@@ -1,22 +1,48 @@
 # Product Sense
 
+**Regiobijeenkomst 07-04-2026**
+
 ## Vision
 
-Samenwijzer helps students learn more effectively by combining AI guidance
-with data-driven insights into their learning progress.
+Samenwijzer geeft studenten en docenten inzicht in leermogelijkheden op basis van studievoortgang.
+De student leert op eigen manier en tempo. Zelfredzaamheid door inzicht in:
 
-## Core beliefs
+- **Waar sta ik?** — huidige voortgang en niveau
+- **Waar moet ik naartoe?** — doelen op basis van opleiding
+- **Hoe kom ik daar?** — gepersonaliseerd leerpad en AI-ondersteuning
 
-- Students learn best when feedback is timely, specific, and actionable.
-- Data about learning patterns should be transparent to the student.
-- AI support supplements — it does not replace — human instruction.
+## Pijler — Studiesucces
+
+Gepersonaliseerde leerondersteuning op basis van studiedata en AI.
+
+### AI features (op prioriteit)
+
+| Prioriteit | Feature | Fase |
+|---|---|---|
+| 1 | Persoonlijke AI tutor (Socratisch) | 1 |
+| 2 | Studiedata dashboard | 1 |
+| 3 | Gepersonaliseerd lesmateriaal (4 niveaus) | 2 |
+| 4 | Oefentoetsen met automatisch nakijken | 2 |
+| 5 | Feedback op ingeleverd werk | 2 |
+| 6 | Rollenspel (beroepssituaties, stage, sollicitatie) | 2 |
+| 7 | Peer learning netwerk | 3 |
+
+### Lesmateriaal niveaus
+
+| Niveau | Label |
+|---|---|
+| 1 | Starter |
+| 2 | Op weg |
+| 3 | Gevorderde |
+| 4 | Expert |
 
 ## Target users
 
-- **Internal:** daily internal users (educators, coaches)
-- **External:** student alpha testers
+- **Primair:** studenten (zelfredzaamheid, eigen leerpad)
+- **Secundair:** docenten en mentoren (inzicht in voortgang van studenten)
 
-## Non-goals (v0.1)
+## Non-goals
 
-- Does not replace a Learning Management System (LMS).
-- Does not store personal data beyond a session unless explicitly designed to.
+- Geen volwaardig LMS — Samenwijzer is een aanvulling, geen vervanging.
+- Geen opslag van persoonsgegevens buiten een sessie tenzij expliciet ontworpen.
+- Aansluiting op arbeidsmarkt (RIASOC etc.) — buiten scope voor nu.
