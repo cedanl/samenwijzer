@@ -35,9 +35,9 @@ Een conversationele tutor die de student Socratisch begeleidt.
 
 ### Blok C — Navigatie en onboarding
 
-- [ ] C1: Multipage Streamlit app (`app/pages/`)
-- [ ] C2: Welkomspagina met uitleg (voldoet aan onboarding spec)
-- [ ] C3: Sessie-state: student selecteert zichzelf uit lijst (geen auth in fase 1)
+- [x] C1: Multipage Streamlit app (`app/pages/`)
+- [x] C2: Welkomspagina met uitleg (voldoet aan onboarding spec)
+- [x] C3: Sessie-state: student selecteert zichzelf eenmalig op startpagina (geen auth)
 
 ---
 
@@ -54,10 +54,12 @@ Een conversationele tutor die de student Socratisch begeleidt.
 
 ## Definitie van klaar
 
-- Demo draait lokaal zonder fouten (`uv run streamlit run app/main.py`)
-- CI is groen (lint + tests)
-- Minstens 3 interne gebruikers hebben de demo gezien en feedback gegeven
-- Bekende problemen zijn gelogd in `docs/exec-plans/tech-debt-tracker.md`
+- [x] Demo draait lokaal zonder fouten (`uv run streamlit run app/main.py`)
+- [x] CI is groen (lint + tests)
+- [ ] Minstens 3 interne gebruikers hebben de demo gezien en feedback gegeven
+- [ ] Bekende problemen zijn gelogd in `docs/exec-plans/tech-debt-tracker.md`
+
+**Code-deel afgerond. Wacht op interne review-ronde.**
 
 ---
 

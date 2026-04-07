@@ -15,8 +15,8 @@ st.caption(
 )
 
 # ── Vereisten ─────────────────────────────────────────────────────────────────
-if "df" not in st.session_state:
-    st.warning("Ga eerst naar de startpagina om de data te laden.")
+if "df" not in st.session_state or "studentnummer" not in st.session_state:
+    st.warning("Ga eerst naar de [startpagina](/) om je naam te kiezen.")
     st.stop()
 
 if not os.environ.get("ANTHROPIC_API_KEY"):
@@ -29,7 +29,7 @@ if not os.environ.get("ANTHROPIC_API_KEY"):
 
 df = st.session_state["df"]
 
-# ── Studentselectie ───────────────────────────────────────────────────────────
+# ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.subheader("Instellingen")
 
@@ -38,9 +38,14 @@ with st.sidebar:
         .apply(lambda r: f"{r['naam']} ({r['studentnummer']})", axis=1)
         .tolist()
     )
-    keuze = st.selectbox("Jij bent", namen)
+    huidig_nr = st.session_state["studentnummer"]
+    huidig_index = next((i for i, n in enumerate(namen) if n.endswith(f"({huidig_nr})")), 0)
+    keuze = st.selectbox("Jij bent", namen, index=huidig_index)
     studentnummer = keuze.split("(")[-1].rstrip(")")
-    student_row = get_student(df, studentnummer)
+
+    if studentnummer != huidig_nr:
+        st.session_state["studentnummer"] = studentnummer
+        st.session_state.pop(f"tutor_sessie_{huidig_nr}", None)
 
     kt_opties = ["(geen specifiek)"] + [
         c.replace("_", " ").title()
@@ -51,10 +56,11 @@ with st.sidebar:
     focus_tekst = "" if kerntaak_focus == "(geen specifiek)" else kerntaak_focus
 
     if st.button("Nieuw gesprek", use_container_width=True):
-        st.session_state.pop("tutor_sessie", None)
+        st.session_state.pop(f"tutor_sessie_{studentnummer}", None)
         st.rerun()
 
 # ── Sessie aanmaken of hergebruiken ───────────────────────────────────────────
+student_row = get_student(df, studentnummer)
 sessie_sleutel = f"tutor_sessie_{studentnummer}"
 
 if sessie_sleutel not in st.session_state:
@@ -68,8 +74,6 @@ if sessie_sleutel not in st.session_state:
     st.session_state[sessie_sleutel] = TutorSessie(student=context)
 
 sessie: TutorSessie = st.session_state[sessie_sleutel]
-
-# Pas kerntaakfocus aan als de student die heeft gewijzigd
 sessie.student.kerntaak_focus = focus_tekst
 
 # ── Gespreksweergave ──────────────────────────────────────────────────────────
@@ -77,6 +81,14 @@ for bericht in sessie.geschiedenis:
     rol = "user" if bericht["role"] == "user" else "assistant"
     with st.chat_message(rol):
         st.write(bericht["content"])
+
+if not sessie.geschiedenis:
+    with st.chat_message("assistant"):
+        st.write(
+            f"Hallo {student_row['naam']}! Waar wil je vandaag mee aan de slag? "
+            "Je kunt me een vraag stellen over je opleiding, een onderwerp uitleggen "
+            "waar je mee worstelt, of gewoon beginnen met nadenken."
+        )
 
 # ── Chatinvoer ────────────────────────────────────────────────────────────────
 invoer = st.chat_input("Typ je vraag of gedachte hier…")
@@ -87,6 +99,6 @@ if invoer:
 
     with st.chat_message("assistant"):
         try:
-            reactie = st.write_stream(stuur_bericht(sessie, invoer))
+            st.write_stream(stuur_bericht(sessie, invoer))
         except Exception as e:
             st.error(f"De tutor kon niet antwoorden: {e}")
