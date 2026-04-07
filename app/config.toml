@@ -1,0 +1,4 @@
+[paths]
+raw_data = "data/01-raw"
+prepared_data = "data/02-prepared"
+output_data = "data/03-output"

@@ -1,0 +1,19 @@
+{
+  "name": "samenwijzer",
+  "build": { "dockerfile": "Dockerfile" },
+  "extensions": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "anthropic.claude-code",
+    "n4eth.ty-type-checker"
+  ],
+  "postCreateCommand": "uv sync && uv pip install ty",
+  "forwardPorts": [8501],
+  "remoteUser": "vscode",
+  "settings": {
+    "editor.formatOnSave": true,
+    "python.linting.enabled": true,
+    "python.linting.ruffEnabled": true,
+    "python.testing.pytestEnabled": true
+  }
+}

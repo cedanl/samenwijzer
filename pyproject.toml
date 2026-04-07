@@ -1,0 +1,47 @@
+[project]
+name = "samenwijzer"
+version = "0.1.0"
+description = "Python app die AI en Data gebruikt om studenten te ondersteunen bij het leren"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "streamlit>=1.40.0",
+    "pandas>=2.2.0",
+    "anthropic>=0.40.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=5.0.0",
+    "ruff>=0.8.0",
+    "ty>=0.0.1a6",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.0.0",
+    "pytest-cov>=5.0.0",
+    "ruff>=0.8.0",
+    "ty>=0.0.1a6",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+ignore = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=src/samenwijzer --cov-report=term-missing"
+
+[tool.ty]
+src = ["src"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

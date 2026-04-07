@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.uv_cache/
+dist/
+build/
+
+# Environment
+.env
+.env.*
+
+# Data — gitignore everything except demo subfolders
+data/01-raw/*
+!data/01-raw/demo/
+data/02-prepared/*
+!data/02-prepared/demo/
+data/03-output/*
+!data/03-output/demo/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test / coverage
+.pytest_cache/
+.coverage
+htmlcov/
