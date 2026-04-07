@@ -27,11 +27,11 @@ Studenten en docenten kunnen voortgang inzien op basis van een CSV-dataset.
 Een conversationele tutor die de student Socratisch begeleidt.
 
 **Stappen:**
-- [ ] B1: `src/samenwijzer/tutor.py` — Claude API client (streaming, sessie-geheugen)
-- [ ] B2: Systeemprompt schrijven: Socratische methode, niveauaanpassing, kerntaak-context
-- [ ] B3: Streamlit pagina: **Tutor** — chatinterface
-- [ ] B4: Tutor ontvangt studentcontext (niveau, voortgang) als context uit Blok A
-- [ ] B5: Tests voor B1 (mock Claude API)
+- [x] B1: `src/samenwijzer/tutor.py` — Claude API client (streaming, sessie-geheugen)
+- [x] B2: Systeemprompt schrijven: Socratische methode, niveauaanpassing, kerntaak-context
+- [x] B3: Streamlit pagina: **Tutor** — chatinterface
+- [x] B4: Tutor ontvangt studentcontext (niveau, voortgang) als context uit Blok A
+- [x] B5: Tests voor B1 (mock Claude API, 10/10 geslaagd)
 
 ### Blok C — Navigatie en onboarding
 
