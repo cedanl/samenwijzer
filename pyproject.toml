@@ -9,6 +9,7 @@ dependencies = [
     "pandas>=2.2.0",
     "anthropic>=0.40.0",
     "python-dotenv>=1.0.0",
+    "altair>=6.0.0",
 ]
 
 [project.optional-dependencies]
@@ -28,7 +29,7 @@ dev-dependencies = [
 ]
 
 [tool.ruff]
-line-length = 88
+line-length = 100
 target-version = "py313"
 
 [tool.ruff.lint]

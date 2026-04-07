@@ -13,14 +13,14 @@
 Studenten en docenten kunnen voortgang inzien op basis van een CSV-dataset.
 
 **Stappen:**
-- [ ] A1: Demo CSV-dataset aanmaken (`data/01-raw/demo/studenten.csv`)
-- [ ] A2: `prepare.py` — CSV inlezen, valideren, opschonen
-- [ ] A3: `transform.py` — Data omzetten naar analyse-klaar formaat
-- [ ] A4: `analyze.py` — Voortgang per student berekenen (BSA, kerntaken, werkprocessen)
-- [ ] A5: `visualize.py` — Grafieken: voortgangsoverzicht, kerntaakscores
-- [ ] A6: Streamlit pagina: **Mijn voortgang** (studentweergave)
-- [ ] A7: Streamlit pagina: **Groepsoverzicht** (docentweergave, filter op opleiding/cohort)
-- [ ] A8: Tests voor A2–A5 (100% coverage op pure functies)
+- [x] A1: Demo CSV-dataset aanmaken (`data/01-raw/demo/studenten.csv`)
+- [x] A2: `prepare.py` — CSV inlezen, valideren, opschonen
+- [x] A3: `transform.py` — Data omzetten naar analyse-klaar formaat
+- [x] A4: `analyze.py` — Voortgang per student berekenen (BSA, kerntaken, werkprocessen)
+- [x] A5: `visualize.py` — Grafieken: voortgangsoverzicht, kerntaakscores
+- [x] A6: Streamlit pagina: **Mijn voortgang** (studentweergave)
+- [x] A7: Streamlit pagina: **Groepsoverzicht** (docentweergave, filter op opleiding/cohort)
+- [x] A8: Tests voor A2–A5 (27/27 geslaagd, 100% op pure functies)
 
 ### Blok B — AI Tutor
 

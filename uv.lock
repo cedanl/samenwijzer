@@ -983,6 +983,7 @@ name = "samenwijzer"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "altair" },
     { name = "anthropic" },
     { name = "pandas" },
     { name = "python-dotenv" },
@@ -1007,6 +1008,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "altair", specifier = ">=6.0.0" },
     { name = "anthropic", specifier = ">=0.40.0" },
     { name = "pandas", specifier = ">=2.2.0" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.0.0" },
