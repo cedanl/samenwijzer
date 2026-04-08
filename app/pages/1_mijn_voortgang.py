@@ -2,7 +2,18 @@
 
 import streamlit as st
 
-from samenwijzer.analyze import get_student, kerntaak_scores, werkproces_scores
+from samenwijzer.styles import CSS, render_footer
+from samenwijzer.analyze import (
+
+    badge,
+    cohort_positie,
+    get_student,
+    kerntaak_scores,
+    leerpad_niveau,
+    werkproces_scores,
+    zwakste_kerntaak,
+    zwakste_werkproces,
+)
 from samenwijzer.visualize import (
     bsa_staaf,
     kerntaak_grafiek,
@@ -11,6 +22,7 @@ from samenwijzer.visualize import (
 )
 
 st.set_page_config(page_title="Mijn voortgang — Samenwijzer", page_icon="📊", layout="wide")
+st.markdown(CSS, unsafe_allow_html=True)
 st.title("📊 Mijn voortgang")
 
 if "df" not in st.session_state:
@@ -40,8 +52,18 @@ with col_info:
         f"{student['leerweg']} · Cohort {student['cohort']}"
     )
     st.caption(f"Mentor: {student['mentor']}")
+    niveau = leerpad_niveau(student)
+    niveau_kleuren = {
+        "Starter": "orange",
+        "Onderweg": "blue",
+        "Gevorderde": "green",
+        "Expert": "violet",
+    }
+    kleur = niveau_kleuren[niveau]
+    st.markdown(f"**Leerpad:** :{kleur}[**{niveau}**]")
 
 with col_meta:
+    st.markdown(f"#### {badge(student)}")
     if student["risico"]:
         st.error("⚠️ Aandacht nodig — neem contact op met je mentor.")
     else:
@@ -89,3 +111,41 @@ if not wp_df.empty:
     st.altair_chart(werkproces_grafiek(wp_df), use_container_width=True)
 else:
     st.info("Geen werkprocesscores beschikbaar.")
+
+st.divider()
+
+# ── Aandachtspunten ───────────────────────────────────────────────────────────
+st.subheader("Aandachtspunten")
+zkt = zwakste_kerntaak(df, studentnummer)
+zwp = zwakste_werkproces(df, studentnummer)
+
+col_zkt, col_zwp = st.columns(2)
+with col_zkt:
+    if zkt:
+        label, score = zkt
+        st.warning(f"**Zwakste kerntaak: {label}** ({score:.0f} punten)")
+        st.caption("Dit is het onderdeel waar je de meeste winst kunt behalen. Bespreek dit met je mentor of gebruik de AI Leercoach.")
+with col_zwp:
+    if zwp:
+        label, score = zwp
+        st.warning(f"**Zwakste werkproces: {label}** ({score:.0f} punten)")
+        st.caption("Focus extra op dit werkproces bij je volgende stage of opdracht.")
+
+st.divider()
+
+# ── Positie in cohort (anoniem) ───────────────────────────────────────────────
+st.subheader("Jouw positie in het cohort")
+positie_info = cohort_positie(df, studentnummer)
+pos = positie_info["positie"]
+totaal = positie_info["totaal"]
+cohort = positie_info["cohort"]
+
+col_pos, col_bar = st.columns([1, 2])
+with col_pos:
+    st.metric("Rangpositie", f"{pos} van {totaal}", help=f"Cohort {cohort}, gesorteerd op voortgang")
+with col_bar:
+    voortgang_pct = int(student["voortgang"] * 100)
+    gem_voortgang_pct = int(df[df["cohort"] == cohort]["voortgang"].mean() * 100)
+    st.metric("Jouw voortgang", f"{voortgang_pct}%", delta=f"{voortgang_pct - gem_voortgang_pct}% t.o.v. cohortgemiddelde")
+
+render_footer()
