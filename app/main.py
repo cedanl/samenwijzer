@@ -10,6 +10,7 @@ import streamlit as st
 from dotenv import load_dotenv
 
 from samenwijzer.prepare import load_student_csv
+from samenwijzer.styles import CSS, render_footer
 from samenwijzer.transform import transform_student_data
 
 load_dotenv()
@@ -21,6 +22,7 @@ st.set_page_config(
     page_icon="📚",
     layout="wide",
 )
+st.markdown(CSS, unsafe_allow_html=True)
 
 
 @st.cache_data
@@ -66,7 +68,6 @@ nieuw_studentnummer = keuze.split("(")[-1].rstrip(")")
 
 if nieuw_studentnummer != huidig:
     st.session_state["studentnummer"] = nieuw_studentnummer
-    # Wis tutorsessies bij wisselen van student
     for key in list(st.session_state.keys()):
         if key.startswith("tutor_sessie_"):
             del st.session_state[key]
@@ -83,27 +84,27 @@ st.divider()
 # ── Navigatiekaarten ──────────────────────────────────────────────────────────
 st.subheader("Wat wil je doen?")
 
-col1, col2, col3 = st.columns(3)
+_, col1, col2, col3, _ = st.columns([0.5, 3, 3, 3, 0.5])
 
 with col1:
-    st.markdown("### 📊 Mijn voortgang")
-    st.write(
-        "Bekijk je studievoortgang, behaalde studiepunten en scores op kerntaken en werkprocessen."
-    )
-    st.page_link("pages/1_mijn_voortgang.py", label="Ga naar Mijn voortgang →")
+    with st.container(border=True):
+        st.markdown("**📊 Mijn voortgang**")
+        st.caption("Bekijk je studievoortgang, BSA en competentiescores.")
+        if st.button("OPEN", key="btn_voortgang", use_container_width=True, type="primary"):
+            st.switch_page("pages/1_mijn_voortgang.py")
 
 with col2:
-    st.markdown("### 🎓 AI Tutor")
-    st.write(
-        "Chat met je persoonlijke tutor. Hij helpt je zelf "
-        "antwoorden te vinden door de juiste vragen te stellen."
-    )
-    st.page_link("pages/3_tutor.py", label="Ga naar AI Tutor →")
+    with st.container(border=True):
+        st.markdown("**👥 Groepsoverzicht**")
+        st.caption("Voor docenten: overzicht van alle studenten in de groep.")
+        if st.button("OPEN", key="btn_groep", use_container_width=True, type="primary"):
+            st.switch_page("pages/2_groepsoverzicht.py")
 
 with col3:
-    st.markdown("### 👥 Groepsoverzicht")
-    st.write(
-        "Voor docenten en mentoren: bekijk de voortgang "
-        "van de hele groep en zie wie aandacht nodig heeft."
-    )
-    st.page_link("pages/2_groepsoverzicht.py", label="Ga naar Groepsoverzicht →")
+    with st.container(border=True):
+        st.markdown("**🎓 AI Leerondersteuning**")
+        st.caption("Tutor, lesmateriaal, oefentoets en feedback op werk.")
+        if st.button("OPEN", key="btn_coach", use_container_width=True, type="primary"):
+            st.switch_page("pages/3_leercoach.py")
+
+render_footer()

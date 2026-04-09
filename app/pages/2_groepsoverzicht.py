@@ -2,10 +2,12 @@
 
 import streamlit as st
 
-from samenwijzer.analyze import cohort_gemiddelden, groepsoverzicht
+from samenwijzer.analyze import cohort_gemiddelden, groepsoverzicht, peer_profielen
+from samenwijzer.styles import CSS, render_footer
 from samenwijzer.visualize import groep_voortgang_grafiek
 
 st.set_page_config(page_title="Groepsoverzicht — Samenwijzer", page_icon="👥", layout="wide")
+st.markdown(CSS, unsafe_allow_html=True)
 st.title("👥 Groepsoverzicht")
 
 if "df" not in st.session_state:
@@ -114,10 +116,36 @@ st.dataframe(
         }
     )
     .style.format({"Voortgang": "{:.0%}", "BSA %": "{:.0%}", "KT gem.": "{:.0f}"})
-    .applymap(lambda v: "background-color: #fdecea" if v is True else "", subset=["Risico"]),
+    .map(lambda v: "background-color: #fdecea" if v is True else "", subset=["Risico"]),
     use_container_width=True,
     hide_index=True,
 )
+
+# ── Peer Learning ─────────────────────────────────────────────────────────────
+with st.expander("👥 Peer Learning — koppeladvies op basis van kerntaken"):
+    pp_df = peer_profielen(gefilterd)
+    if pp_df.empty:
+        st.info("Geen kerntaakdata beschikbaar voor peer matching.")
+    else:
+        st.caption(
+            "Overzicht van de sterkste en zwakste kerntaak per student. "
+            "Koppel studenten die elkaars sterke punten kunnen benutten."
+        )
+        st.dataframe(
+            pp_df.rename(
+                columns={
+                    "naam": "Student",
+                    "sterkste_kt": "Sterk in",
+                    "sterkste_score": "Score",
+                    "zwakste_kt": "Aandacht voor",
+                    "zwakste_score": "Score ",
+                }
+            ).style.format({"Score": "{:.0f}", "Score ": "{:.0f}"}),
+            use_container_width=True,
+            hide_index=True,
+        )
+
+st.divider()
 
 # ── Cohortgemiddelden ─────────────────────────────────────────────────────────
 st.subheader("Gemiddelden per cohort")
@@ -137,3 +165,5 @@ if not cohort_df.empty:
         use_container_width=True,
         hide_index=True,
     )
+
+render_footer()
