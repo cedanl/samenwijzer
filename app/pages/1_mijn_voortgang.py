@@ -13,23 +13,13 @@ from samenwijzer.visualize import (
 st.set_page_config(page_title="Mijn voortgang — Samenwijzer", page_icon="📊", layout="wide")
 st.title("📊 Mijn voortgang")
 
-if "df" not in st.session_state:
-    st.warning("Ga eerst naar de startpagina om de data te laden.")
+if "df" not in st.session_state or "studentnummer" not in st.session_state:
+    st.warning("Ga eerst naar de [startpagina](/) om je naam te kiezen.")
     st.stop()
 
 df = st.session_state["df"]
-
-namen = (
-    df.sort_values("naam")[["naam", "studentnummer"]]
-    .apply(lambda r: f"{r['naam']} ({r['studentnummer']})", axis=1)
-    .tolist()
-)
-keuze = st.selectbox("Kies je naam", namen)
-studentnummer = keuze.split("(")[-1].rstrip(")")
-
+studentnummer = st.session_state["studentnummer"]
 student = get_student(df, studentnummer)
-
-st.divider()
 
 # ── Header ────────────────────────────────────────────────────────────────────
 col_info, col_meta = st.columns([2, 1])
