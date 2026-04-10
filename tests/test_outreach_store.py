@@ -31,9 +31,7 @@ def test_init_db_maakt_tabellen(db: Path) -> None:
     with sqlite3.connect(db) as conn:
         tabellen = {
             r[0]
-            for r in conn.execute(
-                "SELECT name FROM sqlite_master WHERE type='table'"
-            ).fetchall()
+            for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchall()
         }
     assert "student_status" in tabellen
     assert "interventies" in tabellen
@@ -124,12 +122,8 @@ def test_get_alle_interventies(db: Path) -> None:
 
 def test_interventies_gesorteerd_nieuwste_eerst(db: Path) -> None:
     iv1 = _maak_interventie()
-    iv1 = Interventie(
-        **{**iv1.__dict__, "timestamp": "2026-04-01T08:00:00", "id": None}
-    )
-    iv2 = Interventie(
-        **{**iv1.__dict__, "timestamp": "2026-04-08T10:00:00", "id": None}
-    )
+    iv1 = Interventie(**{**iv1.__dict__, "timestamp": "2026-04-01T08:00:00", "id": None})
+    iv2 = Interventie(**{**iv1.__dict__, "timestamp": "2026-04-08T10:00:00", "id": None})
     log_interventie(iv1, db)
     log_interventie(iv2, db)
 

@@ -56,8 +56,16 @@ def test_gesorteerd_op_voortgang_oplopend(df_basis: pd.DataFrame) -> None:
 
 def test_leeg_dataframe_geeft_leeg_resultaat() -> None:
     leeg = pd.DataFrame(
-        columns=["studentnummer", "naam", "opleiding", "niveau", "voortgang",
-                 "bsa_behaald", "bsa_vereist", "risico"]
+        columns=[
+            "studentnummer",
+            "naam",
+            "opleiding",
+            "niveau",
+            "voortgang",
+            "bsa_behaald",
+            "bsa_vereist",
+            "risico",
+        ]
     )
     result = at_risk_studenten(leeg)
     assert result.empty
