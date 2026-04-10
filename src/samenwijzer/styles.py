@@ -90,11 +90,6 @@ def render_nav() -> None:
     with cols[n + 2]:
         st.page_link("pages/uitloggen.py", label="Uitloggen")
 
-    st.markdown(
-        '<hr style="margin:4px 0 12px;border:none;border-top:1px solid rgba(0,0,0,0.08)">',
-        unsafe_allow_html=True,
-    )
-
 
 def render_footer() -> None:
     """Render de huisstijl footer onderaan de pagina."""
@@ -124,8 +119,27 @@ header[data-testid="stHeader"] { display: none !important; }
 [data-testid="stSidebarCollapsedControl"],
 section[data-testid="stSidebar"] { display: none !important; }
 
+/* ── Vaste navigatiebalk ────────────────────────────────────────────────── */
+/* De eerste stHorizontalBlock is altijd onze nav (render_nav() staat bovenaan).
+   position:fixed haalt hem uit de flow en plakt hem tegen de bovenkant. */
+.block-container > div > [data-testid="stHorizontalBlock"]:first-of-type {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 56px !important;
+    background: #ffffff !important;
+    z-index: 9999 !important;
+    padding: 0 24px !important;
+    margin: 0 !important;
+    max-width: none !important;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.08) !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
 .block-container {
-    padding-top: 1.5rem !important;
+    padding-top: 72px !important;
     max-width: 900px;
     margin: 0 auto;
     padding-bottom: 80px !important;
