@@ -34,45 +34,28 @@ FOOTER_HTML = """
 </div>
 """
 
+# Bestandspaden relatief aan app/main.py — vereist door st.page_link()
 _NAV_STUDENT = [
-    ("📚 Home", "/"),
-    ("📊 Mijn voortgang", "/mijn_voortgang"),
-    ("🎓 Leercoach", "/leercoach"),
-    ("💚 Welzijn", "/welzijn"),
+    ("📚 Home", "main.py"),
+    ("📊 Mijn voortgang", "pages/1_mijn_voortgang.py"),
+    ("🎓 Leercoach", "pages/3_leercoach.py"),
+    ("💚 Welzijn", "pages/5_welzijn.py"),
 ]
 
 _NAV_DOCENT = [
-    ("📚 Home", "/"),
-    ("👥 Groepsoverzicht", "/groepsoverzicht"),
-    ("📬 Outreach", "/outreach"),
-    ("🎓 Leercoach", "/leercoach"),
+    ("📚 Home", "main.py"),
+    ("👥 Groepsoverzicht", "pages/2_groepsoverzicht.py"),
+    ("📬 Outreach", "pages/4_outreach.py"),
+    ("🎓 Leercoach", "pages/3_leercoach.py"),
 ]
-
-# Pill-stijl gedeeld door alle nav-items (inclusief uitloggen)
-_PILL = (
-    "display:inline-block;"
-    "background:#ffffff;"
-    "border-radius:50px;"
-    "padding:7px 18px;"
-    "font-size:13px;"
-    "font-weight:700;"
-    "color:#1a1a1a;"
-    "text-decoration:none;"
-    "white-space:nowrap;"
-    "box-shadow:0 4px 16px rgba(0,0,0,0.13);"
-    "letter-spacing:0.05em;"
-    "font-family:'General Sans',sans-serif;"
-    "transition:background 0.15s;"
-)
 
 
 def render_nav() -> None:
-    """Render de vaste navigatiebalk bovenaan in de header-zone.
+    """Render de navigatiebalk bovenaan de pagina via st.page_link().
 
-    Injecteert een HTML-div met position:fixed die de Streamlit-header
-    vervangt. Alle items — inclusief Uitloggen — hebben dezelfde pill-stijl.
-    Uitloggen navigeert naar /uitloggen, dat de sessie wist en terugkeert
-    naar de startpagina.
+    Gebruikt Streamlit's eigen client-side navigatie zodat session_state
+    bewaard blijft bij het wisselen van pagina. HTML-ankers (<a href="...">)
+    starten een volledige herlaad en wissen de sessie — vandaar st.page_link().
 
     Aanroepen direct ná st.markdown(CSS, unsafe_allow_html=True).
     """
@@ -89,37 +72,26 @@ def render_nav() -> None:
         else st.session_state.get("mentor_naam", "")
     )
 
-    links = "".join(
-        f'<a href="{url}" target="_self" style="{_PILL}">{label}</a>' for label, url in nav_items
-    )
+    n = len(nav_items)
+    # kolommen: nav-items | spatie | gebruikersnaam | uitloggen
+    cols = st.columns([2] * n + [3, 2, 2])
 
-    uitloggen = f'<a href="/uitloggen" target="_self" style="{_PILL}">Uitloggen</a>'
+    for i, (label, page) in enumerate(nav_items):
+        with cols[i]:
+            st.page_link(page, label=label)
 
-    gebruiker_html = (
-        f'<span style="color:#888;font-size:12px;font-weight:600;'
-        f"white-space:nowrap;font-family:'General Sans',sans-serif;\">👤 {gebruiker}</span>"
-    )
+    with cols[n + 1]:
+        st.markdown(
+            f'<div style="text-align:right;color:#888;font-size:12px;font-weight:600;'
+            f"padding-top:8px;font-family:'General Sans',sans-serif;\">👤 {gebruiker}</div>",
+            unsafe_allow_html=True,
+        )
+
+    with cols[n + 2]:
+        st.page_link("pages/uitloggen.py", label="Uitloggen")
 
     st.markdown(
-        f"""
-<div style="
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    height: 56px;
-    background: #ffffff;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    padding: 0 24px;
-    gap: 8px;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.08);
-">
-    {links}
-    <div style="flex:1"></div>
-    {gebruiker_html}
-    {uitloggen}
-</div>
-""",
+        '<hr style="margin:4px 0 12px;border:none;border-top:1px solid rgba(0,0,0,0.08)">',
         unsafe_allow_html=True,
     )
 
@@ -141,7 +113,7 @@ CSS = """
     font-weight: 500;
 }
 
-/* Streamlit-header verbergen — vervangen door render_nav() */
+/* Streamlit-header verbergen */
 [data-testid="stHeader"],
 [data-testid="stHeader"] > *,
 header[data-testid="stHeader"] { display: none !important; }
@@ -153,7 +125,7 @@ header[data-testid="stHeader"] { display: none !important; }
 section[data-testid="stSidebar"] { display: none !important; }
 
 .block-container {
-    padding-top: 72px !important;
+    padding-top: 1.5rem !important;
     max-width: 900px;
     margin: 0 auto;
     padding-bottom: 80px !important;
@@ -162,6 +134,35 @@ section[data-testid="stSidebar"] { display: none !important; }
 h1 { font-size: 3.2rem; font-weight: 600; line-height: 1.15; }
 p, li { color: #333; line-height: 1.6; }
 
+/* ── Navigatie — st.page_link als pill ──────────────────────────────────── */
+[data-testid="stPageLink"] {
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+[data-testid="stPageLink"] a {
+    display: inline-block !important;
+    background: #ffffff !important;
+    border-radius: 50px !important;
+    padding: 7px 18px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #1a1a1a !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.13) !important;
+    letter-spacing: 0.05em !important;
+    font-family: 'General Sans', sans-serif !important;
+    transition: background 0.15s !important;
+}
+
+[data-testid="stPageLink"] a:hover {
+    background: #f0f0f0 !important;
+    text-decoration: none !important;
+}
+
+/* ── Knoppen ────────────────────────────────────────────────────────────── */
 [data-testid="stBaseButton-primary"],
 [data-testid="stBaseButton-primary"] p,
 [data-testid="stBaseButton-primary"] span {
