@@ -2,8 +2,11 @@
 base = "light"
 primaryColor = "#1a1a1a"
 backgroundColor = "#f0d4d4"
-secondaryBackgroundColor = "#fae8e8"
+secondaryBackgroundColor = "#ffffff"
 textColor = "#1a1a1a"
+
+[client]
+showSidebarNavigation = false
 
 [server]
 headless = true

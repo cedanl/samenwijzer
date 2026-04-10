@@ -3,39 +3,41 @@
 import streamlit as st
 
 from samenwijzer.analyze import cohort_gemiddelden, groepsoverzicht, peer_profielen
-from samenwijzer.styles import CSS, render_footer
+from samenwijzer.auth import mentor_filter, vereist_docent
+from samenwijzer.outreach_store import get_alle_welzijnschecks
+from samenwijzer.styles import CSS, render_footer, render_nav
 from samenwijzer.visualize import groep_voortgang_grafiek
+from samenwijzer.welzijn import categorie_label, urgentie_label
 
 st.set_page_config(page_title="Groepsoverzicht — Samenwijzer", page_icon="👥", layout="wide")
 st.markdown(CSS, unsafe_allow_html=True)
+render_nav()
+vereist_docent()
 st.title("👥 Groepsoverzicht")
 
 if "df" not in st.session_state:
     st.warning("Ga eerst naar de startpagina om de data te laden.")
     st.stop()
 
-df = st.session_state["df"]
+df = mentor_filter(st.session_state["df"])
+mentor_naam = st.session_state.get("mentor_naam", "")
+st.caption(f"Mentor: **{mentor_naam}** · {len(df)} studenten")
 
 # ── Filters ───────────────────────────────────────────────────────────────────
 with st.expander("Filters", expanded=True):
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
     with col1:
         opleidingen = ["Alle"] + sorted(df["opleiding"].unique().tolist())
         opleiding = st.selectbox("Opleiding", opleidingen)
     with col2:
         cohorten = ["Alle"] + sorted(df["cohort"].unique().tolist(), reverse=True)
         cohort = st.selectbox("Cohort", cohorten)
-    with col3:
-        mentoren = ["Alle"] + sorted(df["mentor"].unique().tolist())
-        mentor = st.selectbox("Mentor", mentoren)
 
 gefilterd = df.copy()
 if opleiding != "Alle":
     gefilterd = gefilterd[gefilterd["opleiding"] == opleiding]
 if cohort != "Alle":
     gefilterd = gefilterd[gefilterd["cohort"] == cohort]
-if mentor != "Alle":
-    gefilterd = gefilterd[gefilterd["mentor"] == mentor]
 
 st.divider()
 
@@ -92,6 +94,29 @@ if not risico_df.empty:
         use_container_width=True,
         hide_index=True,
     )
+
+st.divider()
+
+# ── Welzijnschecks ────────────────────────────────────────────────────────────
+alle_checks = get_alle_welzijnschecks()
+studentnummers_groep = set(gefilterd["studentnummer"].tolist())
+checks_groep = [c for c in alle_checks if c.studentnummer in studentnummers_groep]
+
+if checks_groep:
+    _urgentie_icoon = {1: "🟢", 2: "🟡", 3: "🔴"}
+    st.subheader(f"💚 Recente welzijnschecks ({len(checks_groep)})")
+    st.caption("Studenten die zelf aangeven hulp nodig te hebben.")
+    for check in checks_groep[:10]:
+        naam_rij = gefilterd[gefilterd["studentnummer"] == check.studentnummer]
+        naam = naam_rij.iloc[0]["naam"] if not naam_rij.empty else check.studentnummer
+        icoon = _urgentie_icoon.get(check.urgentie, "⚪")
+        st.markdown(
+            f"{icoon} **{naam}** · {check.timestamp[:10]} · "
+            f"{categorie_label(check.categorie)} · {urgentie_label(check.urgentie)}"
+            + (f"  \n> {check.toelichting[:120]}" if check.toelichting else "")
+        )
+    if len(checks_groep) > 10:
+        st.caption(f"… en nog {len(checks_groep) - 10} eerdere checks.")
 
 st.divider()
 

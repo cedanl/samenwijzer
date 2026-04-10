@@ -2,4 +2,7 @@
 
 | ID | Description | Domain | Priority | Opened |
 |---|---|---|---|---|
-| — | No debt recorded yet | — | — | — |
+| TD-001 | ResourceWarning: unclosed SQLite connections in test suite (`test_prepare.py`). `init_db()` opens connections that are not closed when called indirectly during import. Fix: use `contextlib.closing` or restructure test fixtures. | outreach_store | low | 2026-04-10 |
+| TD-002 | `welzijn.py`, `coach.py`, `visualize.py` have 0% test coverage. Need mocked Anthropic SDK tests and/or Altair snapshot tests. | testing | medium | 2026-04-10 |
+| TD-003 | `outreach_store.py` Campagne and WelzijnsCheck CRUD paths not covered by existing tests. | testing | medium | 2026-04-10 |
+| TD-004 | SMTP env var inconsistency: CLAUDE.md and `.env.example` use `SMTP_AFZENDER`, but old docs referenced `AFZENDER_EMAIL`. Standardised to `SMTP_AFZENDER` in `email_config_uit_env()`. Verify no lingering references. | outreach | low | 2026-04-10 |

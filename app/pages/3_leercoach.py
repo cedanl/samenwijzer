@@ -6,24 +6,26 @@ import streamlit as st
 from dotenv import load_dotenv
 
 from samenwijzer.analyze import get_student, leerpad_niveau, zwakste_kerntaak
+from samenwijzer.auth import mentor_filter
 from samenwijzer.coach import (
     controleer_antwoorden,
     geef_feedback_op_werk,
     genereer_lesmateriaal,
     genereer_oefentoets,
 )
-from samenwijzer.styles import CSS, render_footer
+from samenwijzer.styles import CSS, render_footer, render_nav
 from samenwijzer.tutor import StudentContext, TutorSessie, stuur_bericht
 
 load_dotenv()
 
 st.set_page_config(page_title="AI Leerondersteuning — Samenwijzer", page_icon="🎓", layout="wide")
 st.markdown(CSS, unsafe_allow_html=True)
+render_nav()
 st.title("🎓 AI Leerondersteuning")
 
 # ── Vereisten ──────────────────────────────────────────────────────────────────
-if "df" not in st.session_state:
-    st.warning("Ga eerst naar de startpagina om de data te laden.")
+if "df" not in st.session_state or "rol" not in st.session_state:
+    st.warning("Ga eerst naar de startpagina om in te loggen.")
     st.stop()
 
 if not os.environ.get("ANTHROPIC_API_KEY"):
@@ -34,22 +36,33 @@ if not os.environ.get("ANTHROPIC_API_KEY"):
     st.stop()
 
 df = st.session_state["df"]
+rol = st.session_state["rol"]
 
-# ── Studentselectie ────────────────────────────────────────────────────────────
-namen = (
-    df.sort_values("naam")[["naam", "studentnummer"]]
-    .apply(lambda r: f"{r['naam']} ({r['studentnummer']})", axis=1)
-    .tolist()
-)
-col_sel, col_info = st.columns([2, 1])
-with col_sel:
-    keuze = st.selectbox("Kies je naam", namen, label_visibility="collapsed")
-with col_info:
-    studentnummer = keuze.split("(")[-1].rstrip(")")
+# ── Studentselectie (rol-afhankelijk) ──────────────────────────────────────────
+if rol == "student":
+    # Student ziet altijd en alleen zijn eigen gegevens — geen selector tonen
+    studentnummer = st.session_state["studentnummer"]
     student = get_student(df, studentnummer)
     leerpad = leerpad_niveau(student)
     opleiding = student["opleiding"]
     st.caption(f"**{opleiding}** · Leerpad: **{leerpad}**")
+else:
+    # Docent ziet alleen studenten uit eigen groep
+    groep = mentor_filter(df)
+    opties = (
+        groep.sort_values("naam")[["naam", "studentnummer"]]
+        .apply(lambda r: f"{r['naam']} ({r['studentnummer']})", axis=1)
+        .tolist()
+    )
+    col_sel, col_info = st.columns([2, 1])
+    with col_sel:
+        keuze = st.selectbox("Selecteer een student", opties)
+    studentnummer = keuze.split("(")[-1].rstrip(")")
+    student = get_student(df, studentnummer)
+    leerpad = leerpad_niveau(student)
+    opleiding = student["opleiding"]
+    with col_info:
+        st.caption(f"**{opleiding}** · Leerpad: **{leerpad}**")
 
 zkt = zwakste_kerntaak(df, studentnummer)
 zwakste_kt_label = zkt[0] if zkt else ""
