@@ -30,9 +30,11 @@ FOOTER_HTML = """
 </div>
 """
 
+
 def render_footer() -> None:
     """Render de huisstijl footer onderaan de pagina."""
     import streamlit as st
+
     st.markdown(FOOTER_HTML, unsafe_allow_html=True)
 
 

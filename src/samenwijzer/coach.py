@@ -20,7 +20,7 @@ def genereer_lesmateriaal(
     zwakste_kt: str = "",
     *,
     api_key: str | None = None,
-) -> Generator[str, None, None]:
+) -> Generator[str]:
     """Stream gepersonaliseerd lesmateriaal over een onderwerp.
 
     Args:
@@ -95,7 +95,7 @@ def controleer_antwoorden(
     leerpad: str,
     *,
     api_key: str | None = None,
-) -> Generator[str, None, None]:
+) -> Generator[str]:
     """Stream feedback op de ingevulde toetsantwoorden.
 
     Args:
@@ -107,9 +107,7 @@ def controleer_antwoorden(
     Yields:
         Tekstfragmenten van de feedback.
     """
-    antwoorden_tekst = ", ".join(
-        f"Vraag {k}: {v}" for k, v in sorted(antwoorden.items())
-    )
+    antwoorden_tekst = ", ".join(f"Vraag {k}: {v}" for k, v in sorted(antwoorden.items()))
 
     prompt = (
         f"Dit is de oefentoets:\n{toets_tekst}\n\n"
@@ -133,7 +131,7 @@ def geef_feedback_op_werk(
     leerpad: str,
     *,
     api_key: str | None = None,
-) -> Generator[str, None, None]:
+) -> Generator[str]:
     """Stream constructieve feedback op ingeleverd werk van een student.
 
     Args:

@@ -17,9 +17,7 @@ from samenwijzer.tutor import StudentContext, TutorSessie, stuur_bericht
 
 load_dotenv()
 
-st.set_page_config(
-    page_title="AI Leerondersteuning — Samenwijzer", page_icon="🎓", layout="wide"
-)
+st.set_page_config(page_title="AI Leerondersteuning — Samenwijzer", page_icon="🎓", layout="wide")
 st.markdown(CSS, unsafe_allow_html=True)
 st.title("🎓 AI Leerondersteuning")
 
@@ -137,9 +135,7 @@ with tab_les:
             else:
                 st.session_state.pop("sw_lesmateriaal", None)
                 tekst = st.write_stream(
-                    genereer_lesmateriaal(
-                        onderwerp.strip(), opleiding, leerpad, zwakste_kt_label
-                    )
+                    genereer_lesmateriaal(onderwerp.strip(), opleiding, leerpad, zwakste_kt_label)
                 )
                 st.session_state["sw_lesmateriaal"] = tekst
         elif "sw_lesmateriaal" in st.session_state:
@@ -173,9 +169,7 @@ with tab_toets:
     if "sw_toets_tekst" in st.session_state:
         toets_tekst = st.session_state["sw_toets_tekst"]
         vragen_deel = (
-            toets_tekst.split("ANTWOORDEN:")[0]
-            if "ANTWOORDEN:" in toets_tekst
-            else toets_tekst
+            toets_tekst.split("ANTWOORDEN:")[0] if "ANTWOORDEN:" in toets_tekst else toets_tekst
         )
 
         with st.container(border=True):
@@ -238,9 +232,7 @@ with tab_werk:
                 st.warning("Upload een bestand of plak je werk in het tekstvak.")
             else:
                 st.session_state.pop("sw_werk_feedback", None)
-                fb = st.write_stream(
-                    geef_feedback_op_werk(werk_tekst.strip(), opleiding, leerpad)
-                )
+                fb = st.write_stream(geef_feedback_op_werk(werk_tekst.strip(), opleiding, leerpad))
                 st.session_state["sw_werk_feedback"] = fb
         elif "sw_werk_feedback" in st.session_state:
             st.divider()

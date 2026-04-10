@@ -2,9 +2,7 @@
 
 import streamlit as st
 
-from samenwijzer.styles import CSS, render_footer
 from samenwijzer.analyze import (
-
     badge,
     cohort_positie,
     get_student,
@@ -14,6 +12,7 @@ from samenwijzer.analyze import (
     zwakste_kerntaak,
     zwakste_werkproces,
 )
+from samenwijzer.styles import CSS, render_footer
 from samenwijzer.visualize import (
     bsa_staaf,
     kerntaak_grafiek,
@@ -114,7 +113,10 @@ with col_zkt:
     if zkt:
         label, score = zkt
         st.warning(f"**Zwakste kerntaak: {label}** ({score:.0f} punten)")
-        st.caption("Dit is het onderdeel waar je de meeste winst kunt behalen. Bespreek dit met je mentor of gebruik de AI Leercoach.")
+        st.caption(
+            "Dit is het onderdeel waar je de meeste winst kunt behalen. "
+            "Bespreek dit met je mentor of gebruik de AI Leercoach."
+        )
 with col_zwp:
     if zwp:
         label, score = zwp
@@ -132,10 +134,13 @@ cohort = positie_info["cohort"]
 
 col_pos, col_bar = st.columns([1, 2])
 with col_pos:
-    st.metric("Rangpositie", f"{pos} van {totaal}", help=f"Cohort {cohort}, gesorteerd op voortgang")
+    st.metric(
+        "Rangpositie", f"{pos} van {totaal}", help=f"Cohort {cohort}, gesorteerd op voortgang"
+    )
 with col_bar:
     voortgang_pct = int(student["voortgang"] * 100)
     gem_voortgang_pct = int(df[df["cohort"] == cohort]["voortgang"].mean() * 100)
-    st.metric("Jouw voortgang", f"{voortgang_pct}%", delta=f"{voortgang_pct - gem_voortgang_pct}% t.o.v. cohortgemiddelde")
+    delta = f"{voortgang_pct - gem_voortgang_pct}% t.o.v. cohortgemiddelde"
+    st.metric("Jouw voortgang", f"{voortgang_pct}%", delta=delta)
 
 render_footer()
