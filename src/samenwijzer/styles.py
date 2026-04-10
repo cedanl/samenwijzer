@@ -138,6 +138,22 @@ section[data-testid="stSidebar"] { display: none !important; }
     gap: 8px !important;
 }
 
+/* Nav-kolommen: auto-breedte zodat labels niet worden afgekapt of omslaan */
+.block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
+    [data-testid="stColumn"] {
+    flex: 0 0 auto !important;
+    min-width: fit-content !important;
+    width: auto !important;
+    overflow: visible !important;
+}
+
+/* Spatie-kolom (5e kolom) vult de resterende ruimte op */
+.block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
+    [data-testid="stColumn"]:nth-child(5) {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+}
+
 .block-container {
     padding-top: 72px !important;
     max-width: 900px;
