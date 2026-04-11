@@ -26,8 +26,8 @@ Target users: students (progress, AI tutor, wellbeing check) and internal daily 
 | Product vision & features | `docs/PRODUCT_SENSE.md` |
 | Frontend & UI conventions | `docs/FRONTEND.md` |
 | Design decisions | `docs/design-docs/index.md` |
-| Active execution plans | `docs/exec-plans/active/` |
-| Completed plans | `docs/exec-plans/completed/` |
+| Active execution plans | `docs/exec-plans/active/` — (leeg; fase 1 is afgerond) |
+| Completed plans | `docs/exec-plans/completed/` — fase-1-fundament.md |
 | Quality scores per domain | `docs/QUALITY_SCORE.md` |
 | Security rules | `docs/SECURITY.md` |
 | Reliability requirements | `docs/RELIABILITY.md` |

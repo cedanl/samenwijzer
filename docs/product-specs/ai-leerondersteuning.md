@@ -1,6 +1,6 @@
 # Product Spec: AI Leerondersteuning
 
-**Status:** draft
+**Status:** geïmplementeerd (features 1–3, 6 gereed; 4–5 backlog)
 
 ## Doel
 
@@ -25,9 +25,9 @@ Bestaand of gegenereerd lesmateriaal aangeboden op het niveau van de student.
 - Genereren van nieuw materiaal op basis van kerntaak, werkproces of vak.
 
 **Acceptatiecriteria:**
-- [ ] Student selecteert kerntaak/werkproces en niveau.
-- [ ] App genereert lesmateriaal via Claude API.
-- [ ] Output is leesbaar en educatief verantwoord op het gekozen niveau.
+- [x] Student selecteert kerntaak/werkproces en niveau.
+- [x] App genereert lesmateriaal via Claude API (`genereer_lesmateriaal()` in `coach.py`).
+- [x] Output is leesbaar en educatief verantwoord op het gekozen niveau.
 
 ---
 
@@ -36,9 +36,9 @@ Bestaand of gegenereerd lesmateriaal aangeboden op het niveau van de student.
 Toetsvragen gegenereerd op basis van lesmateriaal (zie feature 1).
 
 **Acceptatiecriteria:**
-- [ ] Student kan een oefentoets starten op basis van een kerntaak.
-- [ ] Antwoorden worden automatisch nagetkeken door de AI.
-- [ ] Student ontvangt toelichting bij fout antwoord.
+- [x] Student kan een oefentoets starten op basis van een kerntaak.
+- [x] Antwoorden worden automatisch nagekeken door de AI (`controleer_antwoorden()` in `coach.py`).
+- [x] Student ontvangt toelichting bij fout antwoord.
 
 ---
 
@@ -47,16 +47,16 @@ Toetsvragen gegenereerd op basis van lesmateriaal (zie feature 1).
 Student levert tekst of antwoord in; AI geeft gerichte feedback.
 
 **Acceptatiecriteria:**
-- [ ] Student kan tekst inleveren.
-- [ ] AI geeft feedback op inhoud, structuur en niveau.
-- [ ] Feedback is constructief en aansluitend bij het leerniveau.
+- [x] Student kan tekst inleveren.
+- [x] AI geeft feedback op inhoud, structuur en niveau (`geef_feedback_op_werk()` in `coach.py`).
+- [x] Feedback is constructief en aansluitend bij het leerniveau.
 
 ---
 
 ### 4. Peer learning netwerk
 
 Studenten kunnen vragen stellen en antwoorden geven aan elkaar.
-*(Lagere prioriteit — v0.2)*
+*(Backlog — v0.2)*
 
 ---
 
@@ -74,6 +74,8 @@ Oefenen van beroepssituaties via een gespreksinterface.
 - [ ] AI speelt de tegenpartij (werkgever, stagebegeleider, collega).
 - [ ] Na afloop geeft de AI feedback op het gesprek.
 
+*(Backlog — v0.2)*
+
 ---
 
 ### 6. Persoonlijke AI tutor
@@ -86,6 +88,6 @@ Een conversationele tutor die de student begeleidt bij leren en nadenken.
 - Geeft géén directe antwoorden maar stelt verdiepende vragen.
 
 **Acceptatiecriteria:**
-- [ ] Student kan een open gesprek voeren met de tutor.
-- [ ] Tutor past toon en complexiteit aan op basis van niveau van de student.
-- [ ] Tutor verwijst naar relevante kerntaken en werkprocessen.
+- [x] Student kan een open gesprek voeren met de tutor (`stuur_bericht()` in `tutor.py`).
+- [x] Tutor past toon en complexiteit aan op basis van niveau van de student.
+- [x] Tutor verwijst naar relevante kerntaken en werkprocessen via `StudentContext`.
