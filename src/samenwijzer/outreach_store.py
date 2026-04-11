@@ -2,6 +2,8 @@
 
 import json
 import sqlite3
+from collections.abc import Generator
+from contextlib import contextmanager
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -11,6 +13,20 @@ _STATUSSEN = ("niet_gecontacteerd", "gecontacteerd", "gereageerd", "opgelost")
 
 # Paden waarvoor init_db() al is uitgevoerd in deze sessie.
 _geinitialiseerd: set[Path] = set()
+
+
+@contextmanager
+def _verbinding(db_path: Path) -> Generator[sqlite3.Connection]:
+    """Open een SQLite-verbinding en sluit hem gegarandeerd na gebruik."""
+    conn = sqlite3.connect(db_path)
+    try:
+        yield conn
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
 
 
 @dataclass
@@ -60,7 +76,7 @@ class Interventie:
 def init_db(db_path: Path = _DB_PATH) -> None:
     """Maak de database en tabellen aan als ze nog niet bestaan."""
     db_path.parent.mkdir(parents=True, exist_ok=True)
-    with sqlite3.connect(db_path) as conn:
+    with _verbinding(db_path) as conn:
         conn.executescript("""
             CREATE TABLE IF NOT EXISTS student_status (
                 studentnummer TEXT PRIMARY KEY,
@@ -111,7 +127,7 @@ def _zorg_voor_db(db_path: Path) -> None:
 def get_student_status(studentnummer: str, db_path: Path = _DB_PATH) -> StudentStatus:
     """Haal de status op voor één student. Retourneert standaard als nog niet aanwezig."""
     _zorg_voor_db(db_path)
-    with sqlite3.connect(db_path) as conn:
+    with _verbinding(db_path) as conn:
         row = conn.execute(
             "SELECT status, laatste_contact, laatste_mentor, notitie "
             "FROM student_status WHERE studentnummer = ?",
@@ -131,7 +147,7 @@ def get_student_status(studentnummer: str, db_path: Path = _DB_PATH) -> StudentS
 def get_alle_statussen(db_path: Path = _DB_PATH) -> dict[str, StudentStatus]:
     """Haal alle opgeslagen statussen op als dict (studentnummer → StudentStatus)."""
     _zorg_voor_db(db_path)
-    with sqlite3.connect(db_path) as conn:
+    with _verbinding(db_path) as conn:
         rows = conn.execute(
             "SELECT studentnummer, status, laatste_contact, laatste_mentor, notitie "
             "FROM student_status"
@@ -151,7 +167,7 @@ def get_alle_statussen(db_path: Path = _DB_PATH) -> dict[str, StudentStatus]:
 def upsert_status(status: StudentStatus, db_path: Path = _DB_PATH) -> None:
     """Sla de status van een student op (insert of update)."""
     _zorg_voor_db(db_path)
-    with sqlite3.connect(db_path) as conn:
+    with _verbinding(db_path) as conn:
         conn.execute(
             """
             INSERT INTO student_status
@@ -176,7 +192,7 @@ def upsert_status(status: StudentStatus, db_path: Path = _DB_PATH) -> None:
 def log_interventie(interventie: Interventie, db_path: Path = _DB_PATH) -> None:
     """Schrijf een interventie naar de auditlog."""
     _zorg_voor_db(db_path)
-    with sqlite3.connect(db_path) as conn:
+    with _verbinding(db_path) as conn:
         conn.execute(
             """
             INSERT INTO interventies
@@ -202,7 +218,7 @@ def get_interventies_voor_student(
 ) -> list[Interventie]:
     """Haal alle interventies op voor één student, nieuwste eerst."""
     _zorg_voor_db(db_path)
-    with sqlite3.connect(db_path) as conn:
+    with _verbinding(db_path) as conn:
         rows = conn.execute(
             "SELECT id, studentnummer, timestamp, mentor, status_voor, status_na, "
             "bericht_samenvatting, voortgang_op_moment, bsa_percentage_op_moment "
@@ -215,7 +231,7 @@ def get_interventies_voor_student(
 def get_alle_interventies(db_path: Path = _DB_PATH) -> list[Interventie]:
     """Haal alle interventies op, nieuwste eerst."""
     _zorg_voor_db(db_path)
-    with sqlite3.connect(db_path) as conn:
+    with _verbinding(db_path) as conn:
         rows = conn.execute(
             "SELECT id, studentnummer, timestamp, mentor, status_voor, status_na, "
             "bericht_samenvatting, voortgang_op_moment, bsa_percentage_op_moment "
@@ -227,7 +243,7 @@ def get_alle_interventies(db_path: Path = _DB_PATH) -> list[Interventie]:
 def maak_campagne(campagne: Campagne, db_path: Path = _DB_PATH) -> int:
     """Sla een nieuwe campagne op en geef het nieuwe id terug."""
     _zorg_voor_db(db_path)
-    with sqlite3.connect(db_path) as conn:
+    with _verbinding(db_path) as conn:
         cur = conn.execute(
             """
             INSERT INTO campagnes
@@ -251,7 +267,7 @@ def maak_campagne(campagne: Campagne, db_path: Path = _DB_PATH) -> int:
 def get_alle_campagnes(db_path: Path = _DB_PATH) -> list[Campagne]:
     """Haal alle campagnes op, nieuwste eerst."""
     _zorg_voor_db(db_path)
-    with sqlite3.connect(db_path) as conn:
+    with _verbinding(db_path) as conn:
         rows = conn.execute(
             "SELECT id, naam, transitiemoment, bericht_template, aangemaakt_door, "
             "aangemaakt_op, doelgroep_filter, status FROM campagnes ORDER BY aangemaakt_op DESC"
@@ -262,7 +278,7 @@ def get_alle_campagnes(db_path: Path = _DB_PATH) -> list[Campagne]:
 def sluit_campagne(campagne_id: int, db_path: Path = _DB_PATH) -> None:
     """Zet de status van een campagne op 'afgesloten'."""
     _zorg_voor_db(db_path)
-    with sqlite3.connect(db_path) as conn:
+    with _verbinding(db_path) as conn:
         conn.execute("UPDATE campagnes SET status = 'afgesloten' WHERE id = ?", (campagne_id,))
 
 
@@ -283,7 +299,7 @@ def _row_to_campagne(row: tuple) -> Campagne:
 def sla_welzijnscheck_op(check: WelzijnsCheck, db_path: Path = _DB_PATH) -> int:
     """Sla een welzijnscheck op en geef het nieuwe id terug."""
     _zorg_voor_db(db_path)
-    with sqlite3.connect(db_path) as conn:
+    with _verbinding(db_path) as conn:
         cur = conn.execute(
             """
             INSERT INTO welzijnschecks (studentnummer, timestamp, categorie, toelichting, urgentie)
@@ -303,7 +319,7 @@ def sla_welzijnscheck_op(check: WelzijnsCheck, db_path: Path = _DB_PATH) -> int:
 def get_welzijnschecks_student(studentnummer: str, db_path: Path = _DB_PATH) -> list[WelzijnsCheck]:
     """Haal alle welzijnschecks op voor één student, nieuwste eerst."""
     _zorg_voor_db(db_path)
-    with sqlite3.connect(db_path) as conn:
+    with _verbinding(db_path) as conn:
         rows = conn.execute(
             "SELECT id, studentnummer, timestamp, categorie, toelichting, urgentie "
             "FROM welzijnschecks WHERE studentnummer = ? ORDER BY timestamp DESC",
@@ -315,7 +331,7 @@ def get_welzijnschecks_student(studentnummer: str, db_path: Path = _DB_PATH) -> 
 def get_alle_welzijnschecks(db_path: Path = _DB_PATH) -> list[WelzijnsCheck]:
     """Haal alle welzijnschecks op, nieuwste eerst."""
     _zorg_voor_db(db_path)
-    with sqlite3.connect(db_path) as conn:
+    with _verbinding(db_path) as conn:
         rows = conn.execute(
             "SELECT id, studentnummer, timestamp, categorie, toelichting, urgentie "
             "FROM welzijnschecks ORDER BY timestamp DESC"
