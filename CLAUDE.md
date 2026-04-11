@@ -17,6 +17,10 @@ Follow CEDA technical standards: https://github.com/cedanl/.github/tree/main/sta
 Python 3.13, Streamlit, pandas, Anthropic SDK.
 Package management: `uv`. Type checking: `ty`. Linting/formatting: `ruff`.
 
+**pandas vs Polars**: dit project gebruikt pandas bewust. Altair, Streamlit en de meeste
+visualisatiebibliotheken verwachten pandas-DataFrames; conversiestappen zouden code-overhead
+toevoegen zonder meetbare voordelen bij de huidige datasetgrootte (1000 studenten).
+
 ## Commands
 
 ```bash
@@ -26,7 +30,7 @@ uv sync
 # App starten
 uv run streamlit run app/main.py
 
-# Alle tests
+# Alle tests (met coverage-rapport)
 uv run pytest
 
 # Één testbestand
@@ -44,6 +48,9 @@ uv run ruff format src/ app/
 
 # Type checking
 uv run ty check
+
+# Dependencies upgraden
+uv lock --upgrade && uv sync
 ```
 
 ## Omgeving
@@ -125,6 +132,10 @@ Uitloggen verloopt via `app/pages/uitloggen.py` (wist sessie, redirect naar `/`)
 **Paginaconventies**: elke pagina begint met `st.set_page_config()`, gevolgd door
 `st.markdown(CSS, unsafe_allow_html=True)` en `render_nav()`. AI-calls langer dan ~1 seconde
 worden gewrapped in `st.spinner()`. Toon gebruikersvriendelijke foutmeldingen — geen ruwe tracebacks.
+AI-timeout is 30 seconden; vang `anthropic.APITimeoutError` op en toon een gebruikersvriendelijke melding.
+
+**Streaming AI-calls**: gebruik altijd `st.write_stream()`. Sla het resultaat op in
+`st.session_state` zodat re-renders de API-call niet opnieuw uitvoeren.
 
 ## Authenticatie & toegangsbeheer
 
@@ -197,6 +208,27 @@ Drie urgentieniveaus: 1 (kan wachten), 2 (liefst snel), 3 (dringend).
 
 `genereer_welzijnsreactie()` streamt een korte, empathische AI-reactie na het invullen.
 Mentoren zien recente welzijnschecks van hun studenten in `2_groepsoverzicht.py`.
+
+**Gevoeligheid**: toon vrije-tekst studentreacties nooit in geaggregeerde dashboards. Alleen de
+toegewezen mentor ziet individuele check-details. Urgentie 3 ("Dringend") vereist directe
+actie van de mentor.
+
+## Linting & stijl
+
+`ruff` line-length = 100. Selectie: `E, F, I, N, W, UP`. `styles.py` heeft een E501-uitzondering
+(HTML-strings zijn inherent lang). `src/samenwijzer/` en `app/` zijn de lintdoelen.
+
+## SQLite-isolatie
+
+Alle schrijfbewerkingen naar `outreach.db` lopen via `outreach_store.py`. Nooit raw SQL in `app/`.
+`outreach.db` is gitignored — commit hem nooit.
+
+## Bekende tech debt
+
+Zie `docs/exec-plans/tech-debt-tracker.md` voor de actuele lijst. Notabele items:
+- **TD-001**: Unclosed SQLite-connecties in `test_prepare.py` (low prio; gebruik `contextlib.closing`).
+- **TD-002/TD-003**: `welzijn.py`, `coach.py`, `visualize.py` en Campagne/WelzijnsCheck CRUD-paden
+  hebben 0% testdekking — nieuwe tests hier zijn welkom.
 
 ## Agent rules
 

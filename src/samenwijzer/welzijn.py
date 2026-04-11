@@ -1,7 +1,7 @@
 """Welzijnsmodule: AI-reactie op student self-assessment."""
 
-import os
 from collections.abc import Generator
+from os import environ
 
 import anthropic
 
@@ -26,15 +26,18 @@ _URGENTIE_LABEL: dict[int, str] = {
 
 
 def categorie_label(categorie: str) -> str:
+    """Geef het leesbare label voor een hulpcategorie."""
     return _CATEGORIE_LABEL.get(categorie, categorie)
 
 
 def urgentie_label(urgentie: int) -> str:
+    """Geef het leesbare label voor een urgentieniveau (1–3)."""
     return _URGENTIE_LABEL.get(urgentie, str(urgentie))
 
 
 def _client(api_key: str | None = None) -> anthropic.Anthropic:
-    return anthropic.Anthropic(api_key=api_key or os.environ.get("ANTHROPIC_API_KEY"))
+    """Maak een Anthropic-client aan met de opgegeven of omgevings-API-sleutel."""
+    return anthropic.Anthropic(api_key=api_key or environ.get("ANTHROPIC_API_KEY"))
 
 
 def genereer_welzijnsreactie(
