@@ -5,10 +5,14 @@ from unittest.mock import MagicMock, patch
 import pytest
 
 from samenwijzer.coach import (
+    SCENARIO_OPTIES,
+    RollenspelSessie,
     controleer_antwoorden,
     genereer_lesmateriaal,
     genereer_oefentoets,
+    genereer_rollenspel_feedback,
     geef_feedback_op_werk,
+    stuur_rollenspel_bericht,
 )
 
 
@@ -190,3 +194,123 @@ def test_geef_feedback_op_werk_prompt_bevat_werk(mock_cls: MagicMock) -> None:
     prompt = mock_client.messages.stream.call_args.kwargs["messages"][0]["content"]
     assert "Mijn stageverslag gaat over..." in prompt
     assert "Horeca" in prompt
+
+
+# ── RollenspelSessie ──────────────────────────────────────────────────────────
+
+
+def _maak_sessie(scenario: str = "sollicitatie") -> RollenspelSessie:
+    return RollenspelSessie(
+        scenario=scenario, opleiding="Verzorgende IG", leerpad="Gevorderde", naam="Anna"
+    )
+
+
+def test_rollenspel_sessie_tegenpartij_sollicitatie() -> None:
+    assert _maak_sessie("sollicitatie").tegenpartij() == "werkgever"
+
+
+def test_rollenspel_sessie_tegenpartij_stagegesprek() -> None:
+    assert _maak_sessie("stagegesprek").tegenpartij() == "stagebegeleider"
+
+
+def test_rollenspel_sessie_tegenpartij_beroepssituatie() -> None:
+    assert _maak_sessie("beroepssituatie").tegenpartij() == "gesprekspartner"
+
+
+def test_rollenspel_sessie_tegenpartij_onbekend_scenario() -> None:
+    assert _maak_sessie("onbekend").tegenpartij() == "gesprekspartner"
+
+
+def test_rollenspel_sessie_reset_wist_geschiedenis() -> None:
+    sessie = _maak_sessie()
+    sessie.geschiedenis = [{"role": "user", "content": "hallo"}]
+    sessie.reset()
+    assert sessie.geschiedenis == []
+
+
+def test_scenario_opties_bevat_alle_sleutels() -> None:
+    assert set(SCENARIO_OPTIES) == {"sollicitatie", "stagegesprek", "beroepssituatie"}
+
+
+# ── stuur_rollenspel_bericht ──────────────────────────────────────────────────
+
+
+@patch("samenwijzer.coach.anthropic.Anthropic")
+def test_stuur_rollenspel_bericht_yield_reactie(mock_cls: MagicMock) -> None:
+    reactie = "Goedemorgen, vertel eens over jezelf."
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = _mock_stream(reactie)
+    mock_cls.return_value = mock_client
+
+    sessie = _maak_sessie()
+    resultaat = "".join(stuur_rollenspel_bericht(sessie, "Hallo!", api_key="test"))
+
+    assert resultaat == reactie
+
+
+@patch("samenwijzer.coach.anthropic.Anthropic")
+def test_stuur_rollenspel_bericht_voegt_berichten_toe(mock_cls: MagicMock) -> None:
+    reactie = "Interessant!"
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = _mock_stream(reactie)
+    mock_cls.return_value = mock_client
+
+    sessie = _maak_sessie()
+    list(stuur_rollenspel_bericht(sessie, "Ik wil graag stage lopen.", api_key="test"))
+
+    assert len(sessie.geschiedenis) == 2
+    assert sessie.geschiedenis[0] == {"role": "user", "content": "Ik wil graag stage lopen."}
+    assert sessie.geschiedenis[1] == {"role": "assistant", "content": reactie}
+
+
+@patch("samenwijzer.coach.anthropic.Anthropic")
+def test_stuur_rollenspel_bericht_stuurt_systeem_prompt(mock_cls: MagicMock) -> None:
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = _mock_stream("OK")
+    mock_cls.return_value = mock_client
+
+    sessie = _maak_sessie("sollicitatie")
+    list(stuur_rollenspel_bericht(sessie, "Goedemorgen.", api_key="test"))
+
+    call_kwargs = mock_client.messages.stream.call_args.kwargs
+    assert "system" in call_kwargs
+    assert "werkgever" in call_kwargs["system"]
+
+
+# ── genereer_rollenspel_feedback ──────────────────────────────────────────────
+
+
+@patch("samenwijzer.coach.anthropic.Anthropic")
+def test_genereer_rollenspel_feedback_yield_nabespreking(mock_cls: MagicMock) -> None:
+    nabespreking = "Je deed het goed! Verbeterpunt: meer doorvragen."
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = _mock_stream(nabespreking)
+    mock_cls.return_value = mock_client
+
+    sessie = _maak_sessie()
+    sessie.geschiedenis = [
+        {"role": "user", "content": "Hallo"},
+        {"role": "assistant", "content": "Vertel over jezelf."},
+    ]
+    resultaat = "".join(genereer_rollenspel_feedback(sessie, api_key="test"))
+
+    assert resultaat == nabespreking
+
+
+@patch("samenwijzer.coach.anthropic.Anthropic")
+def test_genereer_rollenspel_feedback_prompt_bevat_gesprek(mock_cls: MagicMock) -> None:
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = _mock_stream("OK")
+    mock_cls.return_value = mock_client
+
+    sessie = _maak_sessie("stagegesprek")
+    sessie.geschiedenis = [
+        {"role": "user", "content": "Ik doe mijn best."},
+        {"role": "assistant", "content": "Dat waardeer ik."},
+    ]
+    list(genereer_rollenspel_feedback(sessie, api_key="test"))
+
+    prompt = mock_client.messages.stream.call_args.kwargs["messages"][0]["content"]
+    assert "Ik doe mijn best." in prompt
+    assert "Dat waardeer ik." in prompt
+    assert "stagegesprek" in prompt.lower() or "Stagegesprek" in prompt
