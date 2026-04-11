@@ -258,6 +258,80 @@ def controleer_antwoorden(
         yield from stream.text_stream
 
 
+def genereer_weekplan(
+    naam: str,
+    opleiding: str,
+    leerpad: str,
+    voortgang: float,
+    bsa_behaald: float,
+    bsa_vereist: float,
+    zwakste_kerntaak: str = "",
+    zwakste_werkproces: str = "",
+    *,
+    api_key: str | None = None,
+) -> Generator[str]:
+    """Stream een gepersonaliseerd weekplan met concrete studieacties.
+
+    Args:
+        naam: Naam van de student.
+        opleiding: De opleiding van de student.
+        leerpad: Het leerpadniveau (Starter/Onderweg/Gevorderde/Expert).
+        voortgang: Studievoortgang als getal tussen 0 en 1.
+        bsa_behaald: Behaalde BSA-studiepunten.
+        bsa_vereist: Vereiste BSA-studiepunten.
+        zwakste_kerntaak: Label van de kerntaak met de laagste score.
+        zwakste_werkproces: Label van het werkproces met de laagste score.
+        api_key: Optionele Anthropic API-sleutel.
+
+    Yields:
+        Tekstfragmenten van het gegenereerde weekplan.
+    """
+    bsa_status = (
+        f"BSA: {bsa_behaald:.0f} van {bsa_vereist:.0f} studiepunten behaald "
+        f"({bsa_behaald / bsa_vereist * 100:.0f}%)"
+        if bsa_vereist > 0
+        else "BSA-status onbekend"
+    )
+    aandachtspunten = []
+    if zwakste_kerntaak:
+        aandachtspunten.append(f"zwakste kerntaak: {zwakste_kerntaak}")
+    if zwakste_werkproces:
+        aandachtspunten.append(f"zwakste werkproces: {zwakste_werkproces}")
+    aandacht_tekst = "Aandachtspunten: " + " | ".join(aandachtspunten) if aandachtspunten else ""
+
+    prompt = (
+        f"Maak een concreet weekplan voor MBO-student {naam}.\n\n"
+        f"## Studentprofiel\n"
+        f"- Opleiding: {opleiding}\n"
+        f"- Niveau: {leerpad}\n"
+        f"- Studievoortgang: {voortgang * 100:.0f}%\n"
+        f"- {bsa_status}\n"
+        + (f"- {aandacht_tekst}\n" if aandacht_tekst else "")
+        + "\n## Opdracht\n"
+        "Genereer een weekplan met **5 tot 7 concrete studieacties** voor de komende week.\n"
+        "Gebruik dit formaat:\n\n"
+        "**Weekplan — [naam]**\n\n"
+        "| Dag | Actie | Duur | Doel |\n"
+        "|---|---|---|---|\n"
+        "| Maandag | … | … | … |\n\n"
+        "Voeg daarna 1-2 regels motiverende afsluiting toe.\n\n"
+        "Regels:\n"
+        "- Acties zijn specifiek en uitvoerbaar (geen vage tips)\n"
+        "- Sluit aan op de zwakste kerntaak of werkproces als die bekend is\n"
+        "- Pas de intensiteit aan op het niveau (Starter = rustig opbouwen, Expert = verdieping)\n"
+        "- Gebruik eenvoudige MBO-taal\n"
+        "- Schrijf in het Nederlands"
+    )
+
+    client = _client(api_key)
+    with client.messages.stream(
+        model=_MODEL,
+        max_tokens=_MAX_TOKENS,
+        messages=[{"role": "user", "content": prompt}],
+    ) as stream:
+        yield from stream.text_stream
+
+
 def geef_feedback_op_werk(
     werk: str,
     opleiding: str,

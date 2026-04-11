@@ -13,6 +13,7 @@ from samenwijzer.analyze import (
     zwakste_werkproces,
 )
 from samenwijzer.auth import mentor_filter
+from samenwijzer.coach import genereer_weekplan
 from samenwijzer.styles import CSS, render_footer, render_nav
 from samenwijzer.visualize import (
     bsa_staaf,
@@ -146,72 +147,127 @@ with col_c:
             unsafe_allow_html=True,
         )
 
-# ── Scores: kerntaken en werkprocessen ───────────────────────────────────────
-kt_df = kerntaak_scores(df, studentnummer)
-wp_df = werkproces_scores(df, studentnummer)
-
-col_kt, col_wp = st.columns(2)
+# ── Tabs: scores, aandachtspunten, weekplan ───────────────────────────────────
+zkt = zwakste_kerntaak(df, studentnummer)
+zwp = zwakste_werkproces(df, studentnummer)
+zkt_label = zkt[0] if zkt else ""
+zwp_label = zwp[0] if zwp else ""
 
 _label_stijl = (
     "font-size:0.7rem; font-weight:700; letter-spacing:0.1em; "
     "color:#888; margin:0 0 8px; text-transform:uppercase"
 )
 
-with col_kt:
-    with st.container(border=True):
-        st.markdown(f"<p style='{_label_stijl}'>Kerntaken</p>", unsafe_allow_html=True)
-        if not kt_df.empty:
-            st.altair_chart(kerntaak_grafiek(kt_df), use_container_width=True)
-        else:
-            st.info("Geen kerntaakscores beschikbaar.")
+tab_scores, tab_aandacht, tab_weekplan = st.tabs(["📊 Scores", "⚠️ Aandachtspunten", "📅 Weekplan"])
 
-with col_wp:
-    with st.container(border=True):
-        st.markdown(f"<p style='{_label_stijl}'>Werkprocessen</p>", unsafe_allow_html=True)
-        if not wp_df.empty:
-            st.altair_chart(werkproces_grafiek(wp_df), use_container_width=True)
-        else:
-            st.info("Geen werkprocesscores beschikbaar.")
+# ─────────────────────────────────────────────────────────────────────────────
+# TAB 1: SCORES
+# ─────────────────────────────────────────────────────────────────────────────
+with tab_scores:
+    kt_df = kerntaak_scores(df, studentnummer)
+    wp_df = werkproces_scores(df, studentnummer)
 
-# ── Aandachtspunten ───────────────────────────────────────────────────────────
-zkt = zwakste_kerntaak(df, studentnummer)
-zwp = zwakste_werkproces(df, studentnummer)
+    col_kt, col_wp = st.columns(2)
 
-if zkt or zwp:
-    st.markdown(
-        f"<p style='{_label_stijl}; margin-top:8px'>Aandachtspunten</p>",
-        unsafe_allow_html=True,
+    with col_kt:
+        with st.container(border=True):
+            st.markdown(f"<p style='{_label_stijl}'>Kerntaken</p>", unsafe_allow_html=True)
+            if not kt_df.empty:
+                st.altair_chart(kerntaak_grafiek(kt_df), use_container_width=True)
+            else:
+                st.info("Geen kerntaakscores beschikbaar.")
+
+    with col_wp:
+        with st.container(border=True):
+            st.markdown(f"<p style='{_label_stijl}'>Werkprocessen</p>", unsafe_allow_html=True)
+            if not wp_df.empty:
+                st.altair_chart(werkproces_grafiek(wp_df), use_container_width=True)
+            else:
+                st.info("Geen werkprocesscores beschikbaar.")
+
+# ─────────────────────────────────────────────────────────────────────────────
+# TAB 2: AANDACHTSPUNTEN
+# ─────────────────────────────────────────────────────────────────────────────
+with tab_aandacht:
+    if zkt or zwp:
+        col_zkt, col_zwp = st.columns(2)
+
+        with col_zkt:
+            if zkt:
+                label, score = zkt
+                with st.container(border=True):
+                    st.markdown(
+                        "<p style='font-size:0.7rem; font-weight:700; letter-spacing:0.08em; "
+                        "color:#e67e22; margin:0; text-transform:uppercase'>⚠️ Zwakste kerntaak</p>"
+                        f"<p style='font-size:1.05rem; font-weight:700; margin:6px 0 2px; "
+                        f"color:#1a1a1a'>{label}</p>"
+                        f"<p style='color:#aaa; font-size:0.82rem; margin:0'>"
+                        f"{score:.0f} punten</p>",
+                        unsafe_allow_html=True,
+                    )
+                    st.caption(
+                        "Bespreek dit met je mentor of gebruik de AI Leercoach voor gerichte "
+                        "oefening."
+                    )
+
+        with col_zwp:
+            if zwp:
+                label, score = zwp
+                with st.container(border=True):
+                    st.markdown(
+                        "<p style='font-size:0.7rem; font-weight:700; letter-spacing:0.08em; "
+                        "color:#e67e22; margin:0; text-transform:uppercase'>⚠️ Zwakste "
+                        "werkproces</p>"
+                        f"<p style='font-size:1.05rem; font-weight:700; margin:6px 0 2px; "
+                        f"color:#1a1a1a'>{label}</p>"
+                        f"<p style='color:#aaa; font-size:0.82rem; margin:0'>"
+                        f"{score:.0f} punten</p>",
+                        unsafe_allow_html=True,
+                    )
+                    st.caption("Focus extra op dit werkproces bij je volgende stage of opdracht.")
+    else:
+        st.info("Geen specifieke aandachtspunten gevonden — goed bezig!")
+
+# ─────────────────────────────────────────────────────────────────────────────
+# TAB 3: WEEKPLAN
+# ─────────────────────────────────────────────────────────────────────────────
+with tab_weekplan:
+    st.caption(
+        "Een persoonlijk studieplan voor deze week, afgestemd op jouw voortgang, "
+        "BSA-status en aandachtspunten."
     )
-    col_zkt, col_zwp = st.columns(2)
 
-    with col_zkt:
-        if zkt:
-            label, score = zkt
-            with st.container(border=True):
-                st.markdown(
-                    "<p style='font-size:0.7rem; font-weight:700; letter-spacing:0.08em; "
-                    "color:#e67e22; margin:0; text-transform:uppercase'>⚠️ Zwakste kerntaak</p>"
-                    f"<p style='font-size:1.05rem; font-weight:700; margin:6px 0 2px; "
-                    f"color:#1a1a1a'>{label}</p>"
-                    f"<p style='color:#aaa; font-size:0.82rem; margin:0'>{score:.0f} punten</p>",
-                    unsafe_allow_html=True,
-                )
-                st.caption(
-                    "Bespreek dit met je mentor of gebruik de AI Leercoach voor gerichte oefening."
-                )
+    weekplan_sleutel = f"sw_weekplan_{studentnummer}"
 
-    with col_zwp:
-        if zwp:
-            label, score = zwp
-            with st.container(border=True):
-                st.markdown(
-                    "<p style='font-size:0.7rem; font-weight:700; letter-spacing:0.08em; "
-                    "color:#e67e22; margin:0; text-transform:uppercase'>⚠️ Zwakste werkproces</p>"
-                    f"<p style='font-size:1.05rem; font-weight:700; margin:6px 0 2px; "
-                    f"color:#1a1a1a'>{label}</p>"
-                    f"<p style='color:#aaa; font-size:0.82rem; margin:0'>{score:.0f} punten</p>",
-                    unsafe_allow_html=True,
+    col_gen, col_reset = st.columns([4, 1])
+    with col_gen:
+        genereer_btn = st.button(
+            "GENEREER WEEKPLAN", type="primary", key="btn_weekplan", use_container_width=True
+        )
+    with col_reset:
+        if st.button("↺", key="btn_weekplan_reset", use_container_width=True):
+            st.session_state.pop(weekplan_sleutel, None)
+            st.rerun()
+
+    if genereer_btn:
+        st.session_state.pop(weekplan_sleutel, None)
+        with st.spinner("Weekplan wordt opgesteld…"):
+            tekst = st.write_stream(
+                genereer_weekplan(
+                    naam=str(student["naam"]),
+                    opleiding=str(student["opleiding"]),
+                    leerpad=niveau,
+                    voortgang=float(student["voortgang"]),
+                    bsa_behaald=float(student["bsa_behaald"]),
+                    bsa_vereist=float(student["bsa_vereist"]),
+                    zwakste_kerntaak=zkt_label,
+                    zwakste_werkproces=zwp_label,
                 )
-                st.caption("Focus extra op dit werkproces bij je volgende stage of opdracht.")
+            )
+        st.session_state[weekplan_sleutel] = tekst
+    elif weekplan_sleutel in st.session_state:
+        st.markdown(st.session_state[weekplan_sleutel])
+    else:
+        st.info("Klik op **GENEREER WEEKPLAN** om je persoonlijke studieplan te maken.")
 
 render_footer()

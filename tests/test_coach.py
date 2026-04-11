@@ -11,6 +11,7 @@ from samenwijzer.coach import (
     genereer_lesmateriaal,
     genereer_oefentoets,
     genereer_rollenspel_feedback,
+    genereer_weekplan,
     geef_feedback_op_werk,
     stuur_rollenspel_bericht,
 )
@@ -314,3 +315,100 @@ def test_genereer_rollenspel_feedback_prompt_bevat_gesprek(mock_cls: MagicMock) 
     assert "Ik doe mijn best." in prompt
     assert "Dat waardeer ik." in prompt
     assert "stagegesprek" in prompt.lower() or "Stagegesprek" in prompt
+
+
+# ── genereer_weekplan ─────────────────────────────────────────────────────────
+
+
+@patch("samenwijzer.coach.anthropic.Anthropic")
+def test_genereer_weekplan_yield_tekst(mock_cls: MagicMock) -> None:
+    weekplan = "**Weekplan — Yasmin**\n| Maandag | Herhaal theorie | 30 min | Begrip |"
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = _mock_stream(weekplan)
+    mock_cls.return_value = mock_client
+
+    resultaat = "".join(
+        genereer_weekplan(
+            naam="Yasmin",
+            opleiding="Verzorgende IG",
+            leerpad="Onderweg",
+            voortgang=0.55,
+            bsa_behaald=33.0,
+            bsa_vereist=60.0,
+            api_key="test",
+        )
+    )
+
+    assert resultaat == weekplan
+
+
+@patch("samenwijzer.coach.anthropic.Anthropic")
+def test_genereer_weekplan_prompt_bevat_studentprofiel(mock_cls: MagicMock) -> None:
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = _mock_stream("OK")
+    mock_cls.return_value = mock_client
+
+    list(
+        genereer_weekplan(
+            naam="Ravi",
+            opleiding="Elektrotechniek",
+            leerpad="Gevorderde",
+            voortgang=0.72,
+            bsa_behaald=45.0,
+            bsa_vereist=60.0,
+            api_key="test",
+        )
+    )
+
+    prompt = mock_client.messages.stream.call_args.kwargs["messages"][0]["content"]
+    assert "Ravi" in prompt
+    assert "Elektrotechniek" in prompt
+    assert "Gevorderde" in prompt
+    assert "72%" in prompt
+
+
+@patch("samenwijzer.coach.anthropic.Anthropic")
+def test_genereer_weekplan_prompt_bevat_aandachtspunten(mock_cls: MagicMock) -> None:
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = _mock_stream("OK")
+    mock_cls.return_value = mock_client
+
+    list(
+        genereer_weekplan(
+            naam="Sara",
+            opleiding="Horeca",
+            leerpad="Starter",
+            voortgang=0.30,
+            bsa_behaald=15.0,
+            bsa_vereist=60.0,
+            zwakste_kerntaak="KT1 Gastvrijheid",
+            zwakste_werkproces="WP1.2 Serviceverlening",
+            api_key="test",
+        )
+    )
+
+    prompt = mock_client.messages.stream.call_args.kwargs["messages"][0]["content"]
+    assert "KT1 Gastvrijheid" in prompt
+    assert "WP1.2 Serviceverlening" in prompt
+
+
+@patch("samenwijzer.coach.anthropic.Anthropic")
+def test_genereer_weekplan_zonder_aandachtspunten(mock_cls: MagicMock) -> None:
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = _mock_stream("OK")
+    mock_cls.return_value = mock_client
+
+    # Geen crash als zwakste_kerntaak en zwakste_werkproces leeg zijn
+    resultaat = "".join(
+        genereer_weekplan(
+            naam="Tim",
+            opleiding="Logistiek",
+            leerpad="Expert",
+            voortgang=0.90,
+            bsa_behaald=58.0,
+            bsa_vereist=60.0,
+            api_key="test",
+        )
+    )
+
+    assert resultaat == "OK"
