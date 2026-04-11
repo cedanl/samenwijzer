@@ -27,7 +27,7 @@ Gepersonaliseerde leerondersteuning op basis van studiedata en AI.
 | 5 | Feedback op ingeleverd werk | gereed |
 | 6 | Welzijnscheck student self-assessment | gereed |
 | 7 | Outreach campagnebeheer (docent) | gereed |
-| 8 | Rollenspel (beroepssituaties, stage, sollicitatie) | backlog |
+| 8 | Rollenspel (beroepssituaties, stage, sollicitatie) | gereed |
 | 9 | Peer learning netwerk | backlog |
 
 ### Lesmateriaal niveaus
