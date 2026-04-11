@@ -1,6 +1,6 @@
 # Product Spec: AI Leerondersteuning
 
-**Status:** geïmplementeerd (features 1–3, 6 gereed; 4–5 backlog)
+**Status:** geïmplementeerd (features 1–3, 5–6 gereed; 4 backlog)
 
 ## Doel
 
@@ -70,11 +70,9 @@ Oefenen van beroepssituaties via een gespreksinterface.
 - Sollicitatiegesprekken
 
 **Acceptatiecriteria:**
-- [ ] Student kiest een scenario.
-- [ ] AI speelt de tegenpartij (werkgever, stagebegeleider, collega).
-- [ ] Na afloop geeft de AI feedback op het gesprek.
-
-*(Backlog — v0.2)*
+- [x] Student kiest een scenario.
+- [x] AI speelt de tegenpartij (werkgever, stagebegeleider, collega) via `stuur_rollenspel_bericht()` in `coach.py`.
+- [x] Na afloop geeft de AI feedback op het gesprek via `genereer_rollenspel_feedback()` in `coach.py`.
 
 ---
 
