@@ -20,6 +20,6 @@ Tracks coverage and quality gaps per domain. Updated by the doc-gardening agent.
 
 ## Notes
 
-- Coverage measured with `uv run pytest` (168 tests, all passing as of 2026-04-11).
+- Coverage measured with `uv run pytest` (172 tests, all passing as of 2026-04-11).
 - `export` has 0% coverage — stub implementation, not yet ready to test.
 - `outreach_store` at 97%: `_verbinding()` context manager body (lines 25-27) en `_zorg_voor_db` indirect pad (line 124) niet gedekt — verwaarloosbaar.
