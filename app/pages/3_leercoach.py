@@ -98,7 +98,7 @@ with tab_tutor:
         focus_tekst = "" if kerntaak_focus == "(geen specifiek)" else kerntaak_focus
     with col_btn:
         st.markdown("<div style='padding-top:1.6rem'>", unsafe_allow_html=True)
-        if st.button("NIEUW GESPREK", use_container_width=True):
+        if st.button("↺ Nieuw gesprek", use_container_width=True):
             st.session_state.pop(f"tutor_sessie_{studentnummer}", None)
             st.rerun()
         st.markdown("</div>", unsafe_allow_html=True)
@@ -146,7 +146,7 @@ with tab_les:
             placeholder="bijv. wondverzorging, communicatie met cliënten …",
             key="les_onderwerp",
         )
-        if st.button("GENEREER LESMATERIAAL", type="primary", key="btn_les"):
+        if st.button("📚 Genereer lesmateriaal", type="primary", key="btn_les"):
             if not onderwerp.strip():
                 st.warning("Vul een onderwerp in.")
             else:
@@ -172,7 +172,7 @@ with tab_toets:
             placeholder="bijv. wondverzorging, medicatieveiligheid …",
             key="toets_onderwerp",
         )
-        if st.button("GENEREER OEFENTOETS", type="primary", key="btn_toets"):
+        if st.button("📝 Genereer oefentoets", type="primary", key="btn_toets"):
             if not onderwerp_toets.strip():
                 st.warning("Vul een onderwerp in.")
             else:
@@ -203,7 +203,7 @@ with tab_toets:
                     if keuze_antw != "—":
                         antwoorden[i] = keuze_antw
 
-            if st.button("CONTROLEER ANTWOORDEN", type="primary", key="btn_controleer"):
+            if st.button("✓ Controleer antwoorden", type="primary", key="btn_controleer"):
                 if len(antwoorden) < 5:
                     st.warning("Beantwoord eerst alle 5 vragen.")
                 else:
@@ -244,7 +244,7 @@ with tab_werk:
                 key="sw_werk_tekst",
             )
 
-        if st.button("GEEF FEEDBACK", type="primary", key="btn_feedback"):
+        if st.button("✏️ Geef feedback", type="primary", key="btn_feedback"):
             if not werk_tekst.strip():
                 st.warning("Upload een bestand of plak je werk in het tekstvak.")
             else:
@@ -279,7 +279,7 @@ with tab_rol:
                 format_func=lambda i: scenario_labels[i],
                 key="rp_scenario_keuze",
             )
-            if st.button("START ROLLENSPEL", type="primary", key="btn_rp_start"):
+            if st.button("🎭 Start rollenspel", type="primary", key="btn_rp_start"):
                 st.session_state[rp_sleutel] = RollenspelSessie(
                     scenario=scenario_codes[keuze_idx],
                     opleiding=opleiding,
@@ -298,7 +298,7 @@ with tab_rol:
                 f"Tegenpartij: **{rp_sessie.tegenpartij()}**"
             )
         with col_nieuw:
-            if st.button("NIEUW GESPREK", use_container_width=True, key="btn_rp_reset"):
+            if st.button("↺ Nieuw gesprek", use_container_width=True, key="btn_rp_reset"):
                 st.session_state.pop(rp_sleutel, None)
                 st.session_state.pop(rp_feedback_sleutel, None)
                 st.rerun()
@@ -326,7 +326,7 @@ with tab_rol:
 
             st.divider()
             if rp_sessie.geschiedenis and st.button(
-                "AFRONDEN EN FEEDBACK ONTVANGEN",
+                "✅ Afronden & feedback",
                 type="primary",
                 key="btn_rp_feedback",
             ):

@@ -242,7 +242,7 @@ with tab_weekplan:
     col_gen, col_reset = st.columns([4, 1])
     with col_gen:
         genereer_btn = st.button(
-            "GENEREER WEEKPLAN", type="primary", key="btn_weekplan", use_container_width=True
+            "📅 Genereer weekplan", type="primary", key="btn_weekplan", use_container_width=True
         )
     with col_reset:
         if st.button("↺", key="btn_weekplan_reset", use_container_width=True):

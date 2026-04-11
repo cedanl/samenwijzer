@@ -103,7 +103,7 @@ CSS = """
 @import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
 
 [data-testid="stApp"] {
-    background-color: #f0d4d4;
+    background-color: #ffffff;
     font-family: 'General Sans', sans-serif;
     font-weight: 500;
 }
@@ -201,9 +201,8 @@ p, li { color: #333; line-height: 1.6; }
     border-radius: 50px !important;
     font-weight: 700 !important;
     border: none !important;
-    letter-spacing: 0.07em !important;
+    letter-spacing: 0.04em !important;
     font-size: 13px !important;
-    white-space: nowrap !important;
 }
 [data-testid="stBaseButton-primary"]:hover { background-color: #333 !important; }
 
@@ -215,12 +214,11 @@ p, li { color: #333; line-height: 1.6; }
     border: none !important;
     box-shadow: 0 8px 24px rgba(0,0,0,0.20) !important;
     font-weight: 700 !important;
-    letter-spacing: 0.05em !important;
+    letter-spacing: 0.03em !important;
     font-size: 13px !important;
-    white-space: nowrap !important;
 }
 [data-testid="stBaseButton-secondary"]:hover {
-    background-color: #e8c8c8 !important;
+    background-color: #f5f5f5 !important;
     box-shadow: 0 10px 28px rgba(0,0,0,0.25) !important;
 }
 
