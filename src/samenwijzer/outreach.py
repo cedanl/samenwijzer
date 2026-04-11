@@ -1,9 +1,9 @@
 """Outreach-module: risicodetectie, AI-berichtgeneratie en e-mailverzending."""
 
-import os
 import smtplib
 from collections.abc import Generator
 from email.mime.text import MIMEText
+from os import environ
 
 import anthropic
 import pandas as pd
@@ -13,7 +13,8 @@ _MAX_TOKENS = 1024
 
 
 def _client(api_key: str | None = None) -> anthropic.Anthropic:
-    return anthropic.Anthropic(api_key=api_key or os.environ.get("ANTHROPIC_API_KEY"))
+    """Maak een Anthropic-client aan met de opgegeven of omgevings-API-sleutel."""
+    return anthropic.Anthropic(api_key=api_key or environ.get("ANTHROPIC_API_KEY"))
 
 
 def at_risk_studenten(df: pd.DataFrame) -> pd.DataFrame:
@@ -136,11 +137,11 @@ def email_config_uit_env() -> dict[str, str]:
         Dict met de SMTP-instellingen (lege strings als variabele ontbreekt).
     """
     return {
-        "smtp_host": os.environ.get("SMTP_HOST", ""),
-        "smtp_port": os.environ.get("SMTP_PORT", "587"),
-        "smtp_user": os.environ.get("SMTP_USER", ""),
-        "smtp_password": os.environ.get("SMTP_PASSWORD", ""),
-        "afzender_email": os.environ.get("SMTP_AFZENDER", ""),
+        "smtp_host": environ.get("SMTP_HOST", ""),
+        "smtp_port": environ.get("SMTP_PORT", "587"),
+        "smtp_user": environ.get("SMTP_USER", ""),
+        "smtp_password": environ.get("SMTP_PASSWORD", ""),
+        "afzender_email": environ.get("SMTP_AFZENDER", ""),
     }
 
 

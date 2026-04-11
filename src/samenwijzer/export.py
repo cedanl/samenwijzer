@@ -3,7 +3,7 @@
 from pathlib import Path
 
 
-def export_results(analysis_results, output_path: Path) -> None:
+def export_results(analysis_results: object, output_path: Path) -> None:
     """Export analysis results to the output directory.
 
     Args:

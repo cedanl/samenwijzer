@@ -14,6 +14,7 @@ _OER_JSON = (
 
 
 def _laad_oer() -> dict:
+    """Laad de OER-kerntakendata eenmalig vanuit JSON en cache het resultaat."""
     global _OER_DATA
     if _OER_DATA is None:
         _OER_DATA = json.loads(_OER_JSON.read_text(encoding="utf-8")) if _OER_JSON.exists() else {}

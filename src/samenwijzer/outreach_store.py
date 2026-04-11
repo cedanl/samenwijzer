@@ -267,6 +267,7 @@ def sluit_campagne(campagne_id: int, db_path: Path = _DB_PATH) -> None:
 
 
 def _row_to_campagne(row: tuple) -> Campagne:
+    """Converteer een SQLite-rij naar een Campagne-dataclass."""
     return Campagne(
         id=row[0],
         naam=row[1],
@@ -323,6 +324,7 @@ def get_alle_welzijnschecks(db_path: Path = _DB_PATH) -> list[WelzijnsCheck]:
 
 
 def _row_to_welzijnscheck(row: tuple) -> WelzijnsCheck:
+    """Converteer een SQLite-rij naar een WelzijnsCheck-dataclass."""
     return WelzijnsCheck(
         id=row[0],
         studentnummer=row[1],
@@ -334,6 +336,7 @@ def _row_to_welzijnscheck(row: tuple) -> WelzijnsCheck:
 
 
 def _row_to_interventie(row: tuple) -> Interventie:
+    """Converteer een SQLite-rij naar een Interventie-dataclass."""
     return Interventie(
         id=row[0],
         studentnummer=row[1],

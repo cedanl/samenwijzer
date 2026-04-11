@@ -1,7 +1,7 @@
 """AI Leercoach: gepersonaliseerd lesmateriaal, oefentoets en werkfeedback."""
 
-import os
 from collections.abc import Generator
+from os import environ
 
 import anthropic
 
@@ -10,7 +10,8 @@ _MAX_TOKENS = 2048
 
 
 def _client(api_key: str | None = None) -> anthropic.Anthropic:
-    return anthropic.Anthropic(api_key=api_key or os.environ.get("ANTHROPIC_API_KEY"))
+    """Maak een Anthropic-client aan met de opgegeven of omgevings-API-sleutel."""
+    return anthropic.Anthropic(api_key=api_key or environ.get("ANTHROPIC_API_KEY"))
 
 
 def genereer_lesmateriaal(
