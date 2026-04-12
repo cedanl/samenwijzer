@@ -16,6 +16,7 @@ src/samenwijzer/
   export.py     ← Write results to data/03-output/
 
 Cross-cutting modules (no layer restriction, import explicitly):
+  _ai.py            ← Shared Anthropic client factory (_client())
   auth.py           ← Role checks and mentor filter
   outreach.py       ← At-risk selection, referral logic, AI message generation, email
   outreach_store.py ← SQLite persistence (StudentStatus, Interventie, Campagne, WelzijnsCheck)
