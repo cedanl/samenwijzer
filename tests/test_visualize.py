@@ -12,7 +12,6 @@ from samenwijzer.visualize import (
     werkproces_grafiek,
 )
 
-
 # ── voortgang_gauge ───────────────────────────────────────────────────────────
 
 

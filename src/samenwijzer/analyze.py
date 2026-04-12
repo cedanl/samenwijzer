@@ -54,6 +54,9 @@ def get_student(df: pd.DataFrame, studentnummer: str) -> pd.Series:
 def groepsoverzicht(df: pd.DataFrame) -> pd.DataFrame:
     """Geef een samengevat overzicht per student voor de docentweergave.
 
+    Args:
+        df: Getransformeerd studenten-DataFrame.
+
     Returns:
         DataFrame met kolommen: studentnummer, naam, opleiding, cohort,
         mentor, voortgang, bsa_behaald, bsa_vereist, bsa_percentage,
@@ -268,7 +271,7 @@ def transitiemoment_label(moment: str | None) -> str:
 
 
 def cohort_gemiddelden(df: pd.DataFrame) -> pd.DataFrame:
-    """Berek gemiddelde voortgang en BSA-percentage per cohort en opleiding.
+    """Bereken gemiddelde voortgang en BSA-percentage per cohort en opleiding.
 
     Returns:
         DataFrame gegroepeerd op opleiding en cohort.

@@ -1,0 +1,29 @@
+dataset;column_name;description;type;source;sensitive
+studenten;studentnummer;Uniek studentnummer;string;Berend CSV (Studentnummer);true
+studenten;naam;Volledige naam van de student;string;Berend CSV (Naam);true
+studenten;mentor;Naam van de toegewezen mentor;string;Berend CSV (Mentor);false
+studenten;opleiding;Naam van de gevolgde opleiding;string;Berend CSV (Opleiding);false
+studenten;crebo;CREBO-code van de opleiding;string;afgeleid van opleiding via _CREBO_MAP;false
+studenten;niveau;MBO-niveau (1–4);integer;afgeleid van klascode (eerste karakter);false
+studenten;leerweg;Leerweg: BOL of BBL;string;afgeleid (altijd BOL in Berend-dataset);false
+studenten;cohort;Cohortlabel (bijv. Cohort B);string;afgeleid van klascode (tweede karakter);false
+studenten;leeftijd;Leeftijd van de student in jaren;integer;Berend CSV (StudentAge);false
+studenten;geslacht;Geslacht: M/V/O;string;Berend CSV (StudentGender, 0=M 1=V);false
+studenten;bsa_vereist;Vereiste BSA-studiepunten voor het jaar;float;gesteld op 60.0;false
+studenten;bsa_behaald;Behaalde BSA-studiepunten;float;afgeleid van absence_unauthorized;false
+studenten;voortgang;Studievoortgang als getal tussen 0 en 1;float;afgeleid van absence_unauthorized;false
+studenten;kt_1;Score op kerntaak 1 (0–100); float;synthetisch gegenereerd o.b.v. voortgang + ruis;false
+studenten;kt_2;Score op kerntaak 2 (0–100);float;synthetisch gegenereerd o.b.v. voortgang + ruis;false
+studenten;wp_1_1;Score op werkproces 1.1 (0–100);float;synthetisch gegenereerd o.b.v. kt_1 + ruis;false
+studenten;wp_1_2;Score op werkproces 1.2 (0–100);float;synthetisch gegenereerd o.b.v. kt_1 + ruis;false
+studenten;wp_1_3;Score op werkproces 1.3 (0–100);float;synthetisch gegenereerd o.b.v. kt_1 + ruis;false
+studenten;wp_2_1;Score op werkproces 2.1 (0–100);float;synthetisch gegenereerd o.b.v. kt_2 + ruis;false
+studenten;wp_2_2;Score op werkproces 2.2 (0–100);float;synthetisch gegenereerd o.b.v. kt_2 + ruis;false
+studenten;wp_2_3;Score op werkproces 2.3 (0–100);float;synthetisch gegenereerd o.b.v. kt_2 + ruis;false
+studenten;bsa_percentage;Behaalde BSA als fractie van vereiste (0–1);float;berekend: bsa_behaald / bsa_vereist;false
+studenten;bsa_achterstand;Aantal BSA-punten achter op schema (≥0);float;berekend: bsa_vereist - bsa_behaald;false
+studenten;bsa_op_schema;Of de student op schema ligt voor BSA;boolean;berekend: bsa_behaald >= bsa_vereist;false
+studenten;kt_gemiddelde;Gemiddelde kerntaakscore over alle kt-kolommen;float;berekend: mean(kt_1 kt_2);false
+studenten;wp_gemiddelde;Gemiddelde werkprocesscore over alle wp-kolommen;float;berekend: mean(wp_1_1 ... wp_2_3);false
+studenten;risico;Of de student een at-risk vlag heeft;boolean;berekend: bsa_percentage < 0.5 of voortgang < 0.4;false
+studenten;niveau_label;Leesbaar niveaulabel (bijv. Niveau 3);string;berekend via niveau-mapping;false

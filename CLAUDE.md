@@ -225,10 +225,7 @@ Alle schrijfbewerkingen naar `outreach.db` lopen via `outreach_store.py`. Nooit 
 
 ## Bekende tech debt
 
-Zie `docs/exec-plans/tech-debt-tracker.md` voor de actuele lijst. Notabele items:
-- **TD-001**: Unclosed SQLite-connecties in `test_prepare.py` (low prio; gebruik `contextlib.closing`).
-- **TD-002/TD-003**: `welzijn.py`, `coach.py`, `visualize.py` en Campagne/WelzijnsCheck CRUD-paden
-  hebben 0% testdekking — nieuwe tests hier zijn welkom.
+Zie `docs/exec-plans/tech-debt-tracker.md` voor de actuele lijst. Alle bekende items (TD-001 t/m TD-004) zijn gesloten per 2026-04-11.
 
 ## Agent rules
 

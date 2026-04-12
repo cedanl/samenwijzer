@@ -252,9 +252,7 @@ def test_peer_profielen_leeg_zonder_kt_kolommen() -> None:
         (0.60, 0.60, None),
     ],
 )
-def test_detecteer_transitiemoment(
-    bsa_pct: float, voortgang: float, verwacht: str | None
-) -> None:
+def test_detecteer_transitiemoment(bsa_pct: float, voortgang: float, verwacht: str | None) -> None:
     student = pd.Series({"bsa_percentage": bsa_pct, "voortgang": voortgang})
     assert detecteer_transitiemoment(student) == verwacht
 
