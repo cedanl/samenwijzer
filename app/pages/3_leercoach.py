@@ -49,7 +49,12 @@ if rol == "student":
     student = get_student(df, studentnummer)
     leerpad = leerpad_niveau(student)
     opleiding = student["opleiding"]
-    st.caption(f"**{opleiding}** · Leerpad: **{leerpad}**")
+    leerpad_klasse = leerpad.lower()
+    st.markdown(
+        f"<span class='badge badge--{leerpad_klasse}'>{leerpad}</span> "
+        f"<span style='color:#888; font-size:0.85rem; margin-left:8px'>{opleiding}</span>",
+        unsafe_allow_html=True,
+    )
 else:
     # Docent ziet alleen studenten uit eigen groep
     groep = mentor_filter(df)
@@ -66,7 +71,12 @@ else:
     leerpad = leerpad_niveau(student)
     opleiding = student["opleiding"]
     with col_info:
-        st.caption(f"**{opleiding}** · Leerpad: **{leerpad}**")
+        leerpad_klasse = leerpad.lower()
+        st.markdown(
+            f"<span class='badge badge--{leerpad_klasse}'>{leerpad}</span> "
+            f"<span style='color:#888; font-size:0.85rem; margin-left:8px'>{opleiding}</span>",
+            unsafe_allow_html=True,
+        )
 
 zkt = zwakste_kerntaak(df, studentnummer)
 zwakste_kt_label = zkt[0] if zkt else ""
@@ -97,11 +107,9 @@ with tab_tutor:
         kerntaak_focus = st.selectbox("Focus op kerntaak", kt_opties, key="kt_focus")
         focus_tekst = "" if kerntaak_focus == "(geen specifiek)" else kerntaak_focus
     with col_btn:
-        st.markdown("<div style='padding-top:1.6rem'>", unsafe_allow_html=True)
         if st.button("↺ Nieuw gesprek", use_container_width=True):
             st.session_state.pop(f"tutor_sessie_{studentnummer}", None)
             st.rerun()
-        st.markdown("</div>", unsafe_allow_html=True)
 
     sessie_sleutel = f"tutor_sessie_{studentnummer}"
     if sessie_sleutel not in st.session_state:

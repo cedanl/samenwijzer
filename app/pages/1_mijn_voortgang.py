@@ -50,46 +50,27 @@ else:
 student = get_student(df, studentnummer)
 niveau = leerpad_niveau(student)
 
-_NIVEAU_KLEUR = {
-    "Starter": "#e67e22",
-    "Onderweg": "#3498db",
-    "Gevorderde": "#27ae60",
-    "Expert": "#c8785a",
-}
-niveau_kleur = _NIVEAU_KLEUR[niveau]
+niveau_klasse = niveau.lower()
+risico_badge = (
+    "<span class='badge badge--niet-gecontacteerd'>⚠️ Aandacht nodig</span>"
+    if student["risico"]
+    else "<span class='badge badge--opgelost'>✅ Op schema</span>"
+)
 
 # ── Hero-kaart ─────────────────────────────────────────────────────────────────
-with st.container(border=True):
-    col_naam, col_status = st.columns([3, 1])
-
-    with col_naam:
-        st.markdown(
-            f"<h2 style='margin:0 0 4px; font-size:1.9rem; font-weight:700; color:#1a1a1a'>"
-            f"{student['naam']}</h2>"
-            f"<p style='color:#888; margin:0 0 6px; font-size:0.9rem'>"
-            f"{student['opleiding']} &nbsp;·&nbsp; Niveau {student['niveau']} "
-            f"&nbsp;·&nbsp; {student['leerweg']} &nbsp;·&nbsp; Cohort {student['cohort']}</p>"
-            f"<p style='color:#aaa; margin:0 0 10px; font-size:0.82rem'>"
-            f"Mentor: {student['mentor']}</p>",
-            unsafe_allow_html=True,
-        )
-        st.markdown(
-            f"<span style='background:{niveau_kleur}22; color:{niveau_kleur}; "
-            f"border-radius:50px; padding:5px 16px; font-size:0.82rem; "
-            f"font-weight:700; letter-spacing:0.05em'>{niveau.upper()}</span>",
-            unsafe_allow_html=True,
-        )
-
-    with col_status:
-        st.markdown(
-            f"<div style='text-align:right; font-size:1.1rem; font-weight:700; "
-            f"padding-top:4px; color:#1a1a1a'>{badge(student)}</div>",
-            unsafe_allow_html=True,
-        )
-        if student["risico"]:
-            st.error("⚠️ Aandacht nodig")
-        else:
-            st.success("✅ Op schema")
+st.markdown(
+    f"""<div class="hero-card">
+  <p class="hero-card__naam">{student['naam']}</p>
+  <p class="hero-card__meta">{student['opleiding']} &nbsp;·&nbsp; Niveau {student['niveau']} &nbsp;·&nbsp; {student['leerweg']} &nbsp;·&nbsp; Cohort {student['cohort']}</p>
+  <p class="hero-card__mentor">Mentor: {student['mentor']}</p>
+  <span class="badge badge--{niveau_klasse}">{niveau}</span>
+  &nbsp;
+  {risico_badge}
+  &nbsp;
+  <span style="font-size:1.1rem;font-weight:700;">{badge(student)}</span>
+</div>""",
+    unsafe_allow_html=True,
+)
 
 # ── Drie statistieken ─────────────────────────────────────────────────────────
 positie_info = cohort_positie(df, studentnummer)
@@ -105,58 +86,47 @@ delta_teken = "+" if delta >= 0 else ""
 col_v, col_b, col_c = st.columns(3)
 
 with col_v:
-    with st.container(border=True):
-        st.markdown(
-            "<p style='font-size:0.7rem; font-weight:700; letter-spacing:0.1em; "
-            "color:#888; margin:0; text-transform:uppercase'>Studievoortgang</p>"
-            f"<p style='font-size:2.6rem; font-weight:700; margin:2px 0 0; "
-            f"color:#1a1a1a; line-height:1'>{voortgang_pct}%</p>",
-            unsafe_allow_html=True,
-        )
-        st.altair_chart(voortgang_gauge(student["voortgang"]), use_container_width=True)
+    st.markdown(
+        f"<div class='stat-card'>"
+        f"<p class='stat-card__label'>Studievoortgang</p>"
+        f"<p class='stat-card__value'>{voortgang_pct}%</p>"
+        f"</div>",
+        unsafe_allow_html=True,
+    )
+    st.altair_chart(voortgang_gauge(student["voortgang"]), use_container_width=True)
 
 with col_b:
     behaald = int(student["bsa_behaald"])
     vereist = int(student["bsa_vereist"])
-    with st.container(border=True):
-        st.markdown(
-            "<p style='font-size:0.7rem; font-weight:700; letter-spacing:0.1em; "
-            "color:#888; margin:0; text-transform:uppercase'>Studiepunten (BSA)</p>"
-            f"<p style='font-size:2.6rem; font-weight:700; margin:2px 0 0; "
-            f"color:#1a1a1a; line-height:1'>{behaald}"
-            f"<span style='font-size:1rem; color:#aaa; font-weight:500'> / {vereist}</span></p>",
-            unsafe_allow_html=True,
-        )
-        st.altair_chart(
-            bsa_staaf(student["bsa_behaald"], student["bsa_vereist"]),
-            use_container_width=True,
-        )
+    st.markdown(
+        f"<div class='stat-card'>"
+        f"<p class='stat-card__label'>Studiepunten (BSA)</p>"
+        f"<p class='stat-card__value'>{behaald}<span class='stat-card__sub'> / {vereist}</span></p>"
+        f"</div>",
+        unsafe_allow_html=True,
+    )
+    st.altair_chart(
+        bsa_staaf(student["bsa_behaald"], student["bsa_vereist"]),
+        use_container_width=True,
+    )
 
+delta_klasse = "stat-card__delta--pos" if delta >= 0 else "stat-card__delta--neg"
 with col_c:
-    with st.container(border=True):
-        st.markdown(
-            "<p style='font-size:0.7rem; font-weight:700; letter-spacing:0.1em; "
-            "color:#888; margin:0; text-transform:uppercase'>Positie in cohort</p>"
-            f"<p style='font-size:2.6rem; font-weight:700; margin:2px 0 0; "
-            f"color:#1a1a1a; line-height:1'>{pos}"
-            f"<span style='font-size:1rem; color:#aaa; font-weight:500'>"
-            f" / {totaal_cohort}</span></p>"
-            f"<p style='margin:6px 0 2px; font-size:0.85rem; "
-            f"color:{delta_kleur}; font-weight:700'>{delta_teken}{delta}% t.o.v. gemiddelde</p>"
-            f"<p style='margin:0; font-size:0.78rem; color:#aaa'>Cohort {cohort}</p>",
-            unsafe_allow_html=True,
-        )
+    st.markdown(
+        f"<div class='stat-card'>"
+        f"<p class='stat-card__label'>Positie in cohort</p>"
+        f"<p class='stat-card__value'>{pos}<span class='stat-card__sub'> / {totaal_cohort}</span></p>"
+        f"<p class='{delta_klasse}'>{delta_teken}{delta}% t.o.v. gemiddelde</p>"
+        f"<p class='stat-card__sub'>Cohort {cohort}</p>"
+        f"</div>",
+        unsafe_allow_html=True,
+    )
 
 # ── Tabs: scores, aandachtspunten, weekplan ───────────────────────────────────
 zkt = zwakste_kerntaak(df, studentnummer)
 zwp = zwakste_werkproces(df, studentnummer)
 zkt_label = zkt[0] if zkt else ""
 zwp_label = zwp[0] if zwp else ""
-
-_label_stijl = (
-    "font-size:0.7rem; font-weight:700; letter-spacing:0.1em; "
-    "color:#888; margin:0 0 8px; text-transform:uppercase"
-)
 
 tab_scores, tab_aandacht, tab_weekplan = st.tabs(["📊 Scores", "⚠️ Aandachtspunten", "📅 Weekplan"])
 
@@ -171,7 +141,7 @@ with tab_scores:
 
     with col_kt:
         with st.container(border=True):
-            st.markdown(f"<p style='{_label_stijl}'>Kerntaken</p>", unsafe_allow_html=True)
+            st.markdown("<p class='section-label'>Kerntaken</p>", unsafe_allow_html=True)
             if not kt_df.empty:
                 st.altair_chart(kerntaak_grafiek(kt_df), use_container_width=True)
             else:
@@ -179,7 +149,7 @@ with tab_scores:
 
     with col_wp:
         with st.container(border=True):
-            st.markdown(f"<p style='{_label_stijl}'>Werkprocessen</p>", unsafe_allow_html=True)
+            st.markdown("<p class='section-label'>Werkprocessen</p>", unsafe_allow_html=True)
             if not wp_df.empty:
                 st.altair_chart(werkproces_grafiek(wp_df), use_container_width=True)
             else:
@@ -197,8 +167,7 @@ with tab_aandacht:
                 label, score = zkt
                 with st.container(border=True):
                     st.markdown(
-                        "<p style='font-size:0.7rem; font-weight:700; letter-spacing:0.08em; "
-                        "color:#e67e22; margin:0; text-transform:uppercase'>⚠️ Zwakste kerntaak</p>"
+                        "<p class='section-label section-label--warning'>⚠️ Zwakste kerntaak</p>"
                         f"<p style='font-size:1.05rem; font-weight:700; margin:6px 0 2px; "
                         f"color:#1a1a1a'>{label}</p>"
                         f"<p style='color:#aaa; font-size:0.82rem; margin:0'>"
@@ -215,9 +184,7 @@ with tab_aandacht:
                 label, score = zwp
                 with st.container(border=True):
                     st.markdown(
-                        "<p style='font-size:0.7rem; font-weight:700; letter-spacing:0.08em; "
-                        "color:#e67e22; margin:0; text-transform:uppercase'>⚠️ Zwakste "
-                        "werkproces</p>"
+                        "<p class='section-label section-label--warning'>⚠️ Zwakste werkproces</p>"
                         f"<p style='font-size:1.05rem; font-weight:700; margin:6px 0 2px; "
                         f"color:#1a1a1a'>{label}</p>"
                         f"<p style='color:#aaa; font-size:0.82rem; margin:0'>"

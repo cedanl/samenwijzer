@@ -246,5 +246,67 @@ p, li { color: #333; line-height: 1.6; }
     background-color: #c8785a !important;
     border-color: #c8785a !important;
 }
+
+/* ── st.metric() opmaak ─────────────────────────────────────────────────── */
+[data-testid="stMetric"] { background:white; border-radius:16px; padding:16px 20px; box-shadow:0 4px 24px rgba(180,100,90,0.10); }
+[data-testid="stMetricLabel"] p { font-size:0.68rem!important; font-weight:700!important; letter-spacing:0.10em!important; text-transform:uppercase!important; color:#999!important; }
+[data-testid="stMetricValue"] { font-size:2.2rem!important; font-weight:700!important; color:#1a1a1a!important; }
+[data-testid="stMetricDelta"] svg { display:none; }
+[data-testid="stMetricDelta"]>div { font-size:0.82rem!important; font-weight:700!important; }
+
+/* ── Tabs ────────────────────────────────────────────────────────────────── */
+[data-testid="stTabs"] [role="tablist"] { border-bottom:2px solid #f0d4d4; gap:4px; }
+[data-testid="stTabs"] button[role="tab"] { font-family:'General Sans',sans-serif!important; font-weight:600!important; font-size:13px!important; color:#888!important; border-radius:8px 8px 0 0!important; padding:8px 16px!important; border:none!important; background:transparent!important; }
+[data-testid="stTabs"] button[role="tab"][aria-selected="true"] { color:#1a1a1a!important; background:white!important; border-bottom:2px solid #c8785a!important; }
+
+/* ── Expanders ───────────────────────────────────────────────────────────── */
+[data-testid="stExpander"] { border:1px solid #f0d4d4!important; border-radius:12px!important; background:white!important; }
+[data-testid="stExpander"] summary { font-family:'General Sans',sans-serif!important; font-weight:600!important; font-size:0.9rem!important; color:#1a1a1a!important; padding:12px 16px!important; }
+[data-testid="stExpander"] summary:hover { background:#fae8e8!important; border-radius:12px 12px 0 0!important; }
+
+/* ── .stat-card ──────────────────────────────────────────────────────────── */
+.stat-card { background:white; border-radius:16px; padding:20px 20px 16px; box-shadow:0 4px 24px rgba(180,100,90,0.10); }
+.stat-card__label { font-size:0.68rem; font-weight:700; letter-spacing:0.10em; text-transform:uppercase; color:#999; margin:0 0 6px; }
+.stat-card__value { font-size:2.4rem; font-weight:700; color:#1a1a1a; line-height:1; margin:0; }
+.stat-card__sub { font-size:0.82rem; color:#bbb; font-weight:500; margin:4px 0 0; }
+.stat-card__delta--pos { color:#27ae60; font-weight:700; font-size:0.85rem; }
+.stat-card__delta--neg { color:#c0392b; font-weight:700; font-size:0.85rem; }
+
+/* ── .badge ──────────────────────────────────────────────────────────────── */
+.badge { display:inline-block; border-radius:50px; padding:4px 14px; font-size:0.75rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; white-space:nowrap; }
+.badge--starter    { background:#e67e2220; color:#e67e22; }
+.badge--onderweg   { background:#3498db20; color:#3498db; }
+.badge--gevorderde { background:#27ae6020; color:#27ae60; }
+.badge--expert     { background:#c8785a22; color:#c8785a; }
+.badge--niet-gecontacteerd { background:#e74c3c18; color:#c0392b; }
+.badge--gecontacteerd      { background:#f39c1218; color:#e67e22; }
+.badge--gereageerd         { background:#3498db18; color:#2980b9; }
+.badge--opgelost           { background:#27ae6018; color:#27ae60; }
+.badge--urgentie-1 { background:#27ae6018; color:#27ae60; }
+.badge--urgentie-2 { background:#f39c1218; color:#e67e22; }
+.badge--urgentie-3 { background:#e74c3c18; color:#c0392b; }
+.badge--transitie  { background:#c8785a18; color:#c8785a; }
+
+/* ── .hero-card ──────────────────────────────────────────────────────────── */
+.hero-card { background:white; border-radius:20px; padding:28px 28px 24px; box-shadow:0 4px 32px rgba(180,100,90,0.13); margin-bottom:4px; }
+.hero-card__naam { font-size:1.9rem; font-weight:700; color:#1a1a1a; margin:0 0 4px; line-height:1.2; }
+.hero-card__meta { color:#888; font-size:0.88rem; margin:0 0 4px; }
+.hero-card__mentor { color:#bbb; font-size:0.80rem; margin:0 0 14px; }
+
+/* ── .section-label ──────────────────────────────────────────────────────── */
+.section-label { font-size:0.68rem; font-weight:700; letter-spacing:0.10em; color:#999; text-transform:uppercase; margin:0 0 8px; }
+.section-label--warning { color:#e67e22; }
+
+/* ── .welzijn-intro / .check-item ────────────────────────────────────────── */
+.welzijn-intro { background:linear-gradient(135deg,#fae8e8 0%,#f0d4d4 100%); border-radius:16px; padding:24px 28px; margin-bottom:20px; border-left:4px solid #c8785a; }
+.welzijn-intro__title { font-size:1.1rem; font-weight:700; color:#1a1a1a; margin:0 0 6px; }
+.welzijn-intro__body { color:#555; font-size:0.9rem; line-height:1.5; margin:0; }
+.check-item { display:flex; align-items:baseline; gap:10px; padding:10px 0; border-bottom:1px solid #f0d4d440; }
+.check-item__date { color:#aaa; font-size:0.78rem; min-width:80px; font-weight:600; }
+.check-item__label { font-size:0.85rem; color:#1a1a1a; font-weight:600; }
+.check-item__note { color:#888; font-size:0.82rem; font-style:italic; }
+
+/* ── Leercoach reset-knop uitlijning ─────────────────────────────────────── */
+[data-testid="stColumn"]:has([data-testid="stBaseButton-secondary"]) { display:flex; align-items:flex-end; }
 </style>
 """
