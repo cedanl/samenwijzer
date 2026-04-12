@@ -2,31 +2,20 @@
 
 from unittest.mock import MagicMock, patch
 
-import pytest
-
 from samenwijzer.coach import (
     SCENARIO_OPTIES,
     RollenspelSessie,
     controleer_antwoorden,
+    geef_feedback_op_werk,
     genereer_lesmateriaal,
     genereer_oefentoets,
     genereer_rollenspel_feedback,
     genereer_weekplan,
-    geef_feedback_op_werk,
     stuur_rollenspel_bericht,
 )
-
+from tests.helpers import mock_stream
 
 # ── Mock helpers ──────────────────────────────────────────────────────────────
-
-
-def _mock_stream(tekst: str) -> MagicMock:
-    """Bouw een mock-stream die tekst als één fragment yieldt."""
-    mock = MagicMock()
-    mock.__enter__ = MagicMock(return_value=mock)
-    mock.__exit__ = MagicMock(return_value=False)
-    mock.text_stream = iter([tekst])
-    return mock
 
 
 def _mock_response(tekst: str) -> MagicMock:
@@ -39,11 +28,11 @@ def _mock_response(tekst: str) -> MagicMock:
 # ── genereer_lesmateriaal ─────────────────────────────────────────────────────
 
 
-@patch("samenwijzer.coach.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_genereer_lesmateriaal_yield_fragmenten(mock_cls: MagicMock) -> None:
     verwacht = "Hier is het lesmateriaal over zorgverlening."
     mock_client = MagicMock()
-    mock_client.messages.stream.return_value = _mock_stream(verwacht)
+    mock_client.messages.stream.return_value = mock_stream(verwacht)
     mock_cls.return_value = mock_client
 
     resultaat = "".join(
@@ -53,10 +42,10 @@ def test_genereer_lesmateriaal_yield_fragmenten(mock_cls: MagicMock) -> None:
     assert resultaat == verwacht
 
 
-@patch("samenwijzer.coach.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_genereer_lesmateriaal_prompt_bevat_onderwerp(mock_cls: MagicMock) -> None:
     mock_client = MagicMock()
-    mock_client.messages.stream.return_value = _mock_stream("OK")
+    mock_client.messages.stream.return_value = mock_stream("OK")
     mock_cls.return_value = mock_client
 
     list(genereer_lesmateriaal("hygiëne", "Horeca", "Starter", api_key="test"))
@@ -67,10 +56,10 @@ def test_genereer_lesmateriaal_prompt_bevat_onderwerp(mock_cls: MagicMock) -> No
     assert "Starter" in prompt
 
 
-@patch("samenwijzer.coach.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_genereer_lesmateriaal_zwakste_kt_opgenomen(mock_cls: MagicMock) -> None:
     mock_client = MagicMock()
-    mock_client.messages.stream.return_value = _mock_stream("OK")
+    mock_client.messages.stream.return_value = mock_stream("OK")
     mock_cls.return_value = mock_client
 
     list(
@@ -86,7 +75,7 @@ def test_genereer_lesmateriaal_zwakste_kt_opgenomen(mock_cls: MagicMock) -> None
 # ── genereer_oefentoets ───────────────────────────────────────────────────────
 
 
-@patch("samenwijzer.coach.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_genereer_oefentoets_geeft_tekst_terug(mock_cls: MagicMock) -> None:
     toets_tekst = "**Vraag 1:** ...\nANTWOORDEN: 1=A, 2=B, 3=C, 4=D, 5=A"
     mock_client = MagicMock()
@@ -98,7 +87,7 @@ def test_genereer_oefentoets_geeft_tekst_terug(mock_cls: MagicMock) -> None:
     assert resultaat == toets_tekst
 
 
-@patch("samenwijzer.coach.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_genereer_oefentoets_prompt_bevat_onderwerp_en_opleiding(mock_cls: MagicMock) -> None:
     mock_client = MagicMock()
     mock_client.messages.create.return_value = _mock_response("toets")
@@ -114,11 +103,11 @@ def test_genereer_oefentoets_prompt_bevat_onderwerp_en_opleiding(mock_cls: Magic
 # ── controleer_antwoorden ─────────────────────────────────────────────────────
 
 
-@patch("samenwijzer.coach.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_controleer_antwoorden_yield_feedback(mock_cls: MagicMock) -> None:
     feedback = "Vraag 1: goed! Vraag 2: fout."
     mock_client = MagicMock()
-    mock_client.messages.stream.return_value = _mock_stream(feedback)
+    mock_client.messages.stream.return_value = mock_stream(feedback)
     mock_cls.return_value = mock_client
 
     resultaat = "".join(
@@ -134,10 +123,10 @@ def test_controleer_antwoorden_yield_feedback(mock_cls: MagicMock) -> None:
     assert resultaat == feedback
 
 
-@patch("samenwijzer.coach.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_controleer_antwoorden_prompt_bevat_antwoorden(mock_cls: MagicMock) -> None:
     mock_client = MagicMock()
-    mock_client.messages.stream.return_value = _mock_stream("OK")
+    mock_client.messages.stream.return_value = mock_stream("OK")
     mock_cls.return_value = mock_client
 
     list(
@@ -158,11 +147,11 @@ def test_controleer_antwoorden_prompt_bevat_antwoorden(mock_cls: MagicMock) -> N
 # ── geef_feedback_op_werk ─────────────────────────────────────────────────────
 
 
-@patch("samenwijzer.coach.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_geef_feedback_op_werk_yield_feedback(mock_cls: MagicMock) -> None:
     feedback = "Goed werk, verbeter de structuur."
     mock_client = MagicMock()
-    mock_client.messages.stream.return_value = _mock_stream(feedback)
+    mock_client.messages.stream.return_value = mock_stream(feedback)
     mock_cls.return_value = mock_client
 
     resultaat = "".join(
@@ -177,10 +166,10 @@ def test_geef_feedback_op_werk_yield_feedback(mock_cls: MagicMock) -> None:
     assert resultaat == feedback
 
 
-@patch("samenwijzer.coach.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_geef_feedback_op_werk_prompt_bevat_werk(mock_cls: MagicMock) -> None:
     mock_client = MagicMock()
-    mock_client.messages.stream.return_value = _mock_stream("OK")
+    mock_client.messages.stream.return_value = mock_stream("OK")
     mock_cls.return_value = mock_client
 
     list(
@@ -236,11 +225,11 @@ def test_scenario_opties_bevat_alle_sleutels() -> None:
 # ── stuur_rollenspel_bericht ──────────────────────────────────────────────────
 
 
-@patch("samenwijzer.coach.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_stuur_rollenspel_bericht_yield_reactie(mock_cls: MagicMock) -> None:
     reactie = "Goedemorgen, vertel eens over jezelf."
     mock_client = MagicMock()
-    mock_client.messages.stream.return_value = _mock_stream(reactie)
+    mock_client.messages.stream.return_value = mock_stream(reactie)
     mock_cls.return_value = mock_client
 
     sessie = _maak_sessie()
@@ -249,11 +238,11 @@ def test_stuur_rollenspel_bericht_yield_reactie(mock_cls: MagicMock) -> None:
     assert resultaat == reactie
 
 
-@patch("samenwijzer.coach.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_stuur_rollenspel_bericht_voegt_berichten_toe(mock_cls: MagicMock) -> None:
     reactie = "Interessant!"
     mock_client = MagicMock()
-    mock_client.messages.stream.return_value = _mock_stream(reactie)
+    mock_client.messages.stream.return_value = mock_stream(reactie)
     mock_cls.return_value = mock_client
 
     sessie = _maak_sessie()
@@ -264,10 +253,10 @@ def test_stuur_rollenspel_bericht_voegt_berichten_toe(mock_cls: MagicMock) -> No
     assert sessie.geschiedenis[1] == {"role": "assistant", "content": reactie}
 
 
-@patch("samenwijzer.coach.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_stuur_rollenspel_bericht_stuurt_systeem_prompt(mock_cls: MagicMock) -> None:
     mock_client = MagicMock()
-    mock_client.messages.stream.return_value = _mock_stream("OK")
+    mock_client.messages.stream.return_value = mock_stream("OK")
     mock_cls.return_value = mock_client
 
     sessie = _maak_sessie("sollicitatie")
@@ -281,11 +270,11 @@ def test_stuur_rollenspel_bericht_stuurt_systeem_prompt(mock_cls: MagicMock) -> 
 # ── genereer_rollenspel_feedback ──────────────────────────────────────────────
 
 
-@patch("samenwijzer.coach.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_genereer_rollenspel_feedback_yield_nabespreking(mock_cls: MagicMock) -> None:
     nabespreking = "Je deed het goed! Verbeterpunt: meer doorvragen."
     mock_client = MagicMock()
-    mock_client.messages.stream.return_value = _mock_stream(nabespreking)
+    mock_client.messages.stream.return_value = mock_stream(nabespreking)
     mock_cls.return_value = mock_client
 
     sessie = _maak_sessie()
@@ -298,10 +287,10 @@ def test_genereer_rollenspel_feedback_yield_nabespreking(mock_cls: MagicMock) ->
     assert resultaat == nabespreking
 
 
-@patch("samenwijzer.coach.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_genereer_rollenspel_feedback_prompt_bevat_gesprek(mock_cls: MagicMock) -> None:
     mock_client = MagicMock()
-    mock_client.messages.stream.return_value = _mock_stream("OK")
+    mock_client.messages.stream.return_value = mock_stream("OK")
     mock_cls.return_value = mock_client
 
     sessie = _maak_sessie("stagegesprek")
@@ -320,11 +309,11 @@ def test_genereer_rollenspel_feedback_prompt_bevat_gesprek(mock_cls: MagicMock) 
 # ── genereer_weekplan ─────────────────────────────────────────────────────────
 
 
-@patch("samenwijzer.coach.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_genereer_weekplan_yield_tekst(mock_cls: MagicMock) -> None:
     weekplan = "**Weekplan — Yasmin**\n| Maandag | Herhaal theorie | 30 min | Begrip |"
     mock_client = MagicMock()
-    mock_client.messages.stream.return_value = _mock_stream(weekplan)
+    mock_client.messages.stream.return_value = mock_stream(weekplan)
     mock_cls.return_value = mock_client
 
     resultaat = "".join(
@@ -342,10 +331,10 @@ def test_genereer_weekplan_yield_tekst(mock_cls: MagicMock) -> None:
     assert resultaat == weekplan
 
 
-@patch("samenwijzer.coach.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_genereer_weekplan_prompt_bevat_studentprofiel(mock_cls: MagicMock) -> None:
     mock_client = MagicMock()
-    mock_client.messages.stream.return_value = _mock_stream("OK")
+    mock_client.messages.stream.return_value = mock_stream("OK")
     mock_cls.return_value = mock_client
 
     list(
@@ -367,10 +356,10 @@ def test_genereer_weekplan_prompt_bevat_studentprofiel(mock_cls: MagicMock) -> N
     assert "72%" in prompt
 
 
-@patch("samenwijzer.coach.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_genereer_weekplan_prompt_bevat_aandachtspunten(mock_cls: MagicMock) -> None:
     mock_client = MagicMock()
-    mock_client.messages.stream.return_value = _mock_stream("OK")
+    mock_client.messages.stream.return_value = mock_stream("OK")
     mock_cls.return_value = mock_client
 
     list(
@@ -392,10 +381,10 @@ def test_genereer_weekplan_prompt_bevat_aandachtspunten(mock_cls: MagicMock) -> 
     assert "WP1.2 Serviceverlening" in prompt
 
 
-@patch("samenwijzer.coach.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_genereer_weekplan_zonder_aandachtspunten(mock_cls: MagicMock) -> None:
     mock_client = MagicMock()
-    mock_client.messages.stream.return_value = _mock_stream("OK")
+    mock_client.messages.stream.return_value = mock_stream("OK")
     mock_cls.return_value = mock_client
 
     # Geen crash als zwakste_kerntaak en zwakste_werkproces leeg zijn

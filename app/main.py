@@ -39,19 +39,28 @@ df = st.session_state["df"]
 
 # ── Loginscherm ───────────────────────────────────────────────────────────────
 if "rol" not in st.session_state:
-    st.title("📚 Welkom bij Samenwijzer")
-    st.write(
-        "Samenwijzer helpt studenten grip te krijgen op hun leerproces "
-        "en geeft docenten inzicht in de groep."
+    st.markdown(
+        """<div style="background:linear-gradient(135deg,#fae8e8 0%,#f0d4d4 100%);
+border-radius:20px; padding:32px 36px 28px; margin-bottom:24px;
+border-left:5px solid #c8785a;">
+  <h1 style="margin:0 0 8px; font-size:2.4rem; font-weight:700; color:#1a1a1a;">📚 Welkom bij Samenwijzer</h1>
+  <p style="margin:0; color:#555; font-size:1rem; line-height:1.5;">
+    Samenwijzer helpt studenten grip te krijgen op hun leerproces
+    en geeft docenten inzicht in de groep.
+  </p>
+</div>""",
+        unsafe_allow_html=True,
     )
-    st.divider()
 
     col_student, col_docent = st.columns(2)
 
     with col_student:
         with st.container(border=True):
-            st.markdown("**🎓 Ik ben student**")
-            st.caption("Bekijk je eigen voortgang en gebruik de AI-leercoach.")
+            st.markdown(
+                "<p style='font-size:1.05rem; font-weight:700; margin:0 0 2px; color:#1a1a1a'>🎓 Ik ben student</p>"
+                "<p style='font-size:0.82rem; color:#888; margin:0 0 12px'>Bekijk je eigen voortgang en gebruik de AI-leercoach.</p>",
+                unsafe_allow_html=True,
+            )
             namen = (
                 df.sort_values("naam")[["naam", "studentnummer"]]
                 .apply(lambda r: f"{r['naam']} ({r['studentnummer']})", axis=1)
@@ -76,8 +85,11 @@ if "rol" not in st.session_state:
 
     with col_docent:
         with st.container(border=True):
-            st.markdown("**👩‍🏫 Ik ben docent**")
-            st.caption("Toegang tot groepsoverzichten, outreach en alle studentdata.")
+            st.markdown(
+                "<p style='font-size:1.05rem; font-weight:700; margin:0 0 2px; color:#1a1a1a'>👩‍🏫 Ik ben docent</p>"
+                "<p style='font-size:0.82rem; color:#888; margin:0 0 12px'>Toegang tot groepsoverzichten, outreach en alle studentdata.</p>",
+                unsafe_allow_html=True,
+            )
             mentoren = sorted(df["mentor"].unique().tolist())
             mentor_keuze = st.selectbox("Selecteer je naam", mentoren, key="login_mentor")
             ww_docent = st.text_input(
@@ -101,43 +113,72 @@ if "rol" not in st.session_state:
 # ── Na inloggen ───────────────────────────────────────────────────────────────
 rol = st.session_state["rol"]
 render_nav()
-st.title("📚 Samenwijzer")
 
 if rol == "student":
     student = df[df["studentnummer"] == st.session_state["studentnummer"]].iloc[0]
-    st.success(
-        f"Welkom, **{student['naam']}** · {student['opleiding']} "
-        f"· Niveau {student['niveau']} · {student['leerweg']}"
+    st.markdown(
+        f"""<div style="background:#fae8e8; border-left:4px solid #c8785a; border-radius:12px;
+padding:16px 20px; margin-bottom:20px;">
+  <p style="margin:0 0 2px; font-size:1.05rem; font-weight:700; color:#1a1a1a">
+    Welkom, {student['naam']}
+  </p>
+  <p style="margin:0; font-size:0.85rem; color:#888">
+    {student['opleiding']} · Niveau {student['niveau']} · {student['leerweg']}
+  </p>
+</div>""",
+        unsafe_allow_html=True,
     )
 else:
     mentor_naam = st.session_state.get("mentor_naam", "")
     eigen_studenten = len(df[df["mentor"] == mentor_naam])
-    st.success(f"Ingelogd als **{mentor_naam}** · {eigen_studenten} studenten in jouw groep.")
+    st.markdown(
+        f"""<div style="background:#fae8e8; border-left:4px solid #c8785a; border-radius:12px;
+padding:16px 20px; margin-bottom:20px;">
+  <p style="margin:0 0 2px; font-size:1.05rem; font-weight:700; color:#1a1a1a">
+    Welkom, {mentor_naam}
+  </p>
+  <p style="margin:0; font-size:0.85rem; color:#888">
+    {eigen_studenten} studenten in jouw groep
+  </p>
+</div>""",
+        unsafe_allow_html=True,
+    )
 
-st.divider()
-st.subheader("Wat wil je doen?")
+st.markdown("<p class='section-label'>Wat wil je doen?</p>", unsafe_allow_html=True)
 
 if rol == "student":
     _, col1, col2, col3, _ = st.columns([0.5, 3, 3, 3, 0.5])
 
     with col1:
         with st.container(border=True):
-            st.markdown("**📊 Mijn voortgang**")
-            st.caption("Bekijk je studievoortgang, BSA en competentiescores.")
+            st.markdown(
+                "<p class='section-label'>Voortgang</p>"
+                "<p style='font-size:0.95rem; font-weight:700; margin:0 0 4px; color:#1a1a1a'>📊 Mijn voortgang</p>"
+                "<p style='font-size:0.80rem; color:#888; margin:0 0 10px'>Bekijk je studievoortgang, BSA en competentiescores.</p>",
+                unsafe_allow_html=True,
+            )
             if st.button("OPEN", key="btn_voortgang", use_container_width=True, type="primary"):
                 st.switch_page("pages/1_mijn_voortgang.py")
 
     with col2:
         with st.container(border=True):
-            st.markdown("**🎓 AI Leerondersteuning**")
-            st.caption("Tutor, lesmateriaal, oefentoets en feedback op werk.")
+            st.markdown(
+                "<p class='section-label'>Leren</p>"
+                "<p style='font-size:0.95rem; font-weight:700; margin:0 0 4px; color:#1a1a1a'>🎓 AI Leerondersteuning</p>"
+                "<p style='font-size:0.80rem; color:#888; margin:0 0 10px'>Tutor, lesmateriaal, oefentoets en feedback op werk.</p>",
+                unsafe_allow_html=True,
+            )
             if st.button("OPEN", key="btn_coach", use_container_width=True, type="primary"):
                 st.switch_page("pages/3_leercoach.py")
 
     with col3:
         with st.container(border=True):
-            st.markdown("**💚 Welzijn**")
-            st.caption("Deel hoe het met je gaat en ontvang gerichte ondersteuning.")
+            st.markdown(
+                "<p class='section-label'>Welzijn</p>"
+                "<p style='font-size:0.95rem; font-weight:700; margin:0 0 4px; color:#1a1a1a'>💚 Welzijn</p>"
+                "<p style='font-size:0.80rem; color:#888; margin:0 0 10px'>Deel hoe het met je gaat en ontvang gerichte ondersteuning.</p>",
+                unsafe_allow_html=True,
+            )
             if st.button("OPEN", key="btn_welzijn", use_container_width=True, type="primary"):
                 st.switch_page("pages/5_welzijn.py")
 
@@ -146,29 +187,45 @@ else:  # docent
 
     with col1:
         with st.container(border=True):
-            st.markdown("**📊 Studentvoortgang**")
-            st.caption("Bekijk de voortgang van een individuele student.")
+            st.markdown(
+                "<p class='section-label'>Voortgang</p>"
+                "<p style='font-size:0.95rem; font-weight:700; margin:0 0 4px; color:#1a1a1a'>📊 Studentvoortgang</p>"
+                "<p style='font-size:0.80rem; color:#888; margin:0 0 10px'>Bekijk de voortgang van een individuele student.</p>",
+                unsafe_allow_html=True,
+            )
             if st.button("OPEN", key="btn_voortgang", use_container_width=True, type="primary"):
                 st.switch_page("pages/1_mijn_voortgang.py")
 
     with col2:
         with st.container(border=True):
-            st.markdown("**👥 Groepsoverzicht**")
-            st.caption("Overzicht van al jouw studenten in de groep.")
+            st.markdown(
+                "<p class='section-label'>Groep</p>"
+                "<p style='font-size:0.95rem; font-weight:700; margin:0 0 4px; color:#1a1a1a'>👥 Groepsoverzicht</p>"
+                "<p style='font-size:0.80rem; color:#888; margin:0 0 10px'>Overzicht van al jouw studenten in de groep.</p>",
+                unsafe_allow_html=True,
+            )
             if st.button("OPEN", key="btn_groep", use_container_width=True, type="primary"):
                 st.switch_page("pages/2_groepsoverzicht.py")
 
     with col3:
         with st.container(border=True):
-            st.markdown("**🎓 AI Leerondersteuning**")
-            st.caption("Tutor, lesmateriaal, oefentoets en feedback op werk.")
+            st.markdown(
+                "<p class='section-label'>Leren</p>"
+                "<p style='font-size:0.95rem; font-weight:700; margin:0 0 4px; color:#1a1a1a'>🎓 AI Leerondersteuning</p>"
+                "<p style='font-size:0.80rem; color:#888; margin:0 0 10px'>Tutor, lesmateriaal, oefentoets en feedback op werk.</p>",
+                unsafe_allow_html=True,
+            )
             if st.button("OPEN", key="btn_coach", use_container_width=True, type="primary"):
                 st.switch_page("pages/3_leercoach.py")
 
     with col4:
         with st.container(border=True):
-            st.markdown("**📬 Outreach**")
-            st.caption("Signaleer risico's en neem contact op met jouw studenten.")
+            st.markdown(
+                "<p class='section-label'>Outreach</p>"
+                "<p style='font-size:0.95rem; font-weight:700; margin:0 0 4px; color:#1a1a1a'>📬 Outreach</p>"
+                "<p style='font-size:0.80rem; color:#888; margin:0 0 10px'>Signaleer risico's en neem contact op met jouw studenten.</p>",
+                unsafe_allow_html=True,
+            )
             if st.button("OPEN", key="btn_outreach", use_container_width=True, type="primary"):
                 st.switch_page("pages/4_outreach.py")
 

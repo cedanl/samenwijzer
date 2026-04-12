@@ -7,9 +7,8 @@ waar nodig — maar geeft nooit direct het antwoord.
 
 from collections.abc import Generator
 from dataclasses import dataclass, field
-from os import environ
 
-import anthropic
+from samenwijzer._ai import _client
 
 _MODEL = "claude-sonnet-4-6"
 _MAX_TOKENS = 1024
@@ -101,8 +100,7 @@ def stuur_bericht(
     Raises:
         anthropic.APIError: Bij problemen met de API.
     """
-    key = api_key or environ.get("ANTHROPIC_API_KEY")
-    client = anthropic.Anthropic(api_key=key)
+    client = _client(api_key)
 
     sessie.voeg_toe("user", bericht)
 

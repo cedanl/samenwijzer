@@ -1,9 +1,10 @@
 """Welzijnsmodule: AI-reactie op student self-assessment."""
 
+import smtplib
 from collections.abc import Generator
-from os import environ
 
-import anthropic
+from samenwijzer._ai import _client
+from samenwijzer.outreach import email_config_uit_env, verstuur_email
 
 _MODEL = "claude-sonnet-4-6"
 _MAX_TOKENS = 512
@@ -33,11 +34,6 @@ def categorie_label(categorie: str) -> str:
 def urgentie_label(urgentie: int) -> str:
     """Geef het leesbare label voor een urgentieniveau (1–3)."""
     return _URGENTIE_LABEL.get(urgentie, str(urgentie))
-
-
-def _client(api_key: str | None = None) -> anthropic.Anthropic:
-    """Maak een Anthropic-client aan met de opgegeven of omgevings-API-sleutel."""
-    return anthropic.Anthropic(api_key=api_key or environ.get("ANTHROPIC_API_KEY"))
 
 
 def genereer_welzijnsreactie(
@@ -80,3 +76,74 @@ def genereer_welzijnsreactie(
         messages=[{"role": "user", "content": prompt}],
     ) as stream:
         yield from stream.text_stream
+
+
+def stuur_welzijn_notificatie(
+    student_naam: str,
+    mentor_naam: str,
+    categorie: str,
+    urgentie: int,
+    toelichting: str,
+    timestamp: str,
+) -> bool:
+    """Stuur een e-mailnotificatie aan de mentor over een nieuwe welzijnscheck.
+
+    Verstuurt alleen als SMTP én WELZIJN_NOTIFICATIE_EMAIL geconfigureerd zijn.
+    Bij ontbrekende configuratie of SMTP-fout wordt stilzwijgend False teruggegeven.
+
+    Args:
+        student_naam: Volledige naam van de student.
+        mentor_naam: Naam van de toegewezen mentor.
+        categorie: Hulpcategorie van de check.
+        urgentie: Urgentieniveau 1–3.
+        toelichting: Optionele tekst van de student.
+        timestamp: ISO-timestamp van de check.
+
+    Returns:
+        True als het e-mailbericht succesvol verstuurd is, anders False.
+    """
+    smtp = email_config_uit_env()
+    notificatie_email = smtp["welzijn_notificatie_email"]
+    smtp_klaar = all(smtp[k] for k in ("smtp_host", "smtp_user", "smtp_password"))
+
+    if not (notificatie_email and smtp_klaar):
+        return False
+
+    urgentie_tekst = _URGENTIE_LABEL.get(urgentie, str(urgentie))
+    categorie_tekst = _CATEGORIE_LABEL.get(categorie, categorie)
+    datum = timestamp[:10]
+
+    bericht_regels = [
+        f"Een student heeft een welzijnscheck ingediend op {datum}.",
+        "",
+        f"Student:   {student_naam}",
+        f"Mentor:    {mentor_naam}",
+        f"Categorie: {categorie_tekst}",
+        f"Urgentie:  {urgentie_tekst}",
+    ]
+    if toelichting.strip():
+        bericht_regels += ["", "Toelichting van de student:", f"  {toelichting.strip()}"]
+    bericht_regels += [
+        "",
+        "Log in op Samenwijzer om de check te bekijken en actie te ondernemen.",
+    ]
+
+    onderwerp = f"Welzijnscheck {student_naam} — {urgentie_tekst}"
+    if urgentie == 3:
+        onderwerp = f"⚠️ DRINGEND: {onderwerp}"
+
+    try:
+        verstuur_email(
+            ontvanger_email=notificatie_email,
+            onderwerp=onderwerp,
+            bericht="\n".join(bericht_regels),
+            smtp_host=smtp["smtp_host"],
+            smtp_port=smtp["smtp_port"],
+            smtp_user=smtp["smtp_user"],
+            smtp_password=smtp["smtp_password"],
+            afzender_email=smtp["afzender_email"],
+        )
+    except smtplib.SMTPException:
+        return False
+
+    return True

@@ -5,16 +5,12 @@ from collections.abc import Generator
 from email.mime.text import MIMEText
 from os import environ
 
-import anthropic
 import pandas as pd
+
+from samenwijzer._ai import _client
 
 _MODEL = "claude-sonnet-4-6"
 _MAX_TOKENS = 1024
-
-
-def _client(api_key: str | None = None) -> anthropic.Anthropic:
-    """Maak een Anthropic-client aan met de opgegeven of omgevings-API-sleutel."""
-    return anthropic.Anthropic(api_key=api_key or environ.get("ANTHROPIC_API_KEY"))
 
 
 def at_risk_studenten(df: pd.DataFrame) -> pd.DataFrame:
@@ -142,6 +138,7 @@ def email_config_uit_env() -> dict[str, str]:
         "smtp_user": environ.get("SMTP_USER", ""),
         "smtp_password": environ.get("SMTP_PASSWORD", ""),
         "afzender_email": environ.get("SMTP_AFZENDER", ""),
+        "welzijn_notificatie_email": environ.get("WELZIJN_NOTIFICATIE_EMAIL", ""),
     }
 
 

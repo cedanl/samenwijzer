@@ -33,16 +33,11 @@ from samenwijzer.welzijn import CATEGORIEËN, categorie_label
 
 load_dotenv()
 
-_STATUS_ICOON = {
-    "niet_gecontacteerd": "🔴",
-    "gecontacteerd": "🟡",
-    "gereageerd": "🔵",
-    "opgelost": "🟢",
-}
-
-_TRANSITIE_KLEUR = {
-    "bsa_risico": "⚠️",
-    "bijna_klaar": "🎓",
+_STATUS_KLASSE = {
+    "niet_gecontacteerd": "niet-gecontacteerd",
+    "gecontacteerd": "gecontacteerd",
+    "gereageerd": "gereageerd",
+    "opgelost": "opgelost",
 }
 
 st.set_page_config(page_title="Outreach — Samenwijzer", page_icon="📬", layout="wide")
@@ -93,22 +88,30 @@ with tab_werklijst:
         opgeslagen = statussen.get(
             snr, StudentStatus(studentnummer=snr, status="niet_gecontacteerd")
         )
-        icoon = _STATUS_ICOON.get(opgeslagen.status, "⚪")
+        status_klasse = _STATUS_KLASSE.get(opgeslagen.status, "niet-gecontacteerd")
         moment = detecteer_transitiemoment(student)
         moment_badge = transitiemoment_label(moment)
+        voortgang_pct = int(student["voortgang"] * 100)
 
         with st.container(border=True):
             col_info, col_actie = st.columns([3, 2])
 
             with col_info:
-                badge_deel = f" &nbsp; `{moment_badge}`" if moment_badge else ""
+                transitie_deel = (
+                    f" &nbsp; <span class='badge badge--transitie'>{moment_badge}</span>"
+                    if moment_badge
+                    else ""
+                )
                 st.markdown(
-                    f"**{student['naam']}** &nbsp; {icoon} `{opgeslagen.status.replace('_', ' ')}`"
-                    f"{badge_deel}"
+                    f"<strong>{student['naam']}</strong> &nbsp; "
+                    f"<span class='badge badge--{status_klasse}'>"
+                    f"{opgeslagen.status.replace('_', ' ')}</span>"
+                    f"{transitie_deel}",
+                    unsafe_allow_html=True,
                 )
                 st.caption(
                     f"{student['opleiding']} · Niveau {student['niveau']} · "
-                    f"Voortgang {int(student['voortgang'] * 100)} % · "
+                    f"Voortgang {voortgang_pct} % · "
                     f"BSA {int(student['bsa_behaald'])}/{int(student['bsa_vereist'])} pt"
                 )
                 if opgeslagen.laatste_contact:
@@ -133,7 +136,7 @@ with tab_werklijst:
                     label_visibility="collapsed",
                 )
 
-        with st.expander(f"Bericht opstellen voor {student['naam'].split()[0]}"):
+        with st.expander(f"Bericht opstellen voor {student['naam'].split()[0]}", expanded=(voortgang_pct < 30)):
             col_toon, col_verwijzing = st.columns(2)
             with col_toon:
                 toon = st.radio(
@@ -330,7 +333,11 @@ with tab_campagnes:
                     col_c, col_sluiten = st.columns([4, 1])
                     with col_c:
                         moment_tekst = transitiemoment_label(camp.transitiemoment)
-                        st.markdown(f"**{camp.naam}** &nbsp; `{moment_tekst}`")
+                        st.markdown(
+                            f"<strong>{camp.naam}</strong> &nbsp; "
+                            f"<span class='badge badge--transitie'>{moment_tekst}</span>",
+                            unsafe_allow_html=True,
+                        )
                         st.caption(
                             f"Aangemaakt door {camp.aangemaakt_door} op {camp.aangemaakt_op[:10]}"
                         )
@@ -401,10 +408,33 @@ with tab_effectiviteit:
         oplossing_rate = opgelost_n / gereageerd_n * 100 if gereageerd_n else 0
 
         m1, m2, m3, m4 = st.columns(4)
-        m1.metric("Totaal interventies", totaal_contacten)
-        m2.metric("Contactratio", f"{contact_rate:.0f} %", help="Gecontacteerd / at-risk")
-        m3.metric("Responsratio", f"{respons_rate:.0f} %", help="Gereageerd / gecontacteerd")
-        m4.metric("Opgelost", f"{oplossing_rate:.0f} %", help="Opgelost / gereageerd")
+        with m1:
+            st.markdown(
+                f"<div class='stat-card'><p class='stat-card__label'>Totaal interventies</p>"
+                f"<p class='stat-card__value'>{totaal_contacten}</p></div>",
+                unsafe_allow_html=True,
+            )
+        with m2:
+            st.markdown(
+                f"<div class='stat-card'><p class='stat-card__label'>Contactratio</p>"
+                f"<p class='stat-card__value'>{contact_rate:.0f}%</p>"
+                f"<p class='stat-card__sub'>Gecontacteerd / at-risk</p></div>",
+                unsafe_allow_html=True,
+            )
+        with m3:
+            st.markdown(
+                f"<div class='stat-card'><p class='stat-card__label'>Responsratio</p>"
+                f"<p class='stat-card__value'>{respons_rate:.0f}%</p>"
+                f"<p class='stat-card__sub'>Gereageerd / gecontacteerd</p></div>",
+                unsafe_allow_html=True,
+            )
+        with m4:
+            st.markdown(
+                f"<div class='stat-card'><p class='stat-card__label'>Opgelost</p>"
+                f"<p class='stat-card__value'>{oplossing_rate:.0f}%</p>"
+                f"<p class='stat-card__sub'>Opgelost / gereageerd</p></div>",
+                unsafe_allow_html=True,
+            )
 
         st.divider()
 
