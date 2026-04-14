@@ -40,7 +40,7 @@ Verzenden en ontvangen van berichten via Twilio WhatsApp API.
 - [x] F2: `src/samenwijzer/whatsapp.py` — `stuur_checkin()`, `verwerk_inkomend_bericht()`, `stuur_foutbericht()`, AI-gesprek
 - [ ] F3: Twilio sandbox opzetten, template aanmaken en testen met 1 testnummer
 - [x] F4: `app/webhook.py` — FastAPI endpoint `/webhook/whatsapp` + TwiML-antwoorden + Twilio-handtekeningvalidatie
-- [ ] F5: Webhook lokaal testen via ngrok; antwoorden verwerken naar `welzijn.csv`
+- [x] F5: Webhook lokaal testen via ngrok; antwoorden verwerken naar `welzijn.csv`
 - [ ] F6: Meta template goedkeuring aanvragen voor productie-template `wekelijkse_checkin_v1`
 - [x] F7: Tests voor F2 — 32/32 geslaagd (parseerlogica, foutpaden, score-verwerking)
 
@@ -62,7 +62,7 @@ Automatische verzending elke maandagochtend via GitHub Actions.
 **Stappen:**
 - [x] H1: `src/samenwijzer/scheduler.py` — `stuur_wekelijkse_checkins(df, dry_run)` + CLI-entrypoint
 - [x] H2: `.github/workflows/checkin.yml` — cron `0 8 * * 1` + `workflow_dispatch` met dry_run-optie
-- [ ] H3: Secrets instellen in GitHub repo: `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_WHATSAPP_NUMBER`, `WHATSAPP_ENCRYPT_KEY`
+- [x] H3: Secrets instellen in GitHub repo: `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_WHATSAPP_NUMBER`, `WHATSAPP_ENCRYPT_KEY`
 - [x] H4: `DRY_RUN=true` envvar — berichten worden gelogd, niet verstuurd
 - [x] H5: Tests voor H1 — dry_run, actief-filter, ontbrekende studenten, Twilio-fout
 
