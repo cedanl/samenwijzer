@@ -74,7 +74,7 @@ Bij score 2 of 3 kan de student kort doorpraten met de AI leercoach via WhatsApp
 - [x] I1: Gespreksstatus in `whatsapp_store.WhatsappSessie` — stap + uitgewisseld-teller + context_json
 - [x] I2: `_genereer_ai_reactie()` in `whatsapp.py` — Claude Haiku, max. 2 zinnen, mobiel formaat
 - [x] I3: Na MAX_EXCHANGES (3): doorverwijzingsbericht naar mentor + app
-- [ ] I4: Gesprek opslaan als context voor leercoach-sessie in de app (`data/02-prepared/`)
+- [x] I4: Gesprek opslaan als context voor leercoach-sessie in de app (`data/02-prepared/`)
 - [x] I5: Tests voor I1–I3 — gespreksstatus, exchange-limiet, doorverwijzingstekst
 
 ---

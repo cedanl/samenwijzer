@@ -9,10 +9,12 @@ Verantwoordelijkheden:
 AI-isolatie: alle Anthropic-calls lopen via _ai._client().
 """
 
+import json
 import logging
 import os
 from dataclasses import dataclass
 from datetime import date
+from pathlib import Path
 from typing import Literal
 
 from twilio.rest import Client as TwilioClient
@@ -32,6 +34,7 @@ from samenwijzer.whatsapp_store import (
 log = logging.getLogger(__name__)
 
 _TWILIO_FROM = os.getenv("TWILIO_WHATSAPP_NUMBER", "whatsapp:+14155238886")
+_GESPREKKEN_PAD = Path(__file__).parent.parent.parent / "data" / "02-prepared"
 MAX_EXCHANGES = 3
 
 _CHECKIN_TEKST = (
@@ -220,7 +223,10 @@ def verwerk_inkomend_bericht(
 
     # 4. AI-gesprek lopend
     if sessie and sessie.stap == "ai_gesprek":
+        snr = get_studentnummer_voor_telefoon(from_number) or from_number
+
         if sessie.uitgewisseld >= MAX_EXCHANGES:
+            sla_whatsapp_gesprek_op(snr, sessie.context(), ontvangen_op)
             verwijder_sessie(from_number)
             return VerwerkResultaat(_DOORVERWIJZING_TEKST, None)
 
@@ -232,6 +238,7 @@ def verwerk_inkomend_bericht(
         sla_sessie_op(sessie)
 
         if sessie.uitgewisseld >= MAX_EXCHANGES:
+            sla_whatsapp_gesprek_op(snr, sessie.context(), ontvangen_op)
             verwijder_sessie(from_number)
             return VerwerkResultaat(reactie + "\n\n" + _DOORVERWIJZING_TEKST, None)
 
@@ -241,6 +248,32 @@ def verwerk_inkomend_bericht(
     if antwoord.soort == "onbekend":
         stuur_foutbericht(from_number)
     return VerwerkResultaat(None, None)
+
+
+# ── Gesprekopslag ─────────────────────────────────────────────────────────────
+
+def sla_whatsapp_gesprek_op(studentnummer: str, context: list[dict], datum: date) -> None:
+    """Sla een afgesloten WhatsApp-gesprek op als leercoach-context.
+
+    Schrijft naar data/02-prepared/whatsapp_context_<studentnummer>.json.
+    Een volgend gesprek overschrijft het vorige (alleen meest recente is relevant).
+    """
+    _GESPREKKEN_PAD.mkdir(parents=True, exist_ok=True)
+    pad = _GESPREKKEN_PAD / f"whatsapp_context_{studentnummer}.json"
+    payload = {"studentnummer": studentnummer, "datum": datum.isoformat(), "gesprek": context}
+    pad.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    log.info("WhatsApp-gesprek opgeslagen voor student %s (%d berichten)", studentnummer, len(context))
+
+
+def laad_whatsapp_gesprek(studentnummer: str) -> dict | None:
+    """Laad het meest recente WhatsApp-gesprek voor een student, of None als er geen is."""
+    pad = _GESPREKKEN_PAD / f"whatsapp_context_{studentnummer}.json"
+    if not pad.exists():
+        return None
+    try:
+        return json.loads(pad.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return None
 
 
 # ── AI ────────────────────────────────────────────────────────────────────────

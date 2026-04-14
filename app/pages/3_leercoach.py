@@ -19,6 +19,7 @@ from samenwijzer.coach import (
 )
 from samenwijzer.styles import CSS, render_footer, render_nav
 from samenwijzer.tutor import StudentContext, TutorSessie, stuur_bericht
+from samenwijzer.whatsapp import laad_whatsapp_gesprek
 
 load_dotenv()
 
@@ -120,10 +121,29 @@ with tab_tutor:
             voortgang=float(student["voortgang"]),
             kerntaak_focus=focus_tekst,
         )
-        st.session_state[sessie_sleutel] = TutorSessie(student=context)
+        nieuwe_sessie = TutorSessie(student=context)
+
+        # Laad WhatsApp-gesprekcontext als die beschikbaar is
+        wa_data = laad_whatsapp_gesprek(studentnummer)
+        if wa_data:
+            for bericht in wa_data.get("gesprek", []):
+                rol_map = {"student": "user", "coach": "assistant"}
+                rol = rol_map.get(bericht.get("rol", ""), "user")
+                nieuwe_sessie.voeg_toe(rol, bericht.get("tekst", ""))
+            st.session_state[f"wa_context_geladen_{studentnummer}"] = wa_data["datum"]
+
+        st.session_state[sessie_sleutel] = nieuwe_sessie
 
     sessie: TutorSessie = st.session_state[sessie_sleutel]
     sessie.student.kerntaak_focus = focus_tekst
+
+    wa_datum = st.session_state.get(f"wa_context_geladen_{studentnummer}")
+    if wa_datum and sessie.geschiedenis:
+        st.info(
+            f"📱 WhatsApp-gesprek van {wa_datum} is geladen als startcontext. "
+            "De tutor is op de hoogte van dit gesprek.",
+            icon="💬",
+        )
 
     for bericht in sessie.geschiedenis:
         rol = "user" if bericht["role"] == "user" else "assistant"

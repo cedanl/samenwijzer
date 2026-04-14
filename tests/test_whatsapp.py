@@ -407,3 +407,51 @@ class TestScheduler:
 
         assert resultaat["fouten"] == 1
         assert resultaat["verstuurd"] == 0
+
+
+# ── whatsapp.sla_whatsapp_gesprek_op / laad_whatsapp_gesprek ──────────────────
+
+class TestGesprekOpslag:
+    DATUM = date(2026, 4, 14)
+    SNR = "100001"
+
+    def test_opslaan_en_laden(self, tmp_path, monkeypatch):
+        import samenwijzer.whatsapp as wa_mod
+
+        monkeypatch.setattr(wa_mod, "_GESPREKKEN_PAD", tmp_path)
+
+        context = [
+            {"rol": "student", "tekst": "Het gaat niet goed met mij"},
+            {"rol": "coach", "tekst": "Wat bedoel je precies?"},
+        ]
+        wa_mod.sla_whatsapp_gesprek_op(self.SNR, context, self.DATUM)
+
+        geladen = wa_mod.laad_whatsapp_gesprek(self.SNR)
+        assert geladen is not None
+        assert geladen["studentnummer"] == self.SNR
+        assert geladen["datum"] == "2026-04-14"
+        assert len(geladen["gesprek"]) == 2
+
+    def test_laden_zonder_bestand_geeft_none(self, tmp_path, monkeypatch):
+        import samenwijzer.whatsapp as wa_mod
+
+        monkeypatch.setattr(wa_mod, "_GESPREKKEN_PAD", tmp_path)
+        assert wa_mod.laad_whatsapp_gesprek("999999") is None
+
+    def test_gesprek_opgeslagen_bij_doorverwijzing(self, tmp_path, monkeypatch):
+        from samenwijzer.whatsapp import MAX_EXCHANGES, verwerk_inkomend_bericht
+        from samenwijzer.whatsapp_store import WhatsappSessie, activeer_nummer, registreer_nummer, sla_sessie_op
+        import samenwijzer.whatsapp as wa_mod
+
+        monkeypatch.setattr(wa_mod, "_GESPREKKEN_PAD", tmp_path)
+
+        registreer_nummer(self.SNR, "+31612345678")
+        activeer_nummer(self.SNR)
+        sla_sessie_op(WhatsappSessie(
+            "+31612345678", "ai_gesprek", MAX_EXCHANGES, "[]", "2026-04-14"
+        ))
+
+        with patch("samenwijzer.whatsapp._genereer_ai_reactie", return_value="Test reactie"):
+            verwerk_inkomend_bericht("+31612345678", "het gaat slecht", self.DATUM)
+
+        assert wa_mod.laad_whatsapp_gesprek(self.SNR) is not None
