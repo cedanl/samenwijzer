@@ -4,6 +4,8 @@ from pathlib import Path
 
 import pandas as pd
 
+WELZIJN_REQUIRED_COLUMNS = {"studentnummer", "datum", "antwoord"}
+
 REQUIRED_COLUMNS = {
     "studentnummer",
     "naam",
@@ -89,3 +91,44 @@ def _validate(df: pd.DataFrame) -> None:
         raise ValueError(
             f"Ongeldige leerweg waarden: {invalid_leerweg['leerweg'].unique().tolist()}"
         )
+
+
+def load_welzijn_csv(path: Path) -> pd.DataFrame:
+    """Laad en valideer een welzijn-CSV.
+
+    Args:
+        path: Pad naar het CSV-bestand.
+
+    Returns:
+        DataFrame met kolommen: studentnummer (str), datum (date),
+        antwoord (int 1-3), toelichting (str of None).
+
+    Raises:
+        FileNotFoundError: Als het bestand niet bestaat.
+        ValueError: Als verplichte kolommen ontbreken of antwoord ongeldig is.
+    """
+    if not path.exists():
+        raise FileNotFoundError(f"Welzijn-CSV niet gevonden: {path}")
+
+    df = pd.read_csv(path, dtype={"studentnummer": str})
+
+    missing = WELZIJN_REQUIRED_COLUMNS - set(df.columns)
+    if missing:
+        raise ValueError(f"Ontbrekende verplichte kolommen in welzijn-CSV: {missing}")
+
+    df["datum"] = pd.to_datetime(df["datum"], errors="coerce").dt.date
+    df["antwoord"] = pd.to_numeric(df["antwoord"], errors="coerce").astype("Int64")
+
+    if "toelichting" not in df.columns:
+        df["toelichting"] = None
+    else:
+        df["toelichting"] = df["toelichting"].where(df["toelichting"].notna(), None)
+
+    ongeldige_antwoorden = df[~df["antwoord"].isin([1, 2, 3])]
+    if not ongeldige_antwoorden.empty:
+        raise ValueError(
+            f"Ongeldige antwoordwaarden (verwacht 1, 2 of 3): "
+            f"{ongeldige_antwoorden['antwoord'].dropna().unique().tolist()}"
+        )
+
+    return df.sort_values(["studentnummer", "datum"]).reset_index(drop=True)

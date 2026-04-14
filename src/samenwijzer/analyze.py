@@ -3,6 +3,7 @@
 import pandas as pd
 
 from samenwijzer.transform import get_kerntaak_columns, get_werkproces_columns
+from samenwijzer.wellbeing import WelzijnsCheck, heeft_signaal, welzijnswaarde
 
 
 def get_student(df: pd.DataFrame, studentnummer: str) -> pd.Series:
@@ -200,6 +201,62 @@ def peer_profielen(df: pd.DataFrame) -> pd.DataFrame:
         )
 
     return pd.DataFrame(records).sort_values("naam").reset_index(drop=True)
+
+
+def signaleringen(
+    df_studenten: pd.DataFrame,
+    df_welzijn: pd.DataFrame,
+    drempel: float = 0.55,
+) -> pd.DataFrame:
+    """Geef studenten met een actieve welzijnssignalering.
+
+    Neemt de meest recente check per student en geeft alleen studenten terug
+    waarvan de welzijnswaarde onder de drempel ligt. Combineert welzijnsdata
+    met naam en mentor uit de studentendata.
+
+    Args:
+        df_studenten: Getransformeerd studenten-DataFrame.
+        df_welzijn: Geladen welzijn-DataFrame (uit load_welzijn_csv).
+        drempel: Grenswaarde voor signalering (standaard 0.55 = antwoord 2 of 3).
+
+    Returns:
+        DataFrame met kolommen: studentnummer, naam, mentor, datum,
+        antwoord, toelichting, welzijnswaarde. Gesorteerd op welzijnswaarde
+        oplopend (meest zorgelijk bovenaan).
+    """
+    if df_welzijn.empty:
+        return pd.DataFrame(
+            columns=["studentnummer", "naam", "mentor", "datum",
+                     "antwoord", "toelichting", "welzijnswaarde"]
+        )
+
+    meest_recent = (
+        df_welzijn.sort_values("datum")
+        .groupby("studentnummer", as_index=False)
+        .last()
+    )
+
+    meest_recent["welzijnswaarde"] = meest_recent.apply(
+        lambda r: welzijnswaarde(
+            WelzijnsCheck(r["studentnummer"], r["datum"], int(r["antwoord"]))
+        ),
+        axis=1,
+    )
+
+    signalen = meest_recent[meest_recent["welzijnswaarde"] < drempel].copy()
+
+    signalen = signalen.merge(
+        df_studenten[["studentnummer", "naam", "mentor"]],
+        on="studentnummer",
+        how="left",
+    )
+
+    return (
+        signalen[["studentnummer", "naam", "mentor", "datum",
+                  "antwoord", "toelichting", "welzijnswaarde"]]
+        .sort_values("welzijnswaarde")
+        .reset_index(drop=True)
+    )
 
 
 def cohort_gemiddelden(df: pd.DataFrame) -> pd.DataFrame:
