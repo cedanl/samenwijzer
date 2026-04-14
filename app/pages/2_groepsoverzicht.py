@@ -5,8 +5,9 @@ from pathlib import Path
 import streamlit as st
 
 from samenwijzer.analyze import cohort_gemiddelden, groepsoverzicht, peer_profielen, signaleringen
+from samenwijzer.auth import mentor_filter, vereist_docent
 from samenwijzer.prepare import load_welzijn_csv
-from samenwijzer.styles import CSS, render_footer
+from samenwijzer.styles import CSS, render_footer, render_nav
 from samenwijzer.visualize import groep_voortgang_grafiek
 from samenwijzer.wellbeing import (
     antwoord_label,
@@ -21,48 +22,72 @@ _NOTITIES_PAD = _ROOT / "data" / "02-prepared" / "notities.csv"
 
 st.set_page_config(page_title="Groepsoverzicht — Samenwijzer", page_icon="👥", layout="wide")
 st.markdown(CSS, unsafe_allow_html=True)
+render_nav()
+vereist_docent()
 st.title("👥 Groepsoverzicht")
 
 if "df" not in st.session_state:
     st.warning("Ga eerst naar de startpagina om de data te laden.")
     st.stop()
 
-df = st.session_state["df"]
+df = mentor_filter(st.session_state["df"])
+mentor_naam = st.session_state.get("mentor_naam", "")
+st.caption(f"Mentor: **{mentor_naam}** · {len(df)} studenten")
+
+# ── Overzichtsmetrics (eerst getoond, filters daarna) ─────────────────────────
+totaal_alle = len(df)
+risico_alle = int(df["risico"].sum())
+gem_voortgang_alle = f"{df['voortgang'].mean() * 100:.0f}%" if totaal_alle else "—"
+
+m1, m2, m3, m4 = st.columns(4)
+with m1:
+    st.markdown(
+        f"<div class='stat-card'><p class='stat-card__label'>Studenten</p>"
+        f"<p class='stat-card__value'>{totaal_alle}</p></div>",
+        unsafe_allow_html=True,
+    )
+with m2:
+    st.markdown(
+        f"<div class='stat-card'><p class='stat-card__label'>Op schema</p>"
+        f"<p class='stat-card__value'>{totaal_alle - risico_alle}</p></div>",
+        unsafe_allow_html=True,
+    )
+with m3:
+    risico_delta_klasse = "stat-card__delta--neg" if risico_alle > 0 else "stat-card__delta--pos"
+    risico_pct_alle = f"{risico_alle / totaal_alle * 100:.0f}%" if totaal_alle else "—"
+    st.markdown(
+        f"<div class='stat-card'><p class='stat-card__label'>Aandacht nodig</p>"
+        f"<p class='stat-card__value'>{risico_alle}</p>"
+        f"<p class='{risico_delta_klasse}'>{risico_pct_alle} van de groep</p></div>",
+        unsafe_allow_html=True,
+    )
+with m4:
+    st.markdown(
+        f"<div class='stat-card'><p class='stat-card__label'>Gem. voortgang</p>"
+        f"<p class='stat-card__value'>{gem_voortgang_alle}</p></div>",
+        unsafe_allow_html=True,
+    )
+
+st.divider()
 
 # ── Filters ───────────────────────────────────────────────────────────────────
 with st.expander("Filters", expanded=True):
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
     with col1:
         opleidingen = ["Alle"] + sorted(df["opleiding"].unique().tolist())
         opleiding = st.selectbox("Opleiding", opleidingen)
     with col2:
         cohorten = ["Alle"] + sorted(df["cohort"].unique().tolist(), reverse=True)
         cohort = st.selectbox("Cohort", cohorten)
-    with col3:
-        mentoren = ["Alle"] + sorted(df["mentor"].unique().tolist())
-        mentor = st.selectbox("Mentor", mentoren)
 
 gefilterd = df.copy()
 if opleiding != "Alle":
     gefilterd = gefilterd[gefilterd["opleiding"] == opleiding]
 if cohort != "Alle":
     gefilterd = gefilterd[gefilterd["cohort"] == cohort]
-if mentor != "Alle":
-    gefilterd = gefilterd[gefilterd["mentor"] == mentor]
 
-st.divider()
-
-# ── Overzichtsmetrics ─────────────────────────────────────────────────────────
 totaal = len(gefilterd)
 risico_aantal = int(gefilterd["risico"].sum())
-
-m1, m2, m3, m4 = st.columns(4)
-m1.metric("Studenten", totaal)
-m2.metric("Op schema", totaal - risico_aantal)
-risico_pct = f"{risico_aantal / totaal * 100:.0f}%" if totaal else "—"
-m3.metric("Aandacht nodig", risico_aantal, delta=risico_pct, delta_color="inverse")
-gem_voortgang = f"{gefilterd['voortgang'].mean() * 100:.0f}%" if totaal else "—"
-m4.metric("Gem. voortgang", gem_voortgang)
 
 st.divider()
 
@@ -152,19 +177,12 @@ with tab_voortgang:
 
 # ── Tab: Signaleringen ────────────────────────────────────────────────────────
 with tab_signaleringen:
-    if mentor == "Alle":
-        st.info(
-            "Filter op een **specifieke mentor** om signaleringen te zien. "
-            "Welzijnsscores zijn alleen zichtbaar voor de eigen mentor."
-        )
-        st.stop()
-
     df_welzijn = load_welzijn_csv(_DEMO_WELZIJN)
     df_signalen = signaleringen(gefilterd, df_welzijn)
-    df_signalen = filter_signaleringen_voor_mentor(df_signalen, mentor)
+    df_signalen = filter_signaleringen_voor_mentor(df_signalen, mentor_naam)
 
     if df_signalen.empty:
-        st.success(f"Geen actieve signaleringen voor mentor **{mentor}**.")
+        st.success(f"Geen actieve signaleringen voor mentor **{mentor_naam}**.")
     else:
         st.caption(
             f"Studenten met een recente welzijnsscore van **Matig** of **Zwaar**. "
@@ -208,7 +226,7 @@ with tab_signaleringen:
                         )
                         if st.form_submit_button("Opslaan", use_container_width=True):
                             try:
-                                sla_notitie_op(_NOTITIES_PAD, snr, mentor, tekst)
+                                sla_notitie_op(_NOTITIES_PAD, snr, mentor_naam, tekst)
                                 st.success("Opgeslagen.")
                                 st.rerun()
                             except ValueError as e:

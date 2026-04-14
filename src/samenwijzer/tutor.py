@@ -5,11 +5,10 @@ Hij stelt verdiepende vragen, verbindt ideeën en biedt oefeningen aan
 waar nodig — maar geeft nooit direct het antwoord.
 """
 
-import os
 from collections.abc import Generator
 from dataclasses import dataclass, field
 
-import anthropic
+from samenwijzer._ai import _client
 
 _MODEL = "claude-sonnet-4-6"
 _MAX_TOKENS = 1024
@@ -26,6 +25,7 @@ class StudentContext:
     kerntaak_focus: str = ""
 
     def als_tekst(self) -> str:
+        """Geef de studentcontext terug als opgemaakte tekst voor de systeemprompt."""
         niveau_labels = {1: "starter", 2: "op weg", 3: "gevorderde", 4: "expert"}
         label = niveau_labels.get(self.niveau, "onbekend")
         tekst = (
@@ -100,8 +100,7 @@ def stuur_bericht(
     Raises:
         anthropic.APIError: Bij problemen met de API.
     """
-    key = api_key or os.environ.get("ANTHROPIC_API_KEY")
-    client = anthropic.Anthropic(api_key=key)
+    client = _client(api_key)
 
     sessie.voeg_toe("user", bericht)
 

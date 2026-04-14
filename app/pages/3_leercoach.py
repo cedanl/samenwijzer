@@ -6,26 +6,30 @@ import streamlit as st
 from dotenv import load_dotenv
 
 from samenwijzer.analyze import get_student, leerpad_niveau, zwakste_kerntaak
+from samenwijzer.auth import mentor_filter
 from samenwijzer.coach import (
+    SCENARIO_OPTIES,
+    RollenspelSessie,
     controleer_antwoorden,
     geef_feedback_op_werk,
     genereer_lesmateriaal,
     genereer_oefentoets,
+    genereer_rollenspel_feedback,
+    stuur_rollenspel_bericht,
 )
-from samenwijzer.styles import CSS, render_footer
+from samenwijzer.styles import CSS, render_footer, render_nav
 from samenwijzer.tutor import StudentContext, TutorSessie, stuur_bericht
 
 load_dotenv()
 
-st.set_page_config(
-    page_title="AI Leerondersteuning — Samenwijzer", page_icon="🎓", layout="wide"
-)
+st.set_page_config(page_title="AI Leerondersteuning — Samenwijzer", page_icon="🎓", layout="wide")
 st.markdown(CSS, unsafe_allow_html=True)
+render_nav()
 st.title("🎓 AI Leerondersteuning")
 
 # ── Vereisten ──────────────────────────────────────────────────────────────────
-if "df" not in st.session_state:
-    st.warning("Ga eerst naar de startpagina om de data te laden.")
+if "df" not in st.session_state or "rol" not in st.session_state:
+    st.warning("Ga eerst naar de startpagina om in te loggen.")
     st.stop()
 
 if not os.environ.get("ANTHROPIC_API_KEY"):
@@ -36,22 +40,43 @@ if not os.environ.get("ANTHROPIC_API_KEY"):
     st.stop()
 
 df = st.session_state["df"]
+rol = st.session_state["rol"]
 
-# ── Studentselectie ────────────────────────────────────────────────────────────
-namen = (
-    df.sort_values("naam")[["naam", "studentnummer"]]
-    .apply(lambda r: f"{r['naam']} ({r['studentnummer']})", axis=1)
-    .tolist()
-)
-col_sel, col_info = st.columns([2, 1])
-with col_sel:
-    keuze = st.selectbox("Kies je naam", namen, label_visibility="collapsed")
-with col_info:
+# ── Studentselectie (rol-afhankelijk) ──────────────────────────────────────────
+if rol == "student":
+    # Student ziet altijd en alleen zijn eigen gegevens — geen selector tonen
+    studentnummer = st.session_state["studentnummer"]
+    student = get_student(df, studentnummer)
+    leerpad = leerpad_niveau(student)
+    opleiding = student["opleiding"]
+    leerpad_klasse = leerpad.lower()
+    st.markdown(
+        f"<span class='badge badge--{leerpad_klasse}'>{leerpad}</span> "
+        f"<span style='color:#888; font-size:0.85rem; margin-left:8px'>{opleiding}</span>",
+        unsafe_allow_html=True,
+    )
+else:
+    # Docent ziet alleen studenten uit eigen groep
+    groep = mentor_filter(df)
+    opties = (
+        groep.sort_values("naam")[["naam", "studentnummer"]]
+        .apply(lambda r: f"{r['naam']} ({r['studentnummer']})", axis=1)
+        .tolist()
+    )
+    col_sel, col_info = st.columns([2, 1])
+    with col_sel:
+        keuze = st.selectbox("Selecteer een student", opties)
     studentnummer = keuze.split("(")[-1].rstrip(")")
     student = get_student(df, studentnummer)
     leerpad = leerpad_niveau(student)
     opleiding = student["opleiding"]
-    st.caption(f"**{opleiding}** · Leerpad: **{leerpad}**")
+    with col_info:
+        leerpad_klasse = leerpad.lower()
+        st.markdown(
+            f"<span class='badge badge--{leerpad_klasse}'>{leerpad}</span> "
+            f"<span style='color:#888; font-size:0.85rem; margin-left:8px'>{opleiding}</span>",
+            unsafe_allow_html=True,
+        )
 
 zkt = zwakste_kerntaak(df, studentnummer)
 zwakste_kt_label = zkt[0] if zkt else ""
@@ -59,8 +84,8 @@ zwakste_kt_label = zkt[0] if zkt else ""
 st.divider()
 
 # ── Tabs ───────────────────────────────────────────────────────────────────────
-tab_tutor, tab_les, tab_toets, tab_werk = st.tabs(
-    ["🎓 Tutor", "📚 Lesmateriaal", "📝 Oefentoets", "✏️ Feedback op werk"]
+tab_tutor, tab_les, tab_toets, tab_werk, tab_rol = st.tabs(
+    ["🎓 Tutor", "📚 Lesmateriaal", "📝 Oefentoets", "✏️ Feedback op werk", "🎭 Rollenspel"]
 )
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -82,11 +107,9 @@ with tab_tutor:
         kerntaak_focus = st.selectbox("Focus op kerntaak", kt_opties, key="kt_focus")
         focus_tekst = "" if kerntaak_focus == "(geen specifiek)" else kerntaak_focus
     with col_btn:
-        st.markdown("<div style='padding-top:1.6rem'>", unsafe_allow_html=True)
-        if st.button("NIEUW GESPREK", use_container_width=True):
+        if st.button("↺ Nieuw gesprek", use_container_width=True):
             st.session_state.pop(f"tutor_sessie_{studentnummer}", None)
             st.rerun()
-        st.markdown("</div>", unsafe_allow_html=True)
 
     sessie_sleutel = f"tutor_sessie_{studentnummer}"
     if sessie_sleutel not in st.session_state:
@@ -131,15 +154,13 @@ with tab_les:
             placeholder="bijv. wondverzorging, communicatie met cliënten …",
             key="les_onderwerp",
         )
-        if st.button("GENEREER LESMATERIAAL", type="primary", key="btn_les"):
+        if st.button("📚 Genereer lesmateriaal", type="primary", key="btn_les"):
             if not onderwerp.strip():
                 st.warning("Vul een onderwerp in.")
             else:
                 st.session_state.pop("sw_lesmateriaal", None)
                 tekst = st.write_stream(
-                    genereer_lesmateriaal(
-                        onderwerp.strip(), opleiding, leerpad, zwakste_kt_label
-                    )
+                    genereer_lesmateriaal(onderwerp.strip(), opleiding, leerpad, zwakste_kt_label)
                 )
                 st.session_state["sw_lesmateriaal"] = tekst
         elif "sw_lesmateriaal" in st.session_state:
@@ -159,7 +180,7 @@ with tab_toets:
             placeholder="bijv. wondverzorging, medicatieveiligheid …",
             key="toets_onderwerp",
         )
-        if st.button("GENEREER OEFENTOETS", type="primary", key="btn_toets"):
+        if st.button("📝 Genereer oefentoets", type="primary", key="btn_toets"):
             if not onderwerp_toets.strip():
                 st.warning("Vul een onderwerp in.")
             else:
@@ -173,9 +194,7 @@ with tab_toets:
     if "sw_toets_tekst" in st.session_state:
         toets_tekst = st.session_state["sw_toets_tekst"]
         vragen_deel = (
-            toets_tekst.split("ANTWOORDEN:")[0]
-            if "ANTWOORDEN:" in toets_tekst
-            else toets_tekst
+            toets_tekst.split("ANTWOORDEN:")[0] if "ANTWOORDEN:" in toets_tekst else toets_tekst
         )
 
         with st.container(border=True):
@@ -192,7 +211,7 @@ with tab_toets:
                     if keuze_antw != "—":
                         antwoorden[i] = keuze_antw
 
-            if st.button("CONTROLEER ANTWOORDEN", type="primary", key="btn_controleer"):
+            if st.button("✓ Controleer antwoorden", type="primary", key="btn_controleer"):
                 if len(antwoorden) < 5:
                     st.warning("Beantwoord eerst alle 5 vragen.")
                 else:
@@ -233,17 +252,102 @@ with tab_werk:
                 key="sw_werk_tekst",
             )
 
-        if st.button("GEEF FEEDBACK", type="primary", key="btn_feedback"):
+        if st.button("✏️ Geef feedback", type="primary", key="btn_feedback"):
             if not werk_tekst.strip():
                 st.warning("Upload een bestand of plak je werk in het tekstvak.")
             else:
                 st.session_state.pop("sw_werk_feedback", None)
-                fb = st.write_stream(
-                    geef_feedback_op_werk(werk_tekst.strip(), opleiding, leerpad)
-                )
+                fb = st.write_stream(geef_feedback_op_werk(werk_tekst.strip(), opleiding, leerpad))
                 st.session_state["sw_werk_feedback"] = fb
         elif "sw_werk_feedback" in st.session_state:
             st.divider()
             st.markdown(st.session_state["sw_werk_feedback"])
+
+# ─────────────────────────────────────────────────────────────────────────────
+# TAB 5: ROLLENSPEL
+# ─────────────────────────────────────────────────────────────────────────────
+with tab_rol:
+    st.subheader("🎭 Rollenspel")
+    st.caption(
+        "Oefen een gesprek met een AI-tegenpartij. "
+        "Na afloop geeft de AI coaching op hoe het gesprek verliep."
+    )
+
+    rp_sleutel = f"rp_sessie_{studentnummer}"
+    rp_feedback_sleutel = f"rp_feedback_{studentnummer}"
+
+    # ── Scenario-instelling (alleen zichtbaar als er nog geen sessie is) ──────
+    if rp_sleutel not in st.session_state:
+        with st.container(border=True):
+            scenario_labels = list(SCENARIO_OPTIES.values())
+            scenario_codes = list(SCENARIO_OPTIES.keys())
+            keuze_idx = st.selectbox(
+                "Kies een scenario",
+                range(len(scenario_labels)),
+                format_func=lambda i: scenario_labels[i],
+                key="rp_scenario_keuze",
+            )
+            if st.button("🎭 Start rollenspel", type="primary", key="btn_rp_start"):
+                st.session_state[rp_sleutel] = RollenspelSessie(
+                    scenario=scenario_codes[keuze_idx],
+                    opleiding=opleiding,
+                    leerpad=leerpad,
+                    naam=student["naam"],
+                )
+                st.session_state.pop(rp_feedback_sleutel, None)
+                st.rerun()
+    else:
+        rp_sessie: RollenspelSessie = st.session_state[rp_sleutel]
+
+        col_info, col_nieuw = st.columns([3, 1])
+        with col_info:
+            st.caption(
+                f"Scenario: **{SCENARIO_OPTIES[rp_sessie.scenario]}** · "
+                f"Tegenpartij: **{rp_sessie.tegenpartij()}**"
+            )
+        with col_nieuw:
+            if st.button("↺ Nieuw gesprek", use_container_width=True, key="btn_rp_reset"):
+                st.session_state.pop(rp_sleutel, None)
+                st.session_state.pop(rp_feedback_sleutel, None)
+                st.rerun()
+
+        # ── Gespreksgeschiedenis ──────────────────────────────────────────────
+        for bericht in rp_sessie.geschiedenis:
+            spreker = "user" if bericht["role"] == "user" else "assistant"
+            with st.chat_message(spreker):
+                st.write(bericht["content"])
+
+        # ── Invoer (uitgeschakeld als feedback al gegeven is) ─────────────────
+        if rp_feedback_sleutel not in st.session_state:
+            invoer = st.chat_input(
+                f"Typ wat jij zegt tegen de {rp_sessie.tegenpartij()}…",
+                key="rp_invoer",
+            )
+            if invoer:
+                with st.chat_message("user"):
+                    st.write(invoer)
+                with st.chat_message("assistant"):
+                    try:
+                        st.write_stream(stuur_rollenspel_bericht(rp_sessie, invoer))
+                    except Exception as e:
+                        st.error(f"De tegenpartij kon niet antwoorden: {e}")
+
+            st.divider()
+            if rp_sessie.geschiedenis and st.button(
+                "✅ Afronden & feedback",
+                type="primary",
+                key="btn_rp_feedback",
+            ):
+                with st.spinner("Nabespreking wordt opgesteld…"):
+                    try:
+                        feedback = st.write_stream(genereer_rollenspel_feedback(rp_sessie))
+                        st.session_state[rp_feedback_sleutel] = feedback
+                    except Exception as e:
+                        st.error(f"Feedback kon niet worden opgesteld: {e}")
+        else:
+            # ── Eerder gegenereerde feedback tonen ────────────────────────────
+            st.divider()
+            st.subheader("Nabespreking")
+            st.markdown(st.session_state[rp_feedback_sleutel])
 
 render_footer()

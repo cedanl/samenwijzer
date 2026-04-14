@@ -5,6 +5,7 @@ from unittest.mock import MagicMock, patch
 import pytest
 
 from samenwijzer.tutor import StudentContext, TutorSessie, stuur_bericht
+from tests.helpers import mock_stream
 
 
 @pytest.fixture
@@ -69,20 +70,11 @@ def test_sessie_reset(sessie):
 # ── stuur_bericht ─────────────────────────────────────────────────────────────
 
 
-def _mock_stream(tekst: str):
-    """Bouw een mock stream die fragmenten van tekst yieldt."""
-    mock_stream = MagicMock()
-    mock_stream.__enter__ = MagicMock(return_value=mock_stream)
-    mock_stream.__exit__ = MagicMock(return_value=False)
-    mock_stream.text_stream = iter([tekst])
-    return mock_stream
-
-
-@patch("samenwijzer.tutor.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_stuur_bericht_yield_fragmenten(mock_anthropic_cls, sessie):
     reactie_tekst = "Wat denk jij zelf?"
     mock_client = MagicMock()
-    mock_client.messages.stream.return_value = _mock_stream(reactie_tekst)
+    mock_client.messages.stream.return_value = mock_stream(reactie_tekst)
     mock_anthropic_cls.return_value = mock_client
 
     fragmenten = list(stuur_bericht(sessie, "Ik snap het niet.", api_key="test-key"))
@@ -91,10 +83,10 @@ def test_stuur_bericht_yield_fragmenten(mock_anthropic_cls, sessie):
     assert "".join(fragmenten) == reactie_tekst
 
 
-@patch("samenwijzer.tutor.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_stuur_bericht_update_geschiedenis(mock_anthropic_cls, sessie):
     mock_client = MagicMock()
-    mock_client.messages.stream.return_value = _mock_stream("Goed zo!")
+    mock_client.messages.stream.return_value = mock_stream("Goed zo!")
     mock_anthropic_cls.return_value = mock_client
 
     list(stuur_bericht(sessie, "Mijn vraag.", api_key="test-key"))
@@ -105,15 +97,15 @@ def test_stuur_bericht_update_geschiedenis(mock_anthropic_cls, sessie):
     assert "Goed" in sessie.geschiedenis[1]["content"]
 
 
-@patch("samenwijzer.tutor.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_stuur_bericht_meerdere_beurten(mock_anthropic_cls, sessie):
     mock_client = MagicMock()
-    mock_client.messages.stream.return_value = _mock_stream("Prima.")
+    mock_client.messages.stream.return_value = mock_stream("Prima.")
     mock_anthropic_cls.return_value = mock_client
 
     list(stuur_bericht(sessie, "Eerste vraag.", api_key="test-key"))
 
-    mock_client.messages.stream.return_value = _mock_stream("Precies.")
+    mock_client.messages.stream.return_value = mock_stream("Precies.")
     list(stuur_bericht(sessie, "Tweede vraag.", api_key="test-key"))
 
     assert len(sessie.geschiedenis) == 4
@@ -121,10 +113,10 @@ def test_stuur_bericht_meerdere_beurten(mock_anthropic_cls, sessie):
     assert rollen == ["user", "assistant", "user", "assistant"]
 
 
-@patch("samenwijzer.tutor.anthropic.Anthropic")
+@patch("samenwijzer._ai.anthropic.Anthropic")
 def test_stuur_bericht_gebruikt_student_context(mock_anthropic_cls, sessie):
     mock_client = MagicMock()
-    mock_client.messages.stream.return_value = _mock_stream("OK")
+    mock_client.messages.stream.return_value = mock_stream("OK")
     mock_anthropic_cls.return_value = mock_client
 
     list(stuur_bericht(sessie, "Test.", api_key="test-key"))

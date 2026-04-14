@@ -1,9 +1,36 @@
 """Analyse: voortgang per student en groepsstatistieken."""
 
+import json
+from pathlib import Path
+
 import pandas as pd
 
 from samenwijzer.transform import get_kerntaak_columns, get_werkproces_columns
 from samenwijzer.wellbeing import WelzijnsCheck, heeft_signaal, welzijnswaarde
+
+_OER_DATA: dict | None = None
+_OER_JSON = (
+    Path(__file__).parent.parent.parent / "data" / "01-raw" / "berend" / "oer_kerntaken.json"
+)
+
+
+def _laad_oer() -> dict:
+    """Laad de OER-kerntakendata eenmalig vanuit JSON en cache het resultaat."""
+    global _OER_DATA
+    if _OER_DATA is None:
+        _OER_DATA = json.loads(_OER_JSON.read_text(encoding="utf-8")) if _OER_JSON.exists() else {}
+    return _OER_DATA
+
+
+def _oer_label(opleiding: str, kolom: str) -> str:
+    """Zoek de OER-naam op voor een kt_ of wp_ kolom."""
+    data = _laad_oer()
+    opl = data.get(opleiding, data.get("Overig", {}))
+    sectie = "kerntaken" if kolom.startswith("kt_") else "werkprocessen"
+    for item in opl.get(sectie, []):
+        if item["code"] == kolom:
+            return item["naam"]
+    return kolom.replace("_", " ").replace("kt", "KT").replace("wp", "WP").title()
 
 
 def get_student(df: pd.DataFrame, studentnummer: str) -> pd.Series:
@@ -27,6 +54,9 @@ def get_student(df: pd.DataFrame, studentnummer: str) -> pd.Series:
 
 def groepsoverzicht(df: pd.DataFrame) -> pd.DataFrame:
     """Geef een samengevat overzicht per student voor de docentweergave.
+
+    Args:
+        df: Getransformeerd studenten-DataFrame.
 
     Returns:
         DataFrame met kolommen: studentnummer, naam, opleiding, cohort,
@@ -59,14 +89,16 @@ def kerntaak_scores(df: pd.DataFrame, studentnummer: str) -> pd.DataFrame:
         DataFrame met kolommen: kerntaak, score, label.
     """
     student = get_student(df, studentnummer)
+    opleiding = str(student.get("opleiding", ""))
     kt_cols = get_kerntaak_columns(df)
     records = [
         {
             "kerntaak": col,
-            "label": col.replace("_", " ").replace("kt", "KT").title(),
+            "label": _oer_label(opleiding, col),
             "score": student[col],
         }
         for col in kt_cols
+        if pd.notna(student.get(col))
     ]
     return pd.DataFrame(records)
 
@@ -78,14 +110,16 @@ def werkproces_scores(df: pd.DataFrame, studentnummer: str) -> pd.DataFrame:
         DataFrame met kolommen: werkproces, score, label.
     """
     student = get_student(df, studentnummer)
+    opleiding = str(student.get("opleiding", ""))
     wp_cols = get_werkproces_columns(df)
     records = [
         {
             "werkproces": col,
-            "label": col.replace("_", " ").replace("wp", "WP").title(),
+            "label": _oer_label(opleiding, col),
             "score": student[col],
         }
         for col in wp_cols
+        if pd.notna(student.get(col))
     ]
     return pd.DataFrame(records)
 
@@ -133,13 +167,13 @@ def zwakste_kerntaak(df: pd.DataFrame, studentnummer: str) -> tuple[str, float] 
         Tuple (label, score) of None als er geen kerntaakkolommen zijn.
     """
     student = get_student(df, studentnummer)
+    opleiding = str(student.get("opleiding", ""))
     kt_cols = get_kerntaak_columns(df)
-    if not kt_cols:
+    scores = {col: float(student[col]) for col in kt_cols if pd.notna(student.get(col))}
+    if not scores:
         return None
-    scores = {col: float(student[col]) for col in kt_cols}
     zwakste = min(scores, key=lambda k: scores[k])
-    label = zwakste.replace("_", " ").replace("kt", "KT").title()
-    return label, scores[zwakste]
+    return _oer_label(opleiding, zwakste), scores[zwakste]
 
 
 def zwakste_werkproces(df: pd.DataFrame, studentnummer: str) -> tuple[str, float] | None:
@@ -149,13 +183,13 @@ def zwakste_werkproces(df: pd.DataFrame, studentnummer: str) -> tuple[str, float
         Tuple (label, score) of None als er geen werkproceskolommen zijn.
     """
     student = get_student(df, studentnummer)
+    opleiding = str(student.get("opleiding", ""))
     wp_cols = get_werkproces_columns(df)
-    if not wp_cols:
+    scores = {col: float(student[col]) for col in wp_cols if pd.notna(student.get(col))}
+    if not scores:
         return None
-    scores = {col: float(student[col]) for col in wp_cols}
     zwakste = min(scores, key=lambda k: scores[k])
-    label = zwakste.replace("_", " ").replace("wp", "WP").title()
-    return label, scores[zwakste]
+    return _oer_label(opleiding, zwakste), scores[zwakste]
 
 
 def cohort_positie(df: pd.DataFrame, studentnummer: str) -> dict:
@@ -187,15 +221,18 @@ def peer_profielen(df: pd.DataFrame) -> pd.DataFrame:
 
     records = []
     for _, row in df.iterrows():
-        scores = {col: float(row[col]) for col in kt_cols}
+        opleiding = str(row.get("opleiding", ""))
+        scores = {col: float(row[col]) for col in kt_cols if pd.notna(row.get(col))}
+        if not scores:
+            continue
         sterkste = max(scores, key=lambda k: scores[k])
         zwakste = min(scores, key=lambda k: scores[k])
         records.append(
             {
                 "naam": row["naam"],
-                "sterkste_kt": sterkste.replace("_", " ").title(),
+                "sterkste_kt": _oer_label(opleiding, sterkste),
                 "sterkste_score": scores[sterkste],
-                "zwakste_kt": zwakste.replace("_", " ").title(),
+                "zwakste_kt": _oer_label(opleiding, zwakste),
                 "zwakste_score": scores[zwakste],
             }
         )
@@ -259,8 +296,39 @@ def signaleringen(
     )
 
 
+def detecteer_transitiemoment(student: pd.Series) -> str | None:
+    """Detecteer een kritiek transitiemoment voor een student.
+
+    Transitiemomenten zijn gebaseerd op Annie Advisor-onderzoek: studenten
+    hebben extra steun nodig bij BSA-risico, stage en afstuderen.
+
+    Returns:
+        Een van: 'bsa_risico', 'bijna_klaar', of None.
+    """
+    bsa_pct = float(student.get("bsa_percentage", 1.0))
+    voortgang = float(student.get("voortgang", 0.0))
+
+    if bsa_pct < 0.60:
+        return "bsa_risico"
+    if voortgang >= 0.80:
+        return "bijna_klaar"
+    return None
+
+
+_TRANSITIE_LABEL: dict[str | None, str] = {
+    "bsa_risico": "⚠️ BSA-risico",
+    "bijna_klaar": "🎓 Bijna klaar",
+    None: "",
+}
+
+
+def transitiemoment_label(moment: str | None) -> str:
+    """Geef een leesbaar label terug voor een transitiemoment."""
+    return _TRANSITIE_LABEL.get(moment, "")
+
+
 def cohort_gemiddelden(df: pd.DataFrame) -> pd.DataFrame:
-    """Berek gemiddelde voortgang en BSA-percentage per cohort en opleiding.
+    """Bereken gemiddelde voortgang en BSA-percentage per cohort en opleiding.
 
     Returns:
         DataFrame gegroepeerd op opleiding en cohort.

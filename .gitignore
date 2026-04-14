@@ -18,6 +18,7 @@ data/02-prepared/*
 !data/02-prepared/demo/
 data/03-output/*
 !data/03-output/demo/
+!data/03-output/.gitkeep
 
 # Editor
 .vscode/
