@@ -38,7 +38,7 @@ Verzenden en ontvangen van berichten via Twilio WhatsApp API.
 **Stappen:**
 - [x] F1: `uv add twilio fastapi uvicorn cryptography` — dependencies toegevoegd
 - [x] F2: `src/samenwijzer/whatsapp.py` — `stuur_checkin()`, `verwerk_inkomend_bericht()`, `stuur_foutbericht()`, AI-gesprek
-- [ ] F3: Twilio sandbox opzetten, template aanmaken en testen met 1 testnummer
+- [x] F3: Twilio sandbox opzetten, template aanmaken en testen met 1 testnummer
 - [x] F4: `app/webhook.py` — FastAPI endpoint `/webhook/whatsapp` + TwiML-antwoorden + Twilio-handtekeningvalidatie
 - [x] F5: Webhook lokaal testen via ngrok; antwoorden verwerken naar `welzijn.csv`
 - [ ] F6: Meta template goedkeuring aanvragen voor productie-template `wekelijkse_checkin_v1`
