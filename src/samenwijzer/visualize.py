@@ -59,7 +59,7 @@ def voortgang_gauge(voortgang: float, label: str = "Voortgang") -> alt.Chart:
         )
     )
 
-    return (achtergrond + voorgrond + tekst).properties(height=50)
+    return (achtergrond + voorgrond + tekst).properties(height=50, background="white")
 
 
 def bsa_staaf(bsa_behaald: float, bsa_vereist: float) -> alt.Chart:
@@ -90,7 +90,7 @@ def bsa_staaf(bsa_behaald: float, bsa_vereist: float) -> alt.Chart:
             color=alt.Color("kleur:N", scale=None, legend=None),
             tooltip=["categorie:N", "punten:Q"],
         )
-        .properties(height=80)
+        .properties(height=80, background="white")
     )
 
 
@@ -115,7 +115,7 @@ def kerntaak_grafiek(kt_df: pd.DataFrame) -> alt.Chart:
             y=alt.Y("label:N", sort="-x", title=None),
             tooltip=["label:N", "score:Q"],
         )
-        .properties(height=max(60, len(kt_df) * 30))
+        .properties(height=max(60, len(kt_df) * 30), background="white")
     )
 
 
@@ -140,7 +140,7 @@ def werkproces_grafiek(wp_df: pd.DataFrame) -> alt.Chart:
             y=alt.Y("label:N", sort="-x", title=None),
             tooltip=["label:N", "score:Q"],
         )
-        .properties(height=max(60, len(wp_df) * 30))
+        .properties(height=max(60, len(wp_df) * 30), background="white")
     )
 
 
@@ -188,5 +188,5 @@ def groep_voortgang_grafiek(overzicht_df: pd.DataFrame) -> alt.Chart:
                 "bsa_percentage:Q",
             ],
         )
-        .properties(height=350)
+        .properties(height=350, background="white")
     )

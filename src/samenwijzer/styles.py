@@ -226,7 +226,7 @@ p, li { color: #333; line-height: 1.6; }
     background: white !important;
     border-radius: 20px !important;
     border: none !important;
-    box-shadow: 0 4px 32px rgba(180,100,90,0.13);
+    box-shadow: 0 4px 32px rgba(0,0,0,0.09);
     padding: 4px 8px;
 }
 
@@ -248,7 +248,7 @@ p, li { color: #333; line-height: 1.6; }
 }
 
 /* ── st.metric() opmaak ─────────────────────────────────────────────────── */
-[data-testid="stMetric"] { background:white; border-radius:16px; padding:16px 20px; box-shadow:0 4px 24px rgba(180,100,90,0.10); }
+[data-testid="stMetric"] { background:white; border-radius:16px; padding:16px 20px; box-shadow:0 4px 24px rgba(0,0,0,0.08); }
 [data-testid="stMetricLabel"] p { font-size:0.68rem!important; font-weight:700!important; letter-spacing:0.10em!important; text-transform:uppercase!important; color:#999!important; }
 [data-testid="stMetricValue"] { font-size:2.2rem!important; font-weight:700!important; color:#1a1a1a!important; }
 [data-testid="stMetricDelta"] svg { display:none; }
@@ -265,7 +265,7 @@ p, li { color: #333; line-height: 1.6; }
 [data-testid="stExpander"] summary:hover { background:#fae8e8!important; border-radius:12px 12px 0 0!important; }
 
 /* ── .stat-card ──────────────────────────────────────────────────────────── */
-.stat-card { background:white; border-radius:16px; padding:20px 20px 16px; box-shadow:0 4px 24px rgba(180,100,90,0.10); }
+.stat-card { background:white; border-radius:16px; padding:20px 20px 16px; box-shadow:0 4px 24px rgba(0,0,0,0.08); }
 .stat-card__label { font-size:0.68rem; font-weight:700; letter-spacing:0.10em; text-transform:uppercase; color:#999; margin:0 0 6px; }
 .stat-card__value { font-size:2.4rem; font-weight:700; color:#1a1a1a; line-height:1; margin:0; }
 .stat-card__sub { font-size:0.82rem; color:#bbb; font-weight:500; margin:4px 0 0; }
@@ -288,7 +288,7 @@ p, li { color: #333; line-height: 1.6; }
 .badge--transitie  { background:#c8785a18; color:#c8785a; }
 
 /* ── .hero-card ──────────────────────────────────────────────────────────── */
-.hero-card { background:white; border-radius:20px; padding:28px 28px 24px; box-shadow:0 4px 32px rgba(180,100,90,0.13); margin-bottom:4px; }
+.hero-card { background:white; border-radius:20px; padding:28px 28px 24px; box-shadow:0 4px 32px rgba(0,0,0,0.09); margin-bottom:4px; }
 .hero-card__naam { font-size:1.9rem; font-weight:700; color:#1a1a1a; margin:0 0 4px; line-height:1.2; }
 .hero-card__meta { color:#888; font-size:0.88rem; margin:0 0 4px; }
 .hero-card__mentor { color:#bbb; font-size:0.80rem; margin:0 0 14px; }
@@ -308,5 +308,22 @@ p, li { color: #333; line-height: 1.6; }
 
 /* ── Leercoach reset-knop uitlijning ─────────────────────────────────────── */
 [data-testid="stColumn"]:has([data-testid="stBaseButton-secondary"]) { display:flex; align-items:flex-end; }
+
+/* ── Grafiek-kaartjes ────────────────────────────────────────────────────── */
+[data-testid="stArrowVegaLiteChart"],
+[data-testid="stVegaLiteChart"] {
+    background: white !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.09) !important;
+    padding: 12px !important;
+}
+
+/* Zorg dat alle element-containers en kolommen wit blijven */
+[data-testid="stVerticalBlock"],
+[data-testid="stHorizontalBlock"],
+[data-testid="element-container"],
+[data-testid="stColumn"] {
+    background: white !important;
+}
 </style>
 """

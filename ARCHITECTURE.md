@@ -21,6 +21,7 @@ Cross-cutting modules (no layer restriction, import explicitly):
   outreach.py       ← At-risk selection, referral logic, AI message generation, email
   outreach_store.py ← SQLite persistence (StudentStatus, Interventie, Campagne, WelzijnsCheck)
   welzijn.py        ← Student self-assessment AI responses
+  wellbeing.py      ← CSV-gebaseerde welzijnssignalering (WelzijnsCheck, welzijnswaarde, notities)
   tutor.py          ← Socratic AI tutor (Anthropic SDK, streaming)
   coach.py          ← Study material, practice tests, work feedback (Anthropic SDK)
   styles.py         ← EduPulse CSS + render_nav() (vaste header) + render_footer()
@@ -57,7 +58,7 @@ AI calls are isolated in dedicated modules; they are **never** called from the U
 |---|---|---|
 | `app/main.py` | Login + session init | public |
 | `app/pages/1_mijn_voortgang.py` | Student progress view | student |
-| `app/pages/2_groepsoverzicht.py` | Group overview + welzijnschecks | docent |
+| `app/pages/2_groepsoverzicht.py` | Groepsoverzicht: voortgang + welzijnssignaleringen + notities | docent |
 | `app/pages/3_leercoach.py` | AI tutor, study material, feedback | student |
 | `app/pages/4_outreach.py` | Werklijst, campagnes, effectiviteit | docent |
 | `app/pages/5_welzijn.py` | Student self-assessment | student |

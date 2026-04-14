@@ -14,6 +14,8 @@ from dotenv import load_dotenv
 from samenwijzer.prepare import load_berend_csv
 from samenwijzer.styles import CSS, render_footer, render_nav
 from samenwijzer.transform import transform_student_data
+from samenwijzer.whatsapp import stuur_verificatie
+from samenwijzer.whatsapp_store import heeft_actieve_registratie, registreer_nummer
 
 load_dotenv()
 
@@ -116,6 +118,7 @@ render_nav()
 
 if rol == "student":
     student = df[df["studentnummer"] == st.session_state["studentnummer"]].iloc[0]
+    snr = str(student["studentnummer"])
     st.markdown(
         f"""<div style="background:#fae8e8; border-left:4px solid #c8785a; border-radius:12px;
 padding:16px 20px; margin-bottom:20px;">
@@ -128,6 +131,46 @@ padding:16px 20px; margin-bottom:20px;">
 </div>""",
         unsafe_allow_html=True,
     )
+
+    # ── WhatsApp opt-in (eenmalig tonen als nog niet geregistreerd) ───────────
+    if not heeft_actieve_registratie(snr):
+        with st.expander("📱 Ontvang wekelijkse check-ins via WhatsApp", expanded=False):
+            st.caption(
+                "Samenwijzer kan je elke maandag een kort berichtje sturen: hoe gaat het? "
+                "Zo hoef je de app niet te openen om in contact te blijven met je mentor."
+            )
+            with st.form("whatsapp_optin"):
+                nummer = st.text_input(
+                    "Jouw WhatsApp-nummer",
+                    placeholder="+31612345678",
+                    help="Internationaal formaat, bijv. +31612345678",
+                )
+                akkoord = st.checkbox(
+                    "Ik geef toestemming om wekelijks een WhatsApp-bericht te ontvangen "
+                    "en begrijp dat ik me altijd kan afmelden door STOP te sturen."
+                )
+                verzenden = st.form_submit_button("Aanmelden", type="primary")
+
+            if verzenden:
+                nummer = nummer.strip()
+                if not nummer.startswith("+") or len(nummer) < 10:
+                    st.error("Voer een geldig internationaal nummer in, bijv. +31612345678.")
+                elif not akkoord:
+                    st.error("Geef toestemming om je aan te melden.")
+                else:
+                    try:
+                        registreer_nummer(snr, nummer)
+                        stuur_verificatie(nummer)
+                        st.success(
+                            f"Verificatiebericht verstuurd naar {nummer}. "
+                            "Antwoord JA in WhatsApp om te bevestigen."
+                        )
+                    except EnvironmentError:
+                        st.warning(
+                            "WhatsApp-koppeling is nog niet geconfigureerd "
+                            "(geen Twilio-credentials). Je registratie is opgeslagen."
+                        )
+                        registreer_nummer(snr, nummer)
 else:
     mentor_naam = st.session_state.get("mentor_naam", "")
     eigen_studenten = len(df[df["mentor"] == mentor_naam])

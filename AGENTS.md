@@ -16,7 +16,7 @@ Target users: students (progress, AI tutor, wellbeing check) and internal daily 
 3. **Dependency direction:** `prepare → transform → analyze → visualize → export`. Never reversed.
 4. **Structured logging only.** No bare `print()` calls in production code.
 5. **Validate at boundaries.** Validate external data on ingestion; trust internal types.
-6. **AI isolation.** All Anthropic SDK calls live in `tutor.py`, `coach.py`, `outreach.py`, `welzijn.py`.
+6. **AI isolation.** All Anthropic SDK calls live in `tutor.py`, `coach.py`, `outreach.py`, `welzijn.py`. No direct `anthropic` imports in `app/`.
 
 ## Where to look
 
@@ -26,7 +26,7 @@ Target users: students (progress, AI tutor, wellbeing check) and internal daily 
 | Product vision & features | `docs/PRODUCT_SENSE.md` |
 | Frontend & UI conventions | `docs/FRONTEND.md` |
 | Design decisions | `docs/design-docs/index.md` |
-| Active execution plans | `docs/exec-plans/active/` — (leeg; fase 1 is afgerond) |
+| Active execution plans | `docs/exec-plans/active/fase-2-whatsapp-signalering.md` |
 | Completed plans | `docs/exec-plans/completed/` — fase-1-fundament.md |
 | Quality scores per domain | `docs/QUALITY_SCORE.md` |
 | Security rules | `docs/SECURITY.md` |
@@ -40,11 +40,12 @@ Target users: students (progress, AI tutor, wellbeing check) and internal daily 
 |---|---|
 | `prepare.py` | CSV ingest, OER mapping, synthetic kt/wp scores |
 | `transform.py` | BSA%, risico, kt_gemiddelde |
-| `analyze.py` | Leerpadniveau, badge, peer profielen, transitiemoment detectie |
+| `analyze.py` | Leerpadniveau, badge, peer profielen, transitiemoment detectie, `signaleringen()` |
 | `auth.py` | `vereist_docent()`, `mentor_filter()` |
 | `outreach.py` | `at_risk_studenten()`, `suggereer_verwijzing()`, `genereer_outreach_bericht()` |
 | `outreach_store.py` | SQLite: StudentStatus, Interventie, Campagne, WelzijnsCheck |
-| `welzijn.py` | Self-assessment labels, `genereer_welzijnsreactie()` |
+| `welzijn.py` | Student self-assessment labels, `genereer_welzijnsreactie()` |
+| `wellbeing.py` | CSV-gebaseerde welzijnssignalering: WelzijnsCheck dataclass, `welzijnswaarde()`, notities |
 | `tutor.py` | Socratic AI tutor (streaming) |
 | `coach.py` | Study material, practice tests, work feedback |
 | `styles.py` | EduPulse CSS + `render_nav()` (vaste header) + `render_footer()` |

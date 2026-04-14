@@ -1,0 +1,37 @@
+name: Wekelijkse WhatsApp check-in
+
+on:
+  schedule:
+    # Elke maandag om 08:00 UTC (= 09:00/10:00 NL-tijd)
+    - cron: "0 8 * * 1"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (log berichten, verstuur niets)"
+        required: false
+        default: "true"
+        type: choice
+        options: ["true", "false"]
+
+jobs:
+  checkin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Installeer uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+
+      - name: Installeer dependencies
+        run: uv sync
+
+      - name: Verstuur wekelijkse check-ins
+        env:
+          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+          TWILIO_WHATSAPP_NUMBER: ${{ secrets.TWILIO_WHATSAPP_NUMBER }}
+          WHATSAPP_ENCRYPT_KEY: ${{ secrets.WHATSAPP_ENCRYPT_KEY }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+        run: uv run python -m samenwijzer.scheduler

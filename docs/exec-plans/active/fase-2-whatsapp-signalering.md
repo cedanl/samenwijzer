@@ -1,6 +1,6 @@
 # Execution Plan: Fase 2 — WhatsApp Signalering
 
-**Status:** draft
+**Status:** in uitvoering (F/G/H/I code gereed; F3/F5/F6/H3/I4 vereisen externe setup)
 **Doel:** Studenten proactief bereiken via WhatsApp met wekelijkse welzijnschecks; signalen zichtbaar maken voor mentoren in het groepsoverzicht.
 **Spec:** `docs/product-specs/whatsapp-signalering.md`
 **Afhankelijk van:** Fase 1 afgerond (studiedata + AI leercoach)
@@ -36,46 +36,46 @@ Mentoren zien in het groepsoverzicht welke studenten een signaal afgeven.
 Verzenden en ontvangen van berichten via Twilio WhatsApp API.
 
 **Stappen:**
-- [ ] F1: `uv add twilio` — dependency toevoegen
-- [ ] F2: `src/samenwijzer/whatsapp.py` — `stuur_checkin()`, `verwerk_antwoord()`, `stuur_foutbericht()`
+- [x] F1: `uv add twilio fastapi uvicorn cryptography` — dependencies toegevoegd
+- [x] F2: `src/samenwijzer/whatsapp.py` — `stuur_checkin()`, `verwerk_inkomend_bericht()`, `stuur_foutbericht()`, AI-gesprek
 - [ ] F3: Twilio sandbox opzetten, template aanmaken en testen met 1 testnummer
-- [ ] F4: `app/webhook.py` — FastAPI endpoint `/webhook/whatsapp` (ontvangt inkomende berichten)
+- [x] F4: `app/webhook.py` — FastAPI endpoint `/webhook/whatsapp` + TwiML-antwoorden + Twilio-handtekeningvalidatie
 - [ ] F5: Webhook lokaal testen via ngrok; antwoorden verwerken naar `welzijn.csv`
 - [ ] F6: Meta template goedkeuring aanvragen voor productie-template `wekelijkse_checkin_v1`
-- [ ] F7: Tests voor F2 (mock Twilio-client, antwoordparsing, foutpaden)
+- [x] F7: Tests voor F2 — 32/32 geslaagd (parseerlogica, foutpaden, score-verwerking)
 
 ### Blok G — Opt-in en telefoonnummerbeheer
 
 Studenten geven toestemming en registreren hun telefoonnummer.
 
 **Stappen:**
-- [ ] G1: Opt-in scherm toevoegen aan welkomspagina (`app/main.py`) — uitleg + invoerveld nummer
-- [ ] G2: `src/samenwijzer/whatsapp.py` uitbreiden — `stuur_verificatie()`, `verwerk_bevestiging()`
-- [ ] G3: Telefoonnummer versleuteld opslaan (fase 2: `.env`-bestand lokaal; fase 3: secrets manager)
-- [ ] G4: Opt-out verwerken: "STOP" bericht → nummer deactiveren in opslag
-- [ ] G5: Tests voor G2–G4 (verificatieflow, opt-out)
+- [x] G1: Opt-in scherm toegevoegd aan welkomspagina (`app/main.py`) — uitleg + invoerveld + toestemmingscheckbox
+- [x] G2: `stuur_verificatie()` + verificatiesessie in `whatsapp.py`; bevestiging verwerkt in `verwerk_inkomend_bericht()`
+- [x] G3: `src/samenwijzer/whatsapp_store.py` — Fernet-encryptie; sleutel via `WHATSAPP_ENCRYPT_KEY` of lokaal gegenereerd
+- [x] G4: STOP-bericht → `deactiveer_nummer_via_telefoon()` in `whatsapp_store.py`
+- [x] G5: Tests voor G2–G4 — verificatieflow, opt-out, encryptie (plaintext-check)
 
 ### Blok H — Wekelijkse verzending
 
 Automatische verzending elke maandagochtend via GitHub Actions.
 
 **Stappen:**
-- [ ] H1: `src/samenwijzer/scheduler.py` — `stuur_wekelijkse_checkins(df_studenten)`
-- [ ] H2: GitHub Actions workflow `.github/workflows/checkin.yml` — cron `0 8 * * 1`
-- [ ] H3: Secrets instellen in GitHub repo: `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_WHATSAPP_NUMBER`
-- [ ] H4: Droge run testen (log berichten zonder versturen — `DRY_RUN=true` envvar)
-- [ ] H5: Tests voor H1 (mock Twilio, alleen nummers met opt-in ontvangen bericht)
+- [x] H1: `src/samenwijzer/scheduler.py` — `stuur_wekelijkse_checkins(df, dry_run)` + CLI-entrypoint
+- [x] H2: `.github/workflows/checkin.yml` — cron `0 8 * * 1` + `workflow_dispatch` met dry_run-optie
+- [ ] H3: Secrets instellen in GitHub repo: `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_WHATSAPP_NUMBER`, `WHATSAPP_ENCRYPT_KEY`
+- [x] H4: `DRY_RUN=true` envvar — berichten worden gelogd, niet verstuurd
+- [x] H5: Tests voor H1 — dry_run, actief-filter, ontbrekende studenten, Twilio-fout
 
 ### Blok I — AI-doorverwijzing via WhatsApp
 
 Bij score 2 of 3 kan de student kort doorpraten met de AI leercoach via WhatsApp.
 
 **Stappen:**
-- [ ] I1: `src/samenwijzer/whatsapp.py` uitbreiden — gespreksstatus bijhouden per nummer (max. 3 exchanges)
-- [ ] I2: `coach.py` koppeling — korte AI-reactie genereren (max. 2 zinnen, mobiel formaat)
-- [ ] I3: Na 3 exchanges: doorverwijzingsbericht met link naar app sturen
+- [x] I1: Gespreksstatus in `whatsapp_store.WhatsappSessie` — stap + uitgewisseld-teller + context_json
+- [x] I2: `_genereer_ai_reactie()` in `whatsapp.py` — Claude Haiku, max. 2 zinnen, mobiel formaat
+- [x] I3: Na MAX_EXCHANGES (3): doorverwijzingsbericht naar mentor + app
 - [ ] I4: Gesprek opslaan als context voor leercoach-sessie in de app (`data/02-prepared/`)
-- [ ] I5: Tests voor I1–I3 (gespreksstatus, exchange-limiet, doorverwijzing)
+- [x] I5: Tests voor I1–I3 — gespreksstatus, exchange-limiet, doorverwijzingstekst
 
 ---
 
