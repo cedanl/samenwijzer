@@ -1,6 +1,6 @@
 # Execution Plan: Fase 2 — WhatsApp Signalering
 
-**Status:** in uitvoering (F/G/H/I code gereed; F3/F5/F6/H3/I4 vereisen externe setup)
+**Status:** code compleet per 2026-04-15 — enige openstaande actie: F6 Meta template-goedkeuring (externe setup)
 **Doel:** Studenten proactief bereiken via WhatsApp met wekelijkse welzijnschecks; signalen zichtbaar maken voor mentoren in het groepsoverzicht.
 **Spec:** `docs/product-specs/whatsapp-signalering.md`
 **Afhankelijk van:** Fase 1 afgerond (studiedata + AI leercoach)
@@ -113,12 +113,12 @@ D en E kunnen gebouwd worden zonder Twilio-account. F t/m I vereisen externe ser
 
 ## Definitie van klaar
 
-- [ ] Wekelijkse check-in verstuurd en ontvangen in Twilio sandbox (end-to-end test)
-- [ ] Antwoord verwerkt en opgeslagen in `welzijn.csv`
-- [ ] Signalering zichtbaar in groepsoverzicht voor mentor
-- [ ] Opt-in en opt-out werken correct
-- [ ] CI groen (lint + tests voor alle nieuwe modules)
-- [ ] Privacy review gedaan: alleen eigen mentor ziet scores
+- [x] Wekelijkse check-in verstuurd en ontvangen in Twilio sandbox (end-to-end test — F3 gedaan op 2026-04-15)
+- [x] Antwoord verwerkt en opgeslagen in `welzijn.csv` (webhook lokaal getest via ngrok — F5)
+- [x] Signalering zichtbaar in groepsoverzicht voor mentor (E1–E5 compleet)
+- [x] Opt-in en opt-out werken correct (G compleet; STOP-flow getest)
+- [x] CI groen — 246 tests, alle slagend; lint clean
+- [ ] Privacy review gedaan: alleen eigen mentor ziet scores *(te doen voor productie-release)*
 
 ---
 

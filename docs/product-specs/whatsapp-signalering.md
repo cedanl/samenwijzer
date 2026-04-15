@@ -1,6 +1,6 @@
 # Product Spec: WhatsApp Signalering
 
-**Status:** draft
+**Status:** gereed (code compleet per 2026-04-15; F6 Meta template-goedkeuring wacht op externe actie)
 **Prioriteit:** fase 2
 **Geïnspireerd op:** Annie Advisor (annieadvisor.com)
 
@@ -46,11 +46,11 @@ Samenwijzer → student (bij score 2 of 3):
 ```
 
 **Acceptatiecriteria:**
-- [ ] Berichten worden verstuurd via goedgekeurde WhatsApp Business-template.
-- [ ] Student ontvangt bericht alleen als telefoonnummer is geregistreerd en opt-in is gegeven.
-- [ ] Systeem herkent antwoord 1, 2 of 3 en slaat welzijnsscore op.
-- [ ] Bij score 2 of 3: automatisch vervolgbericht met doorverwijzing.
-- [ ] Bij onherkenbaar antwoord: vriendelijk foutbericht met herhaling van opties.
+- [ ] Berichten worden verstuurd via goedgekeurde WhatsApp Business-template. *(F6: Meta-goedkeuring wacht)*
+- [x] Student ontvangt bericht alleen als telefoonnummer is geregistreerd en opt-in is gegeven.
+- [x] Systeem herkent antwoord 1, 2 of 3 en slaat welzijnsscore op.
+- [x] Bij score 2 of 3: automatisch vervolgbericht met doorverwijzing.
+- [x] Bij onherkenbaar antwoord: vriendelijk foutbericht met herhaling van opties.
 
 ---
 
@@ -67,11 +67,11 @@ signalering als risicoscore < 0.45  (schaal 0–1)
 Academisch, motivatie en persoonlijk worden afgeleid uit de WhatsApp-antwoorden. In fase 1 is het één gecombineerde vraag; in fase 2 worden drie aparte vragen gesteld.
 
 **Acceptatiecriteria:**
-- [ ] Groepsoverzicht toont tabel met studenten met actieve signalering.
-- [ ] Per student: naam, mentor, datum laatste check-in, risicoscore.
-- [ ] Mentor kan een notitie toevoegen ("Heb contact opgenomen").
-- [ ] Studenten zonder signalering worden niet getoond.
-- [ ] Privacyprincipe: scores zijn alleen zichtbaar voor de eigen mentor.
+- [x] Groepsoverzicht toont tabel met studenten met actieve signalering.
+- [x] Per student: naam, mentor, datum laatste check-in, risicoscore.
+- [x] Mentor kan een notitie toevoegen ("Heb contact opgenomen").
+- [x] Studenten zonder signalering worden niet getoond.
+- [x] Privacyprincipe: scores zijn alleen zichtbaar voor de eigen mentor.
 
 ---
 
@@ -86,10 +86,10 @@ WhatsApp vereist expliciete opt-in van de student vóór het ontvangen van beric
 4. Na bevestiging: telefoonnummer actief in systeem.
 
 **Acceptatiecriteria:**
-- [ ] Student kan opt-in geven én intrekken vanuit de app.
-- [ ] Telefoonnummer wordt versleuteld opgeslagen (geen plaintext in CSV).
-- [ ] Verificatiestap via WhatsApp vóór activatie.
-- [ ] Opt-out via WhatsApp zelf mogelijk ("STOP" sturen).
+- [x] Student kan opt-in geven én intrekken vanuit de app.
+- [x] Telefoonnummer wordt versleuteld opgeslagen (geen plaintext in CSV).
+- [x] Verificatiestap via WhatsApp vóór activatie.
+- [x] Opt-out via WhatsApp zelf mogelijk ("STOP" sturen).
 
 ---
 
@@ -115,10 +115,10 @@ Na 3 berichten: "Ik stuur je een link naar de leercoach voor een
 ```
 
 **Acceptatiecriteria:**
-- [ ] Bij score 2/3: optie voor kort AI-gesprek via WhatsApp (max. 3 exchanges).
-- [ ] Na 3 exchanges: doorverwijzing naar app of mentor.
-- [ ] AI-reacties zijn kort (max. 2 zinnen) en geschikt voor mobiel.
-- [ ] Gesprek wordt opgeslagen als context voor leercoach-sessie in de app.
+- [x] Bij score 2/3: optie voor kort AI-gesprek via WhatsApp (max. 3 exchanges).
+- [x] Na 3 exchanges: doorverwijzing naar app of mentor.
+- [x] AI-reacties zijn kort (max. 2 zinnen) en geschikt voor mobiel.
+- [x] Gesprek wordt opgeslagen als context voor leercoach-sessie in de app.
 
 ---
 

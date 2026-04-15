@@ -66,6 +66,13 @@ SMTP_PORT=587
 SMTP_USER=noreply@example.com
 SMTP_PASSWORD=...
 SMTP_AFZENDER=noreply@example.com
+
+# Optioneel — voor WhatsApp-signalering via Twilio:
+TWILIO_ACCOUNT_SID=...
+TWILIO_AUTH_TOKEN=...
+TWILIO_WHATSAPP_NUMBER=whatsapp:+14155238886   # Twilio sandbox-default
+WHATSAPP_ENCRYPT_KEY=...                       # Fernet-sleutel voor telefoonencryptie
+                                               # (auto-gegenereerd lokaal als leeg)
 ```
 
 ## Project Structure
@@ -84,10 +91,11 @@ samenwijzer/
 │       ├── 5_welzijn.py          ← Student self-assessment + AI-reactie (student-only)
 │       └── uitloggen.py          ← Wist sessie en stuurt terug naar startpagina
 ├── src/samenwijzer/
+│   ├── _ai.py              ← Gedeelde Anthropic client factory (_client())
 │   ├── prepare.py          ← CSV inladen, valideren, kt/wp-scores genereren
 │   ├── transform.py        ← Berekende kolommen (BSA%, risico, kt_gemiddelde)
 │   ├── analyze.py          ← Kernanalyses (leerpadniveau, badge, peer matching,
-│   │                          OER-labels, transitiemoment-detectie)
+│   │                          OER-labels, transitiemoment-detectie, signaleringen())
 │   ├── visualize.py        ← Altair-grafieken
 │   ├── auth.py             ← Rolcontrole (vereist_docent) en mentorfilter
 │   ├── outreach.py         ← At-risk selectie, verwijslogica, AI-berichtgeneratie,
@@ -96,6 +104,13 @@ samenwijzer/
 │   │                          Campagne, WelzijnsCheck)
 │   ├── welzijn.py          ← Student self-assessment: categorielabels,
 │   │                          AI-reactiegeneratie (Anthropic SDK)
+│   ├── wellbeing.py        ← CSV-gebaseerde welzijnssignalering (WelzijnsCheck
+│   │                          dataclass, welzijnswaarde(), heeft_signaal())
+│   ├── whatsapp.py         ← WhatsApp via Twilio: check-ins versturen, inkomende
+│   │                          berichten parsen, AI-gesprekssessies beheren
+│   ├── whatsapp_store.py   ← SQLite-persistentie voor WhatsApp-registraties en
+│   │                          gesprekssessies; telefoonnummers Fernet-versleuteld
+│   ├── scheduler.py        ← Wekelijkse check-in verzender (GitHub Actions cron)
 │   ├── tutor.py            ← Socratische tutor via Anthropic SDK (streaming)
 │   ├── coach.py            ← Lesmateriaal, oefentoets, werkfeedback (Anthropic SDK)
 │   ├── styles.py           ← EduPulse huisstijl CSS + render_nav() + render_footer()
@@ -119,9 +134,10 @@ Nooit omgekeerd. Zie `ARCHITECTURE.md` voor details.
 geladen op de startpagina via `load_berend_csv()` + `transform_student_data()`. Alle pagina's lezen
 daaruit — nooit opnieuw laden.
 
-**AI-isolatie**: alle Anthropic API-calls zitten in `tutor.py`, `coach.py`, `outreach.py` en
-`welzijn.py`. De UI-laag roept alleen de publieke functies aan; nooit `anthropic` direct
-importeren in `app/`.
+**AI-isolatie**: alle Anthropic API-calls zitten in `tutor.py`, `coach.py`, `outreach.py`,
+`welzijn.py` en `whatsapp.py`. Alle AI-modules maken een client via `_ai._client()` — nooit een
+eigen `anthropic.Anthropic()` instantiëren. De UI-laag roept alleen de publieke functies aan;
+nooit `anthropic` direct importeren in `app/`.
 
 **Huisstijl**: alle CSS zit in `src/samenwijzer/styles.py`. Elke pagina injecteert dit via
 `st.markdown(CSS, unsafe_allow_html=True)`, roept `render_nav()` aan direct erna (injecteert een
@@ -201,17 +217,43 @@ Transitiemomenten (`analyze.py`):
 
 ## Welzijn-module
 
-`welzijn.py` verzorgt de student self-assessment functionaliteit (geïnspireerd op Annie Advisor).
+Er zijn twee aparte welzijnsmodules met verschillende verantwoordelijkheden:
 
+**`welzijn.py`** — student self-assessment via de webapp (geïnspireerd op Annie Advisor).
 Vijf hulpcategorieën: `studieplanning`, `welzijn`, `financiën`, `werkplekleren`, `overig`.
 Drie urgentieniveaus: 1 (kan wachten), 2 (liefst snel), 3 (dringend).
-
 `genereer_welzijnsreactie()` streamt een korte, empathische AI-reactie na het invullen.
 Mentoren zien recente welzijnschecks van hun studenten in `2_groepsoverzicht.py`.
+
+**`wellbeing.py`** — CSV-gebaseerde welzijnssignalering voor het groepsoverzicht.
+`WelzijnsCheck` dataclass, `welzijnswaarde()` en `heeft_signaal()`.
+Ingestion via `prepare.load_welzijn_csv()`, analyse via `analyze.signaleringen()`.
 
 **Gevoeligheid**: toon vrije-tekst studentreacties nooit in geaggregeerde dashboards. Alleen de
 toegewezen mentor ziet individuele check-details. Urgentie 3 ("Dringend") vereist directe
 actie van de mentor.
+
+## WhatsApp-module
+
+`whatsapp.py` verzorgt proactieve outreach via Twilio's WhatsApp API.
+
+- Stuurt wekelijkse check-ins naar geregistreerde studenten via `stuur_checkin()`
+- Verwerkt inkomende berichten (score 1–5, vrije tekst, `STOP`, `JA`-opt-in)
+- Beheert AI-gesprekssessies (maximaal `MAX_EXCHANGES` uitwisselingen) via `_client()` uit `_ai.py`
+- Slaat `WelzijnsCheck`-resultaten op na ontvangst van een score
+
+`whatsapp_store.py` beheert twee SQLite-tabellen (`whatsapp.db`):
+- `registraties` — koppeling studentnummer ↔ versleuteld telefoonnummer
+- `sessies` — actieve AI-gesprekssessies (gesprekshistorie als JSON)
+
+Telefoonnummers worden versleuteld opgeslagen met Fernet. Sleutel komt uit `WHATSAPP_ENCRYPT_KEY`
+of wordt auto-gegenereerd in `data/02-prepared/.whatsapp.key`.
+
+`scheduler.py` wordt aangeroepen vanuit een GitHub Actions cron-job (elke maandag 08:00):
+```bash
+uv run python -m samenwijzer.scheduler
+# DRY_RUN=true uv run python -m samenwijzer.scheduler  ← logt berichten zonder te versturen
+```
 
 ## Linting & stijl
 

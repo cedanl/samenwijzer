@@ -22,6 +22,9 @@ Cross-cutting modules (no layer restriction, import explicitly):
   outreach_store.py ← SQLite persistence (StudentStatus, Interventie, Campagne, WelzijnsCheck)
   welzijn.py        ← Student self-assessment AI responses
   wellbeing.py      ← CSV-gebaseerde welzijnssignalering (WelzijnsCheck, welzijnswaarde, notities)
+  whatsapp.py       ← WhatsApp via Twilio: check-ins, inkomende berichten, AI-gesprekssessies
+  whatsapp_store.py ← SQLite persistence voor WhatsApp-registraties (Fernet-versleuteld) en sessies
+  scheduler.py      ← Wekelijkse check-in verzender (GitHub Actions cron entry point)
   tutor.py          ← Socratic AI tutor (Anthropic SDK, streaming)
   coach.py          ← Study material, practice tests, work feedback (Anthropic SDK)
   styles.py         ← EduPulse CSS + render_nav() (vaste header) + render_footer()
@@ -51,6 +54,7 @@ AI calls are isolated in dedicated modules; they are **never** called from the U
 | `coach.py` | Study material, practice tests, work feedback |
 | `outreach.py` | Personalised outreach message generation |
 | `welzijn.py` | Empathic response to student self-assessment |
+| `whatsapp.py` | WhatsApp check-ins, inbound message parsing, AI conversation |
 
 ## Pages
 
@@ -72,6 +76,9 @@ AI calls are isolated in dedicated modules; they are **never** called from the U
 | pandas | Tabular data |
 | anthropic | Claude API client |
 | python-dotenv | Secrets from `.env` |
+| twilio | WhatsApp messaging via Twilio API |
+| fastapi + uvicorn | Webhook endpoint (inbound WhatsApp messages) |
+| cryptography | Fernet encryption for phone numbers in whatsapp_store |
 | pytest + pytest-cov | Testing |
 | ruff | Linting & formatting |
 | altair | Declarative charts |

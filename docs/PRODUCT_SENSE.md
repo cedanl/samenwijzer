@@ -47,6 +47,8 @@ Samenwijzer verlaagt deze drempel op twee manieren:
 ### Voor studenten
 - **Welzijnscheck** (`5_welzijn.py`) — student geeft zelf aan waar moeite mee is
   (categorie + urgentie). AI geeft direct een empathische reactie. Mentor ontvangt signaal.
+- **WhatsApp check-in** — wekelijks proactief bereikt via WhatsApp (score 1–3); bij score 2/3
+  volgt een kort AI-gesprek (max. 3 exchanges) en doorverwijzing naar mentor of app.
 
 ### Voor docenten/mentoren
 - **Transitiemoment-detectie** — automatische badge bij BSA-risico of bijna-afstuderen
@@ -62,6 +64,6 @@ Samenwijzer verlaagt deze drempel op twee manieren:
 ## Non-goals
 
 - Geen volwaardig LMS — Samenwijzer is een aanvulling, geen vervanging.
-- Geen WhatsApp/SMS-integratie — mentor blijft human-in-the-loop.
+- Geen SMS-fallback of andere berichtenkanalen dan WhatsApp — buiten scope fase 2.
 - Geen volledig autonome campagneverzending — altijd mentor-goedkeuring vereist.
 - Aansluiting op arbeidsmarkt (RIASOC etc.) — buiten scope voor nu.
