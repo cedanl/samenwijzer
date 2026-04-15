@@ -90,8 +90,16 @@ def bsa_staaf(bsa_behaald: float, bsa_vereist: float) -> alt.Chart:
             color=alt.Color("kleur:N", scale=None, legend=None),
             tooltip=["categorie:N", "punten:Q"],
         )
-        .properties(height=80, background="white")
+        .properties(height=110, background="white")
     )
+
+
+_MAX_LABEL = 32
+
+
+def _kort(tekst: str) -> str:
+    """Kap een label af op _MAX_LABEL tekens met een ellipsis."""
+    return tekst if len(tekst) <= _MAX_LABEL else tekst[:_MAX_LABEL].rstrip() + "…"
 
 
 def kerntaak_grafiek(kt_df: pd.DataFrame) -> alt.Chart:
@@ -103,8 +111,10 @@ def kerntaak_grafiek(kt_df: pd.DataFrame) -> alt.Chart:
     Returns:
         Altair Chart.
     """
+    plot = kt_df.copy()
+    plot["label_kort"] = plot["label"].apply(_kort)
     return (
-        alt.Chart(kt_df)
+        alt.Chart(plot)
         .mark_bar(color=_KLEUR_NEUTRAAL, cornerRadiusEnd=4)
         .encode(
             x=alt.X(
@@ -112,10 +122,13 @@ def kerntaak_grafiek(kt_df: pd.DataFrame) -> alt.Chart:
                 scale=alt.Scale(domain=_SCORE_DOMAIN),
                 title="Score (0–100)",
             ),
-            y=alt.Y("label:N", sort="-x", title=None),
-            tooltip=["label:N", "score:Q"],
+            y=alt.Y("label_kort:N", sort="-x", title=None),
+            tooltip=[
+                alt.Tooltip("label:N", title="Kerntaak"),
+                alt.Tooltip("score:Q", title="Score"),
+            ],
         )
-        .properties(height=max(100, len(kt_df) * 50), background="white")
+        .properties(height=max(100, len(plot) * 55), background="white")
     )
 
 
@@ -128,8 +141,10 @@ def werkproces_grafiek(wp_df: pd.DataFrame) -> alt.Chart:
     Returns:
         Altair Chart.
     """
+    plot = wp_df.copy()
+    plot["label_kort"] = plot["label"].apply(_kort)
     return (
-        alt.Chart(wp_df)
+        alt.Chart(plot)
         .mark_bar(color=_KLEUR_SCHAAL, cornerRadiusEnd=4)
         .encode(
             x=alt.X(
@@ -137,10 +152,13 @@ def werkproces_grafiek(wp_df: pd.DataFrame) -> alt.Chart:
                 scale=alt.Scale(domain=_SCORE_DOMAIN),
                 title="Score (0–100)",
             ),
-            y=alt.Y("label:N", sort="-x", title=None),
-            tooltip=["label:N", "score:Q"],
+            y=alt.Y("label_kort:N", sort="-x", title=None),
+            tooltip=[
+                alt.Tooltip("label:N", title="Werkproces"),
+                alt.Tooltip("score:Q", title="Score"),
+            ],
         )
-        .properties(height=max(140, len(wp_df) * 40), background="white")
+        .properties(height=max(140, len(plot) * 42), background="white")
     )
 
 

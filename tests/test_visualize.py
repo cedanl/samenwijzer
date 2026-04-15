@@ -32,9 +32,9 @@ def test_voortgang_gauge_kleur_risico_bij_lage_voortgang() -> None:
     assert chart is not None
 
 
-def test_voortgang_gauge_hoogte_is_50() -> None:
+def test_voortgang_gauge_hoogte_is_80() -> None:
     chart = voortgang_gauge(0.5)
-    assert chart.properties().height == 50
+    assert chart.properties().height == 80
 
 
 def test_voortgang_gauge_custom_label() -> None:
@@ -56,9 +56,9 @@ def test_bsa_staaf_geeft_altair_chart() -> None:
     assert isinstance(chart, alt.Chart)
 
 
-def test_bsa_staaf_hoogte_is_80() -> None:
+def test_bsa_staaf_hoogte_is_110() -> None:
     chart = bsa_staaf(25.0, 40.0)
-    assert chart.properties().height == 80
+    assert chart.properties().height == 110
 
 
 def test_bsa_staaf_behaald_gelijk_aan_vereist() -> None:
@@ -88,13 +88,13 @@ def test_kerntaak_grafiek_geeft_altair_chart(kt_df: pd.DataFrame) -> None:
 
 def test_kerntaak_grafiek_hoogte_schaalt_met_rijen(kt_df: pd.DataFrame) -> None:
     chart = kerntaak_grafiek(kt_df)
-    assert chart.properties().height == max(60, len(kt_df) * 30)
+    assert chart.properties().height == max(100, len(kt_df) * 55)
 
 
 def test_kerntaak_grafiek_één_rij() -> None:
     df = pd.DataFrame({"label": ["KT1"], "score": [80.0]})
     chart = kerntaak_grafiek(df)
-    assert chart.properties().height == 60  # minimum
+    assert chart.properties().height == 100  # minimum
 
 
 # ── werkproces_grafiek ────────────────────────────────────────────────────────
@@ -117,7 +117,7 @@ def test_werkproces_grafiek_geeft_altair_chart(wp_df: pd.DataFrame) -> None:
 
 def test_werkproces_grafiek_hoogte_schaalt_met_rijen(wp_df: pd.DataFrame) -> None:
     chart = werkproces_grafiek(wp_df)
-    assert chart.properties().height == max(60, len(wp_df) * 30)
+    assert chart.properties().height == max(140, len(wp_df) * 42)
 
 
 # ── groep_voortgang_grafiek ───────────────────────────────────────────────────
