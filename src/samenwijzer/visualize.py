@@ -59,7 +59,7 @@ def voortgang_gauge(voortgang: float, label: str = "Voortgang") -> alt.Chart:
         )
     )
 
-    return (achtergrond + voorgrond + tekst).properties(height=50, background="white")
+    return (achtergrond + voorgrond + tekst).properties(height=80, background="white")
 
 
 def bsa_staaf(bsa_behaald: float, bsa_vereist: float) -> alt.Chart:
@@ -115,7 +115,7 @@ def kerntaak_grafiek(kt_df: pd.DataFrame) -> alt.Chart:
             y=alt.Y("label:N", sort="-x", title=None),
             tooltip=["label:N", "score:Q"],
         )
-        .properties(height=max(60, len(kt_df) * 30), background="white")
+        .properties(height=max(100, len(kt_df) * 50), background="white")
     )
 
 
@@ -140,7 +140,7 @@ def werkproces_grafiek(wp_df: pd.DataFrame) -> alt.Chart:
             y=alt.Y("label:N", sort="-x", title=None),
             tooltip=["label:N", "score:Q"],
         )
-        .properties(height=max(60, len(wp_df) * 30), background="white")
+        .properties(height=max(140, len(wp_df) * 40), background="white")
     )
 
 
