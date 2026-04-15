@@ -82,8 +82,9 @@ def render_nav() -> None:
 
     with cols[n + 1]:
         st.markdown(
-            f'<div style="text-align:right;color:#888;font-size:12px;font-weight:600;'
-            f"padding-top:8px;font-family:'General Sans',sans-serif;\">👤 {gebruiker}</div>",
+            f'<div style="text-align:right;color:rgba(255,255,255,0.45);font-size:12px;'
+            f"font-weight:600;padding-top:6px;font-family:'General Sans',sans-serif;\">"
+            f"👤 {gebruiker}</div>",
             unsafe_allow_html=True,
         )
 
@@ -120,31 +121,34 @@ header[data-testid="stHeader"] { display: none !important; }
 section[data-testid="stSidebar"] { display: none !important; }
 
 /* ── Vaste navigatiebalk ────────────────────────────────────────────────── */
-/* De eerste stHorizontalBlock is altijd onze nav (render_nav() staat bovenaan).
-   position:fixed haalt hem uit de flow en plakt hem tegen de bovenkant. */
 .block-container > div > [data-testid="stHorizontalBlock"]:first-of-type {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     right: 0 !important;
-    height: 56px !important;
-    background: #ffffff !important;
+    height: 52px !important;
+    background: #1a1a1a !important;
     z-index: 9999 !important;
     padding: 0 24px !important;
     margin: 0 !important;
     max-width: none !important;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.08) !important;
+    box-shadow: none !important;
     align-items: center !important;
-    gap: 8px !important;
+    gap: 4px !important;
 }
 
-/* Nav-kolommen: auto-breedte zodat labels niet worden afgekapt of omslaan */
+/* Nav-kolommen: auto-breedte, transparante achtergrond */
 .block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
-    [data-testid="stColumn"] {
+    [data-testid="stColumn"],
+.block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
+    [data-testid="stVerticalBlock"],
+.block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
+    [data-testid="element-container"] {
     flex: 0 0 auto !important;
     min-width: fit-content !important;
     width: auto !important;
     overflow: visible !important;
+    background: transparent !important;
 }
 
 /* Spatie-kolom (5e kolom) vult de resterende ruimte op */
@@ -155,7 +159,7 @@ section[data-testid="stSidebar"] { display: none !important; }
 }
 
 .block-container {
-    padding-top: 72px !important;
+    padding-top: 68px !important;
     max-width: 900px;
     margin: 0 auto;
     padding-bottom: 80px !important;
@@ -164,31 +168,70 @@ section[data-testid="stSidebar"] { display: none !important; }
 h1 { font-size: 3.2rem; font-weight: 600; line-height: 1.15; }
 p, li { color: #333; line-height: 1.6; }
 
-/* ── Navigatie — st.page_link als pill ──────────────────────────────────── */
+/* ── Navigatie — st.page_link in donkere header ─────────────────────────── */
 [data-testid="stPageLink"] {
     height: auto !important;
     padding: 0 !important;
     margin: 0 !important;
 }
 
+/* Nav-links: wit op donker, geen pill-schaduw */
+.block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
+    [data-testid="stPageLink"] a {
+    display: inline-block !important;
+    background: transparent !important;
+    border-radius: 6px !important;
+    padding: 6px 14px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: rgba(255,255,255,0.72) !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    box-shadow: none !important;
+    letter-spacing: 0.04em !important;
+    font-family: 'General Sans', sans-serif !important;
+    transition: background 0.15s, color 0.15s !important;
+}
+
+.block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
+    [data-testid="stPageLink"] a:hover {
+    background: rgba(255,255,255,0.10) !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+/* Fix truncatie: alle child-elementen van page_link mogen niet afkappen */
+.block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
+    [data-testid="stPageLink"] a div,
+.block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
+    [data-testid="stPageLink"] a p,
+.block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
+    [data-testid="stPageLink"] a span {
+    overflow: visible !important;
+    text-overflow: unset !important;
+    white-space: nowrap !important;
+    max-width: none !important;
+    width: auto !important;
+    color: inherit !important;
+}
+
+/* Elders op de pagina: page_link behoudt neutrale stijl */
 [data-testid="stPageLink"] a {
     display: inline-block !important;
-    background: #ffffff !important;
-    border-radius: 50px !important;
-    padding: 7px 18px !important;
+    background: transparent !important;
+    border-radius: 6px !important;
+    padding: 4px 10px !important;
     font-size: 13px !important;
-    font-weight: 700 !important;
+    font-weight: 600 !important;
     color: #1a1a1a !important;
     text-decoration: none !important;
     white-space: nowrap !important;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.13) !important;
-    letter-spacing: 0.05em !important;
+    box-shadow: none !important;
     font-family: 'General Sans', sans-serif !important;
-    transition: background 0.15s !important;
 }
 
 [data-testid="stPageLink"] a:hover {
-    background: #f0f0f0 !important;
+    background: #f5f5f5 !important;
     text-decoration: none !important;
 }
 
