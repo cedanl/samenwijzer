@@ -177,7 +177,9 @@ def test_stuur_notificatie_verstuurt_email(mock_config: MagicMock, mock_mail: Ma
 
 @patch("samenwijzer.welzijn.verstuur_email")
 @patch("samenwijzer.welzijn.email_config_uit_env")
-def test_stuur_notificatie_onderwerp_bevat_naam(mock_config: MagicMock, mock_mail: MagicMock) -> None:
+def test_stuur_notificatie_onderwerp_bevat_naam(
+    mock_config: MagicMock, mock_mail: MagicMock
+) -> None:  # noqa: E501
     mock_config.return_value = _SMTP_CONFIG
     stuur_welzijn_notificatie(
         student_naam="Yasmin Bakr",
@@ -193,7 +195,9 @@ def test_stuur_notificatie_onderwerp_bevat_naam(mock_config: MagicMock, mock_mai
 
 @patch("samenwijzer.welzijn.verstuur_email")
 @patch("samenwijzer.welzijn.email_config_uit_env")
-def test_stuur_notificatie_urgentie_3_dringend(mock_config: MagicMock, mock_mail: MagicMock) -> None:
+def test_stuur_notificatie_urgentie_3_dringend(
+    mock_config: MagicMock, mock_mail: MagicMock
+) -> None:  # noqa: E501
     mock_config.return_value = _SMTP_CONFIG
     stuur_welzijn_notificatie(
         student_naam="Ravi",
@@ -209,7 +213,9 @@ def test_stuur_notificatie_urgentie_3_dringend(mock_config: MagicMock, mock_mail
 
 @patch("samenwijzer.welzijn.verstuur_email")
 @patch("samenwijzer.welzijn.email_config_uit_env")
-def test_stuur_notificatie_toelichting_in_bericht(mock_config: MagicMock, mock_mail: MagicMock) -> None:
+def test_stuur_notificatie_toelichting_in_bericht(
+    mock_config: MagicMock, mock_mail: MagicMock
+) -> None:  # noqa: E501
     mock_config.return_value = _SMTP_CONFIG
     stuur_welzijn_notificatie(
         student_naam="X",
@@ -253,7 +259,9 @@ def test_stuur_notificatie_geen_notificatie_email_geeft_false(mock_config: Magic
 
 @patch("samenwijzer.welzijn.verstuur_email")
 @patch("samenwijzer.welzijn.email_config_uit_env")
-def test_stuur_notificatie_smtp_fout_geeft_false(mock_config: MagicMock, mock_mail: MagicMock) -> None:
+def test_stuur_notificatie_smtp_fout_geeft_false(
+    mock_config: MagicMock, mock_mail: MagicMock
+) -> None:  # noqa: E501
     mock_config.return_value = _SMTP_CONFIG
     mock_mail.side_effect = smtplib.SMTPException("verbinding mislukt")
     resultaat = stuur_welzijn_notificatie(

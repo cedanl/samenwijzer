@@ -24,8 +24,8 @@ from twilio.request_validator import RequestValidator
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 load_dotenv(Path(__file__).parent.parent / ".env")
 
+from samenwijzer.wellbeing import WelzijnsCheck  # noqa: E402
 from samenwijzer.whatsapp import verwerk_inkomend_bericht  # noqa: E402
-from samenwijzer.wellbeing import WelzijnsCheck             # noqa: E402
 
 log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -39,6 +39,7 @@ _KOLOMMEN = ["studentnummer", "datum", "antwoord", "toelichting"]
 
 
 # ── Hulpfuncties ──────────────────────────────────────────────────────────────
+
 
 def _valideer_twilio_handtekening(request: Request, auth_token: str) -> bool:
     """Valideer de Twilio-handtekening om spoofing te voorkomen."""
@@ -57,15 +58,19 @@ def _sla_welzijnscheck_op(check: WelzijnsCheck) -> None:
         writer = csv.DictWriter(fh, fieldnames=_KOLOMMEN)
         if not bestaat:
             writer.writeheader()
-        writer.writerow({
-            "studentnummer": check.studentnummer,
-            "datum": check.datum.isoformat(),
-            "antwoord": check.antwoord,
-            "toelichting": "",
-        })
+        writer.writerow(
+            {
+                "studentnummer": check.studentnummer,
+                "datum": check.datum.isoformat(),
+                "antwoord": check.antwoord,
+                "toelichting": "",
+            }
+        )
     log.info(
         "WelzijnsCheck opgeslagen: student=%s datum=%s antwoord=%s",
-        check.studentnummer, check.datum, check.antwoord,
+        check.studentnummer,
+        check.datum,
+        check.antwoord,
     )
 
 
@@ -88,11 +93,12 @@ def _twiml_leeg() -> Response:
 
 # ── Endpoint ──────────────────────────────────────────────────────────────────
 
+
 @app.post("/webhook/whatsapp")
 async def whatsapp_webhook(
     request: Request,
-    From: str = Form(...),
-    Body: str = Form(...),
+    From: str = Form(...),  # noqa: N803 — Twilio stuurt veldnamen met hoofdletter
+    Body: str = Form(...),  # noqa: N803
 ) -> Response:
     """Ontvang en verwerk een inkomend WhatsApp-bericht van Twilio.
 

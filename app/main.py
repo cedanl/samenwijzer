@@ -123,10 +123,10 @@ if rol == "student":
         f"""<div style="background:#fae8e8; border-left:4px solid #c8785a; border-radius:12px;
 padding:16px 20px; margin-bottom:20px;">
   <p style="margin:0 0 2px; font-size:1.05rem; font-weight:700; color:#1a1a1a">
-    Welkom, {student['naam']}
+    Welkom, {student["naam"]}
   </p>
   <p style="margin:0; font-size:0.85rem; color:#888">
-    {student['opleiding']} · Niveau {student['niveau']} · {student['leerweg']}
+    {student["opleiding"]} · Niveau {student["niveau"]} · {student["leerweg"]}
   </p>
 </div>""",
         unsafe_allow_html=True,
@@ -165,7 +165,7 @@ padding:16px 20px; margin-bottom:20px;">
                             f"Verificatiebericht verstuurd naar {nummer}. "
                             "Antwoord JA in WhatsApp om te bevestigen."
                         )
-                    except EnvironmentError:
+                    except OSError:
                         st.warning(
                             "WhatsApp-koppeling is nog niet geconfigureerd "
                             "(geen Twilio-credentials). Je registratie is opgeslagen."

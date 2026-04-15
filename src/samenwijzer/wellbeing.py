@@ -114,9 +114,7 @@ def sla_notitie_op(path: Path, studentnummer: str, mentor: str, notitie: str) ->
     pd.concat([df, nieuwe_rij], ignore_index=True).to_csv(path, index=False)
 
 
-def filter_signaleringen_voor_mentor(
-    df_signaleringen: pd.DataFrame, mentor: str
-) -> pd.DataFrame:
+def filter_signaleringen_voor_mentor(df_signaleringen: pd.DataFrame, mentor: str) -> pd.DataFrame:
     """Filter signaleringen zodat een mentor alleen zijn eigen studenten ziet.
 
     Args:

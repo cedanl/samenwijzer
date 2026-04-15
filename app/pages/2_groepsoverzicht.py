@@ -108,14 +108,27 @@ with tab_voortgang:
         st.subheader(f"⚠️ Studenten die aandacht nodig hebben ({len(risico_df)})")
         st.dataframe(
             risico_df[
-                ["naam", "opleiding", "mentor", "voortgang",
-                 "bsa_behaald", "bsa_vereist", "bsa_percentage"]
+                [
+                    "naam",
+                    "opleiding",
+                    "mentor",
+                    "voortgang",
+                    "bsa_behaald",
+                    "bsa_vereist",
+                    "bsa_percentage",
+                ]
             ]
-            .rename(columns={
-                "naam": "Naam", "opleiding": "Opleiding", "mentor": "Mentor",
-                "voortgang": "Voortgang", "bsa_behaald": "BSA behaald",
-                "bsa_vereist": "BSA vereist", "bsa_percentage": "BSA %",
-            })
+            .rename(
+                columns={
+                    "naam": "Naam",
+                    "opleiding": "Opleiding",
+                    "mentor": "Mentor",
+                    "voortgang": "Voortgang",
+                    "bsa_behaald": "BSA behaald",
+                    "bsa_vereist": "BSA vereist",
+                    "bsa_percentage": "BSA %",
+                }
+            )
             .style.format({"Voortgang": "{:.0%}", "BSA %": "{:.0%}"}),
             use_container_width=True,
             hide_index=True,
@@ -126,13 +139,22 @@ with tab_voortgang:
     st.subheader("Alle studenten")
     st.dataframe(
         groepsoverzicht(gefilterd)
-        .rename(columns={
-            "studentnummer": "Nr.", "naam": "Naam", "opleiding": "Opleiding",
-            "cohort": "Cohort", "leerweg": "Leerweg", "mentor": "Mentor",
-            "voortgang": "Voortgang", "bsa_behaald": "BSA behaald",
-            "bsa_vereist": "BSA vereist", "bsa_percentage": "BSA %",
-            "risico": "Risico", "kt_gemiddelde": "KT gem.",
-        })
+        .rename(
+            columns={
+                "studentnummer": "Nr.",
+                "naam": "Naam",
+                "opleiding": "Opleiding",
+                "cohort": "Cohort",
+                "leerweg": "Leerweg",
+                "mentor": "Mentor",
+                "voortgang": "Voortgang",
+                "bsa_behaald": "BSA behaald",
+                "bsa_vereist": "BSA vereist",
+                "bsa_percentage": "BSA %",
+                "risico": "Risico",
+                "kt_gemiddelde": "KT gem.",
+            }
+        )
         .style.format({"Voortgang": "{:.0%}", "BSA %": "{:.0%}", "KT gem.": "{:.0f}"})
         .map(lambda v: "background-color: #fdecea" if v is True else "", subset=["Risico"]),
         use_container_width=True,
@@ -151,11 +173,15 @@ with tab_voortgang:
                 "Koppel studenten die elkaars sterke punten kunnen benutten."
             )
             st.dataframe(
-                pp_df.rename(columns={
-                    "naam": "Student", "sterkste_kt": "Sterk in",
-                    "sterkste_score": "Score", "zwakste_kt": "Aandacht voor",
-                    "zwakste_score": "Score ",
-                }).style.format({"Score": "{:.0f}", "Score ": "{:.0f}"}),
+                pp_df.rename(
+                    columns={
+                        "naam": "Student",
+                        "sterkste_kt": "Sterk in",
+                        "sterkste_score": "Score",
+                        "zwakste_kt": "Aandacht voor",
+                        "zwakste_score": "Score ",
+                    }
+                ).style.format({"Score": "{:.0f}", "Score ": "{:.0f}"}),
                 use_container_width=True,
                 hide_index=True,
             )
@@ -166,11 +192,16 @@ with tab_voortgang:
     cohort_df = cohort_gemiddelden(gefilterd)
     if not cohort_df.empty:
         st.dataframe(
-            cohort_df.rename(columns={
-                "opleiding": "Opleiding", "cohort": "Cohort", "aantal": "Aantal",
-                "gem_voortgang": "Gem. voortgang", "gem_bsa_percentage": "Gem. BSA %",
-                "studenten_met_risico": "# Risico",
-            }).style.format({"Gem. voortgang": "{:.0%}", "Gem. BSA %": "{:.0%}"}),
+            cohort_df.rename(
+                columns={
+                    "opleiding": "Opleiding",
+                    "cohort": "Cohort",
+                    "aantal": "Aantal",
+                    "gem_voortgang": "Gem. voortgang",
+                    "gem_bsa_percentage": "Gem. BSA %",
+                    "studenten_met_risico": "# Risico",
+                }
+            ).style.format({"Gem. voortgang": "{:.0%}", "Gem. BSA %": "{:.0%}"}),
             use_container_width=True,
             hide_index=True,
         )
@@ -208,9 +239,9 @@ with tab_signaleringen:
                     if rij["toelichting"]:
                         st.caption(f'Toelichting student: "{rij["toelichting"]}"')
 
-                    student_notities = notities_df[
-                        notities_df["studentnummer"] == snr
-                    ].sort_values("timestamp", ascending=False)
+                    student_notities = notities_df[notities_df["studentnummer"] == snr].sort_values(
+                        "timestamp", ascending=False
+                    )
 
                     if not student_notities.empty:
                         st.caption("Eerdere notities:")

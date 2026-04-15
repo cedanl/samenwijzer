@@ -25,6 +25,7 @@ _geinitialiseerd: set[Path] = set()
 
 # ── Encryptie ─────────────────────────────────────────────────────────────────
 
+
 def _sleutel() -> bytes:
     """Geef de Fernet-encryptiesleutel terug, of genereer er één."""
     env_key = os.getenv("WHATSAPP_ENCRYPT_KEY")
@@ -52,6 +53,7 @@ def ontsleutel(versleuteld: str) -> str:
 
 
 # ── Database ──────────────────────────────────────────────────────────────────
+
 
 def _verbinding() -> sqlite3.Connection:
     _DB_PAD.parent.mkdir(parents=True, exist_ok=True)
@@ -86,6 +88,7 @@ def _initialiseer(conn: sqlite3.Connection) -> None:
 
 # ── Dataclasses ───────────────────────────────────────────────────────────────
 
+
 @dataclass
 class TelefoonnummerReg:
     studentnummer: str
@@ -115,11 +118,13 @@ class WhatsappSessie:
 
 # ── Telefoonregistraties ──────────────────────────────────────────────────────
 
+
 def registreer_nummer(studentnummer: str, telefoonnummer: str) -> None:
     """Sla een telefoonnummer versleuteld op. Overschrijft bestaande registratie."""
     nummer_enc = versleutel(telefoonnummer)
     with _verbinding() as conn:
-        conn.execute("""
+        conn.execute(
+            """
             INSERT INTO telefoon_registraties
                 (studentnummer, nummer_enc, opt_in, geactiveerd, aangemeld_op)
             VALUES (?, ?, 0, 0, ?)
@@ -128,27 +133,35 @@ def registreer_nummer(studentnummer: str, telefoonnummer: str) -> None:
                 opt_in       = 0,
                 geactiveerd  = 0,
                 aangemeld_op = excluded.aangemeld_op
-        """, (studentnummer, nummer_enc, datetime.now().isoformat()))
+        """,
+            (studentnummer, nummer_enc, datetime.now().isoformat()),
+        )
 
 
 def activeer_nummer(studentnummer: str) -> None:
     """Activeer opt-in na succesvolle verificatie."""
     with _verbinding() as conn:
-        conn.execute("""
+        conn.execute(
+            """
             UPDATE telefoon_registraties
             SET opt_in=1, geactiveerd=1
             WHERE studentnummer=?
-        """, (studentnummer,))
+        """,
+            (studentnummer,),
+        )
 
 
 def deactiveer_nummer(studentnummer: str) -> None:
     """Verwerk opt-out via de app."""
     with _verbinding() as conn:
-        conn.execute("""
+        conn.execute(
+            """
             UPDATE telefoon_registraties
             SET opt_in=0, geactiveerd=0
             WHERE studentnummer=?
-        """, (studentnummer,))
+        """,
+            (studentnummer,),
+        )
 
 
 def get_registratie(studentnummer: str) -> TelefoonnummerReg | None:
@@ -209,6 +222,7 @@ def deactiveer_nummer_via_telefoon(telefoonnummer: str) -> bool:
 
 # ── Gesprekssessies ───────────────────────────────────────────────────────────
 
+
 def get_sessie(from_number: str) -> WhatsappSessie | None:
     with _verbinding() as conn:
         rij = conn.execute(
@@ -220,7 +234,8 @@ def get_sessie(from_number: str) -> WhatsappSessie | None:
 
 def sla_sessie_op(sessie: WhatsappSessie) -> None:
     with _verbinding() as conn:
-        conn.execute("""
+        conn.execute(
+            """
             INSERT INTO whatsapp_sessies
                 (from_number, stap, uitgewisseld, context_json, gestart_op)
             VALUES (:from_number, :stap, :uitgewisseld, :context_json, :gestart_op)
@@ -228,7 +243,9 @@ def sla_sessie_op(sessie: WhatsappSessie) -> None:
                 stap         = excluded.stap,
                 uitgewisseld = excluded.uitgewisseld,
                 context_json = excluded.context_json
-        """, asdict(sessie))
+        """,
+            asdict(sessie),
+        )
 
 
 def verwijder_sessie(from_number: str) -> None:

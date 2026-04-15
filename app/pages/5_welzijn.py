@@ -73,7 +73,9 @@ with st.container(border=True):
             format_func=urgentie_label,
             horizontal=True,
         )
-        verzend = st.form_submit_button("💚 Verstuur check", type="primary", use_container_width=True)
+        verzend = st.form_submit_button(
+            "💚 Verstuur check", type="primary", use_container_width=True
+        )
 
 if verzend:
     check = WelzijnsCheck(
@@ -111,7 +113,11 @@ eerdere = get_welzijnschecks_student(studentnummer)
 if eerdere:
     with st.expander(f"Eerdere checks ({len(eerdere)})"):
         for c in eerdere[:5]:
-            note = f"<span class='check-item__note'>{c.toelichting[:80]}</span>" if c.toelichting else ""
+            note = (
+                f"<span class='check-item__note'>{c.toelichting[:80]}</span>"
+                if c.toelichting
+                else ""
+            )
             st.markdown(
                 f"""<div class="check-item">
   <span class="check-item__date">{c.timestamp[:10]}</span>

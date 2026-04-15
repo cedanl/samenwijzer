@@ -26,57 +26,194 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 # ── Namen ─────────────────────────────────────────────────────────────────────
 
 VOORNAMEN_M = [
-    "Adam", "Amir", "Bram", "Bryan", "Daan", "David", "Dylan", "Elias",
-    "Finn", "Hamza", "Ilias", "Jayden", "Jesse", "Joris", "Julian", "Kevin",
-    "Lars", "Liam", "Lucas", "Luuk", "Max", "Mohamed", "Nathan", "Nick",
-    "Noah", "Noel", "Oliver", "Owen", "Ramon", "Remi", "Ruben", "Sam",
-    "Sander", "Sem", "Stefan", "Stijn", "Thomas", "Thijs", "Tim", "Tom",
-    "Victor", "Wesley", "Wouter", "Xander", "Younes", "Yusuf",
+    "Adam",
+    "Amir",
+    "Bram",
+    "Bryan",
+    "Daan",
+    "David",
+    "Dylan",
+    "Elias",
+    "Finn",
+    "Hamza",
+    "Ilias",
+    "Jayden",
+    "Jesse",
+    "Joris",
+    "Julian",
+    "Kevin",
+    "Lars",
+    "Liam",
+    "Lucas",
+    "Luuk",
+    "Max",
+    "Mohamed",
+    "Nathan",
+    "Nick",
+    "Noah",
+    "Noel",
+    "Oliver",
+    "Owen",
+    "Ramon",
+    "Remi",
+    "Ruben",
+    "Sam",
+    "Sander",
+    "Sem",
+    "Stefan",
+    "Stijn",
+    "Thomas",
+    "Thijs",
+    "Tim",
+    "Tom",
+    "Victor",
+    "Wesley",
+    "Wouter",
+    "Xander",
+    "Younes",
+    "Yusuf",
 ]
 
 VOORNAMEN_V = [
-    "Amber", "Amy", "Anika", "Anna", "Bo", "Charlotte", "Demi", "Elena",
-    "Elisa", "Emma", "Eva", "Fenna", "Fleur", "Hannah", "Iris", "Isabel",
-    "Jana", "Jasmin", "Julia", "Julie", "Kim", "Laura", "Lena", "Lisa",
-    "Lotte", "Luna", "Manon", "Maria", "Maya", "Mila", "Nina", "Nora",
-    "Olivia", "Roos", "Sara", "Selin", "Senna", "Sofia", "Sofie", "Tess",
-    "Yasmine", "Zoë",
+    "Amber",
+    "Amy",
+    "Anika",
+    "Anna",
+    "Bo",
+    "Charlotte",
+    "Demi",
+    "Elena",
+    "Elisa",
+    "Emma",
+    "Eva",
+    "Fenna",
+    "Fleur",
+    "Hannah",
+    "Iris",
+    "Isabel",
+    "Jana",
+    "Jasmin",
+    "Julia",
+    "Julie",
+    "Kim",
+    "Laura",
+    "Lena",
+    "Lisa",
+    "Lotte",
+    "Luna",
+    "Manon",
+    "Maria",
+    "Maya",
+    "Mila",
+    "Nina",
+    "Nora",
+    "Olivia",
+    "Roos",
+    "Sara",
+    "Selin",
+    "Senna",
+    "Sofia",
+    "Sofie",
+    "Tess",
+    "Yasmine",
+    "Zoë",
 ]
 
 ACHTERNAMEN = [
-    "Bakker", "Berg", "Boer", "Bosch", "Brouwer", "de Groot", "de Jong",
-    "de Vries", "Dekker", "Dijkstra", "Dijk", "Dubois", "El Amrani",
-    "El Idrissi", "Geerts", "Hendriks", "Hermans", "Jacobs", "Jansen",
-    "Janssen", "Karakus", "Kaya", "Koolen", "Kramer", "Laan", "Lammers",
-    "Martens", "Meijer", "Mulder", "Nguyen", "Nijhuis", "Osman", "Peters",
-    "Pieters", "Pijpers", "Poulsen", "Ramadan", "Sanders", "Scheepers",
-    "Smeets", "Smit", "Snijders", "Stam", "Timmermans", "van Dam",
-    "van den Berg", "van den Bosch", "van der Linden", "van der Meer",
-    "van Dijk", "van Dongen", "van Leeuwen", "van Wijnen", "Vermeer",
-    "Vermeulen", "Visser", "Willems", "Wolters", "Wouters", "Zijlstra",
+    "Bakker",
+    "Berg",
+    "Boer",
+    "Bosch",
+    "Brouwer",
+    "de Groot",
+    "de Jong",
+    "de Vries",
+    "Dekker",
+    "Dijkstra",
+    "Dijk",
+    "Dubois",
+    "El Amrani",
+    "El Idrissi",
+    "Geerts",
+    "Hendriks",
+    "Hermans",
+    "Jacobs",
+    "Jansen",
+    "Janssen",
+    "Karakus",
+    "Kaya",
+    "Koolen",
+    "Kramer",
+    "Laan",
+    "Lammers",
+    "Martens",
+    "Meijer",
+    "Mulder",
+    "Nguyen",
+    "Nijhuis",
+    "Osman",
+    "Peters",
+    "Pieters",
+    "Pijpers",
+    "Poulsen",
+    "Ramadan",
+    "Sanders",
+    "Scheepers",
+    "Smeets",
+    "Smit",
+    "Snijders",
+    "Stam",
+    "Timmermans",
+    "van Dam",
+    "van den Berg",
+    "van den Bosch",
+    "van der Linden",
+    "van der Meer",
+    "van Dijk",
+    "van Dongen",
+    "van Leeuwen",
+    "van Wijnen",
+    "Vermeer",
+    "Vermeulen",
+    "Visser",
+    "Willems",
+    "Wolters",
+    "Wouters",
+    "Zijlstra",
 ]
 
 MENTOR_NAMEN = [
-    "Anke Visser", "Bart Hendriks", "Carla de Wit", "Dennis Smits",
-    "Ellen Bakker", "Frank Jansen", "Greta Mulder", "Hans Dekker",
-    "Inge Peters", "Jan Willems", "Karen Laan", "Leon Meijer",
-    "Mirjam Scholten", "Niels van Dam", "Olga Brouwer",
+    "Anke Visser",
+    "Bart Hendriks",
+    "Carla de Wit",
+    "Dennis Smits",
+    "Ellen Bakker",
+    "Frank Jansen",
+    "Greta Mulder",
+    "Hans Dekker",
+    "Inge Peters",
+    "Jan Willems",
+    "Karen Laan",
+    "Leon Meijer",
+    "Mirjam Scholten",
+    "Niels van Dam",
+    "Olga Brouwer",
 ]
 
 # ── Opleidingen ───────────────────────────────────────────────────────────────
 
 OPLEIDINGEN = [
-    ("Zorg & Welzijn",         [3, 4], 130),
-    ("Economie",               [3, 4], 120),
-    ("Techniek",               [2, 3, 4], 100),
-    ("Gastheer/Gastvrouw",     [3],    70),
+    ("Zorg & Welzijn", [3, 4], 130),
+    ("Economie", [3, 4], 120),
+    ("Techniek", [2, 3, 4], 100),
+    ("Gastheer/Gastvrouw", [3], 70),
     ("Junior Manager Logistiek", [3, 4], 80),
-    ("Kapper",                 [3, 4],  60),
-    ("Kok",                    [2, 3],  90),
-    ("Metselaar",              [2, 3],  60),
-    ("Tandartsassistent",      [4],    50),
-    ("Verzorgende",            [3],    90),
-    ("Werktuigbouw",           [3, 4], 150),
+    ("Kapper", [3, 4], 60),
+    ("Kok", [2, 3], 90),
+    ("Metselaar", [2, 3], 60),
+    ("Tandartsassistent", [4], 50),
+    ("Verzorgende", [3], 90),
+    ("Werktuigbouw", [3, 4], 150),
 ]
 
 COHORT_LETTERS = ["A", "B", "C"]  # A = oudst
@@ -256,6 +393,7 @@ OER: dict = {
 
 # ── Studenten genereren ───────────────────────────────────────────────────────
 
+
 def genereer_naam(geslacht: int) -> str:
     voornaam = random.choice(VOORNAMEN_V if geslacht == 1 else VOORNAMEN_M)
     achternaam = random.choice(ACHTERNAMEN)
@@ -284,16 +422,18 @@ for opleiding, niveaus, n_studenten in OPLEIDINGEN:
             absence_raw = float(rng.beta(1.0, 20.0)) * 8
         absence = round(absence_raw, 1)
 
-        rows.append({
-            "Studentnummer": str(studentnummer),
-            "Naam": naam,
-            "Mentor": mentor,
-            "Opleiding": opleiding,
-            "StudentAge": leeftijd,
-            "StudentGender": int(geslacht),
-            "Klas": klas,
-            "absence_unauthorized": absence,
-        })
+        rows.append(
+            {
+                "Studentnummer": str(studentnummer),
+                "Naam": naam,
+                "Mentor": mentor,
+                "Opleiding": opleiding,
+                "StudentAge": leeftijd,
+                "StudentGender": int(geslacht),
+                "Klas": klas,
+                "absence_unauthorized": absence,
+            }
+        )
         studentnummer += 1
 
 df = pd.DataFrame(rows)
@@ -303,13 +443,16 @@ df = pd.DataFrame(rows)
 opleiding_mentor_map: dict[str, list[str]] = {}
 all_mentors = list(MENTOR_NAMEN)
 for idx, (opleiding, _, _) in enumerate(OPLEIDINGEN):
-    opleiding_mentor_map[opleiding] = all_mentors[idx % len(all_mentors) : idx % len(all_mentors) + 2] or all_mentors[:2]
+    start = idx % len(all_mentors)
+    opleiding_mentor_map[opleiding] = all_mentors[start : start + 2] or all_mentors[:2]
+
 
 def wijs_mentor(row: pd.Series) -> str:
     mentors = opleiding_mentor_map.get(row["Opleiding"], MENTOR_NAMEN[:2])
     # Gebruik studentnummer als seed voor consistente toewijzing
     idx = int(row["Studentnummer"]) % len(mentors)
     return mentors[idx]
+
 
 df["Mentor"] = df.apply(wijs_mentor, axis=1)
 

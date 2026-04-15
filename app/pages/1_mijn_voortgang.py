@@ -60,9 +60,9 @@ risico_badge = (
 # ── Hero-kaart ─────────────────────────────────────────────────────────────────
 st.markdown(
     f"""<div class="hero-card">
-  <p class="hero-card__naam">{student['naam']}</p>
-  <p class="hero-card__meta">{student['opleiding']} &nbsp;·&nbsp; Niveau {student['niveau']} &nbsp;·&nbsp; {student['leerweg']} &nbsp;·&nbsp; Cohort {student['cohort']}</p>
-  <p class="hero-card__mentor">Mentor: {student['mentor']}</p>
+  <p class="hero-card__naam">{student["naam"]}</p>
+  <p class="hero-card__meta">{student["opleiding"]} &nbsp;·&nbsp; Niveau {student["niveau"]} &nbsp;·&nbsp; {student["leerweg"]} &nbsp;·&nbsp; Cohort {student["cohort"]}</p>
+  <p class="hero-card__mentor">Mentor: {student["mentor"]}</p>
   <span class="badge badge--{niveau_klasse}">{niveau}</span>
   &nbsp;
   {risico_badge}

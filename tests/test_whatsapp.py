@@ -1,15 +1,14 @@
 """Tests voor whatsapp_store, whatsapp en scheduler."""
 
-import json
 import sqlite3
 from datetime import date
-from pathlib import Path
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 import pandas as pd
 import pytest
 
 # ── Fixtures ──────────────────────────────────────────────────────────────────
+
 
 @pytest.fixture(autouse=True)
 def tmp_db(tmp_path, monkeypatch):
@@ -23,6 +22,7 @@ def tmp_db(tmp_path, monkeypatch):
 
 
 # ── whatsapp_store ─────────────────────────────────────────────────────────────
+
 
 class TestTelefoonnummerOpslag:
     def test_registreer_en_ophalen(self):
@@ -185,6 +185,7 @@ class TestGespreksSessies:
 
 # ── whatsapp.parseer_antwoord ─────────────────────────────────────────────────
 
+
 class TestParseerAntwoord:
     def test_score_1(self):
         from samenwijzer.whatsapp import parseer_antwoord
@@ -225,6 +226,7 @@ class TestParseerAntwoord:
 
 
 # ── whatsapp.verwerk_inkomend_bericht ─────────────────────────────────────────
+
 
 class TestVerwerkInkomendBericht:
     DATUM = date(2026, 4, 14)
@@ -314,15 +316,14 @@ class TestVerwerkInkomendBericht:
         from samenwijzer.whatsapp_store import WhatsappSessie, sla_sessie_op
 
         self._registreer_actief()
-        sla_sessie_op(WhatsappSessie(
-            self.NUMMER, "ai_gesprek", MAX_EXCHANGES, "[]", "2026-04-14"
-        ))
+        sla_sessie_op(WhatsappSessie(self.NUMMER, "ai_gesprek", MAX_EXCHANGES, "[]", "2026-04-14"))
 
         with patch("samenwijzer.whatsapp._genereer_ai_reactie", return_value="Test reactie"):
             resultaat = verwerk_inkomend_bericht(self.NUMMER, "het gaat slecht", self.DATUM)
 
         assert resultaat.antwoord_tekst is not None
-        assert "mentor" in resultaat.antwoord_tekst.lower() or "app" in resultaat.antwoord_tekst.lower()
+        tekst = resultaat.antwoord_tekst.lower()
+        assert "mentor" in tekst or "app" in tekst
 
     def test_ai_gesprek_telt_uitwisselingen(self):
         from samenwijzer.whatsapp import verwerk_inkomend_bericht
@@ -341,12 +342,15 @@ class TestVerwerkInkomendBericht:
 
 # ── scheduler ─────────────────────────────────────────────────────────────────
 
+
 class TestScheduler:
     def _maak_df(self) -> pd.DataFrame:
-        return pd.DataFrame({
-            "studentnummer": ["100001", "100002"],
-            "naam": ["Jan Jansen", "Emma de Vries"],
-        })
+        return pd.DataFrame(
+            {
+                "studentnummer": ["100001", "100002"],
+                "naam": ["Jan Jansen", "Emma de Vries"],
+            }
+        )
 
     def test_dry_run_verstuurt_niets(self):
         from samenwijzer.scheduler import stuur_wekelijkse_checkins
@@ -370,7 +374,7 @@ class TestScheduler:
         registreer_nummer("100002", "+31622222222")  # niet geactiveerd
 
         with patch("samenwijzer.scheduler.stuur_checkin") as mock_stuur:
-            resultaat = stuur_wekelijkse_checkins(self._maak_df())
+            stuur_wekelijkse_checkins(self._maak_df())
 
         assert mock_stuur.call_count == 1
         args = mock_stuur.call_args
@@ -411,6 +415,7 @@ class TestScheduler:
 
 # ── whatsapp.sla_whatsapp_gesprek_op / laad_whatsapp_gesprek ──────────────────
 
+
 class TestGesprekOpslag:
     DATUM = date(2026, 4, 14)
     SNR = "100001"
@@ -439,17 +444,22 @@ class TestGesprekOpslag:
         assert wa_mod.laad_whatsapp_gesprek("999999") is None
 
     def test_gesprek_opgeslagen_bij_doorverwijzing(self, tmp_path, monkeypatch):
-        from samenwijzer.whatsapp import MAX_EXCHANGES, verwerk_inkomend_bericht
-        from samenwijzer.whatsapp_store import WhatsappSessie, activeer_nummer, registreer_nummer, sla_sessie_op
-        import samenwijzer.whatsapp as wa_mod
+        import samenwijzer.whatsapp as wa_mod  # noqa: PLC0415
+        from samenwijzer.whatsapp import MAX_EXCHANGES, verwerk_inkomend_bericht  # noqa: PLC0415
+        from samenwijzer.whatsapp_store import (  # noqa: PLC0415
+            WhatsappSessie,
+            activeer_nummer,
+            registreer_nummer,
+            sla_sessie_op,
+        )
 
         monkeypatch.setattr(wa_mod, "_GESPREKKEN_PAD", tmp_path)
 
         registreer_nummer(self.SNR, "+31612345678")
         activeer_nummer(self.SNR)
-        sla_sessie_op(WhatsappSessie(
-            "+31612345678", "ai_gesprek", MAX_EXCHANGES, "[]", "2026-04-14"
-        ))
+        sla_sessie_op(
+            WhatsappSessie("+31612345678", "ai_gesprek", MAX_EXCHANGES, "[]", "2026-04-14")
+        )
 
         with patch("samenwijzer.whatsapp._genereer_ai_reactie", return_value="Test reactie"):
             verwerk_inkomend_bericht("+31612345678", "het gaat slecht", self.DATUM)

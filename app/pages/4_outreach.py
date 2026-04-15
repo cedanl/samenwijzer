@@ -136,7 +136,9 @@ with tab_werklijst:
                     label_visibility="collapsed",
                 )
 
-        with st.expander(f"Bericht opstellen voor {student['naam'].split()[0]}", expanded=(voortgang_pct < 30)):
+        with st.expander(
+            f"Bericht opstellen voor {student['naam'].split()[0]}", expanded=(voortgang_pct < 30)
+        ):
             col_toon, col_verwijzing = st.columns(2)
             with col_toon:
                 toon = st.radio(

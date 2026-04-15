@@ -258,8 +258,17 @@ def test_filter_mentor_geeft_subset(df_studenten, df_welzijn):
 
 
 def test_filter_mentor_leeg_dataframe_blijft_leeg():
-    leeg = pd.DataFrame(columns=["studentnummer", "naam", "mentor",
-                                  "datum", "antwoord", "toelichting", "welzijnswaarde"])
+    leeg = pd.DataFrame(
+        columns=[
+            "studentnummer",
+            "naam",
+            "mentor",
+            "datum",
+            "antwoord",
+            "toelichting",
+            "welzijnswaarde",
+        ]
+    )
     result = filter_signaleringen_voor_mentor(leeg, "M. Bakker")
     assert result.empty
 

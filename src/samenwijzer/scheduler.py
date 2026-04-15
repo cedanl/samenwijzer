@@ -63,7 +63,9 @@ def stuur_wekelijkse_checkins(df_studenten: pd.DataFrame, dry_run: bool = False)
 
     log.info(
         "Verzending afgerond — verstuurd: %d, overgeslagen: %d, fouten: %d",
-        verstuurd, overgeslagen, fouten,
+        verstuurd,
+        overgeslagen,
+        fouten,
     )
     return {"verstuurd": verstuurd, "overgeslagen": overgeslagen, "fouten": fouten}
 
@@ -73,6 +75,7 @@ def _main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
     from dotenv import load_dotenv
+
     load_dotenv(Path(__file__).parent.parent.parent / ".env")
 
     from samenwijzer.prepare import load_berend_csv

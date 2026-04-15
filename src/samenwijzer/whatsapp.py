@@ -49,14 +49,15 @@ _VERIFICATIE_TEKST = (
     "Antwoord met JA om te bevestigen, of negeer dit bericht."
 )
 _FOUTBERICHT_TEKST = (
-    "Ik begreep je antwoord niet. Stuur 1, 2 of 3:\n"
-    "1 – Goed  |  2 – Matig  |  3 – Zwaar"
+    "Ik begreep je antwoord niet. Stuur 1, 2 of 3:\n1 – Goed  |  2 – Matig  |  3 – Zwaar"
 )
 _DOORVERWIJZING_TEKST = (
     "Bedankt voor het delen 🙏 Je mentor heeft een seintje gekregen. "
     "Voor een uitgebreider gesprek kun je terecht in de Samenwijzer-app."
 )
-_STOP_BEVESTIGING = "Je bent afgemeld voor de welzijnscheck. Stuur JA als je je opnieuw wilt aanmelden."
+_STOP_BEVESTIGING = (
+    "Je bent afgemeld voor de welzijnscheck. Stuur JA als je je opnieuw wilt aanmelden."
+)
 _OPT_IN_BEVESTIGING = "Gelukt! Je ontvangt voortaan elke maandag een korte check-in van ons. ✅"
 _OPT_IN_GEWEIGERD = "Geen probleem. Je ontvangt geen berichten meer."
 
@@ -73,6 +74,7 @@ _AI_SYSTEEM = (
 
 # ── Dataclasses ───────────────────────────────────────────────────────────────
 
+
 @dataclass
 class AntwoordResultaat:
     soort: Literal["score", "tekst", "stop", "ja", "onbekend"]
@@ -83,19 +85,19 @@ class AntwoordResultaat:
 @dataclass
 class VerwerkResultaat:
     """Resultaat van verwerk_inkomend_bericht."""
+
     antwoord_tekst: str | None
     welzijns_check: WelzijnsCheck | None
 
 
 # ── Twilio client ─────────────────────────────────────────────────────────────
 
+
 def _twilio() -> TwilioClient:
     sid = os.getenv("TWILIO_ACCOUNT_SID")
     token = os.getenv("TWILIO_AUTH_TOKEN")
     if not sid or not token:
-        raise EnvironmentError(
-            "TWILIO_ACCOUNT_SID en TWILIO_AUTH_TOKEN zijn vereist in .env."
-        )
+        raise OSError("TWILIO_ACCOUNT_SID en TWILIO_AUTH_TOKEN zijn vereist in .env.")
     return TwilioClient(sid, token)
 
 
@@ -108,6 +110,7 @@ def _stuur(to: str, tekst: str) -> None:
 
 
 # ── Publieke verstuurders ─────────────────────────────────────────────────────
+
 
 def stuur_checkin(naam: str, telefoonnummer: str) -> None:
     """Verstuur de wekelijkse welzijnscheck naar een student."""
@@ -133,6 +136,7 @@ def stuur_foutbericht(telefoonnummer: str) -> None:
 
 # ── Berichtparsing ────────────────────────────────────────────────────────────
 
+
 def parseer_antwoord(body: str) -> AntwoordResultaat:
     """Parseer een inkomend WhatsApp-bericht naar een getypeerd resultaat."""
     tekst = body.strip()
@@ -150,6 +154,7 @@ def parseer_antwoord(body: str) -> AntwoordResultaat:
 
 
 # ── Gespreksverwerking ────────────────────────────────────────────────────────
+
 
 def verwerk_inkomend_bericht(
     from_number: str,
@@ -252,6 +257,7 @@ def verwerk_inkomend_bericht(
 
 # ── Gesprekopslag ─────────────────────────────────────────────────────────────
 
+
 def sla_whatsapp_gesprek_op(studentnummer: str, context: list[dict], datum: date) -> None:
     """Sla een afgesloten WhatsApp-gesprek op als leercoach-context.
 
@@ -262,7 +268,9 @@ def sla_whatsapp_gesprek_op(studentnummer: str, context: list[dict], datum: date
     pad = _GESPREKKEN_PAD / f"whatsapp_context_{studentnummer}.json"
     payload = {"studentnummer": studentnummer, "datum": datum.isoformat(), "gesprek": context}
     pad.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    log.info("WhatsApp-gesprek opgeslagen voor student %s (%d berichten)", studentnummer, len(context))
+    log.info(
+        "WhatsApp-gesprek opgeslagen voor student %s (%d berichten)", studentnummer, len(context)
+    )
 
 
 def laad_whatsapp_gesprek(studentnummer: str) -> dict | None:
@@ -277,6 +285,7 @@ def laad_whatsapp_gesprek(studentnummer: str) -> dict | None:
 
 
 # ── AI ────────────────────────────────────────────────────────────────────────
+
 
 def _genereer_ai_reactie(context: list[dict]) -> str:
     """Genereer een korte empathische reactie voor WhatsApp (max. 2 zinnen)."""

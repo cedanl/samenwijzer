@@ -6,7 +6,7 @@ from pathlib import Path
 import pandas as pd
 
 from samenwijzer.transform import get_kerntaak_columns, get_werkproces_columns
-from samenwijzer.wellbeing import WelzijnsCheck, heeft_signaal, welzijnswaarde
+from samenwijzer.wellbeing import WelzijnsCheck, welzijnswaarde
 
 _OER_DATA: dict | None = None
 _OER_JSON = (
@@ -263,20 +263,21 @@ def signaleringen(
     """
     if df_welzijn.empty:
         return pd.DataFrame(
-            columns=["studentnummer", "naam", "mentor", "datum",
-                     "antwoord", "toelichting", "welzijnswaarde"]
+            columns=[
+                "studentnummer",
+                "naam",
+                "mentor",
+                "datum",
+                "antwoord",
+                "toelichting",
+                "welzijnswaarde",
+            ]
         )
 
-    meest_recent = (
-        df_welzijn.sort_values("datum")
-        .groupby("studentnummer", as_index=False)
-        .last()
-    )
+    meest_recent = df_welzijn.sort_values("datum").groupby("studentnummer", as_index=False).last()
 
     meest_recent["welzijnswaarde"] = meest_recent.apply(
-        lambda r: welzijnswaarde(
-            WelzijnsCheck(r["studentnummer"], r["datum"], int(r["antwoord"]))
-        ),
+        lambda r: welzijnswaarde(WelzijnsCheck(r["studentnummer"], r["datum"], int(r["antwoord"]))),
         axis=1,
     )
 
@@ -289,8 +290,17 @@ def signaleringen(
     )
 
     return (
-        signalen[["studentnummer", "naam", "mentor", "datum",
-                  "antwoord", "toelichting", "welzijnswaarde"]]
+        signalen[
+            [
+                "studentnummer",
+                "naam",
+                "mentor",
+                "datum",
+                "antwoord",
+                "toelichting",
+                "welzijnswaarde",
+            ]
+        ]
         .sort_values("welzijnswaarde")
         .reset_index(drop=True)
     )
