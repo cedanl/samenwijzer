@@ -78,10 +78,11 @@ def init_db(conn: sqlite3.Connection) -> None:
     conn.commit()
 
 
-def get_connection(db_path: Path) -> sqlite3.Connection:
-    conn = sqlite3.connect(str(db_path), check_same_thread=False)
+def get_connection(db_path: Path, timeout: float = 30.0) -> sqlite3.Connection:
+    conn = sqlite3.connect(str(db_path), check_same_thread=False, timeout=timeout)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
+    conn.execute("PRAGMA journal_mode = WAL")
     return conn
 
 
