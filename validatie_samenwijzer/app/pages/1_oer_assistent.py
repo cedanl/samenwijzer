@@ -1,5 +1,6 @@
 """Student: hybride OER-chat met doorvraagmogelijkheid."""
 
+import html
 import os
 from pathlib import Path
 
@@ -56,7 +57,7 @@ for i, bericht in enumerate(st.session_state.chat_history):
             else bericht["content"]
         )
         st.markdown(
-            f'<div class="chat-vraag">💬 {vraag_tekst}</div>',
+            f'<div class="chat-vraag">💬 {html.escape(vraag_tekst)}</div>',
             unsafe_allow_html=True,
         )
     else:
@@ -73,8 +74,8 @@ for i, bericht in enumerate(st.session_state.chat_history):
                         pagina = bron["metadata"].get("pagina", "?")
                         st.markdown(
                             f'<div class="bron-kaartje">📄 <strong>Pagina {pagina}'
-                            f'</strong><br>'
-                            f'<em>{bron["tekst"][:200]}…</em></div>',
+                            f"</strong><br>"
+                            f"<em>{bron['tekst'][:200]}…</em></div>",
                             unsafe_allow_html=True,
                         )
 
@@ -93,7 +94,7 @@ if vraag and oer_id:
     )
 
     st.markdown(
-        f'<div class="chat-vraag">💬 {vraag}</div>',
+        f'<div class="chat-vraag">💬 {html.escape(vraag)}</div>',
         unsafe_allow_html=True,
     )
 
@@ -110,14 +111,16 @@ if vraag and oer_id:
                 pagina = bron["metadata"].get("pagina", "?")
                 st.markdown(
                     f'<div class="bron-kaartje">📄 <strong>Pagina {pagina}</strong><br>'
-                    f'<em>{bron["tekst"][:200]}…</em></div>',
+                    f"<em>{bron['tekst'][:200]}…</em></div>",
                     unsafe_allow_html=True,
                 )
 
-    st.session_state.chat_history.extend([
-        {"role": "user", "content": vraag},
-        {"role": "assistant", "content": antwoord},
-    ])
+    st.session_state.chat_history.extend(
+        [
+            {"role": "user", "content": vraag},
+            {"role": "assistant", "content": antwoord},
+        ]
+    )
     st.session_state.chat_bronnen.append(chunks)
 
 render_footer()

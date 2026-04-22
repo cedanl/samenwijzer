@@ -1,8 +1,11 @@
 """Hybride OER-chat: retrieval + prompt-opbouw + Claude streaming."""
 
+from __future__ import annotations
+
 from collections.abc import Generator
 
 import anthropic
+import openai
 
 LAGE_RELEVANTIE_BERICHT = (
     "Ik kon geen relevante informatie over deze vraag vinden in jouw OER. "
@@ -18,7 +21,7 @@ _SYSTEEM_TEMPLATE = (
 )
 
 
-def embed_vraag(openai_client, vraag: str) -> list[float]:
+def embed_vraag(openai_client: openai.OpenAI, vraag: str) -> list[float]:
     """Maak een embedding van de gebruikersvraag."""
     response = openai_client.embeddings.create(
         model="text-embedding-3-small",
@@ -39,8 +42,7 @@ def bouw_berichten(
 
     if chunks:
         passages = "\n\n".join(
-            f"[Pagina {c['metadata'].get('pagina', '?')}]\n{c['tekst']}"
-            for c in chunks
+            f"[Pagina {c['metadata'].get('pagina', '?')}]\n{c['tekst']}" for c in chunks
         )
         context = f"{systeem}\n\nRelevante OER-passages:\n{passages}"
     else:

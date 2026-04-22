@@ -1,8 +1,5 @@
 """Mentor: studentenoverzicht met voortgangsbadges."""
 
-import os
-from pathlib import Path
-
 import streamlit as st
 from dotenv import load_dotenv
 
@@ -10,12 +7,9 @@ load_dotenv()
 
 st.set_page_config(page_title="Mijn studenten", page_icon="👥", layout="wide")
 
+from validatie_samenwijzer._db import get_conn  # noqa: E402
 from validatie_samenwijzer.auth import vereist_mentor  # noqa: E402
-from validatie_samenwijzer.db import (  # noqa: E402
-    get_connection,
-    get_studenten_by_mentor_id,
-    init_db,
-)
+from validatie_samenwijzer.db import get_studenten_by_mentor_id  # noqa: E402
 from validatie_samenwijzer.styles import (  # noqa: E402
     CSS,
     GROEN,
@@ -29,24 +23,28 @@ st.markdown(CSS, unsafe_allow_html=True)
 vereist_mentor()
 render_nav()
 
-DB_PATH = Path(os.environ.get("DB_PATH", "data/validatie.db"))
-
-
-@st.cache_resource
-def _conn():
-    conn = get_connection(DB_PATH)
-    init_db(conn)
-    return conn
-
 
 mentor_id = st.session_state.get("gebruiker_id")
 st.subheader("👥 Mijn studenten")
 
-studenten = get_studenten_by_mentor_id(_conn(), mentor_id)
+studenten = get_studenten_by_mentor_id(get_conn(), mentor_id)
 
 if not studenten:
     st.info("Geen studenten gekoppeld aan jouw account.")
     st.stop()
+
+# Haal OER-info in één query op voor alle studenten (voorkomt N+1)
+oer_ids = list({s["oer_id"] for s in studenten})
+placeholders = ",".join("?" * len(oer_ids))
+oer_info: dict[int, dict] = {
+    r["id"]: dict(r)
+    for r in get_conn()
+    .execute(
+        f"SELECT id, opleiding, leerweg, cohort FROM oer_documenten WHERE id IN ({placeholders})",
+        oer_ids,
+    )
+    .fetchall()
+}
 
 st.caption(f"{len(studenten)} studenten · Klik op een student om een begeleidingssessie te starten")
 
@@ -65,14 +63,7 @@ for student in studenten:
         col1, col2, col3, col4, col5 = st.columns([3, 2, 2, 2, 2])
         with col1:
             st.markdown(f"**{student['naam']}**")
-            oer = (
-                _conn()
-                .execute(
-                    "SELECT opleiding, leerweg, cohort FROM oer_documenten WHERE id = ?",
-                    (student["oer_id"],),
-                )
-                .fetchone()
-            )
+            oer = oer_info.get(student["oer_id"])
             if oer:
                 st.caption(f"{oer['opleiding']} · {oer['leerweg']} · {oer['cohort']}")
         with col2:

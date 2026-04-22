@@ -40,6 +40,7 @@ def _naam_heeft_crebo(bestandsnaam: str) -> bool:
 
 # ── Metadata uit tekst ────────────────────────────────────────────────────────
 
+
 def _extraheer_uit_tekst(tekst: str) -> dict:
     crebo_m = _CREBO_MET_CONTEXT.search(tekst) or _CREBO_PUUR.search(tekst)
     leerweg_m = _LEERWEG.search(tekst)
@@ -52,6 +53,7 @@ def _extraheer_uit_tekst(tekst: str) -> dict:
 
 
 # ── Tekst uit eerste pagina's ─────────────────────────────────────────────────
+
 
 def _lees_eerste_paginas(pad: Path, n: int = 2) -> str:
     import pdfplumber
@@ -82,6 +84,7 @@ def _lees_eerste_paginas(pad: Path, n: int = 2) -> str:
 
 # ── Nieuwe bestandsnaam ───────────────────────────────────────────────────────
 
+
 def _nieuwe_naam(pad: Path, meta: dict) -> Path | None:
     """Geeft nieuw pad terug, of None als er onvoldoende metadata is."""
     crebo = meta.get("crebo")
@@ -97,6 +100,7 @@ def _nieuwe_naam(pad: Path, meta: dict) -> Path | None:
 
 
 # ── Verwerk één bestand ───────────────────────────────────────────────────────
+
 
 def _verwerk(pad: Path, dry_run: bool) -> str:
     """Retourneert 'hernoemd', 'overgeslagen' of 'geen_metadata'."""
@@ -123,7 +127,11 @@ def _verwerk(pad: Path, dry_run: bool) -> str:
     cohort_info = meta.get("cohort") or "(geen cohort gevonden, 2025 aangenomen)"
     logger.info(
         "%s → %s  [crebo=%s leerweg=%s cohort=%s]",
-        pad.name, nieuw_pad.name, meta["crebo"], leerweg_info, cohort_info,
+        pad.name,
+        nieuw_pad.name,
+        meta["crebo"],
+        leerweg_info,
+        cohort_info,
     )
 
     if not dry_run:
@@ -134,12 +142,14 @@ def _verwerk(pad: Path, dry_run: bool) -> str:
 
 # ── Hoofdprogramma ────────────────────────────────────────────────────────────
 
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Hernoem OER-PDFs met metadata-prefix")
     parser.add_argument("--oeren-pad", default="oeren", help="Map met OER-mappen")
     parser.add_argument("--map", help="Verwerk alleen deze submap (bijv. talland_oeren)")
     parser.add_argument(
-        "--dry-run", action="store_true",
+        "--dry-run",
+        action="store_true",
         help="Toon wat hernoemd zou worden zonder daadwerkelijk te hernoemen",
     )
     args = parser.parse_args()

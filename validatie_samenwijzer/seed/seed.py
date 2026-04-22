@@ -50,11 +50,21 @@ def seed(db_path: Path) -> None:
     # OER documenten — gebruik geïndexeerde bestanden (crebo in bestandsnaam)
     # Talland 25655 BBL: bestandsnaam bevat crebo → ingest kan dit indexeren
     oer_vz_bbl = _get_of_maak_oer(
-        conn, inst_talland["id"], "Mbo-Verpleegkundige", "25655", "2025", "BBL",
+        conn,
+        inst_talland["id"],
+        "Mbo-Verpleegkundige",
+        "25655",
+        "2025",
+        "BBL",
         "oeren/talland_oeren/25655 Mbo-Verpleegkundige 24 maanden BBL.pdf",
     )
     oer_kok_bbl = _get_of_maak_oer(
-        conn, inst_dv["id"], "Kok", "25180", "2025", "BBL",
+        conn,
+        inst_dv["id"],
+        "Kok",
+        "25180",
+        "2025",
+        "BBL",
         "oeren/davinci_oeren/25180BBL2025MJP-Kok.pdf",
     )
 
@@ -95,16 +105,58 @@ def seed(db_path: Path) -> None:
     # Studenten
     studenten = [
         (
-            "100001", "Fatima Al-Hassan", inst_talland["id"], oer_vz_bbl, mentor1_id,
-            19, "V", "VZ-1A", 0.54, 37.0, 60.0, 8.0, 2.0, "VMBO_TL", "Zorgenwelzijn", False,
+            "100001",
+            "Fatima Al-Hassan",
+            inst_talland["id"],
+            oer_vz_bbl,
+            mentor1_id,
+            19,
+            "V",
+            "VZ-1A",
+            0.54,
+            37.0,
+            60.0,
+            8.0,
+            2.0,
+            "VMBO_TL",
+            "Zorgenwelzijn",
+            False,
         ),
         (
-            "100002", "Daan Vermeer", inst_talland["id"], oer_vz_bbl, mentor1_id,
-            20, "M", "VZ-1A", 0.78, 52.0, 60.0, 1.0, 4.0, "VMBO_KB", "Zorgenwelzijn", False,
+            "100002",
+            "Daan Vermeer",
+            inst_talland["id"],
+            oer_vz_bbl,
+            mentor1_id,
+            20,
+            "M",
+            "VZ-1A",
+            0.78,
+            52.0,
+            60.0,
+            1.0,
+            4.0,
+            "VMBO_KB",
+            "Zorgenwelzijn",
+            False,
         ),
         (
-            "100003", "Lina Kowalski", inst_dv["id"], oer_kok_bbl, mentor2_id,
-            18, "V", "HO-1B", 0.38, 24.0, 60.0, 14.0, 0.0, "VMBO_BB", "Economie", False,
+            "100003",
+            "Lina Kowalski",
+            inst_dv["id"],
+            oer_kok_bbl,
+            mentor2_id,
+            18,
+            "V",
+            "HO-1B",
+            0.38,
+            24.0,
+            60.0,
+            14.0,
+            0.0,
+            "VMBO_BB",
+            "Economie",
+            False,
         ),
     ]
 
@@ -114,14 +166,44 @@ def seed(db_path: Path) -> None:
     }
 
     for (
-        nr, naam, inst_id, oer_id, mentor_id,
-        lft, gsl, klas, vg, bsa_b, bsa_v, afwn, afwg, voopl, sect, drop
+        nr,
+        naam,
+        inst_id,
+        oer_id,
+        mentor_id,
+        lft,
+        gsl,
+        klas,
+        vg,
+        bsa_b,
+        bsa_v,
+        afwn,
+        afwg,
+        voopl,
+        sect,
+        drop,
     ) in studenten:
         if get_student_by_studentnummer(conn, nr):
             continue
         st_id = voeg_student_toe(
-            conn, nr, naam, WW_HASH, inst_id, oer_id, mentor_id,
-            lft, gsl, klas, vg, bsa_b, bsa_v, afwn, afwg, voopl, sect, drop,
+            conn,
+            nr,
+            naam,
+            WW_HASH,
+            inst_id,
+            oer_id,
+            mentor_id,
+            lft,
+            gsl,
+            klas,
+            vg,
+            bsa_b,
+            bsa_v,
+            afwn,
+            afwg,
+            voopl,
+            sect,
+            drop,
         )
         for kt_id in kt_per_oer[oer_id]:
             basis = vg * 100

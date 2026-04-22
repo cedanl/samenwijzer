@@ -11,8 +11,8 @@ load_dotenv()
 
 st.set_page_config(page_title="Mijn OER", page_icon="📄", layout="wide")
 
+from validatie_samenwijzer._db import get_conn  # noqa: E402
 from validatie_samenwijzer.auth import vereist_student  # noqa: E402
-from validatie_samenwijzer.db import get_connection, init_db  # noqa: E402
 from validatie_samenwijzer.ingest import extraheer_tekst_html  # noqa: E402
 from validatie_samenwijzer.styles import CSS, render_footer, render_nav  # noqa: E402
 
@@ -20,15 +20,7 @@ st.markdown(CSS, unsafe_allow_html=True)
 vereist_student()
 render_nav()
 
-DB_PATH = Path(os.environ.get("DB_PATH", "data/validatie.db"))
 OEREN_PAD = Path(os.environ.get("OEREN_PAD", "oeren"))
-
-
-@st.cache_resource
-def _conn():
-    conn = get_connection(DB_PATH)
-    init_db(conn)
-    return conn
 
 
 oer_id = st.session_state.get("oer_id")
@@ -36,9 +28,7 @@ opleiding = st.session_state.get("opleiding", "")
 
 st.subheader(f"📄 Mijn OER — {opleiding}")
 
-oer = _conn().execute(
-    "SELECT * FROM oer_documenten WHERE id = ?", (oer_id,)
-).fetchone()
+oer = get_conn().execute("SELECT * FROM oer_documenten WHERE id = ?", (oer_id,)).fetchone()
 
 if not oer:
     st.warning("Geen OER gekoppeld aan jouw profiel.")

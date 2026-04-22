@@ -1,5 +1,6 @@
 """Mentor: studentprofiel + OER-assistent naast elkaar."""
 
+import html
 import os
 from pathlib import Path
 
@@ -11,6 +12,7 @@ load_dotenv()
 st.set_page_config(page_title="Begeleidingssessie", page_icon="🎓", layout="wide")
 
 from validatie_samenwijzer._ai import _client as ai_client  # noqa: E402
+from validatie_samenwijzer._db import get_conn  # noqa: E402
 from validatie_samenwijzer._openai import _client as openai_client  # noqa: E402
 from validatie_samenwijzer.auth import vereist_mentor  # noqa: E402
 from validatie_samenwijzer.chat import (  # noqa: E402
@@ -19,11 +21,7 @@ from validatie_samenwijzer.chat import (  # noqa: E402
     embed_vraag,
     genereer_antwoord,
 )
-from validatie_samenwijzer.db import (  # noqa: E402
-    get_connection,
-    get_kerntaak_scores_by_student_id,
-    init_db,
-)
+from validatie_samenwijzer.db import get_kerntaak_scores_by_student_id  # noqa: E402
 from validatie_samenwijzer.styles import (  # noqa: E402
     CSS,
     GROEN,
@@ -42,15 +40,7 @@ st.markdown(CSS, unsafe_allow_html=True)
 vereist_mentor()
 render_nav()
 
-DB_PATH = Path(os.environ.get("DB_PATH", "data/validatie.db"))
 CHROMA_PATH = Path(os.environ.get("CHROMA_PATH", "data/chroma"))
-
-
-@st.cache_resource
-def _conn():
-    conn = get_connection(DB_PATH)
-    init_db(conn)
-    return conn
 
 
 @st.cache_resource
@@ -65,7 +55,7 @@ if not student:
     st.stop()
 
 oer = (
-    _conn()
+    get_conn()
     .execute(
         """SELECT oer_documenten.*, instellingen.display_naam
        FROM oer_documenten JOIN instellingen ON instellingen.id =
@@ -112,7 +102,7 @@ with col_profiel:
             unsafe_allow_html=True,
         )
 
-    scores = get_kerntaak_scores_by_student_id(_conn(), student["id"])
+    scores = get_kerntaak_scores_by_student_id(get_conn(), student["id"])
     if scores:
         with st.container(border=True):
             st.markdown("**Kerntaken**")
@@ -161,7 +151,7 @@ with col_chat:
                 else bericht["content"]
             )
             st.markdown(
-                f'<div class="chat-vraag">💬 {vraag_tekst}</div>',
+                f'<div class="chat-vraag">💬 {html.escape(vraag_tekst)}</div>',
                 unsafe_allow_html=True,
             )
         else:
@@ -194,7 +184,7 @@ with col_chat:
         )
 
         st.markdown(
-            f'<div class="chat-vraag">💬 {vraag}</div>',
+            f'<div class="chat-vraag">💬 {html.escape(vraag)}</div>',
             unsafe_allow_html=True,
         )
 

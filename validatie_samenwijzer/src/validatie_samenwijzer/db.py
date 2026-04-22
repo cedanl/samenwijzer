@@ -101,8 +101,15 @@ def get_instelling_by_naam(conn: sqlite3.Connection, naam: str) -> sqlite3.Row |
     return conn.execute("SELECT * FROM instellingen WHERE naam = ?", (naam,)).fetchone()
 
 
-def voeg_oer_document_toe(conn: sqlite3.Connection, instelling_id: int, opleiding: str,
-                           crebo: str, cohort: str, leerweg: str, bestandspad: str) -> int:
+def voeg_oer_document_toe(
+    conn: sqlite3.Connection,
+    instelling_id: int,
+    opleiding: str,
+    crebo: str,
+    cohort: str,
+    leerweg: str,
+    bestandspad: str,
+) -> int:
     cur = conn.execute(
         """INSERT INTO oer_documenten
            (instelling_id, opleiding, crebo, cohort, leerweg, bestandspad)
@@ -113,8 +120,9 @@ def voeg_oer_document_toe(conn: sqlite3.Connection, instelling_id: int, opleidin
     return cur.lastrowid
 
 
-def get_oer_document(conn: sqlite3.Connection, crebo: str, cohort: str,
-                     leerweg: str) -> sqlite3.Row | None:
+def get_oer_document(
+    conn: sqlite3.Connection, crebo: str, cohort: str, leerweg: str
+) -> sqlite3.Row | None:
     return conn.execute(
         "SELECT * FROM oer_documenten WHERE crebo = ? AND cohort = ? AND leerweg = ?",
         (crebo, cohort, leerweg),
@@ -126,8 +134,9 @@ def markeer_geindexeerd(conn: sqlite3.Connection, oer_id: int) -> None:
     conn.commit()
 
 
-def voeg_kerntaak_toe(conn: sqlite3.Connection, oer_id: int, code: str, naam: str,
-                      type: str, volgorde: int) -> int:
+def voeg_kerntaak_toe(
+    conn: sqlite3.Connection, oer_id: int, code: str, naam: str, type: str, volgorde: int
+) -> int:
     cur = conn.execute(
         "INSERT INTO kerntaken (oer_id, code, naam, type, volgorde) VALUES (?, ?, ?, ?, ?)",
         (oer_id, code, naam, type, volgorde),
@@ -143,8 +152,9 @@ def get_kerntaken_by_oer_id(conn: sqlite3.Connection, oer_id: int) -> list[sqlit
     ).fetchall()
 
 
-def voeg_mentor_toe(conn: sqlite3.Connection, naam: str, wachtwoord_hash: str,
-                    instelling_id: int) -> int:
+def voeg_mentor_toe(
+    conn: sqlite3.Connection, naam: str, wachtwoord_hash: str, instelling_id: int
+) -> int:
     cur = conn.execute(
         "INSERT INTO mentoren (naam, wachtwoord_hash, instelling_id) VALUES (?, ?, ?)",
         (naam, wachtwoord_hash, instelling_id),
@@ -175,29 +185,59 @@ def get_oer_ids_by_mentor_id(conn: sqlite3.Connection, mentor_id: int) -> list[i
     return [r["oer_id"] for r in rows]
 
 
-def voeg_student_toe(conn: sqlite3.Connection, studentnummer: str, naam: str,
-                     wachtwoord_hash: str, instelling_id: int, oer_id: int,
-                     mentor_id: int | None, leeftijd: int | None, geslacht: str | None,
-                     klas: str | None, voortgang: float | None, bsa_behaald: float | None,
-                     bsa_vereist: float | None, absence_unauthorized: float | None,
-                     absence_authorized: float | None, vooropleiding: str | None,
-                     sector: str | None, dropout: bool) -> int:
+def voeg_student_toe(
+    conn: sqlite3.Connection,
+    studentnummer: str,
+    naam: str,
+    wachtwoord_hash: str,
+    instelling_id: int,
+    oer_id: int,
+    mentor_id: int | None,
+    leeftijd: int | None,
+    geslacht: str | None,
+    klas: str | None,
+    voortgang: float | None,
+    bsa_behaald: float | None,
+    bsa_vereist: float | None,
+    absence_unauthorized: float | None,
+    absence_authorized: float | None,
+    vooropleiding: str | None,
+    sector: str | None,
+    dropout: bool,
+) -> int:
     cur = conn.execute(
         """INSERT INTO studenten
            (studentnummer, naam, wachtwoord_hash, instelling_id, oer_id, mentor_id,
             leeftijd, geslacht, klas, voortgang, bsa_behaald, bsa_vereist,
             absence_unauthorized, absence_authorized, vooropleiding, sector, dropout)
            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
-        (studentnummer, naam, wachtwoord_hash, instelling_id, oer_id, mentor_id,
-         leeftijd, geslacht, klas, voortgang, bsa_behaald, bsa_vereist,
-         absence_unauthorized, absence_authorized, vooropleiding, sector, int(dropout)),
+        (
+            studentnummer,
+            naam,
+            wachtwoord_hash,
+            instelling_id,
+            oer_id,
+            mentor_id,
+            leeftijd,
+            geslacht,
+            klas,
+            voortgang,
+            bsa_behaald,
+            bsa_vereist,
+            absence_unauthorized,
+            absence_authorized,
+            vooropleiding,
+            sector,
+            int(dropout),
+        ),
     )
     conn.commit()
     return cur.lastrowid
 
 
-def get_student_by_studentnummer(conn: sqlite3.Connection,
-                                 studentnummer: str) -> sqlite3.Row | None:
+def get_student_by_studentnummer(
+    conn: sqlite3.Connection, studentnummer: str
+) -> sqlite3.Row | None:
     return conn.execute(
         "SELECT * FROM studenten WHERE studentnummer = ?", (studentnummer,)
     ).fetchone()
@@ -210,8 +250,9 @@ def get_studenten_by_mentor_id(conn: sqlite3.Connection, mentor_id: int) -> list
     ).fetchall()
 
 
-def voeg_student_kerntaak_score_toe(conn: sqlite3.Connection, student_id: int,
-                                     kerntaak_id: int, score: float) -> None:
+def voeg_student_kerntaak_score_toe(
+    conn: sqlite3.Connection, student_id: int, kerntaak_id: int, score: float
+) -> None:
     conn.execute(
         """INSERT OR REPLACE INTO student_kerntaak_scores (student_id, kerntaak_id, score)
            VALUES (?, ?, ?)""",
@@ -220,8 +261,9 @@ def voeg_student_kerntaak_score_toe(conn: sqlite3.Connection, student_id: int,
     conn.commit()
 
 
-def get_kerntaak_scores_by_student_id(conn: sqlite3.Connection,
-                                       student_id: int) -> list[sqlite3.Row]:
+def get_kerntaak_scores_by_student_id(
+    conn: sqlite3.Connection, student_id: int
+) -> list[sqlite3.Row]:
     return conn.execute(
         """SELECT sks.score, k.code, k.naam, k.type, k.volgorde
            FROM student_kerntaak_scores sks

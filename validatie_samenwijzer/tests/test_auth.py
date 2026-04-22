@@ -21,13 +21,16 @@ def conn():
     c.close()
 
 
-def test_hash_wachtwoord_is_deterministisch():
-    assert hash_wachtwoord("test") == hash_wachtwoord("test")
+def test_hash_wachtwoord_bevat_salt():
+    h = hash_wachtwoord("test")
+    assert ":" in h, "Hash moet salt:dk formaat hebben"
+    salt_hex, dk_hex = h.split(":", 1)
+    assert len(bytes.fromhex(salt_hex)) == 32
+    assert len(bytes.fromhex(dk_hex)) == 32
 
 
-def test_hash_wachtwoord_is_sha256():
-    import hashlib
-    assert hash_wachtwoord("abc") == hashlib.sha256("abc".encode()).hexdigest()
+def test_hash_wachtwoord_uniek_per_aanroep():
+    assert hash_wachtwoord("test") != hash_wachtwoord("test")
 
 
 def test_login_student_geldig(conn):

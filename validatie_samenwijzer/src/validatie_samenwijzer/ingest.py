@@ -1,7 +1,13 @@
 """OER-ingestie pipeline: parse → extraheer → chunk → embed → sla op."""
 
+from __future__ import annotations
+
 import re
+import sqlite3
 from pathlib import Path
+
+import chromadb
+import openai
 
 # ── Bestandsnaam parsen ───────────────────────────────────────────────────────
 
@@ -46,6 +52,7 @@ def parseer_bestandsnaam(bestandsnaam: str) -> dict | None:
 
 
 # ── Tekst chunken ─────────────────────────────────────────────────────────────
+
 
 def chunk_tekst(tekst: str, chunk_grootte: int = 500, overlap: int = 50) -> list[str]:
     """Splits tekst in chunks van ~chunk_grootte woorden met overlap."""
@@ -136,6 +143,7 @@ def extraheer_tekst_pdf(pad: Path) -> str:
 
 def extraheer_tekst_html(pad: Path) -> str:
     from bs4 import BeautifulSoup
+
     html = pad.read_text(encoding="utf-8", errors="replace")
     soep = BeautifulSoup(html, "html.parser")
     for tag in soep(["script", "style", "nav", "header", "footer"]):
@@ -161,10 +169,19 @@ def extraheer_tekst(pad: Path) -> str:
 
 # ── CLI pipeline ──────────────────────────────────────────────────────────────
 
-def _verwerk_bestand(pad: Path, instelling_naam: str, conn, collection,
-                     openai_client, *, reset: bool = False) -> None:
+
+def _verwerk_bestand(
+    pad: Path,
+    instelling_naam: str,
+    conn: sqlite3.Connection,
+    collection: chromadb.Collection,
+    openai_client: openai.OpenAI,
+    *,
+    reset: bool = False,
+) -> None:
     """Verwerk één OER-bestand: parse → extraheer → chunk → embed → sla op."""
     import logging
+
     logger = logging.getLogger(__name__)
 
     meta = parseer_bestandsnaam(pad.name)
@@ -189,9 +206,12 @@ def _verwerk_bestand(pad: Path, instelling_naam: str, conn, collection,
     oer = get_oer_document(conn, meta["crebo"], meta["cohort"], meta["leerweg"])
     if oer is None:
         oer_id = voeg_oer_document_toe(
-            conn, instelling_id=inst["id"],
+            conn,
+            instelling_id=inst["id"],
             opleiding=pad.stem[:100],
-            crebo=meta["crebo"], cohort=meta["cohort"], leerweg=meta["leerweg"],
+            crebo=meta["crebo"],
+            cohort=meta["cohort"],
+            leerweg=meta["leerweg"],
             bestandspad=str(pad),
         )
     else:
@@ -210,8 +230,14 @@ def _verwerk_bestand(pad: Path, instelling_naam: str, conn, collection,
 
     kerntaken = extraheer_kerntaken(tekst)
     for kt in kerntaken:
-        voeg_kerntaak_toe(conn, oer_id=oer_id, code=kt["code"], naam=kt["naam"],
-                          type=kt["type"], volgorde=kt["volgorde"])
+        voeg_kerntaak_toe(
+            conn,
+            oer_id=oer_id,
+            code=kt["code"],
+            naam=kt["naam"],
+            type=kt["type"],
+            volgorde=kt["volgorde"],
+        )
 
     chunks_tekst = [c for c in chunk_tekst(tekst) if c.strip()]
     if not chunks_tekst:
@@ -294,8 +320,10 @@ def main() -> None:
 
     def verwerk_instelling(naam: str) -> None:
         map_naam = {
-            "aeres": "aeres_oeren", "davinci": "davinci_oeren",
-            "rijn_ijssel": "rijn_ijssel_oer", "talland": "talland_oeren",
+            "aeres": "aeres_oeren",
+            "davinci": "davinci_oeren",
+            "rijn_ijssel": "rijn_ijssel_oer",
+            "talland": "talland_oeren",
             "utrecht": "utrecht_oeren",
         }.get(naam, naam)
         pad = oeren_pad / map_naam

@@ -25,30 +25,124 @@ RNG = random.Random(2026)
 # ── Namenlijsten ──────────────────────────────────────────────────────────────
 
 VOORNAMEN_V = [
-    "Emma", "Sophie", "Julia", "Lisa", "Anna", "Sara", "Laura", "Amy",
-    "Nora", "Lena", "Fatima", "Aisha", "Yasmin", "Lina", "Mia", "Fenna",
-    "Roos", "Nathalie", "Isabel", "Mariam", "Zoë", "Eline", "Hanna", "Vera",
-    "Manon", "Fleur", "Sanne", "Anouk", "Iris", "Sofie",
+    "Emma",
+    "Sophie",
+    "Julia",
+    "Lisa",
+    "Anna",
+    "Sara",
+    "Laura",
+    "Amy",
+    "Nora",
+    "Lena",
+    "Fatima",
+    "Aisha",
+    "Yasmin",
+    "Lina",
+    "Mia",
+    "Fenna",
+    "Roos",
+    "Nathalie",
+    "Isabel",
+    "Mariam",
+    "Zoë",
+    "Eline",
+    "Hanna",
+    "Vera",
+    "Manon",
+    "Fleur",
+    "Sanne",
+    "Anouk",
+    "Iris",
+    "Sofie",
 ]
 VOORNAMEN_M = [
-    "Daan", "Luca", "Noah", "Sem", "Thomas", "Lars", "Tim", "Jesse",
-    "Bram", "Finn", "Joris", "Sander", "Kevin", "Rick", "Milan", "Justin",
-    "Ryan", "Niels", "Pieter", "Mark", "Thijs", "Stijn", "Ruben", "Joren",
-    "Mohammed", "Adam", "Omar", "Hamza", "Rayan", "Bilal",
+    "Daan",
+    "Luca",
+    "Noah",
+    "Sem",
+    "Thomas",
+    "Lars",
+    "Tim",
+    "Jesse",
+    "Bram",
+    "Finn",
+    "Joris",
+    "Sander",
+    "Kevin",
+    "Rick",
+    "Milan",
+    "Justin",
+    "Ryan",
+    "Niels",
+    "Pieter",
+    "Mark",
+    "Thijs",
+    "Stijn",
+    "Ruben",
+    "Joren",
+    "Mohammed",
+    "Adam",
+    "Omar",
+    "Hamza",
+    "Rayan",
+    "Bilal",
 ]
 ACHTERNAMEN = [
-    "de Jong", "Janssen", "de Vries", "van den Berg", "van Dijk", "Bakker",
-    "Visser", "Smit", "Meijer", "de Boer", "Mulder", "van Leeuwen",
-    "de Groot", "Bos", "Vos", "Peters", "Hendriks", "van der Berg",
-    "Kuijpers", "Dijkstra", "Peeters", "Jacobs", "van den Broek", "Vermeer",
-    "Willemsen", "Lammers", "Maas", "Postma", "Dekker", "Hoekstra",
-    "Al-Hassan", "El Amrani", "Yilmaz", "Kowalski", "Nguyen", "Ozturk",
-    "Bouzid", "Kaur", "Singh", "Ferreira",
+    "de Jong",
+    "Janssen",
+    "de Vries",
+    "van den Berg",
+    "van Dijk",
+    "Bakker",
+    "Visser",
+    "Smit",
+    "Meijer",
+    "de Boer",
+    "Mulder",
+    "van Leeuwen",
+    "de Groot",
+    "Bos",
+    "Vos",
+    "Peters",
+    "Hendriks",
+    "van der Berg",
+    "Kuijpers",
+    "Dijkstra",
+    "Peeters",
+    "Jacobs",
+    "van den Broek",
+    "Vermeer",
+    "Willemsen",
+    "Lammers",
+    "Maas",
+    "Postma",
+    "Dekker",
+    "Hoekstra",
+    "Al-Hassan",
+    "El Amrani",
+    "Yilmaz",
+    "Kowalski",
+    "Nguyen",
+    "Ozturk",
+    "Bouzid",
+    "Kaur",
+    "Singh",
+    "Ferreira",
 ]
 
 VOOROPLEIDINGEN = ["VMBO_BB", "VMBO_KB", "VMBO_TL", "VMBO_GT", "HAVO", "MBO_2", "MBO_3"]
-SECTOREN = ["Zorgenwelzijn", "Techniek", "Economie", "Groen", "Horeca", "Dienstverlening",
-            "ICT", "Media", "Sport"]
+SECTOREN = [
+    "Zorgenwelzijn",
+    "Techniek",
+    "Economie",
+    "Groen",
+    "Horeca",
+    "Dienstverlening",
+    "ICT",
+    "Media",
+    "Sport",
+]
 
 
 def _willekeurige_naam(rng: random.Random) -> tuple[str, str]:
@@ -59,7 +153,7 @@ def _willekeurige_naam(rng: random.Random) -> tuple[str, str]:
 
 
 def _willekeurige_scores(rng: random.Random) -> dict:
-    voortgang = round(rng.betavariate(2, 2), 2)        # piek rond 0.5
+    voortgang = round(rng.betavariate(2, 2), 2)  # piek rond 0.5
     bsa_vereist = rng.choice([40.0, 50.0, 60.0])
     bsa_behaald = round(voortgang * bsa_vereist * rng.uniform(0.7, 1.2), 1)
     bsa_behaald = min(bsa_behaald, bsa_vereist)
@@ -111,9 +205,7 @@ def bulk_seed(db_path: Path, n: int = AANTAL_STUDENTEN) -> None:
             continue
         inst_naam = oer["inst_naam"]
         mentor_naam = f"Mentor_{inst_naam}"
-        bestaand = conn.execute(
-            "SELECT id FROM mentoren WHERE naam=?", (mentor_naam,)
-        ).fetchone()
+        bestaand = conn.execute("SELECT id FROM mentoren WHERE naam=?", (mentor_naam,)).fetchone()
         if bestaand:
             mentor_id = bestaand["id"]
         else:
@@ -125,9 +217,10 @@ def bulk_seed(db_path: Path, n: int = AANTAL_STUDENTEN) -> None:
         koppel_mentor_oer(conn, mentor_per_instelling[oer["instelling_id"]], oer["id"])
 
     # ── Controleer hoeveel studenten al bestaan ───────────────────────────────
-    hoogste = conn.execute(
-        "SELECT MAX(CAST(studentnummer AS INTEGER)) FROM studenten"
-    ).fetchone()[0] or 200000
+    hoogste = (
+        conn.execute("SELECT MAX(CAST(studentnummer AS INTEGER)) FROM studenten").fetchone()[0]
+        or 200000
+    )
     volgnummer = int(hoogste) + 1
 
     aangemaakt = 0
