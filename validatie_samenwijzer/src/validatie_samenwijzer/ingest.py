@@ -5,25 +5,44 @@ from pathlib import Path
 
 # ── Bestandsnaam parsen ───────────────────────────────────────────────────────
 
-_CREBO_PATROON = re.compile(r"(\d{5})\s*[-_]?\s*(BOL|BBL)\s*[-_]?\s*(\d{4})", re.IGNORECASE)
+# Patroon 1 (Da Vinci): crebo direct gevolgd door BOL/BBL (evt. gecombineerd) en jaar
+_CREBO_LEERWEG_JAAR = re.compile(
+    r"(?<!\d)(\d{5})\s*[-_]?\s*(BOL|BBL)(?:BOL|BBL)?\s*[-_]?\s*(\d{4})", re.IGNORECASE
+)
+# Losse patronen voor fallback — (?<!\d) en (?!\d) i.p.v. \b om underscores te doorbreken
+_CREBO = re.compile(r"(?<!\d)(\d{5})(?!\d)")
+_LEERWEG = re.compile(r"\b(BOL|BBL)\b", re.IGNORECASE)
+_JAAR = re.compile(r"(?<!\d)(20[2-3]\d)(?!\d)")
+
+_HUIDIG_COHORT = "2025"
 
 
 def parseer_bestandsnaam(bestandsnaam: str) -> dict | None:
     """Haal crebo, leerweg en cohort op uit de bestandsnaam.
 
-    Ondersteunt patronen zoals:
-    - 25168BOL2025Examenplan.pdf
-    - 25655 BBL 2024 OER.pdf
-    Geeft None als er geen match is.
+    Ondersteunt:
+    - Da Vinci:     25168BOL2025Examenplan.pdf
+    - Rijn IJssel:  content_oer-2024-2025-ci-25651-acteur.pdf
+    - Talland:      25180 Kok 24 maanden BBL.pdf
+    Geeft None als er geen 5-cijferig crebo gevonden wordt.
     """
-    m = _CREBO_PATROON.search(bestandsnaam)
-    if not m:
+    # Patroon 1: crebo + leerweg + jaar aaneengesloten (Da Vinci)
+    m = _CREBO_LEERWEG_JAAR.search(bestandsnaam)
+    if m:
+        return {"crebo": m.group(1), "leerweg": m.group(2).upper(), "cohort": m.group(3)}
+
+    # Patroon 2: losse elementen — crebo verplicht, leerweg en jaar optioneel
+    crebo_m = _CREBO.search(bestandsnaam)
+    if not crebo_m:
         return None
-    return {
-        "crebo": m.group(1),
-        "leerweg": m.group(2).upper(),
-        "cohort": m.group(3),
-    }
+
+    crebo = crebo_m.group(1)
+    leerweg_m = _LEERWEG.search(bestandsnaam)
+    leerweg = leerweg_m.group(1).upper() if leerweg_m else "BOL"
+    jaar_m = _JAAR.search(bestandsnaam)
+    cohort = jaar_m.group(1) if jaar_m else _HUIDIG_COHORT
+
+    return {"crebo": crebo, "leerweg": leerweg, "cohort": cohort}
 
 
 # ── Tekst chunken ─────────────────────────────────────────────────────────────
@@ -80,15 +99,39 @@ def extraheer_kerntaken(tekst: str) -> list[dict]:
 
 # ── Tekstextractie per bestandstype ──────────────────────────────────────────
 
+_OCR_DREMPEL = 100  # minimaal aantal tekens voor acceptabele tekst
+
+
+def _extraheer_tekst_ocr(pad: Path) -> str:
+    """Tesseract OCR fallback voor gescande of afbeelding-gebaseerde PDFs."""
+    import pytesseract
+    from pdf2image import convert_from_path
+
+    paginas = convert_from_path(str(pad), dpi=200)
+    return "\n\n".join(
+        t for p in paginas if (t := pytesseract.image_to_string(p, lang="nld").strip())
+    )
+
+
 def extraheer_tekst_pdf(pad: Path) -> str:
+    import logging
+
     import pdfplumber
+
+    logger = logging.getLogger(__name__)
     tekst_delen = []
     with pdfplumber.open(str(pad)) as pdf:
         for pagina in pdf.pages:
             t = pagina.extract_text()
             if t:
                 tekst_delen.append(t)
-    return "\n\n".join(tekst_delen)
+    tekst = "\n\n".join(tekst_delen)
+
+    if len(tekst.strip()) < _OCR_DREMPEL:
+        logger.info("pdfplumber leverde te weinig tekst voor '%s', val terug op OCR.", pad.name)
+        tekst = _extraheer_tekst_ocr(pad)
+
+    return tekst
 
 
 def extraheer_tekst_html(pad: Path) -> str:
@@ -170,8 +213,9 @@ def _verwerk_bestand(pad: Path, instelling_naam: str, conn, collection,
         voeg_kerntaak_toe(conn, oer_id=oer_id, code=kt["code"], naam=kt["naam"],
                           type=kt["type"], volgorde=kt["volgorde"])
 
-    chunks_tekst = chunk_tekst(tekst)
+    chunks_tekst = [c for c in chunk_tekst(tekst) if c.strip()]
     if not chunks_tekst:
+        logger.warning("'%s' bevat geen extraheerbare tekst — overgeslagen.", pad.name)
         return
 
     embeddings = openai_client.embeddings.create(
