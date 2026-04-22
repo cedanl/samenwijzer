@@ -15,6 +15,7 @@ dependencies = [
     "uvicorn>=0.44.0",
     "cryptography>=46.0.7",
     "python-multipart>=0.0.26",
+    "ngrok>=1.7.0",
 ]
 
 [project.optional-dependencies]
@@ -39,6 +40,7 @@ dev = [
 [tool.ruff]
 line-length = 100
 target-version = "py313"
+exclude = ["validatie_samenwijzer/"]  # eigen pyproject.toml met eigen ruff-config
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "N", "W", "UP"]
