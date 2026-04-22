@@ -1,0 +1,46 @@
+[project]
+name = "validatie-samenwijzer"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "streamlit>=1.42.0",
+    "anthropic>=0.45.0",
+    "openai>=1.60.0",
+    "chromadb>=0.6.0",
+    "pdfplumber>=0.11.0",
+    "beautifulsoup4>=4.12.0",
+    "python-dotenv>=1.0.0",
+    "pytesseract>=0.3.13",
+    "pdf2image>=1.17.0",
+]
+
+[project.scripts]
+ingest = "validatie_samenwijzer.ingest:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-cov>=6.0.0",
+    "ruff>=0.9.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/validatie_samenwijzer"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"app/main.py" = ["E501"]
+"app/pages/*.py" = ["E501"]
+"src/validatie_samenwijzer/styles.py" = ["E501"]
