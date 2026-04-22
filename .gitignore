@@ -10,6 +10,7 @@ build/
 # Environment
 .env
 .env.*
+!validatie_samenwijzer/.env.example
 
 # Data — gitignore everything except demo subfolders
 data/01-raw/*
