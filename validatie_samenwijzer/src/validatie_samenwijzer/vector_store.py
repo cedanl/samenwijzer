@@ -4,7 +4,6 @@ from pathlib import Path
 
 import chromadb
 
-
 COLLECTIE_NAAM = "oer_chunks"
 DREMPELWAARDE = 0.7  # cosine distance; > drempel = te weinig relevant
 
