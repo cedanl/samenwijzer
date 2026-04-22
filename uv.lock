@@ -879,6 +879,24 @@ wheels = [
 ]
 
 [[package]]
+name = "ngrok"
+version = "1.7.0"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/df/cf/baca26017f87084e25aab31117fa5feca198b4fd7a61406ae5add6f733c7/ngrok-1.7.0-cp310-abi3-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:97ed4d29ed65f00acaeaa958324aeec32f2f3b07042090fe91d30b47429b7994", size = 7158247, upload-time = "2025-12-16T21:59:21.257Z" },
+    { url = "https://files.pythonhosted.org/packages/62/b5/f21e7843c4b19e841d22b8967d4fa953a8b1fe8966c1e52fc5dfe3e2eef6/ngrok-1.7.0-cp310-abi3-macosx_10_12_x86_64.whl", hash = "sha256:b96b5efc8d6bb0f5551005e4d813a05fa7ccae057c30719934d6f6d7ae6858c6", size = 3717318, upload-time = "2025-12-16T21:59:05.788Z" },
+    { url = "https://files.pythonhosted.org/packages/d2/73/1c5e716c1901a5d26f27b94f7b2b48ded4f492c766b1c5bb28f763bcc6a6/ngrok-1.7.0-cp310-abi3-macosx_11_0_arm64.whl", hash = "sha256:8b95a3e1ca6f8120395a118ae85ad940197b4565c530f1941678770e3be63bde", size = 3458413, upload-time = "2025-12-16T21:58:29.825Z" },
+    { url = "https://files.pythonhosted.org/packages/4b/af/d4e8a8395d7e30ca0f612358d847cc464a93061514cecab7ecbc2d815123/ngrok-1.7.0-cp310-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:a0c63849756558cf79186cc75b4b58175cbc907d14a5d907175627c5ce6201db", size = 5507673, upload-time = "2025-12-16T21:59:51.416Z" },
+    { url = "https://files.pythonhosted.org/packages/f8/68/21b935ca9e5d3bc23f3c732f54c7b472b67325c5433b7311a52f15f03b70/ngrok-1.7.0-cp310-abi3-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:69a483a27945ff95a5976cfa317ca504ec121c07d147f2dc98ffe15b36ff7e51", size = 4448911, upload-time = "2025-12-16T22:00:28.291Z" },
+    { url = "https://files.pythonhosted.org/packages/a0/d3/f6fb8279a7f7ef78c9cfa4edc25d95771194311e23f9bb38a986c257069e/ngrok-1.7.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0f3793cec6e52d8aff427fc1ddbf914c3b51f0e28240187bdaf27fd0ba8521f0", size = 3760573, upload-time = "2025-12-16T22:00:26.896Z" },
+    { url = "https://files.pythonhosted.org/packages/a5/98/6f2a631e816ef81133d207453928e0029ec6c5db071de9e62fe6a7880f32/ngrok-1.7.0-cp310-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:4b1acf42cf7489b2356c4d8d5075d3f5d989a4972037bb717ffe7308bb9bcac8", size = 3560031, upload-time = "2025-12-16T22:02:59.164Z" },
+    { url = "https://files.pythonhosted.org/packages/7d/db/f02a76bf4033a5af0b7ea24e7317c1a2807c09c549e154eb3d945b8c8077/ngrok-1.7.0-cp310-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:567acd8edcb89fb3f4f387d347b4ddb0f9245348aecd5b490dfbd6e2e192dbd8", size = 3847556, upload-time = "2025-12-16T22:04:13.421Z" },
+    { url = "https://files.pythonhosted.org/packages/02/17/01f76eaa4dda96014160d79049f10c19b6ad273184a3bb570082414b51dc/ngrok-1.7.0-cp310-abi3-win32.whl", hash = "sha256:7927b73aaf04d33fdc0a17e6a354854c8aab08afa92a1e0840946f4969aeeae1", size = 3205609, upload-time = "2025-12-16T22:01:37.083Z" },
+    { url = "https://files.pythonhosted.org/packages/88/f0/367170996e75a251eae2e48b9c7090884420a8a9368a0ec7aea10b061375/ngrok-1.7.0-cp310-abi3-win_amd64.whl", hash = "sha256:270c3f1638408cf75ac6ac88b4afb2676a2b97a191c5d9cff7ccaa5c7819469a", size = 3784379, upload-time = "2025-12-16T21:59:28.704Z" },
+    { url = "https://files.pythonhosted.org/packages/a1/31/be1ee0d10732a08fc11cb7838825f004bae4ce04668f9dcee7a6ff165f2a/ngrok-1.7.0-cp310-abi3-win_arm64.whl", hash = "sha256:cfa809dff993c5feecafe5899010c1b85c27e242d051246a3872bdb2d7ca3bec", size = 3470632, upload-time = "2025-12-16T21:59:31.598Z" },
+]
+
+[[package]]
 name = "numpy"
 version = "2.4.4"
 source = { registry = "https://pypi.org/simple" }
@@ -1464,6 +1482,7 @@ dependencies = [
     { name = "anthropic" },
     { name = "cryptography" },
     { name = "fastapi" },
+    { name = "ngrok" },
     { name = "pandas" },
     { name = "python-dotenv" },
     { name = "python-multipart" },
@@ -1494,6 +1513,7 @@ requires-dist = [
     { name = "anthropic", specifier = ">=0.40.0" },
     { name = "cryptography", specifier = ">=46.0.7" },
     { name = "fastapi", specifier = ">=0.135.3" },
+    { name = "ngrok", specifier = ">=1.7.0" },
     { name = "pandas", specifier = ">=2.2.0" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.0.0" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=5.0.0" },

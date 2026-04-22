@@ -30,6 +30,9 @@ uv sync
 # App starten
 uv run streamlit run app/main.py
 
+# WhatsApp-webhook starten (apart proces, poort 8502)
+uv run uvicorn app.webhook:app --host 0.0.0.0 --port 8502
+
 # Alle tests (met coverage-rapport)
 uv run pytest
 
@@ -90,6 +93,8 @@ samenwijzer/
 │       ├── 4_outreach.py         ← Werklijst, campagnes, effectiviteitsdashboard
 │       ├── 5_welzijn.py          ← Student self-assessment + AI-reactie (student-only)
 │       └── uitloggen.py          ← Wist sessie en stuurt terug naar startpagina
+│   └── webhook.py                ← FastAPI-endpoint `/webhook/whatsapp` (Twilio-handtekeningvalidatie,
+│                                    TwiML-antwoord, schrijft naar welzijn.csv); draait naast Streamlit
 ├── src/samenwijzer/
 │   ├── _ai.py              ← Gedeelde Anthropic client factory (_client())
 │   ├── prepare.py          ← CSV inladen, valideren, kt/wp-scores genereren
@@ -125,10 +130,28 @@ samenwijzer/
 └── docs/                   ← Kennisbank (design, plannen, specs)
 ```
 
+## Kennisbank
+
+| Onderwerp | Bestand |
+|---|---|
+| Architectuur & lagen | `ARCHITECTURE.md` |
+| Productvision & features | `docs/PRODUCT_SENSE.md` |
+| Frontend- & UI-conventies | `docs/FRONTEND.md` |
+| Ontwerpbeslissingen | `docs/design-docs/index.md` |
+| Actief uitvoeringsplan | `docs/exec-plans/active/fase-2-whatsapp-signalering.md` |
+| Kwaliteitsscores per domein | `docs/QUALITY_SCORE.md` |
+| Beveiligingsregels | `docs/SECURITY.md` |
+| Betrouwbaarheidsvereisten | `docs/RELIABILITY.md` |
+| Tech debt | `docs/exec-plans/tech-debt-tracker.md` |
+
 ## Architectuur
 
 Dependency-richting is strikt: `prepare → transform → analyze → visualize/coach/tutor/welzijn → app`.
 Nooit omgekeerd. Zie `ARCHITECTURE.md` voor details.
+
+**Cross-cutting modules** (`_ai.py`, `auth.py`, `outreach.py`, `outreach_store.py`, `welzijn.py`,
+`wellbeing.py`, `whatsapp.py`, `whatsapp_store.py`, `scheduler.py`, `styles.py`) hebben geen
+laagrestrictie — ze worden via expliciete imports aangesproken.
 
 **Sessiedata**: `st.session_state["df"]` bevat het getransformeerde DataFrame en wordt eenmalig
 geladen op de startpagina via `load_berend_csv()` + `transform_student_data()`. Alle pagina's lezen
@@ -249,6 +272,8 @@ actie van de mentor.
 Telefoonnummers worden versleuteld opgeslagen met Fernet. Sleutel komt uit `WHATSAPP_ENCRYPT_KEY`
 of wordt auto-gegenereerd in `data/02-prepared/.whatsapp.key`.
 
+**AVG**: gesprekshistorie mag niet langer dan 30 dagen bewaard worden. Verwijder sessies tijdig.
+
 `scheduler.py` wordt aangeroepen vanuit een GitHub Actions cron-job (elke maandag 08:00):
 ```bash
 uv run python -m samenwijzer.scheduler
@@ -257,13 +282,15 @@ uv run python -m samenwijzer.scheduler
 
 ## Linting & stijl
 
-`ruff` line-length = 100. Selectie: `E, F, I, N, W, UP`. `styles.py` heeft een E501-uitzondering
-(HTML-strings zijn inherent lang). `src/samenwijzer/` en `app/` zijn de lintdoelen.
+`ruff` line-length = 100. Selectie: `E, F, I, N, W, UP`. E501-uitzonderingen voor `styles.py`,
+`app/main.py` en `app/pages/*.py` (HTML-strings zijn inherent lang). `src/samenwijzer/` en `app/`
+zijn de lintdoelen.
 
 ## SQLite-isolatie
 
-Alle schrijfbewerkingen naar `outreach.db` lopen via `outreach_store.py`. Nooit raw SQL in `app/`.
-`outreach.db` is gitignored — commit hem nooit.
+Alle schrijfbewerkingen naar `outreach.db` lopen via `outreach_store.py`; alle schrijfbewerkingen
+naar `whatsapp.db` lopen via `whatsapp_store.py`. Nooit raw SQL in `app/`. Beide bestanden zijn
+gitignored — commit ze nooit.
 
 ## Bekende tech debt
 
