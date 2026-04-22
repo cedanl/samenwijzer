@@ -3,7 +3,6 @@
 import re
 from pathlib import Path
 
-
 # ── Bestandsnaam parsen ───────────────────────────────────────────────────────
 
 _CREBO_PATROON = re.compile(r"(\d{5})\s*[-_]?\s*(BOL|BBL)\s*[-_]?\s*(\d{4})", re.IGNORECASE)
@@ -131,8 +130,11 @@ def _verwerk_bestand(pad: Path, instelling_naam: str, conn, collection,
         return
 
     from validatie_samenwijzer.db import (
-        get_instelling_by_naam, voeg_oer_document_toe, get_oer_document,
-        voeg_kerntaak_toe, markeer_geindexeerd,
+        get_instelling_by_naam,
+        get_oer_document,
+        markeer_geindexeerd,
+        voeg_kerntaak_toe,
+        voeg_oer_document_toe,
     )
     from validatie_samenwijzer.vector_store import voeg_chunks_toe
 
@@ -207,7 +209,8 @@ def main() -> None:
 
     from validatie_samenwijzer._openai import _client as openai_client_factory
     from validatie_samenwijzer.db import get_connection, init_db, voeg_instelling_toe
-    from validatie_samenwijzer.vector_store import get_client as chroma_client, get_collection
+    from validatie_samenwijzer.vector_store import get_client as chroma_client
+    from validatie_samenwijzer.vector_store import get_collection
 
     load_dotenv()
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
@@ -216,7 +219,9 @@ def main() -> None:
     parser.add_argument("--instelling", help="Verwerk alle OER's van deze instelling")
     parser.add_argument("--bestand", help="Verwerk één specifiek bestand")
     parser.add_argument("--alles", action="store_true", help="Verwerk alle instellingen")
-    parser.add_argument("--reset", action="store_true", help="Herindexeer ook al-geïndexeerde OER's")
+    parser.add_argument(
+        "--reset", action="store_true", help="Herindexeer ook al-geïndexeerde OER's"
+    )
     args = parser.parse_args()
 
     db_path = Path(os.environ.get("DB_PATH", "data/validatie.db"))
