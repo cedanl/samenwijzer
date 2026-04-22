@@ -102,11 +102,25 @@ def render_footer() -> None:
 CSS = """
 <style>
 @import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
 
 [data-testid="stApp"] {
-    background-color: #ffffff;
+    background-color: #FAFAF8;
     font-family: 'General Sans', sans-serif;
     font-weight: 500;
+}
+
+h1 {
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-weight: 400 !important;
+    font-size: 2.8rem !important;
+    letter-spacing: -0.01em !important;
+    color: #1a1a1a !important;
+}
+
+h2 {
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-weight: 400 !important;
 }
 
 /* Streamlit-header verbergen */
@@ -266,10 +280,10 @@ p, li { color: #333; line-height: 1.6; }
 }
 
 [data-testid="stVerticalBlockBorderWrapper"] {
-    background: white !important;
-    border-radius: 20px !important;
-    border: none !important;
-    box-shadow: 0 4px 32px rgba(0,0,0,0.09);
+    background: #ffffff !important;
+    border-radius: 18px !important;
+    border: 1px solid rgba(0,0,0,0.06) !important;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
     padding: 4px 8px;
 }
 
@@ -291,7 +305,7 @@ p, li { color: #333; line-height: 1.6; }
 }
 
 /* ── st.metric() opmaak ─────────────────────────────────────────────────── */
-[data-testid="stMetric"] { background:white; border-radius:16px; padding:16px 20px; box-shadow:0 4px 24px rgba(0,0,0,0.08); }
+[data-testid="stMetric"] { background:#ffffff; border-radius:16px; padding:16px 20px; box-shadow:0 4px 24px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04); }
 [data-testid="stMetricLabel"] p { font-size:0.68rem!important; font-weight:700!important; letter-spacing:0.10em!important; text-transform:uppercase!important; color:#999!important; }
 [data-testid="stMetricValue"] { font-size:2.2rem!important; font-weight:700!important; color:#1a1a1a!important; }
 [data-testid="stMetricDelta"] svg { display:none; }
@@ -361,12 +375,17 @@ p, li { color: #333; line-height: 1.6; }
     padding: 12px !important;
 }
 
-/* Zorg dat alle element-containers en kolommen wit blijven */
+/* Gebruik de paginaachtergrond als basis — witte kaartjes hangen er bovenop */
 [data-testid="stVerticalBlock"],
 [data-testid="stHorizontalBlock"],
 [data-testid="element-container"],
 [data-testid="stColumn"] {
-    background: white !important;
+    background: transparent;
+}
+
+/* Alleen stApp zelf krijgt achtergrondkleur; kaartjes zijn #fff */
+[data-testid="stApp"] {
+    background-color: #FAFAF8 !important;
 }
 </style>
 """
