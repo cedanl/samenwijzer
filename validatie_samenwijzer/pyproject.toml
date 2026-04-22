@@ -12,6 +12,9 @@ dependencies = [
     "python-dotenv>=1.0.0",
 ]
 
+[project.scripts]
+ingest = "validatie_samenwijzer.ingest:main"
+
 [project.optional-dependencies]
 dev = [
     "pytest>=8.3.0",

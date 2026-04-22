@@ -77,3 +77,198 @@ def extraheer_kerntaken(tekst: str) -> list[dict]:
         volgorde += 1
 
     return resultaten
+
+
+# ── Tekstextractie per bestandstype ──────────────────────────────────────────
+
+def extraheer_tekst_pdf(pad: Path) -> str:
+    import pdfplumber
+    tekst_delen = []
+    with pdfplumber.open(str(pad)) as pdf:
+        for pagina in pdf.pages:
+            t = pagina.extract_text()
+            if t:
+                tekst_delen.append(t)
+    return "\n\n".join(tekst_delen)
+
+
+def extraheer_tekst_html(pad: Path) -> str:
+    from bs4 import BeautifulSoup
+    html = pad.read_text(encoding="utf-8", errors="replace")
+    soep = BeautifulSoup(html, "html.parser")
+    for tag in soep(["script", "style", "nav", "header", "footer"]):
+        tag.decompose()
+    return soep.get_text(separator="\n", strip=True)
+
+
+def extraheer_tekst_md(pad: Path) -> str:
+    return pad.read_text(encoding="utf-8", errors="replace")
+
+
+def extraheer_tekst(pad: Path) -> str:
+    """Extraheer tekst uit PDF, HTML of Markdown."""
+    suffix = pad.suffix.lower()
+    if suffix == ".pdf":
+        return extraheer_tekst_pdf(pad)
+    if suffix in {".html", ".htm"}:
+        return extraheer_tekst_html(pad)
+    if suffix == ".md":
+        return extraheer_tekst_md(pad)
+    raise ValueError(f"Niet-ondersteund bestandstype: {suffix}")
+
+
+# ── CLI pipeline ──────────────────────────────────────────────────────────────
+
+def _verwerk_bestand(pad: Path, instelling_naam: str, conn, collection,
+                     openai_client, *, reset: bool = False) -> None:
+    """Verwerk één OER-bestand: parse → extraheer → chunk → embed → sla op."""
+    import logging
+    logger = logging.getLogger(__name__)
+
+    meta = parseer_bestandsnaam(pad.name)
+    if meta is None:
+        logger.warning("Kan crebo/leerweg/cohort niet parsen uit '%s' — overgeslagen.", pad.name)
+        return
+
+    from validatie_samenwijzer.db import (
+        get_instelling_by_naam, voeg_oer_document_toe, get_oer_document,
+        voeg_kerntaak_toe, markeer_geindexeerd,
+    )
+    from validatie_samenwijzer.vector_store import voeg_chunks_toe
+
+    inst = get_instelling_by_naam(conn, instelling_naam)
+    if inst is None:
+        logger.error("Instelling '%s' niet gevonden in database.", instelling_naam)
+        return
+
+    oer = get_oer_document(conn, meta["crebo"], meta["cohort"], meta["leerweg"])
+    if oer is None:
+        oer_id = voeg_oer_document_toe(
+            conn, instelling_id=inst["id"],
+            opleiding=pad.stem[:100],
+            crebo=meta["crebo"], cohort=meta["cohort"], leerweg=meta["leerweg"],
+            bestandspad=str(pad),
+        )
+    else:
+        oer_id = oer["id"]
+        if oer["geindexeerd"] and not reset:
+            logger.info("'%s' al geïndexeerd — overgeslagen.", pad.name)
+            return
+
+    logger.info("Verwerk '%s' (oer_id=%d)...", pad.name, oer_id)
+
+    try:
+        tekst = extraheer_tekst(pad)
+    except Exception as e:
+        logger.error("Extractie mislukt voor '%s': %s", pad.name, e)
+        return
+
+    kerntaken = extraheer_kerntaken(tekst)
+    for kt in kerntaken:
+        voeg_kerntaak_toe(conn, oer_id=oer_id, code=kt["code"], naam=kt["naam"],
+                          type=kt["type"], volgorde=kt["volgorde"])
+
+    chunks_tekst = chunk_tekst(tekst)
+    if not chunks_tekst:
+        return
+
+    embeddings = openai_client.embeddings.create(
+        model="text-embedding-3-small",
+        input=chunks_tekst,
+    )
+
+    chunks = [
+        {
+            "id": f"oer{oer_id}_chunk{i}",
+            "tekst": chunk_t,
+            "embedding": emb.embedding,
+            "metadata": {
+                "oer_id": oer_id,
+                "instelling": instelling_naam,
+                "crebo": meta["crebo"],
+                "cohort": meta["cohort"],
+                "leerweg": meta["leerweg"],
+                "pagina": 0,
+            },
+        }
+        for i, (chunk_t, emb) in enumerate(zip(chunks_tekst, embeddings.data))
+    ]
+    voeg_chunks_toe(collection, chunks)
+    markeer_geindexeerd(conn, oer_id)
+    logger.info("'%s' geïndexeerd: %d chunks, %d kerntaken.", pad.name, len(chunks), len(kerntaken))
+
+
+def main() -> None:
+    import argparse
+    import logging
+    import os
+
+    from dotenv import load_dotenv
+
+    from validatie_samenwijzer._openai import _client as openai_client_factory
+    from validatie_samenwijzer.db import get_connection, init_db, voeg_instelling_toe
+    from validatie_samenwijzer.vector_store import get_client as chroma_client, get_collection
+
+    load_dotenv()
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
+
+    parser = argparse.ArgumentParser(description="OER-ingestie pipeline")
+    parser.add_argument("--instelling", help="Verwerk alle OER's van deze instelling")
+    parser.add_argument("--bestand", help="Verwerk één specifiek bestand")
+    parser.add_argument("--alles", action="store_true", help="Verwerk alle instellingen")
+    parser.add_argument("--reset", action="store_true", help="Herindexeer ook al-geïndexeerde OER's")
+    args = parser.parse_args()
+
+    db_path = Path(os.environ.get("DB_PATH", "data/validatie.db"))
+    chroma_path = Path(os.environ.get("CHROMA_PATH", "data/chroma"))
+    oeren_pad = Path(os.environ.get("OEREN_PAD", "oeren"))
+
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+    chroma_path.mkdir(parents=True, exist_ok=True)
+
+    conn = get_connection(db_path)
+    init_db(conn)
+
+    chroma = get_collection(chroma_client(chroma_path))
+    oc = openai_client_factory()
+
+    instellingen_map = {
+        "aeres": "Aeres MBO",
+        "davinci": "Da Vinci College",
+        "rijn_ijssel": "Rijn IJssel",
+        "talland": "Talland",
+        "utrecht": "ROC Utrecht",
+    }
+
+    for naam, display in instellingen_map.items():
+        voeg_instelling_toe(conn, naam, display)
+
+    def verwerk_instelling(naam: str) -> None:
+        map_naam = {
+            "aeres": "aeres_oeren", "davinci": "davinci_oeren",
+            "rijn_ijssel": "rijn_ijssel_oer", "talland": "talland_oeren",
+            "utrecht": "utrecht_oeren",
+        }.get(naam, naam)
+        pad = oeren_pad / map_naam
+        if not pad.exists():
+            logging.warning("Map '%s' niet gevonden.", pad)
+            return
+        for bestand in pad.iterdir():
+            if bestand.suffix.lower() in {".pdf", ".html", ".htm", ".md"}:
+                _verwerk_bestand(bestand, naam, conn, chroma, oc, reset=args.reset)
+
+    if args.bestand:
+        pad = Path(args.bestand)
+        inst = pad.parent.name.replace("_oeren", "").replace("_oer", "")
+        _verwerk_bestand(pad, inst, conn, chroma, oc, reset=args.reset)
+    elif args.instelling:
+        verwerk_instelling(args.instelling)
+    elif args.alles:
+        for naam in instellingen_map:
+            verwerk_instelling(naam)
+    else:
+        parser.print_help()
+
+
+if __name__ == "__main__":
+    main()
