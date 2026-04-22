@@ -26,42 +26,42 @@ def verifieer_wachtwoord(wachtwoord: str, opgeslagen_hash: str) -> bool:
         dk = hashlib.pbkdf2_hmac("sha256", wachtwoord.encode(), salt, _ITERATIONS)
         return hmac.compare_digest(dk.hex(), dk_hex)
     # Legacy: bare SHA-256 (migrate on next login)
-    return hmac.compare_digest(
-        hashlib.sha256(wachtwoord.encode()).hexdigest(), opgeslagen_hash
-    )
+    return hmac.compare_digest(hashlib.sha256(wachtwoord.encode()).hexdigest(), opgeslagen_hash)
+
+
+def _login(
+    conn: sqlite3.Connection, tabel: str, veld: str, waarde: str, wachtwoord: str
+) -> sqlite3.Row | None:
+    row = conn.execute(
+        f"SELECT * FROM {tabel} WHERE {veld} = ?",  # noqa: S608
+        (waarde,),
+    ).fetchone()
+    if row and verifieer_wachtwoord(wachtwoord, row["wachtwoord_hash"]):
+        return row
+    return None
 
 
 def login_student(
     conn: sqlite3.Connection, studentnummer: str, wachtwoord: str
 ) -> sqlite3.Row | None:
-    row = conn.execute(
-        "SELECT * FROM studenten WHERE studentnummer = ?",
-        (studentnummer,),
-    ).fetchone()
-    if row and verifieer_wachtwoord(wachtwoord, row["wachtwoord_hash"]):
-        return row
-    return None
+    return _login(conn, "studenten", "studentnummer", studentnummer, wachtwoord)
 
 
 def login_mentor(conn: sqlite3.Connection, naam: str, wachtwoord: str) -> sqlite3.Row | None:
-    row = conn.execute(
-        "SELECT * FROM mentoren WHERE naam = ?",
-        (naam,),
-    ).fetchone()
-    if row and verifieer_wachtwoord(wachtwoord, row["wachtwoord_hash"]):
-        return row
-    return None
+    return _login(conn, "mentoren", "naam", naam, wachtwoord)
+
+
+def vereist_rol(vereiste_rol: str) -> None:
+    if st.session_state.get("rol") != vereiste_rol:
+        label = "studenten" if vereiste_rol == "student" else "mentoren"
+        st.error(f"🔒 Deze pagina is alleen toegankelijk voor {label}.")
+        st.page_link("main.py", label="Terug naar de startpagina", icon="🏠")
+        st.stop()
 
 
 def vereist_student() -> None:
-    if st.session_state.get("rol") != "student":
-        st.error("🔒 Deze pagina is alleen toegankelijk voor studenten.")
-        st.page_link("main.py", label="Terug naar de startpagina", icon="🏠")
-        st.stop()
+    vereist_rol("student")
 
 
 def vereist_mentor() -> None:
-    if st.session_state.get("rol") != "mentor":
-        st.error("🔒 Deze pagina is alleen toegankelijk voor mentoren.")
-        st.page_link("main.py", label="Terug naar de startpagina", icon="🏠")
-        st.stop()
+    vereist_rol("mentor")

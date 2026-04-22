@@ -28,6 +28,7 @@ vereist_student()
 render_nav()
 
 CHROMA_PATH = Path(os.environ.get("CHROMA_PATH", "data/chroma"))
+MAX_GESCHIEDENIS = 20  # 10 uitwisselingen
 
 
 @st.cache_resource
@@ -48,8 +49,8 @@ if "chat_history" not in st.session_state:
 if "chat_bronnen" not in st.session_state:
     st.session_state.chat_bronnen = []
 
-# Toon gesprekshistorie
-for i, bericht in enumerate(st.session_state.chat_history):
+assistant_idx = 0
+for bericht in st.session_state.chat_history:
     if bericht["role"] == "user":
         vraag_tekst = (
             bericht["content"].split("Vraag:")[-1].strip()
@@ -65,8 +66,8 @@ for i, bericht in enumerate(st.session_state.chat_history):
             f'<div class="chat-antwoord">{bericht["content"]}</div>',
             unsafe_allow_html=True,
         )
-        if i < len(st.session_state.chat_bronnen):
-            bronnen = st.session_state.chat_bronnen[i // 2]
+        if assistant_idx < len(st.session_state.chat_bronnen):
+            bronnen = st.session_state.chat_bronnen[assistant_idx]
             if bronnen:
                 cols = st.columns(min(len(bronnen), 2))
                 for j, bron in enumerate(bronnen):
@@ -78,8 +79,8 @@ for i, bericht in enumerate(st.session_state.chat_history):
                             f"<em>{bron['tekst'][:200]}…</em></div>",
                             unsafe_allow_html=True,
                         )
+        assistant_idx += 1
 
-# Invoerveld
 vraag = st.chat_input("Stel een vraag over jouw OER…")
 if vraag and oer_id:
     embedding = embed_vraag(openai_client(), vraag)
@@ -122,5 +123,8 @@ if vraag and oer_id:
         ]
     )
     st.session_state.chat_bronnen.append(chunks)
+    if len(st.session_state.chat_history) > MAX_GESCHIEDENIS:
+        st.session_state.chat_history = st.session_state.chat_history[-MAX_GESCHIEDENIS:]
+        st.session_state.chat_bronnen = st.session_state.chat_bronnen[-(MAX_GESCHIEDENIS // 2) :]
 
 render_footer()

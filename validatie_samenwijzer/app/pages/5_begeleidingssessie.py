@@ -41,6 +41,7 @@ vereist_mentor()
 render_nav()
 
 CHROMA_PATH = Path(os.environ.get("CHROMA_PATH", "data/chroma"))
+MAX_GESCHIEDENIS = 20  # 10 uitwisselingen
 
 
 @st.cache_resource
@@ -73,7 +74,6 @@ st.caption(f"{opleiding} · {instelling}")
 
 col_profiel, col_chat = st.columns([1.3, 2])
 
-# ── Linkerpaneel: studentprofiel ──────────────────────────────────────────────
 with col_profiel:
     vg = student.get("voortgang") or 0.0
     bsa_b = student.get("bsa_behaald") or 0.0
@@ -103,6 +103,7 @@ with col_profiel:
         )
 
     scores = get_kerntaak_scores_by_student_id(get_conn(), student["id"])
+    lage_kt: list = []
     if scores:
         with st.container(border=True):
             st.markdown("**Kerntaken**")
@@ -115,8 +116,9 @@ with col_profiel:
                         f'style="width:{s["score"]:.0f}%;background:{kleur}"></div></div>',
                         unsafe_allow_html=True,
                     )
+                    if s["score"] < 50:
+                        lage_kt.append(s)
 
-    # Bespreekpuntsuggesties
     punten = []
     if vg < 0.5:
         punten.append("⚠️ Lage voortgang — doorvragen naar oorzaak")
@@ -124,7 +126,6 @@ with col_profiel:
         punten.append("⚠️ BSA-risico — aanwezigheid bespreken")
     if afwn > 8:
         punten.append("⚠️ Hoge ongeoorloofde afwezigheid")
-    lage_kt = [s for s in scores if s["type"] == "kerntaak" and s["score"] < 50]
     for kt in lage_kt:
         punten.append(f"📉 Lage score: {kt['naam']}")
 
@@ -134,7 +135,6 @@ with col_profiel:
             for punt in punten:
                 st.caption(punt)
 
-# ── Rechterpaneel: OER-chat ───────────────────────────────────────────────────
 with col_chat:
     st.markdown(f"**💬 OER-assistent** — {opleiding}")
 
@@ -143,7 +143,8 @@ with col_chat:
     if "chat_bronnen" not in st.session_state:
         st.session_state.chat_bronnen = []
 
-    for i, bericht in enumerate(st.session_state.chat_history):
+    assistant_idx = 0
+    for bericht in st.session_state.chat_history:
         if bericht["role"] == "user":
             vraag_tekst = (
                 bericht["content"].split("Vraag:")[-1].strip()
@@ -159,9 +160,8 @@ with col_chat:
                 f'<div class="chat-antwoord">{bericht["content"]}</div>',
                 unsafe_allow_html=True,
             )
-            bron_idx = i // 2
-            if bron_idx < len(st.session_state.chat_bronnen):
-                bronnen = st.session_state.chat_bronnen[bron_idx]
+            if assistant_idx < len(st.session_state.chat_bronnen):
+                bronnen = st.session_state.chat_bronnen[assistant_idx]
                 for bron in bronnen:
                     pagina = bron["metadata"].get("pagina", "?")
                     st.markdown(
@@ -169,6 +169,7 @@ with col_chat:
                         f"<em>{bron['tekst'][:150]}…</em></div>",
                         unsafe_allow_html=True,
                     )
+            assistant_idx += 1
 
     vraag = st.chat_input(f"Stel een vraag over {student['naam']}'s OER…")
     if vraag and oer:
@@ -210,5 +211,10 @@ with col_chat:
             ]
         )
         st.session_state.chat_bronnen.append(chunks)
+        if len(st.session_state.chat_history) > MAX_GESCHIEDENIS:
+            st.session_state.chat_history = st.session_state.chat_history[-MAX_GESCHIEDENIS:]
+            st.session_state.chat_bronnen = st.session_state.chat_bronnen[
+                -(MAX_GESCHIEDENIS // 2) :
+            ]
 
 render_footer()
