@@ -39,7 +39,10 @@ else:
     if not pad.is_absolute():
         pad = OEREN_PAD.parent / pad
 
-    if pad.exists() and pad.suffix.lower() == ".pdf":
+    if not pad.exists():
+        st.warning(f"OER-bestand niet gevonden op: {pad}")
+        st.info("Vraag je mentor of beheerder om het bestand te uploaden.")
+    elif pad.suffix.lower() == ".pdf":
         with open(pad, "rb") as f:
             pdf_bytes = f.read()
         st.download_button(
@@ -55,13 +58,23 @@ else:
             f'width="100%" height="800px"></iframe>',
             unsafe_allow_html=True,
         )
-    elif pad.exists() and pad.suffix.lower() in {".html", ".htm"}:
+    elif pad.suffix.lower() in {".html", ".htm"}:
         tekst = extraheer_tekst_html(pad)
         st.text_area("OER-inhoud", tekst, height=600)
-    elif pad.exists() and pad.suffix.lower() == ".md":
+    elif pad.suffix.lower() == ".md":
         st.markdown(pad.read_text(encoding="utf-8"))
+    elif pad.suffix.lower() == ".txt":
+        tekst = pad.read_text(encoding="utf-8", errors="replace")
+        st.download_button(
+            label="⬇️ Download OER als tekstbestand",
+            data=tekst.encode("utf-8"),
+            file_name=pad.name,
+            mime="text/plain",
+        )
+        st.markdown("---")
+        st.text_area("OER-inhoud", tekst, height=600)
     else:
-        st.warning(f"OER-bestand niet gevonden op: {pad}")
+        st.warning(f"Bestandstype '{pad.suffix}' wordt niet ondersteund.")
         st.info("Vraag je mentor of beheerder om het bestand te uploaden.")
 
 render_footer()

@@ -258,6 +258,7 @@ _NAV_MENTOR = [
 
 
 def render_nav() -> None:
+    """Render de vaste navigatiebalk bovenin op basis van de sessierol."""
     import streamlit as st
 
     rol = st.session_state.get("rol")
@@ -275,7 +276,7 @@ def render_nav() -> None:
     with cols[-2]:
         st.markdown(
             f'<span style="color:rgba(255,255,255,0.6);font-size:0.78rem;'
-            f'font-family:\'DM Sans\',sans-serif">{gebruiker} · {opleiding}</span>',
+            f"font-family:'DM Sans',sans-serif\">{gebruiker} · {opleiding}</span>",
             unsafe_allow_html=True,
         )
     with cols[-1]:
@@ -283,6 +284,7 @@ def render_nav() -> None:
 
 
 def render_footer() -> None:
+    """Render de vaste footer onderaan de pagina."""
     import streamlit as st
 
     st.markdown(

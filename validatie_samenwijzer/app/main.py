@@ -36,6 +36,7 @@ def _sla_student_op(student) -> None:
             "opleiding": oer["opleiding"] if oer else "",
             "instelling": oer["display_naam"] if oer else "",
             "crebo": oer["crebo"] if oer else "",
+            "bestandspad": oer["bestandspad"] if oer else "",
             "chat_history": [],
         }
     )
