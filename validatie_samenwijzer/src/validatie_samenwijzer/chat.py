@@ -2,10 +2,17 @@
 
 from __future__ import annotations
 
+import logging
 from collections.abc import Generator
+from pathlib import Path
 
 import anthropic
 import openai
+
+logger = logging.getLogger(__name__)
+
+MIN_RELEVANTE_CHUNKS = 2  # minimaal aantal chunks voor chunk-gebaseerd antwoord
+_MAX_OER_TEKST_TEKENS = 100_000  # maximaal aantal tekens van volledige OER als context
 
 LAGE_RELEVANTIE_BERICHT = (
     "Ik kon geen relevante informatie over deze vraag vinden in jouw OER. "
@@ -18,6 +25,12 @@ _SYSTEEM_TEMPLATE = (
     "Beantwoord vragen uitsluitend op basis van de aangeleverde OER-passages. "
     "Als de passages onvoldoende informatie bevatten, zeg dat dan expliciet. "
     "Antwoord in het Nederlands, beknopt en helder."
+)
+
+_VOLLEDIG_OER_SYSTEEM_TEMPLATE = (
+    "Je bent een OER-assistent voor de opleiding {opleiding} bij {instelling}. "
+    "Beantwoord vragen op basis van de volledige OER-tekst hieronder. "
+    "Wees volledig en accuraat. Antwoord in het Nederlands."
 )
 
 
@@ -56,6 +69,50 @@ def bouw_berichten(
     else:
         berichten.append({"role": "user", "content": vraag})
 
+    return berichten
+
+
+def laad_oer_tekst(bestandspad: Path) -> str:
+    """Laad de volledige OER-tekst uit het bestand. Geeft lege string bij fout."""
+    if not bestandspad.exists():
+        return ""
+    suffix = bestandspad.suffix.lower()
+    if suffix == ".txt":
+        return bestandspad.read_text(encoding="utf-8", errors="replace")
+    if suffix == ".pdf":
+        try:
+            import pdfplumber
+
+            tekst_delen = []
+            with pdfplumber.open(str(bestandspad)) as pdf:
+                for pagina in pdf.pages:
+                    t = pagina.extract_text()
+                    if t:
+                        tekst_delen.append(t)
+            return "\n\n".join(tekst_delen)
+        except Exception as e:
+            logger.warning("PDF lezen mislukt voor '%s': %s", bestandspad, e)
+            return ""
+    return ""
+
+
+def bouw_berichten_volledig(
+    chat_history: list[dict],
+    oer_tekst: str,
+    vraag: str,
+    opleiding: str,
+    instelling: str,
+) -> list[dict]:
+    """Bouw berichtenlijst op met de volledige OER-tekst als context."""
+    systeem = _VOLLEDIG_OER_SYSTEEM_TEMPLATE.format(opleiding=opleiding, instelling=instelling)
+    tekst = oer_tekst[:_MAX_OER_TEKST_TEKENS]
+    context = f"{systeem}\n\nVolledig OER:\n{tekst}"
+
+    berichten = list(chat_history)
+    if not berichten:
+        berichten.append({"role": "user", "content": f"{context}\n\nVraag: {vraag}"})
+    else:
+        berichten.append({"role": "user", "content": vraag})
     return berichten
 
 

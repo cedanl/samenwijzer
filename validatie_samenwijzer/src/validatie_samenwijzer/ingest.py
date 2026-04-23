@@ -121,6 +121,7 @@ def _extraheer_tekst_ocr(pad: Path) -> str:
 
 
 def extraheer_tekst_pdf(pad: Path) -> str:
+    """Extraheer tekst uit een PDF via pdfplumber; valt terug op Tesseract OCR bij < 100 tekens."""
     import logging
 
     import pdfplumber
@@ -142,6 +143,7 @@ def extraheer_tekst_pdf(pad: Path) -> str:
 
 
 def extraheer_tekst_html(pad: Path) -> str:
+    """Extraheer zichtbare tekst uit een HTML-bestand; verwijdert scripts, stijlen en nav."""
     from bs4 import BeautifulSoup
 
     html = pad.read_text(encoding="utf-8", errors="replace")
@@ -152,11 +154,17 @@ def extraheer_tekst_html(pad: Path) -> str:
 
 
 def extraheer_tekst_md(pad: Path) -> str:
+    """Lees een Markdown-bestand als platte tekst."""
+    return pad.read_text(encoding="utf-8", errors="replace")
+
+
+def extraheer_tekst_txt(pad: Path) -> str:
+    """Lees een tekstbestand als platte tekst."""
     return pad.read_text(encoding="utf-8", errors="replace")
 
 
 def extraheer_tekst(pad: Path) -> str:
-    """Extraheer tekst uit PDF, HTML of Markdown."""
+    """Extraheer tekst uit PDF, HTML, Markdown of plaintext."""
     suffix = pad.suffix.lower()
     if suffix == ".pdf":
         return extraheer_tekst_pdf(pad)
@@ -164,6 +172,8 @@ def extraheer_tekst(pad: Path) -> str:
         return extraheer_tekst_html(pad)
     if suffix == ".md":
         return extraheer_tekst_md(pad)
+    if suffix == ".txt":
+        return extraheer_tekst_txt(pad)
     raise ValueError(f"Niet-ondersteund bestandstype: {suffix}")
 
 
@@ -178,11 +188,21 @@ def _verwerk_bestand(
     openai_client: openai.OpenAI,
     *,
     reset: bool = False,
+    al_gewist: set[int] | None = None,
 ) -> None:
-    """Verwerk één OER-bestand: parse → extraheer → chunk → embed → sla op."""
+    """Verwerk één OER-bestand: parse → extraheer → chunk → embed → sla op.
+
+    Meerdere bestanden met hetzelfde crebo/leerweg/cohort (bijv. OER + examenplan)
+    worden allemaal geïndexeerd onder hetzelfde oer_id. Bij --reset worden chunks
+    per oer_id maximaal één keer verwijderd zodat aanvullende bestanden niet
+    de chunks van eerder verwerkte bestanden overschrijven.
+    """
     import logging
 
     logger = logging.getLogger(__name__)
+
+    if al_gewist is None:
+        al_gewist = set()
 
     meta = parseer_bestandsnaam(pad.name)
     if meta is None:
@@ -196,7 +216,7 @@ def _verwerk_bestand(
         voeg_kerntaak_toe,
         voeg_oer_document_toe,
     )
-    from validatie_samenwijzer.vector_store import voeg_chunks_toe
+    from validatie_samenwijzer.vector_store import verwijder_chunks_voor_oer, voeg_chunks_toe
 
     inst = get_instelling_by_naam(conn, instelling_naam)
     if inst is None:
@@ -216,9 +236,14 @@ def _verwerk_bestand(
         )
     else:
         oer_id = oer["id"]
-        if oer["geindexeerd"] and not reset:
+        # Overslaan alleen als EXACT hetzelfde bestand al geïndexeerd is (en geen reset)
+        if str(pad) == oer["bestandspad"] and oer["geindexeerd"] and not reset:
             logger.info("'%s' al geïndexeerd — overgeslagen.", pad.name)
             return
+        # Bij reset: chunks verwijderen — maar maximaal één keer per oer_id per run
+        if reset and oer_id not in al_gewist:
+            verwijder_chunks_voor_oer(collection, oer_id)
+            al_gewist.add(oer_id)
 
     logger.info("Verwerk '%s' (oer_id=%d)...", pad.name, oer_id)
 
@@ -271,6 +296,7 @@ def _verwerk_bestand(
 
 
 def main() -> None:
+    """CLI-entrypoint voor de OER-ingestie pipeline (--instelling, --bestand, --alles)."""
     import argparse
     import logging
     import os
@@ -319,6 +345,7 @@ def main() -> None:
         voeg_instelling_toe(conn, naam, display)
 
     def verwerk_instelling(naam: str) -> None:
+        """Verwerk alle OER-bestanden in de map van de opgegeven instelling."""
         map_naam = {
             "aeres": "aeres_oeren",
             "davinci": "davinci_oeren",
@@ -330,14 +357,17 @@ def main() -> None:
         if not pad.exists():
             logging.warning("Map '%s' niet gevonden.", pad)
             return
+        al_gewist: set[int] = set()
         for bestand in pad.iterdir():
-            if bestand.suffix.lower() in {".pdf", ".html", ".htm", ".md"}:
-                _verwerk_bestand(bestand, naam, conn, chroma, oc, reset=args.reset)
+            if bestand.suffix.lower() in {".pdf", ".html", ".htm", ".md", ".txt"}:
+                _verwerk_bestand(
+                    bestand, naam, conn, chroma, oc, reset=args.reset, al_gewist=al_gewist
+                )
 
     if args.bestand:
         pad = Path(args.bestand)
         inst = pad.parent.name.replace("_oeren", "").replace("_oer", "")
-        _verwerk_bestand(pad, inst, conn, chroma, oc, reset=args.reset)
+        _verwerk_bestand(pad, inst, conn, chroma, oc, reset=args.reset, al_gewist=set())
     elif args.instelling:
         verwerk_instelling(args.instelling)
     elif args.alles:
