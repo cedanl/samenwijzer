@@ -32,6 +32,7 @@ uv run streamlit run app/main.py
 
 # WhatsApp-webhook starten (apart proces, poort 8502)
 uv run uvicorn app.webhook:app --host 0.0.0.0 --port 8502
+curl http://localhost:8502/health  # → {"status":"ok"}
 
 # Alle tests (met coverage-rapport)
 uv run pytest
@@ -81,53 +82,12 @@ WHATSAPP_ENCRYPT_KEY=...                       # Fernet-sleutel voor telefoonenc
 ## Project Structure
 
 ```
-samenwijzer/
-├── AGENTS.md               ← Startpunt voor agents (verwijst naar alle kennis)
-├── ARCHITECTURE.md         ← Lagenmodel en dependency-regels
-├── app/
-│   ├── main.py             ← Startpagina + loginscherm + sessie-initialisatie
-│   └── pages/
-│       ├── 1_mijn_voortgang.py   ← Studentweergave (kerntaken, werkprocessen, BSA)
-│       ├── 2_groepsoverzicht.py  ← Docentweergave (eigen studenten + welzijnschecks)
-│       ├── 3_leercoach.py        ← AI tutor, lesmateriaal, oefentoets, werkfeedback
-│       ├── 4_outreach.py         ← Werklijst, campagnes, effectiviteitsdashboard
-│       ├── 5_welzijn.py          ← Student self-assessment + AI-reactie (student-only)
-│       └── uitloggen.py          ← Wist sessie en stuurt terug naar startpagina
-│   └── webhook.py                ← FastAPI-endpoint `/webhook/whatsapp` (Twilio-handtekeningvalidatie,
-│                                    TwiML-antwoord, schrijft naar welzijn.csv); draait naast Streamlit
-├── src/samenwijzer/
-│   ├── _ai.py              ← Gedeelde Anthropic client factory (_client())
-│   ├── prepare.py          ← CSV inladen, valideren, kt/wp-scores genereren
-│   ├── transform.py        ← Berekende kolommen (BSA%, risico, kt_gemiddelde)
-│   ├── analyze.py          ← Kernanalyses (leerpadniveau, badge, peer matching,
-│   │                          OER-labels, transitiemoment-detectie, signaleringen())
-│   ├── visualize.py        ← Altair-grafieken
-│   ├── auth.py             ← Rolcontrole (vereist_docent) en mentorfilter
-│   ├── outreach.py         ← At-risk selectie, verwijslogica, AI-berichtgeneratie,
-│   │                          e-mail verzenden
-│   ├── outreach_store.py   ← SQLite-persistentie (StudentStatus, Interventie,
-│   │                          Campagne, WelzijnsCheck)
-│   ├── welzijn.py          ← Student self-assessment: categorielabels,
-│   │                          AI-reactiegeneratie (Anthropic SDK)
-│   ├── wellbeing.py        ← CSV-gebaseerde welzijnssignalering (WelzijnsCheck
-│   │                          dataclass, welzijnswaarde(), heeft_signaal())
-│   ├── whatsapp.py         ← WhatsApp via Twilio: check-ins versturen, inkomende
-│   │                          berichten parsen, AI-gesprekssessies beheren
-│   ├── whatsapp_store.py   ← SQLite-persistentie voor WhatsApp-registraties en
-│   │                          gesprekssessies; telefoonnummers Fernet-versleuteld
-│   ├── scheduler.py        ← Wekelijkse check-in verzender (GitHub Actions cron)
-│   ├── tutor.py            ← Socratische tutor via Anthropic SDK (streaming)
-│   ├── coach.py            ← Lesmateriaal, oefentoets, werkfeedback (Anthropic SDK)
-│   ├── styles.py           ← EduPulse huisstijl CSS + render_nav() + render_footer()
-│   └── export.py           ← Schrijven naar data/03-output/
-├── tests/
-├── data/
-│   ├── 01-raw/berend/
-│   │   ├── studenten.csv       ← Berend-dataset (1000 MBO-studenten)
-│   │   └── oer_kerntaken.json  ← OER-labels per opleiding (kt/wp namen)
-│   ├── 02-prepared/            ← Tussenresultaten + outreach.db (gitignored)
-│   └── 03-output/              ← Exports (gitignored)
-└── docs/                   ← Kennisbank (design, plannen, specs)
+app/            ← UI only (Streamlit pages + webhook.py FastAPI)
+src/samenwijzer/ ← alle business logic
+data/01-raw/    ← brondata (studenten.csv, oer_kerntaken.json)
+data/02-prepared/ ← outreach.db + whatsapp.db (gitignored)
+data/03-output/ ← exports (gitignored)
+docs/           ← kennisbank (zie tabel hieronder)
 ```
 
 ## Kennisbank
@@ -179,6 +139,8 @@ AI-timeout is 30 seconden; vang `anthropic.APITimeoutError` op en toon een gebru
 ## Authenticatie & toegangsbeheer
 
 Login via `app/main.py`. Wachtwoord voor student én docent: **Welkom123** (SHA-256 gehashed).
+
+Voorbeeldaccounts: student `100001`, docent `M. de Vries` (of een ander nummer/naam uit de dataset).
 
 `st.session_state`-sleutels na login:
 
@@ -274,6 +236,15 @@ of wordt auto-gegenereerd in `data/02-prepared/.whatsapp.key`.
 
 **AVG**: gesprekshistorie mag niet langer dan 30 dagen bewaard worden. Verwijder sessies tijdig.
 
+**Lokaal testen met ngrok**: Twilio vereist een publiek bereikbare URL. Start drie terminals:
+```
+Terminal 1:  uv run streamlit run app/main.py
+Terminal 2:  uv run uvicorn app.webhook:app --host 0.0.0.0 --port 8502
+Terminal 3:  ngrok http 8502
+```
+Kopieer de `https://...ngrok-free.app`-URL en stel in op:
+**Twilio Console → Messaging → Sandbox → "When a message comes in"** → `https://<ngrok-url>/webhook/whatsapp`
+
 `scheduler.py` wordt aangeroepen vanuit een GitHub Actions cron-job (elke maandag 08:00):
 ```bash
 uv run python -m samenwijzer.scheduler
@@ -291,10 +262,6 @@ zijn de lintdoelen.
 Alle schrijfbewerkingen naar `outreach.db` lopen via `outreach_store.py`; alle schrijfbewerkingen
 naar `whatsapp.db` lopen via `whatsapp_store.py`. Nooit raw SQL in `app/`. Beide bestanden zijn
 gitignored — commit ze nooit.
-
-## Bekende tech debt
-
-Zie `docs/exec-plans/tech-debt-tracker.md` voor de actuele lijst. Alle bekende items (TD-001 t/m TD-004) zijn gesloten per 2026-04-11.
 
 ## Agent rules
 

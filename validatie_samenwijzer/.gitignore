@@ -1,7 +1,6 @@
 .env
-data/validatie.db
-data/chroma/
-data/*.db
+data/
+gebruikers.txt
 __pycache__/
 *.pyc
 .venv/
