@@ -3,6 +3,8 @@
 import smtplib
 from unittest.mock import MagicMock, patch
 
+import pytest
+
 from samenwijzer.welzijn import (
     CATEGORIEËN,
     categorie_label,
@@ -10,7 +12,7 @@ from samenwijzer.welzijn import (
     stuur_welzijn_notificatie,
     urgentie_label,
 )
-from tests.helpers import mock_stream
+from tests.helpers import mock_stream, mock_stream_fragmenten, mock_stream_met_fout
 
 # ── Labels ────────────────────────────────────────────────────────────────────
 
@@ -273,3 +275,69 @@ def test_stuur_notificatie_smtp_fout_geeft_false(
         timestamp="2026-04-12T10:00:00",
     )
     assert resultaat is False
+
+
+# ── Stream-gedrag ─────────────────────────────────────────────────────────────
+
+
+@patch("samenwijzer._ai.anthropic.Anthropic")
+def test_genereer_welzijnsreactie_meerdere_fragmenten(mock_cls: MagicMock) -> None:
+    """Meerdere stream-fragmenten worden correct doorgegeven."""
+    fragmenten = ["Bedankt ", "voor je ", "openhartigheid."]
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = mock_stream_fragmenten(fragmenten)
+    mock_cls.return_value = mock_client
+
+    resultaat = list(
+        genereer_welzijnsreactie(
+            voornaam="Ama",
+            categorie="welzijn",
+            toelichting="Ik voel me niet goed",
+            urgentie=2,
+            api_key="test-key",
+        )
+    )
+
+    assert resultaat == fragmenten
+    assert "".join(resultaat) == "Bedankt voor je openhartigheid."
+
+
+@patch("samenwijzer._ai.anthropic.Anthropic")
+def test_genereer_welzijnsreactie_leeg_stream_geeft_niets(mock_cls: MagicMock) -> None:
+    """Een lege stream levert geen fragmenten op."""
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = mock_stream_fragmenten([])
+    mock_cls.return_value = mock_client
+
+    resultaat = list(
+        genereer_welzijnsreactie(
+            voornaam="Ama",
+            categorie="overig",
+            toelichting="",
+            urgentie=1,
+            api_key="test-key",
+        )
+    )
+
+    assert resultaat == []
+
+
+@patch("samenwijzer._ai.anthropic.Anthropic")
+def test_genereer_welzijnsreactie_fout_mid_stream_propagates(mock_cls: MagicMock) -> None:
+    """Een uitzondering halverwege de stream propagates naar de aanroeper."""
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = mock_stream_met_fout(
+        ["Even geduld..."], OSError("verbinding weg")
+    )
+    mock_cls.return_value = mock_client
+
+    gen = genereer_welzijnsreactie(
+        voornaam="Ama",
+        categorie="welzijn",
+        toelichting="Ik voel me slecht",
+        urgentie=3,
+        api_key="test-key",
+    )
+    assert next(gen) == "Even geduld..."
+    with pytest.raises(OSError):
+        next(gen)

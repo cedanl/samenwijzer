@@ -5,7 +5,7 @@ from unittest.mock import MagicMock, patch
 import pytest
 
 from samenwijzer.tutor import StudentContext, TutorSessie, stuur_bericht
-from tests.helpers import mock_stream
+from tests.helpers import mock_stream, mock_stream_fragmenten, mock_stream_met_fout
 
 
 @pytest.fixture
@@ -124,3 +124,53 @@ def test_stuur_bericht_gebruikt_student_context(mock_anthropic_cls, sessie):
     call_kwargs = mock_client.messages.stream.call_args.kwargs
     assert "Testine Jansen" in call_kwargs["system"]
     assert "Verzorgende IG" in call_kwargs["system"]
+
+
+# ── Stream-gedrag ─────────────────────────────────────────────────────────────
+
+
+@patch("samenwijzer._ai.anthropic.Anthropic")
+def test_stuur_bericht_meerdere_fragmenten(
+    mock_anthropic_cls: MagicMock, student: StudentContext
+) -> None:
+    """Meerdere stream-fragmenten worden correct doorgegeven."""
+    fragmenten = ["Goedemorgen! ", "Hier is ", "je antwoord."]
+    sessie = TutorSessie(student=student)
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = mock_stream_fragmenten(fragmenten)
+    mock_anthropic_cls.return_value = mock_client
+
+    resultaat = list(stuur_bericht(sessie, "Hoi", api_key="test-key"))
+
+    assert resultaat == fragmenten
+
+
+@patch("samenwijzer._ai.anthropic.Anthropic")
+def test_stuur_bericht_leeg_stream(mock_anthropic_cls: MagicMock, student: StudentContext) -> None:
+    """Een lege stream levert een lege lijst op."""
+    sessie = TutorSessie(student=student)
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = mock_stream_fragmenten([])
+    mock_anthropic_cls.return_value = mock_client
+
+    resultaat = list(stuur_bericht(sessie, "Hoi", api_key="test-key"))
+
+    assert resultaat == []
+
+
+@patch("samenwijzer._ai.anthropic.Anthropic")
+def test_stuur_bericht_fout_mid_stream_propagates(
+    mock_anthropic_cls: MagicMock, student: StudentContext
+) -> None:
+    """Een uitzondering halverwege de stream propagates naar de aanroeper."""
+    sessie = TutorSessie(student=student)
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = mock_stream_met_fout(
+        ["begin..."], TimeoutError("timeout")
+    )
+    mock_anthropic_cls.return_value = mock_client
+
+    gen = stuur_bericht(sessie, "Hoi", api_key="test-key")
+    assert next(gen) == "begin..."
+    with pytest.raises(TimeoutError):
+        next(gen)
