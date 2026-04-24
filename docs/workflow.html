@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Samenwijzer – App Workflow</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <style>
+    body { font-family: sans-serif; background: #f8f9fa; margin: 0; padding: 2rem; }
+    h1 { font-size: 1.4rem; color: #333; margin-bottom: 1.5rem; }
+    .diagram { background: white; border-radius: 8px; padding: 2rem; box-shadow: 0 1px 4px rgba(0,0,0,.1); overflow: auto; }
+  </style>
+</head>
+<body>
+  <h1>Samenwijzer — App Workflow</h1>
+  <div class="diagram">
+    <pre class="mermaid">
+flowchart TD
+    A([Browser]) --> B[app/main.py\nLoginscherm]
+    B -->|SHA-256 Welkom123| C{Rol?}
+
+    CSV[(studenten.csv\noer_kerntaken.json)] --> PREP[prepare.load_berend_csv]
+    PREP --> TRANS[transform.transform_student_data\nbsa_percentage · risico · kt_gemiddelde]
+    TRANS --> DF[(st.session_state df\ngedeeld DataFrame)]
+    C --> DF
+
+    C -->|student| S_HOME[Startpagina student]
+    S_HOME -->|opt-in| WA_REG[whatsapp_store\nregistreer + verificatie]
+    S_HOME --> P1S[1_mijn_voortgang\neigen voortgang]
+    S_HOME --> P3[3_leercoach]
+    S_HOME --> P5[5_welzijn\nself-assessment]
+
+    C -->|docent| D_HOME[Startpagina docent]
+    D_HOME --> P1D[1_mijn_voortgang\nstudent selecteren]
+    D_HOME --> P2[2_groepsoverzicht\nvereist_docent + mentor_filter]
+    D_HOME --> P3
+    D_HOME --> P4[4_outreach\nvereist_docent]
+
+    DF --> ANA[analyze.py\ngroepsoverzicht · signaleringen\ntransitiemomenten · peer matching]
+    ANA --> VIS[visualize.py\nAltair-grafieken]
+    VIS --> P1S & P1D & P2
+
+    AI_CLIENT[_ai._client\nAnthropic SDK] --> TUTOR[tutor.py\nSocratische chat]
+    AI_CLIENT --> COACH[coach.py\nlesmateriaal · oefentoets\nfeedback · rollenspel]
+    AI_CLIENT --> OUT_AI[outreach.py\nAI-berichtgeneratie]
+    AI_CLIENT --> WEL_AI[welzijn.py\nempathische reactie]
+    AI_CLIENT --> WA_AI[whatsapp.py\nAI-gesprekssessie]
+
+    TUTOR & COACH --> P3
+    WEL_AI --> P5
+    OUT_AI --> P4
+
+    P5 -->|WelzijnsCheck opslaan| ODB[(outreach.db\nwelzijnschecks · interventies\nstatussen · campagnes)]
+    P4 --> ODB
+    ODB <--> OSTORE[outreach_store.py]
+
+    WA_REG <--> WSTORE[whatsapp_store.py\nFernet-versleuteld]
+    WSTORE <--> WDB[(whatsapp.db\nregistraties · sessies)]
+
+    SCHED[scheduler.py\nGitHub Actions cron\nmaandag 08:00] --> WA_OUT[whatsapp.py\nstuur_wekelijkse_checkins]
+    WA_OUT -->|Twilio API| STUDENT_PHONE([Student telefoon])
+    STUDENT_PHONE -->|antwoord 1/2/3| WEBHOOK[webhook.py\nFastAPI :8502\nTwiML-validatie]
+    WEBHOOK --> PARSE[parse_antwoord\nscore · tekst · stop · ja]
+    PARSE -->|score| WEL_AI
+    PARSE -->|score| ODB
+    PARSE -->|tekst| WA_AI
+
+    P1S & P1D & P2 & P3 & P4 & P5 --> UIT[uitloggen.py\nclear session_state]
+    UIT --> B
+    </pre>
+  </div>
+  <script>mermaid.initialize({ startOnLoad: true, theme: 'default' });</script>
+</body>
+</html>

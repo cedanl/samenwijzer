@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Streamlit app",
+      "runtimeExecutable": "uv",
+      "runtimeArgs": ["run", "streamlit", "run", "app/main.py"],
+      "port": 8501
+    },
+    {
+      "name": "WhatsApp webhook",
+      "runtimeExecutable": "uv",
+      "runtimeArgs": ["run", "uvicorn", "app.webhook:app", "--host", "0.0.0.0", "--port", "8502"],
+      "port": 8502
+    }
+  ]
+}
