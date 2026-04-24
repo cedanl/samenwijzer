@@ -7,7 +7,9 @@ Samenwijzer is a single-service Python application with a Streamlit frontend.
 ## Layer model
 
 ```
-app/            ← UI only (Streamlit). No business logic.
+app/            ← UI only. Two processes:
+  main.py + pages/  ← Streamlit frontend (poort 8501)
+  webhook.py        ← FastAPI server (poort 8502) — verwerkt inkomende WhatsApp-berichten
 src/samenwijzer/
   prepare.py    ← Ingest and clean raw data
   transform.py  ← Shape data for analysis
@@ -67,6 +69,7 @@ AI calls are isolated in dedicated modules; they are **never** called from the U
 | `app/pages/4_outreach.py` | Werklijst, campagnes, effectiviteit | docent |
 | `app/pages/5_welzijn.py` | Student self-assessment | student |
 | `app/pages/uitloggen.py` | Sessie wissen + redirect naar `/` | — |
+| `app/webhook.py` | FastAPI webhook voor inkomende WhatsApp-berichten (Twilio) | intern |
 
 ## Key dependencies
 

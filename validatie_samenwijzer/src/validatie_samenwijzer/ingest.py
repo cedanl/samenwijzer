@@ -2,12 +2,18 @@
 
 from __future__ import annotations
 
+import os
 import re
 import sqlite3
 from pathlib import Path
 
 import chromadb
 import openai
+
+# Model voor embeddings — zet OPENAI_EMBEDDING_MODEL in .env om te overschrijven.
+# Na een modelwijziging is herindexering vereist:
+#   uv run python -m validatie_samenwijzer.ingest --alles --reset
+EMBEDDING_MODEL = os.environ.get("OPENAI_EMBEDDING_MODEL", "text-embedding-3-large")
 
 # ── Bestandsnaam parsen ───────────────────────────────────────────────────────
 
@@ -70,6 +76,80 @@ def chunk_tekst(tekst: str, chunk_grootte: int = 500, overlap: int = 50) -> list
             break
         start += chunk_grootte - overlap
     return chunks
+
+
+def chunk_tekst_semantisch(
+    tekst: str, max_woorden: int = 400, overlap_alineas: int = 1
+) -> list[str]:
+    """Splits tekst op alineagrenzen in plaats van woordtelling.
+
+    Bewaart coherentie van kerntaak- en werkprocesbeschrijvingen die anders
+    door chunk_tekst doormidden worden geknipt.
+    """
+    alineas = [a.strip() for a in re.split(r"\n\s*\n", tekst) if a.strip()]
+    if not alineas:
+        return [tekst.strip()] if tekst.strip() else []
+
+    chunks: list[str] = []
+    huidige: list[str] = []
+    huidige_woorden = 0
+
+    for alinea in alineas:
+        alinea_woorden = len(alinea.split())
+        if huidige_woorden + alinea_woorden > max_woorden and huidige:
+            chunks.append("\n\n".join(huidige))
+            huidige = huidige[-overlap_alineas:] if overlap_alineas > 0 else []
+            huidige_woorden = sum(len(a.split()) for a in huidige)
+        huidige.append(alinea)
+        huidige_woorden += alinea_woorden
+
+    if huidige:
+        chunks.append("\n\n".join(huidige))
+
+    return chunks
+
+
+def extraheer_paginas_pdf(pad: Path) -> list[tuple[int, str]]:
+    """Extraheer tekst per pagina uit een PDF.
+
+    Geeft een lijst van (paginanummer, tekst) tuples. Valt terug op OCR als
+    pdfplumber minder dan _OCR_DREMPEL tekens oplevert voor het hele document.
+    """
+    import logging
+
+    import pdfplumber
+
+    log = logging.getLogger(__name__)
+    paginas: list[tuple[int, str]] = []
+    with pdfplumber.open(str(pad)) as pdf:
+        for i, pagina in enumerate(pdf.pages, start=1):
+            t = pagina.extract_text()
+            if t and t.strip():
+                paginas.append((i, t))
+
+    totale_tekst = "".join(t for _, t in paginas)
+    if len(totale_tekst.strip()) < _OCR_DREMPEL:
+        log.info("pdfplumber leverde te weinig tekst voor '%s', val terug op OCR.", pad.name)
+        ocr_tekst = _extraheer_tekst_ocr(pad)
+        return [(0, ocr_tekst)] if ocr_tekst.strip() else []
+
+    return paginas
+
+
+def chunk_paginas(
+    paginas: list[tuple[int, str]], max_woorden: int = 400, overlap_alineas: int = 1
+) -> list[dict]:
+    """Chunk een lijst van (paginanummer, tekst) tuples semantisch.
+
+    Elke chunk behoudt het paginanummer van de pagina waaruit hij stamt.
+    """
+    resultaat: list[dict] = []
+    for paginanr, tekst in paginas:
+        for chunk in chunk_tekst_semantisch(tekst, max_woorden=max_woorden,
+                                            overlap_alineas=overlap_alineas):
+            if chunk.strip():
+                resultaat.append({"tekst": chunk, "pagina": paginanr})
+    return resultaat
 
 
 # ── Kerntaken extraheren ──────────────────────────────────────────────────────
@@ -248,7 +328,15 @@ def _verwerk_bestand(
     logger.info("Verwerk '%s' (oer_id=%d)...", pad.name, oer_id)
 
     try:
-        tekst = extraheer_tekst(pad)
+        if pad.suffix.lower() == ".pdf":
+            paginas = extraheer_paginas_pdf(pad)
+            tekst = "\n\n".join(t for _, t in paginas)
+            chunks_met_pagina = chunk_paginas(paginas)
+        else:
+            tekst = extraheer_tekst(pad)
+            chunks_met_pagina = [
+                {"tekst": c, "pagina": 0} for c in chunk_tekst_semantisch(tekst) if c.strip()
+            ]
     except Exception as e:
         logger.error("Extractie mislukt voor '%s': %s", pad.name, e)
         return
@@ -264,20 +352,20 @@ def _verwerk_bestand(
             volgorde=kt["volgorde"],
         )
 
-    chunks_tekst = [c for c in chunk_tekst(tekst) if c.strip()]
-    if not chunks_tekst:
+    chunks_met_pagina = [c for c in chunks_met_pagina if c["tekst"].strip()]
+    if not chunks_met_pagina:
         logger.warning("'%s' bevat geen extraheerbare tekst — overgeslagen.", pad.name)
         return
 
-    embeddings = openai_client.embeddings.create(
-        model="text-embedding-3-small",
-        input=chunks_tekst,
+    embeddings_response = openai_client.embeddings.create(
+        model=EMBEDDING_MODEL,
+        input=[c["tekst"] for c in chunks_met_pagina],
     )
 
     chunks = [
         {
             "id": f"oer{oer_id}_chunk{i}",
-            "tekst": chunk_t,
+            "tekst": c["tekst"],
             "embedding": emb.embedding,
             "metadata": {
                 "oer_id": oer_id,
@@ -285,10 +373,10 @@ def _verwerk_bestand(
                 "crebo": meta["crebo"],
                 "cohort": meta["cohort"],
                 "leerweg": meta["leerweg"],
-                "pagina": 0,
+                "pagina": c["pagina"],
             },
         }
-        for i, (chunk_t, emb) in enumerate(zip(chunks_tekst, embeddings.data))
+        for i, (c, emb) in enumerate(zip(chunks_met_pagina, embeddings_response.data))
     ]
     voeg_chunks_toe(collection, chunks)
     markeer_geindexeerd(conn, oer_id)

@@ -45,10 +45,17 @@ uv run python seed/bulk_seed.py   # 1000 studenten over alle geïndexeerde OERs
 ```
 ANTHROPIC_API_KEY=sk-ant-...
 OPENAI_API_KEY=sk-...
-DB_PATH=data/validatie.db      # default
-CHROMA_PATH=data/chroma        # default
-OEREN_PAD=oeren                # default
+DB_PATH=data/validatie.db              # default
+CHROMA_PATH=data/chroma                # default
+OEREN_PAD=oeren                        # default
+OPENAI_EMBEDDING_MODEL=text-embedding-3-large   # default; zie note hieronder
 ```
+
+> **Let op embedding model**: `OPENAI_EMBEDDING_MODEL` bepaalt het model voor zowel ingestie
+> als retrieval. Ingestie en retrieval **moeten hetzelfde model** gebruiken — een mismatch geeft
+> verkeerde cosine-afstanden (of een ChromaDB dimensiefout bij 3-small ↔ 3-large).
+> Na een modelwijziging is volledige herindexering vereist:
+> `uv run python -m validatie_samenwijzer.ingest --alles --reset`
 
 ## Architectuur
 

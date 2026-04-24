@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import os
 from collections.abc import Generator
 from pathlib import Path
 
@@ -14,6 +15,9 @@ logger = logging.getLogger(__name__)
 MIN_RELEVANTE_CHUNKS = 2  # minimaal aantal chunks voor chunk-gebaseerd antwoord
 _MAX_OER_TEKST_TEKENS = 100_000  # maximaal aantal tekens van volledige OER als context
 
+# Moet overeenkomen met het model waarmee de ChromaDB-collectie is geïndexeerd.
+EMBEDDING_MODEL = os.environ.get("OPENAI_EMBEDDING_MODEL", "text-embedding-3-large")
+
 LAGE_RELEVANTIE_BERICHT = (
     "Ik kon geen relevante informatie over deze vraag vinden in jouw OER. "
     "Controleer of de vraag betrekking heeft op jouw opleiding, of raadpleeg "
@@ -23,21 +27,26 @@ LAGE_RELEVANTIE_BERICHT = (
 _SYSTEEM_TEMPLATE = (
     "Je bent een OER-assistent voor de opleiding {opleiding} bij {instelling}. "
     "Beantwoord vragen uitsluitend op basis van de aangeleverde OER-passages. "
+    "Geef volledige antwoorden: behandel alle onderdelen van de vraag. "
+    "Gebruik kopjes of opsommingen als dat de leesbaarheid ten goede komt. "
+    "Verwijs bij elke claim naar het paginanummer (bijv. 'Volgens pagina X…'). "
     "Als de passages onvoldoende informatie bevatten, zeg dat dan expliciet. "
-    "Antwoord in het Nederlands, beknopt en helder."
+    "Antwoord in het Nederlands."
 )
 
 _VOLLEDIG_OER_SYSTEEM_TEMPLATE = (
     "Je bent een OER-assistent voor de opleiding {opleiding} bij {instelling}. "
     "Beantwoord vragen op basis van de volledige OER-tekst hieronder. "
-    "Wees volledig en accuraat. Antwoord in het Nederlands."
+    "Geef volledige, goed gestructureerde antwoorden met kopjes waar van toepassing. "
+    "Verwijs naar paginanummers of secties als je die kunt identificeren. "
+    "Antwoord in het Nederlands."
 )
 
 
 def embed_vraag(openai_client: openai.OpenAI, vraag: str) -> list[float]:
     """Maak een embedding van de gebruikersvraag."""
     response = openai_client.embeddings.create(
-        model="text-embedding-3-small",
+        model=EMBEDDING_MODEL,
         input=vraag,
     )
     return response.data[0].embedding
@@ -120,7 +129,7 @@ def genereer_antwoord(
     client: anthropic.Anthropic,
     berichten: list[dict],
     model: str = "claude-sonnet-4-6",
-    max_tokens: int = 1024,
+    max_tokens: int = 2048,
 ) -> Generator[str]:
     """Stream Claude-antwoord als generator van tekst-fragmenten."""
     with client.messages.stream(

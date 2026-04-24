@@ -138,7 +138,7 @@ if vraag and oer_id:
             )
             with st.spinner("Even zoeken in jouw OER…"):
                 antwoord = st.write_stream(
-                    genereer_antwoord(ai_client(), berichten, max_tokens=2048)
+                    genereer_antwoord(ai_client(), berichten, max_tokens=4096)
                 )
         else:
             antwoord = LAGE_RELEVANTIE_BERICHT

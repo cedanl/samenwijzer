@@ -16,7 +16,7 @@ Target users: students (progress, AI tutor, wellbeing check) and internal daily 
 3. **Dependency direction:** `prepare → transform → analyze → visualize → export`. Never reversed.
 4. **Structured logging only.** No bare `print()` calls in production code.
 5. **Validate at boundaries.** Validate external data on ingestion; trust internal types.
-6. **AI isolation.** All Anthropic SDK calls live in `tutor.py`, `coach.py`, `outreach.py`, `welzijn.py`. No direct `anthropic` imports in `app/`.
+6. **AI isolation.** All Anthropic SDK calls live in `tutor.py`, `coach.py`, `outreach.py`, `welzijn.py`, `whatsapp.py`. No direct `anthropic` imports in `app/`.
 
 ## Where to look
 
@@ -48,6 +48,10 @@ Target users: students (progress, AI tutor, wellbeing check) and internal daily 
 | `wellbeing.py` | CSV-gebaseerde welzijnssignalering: WelzijnsCheck dataclass, `welzijnswaarde()`, notities |
 | `tutor.py` | Socratic AI tutor (streaming) |
 | `coach.py` | Study material, practice tests, work feedback |
+| `whatsapp.py` | WhatsApp via Twilio: check-ins, inkomende berichten, AI-gesprekssessies |
+| `whatsapp_store.py` | SQLite: WhatsApp-registraties (Fernet-versleuteld) en sessies |
+| `scheduler.py` | Wekelijkse check-in verzender (GitHub Actions cron entry point) |
+| `_ai.py` | Gedeelde Anthropic client factory (`_client()`) |
 | `styles.py` | EduPulse CSS + `render_nav()` (vaste header) + `render_footer()` |
 
 ## How to run
