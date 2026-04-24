@@ -2,6 +2,8 @@
 
 from unittest.mock import MagicMock, patch
 
+import pytest
+
 from samenwijzer.coach import (
     SCENARIO_OPTIES,
     RollenspelSessie,
@@ -13,7 +15,7 @@ from samenwijzer.coach import (
     genereer_weekplan,
     stuur_rollenspel_bericht,
 )
-from tests.helpers import mock_stream
+from tests.helpers import mock_stream, mock_stream_fragmenten, mock_stream_met_fout
 
 # ── Mock helpers ──────────────────────────────────────────────────────────────
 
@@ -401,3 +403,68 @@ def test_genereer_weekplan_zonder_aandachtspunten(mock_cls: MagicMock) -> None:
     )
 
     assert resultaat == "OK"
+
+
+# ── Stream-gedrag ─────────────────────────────────────────────────────────────
+
+
+@patch("samenwijzer._ai.anthropic.Anthropic")
+def test_genereer_lesmateriaal_meerdere_fragmenten(mock_cls: MagicMock) -> None:
+    """Meerdere stream-fragmenten worden correct samengevoegd."""
+    fragmenten = ["Deel één. ", "Deel twee. ", "Deel drie."]
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = mock_stream_fragmenten(fragmenten)
+    mock_cls.return_value = mock_client
+
+    resultaat = list(
+        genereer_lesmateriaal("zorgverlening", "Verzorgende IG", "Starter", api_key="test")
+    )
+
+    assert resultaat == fragmenten
+    assert "".join(resultaat) == "Deel één. Deel twee. Deel drie."
+
+
+@patch("samenwijzer._ai.anthropic.Anthropic")
+def test_genereer_lesmateriaal_leeg_stream_geeft_niets(mock_cls: MagicMock) -> None:
+    """Een lege stream levert geen fragmenten op."""
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = mock_stream_fragmenten([])
+    mock_cls.return_value = mock_client
+
+    resultaat = list(
+        genereer_lesmateriaal("zorgverlening", "Verzorgende IG", "Starter", api_key="test")
+    )
+
+    assert resultaat == []
+
+
+@patch("samenwijzer._ai.anthropic.Anthropic")
+def test_genereer_lesmateriaal_fout_mid_stream_propagates(mock_cls: MagicMock) -> None:
+    """Een uitzondering halverwege de stream propagates naar de aanroeper."""
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = mock_stream_met_fout(
+        ["begin van tekst"],
+        ConnectionError("verbinding verbroken"),
+    )
+    mock_cls.return_value = mock_client
+
+    gen = genereer_lesmateriaal("zorgverlening", "Verzorgende IG", "Starter", api_key="test")
+    assert next(gen) == "begin van tekst"
+    with pytest.raises(ConnectionError):
+        next(gen)
+
+
+@patch("samenwijzer._ai.anthropic.Anthropic")
+def test_genereer_oefentoets_geeft_volledige_tekst_terug(mock_cls: MagicMock) -> None:
+    """genereer_oefentoets gebruikt messages.create en geeft de volledige tekst terug."""
+    from samenwijzer.coach import genereer_oefentoets
+
+    toets_tekst = "Vraag 1: ...\nANTWOORDEN: 1=A"
+    mock_response = MagicMock()
+    mock_response.content = [MagicMock(text=toets_tekst)]
+    mock_client = MagicMock()
+    mock_client.messages.create.return_value = mock_response
+    mock_cls.return_value = mock_client
+
+    resultaat = genereer_oefentoets("zorgverlening", "Verzorgende IG", "Gevorderde", api_key="test")
+    assert resultaat == toets_tekst

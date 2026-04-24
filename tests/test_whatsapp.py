@@ -413,6 +413,89 @@ class TestScheduler:
         assert resultaat["verstuurd"] == 0
 
 
+class TestSchedulerMain:
+    """Tests voor de _main() CLI-entrypoint van scheduler."""
+
+    def test_main_stopt_bij_ontbrekende_csv(self) -> None:
+        """_main() roept sys.exit(1) aan als de berend-CSV niet bestaat.
+
+        De CSV ligt buiten de repo — deze test verifieert de echte code-flow
+        zonder dat we extra mocks nodig hebben.
+        """
+        from samenwijzer.scheduler import _main
+
+        with (
+            patch("dotenv.load_dotenv"),
+            pytest.raises(SystemExit) as exc_info,
+        ):
+            _main()
+
+        assert exc_info.value.code == 1
+
+    def test_main_geen_sysex_zonder_fouten(self, monkeypatch) -> None:
+        """_main() eindigt normaal wanneer er geen fouten zijn."""
+        from pathlib import Path as _Path
+
+        import pandas as pd
+
+        monkeypatch.setenv("DRY_RUN", "true")
+        df_leeg = pd.DataFrame(
+            {"studentnummer": pd.Series(dtype=str), "naam": pd.Series(dtype=str)}
+        )
+
+        _orig_exists = _Path.exists
+
+        def _csv_bestaat(self: _Path) -> bool:
+            return True if "studenten.csv" in str(self) else _orig_exists(self)
+
+        with (
+            patch("dotenv.load_dotenv"),
+            patch.object(_Path, "exists", _csv_bestaat),
+            patch("samenwijzer.prepare.load_berend_csv", return_value=df_leeg),
+            patch("samenwijzer.transform.transform_student_data", return_value=df_leeg),
+            patch(
+                "samenwijzer.scheduler.stuur_wekelijkse_checkins",
+                return_value={"verstuurd": 1, "overgeslagen": 0, "fouten": 0},
+            ),
+        ):
+            from samenwijzer.scheduler import _main
+
+            _main()  # Geen SystemExit verwacht
+
+    def test_main_sysex_bij_fouten(self, monkeypatch) -> None:
+        """_main() roept sys.exit(1) aan wanneer stuur_wekelijkse_checkins fouten meldt."""
+        from pathlib import Path as _Path
+
+        import pandas as pd
+
+        monkeypatch.setenv("DRY_RUN", "false")
+        df_leeg = pd.DataFrame(
+            {"studentnummer": pd.Series(dtype=str), "naam": pd.Series(dtype=str)}
+        )
+
+        _orig_exists = _Path.exists
+
+        def _csv_bestaat(self: _Path) -> bool:
+            return True if "studenten.csv" in str(self) else _orig_exists(self)
+
+        with (
+            patch("dotenv.load_dotenv"),
+            patch.object(_Path, "exists", _csv_bestaat),
+            patch("samenwijzer.prepare.load_berend_csv", return_value=df_leeg),
+            patch("samenwijzer.transform.transform_student_data", return_value=df_leeg),
+            patch(
+                "samenwijzer.scheduler.stuur_wekelijkse_checkins",
+                return_value={"verstuurd": 0, "overgeslagen": 0, "fouten": 2},
+            ),
+            pytest.raises(SystemExit) as exc_info,
+        ):
+            from samenwijzer.scheduler import _main
+
+            _main()
+
+        assert exc_info.value.code == 1
+
+
 # ── whatsapp.sla_whatsapp_gesprek_op / laad_whatsapp_gesprek ──────────────────
 
 
@@ -465,3 +548,112 @@ class TestGesprekOpslag:
             verwerk_inkomend_bericht("+31612345678", "het gaat slecht", self.DATUM)
 
         assert wa_mod.laad_whatsapp_gesprek(self.SNR) is not None
+
+
+# ── whatsapp_store: encryptie-foutpaden ───────────────────────────────────────
+
+
+class TestEncryptieFoutpaden:
+    """Gedrag bij beschadigde of met verkeerde sleutel versleutelde telefoonnummers."""
+
+    def test_get_studentnummer_voor_telefoon_slaat_corrupt_record_over(self, tmp_db) -> None:
+        """Een beschadigde ciphertext wordt stilzwijgend overgeslagen; geeft None terug."""
+        import sqlite3
+
+        from samenwijzer.whatsapp_store import get_studentnummer_voor_telefoon
+
+        # Schrijf een ongeldig (niet-Fernet) cijfertekst direct naar de DB
+        conn = sqlite3.connect(tmp_db)
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS telefoon_registraties (
+                studentnummer TEXT PRIMARY KEY,
+                nummer_enc    TEXT NOT NULL,
+                opt_in        INTEGER NOT NULL DEFAULT 0,
+                geactiveerd   INTEGER NOT NULL DEFAULT 0,
+                aangemeld_op  TEXT
+            )
+        """)
+        conn.execute(
+            "INSERT INTO telefoon_registraties (studentnummer, nummer_enc) VALUES (?, ?)",
+            ("100099", "GEEN_GELDIGE_FERNET_CIPHERTEXT"),
+        )
+        conn.commit()
+        conn.close()
+
+        # Moet niet crashen; corrupt record wordt overgeslagen
+        resultaat = get_studentnummer_voor_telefoon("+31600000000")
+        assert resultaat is None
+
+    def test_get_actieve_registraties_slaat_corrupt_record_over(self, tmp_db) -> None:
+        """Corrupte ciphertext bij actieve registratie wordt overgeslagen; geen crash."""
+        import sqlite3
+
+        from samenwijzer.whatsapp_store import (
+            activeer_nummer,
+            get_actieve_registraties,
+            registreer_nummer,
+        )
+
+        # Voeg een geldige registratie toe
+        registreer_nummer("100001", "+31611111111")
+        activeer_nummer("100001")
+
+        # Overschrijf de ciphertext met rommel
+        conn = sqlite3.connect(tmp_db)
+        conn.execute(
+            "UPDATE telefoon_registraties SET nummer_enc=? WHERE studentnummer=?",
+            ("GEEN_GELDIGE_FERNET_CIPHERTEXT", "100001"),
+        )
+        conn.commit()
+        conn.close()
+
+        resultaten = get_actieve_registraties()
+        # Corrupt record overgeslagen → lege lijst, geen exception
+        assert resultaten == []
+
+    def test_get_actieve_registraties_geeft_geldige_records_terug(self, tmp_db) -> None:
+        """Geldig record naast corrupt record: alleen het geldige wordt teruggegeven."""
+        import sqlite3
+
+        from samenwijzer.whatsapp_store import (
+            activeer_nummer,
+            get_actieve_registraties,
+            registreer_nummer,
+        )
+
+        registreer_nummer("100001", "+31611111111")
+        activeer_nummer("100001")
+        registreer_nummer("100002", "+31622222222")
+        activeer_nummer("100002")
+
+        # Beschadig het record van student 100001
+        conn = sqlite3.connect(tmp_db)
+        conn.execute(
+            "UPDATE telefoon_registraties SET nummer_enc=? WHERE studentnummer=?",
+            ("CORRUPT", "100001"),
+        )
+        conn.commit()
+        conn.close()
+
+        resultaten = get_actieve_registraties()
+        snrs = [snr for snr, _ in resultaten]
+        assert "100001" not in snrs
+        assert "100002" in snrs
+
+    def test_ontsleutel_met_andere_sleutel_geeft_invalid_token(self, tmp_path, monkeypatch) -> None:
+        """Ontsleutelen met een andere sleutel dan waarmee versleuteld is geeft InvalidToken."""
+        from cryptography.fernet import Fernet, InvalidToken
+
+        from samenwijzer.whatsapp_store import ontsleutel, versleutel
+
+        # Versleutel met sleutel A
+        sleutel_a = Fernet.generate_key()
+        monkeypatch.setenv("WHATSAPP_ENCRYPT_KEY", sleutel_a.decode())
+        versleuteld = versleutel("+31612345678")
+
+        # Ontsleutel met sleutel B — moet InvalidToken geven
+        sleutel_b = Fernet.generate_key()
+        monkeypatch.setenv("WHATSAPP_ENCRYPT_KEY", sleutel_b.decode())
+
+        with pytest.raises(InvalidToken):
+            ontsleutel(versleuteld)

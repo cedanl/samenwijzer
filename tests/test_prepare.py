@@ -1,6 +1,7 @@
 """Tests voor samenwijzer.prepare."""
 
 import json
+import os
 import textwrap
 from pathlib import Path
 
@@ -216,3 +217,47 @@ def test_load_berend_csv_opleiding_met_slechts_een_kt(tmp_path: Path) -> None:
 
     df = load_berend_csv(tmp_path / "studenten.csv")
     assert pd.isna(df.iloc[0]["kt_2"])
+
+
+# ── Bestandsrechten ───────────────────────────────────────────────────────────
+
+
+@pytest.mark.skipif(os.getuid() == 0, reason="root negeert bestandsrechten")
+def test_load_student_csv_geen_leesrechten(tmp_path: Path) -> None:
+    """load_student_csv geeft PermissionError als het bestand niet leesbaar is."""
+    p = tmp_path / "studenten.csv"
+    p.write_text("dummy")
+    p.chmod(0o000)
+    try:
+        with pytest.raises(PermissionError):
+            load_student_csv(p)
+    finally:
+        p.chmod(0o644)
+
+
+@pytest.mark.skipif(os.getuid() == 0, reason="root negeert bestandsrechten")
+def test_load_welzijn_csv_geen_leesrechten(tmp_path: Path) -> None:
+    """load_welzijn_csv geeft PermissionError als het bestand niet leesbaar is."""
+    from samenwijzer.prepare import load_welzijn_csv
+
+    p = tmp_path / "welzijn.csv"
+    p.write_text("dummy")
+    p.chmod(0o000)
+    try:
+        with pytest.raises(PermissionError):
+            load_welzijn_csv(p)
+    finally:
+        p.chmod(0o644)
+
+
+@pytest.mark.skipif(os.getuid() == 0, reason="root negeert bestandsrechten")
+def test_load_berend_csv_geen_leesrechten(tmp_path: Path) -> None:
+    """load_berend_csv geeft PermissionError als het bestand niet leesbaar is."""
+    p = tmp_path / "studenten.csv"
+    p.write_text("dummy")
+    p.chmod(0o000)
+    try:
+        with pytest.raises(PermissionError):
+            load_berend_csv(p)
+    finally:
+        p.chmod(0o644)

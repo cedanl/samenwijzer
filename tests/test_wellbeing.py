@@ -1,5 +1,6 @@
 """Tests voor samenwijzer.wellbeing en de welzijn-gerelateerde analyze-functies."""
 
+import os
 from datetime import date
 from pathlib import Path
 
@@ -277,3 +278,32 @@ def test_filter_mentor_onbekende_mentor_geeft_leeg(df_studenten, df_welzijn):
     alle = signaleringen(df_studenten, df_welzijn)
     result = filter_signaleringen_voor_mentor(alle, "X. Onbekend")
     assert result.empty
+
+
+# ── Bestandsrechten ───────────────────────────────────────────────────────────
+
+
+@pytest.mark.skipif(os.getuid() == 0, reason="root negeert bestandsrechten")
+def test_laad_notities_geen_leesrechten(tmp_path: Path) -> None:
+    """laad_notities geeft PermissionError als het bestand niet leesbaar is."""
+    pad = tmp_path / "notities.csv"
+    pad.write_text("studentnummer,mentor,datum,notitie\n")
+    pad.chmod(0o000)
+    try:
+        with pytest.raises(PermissionError):
+            laad_notities(pad)
+    finally:
+        pad.chmod(0o644)
+
+
+@pytest.mark.skipif(os.getuid() == 0, reason="root negeert bestandsrechten")
+def test_sla_notitie_op_geen_schrijfrechten(tmp_path: Path) -> None:
+    """sla_notitie_op geeft PermissionError als de map niet beschrijfbaar is."""
+    beveiligde_map = tmp_path / "readonly"
+    beveiligde_map.mkdir()
+    beveiligde_map.chmod(0o555)
+    try:
+        with pytest.raises(PermissionError):
+            sla_notitie_op(beveiligde_map / "notities.csv", "S001", "M. Bakker", "Test")
+    finally:
+        beveiligde_map.chmod(0o755)

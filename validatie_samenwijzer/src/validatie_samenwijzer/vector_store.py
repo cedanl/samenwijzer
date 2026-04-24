@@ -49,7 +49,7 @@ def zoek_chunks(
     collection: chromadb.Collection,
     query_embedding: list[float],
     oer_ids: list[int],
-    n: int = 5,
+    n: int = 8,
     drempelwaarde: float = DREMPELWAARDE,
 ) -> list[dict]:
     """Zoek relevante chunks gefilterd op oer_ids. Geeft lege lijst bij geen resultaten."""
