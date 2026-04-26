@@ -157,19 +157,79 @@ def parseer_antwoord(body: str) -> AntwoordResultaat:
 # ── Gespreksverwerking ────────────────────────────────────────────────────────
 
 
+def _verwerk_stop(from_number: str) -> VerwerkResultaat:
+    """Verwerk opt-out: deactiveer nummer, verwijder sessie, bevestig aan student."""
+    deactiveer_nummer_via_telefoon(from_number)
+    verwijder_sessie(from_number)
+    log.info("Opt-out verwerkt voor %s", from_number)
+    return VerwerkResultaat(_STOP_BEVESTIGING, None)
+
+
+def _verwerk_verificatie(antwoord: AntwoordResultaat, from_number: str) -> VerwerkResultaat:
+    """Verwerk opt-in verificatie: activeer bij JA, anders weiger vriendelijk."""
+    snr = get_studentnummer_voor_telefoon(from_number)
+    verwijder_sessie(from_number)
+    if antwoord.soort == "ja" and snr:
+        activeer_nummer(snr)
+        log.info("Opt-in geactiveerd voor student %s", snr)
+        return VerwerkResultaat(_OPT_IN_BEVESTIGING, None)
+    return VerwerkResultaat(_OPT_IN_GEWEIGERD, None)
+
+
+def _verwerk_score(
+    antwoord: AntwoordResultaat, from_number: str, ontvangen_op: date
+) -> VerwerkResultaat:
+    """Sla WelzijnsCheck op; start AI-gesprek bij score 2 of 3, sluit af bij score 1."""
+    assert antwoord.score is not None
+    snr = get_studentnummer_voor_telefoon(from_number) or from_number
+    check = WelzijnsCheck(studentnummer=snr, datum=ontvangen_op, antwoord=antwoord.score)
+    if antwoord.score == 1:
+        verwijder_sessie(from_number)
+        return VerwerkResultaat("Fijn om te horen! Veel succes deze week. 💪", check)
+    sla_sessie_op(
+        WhatsappSessie(
+            from_number=from_number,
+            stap="ai_gesprek",
+            uitgewisseld=0,
+            context_json="[]",
+            gestart_op=ontvangen_op.isoformat(),
+        )
+    )
+    return VerwerkResultaat("Dank je voor je eerlijkheid. Wil je even kwijt wat er speelt?", check)
+
+
+def _verwerk_ai_gesprek(
+    sessie: WhatsappSessie, body: str, from_number: str, ontvangen_op: date
+) -> VerwerkResultaat:
+    """Voer volgende AI-uitwisseling uit; sla gesprek op en verwijs door bij MAX_EXCHANGES."""
+    snr = get_studentnummer_voor_telefoon(from_number) or from_number
+
+    if sessie.uitgewisseld >= MAX_EXCHANGES:
+        sla_whatsapp_gesprek_op(snr, sessie.context(), ontvangen_op)
+        verwijder_sessie(from_number)
+        return VerwerkResultaat(_DOORVERWIJZING_TEKST, None)
+
+    sessie.voeg_bericht_toe("student", body)
+    sla_sessie_op(sessie)
+
+    reactie = _genereer_ai_reactie(sessie.context())
+    sessie.voeg_bericht_toe("coach", reactie)
+    sla_sessie_op(sessie)
+
+    if sessie.uitgewisseld >= MAX_EXCHANGES:
+        sla_whatsapp_gesprek_op(snr, sessie.context(), ontvangen_op)
+        verwijder_sessie(from_number)
+        return VerwerkResultaat(reactie + "\n\n" + _DOORVERWIJZING_TEKST, None)
+
+    return VerwerkResultaat(reactie, None)
+
+
 def verwerk_inkomend_bericht(
     from_number: str,
     body: str,
     ontvangen_op: date,
 ) -> VerwerkResultaat:
     """Verwerk een inkomend WhatsApp-bericht en geef antwoord + eventuele WelzijnsCheck.
-
-    Routing:
-    1. STOP-bericht → opt-out verwerken.
-    2. Verificatiesessie actief → opt-in bevestigen of weigeren.
-    3. Score 1/2/3 → WelzijnsCheck aanmaken; bij 2/3 AI-gesprek starten.
-    4. AI-gesprekssessie actief → volgende uitwisseling of doorverwijzen.
-    5. Onbekend bericht → foutbericht sturen.
 
     Args:
         from_number: Telefoonnummer van de afzender (zonder 'whatsapp:'-prefix).
@@ -181,76 +241,20 @@ def verwerk_inkomend_bericht(
     """
     antwoord = parseer_antwoord(body)
 
-    # 1. Opt-out: altijd verwerken, ongeacht sessiestatus
     if antwoord.soort == "stop":
-        deactiveer_nummer_via_telefoon(from_number)
-        verwijder_sessie(from_number)
-        log.info("Opt-out verwerkt voor %s", from_number)
-        return VerwerkResultaat(_STOP_BEVESTIGING, None)
+        return _verwerk_stop(from_number)
 
     sessie = get_sessie(from_number)
 
-    # 2. Opt-in verificatie
     if sessie and sessie.stap == "verificatie":
-        snr = get_studentnummer_voor_telefoon(from_number)
-        verwijder_sessie(from_number)
-        if antwoord.soort == "ja" and snr:
-            activeer_nummer(snr)
-            log.info("Opt-in geactiveerd voor student %s", snr)
-            return VerwerkResultaat(_OPT_IN_BEVESTIGING, None)
-        return VerwerkResultaat(_OPT_IN_GEWEIGERD, None)
+        return _verwerk_verificatie(antwoord, from_number)
 
-    # 3. Check-in score
     if antwoord.soort == "score":
-        assert antwoord.score is not None
-        snr = get_studentnummer_voor_telefoon(from_number) or from_number
-        check = WelzijnsCheck(
-            studentnummer=snr,
-            datum=ontvangen_op,
-            antwoord=antwoord.score,
-        )
-        if antwoord.score == 1:
-            verwijder_sessie(from_number)
-            return VerwerkResultaat("Fijn om te horen! Veel succes deze week. 💪", check)
+        return _verwerk_score(antwoord, from_number, ontvangen_op)
 
-        # Score 2 of 3 → AI-gesprek starten
-        nieuwe_sessie = WhatsappSessie(
-            from_number=from_number,
-            stap="ai_gesprek",
-            uitgewisseld=0,
-            context_json="[]",
-            gestart_op=ontvangen_op.isoformat(),
-        )
-        sla_sessie_op(nieuwe_sessie)
-        return VerwerkResultaat(
-            "Dank je voor je eerlijkheid. Wil je even kwijt wat er speelt?",
-            check,
-        )
-
-    # 4. AI-gesprek lopend
     if sessie and sessie.stap == "ai_gesprek":
-        snr = get_studentnummer_voor_telefoon(from_number) or from_number
+        return _verwerk_ai_gesprek(sessie, body, from_number, ontvangen_op)
 
-        if sessie.uitgewisseld >= MAX_EXCHANGES:
-            sla_whatsapp_gesprek_op(snr, sessie.context(), ontvangen_op)
-            verwijder_sessie(from_number)
-            return VerwerkResultaat(_DOORVERWIJZING_TEKST, None)
-
-        sessie.voeg_bericht_toe("student", body)
-        sla_sessie_op(sessie)
-
-        reactie = _genereer_ai_reactie(sessie.context())
-        sessie.voeg_bericht_toe("coach", reactie)
-        sla_sessie_op(sessie)
-
-        if sessie.uitgewisseld >= MAX_EXCHANGES:
-            sla_whatsapp_gesprek_op(snr, sessie.context(), ontvangen_op)
-            verwijder_sessie(from_number)
-            return VerwerkResultaat(reactie + "\n\n" + _DOORVERWIJZING_TEKST, None)
-
-        return VerwerkResultaat(reactie, None)
-
-    # 5. Onbekend bericht buiten sessiecontext
     if antwoord.soort == "onbekend":
         stuur_foutbericht(from_number)
     return VerwerkResultaat(None, None)
@@ -266,7 +270,9 @@ def sla_whatsapp_gesprek_op(studentnummer: str, context: list[dict], datum: date
     Een volgend gesprek overschrijft het vorige (alleen meest recente is relevant).
     """
     _GESPREKKEN_PAD.mkdir(parents=True, exist_ok=True)
-    pad = _GESPREKKEN_PAD / f"whatsapp_context_{studentnummer}.json"
+    pad = (_GESPREKKEN_PAD / f"whatsapp_context_{studentnummer}.json").resolve()
+    if not str(pad).startswith(str(_GESPREKKEN_PAD.resolve())):
+        raise ValueError(f"Ongeldig studentnummer voor bestandsopslag: {studentnummer!r}")
     payload = {"studentnummer": studentnummer, "datum": datum.isoformat(), "gesprek": context}
     pad.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     log.info(
@@ -276,7 +282,9 @@ def sla_whatsapp_gesprek_op(studentnummer: str, context: list[dict], datum: date
 
 def laad_whatsapp_gesprek(studentnummer: str) -> dict | None:
     """Laad het meest recente WhatsApp-gesprek voor een student, of None als er geen is."""
-    pad = _GESPREKKEN_PAD / f"whatsapp_context_{studentnummer}.json"
+    pad = (_GESPREKKEN_PAD / f"whatsapp_context_{studentnummer}.json").resolve()
+    if not str(pad).startswith(str(_GESPREKKEN_PAD.resolve())):
+        return None
     if not pad.exists():
         return None
     try:

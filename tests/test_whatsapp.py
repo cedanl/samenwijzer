@@ -341,6 +341,39 @@ class TestVerwerkInkomendBericht:
         assert sessie is not None
         assert sessie.uitgewisseld >= 1
 
+    def test_ai_gesprek_bereikt_limiet_tijdens_gesprek(self):
+        """Limiet bereikt na coach-reply: sessie verwijderd, doorverwijzing meegestuurd."""
+        from samenwijzer.whatsapp import MAX_EXCHANGES, verwerk_inkomend_bericht
+        from samenwijzer.whatsapp_store import WhatsappSessie, get_sessie, sla_sessie_op
+
+        self._registreer_actief()
+        # MAX_EXCHANGES - 1 zodat na student (+1) + coach (+1) het limiet precies bereikt wordt
+        sla_sessie_op(
+            WhatsappSessie(self.NUMMER, "ai_gesprek", MAX_EXCHANGES - 1, "[]", "2026-04-14")
+        )
+
+        with (
+            patch("samenwijzer.whatsapp._genereer_ai_reactie", return_value="Ik hoor je"),
+            patch("samenwijzer.whatsapp.sla_whatsapp_gesprek_op"),
+        ):
+            resultaat = verwerk_inkomend_bericht(self.NUMMER, "het gaat slecht", self.DATUM)
+
+        assert get_sessie(self.NUMMER) is None
+        assert resultaat.antwoord_tekst is not None
+        tekst = resultaat.antwoord_tekst.lower()
+        assert "app" in tekst or "mentor" in tekst
+
+    def test_onbekend_bericht_buiten_sessie(self):
+        """Onbekend bericht zonder actieve sessie stuurt foutbericht; geen antwoord_tekst."""
+        from samenwijzer.whatsapp import verwerk_inkomend_bericht
+
+        with patch("samenwijzer.whatsapp.stuur_foutbericht") as mock_fout:
+            resultaat = verwerk_inkomend_bericht(self.NUMMER, "xyz", self.DATUM)
+
+        mock_fout.assert_called_once_with(self.NUMMER)
+        assert resultaat.antwoord_tekst is None
+        assert resultaat.welzijns_check is None
+
 
 # ── scheduler ─────────────────────────────────────────────────────────────────
 
