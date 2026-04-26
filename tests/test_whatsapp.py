@@ -1,7 +1,9 @@
 """Tests voor whatsapp_store, whatsapp en scheduler."""
 
 import sqlite3
+from collections.abc import Callable
 from datetime import date
+from pathlib import Path as _Path
 from unittest.mock import patch
 
 import pandas as pd
@@ -413,44 +415,46 @@ class TestScheduler:
         assert resultaat["verstuurd"] == 0
 
 
+def _stub_csv_exists(exists: bool) -> Callable[[_Path], bool]:
+    """Bouw een Path.exists-stub die alleen de studenten.csv-check overschrijft.
+
+    scheduler._main bouwt zijn Path intern aan, dus we kunnen de path-variabele
+    zelf niet patchen — patch.object op Path.exists is de enige injectieplaats.
+    """
+    _orig = _Path.exists
+
+    def _stub(self: _Path) -> bool:
+        return exists if "studenten.csv" in str(self) else _orig(self)
+
+    return _stub
+
+
 class TestSchedulerMain:
     """Tests voor de _main() CLI-entrypoint van scheduler."""
 
     def test_main_stopt_bij_ontbrekende_csv(self) -> None:
-        """_main() roept sys.exit(1) aan als de berend-CSV niet bestaat.
-
-        De CSV ligt buiten de repo — deze test verifieert de echte code-flow
-        zonder dat we extra mocks nodig hebben.
-        """
-        from samenwijzer.scheduler import _main
-
+        """_main() roept sys.exit(1) aan als de berend-CSV niet bestaat."""
         with (
             patch("dotenv.load_dotenv"),
+            patch.object(_Path, "exists", _stub_csv_exists(False)),
             pytest.raises(SystemExit) as exc_info,
         ):
+            from samenwijzer.scheduler import _main
+
             _main()
 
         assert exc_info.value.code == 1
 
     def test_main_geen_sysex_zonder_fouten(self, monkeypatch) -> None:
         """_main() eindigt normaal wanneer er geen fouten zijn."""
-        from pathlib import Path as _Path
-
-        import pandas as pd
-
         monkeypatch.setenv("DRY_RUN", "true")
         df_leeg = pd.DataFrame(
             {"studentnummer": pd.Series(dtype=str), "naam": pd.Series(dtype=str)}
         )
 
-        _orig_exists = _Path.exists
-
-        def _csv_bestaat(self: _Path) -> bool:
-            return True if "studenten.csv" in str(self) else _orig_exists(self)
-
         with (
             patch("dotenv.load_dotenv"),
-            patch.object(_Path, "exists", _csv_bestaat),
+            patch.object(_Path, "exists", _stub_csv_exists(True)),
             patch("samenwijzer.prepare.load_berend_csv", return_value=df_leeg),
             patch("samenwijzer.transform.transform_student_data", return_value=df_leeg),
             patch(
@@ -464,23 +468,14 @@ class TestSchedulerMain:
 
     def test_main_sysex_bij_fouten(self, monkeypatch) -> None:
         """_main() roept sys.exit(1) aan wanneer stuur_wekelijkse_checkins fouten meldt."""
-        from pathlib import Path as _Path
-
-        import pandas as pd
-
         monkeypatch.setenv("DRY_RUN", "false")
         df_leeg = pd.DataFrame(
             {"studentnummer": pd.Series(dtype=str), "naam": pd.Series(dtype=str)}
         )
 
-        _orig_exists = _Path.exists
-
-        def _csv_bestaat(self: _Path) -> bool:
-            return True if "studenten.csv" in str(self) else _orig_exists(self)
-
         with (
             patch("dotenv.load_dotenv"),
-            patch.object(_Path, "exists", _csv_bestaat),
+            patch.object(_Path, "exists", _stub_csv_exists(True)),
             patch("samenwijzer.prepare.load_berend_csv", return_value=df_leeg),
             patch("samenwijzer.transform.transform_student_data", return_value=df_leeg),
             patch(

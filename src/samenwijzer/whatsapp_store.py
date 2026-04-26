@@ -107,9 +107,16 @@ class WhatsappSessie:
     gestart_op: str | None
 
     def context(self) -> list[dict]:
+        """Geeft een mutable kopie van de gesprekshistorie; muteren raakt context_json niet."""
         return json.loads(self.context_json)
 
     def voeg_bericht_toe(self, rol: str, tekst: str) -> None:
+        """Voeg een bericht toe aan de gesprekshistorie en verhoog de teller.
+
+        Args:
+            rol: Afzender van het bericht ('student' of 'coach').
+            tekst: Berichttekst.
+        """
         ctx = self.context()
         ctx.append({"rol": rol, "tekst": tekst})
         self.context_json = json.dumps(ctx)
@@ -165,6 +172,14 @@ def deactiveer_nummer(studentnummer: str) -> None:
 
 
 def get_registratie(studentnummer: str) -> TelefoonnummerReg | None:
+    """Geef de telefoonregistratie voor een student, of None als die niet bestaat.
+
+    Args:
+        studentnummer: Uniek studentidentificatie.
+
+    Returns:
+        TelefoonnummerReg of None.
+    """
     with _verbinding() as conn:
         rij = conn.execute(
             "SELECT * FROM telefoon_registraties WHERE studentnummer=?",
@@ -174,6 +189,16 @@ def get_registratie(studentnummer: str) -> TelefoonnummerReg | None:
 
 
 def heeft_actieve_registratie(studentnummer: str) -> bool:
+    """Geeft True als de student een actieve opt-in heeft.
+
+    Args:
+        studentnummer: Uniek studentidentificatie.
+
+    Returns:
+        True als zowel geactiveerd als opt_in True zijn. Beide velden zijn nodig:
+        geactiveerd kan gereset worden door opt-out terwijl opt_in de oorspronkelijke
+        toestemming bijhoudt — alleen de combinatie garandeert een geldige opt-in.
+    """
     reg = get_registratie(studentnummer)
     return reg is not None and bool(reg.geactiveerd) and bool(reg.opt_in)
 
@@ -224,6 +249,14 @@ def deactiveer_nummer_via_telefoon(telefoonnummer: str) -> bool:
 
 
 def get_sessie(from_number: str) -> WhatsappSessie | None:
+    """Geef de actieve gesprekssessie voor een telefoonnummer, of None.
+
+    Args:
+        from_number: Telefoonnummer van de student (zonder 'whatsapp:'-prefix).
+
+    Returns:
+        WhatsappSessie of None.
+    """
     with _verbinding() as conn:
         rij = conn.execute(
             "SELECT * FROM whatsapp_sessies WHERE from_number=?",
@@ -233,6 +266,7 @@ def get_sessie(from_number: str) -> WhatsappSessie | None:
 
 
 def sla_sessie_op(sessie: WhatsappSessie) -> None:
+    """Sla een gesprekssessie op (insert of update op from_number)."""
     with _verbinding() as conn:
         conn.execute(
             """
@@ -249,5 +283,10 @@ def sla_sessie_op(sessie: WhatsappSessie) -> None:
 
 
 def verwijder_sessie(from_number: str) -> None:
+    """Verwijder de gesprekssessie voor een telefoonnummer.
+
+    Args:
+        from_number: Telefoonnummer van de student (zonder 'whatsapp:'-prefix).
+    """
     with _verbinding() as conn:
         conn.execute("DELETE FROM whatsapp_sessies WHERE from_number=?", (from_number,))
