@@ -61,7 +61,9 @@ OPENAI_EMBEDDING_MODEL=text-embedding-3-large   # default; zie note hieronder
 
 ### Data-laag
 
-**SQLite** (`db.py`) — schema met `instellingen`, `oer_documenten`, `kerntaken`, `mentoren`, `mentor_oer`, `studenten`, `student_kerntaak_scores`. Verbinding via `get_connection()` met WAL-modus en `check_same_thread=False` (vereist voor `@st.cache_resource`). Alle queries als losse functies, geen ORM.
+**`db.py`** — SQLite schema en alle queries als losse functies, geen ORM. Schema: `instellingen`, `oer_documenten`, `kerntaken`, `mentoren`, `mentor_oer`, `studenten`, `student_kerntaak_scores`. Verbinding via `get_connection()` met WAL-modus en `check_same_thread=False`.
+
+**`_db.py`** — dunne Streamlit-wrapper: `get_conn()` is `@st.cache_resource` en roept `get_connection()` + `init_db()` aan. Gebruik `_db.get_conn()` in pagina's, `db.get_connection()` in scripts en tests.
 
 **ChromaDB** (`vector_store.py`) — persistente collectie `oer_chunks`, cosine distance, gefilterd op `oer_id`. Drempelwaarde `DREMPELWAARDE = 0.7`: chunks boven die afstand worden weggegooid. Zoekfilter via `where={"oer_id": ...}` — een student ziet nooit chunks van andere OERs.
 
@@ -82,6 +84,8 @@ tekst        → extraheer_kerntaken()  → kerntaken/werkprocessen in SQLite
 
 Bestanden zonder crebo in naam (Aeres, Utrecht) worden hernoemd via `tools/rename_oers.py` dat de titelpagina uitleest.
 
+Bij elke start van `main()` draait `_sync_geindexeerd(conn, collection)`: reset `geindexeerd=0` voor OERs die in SQLite als geïndexeerd staan maar geen chunks in Chroma hebben. Voorkomt dat bestanden worden overgeslagen na een externe Chroma-clear.
+
 ### Sessiemodel
 
 Login in `app/main.py`. Na login staat in `st.session_state`:
@@ -97,22 +101,35 @@ Login in `app/main.py`. Na login staat in `st.session_state`:
 
 Rolbewaking: `vereist_student()` / `vereist_mentor()` bovenaan elke pagina aanroepen, direct na CSS-injectie.
 
+### Authenticatie
+
+Wachtwoorden opgeslagen als PBKDF2-HMAC-SHA256 (`salt_hex:hash_hex`). Legacy bare-SHA-256 hashes worden nog geaccepteerd en bij volgende login automatisch gemigreerd. Seed-wachtwoord voor alle test-accounts: **Welkom123**.
+
+Login: studenten op studentnummer, mentoren op naam.
+
 ### Pagina's
 
 | Bestand | Rol | Functie |
 |---|---|---|
 | `app/main.py` | beide | Login, sessie-initialisatie |
 | `1_oer_assistent.py` | student | Hybride chat: embed vraag → zoek chunks op `oer_id` → stream Claude-antwoord |
-| `2_mijn_oer.py` | student | Kerntaken/werkprocessen uit OER tonen |
+| `2_mijn_oer.py` | student | Volledig OER inzien of downloaden |
 | `3_mijn_voortgang.py` | student | Voortgang, BSA, scores visualiseren |
 | `4_mijn_studenten.py` | mentor | Studentenlijst van eigen koppeling |
-| `5_begeleidingssessie.py` | mentor | Profiel + chat voor actieve student |
+| `5_begeleidingssessie.py` | mentor | Profiel + twee tabs: OER-chat en volledig OER bekijken |
 
 ### AI-isolatie
 
 - Anthropic (Claude): `_ai._client()` — alleen voor streaming chat in `chat.py`
 - OpenAI (embeddings): `_openai._client()` — alleen in `ingest.py` en pagina's die embeddings maken
 - Nooit clients direct instantiëren buiten deze twee modules
+
+### Hybride RAG-flow (`1_oer_assistent.py`)
+
+1. Strikte zoektocht: n=8, drempelwaarde=0.7
+2. Als < `MIN_RELEVANTE_CHUNKS` (2): bredere zoektocht n=15, drempelwaarde=0.85
+3. Als nog steeds < 2: fallback op volledige OER-tekst via `laad_oer_tekst()` (max 100k tekens)
+4. Als geen bestandspad beschikbaar: toon `LAGE_RELEVANTIE_BERICHT`
 
 ### OER-bestanden
 
@@ -125,3 +142,5 @@ Een student die aan een niet-geïndexeerde OER gekoppeld is krijgt altijd "Ik ko
 ```python
 conn.execute("SELECT geindexeerd FROM oer_documenten WHERE id=?", (student["oer_id"],))
 ```
+
+Als `data/chroma/` extern wordt gewist terwijl SQLite nog `geindexeerd=1` heeft: de pipeline herstelt dit automatisch via `_sync_geindexeerd()` bij de volgende `--alles` run. De log toont dan: `N documenten geindexeerd-vlag gereset (Chroma/SQLite sync).`
