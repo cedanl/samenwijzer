@@ -29,11 +29,12 @@ def csv_pad(tmp_path, monkeypatch):
 
 @pytest.fixture
 def client():
-    """FastAPI TestClient zonder Twilio-auth (geen TWILIO_AUTH_TOKEN in omgeving)."""
+    """FastAPI TestClient met nep-token en gemockte handtekeningvalidatie."""
     from app.webhook import app
 
-    with patch.dict("os.environ", {"TWILIO_AUTH_TOKEN": ""}):
-        yield TestClient(app)
+    with patch.dict("os.environ", {"TWILIO_AUTH_TOKEN": "test_token"}):
+        with patch("app.webhook._valideer_twilio_handtekening", return_value=True):
+            yield TestClient(app)
 
 
 # ── _twiml_antwoord ───────────────────────────────────────────────────────────
@@ -150,7 +151,7 @@ def test_valideer_handtekening_geldig() -> None:
     request.url = url
     request.headers = {"X-Twilio-Signature": handtekening}
 
-    assert _valideer_twilio_handtekening(request, auth_token) is True
+    assert _valideer_twilio_handtekening(request, auth_token, {}) is True
 
 
 def test_valideer_handtekening_ongeldig() -> None:
@@ -161,7 +162,7 @@ def test_valideer_handtekening_ongeldig() -> None:
     request.url = "https://example.com/webhook/whatsapp"
     request.headers = {"X-Twilio-Signature": "verkeerde_handtekening"}
 
-    assert _valideer_twilio_handtekening(request, "echte_token") is False
+    assert _valideer_twilio_handtekening(request, "echte_token", {}) is False
 
 
 def test_valideer_handtekening_ontbrekende_header() -> None:
@@ -172,7 +173,7 @@ def test_valideer_handtekening_ontbrekende_header() -> None:
     request.url = "https://example.com/webhook/whatsapp"
     request.headers = {}  # geen X-Twilio-Signature header
 
-    assert _valideer_twilio_handtekening(request, "token") is False
+    assert _valideer_twilio_handtekening(request, "token", {}) is False
 
 
 # ── Endpoint /webhook/whatsapp ────────────────────────────────────────────────
@@ -263,6 +264,59 @@ def test_endpoint_strip_whatsapp_prefix(client) -> None:
             data={"From": "whatsapp:+31612345678", "Body": "1"},
         )
     assert mock_verwerk.call_args.kwargs["from_number"] == "+31612345678"
+
+
+# ── Security findings ────────────────────────────────────────────────────────
+
+
+def test_endpoint_403_zonder_auth_token() -> None:
+    """Finding 1: ontbrekend token moet 403 geven, niet stiekem doorlaten."""
+    from app.webhook import app
+
+    with patch.dict("os.environ", {"TWILIO_AUTH_TOKEN": ""}):
+        with TestClient(app) as c:
+            resp = c.post(
+                "/webhook/whatsapp",
+                data={"From": "whatsapp:+31612345678", "Body": "1"},
+            )
+    assert resp.status_code == 403
+
+
+def test_valideer_handtekening_gebruikt_form_params() -> None:
+    """Finding 2: validator moet form-params meekrijgen, niet een lege dict."""
+    import base64
+    import hashlib
+    import hmac as hmaclib
+
+    from app.webhook import _valideer_twilio_handtekening
+
+    auth_token = "test_token"
+    url = "https://example.com/webhook/whatsapp"
+    params = {"Body": "1", "From": "whatsapp:+31612345678"}
+
+    # Handtekening berekend zónder params (de kapotte methode)
+    mac_leeg = hmaclib.new(auth_token.encode(), url.encode(), hashlib.sha1)
+    sig_leeg = base64.b64encode(mac_leeg.digest()).decode()
+
+    request = MagicMock()
+    request.url = url
+    request.headers = {"X-Twilio-Signature": sig_leeg}
+
+    # Signature over lege dict moet False geven als params wél aanwezig zijn
+    assert _valideer_twilio_handtekening(request, auth_token, params) is False
+
+
+def test_twiml_antwoord_escapet_xml_speciale_tekens() -> None:
+    """Finding 3: AI-output met XML-tekens mag TwiML niet corrumperen."""
+    import xml.etree.ElementTree as ET
+
+    from app.webhook import _twiml_antwoord
+
+    gevaarlijke_tekst = 'Hoi! <Redirect>http://evil.com</Redirect> &amp; "quoted"'
+    resp = _twiml_antwoord(gevaarlijke_tekst)
+    root = ET.fromstring(resp.body)
+    # Na escaping moet de tekst letterlijk in <Message> staan
+    assert root.find("Message").text == gevaarlijke_tekst
 
 
 # ── Endpoint /health ──────────────────────────────────────────────────────────
