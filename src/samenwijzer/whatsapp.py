@@ -131,6 +131,7 @@ def stuur_verificatie(telefoonnummer: str) -> None:
 
 
 def stuur_foutbericht(telefoonnummer: str) -> None:
+    """Verstuur een foutmelding die de student vraagt 1, 2 of 3 te sturen."""
     _stuur(telefoonnummer, _FOUTBERICHT_TEKST)
 
 
