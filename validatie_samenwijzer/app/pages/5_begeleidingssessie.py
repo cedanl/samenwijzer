@@ -1,5 +1,6 @@
 """Mentor: studentprofiel + OER-assistent naast elkaar."""
 
+import base64
 import html
 import os
 from pathlib import Path
@@ -22,6 +23,7 @@ from validatie_samenwijzer.chat import (  # noqa: E402
     genereer_antwoord,
 )
 from validatie_samenwijzer.db import get_kerntaak_scores_by_student_id  # noqa: E402
+from validatie_samenwijzer.ingest import extraheer_tekst_html  # noqa: E402
 from validatie_samenwijzer.styles import (  # noqa: E402
     CSS,
     GROEN,
@@ -46,6 +48,7 @@ MAX_GESCHIEDENIS = 20  # 10 uitwisselingen
 
 @st.cache_resource
 def _collection():
+    """Gedeeld ChromaDB-collectie-object; gecached per sessie-lifecycle."""
     return get_collection(get_client(CHROMA_PATH))
 
 
@@ -136,85 +139,134 @@ with col_profiel:
                 st.caption(punt)
 
 with col_chat:
-    st.markdown(f"**💬 OER-assistent** — {opleiding}")
+    tab_chat, tab_oer = st.tabs(["💬 OER-assistent", "📄 Volledig OER"])
 
-    if "chat_history" not in st.session_state:
-        st.session_state.chat_history = []
-    if "chat_bronnen" not in st.session_state:
-        st.session_state.chat_bronnen = []
+    with tab_chat:
+        if "chat_history" not in st.session_state:
+            st.session_state.chat_history = []
+        if "chat_bronnen" not in st.session_state:
+            st.session_state.chat_bronnen = []
 
-    assistant_idx = 0
-    for bericht in st.session_state.chat_history:
-        if bericht["role"] == "user":
-            vraag_tekst = (
-                bericht["content"].split("Vraag:")[-1].strip()
-                if "Vraag:" in bericht["content"]
-                else bericht["content"]
+        assistant_idx = 0
+        for bericht in st.session_state.chat_history:
+            if bericht["role"] == "user":
+                vraag_tekst = (
+                    bericht["content"].split("Vraag:")[-1].strip()
+                    if "Vraag:" in bericht["content"]
+                    else bericht["content"]
+                )
+                st.markdown(
+                    f'<div class="chat-vraag">💬 {html.escape(vraag_tekst)}</div>',
+                    unsafe_allow_html=True,
+                )
+            else:
+                st.markdown(
+                    f'<div class="chat-antwoord">{html.escape(bericht["content"])}</div>',
+                    unsafe_allow_html=True,
+                )
+                if assistant_idx < len(st.session_state.chat_bronnen):
+                    bronnen = st.session_state.chat_bronnen[assistant_idx]
+                    for bron in bronnen:
+                        pagina = bron["metadata"].get("pagina", "?")
+                        st.markdown(
+                            f'<div class="bron-kaartje">📄 p.{pagina} — '
+                            f"<em>{bron['tekst'][:150]}…</em></div>",
+                            unsafe_allow_html=True,
+                        )
+                assistant_idx += 1
+
+        vraag = st.chat_input(f"Stel een vraag over {student['naam']}'s OER…")
+        if vraag and oer:
+            embedding = embed_vraag(openai_client(), vraag)
+            chunks = zoek_chunks(_collection(), embedding, oer_ids=[student["oer_id"]])
+
+            berichten = bouw_berichten(
+                chat_history=st.session_state.chat_history,
+                chunks=chunks,
+                vraag=vraag,
+                opleiding=opleiding,
+                instelling=instelling,
             )
+
             st.markdown(
-                f'<div class="chat-vraag">💬 {html.escape(vraag_tekst)}</div>',
+                f'<div class="chat-vraag">💬 {html.escape(vraag)}</div>',
                 unsafe_allow_html=True,
             )
-        else:
-            st.markdown(
-                f'<div class="chat-antwoord">{bericht["content"]}</div>',
-                unsafe_allow_html=True,
-            )
-            if assistant_idx < len(st.session_state.chat_bronnen):
-                bronnen = st.session_state.chat_bronnen[assistant_idx]
-                for bron in bronnen:
+
+            if not chunks:
+                antwoord = LAGE_RELEVANTIE_BERICHT
+                st.info(antwoord)
+            else:
+                with st.spinner("Zoeken in OER…"):
+                    antwoord = st.write_stream(genereer_antwoord(ai_client(), berichten))
+
+                for bron in chunks:
                     pagina = bron["metadata"].get("pagina", "?")
                     st.markdown(
                         f'<div class="bron-kaartje">📄 p.{pagina} — '
                         f"<em>{bron['tekst'][:150]}…</em></div>",
                         unsafe_allow_html=True,
                     )
-            assistant_idx += 1
 
-    vraag = st.chat_input(f"Stel een vraag over {student['naam']}'s OER…")
-    if vraag and oer:
-        embedding = embed_vraag(openai_client(), vraag)
-        chunks = zoek_chunks(_collection(), embedding, oer_ids=[student["oer_id"]])
+            st.session_state.chat_history.extend(
+                [
+                    {"role": "user", "content": vraag},
+                    {"role": "assistant", "content": antwoord},
+                ]
+            )
+            st.session_state.chat_bronnen.append(chunks)
+            if len(st.session_state.chat_history) > MAX_GESCHIEDENIS:
+                st.session_state.chat_history = st.session_state.chat_history[-MAX_GESCHIEDENIS:]
+                st.session_state.chat_bronnen = st.session_state.chat_bronnen[
+                    -(MAX_GESCHIEDENIS // 2) :
+                ]
 
-        berichten = bouw_berichten(
-            chat_history=st.session_state.chat_history,
-            chunks=chunks,
-            vraag=vraag,
-            opleiding=opleiding,
-            instelling=instelling,
-        )
-
-        st.markdown(
-            f'<div class="chat-vraag">💬 {html.escape(vraag)}</div>',
-            unsafe_allow_html=True,
-        )
-
-        if not chunks:
-            antwoord = LAGE_RELEVANTIE_BERICHT
-            st.info(antwoord)
+    with tab_oer:
+        if not oer:
+            st.warning("Geen OER gekoppeld aan deze student.")
         else:
-            with st.spinner("Zoeken in OER…"):
-                antwoord = st.write_stream(genereer_antwoord(ai_client(), berichten))
+            OEREN_PAD = Path(os.environ.get("OEREN_PAD", "oeren")).resolve()
+            pad = Path(oer["bestandspad"])
+            if not pad.is_absolute():
+                pad = OEREN_PAD.parent / pad
+            pad = pad.resolve()
+            if not pad.is_relative_to(OEREN_PAD.parent):
+                st.error("Ongeldig OER-bestandspad.")
+                st.stop()
 
-            for bron in chunks:
-                pagina = bron["metadata"].get("pagina", "?")
+            st.caption(f"Crebo {oer['crebo']} · {oer['leerweg']} · Cohort {oer['cohort']}")
+
+            if not pad.exists():
+                st.warning(f"OER-bestand niet gevonden op: {pad}")
+            elif pad.suffix.lower() == ".pdf":
+                with open(pad, "rb") as f:
+                    pdf_bytes = f.read()
+                st.download_button(
+                    label="⬇️ Download OER als PDF",
+                    data=pdf_bytes,
+                    file_name=pad.name,
+                    mime="application/pdf",
+                )
+                b64 = base64.b64encode(pdf_bytes).decode()
                 st.markdown(
-                    f'<div class="bron-kaartje">📄 p.{pagina} — '
-                    f"<em>{bron['tekst'][:150]}…</em></div>",
+                    f'<iframe src="data:application/pdf;base64,{b64}" '
+                    f'width="100%" height="800px"></iframe>',
                     unsafe_allow_html=True,
                 )
-
-        st.session_state.chat_history.extend(
-            [
-                {"role": "user", "content": vraag},
-                {"role": "assistant", "content": antwoord},
-            ]
-        )
-        st.session_state.chat_bronnen.append(chunks)
-        if len(st.session_state.chat_history) > MAX_GESCHIEDENIS:
-            st.session_state.chat_history = st.session_state.chat_history[-MAX_GESCHIEDENIS:]
-            st.session_state.chat_bronnen = st.session_state.chat_bronnen[
-                -(MAX_GESCHIEDENIS // 2) :
-            ]
+            elif pad.suffix.lower() in {".html", ".htm"}:
+                st.text_area("OER-inhoud", extraheer_tekst_html(pad), height=600)
+            elif pad.suffix.lower() == ".md":
+                st.markdown(pad.read_text(encoding="utf-8"))
+            elif pad.suffix.lower() == ".txt":
+                tekst = pad.read_text(encoding="utf-8", errors="replace")
+                st.download_button(
+                    label="⬇️ Download OER als tekstbestand",
+                    data=tekst.encode("utf-8"),
+                    file_name=pad.name,
+                    mime="text/plain",
+                )
+                st.text_area("OER-inhoud", tekst, height=600)
+            else:
+                st.warning(f"Bestandstype '{pad.suffix}' wordt niet ondersteund.")
 
 render_footer()
