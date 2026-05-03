@@ -17,6 +17,7 @@ import openai
 EMBEDDING_MODEL = os.environ.get("OPENAI_EMBEDDING_MODEL", "text-embedding-3-large")
 
 log = logging.getLogger(__name__)
+logging.getLogger("pdfminer").setLevel(logging.ERROR)
 
 # ── Bestandsnaam parsen ───────────────────────────────────────────────────────
 

@@ -152,7 +152,7 @@ with col_chat:
                 )
             else:
                 st.markdown(
-                    f'<div class="chat-antwoord">{html.escape(bericht["content"])}</div>',
+                    f'<div class="chat-antwoord">\n\n{bericht["content"]}\n\n</div>',
                     unsafe_allow_html=True,
                 )
 
@@ -177,7 +177,7 @@ with col_chat:
                     ):
                         antwoord += fragment
                         placeholder.markdown(
-                            f'<div class="chat-antwoord">{html.escape(antwoord)}</div>',
+                            f'<div class="chat-antwoord">\n\n{antwoord}\n\n</div>',
                             unsafe_allow_html=True,
                         )
                 except Exception as e:
