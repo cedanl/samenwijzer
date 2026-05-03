@@ -1,94 +1,65 @@
-"""Hybride OER-chat: retrieval + prompt-opbouw + Claude streaming."""
+"""OER-chat: full-document context + Claude streaming."""
 
 from __future__ import annotations
 
 import logging
-import os
 from collections.abc import Generator
 from pathlib import Path
 
 import anthropic
-import openai
 
 logger = logging.getLogger(__name__)
 
-MIN_RELEVANTE_CHUNKS = 2  # minimaal aantal chunks voor chunk-gebaseerd antwoord
-_MAX_OER_TEKST_TEKENS = 100_000  # maximaal aantal tekens van volledige OER als context
-
-# Moet overeenkomen met het model waarmee de ChromaDB-collectie is geïndexeerd.
-EMBEDDING_MODEL = os.environ.get("OPENAI_EMBEDDING_MODEL", "text-embedding-3-large")
+_MAX_OER_TEKST_TEKENS = 500_000  # ruim voldoende voor elke OER binnen Sonnet 4.6 (1M context)
 
 LAGE_RELEVANTIE_BERICHT = (
-    "Ik kon geen relevante informatie over deze vraag vinden in jouw OER. "
-    "Controleer of de vraag betrekking heeft op jouw opleiding, of raadpleeg "
-    "het volledige OER via 'Mijn OER'."
+    "Ik kon geen OER-tekst laden voor deze student. "
+    "Controleer of het OER-bestand beschikbaar is, of raadpleeg het via 'Mijn OER'."
 )
 
-_SYSTEEM_TEMPLATE = (
-    "Je bent een OER-assistent voor de opleiding {opleiding} bij {instelling}. "
-    "Beantwoord vragen uitsluitend op basis van de aangeleverde OER-passages. "
-    "Geef volledige antwoorden: behandel alle onderdelen van de vraag. "
-    "Gebruik kopjes of opsommingen als dat de leesbaarheid ten goede komt. "
-    "Verwijs bij elke claim naar het paginanummer (bijv. 'Volgens pagina X…'). "
-    "Als de passages onvoldoende informatie bevatten, zeg dat dan expliciet. "
-    "Antwoord in het Nederlands."
-)
+_SYSTEEM_TEMPLATE = """\
+Je bent een OER-assistent voor de opleiding {opleiding} bij {instelling}.
+Hieronder staat de volledige Onderwijs- en Examenregeling (OER).
+Beantwoord vragen uitsluitend op basis van deze OER — nooit vanuit eigen kennis.
+Geef volledige, goed gestructureerde antwoorden met kopjes of opsommingen waar dat helpt.
+Verwijs bij elke claim naar de sectie of het paginanummer uit de OER
+(bijv. "Volgens sectie 3.2…" of "Op pagina 12 staat…").
+Als de informatie niet in de OER staat, zeg dat dan expliciet.
+Antwoord in het Nederlands.
 
-_VOLLEDIG_OER_SYSTEEM_TEMPLATE = (
-    "Je bent een OER-assistent voor de opleiding {opleiding} bij {instelling}. "
-    "Beantwoord vragen op basis van de volledige OER-tekst hieronder. "
-    "Geef volledige, goed gestructureerde antwoorden met kopjes waar van toepassing. "
-    "Verwijs naar paginanummers of secties als je die kunt identificeren. "
-    "Antwoord in het Nederlands."
-)
-
-
-def embed_vraag(openai_client: openai.OpenAI, vraag: str) -> list[float]:
-    """Maak een embedding van de gebruikersvraag."""
-    response = openai_client.embeddings.create(
-        model=EMBEDDING_MODEL,
-        input=vraag,
-    )
-    return response.data[0].embedding
-
-
-def bouw_berichten(
-    chat_history: list[dict],
-    chunks: list[dict],
-    vraag: str,
-    opleiding: str,
-    instelling: str,
-) -> list[dict]:
-    """Bouw de berichtenlijst op voor de Claude API."""
-    systeem = _SYSTEEM_TEMPLATE.format(opleiding=opleiding, instelling=instelling)
-
-    if chunks:
-        passages = "\n\n".join(
-            f"[Pagina {c['metadata'].get('pagina', '?')}]\n{c['tekst']}" for c in chunks
-        )
-        context = f"{systeem}\n\nRelevante OER-passages:\n{passages}"
-    else:
-        context = systeem
-
-    berichten = list(chat_history)
-
-    if not berichten:
-        eerste_vraag = f"{context}\n\nVraag: {vraag}"
-        berichten.append({"role": "user", "content": eerste_vraag})
-    else:
-        berichten.append({"role": "user", "content": vraag})
-
-    return berichten
+OER:
+{oer_tekst}"""
 
 
 def laad_oer_tekst(bestandspad: Path) -> str:
-    """Laad de volledige OER-tekst uit het bestand. Geeft lege string bij fout."""
-    if not bestandspad.exists():
+    """Laad de OER-tekst voor gebruik als chatcontext.
+
+    Prioriteit: .md-broertje (markitdown-kwaliteit) → .md zelf → PDF via pdfplumber.
+
+    Args:
+        bestandspad: Pad naar het OER-bestand (PDF of Markdown).
+
+    Returns:
+        Volledige OER-tekst als string, of lege string als niets beschikbaar is.
+    """
+    if not bestandspad.exists() and bestandspad.suffix.lower() != ".md":
+        # Probeer het .md-broertje ook als het bronbestand zelf ontbreekt
+        md_pad = bestandspad.with_suffix(".md")
+        if md_pad.exists():
+            return md_pad.read_text(encoding="utf-8", errors="replace")[:_MAX_OER_TEKST_TEKENS]
         return ""
+
     suffix = bestandspad.suffix.lower()
-    if suffix == ".txt":
-        return bestandspad.read_text(encoding="utf-8", errors="replace")
+
+    if suffix == ".md":
+        return bestandspad.read_text(encoding="utf-8", errors="replace")[:_MAX_OER_TEKST_TEKENS]
+
     if suffix == ".pdf":
+        # Voorkeur: naastliggend .md-bestand van markitdown-conversie
+        md_pad = bestandspad.with_suffix(".md")
+        if md_pad.exists():
+            return md_pad.read_text(encoding="utf-8", errors="replace")[:_MAX_OER_TEKST_TEKENS]
+        # Fallback: pdfplumber
         try:
             import pdfplumber
 
@@ -98,43 +69,54 @@ def laad_oer_tekst(bestandspad: Path) -> str:
                     t = pagina.extract_text()
                     if t:
                         tekst_delen.append(t)
-            return "\n\n".join(tekst_delen)
+            return "\n\n".join(tekst_delen)[:_MAX_OER_TEKST_TEKENS]
         except Exception as e:
             logger.warning("PDF lezen mislukt voor '%s': %s", bestandspad, e)
             return ""
+
     return ""
 
 
-def bouw_berichten_volledig(
-    chat_history: list[dict],
-    oer_tekst: str,
-    vraag: str,
-    opleiding: str,
-    instelling: str,
-) -> list[dict]:
-    """Bouw berichtenlijst op met de volledige OER-tekst als context."""
-    systeem = _VOLLEDIG_OER_SYSTEEM_TEMPLATE.format(opleiding=opleiding, instelling=instelling)
-    tekst = oer_tekst[:_MAX_OER_TEKST_TEKENS]
-    context = f"{systeem}\n\nVolledig OER:\n{tekst}"
+def bouw_systeem(oer_tekst: str, opleiding: str, instelling: str) -> str:
+    """Stel de systeemprompt samen met de volledige OER als context."""
+    return _SYSTEEM_TEMPLATE.format(
+        opleiding=opleiding,
+        instelling=instelling,
+        oer_tekst=oer_tekst,
+    )
 
+
+def bouw_berichten(chat_history: list[dict], vraag: str) -> list[dict]:
+    """Voeg de nieuwe vraag toe aan de gesprekshistorie."""
     berichten = list(chat_history)
-    if not berichten:
-        berichten.append({"role": "user", "content": f"{context}\n\nVraag: {vraag}"})
-    else:
-        berichten.append({"role": "user", "content": vraag})
+    berichten.append({"role": "user", "content": vraag})
     return berichten
 
 
 def genereer_antwoord(
     client: anthropic.Anthropic,
+    system: str,
     berichten: list[dict],
     model: str = "claude-sonnet-4-6",
     max_tokens: int = 2048,
 ) -> Generator[str]:
-    """Stream Claude-antwoord als generator van tekst-fragmenten."""
+    """Stream Claude-antwoord als generator van tekst-fragmenten.
+
+    Args:
+        client: Geïnitialiseerde Anthropic-client.
+        system: Systeemprompt met OER-context.
+        berichten: Gesprekshistorie als lijst van rol/content-dicts.
+        model: Claude-model ID.
+        max_tokens: Maximum aantal tokens in het antwoord.
+
+    Yields:
+        Tekst-fragmenten van het gestreamde antwoord.
+    """
     with client.messages.stream(
         model=model,
+        system=system,
         max_tokens=max_tokens,
+        output_config={"effort": "medium"},
         messages=berichten,
     ) as stream:
         yield from stream.text_stream

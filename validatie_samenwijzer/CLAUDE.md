@@ -29,6 +29,10 @@ uv run python -m validatie_samenwijzer.ingest --alles          # nieuw indexeren
 uv run python -m validatie_samenwijzer.ingest --alles --reset  # alles herindexeren
 uv run python -m validatie_samenwijzer.ingest --bestand oeren/davinci_oeren/25751BBL2025Examenplan.pdf
 
+# Bestandswatcher (herindexeer automatisch bij wijzigingen in oeren/)
+uv run python -m validatie_samenwijzer.watcher          # bewaakt oeren/ (default)
+uv run python -m validatie_samenwijzer.watcher --oeren-pad /pad/naar/oeren
+
 # Seed testdata
 uv run python seed/seed.py        # 3 studenten + 2 mentoren
 uv run python seed/bulk_seed.py   # 1000 studenten over alle geïndexeerde OERs

@@ -126,12 +126,13 @@ def voeg_oer_document_toe(
 
 
 def get_oer_document(
-    conn: sqlite3.Connection, crebo: str, cohort: str, leerweg: str
+    conn: sqlite3.Connection, instelling_id: int, crebo: str, cohort: str, leerweg: str
 ) -> sqlite3.Row | None:
-    """Zoek een OER op crebo + cohort + leerweg. Geeft None als niet gevonden."""
+    """Zoek een OER op instelling + crebo + cohort + leerweg. Geeft None als niet gevonden."""
     return conn.execute(
-        "SELECT * FROM oer_documenten WHERE crebo = ? AND cohort = ? AND leerweg = ?",
-        (crebo, cohort, leerweg),
+        "SELECT * FROM oer_documenten "
+        "WHERE instelling_id = ? AND crebo = ? AND cohort = ? AND leerweg = ?",
+        (instelling_id, crebo, cohort, leerweg),
     ).fetchone()
 
 
@@ -143,6 +144,12 @@ def get_oer_document_by_id(conn: sqlite3.Connection, oer_id: int) -> sqlite3.Row
 def markeer_geindexeerd(conn: sqlite3.Connection, oer_id: int) -> None:
     """Zet geindexeerd=1 voor het OER-document met het gegeven id."""
     conn.execute("UPDATE oer_documenten SET geindexeerd = 1 WHERE id = ?", (oer_id,))
+    conn.commit()
+
+
+def update_oer_bestandspad(conn: sqlite3.Connection, oer_id: int, bestandspad: str) -> None:
+    """Overschrijf het bestandspad van een OER-document (bijv. upgrade van TXT naar PDF)."""
+    conn.execute("UPDATE oer_documenten SET bestandspad = ? WHERE id = ?", (bestandspad, oer_id))
     conn.commit()
 
 

@@ -235,17 +235,42 @@ def extraheer_tekst_html(pad: Path) -> str:
 
 
 def extraheer_tekst_md(pad: Path) -> str:
-    """Lees een Markdown-bestand als platte tekst."""
+    """Lees een Markdown-bestand."""
     return pad.read_text(encoding="utf-8", errors="replace")
 
 
-def extraheer_tekst_txt(pad: Path) -> str:
-    """Lees een tekstbestand als platte tekst."""
-    return pad.read_text(encoding="utf-8", errors="replace")
+def converteer_naar_markdown(pad: Path) -> Path:
+    """Converteer een PDF naar Markdown via markitdown.
+
+    Slaat het resultaat op als <stem>.md naast het bronbestand.
+
+    Args:
+        pad: Pad naar het PDF-bestand.
+
+    Returns:
+        Pad naar het gegenereerde .md-bestand, of het originele pad bij mislukking
+        of als het geen PDF is.
+    """
+    if pad.suffix.lower() != ".pdf":
+        return pad
+    md_pad = pad.with_suffix(".md")
+    if md_pad.exists():
+        return md_pad
+    try:
+        from markitdown import MarkItDown
+
+        md = MarkItDown()
+        resultaat = md.convert(str(pad))
+        md_pad.write_text(resultaat.text_content, encoding="utf-8")
+        log.info("PDF geconverteerd naar Markdown: '%s'", md_pad.name)
+    except Exception as e:
+        log.warning("Markitdown-conversie mislukt voor '%s': %s", pad.name, e)
+        return pad
+    return md_pad
 
 
 def extraheer_tekst(pad: Path) -> str:
-    """Extraheer tekst uit PDF, HTML, Markdown of plaintext."""
+    """Extraheer tekst uit PDF, HTML of Markdown."""
     suffix = pad.suffix.lower()
     if suffix == ".pdf":
         return extraheer_tekst_pdf(pad)
@@ -253,8 +278,6 @@ def extraheer_tekst(pad: Path) -> str:
         return extraheer_tekst_html(pad)
     if suffix == ".md":
         return extraheer_tekst_md(pad)
-    if suffix == ".txt":
-        return extraheer_tekst_txt(pad)
     raise ValueError(f"Niet-ondersteund bestandstype: {suffix}")
 
 
@@ -276,7 +299,7 @@ _MAP_NAAM = {
     "utrecht": "utrecht_oeren",
 }
 
-_ONDERSTEUNDE_EXTENSIES = {".pdf", ".html", ".htm", ".md", ".txt"}
+_ONDERSTEUNDE_EXTENSIES = {".pdf", ".html", ".htm", ".md"}
 
 
 def _resolveer_oer(
@@ -298,6 +321,7 @@ def _resolveer_oer(
     from validatie_samenwijzer.db import (
         get_instelling_by_naam,
         get_oer_document,
+        update_oer_bestandspad,
         voeg_oer_document_toe,
     )
     from validatie_samenwijzer.vector_store import verwijder_chunks_voor_oer
@@ -312,7 +336,7 @@ def _resolveer_oer(
         log.error("Instelling '%s' niet gevonden in database.", instelling_naam)
         return None
 
-    oer = get_oer_document(conn, meta["crebo"], meta["cohort"], meta["leerweg"])
+    oer = get_oer_document(conn, inst["id"], meta["crebo"], meta["cohort"], meta["leerweg"])
     if oer is None:
         oer_id = voeg_oer_document_toe(
             conn,
@@ -328,6 +352,13 @@ def _resolveer_oer(
         if str(pad) == oer["bestandspad"] and oer["geindexeerd"] and not reset:
             log.info("'%s' al geïndexeerd — overgeslagen.", pad.name)
             return None
+        # PDF heeft prioriteit boven MD; update als pad afwijkt.
+        stored_suffix = Path(oer["bestandspad"]).suffix.lower()
+        incoming_suffix = pad.suffix.lower()
+        pad_prioriteit = incoming_suffix == ".pdf" or stored_suffix not in {".pdf"}
+        if pad_prioriteit and str(pad) != oer["bestandspad"]:
+            log.info("Bestandspad bijgewerkt naar '%s'.", pad.name)
+            update_oer_bestandspad(conn, oer_id, str(pad))
         if reset and oer_id not in al_gewist:
             verwijder_chunks_voor_oer(collection, oer_id)
             al_gewist.add(oer_id)
@@ -338,12 +369,21 @@ def _resolveer_oer(
 def _extraheer_chunks(pad: Path) -> tuple[list[dict], str]:
     """Extraheer chunks en volledige tekst uit een OER-bestand.
 
+    PDF-bestanden worden eerst naar Markdown geconverteerd via markitdown.
     Raises bij extractiefouten — caller vangt op en logt.
     """
     if pad.suffix.lower() == ".pdf":
-        paginas = extraheer_paginas_pdf(pad)
-        tekst = "\n\n".join(t for _, t in paginas)
-        chunks_met_pagina = chunk_paginas(paginas)
+        md_pad = converteer_naar_markdown(pad)
+        if md_pad.suffix.lower() == ".md":
+            tekst = extraheer_tekst_md(md_pad)
+            chunks_met_pagina = [
+                {"tekst": c, "pagina": 0} for c in chunk_tekst_semantisch(tekst) if c.strip()
+            ]
+        else:
+            # Markitdown mislukt: val terug op pdfplumber met paginanummers
+            paginas = extraheer_paginas_pdf(pad)
+            tekst = "\n\n".join(t for _, t in paginas)
+            chunks_met_pagina = chunk_paginas(paginas)
     else:
         tekst = extraheer_tekst(pad)
         chunks_met_pagina = [
