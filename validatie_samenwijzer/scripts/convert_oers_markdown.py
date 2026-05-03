@@ -8,9 +8,12 @@ Gebruik:
 """
 
 import argparse
+import logging
 import sys
 import time
 from pathlib import Path
+
+logging.getLogger("pdfminer").setLevel(logging.ERROR)
 
 
 def _formatteer_tijd(seconden: float) -> str:

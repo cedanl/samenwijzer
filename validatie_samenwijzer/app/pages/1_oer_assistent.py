@@ -57,7 +57,7 @@ for bericht in st.session_state.chat_history:
         )
     else:
         st.markdown(
-            f'<div class="chat-antwoord">{bericht["content"]}</div>',
+            f'<div class="chat-antwoord">\n\n{bericht["content"]}\n\n</div>',
             unsafe_allow_html=True,
         )
 
@@ -80,7 +80,7 @@ if vraag:
             for fragment in genereer_antwoord(ai_client(), st.session_state.oer_systeem, berichten):
                 antwoord += fragment
                 placeholder.markdown(
-                    f'<div class="chat-antwoord">{html.escape(antwoord)}</div>',
+                    f'<div class="chat-antwoord">\n\n{antwoord}\n\n</div>',
                     unsafe_allow_html=True,
                 )
         except Exception as e:
