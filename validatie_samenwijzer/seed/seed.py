@@ -29,7 +29,7 @@ RNG = random.Random(42)
 
 def _get_of_maak_oer(conn, instelling_id, opleiding, crebo, cohort, leerweg, bestandspad):
     """Geeft bestaand OER-id terug (bij voorkeur geïndexeerd), of maakt een nieuw record."""
-    bestaand = get_oer_document(conn, crebo, cohort, leerweg)
+    bestaand = get_oer_document(conn, instelling_id, crebo, cohort, leerweg)
     if bestaand:
         return bestaand["id"]
     return voeg_oer_document_toe(

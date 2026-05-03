@@ -20,11 +20,13 @@ from validatie_samenwijzer.styles import (  # noqa: E402
     ROOD,
     render_footer,
     render_nav,
+    render_student_info,
 )
 
 st.markdown(CSS, unsafe_allow_html=True)
 vereist_student()
 render_nav()
+render_student_info()
 
 
 studentnummer = st.session_state.get("studentnummer")

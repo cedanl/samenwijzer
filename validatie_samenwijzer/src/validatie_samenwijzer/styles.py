@@ -257,6 +257,43 @@ _NAV_MENTOR = [
 ]
 
 
+def _opleiding_naam(opleiding: str, crebo: str) -> str:
+    """Extraheer leesbare naam uit het opleiding-veld en formatteer als 'Naam (crebo)'."""
+    import re
+
+    naam = re.sub(r"^\d+[_\s][A-Z]+[_\s]\d+[_\s]+", "", opleiding)  # strip CREBO_BOL_2025__
+    naam = re.sub(rf"^{re.escape(crebo)}\s+", "", naam)  # strip leading crebo (met spatie)
+    naam = re.sub(r"\bOER\s*\([^)]+\)\s*[-–]\s*", "", naam)  # strip "OER (OUD) - "
+    naam = re.sub(rf"\b{re.escape(crebo)}\b\s*[-–]?\s*", "", naam)  # strip resterende crebo
+    naam = re.sub(r"\s+\d+\s+(maanden|jaar)$", "", naam)  # strip " 36 maanden"
+    naam = naam.strip()
+    # Da Vinci filenaam-stijl (geen spaties): CREBOLEERWEGJAARExamenplan/MJP[-naam-cohort-jaar]
+    if " " not in naam:
+        naam = re.sub(rf"^{re.escape(crebo)}[A-Z]{{3}}\d{{4}}(?:Examenplan|MJP)[-_]?", "", naam)
+        naam = re.sub(r"[-_]cohort[-_]\d{4}$", "", naam)
+        naam = naam.replace("-", " ").replace("_", " ").strip()
+    return f"{naam} ({crebo})" if naam else f"Opleiding {crebo}"
+
+
+def render_student_info() -> None:
+    """Render de student-identiteitsbalk onder de navigatie."""
+    import streamlit as st
+
+    naam = st.session_state.get("gebruiker_naam", "")
+    leerweg = st.session_state.get("leerweg", "")
+    opleiding = st.session_state.get("opleiding", "")
+    crebo = st.session_state.get("crebo", "")
+    instelling = st.session_state.get("instelling", "")
+    opleiding_label = _opleiding_naam(opleiding, crebo) if opleiding and crebo else opleiding
+    onderdelen = [x for x in [naam, leerweg, opleiding_label, instelling] if x]
+    st.markdown(
+        f'<p style="color:rgba(28,43,58,0.7);font-size:0.85rem;'
+        f"font-family:'DM Sans',sans-serif;margin:0.4rem 0 0.8rem 0\">"
+        f"{'&nbsp;&nbsp;|&nbsp;&nbsp;'.join(onderdelen)}</p>",
+        unsafe_allow_html=True,
+    )
+
+
 def render_nav() -> None:
     """Render de vaste navigatiebalk bovenin op basis van de sessierol."""
     import streamlit as st

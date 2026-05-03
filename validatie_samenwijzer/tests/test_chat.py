@@ -1,36 +1,10 @@
-from validatie_samenwijzer.chat import LAGE_RELEVANTIE_BERICHT, bouw_berichten
+from validatie_samenwijzer.chat import LAGE_RELEVANTIE_BERICHT, bouw_berichten, bouw_systeem
 
 
-def test_bouw_berichten_zonder_chunks():
-    history = []
-    chunks = []
-    berichten = bouw_berichten(
-        chat_history=history,
-        chunks=chunks,
-        vraag="Hoeveel uren BPV?",
-        opleiding="Verzorgende IG",
-        instelling="Rijn IJssel",
-    )
-    # systeem + gebruiker
+def test_bouw_berichten_nieuwe_vraag():
+    berichten = bouw_berichten([], "Hoeveel uren BPV?")
     assert berichten[0]["role"] == "user"
-    assert "Hoeveel uren BPV?" in berichten[0]["content"]
-
-
-def test_bouw_berichten_met_chunks():
-    chunks = [
-        {"tekst": "Minimaal 800 uur BPV.", "metadata": {"pagina": 14}, "distance": 0.2},
-        {"tekst": "BPV wordt geregistreerd.", "metadata": {"pagina": 17}, "distance": 0.3},
-    ]
-    berichten = bouw_berichten(
-        chat_history=[],
-        chunks=chunks,
-        vraag="Hoeveel uren?",
-        opleiding="Verzorgende IG",
-        instelling="Rijn IJssel",
-    )
-    content = berichten[0]["content"]
-    assert "Minimaal 800 uur BPV." in content
-    assert "BPV wordt geregistreerd." in content
+    assert berichten[0]["content"] == "Hoeveel uren BPV?"
 
 
 def test_bouw_berichten_behoudt_history():
@@ -38,15 +12,23 @@ def test_bouw_berichten_behoudt_history():
         {"role": "user", "content": "Vraag 1"},
         {"role": "assistant", "content": "Antwoord 1"},
     ]
-    berichten = bouw_berichten(
-        chat_history=history,
-        chunks=[],
-        vraag="Vraag 2",
-        opleiding="Kok",
-        instelling="Da Vinci",
-    )
+    berichten = bouw_berichten(history, "Vraag 2")
     rollen = [b["role"] for b in berichten]
     assert rollen == ["user", "assistant", "user"]
+    assert berichten[-1]["content"] == "Vraag 2"
+
+
+def test_bouw_systeem_bevat_oer_tekst():
+    systeem = bouw_systeem("Dit is de OER-tekst.", "Verzorgende IG", "Rijn IJssel")
+    assert "Verzorgende IG" in systeem
+    assert "Rijn IJssel" in systeem
+    assert "Dit is de OER-tekst." in systeem
+
+
+def test_bouw_systeem_leeg_bij_geen_tekst():
+    systeem = bouw_systeem("", "Kok", "Da Vinci")
+    # Lege oer_tekst → systeem mag worden aangemaakt maar is inhoudsloos
+    assert "Kok" in systeem
 
 
 def test_lage_relevantie_bericht_is_string():

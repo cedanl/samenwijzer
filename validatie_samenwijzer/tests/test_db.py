@@ -5,7 +5,7 @@ from validatie_samenwijzer.db import init_db, voeg_instelling_toe, get_instellin
     voeg_student_toe, get_student_by_studentnummer, get_studenten_by_mentor_id, \
     voeg_kerntaak_toe, get_kerntaken_by_oer_id, markeer_geindexeerd, \
     get_oer_ids_by_mentor_id, voeg_student_kerntaak_score_toe, \
-    get_kerntaak_scores_by_student_id
+    get_kerntaak_scores_by_student_id, update_oer_bestandspad
 
 
 @pytest.fixture
@@ -36,13 +36,44 @@ def test_oer_document_crud(conn):
     oer_id = voeg_oer_document_toe(conn, instelling_id=inst["id"], opleiding="Verzorgende IG",
                                    crebo="25655", cohort="2025", leerweg="BOL",
                                    bestandspad="oeren/test.pdf")
-    oer = get_oer_document(conn, crebo="25655", cohort="2025", leerweg="BOL")
+    oer = get_oer_document(conn, inst["id"], crebo="25655", cohort="2025", leerweg="BOL")
     assert oer["id"] == oer_id
     assert oer["opleiding"] == "Verzorgende IG"
     assert oer["geindexeerd"] == 0
     markeer_geindexeerd(conn, oer_id)
-    oer2 = get_oer_document(conn, "25655", "2025", "BOL")
+    oer2 = get_oer_document(conn, inst["id"], "25655", "2025", "BOL")
     assert oer2["geindexeerd"] == 1
+
+
+def test_oer_document_gescheiden_per_instelling(conn):
+    """Twee instellingen met hetzelfde crebo/cohort/leerweg krijgen aparte OER-records."""
+    voeg_instelling_toe(conn, "talland", "Talland")
+    voeg_instelling_toe(conn, "roc_utrecht", "ROC Utrecht")
+    talland = get_instelling_by_naam(conn, "talland")
+    roc = get_instelling_by_naam(conn, "roc_utrecht")
+
+    id_talland = voeg_oer_document_toe(conn, talland["id"], "Sport en bewegingsleider",
+                                       "25908", "2025", "BOL", "oeren/talland/25908BOL2025.pdf")
+    id_roc = voeg_oer_document_toe(conn, roc["id"], "Sport en bewegingsleider",
+                                   "25908", "2025", "BOL", "oeren/roc_utrecht/25908BOL2025.pdf")
+
+    assert id_talland != id_roc
+    oer_t = get_oer_document(conn, talland["id"], "25908", "2025", "BOL")
+    oer_r = get_oer_document(conn, roc["id"], "25908", "2025", "BOL")
+    assert oer_t["id"] == id_talland
+    assert oer_r["id"] == id_roc
+    assert oer_t["bestandspad"] != oer_r["bestandspad"]
+
+
+def test_update_oer_bestandspad(conn):
+    voeg_instelling_toe(conn, "da_vinci", "Da Vinci College")
+    inst = get_instelling_by_naam(conn, "da_vinci")
+    oer_id = voeg_oer_document_toe(conn, instelling_id=inst["id"], opleiding="Zorg",
+                                   crebo="25168", cohort="2025", leerweg="BOL",
+                                   bestandspad="oeren/25168BOL2025.txt")
+    update_oer_bestandspad(conn, oer_id, "oeren/25168BOL2025.pdf")
+    oer = get_oer_document(conn, inst["id"], "25168", "2025", "BOL")
+    assert oer["bestandspad"] == "oeren/25168BOL2025.pdf"
 
 
 def test_kerntaken_crud(conn):
