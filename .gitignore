@@ -37,3 +37,7 @@ htmlcov/
 
 # Git worktrees
 .worktrees/
+
+# B3a: OER-catalog
+oeren/
+data/02-prepared/oeren.db
