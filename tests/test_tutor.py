@@ -122,8 +122,9 @@ def test_stuur_bericht_gebruikt_student_context(mock_anthropic_cls, sessie):
     list(stuur_bericht(sessie, "Test.", api_key="test-key"))
 
     call_kwargs = mock_client.messages.stream.call_args.kwargs
-    assert "Testine Jansen" in call_kwargs["system"]
-    assert "Verzorgende IG" in call_kwargs["system"]
+    system_text = call_kwargs["system"][0]["text"]
+    assert "Testine Jansen" in system_text
+    assert "Verzorgende IG" in system_text
 
 
 # ── Stream-gedrag ─────────────────────────────────────────────────────────────
