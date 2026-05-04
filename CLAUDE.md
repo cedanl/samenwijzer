@@ -55,6 +55,9 @@ uv run ty check
 
 # Dependencies upgraden
 uv lock --upgrade && uv sync
+
+# Demo-dataset opnieuw genereren (1000 studenten, 5 instellingen)
+uv run python scripts/generate_berend_data.py
 ```
 
 ## Omgeving
@@ -88,7 +91,13 @@ data/01-raw/    ← brondata (studenten.csv, oer_kerntaken.json)
 data/02-prepared/ ← outreach.db + whatsapp.db (gitignored)
 data/03-output/ ← exports (gitignored)
 docs/           ← kennisbank (zie tabel hieronder)
+scripts/        ← hulpscripts (niet geïmporteerd door de app)
+validatie_samenwijzer/ ← apart subproject (eigen pyproject.toml, .venv, poort 8503)
 ```
+
+**`validatie_samenwijzer/`** is een zelfstandige Streamlit-app met ChromaDB-gebaseerde OER-RAG.
+Heeft zijn eigen `CLAUDE.md`, `uv sync`, tests en lintconfig. Nooit mixen met de hoofdapp —
+ruff, pytest en `uv` altijd vanuit de juiste projectroot uitvoeren.
 
 ## Kennisbank
 
@@ -99,6 +108,7 @@ docs/           ← kennisbank (zie tabel hieronder)
 | Frontend- & UI-conventies | `docs/FRONTEND.md` |
 | Ontwerpbeslissingen | `docs/design-docs/index.md` |
 | Actief uitvoeringsplan | `docs/exec-plans/active/fase-2-whatsapp-signalering.md` |
+| Product specs | `docs/product-specs/index.md` |
 | Kwaliteitsscores per domein | `docs/QUALITY_SCORE.md` |
 | Beveiligingsregels | `docs/SECURITY.md` |
 | Betrouwbaarheidsvereisten | `docs/RELIABILITY.md` |

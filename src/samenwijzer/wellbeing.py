@@ -80,7 +80,7 @@ def laad_notities(path: Path) -> pd.DataFrame:
     if not path.exists():
         return pd.DataFrame(columns=_NOTITIES_COLUMNS)
 
-    return pd.read_csv(path, dtype={"studentnummer": str, "mentor": str})
+    return pd.read_csv(path, sep=";", dtype={"studentnummer": str, "mentor": str})
 
 
 def sla_notitie_op(path: Path, studentnummer: str, mentor: str, notitie: str) -> None:
@@ -111,7 +111,7 @@ def sla_notitie_op(path: Path, studentnummer: str, mentor: str, notitie: str) ->
         ]
     )
     path.parent.mkdir(parents=True, exist_ok=True)
-    pd.concat([df, nieuwe_rij], ignore_index=True).to_csv(path, index=False)
+    pd.concat([df, nieuwe_rij], ignore_index=True).to_csv(path, sep=";", index=False)
 
 
 def filter_signaleringen_voor_mentor(df_signaleringen: pd.DataFrame, mentor: str) -> pd.DataFrame:

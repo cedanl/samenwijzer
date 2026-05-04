@@ -93,21 +93,21 @@ def test_load_welzijn_csv_demo():
 
 def test_load_welzijn_csv_antwoord_types(tmp_path):
     csv = tmp_path / "welzijn.csv"
-    csv.write_text("studentnummer,datum,antwoord\nS001,2026-04-07,2\n")
+    csv.write_text("studentnummer;datum;antwoord\nS001;2026-04-07;2\n")
     df = load_welzijn_csv(csv)
     assert int(df.iloc[0]["antwoord"]) == 2
 
 
 def test_load_welzijn_csv_ongeldig_antwoord(tmp_path):
     csv = tmp_path / "welzijn.csv"
-    csv.write_text("studentnummer,datum,antwoord\nS001,2026-04-07,9\n")
+    csv.write_text("studentnummer;datum;antwoord\nS001;2026-04-07;9\n")
     with pytest.raises(ValueError, match="Ongeldige antwoordwaarden"):
         load_welzijn_csv(csv)
 
 
 def test_load_welzijn_csv_ontbrekende_kolom(tmp_path):
     csv = tmp_path / "welzijn.csv"
-    csv.write_text("studentnummer,datum\nS001,2026-04-07\n")
+    csv.write_text("studentnummer;datum\nS001;2026-04-07\n")
     with pytest.raises(ValueError, match="Ontbrekende verplichte kolommen"):
         load_welzijn_csv(csv)
 
@@ -287,7 +287,7 @@ def test_filter_mentor_onbekende_mentor_geeft_leeg(df_studenten, df_welzijn):
 def test_laad_notities_geen_leesrechten(tmp_path: Path) -> None:
     """laad_notities geeft PermissionError als het bestand niet leesbaar is."""
     pad = tmp_path / "notities.csv"
-    pad.write_text("studentnummer,mentor,datum,notitie\n")
+    pad.write_text("studentnummer;mentor;datum;notitie\n")
     pad.chmod(0o000)
     try:
         with pytest.raises(PermissionError):

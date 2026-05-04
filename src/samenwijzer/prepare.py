@@ -127,7 +127,7 @@ def load_welzijn_csv(path: Path) -> pd.DataFrame:
     if not path.exists():
         raise FileNotFoundError(f"Welzijn-CSV niet gevonden: {path}")
 
-    df = pd.read_csv(path, dtype={"studentnummer": str})
+    df = pd.read_csv(path, sep=";", dtype={"studentnummer": str})
 
     missing = WELZIJN_REQUIRED_COLUMNS - set(df.columns)
     if missing:

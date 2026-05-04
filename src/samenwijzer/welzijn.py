@@ -1,9 +1,12 @@
 """Welzijnsmodule: AI-reactie op student self-assessment."""
 
+import logging
 import smtplib
 from collections.abc import Generator
 
 from samenwijzer._ai import _client
+
+log = logging.getLogger(__name__)
 from samenwijzer.outreach import email_config_uit_env, verstuur_email
 
 _MODEL = "claude-sonnet-4-6"
@@ -144,6 +147,7 @@ def stuur_welzijn_notificatie(
             afzender_email=smtp["afzender_email"],
         )
     except smtplib.SMTPException:
+        log.exception("Welzijnsnotificatie niet verstuurd naar %s", notificatie_email)
         return False
 
     return True

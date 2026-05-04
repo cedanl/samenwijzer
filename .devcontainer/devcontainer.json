@@ -5,10 +5,11 @@
     "ms-python.python",
     "ms-python.vscode-pylance",
     "anthropic.claude-code",
-    "n4eth.ty-type-checker"
+    "n4eth.ty-type-checker",
+    "charliermarsh.ruff"
   ],
   "postCreateCommand": "uv sync && uv pip install ty",
-  "forwardPorts": [8501],
+  "forwardPorts": [8501, 8502],
   "remoteUser": "vscode",
   "settings": {
     "editor.formatOnSave": true,
