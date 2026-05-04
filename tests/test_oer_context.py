@@ -2,9 +2,7 @@
 
 import sqlite3
 from pathlib import Path
-from unittest.mock import MagicMock, patch
-
-import pytest
+from unittest.mock import patch
 
 from samenwijzer.oer_context import haal_oer_context_op, laad_oer_tekst
 
