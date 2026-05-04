@@ -193,6 +193,12 @@ alle analyse- en labelfuncties filteren NaN weg.
 `prepare._voeg_kt_wp_scores_toe()` en `analyze._oer_label()` gequeried om
 kerntaak-namen op te halen. `oer_kerntaken.json` is uitgefaseerd.
 
+**Instellingen-distributie**: de synthetische dataset bevat 1000 studenten verdeeld
+over 4 instellingen (Da Vinci, Rijn IJssel, Talland, Utrecht), elk met 250 studenten
+en ~12-13 mentoren. Aeres MBO is uitgesloten omdat de geïndexeerde Aeres-OERs
+landbouw-specifieke opleidingen betreffen die geen overlap hebben met de 14
+gecureerde generieke opleidingen in `scripts/synthetisch_opleidingen.json`.
+
 ## Outreach-module
 
 `outreach_store.py` slaat alle outreach-data op in SQLite (`data/02-prepared/outreach.db`).

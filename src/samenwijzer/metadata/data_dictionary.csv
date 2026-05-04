@@ -3,9 +3,9 @@ studenten;studentnummer;Uniek studentnummer;string;Synthetisch CSV (Studentnumme
 studenten;naam;Volledige naam van de student;string;Synthetisch CSV (Naam);true
 studenten;mentor;Naam van de toegewezen mentor;string;Synthetisch CSV (Mentor);false
 studenten;opleiding;Naam van de gevolgde opleiding;string;Synthetisch CSV (Opleiding);false
-studenten;crebo;CREBO-code van de opleiding;string;afgeleid van opleiding via _CREBO_MAP;false
+studenten;crebo;CREBO-code van de opleiding;string;uit synthetische CSV (gekoppeld aan oeren.db);false
 studenten;niveau;MBO-niveau (1–4);integer;afgeleid van klascode (eerste karakter);false
-studenten;leerweg;Leerweg: BOL of BBL;string;afgeleid (altijd BOL in synthetische dataset);false
+studenten;leerweg;Leerweg: BOL of BBL;string;uit synthetische CSV (BOL of BBL, afhankelijk van OER);false
 studenten;cohort;Cohortlabel (bijv. Cohort B);string;afgeleid van klascode (tweede karakter);false
 studenten;leeftijd;Leeftijd van de student in jaren;integer;Synthetisch CSV (StudentAge);false
 studenten;geslacht;Geslacht: M/V/O;string;Synthetisch CSV (StudentGender, 0=M 1=V);false
