@@ -180,24 +180,28 @@ def get_kerntaken_voor_oer(db_pad: Path, oer_id: int) -> list[sqlite3.Row]:
 def get_kerntaken_voor_opleiding(
     db_pad: Path, opleiding: str, niveau: int | None = None
 ) -> list[sqlite3.Row]:
-    """Geef kerntaken voor een opleiding (eerste OER met deze naam, optioneel op niveau gefilterd).
+    """Geef kerntaken voor een opleiding (representatief OER, optioneel op niveau gefilterd).
 
-    Wordt door prepare.py gebruikt om kt/wp-scores te genereren — daar is een
-    representatieve set kerntaken nodig per opleiding-naam.
+    Selecteert het OER-document met de meeste kerntaken voor deze (opleiding, niveau)-
+    combinatie zodat we niet per ongeluk een leeg/onvolledig OER pakken. Wordt door
+    prepare.py gebruikt om kt/wp-scores te genereren — daar is een representatieve set
+    kerntaken nodig per opleiding-naam.
     """
     init_db(db_pad)
     with _verbinding(db_pad) as conn:
-        if niveau is None:
-            oer = conn.execute(
-                "SELECT id FROM oer_documenten WHERE opleiding = ? LIMIT 1",
-                (opleiding,),
-            ).fetchone()
-        else:
-            oer = conn.execute(
-                "SELECT id FROM oer_documenten WHERE opleiding = ? AND niveau = ? LIMIT 1",
-                (opleiding, niveau),
-            ).fetchone()
-        if oer is None:
+        basis_query = (
+            "SELECT o.id AS id, COUNT(k.id) AS aantal "
+            "FROM oer_documenten o LEFT JOIN kerntaken k ON k.oer_id = o.id "
+            "WHERE o.opleiding = ?"
+        )
+        params: tuple = (opleiding,)
+        if niveau is not None:
+            basis_query += " AND o.niveau = ?"
+            params = (opleiding, niveau)
+        basis_query += " GROUP BY o.id ORDER BY aantal DESC LIMIT 1"
+
+        oer = conn.execute(basis_query, params).fetchone()
+        if oer is None or oer["aantal"] == 0:
             return []
         return conn.execute(
             "SELECT * FROM kerntaken WHERE oer_id = ? ORDER BY volgorde",
