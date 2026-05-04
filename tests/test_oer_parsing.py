@@ -119,3 +119,15 @@ def test_bepaal_niveau_voorkeur_voor_bestandsnaam():
 
 def test_bepaal_niveau_geen_match_geeft_none():
     assert bepaal_niveau("OER 2025 algemeen.md", "Geen niveau-aanduiding hier.") is None
+
+
+def test_bepaal_niveau_accepteert_none_tekst():
+    """Defensive: tekst kan None zijn als markdown read mislukt."""
+    assert bepaal_niveau("12345BOL2025.md", None) is None  # type: ignore[arg-type]
+    assert bepaal_niveau("25099BBL2025MJP-MachinistGrondverzetN3.md", None) == 3  # type: ignore[arg-type]
+
+
+def test_extraheer_negeert_dutch_duration_words():
+    """Talland-style: '24 maanden' / 'BBL' filtert weg, 'Kok' overleeft."""
+    naam = extraheer_opleidingsnaam("25180 Kok 24 maanden BBL.pdf")
+    assert naam == "Kok"

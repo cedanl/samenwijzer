@@ -83,6 +83,7 @@ _STOP_TOKENS = {
     "addendum", "cohort", "bol", "bbl", "bolbbl", "vanaf", "voor", "en", "van",
     "de", "het", "te", "op", "een", "in", "ig", "n2", "n3", "n4", "d1", "d2",
     "v1", "v2", "v3", "def",
+    "maanden", "jaar", "jaren", "uur",
 }
 
 _HASH_PATROON = re.compile(r"^[a-zA-Z0-9]{6,}$")
@@ -141,6 +142,7 @@ def bepaal_niveau(bestandsnaam: str, tekst: str) -> int | None:
     Bestandsnaam wint van tekst (suffix als 'N3' is een explicietere markering).
     Geeft None als geen niveau te herleiden is.
     """
+    tekst = tekst or ""
     m = _NIVEAU_BESTANDSNAAM.search(bestandsnaam)
     if m:
         return int(m.group(1))
