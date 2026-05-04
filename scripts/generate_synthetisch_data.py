@@ -9,7 +9,7 @@ from __future__ import annotations
 import argparse  # noqa: F401  — gebruikt door orchestrator (Task 14)
 import json  # noqa: F401  — gebruikt door orchestrator (Task 14)
 import logging
-import random  # noqa: F401  — gebruikt door student-record (Task 13)
+import random
 import sys
 from pathlib import Path
 
