@@ -143,3 +143,63 @@ def get_alle_oers(db_pad: Path) -> list[sqlite3.Row]:
     init_db(db_pad)
     with _verbinding(db_pad) as conn:
         return conn.execute("SELECT * FROM oer_documenten").fetchall()
+
+
+# ── Kerntaken ─────────────────────────────────────────────────────────────────
+
+
+def voeg_kerntaak_toe(
+    db_pad: Path,
+    oer_id: int,
+    code: str,
+    naam: str,
+    type_: str,
+    parent_code: str | None = None,
+    volgorde: int = 0,
+) -> None:
+    """Voeg een kerntaak of werkproces toe."""
+    init_db(db_pad)
+    with _verbinding(db_pad) as conn:
+        conn.execute(
+            "INSERT INTO kerntaken (oer_id, code, naam, type, parent_code, volgorde) "
+            "VALUES (?, ?, ?, ?, ?, ?)",
+            (oer_id, code, naam, type_, parent_code, volgorde),
+        )
+
+
+def get_kerntaken_voor_oer(db_pad: Path, oer_id: int) -> list[sqlite3.Row]:
+    """Geef alle kerntaken voor een specifiek OER-document."""
+    init_db(db_pad)
+    with _verbinding(db_pad) as conn:
+        return conn.execute(
+            "SELECT * FROM kerntaken WHERE oer_id = ? ORDER BY volgorde",
+            (oer_id,),
+        ).fetchall()
+
+
+def get_kerntaken_voor_opleiding(
+    db_pad: Path, opleiding: str, niveau: int | None = None
+) -> list[sqlite3.Row]:
+    """Geef kerntaken voor een opleiding (eerste OER met deze naam, optioneel op niveau gefilterd).
+
+    Wordt door prepare.py gebruikt om kt/wp-scores te genereren — daar is een
+    representatieve set kerntaken nodig per opleiding-naam.
+    """
+    init_db(db_pad)
+    with _verbinding(db_pad) as conn:
+        if niveau is None:
+            oer = conn.execute(
+                "SELECT id FROM oer_documenten WHERE opleiding = ? LIMIT 1",
+                (opleiding,),
+            ).fetchone()
+        else:
+            oer = conn.execute(
+                "SELECT id FROM oer_documenten WHERE opleiding = ? AND niveau = ? LIMIT 1",
+                (opleiding, niveau),
+            ).fetchone()
+        if oer is None:
+            return []
+        return conn.execute(
+            "SELECT * FROM kerntaken WHERE oer_id = ? ORDER BY volgorde",
+            (oer["id"],),
+        ).fetchall()
