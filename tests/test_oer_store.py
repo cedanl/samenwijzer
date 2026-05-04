@@ -43,3 +43,70 @@ def test_voeg_instelling_dubbel_faalt_silently(db_path: Path):
     oer_store.voeg_instelling_toe(db_path, naam="aeres", display_naam="Aeres MBO")
     inst = oer_store.get_instelling_by_naam(db_path, "aeres")
     assert inst["display_naam"] == "Aeres MBO"
+
+
+def test_voeg_oer_document_toe_en_get(db_path: Path):
+    oer_store.voeg_instelling_toe(db_path, "rijn_ijssel", "Rijn IJssel")
+    inst = oer_store.get_instelling_by_naam(db_path, "rijn_ijssel")
+    oer_id = oer_store.voeg_oer_document_toe(
+        db_path,
+        instelling_id=inst["id"],
+        opleiding="Verzorgende IG",
+        crebo="25655",
+        cohort="2025",
+        leerweg="BOL",
+        niveau=3,
+        bestandspad="oeren/rijn_ijssel_oer/25655_BOL_2025__verzorgende-ig.md",
+    )
+    assert oer_id > 0
+
+    oer = oer_store.get_oer_document(db_path, inst["id"], "25655", "BOL", "2025")
+    assert oer["opleiding"] == "Verzorgende IG"
+    assert oer["niveau"] == 3
+
+
+def test_oer_document_unique_per_instelling(db_path: Path):
+    """Twee instellingen mogen dezelfde (crebo, leerweg, cohort) hebben."""
+    oer_store.voeg_instelling_toe(db_path, "talland", "Talland")
+    oer_store.voeg_instelling_toe(db_path, "rijn_ijssel", "Rijn IJssel")
+    talland = oer_store.get_instelling_by_naam(db_path, "talland")
+    rijn = oer_store.get_instelling_by_naam(db_path, "rijn_ijssel")
+
+    id1 = oer_store.voeg_oer_document_toe(
+        db_path, talland["id"], "Kok", "25180", "2025", "BBL", 3, "p1.md"
+    )
+    id2 = oer_store.voeg_oer_document_toe(
+        db_path, rijn["id"], "Kok", "25180", "2025", "BBL", 3, "p2.md"
+    )
+    assert id1 != id2
+
+
+def test_oer_document_dubbel_binnen_instelling_faalt(db_path: Path):
+    oer_store.voeg_instelling_toe(db_path, "talland", "Talland")
+    talland = oer_store.get_instelling_by_naam(db_path, "talland")
+    oer_store.voeg_oer_document_toe(
+        db_path, talland["id"], "Kok", "25180", "2025", "BBL", 3, "p1.md"
+    )
+    with pytest.raises(sqlite3.IntegrityError):
+        oer_store.voeg_oer_document_toe(
+            db_path, talland["id"], "Kok", "25180", "2025", "BBL", 3, "p1.md"
+        )
+
+
+def test_get_oer_document_voor_student(db_path: Path):
+    """Lookup helper voor B: vind OER bij (instelling_naam, crebo, leerweg, cohort)."""
+    oer_store.voeg_instelling_toe(db_path, "rijn_ijssel", "Rijn IJssel")
+    inst = oer_store.get_instelling_by_naam(db_path, "rijn_ijssel")
+    oer_store.voeg_oer_document_toe(
+        db_path, inst["id"], "Verzorgende IG", "25655", "2025", "BOL", 3, "p.md"
+    )
+    oer = oer_store.get_oer_voor_student(
+        db_path, instelling_naam="rijn_ijssel", crebo="25655", leerweg="BOL", cohort="2025"
+    )
+    assert oer["opleiding"] == "Verzorgende IG"
+
+
+def test_get_oer_voor_student_geen_match(db_path: Path):
+    assert oer_store.get_oer_voor_student(
+        db_path, "onbekend", "00000", "BOL", "2025"
+    ) is None

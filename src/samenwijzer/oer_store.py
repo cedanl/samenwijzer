@@ -84,3 +84,62 @@ def get_instelling_by_naam(db_pad: Path, naam: str) -> sqlite3.Row | None:
         return conn.execute(
             "SELECT * FROM instellingen WHERE naam = ?", (naam,)
         ).fetchone()
+
+
+# ── OER-documenten ────────────────────────────────────────────────────────────
+
+
+def voeg_oer_document_toe(
+    db_pad: Path,
+    instelling_id: int,
+    opleiding: str,
+    crebo: str,
+    cohort: str,
+    leerweg: str,
+    niveau: int | None,
+    bestandspad: str,
+) -> int:
+    """Voeg een OER-document toe; geeft het nieuwe id terug."""
+    init_db(db_pad)
+    with _verbinding(db_pad) as conn:
+        cur = conn.execute(
+            "INSERT INTO oer_documenten "
+            "(instelling_id, opleiding, crebo, cohort, leerweg, niveau, bestandspad) "
+            "VALUES (?, ?, ?, ?, ?, ?, ?)",
+            (instelling_id, opleiding, crebo, cohort, leerweg, niveau, bestandspad),
+        )
+        return cur.lastrowid
+
+
+def get_oer_document(
+    db_pad: Path, instelling_id: int, crebo: str, leerweg: str, cohort: str
+) -> sqlite3.Row | None:
+    """Vind één OER-document op (instelling_id, crebo, leerweg, cohort)."""
+    init_db(db_pad)
+    with _verbinding(db_pad) as conn:
+        return conn.execute(
+            "SELECT * FROM oer_documenten "
+            "WHERE instelling_id = ? AND crebo = ? AND leerweg = ? AND cohort = ?",
+            (instelling_id, crebo, leerweg, cohort),
+        ).fetchone()
+
+
+def get_oer_voor_student(
+    db_pad: Path, instelling_naam: str, crebo: str, leerweg: str, cohort: str
+) -> sqlite3.Row | None:
+    """Lookup-helper: vind OER bij student-velden (instelling-naam, crebo, leerweg, cohort)."""
+    init_db(db_pad)
+    with _verbinding(db_pad) as conn:
+        return conn.execute(
+            "SELECT o.* FROM oer_documenten o "
+            "JOIN instellingen i ON i.id = o.instelling_id "
+            "WHERE i.naam = ? AND o.crebo = ? AND o.leerweg = ? AND o.cohort = ?",
+            (instelling_naam, crebo, leerweg, cohort),
+        ).fetchone()
+
+
+def get_alle_oers(db_pad: Path) -> list[sqlite3.Row]:
+    """Geef alle OER-documenten (handig voor build-validatie en tests)."""
+    init_db(db_pad)
+    with _verbinding(db_pad) as conn:
+        return conn.execute("SELECT * FROM oer_documenten").fetchall()
