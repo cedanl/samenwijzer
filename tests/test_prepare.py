@@ -1,6 +1,5 @@
 """Tests voor samenwijzer.prepare."""
 
-import json
 import os
 import textwrap
 from pathlib import Path
@@ -8,7 +7,8 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from samenwijzer.prepare import load_berend_csv, load_student_csv
+from samenwijzer import oer_store, prepare
+from samenwijzer.prepare import load_student_csv, load_synthetisch_csv
 
 
 @pytest.fixture
@@ -97,125 +97,227 @@ def test_ongeldige_voortgang(tmp_path: Path) -> None:
         load_student_csv(p)
 
 
-# ── load_berend_csv ───────────────────────────────────────────────────────────
+# ── load_synthetisch_csv ──────────────────────────────────────────────────────
+
+# Synthetisch CSV-formaat: bevat onder andere Instelling, Opleiding, crebo,
+# leerweg en cohort als kolommen (geen mapping meer).
+_SYNTHETISCH_HEADER = (
+    "Studentnummer,Naam,Klas,Mentor,Instelling,Opleiding,crebo,leerweg,cohort,"
+    "StudentAge,StudentGender,Dropout,Aanmel_aantal,max1studie,absence_unauthorized,"
+    "absence_authorized,Richting_nan,Economie,Landbouw,Techniek,DSV,Zorgenwelzijn,"
+    "Anders,VooroplNiveau_HAVO,VooroplNiveau_MBO,VooroplNiveau_basis,"
+    "VooroplNiveau_educatie,VooroplNiveau_prak,VooroplNiveau_VMBO_BB,"
+    "VooroplNiveau_VMBO_GL,VooroplNiveau_VMBO_KB,VooroplNiveau_VMBO_TL,"
+    "VooroplNiveau_nan,VooroplNiveau_VWOplus,VooroplNiveau_other"
+)
+
+
+def _synth_row(
+    studentnummer: str,
+    naam: str,
+    klas: str,
+    opleiding: str,
+    crebo: str = "25655",
+    instelling: str = "Rijn IJssel",
+    leerweg: str = "BOL",
+    cohort: str = "2025",
+    leeftijd: int = 19,
+    geslacht: int = 1,
+    absence_unauthorized: float = 5.0,
+) -> str:
+    """Bouw een synthetische CSV-rij. Onbelangrijke kolommen krijgen 0."""
+    velden = [
+        studentnummer,
+        naam,
+        klas,
+        "M. Bakker",
+        instelling,
+        opleiding,
+        crebo,
+        leerweg,
+        cohort,
+        str(leeftijd),
+        str(geslacht),
+        "0",
+        "1.0",
+        "0.0",
+        str(absence_unauthorized),
+        "2.0",
+    ]
+    # 19 nullen voor de Richting_* en VooroplNiveau_* kolommen
+    velden.extend(["0"] * 19)
+    return ",".join(velden)
 
 
 @pytest.fixture
-def berend_csv(tmp_path: Path) -> Path:
-    """Minimale Berend-format CSV met twee studenten."""
-    content = textwrap.dedent("""\
-        Studentnummer,Naam,Klas,Mentor,Opleiding,StudentAge,StudentGender,absence_unauthorized
-        S001,Ali Yilmaz,3A,M. Bakker,Verzorgende,19,1,5
-        S002,Ben de Vries,2B,M. Bakker,Verzorgende,21,0,20
-    """)
+def db_pad_met_oer(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
+    """Maak een tmp oeren.db met enkele opleidingen + kerntaken en monkeypatch het pad."""
+    db = tmp_path / "oeren.db"
+    oer_store.voeg_instelling_toe(db, "TestInstelling", "Test Instelling")
+    rij = oer_store.get_instelling_by_naam(db, "TestInstelling")
+    assert rij is not None
+    instelling_id = int(rij["id"])
+
+    # Verzorgende IG niveau 3 — 2 kerntaken + 3 werkprocessen
+    oer_id = oer_store.voeg_oer_document_toe(
+        db, instelling_id, "Verzorgende IG", "25655", "2025", "BOL", 3, "n.v.t."
+    )
+    oer_store.voeg_kerntaak_toe(db, oer_id, "B1-K1", "KT1 Zorgverlening", "kerntaak", None, 1)
+    oer_store.voeg_kerntaak_toe(db, oer_id, "B1-K2", "KT2 Begeleiding", "kerntaak", None, 2)
+    oer_store.voeg_kerntaak_toe(db, oer_id, "B1-K1-W1", "WP1.1 Intake", "werkproces", "B1-K1", 1)
+    oer_store.voeg_kerntaak_toe(db, oer_id, "B1-K1-W2", "WP1.2 Plan", "werkproces", "B1-K1", 2)
+    oer_store.voeg_kerntaak_toe(db, oer_id, "B1-K2-W1", "WP2.1 Uitvoer", "werkproces", "B1-K2", 3)
+
+    # EenKtOpleiding — 1 kerntaak + 1 werkproces (zodat kt_2 NaN wordt)
+    oer_id2 = oer_store.voeg_oer_document_toe(
+        db, instelling_id, "EenKtOpleiding", "99999", "2025", "BOL", 3, "n.v.t."
+    )
+    oer_store.voeg_kerntaak_toe(db, oer_id2, "B1-K1", "Enige KT", "kerntaak", None, 1)
+    oer_store.voeg_kerntaak_toe(db, oer_id2, "B1-K1-W1", "Enige WP", "werkproces", "B1-K1", 1)
+
+    monkeypatch.setattr(prepare, "_DB_PAD_VOOR_KT", db)
+    return db
+
+
+@pytest.fixture
+def synthetisch_csv(tmp_path: Path, db_pad_met_oer: Path) -> Path:
+    """Synthetisch-format CSV met twee studenten in een opleiding die in de tmp DB staat."""
+    rijen = [
+        _SYNTHETISCH_HEADER,
+        _synth_row("100001", "Ali Yilmaz", "3B", "Verzorgende IG", absence_unauthorized=5),
+        _synth_row(
+            "100002",
+            "Ben de Vries",
+            "3B",
+            "Verzorgende IG",
+            geslacht=0,
+            absence_unauthorized=20,
+        ),
+    ]
     p = tmp_path / "studenten.csv"
-    p.write_text(content)
+    p.write_text("\n".join(rijen) + "\n")
     return p
 
 
-@pytest.fixture
-def berend_csv_met_oer(tmp_path: Path) -> Path:
-    """Berend-format CSV met bijbehorend oer_kerntaken.json."""
-    csv_inhoud = textwrap.dedent("""\
-        Studentnummer,Naam,Klas,Mentor,Opleiding,StudentAge,StudentGender,absence_unauthorized
-        S001,Ali Yilmaz,3A,M. Bakker,Verzorgende,19,1,5
-        S002,Ben de Vries,2B,M. Bakker,Verzorgende,21,0,20
-    """)
-    oer = {
-        "Verzorgende": {
-            "kerntaken": [
-                {"code": "kt_1", "naam": "KT1 Zorgverlening"},
-                {"code": "kt_2", "naam": "KT2 Begeleiding"},
-            ],
-            "werkprocessen": [
-                {"code": "wp_1_1", "naam": "WP1.1 Intake"},
-                {"code": "wp_1_2", "naam": "WP1.2 Plan"},
-                {"code": "wp_2_1", "naam": "WP2.1 Uitvoer"},
-            ],
-        }
-    }
-    (tmp_path / "studenten.csv").write_text(csv_inhoud)
-    (tmp_path / "oer_kerntaken.json").write_text(json.dumps(oer))
-    return tmp_path / "studenten.csv"
-
-
-def test_load_berend_csv_bestand_niet_gevonden(tmp_path: Path) -> None:
+def test_load_synthetisch_csv_bestand_niet_gevonden(tmp_path: Path) -> None:
     with pytest.raises(FileNotFoundError):
-        load_berend_csv(tmp_path / "bestaat_niet.csv")
+        load_synthetisch_csv(tmp_path / "bestaat_niet.csv")
 
 
-def test_load_berend_csv_geeft_dataframe(berend_csv: Path) -> None:
-    df = load_berend_csv(berend_csv)
+def test_load_synthetisch_csv_geeft_dataframe(synthetisch_csv: Path) -> None:
+    df = load_synthetisch_csv(synthetisch_csv)
     assert len(df) == 2
-    assert set(df["studentnummer"]) == {"S001", "S002"}
+    assert set(df["studentnummer"]) == {"100001", "100002"}
 
 
-def test_load_berend_csv_standaard_kolommen(berend_csv: Path) -> None:
-    df = load_berend_csv(berend_csv)
-    for kolom in ("naam", "mentor", "opleiding", "niveau", "leerweg", "cohort", "voortgang"):
+def test_load_synthetisch_csv_standaard_kolommen(synthetisch_csv: Path) -> None:
+    df = load_synthetisch_csv(synthetisch_csv)
+    for kolom in (
+        "naam",
+        "mentor",
+        "instelling",
+        "opleiding",
+        "crebo",
+        "niveau",
+        "leerweg",
+        "cohort",
+        "voortgang",
+    ):
         assert kolom in df.columns, f"Kolom '{kolom}' ontbreekt"
 
 
-def test_load_berend_csv_leerweg_is_bol(berend_csv: Path) -> None:
-    df = load_berend_csv(berend_csv)
+def test_load_synthetisch_csv_leerweg_uit_csv(synthetisch_csv: Path) -> None:
+    df = load_synthetisch_csv(synthetisch_csv)
     assert (df["leerweg"] == "BOL").all()
 
 
-def test_load_berend_csv_voortgang_tussen_0_en_1(berend_csv: Path) -> None:
-    df = load_berend_csv(berend_csv)
+def test_load_synthetisch_csv_cohort_uit_csv(synthetisch_csv: Path) -> None:
+    df = load_synthetisch_csv(synthetisch_csv)
+    assert (df["cohort"] == "2025").all()
+
+
+def test_load_synthetisch_csv_crebo_uit_csv(synthetisch_csv: Path) -> None:
+    df = load_synthetisch_csv(synthetisch_csv)
+    assert (df["crebo"] == "25655").all()
+
+
+def test_load_synthetisch_csv_voortgang_tussen_0_en_1(synthetisch_csv: Path) -> None:
+    df = load_synthetisch_csv(synthetisch_csv)
     assert df["voortgang"].between(0, 1).all()
 
 
-def test_load_berend_csv_geslacht_mapping(berend_csv: Path) -> None:
-    df = load_berend_csv(berend_csv)
+def test_load_synthetisch_csv_geslacht_mapping(synthetisch_csv: Path) -> None:
+    df = load_synthetisch_csv(synthetisch_csv)
     geslacht = dict(zip(df["studentnummer"], df["geslacht"]))
-    assert geslacht["S001"] == "V"  # StudentGender=1 → V
-    assert geslacht["S002"] == "M"  # StudentGender=0 → M
+    assert geslacht["100001"] == "V"  # StudentGender=1 → V
+    assert geslacht["100002"] == "M"  # StudentGender=0 → M
 
 
-def test_load_berend_csv_niveau_uit_klascode(berend_csv: Path) -> None:
-    # "3A" → niveau 3, "2B" → niveau 2
-    df = load_berend_csv(berend_csv)
-    niveaus = dict(zip(df["studentnummer"], df["niveau"]))
-    assert niveaus["S001"] == 3
-    assert niveaus["S002"] == 2
+def test_load_synthetisch_csv_niveau_uit_klascode(synthetisch_csv: Path) -> None:
+    df = load_synthetisch_csv(synthetisch_csv)
+    # "3B" → niveau 3
+    assert (df["niveau"] == 3).all()
 
 
-def test_load_berend_csv_met_oer_voegt_kt_kolommen_toe(berend_csv_met_oer: Path) -> None:
-    df = load_berend_csv(berend_csv_met_oer)
+def test_load_synthetisch_csv_voegt_kt_kolommen_toe(synthetisch_csv: Path) -> None:
+    df = load_synthetisch_csv(synthetisch_csv)
     assert "kt_1" in df.columns
     assert "kt_2" in df.columns
+    for wp in ("wp_1_1", "wp_1_2", "wp_1_3", "wp_2_1", "wp_2_2", "wp_2_3"):
+        assert wp in df.columns
 
 
-def test_load_berend_csv_met_oer_kt_scores_binnen_bereik(berend_csv_met_oer: Path) -> None:
-    df = load_berend_csv(berend_csv_met_oer)
+def test_load_synthetisch_csv_kt_scores_binnen_bereik(synthetisch_csv: Path) -> None:
+    df = load_synthetisch_csv(synthetisch_csv)
     kt_waarden = df["kt_1"].dropna()
     assert (kt_waarden >= 0).all()
     assert (kt_waarden <= 100).all()
 
 
-def test_load_berend_csv_zonder_oer_json(berend_csv: Path) -> None:
-    # Geen oer_kerntaken.json naast de CSV → geen crash, wel kt-kolommen met 0
-    df = load_berend_csv(berend_csv)
-    assert df is not None
+def test_load_synthetisch_csv_opleiding_met_slechts_een_kt(
+    tmp_path: Path, db_pad_met_oer: Path
+) -> None:
+    # OER bevat alleen kt_1 voor deze opleiding → kt_2 wordt NaN
+    rijen = [
+        _SYNTHETISCH_HEADER,
+        _synth_row(
+            "100003",
+            "Test Student",
+            "3B",
+            "EenKtOpleiding",
+            crebo="99999",
+            absence_unauthorized=10,
+        ),
+    ]
+    p = tmp_path / "studenten_eenkt.csv"
+    p.write_text("\n".join(rijen) + "\n")
+
+    df = load_synthetisch_csv(p)
+    assert pd.isna(df.iloc[0]["kt_2"])
+    # kt_1 is wel gevuld
+    assert not pd.isna(df.iloc[0]["kt_1"])
 
 
-def test_load_berend_csv_opleiding_met_slechts_een_kt(tmp_path: Path) -> None:
-    # OER bevat alleen kt_1 voor deze opleiding → kt_2 wordt NaN (dekt regel 206)
-    csv_inhoud = textwrap.dedent("""\
-        Studentnummer,Naam,Klas,Mentor,Opleiding,StudentAge,StudentGender,absence_unauthorized
-        S001,Test Student,3A,M. Bakker,EenKtOpleiding,20,0,10
-    """)
-    oer = {
-        "EenKtOpleiding": {
-            "kerntaken": [{"code": "kt_1", "naam": "KT1 Enige kerntaak"}],
-            "werkprocessen": [{"code": "wp_1_1", "naam": "WP1.1"}],
-        }
-    }
-    (tmp_path / "studenten.csv").write_text(csv_inhoud)
-    (tmp_path / "oer_kerntaken.json").write_text(json.dumps(oer))
+def test_load_synthetisch_csv_onbekende_opleiding_geeft_nan(
+    tmp_path: Path, db_pad_met_oer: Path
+) -> None:
+    """Studenten in een opleiding die niet in oeren.db staat krijgen NaN voor kt/wp."""
+    rijen = [
+        _SYNTHETISCH_HEADER,
+        _synth_row(
+            "100004",
+            "Onbekend Student",
+            "3B",
+            "OnbekendeOpleiding",
+            crebo="00000",
+            absence_unauthorized=10,
+        ),
+    ]
+    p = tmp_path / "studenten_onbekend.csv"
+    p.write_text("\n".join(rijen) + "\n")
 
-    df = load_berend_csv(tmp_path / "studenten.csv")
+    df = load_synthetisch_csv(p)
+    assert pd.isna(df.iloc[0]["kt_1"])
     assert pd.isna(df.iloc[0]["kt_2"])
 
 
@@ -251,13 +353,32 @@ def test_load_welzijn_csv_geen_leesrechten(tmp_path: Path) -> None:
 
 
 @pytest.mark.skipif(os.getuid() == 0, reason="root negeert bestandsrechten")
-def test_load_berend_csv_geen_leesrechten(tmp_path: Path) -> None:
-    """load_berend_csv geeft PermissionError als het bestand niet leesbaar is."""
+def test_load_synthetisch_csv_geen_leesrechten(tmp_path: Path) -> None:
+    """load_synthetisch_csv geeft PermissionError als het bestand niet leesbaar is."""
     p = tmp_path / "studenten.csv"
     p.write_text("dummy")
     p.chmod(0o000)
     try:
         with pytest.raises(PermissionError):
-            load_berend_csv(p)
+            load_synthetisch_csv(p)
     finally:
         p.chmod(0o644)
+
+
+def test_kt_wp_scores_zijn_reproduceerbaar(tmp_path: Path, db_pad_met_oer: Path) -> None:
+    """Regressie: kt/wp-scores zijn deterministisch — niet afhankelijk van PYTHONHASHSEED."""
+    csv_pad = tmp_path / "studenten.csv"
+    csv_pad.write_text(
+        _SYNTHETISCH_HEADER
+        + "\n"
+        + _synth_row("100001", "Ali Yilmaz", "3B", "Verzorgende IG")
+        + "\n"
+    )
+    df1 = load_synthetisch_csv(csv_pad)
+    df2 = load_synthetisch_csv(csv_pad)
+    for col in ["kt_1", "kt_2", "wp_1_1", "wp_1_2", "wp_1_3", "wp_2_1", "wp_2_2", "wp_2_3"]:
+        v1, v2 = df1[col].iloc[0], df2[col].iloc[0]
+        if pd.isna(v1):
+            assert pd.isna(v2), f"{col}: NaN inconsistent"
+        else:
+            assert v1 == v2, f"{col}: {v1} != {v2}"

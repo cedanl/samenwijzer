@@ -1,8 +1,11 @@
 """Tests voor samenwijzer.analyze."""
 
+from pathlib import Path
+
 import pandas as pd
 import pytest
 
+from samenwijzer import oer_store
 from samenwijzer.analyze import (
     badge,
     cohort_gemiddelden,
@@ -19,6 +22,74 @@ from samenwijzer.analyze import (
     zwakste_werkproces,
 )
 from samenwijzer.transform import transform_student_data
+
+
+@pytest.fixture
+def oer_db(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
+    """Mini-oeren.db met één opleiding 'Verzorgende IG' inclusief kerntaken.
+
+    Patcht `analyze._DB_PAD_VOOR_LABELS` zodat `_oer_label()` deze db gebruikt.
+    """
+    db = tmp_path / "oeren.db"
+    oer_store.voeg_instelling_toe(db, "rijn_ijssel", "Rijn IJssel")
+    inst = oer_store.get_instelling_by_naam(db, "rijn_ijssel")
+    assert inst is not None
+    oer_id = oer_store.voeg_oer_document_toe(
+        db, inst["id"], "Verzorgende IG", "25655", "2025", "BOL", 3, "p.md"
+    )
+    oer_store.voeg_kerntaak_toe(
+        db, oer_id, "B1-K1", "Bieden van zorg en ondersteuning", "kerntaak", None, 0
+    )
+    oer_store.voeg_kerntaak_toe(db, oer_id, "B1-K2", "Werken aan organisatie", "kerntaak", None, 1)
+    oer_store.voeg_kerntaak_toe(
+        db, oer_id, "B1-K1-W1", "Onderkent gezondheid", "werkproces", "B1-K1", 2
+    )
+    oer_store.voeg_kerntaak_toe(
+        db, oer_id, "B1-K1-W2", "Voert interventies uit", "werkproces", "B1-K1", 3
+    )
+    oer_store.voeg_kerntaak_toe(
+        db, oer_id, "B1-K1-W3", "Coördineert zorg", "werkproces", "B1-K1", 4
+    )
+    oer_store.voeg_kerntaak_toe(
+        db, oer_id, "B1-K2-W1", "Werkt aan ontwikkeling", "werkproces", "B1-K2", 5
+    )
+    oer_store.voeg_kerntaak_toe(
+        db, oer_id, "B1-K2-W2", "Werkt samen met team", "werkproces", "B1-K2", 6
+    )
+    oer_store.voeg_kerntaak_toe(
+        db, oer_id, "B1-K2-W3", "Draagt bij aan kwaliteit", "werkproces", "B1-K2", 7
+    )
+
+    from samenwijzer import analyze
+
+    monkeypatch.setattr(analyze, "_DB_PAD_VOOR_LABELS", db)
+    return db
+
+
+def test_oer_label_kerntaak(oer_db: Path) -> None:
+    from samenwijzer.analyze import _oer_label
+
+    assert _oer_label("Verzorgende IG", "kt_1") == "Bieden van zorg en ondersteuning"
+    assert _oer_label("Verzorgende IG", "kt_2") == "Werken aan organisatie"
+
+
+def test_oer_label_werkproces(oer_db: Path) -> None:
+    from samenwijzer.analyze import _oer_label
+
+    assert _oer_label("Verzorgende IG", "wp_1_1") == "Onderkent gezondheid"
+    assert _oer_label("Verzorgende IG", "wp_2_2") == "Werkt samen met team"
+
+
+def test_oer_label_onbekende_opleiding_geeft_kolom_terug(oer_db: Path) -> None:
+    from samenwijzer.analyze import _oer_label
+
+    assert _oer_label("Onbekend", "kt_1") == "kt_1"
+
+
+def test_oer_label_lege_opleiding_geeft_kolom_terug(oer_db: Path) -> None:
+    from samenwijzer.analyze import _oer_label
+
+    assert _oer_label("", "kt_1") == "kt_1"
 
 
 @pytest.fixture

@@ -123,3 +123,24 @@ def test_ai_modules_importeren_niet_uit_app() -> None:
         if "streamlit" in imports or "app" in imports:
             overtreders.append(naam)
     assert not overtreders, f"AI-modules importeren uit app-laag: {overtreders}"
+
+
+# ── 6. Regressie: geen 'berend'-vermeldingen meer in code ────────────────────
+
+
+def test_geen_b_erend_meer_in_code() -> None:
+    """Regressie: 'berend' is volledig vervangen door 'synthetisch'."""
+    import re
+
+    patroon = re.compile(r"b" + "erend", re.IGNORECASE)  # split om self-match te voorkomen
+    eigen_pad = Path(__file__).resolve()
+    treffers: list[str] = []
+    for sub in ("src", "app", "tests", "scripts"):
+        for path in (ROOT / sub).rglob("*"):
+            if path.resolve() == eigen_pad:
+                continue
+            if path.is_file() and path.suffix in {".py", ".md", ".json", ".csv", ".toml"}:
+                inhoud = path.read_text(encoding="utf-8", errors="ignore")
+                if patroon.search(inhoud):
+                    treffers.append(str(path.relative_to(ROOT)))
+    assert treffers == [], f"B-erend-vermeldingen gevonden in: {treffers}"

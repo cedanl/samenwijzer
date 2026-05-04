@@ -19,7 +19,7 @@ from samenwijzer.whatsapp_store import heeft_actieve_registratie, registreer_num
 
 load_dotenv()
 
-_BEREND_CSV = Path(__file__).parent.parent / "data" / "01-raw" / "demo" / "studenten.csv"
+_STUDENTEN_CSV = Path(__file__).parent.parent / "data" / "01-raw" / "demo" / "studenten.csv"
 
 # SHA-256 van "Welkom123"
 _WACHTWOORD_HASH = hashlib.sha256(b"Welkom123").hexdigest()
@@ -35,7 +35,7 @@ def _laad_data(path: Path) -> object:
 
 
 if "df" not in st.session_state:
-    st.session_state["df"] = _laad_data(_BEREND_CSV)
+    st.session_state["df"] = _laad_data(_STUDENTEN_CSV)
 
 df = st.session_state["df"]
 

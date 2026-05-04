@@ -45,7 +45,7 @@ Inzicht geven aan student en docent op basis van beschikbare studiedata.
 
 ## Acceptatiecriteria
 
-- [x] Studiedata ingeladen vanuit CSV (Berend-dataset, 1000 studenten).
+- [x] Studiedata ingeladen vanuit CSV (synthetische dataset, 1000 studenten).
 - [x] Dashboard toont voortgang per student.
 - [x] Docent kan filteren op opleiding en cohort.
 - [x] Risicostudenten gemarkeerd in tabel en apart getoond.

@@ -1,36 +1,56 @@
 """Analyse: voortgang per student en groepsstatistieken."""
 
-import json
 from pathlib import Path
 
 import pandas as pd
 
+from samenwijzer import oer_store
 from samenwijzer.transform import get_kerntaak_columns, get_werkproces_columns
 from samenwijzer.wellbeing import WelzijnsCheck, welzijnswaarde
 
-_OER_DATA: dict | None = None
-_OER_JSON = (
-    Path(__file__).parent.parent.parent / "data" / "01-raw" / "berend" / "oer_kerntaken.json"
-)
-
-
-def _laad_oer() -> dict:
-    """Laad de OER-kerntakendata eenmalig vanuit JSON en cache het resultaat."""
-    global _OER_DATA
-    if _OER_DATA is None:
-        _OER_DATA = json.loads(_OER_JSON.read_text(encoding="utf-8")) if _OER_JSON.exists() else {}
-    return _OER_DATA
+_DB_PAD_VOOR_LABELS = Path(__file__).parent.parent.parent / "data" / "02-prepared" / "oeren.db"
 
 
 def _oer_label(opleiding: str, kolom: str) -> str:
-    """Zoek de OER-naam op voor een kt_ of wp_ kolom."""
-    data = _laad_oer()
-    opl = data.get(opleiding, data.get("Overig", {}))
-    sectie = "kerntaken" if kolom.startswith("kt_") else "werkprocessen"
-    for item in opl.get(sectie, []):
-        if item["code"] == kolom:
-            return item["naam"]
-    return kolom.replace("_", " ").replace("kt", "KT").replace("wp", "WP").title()
+    """Geef de echte kerntaak/werkproces-naam terug voor (opleiding, kolom).
+
+    Kolom-naam-conventie: kt_1, kt_2, wp_1_1, wp_1_2, …, wp_2_3.
+    Mapping naar OER-codes:
+      kt_1 → eerste kerntaak in oeren.db
+      kt_2 → tweede kerntaak
+      wp_x_y → y-de werkproces onder kerntaak x
+    Geeft de kolom-naam zelf terug als er geen kerntakenlijst is of als de mapping
+    niet kan worden bepaald.
+    """
+    if not opleiding:
+        return kolom
+    kts = oer_store.get_kerntaken_voor_opleiding(_DB_PAD_VOOR_LABELS, opleiding)
+    if not kts:
+        return kolom
+
+    kerntaken = [k for k in kts if k["type"] == "kerntaak"]
+    werkprocessen = [k for k in kts if k["type"] == "werkproces"]
+
+    if kolom == "kt_1" and len(kerntaken) >= 1:
+        return kerntaken[0]["naam"]
+    if kolom == "kt_2" and len(kerntaken) >= 2:
+        return kerntaken[1]["naam"]
+    if kolom.startswith("wp_"):
+        try:
+            _, kt_idx, wp_idx = kolom.split("_")
+            kt_i = int(kt_idx) - 1
+            wp_i = int(wp_idx) - 1
+            if kt_i < len(kerntaken):
+                parent_code = kerntaken[kt_i]["code"]
+                eigen = [w for w in werkprocessen if w["parent_code"] == parent_code]
+                if not eigen:  # geen parent_code link → val terug op volgorde
+                    eigen = werkprocessen[kt_i * 3 : (kt_i + 1) * 3]
+                if wp_i < len(eigen):
+                    return eigen[wp_i]["naam"]
+        except (ValueError, IndexError):
+            pass
+
+    return kolom
 
 
 def get_student(df: pd.DataFrame, studentnummer: str) -> pd.Series:
