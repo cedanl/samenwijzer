@@ -264,6 +264,15 @@ def genereer(
     inst_namen_sorted = sorted(per_inst.keys())
     mentoren_aantallen = _mentoren_per_instelling(len(inst_namen_sorted))
 
+    # Genereer alle mentoren in één batch → gegarandeerd globaal unieke namen
+    totaal_mentoren = sum(mentoren_aantallen)
+    alle_mentoren = maak_mentoren(rng, totaal_mentoren)
+    mentor_partitie: list[list[str]] = []
+    start = 0
+    for n in mentoren_aantallen:
+        mentor_partitie.append(alle_mentoren[start : start + n])
+        start += n
+
     studenten: list[dict] = []
     nummer = 100000
 
@@ -273,8 +282,8 @@ def genereer(
         inst_row = oer_store.get_instelling_by_naam(db_pad, inst_naam)
         display = inst_row["display_naam"]
 
-        # Mentoren voor deze instelling
-        mentoren = maak_mentoren(rng, mentoren_aantallen[idx])
+        # Mentoren voor deze instelling (uit de globale partitie)
+        mentoren = mentor_partitie[idx]
 
         # Verdeel _STUDENTEN_PER_INSTELLING over de opleidingen die deze instelling aanbiedt
         opleidingnamen = sorted({o["opleiding"] for o in beschikbaar})
