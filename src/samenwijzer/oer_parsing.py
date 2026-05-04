@@ -42,3 +42,35 @@ def parseer_bestandsnaam(bestandsnaam: str) -> dict | None:
     jaar_m = _JAAR.search(bestandsnaam)
     cohort = jaar_m.group(1) if jaar_m else _HUIDIG_COHORT
     return {"crebo": crebo, "leerweg": leerweg, "cohort": cohort}
+
+
+# ── Kerntaken extraheren ──────────────────────────────────────────────────────
+
+_KT_PATROON = re.compile(
+    r"^\s*(B\d+-K\d+(?:-W\d+)?|Kerntaak\s+\d+|Werkproces\s+\d+\.\d+)"
+    r"\s*[:\-–]?\s*(.+)$",
+    re.MULTILINE | re.IGNORECASE,
+)
+
+
+def extraheer_kerntaken(tekst: str) -> list[dict]:
+    """Haal kerntaken en werkprocessen uit OER-tekst via regex.
+
+    Returns:
+        Lijst van dicts met sleutels: code, naam, type ('kerntaak'|'werkproces'), volgorde.
+    """
+    if not tekst:
+        return []
+
+    resultaten = []
+    volgorde = 0
+    for m in _KT_PATROON.finditer(tekst):
+        code = m.group(1).strip()
+        naam = m.group(2).strip()[:200]
+        if "werkproces" in code.lower() or re.match(r"B\d+-K\d+-W\d+", code):
+            type_ = "werkproces"
+        else:
+            type_ = "kerntaak"
+        resultaten.append({"code": code, "naam": naam, "type": type_, "volgorde": volgorde})
+        volgorde += 1
+    return resultaten
