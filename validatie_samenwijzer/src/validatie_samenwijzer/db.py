@@ -147,6 +147,16 @@ def markeer_geindexeerd(conn: sqlite3.Connection, oer_id: int) -> None:
     conn.commit()
 
 
+def get_alle_oers_met_instelling(conn: sqlite3.Connection) -> list[sqlite3.Row]:
+    """Geeft alle OER-documenten met display_naam van de instelling."""
+    return conn.execute(
+        "SELECT o.*, i.display_naam "
+        "FROM oer_documenten o "
+        "JOIN instellingen i ON i.id = o.instelling_id "
+        "ORDER BY i.display_naam, o.opleiding, o.leerweg, o.cohort"
+    ).fetchall()
+
+
 def update_oer_bestandspad(conn: sqlite3.Connection, oer_id: int, bestandspad: str) -> None:
     """Overschrijf het bestandspad van een OER-document (bijv. upgrade van TXT naar PDF)."""
     conn.execute("UPDATE oer_documenten SET bestandspad = ? WHERE id = ?", (bestandspad, oer_id))
