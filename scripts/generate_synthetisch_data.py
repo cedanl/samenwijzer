@@ -43,3 +43,34 @@ def verdeel_studenten(totaal: int, opleidingen: list[str]) -> dict[str, int]:
     for i, opl in enumerate(opleidingen):
         verdeling[opl] = basis + (1 if i < rest else 0)
     return verdeling
+
+
+_VOORLETTERS = list("ABCDEFGHIJKLMNOPRSTVW")
+_ACHTERNAMEN = [
+    "de Vries", "Jansen", "Bakker", "Visser", "Smit", "Meijer", "de Boer", "Mulder",
+    "de Groot", "Bos", "Vos", "Peters", "Hendriks", "van Leeuwen", "Dekker",
+    "Brouwer", "de Wit", "Dijkstra", "Smits", "de Graaf", "van der Berg",
+    "van Dijk", "Hoekstra", "Koster", "Prins", "Huisman", "Postma", "Bosch",
+]
+
+
+def maak_mentoren(rng: random.Random, aantal: int) -> list[str]:
+    """Genereer `aantal` unieke mentor-namen in formaat 'V. Achternaam'.
+
+    Deterministic via de meegegeven RNG.
+    """
+    namen: set[str] = set()
+    pogingen = 0
+    while len(namen) < aantal:
+        v = rng.choice(_VOORLETTERS)
+        a = rng.choice(_ACHTERNAMEN)
+        namen.add(f"{v}. {a}")
+        pogingen += 1
+        if pogingen > aantal * 100:
+            raise RuntimeError(f"Kon geen {aantal} unieke mentor-namen genereren")
+    return sorted(namen)
+
+
+def ken_mentor_toe(rng: random.Random, mentoren: list[str]) -> str:
+    """Kies een mentor uit een lijst — willekeurig (uniform)."""
+    return rng.choice(mentoren)
