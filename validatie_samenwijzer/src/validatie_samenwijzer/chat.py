@@ -150,10 +150,7 @@ def bouw_gecombineerd_systeem(oer_items: list[dict]) -> str:
 
     blokken = []
     for i, item in enumerate(oer_items, 1):
-        label = (
-            f"{item['display_naam']} · {item['opleiding']} "
-            f"· {item['leerweg']} {item['cohort']}"
-        )
+        label = f"{item['display_naam']} · {item['opleiding']} · {item['leerweg']} {item['cohort']}"
         blokken.append(f"=== OER {i}: {label} ===\n\n{item['tekst']}")
     return _MULTI_SYSTEEM_TEMPLATE.format(
         n=len(oer_items),

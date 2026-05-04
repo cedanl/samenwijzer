@@ -31,8 +31,8 @@ from validatie_samenwijzer.styles import CSS, render_footer  # noqa: E402
 st.markdown(CSS, unsafe_allow_html=True)
 
 MAX_GESCHIEDENIS = 20
-MAX_OER_SELECTIE = 3   # max aantal OERs tegelijk
-MAX_KANDIDATEN = 10    # boven dit aantal → intake in plaats van dropdown
+MAX_OER_SELECTIE = 3  # max aantal OERs tegelijk
+MAX_KANDIDATEN = 10  # boven dit aantal → intake in plaats van dropdown
 
 # ── Session state ──────────────────────────────────────────────────────────────
 _DEFAULTS: dict = {
@@ -54,8 +54,7 @@ def _reset() -> None:
 
 # ── Header ─────────────────────────────────────────────────────────────────────
 st.markdown(
-    "<h1 style='font-family:Fraunces,serif;color:#1C2B3A;margin-bottom:0.2rem'>"
-    "📚 OER-vraag</h1>",
+    "<h1 style='font-family:Fraunces,serif;color:#1C2B3A;margin-bottom:0.2rem'>📚 OER-vraag</h1>",
     unsafe_allow_html=True,
 )
 
@@ -114,13 +113,15 @@ if st.session_state.pub_kandidaten:
             k = opties[lbl]
             tekst = laad_oer_tekst(Path(k["bestandspad"]))
             if tekst:
-                oer_items.append({
-                    "tekst": tekst,
-                    "opleiding": k["opleiding"],
-                    "display_naam": k["display_naam"],
-                    "leerweg": k["leerweg"],
-                    "cohort": k["cohort"],
-                })
+                oer_items.append(
+                    {
+                        "tekst": tekst,
+                        "opleiding": k["opleiding"],
+                        "display_naam": k["display_naam"],
+                        "leerweg": k["leerweg"],
+                        "cohort": k["cohort"],
+                    }
+                )
                 labels.append(_label(k))
 
         if not oer_items:
@@ -151,9 +152,7 @@ if st.session_state.pub_kandidaten:
                     log.exception("OER-antwoord (publiek, na keuze) mislukt")
                     st.error(f"Er ging iets mis: {e}")
                     antwoord = ""
-                st.session_state.pub_chat_history.append(
-                    {"role": "assistant", "content": antwoord}
-                )
+                st.session_state.pub_chat_history.append({"role": "assistant", "content": antwoord})
             st.rerun()
 
     render_footer()
@@ -195,10 +194,12 @@ def _stream_antwoord(systeem: str, berichten: list[dict]) -> str:
 if st.session_state.pub_oer_systeem:
     berichten = bouw_berichten(st.session_state.pub_chat_history, vraag)
     antwoord = _stream_antwoord(st.session_state.pub_oer_systeem, berichten)
-    st.session_state.pub_chat_history.extend([
-        {"role": "user", "content": vraag},
-        {"role": "assistant", "content": antwoord},
-    ])
+    st.session_state.pub_chat_history.extend(
+        [
+            {"role": "user", "content": vraag},
+            {"role": "assistant", "content": antwoord},
+        ]
+    )
     if len(st.session_state.pub_chat_history) > MAX_GESCHIEDENIS:
         st.session_state.pub_chat_history = st.session_state.pub_chat_history[-MAX_GESCHIEDENIS:]
     render_footer()
@@ -210,7 +211,8 @@ instellingen = sorted({oer["display_naam"] for oer in alle_oers})
 
 gebruiker_tekst = (
     " ".join(b["content"] for b in st.session_state.pub_chat_history if b["role"] == "user")
-    + " " + vraag
+    + " "
+    + vraag
 )
 kandidaten = identificeer_oer_kandidaten(list(alle_oers), gebruiker_tekst, min_score=5)
 
@@ -218,13 +220,17 @@ if len(kandidaten) == 1:
     k = kandidaten[0]
     tekst = laad_oer_tekst(Path(k["bestandspad"]))
     if tekst:
-        st.session_state.pub_oer_systeem = bouw_gecombineerd_systeem([{
-            "tekst": tekst,
-            "opleiding": k["opleiding"],
-            "display_naam": k["display_naam"],
-            "leerweg": k["leerweg"],
-            "cohort": k["cohort"],
-        }])
+        st.session_state.pub_oer_systeem = bouw_gecombineerd_systeem(
+            [
+                {
+                    "tekst": tekst,
+                    "opleiding": k["opleiding"],
+                    "display_naam": k["display_naam"],
+                    "leerweg": k["leerweg"],
+                    "cohort": k["cohort"],
+                }
+            ]
+        )
         st.session_state.pub_oer_labels = [
             f"{k['display_naam']} · {k['opleiding'][:40]} · {k['leerweg']} {k['cohort']}"
         ]
@@ -281,10 +287,12 @@ else:
         st.error(f"Er ging iets mis: {e}")
         antwoord = ""
 
-st.session_state.pub_chat_history.extend([
-    {"role": "user", "content": vraag},
-    {"role": "assistant", "content": antwoord},
-])
+st.session_state.pub_chat_history.extend(
+    [
+        {"role": "user", "content": vraag},
+        {"role": "assistant", "content": antwoord},
+    ]
+)
 if len(st.session_state.pub_chat_history) > MAX_GESCHIEDENIS:
     st.session_state.pub_chat_history = st.session_state.pub_chat_history[-MAX_GESCHIEDENIS:]
 
