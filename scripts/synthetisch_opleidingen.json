@@ -1,0 +1,16 @@
+[
+  {"opleiding": "Software Developer", "sector": "DSV", "niveau": 4},
+  {"opleiding": "Onderwijsassistent", "sector": "DSV", "niveau": 4},
+  {"opleiding": "Medewerker Evenementenorganisatie", "sector": "DSV", "niveau": 4},
+  {"opleiding": "Sport Bewegingsleider", "sector": "DSV", "niveau": 4},
+  {"opleiding": "Tandartsassistent", "sector": "Zorgenwelzijn", "niveau": 4},
+  {"opleiding": "Helpende Zorg Welzijn", "sector": "Zorgenwelzijn", "niveau": 4},
+  {"opleiding": "Retailmedewerker", "sector": "Economie", "niveau": 2},
+  {"opleiding": "Retailmanager", "sector": "Economie", "niveau": 4},
+  {"opleiding": "Logistiek Medewerker", "sector": "Economie", "niveau": 4},
+  {"opleiding": "Commercieel Medewerker", "sector": "Economie", "niveau": 4},
+  {"opleiding": "Kok", "sector": "Anders", "niveau": 4},
+  {"opleiding": "Zelfstandig Werkend Kok", "sector": "Anders", "niveau": 4},
+  {"opleiding": "Allround Podium Evenemententechnicus", "sector": "Techniek", "niveau": 4},
+  {"opleiding": "Eerste Monteur Elektrotechnische Installaties", "sector": "Techniek", "niveau": 3}
+]
