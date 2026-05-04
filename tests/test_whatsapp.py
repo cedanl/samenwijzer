@@ -466,7 +466,7 @@ class TestSchedulerMain:
     """Tests voor de _main() CLI-entrypoint van scheduler."""
 
     def test_main_stopt_bij_ontbrekende_csv(self) -> None:
-        """_main() roept sys.exit(1) aan als de berend-CSV niet bestaat."""
+        """_main() roept sys.exit(1) aan als de synthetische CSV niet bestaat."""
         with (
             patch("dotenv.load_dotenv"),
             patch.object(_Path, "exists", _stub_csv_exists(False)),
@@ -488,7 +488,7 @@ class TestSchedulerMain:
         with (
             patch("dotenv.load_dotenv"),
             patch.object(_Path, "exists", _stub_csv_exists(True)),
-            patch("samenwijzer.prepare.load_berend_csv", return_value=df_leeg),
+            patch("samenwijzer.prepare.load_synthetisch_csv", return_value=df_leeg),
             patch("samenwijzer.transform.transform_student_data", return_value=df_leeg),
             patch(
                 "samenwijzer.scheduler.stuur_wekelijkse_checkins",
@@ -509,7 +509,7 @@ class TestSchedulerMain:
         with (
             patch("dotenv.load_dotenv"),
             patch.object(_Path, "exists", _stub_csv_exists(True)),
-            patch("samenwijzer.prepare.load_berend_csv", return_value=df_leeg),
+            patch("samenwijzer.prepare.load_synthetisch_csv", return_value=df_leeg),
             patch("samenwijzer.transform.transform_student_data", return_value=df_leeg),
             patch(
                 "samenwijzer.scheduler.stuur_wekelijkse_checkins",

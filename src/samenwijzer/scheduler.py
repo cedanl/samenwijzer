@@ -78,17 +78,19 @@ def _main() -> None:
 
     load_dotenv(Path(__file__).parent.parent.parent / ".env")
 
-    from samenwijzer.prepare import load_berend_csv
+    from samenwijzer.prepare import load_synthetisch_csv
     from samenwijzer.transform import transform_student_data
 
     dry_run = os.getenv("DRY_RUN", "false").lower() == "true"
-    csv_pad = Path(__file__).parent.parent.parent / "data" / "01-raw" / "berend" / "studenten.csv"
+    csv_pad = (
+        Path(__file__).parent.parent.parent / "data" / "01-raw" / "synthetisch" / "studenten.csv"
+    )
 
     if not csv_pad.exists():
         log.error("Studentendata niet gevonden op %s", csv_pad)
         sys.exit(1)
 
-    df = transform_student_data(load_berend_csv(csv_pad))
+    df = transform_student_data(load_synthetisch_csv(csv_pad))
     resultaat = stuur_wekelijkse_checkins(df, dry_run=dry_run)
 
     if resultaat["fouten"] > 0:
