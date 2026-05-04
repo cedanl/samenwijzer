@@ -30,6 +30,8 @@ Cross-cutting modules (no layer restriction, import explicitly):
   tutor.py          ← Socratic AI tutor (Anthropic SDK, streaming)
   coach.py          ← Study material, practice tests, work feedback (Anthropic SDK)
   styles.py         ← EduPulse CSS + render_nav() (vaste header) + render_footer()
+  oer_store.py      ← SQLite persistence voor OER-catalog (oeren.db): instellingen, oer_documenten, kerntaken
+  oer_parsing.py    ← OER PDF/bestandsnaam parsing: crebo, opleiding, niveau, kerntaken
 ```
 
 Dependency direction is strictly left-to-right (prepare → export).
@@ -44,6 +46,10 @@ data/01-raw/ → prepare → data/02-prepared/ → transform → analyze → vis
 
 SQLite (`data/02-prepared/outreach.db`) is written by `outreach_store.py` and read by both
 the outreach page (docent) and the welzijn page (student).
+
+SQLite (`data/02-prepared/oeren.db`) is built once by `scripts/build_oer_catalog.py` from OER
+PDFs in `oeren/`. Tables: `instellingen`, `oer_documenten`, `kerntaken`. Read by
+`prepare._voeg_kt_wp_scores_toe()` and `analyze._oer_label()` to resolve kerntaak names.
 
 ## AI integration
 

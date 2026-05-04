@@ -18,7 +18,7 @@ flowchart TD
     A([Browser]) --> B[app/main.py\nLoginscherm]
     B -->|SHA-256 Welkom123| C{Rol?}
 
-    CSV[(studenten.csv\noer_kerntaken.json)] --> PREP[prepare.load_berend_csv]
+    CSV[(studenten.csv\noeren.db)] --> PREP[prepare.load_synthetisch_csv]
     PREP --> TRANS[transform.transform_student_data\nbsa_percentage · risico · kt_gemiddelde]
     TRANS --> DF[(st.session_state df\ngedeeld DataFrame)]
     C --> DF

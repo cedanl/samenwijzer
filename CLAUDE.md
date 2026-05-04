@@ -56,8 +56,11 @@ uv run ty check
 # Dependencies upgraden
 uv lock --upgrade && uv sync
 
-# Demo-dataset opnieuw genereren (1000 studenten, 5 instellingen)
-uv run python scripts/generate_berend_data.py
+# OER-catalog opnieuw opbouwen (na wijzigingen in oeren/)
+uv run python scripts/build_oer_catalog.py
+
+# Synthetische dataset regenereren (deterministisch via seed=42)
+uv run python scripts/generate_synthetisch_data.py
 ```
 
 ## Omgeving
@@ -87,8 +90,8 @@ WHATSAPP_ENCRYPT_KEY=...                       # Fernet-sleutel voor telefoonenc
 ```
 app/            ← UI only (Streamlit pages + webhook.py FastAPI)
 src/samenwijzer/ ← alle business logic
-data/01-raw/    ← brondata (studenten.csv, oer_kerntaken.json)
-data/02-prepared/ ← outreach.db + whatsapp.db (gitignored)
+data/01-raw/    ← brondata (studenten.csv)
+data/02-prepared/ ← oeren.db + outreach.db + whatsapp.db (gitignored)
 data/03-output/ ← exports (gitignored)
 docs/           ← kennisbank (zie tabel hieronder)
 scripts/        ← hulpscripts (niet geïmporteerd door de app)
@@ -120,11 +123,12 @@ Dependency-richting is strikt: `prepare → transform → analyze → visualize/
 Nooit omgekeerd. Zie `ARCHITECTURE.md` voor details.
 
 **Cross-cutting modules** (`_ai.py`, `auth.py`, `outreach.py`, `outreach_store.py`, `welzijn.py`,
-`wellbeing.py`, `whatsapp.py`, `whatsapp_store.py`, `scheduler.py`, `styles.py`) hebben geen
+`wellbeing.py`, `whatsapp.py`, `whatsapp_store.py`, `scheduler.py`, `styles.py`,
+`oer_store.py`, `oer_parsing.py`) hebben geen
 laagrestrictie — ze worden via expliciete imports aangesproken.
 
 **Sessiedata**: `st.session_state["df"]` bevat het getransformeerde DataFrame en wordt eenmalig
-geladen op de startpagina via `load_berend_csv()` + `transform_student_data()`. Alle pagina's lezen
+geladen op de startpagina via `load_synthetisch_csv()` + `transform_student_data()`. Alle pagina's lezen
 daaruit — nooit opnieuw laden.
 
 **AI-isolatie**: alle Anthropic API-calls zitten in `tutor.py`, `coach.py`, `outreach.py`,
@@ -171,17 +175,23 @@ Beveiligingspatroon voor student-only pagina's:
 
 ## Dataset & OER-kerntaken
 
-De Berend-dataset heeft andere kolomnamen dan het standaard Samenwijzer-formaat. `load_berend_csv()`
-in `prepare.py` doet de mapping én voegt synthetische kerntaak- en werkprocesscores toe op basis
-van `oer_kerntaken.json`.
+De synthetische dataset heeft specifieke kolomnamen die `load_synthetisch_csv()`
+in `prepare.py` inleest én voegt synthetische kerntaak- en werkprocesscores toe via
+DB-lookup in `oeren.db`.
 
-`oer_kerntaken.json` bevat per opleiding de echte OER-namen voor:
+`oeren.db` bevat per opleiding de echte OER-namen voor:
 - `kt_1`, `kt_2` — kerntaken (scores 0–100, gecorreleerd met voortgang + per-student ruis)
 - `wp_1_1` t/m `wp_2_3` — werkprocessen
 
-`analyze.py` laadt dit JSON eenmalig (`_laad_oer()`) en gebruikt `_oer_label(opleiding, kolom)` om
-overal echte OER-namen te tonen. Studenten zonder kt_3/wp_3_x in hun opleiding krijgen NaN;
+`analyze.py` gebruikt `_oer_label(opleiding, kolom)` om overal echte OER-namen te tonen.
+Studenten zonder kt_3/wp_3_x in hun opleiding krijgen NaN;
 alle analyse- en labelfuncties filteren NaN weg.
+
+**OER-catalog (`data/02-prepared/oeren.db`)** — SQLite met `instellingen`,
+`oer_documenten` en `kerntaken`. Gevuld eenmalig door
+`scripts/build_oer_catalog.py` op basis van `oeren/`. Wordt door
+`prepare._voeg_kt_wp_scores_toe()` en `analyze._oer_label()` gequeried om
+kerntaak-namen op te halen. `oer_kerntaken.json` is uitgefaseerd.
 
 ## Outreach-module
 
