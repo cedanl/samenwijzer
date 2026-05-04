@@ -5,9 +5,9 @@ import smtplib
 from collections.abc import Generator
 
 from samenwijzer._ai import _client
+from samenwijzer.outreach import email_config_uit_env, verstuur_email
 
 log = logging.getLogger(__name__)
-from samenwijzer.outreach import email_config_uit_env, verstuur_email
 
 _MODEL = "claude-sonnet-4-6"
 _MAX_TOKENS = 512
