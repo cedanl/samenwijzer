@@ -1,6 +1,10 @@
 """Tests voor oer_parsing module."""
 
-from samenwijzer.oer_parsing import extraheer_kerntaken, parseer_bestandsnaam
+from samenwijzer.oer_parsing import (
+    extraheer_kerntaken,
+    extraheer_opleidingsnaam,
+    parseer_bestandsnaam,
+)
 
 
 def test_parseer_davinci_format():
@@ -57,3 +61,39 @@ def test_extraheer_kerntaken_negeert_overige_regels():
     resultaten = extraheer_kerntaken(tekst)
     assert len(resultaten) == 1
     assert resultaten[0]["code"] == "B1-K1"
+
+
+def test_extraheer_schone_naam_davinci():
+    naam = extraheer_opleidingsnaam(
+        "25655_BOL_2025__verzorgende-ig.md"
+    )
+    assert "Verzorgende" in naam
+
+
+def test_extraheer_schone_naam_rijn_ijssel():
+    naam = extraheer_opleidingsnaam(
+        "25591_BOL_2025__oer-2025-2026-ci-25591-mediamaker.md"
+    )
+    assert "Mediamaker" in naam
+
+
+def test_extraheer_filtert_examenplan_en_oer():
+    naam = extraheer_opleidingsnaam(
+        "25775_BOL_2025__25775BOL2025Examenplan-Logistiek-teamleider-cohort-2025.md"
+    )
+    assert "Logistiek" in naam
+    assert "Examenplan" not in naam
+    assert "OER" not in naam.upper()
+
+
+def test_extraheer_geen_naam_als_alleen_codes():
+    naam = extraheer_opleidingsnaam("25756_BBL_2025__25756BBL2025Examenplan.md")
+    assert naam is None or naam == ""
+
+
+def test_extraheer_max_4_woorden():
+    naam = extraheer_opleidingsnaam(
+        "25739_BBL_2025__25739BBL2025MJP-Technicus-Elektrotechnische-Installaties-in-de-Gebouwde-Omgeving-d1.md"
+    )
+    assert naam is not None
+    assert len(naam.split()) <= 4

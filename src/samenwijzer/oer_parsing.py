@@ -74,3 +74,54 @@ def extraheer_kerntaken(tekst: str) -> list[dict]:
         resultaten.append({"code": code, "naam": naam, "type": type_, "volgorde": volgorde})
         volgorde += 1
     return resultaten
+
+
+# ── Opleidingsnaam-extractie ──────────────────────────────────────────────────
+
+_STOP_TOKENS = {
+    "oer", "mjp", "tik", "ci", "examenplan", "examenplannen", "examenreglement",
+    "addendum", "cohort", "bol", "bbl", "bolbbl", "vanaf", "voor", "en", "van",
+    "de", "het", "te", "op", "een", "in", "ig", "n2", "n3", "n4", "d1", "d2",
+    "v1", "v2", "v3", "def",
+}
+
+_HASH_PATROON = re.compile(r"^[a-zA-Z0-9]{6,}$")
+_KLINKER_PATROON = re.compile(r"[aeiou]", re.IGNORECASE)
+
+
+def extraheer_opleidingsnaam(bestandsnaam: str) -> str | None:
+    """Heuristiek: leid opleidingsnaam af uit bestandsnaam.
+
+    Strategie:
+      1. Strip extensie en alles vóór '__' (zodat metadata-prefix wegvalt).
+      2. Splits op _, -, spaties.
+      3. Filter weg: digits, jaartallen, BOL/BBL, OER/MJP/Examenplan-tokens,
+         hash-achtige tokens (≥6 chars zonder klinkers), 1-letter tokens.
+      4. Title-case, max 4 woorden.
+
+    Returns:
+        Schone opleidingsnaam, of None als er onvoldoende woorden overblijven.
+    """
+    naam = bestandsnaam.rsplit(".", 1)[0]  # strip .md/.pdf
+    if "__" in naam:
+        naam = naam.split("__", 1)[1]
+
+    # Split CamelCase/digit-letter boundaries before tokenising (e.g. "25775BOL2025Examenplan")
+    naam = re.sub(r"(?<=\d)(?=[a-zA-Z])|(?<=[a-zA-Z])(?=\d)", " ", naam)
+    tokens = re.split(r"[_\-\s]+", naam)
+    woorden: list[str] = []
+    for t in tokens:
+        t = t.strip().lower()
+        if not t or len(t) < 2:
+            continue
+        if t.isdigit():
+            continue
+        if t in _STOP_TOKENS:
+            continue
+        if _HASH_PATROON.match(t) and not _KLINKER_PATROON.search(t):
+            continue
+        woorden.append(t)
+
+    if not woorden:
+        return None
+    return " ".join(w.title() for w in woorden[:4])
