@@ -129,7 +129,11 @@ def stuur_rollenspel_bericht(
     with client.messages.stream(
         model=_MODEL,
         max_tokens=_MAX_TOKENS,
-        system=_rollenspel_systeem_prompt(sessie),
+        system=[{
+            "type": "text",
+            "text": _rollenspel_systeem_prompt(sessie),
+            "cache_control": {"type": "ephemeral"},
+        }],
         messages=sessie.geschiedenis,
     ) as stream:
         for fragment in stream.text_stream:
@@ -212,7 +216,7 @@ def genereer_oefentoets(
         max_tokens=_MAX_TOKENS,
         messages=[{"role": "user", "content": prompt}],
     )
-    return response.content[0].text
+    return next(b.text for b in response.content if b.type == "text")
 
 
 def controleer_antwoorden(

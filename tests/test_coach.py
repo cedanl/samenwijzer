@@ -23,7 +23,7 @@ from tests.helpers import mock_stream, mock_stream_fragmenten, mock_stream_met_f
 def _mock_response(tekst: str) -> MagicMock:
     """Bouw een mock messages.create-response."""
     mock_msg = MagicMock()
-    mock_msg.content = [MagicMock(text=tekst)]
+    mock_msg.content = [MagicMock(type="text", text=tekst)]
     return mock_msg
 
 
@@ -266,7 +266,7 @@ def test_stuur_rollenspel_bericht_stuurt_systeem_prompt(mock_cls: MagicMock) -> 
 
     call_kwargs = mock_client.messages.stream.call_args.kwargs
     assert "system" in call_kwargs
-    assert "werkgever" in call_kwargs["system"]
+    assert "werkgever" in call_kwargs["system"][0]["text"]
 
 
 # ── genereer_rollenspel_feedback ──────────────────────────────────────────────
@@ -461,7 +461,7 @@ def test_genereer_oefentoets_geeft_volledige_tekst_terug(mock_cls: MagicMock) ->
 
     toets_tekst = "Vraag 1: ...\nANTWOORDEN: 1=A"
     mock_response = MagicMock()
-    mock_response.content = [MagicMock(text=toets_tekst)]
+    mock_response.content = [MagicMock(type="text", text=toets_tekst)]
     mock_client = MagicMock()
     mock_client.messages.create.return_value = mock_response
     mock_cls.return_value = mock_client

@@ -307,9 +307,9 @@ def _genereer_ai_reactie(context: list[dict]) -> str:
         if m["rol"] in ("student", "coach")
     ]
     reactie = ai_client().messages.create(
-        model="claude-haiku-4-5-20251001",
+        model="claude-haiku-4-5",
         max_tokens=150,
         system=_AI_SYSTEEM,
         messages=berichten,
     )
-    return reactie.content[0].text
+    return next(b.text for b in reactie.content if b.type == "text")
