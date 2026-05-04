@@ -363,3 +363,22 @@ def test_load_synthetisch_csv_geen_leesrechten(tmp_path: Path) -> None:
             load_synthetisch_csv(p)
     finally:
         p.chmod(0o644)
+
+
+def test_kt_wp_scores_zijn_reproduceerbaar(tmp_path: Path, db_pad_met_oer: Path) -> None:
+    """Regressie: kt/wp-scores zijn deterministisch — niet afhankelijk van PYTHONHASHSEED."""
+    csv_pad = tmp_path / "studenten.csv"
+    csv_pad.write_text(
+        _SYNTHETISCH_HEADER
+        + "\n"
+        + _synth_row("100001", "Ali Yilmaz", "3B", "Verzorgende IG")
+        + "\n"
+    )
+    df1 = load_synthetisch_csv(csv_pad)
+    df2 = load_synthetisch_csv(csv_pad)
+    for col in ["kt_1", "kt_2", "wp_1_1", "wp_1_2", "wp_1_3", "wp_2_1", "wp_2_2", "wp_2_3"]:
+        v1, v2 = df1[col].iloc[0], df2[col].iloc[0]
+        if pd.isna(v1):
+            assert pd.isna(v2), f"{col}: NaN inconsistent"
+        else:
+            assert v1 == v2, f"{col}: {v1} != {v2}"

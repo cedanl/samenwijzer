@@ -229,7 +229,7 @@ def _voeg_kt_wp_scores_toe(df: pd.DataFrame) -> pd.DataFrame:
 
         snr = str(row["studentnummer"])
         voortgang = float(row["voortgang"])
-        rng = np.random.default_rng(int(abs(hash(snr)) % 2**32))
+        rng = np.random.default_rng(int(snr) % 2**32)
         basis = voortgang * 100
 
         # Synthetische score: vaste mapping op kt_1/kt_2 en wp_1_1…wp_2_3 (geen 1-op-1
