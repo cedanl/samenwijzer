@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import re
 from collections.abc import Generator
 from pathlib import Path
 
@@ -114,9 +115,123 @@ def genereer_antwoord(
     """
     with client.messages.stream(
         model=model,
-        system=system,
+        system=[{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}],
         max_tokens=max_tokens,
         output_config={"effort": "medium"},
+        messages=berichten,
+    ) as stream:
+        yield from stream.text_stream
+
+
+# ── Multi-OER ──────────────────────────────────────────────────────────────────
+
+_MULTI_SYSTEEM_TEMPLATE = """\
+Je bent een OER-assistent voor MBO-opleidingen.
+Hieronder staan {n} Onderwijs- en Examenregelingen (OERs).
+Beantwoord vragen uitsluitend op basis van deze OERs — nooit vanuit eigen kennis.
+Geef volledige, goed gestructureerde antwoorden.
+Verwijs bij elke claim naar de betreffende OER (gebruik de aanduiding uit de koppen hieronder).
+Als de informatie niet in de OERs staat, zeg dat dan expliciet.
+Antwoord in het Nederlands.
+
+{oer_blokken}"""
+
+
+def bouw_gecombineerd_systeem(oer_items: list[dict]) -> str:
+    """Bouw een systeemprompt voor één of meerdere OERs.
+
+    Args:
+        oer_items: lijst van dict met sleutels 'tekst', 'opleiding',
+                   'display_naam', 'leerweg', 'cohort'.
+    """
+    if len(oer_items) == 1:
+        item = oer_items[0]
+        return bouw_systeem(item["tekst"], item["opleiding"], item["display_naam"])
+
+    blokken = []
+    for i, item in enumerate(oer_items, 1):
+        label = (
+            f"{item['display_naam']} · {item['opleiding']} "
+            f"· {item['leerweg']} {item['cohort']}"
+        )
+        blokken.append(f"=== OER {i}: {label} ===\n\n{item['tekst']}")
+    return _MULTI_SYSTEEM_TEMPLATE.format(
+        n=len(oer_items),
+        oer_blokken="\n\n---\n\n".join(blokken),
+    )
+
+
+# ── Conversationele OER-identificatie ─────────────────────────────────────────
+
+_INTAKE_SYSTEEM = """\
+Je bent een assistent die helpt bij vragen over MBO Onderwijs- en Examenregelingen (OERs).
+Je hebt nog geen OER geselecteerd. Om de juiste OER te kunnen raadplegen, heb je nodig:
+- Instelling (bijv. Da Vinci, Rijn IJssel, Talland, Aeres, Utrecht)
+- Opleiding (naam of crebo-nummer, bijv. Verzorgende IG of 25170)
+- Leerweg: BOL of BBL
+- Cohort: het startjaar (bijv. 2025)
+
+Vraag vriendelijk naar de ontbrekende informatie. Reageer beknopt. Antwoord in het Nederlands."""
+
+
+def identificeer_oer_kandidaten(oers: list, tekst: str, min_score: int = 0) -> list[dict]:
+    """Geeft OER-kandidaten gesorteerd op match-score (hoogste eerst).
+
+    Scoort op: crebo-nummer (+3), leerweg (+2), cohortjaar (+2),
+    opleidingswoorden (+1 elk, max 2), instellingsnaam (+1).
+    CamelCase-namen (Da Vinci-stijl) worden gesplitst vóór matching.
+    Numerieke tokens worden uitgesloten zodat jaarcijfers niet dubbel tellen.
+    """
+    tekst_lower = tekst.lower()
+    kandidaten = []
+    _generiek = {"college", "school", "mbo", "roc"}
+
+    for oer in oers:
+        d = dict(oer)
+        score = 0
+
+        if d["crebo"] in tekst:
+            score += 3
+
+        if d["leerweg"].lower() in tekst_lower:
+            score += 2
+
+        if d["cohort"] in tekst:
+            score += 2
+
+        # CamelCase split (VerzorgendeIG → Verzorgende IG) + underscore als separator
+        opl_gesplit = re.sub(r"(?<=[a-z])(?=[A-Z])", " ", d["opleiding"])
+        woorden = [
+            w
+            for w in re.sub(r"[_\W]+", " ", opl_gesplit).lower().split()
+            if len(w) > 3 and not w.isdigit()
+        ]
+        score += min(sum(1 for w in woorden if w in tekst_lower), 2)
+
+        for deel in d["display_naam"].lower().split():
+            if len(deel) >= 4 and deel not in _generiek and deel in tekst_lower:
+                score += 1
+                break
+
+        if score >= min_score:
+            kandidaten.append({**d, "_score": score})
+
+    return sorted(kandidaten, key=lambda x: x["_score"], reverse=True)
+
+
+def genereer_intake_antwoord(
+    client: anthropic.Anthropic,
+    berichten: list[dict],
+    beschikbare_instellingen: list[str] | None = None,
+) -> Generator[str]:
+    """Stream een intake-antwoord als nog geen OER is geselecteerd."""
+    systeem = _INTAKE_SYSTEEM
+    if beschikbare_instellingen:
+        systeem += "\n\nBeschikbare instellingen: " + ", ".join(beschikbare_instellingen)
+    with client.messages.stream(
+        model="claude-sonnet-4-6",
+        system=[{"type": "text", "text": systeem, "cache_control": {"type": "ephemeral"}}],
+        max_tokens=512,
         messages=berichten,
     ) as stream:
         yield from stream.text_stream

@@ -101,4 +101,7 @@ with tab_mentor:
             else:
                 st.error("Onbekende naam of onjuist wachtwoord.")
 
+st.divider()
+st.page_link("pages/0_oer_vraag.py", label="📚 Stel direct een OER-vraag zonder in te loggen →")
+
 render_footer()

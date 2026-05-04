@@ -1,6 +1,7 @@
 """Student: OER-chat met volledige documentcontext."""
 
 import html
+import logging
 from pathlib import Path
 
 import streamlit as st
@@ -8,8 +9,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+log = logging.getLogger(__name__)
+
 st.set_page_config(page_title="OER-assistent", page_icon="💬", layout="wide")
 
+from validatie_samenwijzer._ai import APITimeoutError  # noqa: E402
 from validatie_samenwijzer._ai import _client as ai_client  # noqa: E402
 from validatie_samenwijzer.auth import vereist_student  # noqa: E402
 from validatie_samenwijzer.chat import (  # noqa: E402
@@ -83,7 +87,11 @@ if vraag:
                     f'<div class="chat-antwoord">\n\n{antwoord}\n\n</div>',
                     unsafe_allow_html=True,
                 )
+        except APITimeoutError:
+            st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
+            antwoord = ""
         except Exception as e:
+            log.exception("OER-antwoord (student) mislukt")
             st.error(f"Er ging iets mis: {e}")
 
     st.session_state.chat_history.extend(
