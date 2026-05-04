@@ -74,3 +74,98 @@ def maak_mentoren(rng: random.Random, aantal: int) -> list[str]:
 def ken_mentor_toe(rng: random.Random, mentoren: list[str]) -> str:
     """Kies een mentor uit een lijst — willekeurig (uniform)."""
     return rng.choice(mentoren)
+
+
+SECTOR_KOLOMMEN = ["Economie", "Landbouw", "Techniek", "DSV", "Zorgenwelzijn", "Anders"]
+
+VOOROPLEIDING_KOLOMMEN = [
+    "VooroplNiveau_HAVO",
+    "VooroplNiveau_MBO",
+    "VooroplNiveau_basis",
+    "VooroplNiveau_educatie",
+    "VooroplNiveau_prak",
+    "VooroplNiveau_VMBO_BB",
+    "VooroplNiveau_VMBO_GL",
+    "VooroplNiveau_VMBO_KB",
+    "VooroplNiveau_VMBO_TL",
+    "VooroplNiveau_nan",
+    "VooroplNiveau_VWOplus",
+    "VooroplNiveau_other",
+]
+
+# Gewichten zodat VMBO_TL en VMBO_KB de meeste studenten leveren (realistisch voor MBO)
+_VOOROPL_GEWICHTEN = [5, 8, 1, 1, 1, 6, 4, 8, 12, 2, 1, 2]
+
+_NL_VOORNAMEN = [
+    "Aisha", "Daan", "Emma", "Liam", "Noor", "Lucas", "Sara", "Mees",
+    "Yasmin", "Bram", "Lotte", "Jens", "Fatima", "Tim", "Iris", "Sven",
+    "Lisa", "Joris", "Sophie", "Stijn", "Anna", "Thijs", "Eva", "Finn",
+    "Maud", "Olaf", "Tess", "Bas", "Lieke", "Niels",
+]
+_NL_ACHTERNAMEN = _ACHTERNAMEN  # hergebruik mentor-pool
+
+
+def maak_studenten_naam(rng: random.Random) -> str:
+    return f"{rng.choice(_NL_VOORNAMEN)} {rng.choice(_NL_ACHTERNAMEN)}"
+
+
+def bouw_student_record(
+    rng: random.Random,
+    studentnummer: str,
+    naam: str,
+    instelling: str,
+    opleiding: str,
+    crebo: str,
+    leerweg: str,
+    cohort: str,
+    niveau: int,
+    sector: str,
+    mentor: str,
+) -> dict:
+    """Bouw één student-rij met alle research-features synthetisch ingevuld."""
+    # Klas: niveau-cijfer + cohort-letter (2024 → A, 2025 → B, …)
+    cohort_letter = chr(ord("A") + int(cohort) - 2024)
+    klas = f"{niveau}{cohort_letter}"
+
+    # Absence + dropout-correlatie
+    absence_unauthorized = round(rng.expovariate(1 / 12), 1)  # gemiddeld ~12
+    absence_unauthorized = min(absence_unauthorized, 60.0)
+    absence_authorized = round(rng.expovariate(1 / 8), 1)
+    absence_authorized = min(absence_authorized, 40.0)
+    # P(dropout) groeit met absence_unauthorized
+    p_dropout = min(0.05 + absence_unauthorized / 100.0, 0.6)
+    dropout = 1 if rng.random() < p_dropout else 0
+
+    record = {
+        "Studentnummer": studentnummer,
+        "Naam": naam,
+        "Klas": klas,
+        "Mentor": mentor,
+        "Instelling": instelling,
+        "Opleiding": opleiding,
+        "crebo": crebo,
+        "leerweg": leerweg,
+        "cohort": cohort,
+        "StudentAge": int(rng.gauss(18, 1.8)),
+        "StudentGender": rng.choice([0, 1]),
+        "Dropout": dropout,
+        "Aanmel_aantal": round(rng.uniform(1.0, 3.0), 1),
+        "max1studie": round(rng.uniform(0.0, 1.0), 1),
+        "absence_unauthorized": absence_unauthorized,
+        "absence_authorized": absence_authorized,
+        "Richting_nan": 0,
+    }
+
+    # Studentage clip
+    record["StudentAge"] = max(15, min(record["StudentAge"], 25))
+
+    # Sector one-hots
+    for kol in SECTOR_KOLOMMEN:
+        record[kol] = 1 if kol == sector else 0
+
+    # Vooropleidings-one-hot (precies één 1)
+    voorop_keuze = rng.choices(VOOROPLEIDING_KOLOMMEN, weights=_VOOROPL_GEWICHTEN, k=1)[0]
+    for kol in VOOROPLEIDING_KOLOMMEN:
+        record[kol] = 1 if kol == voorop_keuze else 0
+
+    return record

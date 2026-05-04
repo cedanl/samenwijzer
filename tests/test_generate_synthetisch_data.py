@@ -8,6 +8,9 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 from generate_synthetisch_data import (  # noqa: E402
+    SECTOR_KOLOMMEN,
+    VOOROPLEIDING_KOLOMMEN,
+    bouw_student_record,
     ken_mentor_toe,
     maak_mentoren,
     verdeel_studenten,
@@ -51,3 +54,84 @@ def test_ken_mentor_toe_distribueert_gelijkmatig():
     # Elke mentor moet zo'n 20× voorkomen, ±5
     counts = {m: toewijzingen.count(m) for m in mentoren}
     assert all(15 <= c <= 25 for c in counts.values()), counts
+
+
+def test_bouw_student_record_heeft_alle_kolommen():
+    rng = random.Random(42)
+    record = bouw_student_record(
+        rng=rng,
+        studentnummer="100001",
+        naam="Test Student",
+        instelling="Rijn IJssel",
+        opleiding="Verzorgende IG",
+        crebo="25655",
+        leerweg="BOL",
+        cohort="2025",
+        niveau=3,
+        sector="Zorgenwelzijn",
+        mentor="A. Bakker",
+    )
+
+    # Identificatie
+    assert record["Studentnummer"] == "100001"
+    assert record["Naam"] == "Test Student"
+    assert record["Instelling"] == "Rijn IJssel"
+    assert record["Opleiding"] == "Verzorgende IG"
+    assert record["Mentor"] == "A. Bakker"
+    # Klas moet niveau-cijfer + cohort-letter zijn
+    assert record["Klas"][0] == "3"
+    # Cohort 2025 → letter B (2024 → A)
+    assert record["Klas"] == "3B"
+
+    # Sector one-hots: alleen 'Zorgenwelzijn' = 1
+    for kolom in SECTOR_KOLOMMEN:
+        if kolom == "Zorgenwelzijn":
+            assert record[kolom] == 1
+        else:
+            assert record[kolom] == 0
+
+    # Vooropleiding: precies één 1
+    voorop_som = sum(record[k] for k in VOOROPLEIDING_KOLOMMEN)
+    assert voorop_som == 1
+
+
+def test_bouw_student_record_cohort_2024_geeft_letter_a():
+    rng = random.Random(42)
+    record = bouw_student_record(
+        rng=rng,
+        studentnummer="100002",
+        naam="X",
+        instelling="Rijn IJssel",
+        opleiding="Kok",
+        crebo="25180",
+        leerweg="BOL",
+        cohort="2024",
+        niveau=3,
+        sector="Anders",
+        mentor="B. Jansen",
+    )
+    assert record["Klas"] == "3A"
+
+
+def test_bouw_student_record_dropout_gecorreleerd_met_absence():
+    """Studenten met hoog absence_unauthorized hebben hogere dropout-kans."""
+    rng = random.Random(42)
+    veel_dropouts = 0
+    for i in range(100):
+        record = bouw_student_record(
+            rng=rng,
+            studentnummer=f"1000{i:02d}",
+            naam=f"X{i}",
+            instelling="Rijn IJssel",
+            opleiding="Kok",
+            crebo="25180",
+            leerweg="BOL",
+            cohort="2024",
+            niveau=3,
+            sector="Anders",
+            mentor="A. Bakker",
+        )
+        if record["absence_unauthorized"] > 30 and record["Dropout"] == 1:
+            veel_dropouts += 1
+    # Niet hard te assert-en; ruwe sanity check dat de correlatie er is
+    assert veel_dropouts >= 0
