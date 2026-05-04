@@ -1,5 +1,6 @@
 """Tests voor generate_synthetisch_data.py."""
 
+import json
 import random
 import sys
 from pathlib import Path
@@ -7,14 +8,18 @@ from pathlib import Path
 import pytest
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 from generate_synthetisch_data import (  # noqa: E402
     SECTOR_KOLOMMEN,
     VOOROPLEIDING_KOLOMMEN,
     bouw_student_record,
+    genereer,
     ken_mentor_toe,
     maak_mentoren,
     verdeel_studenten,
 )
+
+from samenwijzer import oer_store  # noqa: E402
 
 
 def test_verdeel_studenten_per_instelling():
@@ -135,3 +140,109 @@ def test_bouw_student_record_dropout_gecorreleerd_met_absence():
             veel_dropouts += 1
     # Niet hard te assert-en; ruwe sanity check dat de correlatie er is
     assert veel_dropouts >= 0
+
+
+# ── Integratie-tests (orchestrator) ──────────────────────────────────────────
+
+
+def _maak_mini_db(tmp_path: Path) -> tuple[Path, Path]:
+    """Hulpfunctie: bouw een mini DB met 4 instellingen + 3 opleidingen + JSON."""
+    db_pad = tmp_path / "oeren.db"
+    instellingen = [
+        ("rijn_ijssel", "Rijn IJssel"),
+        ("davinci", "Da Vinci"),
+        ("talland", "Talland"),
+        ("utrecht", "Utrecht"),
+    ]
+    for naam, display in instellingen:
+        oer_store.voeg_instelling_toe(db_pad, naam, display)
+
+    opleidingen = [("Kok", "25180", 3), ("Kapper", "25641", 3), ("Mediamaker", "25591", 4)]
+    for naam, _ in instellingen:
+        inst = oer_store.get_instelling_by_naam(db_pad, naam)
+        for opl, crebo, niv in opleidingen:
+            oer_store.voeg_oer_document_toe(
+                db_pad,
+                inst["id"],
+                opl,
+                crebo,
+                "2025",
+                "BOL",
+                niv,
+                f"oeren/{naam}/{crebo}.md",
+            )
+
+    opl_json = tmp_path / "opl.json"
+    opl_json.write_text(json.dumps([
+        {"opleiding": "Kok", "sector": "Anders", "niveau": 3},
+        {"opleiding": "Kapper", "sector": "Anders", "niveau": 3},
+        {"opleiding": "Mediamaker", "sector": "Anders", "niveau": 4},
+    ]))
+    return db_pad, opl_json
+
+
+def test_genereer_produceert_1000_rijen(tmp_path: Path):
+    """End-to-end: roep genereer() met een mini DB en JSON, valideer output."""
+    db_pad, opl_json = _maak_mini_db(tmp_path)
+    uitvoer = tmp_path / "studenten.csv"
+    genereer(db_pad=db_pad, opleidingen_json=opl_json, uitvoer_pad=uitvoer, seed=42)
+
+    rijen = uitvoer.read_text().splitlines()
+    # 1 header + 1000 data
+    assert len(rijen) == 1001
+
+
+def test_genereer_validatie_4_instellingen_x_250(tmp_path: Path):
+    """Elke instelling heeft exact 250 studenten."""
+    import pandas as pd
+
+    db_pad, opl_json = _maak_mini_db(tmp_path)
+    uitvoer = tmp_path / "studenten.csv"
+    genereer(db_pad=db_pad, opleidingen_json=opl_json, uitvoer_pad=uitvoer, seed=42)
+
+    df = pd.read_csv(uitvoer)
+    counts = df["Instelling"].value_counts()
+    assert (counts == 250).all(), counts
+
+
+def test_genereer_negeert_aeres_in_oeren_db(tmp_path: Path):
+    """Als oeren.db ook 'aeres' bevat, mag genereer() die overslaan."""
+    import pandas as pd
+
+    db_pad = tmp_path / "oeren.db"
+    instellingen = [
+        ("aeres", "Aeres MBO"),
+        ("rijn_ijssel", "Rijn IJssel"),
+        ("davinci", "Da Vinci"),
+        ("talland", "Talland"),
+        ("utrecht", "Utrecht"),
+    ]
+    for naam, display in instellingen:
+        oer_store.voeg_instelling_toe(db_pad, naam, display)
+    opleidingen = [("Kok", "25180", 3), ("Kapper", "25641", 3), ("Mediamaker", "25591", 4)]
+    for naam, _ in instellingen:
+        inst = oer_store.get_instelling_by_naam(db_pad, naam)
+        for opl, crebo, niv in opleidingen:
+            oer_store.voeg_oer_document_toe(
+                db_pad,
+                inst["id"],
+                opl,
+                crebo,
+                "2025",
+                "BOL",
+                niv,
+                f"oeren/{naam}/{crebo}.md",
+            )
+    opl_json = tmp_path / "opl.json"
+    opl_json.write_text(json.dumps([
+        {"opleiding": "Kok", "sector": "Anders", "niveau": 3},
+        {"opleiding": "Kapper", "sector": "Anders", "niveau": 3},
+        {"opleiding": "Mediamaker", "sector": "Anders", "niveau": 4},
+    ]))
+
+    uitvoer = tmp_path / "studenten.csv"
+    genereer(db_pad=db_pad, opleidingen_json=opl_json, uitvoer_pad=uitvoer, seed=42)
+
+    df = pd.read_csv(uitvoer)
+    assert "Aeres MBO" not in df["Instelling"].values
+    assert df["Instelling"].nunique() == 4
