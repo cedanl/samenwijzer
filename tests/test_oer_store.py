@@ -152,3 +152,32 @@ def test_get_kerntaken_voor_opleiding_zoekt_via_oer(db_path: Path):
 
 def test_get_kerntaken_voor_onbekende_opleiding_geeft_lijst_leeg(db_path: Path):
     assert oer_store.get_kerntaken_voor_opleiding(db_path, "Onbekend", niveau=3) == []
+
+
+def test_get_alle_oers_geeft_volledige_lijst(db_path: Path):
+    oer_store.voeg_instelling_toe(db_path, "rijn_ijssel", "Rijn IJssel")
+    oer_store.voeg_instelling_toe(db_path, "talland", "Talland")
+    rijn = oer_store.get_instelling_by_naam(db_path, "rijn_ijssel")
+    talland = oer_store.get_instelling_by_naam(db_path, "talland")
+    oer_store.voeg_oer_document_toe(
+        db_path, rijn["id"], "Verzorgende IG", "25655", "2025", "BOL", 3, "p1.md"
+    )
+    oer_store.voeg_oer_document_toe(
+        db_path, talland["id"], "Kok", "25180", "2025", "BBL", 3, "p2.md"
+    )
+    alle = oer_store.get_alle_oers(db_path)
+    assert len(alle) == 2
+
+
+def test_get_kerntaken_voor_opleiding_zonder_niveau_pakt_eerste_oer(db_path: Path):
+    """niveau=None pad: pakt de eerste OER-rij die op opleiding-naam matcht."""
+    oer_store.voeg_instelling_toe(db_path, "rijn_ijssel", "Rijn IJssel")
+    inst = oer_store.get_instelling_by_naam(db_path, "rijn_ijssel")
+    oer_id = oer_store.voeg_oer_document_toe(
+        db_path, inst["id"], "Kok", "25180", "2025", "BOL", 3, "p.md"
+    )
+    oer_store.voeg_kerntaak_toe(db_path, oer_id, "B1-K1", "Voorbereiden", "kerntaak", None, 0)
+
+    kts = oer_store.get_kerntaken_voor_opleiding(db_path, "Kok")  # niveau=None
+    assert len(kts) == 1
+    assert kts[0]["naam"] == "Voorbereiden"

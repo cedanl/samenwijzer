@@ -108,7 +108,7 @@ def voeg_oer_document_toe(
             "VALUES (?, ?, ?, ?, ?, ?, ?)",
             (instelling_id, opleiding, crebo, cohort, leerweg, niveau, bestandspad),
         )
-        return cur.lastrowid
+        return int(cur.lastrowid)
 
 
 def get_oer_document(
