@@ -1,6 +1,7 @@
 """Tests voor oer_parsing module."""
 
 from samenwijzer.oer_parsing import (
+    bepaal_niveau,
     extraheer_kerntaken,
     extraheer_opleidingsnaam,
     parseer_bestandsnaam,
@@ -97,3 +98,24 @@ def test_extraheer_max_4_woorden():
     )
     assert naam is not None
     assert len(naam.split()) <= 4
+
+
+def test_bepaal_niveau_uit_bestandsnaam_suffix():
+    assert bepaal_niveau("25099BBL2025MJP-MachinistGrondverzetN3.md", "") == 3
+    assert bepaal_niveau("25099BBL2025MJP-MeubelmakerN2.md", "") == 2
+    assert bepaal_niveau("12345BOL2025-OnbekendeOpleidingN4.md", "") == 4
+
+
+def test_bepaal_niveau_uit_markdown_tekst():
+    tekst = "Deze opleiding is op MBO niveau 3. Bla bla."
+    assert bepaal_niveau("12345BOL2025.md", tekst) == 3
+
+
+def test_bepaal_niveau_voorkeur_voor_bestandsnaam():
+    # Bestandsnaam zegt N4, tekst zegt niveau 2 → bestandsnaam wint
+    tekst = "Onbekende opleiding op niveau 2."
+    assert bepaal_niveau("12345BOL2025-OnbekendeN4.md", tekst) == 4
+
+
+def test_bepaal_niveau_geen_match_geeft_none():
+    assert bepaal_niveau("OER 2025 algemeen.md", "Geen niveau-aanduiding hier.") is None

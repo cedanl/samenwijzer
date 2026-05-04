@@ -125,3 +125,26 @@ def extraheer_opleidingsnaam(bestandsnaam: str) -> str | None:
     if not woorden:
         return None
     return " ".join(w.title() for w in woorden[:4])
+
+
+# ── Niveau-extractie ──────────────────────────────────────────────────────────
+
+_NIVEAU_BESTANDSNAAM = re.compile(r"N([234])(?!\d)", re.IGNORECASE)
+_NIVEAU_TEKST = re.compile(
+    r"\b(?:MBO[\s-]+)?[Nn]iveau\s*([234])\b"
+)
+
+
+def bepaal_niveau(bestandsnaam: str, tekst: str) -> int | None:
+    """Bepaal opleidingsniveau (2/3/4) uit bestandsnaam-suffix of markdown-tekst.
+
+    Bestandsnaam wint van tekst (suffix als 'N3' is een explicietere markering).
+    Geeft None als geen niveau te herleiden is.
+    """
+    m = _NIVEAU_BESTANDSNAAM.search(bestandsnaam)
+    if m:
+        return int(m.group(1))
+    m = _NIVEAU_TEKST.search(tekst)
+    if m:
+        return int(m.group(1))
+    return None
