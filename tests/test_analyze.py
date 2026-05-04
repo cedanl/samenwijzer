@@ -40,9 +40,7 @@ def oer_db(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     oer_store.voeg_kerntaak_toe(
         db, oer_id, "B1-K1", "Bieden van zorg en ondersteuning", "kerntaak", None, 0
     )
-    oer_store.voeg_kerntaak_toe(
-        db, oer_id, "B1-K2", "Werken aan organisatie", "kerntaak", None, 1
-    )
+    oer_store.voeg_kerntaak_toe(db, oer_id, "B1-K2", "Werken aan organisatie", "kerntaak", None, 1)
     oer_store.voeg_kerntaak_toe(
         db, oer_id, "B1-K1-W1", "Onderkent gezondheid", "werkproces", "B1-K1", 2
     )
@@ -63,29 +61,34 @@ def oer_db(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     )
 
     from samenwijzer import analyze
+
     monkeypatch.setattr(analyze, "_DB_PAD_VOOR_LABELS", db)
     return db
 
 
 def test_oer_label_kerntaak(oer_db: Path) -> None:
     from samenwijzer.analyze import _oer_label
+
     assert _oer_label("Verzorgende IG", "kt_1") == "Bieden van zorg en ondersteuning"
     assert _oer_label("Verzorgende IG", "kt_2") == "Werken aan organisatie"
 
 
 def test_oer_label_werkproces(oer_db: Path) -> None:
     from samenwijzer.analyze import _oer_label
+
     assert _oer_label("Verzorgende IG", "wp_1_1") == "Onderkent gezondheid"
     assert _oer_label("Verzorgende IG", "wp_2_2") == "Werkt samen met team"
 
 
 def test_oer_label_onbekende_opleiding_geeft_kolom_terug(oer_db: Path) -> None:
     from samenwijzer.analyze import _oer_label
+
     assert _oer_label("Onbekend", "kt_1") == "kt_1"
 
 
 def test_oer_label_lege_opleiding_geeft_kolom_terug(oer_db: Path) -> None:
     from samenwijzer.analyze import _oer_label
+
     assert _oer_label("", "kt_1") == "kt_1"
 
 

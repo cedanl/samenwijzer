@@ -19,9 +19,7 @@ def test_init_db_maakt_tabellen_aan(db_path: Path):
     with sqlite3.connect(db_path) as conn:
         tabellen = {
             r[0]
-            for r in conn.execute(
-                "SELECT name FROM sqlite_master WHERE type='table'"
-            ).fetchall()
+            for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchall()
         }
     assert {"instellingen", "oer_documenten", "kerntaken"} <= tabellen
 
@@ -107,9 +105,7 @@ def test_get_oer_document_voor_student(db_path: Path):
 
 
 def test_get_oer_voor_student_geen_match(db_path: Path):
-    assert oer_store.get_oer_voor_student(
-        db_path, "onbekend", "00000", "BOL", "2025"
-    ) is None
+    assert oer_store.get_oer_voor_student(db_path, "onbekend", "00000", "BOL", "2025") is None
 
 
 def test_voeg_kerntaak_toe_en_haal_op(db_path: Path):
@@ -122,8 +118,13 @@ def test_voeg_kerntaak_toe_en_haal_op(db_path: Path):
         db_path, oer_id, code="B1-K1", naam="Bieden van zorg", type_="kerntaak", volgorde=0
     )
     oer_store.voeg_kerntaak_toe(
-        db_path, oer_id, code="B1-K1-W1", naam="Onderkent zorg", type_="werkproces",
-        parent_code="B1-K1", volgorde=1,
+        db_path,
+        oer_id,
+        code="B1-K1-W1",
+        naam="Onderkent zorg",
+        type_="werkproces",
+        parent_code="B1-K1",
+        volgorde=1,
     )
     kts = oer_store.get_kerntaken_voor_oer(db_path, oer_id)
     assert len(kts) == 2
@@ -138,12 +139,8 @@ def test_get_kerntaken_voor_opleiding_zoekt_via_oer(db_path: Path):
     oer_id = oer_store.voeg_oer_document_toe(
         db_path, inst["id"], "Verzorgende IG", "25655", "2025", "BOL", 3, "p.md"
     )
-    oer_store.voeg_kerntaak_toe(
-        db_path, oer_id, "B1-K1", "Bieden van zorg", "kerntaak", None, 0
-    )
-    oer_store.voeg_kerntaak_toe(
-        db_path, oer_id, "B1-K2", "Werken aan beroep", "kerntaak", None, 1
-    )
+    oer_store.voeg_kerntaak_toe(db_path, oer_id, "B1-K1", "Bieden van zorg", "kerntaak", None, 0)
+    oer_store.voeg_kerntaak_toe(db_path, oer_id, "B1-K2", "Werken aan beroep", "kerntaak", None, 1)
 
     kts = oer_store.get_kerntaken_voor_opleiding(db_path, "Verzorgende IG", niveau=3)
     namen = [k["naam"] for k in kts]

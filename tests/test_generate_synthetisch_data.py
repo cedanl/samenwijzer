@@ -173,11 +173,15 @@ def _maak_mini_db(tmp_path: Path) -> tuple[Path, Path]:
             )
 
     opl_json = tmp_path / "opl.json"
-    opl_json.write_text(json.dumps([
-        {"opleiding": "Kok", "sector": "Anders", "niveau": 3},
-        {"opleiding": "Kapper", "sector": "Anders", "niveau": 3},
-        {"opleiding": "Mediamaker", "sector": "Anders", "niveau": 4},
-    ]))
+    opl_json.write_text(
+        json.dumps(
+            [
+                {"opleiding": "Kok", "sector": "Anders", "niveau": 3},
+                {"opleiding": "Kapper", "sector": "Anders", "niveau": 3},
+                {"opleiding": "Mediamaker", "sector": "Anders", "niveau": 4},
+            ]
+        )
+    )
     return db_pad, opl_json
 
 
@@ -234,11 +238,15 @@ def test_genereer_negeert_aeres_in_oeren_db(tmp_path: Path):
                 f"oeren/{naam}/{crebo}.md",
             )
     opl_json = tmp_path / "opl.json"
-    opl_json.write_text(json.dumps([
-        {"opleiding": "Kok", "sector": "Anders", "niveau": 3},
-        {"opleiding": "Kapper", "sector": "Anders", "niveau": 3},
-        {"opleiding": "Mediamaker", "sector": "Anders", "niveau": 4},
-    ]))
+    opl_json.write_text(
+        json.dumps(
+            [
+                {"opleiding": "Kok", "sector": "Anders", "niveau": 3},
+                {"opleiding": "Kapper", "sector": "Anders", "niveau": 3},
+                {"opleiding": "Mediamaker", "sector": "Anders", "niveau": 4},
+            ]
+        )
+    )
 
     uitvoer = tmp_path / "studenten.csv"
     genereer(db_pad=db_pad, opleidingen_json=opl_json, uitvoer_pad=uitvoer, seed=42)

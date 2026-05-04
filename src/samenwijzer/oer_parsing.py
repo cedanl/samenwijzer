@@ -79,11 +79,42 @@ def extraheer_kerntaken(tekst: str) -> list[dict]:
 # ── Opleidingsnaam-extractie ──────────────────────────────────────────────────
 
 _STOP_TOKENS = {
-    "oer", "mjp", "tik", "ci", "examenplan", "examenplannen", "examenreglement",
-    "addendum", "cohort", "bol", "bbl", "bolbbl", "vanaf", "voor", "en", "van",
-    "de", "het", "te", "op", "een", "in", "ig", "n2", "n3", "n4", "d1", "d2",
-    "v1", "v2", "v3", "def",
-    "maanden", "jaar", "jaren", "uur",
+    "oer",
+    "mjp",
+    "tik",
+    "ci",
+    "examenplan",
+    "examenplannen",
+    "examenreglement",
+    "addendum",
+    "cohort",
+    "bol",
+    "bbl",
+    "bolbbl",
+    "vanaf",
+    "voor",
+    "en",
+    "van",
+    "de",
+    "het",
+    "te",
+    "op",
+    "een",
+    "in",
+    "ig",
+    "n2",
+    "n3",
+    "n4",
+    "d1",
+    "d2",
+    "v1",
+    "v2",
+    "v3",
+    "def",
+    "maanden",
+    "jaar",
+    "jaren",
+    "uur",
 }
 
 _HASH_PATROON = re.compile(r"^[a-zA-Z0-9]{6,}$")
@@ -131,9 +162,7 @@ def extraheer_opleidingsnaam(bestandsnaam: str) -> str | None:
 # ── Niveau-extractie ──────────────────────────────────────────────────────────
 
 _NIVEAU_BESTANDSNAAM = re.compile(r"N([234])(?!\d)", re.IGNORECASE)
-_NIVEAU_TEKST = re.compile(
-    r"\b(?:MBO[\s-]+)?[Nn]iveau\s*([234])\b"
-)
+_NIVEAU_TEKST = re.compile(r"\b(?:MBO[\s-]+)?[Nn]iveau\s*([234])\b")
 
 
 def bepaal_niveau(bestandsnaam: str, tekst: str) -> int | None:

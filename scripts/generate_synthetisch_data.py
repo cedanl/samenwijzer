@@ -26,7 +26,7 @@ _UITVOER_PAD = Path("data/01-raw/synthetisch/studenten.csv")
 _OPLEIDINGEN_JSON = Path("scripts/synthetisch_opleidingen.json")
 _SEED = 42
 
-_AANTAL_INSTELLINGEN = 4   # Aeres uitgesloten
+_AANTAL_INSTELLINGEN = 4  # Aeres uitgesloten
 _TOTAAL_STUDENTEN = 1000
 _STUDENTEN_PER_INSTELLING = _TOTAAL_STUDENTEN // _AANTAL_INSTELLINGEN  # 250
 _OVER_TE_SLAAN_INSTELLINGEN = {"aeres"}  # geen overlap met de 14 opleidingen
@@ -50,10 +50,34 @@ def verdeel_studenten(totaal: int, opleidingen: list[str]) -> dict[str, int]:
 
 _VOORLETTERS = list("ABCDEFGHIJKLMNOPRSTVW")
 _ACHTERNAMEN = [
-    "de Vries", "Jansen", "Bakker", "Visser", "Smit", "Meijer", "de Boer", "Mulder",
-    "de Groot", "Bos", "Vos", "Peters", "Hendriks", "van Leeuwen", "Dekker",
-    "Brouwer", "de Wit", "Dijkstra", "Smits", "de Graaf", "van der Berg",
-    "van Dijk", "Hoekstra", "Koster", "Prins", "Huisman", "Postma", "Bosch",
+    "de Vries",
+    "Jansen",
+    "Bakker",
+    "Visser",
+    "Smit",
+    "Meijer",
+    "de Boer",
+    "Mulder",
+    "de Groot",
+    "Bos",
+    "Vos",
+    "Peters",
+    "Hendriks",
+    "van Leeuwen",
+    "Dekker",
+    "Brouwer",
+    "de Wit",
+    "Dijkstra",
+    "Smits",
+    "de Graaf",
+    "van der Berg",
+    "van Dijk",
+    "Hoekstra",
+    "Koster",
+    "Prins",
+    "Huisman",
+    "Postma",
+    "Bosch",
 ]
 
 
@@ -100,10 +124,36 @@ VOOROPLEIDING_KOLOMMEN = [
 _VOOROPL_GEWICHTEN = [5, 8, 1, 1, 1, 6, 4, 8, 12, 2, 1, 2]
 
 _NL_VOORNAMEN = [
-    "Aisha", "Daan", "Emma", "Liam", "Noor", "Lucas", "Sara", "Mees",
-    "Yasmin", "Bram", "Lotte", "Jens", "Fatima", "Tim", "Iris", "Sven",
-    "Lisa", "Joris", "Sophie", "Stijn", "Anna", "Thijs", "Eva", "Finn",
-    "Maud", "Olaf", "Tess", "Bas", "Lieke", "Niels",
+    "Aisha",
+    "Daan",
+    "Emma",
+    "Liam",
+    "Noor",
+    "Lucas",
+    "Sara",
+    "Mees",
+    "Yasmin",
+    "Bram",
+    "Lotte",
+    "Jens",
+    "Fatima",
+    "Tim",
+    "Iris",
+    "Sven",
+    "Lisa",
+    "Joris",
+    "Sophie",
+    "Stijn",
+    "Anna",
+    "Thijs",
+    "Eva",
+    "Finn",
+    "Maud",
+    "Olaf",
+    "Tess",
+    "Bas",
+    "Lieke",
+    "Niels",
 ]
 _NL_ACHTERNAMEN = _ACHTERNAMEN  # hergebruik mentor-pool
 
@@ -207,25 +257,38 @@ def _opleidingen_per_instelling(
             inst_naam = r["inst_naam"]
             if inst_naam in _OVER_TE_SLAAN_INSTELLINGEN:
                 continue
-            resultaat.setdefault(inst_naam, []).append({
-                "opleiding": opl,
-                "crebo": r["crebo"],
-                "leerweg": r["leerweg"],
-                "cohort": r["cohort"],
-                "niveau": niveau,
-                "sector": sector,
-            })
+            resultaat.setdefault(inst_naam, []).append(
+                {
+                    "opleiding": opl,
+                    "crebo": r["crebo"],
+                    "leerweg": r["leerweg"],
+                    "cohort": r["cohort"],
+                    "niveau": niveau,
+                    "sector": sector,
+                }
+            )
     return resultaat
 
 
 def _kolomvolgorde() -> list[str]:
     """Definitieve volgorde van CSV-kolommen."""
     return [
-        "Studentnummer", "Naam", "Klas", "Mentor", "Instelling", "Opleiding",
-        "crebo", "leerweg", "cohort",
-        "StudentAge", "StudentGender", "Dropout",
-        "Aanmel_aantal", "max1studie",
-        "absence_unauthorized", "absence_authorized",
+        "Studentnummer",
+        "Naam",
+        "Klas",
+        "Mentor",
+        "Instelling",
+        "Opleiding",
+        "crebo",
+        "leerweg",
+        "cohort",
+        "StudentAge",
+        "StudentGender",
+        "Dropout",
+        "Aanmel_aantal",
+        "max1studie",
+        "absence_unauthorized",
+        "absence_authorized",
         "Richting_nan",
         *SECTOR_KOLOMMEN,
         *VOOROPLEIDING_KOLOMMEN,
@@ -297,19 +360,21 @@ def genereer(
         for opl_naam, n in verdeling.items():
             oer = opl_naar_oer[opl_naam]
             for _ in range(n):
-                studenten.append(bouw_student_record(
-                    rng=rng,
-                    studentnummer=str(nummer),
-                    naam=maak_studenten_naam(rng),
-                    instelling=display,
-                    opleiding=opl_naam,
-                    crebo=oer["crebo"],
-                    leerweg=oer["leerweg"],
-                    cohort=oer["cohort"],
-                    niveau=oer["niveau"],
-                    sector=oer["sector"],
-                    mentor=ken_mentor_toe(rng, mentoren),
-                ))
+                studenten.append(
+                    bouw_student_record(
+                        rng=rng,
+                        studentnummer=str(nummer),
+                        naam=maak_studenten_naam(rng),
+                        instelling=display,
+                        opleiding=opl_naam,
+                        crebo=oer["crebo"],
+                        leerweg=oer["leerweg"],
+                        cohort=oer["cohort"],
+                        niveau=oer["niveau"],
+                        sector=oer["sector"],
+                        mentor=ken_mentor_toe(rng, mentoren),
+                    )
+                )
                 nummer += 1
 
     # Validatie
@@ -331,7 +396,9 @@ def genereer(
 
     log.info(
         "Geschreven: %s — %d studenten, %d instellingen",
-        uitvoer_pad, len(studenten), len(inst_counts),
+        uitvoer_pad,
+        len(studenten),
+        len(inst_counts),
     )
 
 

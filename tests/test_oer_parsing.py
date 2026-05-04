@@ -65,16 +65,12 @@ def test_extraheer_kerntaken_negeert_overige_regels():
 
 
 def test_extraheer_schone_naam_davinci():
-    naam = extraheer_opleidingsnaam(
-        "25655_BOL_2025__verzorgende-ig.md"
-    )
+    naam = extraheer_opleidingsnaam("25655_BOL_2025__verzorgende-ig.md")
     assert "Verzorgende" in naam
 
 
 def test_extraheer_schone_naam_rijn_ijssel():
-    naam = extraheer_opleidingsnaam(
-        "25591_BOL_2025__oer-2025-2026-ci-25591-mediamaker.md"
-    )
+    naam = extraheer_opleidingsnaam("25591_BOL_2025__oer-2025-2026-ci-25591-mediamaker.md")
     assert "Mediamaker" in naam
 
 

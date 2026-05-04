@@ -81,9 +81,7 @@ def get_instelling_by_naam(db_pad: Path, naam: str) -> sqlite3.Row | None:
     """Geef instelling-rij of None."""
     init_db(db_pad)
     with _verbinding(db_pad) as conn:
-        return conn.execute(
-            "SELECT * FROM instellingen WHERE naam = ?", (naam,)
-        ).fetchone()
+        return conn.execute("SELECT * FROM instellingen WHERE naam = ?", (naam,)).fetchone()
 
 
 # ── OER-documenten ────────────────────────────────────────────────────────────

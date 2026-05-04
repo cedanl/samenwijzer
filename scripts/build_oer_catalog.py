@@ -108,9 +108,7 @@ def bouw_catalog(oeren_pad: Path, db_pad: Path) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Bouw oeren.db uit oeren/-map")
     parser.add_argument("--oeren-pad", default="oeren", help="Pad naar oeren-map")
-    parser.add_argument(
-        "--db", default="data/02-prepared/oeren.db", help="Pad naar oeren.db"
-    )
+    parser.add_argument("--db", default="data/02-prepared/oeren.db", help="Pad naar oeren.db")
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.INFO, format="%(message)s")

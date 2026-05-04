@@ -17,14 +17,11 @@ def kleine_oeren_dir(tmp_path: Path) -> Path:
     inst_a = tmp_path / "rijn_ijssel_oer"
     inst_a.mkdir()
     (inst_a / "25655_BOL_2025__verzorgende-ig.md").write_text(
-        "# Verzorgende IG\nMBO niveau 3.\nB1-K1: Bieden van zorg\n"
-        "B1-K1-W1: Onderkent zorg\n"
+        "# Verzorgende IG\nMBO niveau 3.\nB1-K1: Bieden van zorg\nB1-K1-W1: Onderkent zorg\n"
     )
     inst_b = tmp_path / "talland_oeren"
     inst_b.mkdir()
-    (inst_b / "25180_BBL_2025__Kok 24 maanden.md").write_text(
-        "# Kok\nB1-K1: Voorbereiden\n"
-    )
+    (inst_b / "25180_BBL_2025__Kok 24 maanden.md").write_text("# Kok\nB1-K1: Voorbereiden\n")
     return tmp_path
 
 
