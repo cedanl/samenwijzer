@@ -109,11 +109,13 @@ def stuur_bericht(
     with client.messages.stream(
         model=_MODEL,
         max_tokens=_MAX_TOKENS,
-        system=[{
-            "type": "text",
-            "text": _systeem_prompt(sessie.student),
-            "cache_control": {"type": "ephemeral"},
-        }],
+        system=[
+            {
+                "type": "text",
+                "text": _systeem_prompt(sessie.student),
+                "cache_control": {"type": "ephemeral"},
+            }
+        ],
         messages=sessie.geschiedenis,
     ) as stream:
         for fragment in stream.text_stream:

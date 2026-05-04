@@ -188,7 +188,9 @@ with tab_les:
                 st.session_state.pop("sw_lesmateriaal", None)
                 try:
                     tekst = st.write_stream(
-                        genereer_lesmateriaal(onderwerp.strip(), opleiding, leerpad, zwakste_kt_label)
+                        genereer_lesmateriaal(
+                            onderwerp.strip(), opleiding, leerpad, zwakste_kt_label
+                        )
                     )
                     st.session_state["sw_lesmateriaal"] = tekst
                 except APITimeoutError:
@@ -261,7 +263,9 @@ with tab_toets:
                         )
                         st.session_state["sw_toets_feedback"] = feedback
                     except APITimeoutError:
-                        st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
+                        st.error(
+                            "De AI-service reageert niet. Probeer het over een moment opnieuw."
+                        )
                     except Exception as e:
                         log.exception("Toets-feedback mislukt")
                         st.error(f"De feedback kon niet worden gegenereerd: {e}")
@@ -303,7 +307,9 @@ with tab_werk:
             else:
                 st.session_state.pop("sw_werk_feedback", None)
                 try:
-                    fb = st.write_stream(geef_feedback_op_werk(werk_tekst.strip(), opleiding, leerpad))
+                    fb = st.write_stream(
+                        geef_feedback_op_werk(werk_tekst.strip(), opleiding, leerpad)
+                    )
                     st.session_state["sw_werk_feedback"] = fb
                 except APITimeoutError:
                     st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
@@ -381,7 +387,9 @@ with tab_rol:
                     try:
                         st.write_stream(stuur_rollenspel_bericht(rp_sessie, invoer))
                     except APITimeoutError:
-                        st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
+                        st.error(
+                            "De AI-service reageert niet. Probeer het over een moment opnieuw."
+                        )
                     except Exception as e:
                         log.exception("Rollenspel-antwoord mislukt")
                         st.error(f"De tegenpartij kon niet antwoorden: {e}")
@@ -397,7 +405,9 @@ with tab_rol:
                         feedback = st.write_stream(genereer_rollenspel_feedback(rp_sessie))
                         st.session_state[rp_feedback_sleutel] = feedback
                     except APITimeoutError:
-                        st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
+                        st.error(
+                            "De AI-service reageert niet. Probeer het over een moment opnieuw."
+                        )
                     except Exception as e:
                         log.exception("Rollenspel-feedback mislukt")
                         st.error(f"Feedback kon niet worden opgesteld: {e}")

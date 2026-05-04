@@ -129,11 +129,13 @@ def stuur_rollenspel_bericht(
     with client.messages.stream(
         model=_MODEL,
         max_tokens=_MAX_TOKENS,
-        system=[{
-            "type": "text",
-            "text": _rollenspel_systeem_prompt(sessie),
-            "cache_control": {"type": "ephemeral"},
-        }],
+        system=[
+            {
+                "type": "text",
+                "text": _rollenspel_systeem_prompt(sessie),
+                "cache_control": {"type": "ephemeral"},
+            }
+        ],
         messages=sessie.geschiedenis,
     ) as stream:
         for fragment in stream.text_stream:
