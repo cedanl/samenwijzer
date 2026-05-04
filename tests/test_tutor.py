@@ -127,6 +127,32 @@ def test_stuur_bericht_gebruikt_student_context(mock_anthropic_cls, sessie):
     assert "Verzorgende IG" in system_text
 
 
+@patch("samenwijzer._ai.anthropic.Anthropic")
+def test_stuur_bericht_oer_tekst_in_systeem(mock_anthropic_cls, sessie):
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = mock_stream("OK")
+    mock_anthropic_cls.return_value = mock_client
+
+    list(stuur_bericht(sessie, "Vraag.", oer_tekst="Kerntaak 1: Begeleiden", api_key="test-key"))
+
+    call_kwargs = mock_client.messages.stream.call_args.kwargs
+    systeem_tekst = call_kwargs["system"][0]["text"]
+    assert "OER van de student" in systeem_tekst
+    assert "Kerntaak 1: Begeleiden" in systeem_tekst
+
+
+@patch("samenwijzer._ai.anthropic.Anthropic")
+def test_stuur_bericht_zonder_oer_tekst_geen_oer_sectie(mock_anthropic_cls, sessie):
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = mock_stream("OK")
+    mock_anthropic_cls.return_value = mock_client
+
+    list(stuur_bericht(sessie, "Vraag.", api_key="test-key"))
+
+    call_kwargs = mock_client.messages.stream.call_args.kwargs
+    assert "OER van de student" not in call_kwargs["system"][0]["text"]
+
+
 # ── Stream-gedrag ─────────────────────────────────────────────────────────────
 
 
