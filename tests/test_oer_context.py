@@ -39,7 +39,7 @@ def test_laad_oer_tekst_relatief_pad_bestaat_niet() -> None:
 
 def test_haal_oer_context_op_geen_db(tmp_path: Path) -> None:
     """Geeft lege string terug als oeren.db niet bestaat."""
-    student = {"instelling": "da_vinci", "crebo": "25491", "leerweg": "BOL", "cohort": "2024"}
+    student = {"instelling": "Da Vinci", "crebo": "25491", "leerweg": "BOL", "cohort": "2024"}
     with patch("samenwijzer.oer_context._DB_PAD", tmp_path / "bestaat_niet.db"):
         resultaat = haal_oer_context_op(student)
     assert resultaat == ""
@@ -88,7 +88,7 @@ def test_haal_oer_context_op_bestand_niet_beschikbaar(tmp_path: Path) -> None:
     db_pad = tmp_path / "oeren.db"
     _maak_test_db(db_pad, "oeren/da_vinci/niet_bestaand.md")
 
-    student = {"instelling": "da_vinci", "crebo": "25491", "leerweg": "BOL", "cohort": "2024"}
+    student = {"instelling": "Da Vinci", "crebo": "25491", "leerweg": "BOL", "cohort": "2024"}
     with patch("samenwijzer.oer_context._DB_PAD", db_pad):
         resultaat = haal_oer_context_op(student)
     assert resultaat == ""
@@ -102,7 +102,7 @@ def test_haal_oer_context_op_met_bestand(tmp_path: Path) -> None:
 
     _maak_test_db(db_pad, str(oer_bestand))  # absoluut pad om project-root-lookup te omzeilen
 
-    student = {"instelling": "da_vinci", "crebo": "25491", "leerweg": "BOL", "cohort": "2024"}
+    student = {"instelling": "Da Vinci", "crebo": "25491", "leerweg": "BOL", "cohort": "2024"}
     with patch("samenwijzer.oer_context._DB_PAD", db_pad):
         resultaat = haal_oer_context_op(student)
     assert "Kerntaak 1" in resultaat
@@ -119,7 +119,7 @@ def test_haal_oer_context_op_pandas_series(tmp_path: Path) -> None:
     _maak_test_db(db_pad, str(oer_bestand))
 
     student_series = pd.Series(
-        {"instelling": "da_vinci", "crebo": "25491", "leerweg": "BOL", "cohort": "2024"}
+        {"instelling": "Da Vinci", "crebo": "25491", "leerweg": "BOL", "cohort": "2024"}
     )
     with patch("samenwijzer.oer_context._DB_PAD", db_pad):
         resultaat = haal_oer_context_op(student_series)

@@ -31,9 +31,9 @@ def haal_oer_context_op(student_row: dict) -> str:
     try:
         from samenwijzer import oer_store  # lazy import — DB hoeft niet aanwezig te zijn
 
-        rij = oer_store.get_oer_voor_student(
+        rij = oer_store.get_oer_voor_student_display_naam(
             db_pad=_DB_PAD,
-            instelling_naam=str(student_row.get("instelling", "") or ""),
+            display_naam=str(student_row.get("instelling", "") or ""),
             crebo=str(student_row.get("crebo", "") or ""),
             leerweg=str(student_row.get("leerweg", "") or ""),
             cohort=str(student_row.get("cohort", "") or ""),

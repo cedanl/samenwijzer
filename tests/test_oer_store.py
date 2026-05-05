@@ -108,6 +108,26 @@ def test_get_oer_voor_student_geen_match(db_path: Path):
     assert oer_store.get_oer_voor_student(db_path, "onbekend", "00000", "BOL", "2025") is None
 
 
+def test_get_oer_voor_student_display_naam(db_path: Path):
+    """Lookup via display_naam — het veld dat de student-CSV gebruikt."""
+    oer_store.voeg_instelling_toe(db_path, "rijn_ijssel", "Rijn IJssel")
+    inst = oer_store.get_instelling_by_naam(db_path, "rijn_ijssel")
+    oer_store.voeg_oer_document_toe(
+        db_path, inst["id"], "Verzorgende IG", "25655", "2025", "BOL", 3, "p.md"
+    )
+    oer = oer_store.get_oer_voor_student_display_naam(
+        db_path, display_naam="Rijn IJssel", crebo="25655", leerweg="BOL", cohort="2025"
+    )
+    assert oer["opleiding"] == "Verzorgende IG"
+
+
+def test_get_oer_voor_student_display_naam_geen_match(db_path: Path):
+    assert (
+        oer_store.get_oer_voor_student_display_naam(db_path, "Onbekend", "00000", "BOL", "2025")
+        is None
+    )
+
+
 def test_voeg_kerntaak_toe_en_haal_op(db_path: Path):
     oer_store.voeg_instelling_toe(db_path, "rijn_ijssel", "Rijn IJssel")
     inst = oer_store.get_instelling_by_naam(db_path, "rijn_ijssel")
