@@ -2,6 +2,7 @@
 
 import base64
 import html
+import logging
 import os
 from pathlib import Path
 
@@ -10,8 +11,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+log = logging.getLogger(__name__)
+
 st.set_page_config(page_title="Begeleidingssessie", page_icon="🎓", layout="wide")
 
+from validatie_samenwijzer._ai import APITimeoutError  # noqa: E402
 from validatie_samenwijzer._ai import _client as ai_client  # noqa: E402
 from validatie_samenwijzer._db import get_conn  # noqa: E402
 from validatie_samenwijzer.auth import vereist_mentor  # noqa: E402
@@ -180,7 +184,11 @@ with col_chat:
                             f'<div class="chat-antwoord">\n\n{antwoord}\n\n</div>',
                             unsafe_allow_html=True,
                         )
+                except APITimeoutError:
+                    st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
+                    antwoord = ""
                 except Exception as e:
+                    log.exception("OER-antwoord (mentor) mislukt")
                     st.error(f"Er ging iets mis bij het ophalen van een antwoord: {e}")
 
             st.session_state.chat_history.extend(

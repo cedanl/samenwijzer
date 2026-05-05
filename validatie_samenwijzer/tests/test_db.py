@@ -5,7 +5,8 @@ from validatie_samenwijzer.db import init_db, voeg_instelling_toe, get_instellin
     voeg_student_toe, get_student_by_studentnummer, get_studenten_by_mentor_id, \
     voeg_kerntaak_toe, get_kerntaken_by_oer_id, markeer_geindexeerd, \
     get_oer_ids_by_mentor_id, voeg_student_kerntaak_score_toe, \
-    get_kerntaak_scores_by_student_id, update_oer_bestandspad
+    get_kerntaak_scores_by_student_id, update_oer_bestandspad, \
+    get_alle_oers_met_instelling
 
 
 @pytest.fixture
@@ -112,6 +113,36 @@ def test_mentor_en_student_crud(conn):
 
     oer_ids = get_oer_ids_by_mentor_id(conn, mentor_id)
     assert oer_id in oer_ids
+
+
+def test_get_alle_oers_met_instelling_geeft_join_terug(conn):
+    voeg_instelling_toe(conn, "rijn", "Rijn IJssel")
+    voeg_instelling_toe(conn, "da_vinci", "Da Vinci College")
+    rijn = get_instelling_by_naam(conn, "rijn")
+    dv = get_instelling_by_naam(conn, "da_vinci")
+    voeg_oer_document_toe(conn, rijn["id"], "Verzorgende IG", "25655", "2025", "BOL", "p1.pdf")
+    voeg_oer_document_toe(conn, dv["id"], "Kok", "25168", "2025", "BBL", "p2.pdf")
+
+    rijen = get_alle_oers_met_instelling(conn)
+    assert len(rijen) == 2
+    display_namen = {r["display_naam"] for r in rijen}
+    assert display_namen == {"Rijn IJssel", "Da Vinci College"}
+
+
+def test_get_alle_oers_met_instelling_sorteert_op_display_naam(conn):
+    voeg_instelling_toe(conn, "rijn", "Rijn IJssel")
+    voeg_instelling_toe(conn, "aeres", "Aeres MBO")
+    rijn = get_instelling_by_naam(conn, "rijn")
+    aeres = get_instelling_by_naam(conn, "aeres")
+    voeg_oer_document_toe(conn, rijn["id"], "Verzorgende IG", "25655", "2025", "BOL", "p1.pdf")
+    voeg_oer_document_toe(conn, aeres["id"], "Dierenzorg", "97770", "2025", "BOL", "p2.pdf")
+
+    rijen = get_alle_oers_met_instelling(conn)
+    assert [r["display_naam"] for r in rijen] == ["Aeres MBO", "Rijn IJssel"]
+
+
+def test_get_alle_oers_met_instelling_leeg(conn):
+    assert get_alle_oers_met_instelling(conn) == []
 
 
 def test_student_kerntaak_score(conn):
