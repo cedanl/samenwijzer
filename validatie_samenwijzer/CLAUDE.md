@@ -4,7 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Wat dit project is
 
-Standalone Streamlit-app (`validatie_samenwijzer/`) die MBO-studenten en mentoren laat chatten met hun OER (Onderwijs- en Examenregeling) via hybride AI-retrieval (ChromaDB + Claude streaming). Leeft als subproject binnen de `samenwijzer`-monorepo maar heeft zijn eigen `pyproject.toml`, `.venv` en database.
+Standalone Streamlit-app (`validatie_samenwijzer/`) die MBO-studenten en mentoren laat chatten
+met hun OER (Onderwijs- en Examenregeling) via Claude streaming met de **volledige OER als
+context** (Sonnet 4.6, 1M-tokenvenster). Leeft als subproject binnen de `samenwijzer`-monorepo
+maar heeft zijn eigen `pyproject.toml`, `.venv` en database.
+
+> **Geen vector store**: PR #33 (mei 2026) heeft ChromaDB en OpenAI-embeddings verwijderd. De
+> retrieval-laag is vervangen door full-document context. Zie ook `chat.py:_MAX_OER_TEKST_TEKENS`.
 
 ## Commando's
 
@@ -48,47 +54,42 @@ uv run python seed/bulk_seed.py   # 1000 studenten over alle geïndexeerde OERs
 
 ```
 ANTHROPIC_API_KEY=sk-ant-...
-OPENAI_API_KEY=sk-...
-DB_PATH=data/validatie.db              # default
-CHROMA_PATH=data/chroma                # default
-OEREN_PAD=oeren                        # default
-OPENAI_EMBEDDING_MODEL=text-embedding-3-large   # default; zie note hieronder
+DB_PATH=data/validatie.db   # default
+OEREN_PAD=oeren             # default
 ```
-
-> **Let op embedding model**: `OPENAI_EMBEDDING_MODEL` bepaalt het model voor zowel ingestie
-> als retrieval. Ingestie en retrieval **moeten hetzelfde model** gebruiken — een mismatch geeft
-> verkeerde cosine-afstanden (of een ChromaDB dimensiefout bij 3-small ↔ 3-large).
-> Na een modelwijziging is volledige herindexering vereist:
-> `uv run python -m validatie_samenwijzer.ingest --alles --reset`
 
 ## Architectuur
 
 ### Data-laag
 
-**`db.py`** — SQLite schema en alle queries als losse functies, geen ORM. Schema: `instellingen`, `oer_documenten`, `kerntaken`, `mentoren`, `mentor_oer`, `studenten`, `student_kerntaak_scores`. Verbinding via `get_connection()` met WAL-modus en `check_same_thread=False`.
+**`db.py`** — SQLite schema en alle queries als losse functies, geen ORM. Schema: `instellingen`,
+`oer_documenten`, `kerntaken`, `mentoren`, `mentor_oer`, `studenten`, `student_kerntaak_scores`.
+Verbinding via `get_connection()` met WAL-modus en `check_same_thread=False`.
 
-**`_db.py`** — dunne Streamlit-wrapper: `get_conn()` is `@st.cache_resource` en roept `get_connection()` + `init_db()` aan. Gebruik `_db.get_conn()` in pagina's, `db.get_connection()` in scripts en tests.
-
-**ChromaDB** (`vector_store.py`) — persistente collectie `oer_chunks`, cosine distance, gefilterd op `oer_id`. Drempelwaarde `DREMPELWAARDE = 0.7`: chunks boven die afstand worden weggegooid. Zoekfilter via `where={"oer_id": ...}` — een student ziet nooit chunks van andere OERs.
+**`_db.py`** — dunne Streamlit-wrapper: `get_conn()` is `@st.cache_resource` en roept
+`get_connection()` + `init_db()` aan. Gebruik `_db.get_conn()` in pagina's,
+`db.get_connection()` in scripts en tests.
 
 ### Ingestie-pipeline (`ingest.py`)
 
 ```
-bestandsnaam → parseer_bestandsnaam() → crebo/leerweg/cohort
-bestand      → extraheer_tekst()      → tekst (pdfplumber → Tesseract OCR als < 100 tekens)
-tekst        → chunk_tekst()          → chunks van ~500 woorden met overlap
-chunks       → OpenAI embeddings      → vectoren
-              → ChromaDB              → opgeslagen met oer_id-metadata
-tekst        → extraheer_kerntaken()  → kerntaken/werkprocessen in SQLite
+bestandsnaam → parseer_bestandsnaam()    → crebo/leerweg/cohort
+bestand      → converteer_naar_markdown()→ <stem>.md naast bron (markitdown)
+bestand      → extraheer_tekst()         → tekst (pdfplumber → Tesseract OCR als < 100 tekens)
+tekst        → extraheer_kerntaken()     → kerntaken/werkprocessen in SQLite
+oer_id       → markeer_geindexeerd()     → geindexeerd=1
 ```
+
+Geen chunking, geen embeddings, geen vector store. De volledige OER-tekst wordt op
+chat-tijd geladen door `chat.laad_oer_tekst()` (voorkeur: `<stem>.md` van markitdown,
+fallback: pdfplumber over de PDF).
 
 `parseer_bestandsnaam()` kent twee patronen:
 1. Da Vinci-stijl: `25168BOL2025Examenplan.pdf` — crebo+leerweg+jaar aaneengesloten
-2. Fallback: elk 5-cijferig getal als crebo, BOL/BBL en jaar los gesearcht — dekt Rijn IJssel- en Talland-bestanden
+2. Fallback: 5-cijferig getal als crebo, BOL/BBL en jaar los — dekt Rijn IJssel en Talland
 
-Bestanden zonder crebo in naam (Aeres, Utrecht) worden hernoemd via `tools/rename_oers.py` dat de titelpagina uitleest.
-
-Bij elke start van `main()` draait `_sync_geindexeerd(conn, collection)`: reset `geindexeerd=0` voor OERs die in SQLite als geïndexeerd staan maar geen chunks in Chroma hebben. Voorkomt dat bestanden worden overgeslagen na een externe Chroma-clear.
+Bestanden zonder crebo in naam (Aeres, Utrecht) worden hernoemd via `tools/rename_oers.py`
+dat de titelpagina uitleest.
 
 ### Sessiemodel
 
@@ -116,7 +117,8 @@ Login: studenten op studentnummer, mentoren op naam.
 | Bestand | Rol | Functie |
 |---|---|---|
 | `app/main.py` | beide | Login, sessie-initialisatie |
-| `1_oer_assistent.py` | student | Hybride chat: embed vraag → zoek chunks op `oer_id` → stream Claude-antwoord |
+| `0_oer_vraag.py` | publiek (geen login) | Conversationele OER-chat; intake-stap als nog geen OER geselecteerd, multi-OER (max 3 tegelijk) |
+| `1_oer_assistent.py` | student | OER-chat met volledige documentcontext (eigen `oer_id`) |
 | `2_mijn_oer.py` | student | Volledig OER inzien of downloaden |
 | `3_mijn_voortgang.py` | student | Voortgang, BSA, scores visualiseren |
 | `4_mijn_studenten.py` | mentor | Studentenlijst van eigen koppeling |
@@ -124,27 +126,45 @@ Login: studenten op studentnummer, mentoren op naam.
 
 ### AI-isolatie
 
-- Anthropic (Claude): `_ai._client()` — alleen voor streaming chat in `chat.py`
-- OpenAI (embeddings): `_openai._client()` — alleen in `ingest.py` en pagina's die embeddings maken
-- Nooit clients direct instantiëren buiten deze twee modules
+Alle Anthropic-calls lopen via `_ai._client()`. `chat.py` is de enige module met streaming-aanroepen.
+Nooit `anthropic.Anthropic()` direct instantiëren.
 
-### Hybride RAG-flow (`1_oer_assistent.py`)
+### OER-chat-flow
 
-1. Strikte zoektocht: n=8, drempelwaarde=0.7
-2. Als < `MIN_RELEVANTE_CHUNKS` (2): bredere zoektocht n=15, drempelwaarde=0.85
-3. Als nog steeds < 2: fallback op volledige OER-tekst via `laad_oer_tekst()` (max 100k tekens)
-4. Als geen bestandspad beschikbaar: toon `LAGE_RELEVANTIE_BERICHT`
+`chat.py` levert drie ingangen, allemaal full-document context:
+
+1. **Single-OER** (`bouw_systeem`) — gebruikt door `1_oer_assistent.py` en het tweede tabblad
+   van `5_begeleidingssessie.py`. Laadt één OER via `laad_oer_tekst()`.
+2. **Multi-OER** (`bouw_gecombineerd_systeem`) — gebruikt door `0_oer_vraag.py`. Combineert
+   tot 3 OERs in één system prompt met blok-headers `=== OER 1: … ===`.
+3. **Intake** (`genereer_intake_antwoord` + `identificeer_oer_kandidaten`) — fallback in
+   `0_oer_vraag.py` zolang nog geen OER geselecteerd is. `identificeer_oer_kandidaten()`
+   scoort op crebo (+3), leerweg (+2), cohort (+2), opleidingswoorden (+1, max 2),
+   instelling (+1).
+
+`laad_oer_tekst()` voorkeursvolgorde: `<stem>.md` (markitdown-output) → bron-`.md` →
+pdfplumber over PDF. Hard cap: `_MAX_OER_TEKST_TEKENS = 500_000` tekens.
+
+Toon `LAGE_RELEVANTIE_BERICHT` wanneer `laad_oer_tekst()` een lege string teruggeeft
+(bestand ontbreekt of niet leesbaar).
 
 ### OER-bestanden
 
 `oeren/` is gitignored. Structuur: één submap per instelling (`davinci_oeren/`, `rijn_ijssel_oer/`, `talland_oeren/`, `aeres_oeren/`, `utrecht_oeren/`). Geïndexeerde OERs staan als `geindexeerd=1` in `oer_documenten`. Studenten met `oer_id` naar niet-geïndexeerde OERs krijgen geen chatantwoorden.
 
-## Bekende valkuil
+## Bekende valkuilen
 
-Een student die aan een niet-geïndexeerde OER gekoppeld is krijgt altijd "Ik kon geen relevante informatie vinden". Check met:
+**Niet-geïndexeerde OER**: een student die aan een OER met `geindexeerd=0` gekoppeld is krijgt
+geen kerntaken in de DB en (afhankelijk van het bestandspad) een leeg chatantwoord. Check met:
 
 ```python
-conn.execute("SELECT geindexeerd FROM oer_documenten WHERE id=?", (student["oer_id"],))
+conn.execute("SELECT geindexeerd, bestandspad FROM oer_documenten WHERE id=?", (student["oer_id"],))
 ```
 
-Als `data/chroma/` extern wordt gewist terwijl SQLite nog `geindexeerd=1` heeft: de pipeline herstelt dit automatisch via `_sync_geindexeerd()` bij de volgende `--alles` run. De log toont dan: `N documenten geindexeerd-vlag gereset (Chroma/SQLite sync).`
+**Ontbrekend bronbestand**: `geindexeerd=1` betekent dat kerntaken zijn geëxtraheerd, niet dat
+het PDF/MD nog op de schijf staat. `chat.laad_oer_tekst()` valt eerst terug op `<stem>.md`,
+daarna op de PDF. Ontbreken beide → `LAGE_RELEVANTIE_BERICHT`.
+
+**Markitdown-conversie mislukt**: `converteer_naar_markdown()` is best-effort. Bij falen blijft
+alleen pdfplumber over (mindere kwaliteit, geen tabellen). De log toont dan
+`Markitdown-conversie mislukt voor '…'`.
