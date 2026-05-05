@@ -1,7 +1,10 @@
 """Pagina: Voortgang — student- en docentweergave."""
 
+import logging
+
 import streamlit as st
 
+from samenwijzer._ai import APITimeoutError
 from samenwijzer.analyze import (
     badge,
     cohort_positie,
@@ -21,6 +24,8 @@ from samenwijzer.visualize import (
     voortgang_gauge,
     werkproces_grafiek,
 )
+
+log = logging.getLogger(__name__)
 
 st.set_page_config(page_title="Voortgang — Samenwijzer", page_icon="📊", layout="wide")
 st.markdown(CSS, unsafe_allow_html=True)
@@ -218,20 +223,26 @@ with tab_weekplan:
 
     if genereer_btn:
         st.session_state.pop(weekplan_sleutel, None)
-        with st.spinner("Weekplan wordt opgesteld…"):
-            tekst = st.write_stream(
-                genereer_weekplan(
-                    naam=str(student["naam"]),
-                    opleiding=str(student["opleiding"]),
-                    leerpad=niveau,
-                    voortgang=float(student["voortgang"]),
-                    bsa_behaald=float(student["bsa_behaald"]),
-                    bsa_vereist=float(student["bsa_vereist"]),
-                    zwakste_kerntaak=zkt_label,
-                    zwakste_werkproces=zwp_label,
+        try:
+            with st.spinner("Weekplan wordt opgesteld…"):
+                tekst = st.write_stream(
+                    genereer_weekplan(
+                        naam=str(student["naam"]),
+                        opleiding=str(student["opleiding"]),
+                        leerpad=niveau,
+                        voortgang=float(student["voortgang"]),
+                        bsa_behaald=float(student["bsa_behaald"]),
+                        bsa_vereist=float(student["bsa_vereist"]),
+                        zwakste_kerntaak=zkt_label,
+                        zwakste_werkproces=zwp_label,
+                    )
                 )
-            )
-        st.session_state[weekplan_sleutel] = tekst
+            st.session_state[weekplan_sleutel] = tekst
+        except APITimeoutError:
+            st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
+        except Exception as e:
+            log.exception("Weekplan-generatie mislukt")
+            st.error(f"Het weekplan kon niet worden gegenereerd: {e}")
     elif weekplan_sleutel in st.session_state:
         st.markdown(st.session_state[weekplan_sleutel])
     else:

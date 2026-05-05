@@ -11,7 +11,7 @@ from dataclasses import dataclass, field
 from samenwijzer._ai import _client
 
 _MODEL = "claude-sonnet-4-6"
-_MAX_TOKENS = 1024
+_MAX_TOKENS = 2048
 
 
 @dataclass
@@ -109,7 +109,13 @@ def stuur_bericht(
     with client.messages.stream(
         model=_MODEL,
         max_tokens=_MAX_TOKENS,
-        system=_systeem_prompt(sessie.student),
+        system=[
+            {
+                "type": "text",
+                "text": _systeem_prompt(sessie.student),
+                "cache_control": {"type": "ephemeral"},
+            }
+        ],
         messages=sessie.geschiedenis,
     ) as stream:
         for fragment in stream.text_stream:

@@ -1,10 +1,12 @@
 """Pagina: Welzijnscheck — student self-assessment."""
 
+import logging
 from datetime import datetime
 
 import streamlit as st
 from dotenv import load_dotenv
 
+from samenwijzer._ai import APITimeoutError
 from samenwijzer.outreach_store import (
     WelzijnsCheck,
     get_welzijnschecks_student,
@@ -20,6 +22,8 @@ from samenwijzer.welzijn import (
 )
 
 load_dotenv()
+
+log = logging.getLogger(__name__)
 
 st.set_page_config(page_title="Welzijnscheck — Samenwijzer", page_icon="💚", layout="wide")
 st.markdown(CSS, unsafe_allow_html=True)
@@ -103,10 +107,18 @@ if verzend:
 
     with st.container(border=True):
         st.markdown("<p class='section-label'>Reactie van Samenwijzer</p>", unsafe_allow_html=True)
-        with st.spinner("Reactie genereren…"):
-            reactie = st.write_stream(
-                genereer_welzijnsreactie(voornaam, categorie, toelichting.strip(), urgentie)
-            )
+        try:
+            with st.spinner("Reactie genereren…"):
+                reactie = st.write_stream(
+                    genereer_welzijnsreactie(voornaam, categorie, toelichting.strip(), urgentie)
+                )
+        except APITimeoutError:
+            st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
+            reactie = ""
+        except Exception as e:
+            log.exception("Welzijnsreactie kon niet worden gegenereerd")
+            st.error(f"De reactie kon niet worden gegenereerd: {e}")
+            reactie = ""
 
 # ── Eerdere checks ────────────────────────────────────────────────────────────
 eerdere = get_welzijnschecks_student(studentnummer)
