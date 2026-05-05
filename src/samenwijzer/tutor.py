@@ -55,9 +55,9 @@ class TutorSessie:
         self.geschiedenis.clear()
 
 
-def _systeem_prompt(student: StudentContext) -> str:
+def _systeem_prompt(student: StudentContext, oer_tekst: str = "") -> str:
     """Genereer de systeemprompt voor de Socratische tutor."""
-    return f"""Je bent een persoonlijke AI-tutor voor MBO-studenten. Je begeleidt studenten
+    basis = f"""Je bent een persoonlijke AI-tutor voor MBO-studenten. Je begeleidt studenten
 Socratisch: je moedigt hen aan zelf antwoorden te formuleren en goed na te denken over problemen.
 
 ## Jouw rol
@@ -79,11 +79,15 @@ Socratisch: je moedigt hen aan zelf antwoorden te formuleren en goed na te denke
 Antwoord altijd in het Nederlands, tenzij de student expliciet in een andere taal schrijft.
 Gebruik eenvoudige, heldere taal passend bij MBO-niveau {student.niveau}.
 """
+    if oer_tekst:
+        basis += f"\n## OER van de student\n{oer_tekst}"
+    return basis
 
 
 def stuur_bericht(
     sessie: TutorSessie,
     bericht: str,
+    oer_tekst: str = "",
     *,
     api_key: str | None = None,
 ) -> Generator[str]:
@@ -92,6 +96,7 @@ def stuur_bericht(
     Args:
         sessie: De actieve TutorSessie (wordt bijgewerkt met het nieuwe bericht).
         bericht: Het bericht van de student.
+        oer_tekst: Volledige OER-tekst van de student voor extra context (optioneel).
         api_key: Optionele Anthropic API-sleutel; gebruikt ANTHROPIC_API_KEY als niet opgegeven.
 
     Yields:

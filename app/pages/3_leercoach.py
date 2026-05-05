@@ -19,6 +19,7 @@ from samenwijzer.coach import (
     genereer_rollenspel_feedback,
     stuur_rollenspel_bericht,
 )
+from samenwijzer.oer_context import haal_oer_context_op
 from samenwijzer.styles import CSS, render_footer, render_nav
 from samenwijzer.tutor import StudentContext, TutorSessie, stuur_bericht
 from samenwijzer.whatsapp import laad_whatsapp_gesprek
@@ -85,6 +86,11 @@ else:
 
 zkt = zwakste_kerntaak(df, studentnummer)
 zwakste_kt_label = zkt[0] if zkt else ""
+
+oer_context_sleutel = f"oer_context_{studentnummer}"
+if oer_context_sleutel not in st.session_state:
+    st.session_state[oer_context_sleutel] = haal_oer_context_op(student)
+oer_tekst: str = st.session_state[oer_context_sleutel]
 
 st.divider()
 
