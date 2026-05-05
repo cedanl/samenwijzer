@@ -19,6 +19,7 @@ from samenwijzer.coach import (
     genereer_rollenspel_feedback,
     stuur_rollenspel_bericht,
 )
+from samenwijzer.oer_context import haal_oer_context_op
 from samenwijzer.styles import CSS, render_footer, render_nav
 from samenwijzer.tutor import StudentContext, TutorSessie, stuur_bericht
 from samenwijzer.whatsapp import laad_whatsapp_gesprek
@@ -85,6 +86,11 @@ else:
 
 zkt = zwakste_kerntaak(df, studentnummer)
 zwakste_kt_label = zkt[0] if zkt else ""
+
+oer_context_sleutel = f"oer_context_{studentnummer}"
+if oer_context_sleutel not in st.session_state:
+    st.session_state[oer_context_sleutel] = haal_oer_context_op(student)
+oer_tekst: str = st.session_state[oer_context_sleutel]
 
 st.divider()
 
@@ -160,7 +166,7 @@ with tab_tutor:
             st.write(invoer)
         with st.chat_message("assistant"):
             try:
-                st.write_stream(stuur_bericht(sessie, invoer))
+                st.write_stream(stuur_bericht(sessie, invoer, oer_tekst))
             except APITimeoutError:
                 st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
             except Exception as e:
@@ -189,7 +195,7 @@ with tab_les:
                 try:
                     tekst = st.write_stream(
                         genereer_lesmateriaal(
-                            onderwerp.strip(), opleiding, leerpad, zwakste_kt_label
+                            onderwerp.strip(), opleiding, leerpad, zwakste_kt_label, oer_tekst
                         )
                     )
                     st.session_state["sw_lesmateriaal"] = tekst
@@ -224,7 +230,7 @@ with tab_toets:
                 try:
                     with st.spinner("Toets wordt gegenereerd…"):
                         st.session_state["sw_toets_tekst"] = genereer_oefentoets(
-                            onderwerp_toets.strip(), opleiding, leerpad
+                            onderwerp_toets.strip(), opleiding, leerpad, oer_tekst
                         )
                 except APITimeoutError:
                     st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
@@ -308,7 +314,7 @@ with tab_werk:
                 st.session_state.pop("sw_werk_feedback", None)
                 try:
                     fb = st.write_stream(
-                        geef_feedback_op_werk(werk_tekst.strip(), opleiding, leerpad)
+                        geef_feedback_op_werk(werk_tekst.strip(), opleiding, leerpad, oer_tekst)
                     )
                     st.session_state["sw_werk_feedback"] = fb
                 except APITimeoutError:
@@ -385,7 +391,7 @@ with tab_rol:
                     st.write(invoer)
                 with st.chat_message("assistant"):
                     try:
-                        st.write_stream(stuur_rollenspel_bericht(rp_sessie, invoer))
+                        st.write_stream(stuur_rollenspel_bericht(rp_sessie, invoer, oer_tekst))
                     except APITimeoutError:
                         st.error(
                             "De AI-service reageert niet. Probeer het over een moment opnieuw."

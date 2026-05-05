@@ -468,3 +468,92 @@ def test_genereer_oefentoets_geeft_volledige_tekst_terug(mock_cls: MagicMock) ->
 
     resultaat = genereer_oefentoets("zorgverlening", "Verzorgende IG", "Gevorderde", api_key="test")
     assert resultaat == toets_tekst
+
+
+# ── OER-context in AI-functies ────────────────────────────────────────────────
+
+
+@patch("samenwijzer._ai.anthropic.Anthropic")
+def test_genereer_lesmateriaal_oer_tekst_in_systeem(mock_cls: MagicMock) -> None:
+    """OER-tekst wordt als system-parameter meegegeven aan de API."""
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = mock_stream("OK")
+    mock_cls.return_value = mock_client
+
+    list(
+        genereer_lesmateriaal(
+            "hygiëne",
+            "Horeca",
+            "Starter",
+            oer_tekst="Kerntaak 1: Bereiden van gerechten",
+            api_key="test",
+        )
+    )
+
+    call_kwargs = mock_client.messages.stream.call_args.kwargs
+    assert "system" in call_kwargs
+    assert "OER van de student" in call_kwargs["system"]
+    assert "Kerntaak 1: Bereiden van gerechten" in call_kwargs["system"]
+
+
+@patch("samenwijzer._ai.anthropic.Anthropic")
+def test_genereer_lesmateriaal_zonder_oer_tekst_geen_systeem(mock_cls: MagicMock) -> None:
+    """Zonder OER-tekst wordt geen system-parameter meegegeven."""
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = mock_stream("OK")
+    mock_cls.return_value = mock_client
+
+    list(genereer_lesmateriaal("hygiëne", "Horeca", "Starter", api_key="test"))
+
+    call_kwargs = mock_client.messages.stream.call_args.kwargs
+    assert "system" not in call_kwargs
+
+
+@patch("samenwijzer._ai.anthropic.Anthropic")
+def test_geef_feedback_op_werk_oer_tekst_in_systeem(mock_cls: MagicMock) -> None:
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = mock_stream("Feedback")
+    mock_cls.return_value = mock_client
+
+    list(
+        geef_feedback_op_werk(
+            "Mijn verslag.",
+            "Verzorgende IG",
+            "Gevorderde",
+            oer_tekst="OER sectie 3: Begeleiden van cliënten",
+            api_key="test",
+        )
+    )
+
+    call_kwargs = mock_client.messages.stream.call_args.kwargs
+    assert "OER van de student" in call_kwargs["system"]
+    assert "OER sectie 3" in call_kwargs["system"]
+
+
+@patch("samenwijzer._ai.anthropic.Anthropic")
+def test_stuur_rollenspel_bericht_oer_tekst_in_systeem(mock_cls: MagicMock) -> None:
+    from samenwijzer.coach import RollenspelSessie, stuur_rollenspel_bericht
+
+    mock_client = MagicMock()
+    mock_client.messages.stream.return_value = mock_stream("Reactie")
+    mock_cls.return_value = mock_client
+
+    sessie = RollenspelSessie(
+        scenario="sollicitatie",
+        opleiding="ICT-beheerder",
+        leerpad="Gevorderde",
+        naam="Test Student",
+    )
+    list(
+        stuur_rollenspel_bericht(
+            sessie,
+            "Goedemiddag.",
+            oer_tekst="Kerntaak 2: Installeren van systemen",
+            api_key="test",
+        )
+    )
+
+    call_kwargs = mock_client.messages.stream.call_args.kwargs
+    systeem_tekst = call_kwargs["system"][0]["text"]
+    assert "OER van de student" in systeem_tekst
+    assert "Kerntaak 2: Installeren van systemen" in systeem_tekst

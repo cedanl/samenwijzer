@@ -14,6 +14,7 @@ def genereer_lesmateriaal(
     opleiding: str,
     leerpad: str,
     zwakste_kt: str = "",
+    oer_tekst: str = "",
     *,
     api_key: str | None = None,
 ) -> Generator[str]:
@@ -24,6 +25,7 @@ def genereer_lesmateriaal(
         opleiding: De opleiding van de student.
         leerpad: Het leerpadniveau (Starter/Onderweg/Gevorderde/Expert).
         zwakste_kt: Optionele naam van de zwakste kerntaak voor extra context.
+        oer_tekst: Volledige OER-tekst van de student voor extra context (optioneel).
 
     Yields:
         Tekstfragmenten van het gegenereerde lesmateriaal.
@@ -40,11 +42,16 @@ def genereer_lesmateriaal(
         "Voeg aan het einde 2-3 reflectievragen toe om begrip te toetsen."
     )
 
+    stream_kwargs: dict = {}
+    if oer_tekst:
+        stream_kwargs["system"] = f"## OER van de student\n{oer_tekst}"
+
     client = _client(api_key)
     with client.messages.stream(
         model=_MODEL,
         max_tokens=_MAX_TOKENS,
         messages=[{"role": "user", "content": prompt}],
+        **stream_kwargs,
     ) as stream:
         yield from stream.text_stream
 
@@ -108,6 +115,7 @@ def _rollenspel_systeem_prompt(sessie: RollenspelSessie) -> str:
 def stuur_rollenspel_bericht(
     sessie: RollenspelSessie,
     bericht: str,
+    oer_tekst: str = "",
     *,
     api_key: str | None = None,
 ) -> Generator[str]:
@@ -116,12 +124,17 @@ def stuur_rollenspel_bericht(
     Args:
         sessie: De actieve RollenspelSessie (wordt bijgewerkt met het nieuwe bericht).
         bericht: De uitspraak of actie van de student.
+        oer_tekst: Volledige OER-tekst van de student voor extra context (optioneel).
         api_key: Optionele Anthropic API-sleutel.
 
     Yields:
         Tekstfragmenten van de reactie van de tegenpartij.
     """
     sessie.geschiedenis.append({"role": "user", "content": bericht})
+
+    systeem = _rollenspel_systeem_prompt(sessie)
+    if oer_tekst:
+        systeem += f"\n\n## OER van de student\n{oer_tekst}"
 
     volledige_reactie: list[str] = []
 
@@ -132,7 +145,7 @@ def stuur_rollenspel_bericht(
         system=[
             {
                 "type": "text",
-                "text": _rollenspel_systeem_prompt(sessie),
+                "text": systeem,
                 "cache_control": {"type": "ephemeral"},
             }
         ],
@@ -190,6 +203,7 @@ def genereer_oefentoets(
     onderwerp: str,
     opleiding: str,
     leerpad: str,
+    oer_tekst: str = "",
     *,
     api_key: str | None = None,
 ) -> str:
@@ -212,11 +226,16 @@ def genereer_oefentoets(
         "ANTWOORDEN: 1=A, 2=C, 3=B, 4=D, 5=A"
     )
 
+    create_kwargs: dict = {}
+    if oer_tekst:
+        create_kwargs["system"] = f"## OER van de student\n{oer_tekst}"
+
     client = _client(api_key)
     response = client.messages.create(
         model=_MODEL,
         max_tokens=_MAX_TOKENS,
         messages=[{"role": "user", "content": prompt}],
+        **create_kwargs,
     )
     return next(b.text for b in response.content if b.type == "text")
 
@@ -267,6 +286,7 @@ def genereer_weekplan(
     bsa_vereist: float,
     zwakste_kerntaak: str = "",
     zwakste_werkproces: str = "",
+    oer_tekst: str = "",
     *,
     api_key: str | None = None,
 ) -> Generator[str]:
@@ -323,11 +343,16 @@ def genereer_weekplan(
         "- Schrijf in het Nederlands"
     )
 
+    stream_kwargs: dict = {}
+    if oer_tekst:
+        stream_kwargs["system"] = f"## OER van de student\n{oer_tekst}"
+
     client = _client(api_key)
     with client.messages.stream(
         model=_MODEL,
         max_tokens=_MAX_TOKENS,
         messages=[{"role": "user", "content": prompt}],
+        **stream_kwargs,
     ) as stream:
         yield from stream.text_stream
 
@@ -336,6 +361,7 @@ def geef_feedback_op_werk(
     werk: str,
     opleiding: str,
     leerpad: str,
+    oer_tekst: str = "",
     *,
     api_key: str | None = None,
 ) -> Generator[str]:
@@ -345,6 +371,7 @@ def geef_feedback_op_werk(
         werk: De tekst van het ingeleverde werk.
         opleiding: De opleiding van de student.
         leerpad: Het leerpadniveau van de student.
+        oer_tekst: Volledige OER-tekst van de student voor extra context (optioneel).
 
     Yields:
         Tekstfragmenten van de feedback.
@@ -359,10 +386,15 @@ def geef_feedback_op_werk(
         f"Werk van de student:\n{werk}"
     )
 
+    stream_kwargs: dict = {}
+    if oer_tekst:
+        stream_kwargs["system"] = f"## OER van de student\n{oer_tekst}"
+
     client = _client(api_key)
     with client.messages.stream(
         model=_MODEL,
         max_tokens=_MAX_TOKENS,
         messages=[{"role": "user", "content": prompt}],
+        **stream_kwargs,
     ) as stream:
         yield from stream.text_stream

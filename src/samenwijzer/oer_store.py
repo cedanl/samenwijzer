@@ -136,6 +136,20 @@ def get_oer_voor_student(
         ).fetchone()
 
 
+def get_oer_voor_student_display_naam(
+    db_pad: Path, display_naam: str, crebo: str, leerweg: str, cohort: str
+) -> sqlite3.Row | None:
+    """Lookup-helper: vind OER via display_naam (zoals opgeslagen in student CSV)."""
+    init_db(db_pad)
+    with _verbinding(db_pad) as conn:
+        return conn.execute(
+            "SELECT o.* FROM oer_documenten o "
+            "JOIN instellingen i ON i.id = o.instelling_id "
+            "WHERE i.display_naam = ? AND o.crebo = ? AND o.leerweg = ? AND o.cohort = ?",
+            (display_naam, crebo, leerweg, cohort),
+        ).fetchone()
+
+
 def get_alle_oers(db_pad: Path) -> list[sqlite3.Row]:
     """Geef alle OER-documenten (handig voor build-validatie en tests)."""
     init_db(db_pad)
