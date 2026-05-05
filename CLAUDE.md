@@ -98,14 +98,16 @@ scripts/        ← hulpscripts (niet geïmporteerd door de app)
 validatie_samenwijzer/ ← apart subproject (eigen pyproject.toml, .venv, poort 8503)
 ```
 
-**`validatie_samenwijzer/`** is een zelfstandige Streamlit-app met ChromaDB-gebaseerde OER-RAG.
-Heeft zijn eigen `CLAUDE.md`, `uv sync`, tests en lintconfig. Nooit mixen met de hoofdapp —
+**`validatie_samenwijzer/`** is een zelfstandige Streamlit-app (poort 8503) die OER-PDFs
+ingest naar SQLite + markdown en daarop OER-chat draait via Claude streaming. Heeft zijn eigen
+`CLAUDE.md`, `pyproject.toml`, `.venv`, tests en lintconfig. Nooit mixen met de hoofdapp —
 ruff, pytest en `uv` altijd vanuit de juiste projectroot uitvoeren.
 
 ## Kennisbank
 
 | Onderwerp | Bestand |
 |---|---|
+| Lokale opstart (alle services) | `INSTRUCTIONS.md` |
 | Architectuur & lagen | `ARCHITECTURE.md` |
 | Productvision & features | `docs/PRODUCT_SENSE.md` |
 | Frontend- & UI-conventies | `docs/FRONTEND.md` |
@@ -124,8 +126,9 @@ Nooit omgekeerd. Zie `ARCHITECTURE.md` voor details.
 
 **Cross-cutting modules** (`_ai.py`, `auth.py`, `outreach.py`, `outreach_store.py`, `welzijn.py`,
 `wellbeing.py`, `whatsapp.py`, `whatsapp_store.py`, `scheduler.py`, `styles.py`,
-`oer_store.py`, `oer_parsing.py`) hebben geen
-laagrestrictie — ze worden via expliciete imports aangesproken.
+`oer_store.py`, `oer_parsing.py`, `oer_context.py`) hebben geen
+laagrestrictie — ze worden via expliciete imports aangesproken. `oer_context.py`
+levert OER-tekst als AI-context voor `tutor.py` en `coach.py`.
 
 **Sessiedata**: `st.session_state["df"]` bevat het getransformeerde DataFrame en wordt eenmalig
 geladen op de startpagina via `load_synthetisch_csv()` + `transform_student_data()`. Alle pagina's lezen
