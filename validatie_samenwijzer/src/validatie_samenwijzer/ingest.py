@@ -1,4 +1,4 @@
-"""OER-ingestie pipeline: parse → extraheer → chunk → embed → sla op."""
+"""OER-ingestie pipeline: parse → extraheer → sla op in SQLite."""
 
 from __future__ import annotations
 
@@ -7,14 +7,6 @@ import os
 import re
 import sqlite3
 from pathlib import Path
-
-import chromadb
-import openai
-
-# Model voor embeddings — zet OPENAI_EMBEDDING_MODEL in .env om te overschrijven.
-# Na een modelwijziging is herindexering vereist:
-#   uv run python -m validatie_samenwijzer.ingest --alles --reset
-EMBEDDING_MODEL = os.environ.get("OPENAI_EMBEDDING_MODEL", "text-embedding-3-large")
 
 log = logging.getLogger(__name__)
 logging.getLogger("pdfminer").setLevel(logging.ERROR)
@@ -59,102 +51,6 @@ def parseer_bestandsnaam(bestandsnaam: str) -> dict | None:
     cohort = jaar_m.group(1) if jaar_m else _HUIDIG_COHORT
 
     return {"crebo": crebo, "leerweg": leerweg, "cohort": cohort}
-
-
-# ── Tekst chunken ─────────────────────────────────────────────────────────────
-
-
-def chunk_tekst(tekst: str, chunk_grootte: int = 500, overlap: int = 50) -> list[str]:
-    """Splits tekst in chunks van ~chunk_grootte woorden met overlap."""
-    assert chunk_grootte > overlap, (
-        f"chunk_grootte ({chunk_grootte}) must exceed overlap ({overlap})"
-    )
-    woorden = tekst.split()
-    if len(woorden) <= chunk_grootte:
-        return [tekst]
-
-    chunks = []
-    start = 0
-    while start < len(woorden):
-        einde = min(start + chunk_grootte, len(woorden))
-        chunk = " ".join(woorden[start:einde])
-        chunks.append(chunk)
-        if einde >= len(woorden):
-            break
-        start += chunk_grootte - overlap
-    return chunks
-
-
-def chunk_tekst_semantisch(
-    tekst: str, max_woorden: int = 400, overlap_alineas: int = 1
-) -> list[str]:
-    """Splits tekst op alineagrenzen in plaats van woordtelling.
-
-    Bewaart coherentie van kerntaak- en werkprocesbeschrijvingen die anders
-    door chunk_tekst doormidden worden geknipt.
-    """
-    alineas = [a.strip() for a in re.split(r"\n\s*\n", tekst) if a.strip()]
-    if not alineas:
-        return [tekst.strip()] if tekst.strip() else []
-
-    chunks: list[str] = []
-    huidige: list[str] = []
-    huidige_woorden = 0
-
-    for alinea in alineas:
-        alinea_woorden = len(alinea.split())
-        if huidige_woorden + alinea_woorden > max_woorden and huidige:
-            chunks.append("\n\n".join(huidige))
-            huidige = huidige[-overlap_alineas:] if overlap_alineas > 0 else []
-            huidige_woorden = sum(len(a.split()) for a in huidige)
-        huidige.append(alinea)
-        huidige_woorden += alinea_woorden
-
-    if huidige:
-        chunks.append("\n\n".join(huidige))
-
-    return chunks
-
-
-def extraheer_paginas_pdf(pad: Path) -> list[tuple[int, str]]:
-    """Extraheer tekst per pagina uit een PDF.
-
-    Geeft een lijst van (paginanummer, tekst) tuples. Valt terug op OCR als
-    pdfplumber minder dan _OCR_DREMPEL tekens oplevert voor het hele document.
-    """
-    import pdfplumber
-
-    paginas: list[tuple[int, str]] = []
-    with pdfplumber.open(str(pad)) as pdf:
-        for i, pagina in enumerate(pdf.pages, start=1):
-            t = pagina.extract_text()
-            if t and t.strip():
-                paginas.append((i, t))
-
-    totale_tekst = "".join(t for _, t in paginas)
-    if len(totale_tekst.strip()) < _OCR_DREMPEL:
-        log.info("pdfplumber leverde te weinig tekst voor '%s', val terug op OCR.", pad.name)
-        ocr_tekst = _extraheer_tekst_ocr(pad)
-        return [(0, ocr_tekst)] if ocr_tekst.strip() else []
-
-    return paginas
-
-
-def chunk_paginas(
-    paginas: list[tuple[int, str]], max_woorden: int = 400, overlap_alineas: int = 1
-) -> list[dict]:
-    """Chunk een lijst van (paginanummer, tekst) tuples semantisch.
-
-    Elke chunk behoudt het paginanummer van de pagina waaruit hij stamt.
-    """
-    resultaat: list[dict] = []
-    for paginanr, tekst in paginas:
-        for chunk in chunk_tekst_semantisch(
-            tekst, max_woorden=max_woorden, overlap_alineas=overlap_alineas
-        ):
-            if chunk.strip():
-                resultaat.append({"tekst": chunk, "pagina": paginanr})
-    return resultaat
 
 
 # ── Kerntaken extraheren ──────────────────────────────────────────────────────
@@ -307,17 +203,13 @@ def _resolveer_oer(
     pad: Path,
     instelling_naam: str,
     conn: sqlite3.Connection,
-    collection: chromadb.Collection,
     *,
     reset: bool,
-    al_gewist: set[int],
 ) -> tuple[int, dict] | None:
     """Zoek of maak een OER-record aan; geef (oer_id, meta) of None als overgeslagen.
 
     Meerdere bestanden met hetzelfde crebo/leerweg/cohort (bijv. OER + examenplan)
-    worden allemaal geïndexeerd onder hetzelfde oer_id. Bij reset worden chunks
-    per oer_id maximaal één keer verwijderd zodat aanvullende bestanden niet
-    de chunks van eerder verwerkte bestanden overschrijven.
+    worden allemaal geïndexeerd onder hetzelfde oer_id.
     """
     from validatie_samenwijzer.db import (
         get_instelling_by_naam,
@@ -325,7 +217,6 @@ def _resolveer_oer(
         update_oer_bestandspad,
         voeg_oer_document_toe,
     )
-    from validatie_samenwijzer.vector_store import verwijder_chunks_voor_oer
 
     meta = parseer_bestandsnaam(pad.name)
     if meta is None:
@@ -356,73 +247,46 @@ def _resolveer_oer(
         # PDF heeft prioriteit boven MD; update als pad afwijkt.
         stored_suffix = Path(oer["bestandspad"]).suffix.lower()
         incoming_suffix = pad.suffix.lower()
-        pad_prioriteit = incoming_suffix == ".pdf" or stored_suffix not in {".pdf"}
-        if pad_prioriteit and str(pad) != oer["bestandspad"]:
+        if (incoming_suffix == ".pdf" or stored_suffix not in {".pdf"}) and str(
+            pad
+        ) != oer["bestandspad"]:
             log.info("Bestandspad bijgewerkt naar '%s'.", pad.name)
             update_oer_bestandspad(conn, oer_id, str(pad))
-        if reset and oer_id not in al_gewist:
-            verwijder_chunks_voor_oer(collection, oer_id)
-            al_gewist.add(oer_id)
 
     return oer_id, meta
-
-
-def _extraheer_chunks(pad: Path) -> tuple[list[dict], str]:
-    """Extraheer chunks en volledige tekst uit een OER-bestand.
-
-    PDF-bestanden worden eerst naar Markdown geconverteerd via markitdown.
-    Raises bij extractiefouten — caller vangt op en logt.
-    """
-    if pad.suffix.lower() == ".pdf":
-        md_pad = converteer_naar_markdown(pad)
-        if md_pad.suffix.lower() == ".md":
-            tekst = extraheer_tekst_md(md_pad)
-            chunks_met_pagina = [
-                {"tekst": c, "pagina": 0} for c in chunk_tekst_semantisch(tekst) if c.strip()
-            ]
-        else:
-            # Markitdown mislukt: val terug op pdfplumber met paginanummers
-            paginas = extraheer_paginas_pdf(pad)
-            tekst = "\n\n".join(t for _, t in paginas)
-            chunks_met_pagina = chunk_paginas(paginas)
-    else:
-        tekst = extraheer_tekst(pad)
-        chunks_met_pagina = [
-            {"tekst": c, "pagina": 0} for c in chunk_tekst_semantisch(tekst) if c.strip()
-        ]
-    return chunks_met_pagina, tekst
 
 
 def _verwerk_bestand(
     pad: Path,
     instelling_naam: str,
     conn: sqlite3.Connection,
-    collection: chromadb.Collection,
-    openai_client: openai.OpenAI,
     *,
     reset: bool = False,
-    al_gewist: set[int] | None = None,
 ) -> None:
-    """Verwerk één OER-bestand: parse → extraheer → chunk → embed → sla op."""
+    """Verwerk één OER-bestand: parse → extraheer tekst en kerntaken → sla op in SQLite."""
     from validatie_samenwijzer.db import markeer_geindexeerd, voeg_kerntaak_toe
-    from validatie_samenwijzer.vector_store import voeg_chunks_toe
 
-    if al_gewist is None:
-        al_gewist = set()
-
-    result = _resolveer_oer(
-        pad, instelling_naam, conn, collection, reset=reset, al_gewist=al_gewist
-    )
+    result = _resolveer_oer(pad, instelling_naam, conn, reset=reset)
     if result is None:
         return
-    oer_id, meta = result
+    oer_id, _meta = result
 
     log.info("Verwerk '%s' (oer_id=%d)...", pad.name, oer_id)
 
+    if pad.suffix.lower() == ".pdf":
+        md_pad = converteer_naar_markdown(pad)
+        verwerk_pad = md_pad if md_pad.suffix.lower() == ".md" else pad
+    else:
+        verwerk_pad = pad
+
     try:
-        chunks_met_pagina, tekst = _extraheer_chunks(pad)
+        tekst = extraheer_tekst(verwerk_pad)
     except Exception as e:
         log.error("Extractie mislukt voor '%s': %s", pad.name, e)
+        return
+
+    if not tekst.strip():
+        log.warning("'%s' bevat geen extraheerbare tekst — overgeslagen.", pad.name)
         return
 
     kerntaken = extraheer_kerntaken(tekst)
@@ -436,43 +300,14 @@ def _verwerk_bestand(
             volgorde=kt["volgorde"],
         )
 
-    chunks_met_pagina = [c for c in chunks_met_pagina if c["tekst"].strip()]
-    if not chunks_met_pagina:
-        log.warning("'%s' bevat geen extraheerbare tekst — overgeslagen.", pad.name)
-        return
-
-    embeddings_response = openai_client.embeddings.create(
-        model=EMBEDDING_MODEL,
-        input=[c["tekst"] for c in chunks_met_pagina],
-    )
-
-    chunks = [
-        {
-            "id": f"oer{oer_id}_chunk{i}",
-            "tekst": c["tekst"],
-            "embedding": emb.embedding,
-            "metadata": {
-                "oer_id": oer_id,
-                "instelling": instelling_naam,
-                "crebo": meta["crebo"],
-                "cohort": meta["cohort"],
-                "leerweg": meta["leerweg"],
-                "pagina": c["pagina"],
-            },
-        }
-        for i, (c, emb) in enumerate(zip(chunks_met_pagina, embeddings_response.data))
-    ]
-    voeg_chunks_toe(collection, chunks)
     markeer_geindexeerd(conn, oer_id)
-    log.info("'%s' geïndexeerd: %d chunks, %d kerntaken.", pad.name, len(chunks), len(kerntaken))
+    log.info("'%s' geïndexeerd: %d kerntaken.", pad.name, len(kerntaken))
 
 
 def _verwerk_instelling(
     naam: str,
     oeren_pad: Path,
     conn: sqlite3.Connection,
-    collection: chromadb.Collection,
-    openai_client: openai.OpenAI,
     *,
     reset: bool = False,
 ) -> None:
@@ -482,39 +317,9 @@ def _verwerk_instelling(
     if not pad.exists():
         log.warning("Map '%s' niet gevonden.", pad)
         return
-    al_gewist: set[int] = set()
     for bestand in pad.iterdir():
         if bestand.suffix.lower() in _ONDERSTEUNDE_EXTENSIES:
-            _verwerk_bestand(
-                bestand,
-                naam,
-                conn,
-                collection,
-                openai_client,
-                reset=reset,
-                al_gewist=al_gewist,
-            )
-
-
-def _sync_geindexeerd(conn: sqlite3.Connection, collection: chromadb.Collection) -> int:
-    """Reset geindexeerd=0 voor OERs waarvan de chunks niet in Chroma zitten.
-
-    Voorkomt dat ingest bestanden overslaat na een externe Chroma-clear of -reset,
-    waarbij SQLite nog geindexeerd=1 heeft maar de chunks ontbreken.
-    """
-    metas = collection.get(include=["metadatas"])["metadatas"]
-    aanwezig: set[int] = {int(m["oer_id"]) for m in metas if "oer_id" in m}
-    if aanwezig:
-        placeholders = ",".join("?" * len(aanwezig))
-        cur = conn.execute(
-            f"UPDATE oer_documenten SET geindexeerd = 0 "
-            f"WHERE geindexeerd = 1 AND id NOT IN ({placeholders})",
-            list(aanwezig),
-        )
-    else:
-        cur = conn.execute("UPDATE oer_documenten SET geindexeerd = 0 WHERE geindexeerd = 1")
-    conn.commit()
-    return cur.rowcount
+            _verwerk_bestand(bestand, naam, conn, reset=reset)
 
 
 def main() -> None:
@@ -523,10 +328,7 @@ def main() -> None:
 
     from dotenv import load_dotenv
 
-    from validatie_samenwijzer._openai import _client as openai_client_factory
     from validatie_samenwijzer.db import get_connection, init_db, voeg_instelling_toe
-    from validatie_samenwijzer.vector_store import get_client as chroma_client
-    from validatie_samenwijzer.vector_store import get_collection
 
     load_dotenv()
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
@@ -541,22 +343,12 @@ def main() -> None:
     args = parser.parse_args()
 
     db_path = Path(os.environ.get("DB_PATH", "data/validatie.db"))
-    chroma_path = Path(os.environ.get("CHROMA_PATH", "data/chroma"))
     oeren_pad = Path(os.environ.get("OEREN_PAD", "oeren"))
 
     db_path.parent.mkdir(parents=True, exist_ok=True)
-    chroma_path.mkdir(parents=True, exist_ok=True)
 
     conn = get_connection(db_path)
     init_db(conn)
-
-    chroma = get_collection(chroma_client(chroma_path))
-
-    gereset = _sync_geindexeerd(conn, chroma)
-    if gereset:
-        log.info("%d documenten geindexeerd-vlag gereset (Chroma/SQLite sync).", gereset)
-
-    oc = openai_client_factory()
 
     for naam, display in _INSTELLINGEN.items():
         voeg_instelling_toe(conn, naam, display)
@@ -564,12 +356,12 @@ def main() -> None:
     if args.bestand:
         pad = Path(args.bestand)
         inst = pad.parent.name.replace("_oeren", "").replace("_oer", "")
-        _verwerk_bestand(pad, inst, conn, chroma, oc, reset=args.reset, al_gewist=set())
+        _verwerk_bestand(pad, inst, conn, reset=args.reset)
     elif args.instelling:
-        _verwerk_instelling(args.instelling, oeren_pad, conn, chroma, oc, reset=args.reset)
+        _verwerk_instelling(args.instelling, oeren_pad, conn, reset=args.reset)
     elif args.alles:
         for naam in _INSTELLINGEN:
-            _verwerk_instelling(naam, oeren_pad, conn, chroma, oc, reset=args.reset)
+            _verwerk_instelling(naam, oeren_pad, conn, reset=args.reset)
     else:
         parser.print_help()
 
