@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Wat dit project is
 
-Standalone Streamlit-app (`validatie_samenwijzer/`) die MBO-studenten en mentoren laat chatten met hun OER (Onderwijs- en Examenregeling) via hybride AI-retrieval (ChromaDB + Claude streaming). Leeft als subproject binnen de `samenwijzer`-monorepo maar heeft zijn eigen `pyproject.toml`, `.venv` en database.
+Standalone Streamlit-app (`validatie_samenwijzer/`) die MBO-studenten en mentoren laat chatten met hun OER (Onderwijs- en Examenregeling) via volledige documentcontext in Claude. Leeft als subproject binnen de `samenwijzer`-monorepo maar heeft zijn eigen `pyproject.toml`, `.venv` en database.
 
 ## Commando's
 
@@ -48,18 +48,9 @@ uv run python seed/bulk_seed.py   # 1000 studenten over alle geïndexeerde OERs
 
 ```
 ANTHROPIC_API_KEY=sk-ant-...
-OPENAI_API_KEY=sk-...
-DB_PATH=data/validatie.db              # default
-CHROMA_PATH=data/chroma                # default
-OEREN_PAD=oeren                        # default
-OPENAI_EMBEDDING_MODEL=text-embedding-3-large   # default; zie note hieronder
+DB_PATH=data/validatie.db    # default
+OEREN_PAD=oeren              # default
 ```
-
-> **Let op embedding model**: `OPENAI_EMBEDDING_MODEL` bepaalt het model voor zowel ingestie
-> als retrieval. Ingestie en retrieval **moeten hetzelfde model** gebruiken — een mismatch geeft
-> verkeerde cosine-afstanden (of een ChromaDB dimensiefout bij 3-small ↔ 3-large).
-> Na een modelwijziging is volledige herindexering vereist:
-> `uv run python -m validatie_samenwijzer.ingest --alles --reset`
 
 ## Architectuur
 
@@ -69,16 +60,12 @@ OPENAI_EMBEDDING_MODEL=text-embedding-3-large   # default; zie note hieronder
 
 **`_db.py`** — dunne Streamlit-wrapper: `get_conn()` is `@st.cache_resource` en roept `get_connection()` + `init_db()` aan. Gebruik `_db.get_conn()` in pagina's, `db.get_connection()` in scripts en tests.
 
-**ChromaDB** (`vector_store.py`) — persistente collectie `oer_chunks`, cosine distance, gefilterd op `oer_id`. Drempelwaarde `DREMPELWAARDE = 0.7`: chunks boven die afstand worden weggegooid. Zoekfilter via `where={"oer_id": ...}` — een student ziet nooit chunks van andere OERs.
-
 ### Ingestie-pipeline (`ingest.py`)
 
 ```
 bestandsnaam → parseer_bestandsnaam() → crebo/leerweg/cohort
+PDF          → converteer_naar_markdown() → .md via markitdown (naast PDF opgeslagen)
 bestand      → extraheer_tekst()      → tekst (pdfplumber → Tesseract OCR als < 100 tekens)
-tekst        → chunk_tekst()          → chunks van ~500 woorden met overlap
-chunks       → OpenAI embeddings      → vectoren
-              → ChromaDB              → opgeslagen met oer_id-metadata
 tekst        → extraheer_kerntaken()  → kerntaken/werkprocessen in SQLite
 ```
 
@@ -88,7 +75,14 @@ tekst        → extraheer_kerntaken()  → kerntaken/werkprocessen in SQLite
 
 Bestanden zonder crebo in naam (Aeres, Utrecht) worden hernoemd via `tools/rename_oers.py` dat de titelpagina uitleest.
 
-Bij elke start van `main()` draait `_sync_geindexeerd(conn, collection)`: reset `geindexeerd=0` voor OERs die in SQLite als geïndexeerd staan maar geen chunks in Chroma hebben. Voorkomt dat bestanden worden overgeslagen na een externe Chroma-clear.
+### OER-chat architectuur (`chat.py`)
+
+- `laad_oer_tekst(pad)` — leest `.md`-broertje naast PDF → `.md` zelf → pdfplumber-fallback; max 500k tekens
+- `bouw_systeem(oer_tekst, opleiding, instelling)` — assembleert systeemprompt met volledige OER
+- `bouw_berichten(chat_history, vraag)` — voegt vraag toe aan gesprekshistorie
+- `genereer_antwoord(client, system, berichten)` — streamt via `client.messages.stream`
+
+OER wordt eenmalig per sessie geladen in `st.session_state.oer_systeem`.
 
 ### Sessiemodel
 
@@ -116,7 +110,8 @@ Login: studenten op studentnummer, mentoren op naam.
 | Bestand | Rol | Functie |
 |---|---|---|
 | `app/main.py` | beide | Login, sessie-initialisatie |
-| `1_oer_assistent.py` | student | Hybride chat: embed vraag → zoek chunks op `oer_id` → stream Claude-antwoord |
+| `0_oer_vraag.py` | publiek | Conversationele OER-vraag zonder inlogvereiste |
+| `1_oer_assistent.py` | student | Chat met eigen OER via volledige documentcontext |
 | `2_mijn_oer.py` | student | Volledig OER inzien of downloaden |
 | `3_mijn_voortgang.py` | student | Voortgang, BSA, scores visualiseren |
 | `4_mijn_studenten.py` | mentor | Studentenlijst van eigen koppeling |
@@ -125,15 +120,7 @@ Login: studenten op studentnummer, mentoren op naam.
 ### AI-isolatie
 
 - Anthropic (Claude): `_ai._client()` — alleen voor streaming chat in `chat.py`
-- OpenAI (embeddings): `_openai._client()` — alleen in `ingest.py` en pagina's die embeddings maken
-- Nooit clients direct instantiëren buiten deze twee modules
-
-### Hybride RAG-flow (`1_oer_assistent.py`)
-
-1. Strikte zoektocht: n=8, drempelwaarde=0.7
-2. Als < `MIN_RELEVANTE_CHUNKS` (2): bredere zoektocht n=15, drempelwaarde=0.85
-3. Als nog steeds < 2: fallback op volledige OER-tekst via `laad_oer_tekst()` (max 100k tekens)
-4. Als geen bestandspad beschikbaar: toon `LAGE_RELEVANTIE_BERICHT`
+- Nooit clients direct instantiëren buiten deze module
 
 ### OER-bestanden
 
@@ -143,8 +130,6 @@ Login: studenten op studentnummer, mentoren op naam.
 
 Een student die aan een niet-geïndexeerde OER gekoppeld is krijgt altijd "Ik kon geen relevante informatie vinden". Check met:
 
-```python
-conn.execute("SELECT geindexeerd FROM oer_documenten WHERE id=?", (student["oer_id"],))
+```sql
+SELECT geindexeerd FROM oer_documenten WHERE id = <oer_id>;
 ```
-
-Als `data/chroma/` extern wordt gewist terwijl SQLite nog `geindexeerd=1` heeft: de pipeline herstelt dit automatisch via `_sync_geindexeerd()` bij de volgende `--alles` run. De log toont dan: `N documenten geindexeerd-vlag gereset (Chroma/SQLite sync).`

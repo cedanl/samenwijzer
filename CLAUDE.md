@@ -110,7 +110,7 @@ ruff, pytest en `uv` altijd vanuit de juiste projectroot uitvoeren.
 | Productvision & features | `docs/PRODUCT_SENSE.md` |
 | Frontend- & UI-conventies | `docs/FRONTEND.md` |
 | Ontwerpbeslissingen | `docs/design-docs/index.md` |
-| Actief uitvoeringsplan | `docs/exec-plans/active/fase-2-whatsapp-signalering.md` |
+| Uitvoeringsplannen | `docs/exec-plans/completed/` (fase 1–2 afgerond; geen actief plan) |
 | Product specs | `docs/product-specs/index.md` |
 | Kwaliteitsscores per domein | `docs/QUALITY_SCORE.md` |
 | Beveiligingsregels | `docs/SECURITY.md` |
