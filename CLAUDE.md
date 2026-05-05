@@ -124,7 +124,7 @@ Nooit omgekeerd. Zie `ARCHITECTURE.md` voor details.
 
 **Cross-cutting modules** (`_ai.py`, `auth.py`, `outreach.py`, `outreach_store.py`, `welzijn.py`,
 `wellbeing.py`, `whatsapp.py`, `whatsapp_store.py`, `scheduler.py`, `styles.py`,
-`oer_store.py`, `oer_parsing.py`) hebben geen
+`oer_store.py`, `oer_parsing.py`, `oer_context.py`) hebben geen
 laagrestrictie — ze worden via expliciete imports aangesproken.
 
 **Sessiedata**: `st.session_state["df"]` bevat het getransformeerde DataFrame en wordt eenmalig

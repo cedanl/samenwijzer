@@ -32,6 +32,7 @@ Cross-cutting modules (no layer restriction, import explicitly):
   styles.py         ← EduPulse CSS + render_nav() (vaste header) + render_footer()
   oer_store.py      ← SQLite persistence voor OER-catalog (oeren.db): instellingen, oer_documenten, kerntaken
   oer_parsing.py    ← OER PDF/bestandsnaam parsing: crebo, opleiding, niveau, kerntaken
+  oer_context.py    ← OER-tekst ophalen per student (display_naam lookup + markitdown-tekst laden)
 ```
 
 Dependency direction is strictly left-to-right (prepare → export).
@@ -58,8 +59,8 @@ AI calls are isolated in dedicated modules; they are **never** called from the U
 
 | Module | AI purpose |
 |---|---|
-| `tutor.py` | Socratic tutor conversation (streaming) |
-| `coach.py` | Study material, practice tests, work feedback |
+| `tutor.py` | Socratic tutor conversation (streaming); injects OER-context via `oer_context.py` |
+| `coach.py` | Study material, practice tests, work feedback; injects OER-context via `oer_context.py` |
 | `outreach.py` | Personalised outreach message generation |
 | `welzijn.py` | Empathic response to student self-assessment |
 | `whatsapp.py` | WhatsApp check-ins, inbound message parsing, AI conversation |

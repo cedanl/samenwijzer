@@ -56,7 +56,7 @@ studentnummer = st.session_state["studentnummer"]
 | `main.py` | — | public | Login + session init |
 | `1_mijn_voortgang.py` | 📊 | student | BSA, kerntaken, werkprocessen |
 | `2_groepsoverzicht.py` | 👥 | docent | Voortgang + welzijnschecks groep |
-| `3_leercoach.py` | 🎓 | student | AI tutor, lesmateriaal, oefentoets |
+| `3_leercoach.py` | 🎓 | student | AI tutor, lesmateriaal, oefentoets; OER-context geladen bij paginastart |
 | `4_outreach.py` | 📬 | docent | Werklijst, campagnes, effectiviteit |
 | `5_welzijn.py` | 💚 | student | Self-assessment + AI-reactie |
 | `uitloggen.py` | — | — | Sessie wissen + redirect naar `/` |

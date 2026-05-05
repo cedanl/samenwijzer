@@ -8,7 +8,7 @@
 
 ## Testing
 
-- **325 tests** (5 overgeslagen: permission-tests die root vereisen). Totale coverage: 92%.
+- **408 tests** (5 overgeslagen: permission-tests die root vereisen). Totale coverage: 93%.
 - Unit tests dekken alle modules in `src/samenwijzer/` — zie `docs/QUALITY_SCORE.md` voor details per domein.
 - Schaal-tests (`tests/test_scale.py`) runnen de volledige data-pipeline op 1000 synthetische studenten en verifiëren correctheid van analyze-functies onder realistisch volume.
 - Webhook-tests (`tests/test_webhook.py`) testen de FastAPI `/webhook/whatsapp`- en `/health`-endpoints via FastAPI `TestClient` (httpx), inclusief Twilio-handtekeningvalidatie.

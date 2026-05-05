@@ -1,6 +1,6 @@
 # Validatie Samenwijzer
 
-Standalone Streamlit-app waarmee MBO-studenten en mentoren kunnen chatten met hun OER (Onderwijs- en Examenregeling) via hybride AI-retrieval (ChromaDB + Claude streaming).
+Standalone Streamlit-app waarmee MBO-studenten en mentoren conversationeel kunnen chatten met hun OER (Onderwijs- en Examenregeling) via volledige Claude-documentcontext.
 
 ## Vereisten
 
@@ -11,12 +11,23 @@ Standalone Streamlit-app waarmee MBO-studenten en mentoren kunnen chatten met hu
 
 ## Starten
 
+Uitvoeren vanuit `validatie_samenwijzer/`:
+
 ```bash
 uv sync
 uv run streamlit run app/main.py
 ```
 
-De app draait op http://localhost:8501.
+De app draait op http://localhost:8503.
+
+Inloggen: wachtwoord **Welkom123** voor alle accounts.
+
+| Rol | Inlogwaarde | Instelling |
+|---|---|---|
+| student | `100001` (Rick Mulder) | Rijn IJssel |
+| student | `100168` (Mohammed Singh) | Da Vinci College |
+| mentor | `Hans Klooster` | Rijn IJssel |
+| mentor | `Hanneke Dijkman` | Da Vinci College |
 
 ## Testdata seeden
 
@@ -39,5 +50,17 @@ uv run python seed/bulk_seed.py   # 1000 studenten over alle geïndexeerde OERs
 uv sync --extra dev && uv run pytest
 uv run ruff check src/ app/
 ```
+
+## Pagina-overzicht
+
+| Pagina | Rol | Functie |
+|---|---|---|
+| Login (`main.py`) | beide | Studentnummer of mentornaam + wachtwoord |
+| `0_oer_vraag.py` | publiek | Conversationele OER-vraag zonder inlogvereiste |
+| `1_oer_assistent.py` | student | Chat met eigen OER via volledige documentcontext |
+| `2_mijn_oer.py` | student | Volledig OER inzien of downloaden |
+| `3_mijn_voortgang.py` | student | Voortgang, BSA, scores visualiseren |
+| `4_mijn_studenten.py` | mentor | Studentenlijst van eigen koppeling |
+| `5_begeleidingssessie.py` | mentor | Studentprofiel + OER-chat + OER-viewer |
 
 Zie [CLAUDE.md](CLAUDE.md) voor uitgebreide architectuurdocumentatie.

@@ -26,8 +26,7 @@ Target users: students (progress, AI tutor, wellbeing check) and internal daily 
 | Product vision & features | `docs/PRODUCT_SENSE.md` |
 | Frontend & UI conventions | `docs/FRONTEND.md` |
 | Design decisions | `docs/design-docs/index.md` |
-| Active execution plans | `docs/exec-plans/active/fase-2-whatsapp-signalering.md` |
-| Completed plans | `docs/exec-plans/completed/` — fase-1-fundament.md |
+| Completed plans | `docs/exec-plans/completed/` — fase 1 en fase 2 afgerond; geen actief plan |
 | Quality scores per domain | `docs/QUALITY_SCORE.md` |
 | Security rules | `docs/SECURITY.md` |
 | Reliability requirements | `docs/RELIABILITY.md` |
@@ -51,6 +50,7 @@ Target users: students (progress, AI tutor, wellbeing check) and internal daily 
 | `whatsapp.py` | WhatsApp via Twilio: check-ins, inkomende berichten, AI-gesprekssessies |
 | `whatsapp_store.py` | SQLite: WhatsApp-registraties (Fernet-versleuteld) en sessies |
 | `scheduler.py` | Wekelijkse check-in verzender (GitHub Actions cron entry point) |
+| `oer_context.py` | OER-tekst ophalen per student (`haal_oer_context_op(student_row)`); inject in AI-calls |
 | `_ai.py` | Gedeelde Anthropic client factory (`_client()`) |
 | `styles.py` | EduPulse CSS + `render_nav()` (vaste header) + `render_footer()` |
 
