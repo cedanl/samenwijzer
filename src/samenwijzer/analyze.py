@@ -11,7 +11,7 @@ from samenwijzer.wellbeing import WelzijnsCheck, welzijnswaarde
 _DB_PAD_VOOR_LABELS = Path(__file__).parent.parent.parent / "data" / "02-prepared" / "oeren.db"
 
 
-def _oer_label(opleiding: str, kolom: str) -> str:
+def _oer_label(opleiding: str, kolom: str, crebo: str = "") -> str:
     """Geef de echte kerntaak/werkproces-naam terug voor (opleiding, kolom).
 
     Kolom-naam-conventie: kt_1, kt_2, wp_1_1, wp_1_2, …, wp_2_3.
@@ -19,12 +19,15 @@ def _oer_label(opleiding: str, kolom: str) -> str:
       kt_1 → eerste kerntaak in oeren.db
       kt_2 → tweede kerntaak
       wp_x_y → y-de werkproces onder kerntaak x
+    Lookup-prioriteit: crebo (cross-instelling, robuust) → opleiding-naam (legacy).
     Geeft de kolom-naam zelf terug als er geen kerntakenlijst is of als de mapping
     niet kan worden bepaald.
     """
-    if not opleiding:
-        return kolom
-    kts = oer_store.get_kerntaken_voor_opleiding(_DB_PAD_VOOR_LABELS, opleiding)
+    kts: list = []
+    if crebo:
+        kts = oer_store.get_kerntaken_voor_crebo(_DB_PAD_VOOR_LABELS, crebo)
+    if not kts and opleiding:
+        kts = oer_store.get_kerntaken_voor_opleiding(_DB_PAD_VOOR_LABELS, opleiding)
     if not kts:
         return kolom
 
@@ -110,11 +113,12 @@ def kerntaak_scores(df: pd.DataFrame, studentnummer: str) -> pd.DataFrame:
     """
     student = get_student(df, studentnummer)
     opleiding = str(student.get("opleiding", ""))
+    crebo = str(student.get("crebo", ""))
     kt_cols = get_kerntaak_columns(df)
     records = [
         {
             "kerntaak": col,
-            "label": _oer_label(opleiding, col),
+            "label": _oer_label(opleiding, col, crebo),
             "score": student[col],
         }
         for col in kt_cols
@@ -131,11 +135,12 @@ def werkproces_scores(df: pd.DataFrame, studentnummer: str) -> pd.DataFrame:
     """
     student = get_student(df, studentnummer)
     opleiding = str(student.get("opleiding", ""))
+    crebo = str(student.get("crebo", ""))
     wp_cols = get_werkproces_columns(df)
     records = [
         {
             "werkproces": col,
-            "label": _oer_label(opleiding, col),
+            "label": _oer_label(opleiding, col, crebo),
             "score": student[col],
         }
         for col in wp_cols
@@ -188,12 +193,13 @@ def zwakste_kerntaak(df: pd.DataFrame, studentnummer: str) -> tuple[str, float] 
     """
     student = get_student(df, studentnummer)
     opleiding = str(student.get("opleiding", ""))
+    crebo = str(student.get("crebo", ""))
     kt_cols = get_kerntaak_columns(df)
     scores = {col: float(student[col]) for col in kt_cols if pd.notna(student.get(col))}
     if not scores:
         return None
     zwakste = min(scores, key=lambda k: scores[k])
-    return _oer_label(opleiding, zwakste), scores[zwakste]
+    return _oer_label(opleiding, zwakste, crebo), scores[zwakste]
 
 
 def zwakste_werkproces(df: pd.DataFrame, studentnummer: str) -> tuple[str, float] | None:
@@ -204,12 +210,13 @@ def zwakste_werkproces(df: pd.DataFrame, studentnummer: str) -> tuple[str, float
     """
     student = get_student(df, studentnummer)
     opleiding = str(student.get("opleiding", ""))
+    crebo = str(student.get("crebo", ""))
     wp_cols = get_werkproces_columns(df)
     scores = {col: float(student[col]) for col in wp_cols if pd.notna(student.get(col))}
     if not scores:
         return None
     zwakste = min(scores, key=lambda k: scores[k])
-    return _oer_label(opleiding, zwakste), scores[zwakste]
+    return _oer_label(opleiding, zwakste, crebo), scores[zwakste]
 
 
 def cohort_positie(df: pd.DataFrame, studentnummer: str) -> dict:
@@ -242,6 +249,7 @@ def peer_profielen(df: pd.DataFrame) -> pd.DataFrame:
     records = []
     for _, row in df.iterrows():
         opleiding = str(row.get("opleiding", ""))
+        crebo = str(row.get("crebo", ""))
         scores = {col: float(row[col]) for col in kt_cols if pd.notna(row.get(col))}
         if not scores:
             continue
@@ -250,9 +258,9 @@ def peer_profielen(df: pd.DataFrame) -> pd.DataFrame:
         records.append(
             {
                 "naam": row["naam"],
-                "sterkste_kt": _oer_label(opleiding, sterkste),
+                "sterkste_kt": _oer_label(opleiding, sterkste, crebo),
                 "sterkste_score": scores[sterkste],
-                "zwakste_kt": _oer_label(opleiding, zwakste),
+                "zwakste_kt": _oer_label(opleiding, zwakste, crebo),
                 "zwakste_score": scores[zwakste],
             }
         )

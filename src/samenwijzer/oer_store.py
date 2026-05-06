@@ -192,6 +192,87 @@ def get_kerntaken_voor_oer(db_pad: Path, oer_id: int) -> list[sqlite3.Row]:
         ).fetchall()
 
 
+def pas_kerntaken_fallback_toe(db_pad: Path, fallback: dict) -> dict[str, int]:
+    """Voeg gecureerde kerntaken toe aan crebos die in de DB geen kerntaken hebben.
+
+    Voor elk crebo in `fallback` wordt gecontroleerd of er al kerntaken in de DB
+    staan voor dat crebo (via een willekeurig oer_document). Als die ontbreken
+    (typisch: MJP-/lesplandocumenten zonder expliciete kwalificatiestructuur),
+    worden de fallback-kerntaken toegevoegd aan een willekeurig OER-document
+    voor dat crebo. Idempotent: een tweede aanroep voegt niets toe.
+
+    Args:
+        db_pad: Pad naar oeren.db.
+        fallback: Dict {crebo: {"kerntaken": [{"code", "naam", "type", "parent_code"}, ...]}}.
+                  Sleutels die met '_' beginnen worden genegeerd (metadata zoals "_doel").
+
+    Returns:
+        Dict {"toegepast": aantal_crebos, "overgeslagen": aantal_crebos_zonder_doc}.
+    """
+    init_db(db_pad)
+    telling = {"toegepast": 0, "overgeslagen": 0}
+
+    with _verbinding(db_pad) as conn:
+        for crebo, data in fallback.items():
+            if crebo.startswith("_"):
+                continue
+            heeft_kt = conn.execute(
+                "SELECT 1 FROM kerntaken k JOIN oer_documenten o ON k.oer_id=o.id "
+                "WHERE o.crebo = ? LIMIT 1",
+                (crebo,),
+            ).fetchone()
+            if heeft_kt:
+                continue
+            doc = conn.execute(
+                "SELECT id FROM oer_documenten WHERE crebo = ? LIMIT 1",
+                (crebo,),
+            ).fetchone()
+            if doc is None:
+                telling["overgeslagen"] += 1
+                continue
+            for volgorde, kt in enumerate(data.get("kerntaken", [])):
+                conn.execute(
+                    "INSERT INTO kerntaken (oer_id, code, naam, type, parent_code, volgorde) "
+                    "VALUES (?, ?, ?, ?, ?, ?)",
+                    (
+                        doc["id"],
+                        kt["code"],
+                        kt["naam"],
+                        kt["type"],
+                        kt.get("parent_code"),
+                        volgorde,
+                    ),
+                )
+            telling["toegepast"] += 1
+
+    return telling
+
+
+def get_kerntaken_voor_crebo(db_pad: Path, crebo: str) -> list[sqlite3.Row]:
+    """Geef kerntaken voor een crebo (cross-instelling, cross-leerweg, cross-cohort).
+
+    Selecteert het OER-document met de meeste kerntaken voor deze crebo over alle
+    instellingen heen. Robuust tegen opleidings-naam-mismatches (typo's, "Crebo XXXXX"
+    fallback-namen, varianten tussen instellingen) — kerntaken horen bij de
+    kwalificatie (crebo), niet bij de instelling-specifieke documentnaam.
+    """
+    init_db(db_pad)
+    with _verbinding(db_pad) as conn:
+        oer = conn.execute(
+            "SELECT o.id AS id, COUNT(k.id) AS aantal "
+            "FROM oer_documenten o LEFT JOIN kerntaken k ON k.oer_id = o.id "
+            "WHERE o.crebo = ? "
+            "GROUP BY o.id ORDER BY aantal DESC LIMIT 1",
+            (crebo,),
+        ).fetchone()
+        if oer is None or oer["aantal"] == 0:
+            return []
+        return conn.execute(
+            "SELECT * FROM kerntaken WHERE oer_id = ? ORDER BY volgorde",
+            (oer["id"],),
+        ).fetchall()
+
+
 def get_kerntaken_voor_opleiding(
     db_pad: Path, opleiding: str, niveau: int | None = None
 ) -> list[sqlite3.Row]:

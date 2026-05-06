@@ -114,20 +114,27 @@ def stuur_bericht(
 
     volledige_reactie: list[str] = []
 
-    with client.messages.stream(
-        model=_MODEL,
-        max_tokens=_MAX_TOKENS,
-        system=[
-            {
-                "type": "text",
-                "text": _systeem_prompt(sessie.student, oer_tekst),
-                "cache_control": {"type": "ephemeral"},
-            }
-        ],
-        messages=sessie.geschiedenis,
-    ) as stream:
-        for fragment in stream.text_stream:
-            volledige_reactie.append(fragment)
-            yield fragment
+    try:
+        with client.messages.stream(
+            model=_MODEL,
+            max_tokens=_MAX_TOKENS,
+            system=[
+                {
+                    "type": "text",
+                    "text": _systeem_prompt(sessie.student, oer_tekst),
+                    "cache_control": {"type": "ephemeral"},
+                }
+            ],
+            messages=sessie.geschiedenis,
+        ) as stream:
+            for fragment in stream.text_stream:
+                volledige_reactie.append(fragment)
+                yield fragment
+    except Exception:
+        # Houd de gespreksgeschiedenis consistent: het user-bericht weer verwijderen
+        # voorkomt dat een volgende poging twee user-rollen op rij stuurt (= 400).
+        if sessie.geschiedenis and sessie.geschiedenis[-1].get("role") == "user":
+            sessie.geschiedenis.pop()
+        raise
 
     sessie.voeg_toe("assistant", "".join(volledige_reactie))

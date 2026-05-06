@@ -1,0 +1,17 @@
+{
+  "_doel": "Vangnet voor crebos waarvoor geen kerntaken/werkprocessen uit OER-bestanden geëxtraheerd kunnen worden (bv. MJP-/lesplandocumenten zonder expliciete kwalificatiestructuur). build_oer_catalog.py voegt deze toe aan een willekeurig OER-document van het crebo wanneer er anders géén kerntaken in de DB staan voor dat crebo. Codes en namen zijn plausibele invullingen — vervang door het officiële SBB-kwalificatiedossier zodra beschikbaar.",
+  "25736": {
+    "opleiding_label": "Eerste Monteur Elektrotechnische Installaties in de Gebouwde Omgeving",
+    "niveau": 3,
+    "kerntaken": [
+      {"code": "B1-K1", "naam": "Bereidt elektrotechnische installatiewerkzaamheden voor", "type": "kerntaak", "parent_code": null},
+      {"code": "B1-K1-W1", "naam": "Bestudeert opdracht, tekeningen en specificaties", "type": "werkproces", "parent_code": "B1-K1"},
+      {"code": "B1-K1-W2", "naam": "Plant werkzaamheden en stemt af met collega's", "type": "werkproces", "parent_code": "B1-K1"},
+      {"code": "B1-K1-W3", "naam": "Verzamelt materiaal en gereedschap", "type": "werkproces", "parent_code": "B1-K1"},
+      {"code": "B1-K2", "naam": "Realiseert elektrotechnische installaties", "type": "kerntaak", "parent_code": null},
+      {"code": "B1-K2-W1", "naam": "Monteert componenten en bevestigingen", "type": "werkproces", "parent_code": "B1-K2"},
+      {"code": "B1-K2-W2", "naam": "Trekt, legt en sluit kabels aan", "type": "werkproces", "parent_code": "B1-K2"},
+      {"code": "B1-K2-W3", "naam": "Test installatie en levert op aan klant", "type": "werkproces", "parent_code": "B1-K2"}
+    ]
+  }
+}

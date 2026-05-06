@@ -198,3 +198,98 @@ def test_get_kerntaken_voor_opleiding_zonder_niveau_pakt_eerste_oer(db_path: Pat
     kts = oer_store.get_kerntaken_voor_opleiding(db_path, "Kok")  # niveau=None
     assert len(kts) == 1
     assert kts[0]["naam"] == "Voorbereiden"
+
+
+def test_get_kerntaken_voor_crebo_overstijgt_naam_mismatch(db_path: Path):
+    """Cross-instelling lookup vindt kerntaken ondanks naam-typo's tussen instellingen."""
+    oer_store.voeg_instelling_toe(db_path, "rijn_ijssel", "Rijn IJssel")
+    oer_store.voeg_instelling_toe(db_path, "utrecht", "Utrecht")
+    rijn = oer_store.get_instelling_by_naam(db_path, "rijn_ijssel")
+    utr = oer_store.get_instelling_by_naam(db_path, "utrecht")
+    # Twee docs voor crebo 25798 — verschillende namen, één heeft kerntaken
+    oer_store.voeg_oer_document_toe(
+        db_path,
+        rijn["id"],
+        "Allround Podium Evenemententechnicus",
+        "25798",
+        "2025",
+        "BOL",
+        4,
+        "rijn.md",
+    )
+    utr_id = oer_store.voeg_oer_document_toe(
+        db_path,
+        utr["id"],
+        "Crebo 25798",
+        "25798",
+        "2025",
+        "BOL",
+        4,
+        "utr.md",
+    )
+    oer_store.voeg_kerntaak_toe(db_path, utr_id, "B1-K1", "Voorbereiden", "kerntaak", None, 0)
+
+    kts = oer_store.get_kerntaken_voor_crebo(db_path, "25798")
+    assert len(kts) == 1
+    assert kts[0]["naam"] == "Voorbereiden"
+
+
+def test_get_kerntaken_voor_onbekend_crebo_geeft_lijst_leeg(db_path: Path):
+    assert oer_store.get_kerntaken_voor_crebo(db_path, "99999") == []
+
+
+def test_pas_kerntaken_fallback_toe_vult_lege_crebo_aan(db_path: Path):
+    """Fallback voegt kerntaken toe aan een crebo dat in de DB nog 0 kerntaken heeft."""
+    oer_store.voeg_instelling_toe(db_path, "davinci", "Da Vinci")
+    inst = oer_store.get_instelling_by_naam(db_path, "davinci")
+    oer_store.voeg_oer_document_toe(
+        db_path, inst["id"], "Eerste Monteur", "25736", "2025", "BOL", 3, "doc.md"
+    )
+
+    fallback = {
+        "_doel": "test",
+        "25736": {
+            "kerntaken": [
+                {"code": "B1-K1", "naam": "Bereidt voor", "type": "kerntaak", "parent_code": None},
+                {
+                    "code": "B1-K1-W1",
+                    "naam": "Bestudeert opdracht",
+                    "type": "werkproces",
+                    "parent_code": "B1-K1",
+                },
+            ],
+        },
+    }
+    telling = oer_store.pas_kerntaken_fallback_toe(db_path, fallback)
+    assert telling == {"toegepast": 1, "overgeslagen": 0}
+
+    kts = oer_store.get_kerntaken_voor_crebo(db_path, "25736")
+    assert [k["naam"] for k in kts] == ["Bereidt voor", "Bestudeert opdracht"]
+
+
+def test_pas_kerntaken_fallback_toe_is_idempotent(db_path: Path):
+    """Tweede aanroep voegt niets toe als crebo al kerntaken heeft."""
+    oer_store.voeg_instelling_toe(db_path, "davinci", "Da Vinci")
+    inst = oer_store.get_instelling_by_naam(db_path, "davinci")
+    oer_store.voeg_oer_document_toe(
+        db_path, inst["id"], "Eerste Monteur", "25736", "2025", "BOL", 3, "doc.md"
+    )
+    fallback = {
+        "25736": {
+            "kerntaken": [{"code": "B1-K1", "naam": "X", "type": "kerntaak", "parent_code": None}],
+        },
+    }
+    oer_store.pas_kerntaken_fallback_toe(db_path, fallback)
+    telling = oer_store.pas_kerntaken_fallback_toe(db_path, fallback)
+    assert telling == {"toegepast": 0, "overgeslagen": 0}
+
+
+def test_pas_kerntaken_fallback_toe_slaat_crebo_zonder_doc_over(db_path: Path):
+    """Crebo waarvoor geen OER-document bestaat: telt als 'overgeslagen', geen crash."""
+    fallback = {
+        "99999": {
+            "kerntaken": [{"code": "X", "naam": "Y", "type": "kerntaak", "parent_code": None}],
+        },
+    }
+    telling = oer_store.pas_kerntaken_fallback_toe(db_path, fallback)
+    assert telling == {"toegepast": 0, "overgeslagen": 1}

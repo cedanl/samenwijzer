@@ -10,19 +10,29 @@ APITimeoutError = anthropic.APITimeoutError
 def vriendelijke_fout(e: Exception) -> str:
     """Vertaal een Anthropic-API-fout naar een leesbare boodschap voor de UI.
 
-    Stack-trace details horen via `log.exception(...)` in de logs — niet op het scherm.
+    Specifieke subklassen eerst (RateLimitError etc. zijn ook APIStatusError);
+    voor onbekende fouten wordt de klasnaam meegegeven zodat we kunnen herleiden
+    welk geval we nog niet vangen. Stack-trace details horen via `log.exception(...)`
+    in de logs — niet op het scherm.
     """
     if isinstance(e, anthropic.APITimeoutError):
         return "De AI-service reageert niet. Probeer het over een moment opnieuw."
-    if isinstance(e, anthropic.APIStatusError) and getattr(e, "status_code", None) == 529:
-        return "De AI is even overbelast. Wacht een paar seconden en probeer opnieuw."
     if isinstance(e, anthropic.RateLimitError):
         return "Te veel verzoeken aan de AI-service. Wacht even en probeer opnieuw."
     if isinstance(e, anthropic.AuthenticationError):
         return "API-sleutel ontbreekt of klopt niet. Controleer je .env."
     if isinstance(e, anthropic.APIConnectionError):
         return "Geen verbinding met de AI-service. Controleer je internetverbinding."
-    return "Er ging iets mis met de AI-service. Probeer het opnieuw."
+    if isinstance(e, anthropic.BadRequestError):
+        return "Het verzoek aan de AI is ongeldig. Reset het gesprek en probeer opnieuw."
+    if isinstance(e, anthropic.APIStatusError):
+        code = getattr(e, "status_code", None)
+        if code == 529:
+            return "De AI is even overbelast. Wacht een paar seconden en probeer opnieuw."
+        if code is not None and 500 <= code < 600:
+            return f"De AI-server heeft een fout (HTTP {code}). Probeer het zo opnieuw."
+        return f"De AI-service gaf een fout (HTTP {code}). Probeer het opnieuw."
+    return f"Er ging iets mis met de AI-service ({type(e).__name__}). Probeer het opnieuw."
 
 
 _default_client: anthropic.Anthropic | None = None
