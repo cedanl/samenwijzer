@@ -246,7 +246,9 @@ def rebuild(db_path: Path) -> None:
     print(f"{'Instelling':<22} {'OERs':>5} {'Studenten':>10} {'Mentoren':>9}")
     print("-" * 52)
     for display_naam, n_st, n_m, _ in samenvatting:
-        inst_id = next(i for i in instellingen if oers_per_inst[i][0]["display_naam"] == display_naam)
+        inst_id = next(
+            i for i in instellingen if oers_per_inst[i][0]["display_naam"] == display_naam
+        )
         n_oers = len(oers_per_inst[inst_id])
         print(f"{display_naam:<22} {n_oers:>5} {n_st:>10} {n_m:>9}")
     print("-" * 52)
