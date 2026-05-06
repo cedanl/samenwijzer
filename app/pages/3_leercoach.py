@@ -104,8 +104,8 @@ tab_tutor, tab_les, tab_toets, tab_werk, tab_rol = st.tabs(
 # ─────────────────────────────────────────────────────────────────────────────
 with tab_tutor:
     st.caption(
-        "De tutor helpt je zelf antwoorden te vinden — hij geeft geen kant-en-klare "
-        "oplossingen, maar stelt je de juiste vragen."
+        "Stel je vraag over de OER, kerntaken, werkprocessen of leerstof — "
+        "de tutor antwoordt direct met je eigen OER als bron."
     )
 
     col_kt, col_btn = st.columns([3, 1])
