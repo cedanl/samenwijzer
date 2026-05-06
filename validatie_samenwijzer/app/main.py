@@ -75,6 +75,15 @@ elif st.session_state.get("rol") == "mentor":
 st.title("📚 OER-assistent")
 st.caption("Samenwijzer · CEDA 2026")
 
+if st.button(
+    "📚 Stel direct een OER-vraag zonder in te loggen →",
+    type="primary",
+    use_container_width=True,
+):
+    st.switch_page("pages/0_oer_vraag.py")
+
+st.divider()
+
 tab_student, tab_mentor = st.tabs(["Student", "Mentor"])
 
 with tab_student:
@@ -100,8 +109,5 @@ with tab_mentor:
                 st.switch_page("pages/4_mijn_studenten.py")
             else:
                 st.error("Onbekende naam of onjuist wachtwoord.")
-
-st.divider()
-st.page_link("pages/0_oer_vraag.py", label="📚 Stel direct een OER-vraag zonder in te loggen →")
 
 render_footer()
