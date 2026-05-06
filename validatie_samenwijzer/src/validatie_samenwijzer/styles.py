@@ -353,6 +353,15 @@ header[data-testid="stHeader"] {{ display: none !important; }}
     line-height: 1.5;
 }}
 
+.oer-intro {{
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: rgba(26,20,16,0.78);
+    max-width: 60ch;
+}}
+
 .oer-citaat {{
     background: {PAPIER_LICHT};
     border-left: 3px solid {BORDEAUX};
@@ -492,7 +501,8 @@ header[data-testid="stHeader"] {{ display: none !important; }}
 }}
 
 .footer::before, .footer::after {{
-    content: ' ⸻ ';
+    content: ' ❧ ';
+    font-family: 'Newsreader', Georgia, serif;
     color: {OCHRE};
     letter-spacing: 0;
 }}

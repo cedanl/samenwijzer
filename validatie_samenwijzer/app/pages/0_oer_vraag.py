@@ -113,7 +113,7 @@ if st.session_state.pub_oer_labels:
             st.rerun()
 else:
     st.markdown(
-        '<div class="oer-meta" style="margin-bottom:1.2rem">'
+        '<div class="oer-intro" style="margin-bottom:1.2rem">'
         "Stel je vraag. Vermeld instelling, opleiding, leerweg (BOL/BBL) en cohortjaar — "
         "of laat de assistent ernaar vragen. Je kunt meerdere OERs tegelijk bevragen."
         "</div>",
