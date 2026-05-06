@@ -8,6 +8,7 @@ Gebruik:
 from __future__ import annotations
 
 import argparse
+import json
 import logging
 import sys
 from pathlib import Path
@@ -22,6 +23,8 @@ from samenwijzer.oer_parsing import (  # noqa: E402
     extraheer_opleidingsnaam,
     parseer_bestandsnaam,
 )
+
+_FALLBACK_PAD = Path(__file__).parent / "oer_kerntaken_fallback.json"
 
 log = logging.getLogger(__name__)
 
@@ -130,6 +133,15 @@ def main() -> int:
         telling["kerntaken"],
         telling["overgeslagen"],
     )
+
+    if _FALLBACK_PAD.exists():
+        fallback = json.loads(_FALLBACK_PAD.read_text(encoding="utf-8"))
+        fb = oer_store.pas_kerntaken_fallback_toe(db_pad, fallback)
+        log.info(
+            "Fallback toegepast — %d crebos aangevuld, %d zonder OER-doc overgeslagen",
+            fb["toegepast"],
+            fb["overgeslagen"],
+        )
     return 0
 
 

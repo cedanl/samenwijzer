@@ -141,21 +141,28 @@ def stuur_rollenspel_bericht(
     volledige_reactie: list[str] = []
 
     client = _client(api_key)
-    with client.messages.stream(
-        model=_MODEL,
-        max_tokens=_MAX_TOKENS,
-        system=[
-            {
-                "type": "text",
-                "text": systeem,
-                "cache_control": {"type": "ephemeral"},
-            }
-        ],
-        messages=sessie.geschiedenis,
-    ) as stream:
-        for fragment in stream.text_stream:
-            volledige_reactie.append(fragment)
-            yield fragment
+    try:
+        with client.messages.stream(
+            model=_MODEL,
+            max_tokens=_MAX_TOKENS,
+            system=[
+                {
+                    "type": "text",
+                    "text": systeem,
+                    "cache_control": {"type": "ephemeral"},
+                }
+            ],
+            messages=sessie.geschiedenis,
+        ) as stream:
+            for fragment in stream.text_stream:
+                volledige_reactie.append(fragment)
+                yield fragment
+    except Exception:
+        # Houd de gespreksgeschiedenis consistent: het user-bericht weer verwijderen
+        # voorkomt dat een volgende poging twee user-rollen op rij stuurt (= 400).
+        if sessie.geschiedenis and sessie.geschiedenis[-1].get("role") == "user":
+            sessie.geschiedenis.pop()
+        raise
 
     sessie.geschiedenis.append({"role": "assistant", "content": "".join(volledige_reactie)})
 

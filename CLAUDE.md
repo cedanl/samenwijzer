@@ -192,15 +192,22 @@ DB-lookup in `oeren.db`.
 - `kt_1`, `kt_2` — kerntaken (scores 0–100, gecorreleerd met voortgang + per-student ruis)
 - `wp_1_1` t/m `wp_2_3` — werkprocessen
 
-`analyze.py` gebruikt `_oer_label(opleiding, kolom)` om overal echte OER-namen te tonen.
-Studenten zonder kt_3/wp_3_x in hun opleiding krijgen NaN;
-alle analyse- en labelfuncties filteren NaN weg.
+`analyze.py` gebruikt `_oer_label(opleiding, kolom, crebo)` om overal echte OER-namen
+te tonen. Lookup-prioriteit: crebo (cross-instelling, robuust tegen naam-typo's)
+→ opleiding-naam (legacy). Studenten zonder kt_3/wp_3_x in hun opleiding krijgen
+NaN; alle analyse- en labelfuncties filteren NaN weg.
 
 **OER-catalog (`data/02-prepared/oeren.db`)** — SQLite met `instellingen`,
 `oer_documenten` en `kerntaken`. Gevuld eenmalig door
 `scripts/build_oer_catalog.py` op basis van `oeren/`. Wordt door
-`prepare._voeg_kt_wp_scores_toe()` en `analyze._oer_label()` gequeried om
-kerntaak-namen op te halen. `oer_kerntaken.json` is uitgefaseerd.
+`prepare._voeg_kt_wp_scores_toe()` (lookup op crebo) en `analyze._oer_label()`
+gequeried om kerntaak-namen op te halen. `oer_kerntaken.json` is uitgefaseerd.
+
+**Fallback voor onparseerbare OERs** — `scripts/oer_kerntaken_fallback.json` bevat
+gecureerde kerntaken voor crebos waarvoor regex-extractie niets oplevert
+(typisch MJP-/lesplandocumenten zonder kwalificatiestructuur, bv. crebo 25736).
+`build_oer_catalog.py` voegt deze automatisch toe aan een willekeurig OER-document
+van het crebo, zodat alle 1000 studenten kerntaken/werkprocessen krijgen.
 
 **Instellingen-distributie**: de synthetische dataset bevat 1000 studenten verdeeld
 over 4 instellingen (Da Vinci, Rijn IJssel, Talland, Utrecht), elk met 250 studenten

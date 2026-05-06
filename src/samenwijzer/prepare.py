@@ -192,16 +192,17 @@ def load_synthetisch_csv(path: Path = _DEFAULT_PAD) -> pd.DataFrame:
 def _voeg_kt_wp_scores_toe(df: pd.DataFrame) -> pd.DataFrame:
     """Voeg synthetische kt/wp-scores toe per student via oeren.db lookup.
 
-    Voor elke unieke (opleiding, niveau) wordt één keer de kerntakenlijst opgehaald;
+    Voor elke unieke crebo wordt één keer de kerntakenlijst opgehaald (cross-
+    instelling — een crebo identificeert dezelfde kwalificatie ongeacht school);
     daarna krijgt elke student gecorreleerd-met-voortgang scores op zijn kerntaken.
 
     Scores zijn reproduceerbaar (RNG gezaaid op studentnummer) en synthetisch:
     we mappen de eerste 2 kerntaken op kt_1/kt_2 en de eerste 6 werkprocessen op
-    wp_1_1…wp_2_3. Heeft een opleiding minder kerntaken/werkprocessen dan deze
+    wp_1_1…wp_2_3. Heeft een crebo minder kerntaken/werkprocessen dan deze
     standaardposities, dan krijgt de student NaN op de ontbrekende kolommen.
 
     Args:
-        df: DataFrame met tenminste 'studentnummer', 'opleiding', 'niveau' en 'voortgang'.
+        df: DataFrame met tenminste 'studentnummer', 'crebo' en 'voortgang'.
 
     Returns:
         DataFrame uitgebreid met kt_1, kt_2, wp_1_1 … wp_2_3 kolommen (0–100 of NaN).
@@ -213,19 +214,17 @@ def _voeg_kt_wp_scores_toe(df: pd.DataFrame) -> pd.DataFrame:
     for col in kt_cols + wp_cols:
         df[col] = float("nan")
 
-    # Cache: (opleiding, niveau) → aantal beschikbare kerntaken/werkprocessen
-    cache: dict[tuple[str, int], tuple[int, int]] = {}
+    # Cache: crebo → aantal beschikbare kerntaken/werkprocessen
+    cache: dict[str, tuple[int, int]] = {}
 
     for idx, row in df.iterrows():
-        opl = str(row["opleiding"])
-        niv = int(row["niveau"])
-        sleutel = (opl, niv)
-        if sleutel not in cache:
-            kts = oer_store.get_kerntaken_voor_opleiding(_DB_PAD_VOOR_KT, opl, niveau=niv)
+        crebo = str(row["crebo"])
+        if crebo not in cache:
+            kts = oer_store.get_kerntaken_voor_crebo(_DB_PAD_VOOR_KT, crebo)
             n_kt = sum(1 for k in kts if k["type"] == "kerntaak")
             n_wp = sum(1 for k in kts if k["type"] == "werkproces")
-            cache[sleutel] = (n_kt, n_wp)
-        n_kt, n_wp = cache[sleutel]
+            cache[crebo] = (n_kt, n_wp)
+        n_kt, n_wp = cache[crebo]
 
         snr = str(row["studentnummer"])
         voortgang = float(row["voortgang"])

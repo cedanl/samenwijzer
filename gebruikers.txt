@@ -1,0 +1,38 @@
+Wachtwoord voor iedereen: Welkom123
+
+STUDENTEN (10)
+==============
+Verspreid over 4 instellingen en alle voortgangscategorieën (risico / midden / hoog).
+
+Nr       Naam                LW    Opleiding                            Crebo  Instelling     Voortgang
+-------------------------------------------------------------------------------------------------------
+100151   Eva Dekker          BOL   Onderwijsassistent                   25698  Da Vinci        17%  ⚠
+100185   Noor Brouwer        BOL   Tandartsassistent                    25699  Da Vinci        54%
+100110   Niels Vos           BOL   Onderwijsassistent                   25698  Da Vinci       100%
+100468   Aisha de Wit        BOL   Software Developer                   25998  Rijn IJssel     17%  ⚠
+100436   Lieke Dekker        BOL   Medewerker Evenementenorganisatie    25749  Rijn IJssel     67%
+100252   Sven Vos            BOL   Allround Podium Evenemententechnicus 25798  Rijn IJssel    100%
+100678   Iris Vos            BOL   Sport- en Bewegingsleider            25908  Talland         17%  ⚠
+100726   Sophie Jansen       BOL   Zelfstandig Werkend Kok              25182  Talland         67%
+100515   Lotte Dijkstra      BOL   Commercieel Medewerker               25134  Talland        100%
+100963   Olaf Bosch          BOL   Software Developer                   23399  Utrecht         26%  ⚠
+
+⚠ = student in risicocategorie (geschikt voor outreach- en welzijnstesten)
+
+
+MENTOREN (10)
+=============
+Verspreid over 4 instellingen, allemaal met groepen van 19–25 studenten.
+
+Naam                         Instelling     Studenten
+-----------------------------------------------------
+D. van Dijk                  Da Vinci          22
+C. Hendriks                  Da Vinci          21
+F. Dijkstra                  Da Vinci          19
+H. Bosch                     Rijn IJssel       24
+I. Mulder                    Rijn IJssel       23
+L. Smits                     Talland           25
+O. Hendriks                  Talland           22
+T. de Groot                  Utrecht           24
+S. Bakker                    Utrecht           24
+S. de Boer                   Utrecht           24
