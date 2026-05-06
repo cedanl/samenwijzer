@@ -63,6 +63,10 @@ uv run python scripts/build_oer_catalog.py
 # Synthetische dataset regenereren (deterministisch via seed=42)
 # Vereist: oeren.db moet eerst gevuld zijn — draai build_oer_catalog.py
 uv run python scripts/generate_synthetisch_data.py
+
+# Synthetische welzijn-data regenereren (wekelijkse checks, seed=42)
+# Vereist: synthetisch/studenten.csv aanwezig
+uv run python scripts/generate_synthetisch_welzijn.py
 ```
 
 ## Omgeving

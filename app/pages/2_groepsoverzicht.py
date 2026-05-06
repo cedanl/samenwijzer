@@ -17,7 +17,7 @@ from samenwijzer.wellbeing import (
 )
 
 _ROOT = Path(__file__).parent.parent.parent
-_DEMO_WELZIJN = _ROOT / "data" / "01-raw" / "demo" / "welzijn.csv"
+_WELZIJN_CSV = _ROOT / "data" / "01-raw" / "synthetisch" / "welzijn.csv"
 _NOTITIES_PAD = _ROOT / "data" / "02-prepared" / "notities.csv"
 
 st.set_page_config(page_title="Groepsoverzicht — Samenwijzer", page_icon="👥", layout="wide")
@@ -208,7 +208,7 @@ with tab_voortgang:
 
 # ── Tab: Signaleringen ────────────────────────────────────────────────────────
 with tab_signaleringen:
-    df_welzijn = load_welzijn_csv(_DEMO_WELZIJN)
+    df_welzijn = load_welzijn_csv(_WELZIJN_CSV)
     df_signalen = signaleringen(gefilterd, df_welzijn)
     df_signalen = filter_signaleringen_voor_mentor(df_signalen, mentor_naam)
 
