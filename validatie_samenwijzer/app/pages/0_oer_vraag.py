@@ -1,5 +1,6 @@
 """Publieke OER-vraag — conversationeel, zonder inlogvereiste."""
 
+import base64
 import html
 import logging
 from pathlib import Path
@@ -26,6 +27,7 @@ from validatie_samenwijzer.chat import (  # noqa: E402
     laad_oer_tekst,
 )
 from validatie_samenwijzer.db import get_alle_oers_met_instelling  # noqa: E402
+from validatie_samenwijzer.ingest import extraheer_tekst_html  # noqa: E402
 from validatie_samenwijzer.styles import CSS, render_footer  # noqa: E402
 
 st.markdown(CSS, unsafe_allow_html=True)
@@ -39,6 +41,7 @@ _DEFAULTS: dict = {
     "pub_chat_history": [],
     "pub_oer_systeem": None,
     "pub_oer_labels": [],
+    "pub_oer_paden": [],
     "pub_kandidaten": [],
     "pub_wachtende_vraag": None,
 }
@@ -50,6 +53,35 @@ for _sleutel, _waarde in _DEFAULTS.items():
 def _reset() -> None:
     for sleutel, waarde in _DEFAULTS.items():
         st.session_state[sleutel] = waarde if not isinstance(waarde, list) else []
+
+
+def _render_oer_bestand(pad: Path) -> None:
+    """Render een OER-bestand inline (PDF iframe + download, of tekst-fallback)."""
+    if not pad.exists():
+        st.warning(f"OER-bestand niet gevonden op: {pad}")
+        return
+
+    suffix = pad.suffix.lower()
+    if suffix == ".pdf":
+        pdf_bytes = pad.read_bytes()
+        st.download_button(
+            label="⬇️ Download OER als PDF",
+            data=pdf_bytes,
+            file_name=pad.name,
+            mime="application/pdf",
+        )
+        b64 = base64.b64encode(pdf_bytes).decode()
+        st.markdown(
+            f'<iframe src="data:application/pdf;base64,{b64}" '
+            f'width="100%" height="800px"></iframe>',
+            unsafe_allow_html=True,
+        )
+    elif suffix in {".html", ".htm"}:
+        st.text_area("OER-inhoud", extraheer_tekst_html(pad), height=800)
+    elif suffix == ".md":
+        st.markdown(pad.read_text(encoding="utf-8"))
+    else:
+        st.warning(f"Bestandstype '{suffix}' wordt niet ondersteund.")
 
 
 # ── Header ─────────────────────────────────────────────────────────────────────
@@ -77,6 +109,23 @@ else:
         "of laat de assistent ernaar vragen. Je kunt meerdere OERs tegelijk bevragen.</p>",
         unsafe_allow_html=True,
     )
+
+# ── PDF-bekijkknoppen per geladen OER ──────────────────────────────────────────
+if st.session_state.pub_oer_paden:
+    knop_cols = st.columns(len(st.session_state.pub_oer_paden))
+    for i, col in enumerate(knop_cols):
+        with col:
+            if st.button(f"📄 Bekijk OER {i + 1}", key=f"toon_oer_{i}",
+                         use_container_width=True):
+                st.session_state[f"pub_toon_oer_{i}"] = (
+                    not st.session_state.get(f"pub_toon_oer_{i}", False)
+                )
+    for i, pad in enumerate(st.session_state.pub_oer_paden):
+        if st.session_state.get(f"pub_toon_oer_{i}"):
+            with st.expander(
+                f"📄 {st.session_state.pub_oer_labels[i]}", expanded=True
+            ):
+                _render_oer_bestand(pad)
 
 # ── Chatgeschiedenis ───────────────────────────────────────────────────────────
 for bericht in st.session_state.pub_chat_history:
@@ -109,9 +158,11 @@ if st.session_state.pub_kandidaten:
     if st.button("✅ Bevestig keuze", type="primary", disabled=not geselecteerd):
         oer_items = []
         labels = []
+        paden = []
         for lbl in geselecteerd:
             k = opties[lbl]
-            tekst = laad_oer_tekst(Path(k["bestandspad"]))
+            pad = Path(k["bestandspad"])
+            tekst = laad_oer_tekst(pad)
             if tekst:
                 oer_items.append(
                     {
@@ -123,12 +174,14 @@ if st.session_state.pub_kandidaten:
                     }
                 )
                 labels.append(_label(k))
+                paden.append(pad)
 
         if not oer_items:
             st.error("Geen van de geselecteerde OER-bestanden kon worden geladen.")
         else:
             st.session_state.pub_oer_systeem = bouw_gecombineerd_systeem(oer_items)
             st.session_state.pub_oer_labels = labels
+            st.session_state.pub_oer_paden = paden
             st.session_state.pub_kandidaten = []
 
             if st.session_state.pub_wachtende_vraag:
@@ -218,7 +271,8 @@ kandidaten = identificeer_oer_kandidaten(list(alle_oers), gebruiker_tekst, min_s
 
 if len(kandidaten) == 1:
     k = kandidaten[0]
-    tekst = laad_oer_tekst(Path(k["bestandspad"]))
+    pad = Path(k["bestandspad"])
+    tekst = laad_oer_tekst(pad)
     if tekst:
         st.session_state.pub_oer_systeem = bouw_gecombineerd_systeem(
             [
@@ -234,6 +288,7 @@ if len(kandidaten) == 1:
         st.session_state.pub_oer_labels = [
             f"{k['display_naam']} · {k['opleiding'][:40]} · {k['leerweg']} {k['cohort']}"
         ]
+        st.session_state.pub_oer_paden = [pad]
         berichten = bouw_berichten(st.session_state.pub_chat_history, vraag)
         antwoord = _stream_antwoord(st.session_state.pub_oer_systeem, berichten)
     else:
