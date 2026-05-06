@@ -36,18 +36,14 @@ def test_genereer_rijen_reproduceerbaar():
 
 
 def test_genereer_rijen_geeft_alleen_geldige_antwoorden():
-    studenten = [
-        {"studentnummer": str(100000 + i), "voortgang": 0.5} for i in range(50)
-    ]
+    studenten = [{"studentnummer": str(100000 + i), "voortgang": 0.5} for i in range(50)]
     rijen = genereer_rijen(studenten, seed=42, aantal_weken=10)
     assert all(r["antwoord"] in (1, 2, 3) for r in rijen)
 
 
 def test_genereer_rijen_dekt_meeste_studenten_bij_lange_periode():
     """Met 10 weken en 45% deelnamekans verwachten we dekking voor bijna iedereen."""
-    studenten = [
-        {"studentnummer": str(100000 + i), "voortgang": 0.6} for i in range(200)
-    ]
+    studenten = [{"studentnummer": str(100000 + i), "voortgang": 0.6} for i in range(200)]
     rijen = genereer_rijen(studenten, seed=42, aantal_weken=10, kans_deelname=0.45)
     unieke = {r["studentnummer"] for r in rijen}
     assert len(unieke) >= 195  # ≤5 studenten uit 200 mogen geheel ontbreken
@@ -56,7 +52,10 @@ def test_genereer_rijen_dekt_meeste_studenten_bij_lange_periode():
 def test_genereer_rijen_datums_oplopend_per_student():
     studenten = [{"studentnummer": "100001", "voortgang": 0.5}]
     rijen = genereer_rijen(
-        studenten, seed=1, aantal_weken=10, kans_deelname=1.0,
+        studenten,
+        seed=1,
+        aantal_weken=10,
+        kans_deelname=1.0,
         laatste_check=date(2026, 5, 4),
     )
     datums = [r["datum"] for r in rijen]

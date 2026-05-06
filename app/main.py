@@ -19,9 +19,7 @@ from samenwijzer.whatsapp_store import heeft_actieve_registratie, registreer_num
 
 load_dotenv()
 
-_STUDENTEN_CSV = (
-    Path(__file__).parent.parent / "data" / "01-raw" / "synthetisch" / "studenten.csv"
-)
+_STUDENTEN_CSV = Path(__file__).parent.parent / "data" / "01-raw" / "synthetisch" / "studenten.csv"
 
 # SHA-256 van "Welkom123"
 _WACHTWOORD_HASH = hashlib.sha256(b"Welkom123").hexdigest()
