@@ -3,6 +3,8 @@
 from collections.abc import Generator
 from dataclasses import dataclass, field
 
+from anthropic.types import MessageParam
+
 from samenwijzer._ai import _client
 
 _MODEL = "claude-sonnet-4-6"
@@ -79,7 +81,7 @@ class RollenspelSessie:
     opleiding: str
     leerpad: str
     naam: str
-    geschiedenis: list[dict] = field(default_factory=list)
+    geschiedenis: list[MessageParam] = field(default_factory=list)
 
     def tegenpartij(self) -> str:
         """Geef de rol die de AI speelt in dit scenario."""

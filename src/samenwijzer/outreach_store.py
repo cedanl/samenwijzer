@@ -261,7 +261,10 @@ def maak_campagne(campagne: Campagne, db_path: Path = _DB_PATH) -> int:
                 campagne.status,
             ),
         )
-        return int(cur.lastrowid)
+        rowid = cur.lastrowid
+        if rowid is None:
+            raise RuntimeError("INSERT in campagnes leverde geen lastrowid op")
+        return rowid
 
 
 def get_alle_campagnes(db_path: Path = _DB_PATH) -> list[Campagne]:
@@ -313,7 +316,10 @@ def sla_welzijnscheck_op(check: WelzijnsCheck, db_path: Path = _DB_PATH) -> int:
                 check.urgentie,
             ),
         )
-        return int(cur.lastrowid)
+        rowid = cur.lastrowid
+        if rowid is None:
+            raise RuntimeError("INSERT in welzijnschecks leverde geen lastrowid op")
+        return rowid
 
 
 def get_welzijnschecks_student(studentnummer: str, db_path: Path = _DB_PATH) -> list[WelzijnsCheck]:

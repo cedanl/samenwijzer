@@ -137,8 +137,7 @@ with tab_tutor:
         wa_data = laad_whatsapp_gesprek(studentnummer)
         if wa_data:
             for bericht in wa_data.get("gesprek", []):
-                rol_map = {"student": "user", "coach": "assistant"}
-                rol = rol_map.get(bericht.get("rol", ""), "user")
+                rol = "assistant" if bericht.get("rol") == "coach" else "user"
                 nieuwe_sessie.voeg_toe(rol, bericht.get("tekst", ""))
             st.session_state[f"wa_context_geladen_{studentnummer}"] = wa_data["datum"]
 

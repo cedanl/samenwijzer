@@ -17,6 +17,7 @@ from datetime import date
 from pathlib import Path
 from typing import Literal
 
+from anthropic.types import MessageParam, TextBlock
 from twilio.rest import Client as TwilioClient
 
 from samenwijzer._ai import _client as ai_client
@@ -298,7 +299,7 @@ def laad_whatsapp_gesprek(studentnummer: str) -> dict | None:
 
 def _genereer_ai_reactie(context: list[dict]) -> str:
     """Genereer een korte empathische reactie voor WhatsApp (max. 2 zinnen)."""
-    berichten = [
+    berichten: list[MessageParam] = [
         {
             "role": "user" if m["rol"] == "student" else "assistant",
             "content": m["tekst"],
@@ -312,4 +313,4 @@ def _genereer_ai_reactie(context: list[dict]) -> str:
         system=_AI_SYSTEEM,
         messages=berichten,
     )
-    return next(b.text for b in reactie.content if b.type == "text")
+    return next(b.text for b in reactie.content if isinstance(b, TextBlock))

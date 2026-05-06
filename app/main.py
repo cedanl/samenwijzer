@@ -11,7 +11,7 @@ from pathlib import Path
 import streamlit as st
 from dotenv import load_dotenv
 
-from samenwijzer.prepare import load_student_csv
+from samenwijzer.prepare import load_synthetisch_csv
 from samenwijzer.styles import CSS, render_footer, render_nav
 from samenwijzer.transform import transform_student_data
 from samenwijzer.whatsapp import stuur_verificatie
@@ -19,7 +19,9 @@ from samenwijzer.whatsapp_store import heeft_actieve_registratie, registreer_num
 
 load_dotenv()
 
-_STUDENTEN_CSV = Path(__file__).parent.parent / "data" / "01-raw" / "demo" / "studenten.csv"
+_STUDENTEN_CSV = (
+    Path(__file__).parent.parent / "data" / "01-raw" / "synthetisch" / "studenten.csv"
+)
 
 # SHA-256 van "Welkom123"
 _WACHTWOORD_HASH = hashlib.sha256(b"Welkom123").hexdigest()
@@ -30,7 +32,7 @@ st.markdown(CSS, unsafe_allow_html=True)
 
 @st.cache_data
 def _laad_data(path: Path) -> object:
-    df = load_student_csv(path)
+    df = load_synthetisch_csv(path)
     return transform_student_data(df)
 
 

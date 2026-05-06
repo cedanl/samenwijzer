@@ -7,6 +7,9 @@ waar nodig — maar geeft nooit direct het antwoord.
 
 from collections.abc import Generator
 from dataclasses import dataclass, field
+from typing import Literal
+
+from anthropic.types import MessageParam
 
 from samenwijzer._ai import _client
 
@@ -44,9 +47,9 @@ class TutorSessie:
     """Bewaart de gespreksgeschiedenis van één tutorsessie."""
 
     student: StudentContext
-    geschiedenis: list[dict] = field(default_factory=list)
+    geschiedenis: list[MessageParam] = field(default_factory=list)
 
-    def voeg_toe(self, rol: str, inhoud: str) -> None:
+    def voeg_toe(self, rol: Literal["user", "assistant"], inhoud: str) -> None:
         """Voeg een bericht toe aan de geschiedenis."""
         self.geschiedenis.append({"role": rol, "content": inhoud})
 

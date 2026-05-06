@@ -55,8 +55,8 @@ ignore = []
 testpaths = ["tests"]
 addopts = "--cov=src/samenwijzer --cov-report=term-missing"
 
-[tool.ty]
-src = ["src"]
+[tool.ty.src]
+include = ["src"]
 
 [build-system]
 requires = ["hatchling"]

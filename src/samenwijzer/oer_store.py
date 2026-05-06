@@ -106,7 +106,10 @@ def voeg_oer_document_toe(
             "VALUES (?, ?, ?, ?, ?, ?, ?)",
             (instelling_id, opleiding, crebo, cohort, leerweg, niveau, bestandspad),
         )
-        return int(cur.lastrowid)
+        rowid = cur.lastrowid
+        if rowid is None:
+            raise RuntimeError("INSERT in oer_documenten leverde geen lastrowid op")
+        return rowid
 
 
 def get_oer_document(
