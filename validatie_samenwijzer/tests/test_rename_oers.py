@@ -1,15 +1,12 @@
 import sys
 from pathlib import Path
 
-import pytest
-
 sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
 from rename_oers import (
     _extraheer_uit_bestandsnaam,
     _extraheer_uit_tekst,
     _naam_heeft_prefix,
 )
-
 
 # ── _naam_heeft_prefix ────────────────────────────────────────────────────────
 

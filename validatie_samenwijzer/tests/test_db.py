@@ -1,12 +1,27 @@
 import sqlite3
+
 import pytest
-from validatie_samenwijzer.db import init_db, voeg_instelling_toe, get_instelling_by_naam, \
-    voeg_oer_document_toe, get_oer_document, voeg_mentor_toe, get_mentor_by_naam, \
-    voeg_student_toe, get_student_by_studentnummer, get_studenten_by_mentor_id, \
-    voeg_kerntaak_toe, get_kerntaken_by_oer_id, markeer_geindexeerd, \
-    get_oer_ids_by_mentor_id, voeg_student_kerntaak_score_toe, \
-    get_kerntaak_scores_by_student_id, update_oer_bestandspad, \
-    get_alle_oers_met_instelling
+
+from validatie_samenwijzer.db import (
+    get_alle_oers_met_instelling,
+    get_instelling_by_naam,
+    get_kerntaak_scores_by_student_id,
+    get_kerntaken_by_oer_id,
+    get_mentor_by_naam,
+    get_oer_document,
+    get_oer_ids_by_mentor_id,
+    get_student_by_studentnummer,
+    get_studenten_by_mentor_id,
+    init_db,
+    markeer_geindexeerd,
+    update_oer_bestandspad,
+    voeg_instelling_toe,
+    voeg_kerntaak_toe,
+    voeg_mentor_toe,
+    voeg_oer_document_toe,
+    voeg_student_kerntaak_score_toe,
+    voeg_student_toe,
+)
 
 
 @pytest.fixture
@@ -19,7 +34,8 @@ def conn():
 
 
 def test_init_db_maakt_tabellen_aan(conn):
-    tabellen = {r[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchall()}
+    rijen = conn.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchall()
+    tabellen = {r[0] for r in rijen}
     assert {"instellingen", "oer_documenten", "kerntaken", "mentoren", "mentor_oer",
             "studenten", "student_kerntaak_scores"} <= tabellen
 
@@ -80,9 +96,17 @@ def test_update_oer_bestandspad(conn):
 def test_kerntaken_crud(conn):
     voeg_instelling_toe(conn, "rijn", "Rijn IJssel")
     inst = get_instelling_by_naam(conn, "rijn")
-    oer_id = voeg_oer_document_toe(conn, inst["id"], "Verzorgende IG", "25655", "2025", "BOL", "pad.pdf")
-    kt_id = voeg_kerntaak_toe(conn, oer_id=oer_id, code="B1-K1", naam="Verpleegkundige zorg", type="kerntaak", volgorde=1)
-    wp_id = voeg_kerntaak_toe(conn, oer_id=oer_id, code="B1-K1-W1", naam="Zorg plannen", type="werkproces", volgorde=2)
+    oer_id = voeg_oer_document_toe(
+        conn, inst["id"], "Verzorgende IG", "25655", "2025", "BOL", "pad.pdf"
+    )
+    voeg_kerntaak_toe(
+        conn, oer_id=oer_id, code="B1-K1", naam="Verpleegkundige zorg",
+        type="kerntaak", volgorde=1,
+    )
+    voeg_kerntaak_toe(
+        conn, oer_id=oer_id, code="B1-K1-W1", naam="Zorg plannen",
+        type="werkproces", volgorde=2,
+    )
     kt_lijst = get_kerntaken_by_oer_id(conn, oer_id)
     assert len(kt_lijst) == 2
     assert kt_lijst[0]["code"] == "B1-K1"
@@ -91,9 +115,13 @@ def test_kerntaken_crud(conn):
 def test_mentor_en_student_crud(conn):
     voeg_instelling_toe(conn, "rijn", "Rijn IJssel")
     inst = get_instelling_by_naam(conn, "rijn")
-    oer_id = voeg_oer_document_toe(conn, inst["id"], "Verzorgende IG", "25655", "2025", "BOL", "pad.pdf")
+    oer_id = voeg_oer_document_toe(
+        conn, inst["id"], "Verzorgende IG", "25655", "2025", "BOL", "pad.pdf"
+    )
 
-    mentor_id = voeg_mentor_toe(conn, naam="Jansen", wachtwoord_hash="abc123", instelling_id=inst["id"])
+    mentor_id = voeg_mentor_toe(
+        conn, naam="Jansen", wachtwoord_hash="abc123", instelling_id=inst["id"]
+    )
     mentor = get_mentor_by_naam(conn, "Jansen")
     assert mentor["id"] == mentor_id
 

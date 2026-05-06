@@ -1,8 +1,15 @@
 import sqlite3
+
 import pytest
-from validatie_samenwijzer.db import init_db, voeg_instelling_toe, voeg_oer_document_toe, \
-    voeg_mentor_toe, voeg_student_toe
-from validatie_samenwijzer.auth import hash_wachtwoord, login_student, login_mentor
+
+from validatie_samenwijzer.auth import hash_wachtwoord, login_mentor, login_student
+from validatie_samenwijzer.db import (
+    init_db,
+    voeg_instelling_toe,
+    voeg_mentor_toe,
+    voeg_oer_document_toe,
+    voeg_student_toe,
+)
 
 
 @pytest.fixture

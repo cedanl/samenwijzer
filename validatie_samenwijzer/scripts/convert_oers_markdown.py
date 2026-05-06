@@ -26,8 +26,12 @@ def _formatteer_tijd(seconden: float) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Converteer OER-PDFs naar Markdown")
     parser.add_argument("--oeren-pad", default="oeren", help="Pad naar de oeren-map")
-    parser.add_argument("--preview", action="store_true", help="Droge run — geen bestanden schrijven")
-    parser.add_argument("--herconverteer", action="store_true", help="Overschrijf bestaande .md-bestanden")
+    parser.add_argument(
+        "--preview", action="store_true", help="Droge run — geen bestanden schrijven"
+    )
+    parser.add_argument(
+        "--herconverteer", action="store_true", help="Overschrijf bestaande .md-bestanden"
+    )
     args = parser.parse_args()
 
     oeren_pad = Path(args.oeren_pad)
@@ -77,7 +81,7 @@ def main() -> None:
             print(f"OK ({kb} KB, {duur:.1f}s)", flush=True)
             geconverteerd += 1
         except Exception as e:
-            print(f"FOUT", flush=True)
+            print("FOUT", flush=True)
             print(f"       {e}", file=sys.stderr, flush=True)
             mislukt += 1
 
