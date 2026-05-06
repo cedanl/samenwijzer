@@ -84,18 +84,27 @@ def _render_oer_bestand(pad: Path) -> None:
         st.warning(f"Bestandstype '{suffix}' wordt niet ondersteund.")
 
 
-# ── Header ─────────────────────────────────────────────────────────────────────
-st.markdown(
-    "<h1 style='font-family:Fraunces,serif;color:#1C2B3A;margin-bottom:0.2rem'>📚 OER-vraag</h1>",
-    unsafe_allow_html=True,
-)
+# ── Codex-header ───────────────────────────────────────────────────────────────
+hdr_l, hdr_r = st.columns([1, 7])
+with hdr_l:
+    st.markdown('<div class="oer-mark">§</div>', unsafe_allow_html=True)
+with hdr_r:
+    st.markdown(
+        '<div class="oer-overtitel">Onderwijs- en Examenregeling</div>'
+        '<h1 style="margin:0">OER-vraag</h1>'
+        '<div class="oer-ondertitel">een juridisch document, helder uitgelegd</div>',
+        unsafe_allow_html=True,
+    )
+
+st.markdown('<div class="oer-ornament">⁂</div>', unsafe_allow_html=True)
 
 if st.session_state.pub_oer_labels:
-    labels_str = " &nbsp;|&nbsp; ".join(st.session_state.pub_oer_labels)
-    col1, col2 = st.columns([9, 1])
+    labels_str = " · ".join(st.session_state.pub_oer_labels)
+    col1, col2 = st.columns([8, 2])
     with col1:
         st.markdown(
-            f"<p style='color:#2E7D32;font-size:0.9rem;margin-bottom:0.5rem'>✅ {labels_str}</p>",
+            '<div class="oer-overtitel">geraadpleegd</div>'
+            f'<div class="oer-meta">{labels_str}</div>',
             unsafe_allow_html=True,
         )
     with col2:
@@ -104,9 +113,10 @@ if st.session_state.pub_oer_labels:
             st.rerun()
 else:
     st.markdown(
-        "<p style='color:rgba(28,43,58,0.6);font-size:0.9rem;margin-bottom:0.5rem'>"
+        '<div class="oer-meta" style="margin-bottom:1.2rem">'
         "Stel je vraag. Vermeld instelling, opleiding, leerweg (BOL/BBL) en cohortjaar — "
-        "of laat de assistent ernaar vragen. Je kunt meerdere OERs tegelijk bevragen.</p>",
+        "of laat de assistent ernaar vragen. Je kunt meerdere OERs tegelijk bevragen."
+        "</div>",
         unsafe_allow_html=True,
     )
 

@@ -1,48 +1,99 @@
-"""Warm Schrift huisstijl — Fraunces + DM Sans, warm papier, leien navigatie."""
+"""OER Codex — juridisch-editorial typografie voor de OER-assistent.
 
-SLATE = "#1C2B3A"
-AMBER = "#C4813A"
-PAPIER = "#FAFAF5"
+Fraunces (display, drop caps) + Newsreader (body) + IBM Plex Mono (verwijzingen).
+Warm parchment, inkt-zwart, bordeaux juridisch accent, ochre marginalia.
+"""
+
+# ── Codex-palet ────────────────────────────────────────────────────────────────
+INKT = "#1A1410"          # body, koppen, nav-bg
+PAPIER = "#F4EFE6"        # hoofdachtergrond — warm parchment
+PAPIER_LICHT = "#FAF5E9"  # citatiekaders, raised surfaces
+BORDEAUX = "#7A1828"      # juridisch zegelaccent
+OCHRE = "#A88A5C"         # marginalia, ornamenten, hover-tints
+HAARLIJN = "#D9CFB8"      # subtiele scheidingslijnen
+
+# Backwards-compat aliassen — bestaande pagina's gebruiken deze nog
+SLATE = INKT
+AMBER = OCHRE
 GROEN = "#2D7A4F"
 ORANJE = "#D97706"
-ROOD = "#B91C1C"
-GEEL_BRON = "#FEF3C7"
-GEEL_RAND = "#D97706"
-
-# Exports die pagina's gebruiken voor kleuren in inline styles
+ROOD = BORDEAUX
+GEEL_BRON = PAPIER_LICHT
+GEEL_RAND = OCHRE
 WIT = "#FFFFFF"
 
 CSS = f"""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 html, body, [class*="css"] {{
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Newsreader', 'Source Serif Pro', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.62;
     background-color: {PAPIER};
-    color: #1C2B3A;
+    background-image: radial-gradient(rgba(168, 138, 92, 0.06) 1px, transparent 1px);
+    background-size: 18px 18px;
+    color: {INKT};
 }}
 
-h1, h2, h3 {{
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    color: {SLATE};
+h1, h2, h3, h4,
+[data-testid="stMarkdown"] h1,
+[data-testid="stMarkdown"] h2,
+[data-testid="stMarkdown"] h3,
+[data-testid="stMarkdown"] h4,
+[data-testid="stMarkdownContainer"] h1,
+[data-testid="stMarkdownContainer"] h2,
+[data-testid="stMarkdownContainer"] h3,
+[data-testid="stMarkdownContainer"] h4,
+[data-testid="stHeadingWithActionElements"] h1,
+[data-testid="stHeadingWithActionElements"] h2,
+[data-testid="stHeadingWithActionElements"] h3 {{
+    font-family: 'Fraunces', Georgia, serif !important;
+    font-weight: 500 !important;
+    color: {INKT} !important;
+    letter-spacing: -0.012em !important;
 }}
 
-/* Sidebar verbergen */
+[data-testid="stMarkdown"] h1,
+[data-testid="stMarkdownContainer"] h1,
+[data-testid="stHeadingWithActionElements"] h1,
+h1 {{
+    font-size: 2.6rem !important;
+    line-height: 1.05 !important;
+    margin-bottom: 0.2em !important;
+}}
+
+[data-testid="stMarkdown"] h2,
+[data-testid="stMarkdownContainer"] h2,
+h2 {{
+    font-size: 1.7rem !important;
+    margin-top: 1.6em !important;
+    margin-bottom: 0.35em !important;
+}}
+
+[data-testid="stMarkdown"] h3,
+[data-testid="stMarkdownContainer"] h3,
+h3 {{ font-size: 1.25rem !important; }}
+
+a {{
+    color: {BORDEAUX};
+    text-decoration: underline;
+    text-decoration-color: {OCHRE};
+    text-underline-offset: 3px;
+}}
+
 [data-testid="stSidebar"],
 [data-testid="stSidebarNav"],
 [data-testid="stSidebarCollapsedControl"],
 section[data-testid="stSidebar"] {{ display: none !important; }}
 
-/* Streamlit-header verbergen */
 [data-testid="stHeader"],
 header[data-testid="stHeader"] {{ display: none !important; }}
 
-/* Content-ruimte */
 .block-container {{
     padding-top: 5rem !important;
     padding-bottom: 5rem !important;
-    max-width: 980px;
+    max-width: 820px;
     margin: 0 auto;
 }}
 
@@ -50,13 +101,14 @@ header[data-testid="stHeader"] {{ display: none !important; }}
 .block-container > div > [data-testid="stHorizontalBlock"]:first-of-type {{
     position: fixed !important;
     top: 0 !important; left: 0 !important; right: 0 !important;
-    height: 54px !important;
-    background: {SLATE} !important;
+    height: 50px !important;
+    background: {INKT} !important;
     z-index: 9999 !important;
     padding: 0 28px !important;
     margin: 0 !important;
     max-width: none !important;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.18) !important;
+    border-bottom: 1px solid {BORDEAUX} !important;
+    box-shadow: none !important;
     align-items: center !important;
     gap: 2px !important;
 }}
@@ -74,35 +126,36 @@ header[data-testid="stHeader"] {{ display: none !important; }}
     background: transparent !important;
 }}
 
-/* Spatie-kolom vult resterende ruimte */
 .block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
     [data-testid="stColumn"]:nth-last-child(2) {{
     flex: 1 1 auto !important;
     min-width: 0 !important;
 }}
 
-/* Nav-links */
+/* Nav-links — Fraunces small caps, geen knop-achtige badges */
 .block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
     [data-testid="stPageLink"] a {{
     display: inline-block !important;
     background: transparent !important;
-    border-radius: 5px !important;
-    padding: 6px 13px !important;
-    font-size: 13px !important;
-    font-weight: 600 !important;
-    color: rgba(255,255,255,0.75) !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 6px 14px !important;
+    font-family: 'Fraunces', serif !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    font-variant-caps: all-small-caps !important;
+    letter-spacing: 0.13em !important;
+    color: rgba(244,239,230,0.65) !important;
     text-decoration: none !important;
     white-space: nowrap !important;
     box-shadow: none !important;
-    letter-spacing: 0.03em !important;
-    font-family: 'DM Sans', sans-serif !important;
-    transition: background 0.15s, color 0.15s !important;
+    transition: color 0.18s !important;
 }}
 
 .block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
     [data-testid="stPageLink"] a:hover {{
-    background: rgba(255,255,255,0.10) !important;
-    color: #ffffff !important;
+    background: transparent !important;
+    color: {PAPIER} !important;
 }}
 
 .block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
@@ -119,128 +172,329 @@ header[data-testid="stHeader"] {{ display: none !important; }}
     color: inherit !important;
 }}
 
-/* Elders op pagina: neutrale page_link stijl */
+/* Elders: page_link in document-tinten */
 [data-testid="stPageLink"] a {{
     display: inline-block !important;
     background: transparent !important;
-    border-radius: 5px !important;
+    border-radius: 2px !important;
     padding: 4px 10px !important;
-    font-size: 13px !important;
-    font-weight: 600 !important;
-    color: {SLATE} !important;
+    font-family: 'Fraunces', serif !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    font-variant-caps: all-small-caps !important;
+    letter-spacing: 0.10em !important;
+    color: {INKT} !important;
     text-decoration: none !important;
     white-space: nowrap !important;
     box-shadow: none !important;
-    font-family: 'DM Sans', sans-serif !important;
 }}
 
 [data-testid="stPageLink"] a:hover {{
-    background: rgba(28,43,58,0.06) !important;
+    background: rgba(122,24,40,0.06) !important;
 }}
 
 /* ── Voortgangsbalk ─────────────────────────────────────────────────────── */
 .progress-bar-bg {{
-    background: rgba(28,43,58,0.10);
-    border-radius: 8px;
-    height: 10px;
+    background: rgba(26,20,16,0.10);
+    border-radius: 0;
+    height: 8px;
     margin: 5px 0;
     overflow: hidden;
 }}
 .progress-bar-fill {{
-    border-radius: 8px;
-    height: 10px;
-    background: linear-gradient(90deg, {GROEN} 0%, #3ea868 100%);
+    height: 8px;
+    background: {BORDEAUX};
     transition: width 0.4s ease;
 }}
 
-/* ── Bronkaartje ────────────────────────────────────────────────────────── */
+/* ── Bronkaartje (citatie-stijl) ────────────────────────────────────────── */
 .bron-kaartje {{
-    background: {GEEL_BRON};
-    border-left: 3px solid {AMBER};
-    border-radius: 0 8px 8px 0;
-    padding: 0.65rem 1rem;
-    font-size: 0.82rem;
+    background: {PAPIER_LICHT};
+    border-left: 2px solid {BORDEAUX};
+    border-radius: 0;
+    padding: 0.75rem 1.1rem;
+    font-family: 'Newsreader', serif;
+    font-size: 0.95rem;
     margin-bottom: 0.5rem;
-    color: #1C2B3A;
+    color: {INKT};
 }}
 
-/* ── Chat-bubbles ───────────────────────────────────────────────────────── */
+/* ── Vraag/Antwoord als documentpassages — geen bubbles ─────────────────── */
 .chat-vraag {{
-    background: #EEF2FF;
-    border: 1px solid #C7D2FE;
-    border-radius: 14px 14px 14px 3px;
-    padding: 0.75rem 1.1rem;
-    margin-bottom: 0.4rem;
-    max-width: 82%;
-    font-size: 0.88rem;
-    color: #1C2B3A;
+    margin: 1.6rem 0 0.4rem 0;
+    padding: 0 0 0 1rem;
+    border: none;
+    border-left: 2px solid {OCHRE};
+    background: none;
+    color: {INKT};
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: 1.08rem;
     line-height: 1.55;
+    max-width: 100%;
+    border-radius: 0;
 }}
+
+.chat-vraag::before {{
+    content: 'Vraag';
+    display: block;
+    font-style: normal;
+    font-family: 'Fraunces', serif;
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.20em;
+    font-size: 0.72rem;
+    color: {OCHRE};
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}}
+
 .chat-antwoord {{
-    background: #F7F3EC;
-    border: 1px solid #E8DFC8;
-    border-radius: 14px 14px 3px 14px;
+    margin: 0.4rem 0 1.8rem 0;
+    padding: 0;
+    border: none;
+    background: none;
+    color: {INKT};
+    font-family: 'Newsreader', serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    border-radius: 0;
+}}
+
+.chat-antwoord::before {{
+    content: 'Antwoord';
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.20em;
+    font-size: 0.72rem;
+    color: {BORDEAUX};
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+}}
+
+/* Drop cap op het eerste paragraaf van een antwoord */
+.chat-antwoord > p:first-of-type::first-letter,
+.chat-antwoord > div > p:first-of-type::first-letter {{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    color: {BORDEAUX};
+    float: left;
+    font-size: 3.6em;
+    line-height: 0.85;
+    padding: 0.05em 0.16em 0 0;
+    margin-top: 0.04em;
+}}
+
+/* Markdown-blockquotes binnen antwoorden → pull-quote citaten */
+.chat-antwoord blockquote {{
+    background: {PAPIER_LICHT};
+    border-left: 3px solid {BORDEAUX};
+    margin: 1rem 0;
     padding: 0.75rem 1.1rem;
-    margin-bottom: 0.5rem;
-    font-size: 0.88rem;
-    color: #1C2B3A;
-    line-height: 1.6;
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    color: {INKT};
 }}
 
-/* ── Kaartjes (st.container border=True) ────────────────────────────────── */
+.chat-antwoord blockquote p {{ margin: 0; }}
+
+.chat-antwoord code {{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85em;
+    background: rgba(168,138,92,0.14);
+    padding: 1px 5px;
+    border-radius: 2px;
+    color: {INKT};
+}}
+
+/* ── Codex-helpers ──────────────────────────────────────────────────────── */
+.oer-mark {{
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: {OCHRE};
+    font-size: 3.4rem;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-align: right;
+}}
+
+.oer-overtitel {{
+    font-family: 'Fraunces', serif;
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.20em;
+    font-size: 0.80rem;
+    color: {OCHRE};
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+}}
+
+.oer-ondertitel {{
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    color: rgba(26,20,16,0.7);
+    font-size: 1.05rem;
+    margin-top: 0.2rem;
+}}
+
+.oer-ornament {{
+    text-align: center;
+    color: {OCHRE};
+    font-size: 1.2rem;
+    margin: 1.6rem 0 1.2rem 0;
+    letter-spacing: 1em;
+}}
+
+.oer-meta {{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: rgba(26,20,16,0.65);
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+}}
+
+.oer-citaat {{
+    background: {PAPIER_LICHT};
+    border-left: 3px solid {BORDEAUX};
+    margin: 1.2rem 0;
+    padding: 0.9rem 1.2rem;
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    color: {INKT};
+}}
+
+.oer-citaat-bron {{
+    display: block;
+    margin-top: 0.5rem;
+    font-style: normal;
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: {OCHRE};
+}}
+
+/* ── Containers (st.container border=True) ────────────────────────────── */
 [data-testid="stVerticalBlockBorderWrapper"] {{
-    background: #FFFFFF !important;
-    border-radius: 14px !important;
-    border: 1px solid rgba(28,43,58,0.10) !important;
-    box-shadow: 0 2px 16px rgba(28,43,58,0.06);
-    padding: 4px 8px;
+    background: {PAPIER_LICHT} !important;
+    border-radius: 0 !important;
+    border: 1px solid {HAARLIJN} !important;
+    box-shadow: none !important;
+    padding: 6px 12px;
 }}
 
-/* ── Knoppen ────────────────────────────────────────────────────────────── */
+/* ── Knoppen — sober, edition-stijl ────────────────────────────────────── */
 [data-testid="stBaseButton-primary"],
 [data-testid="stBaseButton-primary"] p,
 [data-testid="stBaseButton-primary"] span {{
-    background-color: {SLATE} !important;
-    color: white !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
-    border: none !important;
-    font-family: 'DM Sans', sans-serif !important;
-    font-size: 13px !important;
+    background-color: {BORDEAUX} !important;
+    color: {PAPIER} !important;
+    border-radius: 2px !important;
+    font-family: 'Fraunces', serif !important;
+    font-variant-caps: all-small-caps !important;
+    letter-spacing: 0.13em !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    border: 1px solid {BORDEAUX} !important;
+    padding: 0.55rem 1.2rem !important;
+    box-shadow: none !important;
 }}
 
 [data-testid="stBaseButton-primary"]:hover {{
-    background-color: #253444 !important;
+    background-color: #5C111E !important;
+    border-color: #5C111E !important;
 }}
 
 [data-testid="stBaseButton-secondary"],
 [data-testid="stBaseButton-secondary"] p,
 [data-testid="stBaseButton-secondary"] span {{
-    background-color: {PAPIER} !important;
-    border-radius: 8px !important;
-    border: 1px solid rgba(28,43,58,0.18) !important;
-    font-weight: 600 !important;
-    font-size: 13px !important;
-    font-family: 'DM Sans', sans-serif !important;
+    background-color: transparent !important;
+    color: {INKT} !important;
+    border-radius: 2px !important;
+    border: 1px solid {HAARLIJN} !important;
+    font-family: 'Fraunces', serif !important;
+    font-variant-caps: all-small-caps !important;
+    letter-spacing: 0.10em !important;
+    font-size: 0.92rem !important;
+    font-weight: 500 !important;
+    padding: 0.5rem 1rem !important;
+}}
+
+[data-testid="stBaseButton-secondary"]:hover {{
+    background-color: {PAPIER_LICHT} !important;
+    border-color: {OCHRE} !important;
+    color: {INKT} !important;
+}}
+
+/* ── Form elements ─────────────────────────────────────────────────────── */
+[data-testid="stTextInput"] input,
+[data-testid="stTextArea"] textarea {{
+    background: {PAPIER_LICHT} !important;
+    border: 1px solid {HAARLIJN} !important;
+    border-radius: 2px !important;
+    font-family: 'Newsreader', serif !important;
+    color: {INKT} !important;
+}}
+
+[data-testid="stTextInput"] input:focus,
+[data-testid="stTextArea"] textarea:focus {{
+    border-color: {BORDEAUX} !important;
+    box-shadow: 0 0 0 1px {BORDEAUX} !important;
+}}
+
+/* ── Tabs ─────────────────────────────────────────────────────────────── */
+[data-testid="stTabs"] [role="tab"] p {{
+    font-family: 'Fraunces', serif !important;
+    font-variant-caps: all-small-caps !important;
+    letter-spacing: 0.13em !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    color: rgba(26,20,16,0.55) !important;
+}}
+
+[data-testid="stTabs"] [role="tab"][aria-selected="true"] p {{
+    color: {BORDEAUX} !important;
+}}
+
+[data-testid="stTabs"] [data-baseweb="tab-highlight"] {{
+    background: {BORDEAUX} !important;
 }}
 
 /* ── Chat-input ─────────────────────────────────────────────────────────── */
 [data-testid="stBottom"],
 [data-testid="stBottomBlockContainer"] {{
     background-color: {PAPIER} !important;
+    border-top: 1px solid {HAARLIJN} !important;
 }}
 
-/* ── Footer ─────────────────────────────────────────────────────────────── */
+[data-testid="stChatInput"],
+[data-testid="stChatInputTextArea"],
+[data-testid="stChatInput"] textarea {{
+    background: {PAPIER_LICHT} !important;
+    border: 1px solid {HAARLIJN} !important;
+    border-radius: 2px !important;
+    font-family: 'Newsreader', serif !important;
+    color: {INKT} !important;
+}}
+
+/* ── Footer — small caps met ornament ───────────────────────────────────── */
 .footer {{
     position: fixed; bottom: 0; left: 0; right: 0;
     background: {PAPIER};
-    border-top: 1px solid rgba(28,43,58,0.10);
-    padding: 0.45rem 1.5rem;
-    font-size: 0.68rem;
-    color: rgba(28,43,58,0.45);
+    border-top: 1px solid {HAARLIJN};
+    padding: 0.55rem 1.5rem;
+    font-family: 'Fraunces', serif;
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.20em;
+    font-size: 0.72rem;
+    color: rgba(26,20,16,0.55);
     text-align: center;
     z-index: 999;
-    font-family: 'DM Sans', sans-serif;
+}}
+
+.footer::before, .footer::after {{
+    content: ' ⸻ ';
+    color: {OCHRE};
+    letter-spacing: 0;
 }}
 </style>
 """
