@@ -57,9 +57,11 @@ uv run ty check
 uv lock --upgrade && uv sync
 
 # OER-catalog opnieuw opbouwen (na wijzigingen in oeren/)
+# Vereist: oeren/ submap per instelling met PDFs aanwezig
 uv run python scripts/build_oer_catalog.py
 
 # Synthetische dataset regenereren (deterministisch via seed=42)
+# Vereist: oeren.db moet eerst gevuld zijn — draai build_oer_catalog.py
 uv run python scripts/generate_synthetisch_data.py
 ```
 
