@@ -6,6 +6,25 @@ import anthropic
 
 APITimeoutError = anthropic.APITimeoutError
 
+
+def vriendelijke_fout(e: Exception) -> str:
+    """Vertaal een Anthropic-API-fout naar een leesbare boodschap voor de UI.
+
+    Stack-trace details horen via `log.exception(...)` in de logs — niet op het scherm.
+    """
+    if isinstance(e, anthropic.APITimeoutError):
+        return "De AI-service reageert niet. Probeer het over een moment opnieuw."
+    if isinstance(e, anthropic.APIStatusError) and getattr(e, "status_code", None) == 529:
+        return "De AI is even overbelast. Wacht een paar seconden en probeer opnieuw."
+    if isinstance(e, anthropic.RateLimitError):
+        return "Te veel verzoeken aan de AI-service. Wacht even en probeer opnieuw."
+    if isinstance(e, anthropic.AuthenticationError):
+        return "API-sleutel ontbreekt of klopt niet. Controleer je .env."
+    if isinstance(e, anthropic.APIConnectionError):
+        return "Geen verbinding met de AI-service. Controleer je internetverbinding."
+    return "Er ging iets mis met de AI-service. Probeer het opnieuw."
+
+
 _default_client: anthropic.Anthropic | None = None
 
 

@@ -4,7 +4,7 @@ import logging
 
 import streamlit as st
 
-from samenwijzer._ai import APITimeoutError
+from samenwijzer._ai import APITimeoutError, vriendelijke_fout
 from samenwijzer.analyze import (
     badge,
     cohort_positie,
@@ -242,7 +242,7 @@ with tab_weekplan:
             st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
         except Exception as e:
             log.exception("Weekplan-generatie mislukt")
-            st.error(f"Het weekplan kon niet worden gegenereerd: {e}")
+            st.error(vriendelijke_fout(e))
     elif weekplan_sleutel in st.session_state:
         st.markdown(st.session_state[weekplan_sleutel])
     else:

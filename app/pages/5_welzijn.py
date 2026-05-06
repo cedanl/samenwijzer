@@ -6,7 +6,7 @@ from datetime import datetime
 import streamlit as st
 from dotenv import load_dotenv
 
-from samenwijzer._ai import APITimeoutError
+from samenwijzer._ai import APITimeoutError, vriendelijke_fout
 from samenwijzer.outreach_store import (
     WelzijnsCheck,
     get_welzijnschecks_student,
@@ -117,7 +117,7 @@ if verzend:
             reactie = ""
         except Exception as e:
             log.exception("Welzijnsreactie kon niet worden gegenereerd")
-            st.error(f"De reactie kon niet worden gegenereerd: {e}")
+            st.error(vriendelijke_fout(e))
             reactie = ""
 
 # ── Eerdere checks ────────────────────────────────────────────────────────────

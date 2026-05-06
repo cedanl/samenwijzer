@@ -6,7 +6,7 @@ import os
 import streamlit as st
 from dotenv import load_dotenv
 
-from samenwijzer._ai import APITimeoutError
+from samenwijzer._ai import APITimeoutError, vriendelijke_fout
 from samenwijzer.analyze import get_student, leerpad_niveau, zwakste_kerntaak
 from samenwijzer.auth import mentor_filter
 from samenwijzer.coach import (
@@ -170,7 +170,7 @@ with tab_tutor:
                 st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
             except Exception as e:
                 log.exception("Tutor-antwoord mislukt")
-                st.error(f"De tutor kon niet antwoorden: {e}")
+                st.error(vriendelijke_fout(e))
 
 # ─────────────────────────────────────────────────────────────────────────────
 # TAB 2: LESMATERIAAL
@@ -202,7 +202,7 @@ with tab_les:
                     st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
                 except Exception as e:
                     log.exception("Lesmateriaal-generatie mislukt")
-                    st.error(f"Het lesmateriaal kon niet worden gegenereerd: {e}")
+                    st.error(vriendelijke_fout(e))
         elif "sw_lesmateriaal" in st.session_state:
             st.markdown(st.session_state["sw_lesmateriaal"])
 
@@ -235,7 +235,7 @@ with tab_toets:
                     st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
                 except Exception as e:
                     log.exception("Oefentoets-generatie mislukt")
-                    st.error(f"De toets kon niet worden gegenereerd: {e}")
+                    st.error(vriendelijke_fout(e))
 
     if "sw_toets_tekst" in st.session_state:
         toets_tekst = st.session_state["sw_toets_tekst"]
@@ -273,7 +273,7 @@ with tab_toets:
                         )
                     except Exception as e:
                         log.exception("Toets-feedback mislukt")
-                        st.error(f"De feedback kon niet worden gegenereerd: {e}")
+                        st.error(vriendelijke_fout(e))
             elif "sw_toets_feedback" in st.session_state:
                 st.divider()
                 st.markdown(st.session_state["sw_toets_feedback"])
@@ -320,7 +320,7 @@ with tab_werk:
                     st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
                 except Exception as e:
                     log.exception("Werkfeedback-generatie mislukt")
-                    st.error(f"De feedback kon niet worden gegenereerd: {e}")
+                    st.error(vriendelijke_fout(e))
         elif "sw_werk_feedback" in st.session_state:
             st.divider()
             st.markdown(st.session_state["sw_werk_feedback"])
@@ -397,7 +397,7 @@ with tab_rol:
                         )
                     except Exception as e:
                         log.exception("Rollenspel-antwoord mislukt")
-                        st.error(f"De tegenpartij kon niet antwoorden: {e}")
+                        st.error(vriendelijke_fout(e))
 
             st.divider()
             if rp_sessie.geschiedenis and st.button(
@@ -415,7 +415,7 @@ with tab_rol:
                         )
                     except Exception as e:
                         log.exception("Rollenspel-feedback mislukt")
-                        st.error(f"Feedback kon niet worden opgesteld: {e}")
+                        st.error(vriendelijke_fout(e))
         else:
             # ── Eerder gegenereerde feedback tonen ────────────────────────────
             st.divider()
