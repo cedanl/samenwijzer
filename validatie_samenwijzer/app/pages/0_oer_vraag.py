@@ -127,7 +127,7 @@ st.markdown('<div class="oer-ornament">⁂</div>', unsafe_allow_html=True)
 
 if st.session_state.pub_oer_labels:
     labels_str = " · ".join(st.session_state.pub_oer_labels)
-    col1, col2 = st.columns([8, 2])
+    col1, col2 = st.columns([8, 2], vertical_alignment="center")
     with col1:
         st.markdown(
             '<div class="oer-overtitel">geraadpleegd</div>'
@@ -135,7 +135,7 @@ if st.session_state.pub_oer_labels:
             unsafe_allow_html=True,
         )
     with col2:
-        if st.button("Nieuw gesprek"):
+        if st.button("Nieuw gesprek", use_container_width=True):
             _reset()
             st.rerun()
 else:
@@ -187,6 +187,13 @@ if st.session_state.pub_kandidaten:
 
     opties = {_label(k): k for k in kandidaten}
     n_opties = len(opties)
+
+    _, col_reset = st.columns([8, 2])
+    with col_reset:
+        if st.button("Nieuw gesprek", key="reset_kandidaten", use_container_width=True):
+            _reset()
+            st.rerun()
+
     geselecteerd = st.multiselect(
         f"{n_opties} OERs gevonden — kies er één of meer (max {MAX_OER_SELECTIE}). "
         "Tip: typ de instellingsnaam om te filteren.",
