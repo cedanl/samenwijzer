@@ -1,5 +1,5 @@
 {
-  "_doel": "Vangnet voor crebos waarvoor geen kerntaken/werkprocessen uit OER-bestanden geëxtraheerd kunnen worden (bv. MJP-/lesplandocumenten zonder expliciete kwalificatiestructuur). build_oer_catalog.py voegt deze toe aan een willekeurig OER-document van het crebo wanneer er anders géén kerntaken in de DB staan voor dat crebo. Codes en namen zijn plausibele invullingen — vervang door het officiële SBB-kwalificatiedossier zodra beschikbaar.",
+  "_doel": "Vangnet voor crebos waarvoor geen of corrupte kerntaken/werkprocessen uit OER-bestanden geëxtraheerd kunnen worden (bv. MJP-/lesplandocumenten zonder expliciete kwalificatiestructuur, of OERs waarin alleen W-codes staan zonder werkproces-namen). build_oer_catalog.py voegt deze toe aan een willekeurig OER-document van het crebo wanneer er géén kerntaken in de DB staan voor dat crebo. Met \"override\": true worden bestaande corrupte kerntaken eerst gewist en vervangen. Codes en namen zijn plausibele invullingen op basis van het SBB-kwalificatiedossier — vervang door het officiële dossier zodra beschikbaar.",
   "25736": {
     "opleiding_label": "Eerste Monteur Elektrotechnische Installaties in de Gebouwde Omgeving",
     "niveau": 3,
@@ -12,6 +12,51 @@
       {"code": "B1-K2-W1", "naam": "Monteert componenten en bevestigingen", "type": "werkproces", "parent_code": "B1-K2"},
       {"code": "B1-K2-W2", "naam": "Trekt, legt en sluit kabels aan", "type": "werkproces", "parent_code": "B1-K2"},
       {"code": "B1-K2-W3", "naam": "Test installatie en levert op aan klant", "type": "werkproces", "parent_code": "B1-K2"}
+    ]
+  },
+  "25960": {
+    "opleiding_label": "Helpende Zorg en Welzijn",
+    "niveau": 2,
+    "override": true,
+    "kerntaken": [
+      {"code": "B1-K1", "naam": "Voert dienstverlenende werkzaamheden uit", "type": "kerntaak", "parent_code": null},
+      {"code": "B1-K1-W1", "naam": "Bereidt werkzaamheden voor en stemt af met collega's", "type": "werkproces", "parent_code": "B1-K1"},
+      {"code": "B1-K1-W2", "naam": "Treedt op als host en ontvangt bezoekers", "type": "werkproces", "parent_code": "B1-K1"},
+      {"code": "B1-K1-W3", "naam": "Draagt bij aan een fysiek en sociaal veilige omgeving", "type": "werkproces", "parent_code": "B1-K1"},
+      {"code": "P2-K1", "naam": "Ondersteunt bij dagelijkse activiteiten in zorg en welzijn", "type": "kerntaak", "parent_code": null},
+      {"code": "P2-K1-W1", "naam": "Ondersteunt bij wonen en huishouden", "type": "werkproces", "parent_code": "P2-K1"},
+      {"code": "P2-K1-W2", "naam": "Ondersteunt bij voeding en maaltijden", "type": "werkproces", "parent_code": "P2-K1"},
+      {"code": "P2-K1-W3", "naam": "Ondersteunt bij persoonlijke zorg en welbevinden", "type": "werkproces", "parent_code": "P2-K1"}
+    ]
+  },
+  "25180": {
+    "opleiding_label": "Kok",
+    "niveau": 2,
+    "override": true,
+    "kerntaken": [
+      {"code": "B1-K1", "naam": "Bereidt gerechten", "type": "kerntaak", "parent_code": null},
+      {"code": "B1-K1-W1", "naam": "Werkt mee aan inkoop, ontvangst en opslag van keukengrondstoffen", "type": "werkproces", "parent_code": "B1-K1"},
+      {"code": "B1-K1-W2", "naam": "Werkt grondstoffen voor en bereidt gerechten", "type": "werkproces", "parent_code": "B1-K1"},
+      {"code": "B1-K1-W3", "naam": "Maakt gerechten gereed voor uitserveren", "type": "werkproces", "parent_code": "B1-K1"},
+      {"code": "B1-K2", "naam": "Beheert keukenvoorraden", "type": "kerntaak", "parent_code": null},
+      {"code": "B1-K2-W1", "naam": "Inventariseert benodigde voorraden en bestellingen", "type": "werkproces", "parent_code": "B1-K2"},
+      {"code": "B1-K2-W2", "naam": "Beheert voorraad en werkt mee aan bestelprocedure", "type": "werkproces", "parent_code": "B1-K2"},
+      {"code": "B1-K2-W3", "naam": "Werkt mee aan kwaliteitszorg, hygiëne en veiligheid in de keuken", "type": "werkproces", "parent_code": "B1-K2"}
+    ]
+  },
+  "25182": {
+    "opleiding_label": "Zelfstandig Werkend Kok",
+    "niveau": 4,
+    "override": true,
+    "kerntaken": [
+      {"code": "B1-K1", "naam": "Bereidt gerechten zelfstandig", "type": "kerntaak", "parent_code": null},
+      {"code": "B1-K1-W1", "naam": "Werkt mee aan inkoop, ontvangst en opslag van keukengrondstoffen", "type": "werkproces", "parent_code": "B1-K1"},
+      {"code": "B1-K1-W2", "naam": "Bereidt gerechten zelfstandig en bewaakt de kwaliteit", "type": "werkproces", "parent_code": "B1-K1"},
+      {"code": "B1-K1-W3", "naam": "Maakt gerechten gereed voor uitserveren en presenteert", "type": "werkproces", "parent_code": "B1-K1"},
+      {"code": "B1-K2", "naam": "Beheert keukenvoorraden", "type": "kerntaak", "parent_code": null},
+      {"code": "B1-K2-W1", "naam": "Inventariseert benodigde voorraden en stelt bestellingen op", "type": "werkproces", "parent_code": "B1-K2"},
+      {"code": "B1-K2-W2", "naam": "Beheert voorraad en bestelprocedure", "type": "werkproces", "parent_code": "B1-K2"},
+      {"code": "B1-K2-W3", "naam": "Werkt mee aan kwaliteitszorg, hygiëne en veiligheid in de keuken", "type": "werkproces", "parent_code": "B1-K2"}
     ]
   }
 }

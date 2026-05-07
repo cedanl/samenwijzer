@@ -7,7 +7,13 @@ import streamlit as st
 from dotenv import load_dotenv
 
 from samenwijzer._ai import APITimeoutError, vriendelijke_fout
-from samenwijzer.analyze import get_student, leerpad_niveau, zwakste_kerntaak
+from samenwijzer.analyze import (
+    get_student,
+    kerntaak_scores,
+    leerpad_niveau,
+    werkproces_scores,
+    zwakste_kerntaak,
+)
 from samenwijzer.auth import mentor_filter
 from samenwijzer.coach import (
     SCENARIO_OPTIES,
@@ -110,12 +116,12 @@ with tab_tutor:
 
     col_kt, col_btn = st.columns([3, 1])
     with col_kt:
-        kt_opties = ["(geen specifiek)"] + [
-            c.replace("_", " ").title()
-            for c in df.columns
-            if c.startswith("kt") and not c.endswith("_gemiddelde")
-        ]
-        kerntaak_focus = st.selectbox("Focus op kerntaak", kt_opties, key="kt_focus")
+        kt_labels = kerntaak_scores(df, studentnummer)["label"].tolist()
+        wp_labels = werkproces_scores(df, studentnummer)["label"].tolist()
+        focus_opties = ["(geen specifiek)"] + kt_labels + wp_labels
+        kerntaak_focus = st.selectbox(
+            "Focus op kerntaak of werkproces", focus_opties, key="kt_focus"
+        )
         focus_tekst = "" if kerntaak_focus == "(geen specifiek)" else kerntaak_focus
     with col_btn:
         if st.button("↺ Nieuw gesprek", use_container_width=True):

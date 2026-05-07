@@ -201,10 +201,14 @@ def pas_kerntaken_fallback_toe(db_pad: Path, fallback: dict) -> dict[str, int]:
     worden de fallback-kerntaken toegevoegd aan een willekeurig OER-document
     voor dat crebo. Idempotent: een tweede aanroep voegt niets toe.
 
+    Met `"override": true` per crebo-entry worden bestaande kerntaken voor dat
+    crebo eerst gewist en daarna vervangen door de fallback. Bedoeld voor
+    crebos waarvan de regex-extractie corrupte fragmenten oplevert ('W1:', '?').
+
     Args:
         db_pad: Pad naar oeren.db.
-        fallback: Dict {crebo: {"kerntaken": [{"code", "naam", "type", "parent_code"}, ...]}}.
-                  Sleutels die met '_' beginnen worden genegeerd (metadata zoals "_doel").
+        fallback: Dict {crebo: {"override": bool, "kerntaken": [...]}}.
+                  Sleutels die met '_' beginnen worden genegeerd (metadata).
 
     Returns:
         Dict {"toegepast": aantal_crebos, "overgeslagen": aantal_crebos_zonder_doc}.
@@ -216,12 +220,13 @@ def pas_kerntaken_fallback_toe(db_pad: Path, fallback: dict) -> dict[str, int]:
         for crebo, data in fallback.items():
             if crebo.startswith("_"):
                 continue
+            override = bool(data.get("override", False))
             heeft_kt = conn.execute(
                 "SELECT 1 FROM kerntaken k JOIN oer_documenten o ON k.oer_id=o.id "
                 "WHERE o.crebo = ? LIMIT 1",
                 (crebo,),
             ).fetchone()
-            if heeft_kt:
+            if heeft_kt and not override:
                 continue
             doc = conn.execute(
                 "SELECT id FROM oer_documenten WHERE crebo = ? LIMIT 1",
@@ -230,6 +235,12 @@ def pas_kerntaken_fallback_toe(db_pad: Path, fallback: dict) -> dict[str, int]:
             if doc is None:
                 telling["overgeslagen"] += 1
                 continue
+            if override and heeft_kt:
+                conn.execute(
+                    "DELETE FROM kerntaken WHERE oer_id IN "
+                    "(SELECT id FROM oer_documenten WHERE crebo = ?)",
+                    (crebo,),
+                )
             for volgorde, kt in enumerate(data.get("kerntaken", [])):
                 conn.execute(
                     "INSERT INTO kerntaken (oer_id, code, naam, type, parent_code, volgorde) "
