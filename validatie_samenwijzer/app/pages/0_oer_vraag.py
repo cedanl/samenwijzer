@@ -34,7 +34,7 @@ st.markdown(CSS, unsafe_allow_html=True)
 
 MAX_GESCHIEDENIS = 20
 MAX_OER_SELECTIE = 3  # max aantal OERs tegelijk
-MAX_KANDIDATEN = 10  # boven dit aantal → intake in plaats van dropdown
+MAX_KANDIDATEN = 40  # max aantal opties in de dropdown — daarboven afkappen op top-N
 
 # ── Session state ──────────────────────────────────────────────────────────────
 _DEFAULTS: dict = {
@@ -186,8 +186,10 @@ if st.session_state.pub_kandidaten:
         return f"{k['display_naam']} · {opl} · {k['leerweg']} {k['cohort']}"
 
     opties = {_label(k): k for k in kandidaten}
+    n_opties = len(opties)
     geselecteerd = st.multiselect(
-        f"Meerdere OERs gevonden — kies er één of meer (max {MAX_OER_SELECTIE}):",
+        f"{n_opties} OERs gevonden — kies er één of meer (max {MAX_OER_SELECTIE}). "
+        "Tip: typ de instellingsnaam om te filteren.",
         list(opties.keys()),
         max_selections=MAX_OER_SELECTIE,
     )
@@ -299,32 +301,18 @@ if len(kandidaten) == 1:
         antwoord = LAGE_RELEVANTIE_BERICHT
         st.info(antwoord)
 
-elif 1 < len(kandidaten) <= MAX_KANDIDATEN:
-    st.session_state.pub_kandidaten = kandidaten
+elif len(kandidaten) >= 2:
+    # Meerdere matches — toon top-N in de dropdown gesorteerd op (score desc,
+    # cohort desc, instelling, opleiding) zodat ties op een nuttige volgorde staan.
+    def _sorteer_sleutel(k: dict) -> tuple:
+        cohort_int = int(k["cohort"]) if str(k["cohort"]).isdigit() else 0
+        return (-int(k["_score"]), -cohort_int, k["display_naam"], k["opleiding"])
+
+    keuze_lijst = sorted(kandidaten, key=_sorteer_sleutel)[:MAX_KANDIDATEN]
+    st.session_state.pub_kandidaten = keuze_lijst
     st.session_state.pub_wachtende_vraag = vraag
     st.session_state.pub_chat_history.append({"role": "user", "content": vraag})
     st.rerun()
-
-elif len(kandidaten) > MAX_KANDIDATEN:
-    # Verfijn naar de hoogst scorende OERs; alleen als dat ≤ MAX_KANDIDATEN zijn → dropdown
-    top_score = kandidaten[0]["_score"]
-    top_tier = [k for k in kandidaten if k["_score"] >= top_score]
-    if len(top_tier) <= MAX_KANDIDATEN:
-        st.session_state.pub_kandidaten = top_tier
-        st.session_state.pub_wachtende_vraag = vraag
-        st.session_state.pub_chat_history.append({"role": "user", "content": vraag})
-        st.rerun()
-    else:
-        # Zelfs in top tier te vaag: vraag om opleidingsnaam zonder Claude-call
-        antwoord = (
-            f"Er zijn {len(top_tier)} OERs gevonden met de hoogste relevantie. "
-            "Geef de **opleidingsnaam** of het **crebo-nummer** om preciezer te zoeken. "
-            f"Beschikbare instellingen: {', '.join(instellingen)}."
-        )
-        st.markdown(
-            f'<div class="chat-antwoord">\n\n{antwoord}\n\n</div>',
-            unsafe_allow_html=True,
-        )
 
 else:
     # Geen matches: conversationele intake via Claude
