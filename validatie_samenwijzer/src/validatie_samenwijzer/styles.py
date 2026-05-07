@@ -1,38 +1,34 @@
-"""OER Codex — juridisch-editorial typografie voor de OER-assistent.
+"""Validatie Samenwijzer — moderne, student-vriendelijke stijl.
 
-Fraunces (display, drop caps) + Newsreader (body) + IBM Plex Mono (verwijzingen).
-Warm parchment, inkt-zwart, bordeaux juridisch accent, ochre marginalia.
+Wit + grijs + zacht oranje (terracotta) op basis van de CEDA-huisstijl,
+met witte achtergrond en lucht in plaats van de roze CEDA-achtergrond.
+General Sans typografie, geen serif, geen drop caps.
 """
 
-# ── Codex-palet ────────────────────────────────────────────────────────────────
-INKT = "#1A1410"          # body, koppen, nav-bg
-PAPIER = "#F4EFE6"        # hoofdachtergrond — warm parchment
-PAPIER_LICHT = "#FAF5E9"  # citatiekaders, raised surfaces
-BORDEAUX = "#7A1828"      # juridisch zegelaccent
-OCHRE = "#A88A5C"         # marginalia, ornamenten, hover-tints
-HAARLIJN = "#D9CFB8"      # subtiele scheidingslijnen
+# ── Palet ──────────────────────────────────────────────────────────────────
+WIT = "#ffffff"
+MIST = "#fafafa"               # cards, citatie-blokjes, hover-tints
+LIJN = "#e5e5e7"               # borders, scheidingslijnen
+GRIJS_TEKST = "#6b7280"        # secondary text, labels, meta
+INKT = "#1a1a1a"               # body, koppen
+TERRACOTTA = "#c8785a"         # primaire accent — links, knoppen, tab-highlight
+TERRACOTTA_LICHT = "#fae3d6"   # vraag-bubble, focus-glow
+TERRACOTTA_DONKER = "#a85f44"  # hover op primaire knop
 
-# Backwards-compat aliassen — bestaande pagina's gebruiken deze nog
-SLATE = INKT
-AMBER = OCHRE
-GROEN = "#2D7A4F"
-ORANJE = "#D97706"
-ROOD = BORDEAUX
-GEEL_BRON = PAPIER_LICHT
-GEEL_RAND = OCHRE
-WIT = "#FFFFFF"
+# Status-tinten — gebruikt in pagina's voor voortgang/risico-indicatoren
+GROEN = "#27ae60"
+ORANJE = "#e67e22"
+ROOD = "#c0392b"
 
 CSS = f"""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
 
 html, body, [class*="css"] {{
-    font-family: 'Newsreader', 'Source Serif Pro', Georgia, serif;
-    font-size: 17px;
-    line-height: 1.62;
-    background-color: {PAPIER};
-    background-image: radial-gradient(rgba(168, 138, 92, 0.06) 1px, transparent 1px);
-    background-size: 18px 18px;
+    font-family: 'General Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    background-color: {WIT};
     color: {INKT};
 }}
 
@@ -48,38 +44,42 @@ h1, h2, h3, h4,
 [data-testid="stHeadingWithActionElements"] h1,
 [data-testid="stHeadingWithActionElements"] h2,
 [data-testid="stHeadingWithActionElements"] h3 {{
-    font-family: 'Fraunces', Georgia, serif !important;
-    font-weight: 500 !important;
+    font-family: 'General Sans', sans-serif !important;
+    font-weight: 600 !important;
     color: {INKT} !important;
-    letter-spacing: -0.012em !important;
+    letter-spacing: -0.01em !important;
 }}
 
 [data-testid="stMarkdown"] h1,
 [data-testid="stMarkdownContainer"] h1,
 [data-testid="stHeadingWithActionElements"] h1,
 h1 {{
-    font-size: 2.6rem !important;
-    line-height: 1.05 !important;
-    margin-bottom: 0.2em !important;
+    font-size: 2.4rem !important;
+    line-height: 1.15 !important;
+    margin-bottom: 0.3em !important;
 }}
 
 [data-testid="stMarkdown"] h2,
 [data-testid="stMarkdownContainer"] h2,
 h2 {{
-    font-size: 1.7rem !important;
-    margin-top: 1.6em !important;
-    margin-bottom: 0.35em !important;
+    font-size: 1.5rem !important;
+    margin-top: 1.4em !important;
+    margin-bottom: 0.4em !important;
 }}
 
 [data-testid="stMarkdown"] h3,
 [data-testid="stMarkdownContainer"] h3,
-h3 {{ font-size: 1.25rem !important; }}
+h3 {{ font-size: 1.15rem !important; }}
 
 a {{
-    color: {BORDEAUX};
-    text-decoration: underline;
-    text-decoration-color: {OCHRE};
-    text-underline-offset: 3px;
+    color: {TERRACOTTA};
+    text-decoration: none;
+    border-bottom: 1px solid {TERRACOTTA_LICHT};
+    transition: border-color 0.15s;
+}}
+
+a:hover {{
+    border-bottom-color: {TERRACOTTA};
 }}
 
 [data-testid="stSidebar"],
@@ -91,26 +91,26 @@ section[data-testid="stSidebar"] {{ display: none !important; }}
 header[data-testid="stHeader"] {{ display: none !important; }}
 
 .block-container {{
-    padding-top: 5rem !important;
+    padding-top: 4.5rem !important;
     padding-bottom: 5rem !important;
-    max-width: 820px;
+    max-width: 860px;
     margin: 0 auto;
 }}
 
-/* ── Vaste navigatiebalk ────────────────────────────────────────────────── */
+/* ── Vaste navigatiebalk — wit met grijze onderlijn ─────────────────────── */
 .block-container > div > [data-testid="stHorizontalBlock"]:first-of-type {{
     position: fixed !important;
     top: 0 !important; left: 0 !important; right: 0 !important;
-    height: 50px !important;
-    background: {INKT} !important;
+    height: 56px !important;
+    background: {WIT} !important;
     z-index: 9999 !important;
     padding: 0 28px !important;
     margin: 0 !important;
     max-width: none !important;
-    border-bottom: 1px solid {BORDEAUX} !important;
+    border-bottom: 1px solid {LIJN} !important;
     box-shadow: none !important;
     align-items: center !important;
-    gap: 2px !important;
+    gap: 4px !important;
 }}
 
 .block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
@@ -132,30 +132,27 @@ header[data-testid="stHeader"] {{ display: none !important; }}
     min-width: 0 !important;
 }}
 
-/* Nav-links — Fraunces small caps, geen knop-achtige badges */
 .block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
     [data-testid="stPageLink"] a {{
     display: inline-block !important;
     background: transparent !important;
     border: none !important;
-    border-radius: 0 !important;
-    padding: 6px 14px !important;
-    font-family: 'Fraunces', serif !important;
+    border-radius: 6px !important;
+    padding: 8px 14px !important;
+    font-family: 'General Sans', sans-serif !important;
     font-size: 14px !important;
     font-weight: 500 !important;
-    font-variant-caps: all-small-caps !important;
-    letter-spacing: 0.13em !important;
-    color: rgba(244,239,230,0.65) !important;
+    color: {GRIJS_TEKST} !important;
     text-decoration: none !important;
     white-space: nowrap !important;
     box-shadow: none !important;
-    transition: color 0.18s !important;
+    transition: color 0.15s, background 0.15s !important;
 }}
 
 .block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
     [data-testid="stPageLink"] a:hover {{
-    background: transparent !important;
-    color: {PAPIER} !important;
+    background: {MIST} !important;
+    color: {INKT} !important;
 }}
 
 .block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
@@ -172,17 +169,14 @@ header[data-testid="stHeader"] {{ display: none !important; }}
     color: inherit !important;
 }}
 
-/* Elders: page_link in document-tinten */
 [data-testid="stPageLink"] a {{
     display: inline-block !important;
     background: transparent !important;
-    border-radius: 2px !important;
-    padding: 4px 10px !important;
-    font-family: 'Fraunces', serif !important;
+    border-radius: 6px !important;
+    padding: 6px 12px !important;
+    font-family: 'General Sans', sans-serif !important;
     font-size: 14px !important;
     font-weight: 500 !important;
-    font-variant-caps: all-small-caps !important;
-    letter-spacing: 0.10em !important;
     color: {INKT} !important;
     text-decoration: none !important;
     white-space: nowrap !important;
@@ -190,321 +184,266 @@ header[data-testid="stHeader"] {{ display: none !important; }}
 }}
 
 [data-testid="stPageLink"] a:hover {{
-    background: rgba(122,24,40,0.06) !important;
+    background: {MIST} !important;
 }}
 
 /* ── Voortgangsbalk ─────────────────────────────────────────────────────── */
 .progress-bar-bg {{
-    background: rgba(26,20,16,0.10);
-    border-radius: 0;
+    background: {LIJN};
+    border-radius: 4px;
     height: 8px;
     margin: 5px 0;
     overflow: hidden;
 }}
 .progress-bar-fill {{
     height: 8px;
-    background: {BORDEAUX};
+    background: {TERRACOTTA};
+    border-radius: 4px;
     transition: width 0.4s ease;
 }}
 
-/* ── Bronkaartje (citatie-stijl) ────────────────────────────────────────── */
+/* ── Bron-kaartje ───────────────────────────────────────────────────────── */
 .bron-kaartje {{
-    background: {PAPIER_LICHT};
-    border-left: 2px solid {BORDEAUX};
-    border-radius: 0;
+    background: {MIST};
+    border-left: 3px solid {TERRACOTTA};
+    border-radius: 4px;
     padding: 0.75rem 1.1rem;
-    font-family: 'Newsreader', serif;
+    font-family: 'General Sans', sans-serif;
     font-size: 0.95rem;
     margin-bottom: 0.5rem;
     color: {INKT};
 }}
 
-/* ── Vraag/Antwoord als documentpassages — geen bubbles ─────────────────── */
+/* ── Chat-bubbles ───────────────────────────────────────────────────────── */
 .chat-vraag {{
-    margin: 1.6rem 0 0.4rem 0;
-    padding: 0 0 0 1rem;
-    border: none;
-    border-left: 2px solid {OCHRE};
-    background: none;
+    margin: 1rem 0 0.4rem auto;
+    padding: 10px 14px;
+    background: {TERRACOTTA_LICHT};
+    border-radius: 16px 16px 4px 16px;
     color: {INKT};
-    font-family: 'Newsreader', serif;
-    font-style: italic;
-    font-size: 1.08rem;
-    line-height: 1.55;
-    max-width: 100%;
-    border-radius: 0;
-}}
-
-.chat-vraag::before {{
-    content: 'Vraag';
-    display: block;
-    font-style: normal;
-    font-family: 'Fraunces', serif;
-    font-variant-caps: all-small-caps;
-    letter-spacing: 0.20em;
-    font-size: 0.72rem;
-    color: {OCHRE};
-    margin-bottom: 0.25rem;
-    font-weight: 500;
+    font-family: 'General Sans', sans-serif;
+    font-size: 0.98rem;
+    line-height: 1.5;
+    max-width: 75%;
+    width: fit-content;
 }}
 
 .chat-antwoord {{
-    margin: 0.4rem 0 1.8rem 0;
-    padding: 0;
-    border: none;
-    background: none;
+    margin: 0.4rem auto 1.4rem 0;
+    padding: 12px 16px;
+    background: {WIT};
+    border: 1px solid {LIJN};
+    border-radius: 16px 16px 16px 4px;
     color: {INKT};
-    font-family: 'Newsreader', serif;
+    font-family: 'General Sans', sans-serif;
     font-size: 1rem;
-    line-height: 1.7;
-    border-radius: 0;
+    line-height: 1.6;
+    max-width: 90%;
 }}
 
-.chat-antwoord::before {{
-    content: 'Antwoord';
-    display: block;
-    font-family: 'Fraunces', serif;
-    font-variant-caps: all-small-caps;
-    letter-spacing: 0.20em;
-    font-size: 0.72rem;
-    color: {BORDEAUX};
-    margin-bottom: 0.4rem;
-    font-weight: 500;
-}}
-
-/* Drop cap op het eerste paragraaf van een antwoord */
-.chat-antwoord > p:first-of-type::first-letter,
-.chat-antwoord > div > p:first-of-type::first-letter {{
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    color: {BORDEAUX};
-    float: left;
-    font-size: 3.6em;
-    line-height: 0.85;
-    padding: 0.05em 0.16em 0 0;
-    margin-top: 0.04em;
-}}
-
-/* Markdown-blockquotes binnen antwoorden → pull-quote citaten */
 .chat-antwoord blockquote {{
-    background: {PAPIER_LICHT};
-    border-left: 3px solid {BORDEAUX};
-    margin: 1rem 0;
-    padding: 0.75rem 1.1rem;
-    font-family: 'Newsreader', serif;
-    font-style: italic;
+    background: {MIST};
+    border-left: 3px solid {TERRACOTTA};
+    border-radius: 4px;
+    margin: 0.8rem 0;
+    padding: 0.6rem 1rem;
+    font-family: 'General Sans', sans-serif;
     color: {INKT};
 }}
 
 .chat-antwoord blockquote p {{ margin: 0; }}
 
 .chat-antwoord code {{
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
     font-size: 0.85em;
-    background: rgba(168,138,92,0.14);
+    background: {MIST};
     padding: 1px 5px;
-    border-radius: 2px;
+    border-radius: 4px;
     color: {INKT};
 }}
 
-/* ── Codex-helpers ──────────────────────────────────────────────────────── */
+/* ── Landingspagina-helpers ─────────────────────────────────────────────── */
 .oer-mark {{
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 400;
-    color: {OCHRE};
+    font-family: 'General Sans', sans-serif;
+    font-weight: 600;
+    color: {TERRACOTTA};
     font-size: 3.4rem;
     line-height: 1;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.02em;
     text-align: right;
 }}
 
 .oer-overtitel {{
-    font-family: 'Fraunces', serif;
-    font-variant-caps: all-small-caps;
-    letter-spacing: 0.20em;
-    font-size: 0.80rem;
-    color: {OCHRE};
+    font-family: 'General Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.78rem;
+    color: {GRIJS_TEKST};
     margin-bottom: 0.3rem;
-    font-weight: 500;
+    font-weight: 600;
 }}
 
 .oer-ondertitel {{
-    font-family: 'Newsreader', serif;
-    font-style: italic;
-    color: rgba(26,20,16,0.7);
+    font-family: 'General Sans', sans-serif;
+    color: {GRIJS_TEKST};
     font-size: 1.05rem;
     margin-top: 0.2rem;
 }}
 
 .oer-ornament {{
     text-align: center;
-    color: {OCHRE};
-    font-size: 1.2rem;
-    margin: 1.6rem 0 1.2rem 0;
-    letter-spacing: 1em;
+    color: {TERRACOTTA};
+    font-size: 1.1rem;
+    margin: 1.4rem 0 1rem 0;
+    letter-spacing: 0.6em;
 }}
 
 .oer-meta {{
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
     font-size: 0.78rem;
-    color: rgba(26,20,16,0.65);
+    color: {GRIJS_TEKST};
     letter-spacing: 0.02em;
     line-height: 1.5;
 }}
 
 .oer-intro {{
-    font-family: 'Newsreader', serif;
-    font-style: italic;
+    font-family: 'General Sans', sans-serif;
     font-size: 1.05rem;
     line-height: 1.6;
-    color: rgba(26,20,16,0.78);
+    color: {GRIJS_TEKST};
     max-width: 60ch;
 }}
 
 .oer-citaat {{
-    background: {PAPIER_LICHT};
-    border-left: 3px solid {BORDEAUX};
+    background: {MIST};
+    border-left: 3px solid {TERRACOTTA};
+    border-radius: 4px;
     margin: 1.2rem 0;
     padding: 0.9rem 1.2rem;
-    font-family: 'Newsreader', serif;
-    font-style: italic;
+    font-family: 'General Sans', sans-serif;
     color: {INKT};
 }}
 
 .oer-citaat-bron {{
     display: block;
     margin-top: 0.5rem;
-    font-style: normal;
-    font-variant-caps: all-small-caps;
-    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    letter-spacing: 0.10em;
     font-size: 0.72rem;
-    color: {OCHRE};
+    color: {GRIJS_TEKST};
+    font-weight: 600;
 }}
 
-/* ── Containers (st.container border=True) ────────────────────────────── */
+/* ── Containers (st.container border=True) ──────────────────────────────── */
 [data-testid="stVerticalBlockBorderWrapper"] {{
-    background: {PAPIER_LICHT} !important;
-    border-radius: 0 !important;
-    border: 1px solid {HAARLIJN} !important;
+    background: {WIT} !important;
+    border-radius: 12px !important;
+    border: 1px solid {LIJN} !important;
     box-shadow: none !important;
-    padding: 6px 12px;
+    padding: 8px 14px;
 }}
 
-/* ── Knoppen — sober, edition-stijl ────────────────────────────────────── */
+/* ── Knoppen ─────────────────────────────────────────────────────────────── */
 [data-testid="stBaseButton-primary"],
 [data-testid="stBaseButton-primary"] p,
 [data-testid="stBaseButton-primary"] span {{
-    background-color: {BORDEAUX} !important;
-    color: {PAPIER} !important;
-    border-radius: 2px !important;
-    font-family: 'Fraunces', serif !important;
-    font-variant-caps: all-small-caps !important;
-    letter-spacing: 0.13em !important;
+    background-color: {TERRACOTTA} !important;
+    color: {WIT} !important;
+    border-radius: 50px !important;
+    font-family: 'General Sans', sans-serif !important;
+    letter-spacing: 0.02em !important;
     font-size: 0.95rem !important;
-    font-weight: 500 !important;
-    border: 1px solid {BORDEAUX} !important;
-    padding: 0.55rem 1.2rem !important;
+    font-weight: 600 !important;
+    border: 1px solid {TERRACOTTA} !important;
+    padding: 0.55rem 1.4rem !important;
     box-shadow: none !important;
 }}
 
 [data-testid="stBaseButton-primary"]:hover {{
-    background-color: #5C111E !important;
-    border-color: #5C111E !important;
+    background-color: {TERRACOTTA_DONKER} !important;
+    border-color: {TERRACOTTA_DONKER} !important;
 }}
 
 [data-testid="stBaseButton-secondary"],
 [data-testid="stBaseButton-secondary"] p,
 [data-testid="stBaseButton-secondary"] span {{
-    background-color: transparent !important;
+    background-color: {WIT} !important;
     color: {INKT} !important;
-    border-radius: 2px !important;
-    border: 1px solid {HAARLIJN} !important;
-    font-family: 'Fraunces', serif !important;
-    font-variant-caps: all-small-caps !important;
-    letter-spacing: 0.10em !important;
+    border-radius: 50px !important;
+    border: 1px solid {LIJN} !important;
+    font-family: 'General Sans', sans-serif !important;
     font-size: 0.92rem !important;
     font-weight: 500 !important;
-    padding: 0.5rem 1rem !important;
+    padding: 0.5rem 1.2rem !important;
 }}
 
 [data-testid="stBaseButton-secondary"]:hover {{
-    background-color: {PAPIER_LICHT} !important;
-    border-color: {OCHRE} !important;
+    background-color: {MIST} !important;
+    border-color: {GRIJS_TEKST} !important;
     color: {INKT} !important;
 }}
 
-/* ── Form elements ─────────────────────────────────────────────────────── */
+/* ── Form elements ──────────────────────────────────────────────────────── */
 [data-testid="stTextInput"] input,
 [data-testid="stTextArea"] textarea {{
-    background: {PAPIER_LICHT} !important;
-    border: 1px solid {HAARLIJN} !important;
-    border-radius: 2px !important;
-    font-family: 'Newsreader', serif !important;
+    background: {WIT} !important;
+    border: 1px solid {LIJN} !important;
+    border-radius: 8px !important;
+    font-family: 'General Sans', sans-serif !important;
     color: {INKT} !important;
 }}
 
 [data-testid="stTextInput"] input:focus,
 [data-testid="stTextArea"] textarea:focus {{
-    border-color: {BORDEAUX} !important;
-    box-shadow: 0 0 0 1px {BORDEAUX} !important;
+    border-color: {TERRACOTTA} !important;
+    box-shadow: 0 0 0 3px {TERRACOTTA_LICHT} !important;
 }}
 
-/* ── Tabs ─────────────────────────────────────────────────────────────── */
+/* ── Tabs ───────────────────────────────────────────────────────────────── */
 [data-testid="stTabs"] [role="tab"] p {{
-    font-family: 'Fraunces', serif !important;
-    font-variant-caps: all-small-caps !important;
-    letter-spacing: 0.13em !important;
+    font-family: 'General Sans', sans-serif !important;
     font-size: 0.95rem !important;
     font-weight: 500 !important;
-    color: rgba(26,20,16,0.55) !important;
+    color: {GRIJS_TEKST} !important;
 }}
 
 [data-testid="stTabs"] [role="tab"][aria-selected="true"] p {{
-    color: {BORDEAUX} !important;
+    color: {INKT} !important;
+    font-weight: 600 !important;
 }}
 
 [data-testid="stTabs"] [data-baseweb="tab-highlight"] {{
-    background: {BORDEAUX} !important;
+    background: {TERRACOTTA} !important;
 }}
 
 /* ── Chat-input ─────────────────────────────────────────────────────────── */
 [data-testid="stBottom"],
 [data-testid="stBottomBlockContainer"] {{
-    background-color: {PAPIER} !important;
-    border-top: 1px solid {HAARLIJN} !important;
+    background-color: {WIT} !important;
+    border-top: 1px solid {LIJN} !important;
 }}
 
 [data-testid="stChatInput"],
 [data-testid="stChatInputTextArea"],
 [data-testid="stChatInput"] textarea {{
-    background: {PAPIER_LICHT} !important;
-    border: 1px solid {HAARLIJN} !important;
-    border-radius: 2px !important;
-    font-family: 'Newsreader', serif !important;
+    background: {WIT} !important;
+    border: 1px solid {LIJN} !important;
+    border-radius: 12px !important;
+    font-family: 'General Sans', sans-serif !important;
     color: {INKT} !important;
 }}
 
-/* ── Footer — small caps met ornament ───────────────────────────────────── */
+/* ── Footer ─────────────────────────────────────────────────────────────── */
 .footer {{
     position: fixed; bottom: 0; left: 0; right: 0;
-    background: {PAPIER};
-    border-top: 1px solid {HAARLIJN};
-    padding: 0.55rem 1.5rem;
-    font-family: 'Fraunces', serif;
-    font-variant-caps: all-small-caps;
-    letter-spacing: 0.20em;
-    font-size: 0.72rem;
-    color: rgba(26,20,16,0.55);
+    background: {WIT};
+    border-top: 1px solid {LIJN};
+    padding: 0.6rem 1.5rem;
+    font-family: 'General Sans', sans-serif;
+    font-size: 0.78rem;
+    color: {GRIJS_TEKST};
     text-align: center;
     z-index: 999;
-}}
-
-.footer::before, .footer::after {{
-    content: ' ❧ ';
-    font-family: 'Newsreader', Georgia, serif;
-    color: {OCHRE};
-    letter-spacing: 0;
 }}
 </style>
 """
@@ -531,7 +470,6 @@ def _opleiding_naam(opleiding: str, crebo: str) -> str:
     naam = re.sub(rf"\b{re.escape(crebo)}\b\s*[-–]?\s*", "", naam)  # strip resterende crebo
     naam = re.sub(r"\s+\d+\s+(maanden|jaar)$", "", naam)  # strip " 36 maanden"
     naam = naam.strip()
-    # Da Vinci filenaam-stijl (geen spaties): CREBOLEERWEGJAARExamenplan/MJP[-naam-cohort-jaar]
     if " " not in naam:
         naam = re.sub(rf"^{re.escape(crebo)}[A-Z]{{3}}\d{{4}}(?:Examenplan|MJP)[-_]?", "", naam)
         naam = re.sub(r"[-_]cohort[-_]\d{4}$", "", naam)
@@ -551,8 +489,8 @@ def render_student_info() -> None:
     opleiding_label = _opleiding_naam(opleiding, crebo) if opleiding and crebo else opleiding
     onderdelen = [x for x in [naam, leerweg, opleiding_label, instelling] if x]
     st.markdown(
-        f'<p style="color:rgba(28,43,58,0.7);font-size:0.85rem;'
-        f"font-family:'DM Sans',sans-serif;margin:0.4rem 0 0.8rem 0\">"
+        f'<p style="color:{GRIJS_TEKST};font-size:0.85rem;'
+        f"font-family:'General Sans',sans-serif;margin:0.4rem 0 0.8rem 0\">"
         f"{'&nbsp;&nbsp;|&nbsp;&nbsp;'.join(onderdelen)}</p>",
         unsafe_allow_html=True,
     )
@@ -576,8 +514,8 @@ def render_nav() -> None:
             st.page_link(page, label=label)
     with cols[-2]:
         st.markdown(
-            f'<span style="color:rgba(255,255,255,0.6);font-size:0.78rem;'
-            f"font-family:'DM Sans',sans-serif\">{gebruiker} · {opleiding}</span>",
+            f'<span style="color:{GRIJS_TEKST};font-size:0.78rem;'
+            f"font-family:'General Sans',sans-serif\">{gebruiker} · {opleiding}</span>",
             unsafe_allow_html=True,
         )
     with cols[-1]:
