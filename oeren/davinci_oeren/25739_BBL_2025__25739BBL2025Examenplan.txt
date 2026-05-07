@@ -1,0 +1,32 @@
+Examenplan beroepsgerichte examens 25739 Technicus elektrotechnische installaties in de gebouwde
+omgeving. N4 BBL vanaf 2022
+
+                                                               Kerntaak B1-K1 Installeren van elektrotechnische installaties
+
+Code Exameninstrument   Werkprocessen Waar    Wie beoordelen                    Score      Weging  Score voor de kerntaak
+              PvB 1                                                             (O-V-G of  nvt     (O-V-G of cijfer)
+                                              Interne en                        cijfer)
+                        B1-K1-W1  Bedrijf of  externe                           Cijfer
+                        B1-K1-W2  DZF         examinator
+                        B1-K1-W3
+                        B1-K1-W4                                                                   cijfer
+                        B1-K1-W5
+                        B1-K1-W6
+                        B1-K1-W7
+                        B1-K1-W8
+                        B1-K1-W9
+
+      De beoordeling voor kerntaak B1-K1 is gelijk aan het cijfer voor PVB 1
+      Kerntaak B1-K1 is behaald, wanneer voor PvB 1 minimaal een 6 is behaald.
+
+      Kerntaak P2-K1 Onderhouden van elektrotechnische installaties in de gebouwde omgeving en analyseren van storingen
+
+Code  Exameninstrument  Werkprocessen Waar    Wie beoordelen                    Score      Weging  Score voor de kerntaak
+      PvB 2                                                                     (O-V-G of  nvt     (O-V-G of cijfer)
+                        P2-K1-W1  Bedrijf of  Interne en                        cijfer)
+                        P2-K1-W2  DZF         externe                                              cijfer
+                        P2-K1-W3              examinator                        Cijfer
+
+      De beoordeling voor kerntaak P2-K1 is gelijk aan het cijfer voor PVB 2
+      Kerntaak P2-K1 is behaald, wanneer voor PvB 2 minimaal een 6 is behaald
+

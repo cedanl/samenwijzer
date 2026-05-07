@@ -1,0 +1,1001 @@
+Studentnummer,Naam,Klas,Mentor,Instelling,Opleiding,crebo,leerweg,cohort,StudentAge,StudentGender,Dropout,Aanmel_aantal,max1studie,absence_unauthorized,absence_authorized,Richting_nan,Economie,Landbouw,Techniek,DSV,Zorgenwelzijn,Anders,VooroplNiveau_HAVO,VooroplNiveau_MBO,VooroplNiveau_basis,VooroplNiveau_educatie,VooroplNiveau_prak,VooroplNiveau_VMBO_BB,VooroplNiveau_VMBO_GL,VooroplNiveau_VMBO_KB,VooroplNiveau_VMBO_TL,VooroplNiveau_nan,VooroplNiveau_VWOplus,VooroplNiveau_other
+100000,Eva Dijkstra,3B,B. de Vries,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,1,0,1.8,0.1,13.8,14.8,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100001,Sophie Hoekstra,3B,C. Hendriks,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,1,0,1.3,0.1,2.9,5.5,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100002,Joris de Groot,3B,F. Dijkstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,1,0,1.2,0.0,10.5,18.2,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100003,Anna Meijer,3B,F. Hoekstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,24,1,0,2.1,1.0,13.7,7.3,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100004,Aisha van Dijk,3B,F. Dijkstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,1,0,1.9,0.5,1.5,17.3,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+100005,Lieke Koster,3B,C. Dijkstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,0,0,2.7,0.3,42.9,11.5,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100006,Stijn de Boer,3B,B. Koster,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,21,1,0,2.0,0.1,5.6,1.4,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100007,Tess Huisman,3B,C. Dijkstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,0,0,1.2,0.5,3.3,2.2,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100008,Maud Dijkstra,3B,F. Hoekstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,1,0,2.9,0.9,1.6,8.6,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100009,Eva de Boer,3B,F. Dijkstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,1,0,2.8,0.5,4.5,40.0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100010,Emma Vos,3B,A. Koster,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,20,0,0,1.1,0.0,10.6,2.1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100011,Lisa Mulder,3B,C. Dijkstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,1,1,1.5,0.5,13.3,1.9,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100012,Liam Visser,3B,D. van Dijk,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,0,0,1.1,0.7,6.8,4.4,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100013,Liam Mulder,3B,B. de Vries,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,1,0,1.9,0.9,2.5,4.8,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100014,Olaf Bosch,3B,D. Hendriks,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,0,0,1.3,0.5,1.2,8.4,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100015,Fatima Jansen,3B,B. Koster,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,1,0,1.6,0.7,5.7,33.8,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100016,Olaf Dijkstra,3B,D. van Dijk,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,20,0,0,2.5,0.1,15.2,1.3,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100017,Lisa Bosch,3B,D. Hendriks,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,0,0,1.1,0.1,2.1,25.9,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100018,Fatima Visser,3B,D. Peters,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,1,0,2.9,0.2,3.4,7.2,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100019,Mees de Groot,3B,C. Jansen,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,0,0,1.0,0.6,1.7,8.3,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100020,Liam Bakker,3B,D. Hendriks,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,20,1,0,1.6,0.4,2.9,2.5,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100021,Bram de Graaf,3B,F. Hoekstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,1,0,2.9,0.1,12.7,0.1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100022,Yasmin Visser,3B,A. Prins,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,1,0,2.0,0.3,16.3,1.4,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100023,Daan Bakker,3B,D. van Dijk,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,0,1,2.3,0.3,6.6,2.6,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100024,Joris Hoekstra,3B,C. Jansen,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,0,0,2.7,0.6,9.9,0.9,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100025,Noor Jansen,3B,C. Dijkstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,0,0,2.8,0.2,5.4,21.6,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100026,Liam Peters,3B,F. Hoekstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,0,0,2.7,1.0,9.8,16.6,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100027,Lieke van Leeuwen,3B,A. Koster,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,1,0,2.6,0.9,2.4,20.7,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100028,Yasmin Meijer,3B,F. Hoekstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,1,1,1.7,0.8,14.5,3.9,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100029,Mees de Vries,3B,D. van Dijk,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,1,0,1.7,0.5,2.6,3.2,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100030,Tess Dijkstra,3B,C. Hendriks,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,20,1,0,1.1,0.6,33.6,1.0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100031,Olaf Vos,3B,C. Jansen,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,22,0,0,1.5,0.7,11.2,5.7,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100032,Niels Huisman,3B,D. Hendriks,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,1,0,2.2,0.7,13.9,22.5,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100033,Lieke Bos,3B,D. Hendriks,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,1,0,2.1,0.2,4.4,4.2,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100034,Fatima van Dijk,3B,F. Dijkstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,1,1,1.4,0.8,28.0,7.6,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100035,Lotte Dekker,3B,C. de Boer,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,0,0,2.3,0.3,7.0,1.9,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100036,Stijn Vos,3B,A. Prins,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,0,0,1.1,1.0,20.5,11.1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100037,Maud Bakker,3B,C. de Boer,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,1,0,2.0,0.2,6.4,7.9,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100038,Aisha Prins,3B,F. Hoekstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,1,1,1.1,0.2,26.0,12.1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100039,Iris Smit,3B,F. Hoekstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,1,0,2.9,0.9,7.5,6.1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100040,Finn de Wit,3B,C. Jansen,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,1,0,2.5,0.8,21.3,6.4,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+100041,Maud de Wit,3B,C. de Boer,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,1,1,1.5,0.3,11.8,2.6,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100042,Emma Smit,3B,B. Koster,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,1,0,1.8,0.2,3.2,9.5,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100043,Lieke Prins,3B,D. Peters,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,1,0,2.0,0.9,35.0,0.2,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+100044,Fatima Bosch,3B,C. Jansen,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,1,0,1.9,0.0,9.3,10.6,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100045,Thijs Huisman,3B,C. Jansen,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,0,0,2.8,0.6,15.5,14.7,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100046,Emma van der Berg,3B,C. Jansen,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,1,1,1.7,0.9,1.8,5.0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+100047,Tess van Leeuwen,3B,C. Dijkstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,0,0,3.0,0.3,21.6,5.1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100048,Maud van der Berg,3B,A. Koster,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,0,1,1.9,0.1,16.8,23.9,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+100049,Iris Hoekstra,3B,C. Dijkstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,0,0,2.6,0.2,17.5,1.5,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+100050,Sophie de Vries,3B,C. Dijkstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,0,0,1.2,0.8,10.3,19.1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100051,Stijn Huisman,3B,A. Prins,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,1,1,2.3,0.1,19.1,6.7,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100052,Aisha Bosch,3B,C. Jansen,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,0,0,1.9,0.7,20.7,0.9,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100053,Yasmin de Graaf,3B,F. Hoekstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,1,0,1.6,0.2,30.3,11.9,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100054,Yasmin Dekker,3B,B. de Vries,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,1,0,1.4,0.2,16.7,6.7,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100055,Lotte de Groot,3B,D. Peters,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,0,1,1.2,0.7,14.5,2.6,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100056,Maud Mulder,3B,F. Dijkstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,1,0,2.4,0.3,7.8,10.0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100057,Sven Dijkstra,3B,D. Hendriks,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,1,0,2.4,0.3,5.1,40.0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100058,Liam Koster,3B,B. de Vries,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,1,0,1.6,0.6,4.5,10.9,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100059,Stijn Bos,3B,A. Prins,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,1,0,1.0,0.5,21.5,2.8,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+100060,Daan Dijkstra,3B,C. Dijkstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,1,0,1.9,0.4,14.3,1.1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100061,Daan de Groot,3B,C. de Boer,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,0,0,1.3,0.8,1.5,0.5,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+100062,Emma Mulder,3B,A. Prins,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,1,0,1.9,0.4,9.8,4.3,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100063,Tim Bos,3B,D. Peters,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,0,0,2.3,0.3,11.6,7.5,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100064,Mees Meijer,3B,D. Hendriks,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,0,0,1.6,0.3,0.9,0.0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100065,Emma van Dijk,3B,B. de Vries,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,0,0,1.9,0.5,30.9,12.4,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100066,Niels de Groot,3B,B. Koster,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,1,0,1.9,0.5,0.9,1.5,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+100067,Fatima de Groot,3B,D. Hendriks,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,1,0,2.5,0.6,9.3,4.6,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100068,Mees van Dijk,3B,D. Peters,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,0,0,1.9,0.7,10.6,0.2,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100069,Lucas Smits,3B,C. Jansen,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,1,1,1.8,0.3,12.1,5.4,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100070,Lucas Vos,3B,C. Jansen,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,1,0,1.2,0.3,14.2,2.7,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100071,Maud Hendriks,3B,D. Hendriks,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,1,0,1.8,0.2,20.9,0.0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100072,Maud Brouwer,3B,D. van Dijk,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,1,0,1.2,1.0,7.0,0.4,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100073,Mees Hoekstra,3B,B. Koster,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,0,0,3.0,0.9,4.5,0.1,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100074,Liam van der Berg,3B,B. Koster,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,1,0,1.5,0.6,8.3,10.1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100075,Niels de Graaf,3B,D. Hendriks,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,21,1,1,1.7,0.8,16.5,1.2,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+100076,Aisha Bos,3B,F. Dijkstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,1,0,1.7,0.6,4.3,7.1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100077,Iris Vos,3B,B. de Vries,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,1,1,1.1,0.7,47.4,2.2,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100078,Olaf Hendriks,3B,C. Jansen,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,20,0,0,2.0,0.6,53.5,12.6,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100079,Bas Bosch,3B,C. de Boer,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,21,0,1,1.8,0.7,1.3,19.3,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100080,Sven Huisman,3B,C. Dijkstra,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,20,1,0,2.9,0.6,5.0,9.4,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100081,Sven Bosch,3B,D. Hendriks,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,1,0,3.0,0.7,0.4,0.6,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100082,Liam Prins,3B,D. van Dijk,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,1,1,2.6,0.3,14.6,0.8,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100083,Noor Mulder,3B,D. Hendriks,Da Vinci,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,0,0,1.2,0.9,6.4,9.2,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100084,Mees Brouwer,4B,D. Peters,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,1,0,2.8,0.7,1.9,4.9,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100085,Iris Peters,4B,D. Peters,Da Vinci,Onderwijsassistent,25698,BOL,2025,18,1,0,2.7,0.2,4.3,26.2,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100086,Sven Visser,4B,B. de Vries,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,1,0,1.5,0.6,5.8,3.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100087,Finn Jansen,4B,D. Peters,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,0,0,2.2,0.4,16.4,14.3,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100088,Stijn de Groot,4B,D. van Dijk,Da Vinci,Onderwijsassistent,25698,BOL,2025,18,0,0,1.6,0.4,16.9,11.7,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100089,Finn Smit,4B,A. Prins,Da Vinci,Onderwijsassistent,25698,BOL,2025,18,0,0,1.3,0.5,28.8,3.2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100090,Lisa de Wit,4B,C. Dijkstra,Da Vinci,Onderwijsassistent,25698,BOL,2025,15,1,0,2.6,0.5,21.3,2.4,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100091,Maud Mulder,4B,D. van Dijk,Da Vinci,Onderwijsassistent,25698,BOL,2025,18,1,0,1.2,0.4,15.5,31.3,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+100092,Liam Dekker,4B,C. Hendriks,Da Vinci,Onderwijsassistent,25698,BOL,2025,19,0,0,2.3,0.5,13.4,8.9,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100093,Joris Vos,4B,D. Peters,Da Vinci,Onderwijsassistent,25698,BOL,2025,15,1,0,2.3,0.1,3.0,0.5,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100094,Daan Bos,4B,C. de Boer,Da Vinci,Onderwijsassistent,25698,BOL,2025,16,1,0,2.2,0.7,1.5,2.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100095,Anna Visser,4B,C. de Boer,Da Vinci,Onderwijsassistent,25698,BOL,2025,19,1,0,1.4,0.4,11.5,22.4,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100096,Jens Visser,4B,D. van Dijk,Da Vinci,Onderwijsassistent,25698,BOL,2025,19,0,0,2.9,0.8,5.5,18.6,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100097,Sara van der Berg,4B,D. van Dijk,Da Vinci,Onderwijsassistent,25698,BOL,2025,18,0,0,3.0,0.8,10.9,0.2,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100098,Tess Prins,4B,D. Hendriks,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,0,0,1.6,1.0,2.8,1.9,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100099,Joris de Groot,4B,F. Hoekstra,Da Vinci,Onderwijsassistent,25698,BOL,2025,18,0,1,1.7,0.8,2.3,8.7,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100100,Aisha Meijer,4B,C. Dijkstra,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,1,0,2.0,0.1,0.6,10.8,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100101,Stijn Jansen,4B,F. Dijkstra,Da Vinci,Onderwijsassistent,25698,BOL,2025,15,1,0,2.3,0.0,18.3,16.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100102,Bas Hendriks,4B,C. Jansen,Da Vinci,Onderwijsassistent,25698,BOL,2025,18,0,0,1.1,0.3,13.9,5.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100103,Joris Hoekstra,4B,C. Hendriks,Da Vinci,Onderwijsassistent,25698,BOL,2025,18,1,0,1.2,0.7,5.8,7.3,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100104,Anna Prins,4B,D. Hendriks,Da Vinci,Onderwijsassistent,25698,BOL,2025,18,1,0,1.8,0.7,15.3,1.9,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+100105,Lotte van Dijk,4B,C. Dijkstra,Da Vinci,Onderwijsassistent,25698,BOL,2025,19,0,0,1.2,0.1,5.6,1.3,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100106,Finn Koster,4B,C. Hendriks,Da Vinci,Onderwijsassistent,25698,BOL,2025,16,0,0,1.8,0.9,20.0,6.5,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100107,Tim Bosch,4B,F. Dijkstra,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,0,0,2.2,0.2,0.6,2.7,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100108,Mees Bosch,4B,A. Prins,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,1,0,2.7,1.0,5.2,6.5,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100109,Stijn van Dijk,4B,D. van Dijk,Da Vinci,Onderwijsassistent,25698,BOL,2025,19,1,0,1.1,0.3,9.8,7.5,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100110,Niels Vos,4B,C. Hendriks,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,0,0,1.2,0.5,0.1,16.3,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100111,Iris Vos,4B,B. Koster,Da Vinci,Onderwijsassistent,25698,BOL,2025,18,0,0,2.8,0.2,5.5,10.2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100112,Daan van Dijk,4B,A. Prins,Da Vinci,Onderwijsassistent,25698,BOL,2025,16,0,0,1.7,0.1,3.8,8.7,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100113,Sophie Brouwer,4B,D. Hendriks,Da Vinci,Onderwijsassistent,25698,BOL,2025,18,0,0,1.0,0.3,13.2,0.4,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100114,Noor Prins,4B,C. Dijkstra,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,0,0,2.0,0.8,4.1,1.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100115,Emma Hendriks,4B,F. Dijkstra,Da Vinci,Onderwijsassistent,25698,BOL,2025,18,1,0,2.2,0.6,0.5,0.2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100116,Tim Bos,4B,A. Prins,Da Vinci,Onderwijsassistent,25698,BOL,2025,19,1,0,1.2,0.8,6.2,27.1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100117,Sophie Hendriks,4B,D. Hendriks,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,0,0,1.7,0.2,1.0,16.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100118,Liam de Wit,4B,D. Hendriks,Da Vinci,Onderwijsassistent,25698,BOL,2025,20,0,0,1.5,0.1,2.6,12.0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100119,Stijn Smit,4B,F. Hoekstra,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,1,0,1.9,0.6,17.1,0.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100120,Thijs Smits,4B,D. van Dijk,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,0,0,1.9,0.6,12.1,7.8,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100121,Sophie Jansen,4B,C. Hendriks,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,0,0,1.7,0.3,8.5,3.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100122,Bas Bakker,4B,D. Peters,Da Vinci,Onderwijsassistent,25698,BOL,2025,20,0,0,1.9,0.8,10.8,3.9,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100123,Lotte de Graaf,4B,C. de Boer,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,1,0,3.0,0.1,8.4,25.3,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100124,Daan Mulder,4B,F. Dijkstra,Da Vinci,Onderwijsassistent,25698,BOL,2025,18,1,0,1.8,0.8,6.9,4.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100125,Daan Huisman,4B,D. van Dijk,Da Vinci,Onderwijsassistent,25698,BOL,2025,19,1,1,1.6,0.7,12.5,0.5,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100126,Niels de Graaf,4B,B. Koster,Da Vinci,Onderwijsassistent,25698,BOL,2025,15,1,0,1.3,0.7,4.9,7.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100127,Joris Hendriks,4B,D. van Dijk,Da Vinci,Onderwijsassistent,25698,BOL,2025,21,0,0,2.3,0.4,18.8,13.4,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100128,Jens Bos,4B,B. Koster,Da Vinci,Onderwijsassistent,25698,BOL,2025,20,0,0,1.2,0.8,36.2,3.3,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100129,Maud Dijkstra,4B,F. Dijkstra,Da Vinci,Onderwijsassistent,25698,BOL,2025,25,0,0,2.2,0.2,25.8,0.3,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100130,Eva Prins,4B,D. Peters,Da Vinci,Onderwijsassistent,25698,BOL,2025,15,0,0,2.9,0.6,19.9,1.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100131,Olaf Dekker,4B,B. de Vries,Da Vinci,Onderwijsassistent,25698,BOL,2025,19,1,0,2.8,0.2,9.2,3.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100132,Sophie Dekker,4B,C. de Boer,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,0,0,2.6,0.1,17.6,12.0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100133,Anna Brouwer,4B,C. Hendriks,Da Vinci,Onderwijsassistent,25698,BOL,2025,18,0,0,1.6,0.8,9.7,0.9,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+100134,Lieke de Wit,4B,B. Koster,Da Vinci,Onderwijsassistent,25698,BOL,2025,19,0,0,1.8,0.4,21.3,0.8,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100135,Fatima Bakker,4B,C. Hendriks,Da Vinci,Onderwijsassistent,25698,BOL,2025,15,1,0,2.6,0.1,3.1,3.1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+100136,Tess Brouwer,4B,F. Dijkstra,Da Vinci,Onderwijsassistent,25698,BOL,2025,15,0,0,1.5,0.8,21.3,11.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100137,Finn de Graaf,4B,D. Hendriks,Da Vinci,Onderwijsassistent,25698,BOL,2025,15,0,0,1.1,0.4,6.6,12.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100138,Iris Bakker,4B,A. Prins,Da Vinci,Onderwijsassistent,25698,BOL,2025,16,0,0,1.6,0.0,21.7,5.5,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100139,Sophie van Leeuwen,4B,B. Koster,Da Vinci,Onderwijsassistent,25698,BOL,2025,16,0,0,2.9,0.5,13.1,0.7,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100140,Lisa Dijkstra,4B,A. Koster,Da Vinci,Onderwijsassistent,25698,BOL,2025,19,0,0,1.7,0.1,5.9,5.1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100141,Thijs van der Berg,4B,A. Prins,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,0,0,1.7,0.3,17.7,10.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100142,Tess Prins,4B,D. van Dijk,Da Vinci,Onderwijsassistent,25698,BOL,2025,18,1,0,1.1,0.2,7.5,9.5,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100143,Lieke Jansen,4B,C. Hendriks,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,1,0,1.5,0.8,32.5,5.8,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100144,Jens Bosch,4B,F. Hoekstra,Da Vinci,Onderwijsassistent,25698,BOL,2025,18,1,0,2.5,0.9,0.6,8.5,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100145,Lucas Brouwer,4B,F. Dijkstra,Da Vinci,Onderwijsassistent,25698,BOL,2025,16,0,0,2.5,0.1,8.3,20.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100146,Tess Meijer,4B,D. Hendriks,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,1,0,1.3,0.4,4.2,0.9,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100147,Finn Bosch,4B,C. Hendriks,Da Vinci,Onderwijsassistent,25698,BOL,2025,19,0,0,1.2,0.6,11.4,4.6,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100148,Olaf Koster,4B,D. van Dijk,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,0,0,1.1,0.8,2.1,0.3,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100149,Fatima Smits,4B,A. Koster,Da Vinci,Onderwijsassistent,25698,BOL,2025,16,1,0,1.9,0.1,11.1,9.1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100150,Jens Hendriks,4B,C. Hendriks,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,1,1,2.8,0.1,12.6,2.3,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100151,Eva Dekker,4B,B. de Vries,Da Vinci,Onderwijsassistent,25698,BOL,2025,15,1,0,1.4,0.1,60.0,2.7,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100152,Lucas Hoekstra,4B,C. de Boer,Da Vinci,Onderwijsassistent,25698,BOL,2025,20,0,0,2.1,0.3,60.0,13.3,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+100153,Lucas Hoekstra,4B,F. Dijkstra,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,0,0,1.2,0.2,31.5,8.1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100154,Olaf Brouwer,4B,A. Koster,Da Vinci,Onderwijsassistent,25698,BOL,2025,18,0,0,1.1,0.4,5.4,6.8,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100155,Sven de Wit,4B,C. Jansen,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,1,1,2.3,0.4,17.6,13.9,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100156,Jens Smit,4B,F. Hoekstra,Da Vinci,Onderwijsassistent,25698,BOL,2025,19,0,0,2.7,0.5,9.6,7.1,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+100157,Lucas Vos,4B,F. Dijkstra,Da Vinci,Onderwijsassistent,25698,BOL,2025,19,1,0,2.7,0.3,3.1,23.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100158,Joris de Groot,4B,B. Koster,Da Vinci,Onderwijsassistent,25698,BOL,2025,16,0,1,1.3,0.6,11.8,7.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100159,Lotte Postma,4B,D. Peters,Da Vinci,Onderwijsassistent,25698,BOL,2025,16,1,0,2.3,0.8,0.5,15.9,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100160,Anna de Vries,4B,C. de Boer,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,1,0,1.6,0.1,26.4,6.3,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100161,Iris van Leeuwen,4B,C. de Boer,Da Vinci,Onderwijsassistent,25698,BOL,2025,19,1,0,2.5,0.9,7.5,3.3,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100162,Noor Prins,4B,C. Hendriks,Da Vinci,Onderwijsassistent,25698,BOL,2025,19,0,0,1.2,0.3,8.7,0.9,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100163,Stijn van Leeuwen,4B,B. de Vries,Da Vinci,Onderwijsassistent,25698,BOL,2025,19,1,0,1.4,0.2,39.5,18.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100164,Iris Brouwer,4B,C. Dijkstra,Da Vinci,Onderwijsassistent,25698,BOL,2025,16,1,0,1.1,0.3,8.3,0.8,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100165,Tess van der Berg,4B,D. van Dijk,Da Vinci,Onderwijsassistent,25698,BOL,2025,18,1,0,1.3,0.3,7.6,6.2,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100166,Fatima Peters,4B,A. Koster,Da Vinci,Onderwijsassistent,25698,BOL,2025,17,1,0,2.5,0.3,6.1,6.8,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100167,Thijs de Graaf,4B,A. Prins,Da Vinci,Tandartsassistent,25699,BOL,2025,17,1,0,2.1,0.4,1.7,0.8,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0
+100168,Stijn de Wit,4B,C. Jansen,Da Vinci,Tandartsassistent,25699,BOL,2025,16,1,0,1.3,0.9,8.3,0.4,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0
+100169,Niels de Graaf,4B,C. Hendriks,Da Vinci,Tandartsassistent,25699,BOL,2025,19,1,0,2.2,0.5,2.1,37.3,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0
+100170,Sven Hoekstra,4B,D. Peters,Da Vinci,Tandartsassistent,25699,BOL,2025,15,1,0,2.6,0.7,4.3,13.5,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100171,Aisha de Graaf,4B,C. de Boer,Da Vinci,Tandartsassistent,25699,BOL,2025,15,0,0,2.4,0.6,3.7,8.5,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0
+100172,Anna Koster,4B,D. Peters,Da Vinci,Tandartsassistent,25699,BOL,2025,18,0,0,1.4,0.4,17.9,3.8,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+100173,Tim Hoekstra,4B,B. de Vries,Da Vinci,Tandartsassistent,25699,BOL,2025,20,0,0,2.4,0.5,6.3,11.9,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0
+100174,Thijs Brouwer,4B,D. Hendriks,Da Vinci,Tandartsassistent,25699,BOL,2025,15,1,0,2.2,0.2,5.7,25.1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0
+100175,Joris Bos,4B,B. de Vries,Da Vinci,Tandartsassistent,25699,BOL,2025,17,0,0,2.4,0.5,34.1,32.3,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0
+100176,Joris Huisman,4B,F. Dijkstra,Da Vinci,Tandartsassistent,25699,BOL,2025,15,1,0,2.9,0.8,3.8,1.0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0
+100177,Bram Hoekstra,4B,A. Prins,Da Vinci,Tandartsassistent,25699,BOL,2025,21,1,0,1.4,0.8,5.1,4.7,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0
+100178,Joris Hoekstra,4B,C. Dijkstra,Da Vinci,Tandartsassistent,25699,BOL,2025,18,0,0,2.3,0.1,1.8,7.7,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+100179,Eva Brouwer,4B,A. Prins,Da Vinci,Tandartsassistent,25699,BOL,2025,20,0,0,1.8,0.9,13.7,1.2,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100180,Sven van der Berg,4B,B. de Vries,Da Vinci,Tandartsassistent,25699,BOL,2025,20,0,0,2.1,0.7,16.9,2.7,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0
+100181,Niels Meijer,4B,C. Jansen,Da Vinci,Tandartsassistent,25699,BOL,2025,19,1,0,2.6,0.2,25.7,1.5,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100182,Bas Bos,4B,A. Koster,Da Vinci,Tandartsassistent,25699,BOL,2025,19,1,0,2.8,0.1,0.1,6.7,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0
+100183,Yasmin de Boer,4B,F. Hoekstra,Da Vinci,Tandartsassistent,25699,BOL,2025,17,1,0,2.4,0.0,1.4,1.4,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+100184,Bram Smits,4B,D. van Dijk,Da Vinci,Tandartsassistent,25699,BOL,2025,20,1,0,1.2,0.7,17.0,1.5,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0
+100185,Noor Brouwer,4B,C. Hendriks,Da Vinci,Tandartsassistent,25699,BOL,2025,15,1,0,2.5,1.0,33.0,0.1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0
+100186,Finn Smits,4B,A. Koster,Da Vinci,Tandartsassistent,25699,BOL,2025,17,0,0,1.8,0.5,3.6,3.6,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100187,Eva Prins,4B,C. Dijkstra,Da Vinci,Tandartsassistent,25699,BOL,2025,16,1,0,2.2,0.2,14.1,8.1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0
+100188,Noor Dekker,4B,F. Dijkstra,Da Vinci,Tandartsassistent,25699,BOL,2025,20,0,0,2.5,0.7,53.9,3.7,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0
+100189,Olaf Bakker,4B,D. Hendriks,Da Vinci,Tandartsassistent,25699,BOL,2025,16,0,1,1.1,0.5,7.1,9.7,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0
+100190,Sophie Dijkstra,4B,B. Koster,Da Vinci,Tandartsassistent,25699,BOL,2025,16,1,0,1.2,0.5,2.2,15.4,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100191,Iris Smit,4B,D. Hendriks,Da Vinci,Tandartsassistent,25699,BOL,2025,15,1,0,2.4,0.4,6.4,6.6,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100192,Finn de Boer,4B,D. Peters,Da Vinci,Tandartsassistent,25699,BOL,2025,17,0,0,3.0,0.5,0.9,4.4,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0
+100193,Lucas Prins,4B,B. Koster,Da Vinci,Tandartsassistent,25699,BOL,2025,17,1,0,1.7,0.9,17.4,30.7,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0
+100194,Niels Hendriks,4B,C. Jansen,Da Vinci,Tandartsassistent,25699,BOL,2025,20,0,0,1.4,0.5,1.0,26.6,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0
+100195,Finn Mulder,4B,A. Koster,Da Vinci,Tandartsassistent,25699,BOL,2025,20,1,0,2.1,0.8,16.9,30.7,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0
+100196,Jens Smit,4B,C. Dijkstra,Da Vinci,Tandartsassistent,25699,BOL,2025,20,0,0,1.5,0.1,2.5,16.6,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0
+100197,Iris de Graaf,4B,D. van Dijk,Da Vinci,Tandartsassistent,25699,BOL,2025,18,1,0,1.9,0.5,14.6,0.4,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100198,Maud Jansen,4B,B. Koster,Da Vinci,Tandartsassistent,25699,BOL,2025,17,1,0,1.5,0.9,8.4,2.7,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1
+100199,Lisa Mulder,4B,C. Jansen,Da Vinci,Tandartsassistent,25699,BOL,2025,16,0,0,2.3,0.4,4.3,0.5,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0
+100200,Jens van der Berg,4B,D. van Dijk,Da Vinci,Tandartsassistent,25699,BOL,2025,16,0,0,2.5,0.5,5.8,5.9,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100201,Bram Bosch,4B,F. Dijkstra,Da Vinci,Tandartsassistent,25699,BOL,2025,18,1,1,2.9,0.6,1.9,5.0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0
+100202,Mees de Groot,4B,B. de Vries,Da Vinci,Tandartsassistent,25699,BOL,2025,16,0,0,1.1,0.4,4.8,0.7,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0
+100203,Daan Bosch,4B,A. Prins,Da Vinci,Tandartsassistent,25699,BOL,2025,19,0,0,2.0,0.9,2.5,11.5,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+100204,Niels de Vries,4B,B. de Vries,Da Vinci,Tandartsassistent,25699,BOL,2025,20,0,1,2.4,0.7,33.2,26.2,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+100205,Mees Dijkstra,4B,C. Hendriks,Da Vinci,Tandartsassistent,25699,BOL,2025,17,1,0,1.6,0.4,17.9,3.8,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100206,Iris Visser,4B,F. Hoekstra,Da Vinci,Tandartsassistent,25699,BOL,2025,19,1,0,1.1,0.9,47.8,5.1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100207,Aisha de Groot,4B,D. Hendriks,Da Vinci,Tandartsassistent,25699,BOL,2025,17,0,0,1.4,0.2,32.8,6.9,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0
+100208,Mees Brouwer,4B,D. Hendriks,Da Vinci,Tandartsassistent,25699,BOL,2025,20,1,0,1.9,0.7,12.8,9.2,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+100209,Noor Koster,4B,D. Hendriks,Da Vinci,Tandartsassistent,25699,BOL,2025,15,0,0,2.0,0.8,8.0,19.9,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0
+100210,Tess van Dijk,4B,A. Koster,Da Vinci,Tandartsassistent,25699,BOL,2025,18,0,0,1.4,0.5,17.3,4.3,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0
+100211,Anna van Dijk,4B,D. Peters,Da Vinci,Tandartsassistent,25699,BOL,2025,20,1,1,1.0,0.5,29.3,8.6,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0
+100212,Bram de Vries,4B,D. Hendriks,Da Vinci,Tandartsassistent,25699,BOL,2025,18,0,0,2.0,0.2,20.1,9.0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0
+100213,Yasmin Postma,4B,C. Hendriks,Da Vinci,Tandartsassistent,25699,BOL,2025,17,1,0,1.9,0.2,3.7,4.0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100214,Bram van Dijk,4B,A. Prins,Da Vinci,Tandartsassistent,25699,BOL,2025,19,1,0,1.1,0.0,12.7,15.6,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0
+100215,Sven Bosch,4B,C. Jansen,Da Vinci,Tandartsassistent,25699,BOL,2025,18,0,0,2.8,0.9,12.4,3.2,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0
+100216,Lieke Bosch,4B,F. Dijkstra,Da Vinci,Tandartsassistent,25699,BOL,2025,21,0,1,1.4,0.9,26.2,5.2,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0
+100217,Sara Smits,4B,B. Koster,Da Vinci,Tandartsassistent,25699,BOL,2025,19,0,0,1.6,0.6,16.7,10.0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0
+100218,Bas Hendriks,4B,D. van Dijk,Da Vinci,Tandartsassistent,25699,BOL,2025,21,0,0,2.0,1.0,27.2,3.2,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0
+100219,Tim Mulder,4B,A. Prins,Da Vinci,Tandartsassistent,25699,BOL,2025,22,1,0,2.9,0.3,5.0,11.7,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0
+100220,Olaf Dekker,4B,C. de Boer,Da Vinci,Tandartsassistent,25699,BOL,2025,18,1,0,1.2,0.6,3.1,6.4,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100221,Eva Bakker,4B,A. Prins,Da Vinci,Tandartsassistent,25699,BOL,2025,20,0,0,2.5,0.3,3.7,3.8,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0
+100222,Aisha Bos,4B,C. de Boer,Da Vinci,Tandartsassistent,25699,BOL,2025,18,1,0,1.2,0.1,5.4,2.5,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0
+100223,Stijn de Graaf,4B,F. Hoekstra,Da Vinci,Tandartsassistent,25699,BOL,2025,19,1,0,2.6,0.7,4.7,3.9,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0
+100224,Mees Smits,4B,D. Hendriks,Da Vinci,Tandartsassistent,25699,BOL,2025,17,0,0,1.3,0.3,2.2,3.8,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0
+100225,Olaf Bakker,4B,C. Hendriks,Da Vinci,Tandartsassistent,25699,BOL,2025,19,0,0,1.9,0.1,3.5,2.3,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0
+100226,Fatima Vos,4B,D. Peters,Da Vinci,Tandartsassistent,25699,BOL,2025,15,0,0,1.6,0.6,5.7,15.9,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100227,Sven Vos,4B,B. Koster,Da Vinci,Tandartsassistent,25699,BOL,2025,19,1,1,2.9,0.8,40.1,27.7,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+100228,Yasmin Postma,4B,F. Hoekstra,Da Vinci,Tandartsassistent,25699,BOL,2025,16,0,0,2.9,0.5,6.0,1.0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100229,Iris Huisman,4B,C. Dijkstra,Da Vinci,Tandartsassistent,25699,BOL,2025,16,1,0,2.3,0.1,21.4,0.6,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0
+100230,Yasmin van Dijk,4B,B. Koster,Da Vinci,Tandartsassistent,25699,BOL,2025,20,1,1,2.1,0.9,15.1,12.5,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100231,Tim Dijkstra,4B,A. Koster,Da Vinci,Tandartsassistent,25699,BOL,2025,17,0,0,1.2,0.2,18.8,3.6,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0
+100232,Lucas van der Berg,4B,D. Peters,Da Vinci,Tandartsassistent,25699,BOL,2025,15,1,0,1.2,0.1,0.5,32.9,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0
+100233,Finn de Wit,4B,D. Hendriks,Da Vinci,Tandartsassistent,25699,BOL,2025,19,1,0,1.9,0.7,10.4,6.8,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100234,Noor Peters,4B,A. Koster,Da Vinci,Tandartsassistent,25699,BOL,2025,20,0,0,1.7,0.3,7.9,2.8,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100235,Lisa Brouwer,4B,C. Hendriks,Da Vinci,Tandartsassistent,25699,BOL,2025,19,1,0,1.1,0.0,7.8,4.6,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100236,Aisha Bosch,4B,C. Hendriks,Da Vinci,Tandartsassistent,25699,BOL,2025,19,0,1,2.1,0.3,12.5,9.0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+100237,Iris Mulder,4B,F. Hoekstra,Da Vinci,Tandartsassistent,25699,BOL,2025,17,1,0,1.8,0.7,6.2,1.6,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100238,Iris Smits,4B,C. Jansen,Da Vinci,Tandartsassistent,25699,BOL,2025,18,0,0,2.2,0.8,5.9,9.8,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0
+100239,Jens Vos,4B,B. de Vries,Da Vinci,Tandartsassistent,25699,BOL,2025,15,1,0,2.2,0.6,7.3,2.4,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0
+100240,Jens Peters,4B,C. de Boer,Da Vinci,Tandartsassistent,25699,BOL,2025,17,0,0,2.3,0.3,11.5,13.4,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0
+100241,Liam Meijer,4B,C. Hendriks,Da Vinci,Tandartsassistent,25699,BOL,2025,20,0,0,2.1,0.4,14.2,5.7,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0
+100242,Joris Hoekstra,4B,D. van Dijk,Da Vinci,Tandartsassistent,25699,BOL,2025,17,1,1,2.2,0.9,32.0,1.5,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0
+100243,Sven Smit,4B,B. de Vries,Da Vinci,Tandartsassistent,25699,BOL,2025,19,1,0,1.8,0.5,20.3,26.6,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100244,Iris Brouwer,4B,B. Koster,Da Vinci,Tandartsassistent,25699,BOL,2025,17,1,0,1.3,0.5,1.0,0.3,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100245,Maud Brouwer,4B,D. Hendriks,Da Vinci,Tandartsassistent,25699,BOL,2025,19,1,0,2.1,0.8,8.6,6.8,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100246,Iris Dijkstra,4B,B. de Vries,Da Vinci,Tandartsassistent,25699,BOL,2025,18,0,0,1.9,0.3,55.0,0.9,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100247,Iris Bosch,4B,A. Prins,Da Vinci,Tandartsassistent,25699,BOL,2025,16,1,0,2.7,0.6,17.9,2.2,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+100248,Stijn Smit,4B,F. Hoekstra,Da Vinci,Tandartsassistent,25699,BOL,2025,17,0,1,1.6,0.7,2.8,1.9,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0
+100249,Yasmin Bosch,4B,D. Hendriks,Da Vinci,Tandartsassistent,25699,BOL,2025,19,1,1,2.8,1.0,50.8,9.1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100250,Noor Hoekstra,4B,G. van Dijk,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,18,1,0,1.3,0.6,3.4,9.9,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100251,Fatima Dekker,4B,G. Prins,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,15,1,1,2.4,0.9,12.0,17.0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100252,Sven Vos,4B,I. Dekker,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,17,1,0,2.7,0.8,0.0,11.9,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100253,Tim Postma,4B,H. Bosch,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,16,0,0,2.1,0.5,8.2,3.1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100254,Thijs Prins,4B,G. Hoekstra,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,22,0,0,1.9,0.0,0.6,7.9,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+100255,Sara Hoekstra,4B,G. van Dijk,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,18,1,0,1.2,0.4,25.7,2.9,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100256,Thijs van der Berg,4B,G. van Dijk,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,18,0,0,2.4,0.0,0.6,7.9,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100257,Noor Smits,4B,H. Bosch,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,16,1,1,2.6,1.0,8.8,4.7,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100258,Noor Brouwer,4B,G. Prins,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,19,1,0,1.3,0.8,3.1,0.7,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100259,Noor van der Berg,4B,I. Hoekstra,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,19,0,1,1.9,0.7,1.8,6.0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100260,Noor van Leeuwen,4B,I. Dekker,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,20,1,1,1.7,0.4,13.9,15.7,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100261,Mees de Groot,4B,I. Hoekstra,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,19,1,0,2.6,0.7,1.1,6.4,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100262,Thijs Bos,4B,H. Bosch,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,17,0,0,2.0,0.1,8.8,5.7,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100263,Stijn Bakker,4B,H. de Wit,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,18,1,0,1.3,0.9,26.3,0.1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100264,Jens Dijkstra,4B,I. Hoekstra,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,20,0,0,1.5,0.0,2.3,5.1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100265,Olaf Hendriks,4B,H. de Wit,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,19,1,0,2.4,0.1,4.1,10.0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100266,Stijn Smit,4B,H. Dekker,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,19,1,0,1.8,0.6,1.0,0.7,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100267,Thijs van der Berg,4B,G. Prins,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,17,0,0,1.1,0.1,4.5,4.6,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100268,Iris de Graaf,4B,I. Dekker,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,18,0,0,2.4,0.2,0.7,8.8,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+100269,Lisa de Wit,4B,I. Mulder,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,18,1,0,2.5,0.1,20.7,2.4,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100270,Lotte Huisman,4B,H. Prins,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,17,1,0,2.0,0.1,3.8,0.5,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100271,Lucas Peters,4B,G. van Dijk,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,17,0,0,1.5,0.5,3.5,0.9,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100272,Bas de Vries,4B,H. Bosch,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,19,0,0,2.1,0.9,0.6,3.6,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100273,Tim Mulder,4B,H. Meijer,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,22,0,0,2.1,0.1,3.4,19.8,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100274,Daan Meijer,4B,H. Bosch,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,19,1,0,2.5,0.3,19.6,31.9,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100275,Iris de Vries,4B,H. Meijer,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,18,0,0,1.9,0.6,2.7,6.6,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100276,Maud Prins,4B,H. Bosch,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,20,0,0,1.5,0.3,15.8,6.3,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100277,Lieke de Vries,4B,H. Meijer,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,21,1,0,1.2,0.5,0.0,8.6,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100278,Sven Jansen,4B,G. van Dijk,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,19,1,0,1.9,0.7,14.9,0.8,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100279,Lisa Smit,4B,I. Hoekstra,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,16,1,0,2.3,0.1,20.6,0.6,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+100280,Bas Vos,4B,I. Mulder,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,16,0,0,1.3,0.8,6.0,14.3,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100281,Liam Meijer,4B,H. Smit,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,18,0,0,1.9,0.5,7.5,4.2,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100282,Emma Meijer,4B,I. Mulder,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,21,1,0,1.3,0.7,13.9,14.0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100283,Fatima de Wit,4B,G. Hoekstra,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,18,0,0,2.9,0.9,13.6,2.4,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100284,Joris Mulder,4B,G. Prins,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,21,0,0,1.3,0.8,7.4,13.0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100285,Anna van der Berg,4B,G. Prins,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,18,0,0,3.0,0.2,10.5,2.4,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100286,Olaf Smit,4B,G. Prins,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,19,0,1,2.8,0.4,28.3,14.1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100287,Sven de Vries,4B,H. Prins,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,18,0,0,1.5,0.4,13.8,1.5,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100288,Stijn de Graaf,4B,I. Dekker,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,17,1,0,1.8,0.4,3.4,2.8,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100289,Olaf de Wit,4B,H. Bosch,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,17,1,0,2.6,0.4,12.0,13.0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100290,Sven Peters,4B,I. Dekker,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,17,1,0,1.1,1.0,8.4,3.9,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100291,Maud Smits,4B,H. Bosch,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,19,1,0,2.1,0.8,43.8,0.8,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100292,Maud Mulder,4B,I. Dekker,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,19,0,0,1.5,0.3,22.5,12.8,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100293,Jens Smits,4B,G. Hoekstra,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,15,0,0,2.1,0.2,14.6,3.5,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100294,Lieke Brouwer,4B,H. de Wit,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,18,1,1,1.0,0.9,4.4,5.4,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100295,Noor Vos,4B,I. Huisman,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,19,0,0,1.0,0.6,2.3,13.0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100296,Maud Visser,4B,H. de Wit,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,19,0,0,1.7,0.3,23.7,25.9,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100297,Finn van Leeuwen,4B,I. Mulder,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,17,1,0,1.4,0.6,12.2,5.3,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100298,Bram Koster,4B,I. Huisman,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,17,0,1,1.4,0.3,4.2,1.6,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100299,Stijn Mulder,4B,I. Hoekstra,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,15,0,1,1.5,1.0,10.0,22.1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100300,Lieke Bakker,4B,I. Huisman,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,19,0,0,1.7,0.8,13.3,10.5,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100301,Daan Hendriks,4B,H. Smit,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,18,1,0,2.8,0.4,15.8,27.8,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100302,Tess Brouwer,4B,I. Mulder,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,18,0,0,1.6,0.3,23.9,8.4,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+100303,Emma Vos,4B,G. van Dijk,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,18,0,1,1.7,1.0,26.3,1.4,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100304,Eva de Vries,4B,H. Prins,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,18,0,0,2.9,0.4,34.3,1.4,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100305,Niels Koster,4B,H. de Wit,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,18,0,0,1.8,0.5,3.7,2.6,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100306,Daan Peters,4B,G. Hoekstra,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,17,0,0,1.4,0.6,6.7,2.8,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100307,Sven Bosch,4B,G. Prins,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,17,1,0,1.2,0.5,4.4,4.1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100308,Lieke Hendriks,4B,H. Meijer,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,17,0,0,1.3,0.7,2.5,0.4,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100309,Thijs Peters,4B,I. Mulder,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,21,0,0,2.7,0.8,9.4,28.2,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100310,Joris van Dijk,4B,H. Smit,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,15,0,0,2.0,0.9,10.2,2.1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100311,Thijs de Graaf,4B,G. van Dijk,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,20,0,0,2.9,0.8,1.5,11.3,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100312,Tim Bakker,4B,I. Hoekstra,Rijn IJssel,Allround Podium Evenemententechnicus,25798,BOL,2025,18,0,0,1.2,0.6,6.9,40.0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100313,Bas de Groot,3B,H. de Wit,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,1,0,1.2,0.1,7.4,16.5,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100314,Sophie Prins,3B,G. Prins,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,1,1,2.8,0.3,31.1,6.6,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100315,Sophie de Graaf,3B,H. Smit,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,20,1,0,1.1,0.9,0.5,2.6,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100316,Mees Jansen,3B,I. Huisman,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,1,0,1.6,0.5,7.7,2.5,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100317,Liam Bosch,3B,H. Bosch,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,20,1,0,1.5,0.4,1.7,29.3,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100318,Sara Dekker,3B,H. Bosch,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,0,0,2.0,0.2,29.4,4.2,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+100319,Lisa Hendriks,3B,G. van Dijk,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,0,0,1.4,0.8,18.2,5.9,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100320,Mees Jansen,3B,H. Smit,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,1,0,2.3,0.1,0.6,3.6,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100321,Jens Brouwer,3B,I. Dekker,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,1,0,1.7,0.8,7.1,25.9,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+100322,Tess Hoekstra,3B,G. Prins,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,0,0,2.3,0.7,4.0,3.9,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+100323,Tim de Wit,3B,G. Hoekstra,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,1,0,2.8,0.6,24.0,27.3,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100324,Aisha Mulder,3B,H. Dekker,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,1,0,2.7,0.5,11.2,22.9,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100325,Bram van Dijk,3B,H. de Wit,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,1,1,2.1,0.6,20.9,4.0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+100326,Thijs Visser,3B,H. Smit,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,1,0,1.4,0.5,0.8,35.6,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100327,Daan Huisman,3B,I. Mulder,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,0,0,2.4,0.7,19.9,4.1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100328,Yasmin van Leeuwen,3B,H. Prins,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,0,0,2.4,0.6,5.9,0.3,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100329,Thijs Peters,3B,H. de Wit,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,0,0,1.6,0.5,4.3,1.5,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100330,Finn Huisman,3B,H. de Wit,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,1,0,1.4,0.9,17.3,1.6,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100331,Lieke Vos,3B,H. Meijer,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,1,0,1.1,0.6,3.6,2.8,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100332,Stijn Bakker,3B,H. Smit,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,0,0,2.7,0.2,26.4,5.6,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100333,Lotte van Leeuwen,3B,I. Dekker,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,0,1,2.6,0.5,26.8,34.5,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100334,Lucas Vos,3B,I. Hoekstra,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,0,0,2.0,0.8,0.7,4.8,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100335,Stijn van Leeuwen,3B,I. Hoekstra,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,0,0,1.1,0.2,6.7,4.5,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100336,Aisha Vos,3B,I. Mulder,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,1,0,1.6,0.1,21.5,1.7,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100337,Bram Meijer,3B,G. Prins,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,1,0,1.9,0.7,20.8,2.8,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100338,Lieke Brouwer,3B,H. Meijer,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,0,0,2.5,0.1,16.6,1.4,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100339,Sophie de Wit,3B,G. van Dijk,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,1,0,2.8,0.3,1.6,9.9,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100340,Daan de Graaf,3B,G. Hoekstra,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,1,1,1.2,0.3,13.0,8.5,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100341,Sara Hoekstra,3B,I. Hoekstra,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,1,0,2.2,0.7,11.9,2.9,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100342,Lieke Visser,3B,H. de Wit,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,0,1,2.6,0.8,15.2,1.0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100343,Jens Hoekstra,3B,H. Prins,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,0,0,2.4,0.5,4.2,0.3,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100344,Aisha van Dijk,3B,G. Prins,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,0,0,2.4,0.1,28.5,14.4,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+100345,Mees Dekker,3B,H. Dekker,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,0,0,2.7,0.4,3.7,0.4,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100346,Tim Koster,3B,G. Prins,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,0,1,1.7,0.9,1.2,11.4,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+100347,Yasmin Koster,3B,G. Prins,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,1,0,2.9,0.3,5.6,3.4,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100348,Bas Brouwer,3B,I. Mulder,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,0,0,1.2,0.9,6.6,17.4,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100349,Sophie van Dijk,3B,H. Smit,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,20,0,0,2.7,0.9,2.4,3.8,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100350,Lieke Smit,3B,H. Smit,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,1,0,1.0,0.9,30.4,1.0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100351,Finn Smits,3B,I. Huisman,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,1,0,2.0,0.7,10.0,30.5,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100352,Tim van Dijk,3B,I. Huisman,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,0,0,1.0,0.9,3.4,3.4,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100353,Sven Bosch,3B,H. Smit,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,20,0,0,1.7,0.3,24.4,0.6,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100354,Joris van der Berg,3B,H. Prins,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,1,0,1.9,0.1,6.2,2.1,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100355,Anna de Vries,3B,G. Prins,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,0,0,2.6,1.0,6.2,0.3,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100356,Lieke de Wit,3B,H. de Wit,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,0,0,2.7,0.3,2.8,8.9,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100357,Stijn Brouwer,3B,I. Huisman,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,0,1,1.0,0.4,12.8,10.1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100358,Olaf Bos,3B,H. de Wit,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,1,1,1.2,0.6,8.9,9.7,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100359,Niels Bosch,3B,H. Prins,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,1,0,1.2,0.4,2.9,13.9,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100360,Tess van Dijk,3B,I. Dekker,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,1,0,1.0,0.7,1.6,17.8,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100361,Tim Postma,3B,I. Dekker,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,0,0,2.4,0.2,7.9,5.7,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100362,Liam Hendriks,3B,I. Hoekstra,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,0,0,1.5,1.0,11.0,17.1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100363,Iris Huisman,3B,G. van Dijk,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,21,1,0,2.7,0.5,1.8,7.4,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100364,Finn Dijkstra,3B,I. Hoekstra,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,0,0,3.0,0.7,2.9,1.9,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+100365,Lisa Dijkstra,3B,I. Huisman,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,1,0,2.2,0.9,12.2,9.9,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100366,Thijs Koster,3B,H. de Wit,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,0,0,1.1,0.1,4.0,15.0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+100367,Olaf Meijer,3B,H. Dekker,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,1,1,1.4,0.5,13.8,1.3,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100368,Iris Visser,3B,I. Dekker,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,0,0,2.0,0.8,24.3,10.8,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100369,Eva van Dijk,3B,G. Hoekstra,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,1,0,2.9,0.1,31.3,3.9,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100370,Sara de Graaf,3B,I. Mulder,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,1,1,2.5,0.5,23.6,4.7,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100371,Maud Koster,3B,H. Bosch,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,15,0,0,2.9,0.7,4.2,1.6,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100372,Daan van Leeuwen,3B,H. Dekker,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,17,0,0,1.1,0.9,9.8,1.1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100373,Maud van der Berg,3B,I. Dekker,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,19,1,0,1.1,0.7,22.2,2.9,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100374,Lucas de Wit,3B,G. Prins,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,16,0,0,2.3,0.3,18.5,1.4,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+100375,Maud de Graaf,3B,H. de Wit,Rijn IJssel,Eerste Monteur Elektrotechnische Installaties,25736,BOL,2025,18,0,0,1.2,0.3,7.7,6.6,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100376,Anna de Graaf,4B,I. Dekker,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,15,0,0,1.8,0.5,3.4,0.3,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+100377,Niels de Wit,4B,I. Mulder,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,20,0,0,1.6,0.7,5.6,13.0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100378,Emma Visser,4B,G. van Dijk,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,17,0,0,2.7,0.4,42.7,11.9,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100379,Joris Postma,4B,I. Huisman,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,17,0,0,2.5,0.2,25.3,10.8,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100380,Lotte Jansen,4B,G. Prins,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,21,1,0,1.8,0.5,0.9,1.6,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100381,Lotte de Vries,4B,H. Prins,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,19,0,0,2.5,0.6,13.4,6.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100382,Emma Peters,4B,H. de Wit,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,20,1,0,1.8,0.8,1.3,12.4,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100383,Lucas Dijkstra,4B,H. Bosch,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,19,1,0,2.9,0.1,1.8,4.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100384,Niels Huisman,4B,I. Huisman,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,18,0,1,1.0,0.6,12.5,25.2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100385,Emma Bos,4B,H. Bosch,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,17,1,0,2.8,0.9,16.6,18.7,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100386,Lucas Mulder,4B,I. Dekker,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,19,1,1,2.3,0.1,21.6,1.7,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100387,Yasmin Visser,4B,H. Bosch,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,15,0,0,2.3,0.2,15.5,5.3,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+100388,Emma de Boer,4B,H. Meijer,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,17,1,0,2.6,1.0,8.0,3.2,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100389,Lotte Mulder,4B,I. Mulder,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,17,1,0,1.3,0.7,3.0,10.8,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100390,Iris Dekker,4B,H. Meijer,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,17,1,1,2.7,0.1,17.9,5.3,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100391,Yasmin Koster,4B,I. Hoekstra,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,17,0,1,2.6,0.6,1.0,0.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100392,Sara Jansen,4B,H. de Wit,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,17,1,0,1.4,0.8,3.6,18.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100393,Bram Smit,4B,H. Smit,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,17,0,0,2.3,0.8,8.3,0.8,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100394,Stijn van Dijk,4B,G. van Dijk,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,15,0,1,2.5,0.5,17.0,1.2,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100395,Mees Prins,4B,H. Smit,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,17,0,0,2.0,0.8,3.2,2.5,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100396,Niels Dekker,4B,G. Hoekstra,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,20,1,0,2.7,0.3,0.5,8.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100397,Lucas Hendriks,4B,I. Hoekstra,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,17,0,0,2.0,0.4,5.7,7.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100398,Lisa Hendriks,4B,H. Meijer,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,18,0,0,1.9,0.2,20.4,3.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100399,Yasmin de Boer,4B,G. van Dijk,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,17,0,0,2.3,0.4,2.5,3.6,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100400,Liam Brouwer,4B,I. Hoekstra,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,18,0,0,1.3,0.6,7.8,1.9,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100401,Lisa Jansen,4B,I. Dekker,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,17,1,0,2.2,0.6,1.9,1.5,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100402,Finn Koster,4B,I. Hoekstra,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,16,1,1,1.3,0.8,20.7,23.5,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100403,Olaf Smits,4B,I. Mulder,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,16,1,0,2.8,0.6,2.4,8.6,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100404,Fatima Hendriks,4B,G. van Dijk,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,16,0,0,2.2,0.2,1.4,1.8,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100405,Stijn Jansen,4B,I. Mulder,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,17,0,1,2.8,0.5,9.1,11.2,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100406,Maud van Dijk,4B,I. Hoekstra,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,17,1,0,2.6,0.4,6.8,4.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100407,Finn Prins,4B,I. Huisman,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,16,0,0,2.8,0.1,10.3,4.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100408,Joris van Leeuwen,4B,H. Dekker,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,17,0,0,1.8,0.2,2.5,9.9,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100409,Tim Peters,4B,G. Prins,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,17,1,0,2.1,0.6,2.0,8.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100410,Fatima Prins,4B,H. Bosch,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,16,1,0,3.0,0.6,6.4,12.3,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100411,Fatima Koster,4B,G. van Dijk,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,19,1,0,2.6,0.9,23.2,8.6,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100412,Lisa Hendriks,4B,I. Mulder,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,17,0,0,2.6,0.8,5.0,6.4,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100413,Stijn van Leeuwen,4B,G. Prins,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,16,0,0,2.4,0.9,0.8,2.0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100414,Anna de Wit,4B,H. Dekker,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,19,1,0,1.0,0.9,14.9,7.3,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100415,Lisa Bos,4B,H. Bosch,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,15,0,0,2.2,0.7,0.4,7.3,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100416,Anna de Vries,4B,G. van Dijk,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,17,0,0,2.0,0.7,1.1,2.6,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100417,Emma Dijkstra,4B,H. Dekker,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,16,1,0,2.9,0.3,15.5,6.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100418,Sara Dekker,4B,H. Prins,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,18,1,0,1.7,0.1,10.3,2.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100419,Yasmin Dijkstra,4B,I. Mulder,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,18,1,0,2.5,0.8,10.3,9.5,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100420,Iris van Dijk,4B,H. Smit,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,17,0,0,2.4,0.2,27.2,15.8,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100421,Jens de Wit,4B,H. de Wit,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,19,0,0,1.8,0.7,0.1,14.3,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100422,Joris Meijer,4B,H. Smit,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,19,0,0,2.0,0.2,4.5,2.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100423,Bas de Groot,4B,H. Bosch,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,20,1,0,1.3,0.1,3.1,14.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100424,Thijs van Dijk,4B,H. Smit,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,19,1,0,2.0,1.0,11.4,11.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100425,Bas de Groot,4B,H. Smit,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,18,1,0,1.4,0.6,2.4,11.6,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100426,Olaf van Leeuwen,4B,H. Smit,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,19,1,1,3.0,0.7,33.7,0.3,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100427,Eva de Vries,4B,G. Hoekstra,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,15,1,1,2.2,0.3,13.5,3.8,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100428,Mees de Groot,4B,H. Smit,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,16,1,1,1.7,0.4,38.2,3.4,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100429,Sophie Smit,4B,I. Dekker,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,18,0,0,2.1,0.9,13.9,13.5,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100430,Olaf Koster,4B,G. van Dijk,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,20,1,0,2.6,0.3,7.7,0.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100431,Sophie Jansen,4B,H. Prins,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,20,1,0,2.0,0.6,1.3,1.4,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100432,Lotte de Groot,4B,H. Meijer,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,16,1,0,2.7,1.0,5.4,6.5,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100433,Sophie van der Berg,4B,I. Hoekstra,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,19,1,0,2.3,0.5,9.3,31.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100434,Lieke Bakker,4B,H. Prins,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,19,1,0,1.8,0.6,11.4,5.0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100435,Niels Bakker,4B,G. Prins,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,16,1,0,2.4,0.6,2.1,2.1,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100436,Lieke Dekker,4B,I. Mulder,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,19,0,0,2.7,0.1,23.8,3.6,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100437,Yasmin Koster,4B,I. Huisman,Rijn IJssel,Medewerker Evenementenorganisatie,25749,BOL,2025,17,0,0,1.1,0.9,16.6,1.9,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100438,Aisha Prins,4B,H. Prins,Rijn IJssel,Software Developer,25998,BOL,2025,17,1,1,1.6,0.2,8.9,40.0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+100439,Anna Smit,4B,G. van Dijk,Rijn IJssel,Software Developer,25998,BOL,2025,17,1,1,2.7,0.3,9.0,1.5,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100440,Bas Dijkstra,4B,H. Dekker,Rijn IJssel,Software Developer,25998,BOL,2025,15,1,0,2.3,0.6,9.5,1.2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100441,Lisa van der Berg,4B,I. Hoekstra,Rijn IJssel,Software Developer,25998,BOL,2025,17,0,0,2.6,0.4,9.2,19.2,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100442,Yasmin Smit,4B,H. Dekker,Rijn IJssel,Software Developer,25998,BOL,2025,18,0,0,2.4,0.5,0.1,5.9,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100443,Bram de Vries,4B,I. Mulder,Rijn IJssel,Software Developer,25998,BOL,2025,19,0,0,2.1,0.2,6.8,2.8,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100444,Tim Hendriks,4B,H. Bosch,Rijn IJssel,Software Developer,25998,BOL,2025,16,1,0,2.3,0.5,2.1,10.7,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100445,Stijn Huisman,4B,I. Huisman,Rijn IJssel,Software Developer,25998,BOL,2025,18,1,0,1.8,0.9,13.8,2.7,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100446,Bram Visser,4B,I. Hoekstra,Rijn IJssel,Software Developer,25998,BOL,2025,16,0,0,1.1,0.5,7.3,4.8,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100447,Liam Bos,4B,H. Dekker,Rijn IJssel,Software Developer,25998,BOL,2025,18,0,1,1.3,0.5,1.6,4.6,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100448,Bram Huisman,4B,I. Mulder,Rijn IJssel,Software Developer,25998,BOL,2025,18,0,0,1.1,0.8,8.3,3.7,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100449,Sven Meijer,4B,H. Bosch,Rijn IJssel,Software Developer,25998,BOL,2025,18,0,0,1.2,0.8,27.1,2.3,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100450,Maud Dekker,4B,H. Bosch,Rijn IJssel,Software Developer,25998,BOL,2025,18,0,0,1.9,0.7,16.1,0.3,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+100451,Lotte Meijer,4B,I. Hoekstra,Rijn IJssel,Software Developer,25998,BOL,2025,15,0,0,1.5,0.6,15.6,10.9,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100452,Lieke Jansen,4B,I. Hoekstra,Rijn IJssel,Software Developer,25998,BOL,2025,17,1,0,2.2,0.4,2.9,1.0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100453,Daan Smits,4B,I. Mulder,Rijn IJssel,Software Developer,25998,BOL,2025,18,0,1,1.5,0.5,14.1,9.3,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100454,Lotte Prins,4B,I. Hoekstra,Rijn IJssel,Software Developer,25998,BOL,2025,17,1,0,1.5,1.0,0.7,3.5,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100455,Maud Peters,4B,I. Mulder,Rijn IJssel,Software Developer,25998,BOL,2025,17,1,1,1.7,0.1,26.7,10.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100456,Sven Hoekstra,4B,H. Smit,Rijn IJssel,Software Developer,25998,BOL,2025,15,1,0,2.5,0.3,9.8,6.3,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100457,Niels Bosch,4B,H. de Wit,Rijn IJssel,Software Developer,25998,BOL,2025,17,1,0,2.1,0.5,2.1,6.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100458,Lisa Hendriks,4B,I. Huisman,Rijn IJssel,Software Developer,25998,BOL,2025,18,0,0,2.3,0.5,2.5,0.2,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100459,Lisa van Dijk,4B,H. Smit,Rijn IJssel,Software Developer,25998,BOL,2025,16,1,0,2.3,0.1,17.4,1.3,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100460,Emma Jansen,4B,G. van Dijk,Rijn IJssel,Software Developer,25998,BOL,2025,18,1,0,2.3,0.5,2.4,0.3,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100461,Yasmin Jansen,4B,H. Meijer,Rijn IJssel,Software Developer,25998,BOL,2025,18,0,1,2.3,0.9,3.0,10.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100462,Iris Huisman,4B,I. Hoekstra,Rijn IJssel,Software Developer,25998,BOL,2025,16,0,0,2.6,0.3,0.8,6.5,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100463,Emma Postma,4B,H. Dekker,Rijn IJssel,Software Developer,25998,BOL,2025,18,0,0,2.5,0.5,1.0,1.9,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100464,Lisa van Dijk,4B,H. Bosch,Rijn IJssel,Software Developer,25998,BOL,2025,15,1,0,2.3,0.7,10.1,23.6,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100465,Liam Meijer,4B,I. Mulder,Rijn IJssel,Software Developer,25998,BOL,2025,16,0,0,2.1,0.6,2.4,4.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100466,Lieke Vos,4B,H. de Wit,Rijn IJssel,Software Developer,25998,BOL,2025,18,1,1,2.2,0.6,57.2,3.1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100467,Maud Dijkstra,4B,I. Huisman,Rijn IJssel,Software Developer,25998,BOL,2025,16,1,0,1.0,0.0,3.5,26.1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+100468,Aisha de Wit,4B,G. van Dijk,Rijn IJssel,Software Developer,25998,BOL,2025,18,0,1,2.5,0.9,60.0,2.9,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100469,Niels Dijkstra,4B,H. de Wit,Rijn IJssel,Software Developer,25998,BOL,2025,21,0,0,1.9,0.2,9.8,20.8,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+100470,Lieke Smits,4B,H. Bosch,Rijn IJssel,Software Developer,25998,BOL,2025,15,0,0,2.4,0.8,3.2,13.3,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100471,Tess Hoekstra,4B,I. Huisman,Rijn IJssel,Software Developer,25998,BOL,2025,20,1,0,1.1,0.8,10.3,19.1,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100472,Maud Jansen,4B,I. Mulder,Rijn IJssel,Software Developer,25998,BOL,2025,18,0,0,2.5,0.8,4.9,16.9,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100473,Anna Prins,4B,I. Hoekstra,Rijn IJssel,Software Developer,25998,BOL,2025,17,0,1,1.7,0.7,5.8,2.9,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100474,Thijs Koster,4B,H. Prins,Rijn IJssel,Software Developer,25998,BOL,2025,19,1,0,1.3,0.3,42.5,11.2,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100475,Finn Jansen,4B,H. de Wit,Rijn IJssel,Software Developer,25998,BOL,2025,19,0,0,2.5,0.5,6.1,0.7,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100476,Fatima van der Berg,4B,I. Dekker,Rijn IJssel,Software Developer,25998,BOL,2025,18,1,0,1.6,0.9,2.6,7.7,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100477,Thijs van Leeuwen,4B,H. Prins,Rijn IJssel,Software Developer,25998,BOL,2025,18,0,0,2.5,0.2,5.5,1.7,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100478,Tess Huisman,4B,H. Smit,Rijn IJssel,Software Developer,25998,BOL,2025,18,0,0,2.5,0.9,11.7,4.6,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100479,Daan Mulder,4B,I. Dekker,Rijn IJssel,Software Developer,25998,BOL,2025,20,0,0,1.7,0.8,31.4,16.2,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+100480,Sven de Vries,4B,H. Meijer,Rijn IJssel,Software Developer,25998,BOL,2025,16,1,0,2.2,1.0,2.8,6.2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100481,Thijs de Vries,4B,H. Prins,Rijn IJssel,Software Developer,25998,BOL,2025,17,0,1,1.1,0.2,10.5,8.7,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100482,Yasmin Jansen,4B,H. Smit,Rijn IJssel,Software Developer,25998,BOL,2025,17,1,0,2.7,0.0,12.8,0.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100483,Anna Hendriks,4B,H. Bosch,Rijn IJssel,Software Developer,25998,BOL,2025,21,1,0,2.0,0.6,46.8,5.7,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100484,Sara de Wit,4B,H. Smit,Rijn IJssel,Software Developer,25998,BOL,2025,19,1,1,1.8,0.2,9.9,10.0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100485,Jens Peters,4B,I. Hoekstra,Rijn IJssel,Software Developer,25998,BOL,2025,17,1,0,2.6,0.6,4.3,40.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100486,Lieke Postma,4B,G. Hoekstra,Rijn IJssel,Software Developer,25998,BOL,2025,17,0,1,1.2,0.4,34.6,23.8,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+100487,Stijn Bosch,4B,I. Hoekstra,Rijn IJssel,Software Developer,25998,BOL,2025,19,1,0,2.9,0.9,13.9,4.3,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100488,Joris Smit,4B,H. Bosch,Rijn IJssel,Software Developer,25998,BOL,2025,18,0,0,1.9,0.9,12.7,7.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100489,Anna Smits,4B,G. van Dijk,Rijn IJssel,Software Developer,25998,BOL,2025,18,0,0,1.4,0.8,4.6,6.5,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100490,Aisha Prins,4B,H. Meijer,Rijn IJssel,Software Developer,25998,BOL,2025,15,1,0,1.3,0.2,25.5,4.3,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100491,Aisha Prins,4B,I. Dekker,Rijn IJssel,Software Developer,25998,BOL,2025,19,0,0,1.5,0.0,11.5,7.4,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100492,Maud Brouwer,4B,G. van Dijk,Rijn IJssel,Software Developer,25998,BOL,2025,15,1,0,1.9,0.2,8.4,7.4,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100493,Tim Prins,4B,G. Hoekstra,Rijn IJssel,Software Developer,25998,BOL,2025,20,0,1,2.5,0.1,31.2,24.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100494,Iris Bosch,4B,I. Dekker,Rijn IJssel,Software Developer,25998,BOL,2025,18,0,0,2.2,0.8,8.1,3.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100495,Fatima de Graaf,4B,I. Huisman,Rijn IJssel,Software Developer,25998,BOL,2025,19,0,0,2.0,0.5,10.2,6.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100496,Daan Mulder,4B,H. de Wit,Rijn IJssel,Software Developer,25998,BOL,2025,15,0,1,1.4,0.4,9.3,33.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100497,Maud Postma,4B,H. Dekker,Rijn IJssel,Software Developer,25998,BOL,2025,19,0,0,2.4,0.9,7.4,4.4,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100498,Anna Dekker,4B,G. Prins,Rijn IJssel,Software Developer,25998,BOL,2025,20,0,0,1.8,0.3,15.4,1.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100499,Iris Smits,4B,I. Huisman,Rijn IJssel,Software Developer,25998,BOL,2025,16,1,1,2.4,0.9,27.1,17.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100500,Eva Koster,4=,I. van der Berg,Talland,Commercieel Medewerker,25134,BOL,2020,20,0,0,1.8,0.4,1.1,9.8,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100501,Niels Vos,4=,N. Vos,Talland,Commercieel Medewerker,25134,BOL,2020,19,0,1,1.4,0.7,24.6,15.9,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100502,Bram Koster,4=,L. Smits,Talland,Commercieel Medewerker,25134,BOL,2020,18,1,0,1.0,0.5,4.1,1.6,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100503,Olaf de Vries,4=,N. Vos,Talland,Commercieel Medewerker,25134,BOL,2020,17,1,0,1.9,0.4,25.7,2.2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100504,Aisha Mulder,4=,L. de Graaf,Talland,Commercieel Medewerker,25134,BOL,2020,18,0,0,2.3,0.0,3.9,7.9,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100505,Thijs Smits,4=,N. Vos,Talland,Commercieel Medewerker,25134,BOL,2020,19,1,1,3.0,0.2,4.3,20.2,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+100506,Thijs Hoekstra,4=,O. Hendriks,Talland,Commercieel Medewerker,25134,BOL,2020,15,0,0,1.2,0.3,10.8,12.4,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100507,Fatima Postma,4=,I. van der Berg,Talland,Commercieel Medewerker,25134,BOL,2020,18,1,1,1.3,0.7,17.0,14.8,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+100508,Lisa van Leeuwen,4=,L. de Graaf,Talland,Commercieel Medewerker,25134,BOL,2020,15,0,1,2.0,0.7,2.8,1.9,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100509,Eva Bos,4=,L. Peters,Talland,Commercieel Medewerker,25134,BOL,2020,15,1,0,2.9,0.6,11.3,3.0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100510,Finn van der Berg,4=,L. Smits,Talland,Commercieel Medewerker,25134,BOL,2020,16,0,0,1.2,0.5,8.1,1.6,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100511,Finn Bosch,4=,J. Postma,Talland,Commercieel Medewerker,25134,BOL,2020,15,1,0,1.7,0.8,19.3,40.0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100512,Anna de Boer,4=,O. Hendriks,Talland,Commercieel Medewerker,25134,BOL,2020,16,0,0,1.2,0.3,4.0,12.5,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100513,Sophie de Graaf,4=,I. Smit,Talland,Commercieel Medewerker,25134,BOL,2020,17,1,0,2.8,0.8,21.4,1.7,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100514,Sven Smit,4=,O. Dijkstra,Talland,Commercieel Medewerker,25134,BOL,2020,15,0,0,2.7,0.3,7.4,16.0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100515,Lotte Dijkstra,4=,L. de Graaf,Talland,Commercieel Medewerker,25134,BOL,2020,18,1,0,1.1,0.1,0.2,6.9,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100516,Lotte Hendriks,4=,O. Dijkstra,Talland,Commercieel Medewerker,25134,BOL,2020,18,1,0,2.4,0.3,9.2,1.5,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100517,Tim Bakker,4=,L. Smits,Talland,Commercieel Medewerker,25134,BOL,2020,18,1,0,1.4,0.3,25.2,3.7,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100518,Olaf Jansen,4=,J. Postma,Talland,Commercieel Medewerker,25134,BOL,2020,15,0,1,1.7,0.5,29.4,4.7,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100519,Bram Prins,4=,L. Meijer,Talland,Commercieel Medewerker,25134,BOL,2020,18,0,0,1.4,0.0,1.9,16.4,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100520,Bas de Wit,4=,I. van der Berg,Talland,Commercieel Medewerker,25134,BOL,2020,17,1,0,2.8,0.1,0.0,21.5,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100521,Finn Bos,4=,I. Smit,Talland,Commercieel Medewerker,25134,BOL,2020,17,1,0,1.4,0.3,10.3,3.0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100522,Maud Dekker,4=,O. Dijkstra,Talland,Commercieel Medewerker,25134,BOL,2020,20,0,0,1.4,0.4,1.5,1.3,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100523,Noor Hoekstra,4=,K. Visser,Talland,Commercieel Medewerker,25134,BOL,2020,18,1,0,2.1,0.1,10.2,1.5,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100524,Lieke van Dijk,4=,I. Smit,Talland,Commercieel Medewerker,25134,BOL,2020,19,1,0,2.2,0.3,1.3,0.4,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100525,Eva Prins,4B,O. Dijkstra,Talland,Helpende Zorg Welzijn,25960,BOL,2025,20,1,0,2.1,0.1,19.9,0.7,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100526,Eva Dekker,4B,I. van der Berg,Talland,Helpende Zorg Welzijn,25960,BOL,2025,16,0,0,1.3,0.9,7.3,9.2,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0
+100527,Jens Hendriks,4B,J. Bakker,Talland,Helpende Zorg Welzijn,25960,BOL,2025,18,1,0,1.9,0.0,14.4,8.8,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0
+100528,Jens Brouwer,4B,L. Smits,Talland,Helpende Zorg Welzijn,25960,BOL,2025,16,1,0,2.6,0.8,22.4,2.7,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+100529,Anna Bakker,4B,K. Visser,Talland,Helpende Zorg Welzijn,25960,BOL,2025,17,0,0,2.1,1.0,9.1,4.1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+100530,Lotte de Boer,4B,O. Hendriks,Talland,Helpende Zorg Welzijn,25960,BOL,2025,18,0,0,1.3,0.7,10.7,12.3,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100531,Eva Smits,4B,L. Smits,Talland,Helpende Zorg Welzijn,25960,BOL,2025,15,0,0,2.6,0.2,1.5,7.3,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0
+100532,Emma de Graaf,4B,I. van der Berg,Talland,Helpende Zorg Welzijn,25960,BOL,2025,16,0,0,1.2,0.8,13.9,7.3,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100533,Lieke Prins,4B,O. Dijkstra,Talland,Helpende Zorg Welzijn,25960,BOL,2025,20,1,0,2.1,0.4,19.9,11.3,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0
+100534,Sara de Boer,4B,O. Dijkstra,Talland,Helpende Zorg Welzijn,25960,BOL,2025,16,1,0,2.4,0.9,25.2,2.9,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1
+100535,Sophie de Vries,4B,N. Vos,Talland,Helpende Zorg Welzijn,25960,BOL,2025,15,1,1,1.1,0.9,51.6,4.1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1
+100536,Aisha Hoekstra,4B,L. de Graaf,Talland,Helpende Zorg Welzijn,25960,BOL,2025,18,1,0,2.3,0.7,20.6,3.6,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+100537,Tim Dijkstra,4B,J. Postma,Talland,Helpende Zorg Welzijn,25960,BOL,2025,17,1,0,2.7,0.4,13.0,5.2,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+100538,Bram Bosch,4B,O. Dijkstra,Talland,Helpende Zorg Welzijn,25960,BOL,2025,20,1,0,2.9,0.1,1.6,0.1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0
+100539,Olaf van Leeuwen,4B,L. Smits,Talland,Helpende Zorg Welzijn,25960,BOL,2025,20,0,0,1.9,0.4,26.9,9.5,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100540,Fatima Peters,4B,J. Postma,Talland,Helpende Zorg Welzijn,25960,BOL,2025,18,1,0,1.8,0.5,2.5,7.4,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+100541,Daan Smits,4B,L. Smits,Talland,Helpende Zorg Welzijn,25960,BOL,2025,16,0,0,1.3,0.7,14.6,1.0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1
+100542,Maud Prins,4B,K. Visser,Talland,Helpende Zorg Welzijn,25960,BOL,2025,19,0,0,2.4,0.5,7.5,0.7,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0
+100543,Stijn Jansen,4B,L. Meijer,Talland,Helpende Zorg Welzijn,25960,BOL,2025,19,1,0,2.1,0.3,9.2,0.1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+100544,Olaf Bos,4B,K. Visser,Talland,Helpende Zorg Welzijn,25960,BOL,2025,16,1,0,1.1,0.5,2.2,9.5,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0
+100545,Daan van Dijk,4B,K. Visser,Talland,Helpende Zorg Welzijn,25960,BOL,2025,20,0,0,1.3,0.1,19.9,7.8,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100546,Yasmin Smit,4B,N. Vos,Talland,Helpende Zorg Welzijn,25960,BOL,2025,18,0,1,2.3,0.4,4.0,15.6,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0
+100547,Olaf Hoekstra,4B,J. Postma,Talland,Helpende Zorg Welzijn,25960,BOL,2025,18,1,0,3.0,1.0,8.0,12.9,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0
+100548,Tess Smit,4B,L. Smits,Talland,Helpende Zorg Welzijn,25960,BOL,2025,16,0,0,1.4,0.7,16.8,4.3,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+100549,Anna de Groot,4B,I. van der Berg,Talland,Helpende Zorg Welzijn,25960,BOL,2025,15,1,0,2.5,0.8,0.6,5.0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0
+100550,Fatima van Dijk,4=,O. Hendriks,Talland,Kok,25180,BOL,2020,16,1,0,1.8,0.3,5.9,2.4,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0
+100551,Daan Visser,4=,L. de Graaf,Talland,Kok,25180,BOL,2020,18,1,0,1.7,0.3,12.2,25.0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0
+100552,Anna Smits,4=,L. Peters,Talland,Kok,25180,BOL,2020,16,1,0,2.4,1.0,7.4,9.0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0
+100553,Aisha van Dijk,4=,I. Smit,Talland,Kok,25180,BOL,2020,15,0,1,2.4,0.4,21.4,0.1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0
+100554,Yasmin de Boer,4=,I. Smit,Talland,Kok,25180,BOL,2020,16,0,0,2.4,0.1,0.3,0.8,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0
+100555,Noor Hendriks,4=,O. Dijkstra,Talland,Kok,25180,BOL,2020,15,0,0,2.8,0.7,17.3,8.4,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0
+100556,Iris van Dijk,4=,I. van der Berg,Talland,Kok,25180,BOL,2020,15,1,0,1.5,0.8,12.2,20.5,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0
+100557,Daan Hendriks,4=,L. Peters,Talland,Kok,25180,BOL,2020,19,1,0,1.4,0.1,4.9,0.5,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1
+100558,Sara de Graaf,4=,L. Peters,Talland,Kok,25180,BOL,2020,18,0,0,2.8,0.7,2.4,5.4,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0
+100559,Emma Bakker,4=,N. Vos,Talland,Kok,25180,BOL,2020,16,1,1,1.3,0.6,15.6,12.0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0
+100560,Thijs Hendriks,4=,K. Visser,Talland,Kok,25180,BOL,2020,20,1,0,2.0,0.4,2.0,3.2,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0
+100561,Olaf Huisman,4=,I. van der Berg,Talland,Kok,25180,BOL,2020,18,1,0,1.2,0.5,9.3,0.0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1
+100562,Lotte van Dijk,4=,K. Visser,Talland,Kok,25180,BOL,2020,19,1,0,1.2,0.5,6.1,8.0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0
+100563,Anna de Boer,4=,J. Bakker,Talland,Kok,25180,BOL,2020,19,1,0,2.4,0.9,9.7,27.4,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0
+100564,Jens Brouwer,4=,I. van der Berg,Talland,Kok,25180,BOL,2020,18,0,1,2.0,0.1,26.0,4.6,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0
+100565,Bram Brouwer,4=,L. de Graaf,Talland,Kok,25180,BOL,2020,18,0,0,1.1,0.1,40.2,13.4,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0
+100566,Daan Hendriks,4=,I. van der Berg,Talland,Kok,25180,BOL,2020,21,0,0,2.5,0.2,2.9,8.5,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0
+100567,Finn Smit,4=,L. Smits,Talland,Kok,25180,BOL,2020,16,0,0,1.5,0.6,12.7,5.1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0
+100568,Anna Jansen,4=,K. Visser,Talland,Kok,25180,BOL,2020,18,0,0,1.2,0.6,20.6,0.8,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0
+100569,Emma Huisman,4=,J. Postma,Talland,Kok,25180,BOL,2020,17,1,0,1.6,1.0,6.7,13.4,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0
+100570,Noor Vos,4=,J. Postma,Talland,Kok,25180,BOL,2020,18,1,0,1.3,0.4,17.3,7.2,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0
+100571,Mees Smits,4=,I. Smit,Talland,Kok,25180,BOL,2020,18,1,0,2.6,0.0,1.7,12.5,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0
+100572,Aisha de Vries,4=,J. Bakker,Talland,Kok,25180,BOL,2020,17,1,0,2.4,0.2,31.3,9.8,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0
+100573,Lisa Dekker,4=,L. Peters,Talland,Kok,25180,BOL,2020,20,0,0,2.4,0.6,3.3,1.5,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0
+100574,Tess Huisman,4=,K. Visser,Talland,Kok,25180,BOL,2020,19,0,0,2.2,0.9,5.1,0.0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1
+100575,Lisa Mulder,4>,L. Smits,Talland,Logistiek Medewerker,25371,BOL,2021,19,0,0,1.2,0.1,17.7,8.6,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100576,Niels Brouwer,4>,L. Smits,Talland,Logistiek Medewerker,25371,BOL,2021,17,1,1,1.5,0.6,2.3,8.9,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100577,Iris Jansen,4>,I. van der Berg,Talland,Logistiek Medewerker,25371,BOL,2021,16,0,1,2.0,0.1,16.2,20.7,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100578,Finn Dekker,4>,N. Vos,Talland,Logistiek Medewerker,25371,BOL,2021,19,0,0,1.7,0.1,10.4,4.3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100579,Bas de Boer,4>,L. Peters,Talland,Logistiek Medewerker,25371,BOL,2021,17,0,0,2.8,0.1,26.6,0.6,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100580,Iris Meijer,4>,L. Peters,Talland,Logistiek Medewerker,25371,BOL,2021,17,1,0,1.3,0.7,5.6,4.9,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100581,Noor Visser,4>,L. Smits,Talland,Logistiek Medewerker,25371,BOL,2021,19,1,0,2.2,0.8,7.4,1.5,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100582,Stijn Meijer,4>,N. Vos,Talland,Logistiek Medewerker,25371,BOL,2021,19,0,1,2.2,0.8,42.1,15.4,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+100583,Finn van Leeuwen,4>,O. Hendriks,Talland,Logistiek Medewerker,25371,BOL,2021,16,0,0,2.8,0.6,24.7,2.3,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100584,Sophie de Vries,4>,L. Peters,Talland,Logistiek Medewerker,25371,BOL,2021,18,1,1,2.0,0.8,47.1,0.3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100585,Iris Brouwer,4>,J. Postma,Talland,Logistiek Medewerker,25371,BOL,2021,17,1,0,2.9,0.1,1.0,11.2,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+100586,Anna Bakker,4>,I. Smit,Talland,Logistiek Medewerker,25371,BOL,2021,19,0,0,3.0,0.5,7.8,2.9,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100587,Eva Hendriks,4>,J. Bakker,Talland,Logistiek Medewerker,25371,BOL,2021,15,0,0,2.7,0.1,18.7,3.7,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100588,Lotte de Wit,4>,I. Smit,Talland,Logistiek Medewerker,25371,BOL,2021,16,0,0,2.6,0.1,4.2,11.2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100589,Finn Jansen,4>,L. de Graaf,Talland,Logistiek Medewerker,25371,BOL,2021,16,0,0,1.8,0.5,34.9,9.0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100590,Jens Meijer,4>,O. Dijkstra,Talland,Logistiek Medewerker,25371,BOL,2021,19,0,0,2.1,0.6,9.8,0.6,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100591,Maud Smits,4>,O. Hendriks,Talland,Logistiek Medewerker,25371,BOL,2021,22,1,0,2.8,0.5,2.8,10.9,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100592,Daan Bakker,4>,L. Meijer,Talland,Logistiek Medewerker,25371,BOL,2021,20,1,0,1.9,0.4,5.1,5.3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100593,Eva Huisman,4>,I. van der Berg,Talland,Logistiek Medewerker,25371,BOL,2021,19,1,0,2.8,0.3,2.5,17.2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+100594,Liam Meijer,4>,K. Visser,Talland,Logistiek Medewerker,25371,BOL,2021,19,0,0,1.6,1.0,1.4,1.3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100595,Noor Brouwer,4>,L. Meijer,Talland,Logistiek Medewerker,25371,BOL,2021,22,0,1,1.1,0.9,6.5,10.7,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100596,Lisa van der Berg,4>,L. Meijer,Talland,Logistiek Medewerker,25371,BOL,2021,16,1,0,1.9,0.6,6.4,3.4,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100597,Bram Meijer,4>,K. Visser,Talland,Logistiek Medewerker,25371,BOL,2021,20,0,0,1.3,0.3,3.1,3.7,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+100598,Stijn Meijer,4>,O. Hendriks,Talland,Logistiek Medewerker,25371,BOL,2021,16,0,0,1.3,0.1,9.2,1.6,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100599,Sophie Smit,4>,L. Smits,Talland,Logistiek Medewerker,25371,BOL,2021,15,0,0,2.3,1.0,3.6,1.6,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100600,Iris Dijkstra,4B,J. Bakker,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,20,1,1,2.9,0.2,9.2,1.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100601,Joris de Wit,4B,L. Meijer,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,16,0,0,2.6,0.7,12.5,2.8,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100602,Lotte Hoekstra,4B,I. van der Berg,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,16,1,1,2.2,0.2,15.8,18.4,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100603,Lotte Jansen,4B,N. Vos,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,17,1,0,1.4,0.1,12.3,7.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100604,Thijs van Dijk,4B,I. van der Berg,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,16,0,1,2.8,0.4,44.7,4.0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100605,Bas van Leeuwen,4B,L. Meijer,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,16,1,0,3.0,0.9,5.9,0.1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100606,Finn Dekker,4B,O. Hendriks,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,19,1,1,2.5,0.4,58.9,13.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100607,Stijn Bakker,4B,J. Bakker,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,15,1,0,1.1,1.0,2.8,5.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100608,Emma de Vries,4B,L. Peters,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,15,0,0,1.4,0.8,12.2,2.6,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+100609,Sven Jansen,4B,K. Visser,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,18,1,0,1.4,0.8,21.6,2.9,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100610,Bram van der Berg,4B,O. Dijkstra,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,16,0,0,1.1,0.8,7.7,8.5,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100611,Emma de Graaf,4B,O. Hendriks,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,19,1,0,2.3,0.5,5.4,5.2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100612,Liam Peters,4B,L. de Graaf,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,17,1,0,2.8,0.1,15.8,0.1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100613,Yasmin Peters,4B,L. Peters,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,17,1,1,2.1,0.9,12.1,24.8,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100614,Maud van der Berg,4B,J. Bakker,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,17,1,1,1.5,0.7,17.4,7.3,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100615,Joris Smits,4B,L. Meijer,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,19,1,0,2.6,0.4,20.8,0.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100616,Lucas Visser,4B,J. Postma,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,19,0,0,1.8,0.9,2.0,2.0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100617,Noor de Vries,4B,L. Smits,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,16,1,0,2.8,0.6,5.1,9.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100618,Lotte Meijer,4B,O. Hendriks,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,19,0,0,1.6,0.2,4.4,10.9,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100619,Tim Hoekstra,4B,I. van der Berg,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,20,0,0,1.4,0.0,1.0,11.9,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100620,Sophie Jansen,4B,L. Smits,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,16,0,0,2.8,0.2,1.5,2.3,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100621,Lucas van Dijk,4B,L. Meijer,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,15,1,0,2.9,0.3,0.4,1.3,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100622,Lisa Prins,4B,O. Hendriks,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,19,0,1,2.4,1.0,11.4,5.6,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100623,Maud Dijkstra,4B,I. Smit,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,15,1,1,1.7,0.6,43.6,0.8,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100624,Liam Meijer,4B,L. Meijer,Talland,Medewerker Evenementenorganisatie,25749,BOL,2025,15,1,1,1.2,0.1,47.8,4.4,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100625,Maud Peters,4B,O. Hendriks,Talland,Onderwijsassistent,25698,BOL,2025,19,1,1,1.2,0.3,4.1,10.2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100626,Bram van Dijk,4B,L. Smits,Talland,Onderwijsassistent,25698,BOL,2025,15,1,0,2.9,0.4,3.1,4.2,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100627,Thijs Brouwer,4B,O. Dijkstra,Talland,Onderwijsassistent,25698,BOL,2025,19,0,0,1.2,0.4,1.3,4.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100628,Liam Koster,4B,J. Bakker,Talland,Onderwijsassistent,25698,BOL,2025,15,0,0,1.5,0.4,0.8,29.6,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100629,Maud Hoekstra,4B,N. Vos,Talland,Onderwijsassistent,25698,BOL,2025,15,1,0,1.7,0.7,10.8,11.3,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+100630,Sven de Wit,4B,K. Visser,Talland,Onderwijsassistent,25698,BOL,2025,16,0,0,1.1,0.7,1.9,4.9,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100631,Sven van Dijk,4B,I. Smit,Talland,Onderwijsassistent,25698,BOL,2025,18,0,0,1.6,0.6,42.9,3.9,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100632,Thijs Prins,4B,L. de Graaf,Talland,Onderwijsassistent,25698,BOL,2025,16,1,1,2.1,0.8,17.5,12.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100633,Aisha Prins,4B,I. Smit,Talland,Onderwijsassistent,25698,BOL,2025,16,1,1,1.6,0.4,56.1,17.0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100634,Daan Meijer,4B,L. de Graaf,Talland,Onderwijsassistent,25698,BOL,2025,18,1,0,2.4,0.5,12.9,12.1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100635,Thijs Brouwer,4B,O. Dijkstra,Talland,Onderwijsassistent,25698,BOL,2025,19,0,0,2.0,0.4,9.7,6.2,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100636,Fatima de Graaf,4B,O. Dijkstra,Talland,Onderwijsassistent,25698,BOL,2025,18,1,0,1.7,0.7,5.2,30.5,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100637,Lieke van der Berg,4B,L. Meijer,Talland,Onderwijsassistent,25698,BOL,2025,18,1,0,1.7,0.7,5.7,4.5,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100638,Anna Bos,4B,N. Vos,Talland,Onderwijsassistent,25698,BOL,2025,18,1,0,1.1,0.7,1.1,9.3,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100639,Lisa van Leeuwen,4B,K. Visser,Talland,Onderwijsassistent,25698,BOL,2025,18,1,1,1.8,0.4,0.2,5.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100640,Olaf Brouwer,4B,I. van der Berg,Talland,Onderwijsassistent,25698,BOL,2025,19,0,0,2.2,0.4,14.1,1.8,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100641,Sven van der Berg,4B,I. van der Berg,Talland,Onderwijsassistent,25698,BOL,2025,15,0,0,1.6,0.6,22.0,6.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100642,Stijn Koster,4B,I. van der Berg,Talland,Onderwijsassistent,25698,BOL,2025,17,1,0,1.9,0.3,15.2,6.9,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100643,Tess Bos,4B,L. de Graaf,Talland,Onderwijsassistent,25698,BOL,2025,20,0,0,1.8,0.3,19.6,4.5,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100644,Thijs Prins,4B,L. de Graaf,Talland,Onderwijsassistent,25698,BOL,2025,19,0,0,2.3,0.8,2.4,0.2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100645,Yasmin van der Berg,4B,L. de Graaf,Talland,Onderwijsassistent,25698,BOL,2025,16,0,0,2.0,0.4,19.9,15.3,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100646,Noor Koster,4B,O. Dijkstra,Talland,Onderwijsassistent,25698,BOL,2025,20,0,0,2.7,0.3,17.4,14.9,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+100647,Lucas de Groot,4B,O. Dijkstra,Talland,Onderwijsassistent,25698,BOL,2025,15,0,1,1.1,0.8,11.0,4.2,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+100648,Sven Dijkstra,4B,L. Peters,Talland,Onderwijsassistent,25698,BOL,2025,17,1,0,2.3,0.2,6.6,18.9,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100649,Finn Brouwer,4B,I. Smit,Talland,Onderwijsassistent,25698,BOL,2025,18,1,0,2.7,0.9,0.7,18.1,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100650,Jens van Dijk,4=,O. Dijkstra,Talland,Software Developer,23243,BOL,2020,18,0,0,2.0,0.8,26.0,4.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+100651,Niels de Wit,4=,K. Visser,Talland,Software Developer,23243,BOL,2020,16,1,0,1.7,0.6,8.2,0.8,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100652,Finn Koster,4=,J. Postma,Talland,Software Developer,23243,BOL,2020,18,1,1,1.5,0.6,32.9,2.0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100653,Jens Hoekstra,4=,I. van der Berg,Talland,Software Developer,23243,BOL,2020,19,1,0,2.8,0.9,4.6,4.4,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100654,Eva Peters,4=,K. Visser,Talland,Software Developer,23243,BOL,2020,19,0,0,2.4,0.8,0.3,27.2,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100655,Joris Hendriks,4=,K. Visser,Talland,Software Developer,23243,BOL,2020,15,0,0,2.1,0.2,12.2,9.6,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100656,Aisha Hendriks,4=,K. Visser,Talland,Software Developer,23243,BOL,2020,16,0,0,2.8,0.6,4.3,22.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100657,Maud van der Berg,4=,L. Peters,Talland,Software Developer,23243,BOL,2020,21,1,1,1.9,0.4,18.7,2.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100658,Eva van Leeuwen,4=,I. van der Berg,Talland,Software Developer,23243,BOL,2020,16,1,0,1.9,0.0,20.9,9.6,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100659,Anna Meijer,4=,O. Dijkstra,Talland,Software Developer,23243,BOL,2020,19,0,1,2.3,0.3,7.0,8.2,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100660,Lucas Mulder,4=,L. de Graaf,Talland,Software Developer,23243,BOL,2020,19,1,0,2.6,0.3,15.0,11.7,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100661,Finn Smit,4=,K. Visser,Talland,Software Developer,23243,BOL,2020,19,1,0,1.4,0.4,2.3,7.2,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100662,Lieke Hendriks,4=,N. Vos,Talland,Software Developer,23243,BOL,2020,16,0,0,2.9,0.2,3.1,23.7,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100663,Lucas Jansen,4=,L. Peters,Talland,Software Developer,23243,BOL,2020,15,1,1,1.3,0.6,11.5,7.3,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100664,Lisa van Leeuwen,4=,L. Smits,Talland,Software Developer,23243,BOL,2020,19,1,1,1.6,0.5,21.1,5.5,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100665,Bas de Boer,4=,N. Vos,Talland,Software Developer,23243,BOL,2020,22,0,0,1.8,0.4,2.9,13.9,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100666,Bram de Groot,4=,J. Postma,Talland,Software Developer,23243,BOL,2020,17,0,0,1.9,0.9,11.5,19.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100667,Fatima van Dijk,4=,J. Postma,Talland,Software Developer,23243,BOL,2020,16,1,0,1.1,0.6,15.0,9.9,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100668,Niels Mulder,4=,L. Smits,Talland,Software Developer,23243,BOL,2020,20,0,0,1.0,0.5,28.7,40.0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100669,Fatima van Dijk,4=,L. Meijer,Talland,Software Developer,23243,BOL,2020,17,0,1,1.5,0.5,1.7,17.8,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100670,Lieke Dekker,4=,J. Bakker,Talland,Software Developer,23243,BOL,2020,17,0,0,2.0,1.0,1.1,9.9,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+100671,Jens van Leeuwen,4=,K. Visser,Talland,Software Developer,23243,BOL,2020,19,1,0,2.0,0.4,28.0,2.4,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100672,Finn Brouwer,4=,J. Bakker,Talland,Software Developer,23243,BOL,2020,16,0,0,1.5,0.0,9.7,20.5,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+100673,Eva Dekker,4=,L. Peters,Talland,Software Developer,23243,BOL,2020,18,1,0,1.7,0.7,1.5,18.0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100674,Sven Visser,4=,O. Hendriks,Talland,Software Developer,23243,BOL,2020,18,0,1,2.5,0.8,24.2,1.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100675,Thijs Smits,4B,J. Postma,Talland,Sport Bewegingsleider,25908,BOL,2025,17,0,0,1.8,0.1,10.5,28.5,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100676,Thijs Visser,4B,L. Meijer,Talland,Sport Bewegingsleider,25908,BOL,2025,16,0,0,2.7,0.2,0.3,9.1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100677,Tess Hoekstra,4B,O. Dijkstra,Talland,Sport Bewegingsleider,25908,BOL,2025,19,0,0,1.7,0.0,7.8,7.9,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100678,Iris Vos,4B,O. Hendriks,Talland,Sport Bewegingsleider,25908,BOL,2025,20,1,0,1.6,0.1,60.0,19.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100679,Stijn Hendriks,4B,I. van der Berg,Talland,Sport Bewegingsleider,25908,BOL,2025,20,1,0,1.2,0.9,6.1,1.6,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100680,Maud Hendriks,4B,K. Visser,Talland,Sport Bewegingsleider,25908,BOL,2025,17,1,1,2.8,0.6,12.5,24.7,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100681,Liam Postma,4B,L. Meijer,Talland,Sport Bewegingsleider,25908,BOL,2025,21,1,0,1.5,0.6,8.6,5.4,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100682,Tim Huisman,4B,L. Meijer,Talland,Sport Bewegingsleider,25908,BOL,2025,19,1,0,2.4,0.6,11.4,4.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100683,Niels Brouwer,4B,L. de Graaf,Talland,Sport Bewegingsleider,25908,BOL,2025,18,1,0,1.2,0.8,11.9,6.0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+100684,Noor van Dijk,4B,K. Visser,Talland,Sport Bewegingsleider,25908,BOL,2025,18,0,0,2.0,0.5,22.1,5.9,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100685,Iris van Dijk,4B,O. Hendriks,Talland,Sport Bewegingsleider,25908,BOL,2025,18,0,0,2.5,0.0,10.1,2.3,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100686,Iris Meijer,4B,J. Bakker,Talland,Sport Bewegingsleider,25908,BOL,2025,17,1,0,2.5,0.4,22.2,0.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100687,Lotte Bosch,4B,J. Bakker,Talland,Sport Bewegingsleider,25908,BOL,2025,16,1,0,2.7,0.1,2.8,0.7,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100688,Aisha Hendriks,4B,I. van der Berg,Talland,Sport Bewegingsleider,25908,BOL,2025,15,1,0,1.6,0.8,0.2,8.5,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100689,Eva van Dijk,4B,O. Hendriks,Talland,Sport Bewegingsleider,25908,BOL,2025,19,0,1,1.0,0.1,13.5,13.1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100690,Sara Bosch,4B,I. Smit,Talland,Sport Bewegingsleider,25908,BOL,2025,15,0,0,1.2,0.8,2.8,8.4,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100691,Tim de Vries,4B,I. van der Berg,Talland,Sport Bewegingsleider,25908,BOL,2025,18,1,0,1.9,0.9,2.2,1.3,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100692,Sara Bos,4B,N. Vos,Talland,Sport Bewegingsleider,25908,BOL,2025,20,1,0,3.0,0.8,21.2,4.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100693,Stijn Koster,4B,L. de Graaf,Talland,Sport Bewegingsleider,25908,BOL,2025,20,1,1,1.5,0.1,60.0,0.3,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100694,Sophie Vos,4B,L. de Graaf,Talland,Sport Bewegingsleider,25908,BOL,2025,15,1,0,1.9,0.4,0.8,17.9,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100695,Finn de Boer,4B,L. Smits,Talland,Sport Bewegingsleider,25908,BOL,2025,18,1,0,2.8,0.9,5.1,2.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100696,Iris Smit,4B,K. Visser,Talland,Sport Bewegingsleider,25908,BOL,2025,20,1,0,2.6,0.8,15.4,4.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100697,Stijn de Boer,4B,K. Visser,Talland,Sport Bewegingsleider,25908,BOL,2025,17,0,0,1.4,0.6,14.1,0.7,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100698,Tim Brouwer,4B,K. Visser,Talland,Sport Bewegingsleider,25908,BOL,2025,17,0,0,1.3,0.9,3.2,6.5,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100699,Olaf Bakker,4B,L. Meijer,Talland,Sport Bewegingsleider,25908,BOL,2025,19,0,0,2.0,1.0,6.8,7.7,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100700,Maud Jansen,4B,L. de Graaf,Talland,Tandartsassistent,25699,BBL,2025,15,0,0,2.9,0.4,3.7,1.3,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0
+100701,Tess Prins,4B,I. van der Berg,Talland,Tandartsassistent,25699,BBL,2025,17,0,0,2.6,0.0,44.1,12.2,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0
+100702,Anna Visser,4B,J. Postma,Talland,Tandartsassistent,25699,BBL,2025,16,0,1,1.3,0.4,29.0,1.4,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100703,Liam Bosch,4B,J. Postma,Talland,Tandartsassistent,25699,BBL,2025,18,0,0,2.7,0.5,6.9,4.3,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0
+100704,Lucas Bakker,4B,K. Visser,Talland,Tandartsassistent,25699,BBL,2025,17,1,0,2.6,0.1,5.6,11.2,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+100705,Niels van Leeuwen,4B,L. Smits,Talland,Tandartsassistent,25699,BBL,2025,17,0,0,1.9,0.8,36.4,5.8,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100706,Lisa Bakker,4B,I. van der Berg,Talland,Tandartsassistent,25699,BBL,2025,16,0,0,2.3,0.6,5.0,4.1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0
+100707,Daan van der Berg,4B,O. Hendriks,Talland,Tandartsassistent,25699,BBL,2025,18,1,0,1.8,0.7,19.3,16.7,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0
+100708,Bram Koster,4B,O. Hendriks,Talland,Tandartsassistent,25699,BBL,2025,20,0,0,2.4,0.4,4.5,3.4,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0
+100709,Joris de Graaf,4B,N. Vos,Talland,Tandartsassistent,25699,BBL,2025,16,1,0,2.6,0.9,12.7,9.6,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0
+100710,Joris Vos,4B,L. Peters,Talland,Tandartsassistent,25699,BBL,2025,19,0,1,2.0,0.3,15.5,10.8,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+100711,Anna Meijer,4B,I. Smit,Talland,Tandartsassistent,25699,BBL,2025,17,0,0,2.7,0.3,0.3,12.7,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+100712,Lisa Visser,4B,O. Hendriks,Talland,Tandartsassistent,25699,BBL,2025,17,0,0,1.9,0.6,0.7,3.7,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0
+100713,Lotte Mulder,4B,O. Hendriks,Talland,Tandartsassistent,25699,BBL,2025,18,0,0,1.7,0.3,54.1,6.7,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100714,Eva Smits,4B,O. Dijkstra,Talland,Tandartsassistent,25699,BBL,2025,19,0,0,2.6,0.4,1.8,3.8,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0
+100715,Eva van Leeuwen,4B,L. Peters,Talland,Tandartsassistent,25699,BBL,2025,19,1,0,1.4,0.1,1.0,0.5,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100716,Fatima Smits,4B,L. de Graaf,Talland,Tandartsassistent,25699,BBL,2025,16,1,0,2.4,0.9,8.8,4.0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100717,Tim Postma,4B,J. Bakker,Talland,Tandartsassistent,25699,BBL,2025,18,0,0,2.9,0.5,1.9,1.1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0
+100718,Eva de Boer,4B,L. Smits,Talland,Tandartsassistent,25699,BBL,2025,15,1,0,1.2,0.4,7.7,11.0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0
+100719,Lisa Smit,4B,I. van der Berg,Talland,Tandartsassistent,25699,BBL,2025,21,1,0,1.1,0.1,5.6,37.7,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100720,Tim Jansen,4B,K. Visser,Talland,Tandartsassistent,25699,BBL,2025,17,1,0,1.1,0.0,26.4,1.9,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0
+100721,Bram Smits,4B,L. Smits,Talland,Tandartsassistent,25699,BBL,2025,18,0,0,2.5,0.5,27.7,12.2,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0
+100722,Iris van Dijk,4B,L. Smits,Talland,Tandartsassistent,25699,BBL,2025,16,1,0,1.5,0.4,1.9,10.4,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0
+100723,Thijs Dekker,4B,O. Hendriks,Talland,Tandartsassistent,25699,BBL,2025,16,0,0,2.1,0.8,3.9,0.7,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+100724,Joris van der Berg,4B,I. van der Berg,Talland,Tandartsassistent,25699,BBL,2025,15,0,0,2.5,0.5,12.4,0.7,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0
+100725,Thijs Dijkstra,4=,J. Bakker,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,17,1,1,1.2,0.5,39.4,2.6,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0
+100726,Sophie Jansen,4=,L. Smits,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,15,1,0,1.8,0.1,23.8,0.2,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1
+100727,Joris Meijer,4=,K. Visser,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,19,1,0,2.9,0.7,1.9,2.4,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0
+100728,Lotte Meijer,4=,I. Smit,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,20,1,1,1.8,0.8,15.0,2.8,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0
+100729,Sara Mulder,4=,N. Vos,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,20,1,0,2.9,0.3,10.6,5.4,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0
+100730,Joris van Leeuwen,4=,I. van der Berg,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,19,0,0,1.5,0.6,7.9,4.2,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0
+100731,Bram Smits,4=,L. Peters,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,17,0,0,1.7,1.0,7.1,15.0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0
+100732,Joris van Leeuwen,4=,L. de Graaf,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,18,0,0,1.0,0.9,7.2,0.0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0
+100733,Stijn de Groot,4=,O. Dijkstra,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,16,1,0,1.1,0.7,5.7,3.5,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0
+100734,Bram Bakker,4=,L. Peters,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,21,0,0,2.2,1.0,14.4,14.2,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0
+100735,Thijs Vos,4=,O. Dijkstra,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,17,0,0,2.3,0.3,3.6,11.2,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0
+100736,Stijn Vos,4=,I. Smit,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,17,0,0,2.3,0.4,29.4,1.1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0
+100737,Eva Brouwer,4=,L. Peters,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,17,0,0,2.1,0.9,9.3,12.4,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0
+100738,Iris van Dijk,4=,I. van der Berg,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,17,0,0,1.2,0.4,5.2,13.4,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0
+100739,Aisha Mulder,4=,O. Hendriks,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,18,1,0,1.4,0.8,0.2,2.6,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0
+100740,Olaf Hoekstra,4=,J. Postma,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,17,0,0,1.0,1.0,3.2,5.4,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0
+100741,Liam Bosch,4=,K. Visser,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,21,0,0,1.1,0.1,10.1,5.4,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0
+100742,Yasmin Smits,4=,J. Postma,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,18,1,1,2.4,0.9,25.5,10.4,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0
+100743,Tim van der Berg,4=,O. Dijkstra,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,17,1,0,2.7,0.4,34.4,0.4,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0
+100744,Lisa Dekker,4=,L. Smits,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,18,1,0,2.1,0.3,5.4,11.4,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0
+100745,Lotte Bakker,4=,N. Vos,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,19,1,1,2.9,0.9,19.8,37.1,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0
+100746,Lotte Bos,4=,I. van der Berg,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,18,1,0,2.7,0.2,11.8,0.8,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0
+100747,Lotte Postma,4=,I. Smit,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,15,0,1,2.6,0.6,20.7,5.9,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0
+100748,Anna Dekker,4=,N. Vos,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,15,0,0,2.6,0.1,1.6,29.4,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0
+100749,Daan Bos,4=,N. Vos,Talland,Zelfstandig Werkend Kok,25182,BOL,2020,20,0,0,1.6,0.4,11.8,0.5,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0
+100750,Maud van Leeuwen,4@,T. de Groot,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,16,1,0,2.8,0.6,24.0,12.4,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100751,Thijs Huisman,4@,S. Bakker,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,18,0,0,1.0,0.7,7.3,3.2,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100752,Tess de Boer,4@,W. Postma,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,15,0,0,1.5,0.8,1.6,5.7,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100753,Bram Smits,4@,V. van der Berg,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,18,0,0,1.3,0.3,8.6,8.4,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100754,Jens de Vries,4@,W. Hoekstra,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,15,0,1,1.8,0.2,10.6,9.1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100755,Niels de Boer,4@,S. de Boer,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,17,1,0,2.2,0.3,5.0,8.8,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100756,Lotte de Graaf,4@,T. van Leeuwen,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,18,0,0,2.8,0.6,6.5,1.4,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100757,Iris de Graaf,4@,T. de Groot,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,17,1,0,2.6,0.4,3.3,10.6,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100758,Tess de Vries,4@,V. de Vries,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,19,1,0,1.1,0.0,0.1,3.5,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100759,Lucas Mulder,4@,T. van Leeuwen,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,19,0,0,1.4,0.2,15.2,3.3,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+100760,Liam de Vries,4@,W. Visser,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,17,1,0,1.5,0.8,1.8,8.5,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100761,Lisa Huisman,4@,W. Postma,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,19,0,1,2.8,0.1,25.6,16.9,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100762,Joris Hendriks,4@,W. de Graaf,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,18,0,0,2.7,0.3,5.6,7.3,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100763,Mees Jansen,4@,W. Visser,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,18,1,0,1.4,0.1,19.1,16.5,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100764,Thijs de Graaf,4@,S. de Boer,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,18,1,0,1.4,0.7,2.2,3.9,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100765,Sven Hoekstra,4@,W. Bakker,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,16,0,0,1.4,0.9,7.7,7.0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100766,Mees Hendriks,4@,T. de Groot,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,19,0,0,1.3,0.1,4.4,17.6,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100767,Jens Mulder,4@,W. Postma,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,17,1,0,1.9,0.4,0.5,5.7,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100768,Lotte de Groot,4@,V. van der Berg,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,21,1,0,2.7,0.5,0.3,4.7,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100769,Olaf de Groot,4@,T. de Groot,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,19,0,1,1.7,0.7,1.2,0.6,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100770,Finn Postma,4@,W. Visser,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,20,1,0,1.0,0.3,22.4,1.7,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100771,Olaf Hendriks,4@,V. van der Berg,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,20,0,1,2.7,0.2,20.7,11.3,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100772,Sara Brouwer,4@,T. de Groot,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,17,0,0,1.6,0.2,8.7,12.3,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100773,Eva van Leeuwen,4@,T. de Groot,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,16,0,1,2.2,0.1,6.9,15.3,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+100774,Aisha Brouwer,4@,W. Visser,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,17,1,0,1.7,0.0,21.6,3.3,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100775,Niels Smit,4@,S. van Leeuwen,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,16,1,0,3.0,0.2,45.4,40.0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100776,Joris Hendriks,4@,T. de Groot,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,17,0,0,1.2,0.6,7.7,3.2,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100777,Eva de Graaf,4@,W. Bakker,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,16,1,0,1.6,0.2,0.3,1.8,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100778,Emma Dekker,4@,S. Bakker,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,19,0,0,1.3,0.4,5.5,0.1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100779,Fatima Bosch,4@,T. de Groot,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,17,1,0,1.3,0.6,1.7,1.8,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+100780,Sara de Wit,4@,W. de Graaf,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,18,1,1,2.2,0.2,13.9,2.6,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100781,Sophie Brouwer,4@,W. Bakker,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,18,1,1,1.7,0.8,7.5,0.3,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100782,Fatima de Graaf,4@,S. van Leeuwen,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,16,0,0,2.4,0.1,6.4,1.6,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100783,Daan Mulder,4@,S. van Leeuwen,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,18,0,0,2.4,0.7,3.8,7.9,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100784,Sven van Leeuwen,4@,W. Hoekstra,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,15,1,0,1.9,0.3,1.6,3.7,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100785,Iris de Vries,4@,S. de Boer,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,17,1,0,2.5,0.9,12.2,9.0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100786,Aisha de Groot,4@,S. de Boer,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,16,0,0,2.1,0.2,14.8,1.2,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+100787,Noor Brouwer,4@,T. van Leeuwen,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,18,0,1,1.4,0.1,22.1,1.5,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100788,Lucas Bakker,4@,W. Visser,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,17,0,1,2.8,0.5,17.3,9.1,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100789,Daan Postma,4@,W. Visser,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,18,0,0,1.8,0.3,20.0,8.2,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100790,Aisha Jansen,4@,V. van der Berg,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,18,1,0,1.1,0.0,17.5,21.1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100791,Thijs van Dijk,4@,S. de Boer,Utrecht,Allround Podium Evenemententechnicus,25798,BOL,2023,18,0,0,2.4,0.0,3.0,17.1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100792,Tess Vos,4@,V. de Vries,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,15,0,0,1.5,0.1,9.9,1.7,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100793,Aisha Hendriks,4@,W. Visser,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,16,0,0,2.3,0.3,4.6,3.9,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100794,Daan Bakker,4@,T. de Groot,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,20,0,0,1.5,0.1,6.4,11.7,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100795,Anna Hoekstra,4@,V. van der Berg,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,17,1,0,1.4,0.8,13.6,28.7,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100796,Bas van Dijk,4@,W. Bakker,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,15,0,0,2.0,0.7,0.8,0.1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100797,Aisha de Graaf,4@,S. de Boer,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,18,0,0,1.1,0.4,4.4,10.7,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+100798,Noor Hendriks,4@,T. de Groot,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,19,1,0,1.3,0.3,12.3,2.2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100799,Daan de Wit,4@,V. van der Berg,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,17,1,1,1.7,0.2,12.5,2.7,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100800,Niels van Dijk,4@,T. de Groot,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,19,0,1,1.9,0.0,19.4,9.5,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100801,Emma de Boer,4@,S. Bakker,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,16,0,0,1.3,0.5,12.1,1.2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100802,Sara Mulder,4@,W. Hoekstra,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,17,0,0,2.2,0.3,1.0,10.3,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100803,Anna de Boer,4@,T. van Leeuwen,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,16,1,0,1.8,0.2,23.8,5.2,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100804,Lisa de Graaf,4@,W. de Graaf,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,15,1,0,2.7,0.8,6.8,1.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100805,Stijn Dijkstra,4@,S. van Leeuwen,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,18,1,0,1.9,0.4,9.7,1.5,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100806,Emma Vos,4@,S. van Leeuwen,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,21,1,0,2.0,0.9,15.1,1.7,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100807,Finn Peters,4@,V. van der Berg,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,18,1,0,2.8,1.0,8.1,8.2,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100808,Niels Smits,4@,S. van Leeuwen,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,20,1,0,2.3,0.4,2.6,4.6,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100809,Fatima van Leeuwen,4@,W. de Graaf,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,16,1,0,2.3,0.7,3.4,5.2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100810,Anna Smit,4@,T. van Leeuwen,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,18,0,1,1.0,0.8,11.2,23.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100811,Niels Hendriks,4@,V. van der Berg,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,20,0,1,2.8,0.2,14.7,29.2,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100812,Eva Bos,4@,W. Hoekstra,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,17,0,1,1.2,0.6,41.2,8.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100813,Tess Smit,4@,T. van Leeuwen,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,19,1,0,1.0,0.2,16.6,21.3,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100814,Liam Bakker,4@,W. de Graaf,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,16,0,0,2.4,0.2,6.5,4.3,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100815,Liam Dekker,4@,W. Postma,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,18,0,1,2.6,0.2,20.2,1.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100816,Bas van Leeuwen,4@,W. Bakker,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,18,1,0,1.2,0.1,11.8,7.8,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100817,Mees Brouwer,4@,W. Bakker,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,19,0,1,2.3,0.8,13.4,0.9,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100818,Sara de Wit,4@,S. Bakker,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,17,1,0,2.2,0.3,5.7,5.9,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100819,Lotte Vos,4@,T. de Groot,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,20,0,1,3.0,0.9,34.0,8.8,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100820,Aisha Dekker,4@,W. de Graaf,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,18,1,0,2.9,0.8,6.2,14.4,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100821,Iris de Graaf,4@,W. Visser,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,18,0,0,1.0,0.6,12.9,5.2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+100822,Lotte de Vries,4@,W. Visser,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,17,1,0,1.8,0.6,5.4,0.4,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100823,Tim Brouwer,4@,W. Visser,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,19,1,0,2.2,0.7,23.3,18.8,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100824,Lieke Smits,4@,W. de Graaf,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,17,1,0,1.3,0.4,8.4,1.1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100825,Thijs Dijkstra,4@,T. de Groot,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,20,0,0,1.2,1.0,3.3,1.5,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100826,Niels Vos,4@,V. van der Berg,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,15,0,0,2.3,0.9,17.4,2.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100827,Sven Bakker,4@,W. de Graaf,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,18,0,0,2.3,0.4,4.9,2.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100828,Finn Koster,4@,V. van der Berg,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,16,1,0,1.2,0.1,12.7,12.3,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100829,Finn Smits,4@,T. de Groot,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,18,1,0,2.9,0.6,16.4,1.0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100830,Daan Smits,4@,W. Hoekstra,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,18,0,0,2.0,0.6,2.5,3.9,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100831,Fatima de Vries,4@,W. Hoekstra,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,15,1,0,2.7,0.5,23.0,3.0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100832,Stijn Bos,4@,S. van Leeuwen,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,19,0,0,1.5,0.8,16.5,15.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100833,Anna Postma,4@,T. de Groot,Utrecht,Medewerker Evenementenorganisatie,25749,BOL,2023,18,1,0,1.3,0.7,8.2,9.7,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100834,Niels Huisman,4A,T. de Groot,Utrecht,Onderwijsassistent,25698,BBL,2024,18,1,0,1.6,0.8,14.5,0.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100835,Lucas de Vries,4A,W. Hoekstra,Utrecht,Onderwijsassistent,25698,BBL,2024,19,1,0,2.5,0.4,6.0,4.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100836,Bram Bos,4A,W. de Graaf,Utrecht,Onderwijsassistent,25698,BBL,2024,19,0,0,2.7,0.7,30.8,9.7,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100837,Lucas Smits,4A,S. van Leeuwen,Utrecht,Onderwijsassistent,25698,BBL,2024,18,0,0,1.4,0.7,7.0,5.3,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100838,Aisha Peters,4A,W. de Graaf,Utrecht,Onderwijsassistent,25698,BBL,2024,19,1,0,2.4,0.2,23.3,0.9,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100839,Jens Brouwer,4A,S. van Leeuwen,Utrecht,Onderwijsassistent,25698,BBL,2024,16,1,0,2.2,1.0,34.8,1.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100840,Fatima Mulder,4A,S. Bakker,Utrecht,Onderwijsassistent,25698,BBL,2024,17,1,0,2.6,1.0,1.5,4.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100841,Emma Prins,4A,W. Bakker,Utrecht,Onderwijsassistent,25698,BBL,2024,17,1,1,1.7,0.1,24.0,8.4,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100842,Sven van der Berg,4A,W. Visser,Utrecht,Onderwijsassistent,25698,BBL,2024,20,0,0,2.6,0.2,28.7,2.0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100843,Anna Hoekstra,4A,V. van der Berg,Utrecht,Onderwijsassistent,25698,BBL,2024,17,0,0,1.8,0.7,4.3,1.1,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100844,Tess Dijkstra,4A,W. Hoekstra,Utrecht,Onderwijsassistent,25698,BBL,2024,17,0,0,2.5,0.2,8.0,5.9,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100845,Liam Meijer,4A,W. Postma,Utrecht,Onderwijsassistent,25698,BBL,2024,15,1,0,1.2,0.1,14.3,0.0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100846,Lucas Bakker,4A,W. Hoekstra,Utrecht,Onderwijsassistent,25698,BBL,2024,19,0,1,1.8,0.9,3.6,11.2,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100847,Bram Jansen,4A,W. Hoekstra,Utrecht,Onderwijsassistent,25698,BBL,2024,19,0,0,2.2,0.7,28.2,2.8,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100848,Jens de Graaf,4A,W. Hoekstra,Utrecht,Onderwijsassistent,25698,BBL,2024,18,0,0,1.6,0.8,8.6,9.3,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+100849,Stijn Dijkstra,4A,T. de Groot,Utrecht,Onderwijsassistent,25698,BBL,2024,18,1,0,1.1,0.3,10.8,2.6,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100850,Lieke Meijer,4A,V. van der Berg,Utrecht,Onderwijsassistent,25698,BBL,2024,18,0,0,1.1,0.7,7.3,23.2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100851,Eva van der Berg,4A,T. de Groot,Utrecht,Onderwijsassistent,25698,BBL,2024,17,0,0,1.8,0.2,15.0,6.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100852,Tim Hendriks,4A,S. Bakker,Utrecht,Onderwijsassistent,25698,BBL,2024,15,1,1,1.1,0.6,39.9,2.3,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100853,Lotte Prins,4A,T. van Leeuwen,Utrecht,Onderwijsassistent,25698,BBL,2024,17,0,0,1.8,1.0,1.9,12.8,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100854,Liam Huisman,4A,S. de Boer,Utrecht,Onderwijsassistent,25698,BBL,2024,18,1,0,2.4,0.9,2.3,10.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100855,Stijn Visser,4A,S. Bakker,Utrecht,Onderwijsassistent,25698,BBL,2024,16,1,0,2.6,0.7,2.2,23.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100856,Joris de Graaf,4A,V. van der Berg,Utrecht,Onderwijsassistent,25698,BBL,2024,16,0,1,1.3,0.6,7.8,1.1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+100857,Niels Koster,4A,W. Visser,Utrecht,Onderwijsassistent,25698,BBL,2024,17,1,1,2.4,0.2,44.0,9.8,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100858,Olaf Dekker,4A,W. Hoekstra,Utrecht,Onderwijsassistent,25698,BBL,2024,17,0,0,1.6,0.9,4.1,24.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+100859,Tim Prins,4A,V. de Vries,Utrecht,Onderwijsassistent,25698,BBL,2024,15,0,1,2.9,0.2,22.4,8.1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100860,Finn Bos,4A,W. Hoekstra,Utrecht,Onderwijsassistent,25698,BBL,2024,20,0,1,2.0,0.5,31.8,13.2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100861,Lieke Dijkstra,4A,W. de Graaf,Utrecht,Onderwijsassistent,25698,BBL,2024,17,0,0,2.4,0.7,1.6,0.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100862,Mees Koster,4A,W. Visser,Utrecht,Onderwijsassistent,25698,BBL,2024,15,1,0,2.9,0.7,36.2,13.9,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100863,Lisa Mulder,4A,S. van Leeuwen,Utrecht,Onderwijsassistent,25698,BBL,2024,17,0,0,1.8,0.4,0.9,14.6,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100864,Liam Vos,4A,W. Visser,Utrecht,Onderwijsassistent,25698,BBL,2024,19,1,0,1.5,0.0,3.4,6.2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100865,Fatima de Boer,4A,T. van Leeuwen,Utrecht,Onderwijsassistent,25698,BBL,2024,19,0,0,2.9,0.9,31.8,25.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100866,Daan Peters,4A,S. Bakker,Utrecht,Onderwijsassistent,25698,BBL,2024,21,0,0,1.8,0.0,11.5,3.2,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100867,Sara Bakker,4A,W. Hoekstra,Utrecht,Onderwijsassistent,25698,BBL,2024,18,1,1,1.0,0.8,8.7,1.3,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100868,Sven Hendriks,4A,V. de Vries,Utrecht,Onderwijsassistent,25698,BBL,2024,18,1,0,2.3,0.4,4.3,4.5,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100869,Finn van Leeuwen,4A,S. Bakker,Utrecht,Onderwijsassistent,25698,BBL,2024,17,0,0,1.6,0.1,5.3,16.4,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100870,Lotte Jansen,4A,S. van Leeuwen,Utrecht,Onderwijsassistent,25698,BBL,2024,18,1,0,2.1,0.8,13.2,23.7,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100871,Lotte Prins,4A,V. van der Berg,Utrecht,Onderwijsassistent,25698,BBL,2024,17,1,0,1.3,1.0,8.4,20.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100872,Noor Smit,4A,V. de Vries,Utrecht,Onderwijsassistent,25698,BBL,2024,17,0,0,1.9,0.3,8.3,11.7,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100873,Maud van Leeuwen,4A,T. de Groot,Utrecht,Onderwijsassistent,25698,BBL,2024,16,1,0,2.5,0.9,11.5,10.5,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100874,Mees van Dijk,4A,V. van der Berg,Utrecht,Onderwijsassistent,25698,BBL,2024,17,0,0,1.4,0.9,2.7,9.8,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100875,Noor Mulder,4A,S. de Boer,Utrecht,Onderwijsassistent,25698,BBL,2024,15,0,0,1.9,0.6,1.7,0.3,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100876,Daan Hendriks,4@,V. van der Berg,Utrecht,Retailmanager,25807,BBL,2023,18,0,0,2.0,0.6,8.9,9.6,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+100877,Yasmin Peters,4@,T. van Leeuwen,Utrecht,Retailmanager,25807,BBL,2023,19,0,1,1.4,0.0,34.4,9.9,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100878,Lotte de Boer,4@,T. van Leeuwen,Utrecht,Retailmanager,25807,BBL,2023,19,1,1,1.7,0.1,7.7,19.1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100879,Thijs Dijkstra,4@,S. van Leeuwen,Utrecht,Retailmanager,25807,BBL,2023,22,1,0,1.5,0.3,4.8,10.8,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100880,Emma Visser,4@,S. van Leeuwen,Utrecht,Retailmanager,25807,BBL,2023,21,0,1,1.4,0.4,11.9,7.4,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100881,Joris de Graaf,4@,V. de Vries,Utrecht,Retailmanager,25807,BBL,2023,17,0,0,1.1,0.2,4.3,5.1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100882,Yasmin Prins,4@,W. Hoekstra,Utrecht,Retailmanager,25807,BBL,2023,17,0,1,2.0,0.5,44.3,18.0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+100883,Olaf de Vries,4@,S. van Leeuwen,Utrecht,Retailmanager,25807,BBL,2023,15,0,1,2.9,0.1,11.0,9.5,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100884,Sara Koster,4@,V. van der Berg,Utrecht,Retailmanager,25807,BBL,2023,19,1,0,2.1,0.4,8.2,6.1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100885,Sara Meijer,4@,S. Bakker,Utrecht,Retailmanager,25807,BBL,2023,18,1,0,2.0,0.7,2.1,2.0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+100886,Bas Mulder,4@,T. van Leeuwen,Utrecht,Retailmanager,25807,BBL,2023,19,0,1,2.3,0.9,14.8,6.4,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+100887,Noor de Groot,4@,S. Bakker,Utrecht,Retailmanager,25807,BBL,2023,18,0,0,1.0,0.3,12.3,2.3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100888,Jens Vos,4@,S. de Boer,Utrecht,Retailmanager,25807,BBL,2023,20,1,1,1.6,0.1,35.1,17.2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100889,Tess Peters,4@,T. de Groot,Utrecht,Retailmanager,25807,BBL,2023,20,0,0,2.1,1.0,15.7,2.6,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100890,Maud Smits,4@,S. de Boer,Utrecht,Retailmanager,25807,BBL,2023,17,0,0,2.6,0.2,15.4,9.3,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+100891,Sophie van der Berg,4@,V. van der Berg,Utrecht,Retailmanager,25807,BBL,2023,20,1,0,1.3,0.5,2.0,2.1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100892,Iris Meijer,4@,S. van Leeuwen,Utrecht,Retailmanager,25807,BBL,2023,17,0,0,2.8,0.8,2.5,5.4,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100893,Sara Bakker,4@,S. van Leeuwen,Utrecht,Retailmanager,25807,BBL,2023,17,1,0,1.2,0.5,0.9,2.3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100894,Olaf de Vries,4@,W. Postma,Utrecht,Retailmanager,25807,BBL,2023,21,0,0,1.3,0.8,1.3,3.9,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+100895,Anna de Graaf,4@,S. Bakker,Utrecht,Retailmanager,25807,BBL,2023,18,1,0,2.7,0.1,18.9,0.1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100896,Maud Smits,4@,W. Bakker,Utrecht,Retailmanager,25807,BBL,2023,18,1,0,2.3,0.1,20.3,2.9,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100897,Liam Dijkstra,4@,T. van Leeuwen,Utrecht,Retailmanager,25807,BBL,2023,20,0,0,2.8,0.0,1.3,17.4,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100898,Noor Peters,4@,W. Visser,Utrecht,Retailmanager,25807,BBL,2023,16,0,0,2.0,1.0,4.1,20.4,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100899,Bram Peters,4@,S. de Boer,Utrecht,Retailmanager,25807,BBL,2023,15,0,0,2.8,0.6,11.5,1.0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100900,Lisa Vos,4@,W. Postma,Utrecht,Retailmanager,25807,BBL,2023,17,1,0,1.7,0.1,2.4,4.4,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100901,Thijs Peters,4@,T. van Leeuwen,Utrecht,Retailmanager,25807,BBL,2023,15,0,1,2.7,1.0,20.0,9.9,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100902,Noor Vos,4@,S. van Leeuwen,Utrecht,Retailmanager,25807,BBL,2023,17,1,0,2.9,0.3,5.9,10.2,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100903,Noor Meijer,4@,V. van der Berg,Utrecht,Retailmanager,25807,BBL,2023,18,1,0,2.2,0.6,5.2,5.5,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100904,Anna Mulder,4@,V. van der Berg,Utrecht,Retailmanager,25807,BBL,2023,15,1,0,1.2,0.7,6.5,5.5,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100905,Maud Hoekstra,4@,W. de Graaf,Utrecht,Retailmanager,25807,BBL,2023,17,0,0,3.0,0.0,3.0,0.7,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100906,Noor Visser,4@,S. Bakker,Utrecht,Retailmanager,25807,BBL,2023,18,1,0,1.3,0.9,29.1,3.6,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100907,Niels van Leeuwen,4@,T. de Groot,Utrecht,Retailmanager,25807,BBL,2023,17,0,0,2.9,0.7,2.8,2.0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100908,Aisha Hoekstra,4@,V. van der Berg,Utrecht,Retailmanager,25807,BBL,2023,21,0,0,1.1,0.4,5.6,9.7,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100909,Emma de Vries,4@,W. Postma,Utrecht,Retailmanager,25807,BBL,2023,19,1,0,2.5,0.7,21.3,4.3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100910,Bram Brouwer,4@,V. van der Berg,Utrecht,Retailmanager,25807,BBL,2023,18,0,0,2.8,0.0,15.4,4.7,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100911,Lisa Meijer,4@,S. Bakker,Utrecht,Retailmanager,25807,BBL,2023,18,1,0,2.1,0.8,6.1,4.4,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100912,Lisa Bos,4@,W. de Graaf,Utrecht,Retailmanager,25807,BBL,2023,19,0,0,2.5,0.4,3.1,21.4,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100913,Fatima Meijer,4@,W. de Graaf,Utrecht,Retailmanager,25807,BBL,2023,18,1,1,2.0,0.7,44.8,7.4,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100914,Fatima Meijer,4@,S. Bakker,Utrecht,Retailmanager,25807,BBL,2023,18,1,1,1.1,0.3,19.5,8.3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100915,Emma de Boer,4@,W. Postma,Utrecht,Retailmanager,25807,BBL,2023,18,0,0,2.3,0.0,0.1,19.2,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+100916,Sophie Smits,4@,S. Bakker,Utrecht,Retailmanager,25807,BBL,2023,16,0,1,3.0,0.8,10.0,12.5,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+100917,Lisa de Boer,4@,V. de Vries,Utrecht,Retailmanager,25807,BBL,2023,21,0,0,1.7,0.9,16.7,10.3,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100918,Lisa Huisman,2@,S. van Leeuwen,Utrecht,Retailmedewerker,25808,BOL,2023,18,0,0,1.3,0.5,0.3,12.7,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100919,Emma Hoekstra,2@,T. de Groot,Utrecht,Retailmedewerker,25808,BOL,2023,17,0,0,3.0,0.5,25.9,13.2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100920,Stijn van der Berg,2@,W. Hoekstra,Utrecht,Retailmedewerker,25808,BOL,2023,17,1,0,1.1,0.7,32.0,3.3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100921,Mees de Boer,2@,W. Postma,Utrecht,Retailmedewerker,25808,BOL,2023,19,1,0,1.2,0.0,11.2,25.4,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100922,Bram Dijkstra,2@,S. de Boer,Utrecht,Retailmedewerker,25808,BOL,2023,17,1,0,1.7,0.1,8.3,4.9,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100923,Iris de Groot,2@,W. Bakker,Utrecht,Retailmedewerker,25808,BOL,2023,18,0,1,2.9,1.0,46.1,11.5,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100924,Jens Bosch,2@,T. van Leeuwen,Utrecht,Retailmedewerker,25808,BOL,2023,19,1,0,1.7,0.7,6.1,15.6,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100925,Yasmin van Dijk,2@,S. Bakker,Utrecht,Retailmedewerker,25808,BOL,2023,19,0,0,2.4,0.6,11.6,8.3,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100926,Liam Bos,2@,V. van der Berg,Utrecht,Retailmedewerker,25808,BOL,2023,16,0,0,1.7,0.5,2.1,4.1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100927,Tess Dekker,2@,S. de Boer,Utrecht,Retailmedewerker,25808,BOL,2023,19,1,0,2.5,0.2,1.1,10.5,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100928,Lotte Vos,2@,W. Postma,Utrecht,Retailmedewerker,25808,BOL,2023,17,0,0,2.9,0.1,8.0,9.7,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100929,Sophie Jansen,2@,W. Postma,Utrecht,Retailmedewerker,25808,BOL,2023,18,1,0,3.0,0.2,17.9,0.5,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100930,Aisha Prins,2@,W. Visser,Utrecht,Retailmedewerker,25808,BOL,2023,18,0,0,1.6,0.7,6.6,2.3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100931,Lisa de Boer,2@,W. Visser,Utrecht,Retailmedewerker,25808,BOL,2023,19,1,1,1.7,0.8,26.8,1.6,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100932,Jens van Leeuwen,2@,W. Bakker,Utrecht,Retailmedewerker,25808,BOL,2023,17,1,0,2.6,0.6,7.7,9.3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100933,Sara Bakker,2@,W. de Graaf,Utrecht,Retailmedewerker,25808,BOL,2023,16,1,0,1.0,0.9,13.2,7.7,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100934,Sven Bosch,2@,V. de Vries,Utrecht,Retailmedewerker,25808,BOL,2023,17,1,0,2.9,0.9,1.4,28.0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100935,Anna Smits,2@,S. de Boer,Utrecht,Retailmedewerker,25808,BOL,2023,17,0,0,2.2,0.2,0.4,11.0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100936,Sara van Dijk,2@,W. Postma,Utrecht,Retailmedewerker,25808,BOL,2023,17,0,1,2.4,0.6,37.2,3.7,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100937,Tim Peters,2@,V. de Vries,Utrecht,Retailmedewerker,25808,BOL,2023,19,1,0,1.2,0.2,21.1,4.4,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100938,Lucas Dijkstra,2@,W. Postma,Utrecht,Retailmedewerker,25808,BOL,2023,16,1,0,2.4,0.9,2.1,4.6,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100939,Liam Bakker,2@,S. de Boer,Utrecht,Retailmedewerker,25808,BOL,2023,15,0,0,2.0,0.8,1.1,0.1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+100940,Liam van der Berg,2@,W. Bakker,Utrecht,Retailmedewerker,25808,BOL,2023,18,1,0,2.1,0.1,8.4,13.1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100941,Liam Peters,2@,W. Bakker,Utrecht,Retailmedewerker,25808,BOL,2023,17,1,0,1.0,0.4,6.4,13.7,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100942,Bram de Groot,2@,W. Visser,Utrecht,Retailmedewerker,25808,BOL,2023,16,1,0,1.1,0.0,3.7,14.6,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100943,Tess Postma,2@,W. Hoekstra,Utrecht,Retailmedewerker,25808,BOL,2023,18,1,0,1.5,1.0,20.6,7.3,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100944,Anna Hendriks,2@,S. Bakker,Utrecht,Retailmedewerker,25808,BOL,2023,15,0,1,1.8,0.3,19.4,6.9,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100945,Mees Visser,2@,W. de Graaf,Utrecht,Retailmedewerker,25808,BOL,2023,15,1,0,2.7,0.6,19.4,5.6,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+100946,Joris Meijer,2@,V. de Vries,Utrecht,Retailmedewerker,25808,BOL,2023,16,0,0,2.2,0.5,2.7,0.8,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100947,Sophie Hendriks,2@,S. Bakker,Utrecht,Retailmedewerker,25808,BOL,2023,16,1,0,1.4,0.7,16.3,1.1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100948,Sara Dijkstra,2@,T. de Groot,Utrecht,Retailmedewerker,25808,BOL,2023,17,0,0,2.9,0.6,15.5,13.2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100949,Sophie Bosch,2@,S. de Boer,Utrecht,Retailmedewerker,25808,BOL,2023,18,0,0,1.6,0.9,1.4,21.0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100950,Sven Bosch,2@,V. de Vries,Utrecht,Retailmedewerker,25808,BOL,2023,18,1,1,2.9,0.1,29.3,1.9,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100951,Fatima Vos,2@,W. Visser,Utrecht,Retailmedewerker,25808,BOL,2023,16,0,1,2.8,0.7,28.7,13.2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100952,Bas Jansen,2@,S. de Boer,Utrecht,Retailmedewerker,25808,BOL,2023,16,0,1,2.0,0.3,44.7,40.0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100953,Stijn de Vries,2@,W. Hoekstra,Utrecht,Retailmedewerker,25808,BOL,2023,16,1,0,1.2,0.2,0.3,5.7,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100954,Mees Bakker,2@,W. de Graaf,Utrecht,Retailmedewerker,25808,BOL,2023,18,1,0,1.9,0.8,14.1,1.1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100955,Fatima de Boer,2@,T. van Leeuwen,Utrecht,Retailmedewerker,25808,BOL,2023,18,1,0,2.9,0.1,2.3,9.3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100956,Sophie Bos,2@,S. van Leeuwen,Utrecht,Retailmedewerker,25808,BOL,2023,19,1,0,2.6,0.6,19.0,24.6,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100957,Tim de Boer,2@,W. Postma,Utrecht,Retailmedewerker,25808,BOL,2023,16,1,0,1.3,0.0,5.2,18.3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100958,Sophie van Leeuwen,2@,T. van Leeuwen,Utrecht,Retailmedewerker,25808,BOL,2023,16,0,0,1.4,0.3,11.1,16.8,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100959,Jens Mulder,4A,S. de Boer,Utrecht,Software Developer,23399,BOL,2024,17,1,0,1.2,0.3,2.9,3.7,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100960,Lotte de Boer,4A,W. Bakker,Utrecht,Software Developer,23399,BOL,2024,19,0,0,2.1,0.1,10.1,3.1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+100961,Stijn Huisman,4A,W. Visser,Utrecht,Software Developer,23399,BOL,2024,18,1,0,1.6,0.3,0.9,17.9,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100962,Olaf Brouwer,4A,W. Bakker,Utrecht,Software Developer,23399,BOL,2024,15,1,0,1.5,0.0,0.6,2.6,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100963,Olaf Bosch,4A,W. Postma,Utrecht,Software Developer,23399,BOL,2024,18,1,1,1.1,0.5,53.0,19.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100964,Lotte van der Berg,4A,S. Bakker,Utrecht,Software Developer,23399,BOL,2024,17,1,0,1.8,0.6,0.9,0.8,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+100965,Stijn Jansen,4A,V. van der Berg,Utrecht,Software Developer,23399,BOL,2024,16,0,0,2.7,0.9,4.3,33.1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100966,Mees Jansen,4A,S. Bakker,Utrecht,Software Developer,23399,BOL,2024,17,0,0,1.4,0.9,1.8,40.0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100967,Lieke Dijkstra,4A,S. Bakker,Utrecht,Software Developer,23399,BOL,2024,16,0,1,1.2,0.9,32.6,16.2,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100968,Lotte Hoekstra,4A,W. Postma,Utrecht,Software Developer,23399,BOL,2024,20,0,0,1.3,0.9,18.8,3.8,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100969,Lieke Bosch,4A,V. van der Berg,Utrecht,Software Developer,23399,BOL,2024,16,0,0,2.2,0.7,12.2,8.8,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+100970,Lotte Prins,4A,W. de Graaf,Utrecht,Software Developer,23399,BOL,2024,17,0,0,2.3,0.7,7.9,0.8,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100971,Emma Bakker,4A,W. Bakker,Utrecht,Software Developer,23399,BOL,2024,16,1,0,1.4,0.1,0.7,0.1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100972,Sophie Prins,4A,W. Hoekstra,Utrecht,Software Developer,23399,BOL,2024,17,0,0,2.8,0.2,8.7,3.0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100973,Iris Bosch,4A,W. Postma,Utrecht,Software Developer,23399,BOL,2024,15,1,0,1.8,0.7,8.6,12.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+100974,Sophie van der Berg,4A,S. de Boer,Utrecht,Software Developer,23399,BOL,2024,18,0,0,1.5,0.5,1.9,16.7,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100975,Jens de Groot,4A,S. de Boer,Utrecht,Software Developer,23399,BOL,2024,21,0,0,1.8,0.4,31.4,0.7,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100976,Iris de Groot,4A,V. de Vries,Utrecht,Software Developer,23399,BOL,2024,16,1,0,1.4,0.3,1.2,8.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100977,Lisa van Leeuwen,4A,S. de Boer,Utrecht,Software Developer,23399,BOL,2024,18,0,0,1.2,0.9,13.7,8.3,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100978,Mees Bakker,4A,W. Hoekstra,Utrecht,Software Developer,23399,BOL,2024,17,0,0,1.4,0.8,1.3,2.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100979,Sven de Boer,4A,S. van Leeuwen,Utrecht,Software Developer,23399,BOL,2024,16,1,0,2.5,0.1,18.5,3.4,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100980,Eva de Graaf,4A,W. Bakker,Utrecht,Software Developer,23399,BOL,2024,19,0,0,1.4,0.9,16.1,15.3,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100981,Aisha van Dijk,4A,W. Bakker,Utrecht,Software Developer,23399,BOL,2024,20,0,0,1.3,0.8,6.7,0.2,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+100982,Jens Brouwer,4A,W. Postma,Utrecht,Software Developer,23399,BOL,2024,18,1,0,2.7,0.5,0.0,16.5,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100983,Noor Prins,4A,S. de Boer,Utrecht,Software Developer,23399,BOL,2024,18,1,0,2.5,1.0,1.3,13.0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+100984,Sven de Groot,4A,V. de Vries,Utrecht,Software Developer,23399,BOL,2024,16,1,0,1.2,0.7,7.4,14.1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100985,Aisha Smit,4A,V. van der Berg,Utrecht,Software Developer,23399,BOL,2024,19,1,1,1.1,0.6,23.3,8.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100986,Tim Peters,4A,T. de Groot,Utrecht,Software Developer,23399,BOL,2024,15,1,0,3.0,0.9,16.4,1.7,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100987,Niels van Dijk,4A,V. de Vries,Utrecht,Software Developer,23399,BOL,2024,15,1,0,1.6,0.0,26.3,4.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+100988,Lotte Postma,4A,W. Postma,Utrecht,Software Developer,23399,BOL,2024,18,0,0,2.9,0.5,1.6,12.7,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100989,Iris van Dijk,4A,S. van Leeuwen,Utrecht,Software Developer,23399,BOL,2024,16,0,0,1.6,0.3,8.9,2.7,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100990,Aisha Dekker,4A,S. Bakker,Utrecht,Software Developer,23399,BOL,2024,17,1,0,2.3,0.0,2.9,14.0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100991,Jens Bos,4A,W. Hoekstra,Utrecht,Software Developer,23399,BOL,2024,18,0,1,2.4,0.1,13.1,11.7,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100992,Tim Smits,4A,S. de Boer,Utrecht,Software Developer,23399,BOL,2024,18,1,0,1.8,1.0,4.1,0.3,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+100993,Yasmin Bos,4A,W. Postma,Utrecht,Software Developer,23399,BOL,2024,20,1,0,2.6,0.1,4.5,6.6,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100994,Yasmin Smit,4A,V. van der Berg,Utrecht,Software Developer,23399,BOL,2024,15,0,1,1.8,0.9,9.7,2.9,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+100995,Noor de Wit,4A,W. Bakker,Utrecht,Software Developer,23399,BOL,2024,16,1,0,1.9,0.4,14.2,5.6,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100996,Tim Dekker,4A,S. Bakker,Utrecht,Software Developer,23399,BOL,2024,18,1,0,2.6,0.6,29.2,0.2,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+100997,Stijn Dijkstra,4A,W. Postma,Utrecht,Software Developer,23399,BOL,2024,18,0,0,1.8,0.0,25.2,0.4,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100998,Bas de Wit,4A,W. Bakker,Utrecht,Software Developer,23399,BOL,2024,18,0,0,2.6,0.6,21.9,0.7,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+100999,Bas Jansen,4A,S. de Boer,Utrecht,Software Developer,23399,BOL,2024,17,0,0,2.4,0.5,16.2,9.0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0

@@ -1,0 +1,54 @@
+Examenplan beroepsgerichte examens 25821 Eerste monteur service en onderhoud werktuigkundige installaties vanaf
+cohort 2022
+
+                                                             Kerntaak B1-K1 Inspecteert apparatuur, installaties en systemen
+
+Code Exameninstrument   Werkprocessen Waar         Wie beoordelen               Score      Weging  Score voor de
+             PvB 1                                                              (O-V-G of  nvt     kerntaak
+                                                                                cijfer)            (O-V-G of cijfer)
+
+                        B1-K1-W1  Beroepspraktijk  Interne en                   Cijfer
+                        B1-K1-W2  of               externe
+                        B1-K1-W3  examenlocatie    examinator
+                        B1-K1-W4  DVC
+                        B1-K1-W5                                                                   cijfer
+                        B1-K1-W6
+
+      Kerntaak B1-K1 is behaald, wanneer voor PvB 1 minimaal een 6 is behaald.
+
+                        Kerntaak B1-K2 Optimaliseert apparatuur, installaties en systemen en verhelpt storingen
+
+Code  Exameninstrument  Werkprocessen Waar         Wie beoordelen               Score      Weging  Score voor de
+      PvB 2                                                                     (O-V-G of  nvt     kerntaak
+                                                                                cijfer)            (O-V-G of cijfer)
+                                                                                Cijfer
+                        B1-K2-W1  Beroepspraktijk  Interne en
+                        B1-K2-W2  of               externe
+                        B1-K2-W3  examenlocatie    examinator
+                        B1-K2-W4  DVC
+                        B1-K2-W5                                                                   cijfer
+                        B1-K2-W6
+
+      Kerntaak B1-K2 is behaald, wanneer voor PvB 2 minimaal een 6 is behaald.
+                        Kerntaak P2-K1 Lokaliseert storingen in werktuigkundige apparatuur en installaties
+
+Code  Exameninstrument  Werkprocessen Waar         Wie beoordelen               Score      Weging           Score voor de
+      PvB 3                                                                     (O-V-G of  nvt              kerntaak
+                        P2-K1-W1  Beroepspraktijk  Interne en                   cijfer)                     (O-V-G of cijfer)
+                        P2-K1-W2  of               externe
+                        P2-K1-W3  examenlocatie    examinator                   Cijfer                      cijfer
+                        P2-K1-W4  DVC
+
+      Kerntaak P2-K1 is behaald, wanneer voor PvB 3 minimaal een 6 is behaald.
+
+                        Kerntaak P2-K2 Voorkomt het vrijkomen van koolmonoxide bij gasverbrandingsinstallaties
+
+Code  Exameninstrument  Werkprocessen Waar         Wie beoordelen               Score      Weging           Score voor de
+      PvB 4                                                                     (O-V-G of  nvt              kerntaak
+                        P2-K2-W1  Beroepspraktijk  Interne en                   cijfer)                     (O-V-G of cijfer)
+                        P2-K2-W2  of               externe
+                        P2-K2-W3  examenlocatie    examinator                   Cijfer                      cijfer
+                        P2-K2-W4  DVC
+
+      Kerntaak P2-K2 is behaald, wanneer voor PvB 4 minimaal een 6 is behaald.
+

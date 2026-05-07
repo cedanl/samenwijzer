@@ -1,0 +1,534 @@
+Onderwijs- en examenreglement (OER)
+
+Inhoudsopgave
+
+Inleiding ........................................................................................................................................................... 1
+
+Onderwijs ......................................................................................................................................................... 1
+
+Kerntaken & werkprocessen ................................................................................................................................ 1
+
+Visie op onderwijs en examinering ...................................................................................................................... 2
+
+Het onderwijsteam .............................................................................................................................................. 3
+
+Het onderwijsprogramma ................................................................................................................................... 3
+
+Keuzedelen .......................................................................................................................................................... 4
+
+Inspanningsverplichting Loopbaanoriëntatie en begeleiding (LOB)/Burgerschap .............................................. 4
+
+Bindend studieadvies .......................................................................................................................................... 5
+
+Examinering ..................................................................................................................................................... 6
+
+Examenplan ......................................................................................................................................................... 6
+
+Vrijstellingen ....................................................................................................................................................... 6
+
+Diplomering ..................................................................................................................................................... 7
+
+MBO Verklaring ................................................................................................................................................... 7
+
+Inleiding
+Je leest nu de OER die hoort bij jouw opleiding. Hierin kun je terugvinden hoe deze opleiding er uit
+gaat zien, welk onderwijs je wanneer gaat volgen en welke examens je gaat doen.
+De algemene informatie over het studeren bij MBO Utrecht vind je op de website
+https://www.mboutrecht.nl/praktisch/
+
+Deze OER hoort bij de opleiding/de certificeerbare eenheid: Persoonlijk begeleider Maatschappelijke
+Zorg, niveau 4, crebonummer 252779
+
+Het kwalificatiedossier dat hoort bij deze opleiding vind je hier: https://kwalificatie-mijn.s-
+bb.nl/kwalificatie/persoonlijk-begeleider-maatschappelijke-
+zorg/cmVzdWx0YWF0VHlwZT01O2Rvc3NpZXJJZD01NjQyO2t3YWxpZmljYXRpZUlkPTEzNzcxMDg=
+
+Onderwijs
+
+Kerntaken & werkprocessen
+Hieronder zie je uit welke kerntaken en werkprocessen dit kwalificatiedossier is opgebouwd.
+
+CvB/2023-060b/01
+
+Kerntaak
+
+Werkprocessen
+
+B1-K1: Bieden van ondersteunende,
+activerende begeleiding en zorg
+
+B1-K1-W1: Inventariseert ondersteuningsvragen
+van de cliënt
+
+B1-K1-W2: Ondersteunt de cliënt bij de zelfzorg
+
+B1-K1-W3: Ondersteunt de cliënt bij wonen en
+huishouden
+
+B1-K1-W4: Ondersteunt de cliënt bij participatie
+
+B1-K1-W5: Voert zorgtechnische handelingen uit
+
+B1-K1-W6: Handelt in onvoorziene en/of
+crisissituaties
+
+B1-K1-W7: Werkt samen en stemt de
+werkzaamheden af
+
+B1-K1-W8: Evalueert de geboden ondersteuning
+en zorg
+
+B1-K2: Werken aan kwaliteit en
+deskundigheid
+
+B1-K2-W1: Werkt aan de eigen professionele
+ontwikkeling
+
+B1-K2-W2: Werkt aan bevorderen en bewaken van
+kwaliteitszorg
+
+Profieldeel
+In het profieldeel staan de kerntaken en werkprocessen die alleen gelden voor jouw opleiding.
+
+Tabel 2
+
+Kerntaak
+
+Werkprocessen
+
+P2-K1: Bieden en coördineren van
+ondersteuning op maat
+
+P2-K1-W1: Ontwikkelt en voert regie over het
+ondersteuningsplan
+
+P2-K1-W2: Organiseert en coördineert activiteiten
+voor een groep cliënten
+
+P2-K1-W3: Begeleidt de cliënt bij het voeren van
+eigen regie
+
+P2-K1-W4: Ondersteunt de cliënt bij het
+behouden/opbouwen/versterken van het sociale
+netwerk
+
+P2-K1-W5: Organiseert en coördineert
+organisatiegebonden taken
+
+P2-K1-W6:  Begeleidt (nieuwe) collega's, stagiaires
+en/of vrijwilligers
+
+De duur van de opleiding is: 3 jaar, 36 maanden.
+
+Na deze opleiding zijn er de volgende doorstroommogelijkheden: Doorstromen naar het HBO, Social
+Work of elke andere opleiding naar keuze. Uiteraard kun je ook lekker aan de slag op de
+arbeidsmarkt.
+
+Jouw opleiding volg je op de volgende locatie(s): Australiëlaan 25, 3526 AB Utrecht
+
+De lessen vinden (onder voorbehoud) plaats tussen 09:00 ’s ochtends en 16:15 ’s middags/’s avonds.
+
+De schoolkosten voor deze opleiding vind je terug op de website mboutrecht.nl.
+Welke leermiddelen je moet aanschaffen vind je vanaf 1 juli op mboutrecht.nl/startschooljaar, vanaf 1
+augustus zijn deze middelen via deze link ook aan te schaffen.
+
+Visie op onderwijs en examinering
+
+Bij MBO Utrecht werken we vanuit een gezamenlijke brede visie op onderwijs, deze vind je terug op
+www.mboutrecht.nl/praktisch/. Aanvullend hebben de verschillende opleidingen een eigen visie op
+onderwijs en examinering, die past bij het beroep waarvoor je wordt opgeleid.
+De visie van jouw opleiding vind je hier.
+
+CvB/2023-060b/01
+
+Bij de Academie voor Zorg en Welzijn vinden wij de volgende onderwijskundige uitgangspunten
+belangrijk:
+
+De visie bestaat uit vier hoofdlijnen:
+
+Participatie en eigenregie als rode draad in zorg en onderwijs.
+
+1.
+Het is een visie op zorg waarbij het houden van de eigen regie op het welbevinden het belangrijkste
+kenmerk is. Bij de Academie voor Zorg en Welzijn hanteren wij deze visie op zorg- en hulpverlening.
+Dit grondrecht van zorgvragers/cliënten staat ook centraal in ons onderwijs. Wij streven ernaar dat jij
+zeggenschap hebt en houdt over de manier waarop jij leert.
+
+2.
+Interactie & experimenteren om te leren omgaan met een veranderende omgeving.
+De omgeving waarin je leert, dus je school en je praktijk, is dynamisch. De zorg- en welzijnssector
+verandert continu, de technologische hulpmiddelen in de zorg zijn niet meer weg te denken en worden
+steeds slimmer. Maar ook het feit dat steeds meer mensen thuis zorg ontvangen en niet naar een
+verzorgingshuis verhuizen, is zo’n ontwikkeling. Bij de Academie voor Zorg en Welzijn vinden we het
+belangrijk dat je leert om te gaan met zo’n veranderende omgeving. Je zult merken dat je met je
+medestudenten vaak zult samenwerken aan een project of experiment. Het belang daarvan is dat je
+leert om samen dingen uit te proberen, dat fouten maken mag en dat je met elkaar leert om gemaakte
+fouten te verbeteren.
+
+Samenwerkend leren door student en onderwijsprofessional Dit vindt op drie manieren plaats:
+3.
+We stimuleren interprofessioneel leren. Hiermee bedoelen we dat jij in de praktijk samenwerkt
+a.
+met allerlei andere disciplines, die je tegenkomt op je stage. Binnen die samenwerking zul je zien dat
+jij en die andere discipline van elkaar leren. Als een fysiotherapeut bijvoorbeeld iemand gaat
+behandelen die door jou verzorgd wordt, dan maken jullie daar afspraken over en leg je aan elkaar uit
+waarom, wanneer en hoe je iets plaats laat vinden. Hetzelfde gebeurt tijdens de lessen op school. Als
+een docent een theoretische uitleg geeft, waarop jij met een praktijkvoorbeeld kunt aangeven hoe dit
+ook anders kan, leert de docent op dat moment van jou.
+
+Voor jou, als student in een zorg- en welzijnsopleiding, is het fijn als theorie en praktijk als het
+
+b.
+ware ‘in elkaar overlopen’. Zo kun jij de geleerde theorie verbinden aan jouw eigen handelen in de
+praktijk. In de lessen worden daarom realistische voorbeelden uit de praktijk gebruikt. Je gaat vanaf
+het begin aan de slag met voor jou herkenbare vraagstukken en dilemma’s. Zo zal de lesstof je eerder
+aanspreken en krijg je een goed beeld van wat er van jou verwacht wordt.
+
+Het onderwijsteam van de Academie voor Zorg en Welzijn kent de verschillen tussen theorie
+
+c.
+en praktijk goed. Wij zijn ons ervan bewust dat de dynamiek op je stageplek op een andere manier
+lerend is dan een dag op school. Wij willen weten hoe het met jou gaat op je stage, wat er gedaan kan
+worden als er belemmeringen in je leren zijn. Wij willen, anders gezegd, graag van jou en je
+werkbegeleiders in de praktijk leren hoe we dingen beter of met een beter effect kunnen aanpakken.
+We willen graag nauw samenwerken met jouw praktijkomgeving, zodat er voor jou een goed
+leerklimaat heerst. We onderhouden daarom met regelmaat het contact met de professionals in jouw
+praktijkomgeving en maken altijd persoonlijk kennis met elkaar.
+
+4.
+
+Aantrekkelijke opleidingsroutes en werken aan een positief imago van het beroep.
+
+Het onderwijsteam
+
+Het team van jouw opleiding bestaat uit ongeveer 15 docenten die uit de praktijk komen, 5 generieke
+docenten, 3 bpvconsulenten, 2 verzuimmedewerkers, een roostermaker, een teamleider en een
+clusterdirecteur. Je studieloopbaanbegeleider is je eerste aanspreekpunt van de opleiding.
+
+Het onderwijsprogramma
+
+Hieronder vind je het globale onderwijsprogramma voor deze opleiding. Je ziet daarin hoeveel
+begeleide onderwijstijd (BOT) en beroepspraktijkvorming (BPV) je volgt per studiejaar. Ook zie je
+globaal waar je aan werkt per periode.
+
+CvB/2023-060b/01
+
+Het aantal uren voor jouw opleiding bedraagt minimaal:
+
+Tabel: Aantal uren voor jouw opleiding
+
+Studiejaar 1
+
+Totaal BOT
+
+Totaal BPV
+
+Studiejaar 2
+
+Totaal BOT
+
+Totaal BPV
+
+Studiejaar 3
+
+Totaal BOT
+
+Totaal BPV
+
+Totaal BOT jaar 1
+
+Totaal BOT jaar 1 t/m 3
+
+Totaal BPV jaar 1 t/m 3
+
+Totaal BOT/BPV 1t/m 3
+
+Studiejaar 2023/2024
+
+744
+
+405
+
+Studiejaar 2024/2025
+
+528
+
+555
+
+Studiejaar 2025/2026
+
+530
+
+610
+
+Vereist
+
+Gepland
+
+700
+
+1800
+
+900
+
+3000
+
+744
+
+1802
+
+1570
+
+3372
+
+Het volledige onderwijsplan van jouw opleiding vind je in Osiris.
+
+Als er tussentijds wijzigingen komen in het onderwijsplan, het onderwijsprogramma of in het
+examenplan noteert de opleiding dit in het addendum op de studiegids. Een addendum is een bijlage
+waar de meest actuele informatie over jouw opleiding wordt beschreven en die kun je vinden op
+dezelfde plek als de studiegids. De opleiding informeert je tijdig over tussentijdse wijzigingen.
+Voor vragen hier over kun je bij je SLB’er terecht.
+
+Toelichting op het onderwijsplan
+Het onderwijsplan bevat een duidelijke koppeling van theorie naar de praktijk, vanwege het bieden
+van de kennis die nodig is voor het behalen van de BPV-opdrachten en de slb-lessen zijn o.a.
+ondersteunend aan de beroepsvaardigheden passend bij de door jouw gekozen studierichting.
+
+Praktisch gezien duurt een les 60 minuten en kies je elk jaar een keuzedeel om dat jaar af te ronden.
+In elk leerjaar heb je verder examens, beroeps- en/of instellingsexamens. En je loopt elk jaar stage in
+combinatie met lestijd op school, dus bijv. 3 dagen school en 2 dagen stage.
+
+Keuzedelen
+
+De keuzedeelverplichting in studiebelastingsuren (SBU) voor jouw opleiding is:
+
+Kwalificatie
+
+Soort opleiding
+
+Keuzedeelverplichting
+(studielast)
+
+Niveau 4
+
+Middenkaderopleiding
+3 jaar
+
+720 klokuren
+
+Keuzedeelverplichting
+bij gemotiveerd
+afwijken (studielast)
+480 klokuren
+
+De keuzedelen die je op deze opleiding kunt volgen zijn:
+Je kiest tijdens de loop van een opleiding één of meerdere keuzedelen, gelet op de
+keuzedeelverplichting die geldt voor deze opleiding.
+
+Inspanningsverplichting Loopbaanoriëntatie en begeleiding (LOB)/Burgerschap
+
+CvB/2023-060b/01
+
+Voor LOB en Burgerschap geldt een inspanningsverplichting. Dat wil zeggen dat je moet laten zien
+hoe jij je tijdens je opleiding hebt ontwikkeld op het gebied van LOB en Burgerschap.
+
+Voor jouw opleiding bestaat de inspanningsverplichting Burgerschap uit de volgende bewijzen per
+dimensie:
+
+Dimensies (incl. kritische
+denkvaardigheid)
+
+Periode/studiejaar afronding  Bewijs in Portfolio*
+
+Politiek-juridische dimensie  Leerjaar 2
+Economische dimensie  Leerjaar 2
+Leerjaar 2
+
+Sociaal maatschappelijke
+dimensie
+
+Dimensie vitaal burgerschap  Leerjaar 2
+
+Opdrachten gemaakt
+Opdrachten gemaakt
+Opdrachten gemaakt
+
+Opdrachten gemaakt
+
+Voor jouw opleiding bestaat de inspanningsverplichting ‘Loopbaanoriëntatie en begeleiding’ uit de
+volgende bewijzen per dimensie:
+
+Competenties  Periode/studiejaar afronding  Bewijs in Portfolio*
+
+Kwaliteitenreflectie  Leerjaar 1, 2, 3
+
+Motievenreflectie  Leerjaar 1, 2, 3
+
+Werkexploratie  Leerjaar 1, 2, 3
+
+Loopbaansturing  Leerjaar 1, 2, 3
+
+Netwerk  Leerjaar 1, 2, 3
+
+Opdracht(en) gemaakt tijdens
+slb-lessen
+Opdracht(en) gemaakt tijdens
+slb-lessen
+Opdracht(en) gemaakt tijdens
+slb-lessen
+Opdracht(en) gemaakt tijdens
+slb-lessen
+Opdracht(en) gemaakt tijdens
+slb-lessen
+
+Bindend studieadvies
+
+Bij MBO Utrecht ontvang je zowel als BOL-student als BBL-student in alle leerjaren een studieadvies
+op basis van je studievoortgang en leerhouding. In het eerste leerjaar is het studieadvies verplicht, dit
+staat zo in de wet. Meer informatie over het bindend studieadvies lees je in de studiegids, je vindt
+deze op www.mboutrecht.nl.
+
+Dit zijn de criteria die worden gehanteerd voor het afgeven van een (voorlopig/bindend) studieadvies
+binnen jouw opleiding:
+
+• persoonlijke ontwikkeling
+• professionele ontwikkeling;
+• studieresultaten;
+• aanwezigheid.
+
+CvB/2023-060b/01
+
+De thema’s, criteria die hierboven zijn genoemd zijn richtlijnen. Deze komen elk leerjaar terug in de
+voortgangsgesprekken na elke onderwijsperiode met je slb’er voert. In het eerste leerjaar dient dit
+meetinstrument als onderbouwing voorafgaand aan het opstellen van het bindend studieadvies. De
+Check-up is te vinden in Teams.
+
+De thema’s, criteria en normen die hierboven zijn genoemd zijn richtlijnen. Deze komen terug in de
+voortgangsgesprekken die je slb’er met je voert.
+
+Examinering
+
+Om je diploma te kunnen behalen doe je examens:
+
+-  Beroepsgerichte examens
+-  Generieke examens (Nederlands, Rekenen en Engels)
+-  Keuzedeelexamens
+
+Examenplan
+
+Hoe de examinering plaatsvindt voor jouw opleiding en de keuzedelen vind je in het examenplan.
+Daar staat het volgende in beschreven:
+
+-  De examenvorm (praktijkexamen, kennisexamen, taal- of rekenexamen) inclusief
+
+examennaam en -code
+
+-  Plaats van examen (op school of in de BPV)
+-  De weging van het examen (Hoe ‘zwaar’ het examen meetelt)
+-  De duur van het examen (Hoe lang het examen duurt)
+-  De normering van het examen (Wanneer heb je een voldoende behaald)
+-  De vorm van het examenresultaat (Of je een cijfer krijgt of een voldoende/goed)
+-  De relatie met de diploma-eisen uit het kwalificatiedossier (zie bij 2.3)
+
+De examenplannen vind je terug op https://www.mboutrecht.nl/praktisch/
+
+Vrijstellingen
+
+Je kunt een vrijstelling aanvragen voor een examenonderdeel als je met eerder behaalde resultaten al
+voldoet aan de eisen.
+Een vrijstelling kun je aanvragen voor de
+
+CvB/2023-060b/01
+
+-  MBO Utrecht brede examens (Nederlands, rekenen, Engels (voor niveau 4)
+-
+-
+-  BPV
+
+specifieke examens (kerntaken)
+examens voor keuzedelen
+
+Je moet dan wel minimaal een zes hebben gehaald voor het eerdere examen.
+
+Als je een havo-, vwo of mbo-4 diploma hebt, wordt bij het inschrijven vrijstelling gevraagd voor de
+generieke onderdelen Nederlands, rekenen en Engels door de opleiding. In geval van een mbo-4
+diploma wordt ook een vrijstelling gevraagd voor loopbaan en burgerschap.
+In alle andere gevallen vraag je zelf vrijstelling aan met behulp van je SLB’er door het invullen van een
+online formulier. De examencommissie verleent op basis van deze gegevens wel of geen vrijstelling.
+Meer informatie over vrijstellingen staat in het examenreglement, die vind je hier.
+
+Diplomering
+
+Hieronder zie je aan welke diploma-eisen je moet voldoen:
+
+Diploma-eis  Slaag/zakbeslissing
+
+Kerntaken   Oordeel per kerntaak minstens voldoende en/of (afgerond naar) cijfer 6
+
+Wettelijke vereisten,
+indien in kwalificatie
+opgenomen
+Nederlands, rekenen,
+eventueel Engels
+
+Oordeel voldoende
+
+Je hebt voldaan aan de landelijk vastgestelde eisen voor de generieke
+
+examenonderdelen Nederlands en rekenen én (voor niveau 4) Engels.
+
+Entree
+
+−  Student moet examen Nederlands en rekenen hebben gemaakt.
+−  Resultaten Nederlands en rekenen tellen niet mee voor het diploma.
+
+Niveau 2 en 3:
+
+−  Nederlandse taal: het eindcijfer is minimaal een 5.
+−  Rekenen: het resultaat
+
+Niveau 4 opleiding
+
+−  Nederlandse taal, Engels en rekenen: het resultaat van de examens moet
+
+minimaal een 5 en tweemaal 6 zijn (in willekeurige volgorde).
+
+Loopbaan en
+Burgerschap
+
+Voldaan
+
+Bpv  Met positieve beoordeling voltooid, waarbij oordeel leerbedrijf is betrokken.
+
+Keuzedelen  De examenresultaten van de keuzedelen zijn van invloed op de
+
+slaag/zakbeslissing. De volgende compensatieregeling geldt:
+
+•  het gemiddelde van de examenresultaten van de keuzedelen
+
+binnen de keuzedeelverplichting moet tenminste (afgerond) een 6
+of tenminste “voldoende” zijn;
+
+•
+
+voor minimaal de helft van deze keuzedelen moet het resultaat
+tenminste een 6 of tenminste “voldoende” zijn;
+
+•  een keuzedeelresultaat mag nooit lager dan een 4 of een daarmee
+overeenkomende eindwaardering zijn (zoals bijvoorbeeld een
+‘onvoldoend’ of ‘niet behaald’).
+
+MBO Verklaring
+Het kan zijn dat je, om wat voor reden dan ook, zonder diploma de opleiding verlaat. In dat geval krijg
+je van de Examencommissie van MBO Utrecht een mbo-verklaring mee. Dat is een overzicht van alle
+examenresultaten die je tot het moment van uitschrijven hebt behaald. Met die verklaring kun je een
+werkgever of een vervolgopleiding laten zien welke delen van de opleiding je hebt afgerond.
+
+CvB/2023-060b/01
+
+Let op: de mbo-verklaring is géén certificaat of diploma. Deze verklaring heeft voor werkgevers niet de
+waarde die gelijkwaardig is en biedt bijvoorbeeld ook geen garantie op vrijstellingen bij een
+vervolgopleiding.
+
+CvB/2023-060b/01
+

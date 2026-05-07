@@ -1,0 +1,2503 @@
+St-OER 2024
+RETAILMEDEWERKER
+
+BOL/BBL 25808
+
+Pagina 1/91
+
+1. Voorwoord
+
+1.1 Welkom
+
+Beste student,
+
+Wij bieden je graag bijgaande Onderwijs- en Examenregeling (OER) aan. In de OER staat  beschreven
+
+hoe het onderwijs en de examinering er bij jouw opleiding uit zien. Ook kun je lezen hoe we je
+
+begeleiden, volgen en waarderen. Kortom, in deze OER wordt jouw weg van onderwijs naar diploma
+
+beschreven.
+
+De OER geldt voor de gehele duur van je opleiding. Als gevolg van veranderende wet- en regelgeving
+
+moet de informatie in de OER soms tussentijds worden aangepast. Je wordt daarover altijd tijdig door
+
+je opleiding geïnformeerd.
+
+We wensen je een prachtige onderwijsperiode toe bij Rijn IJssel! Onze docenten en ondersteuners
+
+staan klaar om je daarbij te begeleiden.
+
+Veel succes bij je opleiding.
+
+Arnhem, 1 juni 2024
+
+College van bestuur Rijn IJssel
+
+Pagina 2/91
+
+1.2 OER, Examenreglement mbo en Studentenstatuut
+Deze OER is geldig voor alle studenten bij de opleiding die je volgt. Er bestaan daarnaast ook
+
+regelingen die voor álle mbo-studenten bij Rijn IJssel gelden. Het Examenreglement mbo en het
+
+Studentenstatuut zijn twee voorbeelden van zulke regelingen. Het hele pakket regelingen bij elkaar
+
+zorgt dat we weten wat we van elkaar kunnen verwachten.
+
+In het Studentenstatuut staan algemene rechten en plichten van alle mbo-studenten bij Rijn IJssel
+
+beschreven. Mochten er verschillen ontstaan tussen de OER voor je opleiding en de tekst uit het
+
+Studentenstatuut, of mocht onduidelijk zijn welke regels in een bepaalde situatie moeten worden
+
+gevolgd, dan tellen de rechten en plichten uit het Studentenstatuut altijd het zwaarst.
+
+In het Examenreglement mbo staan alle algemene regels over de examens die voor alle opleidingen
+
+bij Rijn IJssel hetzelfde zijn. Het Examenreglement is daarom automatisch onderdeel van elke OER
+
+voor elke opleiding.
+
+We adviseren je om behalve deze OER ook het Studentenstatuut en het Examenreglement mbo door
+
+te nemen.
+
+Klik hier als je meer wil lezen.
+
+Pagina 3/91
+
+2. Inleiding
+
+2.1 Algemeen
+
+Rijn IJssel verzorgt opleidingen en cursussen in het beroeps- en volwassenenonderwijs. Er studeren
+
+ongeveer 11.500 studenten bij ons. Mensen van alle leeftijden, vanaf zestien jaar. Wij bieden
+
+opleidingen aan waar iedereen – van welk geloof, welke sekse of etniciteit dan ook – welkom is,
+
+uiteraard met respect voor het ‘zijn’ van de ander.
+
+Meer informatie vind je op https://www.rijnijssel.nl/over-rijn-ijssel/wie-zijn-wij/
+
+Pagina 4/91
+
+2.2 Belofte
+
+Jij bent het waard
+
+Wij geloven dat talent vleugels krijgt door inspiratie én de juiste aandacht op het juiste moment. Daarom
+
+kijken we ONBEVANGEN naar jouw mogelijkheden. En zetten we ons met HART & ZIEL in voor jouw
+
+ontwikkeling als professional.
+
+We durven het anders te doen
+
+De wereld verandert voortdurend. Wij willen ONTDEKKEN wat dit van ons én van jou vraagt. Zodat we je
+
+– samen met het werkveld – kunnen meegeven wat nodig is om waardevol te zijn en te blijven.
+
+Zodat jij verder komt
+
+We helpen je te groeien. En we coachen je bij het waarmaken van je dromen. Bij alle keuzes die je maakt,
+
+bij elke afslag die je neemt en op ieder moment. Samen zorgen we ervoor dat jij altijd verder kunt.
+
+Rijn IJssel. Jouw weg vooruit.
+
+Pagina 5/91
+
+2.3 Organisatie
+
+Rijn IJssel is een stichting die bestuurd wordt door een College van Bestuur. Het CvB geeft leiding
+
+aan twee stafbureaus, twee ondersteunende diensten en vier directeuren van de volgende
+
+onderwijsclusters:
+
+-  Techniek, ICT & Kansrijk
+-  Educatie
+-  Economie, Uiterlijke Verzorging, CIOS en Veiligheid
+-  Zorg en Welzijn
+-  Creatieve Industrie en Vakschool Wageningen
+
+Hoe de organisatie van Rijn IJssel is ingericht vind je op https://www.rijnijssel.nl/over-rijn-ijssel/organisatie.
+
+De directeuren van de clusters zijn samen met de teammanagers verantwoordelijk voor de uitvoering
+
+van de opleidingen.
+
+Pagina 6/91
+
+3. Jouw opleiding
+
+3.1 Jouw opleidingsgegevens
+
+Je bent ingeschreven als student bij Stichting Regionaal Opleidingen Centrum Arnhem. De stichting is
+
+statutair gevestigd te Arnhem en geregistreerd in het handelsregister van de Kamer van Koophandel
+
+onder nummer 41053084.
+
+De onderwijseenheid waar jij bent ingeschreven is:
+
+-  Cluster: Economie, Uiterlijke Verzorging, CIOS & Veiligheid
+-  Adres Locatie: Veluwestraat 120
+-  Postcode locatie: 6813 EE
+-  Plaats locatie: Arnhem
+-  Onderwijsdirecteur: R. Donkers
+
+Deze OER heeft betrekking op de volgende opleiding:
+
+-  Kwalificatiedossier:  R et a i l  op er at i o ne e l  2 33 2 4
+
+-  Kwalificatie: Retailmedewerker 25808
+
+-
+
+Leerweg: BOL/BBL
+
+-  Niveau: 2
+
+-  Startdatum: 01-08-2024
+
+-  Studieduur: 2 jaar
+
+Hoe lang jij precies over je opleiding gaat doen is natuurlijk afhankelijk van je studieresultaten. Je kunt
+als individuele student dus ook langer of korter over je opleiding doen. Versnellen of vertragen ten
+opzichte van de standaard studieduur gaat altijd in overleg met je loopbaancoach.
+
+Pagina 7/91
+
+3.2 Hoelang  duurt  mijn  opleiding
+
+De standaard duur van een opleiding is als volgt:
+
+Soort opleiding
+
+Duur opleiding
+
+Niveau 1
+
+Entreeopleiding
+
+Niveau 2
+
+Basisberoepsopleiding
+
+Niveau 3
+
+Vakopleiding
+
+Niveau 4  Middenkaderopleiding
+
+Niveau 4  Middenkaderopleiding
+
+1 jaar
+
+2 jaar
+
+3 jaar
+
+3 jaar
+
+4 jaar
+
+Niveau 4
+
+Specialistenopleiding
+
+1-2 jaar
+
+De opleiding die je volgt wijkt niet af van de standaard duur.
+
+Jouw opleiding duurt 2 jaar.
+
+Pagina 8/91
+
+4.Beroep
+
+4.1 Hoe ziet mijn beroep er uit?
+
+Klik hier voor een beschrijving van hoe het beroep er uitziet.
+
+Pagina 9/91
+
+4.2 Wat zijn mijn kansen op de arbeidsmarkt
+
+Klik hier voor de kans op werk in jouw vakgebied na jouw opleiding.
+
+Pagina 10/91
+
+5. Opleiding
+
+5.1 Wat ga ik leren?
+
+In het mbo, dus ook bij Rijn IJssel, staat jouw toekomstige beroep in de opleiding centraal. Alle mbo
+
+opleidingen in Nederland moeten voldoen aan dezelfde eisen. Deze eisen staan in het
+
+kwalificatiedossier. In een kwalificatiedossier staat beschreven wat een mbo-student aan het eind van
+
+zijn opleiding moet kennen en kunnen. Niet alleen voor het beroep, maar ook als burger in de
+
+maatschappij en als iemand die zich blijft ontwikkelen (blijft leren). Op basis daarvan ontwerpen scholen
+
+hun onderwijs- en examenprogramma.
+
+Klik hier voor het kwalificatiedossier van jouw opleiding.
+
+Een kwalificatiedossier bestaat uit de volgende onderdelen:
+
+-  Het basisdeel met de beroepsspecifieke onderdelen: kerntaken en werkprocessen;
+
+-  Een of meer profieldelen: één of meerdere kerntaken en werkprocessen die specifiek horen bij de
+
+uitstroomrichting. Niet alle opleidingen hebben een profieldeel.
+
+-  De generieke onderdelen Nederlandse taal, rekenen, en Engels voor MBO-4. Hieronder kan je zien
+
+aan welke exameneisen je moet voldoen.
+
+Niveau  Nederlandse taal
+
+Rekenen*
+
+Engels**
+
+2
+
+3
+
+4
+
+2F lezen/luisteren, spreken,
+
+2F of mbo-
+
+Geen exameneisen
+
+gesprekken voeren en schrijven
+
+rekenniveau 2
+
+2F lezen/luisteren, spreken,
+
+2F of mbo-
+
+Geen exameneisen
+
+gesprekken voeren en schrijven
+
+rekenniveau 3
+
+3F lezen/luisteren, spreken,
+
+3F of mbo-
+
+B1 Lezen/Luisteren
+
+gesprekken voeren en schrijven
+
+rekenniveau 4
+
+A2 Spreken, Gesprekken voeren en
+
+Schrijven
+
+*Vanaf schooljaar 2022-2023 zijn er nieuwe rekeneisen. Het ligt eraan wanneer je bent gestart met een
+
+mbo-opleiding. Welk examen je moet maken hangt af van of je les hebt gehad in de oude eisen of in de
+
+nieuwe eisen. Je rekendocent kan je vertellen wat voor jou geldt.
+
+** Op niveau 4 mag je ook examen doen op een hoger niveau. Dit overleg je met je docent Engels en
+
+moet je aanvragen bij de examencommissie.
+
+Daarnaast bevat elke opleiding:
+
+-
+
+Loopbaan en Burgerschap.
+
+Pagina 11/91
+
+Met het onderdeel Loopbaan leer je goed om te gaan met je studie en leer je hoe je moet plannen. Ook
+
+verken je jouw mogelijkheden op de arbeidsmarkt en in het vervolgonderwijs.
+
+Daarnaast ben je burger in Nederland. Je woont in een buurt, een dorp of een stad in Nederland. Je
+
+mag stemmen, je werkt of je bent vrijwilliger bijvoorbeeld bij een sportclub. Kortom, je bent een burger
+
+in de Nederlandse samenleving. Daarom is Burgerschap onderdeel van je opleiding.
+
+Burgerschap
+
+Burgerschapsonderwijs is een essentieel onderdeel van het Nederlandse onderwijssysteem en richt
+
+zich op het voorbereiden van leerlingen op hun rol als actieve en betrokken burgers in een
+
+democratische samenleving. Het doel is om jongeren te helpen ontwikkelen tot verantwoordelijke en
+
+kritische burgers die een bijdrage kunnen leveren aan de maatschappij. De focus ligt hierbij op het
+
+ontwikkelen van kritische denkvaardigheden, kennis van mensenrechten en de sociale
+
+weerbaarheid.
+
+Het burgerschapsonderwijs kent vier dimensies:
+
+1.  Politiek juridische dimensie:
+
+Kennisgebieden
+
+•  Grondwet en Rechten en Plichten van Burgers
+
+•  Democratische Processen
+
+•  Rechtsstaat en Rechtspraak
+
+•  Overheidsstructuur en Beleid
+
+Vaardigheden
+
+•  Kritisch denken
+
+•  Debatteren en argumenteren
+
+•  Actieve participatie
+
+•
+
+Informatievaardigheden
+
+2.  Economische dimensie
+
+Kennisgebieden
+
+•  Basisbegrip van economie
+
+•  Rol van Overheid en beleidsvorming
+
+•  Persoonlijke financiële vaardigheden
+
+•  Wereldwijde economische samenhang
+
+Vaardigheden
+
+•  Economisch redeneren
+
+•  Besluitvorming op basis van economische kennis
+
+•  Probleemoplossende vaardigheden
+
+Pagina 12/91
+
+•  Financiële geletterdheid
+
+•  Communicatie en samenwerking
+
+3.  Sociaal-maatschappelijke dimensie
+
+Kennisgebieden
+
+•  Sociale structuren en processen
+
+•  Diversiteit en inclusie
+
+•  Rechten en plichten van burger
+
+•  Maatschappelijke vraagstukken
+
+Vaardigheden
+
+•  Empathie en sociale bewustwording
+
+•  Communicatie en samenwerking
+
+•  Actieve participatie
+
+•  Kritisch denken en probleemoplossing
+
+4.  Vitaal Burgerschap
+
+Kennisgebieden
+
+•  Gezonde levensstijl
+
+•  Mentale gezondheid
+
+•  Sociale gezondheid
+
+•  Veiligheid en preventie
+
+Vaardigheden
+
+•  Zelfregulatie
+
+•  Stressmanagement
+
+•  Probleemoplossend vermogen
+
+•  Empathie en sociale vaardigheden
+
+Examenvorm
+
+- Inspanningsverplichting
+
+- Portfolio
+
+Pagina 13/91
+
+Periode en duur
+
+Niveau 2 Retailmedewerker, zowel BBL als BOL
+
+Leerjaar 1: één lesuur per week.
+
+Leerjaar 2: één lesuur per week in de eerste vier periodes.
+
+Niveau 3 Retailspecialist BOL
+
+Leerjaar 1: één lesuur per week.
+
+Leerjaar 2: één lesuur per week, met uitzondering van de terugkomdagen.
+
+Niveau 3 Retailspecialist BBL
+
+Leerjaar 1: één lesuur per week.
+
+Niveau 4 Retailmanager en Ondernemer Handel BOL
+
+Leerjaar 1: één lesuur per week.
+
+Leerjaar 2: één lesuur per week, met uitzondering van de terugkomdagen.
+
+Niveau 4 BBL Retailmanager
+
+Leerjaar 3: één lesuur per week.
+
+Inspanningsverplichting
+
+Voor het vak Burgerschap geldt een inspanningsverplichting, zoals vastgelegd door de
+
+examencommissie. Dit betekent dat je niet alleen beoordeeld wordt op het portfolio dat je inlevert,
+
+maar ook op je inzet, je houding in de les en je aanwezigheid en inzet bij externe activiteiten. Om het
+
+vak Burgerschap succesvol af te ronden, moeten alle dimensies met een voldaan worden afgesloten.
+
+Bij een niet voldaan wordt het diploma niet afgegeven Wetgeving loopbaan en burgerschap.
+
+Materiaal
+
+Licentie Burgerschap AAN
+
+Schooljaar 2025/2026
+
+Met ingang van het schooljaar 2025/2026 gelden er nieuwe eisen voor het vak Burgerschap. Deze
+
+nieuwe eisen leggen de focus op de verhouding tussen de samenleving en het individu. Hierbij wordt
+
+aandacht besteed aan de balans tussen het aanpassen aan de samenleving als burger en het kritisch
+
+zijn op de vorming van die samenleving
+
+Klik hier wat je moet doen om aan de eisen voor Loopbaan en Burgerschap te voldoen.
+
+-  Keuzedelen zijn de 'plus' op de kwalificatie en maken de opleiding compleet.
+
+Pagina 14/91
+
+5.2 Hoe is mijn opleiding opgebouwd?
+
+.
+
+We gebruiken het kwalificatiedossier van jouw beroep om jouw opleiding vorm te geven. Daarbij gaan
+
+we uit van beroepstaken. Een beroepstaak bestaat uit een aantal werkprocessen die logisch bij elkaar
+
+passen. De beroepstaak is de basis voor een leereenheid.
+
+Een leereenheid is een beroepsechte, uitdagende opdracht. Tijdens een leereenheid werk je altijd aan
+
+een beroepstaak en dat doe je tijdens je opleiding meerdere keren: je oefent hierdoor telkens dat
+
+onderdeel van je beroep, totdat je het kunt.
+
+Jouw opleiding bestaat uit telkens blokken van 5 weken(of een veelvoud daarvan), waarin je aan een
+
+leereenheid werkt. Een leereenheid is een pakket van leeractiviteiten (om kennis, houding en
+
+vaardigheden te leren) waardoor je de eindopdracht kunt doen. Zo’n eindopdracht heeft altijd met jouw
+
+toekomstige beroep te maken – dat zie je aan de beroepstaak en de werkprocessen die bij de
+
+leereenheden horen.
+
+De opleiding is ingedeeld in 3 fases. Je start met de oriëntatiefase, dan volgt de ontwikkelfase en tot
+
+slot de uitstroomfase. In elke fase mag je kiezen met welke leereenheid je aan de slag wilt gaan, op
+
+basis van jouw leervraag. Binnen de opleiding is er een voorgestelde volgorde, hier kan en mag je
+
+vanaf wijken.
+
+Klik hier voor een overzicht van jouw opleiding.
+
+Behalve leereenheden volg je ook keuzedelen.
+
+Klik hier voor algemene informatie over keuzedelen en klik hier voor informatie over
+
+keuzedelen van jouw opleiding.
+
+Pagina 15/91
+
+5.3 Wat is de studiebelasting van mijn opleiding?
+
+In de Wet educatie en beroepsonderwijs (WEB) is vastgelegd hoe de onderwijstijd van een opleiding
+
+moet zijn opgebouwd. Hoe dat er uit ziet, zie je in onderstaande tabel.
+
+BOL
+
+Soort opleiding
+
+BOT1
+
+BPV5
+
+  Te verdelen
+
+Totaal
+
+Zelf-
+
+Studielast
+
+over BOT-
+BPV3
+
+(BOT+BPV)
+
+studie
+
+totaal
+
+Niveau 1  Entreeopleiding
+
+600
+
+n.v.t.
+
+Niveau 2  Basisberoepsopleiding
+
+Niveau 3  Vakopleiding
+
+Niveau 4  Middenkaderopleiding
+
+12502
+
+450
+
+18002
+
+900
+
+18002
+
+900
+
+Niveau 4  Middenkaderopleiding
+
+23502
+
+1350
+
+Niveau 4  Specialistenopleiding
+
+700
+
+250
+
+400
+
+300
+
+300
+
+300
+
+300
+
+50
+
+1000
+
+600
+
+1600
+
+20004
+
+30004
+
+30004
+
+40004
+
+1200
+
+3200
+
+1800
+
+3200
+
+1800
+
+4800
+
+2400
+
+6400
+
+1000
+
+600
+
+1600
+
+BBL
+
+BOT1
+
+BPV
+
+Te verdelen
+
+Totaal
+
+Zelf-
+
+Studielast
+
+over BOT-
+BPV3
+
+(BOT+BPV)
+
+studie
+
+totaal
+
+Alle
+
+Per leerjaar
+
+200
+
+610
+
+40
+
+850
+
+750
+
+1600
+
+niveaus
+
+1 BOT = begeleide onderwijstijd
+
+2 Waarvan minimaal 700 in leerjaar 1
+
+3 De school maakt keuzes hoe ze deze uren verdelen over BOT en/of BPV.
+
+4 Minimaal 1000 uur per jaar (evenwichtig verdeeld over de jaren).
+
+5 BPV is beroepspraktijkvorming (stage)
+
+Een opleiding bij Rijn IJssel bestaat uit leereenheden van 5 weken (of een veelvoud daarvan)
+
+en het opleidingsteam verdeelt de studielast zo gelijk mogelijk over de leereenheden.  Het
+
+opleidingsteam mag afwijken van het model in bovenstaand schema, als dit beter aansluit bij
+
+wat studenten nodig hebben.
+
+In een BBL-opleiding bestaat een leereenheid uit ongeveer 106 klokuren BOT en/of BPV.
+
+In de onderwijstijd in bovenstaand schema is het aantal uren opgenomen dat je aan de keuzedelen
+
+besteedt. Hoeveel uren dat zijn, is afhankelijk van de opleiding die je volgt. Dat zie je in onderstaande
+
+tabel.
+
+Pagina 16/91
+
+BOL en BBL Soort opleiding
+
+Keuzedeelverplichting1
+
+Niveau 1
+
+Entreeopleiding
+
+studielast: 240 klokuren
+
+Niveau 2
+
+Basisberoepsopleiding
+
+studielast: 480 klokuren
+
+Niveau 3
+
+Vakopleiding
+
+studielast: 720 klokuren
+
+Niveau 4
+
+Middenkaderopleiding 3 jaar  studielast: 720 klokuren
+
+Niveau 4
+
+Middenkaderopleiding 4 jaar  studielast: 720  klokuren
+
+Niveau 4
+
+Specialistenopleiding
+
+studielast: 240 klokuren
+
+1 De school verdeelt de uren studielast van de keuzedelen over begeleide onderwijstijd, BPV(=stage),
+zelfstudie.
+
+5.4 Onderwijstijd
+
+De opleidingen van Economie, Uiterlijke Verzorging, CIOS en Veiligheid bestaan uit 8 periodes van 5
+weken per jaar. Bij de BOL- opleidingen is sprake van enkele stageperioden in de opleiding.
+
+Elke 5 weken staat er een leereenheid centraal. Je werkt tijdens deze leereenheid aan een (onderdeel
+van een) beroepstaak. Bij de leereenheid horen leeractiviteiten zoals theorie- en praktijk. Gedurende de 5
+weken proberen we zoveel mogelijk een vast rooster aan te houden. Dit rooster vind je in je digitale
+leeromgeving. Je loopbaancoach zal je in het begin van het schooljaar leren hoe en waar je je rooster
+kunt vinden.
+
+Pagina 17/91
+
+5.5 Duur van de leeractiviteiten
+
+Je leeractiviteiten worden altijd gepland in eenheden van 30 minuten. Je kunt dus leeractiviteiten van
+30 minuten, een uur, anderhalf uur of meerdere uren hebben. Ook de pauzes worden gepland in een
+half uur. De planning van de pauzes kan per opleiding afwijken. Over het algemeen geldt dat je na 6
+leseenheden minimaal een half uur pauze hebt.
+
+Pagina 18/91
+
+5.6 Roosters
+
+Het is van belang dat je regelmatig op het rooster kijkt om te kijken of er wijzigingen zijn. Je krijgt vanuit
+school een activatiecode voor de digitale leeromgeving zodat je de mogelijkheid hebt om je rooster en
+eventueel je presentiegegevens te zien.
+
+Let op: natuurlijk blijft het mogelijk dat er onverhoopt toch roosterwijzigingen ontstaan, die niet tijdig op
+internet gepubliceerd kunnen worden. Dit geldt met name voor het eerste lesuur. Indien er een
+roosterwijziging voor het eerste lesuur noodzakelijk is (bijvoorbeeld door ziekte van een docent), dan
+kunnen we dit niet altijd op tijd regelen. Hiervoor vragen we je begrip.
+
+Pagina 19/91
+
+5.7 Indeling schooljaar en jaarplanning
+
+Pagina 20/91
+
+Periode wkleswkmaandagvrijdagactiviteitenles-dagwerk-dagPeriode 1wkleswkmaandagvrijdagactiviteitenweek 351026-aug-2430-aug-24STARTWEEK - introductie / bezemronde examens35week 362102-sep-2406-sep-24start lessen55week 373209-sep-2413-sep-2455week 384316-sep-2420-sep-2455week 395423-sep-2427-sep-2455week 406530-sep-2404-okt-2455Periode 2wkleswkmaandagvrijdagactiviteitenweek 417107-okt-2411-okt-2455week 428214-okt-2418-okt-2455week 439X21-okt-2425-okt-24HerfstvakantieVVVVV00week 4410328-okt-2401-nov-2455week 4511404-nov-2408-nov-2455week 4612511-nov-2415-nov-2455Periode 3wkleswkmaandagvrijdagactiviteitenweek 4713118-nov-2422-nov-2455week 4814225-nov-2430-nov-2455week 4915302-dec-2406-dec-2455week 5016409-dec-2413-dec-2455week 5117516-dec-2420-dec-2455Periode 4wkleswkmaandagvrijdagactiviteitenweek 5218X23-dec-2427-dec-24KerstvakantieVVVVV00week 119X30-dec-2403-jan-25KerstvakantieVVVVV00week 220106-jan-2510-jan-2506-01-25 tussen 08.30-10.00 uur clusteropstart / lessen starten om 10.00 uur55week 321213-jan-2517-jan-2555week 422320-jan-2524-jan-2555week 523427-jan-2531-jan-2555week 624503-feb-2507-feb-2555Periode 5wkleswkmaandagvrijdagactiviteitenweek 725110-feb-2514-feb-2555week 826217-feb-2521-feb-2555week 927324-feb-2528-feb-2555week 1028X03-mrt-2507-mrt-25Voorjaarsvakantie/Carnaval regio ZuidVVVVV00week 1129410-mrt-2514-mrt-2555week 1230517-mrt-2521-mrt-2555Periode 6wkleswkmaandagvrijdagactiviteitenweek 1331124-mrt-2528-mrt-2555week 1432231-mrt-2504-apr-2555week 1533307-apr-2511-apr-2555week 1634414-apr-2518-apr-2518-04-25 Goede VrijdagV44week 1735521-apr-2525-apr-2521-04-25 2e PaasdagV44Periode 7wkleswkmaandagvrijdagactiviteitenweek 1836X28-apr-2502-mei-25Meivakantie VVVVV00week 1937105-mei-2509-mei-2505-05-25 BevrijdingsdagV44week 2038212-mei-2516-mei-2555week 2139319-mei-2523-mei-2555week 2240426-mei-2530-mei-2529-05-25 Hemelvaart / 30-05-25 Dag na H'vaart * (geen verplichte vrije dag OBP), geen les/wel BPVVX*33week 2341502-jun-2506-jun-2555Periode 8wkleswkmaandagvrijdagactiviteitenweek 2442109-jun-2513-jun-2509-06-25 2e PinksterdagV44week 2543216-jun-2520-jun-2555week 2644323-jun-2527-jun-2555week 2745430-jun-2504-jul-25diplomeringen55week 2846507-jul-2511-jul-25diplomeringen / slotweek / jaarafsluiting *45Vakantiemaandagvrijdagweek 2947X14-jul-2518-jul-25Zomervakantie 00week 3048X21-jul-2525-jul-25Zomervakantie - zomersluiting locaties 00week 3149X28-jul-2501-aug-25Zomervakantie - zomersluiting locaties 00week 3250X04-aug-2508-aug-25Zomervakantie - zomersluiting locaties 00week 3351X11-aug-2515-aug-25Zomervakantie00week 3452X18-aug-2522-aug-25Zomervakantie00Periode 1wkleswkmaandagvrijdagactiviteitenweek 351025-aug-2529-aug-25STARTWEEKTotaal lesdagen periode 1 t/m 8: 196199StartweekStartweekPeriodeplanning EU  2024-2025Lesdagenstudenten
+
+6. BPV,    beroepspraktijkvorming
+
+6.1 Wat is bpv
+
+Leren in een bedrijf of instelling noemen we beroepspraktijkvorming (bpv) of stage. Dit is een
+
+belangrijk onderdeel van jouw opleiding, want daar ervaar je en leer je wat jouw beroep inhoudt. We
+
+kennen binnen Rijn IJssel verschillende vormen van bpv:
+
+Stage in de vorm van een ‘lint’: elke week heb je één of meer dagen bpv. (lintstage)
+
+Stage in de vorm van een ‘blok’: gedurende een aantal weken heb je elke dag bpv. (blokstage)
+
+Bij de opleiding Retailmedewerker loop je in principe 16 uur per week een lintstage. De stages starten
+
+vanaf periode 3. Wil je meer informatie over jouw eigen stage, vraag dan je bpv-begeleider of je
+
+loopbaancoach.
+
+Gemiste BPV-dagen, bijvoorbeeld door ziekte, moeten worden ingehaald.
+
+Het kan zijn dat een BPV-adres je wel graag als stagiair aanneemt maar dit niet op alle stagedagen
+
+lukt maar bijvoorbeeld wel 1 dag in het weekend of tijdens een schoolvakantie. De regel hierop is dat
+
+je wel 1 dag in het weekend mag stagelopen van de 2 tot 4 geplande stagedagen. Het is bij een BOL
+
+student niet toegestaan om alleen tijdens een schoolvakantie stage te lopen mits het uren zijn die
+
+ingehaald moeten worden door bijvoorbeeld ziekte. De reden is dat de BPV-begeleider niet
+
+beschikbaar is om jou tijdens de schoolvakantie te begeleiden en niet kan reageren wanneer een
+
+calamiteit tijdens jouw stage plaats vindt.
+
+Wanneer je niet aanwezig kunt zijn op de BPV dan dien je:
+
+1.  volgens de regels van jouw BPV-bedrijf je daar af te melden.
+
+2.  volgens de regels van Rijn IJssel meld je je afwezig met reden bij de servicedesk.
+
+3.
+
+je meldt je af bij de betreffende BPV-begeleider zodat de BPV-begeleider weet dat hij niet op
+
+bezoek hoeft te komen.
+
+De BPV-begeleiders van team Business & Retail en Business & Specials zijn:
+
+Lizette Crouzen: Crouzen, Lizette l.crouzen@rijnijssel.nl +31 6 28299127
+
+Marcel Tombokan: Tombokan, Marcel m.tombokan@rijnijssel.nl +31 6 43046328
+
+Miriam van Elst: Elst van, Miriam m.v.elst@rijnijssel.nl +31 6 14245341
+
+Monique Gertsen: Gertsen, Monique m.gertsen@rijnijssel.nl +31 6 43842819
+
+Pagina 21/91
+
+6.2 Hoe vind ik een bpv plaats?
+
+Stagemarkt en accreditatie
+
+De beroepspraktijkvorming (BPV) is een belangrijk onderdeel van jouw opleiding. Je gaat stage lopen bij
+
+een bedrijf waar je kunt werken in de beroepspraktijk, aan je werkprocessen en kerntaken.
+
+Rijn IJssel werkt uitsluitend samen met leerbedrijven die door de landelijke stichting Samenwerking
+
+Beroepsonderwijs Bedrijfsleven (SBB) zijn erkend als leerbedrijf (geaccrediteerd). Dit geldt ook voor
+
+bedrijven die in het buitenland zijn gevestigd.
+
+Erkende leerbedrijven zijn een schoolvoorbeeld voor de branche en onderstrepen het belang van het
+
+opleiden van jonge mensen. Studenten begeleiden zien zij als een uitdaging en een verantwoordelijke
+
+taak. Een erkend leerbedrijf biedt jou:
+
+•  een veilige leeromgeving
+
+•
+
+voldoende aandacht, zodat jij goed begeleid wordt.
+
+Voor nadere informatie zie site: https://stagemarkt.nl/
+
+Studenten van Rijn IJssel worden uitsluitend geplaatst in een erkend leerbedrijf.
+
+Pagina 22/91
+
+6.3 Hoe word  ik begeleid  tijdens  de bpv
+
+Een goede BPV-plek vinden is niet vanzelfsprekend. Het is belangrijk dat je goede coaching krijgt vanuit
+Rijn IJssel. Tijdens de opleiding word je voorbereid op de BPV door onze BPV-begeleiders, docenten en
+LBC-ers.
+
+Wanneer je een BPV-plek gevonden hebt dan wordt je daar begeleidt door een praktijkopleider binnen het
+leerbedrijf en die contact heeft met school. Vanuit school begeleidt de BPV-begeleider je bij de stage.
+
+Tijdens de BPV komt jouw BPV-begeleider minimaal twee keer op bezoek bij een BLOK stage en
+minimaal 3 keer per schooljaar bij een LINT stage. De 1e  keer voor kennismaking, de 2e  keer voor een
+voortgangsgesprek en een 3e voortgangsgesprek bij een LINT stage. Als het nodig/gewenst is, wordt een
+extra bezoek ingepland. Tijdens het voortgangsgesprek wordt niet alleen gekeken naar de voortgang van
+je opdrachten maar wordt ook je beroepshouding besproken via de tool Peilstok.
+
+Alle vragen over de BPV stel je aan jouw BPV-begeleider, ook wanneer het niet goed gaat of een incident
+heeft plaats gevonden. Je spreekt samen af hoe je wilt dat de communicatie gaat (via mail, telefoon, whats
+app.
+
+BPV-AFSPRAKEN ZAKELIJK EN BEROEPSHOUDING
+
+1.  Tijdens de BPV voorbereidingslessen word je op de hoogte gebracht van wat allemaal van belang
+
+is voor jouw BPV.
+
+2.  Om jouw BPV (stage) te kunnen volbrengen is het noodzakelijk dat Rijn IJssel beschikt over een
+ondertekende BPV-overeenkomst. Dit is een overeenkomst tussen Rijn IJssel, jou en de winkel
+waar jij stage gaat lopen. Zonder deze overeenkomst mag je geen stagelopen. Het is dus jouw
+verantwoording om ervoor te zorgen dat de ondertekende BPV-overeenkomst in ons bezit is.
+
+3.  Jouw stage kent een begin- en een einddatum. Daartussen moet jij jouw BPV-uren realiseren.
+4.  Afwijken van het aantal stage-uren, bijvoorbeeld om medische redenen of een topsportregeling,
+kan alleen met goedkeuring van de teamleider Business & Retail of Business & Specials.
+
+5.  Jouw werktijd begint en eindigt zoals in het stagebedrijf gebruikelijk is. Een stagedag is een
+normale werkdag, maar is nooit langer dan 8 uur per dag. Stage op koopavond of andere
+afwijkende tijdstippen/dagen kan in overleg met het bedrijf en de student ingepland worden.
+6.  Je voert alle werkzaamheden uit, die je door jouw praktijkopleid(st)er worden opgedragen. Als je
+twijfelt of bepaalde werkzaamheden wel passen bij de aard en het doel van de opleiding, overleg
+dan (achteraf!) met de BPV-begeleider die de stage begeleidt. Houd je stipt aan de regels,
+voorschriften van en afspraken met het stagebedrijf.
+
+7.  Zorg dat jouw kleding en uiterlijke verzorging in orde zijn en afgestemd op het stagebedrijf.
+8.  Als je ziek bent, meld je dat zo snel mogelijk, maar in ieder geval ruim vóórdat de winkel
+
+opengaat. Denk eraan dat je je ook op school en bij je BPV-begeleider moet afmelden, vóór 8.45
+uur. Zet het telefoonnummer van het stagebedrijf in je agenda en je mobiele telefoon!
+
+9.  Op stagedagen maak je GEEN afspraken met arts, tandarts, rijschool, …enz. Voor alle andere
+situaties (bijvoorbeeld een trouwfeest, begrafenis, islamitische feestdag) geldt: verlof VOORAF
+aanvragen bij de teamleider. Alleen de teamleider kan jouw verlof toekennen.
+
+10.  Behalve tijdens vakanties loop je stage, conform de jaarkalender van Rijn IJssel. Gemiste
+
+stagedagen moeten ingehaald worden! Dat geldt ook voor gemiste dagen door ziekte. Gebruik
+hiervoor zoveel mogelijk de lesvrije dagen/dagdelen, koopavonden, weekenden of vakantie.
+
+11.  Alle contacten tussen ouder(s)/verzorger(s) en het stagebedrijf lopen via de school.
+12.  Blijf niet met twijfels, klachten en frustraties m.b.t. de stage rondlopen; bespreek ze met de
+
+praktijkopleid(st)er en/of je BPV-begeleider.
+
+13.  Als zich ernstige onregelmatigheden (discriminatie, intimidatie, ongewenste intimiteiten) voordoen
+tijdens de stage, neem dan zo snel mogelijk contact op met je BPV-begeleider die jouw stage
+begeleidt.
+
+14.  Een stage kan en mag nooit eenzijdig door jou afgebroken worden. Er volgt altijd een gesprek met
+
+je BPV-praktijkopleider, BPV-begeleider en jou.
+
+Pagina 23/91
+
+6.4 Wat is een beroepspraktijkovereenkomst?
+
+Voor elke BPV moet een BPVO worden opgesteld. Deze overeenkomst omschrijft de rechten en
+plichten van de student, van het leerbedrijf en van Rijn IJssel tijdens de BPV. Het is een standaard
+contract dat je digitaal moet ondertekenen, maar ook het leerbedrijf en je opleiding moeten de BPVO
+digitaal tekenen.
+
+Belangrijk:
+
+Je mag pas starten met de BPV, nadat de BPVO digitaal getekend is. De studentenadminstratie zorgt
+ervoor dat je een mail krijgt om het BPVO te ondertekenen. Pas wanneer jij de BPVO digitaal hebt
+ondertekend kan jouw BPV-bedrijf het BPVO digitaal ondertekenen.
+
+Let goed op:
+
+1.  Zonder getekende BPVO tellen je gewerkte stage-uren niet mee voor DUO; dit kan dus
+
+gevolgen hebben voor je studiefinanciering.
+
+2.  Wanneer je  stageloopt zonder getekende BPVO dan tellen deze uren niet mee als geldende
+
+stageuren.
+
+3.  De BPV-begeleider mag je niet bezoeken zonder getekend BPVO
+
+Pagina 24/91
+
+6.5  Hoe sluit ik de bpv af?
+
+Jouw BPV-opdrachten bestaat uit Kerntaken. Per BPV periode kun je 1 of 2 kerntaken afronden. Dit is
+
+afhankelijk van welke opleiding je volgt.
+
+Examenplanning
+
+Hieronder staat stapsgewijs beschreven hoe het proces van examinering verloopt, ook is de
+
+examenplanning van alle onderdelen aangegeven.
+
+1.  Je gaat starten met je stage.
+
+2.
+
+In één van de eerste weken van je stage vindt de 0-meting plaats. Deze voer je uit samen met je
+
+praktijkopleider.
+
+3.  Rond de helft (BLOK stage) of één derde (LINT stage) van de stageperiode voer je samen met de
+
+praktijkopleider en de BPV-begeleider de voortgangsmeting uit.
+
+4.  Wanneer de voortgangsmeting voor minimaal 75% op aangetoond staat per werkproces en de
+
+beroepsmeting (Peilstok) goed is kan kun je een Go krijgen voor je praktijkexamen.
+
+5.  Heb je een Go dan kan de proeve van bekwaamheid worden afgenomen.
+
+6.  Heb je een No Go? Dan dien je aan je verbeterpunten te werken.
+
+7.  A: Tot slot is er een examen verantwoordingsgesprek. Dit examen kan alleen doorgaan wanneer
+
+het praktijkexamen positief is afgerond. Het verantwoordingsgesprek vindt plaats op school of via
+
+MS-teams. Hierover ontvang je bericht van jouw BPV-begeleider.
+
+B: Het kan ook zijn dat het betreffende examinerende onderdeel op school wordt afgenomen. Dit
+
+is afhankelijk van welke opleiding je volgt binnen team BURE & BUSP.
+
+8.  Wanneer alle onderdelen positief zijn afgerond en alle BPV-uren gelopen zijn dan worden de
+
+resultaten aangeboden aan het Examenbureau. De resultaten zullen binnen 10 werkdagen
+
+worden vastgesteld en in jouw examenplan worden bijgeschreven.
+
+Wanneer je BPV is afgelopen dan stopt de BPVO vanzelf.
+
+Pagina 25/91
+
+7. Begeleiding
+
+7.1 Hoe word ik tijdens mijn opleiding begeleid?
+
+Vanaf het moment dat we met elkaar kennis maken tijdens het welkomstgesprek, begint jouw
+
+begeleiding. We leren je kennen en volgen jouw ontwikkeling.  We  leren je  om  zoveel mogelijk zelf  te
+
+keuzes te maken in jouw opleiding.
+
+Het hele onderwijsteam en je praktijkopleider/werkplekbegeleider op de stage begeleiden jou tijdens je
+
+opleiding en  in  de stage. Je loopbaancoach heeft een centrale rol, samen zorgen jullie ervoor dat het
+
+onderwijs aansluit bij  jou en je leervragen. Jouw leervraag is het uitgangspunt binnen ons onderwijs. Jij
+
+bepaalt  wat  je  wil  leren,  wanneer  en  hoe.  Samen  ontdekken  we  jouw  drijfveren  en  talenten.  Jouw
+
+loopbaancoach helpt je daarbij: bij het ophalen van jouw leervragen en het vertalen van die vragen naar
+
+het  onderwijs.  Je  loopbaancoach  begeleidt  jou  in  studievoortgang,  persoonlijke  ontwikkeling  en  je
+
+loopbaan.
+
+7.2 En als ik extra ondersteuning nodig heb?
+
+Soms zijn jouw leervragen wat lastiger te stellen of kan jouw loopbaancoach je er niet mee
+
+helpen. Bij Rijn IJssel werken mensen zoals ambulant begeleiders, orthopedagogen,
+
+psychologen en studieloopbaanadviseurs. Zij kunnen samen met jou en jouw loopbaancoach
+
+in gesprek gaan om jouw leervragen te bespreken. De volgende onderwerpen kunnen dan
+
+aanbod komen:
+
+-  Wat heb jij nodig om succesvol te zijn?
+
+-  Waar kan de loopbaancoach of de medewerker van Studentzaken jou bij helpen?
+
+-  Welke aanpassingen moeten er gedaan worden in jouw leeromgeving? Je kunt hierbij denken aan
+
+dingen als een aangepaste stoel, een liftsleutel of een aangepast rooster of examen.
+
+Pagina 26/91
+
+7.3 Hoe krijg ik zicht op mijn voortgang?
+
+We volgen samen met jou hoe je je ontwikkelt tot professional, burger en als mens in onze
+
+maatschappij. Dat doen we met behulp van een student-informatiesysteem. Via het
+
+informatiesysteem vind je jouw leerroute, de resultaten van leeractiviteiten en leereenheden die je
+
+doorlopen hebt en de feedback die je hebt ontvangen. Voor jouw opleiding heet het
+
+informatiesysteem waar mee gewerkt wordt SBIS. Voor de elektronische leeromgeving, waar je alle
+
+inhoud van de opleiding kan vinden, maken we gebruik van Teams.
+
+Pagina 27/91
+
+7.4 Bindend Studieadvies
+
+Rijn IJssel is verplicht om je een bindend studieadvies te geven over het wel/niet vervolgen van je
+opleiding. Wanneer dit advies gegeven wordt ligt vast.
+
+•  Als jouw opleiding langer dan een jaar duurt, krijg je dit advies tussen de 9e en 12e maand.
+•  Als jouw opleiding een jaar duurt, krijg je dit advies tussen de 3e en 4e maand.
+
+Het bindend studieadvies kan positief of negatief zijn. Criteria waarop het bindend studieadvies is
+gebaseerd:
+
+•  Participatie in relatie tot jouw studieresultaten;
+•  Houding in relatie tot het beroep waarvoor je wordt opgeleid;
+•  Capaciteiten in relatie tot het niveau van de opleiding.
+
+Een positief bindend studieadvies betekent dat je op je plek zit en de opleiding kunt vervolgen. Wat je
+moet doen om een positief studieadvies te krijgen lees je hier:
+Om over te gaan heeft de student die de opleiding Retailmedewerker volgt, binnen zijn leerjaar, gemeten
+vanaf het moment van instromen:
+
+1.  Alle kerntaken binnen de bpv afgerond en beoordeelbaar aangeboden;
+2.  Alle leereenheden afgerond en beoordeelbaar aangeboden;
+3.  Voor alle vakken gemiddeld een voldoende cijfer;
+
+De studievoortgang van elke student wordt besproken in een studentenbespreking van het team. De SLB-
+er van de student geeft gedurende het schooljaar op 3 ijkmomenten schriftelijk feedback t.a.v. de
+studievoortgang op basis van een rapport, dat met de student wordt besproken.
+
+NB:
+besluitvorming.
+
+Beroepshouding, houding in de klas en presentie worden meegenomen in de voortgang en
+
+Voortgang van de student, verbetervoorstel, en concrete afspraken, incl. deadline
+herstelmoment: week 5 P4 (i.v.m. monitoren in P5)
+Voorlopig StudieAdvies.
+Voortgang monitoren op basis van afspraken periode 4, behaalde resultaten
+vaststellen,  indien nodig nieuwe afspraken vastleggen, incl. deadline
+herstelmoment: week 5 P6 (i.v.m. monitoren in P7)
+Op basis van resultaten tot en met P7 zijn de volgende scenario’s.
+
+IJKMOMENTEN
+
+Periode 4, week 1:
+
+Periode 6, week 1:
+
+Periode 8, week 1:
+
+        Scenario’s:
+
+De student:
+
+1.  gaat over: voldoet op alle ijkmomenten aan het gevraagde;
+2.  gaat over: met ultimatum (schriftelijk vastgelegd).
+
+Indien niet is voldaan aan het ultimatum, dan kan het tot gevolg hebben dat een student een leerjaar wordt
+teruggezet;
+
+3.  gaat niet over en moet het jaar doubleren;
+4.  ontvangt een negatief bindend studieadvies (leerjaar 1)
+
+Negatief bindend studieadvies
+Een student krijgt een negatief studieadvies wanneer:
+
+•  Het gemiddelde cijfer voor een beroepsgericht vak lager is dan een 3,5 of
+•  het gemiddelde cijfer voor Engels, Nederlands en rekenen lager is dan een 3,5 of
+•  de bpv niet is behaald en
+•  de student een negatief voorlopig studieadvies heeft gekregen.
+
+Pagina 28/91
+
+Doubleren / voorwaardelijk over
+Een student moet het jaar herhalen / gaat voorwaardelijk over wanneer:
+
+•  Het gemiddelde cijfer voor een beroepsgericht vak lager is dan een 4,5 of
+•  het gemiddelde cijfer voor Engels, Nederlands en rekenen lager is dan een 4,5 of
+•  de bpv niet beoordeelbaar aangeboden is of
+•  Een van branche-specifieke projecten niet beoordeelbaar is aangeboden. Dit is geldig vanaf het
+
+moment van instromen.
+
+Deze regelgeving houdt in dat niet gemaakte toetsen beoordeeld worden met een 1.
+Alle toetsen mogen in de eerstvolgende activiteitenweek worden ingehaald. Een toets wordt niet vaker dan
+2x aangeboden. Een student heeft het recht om 1 toets per vak en 1 leereenheid in zijn geheel in te
+halen.
+Wanneer het docententeam afdoende reden ziet, kan worden afgeweken van bovenstaande normen.
+Voor leerjaar 2 is dezelfde regeling van toepassing; met uitzondering van het Bindend StudieAdvies.
+Een negatief bindend studieadvies betekent dat de opleiding onvoldoende bij jou aansluit en dat je de
+opleiding niet kan vervolgen.
+Bij een negatief bindend studieadvies heb je recht om in beroep te gaan bij de Commissie van Beroep
+voor de Examens. Dit doe je door je beroep te sturen aan de Toegankelijk Faciliteit.
+https://www.rijnijssel.nl/over-rijn-ijssel/procedures-en-reglementen/toegankelijke-faciliteit-toef
+Als je een negatief bindend studieadvies hebt gekregen, dan helpt het onderwijsteam jou, gedurende
+maximaal 8 weken, bij het zoeken naar een nieuwe opleiding. Dit is niet verplicht en kan zowel binnen als
+buiten Rijn IJssel.
+Bij iedere nieuwe opleiding die je start, krijg je een bindend studieadvies.
+
+Pagina 29/91
+
+7.5 Student  Support  Center
+
+Tijdens je  opleiding  krijg  je  begeleiding  van  je  loopbaancoach.  In bijzondere  situaties  of  als  je  extra
+
+ondersteuning nodig hebt, kan je begeleid worden door medewerkers van het Student Support Center,
+
+het SSC. Hier werken trajectbegeleiders samen met andere collega's en helpen jou als de studie niet
+
+zo lekker loopt of als je om welke reden dan ook niet aan leren en school toekomt.
+
+Je loopbaancoach schakelt deze mensen in overleg met jou en/of je ouders in. Ze bieden je:
+
+-
+
+-
+
+-
+
+-
+
+voorlichting over studiemogelijkheden;
+
+begeleiding bij beroepskeuze;
+
+begeleiding bij problemen zoals faalangst, dyslexie, dyscalculie of concentratiestoornissen;
+
+adviezen en ondersteuning bij de keuze van een vervolgstudie en/of start op de arbeidsmarkt.
+
+Rijn IJssel doet er alles aan om uitval van studenten te voorkomen. We pakken daarom ook verzuim
+
+stevig aan. Verzuim  is  namelijk  vaak  de  voorbode  van  uitval.  Als  je  zonder  startkwalificatie  de
+
+school  verlaat,  dan  werken we samen met organisaties als Leerplicht  die met jou gaan kijken hoe je
+
+toch een startkwalificatie kunt gaan behalen. Een startkwalificatie is een HAVO-diploma of minimaal
+
+een diploma op niveau 2 in het mbo.
+
+Bij Rijn IJssel werken loopbaancounsellors, psychologen en orthopedagogen die jou kunnen
+
+ondersteunen op gebied van
+
+-
+
+-
+
+-
+
+-
+
+adviseren over studie- en beroepskeuze;
+
+voeren van coaching-gesprekken;
+
+ondersteuning  bij leer- en gedragsproblemen
+
+ondersteuning bij alle andere niet school gerelateerde problemen.
+
+Pagina 30/91
+
+7.6 Zorgstructuur
+
+Om de begeleiding tijdens de opleiding zorgvuldig te laten verlopen wordt gewerkt met twee dossiers:
+
+-
+
+-
+
+een administratief dossier en
+
+een (digitaal) pedagogisch dossier.
+
+Het administratieve dossier wordt beheerd door de studentenadministratie. Hierin worden de
+
+documenten opgenomen  die  van  belang  zijn  voor  de  in-  en  externe  verantwoording  betreffende
+
+financiering en  kwalificering. Het pedagogische dossier wordt beheerd door je loopbaancoach. Hierin
+
+worden documenten bewaard die van belang  zijn  voor  de  in-  en  externe  verantwoording  betreffende
+
+jouw  begeleiding.  Een onderdeel  van  je pedagogisch dossier kan een ondersteuningsplan zijn. Dit
+
+wordt opgesteld als je extra zorg en begeleiding nodig hebt en toegevoegd aan je pedagogisch dossier.
+
+Bij een eventuele wisseling van loopbaancoach wordt het pedagogische dossier overgedragen aan de
+
+nieuwe loopbaancoach. Als je daar bezwaar tegen hebt, moet je dit schriftelijk kenbaar maken aan de
+
+Onderwijsmanager.
+
+Pagina 31/91
+
+7.7 Passend onderwijs
+
+Als jij belemmeringen ervaart, kijken we extra goed naar jouw leertraject. Dit kan een belemmering zijn
+
+op fysiek gebied,  door  leer-  of  gedragsproblemen  of  door  problemen  op  sociaal  gebied.  Samen  met
+
+jou  kijken  wat  het beste bij jou past en welke (extra) ondersteuning jij nodig hebt om het leertraject
+
+goed te doorlopen. Dit betekent soms aanpassingen doen in het lesrooster, of extra tijd bij toetsen.
+
+Deze afspraken leggen wij dan samen vast.
+
+Pagina 32/91
+
+8. Examineren/Kwalificeren
+
+8.1 Hoe ziet het examenreglement eruit?
+Het Examenreglement mbo Rijn IJssel zorgt ervoor dat voor iedere student gelijke
+examenregels gelden.
+
+Klik hier voor het Examenreglement mbo Rijn IJssel.
+
+Pagina 33/91
+
+8.2 Hoe ziet mijn examenplan eruit?
+
+In het examenplan van je opleiding staat omschreven aan welke exameneisen en diploma-eisen je
+
+moet voldoen om je diploma te behalen.
+
+De exameneisen zijn vorm gegeven in examens. Dit zijn beroepsspecifieke kerntaak examens, examens
+
+van Nederlands, rekenen, Engels en keuzedelen.
+
+De diploma-eisen gelden voor:
+
+-
+
+Loopbaan en Burgerschap; je moet hiervoor aantonen dat je je hierin ontwikkeld hebt. Dit
+noemen we een inspanningsverplichting.
+
+-  Ook de bpv(=stage) moet met ‘voldaan’ gewaardeerd zijn om aan de diploma-eisen te
+
+voldoen.
+
+Je kunt jouw examenplan zien via Microsoft Teams. Op dit moment is het nog niet mogelijk je
+
+resultaten te volgen, daar wordt hard aan gewerkt. De reden is dat we over gaan naar een ander
+
+registratiesysteem. Zo gauw dat operationeel is wordt je hierover geïnformeerd. Wil je weten hoe je er
+
+voor staat neem dan contact op met je loopbaancoach.
+
+Pagina 34/91
+
+8.3 Wanneer ben ik klaar om examen te doen?
+
+Tijdens de opleiding oefen  je in allerlei situaties  in de  beroepspraktijk en heb je leeractiviteiten
+
+gevolgd  om kennis, vaardigheden en beroepshouding te leren. Je groeit en ontwikkelt je in de
+
+werkprocessen van je beroep  en de algemene vaardigheden tot beroepsbekwaam niveau. Dan ben
+
+je klaar  om examen te doen.
+
+Pagina 35/91
+
+8.4 Hoe kan  ik me  aanmelden voor  een examen?
+Als je klaar bent om examen te doen, moet jij je aanmelden zodat het examen gepland kan worden.
+Het aanmelden voor een examen gebeurt in overleg met de desbetreffende vakdocent en/of
+loopbaancoach. De vakdocent controleert of je alle vereiste opdrachten en/of toetsen hebt gemaakt.
+Daarna meldt deze je aan voor het examen.
+
+Pagina 36/91
+
+8.5 Wanneer ben ik geslaagd?
+
+Al  jouw  resultaten  van  de  onderdelen  van  het  examenplan  worden  bewaard.  Als  alles  compleet  is,
+
+controleert het onderwijsteam jouw examendossier, als alles compleet is, draagt zij jou voor
+
+diplomering voor bij de examencommissie. Die beoordeelt je resultaten en stelt  vast  of jij je diploma
+
+krijgt. Als jouw resultaten heel goed zijn, kun je ook ‘cum laude’ afstuderen. ‘Cum laude’ betekent ‘met
+
+lof’ en wordt op je diploma vermeld. De voorwaarden voor het krijgen van het predicaat cum laude
+
+staan beschreven in het examenreglement.
+
+Pagina 37/91
+
+8.6 Kan ik een examen herkansen?
+Je mag elk examen één keer herkansen. Voor een tweede herkansing heb je apart
+toestemming nodig.
+
+Wil je herkansen of extra herkansen, kijk dan in het examenreglement. Klik hier
+
+Pagina 38/91
+
+8.7 Heb  ik  recht  o p   aanpassingen  voor
+examinering
+
+In het examenreglement zijn voorwaarden opgenomen dat je in bepaalde omstandigheden recht
+hebt op bijvoorbeeld ‘aangepaste examinering’ of een vrijstelling. Kijk in het examenreglement of je
+mogelijk recht hebt op een aanpassing en of je gebruik wilt maken van een ‘service aanvraag’.
+
+Je kunt een aanvraag doen in het linker menu in SBIS ‘service aanvragen’. De formulieren die je
+hiervoor nodig hebt, kun je vinden in het linker menu in SBIS ‘Informatie’. Mogelijk zijn niet alle
+formulieren hier ondergebracht, vraag dan aan je Loopbaancoach of het Examenbureau het juiste
+formulier.
+
+Pagina 39/91
+
+8.8 Niet gediplomeerd uitschrijven
+
+Het kan gebeuren dat je onverhoopt uitstroomt zonder diploma. Je hebt dan recht op een bewijs van
+
+jouw behaalde examenresultaten.
+
+-
+
+Je hebt recht op een mbo-verklaring voor onderdelen van de opleiding waarvoor je een
+examen hebt gedaan
+
+-  Daarnaast kan je voor sommige onderdelen van je opleiding of keuzedelen een mbo-certificaat
+
+krijgen; een keuzedeelcertificaat en/of een certificaat als onderdeel van je kwalificatie. Je hebt
+alleen recht op een certificaat, als je een voldoende hebt gehaald.
+
+Een mbo-verklaring of een mbo-certificaat is handig bij het vinden van werk of als je een andere opleiding
+
+wil volgen.
+
+Pagina 40/91
+
+9. Leermiddelen
+
+9.1 Inleiding
+
+Voor je opleiding heb je bepaalde leermiddelen nodig. Het kan hierbij gaan om:
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+laptop;
+
+boeken;
+
+digitale leermiddelen;
+
+readers, syllabi;
+
+bedrijfskleding;
+
+telefoon;
+
+overige leermiddelen.
+
+Het kan ook gaan om voorzieningen zoals meerdaagse excursies / reizen.
+
+Tijdens de les wordt je geacht te beschikken over de leermiddelen die je nodig hebt voor die les bij je
+hebben, dat wil zeggen boeken, een laptop, pennen, papier, praktijkkleding en andere noodzakelijke
+materialen. In de stage (BPV) gelden de eisen die het bedrijf aan je stelt.
+
+Indien je jouw leermiddelen voor de les niet bij je of op orde hebt, betekent dit dat je de les niet goed
+kunt volgen. Wanneer dit veelvuldig voorkomt zal dit effect hebben op je studieresultaten, hierbij komt
+het behalen van een diploma in gevaar. Zorg dat je je leermiddelen op orde hebt en dat je, als je deze
+niet aan kunt schaffen, dit meldt je bij je loopbaancoach.
+
+Pagina 41/91
+
+9.2 Aanschaf van leermiddelen
+
+Het staat iedere student vrij om zelf je leverancier te kiezen als het gaat om boeken en overige attributen.
+
+Toch adviseert Rijn IJssel haar studenten de leermiddelen bij MBO-Webshop aan te schaffen. Let wel,
+
+contributies,  vrijwillige  bijdrages  en  overige  schoolkosten  worden  door  Rijn  IJssel  na  1  oktober
+
+gefactureerd.  Wat  die  kosten  mogelijk  zijn,  zie  je  op  de  leermiddelenlijst  van  MBO-Webshop.  We
+
+adviseren je met klem digitale licenties via  MBO-Webshop aan te schaffen (of anders aangegeven) om
+
+later problemen met koppeling aan je schoolaccount  te voorkomen.
+
+Aanvullende  voorzieningen:  Rijn  IJssel  adviseert  je  deze  aan  te  schaffen,  maar  ze  zijn  echter  niet
+
+verplicht.  Kies je er bijvoorbeeld voor om niet deel te nemen aan een meerdaagse excursie of een reis,
+
+dan biedt Rijn IJssel jou een alternatief programma met taken en opdrachten die je op school uit moet
+
+voeren.  Eéndaagse  activiteiten  zoals  excursies,  workshops,  masterclasses  behoren  tot  het  reguliere
+
+onderwijsprogramma, daarvoor vragen wij geen financiële  bijdrage. Om een helder overzicht te geven
+
+van  de  kosten  voor  je  opleiding,  heeft  Rijn  IJssel  ervoor  gekozen  om  het  bestellen  en  betalen  van
+
+leermiddelen  te  regelen  via  MBO-Webshop.  Ook  kun  je  middels  een  pdf-bestand  je  leermiddelenlijst
+
+inzien of printen.
+
+Meer informatie over leermiddelen bestellen vind je op www.mbowebshop.nl.
+
+Voor de start van het schooljaar krijgen de eerstejaars een brief waarin staat hoe je kunt bestellen. Je
+
+krijgt dan ook een overzicht van de kosten. De ouderejaars worden via de elektronische leeromgeving
+
+geïnformeerd over hoe ze leermiddelen kunnen bestellen.
+
+Pagina 42/91
+
+9.3 Overige kosten
+
+Sommige kosten zijn verbonden aan stages in de opleidingen, die niet voor alle studenten hetzelfde zijn:
+
+-  Het kan zijn dat je stage gaat lopen / gaat werken of meewerken aan een project in een
+
+instelling of bedrijf buiten je woonplaats. Je moet daarom rekening houden met reis- en
+verblijfkosten tijdens die perioden.
+
+-  Het kan zijn dat het bedrijf waar je gaat stage lopen of gaat werken bepaalde bedrijfskleding
+verplicht stelt. Daar hoort het bedrijf je in te voorzien. Mocht dat niet het geval zijn dan wordt
+je geacht je schooltenue te dragen.
+
+-  Mocht je een VOG nodig hebben voor je stage, dan wordt dit gezien als onderdeel van de
+
+basisuitrusting leerbedrijf en dient bekostigd te worden door het leerbedrijf.
+
+Pagina 43/91
+
+9.4 Problemen  met  facturering  of  levering
+
+Als je van mening bent dat de verkeerde bedragen in rekening zijn gebracht, dan wel het bestelde niet is
+geleverd, dan moet je dit kenbaar maken bij MBO-Webshop.
+
+De status van o.a. leveringen is altijd te zien in je MBO-Webshop account. Mocht je niet meer weten wat je
+account is, check dan je mailbox: daarin staan berichten over bestellingen en leveringen.
+Daarin staat dan ook je benodigde klantnummer om in te kunnen loggen (eventueel via
+“wachtwoord vergeten”).
+
+Lukt dat niet, bel dan de Klantenservice van MBO-Webshop (085-0750550). Zij kunnen je vragen
+beantwoorden en zaken voor je opzoeken. Ook is op de site van MBO - Webshop bij “Klantenservice”
+een rubriek met “Veel gestelde vragen”.
+
+https://www.mbowebshop.nl/contact/klantenservice
+
+Voor niet geleverde diensten vanuit de aanvullende kosten moet je een mail sturen naar Barbara Joseph;
+b.joseph@rijnijssel.nl.
+
+Alle binnengekomen mails bespreekt het managementteam. Op grond van de informatie en eerder
+genomen besluiten kunnen zij overgaan tot:
+
+-  Volledige terugbetaling van de niet geleverde dienst
+
+-  Gedeeltelijke terugbetaling
+
+-  Geen terugbetaling
+
+Let op: uitsluitend het managementteam kan besluiten tot terugbetaling.
+
+Pagina 44/91
+
+9.5 Niet  gebruikte  leermiddelen
+
+Dit komt in principe niet voor binnen Rijn IJssel maar als dat wel het geval is dan verzoeken wij je dit
+voor te leggen aan het management van je cluster. Op grond van de informatie en eerder genomen
+besluiten kunnen zij overgaan tot:
+
+-  Volledige terugbetaling van het leermiddel
+
+-  Geen terugbetaling
+
+Indien je leermiddelen niet gebruikt zijn en onterecht zijn aangeschaft, vul dan het formulier achter
+bijgaande link: https://forms.office.com/e/dFmbLMEZYr
+
+Let op: uitsluitend het managementteam kan besluiten tot terugbetaling.
+
+Pagina 45/91
+
+9.6 Kosten bij in- en doorstroom naar hogere leerjaren
+
+Stroom je in het tweede, derde of vierde leerjaar van een opleiding van Economie, Uiterlijke Verzorging,
+CIOS en Veiligheid, dan dien je rekening te houden met extra kosten voor aanvullende materialen, die
+nodig zijn om te voldoen aan het gewenste niveau.
+
+Pagina 46/91
+
+10. Aanmelden, Inschrijven, uitschrijven,
+verwijderen en wijzigingen doorgeven
+
+10.1 Aanmelding en inschrijving
+
+Voor de aanmelding en definitieve inschrijving voor een opleiding bestaan wettelijke regels. Als je een
+mbo-opleiding wilt volgen, moet je je uiterlijk 1 april 2024 aanmelden voor toelating tot de opleiding van
+jouw eerste voorkeur. Alles wat je moet weten over aanmelden en inschrijven voor je favoriete opleiding
+vind je op https://www.rijnijssel.nl/ mbo-opleidingen/aanmelding-en-inschrijving/
+
+Pagina 47/91
+
+10.2 Inschrijven BOL-opleiding
+
+Als inschrijvingsbewijs ontvang je een bewijs van inschrijving.
+
+Als je per 1 oktober ingeschreven staat als student voor een BOL-opleiding en op 1 augustus 2024 18
+jaar of ouder bent, ben je lesgeldplichtig. Voor informatie over lesgeld verwijzen we je naar de folder
+‘Lesgeld’ die verkrijgbaar is bij de financiële administratie, bibliotheken, Steunpunten Studiefinanciering
+of de website www.duo.nl.
+
+Pagina 48/91
+
+10.3 Inschrijven BBL-opleiding
+
+Als inschrijvingsbewijs ontvang je een bewijs van inschrijving voor je BBL opleiding. Sta je op 1 oktober
+2024 ingeschreven voor een BBL-opleiding dan ben je verplicht tot het betalen van cursusgeld.
+
+Voor de BBL-opleiding geldt dat je op uiterlijk 31 december 2024 dient te beschikken over een
+overeenkomst beroepspraktijkvorming met een geaccrediteerde instelling, anders kan je de opleiding
+niet volgen. Je wordt dan uitgeschreven, maar moet wel cursusgeld betalen.
+
+Word je tijdens de opleiding ontslagen of wil je zelf veranderen van werkgever?
+
+Neem dan zo snel mogelijk contact op met je loopbaancoach. Je krijgt dan (beperkt) de tijd om een nieuwe
+baan te vinden. Het tussentijds stoppen met de opleiding of moeten stoppen omdat je geen  werkplek
+hebt, geeft geen recht op restitutie van cursusgeld.
+
+Pagina 49/91
+
+10.4 Wijzigingen  doorgeven
+
+Wijzigingen in de persoonlijke gegevens moet je schriftelijk of persoonlijk doorgeven aan de
+studentenadministratie. Informeer naast de studentenadministratie ook DUO, als je recht hebt op
+studiefinanciering. Het is belangrijk om dit allebei te doen, want de persoonlijke gegevens moeten overal
+hetzelfde zijn. Zijn de gegevens niet gelijk, dan kan dit gevolgen hebben voor je studiefinanciering.
+
+Pagina 50/91
+
+10.5 Uitschrijven
+
+Er zijn verschillende situaties te onderscheiden die kunnen leiden tot het tussentijds uitschrijven van jou als
+student.
+
+1. Ik heb mijn diploma gehaald: wat moet ik doen?
+
+Gefeliciteerd! Maar wat nu? Er zijn veel mogelijkheden: werken, doorstromen binnen het mbo of
+
+doorstromen naar het hbo bijvoorbeeld. Als je in de loop van het schooljaar afstudeert, kun je mogelijk
+
+een deel van de door jou betaalde kosten terugkrijgen. Je loopbaancoach kan je hier meer over
+
+vertellen.
+
+Als je niet meteen verder gaat studeren, moet je een aantal dingen regelen. Welke dat zijn, lees je
+
+hieronder. Doe dit op tijd, anders loop je het risico dat je geld terug moet betalen aan DUO en
+
+mogelijk ook een boete krijgt.
+
+2. Stopzetten studiefinanciering
+
+Je krijgt studiefinanciering van DUO (Dienst Uitvoering Onderwijs) tot en met de maand waarin je
+
+wordt uitgeschreven bij Rijn IJssel. De uitschrijfdatum is niet de datum van de diploma-uitreiking,
+
+maar de datum die  op je diploma staat. Je loopbaancoach informeert jou over deze datum. Je moet
+
+deze datum zelf aan DUO doorgeven. Dit kun je online doen: www.duo.nl.
+
+3. Stopzetten studenten OV-chipkaart
+
+Je moet je studenten-reisproduct op je OV-kaart stopzetten. Dit kun je online doen bij DUO. Je mag je
+
+OV- chipkaart houden, maar DUO haalt je studenten-reisproduct ervan af. Klik hier om te zien hoe je
+
+dit moet doen.
+
+4. Ik stop met mijn opleiding, voordat ik een diploma hebt. Wat moet ik doen?
+
+Als je niet meteen bij Rijn IJssel verder gaat studeren, moet je een aantal dingen regelen. Doe dit op
+
+tijd, anders loop je het risico dat je geld terug moet betalen aan DUO en mogelijk ook een boete krijgt.
+
+Daarnaast kan je mogelijk een deel van de door jou betaalde kosten terugkrijgen, als je in de loop van
+
+het schooljaar stopt bij Rijn IJssel. Je loopbaancoach kan hier meer over vertellen.
+
+Neem contact op met je loopbaancoach als je wil stoppen met je opleiding. Hij/zij kan je vertellen wat
+
+je moet doen ten aanzien van:
+
+-  Uitschrijven bij Rijn IJssel
+
+-  Stopzetten studiefinanciering
+
+Je krijgt studiefinanciering van DUO (Dienst Uitvoering Onderwijs) tot en met de maand waarin je wordt
+
+uitgeschreven bij Rijn IJssel. Je moet deze datum zelf aan DUO doorgeven. Dit kun je online doen:
+
+www.duo.nl.
+
+-  Stopzetten studenten OV-chipkaart
+
+Je moet je studenten-reisproduct op je OV-kaart stopzetten. Dit kun je online doen bij DUO. Je mag je
+
+OV- chipkaart houden, maar DUO haalt je studenten-reisproduct ervan af. Klik hier om te zien hoe je
+
+dit moet doen.
+
+Pagina 51/91
+
+Als je jonger dan 18 jaar bent, mag je nooit uitgeschreven worden, tenzij je onmiddellijk met een
+
+andere  opleiding begint. Je dient vooraf een bewijs van inschrijving van de vervolgopleiding bij je
+
+loopbaancoach in te leveren. Voordat je wordt uitgeschreven neemt de loopbaancoach contact op
+
+met je ouders / verzorgers.
+
+Als je 18 jaar of ouder bent, mag je uitgeschreven worden, maar bedenk dat dit financiële
+
+consequenties heeft.
+
+Let op:
+
+DUO:  je  bent  zelf  verantwoordelijk  om  binnen  5  werkdagen  je  studiefinanciering  te  wijzigen  en  je
+
+reisproduct stop te zetten. Indien je een niveau 3 of 4 opleiding volgt, heb je een prestatiebeurs. Deze
+
+wordt omgezet in een schuld, wanneer je binnen de diplomatermijn geen diploma behaalt.
+
+Voortijdig schoolverlaten: indien je geen werk hebt en ook niet met een andere opleiding start, dan ben je
+
+een ‘vroegtijdig schoolverlater’. Wettelijk ben je verplicht om minimaal een niveau 2-diploma, een havo-
+
+of een vwo- diploma te halen.
+
+Werkplicht: tot je 23e jaar kun je zonder werk of school geen aanspraak maken op een uitkering.
+
+Pagina 52/91
+
+11. Aanwezigheid, afwezigheid en verlof
+
+11.1 Inleiding
+
+Je moet van maandag t/m vrijdag volgens het lestijdenrooster beschikbaar zijn. Houd daarmee
+rekening bij het plannen van activiteiten, zoals werk, huisarts- en tandartsbezoek en rijlessen. Houd er
+ook rekening mee dat het lesrooster minimaal 4 tot 8 keer per jaar verandert. Je schooljaar bestaat uit
+lessen op school en stage in de beroepspraktijk. Ook kan het voorkomen dat je in bepaalde perioden
+les krijgt op leerwerkplekken of dat je onderwijs krijgt op een andere locatie of binnen een bedrijf. Het
+kan ook voorkomen dat je ’s avonds les hebt. Dit betekent dat je geen vaste afspraken voor een heel
+schooljaar kunt maken. Je studie gaat voor een hobby, een bijbaan of andere zaken. Bekijk de
+informatie op de videoschermen, borden en via de computer regelmatig.
+We gaan ervan uit dat je elke dag de roosterwijzigingen controleert.
+
+Pagina 53/91
+
+11.2 Aanwezigheidsregistratie
+
+Binnen Rijn IJssel Economie, Uiterlijke Verzorging, CIOS en Veiligheid dien je tijdens alle lessen
+aanwezig te zijn. Dit wordt door docenten geregistreerd. Met je eigen inloggegevens kun je het rooster,
+roosterwijzigingen en je aanwezigheid inzien. Er wordt van je verwacht dat je op alle ingeroosterde
+onderwijsactiviteiten aanwezig bent. Regelgeving omtrent aan- of aanwezig zijn staat in het
+studentenstatuut.
+
+Pagina 54/91
+
+11.3 Geoorloofde  en  ongeoorloofde  afwezigheid
+
+Je bent geoorloofd afwezig:
+
+Als je ziek bent:
+
+-  Meld je dit telefonisch tussen 8.00 en 10.00 uur, indien je 18+ bent bij de receptie van
+
+je leslocatie via het telefoonnummer vermeld op de site van Rijn IJssel.
+
+-  Als je 18- bent stuurt je ouder/verzorger een email naar het verzuim email adres van
+
+de leslocatie vermeld op de site van Rijn IJssel of je belt de receptie.
+
+-  De ziekmelding geldt voor 1 dag, tenzij anders aangegeven bij de afmelding.
+
+Als je ziek bent tijdens je stage:
+
+-
+
+-
+
+-
+
+Je meldt dit vóór 9:00 uur bij je stagebedrijf of volgens de afspraken bij je leerbedrijf
+
+Je meldt dit tussen 08.00 en 10.00 uur bij de receptie van school.
+
+als je weer aan het werk gaat, meld je dit bij de receptie van je leslocatie.
+
+Als je op school ziek wordt:
+
+-  Al je tijdens schooltijd ziek naar huis gaat, haal je het formulier ‘Ziekmelding tijdens lesdag’
+
+bij de Servicedesk. Je laat dit formulier invullen en aftekenen door de loopbaancoach.
+
+-  De Servicedeskmedewerker belt je ouders/verzorgers indien je nog geen 18 jaar bent,
+
+voordat je naar huis gaat.
+
+  Als je een afspraak hebt bij de huisarts/tandarts:
+
+-  Afspraken dienen zo veel mogelijk buiten schooltijd gepland te worden.
+-
+
+Indien er toch een afspraak onder schooltijd gemaakt wordt, dan moet je dat vóór 09.00 uur
+melden bij de receptie.
+
+Indien deze bovenstaande stappen niet gevolgd worden, wordt de afwezigheid geregistreerd als
+ongeoorloofd.
+
+Pagina 55/91
+
+11.4 Ongeoorloofd  verzuim
+
+De school is wettelijk verplicht je aanwezigheid te registreren. Je aanwezigheid wordt dagelijks
+gecontroleerd in de klas. Mocht hieruit blijken dat je veel afwezig bent, worden er passende maatregelen
+genomen. Je loopbaancoach zal dit met je bespreken.
+
+Verzuim kan ongeoorloofd zijn en kan dan grote gevolgen hebben voor je voortgang op school, en / of
+de instelling waar je werkt / stage loopt, de studiefinanciering en de leerplichtwet. Als je jonger bent
+dan 18 jaar ben je leerplichtig. Ben je zonder afmelding door ouders / verzorgers afwezig, dan belt de
+verzuimconsulent van school naar je ouders/verzorgers om te informeren wat er aan de hand is. Lukt
+het niet om contact te krijgen, dan krijgen je ouders / verzorgers een brief. Er gaat een melding naar de
+leerplichtambtenaar als je 16 of meer uren ongeoorloofd afwezig bent geweest.
+
+Als je een BOL-student bent van 18-23 jaar, geldt een kwalificatieplicht. Als er ongeoorloofd verzuimd is
+gedurende 16 lesuren in 4 weken, dan wordt het verzuim gemeld bij DUO en / of bij de gemeente. Er wordt
+dan overleg gepleegd tussen jou, dit team en je loopbaancoach met als doel ervoor te zorgen dat je toch
+uiteindelijk met een diploma de school verlaat.
+
+Pagina 56/91
+
+11.5 Leerplicht
+
+Iedere jongere heeft recht op onderwijs en heeft tegelijkertijd een leerplicht. Jongeren zijn leerplichtig
+tot aan het eind van het schooljaar waarin de jongere zestien jaar wordt. Er geldt een kwalificatieplicht
+voor studenten zonder diploma, daarom moet je zonder diploma naar school tot je 18e verjaardag. Een
+schooljaar loopt van 1 augustus tot 31 juli van het daaropvolgende jaar.
+
+Pagina 57/91
+
+11.6 Kwalificatieplicht
+
+Na het laatste schooljaar van de leerplicht begint de kwalificatieplicht. Met de kwalificatieplicht wordt de
+leerplicht verlengd tot de student een startkwalificatie heeft gehaald. Een startkwalificatie is een diploma
+op havo-, vwo-, of mbo-niveau 2, 3 of 4.
+
+Kwalificatieplicht geldt tot op de dag dat de student achttien jaar wordt. Wanneer de student op dat
+moment besluit te stoppen zonder een startkwalificatie behaald te hebben, moet hij / zij worden
+aangemeld bij het team Voortijdig School Verlaten (team VSV).
+
+Pagina 58/91
+
+11.7 Verzuim
+
+We streven naar het succesvol afronden van de opleiding van álle studenten en willen alle studenten
+daarbij waar nodig ondersteunen. Verzuim wordt gezien als een signaal van onderliggende
+problematiek en een mogelijke voorloper van dreigende uitval: voortijdig schoolverlaten (VSV).
+Preventie van verzuim en daarmee van VSV is van groot belang om studenten met een
+beroepsopleiding succesvol te laten zijn op de arbeidsmarkt.
+Onderwijsinstellingen zijn verplicht om de wet op de leer- en kwalificatieplicht na te leven en melding te
+maken van verzuim.
+
+Visie
+
+  De visie op aanpak van het verzuim binnen Rijn IJssel:
+
+-  De student voelt verbondenheid met en door de school en weet zich gezien;
+
+-  Verzuim is een signaal en vraagt om direct en persoonlijk contact;
+
+-  Verzuim vraagt om een brede aanpak met meerdere partners.
+
+In dit verband is ook een belangrijke rol weggelegd voor de ouders / verzorgers. De ouders /
+verzorgers worden betrokken bij de aanpak van het voortijdig schoolverlaten.
+
+Verzuimprocedures
+
+Rijn IJssel heeft alle verzuimprocedures beschreven. Het gaat om:
+
+-  Registreren van de aan- en afwezigheid van de student. In elke les wordt de aanwezigheid
+
+geregistreerd in een digitaal registratiesysteem SBIS. In dit systeem kunnen de student en de
+ouders / verzorgers het lesrooster en de aan- en afwezigheid zien.
+
+-  Controleren van het dagelijkse verzuim. Ieder cluster heeft een presentiebeheerder. De
+
+presentiebeheerder belt naar de ouders / verzorgers indien de student ongeoorloofd afwezig is bij
+studenten jonger dan 18 jaar.
+
+-  Preventieve leerplicht en RMC-gesprekken (RMC=Regionaal Meld- en Coördinatiepunt). Het
+
+Regionaal Bureau Leerlingzaken van de gemeente Arnhem en Rijn IJssel werken samen om
+ongeoorloofd verzuim vroegtijdig te signaleren en terug te dringen. Als een student ongeoorloofd
+afwezig is, kan het zijn dat de student wordt uitgenodigd voor een informatief en waarschuwend
+gesprek met de leerplichtconsulent of RMC-consulent. In dit gesprek wordt besproken wat de
+reden van afwezigheid is en wordt de student gewezen op de risico’s van veelvuldig verzuim. Na
+het gesprek ontvangen de student (of de wettelijk vertegenwoordiger(s)) en Rijn IJssel een brief
+van de leerplichtconsulent met daarin een waarschuwing en eventueel de gemaakte afspraken.
+
+-  Melden van verzuim bij DUO. Als een student meer dan 16 klokuren ongeoorloofd afwezig is, is
+
+Rijn IJssel verplicht om de student te melden bij de leerplichtconsulent (minderjarige studenten) of
+bij de RMC- consulent (meerderjarige studenten). Studenten jonger dan 18 jaar worden samen
+met de wettelijke vertegenwoordigers opgeroepen voor een verzuimgesprek met de
+leerplichtconsulent. Studenten vanaf 18 jaar worden opgeroepen door een RMC-consulent voor
+een verzuimgesprek.
+
+Pagina 59/91
+
+11.8 Buitengewoon verlof
+
+Verlof belangrijke omstandigheden
+Zijn er belangrijke redenen waarom een student niet op school kan zijn, dan dient de student drie
+dagen vooraf verlof aan te vragen. Dit kan gaan om een huwelijksjubileum, bezoek aan een arts /
+tandarts / ziekenhuis of een andere dringende reden om verlof aan te vragen. Het (oranje) formulier
+‘verlofaanvraag’ is af te halen bij de servicedesk of online te vinden in SBIS.
+
+Extra vakantieverlof
+Wil een student buiten de reguliere Rijn IJssel vakantieplanning op vakantie? Dit kan alleen onder strikte
+voorwaarden. Dat is als de ouders een seizoensgebonden beroep hebben en wanneer het hele gezin in
+geen van de schoolvakanties in één schooljaar met vakantie kan en als de extra vakantie niet in de
+eerste twee weken van het schooljaar valt. Het (blauwe) formulier ‘vakantieaanvraag’ is online te vinden
+op SBIS.
+
+Langdurig ziek of zwangerschap
+Bij langdurige afwezigheid door ziekte of zwangerschap moet de student een doktersverklaring aan de
+loopbaancoach overhandigen. Indien dit niet mogelijk is, wordt de student door de trajectbegeleider
+naar de schoolarts doorverwezen. Indien mogelijk wordt er een alternatief programma opgezet. Bij
+zwangerschap heeft de student recht op 16 weken zwangerschapsverlof.
+
+Verwijderen uit de klas
+Als een student verwijderd wordt uit de les, komen student en docent hier samen op terug. Het is van
+groot belang dat de relatie weer wordt hersteld en er weer voortgang kan plaats vinden.
+
+Pagina 60/91
+
+11.9 Schorsing, verwijdering en uitschrijven
+
+Opstellen waarschuwingen
+
+We hebben als doel dat iedere student een diploma behaalt. Lukt het een student niet om zich aan de
+opleidingseisen te houden of laat de student niet de gewenste inzet, houding en gedrag zien, dan krijgt
+de student een studiecontract. In het studiecontract worden afspraken en verbeteracties vastgelegd en
+de begeleiding die de school daarin aanbiedt. Na een termijn van 10 weken wordt het contract
+geëvalueerd. Na deze evaluatie, afhankelijk van de vorderingen, worden de vervolgstappen bepaald.
+
+Schorsing en gedwongen uitschrijving
+
+Wanneer een student de gedragsregels overtreedt door het vertonen van ernstig wangedrag (denk hierbij
+aan: bedreiging, mishandeling, discriminatie, seksuele intimidatie, etc.) heeft Rijn IJssel het recht om de
+student te schorsen of kan Rijn IJssel zelfs overgaan tot definitieve uitschrijving.
+
+Vroegtijdig uitschrijven
+
+Wanneer een student een verkeerde beroepskeuze heeft gemaakt of er zijn andere redenen om te
+stoppen met de opleiding, dan gaat de student in gesprek met de loopbaancoach. Samen met de
+loopbaancoach en de trajectbegeleider worden de vervolgacties uitgezet. Let op: als de student
+minderjarig is, mag Rijn IJssel de student niet uitschrijven totdat de student staat ingeschreven bij een
+nieuwe opleiding.
+
+Pagina 61/91
+
+12. Financiële zaken
+
+12.1 Inleiding
+
+Meer informatie over financiële zaken vind je ook op https://www.rijnijssel.nl/over-rijn- ijssel/
+financi%C3%ABn/
+
+Pagina 62/91
+
+12.2 Lesgeld of cursusgeld
+
+Wanneer je per 1 augustus van het schooljaar achttien jaar of ouder bent, moet je lesgeld of cursusgeld
+betalen volgens de wettelijke afspraken van het Ministerie van Onderwijs & Wetenschappen. BOL-
+studenten betalen lesgeld, BBL-studenten betalen cursusgeld.
+
+Pagina 63/91
+
+12.3 Lesgeld
+
+Het lesgeld wordt jaarlijks vastgesteld. In het cursusjaar 2024-2025 is het €1.419,-*. Bij inschrijving na
+31 december geldt 7/12 van het lesgeldbedrag. Het lesgeld betaal je aan DUO. Betaling in termijnen is
+mogelijk. Meer informatie hierover is verkrijgbaar bij de DUO www.duo.nl .
+
+Er is geen lesgeld verschuldigd als je:
+
+-
+
+-
+
+-
+
+op 1 augustus van het schooljaar nog geen achttien jaar bent;
+
+uitgeschreven wordt voor 1 oktober 2024 (Let op: volg je na deze datum nog onderwijs, dan ben je
+lesgeld verschuldigd ook al was dit slechts 1 of 2 dagen)
+
+een eerdere betaling aan een andere school gedaan hebt, waar geen vrijstelling of teruggave
+mogelijk was.
+
+* Prijspeil 2024-2025
+
+Pagina 64/91
+
+12.4 Cursusgeld
+
+Het cursusgeld* voor een beroepsbegeleidende leerweg (BBL) bedraagt in 2024-2025
+
+•  niveau 1 € 295,-
+•  niveau 2 € 295,-
+•  niveau 3 € 715,-
+•  niveau 4 € 715,-
+
+Je bent zelf verantwoordelijk voor de betaling. Indien een derde (meestal werkgever) niet (volledig)
+betaald heeft, gaan de aanmaningen naar jou, ongeacht de afspraken tussen jou en deze derde. Het
+volledige bedrag dient uiterlijk op 1 oktober 2024 door de school te zijn ontvangen. Indien je halverwege
+het schooljaar instroomt, dien je het cursusgeld voor 1 maart 2025 te voldoen. Indien je op 1 oktober van
+het cursusjaar ingeschreven stond en aanwezig bent geweest na 1 oktober, ben je verplicht om te
+betalen. Ook al was dit slechts 1 of 2 dagen.
+
+In overleg is een betaling in maximaal 3 termijnen mogelijk. Nadat je de factuur hebt ontvangen, kun je
+binnen 5 werkdagen een afspraak met de stafdienst financiën maken. De laatste termijn van het
+cursusgeld wordt in ieder geval betaald binnen drie maanden na aanvang van de cursusgeldperiode en
+uiterlijk voor het eind van die periode.
+
+* Prijspeil 2024-2025
+
+Pagina 65/91
+
+12.5 Studiefinanciering
+
+Studiefinanciering bestaat uit een basis(prestatie)beurs, een studenten-reisproduct en mogelijk een
+aanvullende beurs. De aanvullende beurs is afhankelijk van het inkomen van je ouders. Je kunt
+studiefinanciering krijgen voor een mbo-opleiding als je aan de volgende voorwaarden voldoet:
+
+-
+
+-
+
+-
+
+je bent 18 jaar of ouder en je hebt je aanvraag gedaan voor de maand waarin je 30 jaar
+wordt;
+
+je volgt een voltijds beroepsopleidende leerweg (BOL);
+
+je hebt de Nederlandse nationaliteit of hebt een verblijfsvergunning type II, III, IV of V.
+
+Het studenten-reisproduct kun je al krijgen als je jonger dan 18 jaar bent.
+
+Niveau 1 of 2
+
+Doe je een mbo-opleiding (BOL) op niveau 1 of 2 dan is je studiefinanciering een gift. Je hebt recht op
+studiefinanciering zolang je staat ingeschreven als voltijdstudent.
+
+Niveau 3 of 4
+
+Doe je een mbo-opleiding (BOL) op niveau 3 of 4, dan heb je in totaal recht op 7 jaar studiefinanciering.
+Je krijgt de eerste vier jaar van je opleiding studiefinanciering in de vorm van een prestatiebeurs. Na de
+eerste vier jaar prestatiebeurs kun je nog drie jaar lenen. Dit geldt ook als je al studiefinanciering hebt
+gehad voor een opleiding op niveau 1 of 2.
+
+Als je stopt met je opleiding op niveau 1 of 2 hoef je de tot dan toe ontvangen studiefinanciering
+(basisbeurs en aanvullende beurs) niet terug te betalen. De studiefinanciering op niveau 3 of 4 is een
+prestatiebeurs. Als je stopt met je opleiding op niveau 3 of 4 en je haalt geen diploma binnen tien jaar op
+niveau 3 of hoger, dan moet je de prestatiebeurs met rente en de kosten voor de studentenreisproduct
+terugbetalen. Voor meer informatie zie: www.duo.nl.
+
+Pagina 66/91
+
+12.6 Tegemoetkoming studiekosten
+
+Er zijn mogelijkheden om via het Ministerie van Onderwijs een deel van de studiekosten terug te
+ontvangen. Afhankelijk van het inkomen van de ouders / verzorgers, kunnen de ouders / verzorgers voor
+hun minderjarige, studerende kind(eren) een bijdrage in de kosten aanvragen. De aanvraag moet door
+de ouders / verzorgers zelf worden gedaan.
+
+Zie voor meer informatie: www.rijksoverheid.nl.
+
+Pagina 67/91
+
+12.7 Terugbetaling les- of cursusgeld
+
+Wanneer  je  je  opleiding  beëindigt  voordat  je  een  diploma  behaalt,  is  in  sommige  gevallen  gehele  of
+gedeeltelijke teruggave van cursusgeld en lesgeld mogelijk. Hiervoor gelden wettelijke bepalingen. Voor
+lesgeld is de regeling terug te vinden op www.duo.nl. De voorwaarden voor terugbetaling van cursusgeld
+zijn na te vragen bij de studentenadministratie.
+
+Heb je vragen over de financiële kant van studeren en wat daar allemaal bij komt kijken? Raadpleeg
+dan https://www.rijnijssel.nl/mbo-opleidingen/ondersteuning/ of Geldwijzer op
+https://www.rijnijssel.nl/media/1840/geldwijzer.pdf
+
+Pagina 68/91
+
+12.8 MBO-studentenfonds
+
+Het mbo-studentenfonds is een regeling voor studenten die niet in staat zijn zelf hun leermiddelen te
+bekostigen. Deze studenten kunnen in aanmerking komen voor steun bij de aanschaf van boeken,
+(bedrijfs)kleding en andere benodigde leermiddelen voor hun opleiding. Er wordt geen geld gegeven,
+maar de leermiddelen worden door de school betaald.
+
+Een aanvraag wordt pas in behandeling genomen op het moment dat de student daadwerkelijk gestart is
+met de opleiding.
+
+Er zijn twee aanvraagformulieren, één voor 18- en één voor 18+. Op de formulieren staat duidelijk
+aangegeven wat er ingevuld moet worden en welke bijlagen en welk bewijsmateriaal er bij de aanvraag
+moet worden toegevoegd als je 18- of als je 18+ bent. Als je op 1 augustus nog geen 18 bent dan kun je
+gebruik maken van het mbo-studentenfonds 18-.
+
+Een aanvraagformulier voor het mbo-studentenfonds is te verkrijgen bij de trajectbegeleider van de
+opleiding.
+
+Meer informatie: https://www.rijnijssel.nl/overig/financi%C3%ABn “
+
+Pagina 69/91
+
+13. Verzekeringen
+
+13.1 Inleiding
+
+Rijn IJssel sluit voor haar studenten aanvullende verzekeringen af. In eerste instantie zal de eigen
+verzekering moeten worden aangesproken. Is een onderdeel niet verzekerd dan zal de door Rijn IJssel
+afgesloten verzekering in werking treden. De verzekering bepaalt of er wel of niet wordt uitbetaald.
+
+Pagina 70/91
+
+13.2 Ziektekostenverzekeringen
+
+De ziektekostenverzekering blijft ook tijdens de stage een zaak van jezelf of je ouder(s)/verzorgers.
+Indien je studiefinanciering (volgens WSF) ontvangt, ben je op een eigen ziektekostenverzekering
+aangewezen. In geval van eigen risico kan er voor dit bedrag een beroep gedaan worden op de
+ongevallenverzekering, dit ter beoordeling van de verzekering (zie boven).
+
+Pagina 71/91
+
+13.3 Verzekeringen bij stage in het buitenland
+
+Wanneer je in het buitenland stage loopt, is er de mogelijkheid een speciale aanvullende verzekering af
+te sluiten: Insurance Passport for Students. Vraag je loopbaancoach om meer informatie of ga naar:
+http://www.studentsinsured.com.
+
+Pagina 72/91
+
+14. Jouw mening telt
+
+14.1 De studentenraad
+
+De Studentenraad is het officiële medezeggenschapsorgaan van de ongeveer 11.500 studenten van
+Rijn IJssel. De Studentenraad is een belangrijk orgaan dat namens jou invloed kan uitoefenen op het
+beleid van Rijn IJssel. De Studentenraad wil op een professionele, betrokken en prettige manier een
+constructieve bijdrage leveren aan de verdere positieve ontwikkeling van Rijn IJssel. Doel is de
+belangen van studenten van Rijn IJssel te behartigen.
+
+De Studentenraad vindt het belangrijk dat jij altijd een centrale plek inneemt binnen het beleid van Rijn
+IJssel. Uitstekend onderwijs, goede begeleiding, een veilig leerklimaat, een veilige leeromgeving en
+heldere, duidelijke informatievoorziening zijn belangrijke zaken voor studenten.
+
+De Studentenraad praat en denkt mee met Rijn IJssel over onder andere de volgende
+onderwerpen:
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+de wijze waarop studenten informatie krijgen over de inhoud, planning en organisatie van het
+onderwijs en de examens het studentenstatuut en de huisregels binnen Rijn IJssel;
+
+de hoofdlijnen van de begroting;
+
+het leermiddelen- en schoolkostenbeleid:
+
+de hoogte en besteding van de vrijwillige bijdrage van studenten;
+
+de beroeps- en klachtenregeling voor studenten;
+
+de inhoud van het studentenstatuut, onderwijs en examenregeling, en de praktijkovereenkomst;
+
+het toelatingsbeleid;
+
+regels op het gebied van veiligheid, gezondheid en welzijn voor studenten;
+
+inkrimping van opleidingen en samenwerkingen met andere scholen;
+
+de werkomstandigheden en voorzieningen voor studenten;
+
+de rol van de studenten bij de interne kwaliteitszorg en zelfevaluatie.
+
+Wil je meer weten van het werk van de studentenraad neem dan contact op met de studentenraad, email:
+studentenraad@rijnijssel.nl
+
+Pagina 73/91
+
+15. Voorzieningen
+
+15.1 Servicedesk
+
+Op iedere (grote) locatie van Rijn IJssel, meestal vlak bij de ingang, is een servicedesk aanwezig. De
+medewerkers van de Servicedesk zorgen voor ontvangst en verwijzing van bezoekers, beantwoording
+van de telefoon, nemen ziekmeldingen in ontvangst en verwijzen door naar de servicedienst van de
+locatie.  De servicedesk is bereikbaar via: 026 3129660.
+
+Pagina 74/91
+
+15.2 Servicediensten
+
+Medewerkers als conciërges, roostermakers, medewerkers van de servicedesk en medewerkers van
+administratieve diensten zorgen er mede voor dat het onderwijs zo goed mogelijk verloopt. Zijn er
+storingen in het gebouw of heb je vragen over bijvoorbeeld koffieautomaten, printers, roostering en
+kapotte verlichting in het gebouw? Stuur dan een mail naar de servicedesk van je locatie:
+servicedesk.veluwestraat@rijnijssel.nl.
+
+Pagina 75/91
+
+15.3 Studentadministratie
+
+De studentenadministratie is verantwoordelijk voor het registreren van studenten. Denk aan aanmelden,
+inschrijven en uitschrijven bij een opleiding. Ook ondersteunt de studentenadministratie het BPV-bureau
+en het examenbureau. Op alle (grotere) locaties van Rijn IJssel is een studentenadministratie aanwezig.
+
+Voor jouw opleiding is dit het e-mailadres: sa-eu@rijnijssel.nl.
+
+Pagina 76/91
+
+15.4 Examenbureau
+
+Het examenbureau is de administratieve ondersteuning van het onderwijs team en de examencommissie
+en zorgt ervoor dat examens kunnen worden afgenomen en dat resultaten in People Soft  worden
+ingevoerd.
+
+Het examenbureau is bereikbaar op het e-mailadres:  examenbureau.ecuv@rijnijssel.nl.
+
+Pagina 77/91
+
+15.5 BPV-bureau
+
+Op het bpv bureau werken de bpv coördinatoren en stagebegeleiders op het moment dat zij geen
+bezoeken afleggen. Zij plannen hier de stage, maar verwerken ook de resultaten van de
+begeleidingen.
+
+Pagina 78/91
+
+15.6 Roosterbureau
+
+Op het roosterbureau werken de roostermakers. Zij maken het rooster en werken in opdracht
+van het onderwijsteam. Het roosterbureau heeft de volgende medewerker(s):
+
+-  Anita Dielen
+
+-  Mieke Peet
+
+Het roosterbureau is niet bereikbaar voor studenten.
+
+Pagina 79/91
+
+15.7 Kantine
+
+De kantine is de ruimte waar je alleen of samen met klasgenoten kunt pauzeren. Je kunt een keuze
+maken uit een ruim assortiment van broodjes, warme dranken, frisdranken, snoepgoed en eventueel
+warme maaltijden. Binnen de school kun je uitsluitend betalen met pinpas. In de kantine kun je eten en
+drinken. Elders in het gebouw is dit niet toegestaan. Deze ruimten en de entree van de school zijn ons
+visitekaartje. We willen ze graag netjes houden. Het spreekt voor zich, dat iedereen zijn eigen rommel
+opruimt.
+
+Pagina 80/91
+
+15.8 Kluisjes
+
+Om je spullen veilig op te bergen kun je op school een kluisje in bruikleen krijgen. Dit is gratis.
+
+Pagina 81/91
+
+15.9 Printen/kopiëren
+
+Op elke locatie kun je printen en kopiëren. Daarvoor heb je je Rijn IJssel-account nodig. Iedere student
+heeft een netwerktegoed van Rijn IJssel. Het docententeam van jouw opleiding kan aangeven welke
+printers je kunt gebruiken.
+
+Printen
+
+Rijn IJssel maakt gebruik van Follow-me printing. Met dit systeem worden printopdrachten in een
+digitale wachtrij gezet. Pas zodra de printopdracht met een pasje bij de kaartlezer van een
+‘multifunctional’ wordt vrijgegeven, wordt de opdracht afgedrukt. Voordat je je printopdracht kunt
+activeren, moet je eerst je pasje of ‘druppel’ (met chip) eenmalig koppelen aan je Rijn IJssel-account.
+Dit doe je met behulp van de kaartlezer bij de ‘multifunctional’. De kaartlezer accepteert alle media
+voorzien van een MIFARE-chip. Dit type chip vind je onder andere in je schoolpas, de OV-kaart,
+bibliotheekpas, etc.
+
+Pagina 82/91
+
+15.10 Fietsen en bromfietsstalling
+
+Als je met de fiets of bromfiets naar school komt, plaats je deze in de stalling. Deze is
+gelegen op het plein, net voorbij de hekken. Er is geen mogelijkheid tot opladen.
+
+Pagina 83/91
+
+15.11 Parkeren
+
+Parkeren op het plein is alleen toegestaan voor personeel van Rijn IJssel. Studenten die met de auto
+naar school komen kunnen aan de zijkant of in de straat parkeren.
+
+Pagina 84/91
+
+15.12 Mededelingen
+
+Mededelingen publiceren we op verschillende plaatsen in de gebouwen op de monitoren.
+
+Pagina 85/91
+
+15.13 Liften in het gebouw
+
+Indien er liften in het gebouw zijn, dan zijn deze in principe bedoeld voor het vervoer van materialen door
+de facilitaire dienst. Als student mag je hier alleen gebruik van maken als je een (tijdelijke) beperking
+hebt. Je vraagt hiervoor toestemming bij de servicedesk.
+
+Pagina 86/91
+
+16. De veilige school
+
+16.1 Inleiding
+
+Rijn IJssel wil dat studenten, medewerkers en bezoekers onze school ervaren als veilige omgeving. Een
+veilige school maken we samen. Een voorwaarde voor democratisch samenleven is dat mensen elkaar
+respecteren. Respect is een voorwaarde voor veiligheid: wie zich in zijn omgeving (thuis, op school of
+op de werkplek) gerespecteerd weet en zich gezien en gehoord voelt, kan zich ook veilig voelen. De
+school wordt gekenmerkt door een grote diversiteit aan persoonlijkheden, talenten, culturen en
+ambities. Deze diversiteit maakt ons rijker en de omgeving levendiger, verschillen worden geaccepteerd
+en positief gewaardeerd zolang deze anderen niet schaden. Zo ontstaat er een klimaat van tolerantie
+gebaseerd op gevoelens van veiligheid. Hier hoort een cultuur bij waarin we elkaar aanspreken op
+gewenst en ongewenst gedrag. Ongewenst gedrag is bijvoorbeeld discriminatie, (seksuele) intimidatie,
+geweld, verbale of lichamelijke agressie en (digitaal) pesten. De sfeer die we willen wordt gekenmerkt
+door tolerantie, vriendelijkheid en zorgzaamheid.
+
+https://www.rijnijssel.nl/extra-paginas/vertrouwenspersonen/
+
+Bij Rijn IJssel hebben we medewerkers die zich hebben gespecialiseerd op het gebied van veiligheid.
+Denk hierbij aan BHV-ers, EHBO-ers, beveiligers, vertrouwenspersonen en de coördinator Sociale
+Veiligheid & Integriteit.
+
+Om onveilige situaties adequaat en zorgvuldig aan te kunnen pakken, situaties goed in te schatten en
+vervolgens de juiste maatregelen te nemen, hebben we hulp nodig van iedereen. Ook van jou! Voel jij je
+onveilig of merk je een onveilige situatie op? Meld dit dan zo snel mogelijk bij een medewerker, want
+samen zorgen we voor een veilige school.
+
+Pagina 87/91
+
+16.2 Gedragsregels
+
+Rijn IJssel hanteert gedragsregels. De regels gelden voor alle medewerkers, studenten en
+bezoekers:
+
+Pagina 88/91
+
+16.3 Vertrouwenspersonen
+
+Wij accepteren geen ongewenst gedrag. Je moet je veilig voelen binnen school. Binnen onze school
+werken veel studenten en medewerkers met elkaar samen. Pesten, (seksuele) intimidatie, geweld en
+discriminatie zouden niet voor moeten komen. Als het toch voorkomt, willen we er in ieder geval voor
+zorgen dat het zo snel en zo goed mogelijk wordt aangepakt. Bij situaties van ongewenst gedrag kun je
+terecht bij één van de vertrouwenspersonen van Rijn IJssel.
+
+De vertrouwenspersoon:
+
+-
+
+-
+
+-
+
+-
+
+is het eerste aanspreekpunt bij kwesties als (seksuele) intimidatie, pesten, racisme en andere
+vormen van discriminatie, en (fysieke of verbale) agressie of geweld;
+
+zal je opvangen, te woord staan en elke melding aanhoren, zal je adviseren en als dat nodig is,
+doorverwijzen. Vertrouwen en zorgvuldig werken zijn hierbij erg belangrijk;
+
+kan je bijstaan bij het indienen van een klacht;
+
+doet niets zonder jouw toestemming. Echter in situaties waarin sprake is van crimineel gedrag
+(bijvoorbeeld bedreiging, stelen) geldt er voor de vertrouwenspersonen een meldplicht.
+
+Voor meer informatie over of het maken van een afspraak met de vertrouwenspersoon, verwijzen we je
+graag naar: https://www.rijnijssel.nl/extra-paginas/vertrouwenspersonen/
+
+https://www.rijnijssel.nl/media/1764/170717-herzien-a5foldervertrouwenspersonen141117.pdf
+
+Pagina 89/91
+
+16.4 Bedrijfshulpverlening
+
+Binnen Economie, Uiterlijke Verzorging, CIOS, Veiligheid is een schoolnoodplan aanwezig. In geval van
+calamiteiten, brand, bommelding of een dreiging van buiten treedt dit noodplan in werking. Er zijn
+bedrijfshulpverleners (BHV) aangewezen die er voor zorgen dat in zulke gevallen de zaken goed
+geregeld zijn. Zij hebben een opleiding gevolgd, onder andere op het gebied van EHBO en
+brandpreventie. Zij weten hoe bijvoorbeeld gehandeld moet worden bij de ontruiming van het gebouw.
+Bij de bedrijfshulpverleners kun je ook terecht voor EHBO. Bij de receptie is bekend wie de
+bedrijfshulpverleners zijn.
+
+  In geval van ontruiming gelden voor studenten de volgende instructies:
+
+1.  Raak niet in paniek, luister goed naar de instructies. Instructies kunnen worden gegeven door
+brandweer, politie, bedrijfhulpverleners, docenten en onderwijsondersteunend personeel.
+
+2.  Verlaat het gebouw volgens de aangegeven vluchtwegen. Gebruik bij een ontruiming nooit de
+
+lift.
+
+3.  Gehandicapte studenten: maak aan je docent en medestudenten duidelijk hoe je het snelst
+
+naar buiten gebracht kunt worden.
+
+4.  Help zonodig een gehandicapte medestudent. Hij / zij weet zelf hoe dat het beste kan
+
+gebeuren.
+
+5.  Ga naar afgesproken verzamelplaats. Deze vind je buiten aan de achterkant van het
+
+gebouw. Je herkent de verzamelplaats aan het volgende teken:
+
+6.  Wacht op nadere instructies van de docent.
+7.  Het is verboden om tijdens een ontruimingsprocedure naar binnen te gaan om bijvoorbeeld
+
+je jas of tas op te halen.
+
+8.  Tijdens de ontruimingsprocedure is het niet toegestaan gebruik te maken van auto, scooter,
+brommer of fiets tenzij dit nadrukkelijk wordt opgedragen door personeel van de school of
+medewerkers van hulpverlenende instanties.
+
+9.  Zorg ervoor dat je bij een brand niet in de weg staat. Blijf op de verzamelplaats. Grote
+
+aantallen toeschouwers belemmeren een goede en snelle hulpverlening.
+
+Pagina 90/91
+
+Minimaal één keer per jaar wordt in het gebouw een oefening gehouden. We verwachten van de
+studenten volop medewerking bij deze oefening. De bedrijfshulpverleners hebben de leiding bij deze
+oefening. Zij zijn te herkennen aan felgekleurde hesjes. Je dient te allen tijde de instructies van de
+bedrijfshulpverleners op te volgen. In het gebouw is in elke gang aangegeven waar de nooduitgangen
+zijn. Verder vind je op plattegronden ook nog eens de (nood-)uitgangen. In de meeste ruimten hangen
+instructies, hoe te handelen in geval van nood. Hieronder zie je zo'n instructie: 'Wat te doen bij
+Ongeval, Brand of Ontruiming.'
+
+Pagina 91/91
+

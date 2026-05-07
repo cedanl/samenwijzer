@@ -1,0 +1,285 @@
+         Opleidingsplanning
+
+SECTOR Economie en Ondernemerschap
+
+Opleiding  Beveiliger 2
+
+CREBO      25690
+
+Leerweg    BOL
+
+Cohort     2025
+Opleiding   Beveiliger 2         OPLEIDINGSGEGEVENS
+Studieduur  2 jaar
+Niveau      2                                                    SECTOR
+Crebo       25690                                Economie en Ondernemerschap
+Leerweg     BOL
+Cohort      2025
+
+Fasering van de opleiding
+
+                             Reguliere  Introductie-  BPV (indien                     Toelichting
+                             lesweken   of toetsweek
+                                                        gepland)   blok 1: intro, studie
+                                  8            2                   blok 2: project, snuffelstage
+Leerjaar 1  Blok 1                             2                   blok 3: project, snuffelstage
+            Blok 2                8            2                   blok 4: 2x studie, 1x afrondingsweek
+            Blok 3                             3
+            Blok 4                8
+
+                                  6
+
+            Effectieve lesweken         30
+
+            Toetsweken e.d.             9
+
+            Totaal / blok               39
+
+Leerjaar 2  Blok 1           Reguliere  Toetsweek     BPV (indien                     Toelichting
+            Blok 2           lesweken       e.d.
+            Blok 3                           2          gepland)   blok 1: intro, studieweek 10
+            Blok 4                8          2                     blok 2: studieweek 5, studieweek 10
+                                             2             9       blok 3: studieweek 5, studieweek 10
+                                  8          3             9       blok 4: 2x studie, 1x afrondingsweek
+                                                           9
+                                  8                        0
+
+                                  6
+
+            Effectieve lesweken         30
+
+            Toetsweken e.d.             9
+
+            Totaal / blok               39
+
+                             Reguliere  Toetsweek     BPV (indien             Toelichting
+                             lesweken       e.d.
+                                                        gepland)
+
+Leerjaar 3  Blok 1
+            Blok 2
+            Blok 3
+            Blok 4
+
+            Effectieve lesweken         0
+
+            Toestweken e.d.             0
+
+            Totaal / blok               0
+
+                             Reguliere  Toetsweek     BPV (indien             Toelichting
+                             lesweken       e.d.
+                                                        gepland)
+
+Leerjaar 4  Blok 1
+            Blok 2
+            Blok 3
+            Blok 4
+
+            Effectieve lesweken         0
+
+            Toetsweken                  0
+
+            Totaal / blok               0
+                                     Lessentabel                 LEERJAAR 1
+
+                Reguliere                                                Opleiding: Beveiliger 2
+                onderwijsactiviteiten = ROOSTER
+                Wet- en regelgeving basis                                 Leerjaar 1
+                Veiligheid en beveiliging basis
+                Waarnemen basis                                        Periode 1 Periode 2 Periode 3 Periode 4
+                Prakijk beveiligen
+                Fit en vitaal                     Osiris code (F....)  uren/     totaal  uren/     totaal  uren/     totaal  uren/     totaal  Totaal                           Studiepunten
+                Hospitality                       FSA2401-WRB          week              week              week              week              /leerjr.                                8
+                Communicatieve vaardigheden       FSA2401-VBB                                                                                                                          8
+                Weerbaarheid praktijk             FSA2401-WAB                    0                 0 6,0 48 6,0 36                                  84                                 4
+                Mediawijsheid                     FSA2401-PBE                                                                                       96                                 8
+                Studieloopbaanbegeleiding         FSA2401-FEV          6,0 48 6,0 48                                 0                 0            24                                 6
+                Persoonlijke vaardigheden         FSA2401-HOS                                                                                       60                                 1
+                                                  FSA2401-COM                    0 3,0 24                            0                 0            21                                 1
+                Keuzedeel praktijk                FSA2401-WEE                                                                                                                          2
+                Keuzedeel theorie                 FSA2401-MED          2,0 16 2,0 16 2,0 16 2,0 12                                                   8                                 1
+                                                  FSA2401-SLB                                                                                        8                                 0
+                BPV                               FSA2401-PEV          1,5 12                      0                 0 1,5 9                         9                                 4
+                Nederlands generiek 2F                                                                                                               8
+                Rekenen n2                        FSA2401-KDP                    0                 0 1,0 8                             0            60                                 15
+                                                  FSA2401-KDT                                                                                       30
+                Burgerschap n2                                                   0 1,0 8                             0                 0             0                                 8
+                Totaal /blok                      FSA2401-BPV                                                                                       32                                 8
+beroepsgericht                                    FSA2401-NED2                   0                 0                 0 1,5 9                         8
+                                                  FSA2401-REK2                                                                                       0                                 8
+                                                                       1,0 8                       0                 0                 0             0                                82
+                                                  FSA2401-BUR2                                                                                       0
+                                                                       2,0 16 2,0 16 2,0 16 2,0 12                                                   0
+                                                                                                                                                    60
+                                                                       1,0 8 1,0 8 1,0 8 1,0 6                                                      60
+                                                                                                                                                     0
+                                                                                 0                 0                 0                 0            30
+                                                                                                                                                598,0
+                                                                                 0                 0 4,0 32                            0
+
+                                                                                 0                 0 1,0 8                             0
+
+                                                                                 0                 0                 0                 0
+
+                                                                                 0                 0                 0                 0
+
+                                                                                 0                 0                 0                 0
+
+                                                                                 0                 0                 0                 0
+
+                                                                       2,0 16 2,0 16 2,0 16 2,0 12
+
+l&b avo                                                                2,0 16 2,0 16 2,0 16 2,0 12
+
+                                                                                 0                 0                 0                 0
+
+                                                                       1,0 8 1,0 8 1,0 8 1,0 6
+
+                                                                       18,5 148,0 20,0 160,0 22,0 176,0 19,0 114,0
+
+                Incidentele                       FSA2401-INTRO        Uren/blok         Uren/blok         Uren/blok         Uren/blok         Totaal                           Studiepunten
+                onderwijsactiviteiten             FSA2401-STU             20,0                                                  20,0           /leerjr.                                0
+                Introductieweek                   FSA2401-PJW             15,0              12,0              12,0              10,0                                                   0
+                Studieweek                        FSA2401-SST                               12,0              12,0               30              20,0                                  8
+                Projectweek: sport en bewegen     FSA2401-EXA              35               10,0              10,0                               35,0                                 10
+                Snuffelstage                                                                                                                     24,0                                  0
+                Examens                                                                      34                34                                24,0
+                                                                                                                                                 30,0                                 18
+                Totaal (incidenteel)
+                                                                                                                                                   0,0
+                                                                                                                                                   0,0
+                                                                                                                                                133,0
+
+                Verantwoording                                         Blok 1            Blok 2            Blok 3            Blok 4            Totaal                           100
+                Begeleide onderwijsuren
+                Uren BPV                                               183               194               210               144               731
+                Uren onderwijstijd
+                Uren zelfstudie (indicatief)                                  0                 0                 0                 0                                        0
+
+                                                                       183               194               210               144               731
+
+                                                                       218               231               250               171               869
+
+                Toelichting: De uren onderwijstijd bestaan uit: 1) begeleide onderwijsuren én 2) uren beroepspraktijkvorming (BPV).
+                Bij de begeleide onderwijsuren gaat het om door de school aangeboden onderwijs dat wordt verzorgt door een docent. Bij uren BPV gaat het om het leren in de
+                praktijk bij een bedrijf of een instelling. Bij zelfstudie gaat het om leeractiviteiten zoals huiswerk.
+                                     Lessentabel                            LEERJAAR 2
+
+                Reguliere                                                            Opleiding: Beveiliger 2
+                onderwijsactiviteiten = ROOSTER (donderdag)
+                Specifiek rapporteren basis 3x1                                      Leerjaar 2
+                Doelmatig optreden basis
+                Digitale vaardigheden basis                                       Periode 5 Periode 6 Periode 7 Periode 8
+                Studieloopbaanbegeleiding (BPV werkboek)
+                Beroepsgericht Engels                        Osiris code (F....)  uren/  totaal  uren/  totaal  uren/  totaal  uren/     totaal  Totaal    Studiepunten
+                Keuzedeel 2                                  FSA2402-SRB          week           week           week           week              /leerjr.         8
+                                                             FSA2402-DOB                                                                                          10
+                BPV 3 dagen per week                         FSA2402-DVB          3,0 24 3,0 24                         0                0            48          15
+                Nederlands generiek 2F                       FSA2402-SLB                                                                              64          0
+                Rekenen                                      FSA2402-ENGB                 0              0 2,0 16 8,0 48                              30          8
+                                                             FSA2402-KD                                                                               52          15
+                Totaal /blok                                                      1,0 8 1,0 8 1,0 8 1,0 6                                             14
+                                                             FSA2402-BPV                                                                                         31
+                                                             FSA2402-NED2         1,0 8 2,0 16 2,0 16 2,0 12                                           0          8
+                                                             FSA2402-REK2                                                                             28          0
+                                                                                          0              0 1,0 8 1,0 6
+                                                                                                                                                       0         95
+                                                                                          0              0              0                0             0
+                                                                                                                                                       0
+                                                                                          0              0 2,0 16 2,0 12                               0
+                                                                                                                                                       0
+beroepsgericht                                                                            0              0              0                0             0
+                                                                                                                                                       0
+                                                                                          0              0              0                0             0
+                                                                                                                                                       0
+                                                                                          0              0              0                0             0
+                                                                                                                                                    648
+                                                                                          0              0              0                0            32
+                                                                                                                                                       8
+                                                                                          0              0              0                0             0
+                                                                                                                                                       0
+                                                                                          0              0              0                0        924,0
+
+                                                                                          0              0              0                0
+
+                                                                                          0              0              0                0
+
+                                                                                          0              0              0                0
+
+                                                                                          0              0              0                0
+
+                                                                                  24,0 216 24,0 216 24,0 216                             0
+
+                                                                                  2,0 16 2,0 16                         0                0
+
+l&b avo                                                                           1,0 8                  0              0                0
+
+                                                                                          0              0              0                0
+
+                                                                                          0              0              0                0
+
+                                                                                  32,0 280,0 32,0 280,0 32,0 280,0 14,0 84,0
+
+                Incidentele                                  FSA2402-INTRO        Uren/blok      Uren/blok      Uren/blok      Uren/blok         Totaal    Studiepunten
+                onderwijsactiviteiten                        FSA2402-ZST10                                                                       /leerjr.
+                Introductieweek                              FSA2402-EXA             20,0           40,0           40,0           60,0                            5
+                Studieweek                                   FSA2402-EXC             20,0           20,0           30,0           30,0             20,0           0
+                Examens                                                              10,0           20,0           20,0           20,0            160,0           0
+                Excursies                                                            20,0            80             90            110                             0
+                Totaal (incidenteel)                                                  70                                                           90,0           5
+                                                                                                                                                   80,0
+                Verantwoording                                                                                                                    350,0
+                Begeleide onderwijsuren
+                Uren BPV                                                          Blok 1         Blok 2         Blok 2         Blok 4            Totaal    100
+                Uren onderwijstijd
+                Uren zelfstudie (indicatief)                                      134            144            154            194               626
+
+                                                                                  216            216            216                   0          648
+
+                                                                                  350            360            370            194               1274
+
+                                                                                  70             75             80             101               326
+                VERANTWOORDING
+
+Verantwoording
+
+ Opleiding                                      Beveiliger 2
+Studieduur
+                                 2 jaar
+     Niveau                      2
+   Leerweg                       BOL
+
+Begeleide onderwijsuren          Leerjaar 1     Leerjaar 2    Leerjaar 3     Leerjaar 4
+Uren BPV                                  731            626              0              0
+Uren onderwijstijd                           0           648              0              0
+Uren zelfstudie (indicatief)              731                             0              0
+                                          869          1274
+                                                         326         1600           1600
+
+BOL                                             Gepland       Wettelijk
+                                                  731          minimaal 700
+Begeleide onderwijsuren eerste jaar               1357         minimaal 1250
+Begeleide onderwijsuren (totaal)                  648          minimaal 450
+Uren BPV (totaal)                                 2005         minimaal 2000
+Totale onderwijstijd (begeleid + bpv)
+
+BBL                              Leerjaar 1 Leerjaar 2 Leerjaar 3 Leerjaar 4
+
+niet van toepassing
+
+Begeleide uren (200/jaar)
+Uren bpv (610/jaar)
+Onderwijstijd totaal (850/jaar)
+
+Entree                           Gepland        Wettelijk
+                                                     600
+niet van toepassing                                 1000
+
+Begeleide onderwijsuren
+Onderwijstijd
+
+Indien in het laatste jaar van de opleiding de studieduur minder is dan 10 maanden moeten de
+normen voor het aantal begeleide onderwijsuren en klokuren bpv evenredig worden verlaagd
+(dit gebeurt niet automatisch!).
+

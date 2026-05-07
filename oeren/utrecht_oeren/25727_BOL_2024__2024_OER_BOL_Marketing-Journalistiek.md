@@ -1,0 +1,644 @@
+Onderwijs- en examenreglement (OER)
+
+Inhoudsopgave
+
+Inleiding ........................................................................................................................................................... 2
+
+Onderwijs ......................................................................................................................................................... 2
+
+Kerntaken & werkprocessen ................................................................................................................................ 2
+
+Visie op onderwijs en examinering ...................................................................................................................... 3
+
+Het onderwijsprogramma ................................................................................................................................... 5
+
+Inspanningsverplichting Loopbaanoriëntatie en begeleiding (LOB)/Burgerschap .............................................. 7
+
+Bindend studieadvies .......................................................................................................................................... 8
+
+Versnelling ........................................................................................................................................................... 9
+
+Examinering ..................................................................................................................................................... 9
+
+Examenplan ......................................................................................................................................................... 9
+
+Vrijstellingen ....................................................................................................................................................... 9
+
+Diplomering ..................................................................................................................................................... 9
+
+MBO Verklaring ................................................................................................................................................. 10
+
+[CvB/2024-058 14/01]
+
+Inleiding
+Je leest nu de OER die hoort bij jouw opleiding Marketing en Communicatie Specialist. Hierin kun je
+terugvinden hoe deze opleiding er uit gaat zien, welk onderwijs je wanneer gaat volgen en welke
+examens je gaat doen. De algemene informatie over het studeren bij MBO Utrecht vind je op de
+website https://www.mboutrecht.nl/praktisch/
+
+Deze OER hoort bij de opleiding:
+
+:   Marketing en Communication Specialist
+
+Naam
+Crebonummer   :  25727
+:  4
+Niveau
+Leerweg
+:  BOL
+Opleidingsduur :  3 jaar
+:  2024
+Cohort
+
+Het kwalificatiedossier dat hoort bij deze opleiding vind je hier: http://kwalificaties.s-bb.nl/. Zoek op
+Marketing en Communication Specialist.
+
+Onderwijs
+
+Kerntaken & werkprocessen
+Hieronder zie je uit welke kerntaken en werkprocessen dit kwalificatiedossier is opgebouwd.
+
+Basiskerntaak B1-K1: Voert taken uit binnen de zakelijke dienstverlening
+
+B1-K1-W1: Treedt op als aanspreekpunt voor klanten, beantwoordt standaardvragen, verstrekt
+informatie, neemt klachten/problemen in ontvangst en verwijst indien van toepassing door, voert de
+bijbehorende receptie- en administratieve werkzaamheden uit.  Het contact kan zowel fysiek,
+telefonisch als online zijn.
+B1-K1-W2: Verzorgt zakelijke communicatie, waaronder e-mails en telefoonnotities, maakt notities
+van overleggen en gevoerde gesprekken, verzamelt en controleert benodigde gegevens/informatie,
+vult eenvoudige formulieren in.
+B1-K1-W3: Verwerkt gegevens, draagt bij aan het bijhouden van dossiers, klantrelatiebestand,
+financiële administratie en ontsluiten van managementinformatie, voert ze in in de systemen van de
+organisatie en checkt de ingevoerde gegevens.
+B1-K1-W4: Werkt aan producten/opdrachten binnen geld-, goederen- en informatiebeweging, neemt
+deel aan overleggen en communiceert helder bij de overdracht van werkzaamheden/diensten in de
+keten van de zakelijke dienstverlening, ondersteunt bij planning en organisatie van activiteiten, het
+opstellen van plannen en de presentatie ervan.
+
+Profielkerntaak P6-K1: Verzorgt marketing en (interne) communicatietrajecten
+
+P6-K1-W1: Levert in opdracht van het lijnmanagement of de manager/adviseur management-
+informatie aan met betrekking tot bedrijfsprocessen, signaleert opvallende zaken en attendeert het
+management hierop, maakt (periodiek) rapportages en stelt hierbij, indien nodig, kengetallen en/of
+andere managementinformatie op.
+P6-K1-W2: Verzorgt marketing- en communicatieactiviteiten, inventariseert en analyseert regelmatig
+de behoeften/wensen en trekt conclusies ten aanzien van de doelgroep en de boodschap, komt met
+voorstellen voor het ontwikkelen van een product of een activiteit (offline en/of online), maakt een
+inschatting van de benodigde tijd en budget, bespreekt zijn voorstellen met de leidinggevende/
+opdrachtgever, ontwikkelt het materiaal op basis van de gemaakte afspraken.
+P6-K1-W3: Voert marktonderzoeken uit, maakt een marktonderzoeksopzet, formuleert
+probleemstelling, hoofd- en deelvragen, kiest een onderzoeksmethodiek, benoemt de projectfasen,
+brengt de benodigde mensen en middelen in kaart, formuleert de streefdata, verzamelt, verwerkt en
+interpreteert de onderzoeksresultaten, trekt conclusies, stelt een rapport op en bespreekt dit met de
+opdrachtgever.
+
+[CvB/2024-058 14/01]
+
+Generieke onderdelen:
+Nederlands: 3F
+Rekenen: 3F
+Loopbaan & Burgerschap
+Engels Lezen en Luisteren: B1
+Engels Schrijven, Spreken & Gesprekken: A2
+
+Deze opleiding volg je op de Onderwijsboulevard, Australiëlaan 25 in Utrecht Kanaleneiland
+
+De lessen vinden plaats tussen 9.30 uur ’s ochtends en 16.15 uur ’s middags.
+
+Standaard duurt deze opleiding 3 jaar. Dat is de beste voorbereiding op werken of doorstuderen. Voor
+sommige studenten kan het beter zijn om de opleiding in 2 leerjaren af te ronden. We noemen deze
+optie het Maatwerktraject. Alle studenten mogen proberen voor het maatwerktraject in aanmerking te
+komen. In leerjaar 3 na periode 3 zullen we bekijken of het ook haalbaar voor je is en/of het bij je past.
+Je volgt na akkoord hetzelfde onderwijsprogramma als alle andere studenten, alleen moet je eerder
+zelfstandig hebben voldaan aan de eisen om deel te mogen nemen aan de examens.
+
+Na deze opleiding ben je toelaatbaar op alle HBO opleidingen. Veel door onze studenten gekozen
+HBO vervolgopleidingen zijn:
+
+Commerciële Economie, Marketing & Communicatie, Marketing & Publishing, Reclame, Digitale
+Media en Communicatie, Communicatiemanagement, Management, Economie & Recht (MER),
+Creative Business, International Marketing Management, International Communications & Media,
+International Business & Management, International Business & Languages, Advanced Business
+Creation, Bedrijfskunde, Bedrijfseconomie, Vastgoed & Makelaardij, Nieuws & Media, Redactie &
+Mediaproductie, Informatie & Media, Media, Journalistiek.
+
+De schoolkosten voor deze opleiding vind je terug op de website mboutrecht.nl.
+Welke leermiddelen je moet aanschaffen vind je vanaf 1 juli op mboutrecht.nl/startschooljaar, vanaf 1
+augustus zijn deze middelen via deze link ook aan te schaffen.
+
+Visie op onderwijs en examinering
+
+Persoonlijk
+Bij ons mag je zijn wie je bent en mag je rekenen op respect, persoonlijke aandacht en geborgenheid.
+Wij bieden op de marketingopleiding een kleinschalige leeromgeving, waardoor je je snel betrokken
+en verbonden zult voelen. Dit doen we met betrokken docenten en medewerkers die je persoonlijk
+kennen en die geloven in jou.
+
+Ambitieus
+We dagen je uit het beste uit jezelf te halen. We leren je omgaan met uitdagingen: in je beroep als
+medewerker marketing en communicatie, in de maatschappij en in je persoonlijke leven. Je krijgt
+uitstekende mogelijkheden om jouw talenten optimaal te ontwikkelen. Er zijn verschillende
+doorstroom- en versnellingsmogelijkheden. Hiermee leg je een stevige basis voor jouw verdere
+loopbaan of vervolgopleiding.
+
+Ondernemend
+We helpen je vaardigheden te ontwikkelen om om te kunnen gaan met een maatschappij en een
+beroepsveld die voortdurend veranderen. In onze opleiding is veel aandacht voor ondernemerschap
+en praktijkervaring bij vakken als Project en Bizznizz en bij de keuzedelen. Zo kan jij later het verschil
+maken in je werk, in je wijk en de wereld.
+
+Meerdere routes naar de doelen (keuzevrijheid en flexibilisering)
+In de opbouw van onze lesprogramma’s zitten, naast de generieke en kerntaakonderdelen,
+verbredende en verdiepende leerlijnen met als doel om aan te sluiten op jouw beroeps- en
+
+[CvB/2024-058 14/01]
+
+studiedoelen in de marketingcommunicatie. Het is echter goed mogelijk dat je er na een aantal weken
+of maanden achter komt dat de gekozen richting niet de juiste is voor jou. Ons onderwijs biedt de
+mogelijkheid om dan andere keuzes te maken.
+
+Aandacht voor pro-activiteit en intrinsieke motivatie
+Het uitgangspunt is dat we jou centraal zetten in het onderwijs: wat heeft hij/zij nodig om zichzelf een
+stap verder te brengen. Om die stappen te kunnen nemen is er een grote mate van pro-activiteit en
+intrinsieke motivatie nodig. We stimuleren je om je eigen keuzes te maken en daarmee aan te sluiten
+op jouw behoeftes. We bieden maatwerk waardoor je de opleiding versneld kunt doorlopen of juist een
+half jaar extra de tijd krijgt om het eerste jaar alsnog succesvol af te ronden. Wij streven ernaar om jou
+gedurende de tijd dat je bij ons bent een steeds grotere verantwoordelijkheid te geven voor je eigen
+ontwikkeling. Waar wij je in leerjaar 1 nog precies vertellen wat wij van je verwachten, laten wij je in de
+leerjaren daarna steeds vrijer om zelf initiatieven te nemen en steeds meer eigenaar van je eigen
+ontwikkeling te worden. Het plannen en organiseren van een steeds grotere zelfredzaamheid van
+onze studenten is iets waar volop aandacht voor is in ons 3-jarige onderwijsprogramma. Vooral
+leerjaar 1 bij het vak Project en in leerjaar 2 en 3 bij Bizznizz krijg je alle kans om verantwoordelijkheid
+te nemen en zelf de regie in handen te nemen.
+
+Andere manieren van beoordelen (proces)
+Wij geloven in onderwijs waarbij de cultuur van een 5,5 weliswaar een studiepunt oplevert, maar niet
+altijd genoeg is om je persoonlijke doelen te halen. We beoordelen jouw voortgang en ontwikkeling
+niet alleen op toetsmomenten en studiepunten, maar kijken naar je hele proces, ontwikkeling en
+leerdoelen. De examinering gaat steeds vaker via portfolio’s waarbij gedurende de gehele opleiding
+bewijsstukken verzameld kunnen worden, waarmee je jouw groei en ontwikkeling zichtbaar maakt.
+
+Invulling van de klassen, lessen en het schoolgebouw (functioneel en sociaal)
+We streven naar onderwijs dat functioneel en sociaal is. Waarbij op school zijn je iets oplevert wat je
+ergens anders niet had kunnen doen. Samenwerken, feedback geven en ontvangen, ontwikkeldoelen
+vaststellen en gastcolleges van professionals uit de praktijk volgen doen we op school.
+Bedrijfsbezoeken, excursies, studiereizen en workshops doen we buiten de deur. Lessen volgen,
+opdrachten uit het boek of klassikale opdrachten van de docent uitvoeren en luisteren naar de uitleg
+van de docent doen we vooral op school, maar kan soms ook op een andere locatie plaatsvinden.
+
+Het onderwijsteam
+Het team van jouw opleiding bestaat uit (onder andere) de volgende mensen:
+
+Teamleider(s): Hermine Reuchlin & Yelena de Wit.
+Taakdocent(en) zorg: Esther Montesinos & Samy Mahdar
+Verzuimmedewerker: Monique Bloemendaal
+Clusterdirecteur: Pascal Scholtius
+Team: Ons team bestaat uit circa 25 docenten, jong en iets minder jong, met verschillende culturele
+achtergronden en een goede mix van ervaring, nieuwkomers, professionals uit het bedrijfsleven,
+aangevuld met meerdere ondersteunende krachten.
+
+[CvB/2024-058 14/01]
+
+Het onderwijsprogramma
+
+Hieronder vind je het globale onderwijsprogramma voor deze opleiding. Je ziet daarin hoeveel
+begeleide onderwijstijd (BOT) en beroepspraktijkvorming (BPV) je volgt per studiejaar. Ook zie je
+globaal waar je aan werkt per periode.
+
+Algemeen Vormend Onderwijs
+Nederlands
+Engels
+Burgerschap
+Rekenen
+
+Ontwikkeling
+SLB
+Mentorgesprekken
+
+Marketing en Communicatie
+Marketing Basis
+Marketing Planning
+Project
+Marketing Calculaties
+Marktonderzoek
+(Online) Communicatie
+Bizznizz
+Digitale Vaardigheden
+
+BPV
+BPV is beroeps praktijk vorming, ook wel stage. De stage in leerjaar 2 is oriënterend, dat wordt ook
+wel een meeloopstage genoemd. Je loopt mee binnen een bedrijf op de Marketing afdeling of met in
+het bedrijf aanwezige marketeers om te onderzoeken of het beroep van marketeer je leuk lijkt. Je
+loopt 36 uur stage in de week gedurende een half jaar.  De stage in leerjaar 3 is beroepsgericht. Je
+werkt hier als marketing stagiaire binnen een bedrijf met een Marketing afdeling of meerdere
+marketeers in dienst, die je kunnen begeleiden bij het uitvoeren van marketing communicatie
+werkzaamheden.
+
+Het onderwijsprogramma van een mbo-opleiding bestaat uit begeleide onderwijstijd (BOT) en
+beroepspraktijkvorming (BPV). BOT-uren worden gegeven door de docenten. De BPV vindt plaats bij
+een erkend leerbedrijf. Het aantal uren voor jouw opleiding bedraagt minimaal: 3000, als volgt
+verdeeld over BOT en BPV:
+
+Studiejaar 1
+
+Totaal BOT
+
+Totaal BPV
+
+Studiejaar 2
+
+Totaal BOT
+
+Totaal BPV
+
+Studiejaar 3
+
+Totaal BOT
+
+Totaal BPV
+
+Studiejaar 2022/2023
+
+ 800
+
+ 0
+
+Studiejaar 2023/2024
+
+ 400
+
+ 640
+
+Studiejaar 2024/2025
+
+ 400
+
+ 640
+
+Totaal BOT jaar 1
+
+ 800
+
+800
+
+Vereist
+
+Gepland
+
+[CvB/2024-058 14/01]
+
+Totaal BOT jaar 1 t/m 3
+
+Totaal BPV jaar 1 t/m 3
+
+Keuzedelen
+
+ 1600
+
+ 1280
+
+1600
+
+1280
+
+De keuzedeelverplichting in studiebelastingsuren (SBU) voor jouw opleiding is:
+
+Kwalificatie
+
+Soort opleiding
+
+Keuzedeelverplichting
+(studielast)
+
+Niveau 4
+
+Middenkaderopleiding
+> 3 jaar
+
+720 klokuren
+
+Keuzedeelverplichting
+bij gemotiveerd
+afwijken (studielast)
+480 klokuren
+
+De keuzedelen zijn een verrijking van je opleiding. Het kan een verdieping of verbreding zijn van
+marketing en/of communicatie, het voorbereiden op doorstroom naar het HBO of gericht zijn op meer
+algemene onderwerpen zoals een extra taal, ondernemersvaardigheden of duurzaamheid. Op deze
+manier kun jij je binnen je opleiding al specialiseren in een bepaalde richting of je goed voorbereiden
+op een vervolgopleiding.
+
+Let op: De keuzedelen zijn bedoeld om flexibele opleidingsmodules aan te bieden die goed
+aansluiten bij de vraag van de arbeidsmarkt. MBO Utrecht behoudt zich het recht voor om gedurende
+je opleiding het aanbod van keuzedelen te wijzigen. Als student van MBO Utrecht kun je geen rechten
+ontlenen aan de aangeboden pakketten van keuzedelen. Tijdens de opleiding word je geïnformeerd
+over het aanbod keuzedelen en wanneer je de keuzedelen moet kiezen.
+
+De keuzedelen die je op deze opleiding kunt volgen (onder voorbehoud) zijn:
+
+Journalistiek 1, Journalistiek 2 en Journalistiek 3
+
+•
+•  Ondernemerschap
+•
+Internationalisering
+•  Algemene Economie
+•  Online Marketing
+•  e-Commerce (is in ontwikkeling)
+•  Spaans
+
+Je kiest tijdens je opleiding minimaal 3 keuzedelen, waarvoor je het examen succesvol dient af te
+ronden.
+
+[CvB/2024-058 14/01]
+
+Inspanningsverplichting Loopbaanoriëntatie en begeleiding (LOB)/Burgerschap
+
+Voor LOB en Burgerschap moet je laten zien hoe jij je tijdens je opleiding hebt ontwikkeld op het
+gebied van LOB en Burgerschap.:
+
+Verantwoording Burgerschap
+
+Dimensies waarin is opgenomen en
+beoordeeld: de kritische denkvaardigheid
+
+Periode van
+afronding
+
+Bewijs in portfolio
+
+1.  Politiek-juridische dimensie
+
+Leerjaar 3
+
+2.  Economische dimensie
+
+Leerjaar 3
+
+3.   Sociaal-maatschappelijke dimensie (incl.
+
+Leerjaar 3
+
+diversiteit)
+
+4.  Dimensie vitaal burgerschap
+
+Leerjaar 3
+
+Verantwoording Loopbaan Oriëntatie en Begeleiding (LOB)
+
+Competenties
+
+1.  Kwaliteitenreflectie
+
+Wie ben ik, wat kan ik? I am
+
+Periode van
+afronding
+
+Leerjaar 3
+
+2.  Motievenreflectie
+
+Leerjaar 3
+
+Wat wil ik, wat drijft mij? I am
+
+3.  Werkexploratie
+
+Leerjaar 3
+
+Welk soort werk past bij mij? I work
+
+4.  Loopbaansturing
+
+Leerjaar 3
+
+Wat wil ik worden? I study
+
+5  Netwerken
+
+Leerjaar 3
+
+Wie kan mij daarbij helpen? I connect
+
+Criteriumgericht interview
+Opdrachten gemaakt
+Verslag
+
+Criteriumgericht interview
+Opdrachten gemaakt
+Verslag
+
+Criteriumgericht interview
+Opdrachten gemaakt
+Verslag
+
+Criteriumgericht interview
+Opdrachten gemaakt
+Verslag
+
+Bewijs in portfolio
+
+Criteriumgericht interview
+Opdracht(en) gemaakt
+Verslag
+
+Criteriumgericht interview
+Opdracht(en) gemaakt
+Verslag
+
+Criteriumgericht interview
+Opdracht(en) gemaakt
+Verslag
+
+Criteriumgericht interview
+Opdracht(en) gemaakt
+Verslag
+
+Criteriumgericht interview
+Opdracht(en) gemaakt
+Verslag
+
+[CvB/2024-058 14/01]
+
+Bindend studieadvies
+
+Bij MBO Utrecht ontvang je in alle leerjaren een studieadvies op basis van je studievoortgang en
+leerhouding. In het eerste leerjaar is het studieadvies verplicht, dit staat zo in de wet. Meer informatie
+over het bindend studieadvies vind je op de website van MBO Utrecht (www.mboutrecht.nl/praktisch).
+
+Dit zijn de criteria die worden gehanteerd voor het afgeven van een (voorlopig/bindend) studieadvies
+binnen jouw opleiding:
+
+• persoonlijke ontwikkeling
+• professionele ontwikkeling;
+• studieresultaten;
+• aanwezigheid.
+
+Het Bindend Studieadvies ontvang je na de resultatenbespreking van periode 3 in leerjaar 1. Dit
+bindend studieadvies kan positief zijn, maar ook negatief, een bindend negatief studieadvies. Dit
+betekent dat je niet verder kan met de opleiding en MBO Utrecht de onderwijsovereenkomst ontbindt.
+MBO Utrecht houdt rekening met de persoonlijke omstandigheden van de student zoals ziekte,
+zwangerschap of een beperking. Een bindend negatief advies wordt schriftelijk verstrekt met een
+toelichting.
+
+Bedoeling BSA
+MBO Utrecht ziet het studieadvies als een manier om samen met de jou in gesprek te zijn over de
+voortgang van het leerproces en welke stappen je kunt zetten om je verder te ontwikkelen. Het
+studieadvies en gesprekken over de studievoorgang zijn onderdeel van de basisbegeleiding en de
+daaraan gekoppelde SLB/LOB gesprekken die wij met al onze studenten voeren. We proberen je altijd
+te helpen om verder te komen.
+
+Maar als het onderwijsteam van de opleiding van mening is dat een student niet de
+ontwikkelmogelijkheden heeft de opleiding met succes af te ronden, dan is het bindend negatief
+studieadvies een laatste middel als het echt niet anders kan. MBO Utrecht spant zich vervolgens in
+om je verder te helpen met een andere loopbaan- en studiekeuze binnen of buiten onze school.
+
+Nazorg
+Als je een bindend negatief studieadvies hebt gekregen, dan geldt een zorgplicht om je verder te
+helpen naar een andere opleiding. Je SLB’er helpt je hierbij en schakelt als dat nodig is een
+studieadviseur van SDV in. Deze periode duurt maximaal 8 weken. Bij een student jonger dan 18 jaar
+zal altijd overleg met Leerplicht plaatsvinden.
+
+Beroepsmogelijkheid
+Een (negatief) BSA heeft gevolgen. Daarom heb je recht op een goede voorlichting, een goed
+onderbouwd studieadvies en de mogelijkheid binnen 10 werkdagen na het BSA in beroep te gaan bij
+de Commissie voor Beroep van Examens. De student krijgt binnen 20 werkdagen een besluit over dit
+verzoek.
+
+[CvB/2024-058 14/01]
+
+Versnelling
+
+Voor sommige studenten kan het beter zijn om de opleiding in 2 leerjaren af te ronden. We noemen
+deze optie het Maatwerktraject. Alle studenten mogen proberen voor het maatwerktraject in
+aanmerking te komen. In leerjaar 3 na periode 3 zullen we bekijken of het ook haalbaar voor je is en/of
+het bij je past. Je volgt na akkoord hetzelfde onderwijsprogramma als alle andere studenten, alleen
+moet je eerder zelfstandig hebben voldaan aan de eisen om deel te mogen nemen aan de examens.
+
+Dat zijn:
+
+-  Eind leerjaar 2 minimaal 80% van de in totaal te behalen studiepunten hebben gehaald.
+-
+Je stage van leerjaar 2 met minimaal een voldoende hebben afgerond
+-
+3 keuzedelen inclusief de bijbehorende examens voldoende hebben afgerond.
+-  Alle bewijsstukken uit het Marketing & Communicatie Portfolio hebben verzameld.
+
+Examinering
+
+Om je diploma te kunnen behalen doe je examens:
+
+-  Beroepsgerichte examens
+-  Generieke examens (Nederlands, Rekenen en Engels)
+-  Keuzedeel examens
+
+Examenplan
+
+Hoe de examinering plaatsvindt voor jouw opleiding en de keuzedelen vind je in het examenplan.
+Daar staat het volgende in beschreven:
+
+-  De examenvorm (praktijkexamen, kennisexamen, taal- of rekenexamen) inclusief
+
+examennaam en -code
+
+-  Plaats van examen (op school of in de BPV)
+-  De weging van het examen (Hoe ‘zwaar’ het examen meetelt)
+-  De duur van het examen (Hoe lang het examen duurt)
+-  De normering van het examen (Wanneer heb je een voldoende behaald)
+-  De vorm van het examenresultaat (Of je een cijfer krijgt of een voldoende/goed)
+-  De relatie met de diploma-eisen uit het kwalificatiedossier (zie bij 2.3)
+
+De examenplannen vind je terug op de website van MBO Utrecht (www.mboutrecht.nl/praktisch).
+
+Vrijstellingen
+
+Je kunt een vrijstelling aanvragen voor een examenonderdeel als je met eerder behaalde resultaten al
+voldoet aan de eisen.
+Een vrijstelling kun je aanvragen voor de
+
+-  MBO Utrecht brede examens (Nederlands, rekenen, Engels (voor niveau 4)
+-
+-
+-  BPV
+
+specifieke examens (kerntaken)
+examens voor keuzedelen
+
+Je moet dan wel minimaal een zes hebben gehaald voor het eerdere examen.
+
+Als je een havo-, vwo of mbo-4 diploma hebt, wordt bij het inschrijven vrijstelling gevraagd voor de
+generieke onderdelen Nederlands, rekenen en Engels door de opleiding. In geval van een mbo-4
+diploma wordt ook een vrijstelling gevraagd voor loopbaan en burgerschap.
+In alle andere gevallen vraag je zelf vrijstelling aan met behulp van je SLB’er door het invullen van een
+online formulier. De examencommissie verleent op basis van deze gegevens wel of geen vrijstelling.
+Meer informatie over vrijstellingen staat in het examenreglement, die vind je hier.
+
+Diplomering
+
+[CvB/2024-058 14/01]
+
+Hieronder zie je aan welke diploma-eisen je moet voldoen:
+
+Diploma-eis  Slaag/zakbeslissing
+
+Kerntaken   Oordeel per kerntaak minstens voldoende en/of (afgerond naar) cijfer 6
+
+Wettelijke vereisten,
+indien in kwalificatie
+opgenomen
+Nederlands, rekenen,
+eventueel Engels
+
+Oordeel voldoende
+
+Je hebt voldaan aan de landelijk vastgestelde eisen voor de generieke
+examenonderdelen Nederlands en rekenen én (voor niveau 4) Engels.
+
+Niveau 4 opleiding
+
+•  Nederlandse taal, rekenen en Engels: het resultaat van de
+
+examens moet minimaal één keer een 5 zijn en twee keer een 6
+zijn (in willekeurige volgorde).
+
+Loopbaan en
+Burgerschap
+
+Voldaan
+
+BPV  Met positieve beoordeling voltooid, waarbij oordeel leerbedrijf is betrokken.
+
+Keuzedelen  De examenresultaten van de keuzedelen zijn van invloed op de
+
+slaag/zakbeslissing. De volgende compensatieregeling geldt:
+
+•  het gemiddelde van de examenresultaten van de keuzedelen
+
+binnen de keuzedeelverplichting moet tenminste (afgerond) een 6
+
+of tenminste “voldoende” zijn;
+
+•
+
+voor minimaal de helft van deze keuzedelen moet het resultaat
+tenminste een 6 of tenminste “voldoende” zijn;
+
+•  een keuzedeelresultaat mag nooit lager dan een 4 of een daarmee
+overeenkomende eindwaardering zijn (zoals bijvoorbeeld een
+‘onvoldoend’ of ‘niet behaald’).
+
+MBO Verklaring
+
+Het kan zijn dat je, om wat voor reden dan ook, zonder diploma de opleiding verlaat. In dat geval krijg
+je van de Examencommissie van MBO Utrecht een mbo-verklaring mee. Dat is een overzicht van alle
+examenresultaten die je tot het moment van uitschrijven hebt behaald. Met die verklaring kun je een
+werkgever of een vervolgopleiding laten zien welke delen van de opleiding je hebt afgerond.
+
+Let op: de MBO-verklaring is géén certificaat of diploma. Deze verklaring heeft voor werkgevers niet
+de waarde die gelijkwaardig is en biedt bijvoorbeeld ook geen garantie op vrijstellingen bij een
+vervolgopleiding.
+
+[CvB/2024-058 14/01]
+

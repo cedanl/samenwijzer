@@ -1,0 +1,423 @@
+79140 Go! Oriëntatietraject 12 maanden BOL
+ZND_ALK_ C2025-2026
+
+Inhoudsopgave
+
+1. OER-wijzigingen
+
+2. Welkom
+
+3. Vorm en inhoud van het onderwijs
+
+4. Hoe ga je leren
+
+5. Voortgang en studieadvies
+
+6. Onderwijsprogrammering
+
+7. Examinering en diplomering
+
+8. Klachten en suggesties
+
+9. Belangrijke namen en adressen
+
+10. Examinering
+
+MBO-OER -wijzigingen
+
+MBO-Welkom
+
+Beste student,
+
+We heten je van harte welkom bij het Talland College! In deze informatiegids inclusief de
+
+Onderwijs- en Examenregeling (OER) vind je informatie over dit traject waar je je voor hebt
+
+ingeschreven. Over wat je kunt leren, hoe we jou begeleiden en hoe we je beoordelen tijdens
+
+het traject.
+
+Veel is in deze OER te vinden, maar het Talland College heeft nog een aantal documenten
+
+waarin je meer specifieke informatie vindt. Aanvullende documenten kun je vinden op
+
+ConnectMe of in het studentenstatuut van het Talland College.
+
+Lees deze OER goed door. Het bevat de wederzijdse rechten en plichten die wij met elkaar zijn
+
+aangegaan. Is er iets niet duidelijk dan kun je altijd terecht bij je studieloopbaanbegeleider.
+
+We wensen je heel veel succes met het volgen van dit traject!
+
+Namens het directieteam,
+
+Omar Ramadan
+
+Voorzitter College van bestuur Talland College
+
+Marilene Streefland
+
+Lid College van bestuur Talland College
+
+MBO-Vorm en inhoud van het onderwijs
+
+Opleidingsduur
+
+Je hebt je ingeschreven voor het Go! Oriëntatietraject, de duur van dit traject verschilt per
+
+student. Jouw studieloopbaanbegeleider maakt met jou jouw programma
+
+Leerweg
+
+Je hebt gekozen om volledig dagonderwijs met stages in de beroepspraktijk (BPV) te volgen,
+
+dus dan volg je de Beroeps Opleidende Leerweg (BOL). Met deze leerweg kom je in
+
+aanmerking voor een studentenreisproduct en vanaf het moment dat je 18 jaar wordt ook
+
+studiefinanciering.
+
+Opleidingsonderdelen
+
+Jouw traject bestaat uit:
+
+1. Het basisdeel dat wordt gevormd door:
+
+a. Dit traject bevat geen beroepsgerichte onderdelen.
+
+b. De generieke onderdelen. Dit zijn Nederlands, rekenen, loopbaan en burgerschap en
+
+Engels.
+
+2. Eén of meer keuzedelen afhankelijk.
+
+beroepsgerichte onderdelen
+
+Na je opleiding
+
+Na dit traject..
+
+Kun je kiezen voor sectoren/opleidingen op niveau 2/3/4 zowel BBL als BOL. Waar je terecht
+
+komt, is afhankelijk van jouw eerder behaalde middelbare school diploma.
+
+MBO-Hoe ga je leren
+
+Leeractiviteiten
+
+Studieloopbaanbegeleiding, huiswerk en excellentie
+
+Erkend leerbedrijf en praktijkovereenkomst
+
+Onderwijs in een internationale context
+
+Tijdens een (her)oriëntatietraject kijk je opnieuw naar jouw interesses, talenten en
+
+mogelijkheden. Je onderzoekt welke richting goed bij jou past en waar jij je verder in wilt
+
+ontwikkelen. Steeds vaker speelt hierbij ook een internationale context een belangrijke rol. Dat
+
+betekent dat je niet alleen kijkt naar wat er in Nederland gebeurt, maar ook naar wat er in
+
+andere landen mogelijk is.
+
+In veel beroepen werk je namelijk samen met mensen uit verschillende culturen. Denk aan
+
+collega’s die uit het buitenland komen, internationale bedrijven die hier actief zijn of klanten die
+
+uit allerlei landen komen. Daarom is het handig om tijdens een (her)oriëntatietraject na te
+
+denken over vragen zoals:
+
+Hoe wordt mijn toekomstige beroep in andere landen uitgevoerd?
+
+Soms zijn de werkzaamheden anders, of worden er andere machines en technieken
+
+gebruikt.
+
+Welke internationale kansen zijn er?
+
+Misschien kun je in de toekomst stagelopen in het buitenland, of werken bij een bedrijf dat
+
+wereldwijd actief is.
+
+Hoe ga ik om met cultuurverschillen?
+
+In de internationale beroepspraktijk is het belangrijk om open te staan voor andere
+
+gewoontes, communicatievormen en manieren van samenwerken.
+
+Door naar deze internationale aspecten te kijken, krijg je een breder beeld van jouw beroep en
+
+van de mogelijkheden voor jouw toekomst. Een (her)oriëntatietraject helpt je dus niet alleen om
+
+jezelf beter te leren kennen, maar ook om te ontdekken hoe jouw beroep past in een wereld die
+
+steeds meer met elkaar verbonden is.
+
+Begeleiding en ondersteuning
+
+MBO-Voortgang en studieadvies
+
+Toetsplan
+
+niet van toepassing
+
+Uitgangspunten BSA
+
+Er wordt wekelijks met je studieloopbaanbegeleider gekeken naar je voortgang. Dan wordt er
+
+besproken wat je volgende stappen zouden kunnen (of moeten) zijn binnen of buiten het traject.
+
+Indien je niet op je plek blijkt binnen het oriëntatietraject wordt er samen met jou gekeken naar
+
+een andere passende opleiding binnen of buiten Talland.
+
+Voorlopig studieadvies & Bindend studieadvies
+
+MBO-Onderwijsprogrammering
+
+Ons onderwijs bestaat uit vaste momenten op je rooster: Nederlands, Engels, rekenen,
+
+burgerschap, LOB, gastsprekers, workshops, bedrijfsbezoeken, MT-trajecten.
+
+In het Go! Oriëntatietraject sta jij centraal. Je krijgt persoonlijke begeleiding van je
+
+studieloopbaanbegeleider, docenten en coaches die jou helpen ontdekken wie je bent, wat je
+
+kunt en wat je wilt. Je hoeft nog niet te weten wat je wilt en welke opleiding je gaat kiezen. Je
+
+krijgt de tijd en de ruimte om dat uit te zoeken
+
+Je maakt kennis met verschillende beroepen en opleidingen, zodat je kunt ervaren hebt wat bij
+
+je past. Denk aan meeloopdagen, proeflessen en praktijkopdrachten. Zo ontdek je jouw
+
+interesses in de echte wereld, niet alleen uit boeken.
+
+Dit alles gebeurt in een veilige en flexibele leeromgeving. Je mag fouten maken, twijfelen en
+
+opnieuw ontdekken en proberen. Je leert in je eigen tempo, zonder prestatiedruk. Zo maak je
+
+een keuze die écht bij jou past en vergroot je de kans dat je straks met plezier en succes aan je
+
+vervolgopleiding begint.
+
+Programmering leerjaar 1
+
+MBO-Examinering en diplomering
+
+Examenreglement
+
+Bij het examineren volgen we de regels van Examenreglement MBO van het Talland College.
+
+Het reglement kun je vinden op het studentenportaal. In het examenreglement vind je onder
+
+andere
+
+informatie over:
+
+• Inschrijven voor en deelnemen aan examens
+
+• Vrijstellingen
+
+• Examineren op een hoger niveau voor de generieke vakken
+
+• Bekendmaking van de examenuitslag
+
+• Herkansingen
+
+• Aangepaste examinering en hulpmiddelen
+
+• Onregelmatigheden en fraude
+
+• Inzagerecht
+
+• Bezwaar en beroep
+
+Het Talland College heeft de opleidingen ingedeeld in sectoren. De examencommissie van
+
+sector is verantwoordelijk voor de kwaliteit van de examinering en diplomering van jouw
+
+opleiding. Heb je een vraag over examinering? Dan kun je contact opnemen met
+
+de examencommissie.
+
+Diploma, mbo-certificaat of mbo-verklaring
+
+Om het diploma te behalen moet je:
+
+• de kerntaken en werkprocessen uit het basisdeel en profieldeel uit kunnen voeren op het
+
+niveau van een beginnend beroepsbeoefenaar. Je moet alle kerntaken met een
+
+voldoende resultaat afgesloten hebben;
+
+• voldaan hebben aan de exameneisen van de keuzedelen;
+
+• voldaan hebben aan de taal- en rekeneisen;
+
+• voldaan hebben aan de inspanningsverplichting loopbaan & burgerschap;
+
+• de BPV met goed gevolg hebben afgesloten;
+
+De bewijstukken hiervan worden bewaard in jouw examen/diploma dossier.
+
+Algemene informatie examinering
+
+Aantal examenkansen
+
+Voor elk examenonderdeel heb je twee examenkansen. De eerste poging en een herkansing.
+
+Wanneer jij alle kansen hebt verbruikt kun je een herkansingsverzoek indienen bij de
+
+examencommissie van jouw sector. Dit staat beschreven in het examenreglement.
+
+Mbo-certificaat
+
+Je ontvangt een mbo-certificaat van de sectorale examencommissie als:
+
+Je de school verlaat zonder diploma te hebben behaald, en
+
+wanneer je wel een resultaat/ waardering hebt behaald voor een of meerdere
+
+onderdeel/onderdelen van de opleiding waarvoor een certificaat is vastgesteld door de
+
+minister van OCW. In de Wet Educatie en Beroepsonderwijs is vastgelegd voor welke delen
+
+van de opleidingen een mbo-certificaat is vastgesteld.
+
+Mbo-verklaring
+
+Je ontvangt een mbo-verklaring van de sectorale examencommissie als je jonger bent dan 23
+
+jaar en de school zonder een diploma of startkwalificatie verlaat. Als je 23 jaar of ouder bent,
+
+dan kun je een mbo-verklaring krijgen als je zelf een verzoek indient bij de opleiding. De
+
+verklaring kan bijdragen aan het vinden van werk en/of terugkeer naar het mbo.
+
+Toegang tot examens
+
+Aan de toegang tot bepaalde examenonderdelen of -eenheden kunnen voorwaarden gesteld. In
+
+overleg met je mentor/loopbaancoach en docenten wordt bepaald of en wanneer je klaar bent
+
+voor het examen. In het examenplan staat vermeld waar dit van toepassing is en wat de
+
+voorwaarde is.
+
+In deze paragraaf is aangegeven uit welke examenonderdelen en -eenheden het examen
+
+bestaat. Verdere informatie over de planning, inhoud, organisatie, vorm van de
+
+examenonderdelen, wijze van beoordeling en gebruik van hulpmiddelen worden in de
+
+examenprogrammering vermeld.
+
+Uiterlijk zes weken voor afname van het examenonderdeel wordt deze informatie bekend
+
+gemaakt.
+
+Gebruikte afkortingen:
+
+TE = Theorie examens
+
+PE = Praktijkexamens
+
+PVB = Proeve(n) van bekwaamheid
+
+OP = Beoordeling van werkstukken, opdrachten of prestaties
+
+BPV = Beoordeling van de BPV
+
+PF = Bewijzen verzameld in portfolio
+
+0
+
+360 = 360 graden feedback
+
+AG = Assessmentgesprek
+
+CE = Centraal (landelijk) examen
+
+IE = Instellings (school) examen
+
+CGI = Criteriumgericht interview
+
+PR = Presentatie
+
+Examinering basisdeel beroepsspecifiek
+
+Deze opleiding bevat geen beroepsspecifieke onderdelen
+
+Examinering profieldeel beroepsspecifiek
+
+Deze opleiding bevat geen beroepsspecifieke onderdelen
+
+Examinering Loopbaan en Burgerschap
+
+BPV
+
+MBO-Klachten en suggesties
+
+Natuurlijk doen we onze uiterste best om je zo goed mogelijk op te leiden en te begeleiden. Vind
+
+je dat we daarin slagen of vind je dat het beter kan? Heb je een klacht? Bespreek dit dan met je
+
+studieloopbaanbegeleider, docent of praktijkbegeleider. Kom je er met hen niet uit? Ga dan naar
+
+de opleidingsmanager van jouw opleiding. Stel dat je niet tot een oplossing komt, dan kun je
+
+een klacht indienen door een mail te sturen naar klacht@talland.nl.
+
+Vertrouwenspersoon
+
+Heb je een klacht over ongewenst gedrag (discriminatie, seksuele intimidatie, pesten of
+
+agressie), ga dan naar de vertrouwenspersoon.
+
+We behandelen alle klachten vertrouwelijk en een klacht indienen heeft nooit gevolgen voor de
+
+manier waarop je in je studie wordt begeleid of beoordeeld.
+
+Informatie over de klachtenregeling en de vertrouwenspersoon vind je op ConnectMe en in het
+
+studentenstatuut.
+
+Rechten en plichten
+
+Bij studeren aan het Talland College horen rechten en plichten. Het Talland College heeft?een
+
+studentenstatuut, waarin de rechten en plichten van de?student en van de school zijn
+
+beschreven. Een klachtenreglement maakt onderdeel uit van het statuut. Iedereen die nieuw op
+
+school komt, krijgt het studentenstatuut uitgereikt.?Het studentenstatuut, andere reglementen
+
+en nuttige?informatie voor studenten vind je op de website van het Talland College.?
+
+Heb je klachten?
+
+Heb je een?klacht over de organisatie, over het gedrag van personeel of over genomen
+
+beslissingen, leg?de klacht dan altijd eerst voor aan de desbetreffende medewerker of de?
+
+desbetreffende dienst of afdeling van?de school. Kom je er niet uit? Dan heeft het Talland
+
+College een?ombudsfunctionaris?(voor onrechtmatige behandeling, stagediscriminatie,
+
+enzovoort) en een?vertrouwenspersoon?(bij vragen over grensoverschrijdend gedrag).
+
+Je vindt de Klachten- en geschillenregeling van het Talland College op ConnectMe.
+
+MBO-Belangrijke namen en adressen
+
+Opleidingsmanager: Marloes Derksen, m.derksen@talland.nl
+
+Coördinator intake & onderwijs: Daisy Linsen, d.linsen@talland.nl
+
+Voor meer informatie kun je ConnectMe raadplegen.
+
+Examinering
+

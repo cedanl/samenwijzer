@@ -1,0 +1,307 @@
+Onderwijs- en examenreglement (OER)
+
+Inhoudsopgave
+
+Inleiding ........................................................................................................................................................... 1
+
+Onderwijs ......................................................................................................................................................... 1
+
+Kerntaken & werkprocessen ................................................................................................................................ 1
+
+Visie op onderwijs en examinering ...................................................................................................................... 3
+
+Het onderwijsteam .............................................................................................................................................. 3
+
+Het onderwijsprogramma ................................................................................................................................... 3
+
+Keuzedelen .......................................................................................................................................................... 3
+
+Inspanningsverplichting Loopbaanoriëntatie en begeleiding (LOB)/Burgerschap .............................................. 3
+
+Bindend studieadvies .......................................................................................................................................... 4
+
+Examinering ..................................................................................................................................................... 4
+
+Examenplan ......................................................................................................................................................... 4
+
+Vrijstellingen ....................................................................................................................................................... 4
+
+Diplomering ..................................................................................................................................................... 5
+
+MBO Verklaring ................................................................................................................................................... 6
+
+Inleiding
+Je leest nu de OER die hoort bij jouw opleiding. Hierin kun je terugvinden hoe deze opleiding er uit
+gaat zien, welk onderwijs je wanneer gaat volgen en welke examens je gaat doen.
+De algemene informatie over het studeren bij MBO Utrecht vind je op de website
+https://www.mboutrecht.nl/praktisch/
+
+Deze OER hoort bij de opleiding: Persoonlijk Begeleider Maatschappelijke zorg 25779
+
+Het kwalificatiedossier dat hoort bij deze opleiding vind je hier.
+
+Onderwijs
+
+Kerntaken & werkprocessen
+Hieronder zie je uit welke kerntaken en werkprocessen dit kwalificatiedossier is opgebouwd.
+
+In een kwalificatiedossier zijn meestal meer opleidingen (kwalificaties) beschreven. Het basisdeel bevat de
+kerntaken en werkprocessen, die gelden voor alle opleidingen in het betreffende kwalificatiedossier.
+
+CvB/2024-049l/01
+
+De duur van de opleiding is 2,5 jaar, waarbij versnellen mogelijk is.
+
+CvB/2024-049l/01
+
+Na deze opleiding zijn er de volgende doorstroommogelijkheden: HBO Social Work of elke andere
+HBO opleiding naar keuze. Uiteraard kun je ook aan de slag op de arbeidsmarkt.
+
+Jouw opleiding volg je op de volgende locatie: Australiëlaan 25, 3526AB Utrecht.
+
+De lessen vinden (onder voorbehoud) plaats tussen 9 uur ’s ochtends en 16:15uur ’s middags.
+
+De schoolkosten voor deze opleiding vind je terug op de website mboutrecht.nl.
+Welke leermiddelen je moet aanschaffen hoor je via je werkgever of de administratie van de opleiding.
+
+Visie op onderwijs en examinering
+
+Bij MBO Utrecht werken we vanuit een gezamenlijke brede visie op onderwijs, deze vind je terug op
+www.mboutrecht.nl/praktisch/.
+
+Het onderwijsteam
+
+Het team van jouw opleiding bestaat uit (onder andere) de volgende mensen:
+
+Teamleider: Mirjam van den Heuvel
+SLB: Yvonne van der Meulen, Everine van der Hoek
+Clusterdirecteur: Bram Smit
+
+Het onderwijsprogramma
+In het onderwijsplan kun je zien hoe je opleiding is opgebouwd. Het onderwijsplan bevat informatie over:
+• _de onderwerpen die in een bepaalde periode aan bod komen;
+• _de hoeveel tijd die aan de verschillende onderwerpen wordt besteed;
+• _de didactische werkvormen die globaal worden toegepast;
+• _de manier waarop de beroepspraktijkvorming (BPV) is gepland;
+• _de relatie tussen de onderwerpen en de diplomavereisten.
+
+Per periode krijg je modulehandleidingen die je inzicht geven in het onderwijsprogramma.
+
+Je opleiding duurt 10 x 8 weken. Je hebt in deze weken 1 lesdag per week met 6 lesuren. Je opleiding bestaat uit
+480 begeleide onderwijsuren.
+
+Het volledige onderwijsplan inclusief examinering van jouw opleiding vind je in Osiris.
+
+Als er tussentijds wijzigingen komen in het onderwijsplan, het onderwijsprogramma of in het examenplan noteert
+de opleiding dit in het addendum op de studiegids. Een addendum is een bijlage waar de meest actuele
+informatie over jouw opleiding wordt beschreven en die kun je vinden op dezelfde plek als de studiegids. De
+opleiding informeert je tijdig over tussentijdse wijzigingen. Voor vragen hier over kun je bij je SLB’er terecht.
+
+Keuzedelen
+De keuzedelen vormen ongeveer 15% van jouw opleiding.
+
+Je kiest tijdens de loop van een opleiding één of meerdere keuzedelen, gelet op de
+keuzedeelverplichting die geldt voor deze opleiding.
+
+Inspanningsverplichting Loopbaanoriëntatie en begeleiding (LOB)/Burgerschap
+
+Voor LOB en Burgerschap geldt een inspanningsverplichting. Dat wil zeggen dat je moet laten zien
+hoe jij je tijdens je opleiding hebt ontwikkeld op het gebied van LOB en Burgerschap.
+
+Voor jouw opleiding bestaat de inspanningsverplichting Burgerschap uit de volgende bewijzen per
+dimensie:
+
+Dimensies (incl. kritische
+denkvaardigheid)
+
+Periode/studiejaar afronding  Bewijs in Portfolio*
+
+CvB/2024-049l/01
+
+Politiek-juridische dimensie  Studiejaar 1
+Economische dimensie  Studiejaar 1
+Studiejaar 1
+
+Sociaal maatschappelijke
+dimensie
+
+Dimensie vitaal burgerschap  Studiejaar 1
+
+Verslag geschreven of gesprek
+Verslag geschreven of gesprek
+Verslag geschreven of gesprek
+
+Verslag geschreven of gesprek
+
+Voor jouw opleiding bestaat de inspanningsverplichting ‘Loopbaanoriëntatie en begeleiding’ uit de
+volgende bewijzen per dimensie:
+
+Competenties  Periode/studiejaar afronding  Bewijs in Portfolio*
+
+Kwaliteitenreflectie  Studiejaar 2
+Motievenreflectie  Studiejaar 2
+Werkexploratie  Studiejaar 2
+Loopbaansturing  Studiejaar 2
+Netwerk  Studiejaar 2
+
+Opdracht gemaakt/Gesprek
+Opdracht gemaakt/Gesprek
+Opdracht gemaakt/Gesprek
+Opdracht gemaakt/Gesprek
+Opdracht gemaakt/Gesprek
+
+Bindend studieadvies
+
+Bij MBO Utrecht ontvang je zowel als BOL-student als BBL-student in alle leerjaren een studieadvies
+op basis van je studievoortgang en leerhouding. In het eerste leerjaar is het studieadvies verplicht, dit
+staat zo in de wet. Meer informatie over het bindend studieadvies lees je in de studiegids, je vindt
+deze op www.mboutrecht.nl.
+
+Dit zijn de criteria die worden gehanteerd voor het afgeven van een (voorlopig/bindend) studieadvies
+binnen jouw opleiding:
+
+• persoonlijke ontwikkeling
+• professionele ontwikkeling;
+• studieresultaten;
+• aanwezigheid.
+
+De criteria en het proces voor de totstandkoming van je studieadvies wordt in de eerste periode van je
+opleiding verstrekt. De SLB-er zal hier een toelichting op geven en het tijdspad uiteenzetten.
+
+Examinering
+Om je diploma te kunnen behalen neem je deel aan de volgende examens:
+
+-  Beroepsgerichte examens (meestal in de praktijk)
+-  Generieke examens (Nederlands, Rekenen)
+-  Keuzedeelexamens
+
+Examenplan
+
+Hoe de examinering plaatsvindt voor jouw opleiding vind je in het examenplan. Daar staat het
+volgende in beschreven:
+
+-  De examenvorm (praktijkexamen, kennisexamen, taal- of rekenexamen) inclusief
+
+examennaam en -code
+
+-  Plaats van examen (op school of in de BPV)
+-  De weging van het examen (Hoe ‘zwaar’ het examen meetelt)
+-  De duur van het examen (Hoe lang het examen duurt)
+-  De normering van het examen (Wanneer heb je een voldoende behaald)
+-  De vorm van het examenresultaat (Of je een cijfer krijgt of een voldoende/goed)
+-  De relatie met de diploma-eisen uit het kwalificatiedossier (zie bij 2.3)
+
+Vrijstellingen
+
+Je kunt een vrijstelling aanvragen voor een examenonderdeel als je met eerder behaalde resultaten al
+voldoet aan de eisen.
+
+CvB/2024-049l/01
+
+Een vrijstelling kun je aanvragen voor de:
+
+-  MBO Utrecht brede examens (Nederlands, rekenen, Engels (voor niveau 4)
+-
+-
+-  BPV
+
+specifieke examens (kerntaken)
+examens voor keuzedelen
+
+Je moet dan wel minimaal een zes hebben gehaald voor het eerdere examen.
+
+Als je een havo-, vwo of mbo-4 diploma hebt, wordt bij het inschrijven automatisch vrijstelling
+aangevraagd voor de generieke onderdelen Nederlands, rekenen en Engels. In geval van een mbo-4
+diploma wordt ook een vrijstelling aangevraagd voor loopbaan en burgerschap.
+In alle andere gevallen vraag je zelf vrijstelling aan met behulp van je SLB’er door het invullen van een
+online formulier. De examencommissie verleent op basis van deze gegevens wel of geen vrijstelling.
+Meer informatie over vrijstellingen staat in het examenreglement, die vind je hier.
+
+Diplomering
+Hieronder zie je aan welke diploma-eisen je moet voldoen:
+
+Diploma-eis  Slaag/zakbeslissing
+
+Kerntaken   Oordeel per kerntaak minstens voldoende en/of (afgerond naar) cijfer 6
+
+Wettelijke vereisten,
+indien in kwalificatie
+opgenomen
+Nederlands, rekenen,
+eventueel Engels
+
+Oordeel voldoende
+
+Je hebt voldaan aan de landelijk vastgestelde eisen voor de generieke
+
+examenonderdelen Nederlands en rekenen én (voor niveau 4) Engels.
+
+Entree
+
+−  Student moet examen Nederlands en rekenen hebben gemaakt.
+−  Resultaten Nederlands en rekenen tellen niet mee voor het diploma.
+
+Niveau 2 en 3:
+
+−  Nederlandse taal: het eindcijfer is minimaal een 5.
+−  Rekenen: het resultaat
+
+Niveau 4 opleiding
+
+−  Nederlandse taal, Engels en rekenen: het resultaat van de examens moet
+
+minimaal een 5 en tweemaal 6 zijn (in willekeurige volgorde).
+
+Loopbaan en
+Burgerschap
+
+Voldaan
+
+Bpv  Met positieve beoordeling voltooid, waarbij oordeel leerbedrijf is betrokken.
+
+Keuzedelen  De examenresultaten van de keuzedelen zijn van invloed op de
+
+slaag/zakbeslissing. De volgende compensatieregeling geldt:
+
+•  het gemiddelde van de examenresultaten van de keuzedelen
+
+binnen de keuzedeelverplichting moet tenminste (afgerond) een 6
+of tenminste “voldoende” zijn;
+
+•
+
+voor minimaal de helft van deze keuzedelen moet het resultaat
+tenminste een 6 of tenminste “voldoende” zijn;
+
+•  een keuzedeelresultaat mag nooit lager dan een 4 of een daarmee
+overeenkomende eindwaardering zijn (zoals bijvoorbeeld een
+‘onvoldoend’ of ‘niet behaald’).
+
+Diploma-eis  Slaag/zakbeslissing
+
+Kerntaken   Oordeel per kerntaak minstens voldoende en/of (afgerond naar) cijfer 6
+
+CvB/2024-049l/01
+
+Wettelijke vereisten,
+indien in kwalificatie
+opgenomen
+
+Oordeel voldoende
+
+Bpv  Met positieve beoordeling voltooid, waarbij oordeel leerbedrijf is
+
+betrokken.
+
+MBO Verklaring
+
+Het kan zijn dat je, om wat voor reden dan ook, zonder diploma de opleiding verlaat. In dat geval krijg
+je van de Examencommissie van MBO Utrecht een mbo-verklaring mee. Dat is een overzicht van alle
+examenresultaten die je tot het moment van uitschrijven hebt behaald. Met die verklaring kun je een
+werkgever of een vervolgopleiding laten zien welke delen van de opleiding je hebt afgerond.
+Let op: de mbo-verklaring is géén certificaat of diploma. Deze verklaring heeft voor werkgevers niet de
+waarde die gelijkwaardig is en biedt bijvoorbeeld ook geen garantie op vrijstellingen bij een
+vervolgopleiding.
+
+CvB/2024-049l/01
+

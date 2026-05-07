@@ -1,0 +1,262 @@
+         Opleidingsplanning
+
+SECTOR Economie en Ondernemerschap
+
+Opleiding Allround Assistant Business Services
+
+CREBO    25723
+Leerweg   BOL
+Cohort   2025
+                                 OPLEIDINGSGEGEVENS
+
+Opleiding   Allround Assistant Business Services
+Studieduur
+Niveau      2 jaar                                    SECTOR
+Crebo
+Leerweg     3                           Economie en Ondernemerschap
+Cohort
+            25723
+
+            BOL
+
+            2025
+
+Fasering van de opleiding
+
+                             Reguliere  Introductie-  BPV (indien                     Toelichting
+                             lesweken   of toetsweek
+                                                        gepland)   Blok 1: intro, studieweek, keuzedeel
+                                  7            3                   Blok 2: Project, studieweek, keuzedeel
+Leerjaar 1  Blok 1                             3                   Blok 3: Project, studieweek, keuzedeel
+            Blok 2                7            3                   Blok 4: 2x studieweek, 1 afrondingsweek
+            Blok 3                             3
+            Blok 4                7
+
+                                  6
+
+            Effectieve lesweken         27
+
+            Toetsweken e.d.             12
+
+            Totaal / blok               39
+
+Leerjaar 2  Blok 1           Reguliere  Toetsweek     BPV (indien                     Toelichting
+            Blok 2           lesweken       e.d.
+            Blok 3                           3          gepland)   Blok 1: intro, studieweek, keuzedeel
+            Blok 4                7          3                     Blok 2: project, studieweek, keuzedeel
+                                             1             0       Blok 3: Keuzedeel
+                                  7          2             0       Blok 4: 1x studieweek, 1 afrondingsweek
+                                                           9
+                                  0                        7
+
+                                  0
+
+            Effectieve lesweken         14
+
+            Toetsweken e.d.                       9
+
+            Totaal / blok               23
+
+                             Reguliere  Toetsweek     BPV (indien    Toelichting
+                             lesweken       e.d.
+                                                        gepland)
+
+Leerjaar 3  Blok 1
+            Blok 2
+            Blok 3
+            Blok 4
+
+            Effectieve lesweken                   0
+
+            Toestweken e.d.                       0
+
+            Totaal / blok                         0
+
+                             Reguliere  Toetsweek     BPV (indien    Toelichting
+                             lesweken       e.d.
+                                                        gepland)
+
+Leerjaar 4  Blok 1
+            Blok 2
+            Blok 3
+            Blok 4
+
+            Effectieve lesweken                   0
+
+            Toetsweken                            0
+
+            Totaal / blok                         0
+                                     Lessentabel                          LEERJAAR 1
+
+                Reguliere                                                         Opleiding: Allround Assistant Business Services
+                onderwijsactiviteiten = ROOSTER
+                Dataverwerking                                                     Leerjaar 1
+                Projectmanagement
+                Zakelijke communicatie                                    Periode 1 Periode 2 Periode 3 Periode 4
+                Studieloopbaanbegeleiding
+                Persoonlijke ontwikkeling            Osiris code (F....)  uren/  totaal  uren/  totaal  uren/  totaal  uren/       totaal  Totaal                            Studiepunten
+                Digitale vaardigheden                FBS2501-DAV          week           week           week           week                /leerjr.
+                Management informatie basis (W1)     FBS2501-PRM                                                                                                                   6
+                Plannen en organiseren basis (W3)    FBS2501-ZCO                  0 3,0 21                      0                  0            21                                 6
+                Bedrijfseconomie basis (W2)          FBS2501-SLB                                                                                39                                 6
+                Marketing & communicatie basis (W4)  FBS2501-PER                  0              0 3,0 21 3,0 18                                28                                 0
+                Inleiding recht                      FBS2501-DIG                                                                                41                                 6
+                Bedrijfsadministratie basis (W2)     FBS25021-MIB         2,0 14 2,0 14                         0                  0            54                                 5
+                BPV                                  FBS25021-PEOB                                                                              27                                 4
+                Nederlands - generiek 2F             FBS2501-BEB          2,0 14 1,0             7      2,0 14 1,0                 6            14                                 4
+                Rekenen-niveau 3                     FBS2501-MECB                                                                               28                                 4
+beroepsgericht  Burgerschap                          FBS2501-INR          2,0 14 2,0 14 2,0 14 2,0 12                                           28                                 4
+                Totaal /blok                         FBS2501-BAB                                                                                26                                 4
+                                                                          1,0     7      1,0     7      1,0     7      1,0         6            13                                 4
+                                                     FBS2501-NED                                                                                26
+                                                     FBS2501-REK3         1,0     7      1,0     7              0                  0             0                                 8
+                                                     FBS2501-BUR                                                                                54                                 8
+                                                                          2,0 14 2,0 14                         0                  0            68                                 8
+                                                                                                                                                41                                 77
+                                                                          2,0 14 2,0 14                         0                  0        507,5
+
+                                                                                  0              0 2,0 14 2,0 12
+
+                                                                                  0              0      1,0     7      1,0         6
+
+                                                                                  0              0 2,0 14 2,0 12
+
+                                                                                  0              0              0                  0
+
+l&b avo                                                                   2,0 14 2,0 14 2,0 14 2,0 12
+
+                                                                          3,0 21 3,0 21 2,0 14 2,0 12
+
+                                                                          1,5 11 1,5 11 1,5 11 1,5 9
+
+                                                                          18,5 129,5 20,5 143,5 18,5 129,5 17,5 105,0
+
+                Incidentele                          FBS2501-PJW          Uren/blok      Uren/blok      Uren/blok      Uren/blok           Totaal                            Studiepunten
+                onderwijsactiviteiten                FBS2501-KD              20,0                                                          /leerjr.                                0
+                Introductieweek                                                             15,0           15,0           30,0                                                     8
+                Projectweek                                                  18,0           18,0           18,0           10,0                20,0                                 15
+                Keuzedelenweek                                               15,0           15,0           15,0            40                 30,0                                 0
+                Studieweek                                                   10,0           10,0           10,0                               54,0                                 0
+                Examens                                                       63             58             58                                75,0                                 23
+                Totaal (incidenteel)                                                                                                          40,0
+                                                                                                                                            219,0                                 100
+
+                Verantwoording                                            Blok 1         Blok 2         Blok 3         Blok 4              Totaal
+                Begeleide onderwijsuren                                    193            202            188            145                     727
+                Uren BPV                                                     0              0                             0                        0
+                Uren onderwijstijd                                         193            202              0            145                     727
+                Uren zelfstudie (indicatief)                               231            242            188            174                     874
+                                                                                                         225
+
+                Toelichting: De uren onderwijstijd bestaan uit: 1) begeleide onderwijsuren én 2) uren beroepspraktijkvorming (BPV).
+                Bij de begeleide onderwijsuren gaat het om door de school aangeboden onderwijs dat wordt verzorgt door een docent. Bij uren BPV gaat het om het leren in de
+                praktijk bij een bedrijf of een instelling. Bij zelfstudie gaat het om leeractiviteiten zoals huiswerk.
+                                     Lessentabel               LEERJAAR 2
+
+                Reguliere                                               Opleiding: Allround Assistant Business Services
+                onderwijsactiviteiten = ROOSTER
+                Verslaglegging                                          Leerjaar 2
+                Management informatie (W1)
+                Plannen & organiseren (W3)                             Periode 5 Periode 6 Periode 7 Periode 8
+                Fiscale kennis
+                Bedrijfsadministratie (W2)        Osiris code (F....)  uren/     totaal  uren/     totaal  uren/  totaal  uren/  totaal  Totaal    Studiepunten
+                Bedrijfseconomie (W2)             FBS2502-VER          week              week              week           week           /leerjr.
+                Marketing & communicatie (W4)     FBS2502-MAI                                                                                             4
+                Studieloopbaanbegeleiding         FBS2502-PEO                    0 2,0 14                          0              0           14          6
+                Professionele ontwikkeling        FBS2502-FIK                                                                                 14          6
+                Life skills                       FBS2502-BA           2,0 14                      0               0              0           28          6
+                Ondernemerschap (keuzedeel)       FBS2502-BE                                                                                  21          6
+                Engels                            FBS2502-MEC          2,0 14 2,0 14                               0              0           28          6
+                BPV                               FBS2502-SLB                                                                                 28          6
+                Nederlands - generiek 2F          FBS2502-PON          1,5 11 1,5 11                               0              0           11          0
+                Rekenen                           FBS2502-LIS                                                                                 14          4
+beroepsgericht                                    FBS2502-OND          2,0 14 2,0 14                               0              0           28          4
+                Totaal /blok                      FBS2502-ENG                                                                                 14          15
+                                                  FBS2502-BPV          2,0 14 2,0 14                               0              0           42          4
+                                                  FBS2502-NED                                                                                 28         10
+                                                  FBS2502-REK                    0 1,5 11                          0              0         640           4
+                                                                                                                                              14          0
+                                                                       1,0 7 1,0 7                                 0              0           14
+                                                                                                                                                         81
+                                                                       2,0 14 2,0 14                               0              0            0
+                                                                                                                                          937,5
+                                                                       1,0 7 1,0 7                                 0              0
+
+                                                                       3,0 21 3,0 21                               0              0
+
+                                                                       2,0 14 2,0 14                               0              0
+
+                                                                                 0                 0 40,0 360 40,0 280
+
+l&b avo                                                                1,0 7 1,0 7                                 0              0
+
+                                                                       2,0 14                      0               0              0
+
+                                                                                 0                 0               0              0
+
+                                                                       21,5 150,5 21,0 147,0 40,0 360,0 40,0 280,0
+
+                Incidentele                       FBS2502-PJW          Uren/blok         Uren/blok         Uren/blok      Uren/blok      Totaal    Studiepunten
+                onderwijsactiviteiten             FBS2502-KD              15,0                                               40,0        /leerjr.         4
+                Introductieweek                                           15,0              15,0              18,0                                       15
+                Studieweek                                                                  15,0              20,0           20,0          15,0
+                Projectweek                                               18,0              18,0              40,0           40,0          70,0          19
+                Keuzedelenweek                                            10,0              10,0               78            100           15,0
+                Bedrijfsbezoeken                                                                                                           54,0
+                BPV events                                                25,0              25,0                                           20,0
+                Examens                                                    83                83                                            40,0
+                Totaal (incidenteel)                                                                                                      130,0
+                                                                                                                                          344,0
+                Verantwoording
+                Begeleide onderwijsuren                                Blok 1            Blok 2            Blok 2         Blok 4         Totaal    100
+                Uren BPV
+                Uren onderwijstijd                                     234               230               78             100            642
+                Uren zelfstudie (indicatief)
+                                                                              0                 0          360            280            640
+
+                                                                       234               230               438            380            1282
+
+                                                                       116               114               39             50             319
+                VERANTWOORDING
+
+Verantwoording
+
+ Opleiding                              Allround Assistant Business Services
+Studieduur                       2 jaar
+                                 3
+     Niveau                      BOL
+   Leerweg
+
+Begeleide onderwijsuren          Leerjaar 1     Leerjaar 2    Leerjaar 3     Leerjaar 4
+Uren BPV                                  727            642              0              0
+Uren onderwijstijd                           0           640              0              0
+Uren zelfstudie (indicatief)              727                             0              0
+                                          874          1282
+                                                         319         1600           1600
+
+BOL                                             Gepland       Wettelijk
+                                                 726,5         minimaal 700
+Begeleide onderwijsuren eerste jaar               1368         minimaal 1250
+Begeleide onderwijsuren (totaal)                  640          minimaal 450
+Uren BPV (totaal)                                 2008         minimaal 2000
+Totale onderwijstijd (begeleid + bpv)
+
+BBL                              Leerjaar 1 Leerjaar 2 Leerjaar 3 Leerjaar 4
+
+niet van toepassing
+
+Begeleide uren (200/jaar)
+Uren bpv (610/jaar)
+Onderwijstijd totaal (850/jaar)
+
+Entree                           Gepland        Wettelijk
+                                                     600
+niet van toepassing                                 1000
+
+Begeleide onderwijsuren
+Onderwijstijd
+
+Indien in het laatste jaar van de opleiding de studieduur minder is dan 10 maanden moeten de
+normen voor het aantal begeleide onderwijsuren en klokuren bpv evenredig worden verlaagd
+(dit gebeurt niet automatisch!).
+

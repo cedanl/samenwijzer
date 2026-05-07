@@ -1,0 +1,1186 @@
+Studentenfolder OER
+
+ Inhoud
+
+1.   Voorwoord
+
+2.   Opbouw en inrichting van opleidingen
+
+2.1
+2.2
+
+Opbouw van de opleiding
+(Beroeps)specifieke eisen
+
+3.   Kwalificatie- en diploma-eisen
+
+Generieke eisen voor Nederlandse taal en rekenen
+Generieke eisen voor Loopbaanoriëntatie en -begeleiding (LOB) en Burgerschap
+Beroepspraktijkvorming (BPV)
+Keuzedelen
+
+3.1
+3.2
+3.3
+3.4
+3.5   Onderwijsprogramma en onderwijstijd
+3.6
+3.7
+3.8
+3.9
+3.10   De Friese taal bij Aeres MBO in Friesland
+
+Praktijkleerovereenkomst
+Studiebegeleiding
+Studievoortgang en overgangsnormen
+Aangepaste Examinering
+
+4.   Examenreglement
+
+Examinering
+Examenvormen
+Examenplan
+
+Herkansingen
+Vrijstellingen
+Examineren op hoger niveau
+
+4.1
+4.2
+4.3
+4.4   De uitslag
+4.5
+4.6
+4.7
+4.8   Organisatie examens
+4.9    Onregelmatigheden en fraude
+4.10   Diplomering
+4.11
+4.12
+4.13   Mbo-certificaat
+4.14   Mbo-verklaring
+4.15   Klachten
+4.16
+
+Examenkandidaat/extraneus
+
+Inzage
+Cum Laude
+
+2
+
+3
+
+4
+
+4
+5
+
+6
+
+6
+6
+7
+9
+10
+11
+11
+12
+12
+13
+
+13
+
+13
+14
+15
+16
+17
+17
+17
+17
+18
+19
+21
+22
+22
+23
+23
+23
+
+
+
+1. Voorwoord
+
+In deze Studentenfolder (gebaseerd op de Onderwijs- en examenregeling (OER))
+2025-2026 vind je informatie over de opbouw van de opleiding en wat je gaat doen
+om een diploma te behalen. Deze OER geldt voor alle studenten die starten in het
+studiejaar 2025-2026 en die een opleiding volgen in de beroepsopleidende leerweg
+(BOL) of de beroepsbegeleidende leerweg (BBL). Naast deze OER, geldt voor
+de studenten van cohort 2025-2026 het studentenstatuut.
+
+3
+
+
+
+2. Opbouw van de opleiding
+
+2.1 Opbouw van de opleiding
+
+Mbo is een afkorting voor middelbaar beroepsonderwijs. Bij Aeres kun je groene opleidingen volgen,
+denk aan; dierverzorging, paardensport en -houderij, groene ruimte, bloembinden, toegepaste biologie,
+food, groen, grond & infra, veehouderij, biologisch-dynamische landbouw, techniek, teelt, hovenier,
+natuur & recreatie en styling & design.
+
+Voor alle mbo-opleidingen bestaan kwalificatiedossiers. Daarin staan de eisen waaraan je moet voldoen
+om een diploma voor een bepaalde studie te behalen. Het gaat om de kennis en vaardigheden die je moet
+hebben om een mbo-opleiding af te ronden.
+
+Alle mbo-opleidingen bestaan uit een basisdeel, een profieldeel en keuzedelen. Het basisdeel bestaat uit
+kerntaken die bij meerdere opleidingen uit je werkveld passen.
+
+Daarnaast vallen de onderdelen Nederlands, rekenen, Burgerschap, loopbaanoriëntatie en -begeleiding
+(en voor niveau 4 ook Engels) onder de “generieke vakken”.
+
+Verder is er een profieldeel met de beroepsgerichte taken die specifiek bij jouw opleiding horen.
+Het profieldeel verschilt van inhoud afhankelijk van het niveau (kwalificatie) van jouw opleiding.
+De naam van het profiel komt uiteindelijk op je diploma. Soms zijn er wettelijke beroepsvereisten een
+onderdeel van je opleiding, dit kan bijvoorbeeld een van de ‘houders van dieren’ zijn of het T-rijbewijs.
+Als iets een wettelijke beroepsvereiste is mag je het niet als keuzedeel kiezen.
+
+De beroepengroep met dezelfde basis en de verschillende kwalificaties noemen we samen een
+‘kwalificatiedossier’, en alle kwalificatiedossiers samen noemen we de kwalificatiestructuur.
+
+Het derde deel van de opleiding bestaat uit ‘keuzedelen’. Keuzedelen zijn er ‘verbredend’ of ‘verdiepend’.
+Je kan een keuzedeel kiezen omdat het de doorstroom naar een volgende opleiding vereenvoudigt.
+Of omdat je een keuzedeel leuk en interessant vindt. Sommige keuzedelen worden uitgevoerd in de stage.
+Je hebt keuze uit de keuzedelen die je school aanbiedt, maar het is wel een verplicht onderdeel.
+Het komt er ongeveer op neer dat je één keuzedeel per jaar doet (dit is natuurlijk afhankelijk van de duur
+van de opleiding en het aantal uren wat er voor een keuzedeel staat).
+De keuzedelen vallen onder de slaag-zak regeling. In paragraaf 4.10 vind je hier meer informatie over.
+
+4
+
+Het kwalificatiedossier van jouw opleiding kun je vinden op de website (www.s-bb.nl/onderwijs/
+kwalificeren-en-examineren) van Samenwerkingsorganisatie Beroepsonderwijs Bedrijfsleven (SBB).
+Jouw opleiding maakt van het basisdeel, het profieldeel en de keuzedelen een goed opgebouwd
+onderwijsprogramma, zodat je alles wat je nodig hebt ook echt leert. Alle diploma-eisen worden
+beschreven in het examenplan. Het examenplan van jouw opleiding staat op de website.
+
+Keuze-
+deel
+
+Keuze-
+deel
+
+Keuze-
+deel
+
+Keuze-
+deel
+
+Keuze-
+deel
+
+Keuze-
+deel
+
+Opleiding
+
+Proﬁel
+
+Proﬁel
+
+Proﬁel
+
+Brede basis
+
+Kwaliﬁcatie
+
+Kwaliﬁcatie-
+dossier
+
+2.2 (Beroeps)specifieke eisen
+
+Wat de beroepsspecifieke eisen zijn staat in een kwalificatiedossier beschreven. Hierin maken ze onder-
+scheid tussen kerntaken (bijvoorbeeld: Uitvoeren werkzaamheden ten behoeve van aanleg/inrichting en
+onderhoud/beheer van de groene ruimte) en werkprocessen (bijvoorbeeld: Draagt zorg voor flora, fauna,
+bodem en water). Er horen meerdere werkprocessen bij een kerntaak.
+
+In je profieldeel zitten deze kerntaken en werkprocessen ook, maar hier zijn ze toegespitst op de richting
+en het niveau waarop je de opleiding volgt.
+
+5
+
+
+
+3. Kwalificatie- en diploma-eisen
+
+3.1 Generieke eisen voor Nederlandse taal en rekenen
+
+Voor alle opleidingen gelden generieke eisen voor Nederlands, Engels (alleen niveau 4) en rekenen,
+zie Tabel 1. Naast onderstaande generieke eisen, kunnen er ook nog beroepsgerichte taaleisen zijn.
+Deze beroepsgerichte taaleisen vind je terug bij de (beroeps)specifieke eisen in het kwalificatiedossier
+van je opleiding.
+
+Tabel 1
+Generieke eisen voor Nederlands, rekenen en Engels
+
+Nederlands
+Rekenen
+Engels lezen en luisteren
+Engels spreken, gesprekken voeren en schrijven
+
+Niveau 1 Niveau 2 Niveau 3 Niveau 4
+2F¹
+¹
+
+2F
+2
+
+2F
+3
+
+3F
+4
+B1
+A2
+
+¹ Studenten in de entreeopleidingen (niveau 1) mogen op elk niveau geëxamineerd worden.
+
+3.2 Generieke eisen voor Loopbaanoriëntatie en -begeleiding (LOB) en Burgerschap
+
+Om goed in onze samenleving mee te kunnen doen, is alleen een voorbereiding op je beroep niet
+voldoende. Bij Loopbaanoriëntatie en -begeleiding leer je om je te oriënteren op je toekomstige beroep en
+op het vinden van een baan. Burgerschap gaat in op deelname aan de maatschappij. Bij Loopbaanoriëntatie
+en -begeleiding gaat het om jouw persoonlijke ontplooiing.
+
+1. Loopbaanoriëntatie en -begeleiding
+
+Zoals hierboven al genoemd werk je binnen loopbaanoriëntatie
+en -begeleiding aan je persoonlijke ontplooiing, het gaat hierbij
+om de competenties:
+
+Wie ben ik, wat kan ik?  kwaliteitenreflectie
+Wat wil ik, wat drijft mij?  motievenreflectie
+Welk soort werk past bij mij?  werkexploratie
+Wat wil ik worden?  loopbaansturing
+Wie kan mij daarbij helpen?  netwerken
+
+6
+
+Kwaliteitenreflectie    Motievenreflecti
+
+Wat
+kan ik?
+
+Wat
+wil ik?
+
+e
+
+Wie kan
+mij daarbij
+helpen?
+
+n
+e
+k
+r
+e
+w
+et
+     N
+
+Wat past
+bij mij?
+
+W
+e
+r
+k
+e
+
+xploratie
+
+Hoe kom
+ik daar?
+
+   Loopbaansturing
+
+2. Burgerschap
+
+De thema’s die bij Burgerschap horen zijn vastgelegd in vier dimensies:
+
+•  De politiek-juridische dimensie;
+•  De economische dimensie;
+•  De maatschappelijk-sociale dimensie en;
+•  De dimensie vitaal burgerschap.
+
+Daarnaast werk je ook aan kritische denkvaardigheden. Door middel van opdrachten moet je aantonen dat
+je je ontwikkelt tot een burger die in deze maatschappij kan functioneren. Voor het diploma moet je hebben
+voldaan aan de eisen voor de burgerschapsdimensies.
+Informatie over de eisen die jouw opleiding stelt aan dit onderdeel kun je opvragen bij je studieloopbaan-
+begeleider/mentor/coach.
+
+Voor LOB en burgerschap geldt een inspanningsverplichting, geen examenverplichting. Je neemt deel aan
+opdrachten, activiteiten en projecten. Als je voldaan hebt aan de inspanningsverplichting en de kwaliteits-
+eisen van de opleiding wordt de eindbeoordeling toegevoegd aan het diplomadossier.
+
+3.3 Beroepspraktijkvorming (BPV)
+
+Beroepspraktijkvorming (BPV) is een ander woord voor stage en is een belangrijk deel van je opleiding.
+Aan de BPV zijn eisen gesteld waaraan je moet voldoen om je diploma te kunnen halen. Je moet onder
+andere het verplichte aantal uren BPV maken. Daarnaast moet je je stage(s) afsluiten met (gemiddeld)
+een voldoende. Er wordt dan bijvoorbeeld gekeken naar de beroepshouding en naar de beroepsspecifieke
+examenonderdelen. Per opleidingssoort verschilt het wettelijk gestelde minimumaantal uur BPV.
+
+De BPV vindt plaats op een erkend leerbedrijf. Een overzicht van de erkende leerbedrijven vind je op:
+www.stagemarkt.nl. Voor sommige opleidingen is het mogelijk om BPV in het buitenland te lopen.
+
+a. Praktijkovereenkomst (POK)
+
+Voordat je op BPV gaat, sluit je een praktijkovereenkomst af met je leerbedrijf en de school. In deze
+praktijkovereenkomst staan de afspraken over de inhoud en vormgeving van de BPV. Zonder praktijk-
+overeenkomst is jouw BPV niet rechtsgeldig en ben je bijvoorbeeld niet verzekerd. De praktijkovereen-
+komst wordt ondertekend door jou (indien je minderjarig bent, ook de ouder/wettelijk vertegenwoordiger),
+het leerbedrijf en de onderwijsinstelling. Een voorbeeld van de praktijkovereenkomst is als bijlage
+opgenomen in de OER.
+
+7
+
+b. Beroepspraktijkvorming in de BOL
+
+Tijdens het leertraject in de beroepsopleidende leerweg (BOL) ga je een periode stagelopen bij een erkend
+leerbedrijf. Wat je tijdens de BPV precies gaat doen hangt af van de mogelijkheden binnen het leerbedrijf
+en je leervraag. Niet in elk bedrijf kun je alle onderdelen van de opleiding leren. Samen met je BPV-begeleider
+kies je een erkend leerbedrijf op basis van jouw wensen en beschikbaarheid van bedrijven. De beschikbaar-
+heid is soms afhankelijk van seizoen- of opdracht gebonden invloeden. Bij de start van je BPV maak je
+verdere afspraken tussen jou, de opleider van het leerbedrijf en de BPV-begeleider. Deze afspraken gaan
+bijvoorbeeld over je werktijden en de veiligheidsvoorschriften.
+
+c. Beroepspraktijkvorming in de BBL
+
+Tijdens het leertraject in de beroepsbegeleidende leerweg (BBL) werk je bij een erkend leerbedrijf.
+Met het leerbedrijf teken je een praktijkovereenkomst. In de praktijkovereenkomst staat het aantal
+geplande uren, gebaseerd op de landelijk vastgestelde urennorm, en maak je afspraken over de inhoud,
+begeleiding en beoordeling van je werk.
+
+BOL
+
+BBL
+
+School
+Praktijk
+Stage
+Werk
+
+d. Beroepspraktijkvorming en keuzedelen
+
+De opleiding kan de mogelijkheid bieden om binnen de BPV-periode aan een keuzedeel te werken.
+Als deze optie er binnen je opleiding is krijg je een addendum bij je praktijkovereenkomst. In deze praktijk-
+overeenkomst staan ook de gekozen keuzedelen. In paragraaf 3.4 lees je wat keuzedelen zijn en hoe dit
+werkt. Aanpassingen worden door de studentenadministratie van de opleiding doorgevoerd als jij,
+je leerbedrijf en de onderwijsinstelling daarmee akkoord gaan.
+
+e. BPV in het buitenland
+
+Aeres MBO stimuleert je om je grenzen te verleggen en bied je de mogelijkheid om praktijkervaring op
+te doen in het buitenland. Dat kan in de vorm van een internationale BPV. Voor BPV binnen de landen
+van de Europese Unie kun je Erasmus+ subsidie aanvragen bij het International Office/ BPV-coördinator/
+studieloopbaanbegeleider/docent.
+
+Als je voor een BPV in het buitenland kiest, maak je op tijd een afspraak met studieloopbaanbegeleider/
+mentor/coach of BPV-begeleider om je wensen en motivatie voor een internationale BPV toe te lichten.
+De BPV moet passend zijn bij jouw studieloopbaan en voldoen aan de opleidingseisen. Examinering in
+het buitenland is niet mogelijk.
+
+8
+
+3.4 Keuzedelen
+
+Met keuzedelen vul je een deel van je opleiding zelf in, het is een soort keuzevak. Vanuit je opleiding krijg je
+een aanbod in keuzedelen. Dat kunnen keuzedelen zijn waarmee je je verder kunt specialiseren in je beroep
+of keuzedelen die je voorbereiden op een vervolgopleiding (bijvoorbeeld een vervolgopleiding binnen het
+mbo of hbo). Als je na je opleiding aan het werk gaat, kun je je met deze keuzedelen onderscheiden van je
+collega’s.
+
+Voorbeeld van keuzedeel bij opleiding vakexpert veehouderij
+
+Opleiding
+
+Vakexpert
+veehouderij
+
+Rundvee
+pedicure
+
+Jouw
+baan
+
+Stroom je door naar een volgende mbo-
+opleiding of start je met een hbo-opleiding,
+dan is het verstandig om tijdens je opleiding
+te kiezen voor keuzedelen die je daarop
+voorbereiden.
+
+Wij proberen het aanbod van keuzedelen zo actueel mogelijk te houden en aan te sluiten op de huidige
+arbeidsmarkt. Maar ook jij als student hebt hier keuzes in. Misschien wil je wel een keuzedeel bij een andere
+opleiding gaan doen omdat deze beter bij je wensen past. Om zo’n keuzedeel (wat niet gekoppeld is aan je
+eigen opleiding) te volgen kun je een schriftelijk verzoek indienen bij de Centrale Examencommissie.
+De studieloopbaanbegeleider/mentor/coach kan je hier mee helpen.
+
+Hoeveel uur je kan besteden aan keuzedelen hangt af van het niveau van de opleiding en de wettelijke duur
+van de opleiding.
+
+HBO
+
+Onderwijs-
+programma
+
+Keuzedeel
+
+MBO
+
+Keuze-
+deel
+
+Verbreden
+
+n
+e
+p
+e
+i
+d
+r
+e
+V
+
+Je hoeft niet direct aan het begin van de opleiding al je keuze-
+delen te kiezen. Je hebt tijd om te ontdekken welke keuzes
+bij jou passen. Hoewel er altijd iets te kiezen valt, is niet alles
+mogelijk. Soms past het gewoon niet in de planning van jouw
+opleiding om een gevraagd keuzedeel te kunnen volgen.
+Er wordt dan samen naar een andere invulling gezocht.
+De keuzes die je maakt worden vastgelegd op het aanvullend
+inschrijfbesluit.
+Keuzedelen mogen geen overlap hebben met de rest van je
+opleiding. Dat betekent dat je bijvoorbeeld geen keuzedeel
+ondernemerschap mag doen als dat al in het basis- of
+profieldeel van je opleiding zit.
+
+Tabel 2: Keuzedeelverplichting, studielast en onderwijstijd
+
+Kwalificatie (opleidings)niveau Soort opleiding
+Entreeopleiding
+Niveau 1
+Basisberoepsopleiding
+Niveau 2
+Vakopleiding
+Niveau 3
+Middenkaderopleiding 3 jaar
+Niveau 4
+Middenkaderopleiding > 3 jaar
+Niveau 4
+
+Keuzedeelverplichting
+Studielast: 240 uren
+Studielast: 480 uren
+Studielast: 720 uren
+Studielast: 720 uren
+Studielast: 720 uren
+
+9
+
+Twee keer per jaar stelt het College van Bestuur het aanbod keuzedelen vast. De lijst met vastgestelde
+keuzedelen vind je op www.aeresmbo.nl/studeren-aan-het-mbo/keuzedelen.
+
+3.5 Onderwijsprogramma en onderwijstijd
+
+De start van je opleiding is gericht op kennismaken met je coach/slb-er, je medestudenten en natuurlijk
+je beroep, jouw verwachtingen van de opleiding en het onderwijsprogramma.
+
+De studielast van een onderwijsprogramma, oftewel de tijd die je elk studiejaar besteedt aan je opleiding,
+is minstens 1600 klokuren. Deze uren worden verdeeld over ‘begeleide onderwijstijd’ (BOT) en
+‘beroepspraktijkvorming’(BPV). Het totaal aantal uren is een gemiddelde en afhankelijk van de studie.
+
+Onder begeleide onderwijsactiviteiten verstaan we onder andere:
+
+•  Lessen/practica;
+•  Beroepspraktijkvorming;
+•  Projecten;
+•  Workshops;
+•  Excursies;
+•  Keuzedelen (kunnen vallen onder BOT of BPV).
+
+Als de activiteiten duidelijk vallen onder de verantwoordelijkheid van een bevoegd docent dan tellen
+de activiteiten mee onder de begeleide onderwijstijd. Als het niet duidelijk is of studenten wel of niet
+mee hebben gedaan met de activiteit, tellen de activiteiten niet onder de begeleide onderwijstijd.
+Uren in de BPV tellen alleen mee voor de onderwijstijd als hiervoor óf een praktijkovereenkomst bij
+een erkend leerbedrijf is afgesloten óf als de uren in de praktijk onder de directe verantwoordelijkheid
+en toezicht van een bevoegde medewerker worden uitgevoerd. De gemaakte uren BPV moeten door
+het bedrijf worden goedgekeurd.
+
+De verdeling van de uren over BOT en BPV moet aan de minimale eisen voldoen, zoals voor de BOL
+beschreven staat in Tabel 3. Een opleiding kan met het aantal uren binnen de BOT en de BPV schuiven
+tussen de jaren van jouw opleiding. Daarnaast kan een locatie of opleiding afwijken van de gestelde
+urennormen, zoals het beschreven staat in de Wet educatie en beroepsonderwijs (WEB). De opleiding
+kan ook hogere eisen stellen aan de urennorm. Om eventuele uitval van onderwijs te kunnen compenseren
+wordt standaard een opslag van vijf procent boven op de minimumnormen geprogrammeerd voor
+de BOL- en de BBL-opleidingen.
+
+10
+
+Tabel 3. Urenverdeling BOL-opleiding
+
+Niveau en studiejaren
+
+BOT (minimaal)
+
+BPV (minimaal) Totaal BOT en BPV
+
+600
+1-jarige opleiding: Entree
+2-jarige opleiding: Niveau 2
+1250 (700 in leerjaar 1)
+3-jarige opleiding: Niveau 3 of 4 1800 (700 in leerjaar 1)
+2350 (700 in leerjaar 1)
+4-jarige opleiding: Niveau 4
+
+Geen minimum
+450
+900
+1350
+
+NB: In de tabel staan de uren voor zelfstudie niet opgenomen.
+
+(minimaal)
+1000
+2000
+3000
+4000
+
+Let op: naast de BOT en de BPV-uren kom je tot de totale studiebelastingsuren door de zelfstudie,
+het voorbereiden en het uitwerken van lesonderdelen, het maken van verslagen en andere activiteiten
+die bij de opleiding horen erbij op te tellen. Voor de BBL-opleidingen bevat elk studiejaar ten minste
+850 klokuren, waarvan ten minste 200 begeleide onderwijsuren en ten minste 610 uren BPV.
+
+Met instemming van de Centrale Studentenraad kan worden afgeweken van de wettelijke urennorm.
+Opleidingen waarvoor dat bij Aeres MBO geldt zijn:
+
+•  Medewerker dierverzorging niveau 2 (CREBO 25732) op locatie Barneveld;
+•  Medewerker veehouderij niveau 2 (CREBO 25432) op locatie Barneveld;
+•  Medewerker groen- en cultuurtechniek niveau 2 (CREBO 25616) op locatie Barneveld;
+•  Medewerker groen, grond en groene infra niveau 2 (CREBO 25992) op locatie Emmeloord;
+•  Medewerker teelt niveau 2 (CREBO 25431) op locatie Emmeloord;
+•  Medewerker groen, grond en groene infra niveau 2 (CREBO 25992) op locatie Barneveld;
+•  Medewerker teelt niveau 2 (CREBO 25984) op locatie Emmeloord;
+•  Medewerker veehouderij niveau 2 (CREBO 25986) op locatie Emmeloord;
+•  Medewerker veehouderij niveau 2 (CREBO 20986) op locatie Barneveld.
+
+3.6 Praktijkleerovereenkomst
+
+Naast een Praktijk-/stage-overeenkomst (POK) kennen we ook een Praktijkleerovereenkomst. Soms werk
+je buiten de school aan een project, een onderzoek of aan realistische praktijkopdrachten die op een bedrijf
+worden uitgevoerd bijvoorbeeld voor Regioleren, Fieldlaps of LIP (leren in de praktijk). Deze onderwijs-
+activiteiten vallen onder de verantwoordelijkheid van de school/het onderwijsteam en worden daarom niet
+als BPV-uren gerekend, maar als lestijd: het gaat om Begeleide Onderwijs Tijd-uren. Je kunt, wanneer je op
+het bedrijf aan je opdracht of project werkt, dan ook ten aller tijde (telefonisch) contact opnemen met je
+begeleider van school.
+
+Een voorbeeld van de praktijkleerovereenkomst is opgenomen als bijlage in de OER.
+
+3.7 Studiebegeleiding
+
+In gesprekken met je studieloopbaanbegeleider/mentor/coach heb je het over je voortgang en ontwikkeling.
+Samen met je studieloopbaanbegeleider/mentor/coach kijk je naar waar je nu staat en wat je volgende
+stappen zijn. Het is een proces van feedback geven en reflecteren: Dit alles met als hoofddoel: een bijdrage
+
+11
+
+aan jouw voortgang en ontwikkeling. Om die voortgang in beeld te krijgen, kun je tussentijds beoordeeld
+worden met toetsen, opdrachten, verslagen enz.
+
+3.8 Studievoortgang en overgangsnormen
+
+Je studievoortgang wordt vastgelegd in een (prestatie)dossier (PD). In het (prestatie)dossier staan je
+resultaten voor zowel beroepsgerichte thema’s en toetsen als toetsen en examens voor Nederlands, Engels
+en rekenen. Zorg dat je je (prestatie)dossier goed bijhoudt. Je kunt zelf het (prestatie)dossier inzien.
+Een voorwaarde voor het succesvol volgen van je opleiding en het deelnemen aan de beroepsproeve is het
+aanwezig zijn bij de lessen. Voor het (prestatie)dossier hanteren we de volgende richtlijnen:
+
+1.  Ieder studiejaar krijg je een nieuw (prestatie)dossier, dat aan het eind van het studiejaar moet zijn
+
+afgerond om over te kunnen gaan naar het volgend studiejaar.
+
+2. Per studiejaar is het (prestatie)dossier opgebouwd uit een aantal thema’s/werkprocessen en toetsen.
+3. De cijfers voor Nederlands, Engels en rekenen tellen mee bij de overgang.
+4. Ook je voortgang voor Loopbaanoriëntatie en -begeleiding en Burgerschap en de BPV tellen mee
+
+bij de overgang.
+
+5. Je bent over wanneer je voor niet meer dan 20 procent van het aantal thema’s of vakken een berekende
+
+5 staat. In je vakrichting mag je maar één berekende 5 hebben. Een 4 en lager tellen voor twee
+berekende vijven.
+
+6. In een overgangsvergadering aan het eind van het studiejaar wordt bepaald wat er gebeurt als je meer
+
+dan 20 procent berekende vijven hebt. Er zijn verschillende mogelijkheden:
+Je gaat over (onder bepaalde voorwaarden);
+•  Je doubleert;
+•  Je stroomt af naar een lager niveau;
+•  Je stroomt uit op een lager niveau.
+
+7.  Als je niet overgaat komen in principe de toetsen uit je (prestatie)dossier te vervallen. Wanneer je
+
+examens hebt gedaan (bijvoorbeeld voor Nederlands), blijven je examencijfers staan, maar krijg je wel
+weer opnieuw twee kansen. De overgangsvergadering kan adviseren een maatwerkprogramma voor
+je op te stellen. Dat wordt vastgelegd in een overeenkomst tussen jou en de onderwijsinstelling. Je kan
+één keer per studie doubleren.
+
+Het onderwijsteam kan afwijken van bovenstaande richtlijnen met toestemming van de directie.
+De nieuwe afspraken worden daarna vastgelegd in je dossier.
+
+3.9 Aangepaste Examinering
+
+Als er sprake is van een zichtbare of onzichtbare beperking kan je een verzoek voor ‘aangepaste examinering’
+indienen bij de Lokale Examenorganisatie. Deze dienen namens jou het verzoek in bij de Centrale Examen-
+commissie. Hiervoor is nodig een reden en/of bewijsstukken (denk aan een deskundigheidsrapport of een
+medische verklaring). Aanpassingen kunnen toegepast worden in de vorm (exameninstrument, uitvoerings-
+wijze, examenopdracht of op te leveren resultaat) of conditie (hulpmiddel, afname, duur, moment of
+aanwezigheid van derden.
+
+12
+
+3.10 De Friese taal bij Aeres MBO in Friesland
+
+De provincie Friesland is een tweetalige provincie, wat betekent dat burgers op grond van de “Wet gebruik
+Friese taal” het recht hebben om hun eigen taal (Nederlands of Fries) te gebruiken.
+
+Op de locaties van Aeres MBO in Friesland mag je Fries spreken, onder voorwaarde dat dit geen
+belemmering is voor het onderwijs (bijvoorbeeld als je docent geen Fries spreekt).
+
+Je kan als je wil een certificaat Fries halen. De provincie Friesland reikt in samenwerking met AFÛK twee
+certificaten uit: ‘De kompetinsje Frysk ferstean yn de eigen beropssituaasje’ en ‘De kompetinsje Frysk
+ferstean en prate yn de eigen beropssituaasje’.
+
+Daarnaast kan je als student in Friesland ook Friese keuzedelen volgen, bijvoorbeeld Fries in de beroeps-
+context.
+
+Delen van het onderwijs kunnen in het Fries worden gegeven. Dit kan alleen als iedereen op dat moment
+eens is met het lesgeven in het Fries. Ook kan het zo zijn dat onderdelen Fries worden gegeven omdat
+het voor het beroep wenselijk is.
+
+De voorwaarden voor het afnemen van examens in het Fries staan in het Examenreglement, hoofdstuk 4,
+artikel 29 van de OER.
+
+
+
+4. Examenreglement
+
+4.1 Examinering
+
+Om het diploma van je opleiding te behalen neem je deel aan de examinering. Deze staat beschreven in
+het examenplan van je opleiding en bestaat uit de volgende onderdelen;
+
+•  Beroepsgerichte examenonderdelen
+•  Generieke examenonderdelen taal en rekenen
+•  Keuzedeelexamens
+
+Daarnaast zijn er nog een aantal diploma-eisen waaraan je moet voldoen zoals een positieve beoordeling
+voor je BPV en een bewijs dat je hebt voldaan aan de inspanningseisen voor loopbaanoriëntatie en
+-begeleiding en burgerschap. Voor een aantal opleidingen geldt dat je ook nog aan de wettelijke beroeps-
+vereisten en/of branchevereisten moet voldoen.
+
+13
+
+4.2 Examenvormen
+
+Hoe de examinering van de opleiding wordt vormgegeven, is afhankelijk van de onderdelen/exameneisen
+in de opleiding. In Tabel 4 staan de verschillende examenvormen beschreven. In het examenplan van je
+opleiding staat exact beschreven welke examenvorm wordt gebruikt bij een exameneis. De examenplannen
+voor de opleidingen zijn te vinden op de website.
+
+Tabel 4
+Mogelijke examenvormen bij een exameneis
+
+Exameneis
+(Beroeps)specifieke eisen
+
+Wettelijke beroepsvereisten
+
+Generieke eisen – Nederlands
+
+Generieke eisen – Engels
+
+Generieke eisen – rekenen
+Keuzedelen
+
+Mogelijke examenvorm
+•  Werkprocesexamen
+•  Vaardigheidsexamen
+•  Beroepsproeve
+•  Kennisexamen
+•  Werkprocesexamen
+•  Vaardigheidsexamen
+•  Kennisexamen
+•  Centraal Examen: lezen en luisteren
+•  Instellingsexamen: spreken, gesprekken voeren en schrijven
+•  Centraal Examen: lezen en luisteren
+•  Instellingsexamen: spreken, gesprekken voeren en schrijven
+•  Centraal Examen of instellingsexamen
+•  Keuzedeelexamen
+•  Praktijkexamen
+•  Kennisexamen
+•  Portfolio-examen
+•  Criterium Gericht Interview of Examengesprek
+•  Presentatie
+•  Verslag
+
+14
+
+4.3 Examenplan
+
+Een examenplan is een overzicht van alle examenonderdelen van je opleiding en het bestaat uit de volgende
+onderdelen:
+
+•  Beroepsgerichte examenonderdelen
+•  Generieke examenonderdelen
+
+•  Nederlands
+•  Rekenen
+•  Engels (niveau 4)
+
+•  Keuzedelen
+•  Overige diploma-eisen
+
+•  Loopbaan
+•  Burgerschap
+•  Beroepspraktijkvorming
+
+•  Wettelijke beroepsvereisten en/of branchevereisten (indien van toepassing).
+
+In een examenplan staat beschreven welke examens je moet doen om in aanmerking te komen voor
+het diploma, wat de minimale duur is van een examen, op welke locatie het examen afgenomen gaat
+worden en wat bijvoorbeeld de weging is van de examens. Je vindt het examenplan van jouw opleiding
+op de website.
+
+De beroepsgerichte examens zijn gekoppeld aan de kerntaken en werkprocessen uit het kwalificatiedossier.
+Algemeen geldt voor het behalen van een diploma dat je alle beroepsgerichte onderdelen met minimaal
+een voldoende afrondt. Op de resultatenlijst die je bij het diploma krijgt uitgereikt, staat voor het beroeps-
+gerichte deel een oordeel per kerntaak. Keuzedelen, Nederlands, Engels (niveau 4) en rekenen tellen mee
+voor het halen van het diploma. De wijze waarop ze meetellen is wettelijk vastgelegd.
+
+Diplomadossier en diploma
+Alle- voor diplomering- benodigde bewijzen worden verzameld in een (digitaal) diplomadossier.
+De locatie beheert voor elke student het diplomadossier. In dit dossier staan de beoordelingsformulieren
+van de beroepsgerichte en generieke examens en de overige diploma-eisen; zoals het afrondingsbewijs voor
+loopbaanoriëntatie en -begeleiding en burgerschap. Op basis van dit dossier beslist de examencommissie of
+je in aanmerking komt voor het diploma.
+
+15
+
+4.4 De uitslag
+
+De eindwaardering voor een examen verschilt per type examen:
+
+•  Instellingsexamen en centraal examen: cijfer 1 t/m 10;
+•  Beroepsproeve, werkprocesexamen en vaardigheidsexamens: onvoldoende, voldoende of goed;
+•  Beroepsgerichte kennisexamen: cijfer 1 t/m 10;
+•  Keuzedeelexamens: cijfer 1 t/m 10.
+
+Voor de keuzedeelexamens die een andere beoordelingsschaal hebben dan een cijferschaal wordt
+onderstaande omrekentabel gebruikt:
+
+Woord
+Onvoldoende
+Voldoende
+Goed
+
+Cijfer
+(2) 4
+6
+8 (10)
+
+Je hebt een examen behaald als:
+
+•  je afgeronde eindcijfer of gemiddelde van de deelcijfers minstens een 6 of een voldoende is;
+•  als je voor een beroepsproeve, vaardigheidsexamen of werkprocesexamen op kerntaakniveau een
+
+voldoende hebt behaald.
+
+Voor de keuzedelen is er sprake van een compensatieregeling.
+Het gemiddelde van al je keuzedelen bij elkaar moet een voldoende (6) zijn.
+
+•  Het gemiddelde van de resultaten, van de geëxamineerde keuzedelen binnen de keuzedeelverplichting,
+
+moet tenminste een 6 zijn;
+
+•  Voor minimaal de helft van de keuzedelen moet het resultaat tenminste een 6 zijn;
+•  Een keuzedeelresultaat mag niet lager dan een 4 zijn;
+•  De compensatieregeling wordt alleen berekend op basis van de keuzedelen die tellen voor
+
+de keuzedeelverplichting. Extra keuzedelen worden niet meegenomen in de compensatieregeling;
+•  Keuzedelen waarvoor geen examenresultaat beschikbaar is, bijvoorbeeld door een vrijstelling op basis
+van leer- of werkervaring of in het geval van een (trekker)rijbewijs, worden niet meegenomen met
+de berekening van de compensatieregeling.
+
+16
+
+4.5 Herkansingen
+
+Je hebt recht op één herkansing van elk examen of een deel van het examen, voor het rekenexamen heb je
+twee herkansingen. Een onvoldoende op een specifiek werkproces van een beroepsproeve, werkproces-
+examen of vaardigheidsexamen kan je ook herkansen als je voldoet aan de volgende voorwaarden:
+
+•  het werkproces kan apart uitgevoerd en beoordeeld worden;
+•  en het werkproces hangt niet samen één of meerdere andere werkprocessen;
+•  de gelijkwaardigheid komt niet in het geding.
+
+De Centrale Examencommissie besluit of je een specifiek werkproces mag herkansen en legt dit vast in
+het diplomadossier.
+
+Heb je het examen na de herkansing niet gehaald kan je soms in aanmerking komen voor een tweede
+herkansing. Als je in aanmerking wilt komen voor een extra examengelegenheid (finale herkansing), dien je
+een verzoek in via de Lokale Examenorganisatie bij de Centrale Examencommissie. De Centrale Examen-
+commissie neemt vervolgens een besluit over het verzoek en kent een extra examengelegenheid toe of
+wijst een extra examengelegenheid af. Mocht je toch nog een examen niet gehaald hebben, en je hebt je
+lessen en stage wel al afgesloten kan je als examendeelnemer (extraneus) nog examens afnemen.
+
+4.6 Vrijstellingen
+
+Je kan onder voorwaarden, die staan in het vrijstellingenbeleid, een vrijstelling krijgen voor een examen.
+De aanvraag hiervoor kan bij de Lokale Examenorganisatie.
+
+4.7 Examineren op hoger niveau
+
+Je kan voor de vakken Nederlands, Engels en rekenen een examen maken op een hoger niveau
+dan voor de diplomering vereist is. Ook hiervoor kan je een aanvraag doen bij de Lokale Examenorganisatie.
+
+4.8 Organisatie examens
+
+Je wordt op tijd geïnformeerd over de plaats en tijdstip van het examen, en je bent verplicht om je voor
+het examen te legitimeren en de aanwijzingen van de assessor, surveillant, of een ander persoon op te volgen.
+Een telefoon, smartwatch of smartphone mogen niet gebruikt worden, net zoals andere hulpmiddelen zoals
+een (grafisch) rekenmachine, tenzij anders vermeld.
+Je bent verplicht deel te nemen aan het examen waarvoor je bent ingeschreven en 15min voor het begin
+aanwezig te zijn. Tot 30 min. na de start mag je nog binnen, hierna word je niet meer toegelaten tot
+het examen. Je krijgt als je te laat bent geen extra tijd.
+Na 30min mag je de examenruimte verlaten, als iedereen al eerder aanwezig is mag je eventueel eerder weg.
+
+17
+
+4.9 Onregelmatigheden en fraude
+
+Het is een onregelmatigheid als het examen niet verloopt zoals is afgesproken, bijvoorbeeld als er
+geluidsoverlast is, of als de verwarming of airco kapot is.
+Het is fraude als je spiekt, je smartwatch nog om hebt of andere hulpmiddelen gebruikt die niet mogen,
+het niet opvolgen van instructies, het vervalsen van documenten of handtekeningen, Chat GPT/AI tijdens
+het examenproces. Als je betrapt wordt op fraude wordt je hier op aangesproken en meldt de surveillant dit
+in het proces verbaal. Je mag je examen afmaken waarna de centrale examen-commissie een onderzoek kan
+instellen en passende maatregelen zal nemen. Ben je het hier niet mee eens dan kan je bezwaar
+indienden bij het klachtenloket.
+Een maatregel kan bijvoorbeeld zijn; je krijgt een 1 voor je examen, ongeldig verklaren van het examen,
+het verplichten van een herkansing, in het ergste geval kan je worden geschorst en/of verwijderd.
+
+18
+
+4.10 Diplomering
+
+Tijdens de opleiding maak je examens, volg je onderwijsactiviteiten en ga je op BPV. Al deze activiteiten
+leiden naar een diploma. Alle bewijsstukken worden verzameld en komen in het diplomadossier.
+Samen met je studieloopbaanbegeleider/mentor/coach bespreek je je vorderingen die in het dossier komen.
+Dit dossier is eigendom van de Centrale Examencommissie en op basis van de beoordeling op volledigheid
+van je diplomadossier beslist de Centrale Examencommissie of je een diploma krijgt. Je studieloopbaan-
+begeleider/mentor/coach begeleidt je in jouw leertraject stap voor stap op weg naar je diploma!
+
+Elke student moet aan een aantal diploma-eisen voldoen voordat hij of zij het diploma kan ontvangen.
+In onderstaande tabellen staan de diploma-eisen voor de verschillende opleidingsniveaus beschreven
+volgens de slaag-zakregeling.
+
+Tabel 5.
+Diploma-eisen voor de entreeopleiding (niveau 1).
+
+Diploma-eis
+(Beroeps)specifieke
+onderdelen - kerntaken
+Wettelijke vereisten (indien
+opgenomen in de kwalificatie)
+Generieke examen –
+Nederlands
+Generieke examen – Rekenen
+Loopbaan en burgerschap
+Beroepspraktijkvorming
+(BPV)
+Keuzedelen
+
+Slaag-zakregeling
+Je hebt per kerntaak minimaal een voldoende of het cijfer 6.
+
+Je hebt minimaal een voldoende.
+
+Je hebt het generieke examen Nederlands gedaan.
+
+Je hebt het generieke examen rekenen gedaan.
+Je eindoordeel is ‘voldaan’.
+Je eindoordeel is voldoende, hierin is ook het oordeel van
+je stagebegeleider meegenomen.
+Je hebt je keuzedelenverplichting gehaald volgens de compenstatie-
+regeling.
+
+•  Het gemiddelde van de examenresultaten is minstens een 6.
+Heb je maar één keuzedeel gedaan, dan moet je hiervoor een
+6 hebben gehaald.
+
+•  Voor minimaal de helft van deze keuzedelen moet het resultaat
+tenminste een 6 zijn. Alle keuzedelen tellen even zwaar mee.
+•  Een cijfer voor een keuzedeel mag nooit lager zijn dan een 4.
+•  De compensatieregeling wordt alleen berekend op basis van
+de keuzedelen die tellen voor de keuzedeelverplichting. Extra
+keuzedelen worden niet meegenomen in de compensatieregeling.
+
+•  Keuzedelen waarvoor je geen beoordeling krijgt kan je niet
+
+gebruiken om te compenseren. Bijvoorbeeld in het geval van
+een vrijstelling op basis van werkervaring of in het geval van
+een (trekker)rijbewijs.
+
+19
+
+Tabel 6.
+Diploma-eisen voor de basisberoepsopleiding en de vakopleiding (niveau 2 en 3)
+
+Diploma-eis
+(Beroeps)specifieke
+onderdelen - kerntaken
+Wettelijke vereisten (indien
+opgenomen in de kwalificatie)
+Generiek examen – Rekenen
+en Nederlands
+
+Loopbaanoriëntatie en
+-begeleiding en burgerschap
+Beroepspraktijkvorming
+(BPV)
+Keuzedelen
+
+Slaag-zakregeling
+Je hebt per kerntaak minimaal een voldoende of het cijfer 6.
+
+Je hebt minimaal een voldoende.
+
+Je eindoordeel van één van de twee generieke examens (Nederlands
+of rekenen) is minstens het cijfer 5 en het eindoordeel voor het andere
+genoemde generieke examen is minstens het cijfer 6.
+Je eindoordeel is ‘voldaan’.
+
+Je oordeel is een voldoende, hierin is ook het oordeel van het leerbedrijf
+of de organisatie meegenomen.
+Je hebt je keuzedelenverplichting gehaald volgens de compenstatie-
+regeling.
+
+•  Het gemiddelde van de examenresultaten van de keuzedelen
+
+binnen de keuzedeelverplichting is minstens een 6.
+Indien de keuzedeelverplichting slechts één keuzedeel omvat,
+dan moet voor dit keuzedeel minstens een 6 zijn behaald.
+
+•  Voor minimaal de helft van deze keuzedelen moet het resultaat
+minstens een 6 zijn. Alle keuzedelen tellen even zwaar mee.
+
+•  Een keuzedeelresultaat mag nooit lager dan een 4 of een daarmee
+
+overeenkomende eindwaardering zijn.
+
+•  De compensatieregeling wordt alleen berekend op basis van
+de keuzedelen die tellen voor de keuzedeelverplichting. Extra
+keuzedelen worden niet meegenomen in de compensatieregeling.
+
+•  Keuzedelen waarvoor geen examenresultaat beschikbaar is,
+
+bijvoorbeeld door een vrijstelling op basis van leer- of werkervaring
+of in het geval van een (trekker)rijbewijs, worden niet meegenomen
+met de berekening van de compensatieregeling.
+
+¹ De studenten in de entreeopleiding en mbo-2 maken hetzelfde centraal examen 2F als de mbo-3 studenten.
+Echter, bij het vaststellen van de omzettingstabellen wordt voor de entreeopleiding en mbo-2 één extra cijfer-
+punt toegevoegd.
+
+20
+
+Tabel 7.
+Diploma-eisen voor de middenkaderopleiding (niveau 4)
+
+Diploma-eis
+(Beroeps)specifieke
+onderdelen - kerntaken
+Wettelijke vereisten (indien
+opgenomen in de kwalificatie)
+Generieke examen – Rekenen,
+Nederlands en Engels
+
+Loopbaanoriëntatie en
+-begeleiding en burgerschap
+Beroepspraktijkvorming
+(BPV)
+Keuzedelen
+
+Slaag/zakbeslissing
+Het oordeel per kerntaak is minimaal een voldoende en/of beoordeeld
+met het cijfer 6.
+Het oordeel is minimaal een voldoende.
+
+Het eindoordeel van één van de drie generieke examens (Nederlands of
+Engels) is tenminste het cijfer 5 en het eindoordeel voor de twee andere
+genoemde generieke examens zijn tenminste het cijfer 6.
+Het eindoordeel is ‘voldaan’.
+
+Het oordeel is een voldoende, waarbij het oordeel van het leerbedrijf of
+de organisatie is meegenomen.
+Er is voldaan aan onderstaande compensatieregeling. De compensatie-
+regeling geldt voor studenten vanaf cohort 2020-2021:
+
+•  Het gemiddelde van de examenresultaten van de keuzedelen
+
+binnen de keuzedeelverplichting is tenminste een 6.
+Indien de keuzedeelverplichting slechts één keuzedeel omvat,
+dan moet voor dit keuzedeel ten minste een 6 zijn behaald.
+
+•  Voor minimaal de helft van deze keuzedelen moet het resultaat
+tenminste een 6 zijn. Alle keuzedelen tellen even zwaar mee.
+
+•  Een keuzedeelresultaat mag nooit lager dan een 4 of een daarmee
+
+overeenkomende eindwaardering zijn.
+
+•  De compensatieregeling wordt alleen berekend op basis van
+de keuzedelen die tellen voor de keuzedeelverplichting. Extra
+keuzedelen worden niet meegenomen in de compensatieregeling.
+
+•  Keuzedelen waarvoor geen examenresultaat beschikbaar is,
+
+bijvoorbeeld door een vrijstelling op basis van leer- of werkervaring
+of in het geval van een (trekker)rijbewijs, worden niet meegenomen
+met de berekening van de compensatieregeling.
+
+4.11 Inzage
+
+Je krijgt binnen 20 werkdagen een voorlopige uitslag. Na de voorlopige uitslag heb je tien werkdagen recht
+op inzage, de afspraken rond inzage verschillen per examen en kan je terugvinden in de OER.
+
+Klopt je voorlopige uitslag niet? Geef dit dan aan op school, kom je er samen niet uit dan maak dan bezwaar
+via het klachtenloket zodra je de definitieve uitslag hebt.
+
+21
+
+Resultaat digitale examens/ instellingsexamen in Eduarte:
+Het resultaat van het digitale examens/ instellingsexamen (indien dit door een koppeling ondersteund
+wordt) wordt na het inleveren/afsluiten van het digitaal examen direct ingelezen in het cijferadministratie-
+systeem Eduarte. Dit betreft een voorlopig resultaat.
+
+De student heeft tien werkdagen na de voorlopige uitslag recht op inzage van het materiaal en
+de beoordeling van de generieke examens die niet centraal worden afgenomen.
+
+De Centrale Examencommissie stelt de definitieve beoordeling en resultaten van de examens vast
+bij diplomering. Tot de diplomering blijven de beoordelingen voorlopige resultaten.
+
+4.12 Cum Laude
+
+Je komt in aanmerking voor de aantekening ‘cum laude’, als de afgeronde eindewaarderingen voor
+alle examenonderdelen die meetellen in de zak/slaagregeling aan de volgende voorwaarden voldoen:
+•  het gemiddelde van de (afgeronde) eindwaarderingen in cijfers of woorden op de resultatenlijst
+
+bij het diploma is ten minste een 8,0 of hoger; bij waardering in woorden ten minste goed;
+
+•  de afgeronde eindwaarderingen op de resultatenlijst bij het diploma zijn tenminste gewaardeerd
+
+met een afgeronde 6 of een ‘voldoende’;
+
+•  de eindwaardering van het generieke onderdeel loopbaan en burgerschap is ‘voldaan’;
+
+en de beoordeling van de beroepspraktijkvorming is ‘voldoende’;
+
+•  Als je max. 1x een examen(onderdeel) herkanst;
+•  Alle resultaten op de resultatenlijst tellen mee behalve extra studieprestaties of aanvullende vakken
+
+(bv. Excellentieprogramma);
+
+•  Je studeert af binnen de nominale onderwijstijd van je opleiding;
+•  Als je een vrijstelling hebt waarvoor het resultaat bekend is kan deze worden meegewogen;
+•  Als er fraude is geconstateerd of je bent geschorst, kan je niet meer in aanmerking komen voor
+
+Cum Laude.
+
+Denk je dat je in aanmerking komt? Geef dit dan aan bij je coach/loopbaanbegeleider.
+
+4.13 Mbo-certificaat
+
+Je komt voor een certificaat in aanmerking wanneer je zonder diploma de opleiding verlaat, maar wel
+onderdelen waar een certificaat aan is verbonden hebt behaald. Een certificaat kan je krijgen voor sommige
+keuzedelen of beroepsgerichte onderdelen. Diploma’s en certificaten mogen niet opgestuurd worden.
+
+22
+
+4.14 Mbo-verklaring
+
+Je komt voor een mbo-verklaring in aanmerking als je zonder diploma de opleiding verlaat, maar wel
+onderdelen hebt behaald van de beroepsopleiding. Als je jonger bent dan 23 jaar en nog geen startkwalificatie
+hebt krijg je (soms naast een certificaat) een mbo-verklaring. Ben je ouder of heb je al een startkwalificatie
+dan krijg je de mbo-verklaring niet automatisch maar mag je hier wel om vragen. Dit kan nog tot maximaal
+twee jaar na het verlaten van de opleiding.
+
+4.15 Klachten
+
+Ben je het niet eens een cijfer, of klopt er iets niet bespreek dit dan eerst met je docent/coach etc. Kom je er
+niet uit? Dan kan je een bericht sturen naar het klachtenloket via de website. Zij helpen je dan verder.
+
+4.16 Examenkandidaat/extraneus
+
+Als je alleen nog een examen moet herkansen, maar je hebt geen examenkansen meer, dan kan je je
+inschrijven als Examenkandidaat (extraneus).
+
+•  Dit kan alleen als je geen BPV of lessen meer hoeft te volgen
+•  Dit kan voor max. 1 jaar
+•  Je mag 3 verschillende examens herkansen
+•  Je betaalt vooraf, per examen een bedrag
+
+Examen
+Kosten
+Eendaagse beroepsproeve
+€500,-¹
+Meerdaagse beroepsproeve
+€500,-¹
+Vaardigheidsexamen
+€250,-
+Werkprocesexamen
+€250,-
+Kennisexamen
+€100,-
+€200,-
+Keuzedeelexamen²
+Instellingsexamen of centraal examen Nederlands (per onderdeel) €70,-
+€70,-
+Instellingsexamen of centraal examen Engels (per onderdeel)
+€70,-
+Instellingsexamen of centraal examen Rekenen
+
+¹ Voor studenten in de BBL geldt dat dit bedrag niet hoger mag zijn dan de hoogte van het wettelijk
+vastgestelde cursusgeld. Deze tarieven worden jaarlijks vastgesteld en gepubliceerd op de pagina van
+de Rijksoverheid (www.rijksoverheid.nl/onderwerpen/middelbaar-beroepsonderwijs/vraag-en-antwoord/
+hoogte-lesgeld-en-cursusgeld-mbo).
+² De keuzedeelexamens van Besluit Houder van Dieren vormen hier een uitzondering op. Dit examen bestaat
+uit een vaardigheidsexamen en een kennisexamen. Indien zowel het vaardigheidsexamen als het kennis-
+examen gemaakt moet worden, zijn de kosten in totaal €350,-
+
+23
+
+© Stichting Aeres Groep. Alle rechten voorbehouden. Niets uit deze uitgave mag worden verveelvoudigd,
+opgeslagen in een geautomatiseerd gegevensbestand, en/of openbaar gemaakt in enige vorm of op enige
+wijze, hetzij elektronisch, mechanisch, door fotokopieën, opnamen, of enige andere manier, zonder
+voorafgaande schriftelijke toestemming van Aeres.
+
+Postbus 245, 6710 BE Ede  •  Bovenbuurtweg 27, 6717 XA Ede
+088 020 7020  •  aeresmbo.nl  •  mbo@aeres.nl
+

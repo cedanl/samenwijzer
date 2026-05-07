@@ -1,0 +1,34 @@
+Examenplannen Tuin,
+Landschap en Recreatie
+Cohort 2024-2025
+
+Om in aanmerking te komen voor een diploma moet je voldoen aan alle kwalificatie-eisen.
+In dit examenplan staat beschreven welke examens je doet.
+
+Medewerker hovenier (25621)
+
+Medewerker natuur, water en recreatie (25622)
+
+Opzichter/uitvoerder groene ruimte (25617)
+
+Vakbekwaam hovenier (25618)
+
+Vakbekwaam Medewerker natuur, water en recreatie (25620)
+
+Pagina 2 van 3
+
+© Copyright 2016, Stichting Aeres Groep. Alle
+rechten voorbehouden. Niets uit deze uitgave mag
+worden verveelvoudigd, opgeslagen in een
+geautomatiseerd gegevensbestand, en/of openbaar
+gemaakt in enige vorm of op enige wijze, hetzij
+elektronisch, mechanisch, door fotokopieën,
+opnamen, of enige andere manier, zonder
+voorafgaande schriftelijke toestemming van Aeres.
+
+Postbus 245, 6710 BE Ede
+Bovenbuurtweg 27, 6717 XA Ede
+088 020 7020
+aeresmbo.nl
+mbo@aeres.nl
+

@@ -1,0 +1,36 @@
+Examenplan beroepsgerichte examens 25834 Eerste monteur utiliteit vanaf cohort 2022
+
+                                                                    Kerntaak B1-K1 Installeert werktuigkundige installaties
+
+Code Exameninstrument   Werkprocessen Waar         Wie beoordelen               Score                                        Weging  Score voor de
+             PvB 1                                                              (O-V-G of                                    nvt     kerntaak
+                        B1-K1-W1  Beroepspraktijk  Interne en                   cijfer)                                              (O-V-G of cijfer)
+                        B1-K1-W2  of               externe                      Cijfer
+                        B1-K1-W3  examenlocatie    examinator                                                                        cijfer
+                        B1-K1-W4  DVC
+                        B1-K1-W5
+                        B1-K1-W6
+
+      Kerntaak B1-K1 is behaald, wanneer voor PvB 1 minimaal een 6 is behaald.
+
+      Kerntaak P3-K1 Begeleiden en uitvoeren van installatiewerk aan werktuigkundige installaties in de utiliteitsbouw
+
+Code  Exameninstrument  Werkprocessen Waar         Wie beoordelen               Score                                        Weging  Score voor de
+      PvB 2                                                                     (O-V-G of                                    nvt     kerntaak
+                        P3-K1-W1  Beroepspraktijk  Interne en                   cijfer)                                              (O-V-G of cijfer)
+                        P3-K1-W2  of               externe
+                        P3-K1-W3  examenlocatie    examinator                   Cijfer                                               cijfer
+                        P3-K1-W4  DVC
+
+      Kerntaak P3-K1 is behaald, wanneer voor PvB 2 minimaal een 6 is behaald.
+                        Kerntaak P3-K2 Voorkomt het vrijkomen van koolmonoxide bij gasverbrandingsinstallaties
+
+Code  Exameninstrument  Werkprocessen Waar         Wie beoordelen               Score      Weging  Score voor de
+      PvB 3                                                                     (O-V-G of  nvt     kerntaak
+                        P3-K2-W1  Beroepspraktijk  Interne en                   cijfer)            (O-V-G of cijfer)
+                        P3-K2-W2  of               externe
+                        P3-K2-W3  examenlocatie    examinator                   Cijfer             cijfer
+                        P3-K2-W4  DVC
+
+      Kerntaak P3-K2 is behaald, wanneer voor PvB 3 minimaal een 6 is behaald.
+

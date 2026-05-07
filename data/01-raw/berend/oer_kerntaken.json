@@ -1,0 +1,170 @@
+{
+  "Kok": {
+    "kerntaken": [
+      {"code": "kt_1", "naam": "Bereidt gerechten"},
+      {"code": "kt_2", "naam": "Beheert keukenvoorraden"}
+    ],
+    "werkprocessen": [
+      {"code": "wp_1_1", "naam": "Bereidt koude gerechten voor", "kerntaak": "kt_1"},
+      {"code": "wp_1_2", "naam": "Bereidt warme gerechten", "kerntaak": "kt_1"},
+      {"code": "wp_1_3", "naam": "Presenteert en serveert gerechten", "kerntaak": "kt_1"},
+      {"code": "wp_2_1", "naam": "Beheert de keukenvoorraad", "kerntaak": "kt_2"},
+      {"code": "wp_2_2", "naam": "Ontvangt en verwerkt goederen", "kerntaak": "kt_2"},
+      {"code": "wp_2_3", "naam": "Beoordeelt kwaliteit van producten", "kerntaak": "kt_2"}
+    ]
+  },
+  "Gastheer/Gastvrouw": {
+    "kerntaken": [
+      {"code": "kt_1", "naam": "Werkt in de bediening"},
+      {"code": "kt_2", "naam": "Bewaakt de voorraad"}
+    ],
+    "werkprocessen": [
+      {"code": "wp_1_1", "naam": "Maakt het bedrijf klaar voor service", "kerntaak": "kt_1"},
+      {"code": "wp_1_2", "naam": "Neemt bestellingen op en serveert", "kerntaak": "kt_1"},
+      {"code": "wp_1_3", "naam": "Behandelt bijzonderheden en klachten", "kerntaak": "kt_1"},
+      {"code": "wp_2_1", "naam": "Beheert de voorraad", "kerntaak": "kt_2"},
+      {"code": "wp_2_2", "naam": "Ontvangt en slaat goederen op", "kerntaak": "kt_2"},
+      {"code": "wp_2_3", "naam": "Voert kassawerkzaamheden uit", "kerntaak": "kt_2"}
+    ]
+  },
+  "Kapper": {
+    "kerntaken": [
+      {"code": "kt_1", "naam": "Haarbehandeling voorbereiden en afronden"},
+      {"code": "kt_2", "naam": "Basishaarbehandeling uitvoeren"}
+    ],
+    "werkprocessen": [
+      {"code": "wp_1_1", "naam": "Ontvangt klant en neemt de hulpvraag aan", "kerntaak": "kt_1"},
+      {"code": "wp_1_2", "naam": "Stelt DABplan vast en op", "kerntaak": "kt_1"},
+      {"code": "wp_1_3", "naam": "Rondt haarbehandeling af", "kerntaak": "kt_1"},
+      {"code": "wp_2_1", "naam": "Verzorgt haar en hoofdhuid", "kerntaak": "kt_2"},
+      {"code": "wp_2_2", "naam": "Knipt het haar", "kerntaak": "kt_2"},
+      {"code": "wp_2_3", "naam": "Kleurt en ontkleurt het haar", "kerntaak": "kt_2"}
+    ]
+  },
+  "Junior Manager Logistiek": {
+    "kerntaken": [
+      {"code": "kt_1", "naam": "Goederen/producten ontvangen en opslaan"},
+      {"code": "kt_2", "naam": "Orders verzamelen en verzenden"}
+    ],
+    "werkprocessen": [
+      {"code": "wp_1_1", "naam": "Lost en controleert goederen", "kerntaak": "kt_1"},
+      {"code": "wp_1_2", "naam": "Controleert en verwerkt goederenstroom", "kerntaak": "kt_1"},
+      {"code": "wp_1_3", "naam": "Slaat goederen op en verwerkt opslag", "kerntaak": "kt_1"},
+      {"code": "wp_2_1", "naam": "Verzamelt en controleert orders", "kerntaak": "kt_2"},
+      {"code": "wp_2_2", "naam": "Verpakt en verzendt orders", "kerntaak": "kt_2"},
+      {"code": "wp_2_3", "naam": "Verwerkt administratie en retourneringen", "kerntaak": "kt_2"}
+    ]
+  },
+  "Metselaar": {
+    "kerntaken": [
+      {"code": "kt_1", "naam": "Voert metselwerkzaamheden uit"},
+      {"code": "kt_2", "naam": "Voert lijmwerkzaamheden uit"}
+    ],
+    "werkprocessen": [
+      {"code": "wp_1_1", "naam": "Bereidt metselwerkzaamheden voor", "kerntaak": "kt_1"},
+      {"code": "wp_1_2", "naam": "Metselt wanden en muren", "kerntaak": "kt_1"},
+      {"code": "wp_1_3", "naam": "Controleert en herstelt metselwerk", "kerntaak": "kt_1"},
+      {"code": "wp_2_1", "naam": "Bereidt lijmwerkzaamheden voor", "kerntaak": "kt_2"},
+      {"code": "wp_2_2", "naam": "Plaatst en verlijmt bouwmaterialen", "kerntaak": "kt_2"},
+      {"code": "wp_2_3", "naam": "Controleert en herstelt lijmwerk", "kerntaak": "kt_2"}
+    ]
+  },
+  "Tandartsassistent": {
+    "kerntaken": [
+      {"code": "kt_1", "naam": "Uitvoeren van front-office taken"},
+      {"code": "kt_2", "naam": "Verrichten van handelingen in het kader van tandheelkundige zorg"}
+    ],
+    "werkprocessen": [
+      {"code": "wp_1_1", "naam": "Neemt de hulpvraag aan", "kerntaak": "kt_1"},
+      {"code": "wp_1_2", "naam": "Zorgt voor de planning van de praktijk", "kerntaak": "kt_1"},
+      {"code": "wp_1_3", "naam": "Verwerkt patiëntgerelateerde informatie", "kerntaak": "kt_1"},
+      {"code": "wp_2_1", "naam": "Voert tandheelkundige handelingen uit", "kerntaak": "kt_2"},
+      {"code": "wp_2_2", "naam": "Assisteert bij tandheelkundige behandelingen", "kerntaak": "kt_2"},
+      {"code": "wp_2_3", "naam": "Geeft voorlichting en advies aan patiënten", "kerntaak": "kt_2"}
+    ]
+  },
+  "Verzorgende": {
+    "kerntaken": [
+      {"code": "kt_1", "naam": "Bieden van zorg en ondersteuning"},
+      {"code": "kt_2", "naam": "Werken aan organisatie- en professiegebonden taken"}
+    ],
+    "werkprocessen": [
+      {"code": "wp_1_1", "naam": "Onderkent de gezondheidstoestand", "kerntaak": "kt_1"},
+      {"code": "wp_1_2", "naam": "Adviseert en instrueert over preventie", "kerntaak": "kt_1"},
+      {"code": "wp_1_3", "naam": "Voert zorg- en begeleidingsactiviteiten uit", "kerntaak": "kt_1"},
+      {"code": "wp_2_1", "naam": "Zorgt voor professionele ontwikkeling", "kerntaak": "kt_2"},
+      {"code": "wp_2_2", "naam": "Werkt samen met andere beroepsgroepen", "kerntaak": "kt_2"},
+      {"code": "wp_2_3", "naam": "Draagt bij aan goede kwaliteit van zorg", "kerntaak": "kt_2"}
+    ]
+  },
+  "Zorg & Welzijn": {
+    "kerntaken": [
+      {"code": "kt_1", "naam": "Bieden van verpleegkundige zorg en ondersteuning"},
+      {"code": "kt_2", "naam": "Werken aan organisatie- en professiegebonden taken"}
+    ],
+    "werkprocessen": [
+      {"code": "wp_1_1", "naam": "Onderkent bestaande of dreigende gezondheidsproblemen", "kerntaak": "kt_1"},
+      {"code": "wp_1_2", "naam": "Voert verpleegkundige interventies uit", "kerntaak": "kt_1"},
+      {"code": "wp_1_3", "naam": "Organiseert en coördineert de zorgverlening", "kerntaak": "kt_1"},
+      {"code": "wp_2_1", "naam": "Werkt aan professionele ontwikkeling", "kerntaak": "kt_2"},
+      {"code": "wp_2_2", "naam": "Werkt samen met andere beroepsgroepen", "kerntaak": "kt_2"},
+      {"code": "wp_2_3", "naam": "Draagt bij aan goede kwaliteit van zorg", "kerntaak": "kt_2"}
+    ]
+  },
+  "Economie": {
+    "kerntaken": [
+      {"code": "kt_1", "naam": "Uitvoeren van commerciële activiteiten"},
+      {"code": "kt_2", "naam": "Voeren van de administratie"}
+    ],
+    "werkprocessen": [
+      {"code": "wp_1_1", "naam": "Voert verkoopactiviteiten uit", "kerntaak": "kt_1"},
+      {"code": "wp_1_2", "naam": "Adviseert klanten over producten en diensten", "kerntaak": "kt_1"},
+      {"code": "wp_1_3", "naam": "Onderhoudt klantrelaties", "kerntaak": "kt_1"},
+      {"code": "wp_2_1", "naam": "Verwerkt financiële transacties", "kerntaak": "kt_2"},
+      {"code": "wp_2_2", "naam": "Beheert debiteuren- en crediteurenadministratie", "kerntaak": "kt_2"},
+      {"code": "wp_2_3", "naam": "Verwerkt orders en bestellingen", "kerntaak": "kt_2"}
+    ]
+  },
+  "Techniek": {
+    "kerntaken": [
+      {"code": "kt_1", "naam": "Onderhouden en repareren van technische installaties"},
+      {"code": "kt_2", "naam": "Installeren en controleren van componenten"}
+    ],
+    "werkprocessen": [
+      {"code": "wp_1_1", "naam": "Voert onderhoudswerkzaamheden uit", "kerntaak": "kt_1"},
+      {"code": "wp_1_2", "naam": "Diagnosticeert en repareert storingen", "kerntaak": "kt_1"},
+      {"code": "wp_1_3", "naam": "Rapporteert over werkzaamheden", "kerntaak": "kt_1"},
+      {"code": "wp_2_1", "naam": "Installeert componenten en systemen", "kerntaak": "kt_2"},
+      {"code": "wp_2_2", "naam": "Sluit aan, test en configureert systemen", "kerntaak": "kt_2"},
+      {"code": "wp_2_3", "naam": "Controleert kwaliteit en veiligheid", "kerntaak": "kt_2"}
+    ]
+  },
+  "Werktuigbouw": {
+    "kerntaken": [
+      {"code": "kt_1", "naam": "Vervaardigen van werkstukken"},
+      {"code": "kt_2", "naam": "Controleren van maatvoering en kwaliteit"}
+    ],
+    "werkprocessen": [
+      {"code": "wp_1_1", "naam": "Leest en interpreteert technische tekeningen", "kerntaak": "kt_1"},
+      {"code": "wp_1_2", "naam": "Bewerkt materialen met hand- en machinetools", "kerntaak": "kt_1"},
+      {"code": "wp_1_3", "naam": "Monteert en assembleert onderdelen", "kerntaak": "kt_1"},
+      {"code": "wp_2_1", "naam": "Controleert maatvoering en pasvorm", "kerntaak": "kt_2"},
+      {"code": "wp_2_2", "naam": "Beoordeelt kwaliteit van werkstukken", "kerntaak": "kt_2"},
+      {"code": "wp_2_3", "naam": "Rapporteert over kwaliteitsbevindingen", "kerntaak": "kt_2"}
+    ]
+  },
+  "Overig": {
+    "kerntaken": [
+      {"code": "kt_1", "naam": "Uitvoeren van beroepsspecifieke taken"},
+      {"code": "kt_2", "naam": "Samenwerken en professioneel handelen"}
+    ],
+    "werkprocessen": [
+      {"code": "wp_1_1", "naam": "Bereidt werkzaamheden voor", "kerntaak": "kt_1"},
+      {"code": "wp_1_2", "naam": "Voert beroepsspecifieke taken uit", "kerntaak": "kt_1"},
+      {"code": "wp_1_3", "naam": "Rondt werkzaamheden af en rapporteert", "kerntaak": "kt_1"},
+      {"code": "wp_2_1", "naam": "Communiceert en overlegt met collega's", "kerntaak": "kt_2"},
+      {"code": "wp_2_2", "naam": "Werkt samen in teamverband", "kerntaak": "kt_2"},
+      {"code": "wp_2_3", "naam": "Ontwikkelt eigen vakkennis en vaardigheden", "kerntaak": "kt_2"}
+    ]
+  }
+}

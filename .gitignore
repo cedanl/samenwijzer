@@ -12,14 +12,15 @@ build/
 .env.*
 !validatie_samenwijzer/.env.example
 
-# Data — gitignore everything except demo subfolders
-data/01-raw/*
-!data/01-raw/demo/
-data/02-prepared/*
-!data/02-prepared/demo/
+# Data — generated/sensitive files
+data/02-prepared/*.db
+data/02-prepared/.whatsapp.key
+data/02-prepared/whatsapp_context_*.json
 data/03-output/*
-!data/03-output/demo/
 !data/03-output/.gitkeep
+
+# Validatie subproject — chroma vector store (regenerable, >100MB)
+validatie_samenwijzer/data/chroma/
 
 # Editor
 .vscode/
@@ -39,5 +40,3 @@ htmlcov/
 .worktrees/
 
 # B3a: OER-catalog
-oeren/
-data/02-prepared/oeren.db

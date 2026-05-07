@@ -1,0 +1,488 @@
+Opleidingsplanning
+
+SECTOR     Techniek en Media
+Opleiding    Vakman GWW
+CREBO             25756
+Leerweg             BBL
+Cohort             2025
+                              LEESINSTRUCTIE
+
+Per bladzijde wordt hieronder uitgelegd welke informatie je over de opleiding in dit document kunt terugvinden.
+
+                                                                        In de bladzijde 'opleidinggegevens' worden de
+                                                                        opleidinggevens van jouw opleiding weergegeven. Het
+                                                                        gaat dan over de naam van de opleiding, de
+                                                                        opleidingsduur, het niveau enzovoorts.
+                                                                        Daaronder staan per leerjaar de 4 blokken of perioden
+                                                                        van maximaal 10 schoolweken. Daarin kan je zien hoeveel
+                                                                        lesweken er voor je zijn en wanneer de BPV (stage)
+                                                                        gepland is.
+
+                                                                        In de bladzijden 'Leerjaar 1' tot en met 'Leerjaar 4' zijn de
+                                                                        klokuren geplande lessen (onderwijsactiviteiten) per week
+                                                                        per blok aangegeven.
+                                                                        In de laatste kolom staan de studiepunten die je per vak
+                                                                        in een schooljaar kan behalen. Het totaal te behalen
+                                                                        studiepunten is 100 per jaar.
+                                                                        Helemaal onderaan kan je het totaal per jaar en per
+                                                                        periode te volgen (klok)uren onderwijstijd en BPV (stage)
+                                                                        aflezen. Ook staat er een indicatie van de tijd die je nog
+                                                                        aan zelfstudie (huiswerk) zal moeten doen.
+
+                                                                        Nota bene: als er geen leerjaar 3 of 4 is, is dat leeg
+De keuzedelen zijn een verplicht onderdeel van de opleiding / examinering. Op deze bladzijde kun je zien uit welke
+keuzedelen je kunt kiezen.
+
+In de bladzijde 'Verantwoording' zie je de urenverdeling van je totale opleiding over de verschillende opleidingsjaren
+heen in één overzicht (alleen voor leerjaren die gelden)
+
+                                                                        In de bladzijde 'Verdeling' zie je schematische de
+                                                                        verdeling van de tijd (per schooljaar 1600 klokuur) over de
+                                                                        begeleide onderwijsuren (lessen), BPV (stage) en
+                                                                        zelfstudie (huiswerk).
+Opleiding   Vakman GWW           OPLEIDINGSGEGEVENS
+Studieduur  2 jaar
+Niveau      2                                                   SECTOR
+Crebo       25756                                       Techniek en Media
+Leerweg     BBL
+Cohort      2025
+
+Fasering van de opleiding
+
+Leerjaar 1  Blok 1           Reguliere  Introductie-  BPV (indien          Toelichting
+            Blok 2           lesweken   of toetsweek                       Toelichting
+            Blok 3                                      gepland)           Toelichting
+            Blok 4                9            1                           Toelichting
+                                                          10
+                                  9            1
+                                               1          10
+                                  9            1          10
+                                                          10
+                                  9
+
+            Effectieve lesweken         36
+
+            Toetsweken e.d.             4
+
+            Totaal / blok               40
+
+Leerjaar 2  Blok 1           Reguliere  Toetsweek     BPV (indien
+            Blok 2           lesweken       e.d.
+            Blok 3                           1          gepland)
+            Blok 4                9
+                                             1            10
+                                  9          1
+                                             1            10
+                                  9                       10
+                                                          10
+                                  9
+
+            Effectieve lesweken         36
+
+            Toetsweken e.d.             4
+
+            Totaal / blok               40
+
+                             Reguliere  Toetsweek     BPV (indien
+                             lesweken       e.d.
+                                                        gepland)
+
+Leerjaar 3  Blok 1
+            Blok 2
+            Blok 3
+            Blok 4
+
+            Effectieve lesweken         0
+
+            Toestweken e.d.             0
+
+            Totaal / blok               0
+
+                             Reguliere  Toetsweek     BPV (indien
+                             lesweken       e.d.
+                                                        gepland)
+
+Leerjaar 4  Blok 1
+            Blok 2
+            Blok 3
+            Blok 4
+
+            Effectieve lesweken         0
+
+            Toetsweken                  0
+
+            Totaal / blok               0
+                                                                                                 LEERJAAR 1
+
+                                                                                               Opleiding:            Vakman GWW
+
+                                     Lessentabel                                                 Leerjaar 1
+
+                Reguliere                                                                        Periode 1                  Periode 2                  Periode 3                  Periode 4
+                onderwijsactiviteiten = ROOSTER
+                Theorie Infra (combi alle 1ste jaars, halve groep)   Osiris code (F....)  uren/  studie     totaal   uren/     studie  totaal   uren/     studie  totaal   uren/     studie  totaal    Totaal   Studiepunten
+                Praktijk Infra (combi alle 1ste jaars, halve groep)  FGO2101-TH-IL1       week   punten              week      punten           week      punten           week      punten           /leerjr.
+                                                                     FGO2101-PR-IL1                                                                                                                                  20,0
+                Keuzedeel 1                                                               1,5    5,0         14      1,5       5,0     14       1,5       5,0     14       1,5       5,0     14            54        20,0
+                Keuzedeel 2                                          FGO2101-BPVL1                                                                                                                         54         0,0
+                                                                     FGO2101-NED2FL1      1,5    5,0         14      1,5       5,0     14       1,5       5,0     14       1,5       5,0     14                       0,0
+                BPV                                                  FGO2201-REN2                                                                                                                            0       15,0
+                Nederlands (NED) (combi alle 1ste jaars)             FGO2201-BURG2                           0                         0                          0                          0               0        0,0
+                Rekenen (REK) (combi alle 1ste jaars)                                                                                                                                                      18         0,0
+                Loopbaan & burgerschap (LB) (combi alle 1ste jaars)                                          0                         0                          0                          0               0        0,0
+                Totaal /blok                                                                                                                                                                                 0        0,0
+                                                                                          0,5 0,0            5       0,5 0,0           5        0,5 0,0           5        0,5 15,0          5               0        0,0
+                                                                                                                                                                                                             0        0,0
+                                                                                                             0                         0                          0                          0               0        0,0
+                                                                                                                                                                                                             0        0,0
+                                                                                                             0                         0                          0                          0               0        0,0
+                                                                                                                                                                                                             0        0,0
+beroepsgericht                                                                                               0                         0                          0                          0               0        0,0
+                                                                                                                                                                                                             0        0,0
+                                                                                                             0                         0                          0                          0               0       24,0
+                                                                                                                                                                                                             0       8,0
+                                                                                                             0                         0                          0                          0          1280         12,0
+                                                                                                                                                                                                           36        0,0
+                                                                                                             0                         0                          0                          0             36        3,0
+                                                                                                                                                                                                             0       102
+                                                                                                             0                         0                          0                          0             18
+                                                                                                                                                                                                      1496,0
+                                                                                                             0                         0                          0                          0
+
+                                                                                                             0                         0                          0                          0
+
+                                                                                                             0                         0                          0                          0
+
+                                                                                                             0                         0                          0                          0
+
+                                                                                                             0                         0                          0                          0
+
+                                                                                          32,0 6,0 320 32,0 6,0 320 32,0 6,0 320 32,0 6,0 320
+
+                                                                                          1,0 2,0            9       1,0 2,0           9        1,0 2,0           9        1,0 2,0           9
+
+l&b avo                                                                                   1,0 2,4            9       1,0 2,4           9        1,0 2,4           9        1,0 4,8           9
+
+                                                                                                             0                         0                          0                          0
+
+                                                                                          0,5 0,0            5       0,5 1,5           5        0,5 0,0           5        0,5 1,5           5
+
+                                                                                          38,0 20,4 374,0 38,0 21,9 374,0 38,0 20,4 374,0 38,0 39,3 374,0
+
+                Incidentele                                          FGO2101-SLBL1        Uren/blok         studie   Uren/blok         studie   Uren/blok         studie   Uren/blok         studie   Totaal    Studiepunten
+                onderwijsactiviteiten                                                         0,5           punten       0,5           punten       0,5           punten       0,5           punten   /leerjr.
+                Studieloopbaanbegeleiding                                                                                                                                                                             4,0
+                                                                                               1                1,0                        1,0                        1,0                        1,0      2,0         0,0
+                Totaal (incidenteel)                                                                                                                                                                      0,0         0,0
+                                                                                                             1              1          1               1          1               1             1         0,0         0,0
+                                                                                                                                                                                                          0,0         0,0
+                                                                                                                                                                                                          0,0         0,0
+                                                                                                                                                                                                          0,0         0,0
+                                                                                                                                                                                                          0,0          4
+                                                                                                                                                                                                          2,0
+
+                Verantwoording                                                                   Blok 1                        Blok 2                     Blok 3                     Blok 4           Totaal    Studiepunten
+                Begeleide onderwijsuren                                                            55                            55                         55                         55                 218     totaal jaar
+                Uren BPV                                                                          320                           320                        320                        320
+                Uren onderwijstijd                                                                375                           375                        375                        375                1280        106
+                Uren zelfstudie (indicatief)                                                       26                            26                         26                         26                1498
+
+                                                                                                                                                                                                          102
+
+                Toelichting: De uren onderwijstijd bestaan uit: 1) begeleide onderwijsuren én 2) uren beroepspraktijkvorming (BPV).
+                Bij de begeleide onderwijsuren gaat het om door de school aangeboden onderwijs dat wordt verzorgt door een docent. Bij uren BPV gaat het om het leren in de praktijk bij een bedrijf of een
+                instelling. Bij zelfstudie gaat het om leeractiviteiten zoals huiswerk.
+                                                                              LEERJAAR 2
+
+                                                                       Opleiding:                 Vakman GWW
+
+                                     Lessentabel                            Leerjaar 2
+
+                Reguliere                                                     Periode 5                  Periode 6                  Periode 7                  Periode 8
+                onderwijsactiviteiten = ROOSTER
+                Theorie Infra                     Osiris code (F....)  uren/  studie     totaal   uren/     studie  totaal   uren/     studie  totaal   uren/     studie  totaal    Totaal   Studiepunten
+                Praktijk Infra                    FGO2101-TH-IV2L2     week   punten              week      punten           week      punten           week      punten           /leerjr.
+                                                  FGO2101-PR-IV2L2                                                                                                                                20,0
+                Keuzedeel 1                                            1,5    5,0        14       1,5       5,0     14       1,5       5,0     14       1,5       5,0     14            54        20,0
+                Keuzedeel 2                       FGO2101-BPVL2                                                                                                                         54         0,0
+                                                  FGO2101-NED2FL2      1,5    5,0        14       1,5       5,0     14       1,5       5,0     14       1,5       5,0     14                       0,0
+                BPV                               FGO2201-REN2                                                                                                                            0        0,0
+                Nederlands                        FGO2201-BURG2                          0                          0                          0                          0               0        0,0
+                Rekenen                                                                                                                                                                   0       15,0
+                Loopbaan & burgerschap                                                   0                          0                          0                          0               0        0,0
+                Totaal /blok                                                                                                                                                            36         0,0
+                                                                                         0                          0                          0                          0               0        0,0
+                                                                                                                                                                                          0        0,0
+                                                                                         0                          0                          0                          0               0        0,0
+                                                                                                                                                                                          0        0,0
+                                                                       1,0 0,0           9        1,0 0,0           9        1,0 0,0           9        1,0 15,0          9               0        0,0
+                                                                                                                                                                                          0        0,0
+beroepsgericht                                                                           0                          0                          0                          0               0        0,0
+                                                                                                                                                                                          0        0,0
+                                                                                         0                          0                          0                          0               0       24,0
+                                                                                                                                                                                          0       8,0
+                                                                                         0                          0                          0                          0          1200         0,0
+                                                                                                                                                                                        36        0,0
+                                                                                         0                          0                          0                          0               0       3,0
+                                                                                                                                                                                          0        90
+                                                                                         0                          0                          0                          0             18
+                                                                                                                                                                                   1398,0
+                                                                                         0                          0                          0                          0
+
+                                                                                         0                          0                          0                          0
+
+                                                                                         0                          0                          0                          0
+
+                                                                                         0                          0                          0                          0
+
+                                                                                         0                          0                          0                          0
+
+                                                                       30,0 6,0 300 30,0 6,0 300 30,0 6,0 300 30,0 6,0 300
+
+                                                                       1,0 2,0           9        1,0 2,0           9        1,0 2,0           9        1,0 2,0           9
+
+l&b avo                                                                                  0                          0                          0                          0
+
+                                                                                         0                          0                          0                          0
+
+                                                                       0,5 0,0           5        0,5 1,5           5        0,5 0,0           5        0,5 1,5           5
+
+                                                                       35,5 18,0 349,5 35,5 19,5 349,5 35,5 18,0 349,5 35,5 34,5 349,5
+
+                Incidentele                       FGO2101-SLBL2        Uren/blok         studie   Uren/blok         studie   Uren/blok         studie   Uren/blok         studie   Totaal    Studiepunten
+                onderwijsactiviteiten                                      0,5           punten       0,5           punten       0,5           punten       0,5           punten   /leerjr.
+                Studieloopbaanbegeleiding                                                                                                                                                          4,0
+                                                                            1                1,0                        1,0                        1,0                        1,0      2,0         0,0
+                Totaal (incidenteel)                                                                                                                                                   0,0         0,0
+                Verantwoording                                                           1               1          1               1          1               1             1         0,0         0,0
+                Begeleide onderwijsuren                                                                                                                                                0,0         0,0
+                Uren BPV                                                                                                                                                               0,0         0,0
+                Uren onderwijstijd                                                                                                                                                     0,0         0,0
+                Uren zelfstudie (indicatief)                                                                                                                                           0,0          4
+                                                                                                                                                                                       2,0
+
+                                                                              Blok 1                        Blok 2                     Blok 2                     Blok 4           Totaal    Studiepunten
+                                                                                51                            51                         51                         51                204      totaal jaar
+                                                                               300                           300                        300                        300
+                                                                               351                           351                        351                        351              1200           94
+                                                                                49                            49                         49                         49              1404
+
+                                                                                                                                                                                      196
+                                                                                 LEERJAAR 3
+
+                                                                       Opleiding:                Vakman GWW
+
+                                     Lessentabel                       Leerjaar 3
+
+                Reguliere                                                     Periode 9          Periode 10                Periode 11                Periode 12
+                onderwijsactiviteiten = ROOSTER
+                                                  Osiris code (F....)  uren/     studie  totaal  uren/     studie  totaal  uren/     studie  totaal  uren/     studie  totaal  Totaal/   Studiepunten
+                Totaal /blok                                           week      punten          week      punten          week      punten          week      punten           leerjr.
+                                                                                                                                                                                      0        0,0
+                                                                                         0                         0                         0                         0              0        0,0
+                                                                                                                                                                                      0        0,0
+                                                                                         0                         0                         0                         0              0        0,0
+                                                                                                                                                                                      0        0,0
+                                                                                         0                         0                         0                         0              0        0,0
+                                                                                                                                                                                      0        0,0
+                                                                                         0                         0                         0                         0              0        0,0
+                                                                                                                                                                                      0        0,0
+                                                                                         0                         0                         0                         0              0        0,0
+                                                                                                                                                                                      0        0,0
+                                                                                         0                         0                         0                         0              0        0,0
+                                                                                                                                                                                      0        0,0
+                                                                                         0                         0                         0                         0              0        0,0
+                                                                                                                                                                                      0        0,0
+beroepsgericht                                                                           0                         0                         0                         0              0        0,0
+                                                                                                                                                                                      0        0,0
+                                                                                         0                         0                         0                         0              0       0,0
+                                                                                                                                                                                      0       0,0
+                                                                                         0                         0                         0                         0              0       0,0
+                                                                                                                                                                                      0       0,0
+                                                                                         0                         0                         0                         0              0       0,0
+                                                                                                                                                                                   0,0          0
+                                                                                         0                         0                         0                         0
+
+                                                                                         0                         0                         0                         0
+
+                                                                                         0                         0                         0                         0
+
+                                                                                         0                         0                         0                         0
+
+                                                                                         0                         0                         0                         0
+
+                                                                                         0                         0                         0                         0
+
+                                                                                         0                         0                         0                         0
+
+                                                                                         0                         0                         0                         0
+
+l&b avo                                                                                  0                         0                         0                         0
+
+                                                                                         0                         0                         0                         0
+
+                                                                                         0                         0                         0                         0
+
+                                                                       0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0
+
+                Incidentele                                            Uren/blok         studie  Uren/blok         studie  Uren/blok         studie  Uren/blok         studie  Totaal    Studiepunten
+                onderwijsactiviteiten                                                    punten                    punten                    punten                    punten  /leerjr.
+                                                                                                                                                                                               0,0
+                Totaal (incidenteel)                                          0          0              0          0              0          0              0          0           0,0         0,0
+                Verantwoording                                                                                                                                                     0,0         0,0
+                Begeleide onderwijsuren                                                                                                                                            0,0         0,0
+                Uren BPV                                                                                                                                                           0,0         0,0
+                Uren onderwijstijd                                                                                                                                                 0,0         0,0
+                Uren zelfstudie (indicatief)                                                                                                                                       0,0         0,0
+                                                                                                                                                                                   0,0          0
+                                                                                                                                                                                   0,0
+
+                                                                              Blok 1                    Blok 2                    Blok 2                    Blok 4             Totaal    Studiepunten
+                                                                                 0                         0                         0                         0                     0     totaal jaar
+                                                                                 0                         0                         0                         0                     0
+                                                                                 0                         0                         0                         0                     0          0
+
+                                                                       #DELING.DOOR.0!           #DELING.DOOR.0!           #DELING.DOOR.0!           #DELING.DOOR.0!            1600
+                                                                                 LEERJAAR 4
+
+                                                                       Opleiding:                Vakman GWW
+
+                                     Lessentabel                       Leerjaar 4
+
+                Reguliere                                              Periode 13                Periode 14                Periode 15                Periode 16
+                onderwijsactiviteiten = ROOSTER
+                                                  Osiris code (F....)  uren/     studie  totaal  uren/     studie  totaal  uren/     studie  totaal  uren/     studie  totaal  Totaal/   Studiepunten
+                BPV                                                    week      punten          week      punten          week      punten          week      punten           leerjr.
+                Totaal /blok                                                                                                                                                          0        0,0
+                                                                                         0                         0                         0                         0              0        0,0
+                                                                                                                                                                                      0        0,0
+                                                                                         0                         0                         0                         0              0        0,0
+                                                                                                                                                                                      0        0,0
+                                                                                         0                         0                         0                         0              0        0,0
+                                                                                                                                                                                      0        0,0
+                                                                                         0                         0                         0                         0              0        0,0
+                                                                                                                                                                                      0        0,0
+                                                                                         0                         0                         0                         0              0        0,0
+                                                                                                                                                                                      0        0,0
+                                                                                         0                         0                         0                         0              0        0,0
+                                                                                                                                                                                      0        0,0
+                                                                                         0                         0                         0                         0              0        0,0
+                                                                                                                                                                                      0        0,0
+beroepsgericht                                                                           0                         0                         0                         0              0        0,0
+                                                                                                                                                                                      0        0,0
+                                                                                         0                         0                         0                         0              0       0,0
+                                                                                                                                                                                      0       0,0
+                                                                                         0                         0                         0                         0              0       0,0
+                                                                                                                                                                                      0       0,0
+                                                                                         0                         0                         0                         0              0       0,0
+                                                                                                                                                                                   0,0          0
+                                                                                         0                         0                         0                         0
+
+                                                                                         0                         0                         0                         0
+
+                                                                                         0                         0                         0                         0
+
+                                                                                         0                         0                         0                         0
+
+                                                                                         0                         0                         0                         0
+
+                                                                                         0                         0                         0                         0
+
+                                                                                         0                         0                         0                         0
+
+                                                                                         0                         0                         0                         0
+
+l&b avo                                                                                  0                         0                         0                         0
+
+                                                                                         0                         0                         0                         0
+
+                                                                                         0                         0                         0                         0
+
+                                                                       0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0
+
+                Incidentele                                            Uren/blok         studie  Uren/blok         studie  Uren/blok         studie  Uren/blok         studie  Totaal    Studiepunten
+                onderwijsactiviteiten                                                    punten                    punten                    punten                    punten  /leerjr.
+                                                                                                                                                                                               0,0
+                Totaal (incidenteel)                                          0          0              0          0              0          0              0          0           0,0         0,0
+                Verantwoording                                                                                                                                                     0,0         0,0
+                Begeleide onderwijsuren                                                                                                                                            0,0         0,0
+                Uren BPV                                                                                                                                                           0,0         0,0
+                Uren onderwijstijd                                                                                                                                                 0,0         0,0
+                Uren zelfstudie (indicatief)                                                                                                                                       0,0         0,0
+                                                                                                                                                                                   0,0          0
+                                                                                                                                                                                   0,0
+
+                                                                              Blok 1                    Blok 2                    Blok 2                    Blok 4             Totaal    Studiepunten
+                                                                                 0                         0                         0                         0                     0     totaal jaar
+                                                                                 0                         0                         0                         0                     0
+                                                                                 0                         0                         0                         0                     0          0
+
+                                                                       #DELING.DOOR.0!           #DELING.DOOR.0!           #DELING.DOOR.0!           #DELING.DOOR.0!            1600
+                          Keuzedelen
+
+Keuzedelen zijn een verplicht onderdeel van de opleiding en een onderdeel van het examen. Afhankelijk van
+de opleiding / niveau moet je een keuze maken uit de onderstaande keuzedelen. Je SLB'er gaat je hierbij
+helpen. Wellicht wil je een ander keuzedeel doen. Ook dan kan je SLB'er je helpen wat de mogelijkheden zijn.
+Als er onvoldoende studenten voor een keuzedeel kiezen kan het voorkomen dat deze niet wordt
+aangeboden. Uiteraard krijg je dit te horen en word je geholpen om een andere keuze te maken.
+
+   Code               Aanbod keuzedelen bij deze opleiding
+K0953
+K1364    Naam keuzedeel
+         Basisvaardigheden met kleine grondverzetmachines tot 2000 kg
+         Rekenen MBO Niveau 3
+                VERANTWOORDING
+
+Verantwoording
+
+ Opleiding                                     Vakman GWW
+Studieduur
+                                 2 jaar
+     Niveau                      2
+   Leerweg                       BBL
+
+Begeleide onderwijsuren          Leerjaar 1    Leerjaar 2    Leerjaar 3     Leerjaar 4
+Uren BPV                                  218           204              0              0
+Uren onderwijstijd                                                       0              0
+Uren zelfstudie (indicatief)            1280          1200               0              0
+                                        1498          1404
+                                                                    1600           1600
+                                          102           196
+
+BOL                                            Gepland       Wettelijk
+
+niet van toepassing                                           minimaal 700
+                                                              minimaal
+Begeleide onderwijsuren eerste jaar                           minimaal
+Begeleide onderwijsuren (totaal)                              minimaal
+Uren BPV (totaal)
+Totale onderwijstijd (begeleid + bpv)
+
+BBL                              Leerjaar 1    Leerjaar 2    Leerjaar 3     Leerjaar 4
+                                          218           204              0              0
+Begeleide uren (200/jaar)                                                0              0
+Uren bpv (610/jaar)                     1280          1200               0              0
+Onderwijstijd totaal (850/jaar)         1498          1404
+
+Entree                           Gepland       Wettelijk
+                                                    600
+niet van toepassing                                1000
+
+Begeleide onderwijsuren
+Onderwijstijd
+
+Indien in het laatste jaar van de opleiding de studieduur minder is dan 10 maanden moeten de
+normen voor het aantal begeleide onderwijsuren en klokuren bpv evenredig worden verlaagd
+(dit gebeurt niet automatisch!).
+                                  VERDELING
+
+Leerjaar 1                                   Leerjaar 2
+
+Begeleide onderwijsuren Uren BPV  Begeleide onderwijsuren Uren BPV
+Uren zelfstudie (indicatief)      Uren zelfstudie (indicatief)
+
+               Leerjaar 3                       Leerjaar 4
+
+Begeleide onderwijsuren Uren BPV  Begeleide onderwijsuren Uren BPV
+Uren zelfstudie (indicatief)      Uren zelfstudie (indicatief)
+
