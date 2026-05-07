@@ -45,7 +45,7 @@ Target users: students (progress, AI tutor, wellbeing check) and internal daily 
 | `outreach_store.py` | SQLite: StudentStatus, Interventie, Campagne, WelzijnsCheck |
 | `welzijn.py` | Student self-assessment labels, `genereer_welzijnsreactie()` |
 | `wellbeing.py` | CSV-gebaseerde welzijnssignalering: WelzijnsCheck dataclass, `welzijnswaarde()`, notities |
-| `tutor.py` | Socratic AI tutor (streaming) |
+| `tutor.py` | AI tutor with direct answers (streaming) |
 | `coach.py` | Study material, practice tests, work feedback |
 | `whatsapp.py` | WhatsApp via Twilio: check-ins, inkomende berichten, AI-gesprekssessies |
 | `whatsapp_store.py` | SQLite: WhatsApp-registraties (Fernet-versleuteld) en sessies |

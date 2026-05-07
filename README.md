@@ -9,7 +9,7 @@ Python/Streamlit app die AI en Data gebruikt om MBO-studenten te ondersteunen bi
 
 ### Voor studenten
 - **Mijn voortgang** — voortgang per kerntaak en werkproces, BSA-status, cohortpositie
-- **Leercoach** — AI-tutor (Socratisch), gepersonaliseerd lesmateriaal, oefentoetsen, werkfeedback; alles afgestemd op de eigen OER
+- **Leercoach** — AI-tutor (directe antwoorden), gepersonaliseerd lesmateriaal, oefentoetsen, werkfeedback; alles afgestemd op de eigen OER
 - **Welzijnscheck** — self-assessment (studieplanning, welzijn, financiën, stage); AI-reactie + signaal naar mentor
 - **WhatsApp check-in** — wekelijkse proactieve welzijnscheck; bij score 2/3 kort AI-gesprek + doorverwijzing
 

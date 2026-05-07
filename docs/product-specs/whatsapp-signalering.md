@@ -106,7 +106,7 @@ Samenwijzer: "Dat klinkt zwaar. Wil je even kwijt wat er speelt?
 
 Student: "Mijn stage loopt niet lekker"
 
-Samenwijzer (AI): [Socratische reactie via Claude API, max. 3 berichten]
+Samenwijzer (AI): [Empathische reactie via Claude API, max. 3 berichten]
                   "Wat maakt het lastig — de taken zelf, de sfeer,
                    of iets anders?"
 

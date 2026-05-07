@@ -81,9 +81,14 @@ Oefenen van beroepssituaties via een gespreksinterface.
 Een conversationele tutor die de student begeleidt bij leren en nadenken.
 
 **Filosofie:**
-- Moedigt student aan zelf antwoorden te formuleren (Socratische methode).
-- Verbindt ideeën, geeft feedback en biedt oefeningen aan waar nodig.
-- Geeft géén directe antwoorden maar stelt verdiepende vragen.
+- Geeft directe, heldere antwoorden — vooral op vragen over de OER, kerntaken,
+  werkprocessen, opleiding, planning of leerstof.
+- Gebruikt de OER-tekst van de student als primaire bron en citeert concrete
+  kerntaak-/werkprocesnamen waar dat helpt.
+- Geeft positieve, opbouwende feedback en past taalgebruik aan op het niveau
+  van de student.
+- Voorzegt nooit letterlijke toets-/huiswerkantwoorden — legt in plaats daarvan
+  uit waar de vraag over gaat en welke OER-onderdelen relevant zijn.
 
 **Acceptatiecriteria:**
 - [x] Student kan een open gesprek voeren met de tutor (`stuur_bericht()` in `tutor.py`).

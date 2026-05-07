@@ -20,7 +20,7 @@ Gepersonaliseerde leerondersteuning op basis van studiedata en AI.
 
 | Prioriteit | Feature | Status |
 |---|---|---|
-| 1 | Persoonlijke AI tutor (Socratisch) | gereed |
+| 1 | Persoonlijke AI tutor (directe antwoorden) | gereed |
 | 2 | Studiedata dashboard | gereed |
 | 3 | Gepersonaliseerd lesmateriaal (4 niveaus) | gereed |
 | 4 | Oefentoetsen met automatisch nakijken | gereed |

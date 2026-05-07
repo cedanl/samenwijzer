@@ -27,7 +27,7 @@ Cross-cutting modules (no layer restriction, import explicitly):
   whatsapp.py       ← WhatsApp via Twilio: check-ins, inkomende berichten, AI-gesprekssessies
   whatsapp_store.py ← SQLite persistence voor WhatsApp-registraties (Fernet-versleuteld) en sessies
   scheduler.py      ← Wekelijkse check-in verzender (GitHub Actions cron entry point)
-  tutor.py          ← Socratic AI tutor (Anthropic SDK, streaming)
+  tutor.py          ← AI tutor with direct answers (Anthropic SDK, streaming)
   coach.py          ← Study material, practice tests, work feedback (Anthropic SDK)
   styles.py         ← EduPulse CSS + render_nav() (vaste header) + render_footer()
   oer_store.py      ← SQLite persistence voor OER-catalog (oeren.db): instellingen, oer_documenten, kerntaken
@@ -59,7 +59,7 @@ AI calls are isolated in dedicated modules; they are **never** called from the U
 
 | Module | AI purpose |
 |---|---|
-| `tutor.py` | Socratic tutor conversation (streaming); injects OER-context via `oer_context.py` |
+| `tutor.py` | AI tutor with direct answers (streaming); injects OER-context via `oer_context.py` |
 | `coach.py` | Study material, practice tests, work feedback; injects OER-context via `oer_context.py` |
 | `outreach.py` | Personalised outreach message generation |
 | `welzijn.py` | Empathic response to student self-assessment |
