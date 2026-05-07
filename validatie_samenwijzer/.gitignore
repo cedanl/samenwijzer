@@ -1,6 +1,5 @@
 .env
 data/
-gebruikers.txt
 __pycache__/
 *.pyc
 .venv/
