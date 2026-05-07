@@ -84,6 +84,33 @@ def _render_oer_bestand(pad: Path) -> None:
         st.warning(f"Bestandstype '{suffix}' wordt niet ondersteund.")
 
 
+_LAAD_INDICATOR = (
+    '<div class="chat-antwoord">⏳ <em>De OER wordt geraadpleegd, '
+    "het antwoord wordt opgesteld…</em></div>"
+)
+
+
+def _stream_antwoord(systeem: str, berichten: list[dict]) -> str:
+    placeholder = st.empty()
+    placeholder.markdown(_LAAD_INDICATOR, unsafe_allow_html=True)
+    antwoord = ""
+    try:
+        for fragment in genereer_antwoord(ai_client(), systeem, berichten):
+            antwoord += fragment
+            placeholder.markdown(
+                f'<div class="chat-antwoord">\n\n{antwoord}\n\n</div>',
+                unsafe_allow_html=True,
+            )
+    except APITimeoutError:
+        placeholder.empty()
+        st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
+    except Exception as e:
+        placeholder.empty()
+        log.exception("OER-antwoord (publiek, stream) mislukt")
+        st.error(f"Er ging iets mis: {e}")
+    return antwoord
+
+
 # ── Codex-header ───────────────────────────────────────────────────────────────
 hdr_l, hdr_r = st.columns([1, 7])
 with hdr_l:
@@ -197,24 +224,7 @@ if st.session_state.pub_kandidaten:
             if st.session_state.pub_wachtende_vraag:
                 st.session_state.pub_wachtende_vraag = None
                 berichten = list(st.session_state.pub_chat_history)
-                placeholder = st.empty()
-                antwoord = ""
-                try:
-                    for fragment in genereer_antwoord(
-                        ai_client(), st.session_state.pub_oer_systeem, berichten
-                    ):
-                        antwoord += fragment
-                        placeholder.markdown(
-                            f'<div class="chat-antwoord">\n\n{antwoord}\n\n</div>',
-                            unsafe_allow_html=True,
-                        )
-                except APITimeoutError:
-                    st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
-                    antwoord = ""
-                except Exception as e:
-                    log.exception("OER-antwoord (publiek, na keuze) mislukt")
-                    st.error(f"Er ging iets mis: {e}")
-                    antwoord = ""
+                antwoord = _stream_antwoord(st.session_state.pub_oer_systeem, berichten)
                 st.session_state.pub_chat_history.append({"role": "assistant", "content": antwoord})
             st.rerun()
 
@@ -235,22 +245,6 @@ st.markdown(
 )
 
 
-def _stream_antwoord(systeem: str, berichten: list[dict]) -> str:
-    placeholder = st.empty()
-    antwoord = ""
-    try:
-        for fragment in genereer_antwoord(ai_client(), systeem, berichten):
-            antwoord += fragment
-            placeholder.markdown(
-                f'<div class="chat-antwoord">\n\n{antwoord}\n\n</div>',
-                unsafe_allow_html=True,
-            )
-    except APITimeoutError:
-        st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
-    except Exception as e:
-        log.exception("OER-antwoord (publiek, stream) mislukt")
-        st.error(f"Er ging iets mis: {e}")
-    return antwoord
 
 
 # ── OER al geladen: antwoord direct ───────────────────────────────────────────
@@ -336,6 +330,7 @@ else:
     # Geen matches: conversationele intake via Claude
     berichten = bouw_berichten(st.session_state.pub_chat_history, vraag)
     placeholder = st.empty()
+    placeholder.markdown(_LAAD_INDICATOR, unsafe_allow_html=True)
     antwoord = ""
     try:
         for fragment in genereer_intake_antwoord(ai_client(), berichten, instellingen):
@@ -345,9 +340,11 @@ else:
                 unsafe_allow_html=True,
             )
     except APITimeoutError:
+        placeholder.empty()
         st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
         antwoord = ""
     except Exception as e:
+        placeholder.empty()
         log.exception("OER-intake-antwoord mislukt")
         st.error(f"Er ging iets mis: {e}")
         antwoord = ""
