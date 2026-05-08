@@ -263,24 +263,12 @@ header[data-testid="stHeader"] {{ display: none !important; }}
 }}
 
 /* ── Landingspagina-helpers ─────────────────────────────────────────────── */
-.oer-mark {{
-    font-family: 'General Sans', sans-serif;
-    font-weight: 600;
-    color: {TERRACOTTA};
-    font-size: 3.4rem;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    text-align: right;
-}}
-
 .oer-overtitel {{
     font-family: 'General Sans', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     color: {GRIJS_TEKST};
     margin-bottom: 0.3rem;
-    font-weight: 600;
+    font-weight: 500;
 }}
 
 .oer-ondertitel {{
@@ -288,14 +276,6 @@ header[data-testid="stHeader"] {{ display: none !important; }}
     color: {GRIJS_TEKST};
     font-size: 1.05rem;
     margin-top: 0.2rem;
-}}
-
-.oer-ornament {{
-    text-align: center;
-    color: {TERRACOTTA};
-    font-size: 1.1rem;
-    margin: 1.4rem 0 1rem 0;
-    letter-spacing: 0.6em;
 }}
 
 .oer-meta {{
@@ -444,6 +424,18 @@ header[data-testid="stHeader"] {{ display: none !important; }}
     color: {GRIJS_TEKST};
     text-align: center;
     z-index: 999;
+}}
+
+/* Honoreer expliciete line-breaks (\\n) in button-labels zoals "Nieuw\\ngesprek".
+   word-break + overflow-wrap voorkomen dat smalle columns letters losknippen. */
+.stButton > button {{
+    min-width: min-content;
+}}
+.stButton > button p {{
+    white-space: pre-line;
+    line-height: 1.15;
+    word-break: keep-all;
+    overflow-wrap: normal;
 }}
 </style>
 """
