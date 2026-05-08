@@ -125,13 +125,17 @@ def test_voeg_kerntaak_toe_is_idempotent(conn):
         conn, oer_id=oer_id, code="B1-K1", naam="Verpleegkundige zorg",
         type="kerntaak", volgorde=1,
     )
+    # Tweede call met andere volgorde — INSERT OR IGNORE laat de oorspronkelijke
+    # waarde staan; dat documenteert het contract voor toekomstige callers.
     tweede = voeg_kerntaak_toe(
         conn, oer_id=oer_id, code="B1-K1", naam="Verpleegkundige zorg",
-        type="kerntaak", volgorde=1,
+        type="kerntaak", volgorde=99,
     )
     assert eerste == tweede
     assert isinstance(tweede, int)
-    assert len(get_kerntaken_by_oer_id(conn, oer_id)) == 1
+    rijen = get_kerntaken_by_oer_id(conn, oer_id)
+    assert len(rijen) == 1
+    assert rijen[0]["volgorde"] == 1  # IGNORE behoudt eerste insert
 
 
 def test_mentor_en_student_crud(conn):
