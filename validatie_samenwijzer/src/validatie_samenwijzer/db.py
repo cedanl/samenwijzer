@@ -167,11 +167,12 @@ def update_oer_bestandspad(conn: sqlite3.Connection, oer_id: int, bestandspad: s
 
 def voeg_kerntaak_toe(
     conn: sqlite3.Connection, oer_id: int, code: str, naam: str, type: str, volgorde: int
-) -> int | None:
-    """Voeg een kerntaak of werkproces toe aan een OER.
+) -> int:
+    """Voeg een kerntaak of werkproces toe (upsert).
 
-    Geeft het id van de (nieuw of bestaande) kerntaak terug; None als de UNIQUE-
-    constraint (oer_id, type, naam) blokkeerde en geen rij is aangemaakt.
+    Geeft altijd het id terug — van de nieuw aangemaakte rij of van de bestaande
+    rij die de UNIQUE(oer_id, type, naam)-constraint matcht. Idempotent, zodat
+    callers hun return value veilig kunnen gebruiken om scores te koppelen.
     """
     cur = conn.execute(
         "INSERT OR IGNORE INTO kerntaken (oer_id, code, naam, type, volgorde) "
@@ -179,9 +180,12 @@ def voeg_kerntaak_toe(
         (oer_id, code, naam, type, volgorde),
     )
     conn.commit()
-    if cur.rowcount == 0:
-        return None
-    return cur.lastrowid
+    if cur.rowcount > 0:
+        return cur.lastrowid
+    return conn.execute(
+        "SELECT id FROM kerntaken WHERE oer_id = ? AND type = ? AND naam = ?",
+        (oer_id, type, naam),
+    ).fetchone()["id"]
 
 
 def get_kerntaken_by_oer_id(conn: sqlite3.Connection, oer_id: int) -> list[sqlite3.Row]:
