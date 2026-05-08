@@ -1,86 +1,99 @@
 Testgebruikers — validatie_samenwijzer
 Wachtwoord voor alle accounts: Welkom123
-======================================
+==========================================
 
-Bron: seed/bulk_seed.py — kiest dynamisch de top OERs (meeste kerntaken eerst,
-dan recentste cohort) per instelling uit data/validatie.db. De exacte set OERs,
-studentnummers en namen hangen dus af van wat ingest heeft geïndexeerd. Dit
-overzicht is een snapshot na de meest recente seed-run.
+Auto-gegenereerd door seed/bulk_seed.py — niet handmatig wijzigen.
+Bij elke seed-run wordt dit bestand overschreven.
 
-Snapshot: 600 studenten + 30 mentoren over 6 OERs in 3 instellingen.
-(Aeres MBO en Rijn IJssel zijn overgeslagen omdat hun geïndexeerde OERs geen
-kerntaken bevatten — regex-extractie in ingest faalt op die PDFs.)
+Instelling                 OERs  Mentoren  Studenten
+-----------------------------------------------------
+Da Vinci College              2        10        200
+ROC Utrecht                   2        10        200
+Talland                       2        10        200
 
+Overgeslagen instellingen:
+  - Rijn IJssel: geen geïndexeerde OERs met kerntaken
+  - Aeres MBO: geen geïndexeerde OERs met kerntaken
 
-STUDENTEN (login op studentnummer)
------------------------------------
-Studentnummers lopen van 100001 t/m 100600 (100 per OER).
-Eerste 3 voorbeelden per OER:
-
-Talland · Onderwijsassistent 36 maanden BOL (crebo 25698, BOL 2025)
-  100001  Joris Yilmaz
-  100002  Nathalie Bouzid
-  100003  Yasmin Peeters
-
-Talland · 25415 SB N3 (crebo 25415, BOL 2021)
-  100101  Mia Vos
-  100102  Sander Willemsen
-  100103  Rayan Hendriks
-
-Da Vinci College · OER Studiegids (crebo 39665, BOL 2026)
-  100201  Hanna Hoekstra
-  100202  Rayan Jacobs
-  100203  Fatima de Jong
-
-Da Vinci College · Examenplan Helpende Zorg en Welzijn (crebo 25960, BOL 2025)
-  100301  Joris Singh
-  100302  Joren Dijkstra
-  100303  Manon Kaur
-
-ROC Utrecht · MBO-Verpleegkundige (crebo 25655, BOL 2025)
-  100401  Eline Vos
-  100402  Thomas Kuijpers
-  100403  Anouk Mulder
-
-ROC Utrecht · Verzorgende IG (crebo 25656, BOL 2025)
-  100501  Hanna Hendriks
-  100502  Noah Bouzid
-  100503  Milan de Boer
+Studentnummers: 100001 t/m 100600
 
 
-MENTOREN (login op naam — typ de volledige naam INCLUSIEF " (crebo)")
-----------------------------------------------------------------------
-Per OER zijn er 5 mentoren. Naam-format: "<initiaal>. <achternaam> (<crebo>)".
-Voorbeeld eerste mentor per OER (rest zijn varianten op B./C./D./E.):
+STUDENTEN (login op studentnummer) — eerste 3 per OER
+------------------------------------------------------------
 
-  A. Bakker (25698)    Talland          Onderwijsassistent BOL 2025
-  A. Bakker (25415)    Talland          25415 SB N3 BOL 2021
-  A. Mulder (39665)    Da Vinci College OER Studiegids BOL 2026
-  A. Mulder (25960)    Da Vinci College Helpende Zorg en Welzijn BOL 2025
-  A. Bakker (25655)    ROC Utrecht      MBO-Verpleegkundige BOL 2025
-  A. Bakker (25656)    ROC Utrecht      Verzorgende IG BOL 2025
+Da Vinci College · 25960_BOL_2025__25960BOL2025MJP_Dienstverlening_HZW_2-JARIG (crebo 25960, BOL 2025)
+  100301  Lisa Nguyen
+  100302  Sofie de Boer
+  100303  Amy de Boer
+
+Da Vinci College · 39665_BOL_2026__OER Studiegids (crebo 39665, BOL 2026)
+  100201  Laura Vermeer
+  100202  Kevin Hendriks
+  100203  Kevin van den Berg
+
+ROC Utrecht · 25880_BOL_2025__Examenplan - 25880 (crebo 25880, BOL 2025)
+  100501  Lena Kowalski
+  100502  Ruben van den Broek
+  100503  Rick Visser
+
+ROC Utrecht · 25749_BOL_2025__Examenplan - 25749 (crebo 25749, BOL 2025)
+  100401  Nora Visser
+  100402  Anouk Janssen
+  100403  Lars Bakker
+
+Talland · 2021 - 25656 OER VIG OVO FL Geriatrische zorg (crebo 25656, BOL 2021)
+  100101  Lena Ferreira
+  100102  Omar van Dijk
+  100103  Omar Dekker
+
+Talland · 2021 - 26027 OER MZG BOL Vastgesteld (crebo 26027, BOL 2021)
+  100001  Fleur Bouzid
+  100002  Hanna Nguyen
+  100003  Niels Vos
 
 
-NOTITIES
---------
-- Gebruikersbestand opnieuw genereren voor de actuele DB:
-    uv run python -m validatie_samenwijzer.ingest --alles    # eerst!
-    uv run python seed/bulk_seed.py
-- Volledige student-/mentor-lijst opvragen:
-    uv run python -c "from pathlib import Path; from validatie_samenwijzer.db \
-import get_connection; [print(r['studentnummer'], r['naam']) for r in get_connection(\
-Path('data/validatie.db')).execute('SELECT studentnummer, naam FROM studenten ORDER BY studentnummer')]"
+MENTOREN (login op volledige naam-string, bv. 'Manon Willemsen (25742)')
+------------------------------------------------------------
+Per OER zijn er 5 mentoren — alle 50 hieronder, gegroepeerd per OER:
 
+Da Vinci College · 25960_BOL_2025__25960BOL2025MJP_Dienstverlening_HZW_2-JARIG (crebo 25960, BOL 2025)
+  Laura Yilmaz (25960)
+  Sophie Ferreira (25960)
+  Isabel El Amrani (25960)
+  Hamza Hoekstra (25960)
+  Yasmin Hoekstra (25960)
 
-SEED.PY (alternatief — minimaal testbestand, 3 studenten + 2 mentoren)
------------------------------------------------------------------------
-Als je seed.py i.p.v. bulk_seed.py draait krijg je:
+Da Vinci College · 39665_BOL_2026__OER Studiegids (crebo 39665, BOL 2026)
+  Pieter Bouzid (39665)
+  Hamza Kaur (39665)
+  Fleur Visser (39665)
+  Roos van den Broek (39665)
+  Omar van der Berg (39665)
 
-  Studenten:
-    100001  Fatima Al-Hassan   Talland          Mbo-Verpleegkundige  VZ-1A  (~54% voortgang)
-    100002  Daan Vermeer       Talland          Mbo-Verpleegkundige  VZ-1A  (~78%)
-    100003  Lina Kowalski      Da Vinci College Kok                  HO-1B  (~38%, risico)
+ROC Utrecht · 25880_BOL_2025__Examenplan - 25880 (crebo 25880, BOL 2025)
+  Nora Peeters (25880)
+  Fatima Meijer (25880)
+  Aisha de Vries (25880)
+  Daan Nguyen (25880)
+  Jesse Postma (25880)
 
-  Mentoren:
-    Jansen     Talland          Mbo-Verpleegkundige BBL 2025 (crebo 25655)
-    De Vries   Da Vinci College Kok BBL 2025 (crebo 25180)
+ROC Utrecht · 25749_BOL_2025__Examenplan - 25749 (crebo 25749, BOL 2025)
+  Lars Janssen (25749)
+  Rayan Visser (25749)
+  Kevin de Jong (25749)
+  Thijs El Amrani (25749)
+  Isabel Singh (25749)
+
+Talland · 2021 - 25656 OER VIG OVO FL Geriatrische zorg (crebo 25656, BOL 2021)
+  Sem Kaur (25656)
+  Rick Maas (25656)
+  Ryan Bakker (25656)
+  Jesse Smit (25656)
+  Mohammed Kaur (25656)
+
+Talland · 2021 - 26027 OER MZG BOL Vastgesteld (crebo 26027, BOL 2021)
+  Jesse Peeters (26027)
+  Julia Yilmaz (26027)
+  Aisha Visser (26027)
+  Sanne Vos (26027)
+  Anouk Singh (26027)
