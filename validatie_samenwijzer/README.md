@@ -24,25 +24,36 @@ Inloggen: wachtwoord **Welkom123** voor alle accounts.
 
 | Rol | Inlogwaarde | Instelling |
 |---|---|---|
-| student | `100001` (Rick Mulder) | Rijn IJssel |
-| student | `100168` (Mohammed Singh) | Da Vinci College |
-| mentor | `Hans Klooster` | Rijn IJssel |
-| mentor | `Hanneke Dijkman` | Da Vinci College |
+| student | `100001` (Joris Yilmaz) | Talland |
+| student | `100201` (Hanna Hoekstra) | Da Vinci College |
+| student | `100401` (Eline Vos) | ROC Utrecht |
+| mentor | `A. Bakker (25698)` | Talland |
+| mentor | `A. Mulder (39665)` | Da Vinci College |
+| mentor | `A. Bakker (25655)` | ROC Utrecht |
 
-## Testdata seeden
+(De exacte studentnummers en namen volgen uit `seed/bulk_seed.py` met `RNG = random.Random(2026)` toegepast op de huidige geïndexeerde OER-set in `data/validatie.db`. Run `seed/bulk_seed.py` opnieuw om actuele accounts te zien.)
+
+## OERs indexeren én testdata seeden
+
+De volgorde is belangrijk: bulk_seed koppelt studenten aan OER-records die ingest aanmaakt.
+Zet daarom eerst je PDFs op de juiste plek en draai dan in volgorde:
 
 ```bash
-uv run python seed/seed.py        # 3 studenten + 2 mentoren
-uv run python seed/bulk_seed.py   # 1000 studenten over alle geïndexeerde OERs
+# 1. Zet PDFs in oeren/<instelling_naam>/ (utrecht_oeren, davinci_oeren, …)
+# 2. Bestandsnamen aanvullen met crebo/leerweg/cohort + indexeren
+./tools/verwerk_oers.sh              # hernoem + indexeer (productie)
+./tools/verwerk_oers.sh --preview    # droge run
+
+# 3. Synthetische gebruikers seeden (vereist een geïndexeerde DB)
+uv run python seed/seed.py           # 3 studenten + 2 mentoren (sanity check)
+uv run python seed/bulk_seed.py      # ~600 studenten over geïndexeerde OERs
 ```
 
-## OERs indexeren
-
-```bash
-# Zet PDF's in oeren/<instelling_naam>/
-./tools/verwerk_oers.sh            # hernoem bestanden + indexeer
-./tools/verwerk_oers.sh --preview  # droge run
-```
+`bulk_seed` faalt met instructie als stap 2 niet is gedraaid. Het rapporteert
+expliciet welke instellingen overgeslagen zijn (typisch wanneer
+`extraheer_kerntaken` regex geen kerntaken uit de PDF kan halen) — dan
+ontbreekt voor die instelling testdata zonder dat dat stilletjes wordt
+verstopt achter wezen-koppelingen.
 
 ## Tests en kwaliteit
 

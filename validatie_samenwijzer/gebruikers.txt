@@ -2,64 +2,50 @@ Testgebruikers — validatie_samenwijzer
 Wachtwoord voor alle accounts: Welkom123
 ======================================
 
-Bron: bulk_seed.py (1000 studenten + 50 mentoren over 10 OERs).
-Voor de minimale seed.py-set (3 studenten + 2 mentoren), zie onderaan.
+Bron: seed/bulk_seed.py — kiest dynamisch de top OERs (meeste kerntaken eerst,
+dan recentste cohort) per instelling uit data/validatie.db. De exacte set OERs,
+studentnummers en namen hangen dus af van wat ingest heeft geïndexeerd. Dit
+overzicht is een snapshot na de meest recente seed-run.
+
+Snapshot: 600 studenten + 30 mentoren over 6 OERs in 3 instellingen.
+(Aeres MBO en Rijn IJssel zijn overgeslagen omdat hun geïndexeerde OERs geen
+kerntaken bevatten — regex-extractie in ingest faalt op die PDFs.)
 
 
 STUDENTEN (login op studentnummer)
 -----------------------------------
-Studentnummers lopen van 100001 t/m 101000 (100 per OER).
-Eerste 3 voorbeelden per opleiding:
+Studentnummers lopen van 100001 t/m 100600 (100 per OER).
+Eerste 3 voorbeelden per OER:
 
-Talland · Mbo-Verpleegkundige (crebo 25655, BBL 2025)
+Talland · Onderwijsassistent 36 maanden BOL (crebo 25698, BOL 2025)
   100001  Joris Yilmaz
-  100002  Nora van den Broek
-  100003  Lina Bakker
+  100002  Nathalie Bouzid
+  100003  Yasmin Peeters
 
-Talland · Helpende Zorg en Welzijn (crebo 25480, BBL 2025)
-  100101  Lisa Kuijpers
-  100102  Julia de Jong
-  100103  Mohammed van Dijk
+Talland · 25415 SB N3 (crebo 25415, BOL 2021)
+  100101  Mia Vos
+  100102  Sander Willemsen
+  100103  Rayan Hendriks
 
-Da Vinci College · Kok (crebo 25180, BBL 2025)
-  100201  Lina Vermeer
-  100202  Joris Kowalski
-  100203  Anna Vermeer
+Da Vinci College · OER Studiegids (crebo 39665, BOL 2026)
+  100201  Hanna Hoekstra
+  100202  Rayan Jacobs
+  100203  Fatima de Jong
 
-Da Vinci College · Medewerker Bediening (crebo 25478, BOL 2025)
-  100301  Lena Al-Hassan
-  100302  Hamza Dekker
-  100303  Fleur Yilmaz
+Da Vinci College · Examenplan Helpende Zorg en Welzijn (crebo 25960, BOL 2025)
+  100301  Joris Singh
+  100302  Joren Dijkstra
+  100303  Manon Kaur
 
-Rijn IJssel · Applicatieontwikkelaar (crebo 25604, BOL 2025)
-  100401  Sem Al-Hassan
-  100402  Anouk van den Broek
-  100403  Luca Willemsen
+ROC Utrecht · MBO-Verpleegkundige (crebo 25655, BOL 2025)
+  100401  Eline Vos
+  100402  Thomas Kuijpers
+  100403  Anouk Mulder
 
-Rijn IJssel · Medewerker ICT (crebo 25187, BBL 2025)
-  100501  Vera El Amrani
-  100502  Isabel Dijkstra
-  100503  Omar Hendriks
-
-Aeres · Dierverzorger 2 (crebo 25390, BBL 2025)
-  100601  Luca Peeters
-  100602  Lena Kowalski
-  100603  Joris Hendriks
-
-Aeres · Medewerker Agrarisch Loonwerk (crebo 25402, BBL 2025)
-  100701  Yasmin Janssen
-  100702  Pieter Vermeer
-  100703  Kevin Kowalski
-
-ROC Utrecht · Medewerker Commercie (crebo 25606, BOL 2025)
-  100801  Fenna Visser
-  100802  Amy van den Broek
-  100803  Ryan Kuijpers
-
-ROC Utrecht · Logistiek Medewerker (crebo 25251, BBL 2025)
-  100901  Thomas Vos
-  100902  Vera Yilmaz
-  100903  Rick Bouzid
+ROC Utrecht · Verzorgende IG (crebo 25656, BOL 2025)
+  100501  Hanna Hendriks
+  100502  Noah Bouzid
+  100503  Milan de Boer
 
 
 MENTOREN (login op naam — typ de volledige naam INCLUSIEF " (crebo)")
@@ -67,30 +53,23 @@ MENTOREN (login op naam — typ de volledige naam INCLUSIEF " (crebo)")
 Per OER zijn er 5 mentoren. Naam-format: "<initiaal>. <achternaam> (<crebo>)".
 Voorbeeld eerste mentor per OER (rest zijn varianten op B./C./D./E.):
 
-  A. Bakker (25655)    Talland          Mbo-Verpleegkundige BBL 2025
-  A. Bakker (25480)    Talland          Helpende Zorg en Welzijn BBL 2025
-  A. Mulder (25180)    Da Vinci College Kok BBL 2025
-  A. Mulder (25478)    Da Vinci College Medewerker Bediening BOL 2025
-  A. Bakker (25604)    Rijn IJssel      Applicatieontwikkelaar BOL 2025
-  A. Bakker (25187)    Rijn IJssel      Medewerker ICT BBL 2025
-  A. Mulder (25390)    Aeres            Dierverzorger 2 BBL 2025
-  A. Mulder (25402)    Aeres            Medewerker Agrarisch Loonwerk BBL 2025
-  A. Bakker (25606)    ROC Utrecht      Medewerker Commercie BOL 2025
-  A. Bakker (25251)    ROC Utrecht      Logistiek Medewerker BBL 2025
-
-Andere achternamen per OER (vervang "A. Bakker"/"A. Mulder" door):
-  Talland / Rijn IJssel / ROC Utrecht  → B. de Boer · C. Visser · D. Smit · E. Hendriks
-  Da Vinci College / Aeres             → B. Peters · C. Dekker · D. Hoekstra · E. Dijkstra
+  A. Bakker (25698)    Talland          Onderwijsassistent BOL 2025
+  A. Bakker (25415)    Talland          25415 SB N3 BOL 2021
+  A. Mulder (39665)    Da Vinci College OER Studiegids BOL 2026
+  A. Mulder (25960)    Da Vinci College Helpende Zorg en Welzijn BOL 2025
+  A. Bakker (25655)    ROC Utrecht      MBO-Verpleegkundige BOL 2025
+  A. Bakker (25656)    ROC Utrecht      Verzorgende IG BOL 2025
 
 
 NOTITIES
 --------
-- DB regenereren met 1000 studenten + 50 mentoren:
-  uv run python seed/bulk_seed.py
-- Volledige mentor-lijst opvragen:
-  uv run python -c "from pathlib import Path; from validatie_samenwijzer.db \
-import get_connection; [print(r['naam']) for r in get_connection(\
-Path('data/validatie.db')).execute('SELECT naam FROM mentoren ORDER BY naam')]"
+- Gebruikersbestand opnieuw genereren voor de actuele DB:
+    uv run python -m validatie_samenwijzer.ingest --alles    # eerst!
+    uv run python seed/bulk_seed.py
+- Volledige student-/mentor-lijst opvragen:
+    uv run python -c "from pathlib import Path; from validatie_samenwijzer.db \
+import get_connection; [print(r['studentnummer'], r['naam']) for r in get_connection(\
+Path('data/validatie.db')).execute('SELECT studentnummer, naam FROM studenten ORDER BY studentnummer')]"
 
 
 SEED.PY (alternatief — minimaal testbestand, 3 studenten + 2 mentoren)
