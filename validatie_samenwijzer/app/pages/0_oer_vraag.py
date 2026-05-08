@@ -280,7 +280,7 @@ gebruiker_tekst = (
     + " "
     + vraag
 )
-kandidaten = identificeer_oer_kandidaten(list(alle_oers), gebruiker_tekst, min_score=5)
+kandidaten = identificeer_oer_kandidaten(list(alle_oers), gebruiker_tekst, min_score=1)
 
 if len(kandidaten) == 1:
     k = kandidaten[0]
