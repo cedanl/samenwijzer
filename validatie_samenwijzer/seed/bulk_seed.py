@@ -1,14 +1,20 @@
-"""Bulk-seed: 1000 synthetische studenten verspreid over 5 instellingen en 10 opleidingen.
+"""Bulk-seed: synthetische studenten + mentoren bovenop een geïngestreerde DB.
 
-Wist bestaande data en bouwt een schone dataset:
-  - 5 instellingen × 2 opleidingen = 10 OERs
-  - 5 mentoren per OER = 50 mentoren totaal
-  - 100 studenten per OER = 1000 studenten totaal
-  - 20 studenten per mentor (round-robin)
+Vereist een gevulde validatie.db waarin OERs al geïndexeerd zijn (`geindexeerd=1`).
+Draai eerst:
+
+    uv run python -m validatie_samenwijzer.ingest --alles
+
+De seed kiest per instelling de top OERs (meeste kerntaken eerst, dan recentste cohort)
+en hangt daar mentoren + studenten aan. Geen hardcoded crebos of bestandspaden — alle
+koppelingen lopen via de OER-records die ingest heeft aangemaakt, zodat hernoemen of
+verplaatsen van bron-PDFs niet meer tot wees-koppelingen leidt.
 """
 
 import os
 import random
+import sqlite3
+import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -19,232 +25,148 @@ from validatie_samenwijzer.db import (
     init_db,
     koppel_mentor_oer,
     voeg_instelling_toe,
-    voeg_kerntaak_toe,
     voeg_mentor_toe,
-    voeg_oer_document_toe,
     voeg_student_kerntaak_score_toe,
     voeg_student_toe,
 )
 
 load_dotenv()
 
-STUDENTEN_PER_OER = 100
+OERS_PER_INSTELLING = 2
 MENTOREN_PER_OER = 5
+STUDENTEN_PER_OER = 100
 WW_HASH = hash_wachtwoord("Welkom123")
 RNG = random.Random(2026)
 
-# ── Instellingen en opleidingen ───────────────────────────────────────────────
-
+# Instelling-namen moeten matchen met validatie_samenwijzer.ingest._INSTELLINGEN —
+# anders ontstaan er dubbele instellingen-records (bv. 'roc_utrecht' naast 'utrecht').
 INSTELLINGEN: list[dict] = [
-    {
-        "naam": "talland",
-        "display_naam": "Talland",
-        "opleidingen": [
-            {
-                "opleiding": "Mbo-Verpleegkundige",
-                "crebo": "25655",
-                "leerweg": "BBL",
-                "cohort": "2025",
-                "bestandspad": "oeren/talland_oeren/25655 Mbo-Verpleegkundige 24 maanden BBL.pdf",
-                "sector": "Zorgenwelzijn",
-                "kerntaken": [
-                    ("B1-K1", "Verpleegkundige zorg verlenen", "kerntaak"),
-                    ("B1-K1-W1", "Zorg plannen en organiseren", "werkproces"),
-                    ("B1-K1-W2", "Zorg uitvoeren", "werkproces"),
-                    ("B1-K2", "Begeleiding en ondersteuning bieden", "kerntaak"),
-                    ("B1-K2-W1", "Begeleidingsgesprek voeren", "werkproces"),
-                ],
-            },
-            {
-                "opleiding": "Helpende Zorg en Welzijn",
-                "crebo": "25480",
-                "leerweg": "BBL",
-                "cohort": "2025",
-                "bestandspad": "oeren/talland_oeren/25480 Helpende ZW BBL.pdf",
-                "sector": "Zorgenwelzijn",
-                "kerntaken": [
-                    ("B1-K1", "Ondersteunen bij activiteiten dagelijks leven", "kerntaak"),
-                    ("B1-K1-W1", "Persoonlijke verzorging uitvoeren", "werkproces"),
-                    ("B1-K1-W2", "Huishoudelijke ondersteuning bieden", "werkproces"),
-                    ("B1-K2", "Signaleren en rapporteren", "kerntaak"),
-                    ("B1-K2-W1", "Rapportage bijhouden", "werkproces"),
-                ],
-            },
-        ],
-    },
-    {
-        "naam": "davinci",
-        "display_naam": "Da Vinci College",
-        "opleidingen": [
-            {
-                "opleiding": "Kok",
-                "crebo": "25180",
-                "leerweg": "BBL",
-                "cohort": "2025",
-                "bestandspad": "oeren/davinci_oeren/25180BBL2025MJP-Kok.pdf",
-                "sector": "Horeca",
-                "kerntaken": [
-                    ("B1-K1", "Bereiden van gerechten", "kerntaak"),
-                    ("B1-K1-W1", "Mise en place uitvoeren", "werkproces"),
-                    ("B1-K1-W2", "Warm bereiden", "werkproces"),
-                    ("B1-K2", "Onderhouden van de werkplek", "kerntaak"),
-                    ("B1-K2-W1", "Keuken schoonmaken en opruimen", "werkproces"),
-                ],
-            },
-            {
-                "opleiding": "Medewerker Bediening",
-                "crebo": "25478",
-                "leerweg": "BOL",
-                "cohort": "2025",
-                "bestandspad": "oeren/davinci_oeren/25478BOL2025Medewerker-Bediening.pdf",
-                "sector": "Horeca",
-                "kerntaken": [
-                    ("B1-K1", "Gasten ontvangen en bedienen", "kerntaak"),
-                    ("B1-K1-W1", "Tafelopstelling verzorgen", "werkproces"),
-                    ("B1-K1-W2", "Bestelling opnemen en serveren", "werkproces"),
-                    ("B1-K2", "Kas en betalingen beheren", "kerntaak"),
-                    ("B1-K2-W1", "Kassawerkzaamheden uitvoeren", "werkproces"),
-                ],
-            },
-        ],
-    },
-    {
-        "naam": "rijn_ijssel",
-        "display_naam": "Rijn IJssel",
-        "opleidingen": [
-            {
-                "opleiding": "Applicatieontwikkelaar",
-                "crebo": "25604",
-                "leerweg": "BOL",
-                "cohort": "2025",
-                "bestandspad": "oeren/rijn_ijssel_oer/25604BOL2025Applicatieontwikkelaar.pdf",
-                "sector": "ICT",
-                "kerntaken": [
-                    ("B1-K1", "Ontwerpen en bouwen van applicaties", "kerntaak"),
-                    ("B1-K1-W1", "Requirements analyseren", "werkproces"),
-                    ("B1-K1-W2", "Applicatie coderen en testen", "werkproces"),
-                    ("B1-K2", "Beheren en optimaliseren", "kerntaak"),
-                    ("B1-K2-W1", "Applicatie deployen en onderhouden", "werkproces"),
-                ],
-            },
-            {
-                "opleiding": "Medewerker ICT",
-                "crebo": "25187",
-                "leerweg": "BBL",
-                "cohort": "2025",
-                "bestandspad": "oeren/rijn_ijssel_oer/25187BBL2025Medewerker-ICT.pdf",
-                "sector": "ICT",
-                "kerntaken": [
-                    ("B1-K1", "Installeren en configureren van systemen", "kerntaak"),
-                    ("B1-K1-W1", "Hardware installeren", "werkproces"),
-                    ("B1-K1-W2", "Software installeren en configureren", "werkproces"),
-                    ("B1-K2", "Gebruikers ondersteunen", "kerntaak"),
-                    ("B1-K2-W1", "Helpdesk-dienstverlening uitvoeren", "werkproces"),
-                ],
-            },
-        ],
-    },
-    {
-        "naam": "aeres",
-        "display_naam": "Aeres",
-        "opleidingen": [
-            {
-                "opleiding": "Dierverzorger 2",
-                "crebo": "25390",
-                "leerweg": "BBL",
-                "cohort": "2025",
-                "bestandspad": "oeren/aeres_oeren/25390BBL2025Dierverzorger2.pdf",
-                "sector": "Groen",
-                "kerntaken": [
-                    ("B1-K1", "Verzorgen van dieren", "kerntaak"),
-                    ("B1-K1-W1", "Dagelijkse zorg uitvoeren", "werkproces"),
-                    ("B1-K1-W2", "Gezondheid bewaken en rapporteren", "werkproces"),
-                    ("B1-K2", "Beheren van de dierenverblijven", "kerntaak"),
-                    ("B1-K2-W1", "Verblijf reinigen en onderhouden", "werkproces"),
-                ],
-            },
-            {
-                "opleiding": "Medewerker Agrarisch Loonwerk",
-                "crebo": "25402",
-                "leerweg": "BBL",
-                "cohort": "2025",
-                "bestandspad": "oeren/aeres_oeren/25402BBL2025Agrarisch-Loonwerk.pdf",
-                "sector": "Groen",
-                "kerntaken": [
-                    ("B1-K1", "Uitvoeren van loonwerkzaamheden", "kerntaak"),
-                    ("B1-K1-W1", "Machines bedienen en onderhouden", "werkproces"),
-                    ("B1-K1-W2", "Gewasbehandeling uitvoeren", "werkproces"),
-                    ("B1-K2", "Plannen en administreren", "kerntaak"),
-                    ("B1-K2-W1", "Werkopdracht voorbereiden en registreren", "werkproces"),
-                ],
-            },
-        ],
-    },
-    {
-        "naam": "roc_utrecht",
-        "display_naam": "ROC Utrecht",
-        "opleidingen": [
-            {
-                "opleiding": "Medewerker Commercie",
-                "crebo": "25606",
-                "leerweg": "BOL",
-                "cohort": "2025",
-                "bestandspad": "oeren/utrecht_oeren/25606BOL2025Medewerker-Commercie.pdf",
-                "sector": "Economie",
-                "kerntaken": [
-                    ("B1-K1", "Verkopen en adviseren", "kerntaak"),
-                    ("B1-K1-W1", "Klantgesprek voeren", "werkproces"),
-                    ("B1-K1-W2", "Verkooptransactie afhandelen", "werkproces"),
-                    ("B1-K2", "Inkoop en voorraadbeheer", "kerntaak"),
-                    ("B1-K2-W1", "Voorraad controleren en bijbestellen", "werkproces"),
-                ],
-            },
-            {
-                "opleiding": "Logistiek Medewerker",
-                "crebo": "25251",
-                "leerweg": "BBL",
-                "cohort": "2025",
-                "bestandspad": "oeren/utrecht_oeren/25251BBL2025Logistiek-Medewerker.pdf",
-                "sector": "Economie",
-                "kerntaken": [
-                    ("B1-K1", "Ontvangen en opslaan van goederen", "kerntaak"),
-                    ("B1-K1-W1", "Goederen controleren en inboeken", "werkproces"),
-                    ("B1-K1-W2", "Goederen opslaan en picken", "werkproces"),
-                    ("B1-K2", "Verzenden en distribueren", "kerntaak"),
-                    ("B1-K2-W1", "Vrachtbrief opmaken en verladen", "werkproces"),
-                ],
-            },
-        ],
-    },
+    {"naam": "talland", "display_naam": "Talland", "klas_prefix": "TA"},
+    {"naam": "davinci", "display_naam": "Da Vinci College", "klas_prefix": "DV"},
+    {"naam": "rijn_ijssel", "display_naam": "Rijn IJssel", "klas_prefix": "RI"},
+    {"naam": "aeres", "display_naam": "Aeres MBO", "klas_prefix": "AE"},
+    {"naam": "utrecht", "display_naam": "ROC Utrecht", "klas_prefix": "UT"},
 ]
-
-# ── Namenlijsten ──────────────────────────────────────────────────────────────
 
 VOORNAMEN_V = [
-    "Emma", "Sophie", "Julia", "Lisa", "Anna", "Sara", "Laura", "Amy", "Nora", "Lena",
-    "Fatima", "Aisha", "Yasmin", "Lina", "Mia", "Fenna", "Roos", "Nathalie", "Isabel",
-    "Mariam", "Zoë", "Eline", "Hanna", "Vera", "Manon", "Fleur", "Sanne", "Anouk",
-    "Iris", "Sofie",
+    "Emma",
+    "Sophie",
+    "Julia",
+    "Lisa",
+    "Anna",
+    "Sara",
+    "Laura",
+    "Amy",
+    "Nora",
+    "Lena",
+    "Fatima",
+    "Aisha",
+    "Yasmin",
+    "Lina",
+    "Mia",
+    "Fenna",
+    "Roos",
+    "Nathalie",
+    "Isabel",
+    "Mariam",
+    "Zoë",
+    "Eline",
+    "Hanna",
+    "Vera",
+    "Manon",
+    "Fleur",
+    "Sanne",
+    "Anouk",
+    "Iris",
+    "Sofie",
 ]
 VOORNAMEN_M = [
-    "Daan", "Luca", "Noah", "Sem", "Thomas", "Lars", "Tim", "Jesse", "Bram", "Finn",
-    "Joris", "Sander", "Kevin", "Rick", "Milan", "Justin", "Ryan", "Niels", "Pieter",
-    "Mark", "Thijs", "Stijn", "Ruben", "Joren", "Mohammed", "Adam", "Omar", "Hamza",
-    "Rayan", "Bilal",
+    "Daan",
+    "Luca",
+    "Noah",
+    "Sem",
+    "Thomas",
+    "Lars",
+    "Tim",
+    "Jesse",
+    "Bram",
+    "Finn",
+    "Joris",
+    "Sander",
+    "Kevin",
+    "Rick",
+    "Milan",
+    "Justin",
+    "Ryan",
+    "Niels",
+    "Pieter",
+    "Mark",
+    "Thijs",
+    "Stijn",
+    "Ruben",
+    "Joren",
+    "Mohammed",
+    "Adam",
+    "Omar",
+    "Hamza",
+    "Rayan",
+    "Bilal",
 ]
 ACHTERNAMEN = [
-    "de Jong", "Janssen", "de Vries", "van den Berg", "van Dijk", "Bakker", "Visser",
-    "Smit", "Meijer", "de Boer", "Mulder", "van Leeuwen", "de Groot", "Bos", "Vos",
-    "Peters", "Hendriks", "van der Berg", "Kuijpers", "Dijkstra", "Peeters", "Jacobs",
-    "van den Broek", "Vermeer", "Willemsen", "Lammers", "Maas", "Postma", "Dekker",
-    "Hoekstra", "Al-Hassan", "El Amrani", "Yilmaz", "Kowalski", "Nguyen", "Ozturk",
-    "Bouzid", "Kaur", "Singh", "Ferreira",
+    "de Jong",
+    "Janssen",
+    "de Vries",
+    "van den Berg",
+    "van Dijk",
+    "Bakker",
+    "Visser",
+    "Smit",
+    "Meijer",
+    "de Boer",
+    "Mulder",
+    "van Leeuwen",
+    "de Groot",
+    "Bos",
+    "Vos",
+    "Peters",
+    "Hendriks",
+    "van der Berg",
+    "Kuijpers",
+    "Dijkstra",
+    "Peeters",
+    "Jacobs",
+    "van den Broek",
+    "Vermeer",
+    "Willemsen",
+    "Lammers",
+    "Maas",
+    "Postma",
+    "Dekker",
+    "Hoekstra",
+    "Al-Hassan",
+    "El Amrani",
+    "Yilmaz",
+    "Kowalski",
+    "Nguyen",
+    "Ozturk",
+    "Bouzid",
+    "Kaur",
+    "Singh",
+    "Ferreira",
 ]
 VOOROPLEIDINGEN = ["VMBO_BB", "VMBO_KB", "VMBO_TL", "VMBO_GT", "HAVO", "MBO_2", "MBO_3"]
 
 MENTOR_ACHTERNAMEN = [
-    "Bakker", "de Boer", "Visser", "Smit", "Hendriks", "Mulder", "Peters", "Dekker",
-    "Hoekstra", "Dijkstra",
+    "Bakker",
+    "de Boer",
+    "Visser",
+    "Smit",
+    "Hendriks",
+    "Mulder",
+    "Peters",
+    "Dekker",
+    "Hoekstra",
+    "Dijkstra",
 ]
 MENTOR_VOORLETTERS = ["A.", "B.", "C.", "D.", "E.", "F.", "G.", "H.", "I.", "J."]
 
@@ -272,69 +194,106 @@ def _willekeurige_scores(rng: random.Random) -> dict:
     }
 
 
-def _reset_database(conn) -> None:
+def _check_db_klaar(conn: sqlite3.Connection) -> None:
+    n = conn.execute("SELECT COUNT(*) FROM oer_documenten WHERE geindexeerd = 1").fetchone()[0]
+    if n == 0:
+        sys.exit(
+            "Geen geïndexeerde OERs in database. Draai eerst:\n"
+            "    uv run python -m validatie_samenwijzer.ingest --alles\n"
+        )
+
+
+def _reset_database(conn: sqlite3.Connection) -> None:
+    """Wis seed-data + wees-OER-records; behoud geïndexeerde OERs en hun kerntaken."""
     conn.executescript("""
         DELETE FROM student_kerntaak_scores;
         DELETE FROM studenten;
         DELETE FROM mentor_oer;
         DELETE FROM mentoren;
-        DELETE FROM kerntaken;
-        DELETE FROM oer_documenten;
-        DELETE FROM instellingen;
     """)
+    # Verwijder OER-records die nooit geïndexeerd raakten en waarvan het bronbestand
+    # ook niet meer bestaat — typisch overblijfsels van eerdere bulk_seed-runs.
+    weeskinderen = conn.execute(
+        "SELECT id, bestandspad FROM oer_documenten WHERE geindexeerd = 0"
+    ).fetchall()
+    voor_verwijdering = [r["id"] for r in weeskinderen if not Path(r["bestandspad"]).exists()]
+    for oer_id in voor_verwijdering:
+        conn.execute("DELETE FROM kerntaken WHERE oer_id = ?", (oer_id,))
+        conn.execute("DELETE FROM oer_documenten WHERE id = ?", (oer_id,))
+    # Verwijder zombie-instellingen zonder OER-verwijzingen (zoals het oude
+    # 'roc_utrecht'-record naast het 'utrecht'-record dat ingest aanmaakt).
+    conn.execute(
+        "DELETE FROM instellingen WHERE id NOT IN (SELECT instelling_id FROM oer_documenten)"
+    )
     conn.commit()
+
+
+def _kies_oers(conn: sqlite3.Connection, instelling_id: int, n: int) -> list[sqlite3.Row]:
+    """Kies tot n geïndexeerde OERs voor deze instelling, gefilterd op kerntaken aanwezig."""
+    return conn.execute(
+        """
+        SELECT o.*, (SELECT COUNT(*) FROM kerntaken WHERE oer_id = o.id) AS n_kt
+        FROM oer_documenten o
+        WHERE o.instelling_id = ?
+          AND o.geindexeerd = 1
+          AND (SELECT COUNT(*) FROM kerntaken WHERE oer_id = o.id) >= 1
+        ORDER BY n_kt DESC, o.cohort DESC, o.id
+        LIMIT ?
+        """,
+        (instelling_id, n),
+    ).fetchall()
 
 
 def bulk_seed(db_path: Path) -> None:
     db_path.parent.mkdir(parents=True, exist_ok=True)
     conn = get_connection(db_path)
     init_db(conn)
+    _check_db_klaar(conn)
     _reset_database(conn)
 
     volgnummer = 100001
     totaal_studenten = 0
+    overgeslagen: list[tuple[str, str]] = []
 
-    for instelling_def in INSTELLINGEN:
-        inst_id = voeg_instelling_toe(conn, instelling_def["naam"], instelling_def["display_naam"])
-
-        for opl in instelling_def["opleidingen"]:
-            # OER aanmaken
-            oer_id = voeg_oer_document_toe(
-                conn,
-                inst_id,
-                opl["opleiding"],
-                opl["crebo"],
-                opl["cohort"],
-                opl["leerweg"],
-                opl["bestandspad"],
+    for inst_idx, inst_def in enumerate(INSTELLINGEN):
+        inst_id = voeg_instelling_toe(conn, inst_def["naam"], inst_def["display_naam"])
+        oers = _kies_oers(conn, inst_id, OERS_PER_INSTELLING)
+        if not oers:
+            overgeslagen.append((inst_def["display_naam"], "geen geïndexeerde OERs met kerntaken"))
+            continue
+        if len(oers) < OERS_PER_INSTELLING:
+            overgeslagen.append(
+                (
+                    inst_def["display_naam"],
+                    f"slechts {len(oers)}/{OERS_PER_INSTELLING} OERs gebruikt",
+                )
             )
 
-            # Kerntaken aanmaken
-            kt_ids = []
-            for volgorde, (code, naam, type_) in enumerate(opl["kerntaken"]):
-                kt_id = voeg_kerntaak_toe(conn, oer_id, code, naam, type_, volgorde)
-                kt_ids.append(kt_id)
+        for oer in oers:
+            kt_ids = [
+                r["id"]
+                for r in conn.execute(
+                    "SELECT id FROM kerntaken WHERE oer_id = ? ORDER BY volgorde",
+                    (oer["id"],),
+                ).fetchall()
+            ]
 
-            # Mentoren aanmaken (MENTOREN_PER_OER per opleiding)
             mentor_ids = []
             for i in range(MENTOREN_PER_OER):
                 voorletter = MENTOR_VOORLETTERS[i % len(MENTOR_VOORLETTERS)]
                 achternaam = MENTOR_ACHTERNAMEN[
-                    (INSTELLINGEN.index(instelling_def) * MENTOREN_PER_OER + i)
-                    % len(MENTOR_ACHTERNAMEN)
+                    (inst_idx * MENTOREN_PER_OER + i) % len(MENTOR_ACHTERNAMEN)
                 ]
-                mentor_naam = f"{voorletter} {achternaam} ({opl['crebo']})"
+                mentor_naam = f"{voorletter} {achternaam} ({oer['crebo']})"
                 mentor_id = voeg_mentor_toe(conn, mentor_naam, WW_HASH, inst_id)
-                koppel_mentor_oer(conn, mentor_id, oer_id)
+                koppel_mentor_oer(conn, mentor_id, oer["id"])
                 mentor_ids.append(mentor_id)
 
-            # Studenten aanmaken (STUDENTEN_PER_OER per opleiding, round-robin over mentoren)
-            klas_prefix = instelling_def["naam"][:2].upper()
             for i in range(STUDENTEN_PER_OER):
                 naam, geslacht = _willekeurige_naam(RNG)
                 scores = _willekeurige_scores(RNG)
                 mentor_id = mentor_ids[i % MENTOREN_PER_OER]
-                klas = f"{klas_prefix}-{opl['crebo'][-3:]}-{RNG.randint(1, 3)}"
+                klas = f"{inst_def['klas_prefix']}-{oer['crebo'][-3:]}-{RNG.randint(1, 3)}"
 
                 st_id = voeg_student_toe(
                     conn,
@@ -342,7 +301,7 @@ def bulk_seed(db_path: Path) -> None:
                     naam=naam,
                     wachtwoord_hash=WW_HASH,
                     instelling_id=inst_id,
-                    oer_id=oer_id,
+                    oer_id=oer["id"],
                     mentor_id=mentor_id,
                     leeftijd=scores["leeftijd"],
                     geslacht=geslacht,
@@ -353,7 +312,7 @@ def bulk_seed(db_path: Path) -> None:
                     absence_unauthorized=scores["absence_unauthorized"],
                     absence_authorized=scores["absence_authorized"],
                     vooropleiding=RNG.choice(VOOROPLEIDINGEN),
-                    sector=opl["sector"],
+                    sector=inst_def["display_naam"],
                     dropout=scores["dropout"],
                 )
                 for kt_id in kt_ids:
@@ -364,25 +323,35 @@ def bulk_seed(db_path: Path) -> None:
                 volgnummer += 1
                 totaal_studenten += 1
 
-    # ── Samenvatting ──────────────────────────────────────────────────────────
-    per_inst = conn.execute("""
-        SELECT i.display_naam, COUNT(DISTINCT o.id) as oers, COUNT(DISTINCT m.id) as mentoren,
-               COUNT(DISTINCT s.id) as studenten
+    per_inst = conn.execute(
+        """
+        SELECT i.display_naam,
+               COUNT(DISTINCT mo.oer_id) AS oers,
+               COUNT(DISTINCT m.id) AS mentoren,
+               COUNT(DISTINCT s.id) AS studenten
         FROM instellingen i
-        LEFT JOIN oer_documenten o ON o.instelling_id = i.id
         LEFT JOIN mentoren m ON m.instelling_id = i.id
+        LEFT JOIN mentor_oer mo ON mo.mentor_id = m.id
         LEFT JOIN studenten s ON s.instelling_id = i.id
-        GROUP BY i.id ORDER BY i.display_naam
-    """).fetchall()
+        GROUP BY i.id
+        HAVING studenten > 0
+        ORDER BY i.display_naam
+        """
+    ).fetchall()
 
     print(f"Bulk-seed voltooid: {totaal_studenten} studenten aangemaakt.")
     print()
-    print(f"{'Instelling':<20} {'OERs':>5} {'Mentoren':>9} {'Studenten':>10}")
-    print("-" * 48)
+    print(f"{'Instelling':<25} {'OERs':>5} {'Mentoren':>9} {'Studenten':>10}")
+    print("-" * 53)
     for r in per_inst:
-        print(
-            f"{r['display_naam']:<20} {r['oers']:>5} {r['mentoren']:>9} {r['studenten']:>10}"
-        )
+        print(f"{r['display_naam']:<25} {r['oers']:>5} {r['mentoren']:>9} {r['studenten']:>10}")
+
+    if overgeslagen:
+        print()
+        print("Aandachtspunten:")
+        for naam, reden in overgeslagen:
+            print(f"  - {naam}: {reden}")
+
     print()
     print("Wachtwoord voor allen: Welkom123")
     print(f"Studentnummers: 100001 t/m {volgnummer - 1}")
