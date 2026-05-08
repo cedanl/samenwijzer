@@ -156,19 +156,15 @@ ACHTERNAMEN = [
 ]
 VOOROPLEIDINGEN = ["VMBO_BB", "VMBO_KB", "VMBO_TL", "VMBO_GT", "HAVO", "MBO_2", "MBO_3"]
 
-MENTOR_ACHTERNAMEN = [
-    "Bakker",
-    "de Boer",
-    "Visser",
-    "Smit",
-    "Hendriks",
-    "Mulder",
-    "Peters",
-    "Dekker",
-    "Hoekstra",
-    "Dijkstra",
-]
-MENTOR_VOORLETTERS = ["A.", "B.", "C.", "D.", "E.", "F.", "G.", "H.", "I.", "J."]
+
+def _willekeurige_mentor_naam(rng: random.Random, gebruikt: set[str]) -> str:
+    """Trek een willekeurige mentor-naam (voornaam + achternaam), uniek binnen `gebruikt`."""
+    voornamen = VOORNAMEN_M + VOORNAMEN_V
+    while True:
+        naam = f"{rng.choice(voornamen)} {rng.choice(ACHTERNAMEN)}"
+        if naam not in gebruikt:
+            gebruikt.add(naam)
+            return naam
 
 
 def _willekeurige_naam(rng: random.Random) -> tuple[str, str]:
@@ -254,8 +250,9 @@ def bulk_seed(db_path: Path) -> None:
     volgnummer = 100001
     totaal_studenten = 0
     overgeslagen: list[tuple[str, str]] = []
+    mentor_namen_gebruikt: set[str] = set()
 
-    for inst_idx, inst_def in enumerate(INSTELLINGEN):
+    for inst_def in INSTELLINGEN:
         inst_id = voeg_instelling_toe(conn, inst_def["naam"], inst_def["display_naam"])
         oers = _kies_oers(conn, inst_id, OERS_PER_INSTELLING)
         if not oers:
@@ -279,12 +276,9 @@ def bulk_seed(db_path: Path) -> None:
             ]
 
             mentor_ids = []
-            for i in range(MENTOREN_PER_OER):
-                voorletter = MENTOR_VOORLETTERS[i % len(MENTOR_VOORLETTERS)]
-                achternaam = MENTOR_ACHTERNAMEN[
-                    (inst_idx * MENTOREN_PER_OER + i) % len(MENTOR_ACHTERNAMEN)
-                ]
-                mentor_naam = f"{voorletter} {achternaam} ({oer['crebo']})"
+            for _ in range(MENTOREN_PER_OER):
+                voornaam_achternaam = _willekeurige_mentor_naam(RNG, mentor_namen_gebruikt)
+                mentor_naam = f"{voornaam_achternaam} ({oer['crebo']})"
                 mentor_id = voeg_mentor_toe(conn, mentor_naam, WW_HASH, inst_id)
                 koppel_mentor_oer(conn, mentor_id, oer["id"])
                 mentor_ids.append(mentor_id)
@@ -323,6 +317,18 @@ def bulk_seed(db_path: Path) -> None:
                 volgnummer += 1
                 totaal_studenten += 1
 
+    print(f"Bulk-seed voltooid: {totaal_studenten} studenten aangemaakt.")
+    print()
+    _schrijf_overzicht(conn, volgnummer - 1, overgeslagen)
+    conn.close()
+
+
+def _schrijf_overzicht(
+    conn: sqlite3.Connection,
+    max_studentnummer: int,
+    overgeslagen: list[tuple[str, str]],
+) -> None:
+    """Genereer seed-overzicht; print naar console + overschrijf gebruikers.txt."""
     per_inst = conn.execute(
         """
         SELECT i.display_naam,
@@ -339,23 +345,96 @@ def bulk_seed(db_path: Path) -> None:
         """
     ).fetchall()
 
-    print(f"Bulk-seed voltooid: {totaal_studenten} studenten aangemaakt.")
-    print()
-    print(f"{'Instelling':<25} {'OERs':>5} {'Mentoren':>9} {'Studenten':>10}")
-    print("-" * 53)
+    regels: list[str] = [
+        "Testgebruikers — validatie_samenwijzer",
+        "Wachtwoord voor alle accounts: Welkom123",
+        "=" * 42,
+        "",
+        "Auto-gegenereerd door seed/bulk_seed.py — niet handmatig wijzigen.",
+        "Bij elke seed-run wordt dit bestand overschreven.",
+        "",
+        f"{'Instelling':<25} {'OERs':>5} {'Mentoren':>9} {'Studenten':>10}",
+        "-" * 53,
+    ]
     for r in per_inst:
-        print(f"{r['display_naam']:<25} {r['oers']:>5} {r['mentoren']:>9} {r['studenten']:>10}")
+        regels.append(
+            f"{r['display_naam']:<25} {r['oers']:>5} {r['mentoren']:>9} {r['studenten']:>10}"
+        )
 
     if overgeslagen:
-        print()
-        print("Aandachtspunten:")
+        regels.append("")
+        regels.append("Overgeslagen instellingen:")
         for naam, reden in overgeslagen:
-            print(f"  - {naam}: {reden}")
+            regels.append(f"  - {naam}: {reden}")
 
-    print()
-    print("Wachtwoord voor allen: Welkom123")
-    print(f"Studentnummers: 100001 t/m {volgnummer - 1}")
-    conn.close()
+    regels.append("")
+    regels.append(f"Studentnummers: 100001 t/m {max_studentnummer}")
+    regels.append("")
+    regels.append("")
+    regels.append("STUDENTEN (login op studentnummer) — eerste 3 per OER")
+    regels.append("-" * 60)
+
+    studenten = conn.execute(
+        """
+        SELECT i.display_naam AS instelling, o.opleiding, o.crebo, o.leerweg, o.cohort,
+               s.studentnummer, s.naam, o.id AS oer_id
+        FROM studenten s
+        JOIN oer_documenten o ON s.oer_id = o.id
+        JOIN instellingen i ON s.instelling_id = i.id
+        ORDER BY i.display_naam, o.id, s.studentnummer
+        """
+    ).fetchall()
+
+    huidige_oer = None
+    teller = 0
+    for r in studenten:
+        if r["oer_id"] != huidige_oer:
+            regels.append("")
+            regels.append(
+                f"{r['instelling']} · {r['opleiding']} "
+                f"(crebo {r['crebo']}, {r['leerweg']} {r['cohort']})"
+            )
+            huidige_oer = r["oer_id"]
+            teller = 0
+        if teller < 3:
+            regels.append(f"  {r['studentnummer']}  {r['naam']}")
+            teller += 1
+
+    regels.append("")
+    regels.append("")
+    regels.append("MENTOREN (login op volledige naam-string, bv. 'Manon Willemsen (25742)')")
+    regels.append("-" * 60)
+    regels.append("Per OER zijn er 5 mentoren — alle 50 hieronder, gegroepeerd per OER:")
+
+    mentoren = conn.execute(
+        """
+        SELECT i.display_naam AS instelling, o.opleiding, o.crebo, o.leerweg, o.cohort,
+               m.naam, o.id AS oer_id
+        FROM mentoren m
+        JOIN mentor_oer mo ON mo.mentor_id = m.id
+        JOIN oer_documenten o ON mo.oer_id = o.id
+        JOIN instellingen i ON m.instelling_id = i.id
+        ORDER BY i.display_naam, o.id, m.id
+        """
+    ).fetchall()
+
+    huidige_mentor_oer = None
+    for r in mentoren:
+        if r["oer_id"] != huidige_mentor_oer:
+            regels.append("")
+            regels.append(
+                f"{r['instelling']} · {r['opleiding']} "
+                f"(crebo {r['crebo']}, {r['leerweg']} {r['cohort']})"
+            )
+            huidige_mentor_oer = r["oer_id"]
+        regels.append(f"  {r['naam']}")
+
+    overzicht = "\n".join(regels) + "\n"
+    print(overzicht)
+
+    pad = Path(__file__).resolve().parent.parent / "gebruikers.txt"
+    pad.write_text(overzicht, encoding="utf-8")
+    print(f"gebruikers.txt geschreven naar {pad}")
 
 
 if __name__ == "__main__":
