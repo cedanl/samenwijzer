@@ -32,7 +32,8 @@ def init_db(conn: sqlite3.Connection) -> None:
             code     TEXT NOT NULL,
             naam     TEXT NOT NULL,
             type     TEXT NOT NULL CHECK (type IN ('kerntaak', 'werkproces')),
-            volgorde INTEGER NOT NULL DEFAULT 0
+            volgorde INTEGER NOT NULL DEFAULT 0,
+            UNIQUE (oer_id, type, naam)
         );
 
         CREATE TABLE IF NOT EXISTS mentoren (
@@ -166,13 +167,20 @@ def update_oer_bestandspad(conn: sqlite3.Connection, oer_id: int, bestandspad: s
 
 def voeg_kerntaak_toe(
     conn: sqlite3.Connection, oer_id: int, code: str, naam: str, type: str, volgorde: int
-) -> int:
-    """Voeg een kerntaak of werkproces toe aan een OER. Geeft het id terug."""
+) -> int | None:
+    """Voeg een kerntaak of werkproces toe aan een OER.
+
+    Geeft het id van de (nieuw of bestaande) kerntaak terug; None als de UNIQUE-
+    constraint (oer_id, type, naam) blokkeerde en geen rij is aangemaakt.
+    """
     cur = conn.execute(
-        "INSERT INTO kerntaken (oer_id, code, naam, type, volgorde) VALUES (?, ?, ?, ?, ?)",
+        "INSERT OR IGNORE INTO kerntaken (oer_id, code, naam, type, volgorde) "
+        "VALUES (?, ?, ?, ?, ?)",
         (oer_id, code, naam, type, volgorde),
     )
     conn.commit()
+    if cur.rowcount == 0:
+        return None
     return cur.lastrowid
 
 

@@ -62,11 +62,26 @@ st.markdown("---")
 st.subheader("Kerntaken en werkprocessen")
 
 scores = get_kerntaak_scores_by_student_id(get_conn(), student["id"])
+
+
+def _dedup_op_naam(items: list) -> list:
+    """Veiligheidsnet tegen duplicate kerntaak-namen — UNIQUE-constraint op DB
+    voorkomt het structureel, maar deze guard blijft expliciet."""
+    gezien: set[str] = set()
+    uniek: list = []
+    for s in items:
+        if s["naam"] in gezien:
+            continue
+        gezien.add(s["naam"])
+        uniek.append(s)
+    return uniek
+
+
 if not scores:
     st.info("Nog geen scores beschikbaar.")
 else:
-    kerntaken = [s for s in scores if s["type"] == "kerntaak"]
-    werkprocessen = [s for s in scores if s["type"] == "werkproces"]
+    kerntaken = _dedup_op_naam([s for s in scores if s["type"] == "kerntaak"])
+    werkprocessen = _dedup_op_naam([s for s in scores if s["type"] == "werkproces"])
 
     if kerntaken:
         st.markdown("**Kerntaken**")

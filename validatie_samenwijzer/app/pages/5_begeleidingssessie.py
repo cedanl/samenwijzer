@@ -97,21 +97,31 @@ with col_profiel:
         )
 
     scores = get_kerntaak_scores_by_student_id(get_conn(), student["id"])
+    # Dedup op naam als veiligheidsnet — de UNIQUE-constraint op kerntaken
+    # voorkomt nu duplicates op DB-niveau, maar deze guard blijft expliciet
+    # voor robuustheid bij toekomstige schema-veranderingen.
+    unieke_kerntaken: list = []
+    gezien_kt: set[str] = set()
+    for s in scores:
+        if s["type"] != "kerntaak" or s["naam"] in gezien_kt:
+            continue
+        gezien_kt.add(s["naam"])
+        unieke_kerntaken.append(s)
+
     lage_kt: list = []
-    if scores:
+    if unieke_kerntaken:
         with st.container(border=True):
             st.markdown("**Kerntaken**")
-            for s in scores:
-                if s["type"] == "kerntaak":
-                    kleur = GROEN if s["score"] >= 70 else (ORANJE if s["score"] >= 50 else ROOD)
-                    st.markdown(f"<small>{html.escape(s['naam'])}</small>", unsafe_allow_html=True)
-                    st.markdown(
-                        f'<div class="progress-bar-bg"><div class="progress-bar-fill" '
-                        f'style="width:{s["score"]:.0f}%;background:{kleur}"></div></div>',
-                        unsafe_allow_html=True,
-                    )
-                    if s["score"] < 50:
-                        lage_kt.append(s)
+            for s in unieke_kerntaken:
+                kleur = GROEN if s["score"] >= 70 else (ORANJE if s["score"] >= 50 else ROOD)
+                st.markdown(f"<small>{html.escape(s['naam'])}</small>", unsafe_allow_html=True)
+                st.markdown(
+                    f'<div class="progress-bar-bg"><div class="progress-bar-fill" '
+                    f'style="width:{s["score"]:.0f}%;background:{kleur}"></div></div>',
+                    unsafe_allow_html=True,
+                )
+                if s["score"] < 50:
+                    lage_kt.append(s)
 
     punten = []
     if vg < 0.5:
