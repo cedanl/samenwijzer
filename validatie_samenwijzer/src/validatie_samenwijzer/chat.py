@@ -186,6 +186,7 @@ def identificeer_oer_kandidaten(oers: list, tekst: str, min_score: int = 0) -> l
     Numerieke tokens worden uitgesloten zodat jaarcijfers niet dubbel tellen.
     """
     tekst_lower = tekst.lower()
+    tekst_woorden = set(re.findall(r"\w+", tekst_lower))
     kandidaten = []
     _generiek = {"college", "school", "mbo", "roc"}
 
@@ -193,13 +194,13 @@ def identificeer_oer_kandidaten(oers: list, tekst: str, min_score: int = 0) -> l
         d = dict(oer)
         score = 0
 
-        if d["crebo"] in tekst:
+        if d["crebo"] in tekst_woorden:
             score += 3
 
-        if d["leerweg"].lower() in tekst_lower:
+        if d["leerweg"].lower() in tekst_woorden:
             score += 2
 
-        if d["cohort"] in tekst:
+        if d["cohort"] in tekst_woorden:
             score += 2
 
         # CamelCase split (VerzorgendeIG → Verzorgende IG) + underscore als separator
@@ -209,10 +210,10 @@ def identificeer_oer_kandidaten(oers: list, tekst: str, min_score: int = 0) -> l
             for w in re.sub(r"[_\W]+", " ", opl_gesplit).lower().split()
             if len(w) > 3 and not w.isdigit()
         ]
-        score += min(sum(1 for w in woorden if w in tekst_lower), 2)
+        score += min(sum(1 for w in woorden if w in tekst_woorden), 2)
 
         for deel in d["display_naam"].lower().split():
-            if len(deel) >= 4 and deel not in _generiek and deel in tekst_lower:
+            if len(deel) >= 4 and deel not in _generiek and deel in tekst_woorden:
                 score += 1
                 break
 

@@ -157,6 +157,23 @@ def test_identificeer_filtert_op_min_score():
     assert resultaat[0]["id"] == 2
 
 
+def test_identificeer_woord_match_geen_substring():
+    """'zorg' in opleidingsnaam mag niet als substring matchen op 'verzorgende'.
+
+    Regressie: typen van 'Verzorgende' op de publieke OER-pagina leverde
+    voorheen ook OERs als 'Helpende-zorg-en-welzijn' op (false-positive
+    via substring 'zorg' in 'verzorgende').
+    """
+    oers = [
+        _oer_row(id=1, opleiding="Verzorgende IG"),
+        _oer_row(id=2, opleiding="Helpende-zorg-en-welzijn"),
+        _oer_row(id=3, opleiding="Begeleider maatschappelijke zorg"),
+    ]
+    resultaat = identificeer_oer_kandidaten(oers, "Verzorgende", min_score=1)
+    assert len(resultaat) == 1
+    assert resultaat[0]["id"] == 1
+
+
 def test_identificeer_sorteert_op_score_aflopend():
     oers = [
         _oer_row(id=1, crebo="11111", leerweg="BBL"),  # match: niets
