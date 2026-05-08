@@ -40,10 +40,10 @@ def test_extraheer_kerntaken_herkent_codes():
 
 def test_extraheer_kerntaken_herkent_kerntaak_prefix():
     tekst = """
-    Kerntaak 1: Werkzaamheden uitvoeren
+    Kerntaak 1: Werkzaamheden uitvoeren in het bedrijf
     Werkproces 1.1: Plannen van werkzaamheden
-    Werkproces 1.2: Uitvoeren van taken
-    Kerntaak 2: Rapportage
+    Werkproces 1.2: Uitvoeren van dagelijkse taken
+    Kerntaak 2: Rapportages opstellen voor management
     """
     kt = extraheer_kerntaken(tekst)
     typen = [k["type"] for k in kt]
@@ -53,3 +53,40 @@ def test_extraheer_kerntaken_herkent_kerntaak_prefix():
 
 def test_extraheer_kerntaken_lege_tekst():
     assert extraheer_kerntaken("") == []
+
+
+def test_extraheer_kerntaken_filtert_garbled_fragments():
+    """Tabel-cellen die als losse regels worden afgevlakt mogen niet als
+    kerntaak doorkomen. Echte beschrijvingen hebben minstens 12 letters
+    en bevatten lowercase tekst."""
+    tekst = """
+    B1-K1- 1
+    B1-K1- W2
+    B1-K1- TE
+    B1-K1: Verzorgt cliënten in dagelijkse activiteiten
+    Kerntaak 2: 4
+    Kerntaak 3: Begeleiding bij sociale ontwikkeling
+    """
+    kt = extraheer_kerntaken(tekst)
+    namen = [k["naam"] for k in kt]
+    assert "1" not in namen
+    assert "W2" not in namen
+    assert "TE" not in namen
+    assert "4" not in namen
+    assert "Verzorgt cliënten in dagelijkse activiteiten" in namen
+    assert "Begeleiding bij sociale ontwikkeling" in namen
+
+
+def test_extraheer_kerntaken_dedupt_binnen_document():
+    """Dezelfde kerntaak komt vaak meerdere keren voor in een OER (introductie,
+    tabel, uitwerking). Extractor levert per OER unieke records."""
+    tekst = """
+    B1-K1: Bieden van zorg en ondersteuning in het verpleegkundig proces
+    ergens later in het document...
+    B1-K1: Bieden van zorg en ondersteuning in het verpleegkundig proces
+    en nog een keer:
+    B1-K1: Bieden van zorg en ondersteuning in het verpleegkundig proces
+    """
+    kt = extraheer_kerntaken(tekst)
+    namen = [k["naam"] for k in kt]
+    assert namen.count("Bieden van zorg en ondersteuning in het verpleegkundig proces") == 1

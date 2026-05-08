@@ -112,6 +112,32 @@ def test_kerntaken_crud(conn):
     assert kt_lijst[0]["code"] == "B1-K1"
 
 
+def test_voeg_kerntaak_toe_is_idempotent(conn):
+    """UNIQUE(oer_id, type, naam) blokkeert duplicate inserts. De helper
+    moet bij conflict het bestaande id teruggeven, niet None of een crash —
+    callers (seed.py, ingest) gebruiken de return value om scores te koppelen."""
+    voeg_instelling_toe(conn, "rijn", "Rijn IJssel")
+    inst = get_instelling_by_naam(conn, "rijn")
+    oer_id = voeg_oer_document_toe(
+        conn, inst["id"], "VZ", "25655", "2025", "BOL", "pad.pdf"
+    )
+    eerste = voeg_kerntaak_toe(
+        conn, oer_id=oer_id, code="B1-K1", naam="Verpleegkundige zorg",
+        type="kerntaak", volgorde=1,
+    )
+    # Tweede call met andere volgorde — INSERT OR IGNORE laat de oorspronkelijke
+    # waarde staan; dat documenteert het contract voor toekomstige callers.
+    tweede = voeg_kerntaak_toe(
+        conn, oer_id=oer_id, code="B1-K1", naam="Verpleegkundige zorg",
+        type="kerntaak", volgorde=99,
+    )
+    assert eerste == tweede
+    assert isinstance(tweede, int)
+    rijen = get_kerntaken_by_oer_id(conn, oer_id)
+    assert len(rijen) == 1
+    assert rijen[0]["volgorde"] == 1  # IGNORE behoudt eerste insert
+
+
 def test_mentor_en_student_crud(conn):
     voeg_instelling_toe(conn, "rijn", "Rijn IJssel")
     inst = get_instelling_by_naam(conn, "rijn")
