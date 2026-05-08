@@ -41,7 +41,7 @@ uv run python -m validatie_samenwijzer.watcher --oeren-pad /pad/naar/oeren
 
 # Seed testdata
 uv run python seed/seed.py        # 3 studenten + 2 mentoren
-uv run python seed/bulk_seed.py   # 1000 studenten over alle geïndexeerde OERs
+uv run python seed/bulk_seed.py   # ~1000 studenten over geïndexeerde OERs (vereist eerst `ingest --alles`)
 
 # Bestandsnamen aanvullen + indexeren (alles-in-één)
 ./tools/verwerk_oers.sh --preview  # droge run

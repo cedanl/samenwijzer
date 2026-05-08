@@ -90,13 +90,14 @@ def get_connection(db_path: Path, timeout: float = 30.0) -> sqlite3.Connection:
 
 def voeg_instelling_toe(conn: sqlite3.Connection, naam: str, display_naam: str) -> int:
     """Voeg een instelling toe (INSERT OR IGNORE). Geeft het id terug."""
-    cur = conn.execute(
+    # Niet vertrouwen op cur.lastrowid: bij OR IGNORE die niet inserteert geeft SQLite de
+    # rowid van de vorige succesvolle insert op deze verbinding terug — die kan tot een
+    # heel andere tabel behoren. Altijd via SELECT op de UNIQUE-kolom resolven.
+    conn.execute(
         "INSERT OR IGNORE INTO instellingen (naam, display_naam) VALUES (?, ?)",
         (naam, display_naam),
     )
     conn.commit()
-    if cur.lastrowid:
-        return cur.lastrowid
     return conn.execute("SELECT id FROM instellingen WHERE naam = ?", (naam,)).fetchone()["id"]
 
 
