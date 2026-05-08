@@ -111,19 +111,12 @@ def _stream_antwoord(systeem: str, berichten: list[dict]) -> str:
     return antwoord
 
 
-# ── Codex-header ───────────────────────────────────────────────────────────────
-hdr_l, hdr_r = st.columns([1, 7])
-with hdr_l:
-    st.markdown('<div class="oer-mark">§</div>', unsafe_allow_html=True)
-with hdr_r:
-    st.markdown(
-        '<div class="oer-overtitel">Onderwijs- en Examenregeling</div>'
-        '<h1 style="margin:0">OER-vraag</h1>'
-        '<div class="oer-ondertitel">een juridisch document, helder uitgelegd</div>',
-        unsafe_allow_html=True,
-    )
-
-st.markdown('<div class="oer-ornament">⁂</div>', unsafe_allow_html=True)
+# ── Header ────────────────────────────────────────────────────────────────────
+st.markdown(
+    '<h1 style="margin:0">OER-vraag</h1>'
+    '<div class="oer-ondertitel">Snel antwoord op je vragen over je opleiding</div>',
+    unsafe_allow_html=True,
+)
 
 if st.session_state.pub_oer_labels:
     labels_str = " · ".join(st.session_state.pub_oer_labels)
@@ -135,7 +128,7 @@ if st.session_state.pub_oer_labels:
             unsafe_allow_html=True,
         )
     with col2:
-        if st.button("Nieuw gesprek", use_container_width=True):
+        if st.button("Nieuw  \ngesprek", use_container_width=True):
             _reset()
             st.rerun()
 else:
@@ -190,7 +183,7 @@ if st.session_state.pub_kandidaten:
 
     _, col_reset = st.columns([8, 2])
     with col_reset:
-        if st.button("Nieuw gesprek", key="reset_kandidaten", use_container_width=True):
+        if st.button("Nieuw  \ngesprek", key="reset_kandidaten", use_container_width=True):
             _reset()
             st.rerun()
 
