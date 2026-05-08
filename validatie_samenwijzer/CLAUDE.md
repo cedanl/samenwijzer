@@ -148,6 +148,17 @@ pdfplumber over PDF. Hard cap: `_MAX_OER_TEKST_TEKENS = 500_000` tekens.
 Toon `LAGE_RELEVANTIE_BERICHT` wanneer `laad_oer_tekst()` een lege string teruggeeft
 (bestand ontbreekt of niet leesbaar).
 
+**Juridische citatieplicht**: zowel `_SYSTEEM_TEMPLATE` als `_MULTI_SYSTEEM_TEMPLATE` eisen per
+claim de OER-aanduiding (multi), sectie of paginanummer, **én een woordelijk citaat tussen
+aanhalingstekens**. Reden: een OER is een juridisch document — antwoorden moeten verifieerbaar
+zijn. Markdown-blockquotes uit het AI-antwoord renderen via CSS als pull-quote citaten.
+Spec: `docs/superpowers/specs/2026-05-06-publieke-oer-citaten-en-pdf-design.md` (vanuit repo-root).
+
+**PDF-bekijken op publieke pagina** (`0_oer_vraag.py`): `pub_oer_paden: list[Path]` in session
+state parallel aan `pub_oer_labels`. Per geladen OER een `📄 Bekijk OER N` knop boven de chat;
+klik toggelt een expander met PDF-iframe (800px) + download-knop. Helper `_render_oer_bestand()`
+spiegelt de logica van `2_mijn_oer.py`.
+
 ### OER-bestanden
 
 `oeren/` is gitignored. Structuur: één submap per instelling (`davinci_oeren/`, `rijn_ijssel_oer/`, `talland_oeren/`, `aeres_oeren/`, `utrecht_oeren/`). Geïndexeerde OERs staan als `geindexeerd=1` in `oer_documenten`. Studenten met `oer_id` naar niet-geïndexeerde OERs krijgen geen chatantwoorden.
@@ -168,3 +179,13 @@ daarna op de PDF. Ontbreken beide → `LAGE_RELEVANTIE_BERICHT`.
 **Markitdown-conversie mislukt**: `converteer_naar_markdown()` is best-effort. Bij falen blijft
 alleen pdfplumber over (mindere kwaliteit, geen tabellen). De log toont dan
 `Markitdown-conversie mislukt voor '…'`.
+
+**Streamlit module-cache bij styles-wijzigingen**: hot-reload herlaadt `styles.py` (en andere
+imported modules) niet — alleen pagina-files worden direct opnieuw uitgevoerd. Bij CSS-edits in
+`src/validatie_samenwijzer/styles.py` is een **volledige Streamlit-restart** nodig (`Ctrl-C` →
+`uv run streamlit run app/main.py`). De R-toets in de browser triggert geen module-reload.
+
+Snelle DOM-check of nieuwe CSS geladen is:
+```js
+Array.from(document.querySelectorAll('style')).some(s => s.textContent.includes('<class-naam>'))
+```
