@@ -77,8 +77,8 @@ st.caption(
     "Subprocesses draaien op deze machine en kunnen meerdere minuten duren."
 )
 
-tab_status, tab_sync, tab_ingest, tab_seed = st.tabs(
-    ["📊 Status", "☁️ Sync oeren", "🗄 Re-ingest", "🌱 Seed"]
+tab_status, tab_bootstrap, tab_sync, tab_ingest, tab_seed = st.tabs(
+    ["📊 Status", "🚀 Bootstrap", "☁️ Sync oeren", "🗄 Re-ingest", "🌱 Seed"]
 )
 
 # ── Tab: Status ────────────────────────────────────────────────────────────────
@@ -134,6 +134,55 @@ with tab_status:
         st.write(f"📁 `{oeren_pad}` — {n_pdf} PDFs, {n_md} markdown-bestanden")
     else:
         st.warning(f"Map `{oeren_pad}` niet gevonden — draai eerst sync.")
+
+# ── Tab: Bootstrap ─────────────────────────────────────────────────────────────
+with tab_bootstrap:
+    st.subheader("🚀 Volledige machine-setup")
+    st.caption(
+        "Eén klik = `uv sync` → `rclone copy` (Box) → `ingest --alles` → `seed`. "
+        "Gebruik dit op een nieuwe machine of als je de DB volledig wil herbouwen."
+    )
+    st.warning(
+        "Duur: 10–30 minuten afhankelijk van Box-bandbreedte en aantal OERs. "
+        "Tijdens de run is de app niet bruikbaar; subprocess-output verschijnt hieronder."
+    )
+
+    col_skip_sync, col_skip_seed, col_bulk = st.columns(3)
+    with col_skip_sync:
+        skip_sync = st.checkbox(
+            "Skip sync",
+            value=False,
+            help="Sla `rclone copy` over (oeren/ is al up-to-date).",
+        )
+    with col_skip_seed:
+        skip_seed = st.checkbox(
+            "Skip seed",
+            value=False,
+            help="Geen testaccounts aanmaken.",
+        )
+    with col_bulk:
+        seed_bulk = st.checkbox(
+            "Seed bulk (~1000 studenten)",
+            value=False,
+            help="Naast basis-accounts ook `seed_bulk.py` draaien.",
+        )
+
+    bevestig = st.checkbox(
+        "Ja, ik weet dat dit de DB volledig herbouwt",
+        value=False,
+        key="bootstrap_bevestig",
+    )
+
+    if st.button("Start bootstrap", type="primary", disabled=not bevestig):
+        cmd = ["bash", "scripts/bootstrap.sh"]
+        if skip_sync:
+            cmd.append("--skip-sync")
+        if skip_seed:
+            cmd.append("--skip-seed")
+        if seed_bulk:
+            cmd.append("--seed-bulk")
+        _run_in_placeholder(cmd)
+
 
 # ── Tab: Sync oeren ────────────────────────────────────────────────────────────
 with tab_sync:
