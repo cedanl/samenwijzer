@@ -143,13 +143,13 @@ DRY_RUN=true uv run python -m samenwijzer.scheduler  # alleen loggen
 | Architectuur & module-rollen | `ARCHITECTURE.md`, `AGENTS.md` |
 | Productvision & features | `docs/PRODUCT_SENSE.md` |
 | Frontend- & UI-conventies | `docs/FRONTEND.md` |
-| Ontwerpbeslissingen | `docs/design-docs/index.md` |
-| Uitvoeringsplannen | `docs/exec-plans/active/`, `docs/exec-plans/completed/` |
-| Product specs | `docs/product-specs/index.md` |
+| Ontwerpbeslissingen | `docs/designs/index.md` |
+| Uitvoeringsplannen | `docs/plans/active/`, `docs/plans/completed/` |
+| Product specs | `docs/specs/index.md` |
 | Kwaliteitsscores | `docs/QUALITY_SCORE.md` |
 | Beveiliging | `docs/SECURITY.md` |
 | Betrouwbaarheid | `docs/RELIABILITY.md` |
-| Tech debt | `docs/exec-plans/tech-debt-tracker.md` |
+| Tech debt | `docs/plans/tech-debt-tracker.md` |
 | Test-accounts | `gebruikers.txt` |
 
 ## Agent rules (samenvatting van AGENTS.md)

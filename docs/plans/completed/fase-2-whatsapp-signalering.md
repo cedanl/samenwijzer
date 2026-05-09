@@ -2,7 +2,7 @@
 
 **Status:** code compleet per 2026-04-15 — enige openstaande actie: F6 Meta template-goedkeuring (externe setup)
 **Doel:** Studenten proactief bereiken via WhatsApp met wekelijkse welzijnschecks; signalen zichtbaar maken voor mentoren in het groepsoverzicht.
-**Spec:** `docs/product-specs/whatsapp-signalering.md`
+**Spec:** `docs/specs/whatsapp-signalering.md`
 **Afhankelijk van:** Fase 1 afgerond (studiedata + AI leercoach)
 
 ---

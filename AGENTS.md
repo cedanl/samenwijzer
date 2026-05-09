@@ -25,13 +25,13 @@ Target users: students (progress, AI tutor, wellbeing check) and internal daily 
 | Architecture & layers | `ARCHITECTURE.md` |
 | Product vision & features | `docs/PRODUCT_SENSE.md` |
 | Frontend & UI conventions | `docs/FRONTEND.md` |
-| Design decisions | `docs/design-docs/index.md` |
-| Completed plans | `docs/exec-plans/completed/` — fase 1 en fase 2 afgerond; geen actief plan |
+| Design decisions | `docs/designs/index.md` |
+| Completed plans | `docs/plans/completed/` — fase 1 en fase 2 afgerond; geen actief plan |
 | Quality scores per domain | `docs/QUALITY_SCORE.md` |
 | Security rules | `docs/SECURITY.md` |
 | Reliability requirements | `docs/RELIABILITY.md` |
-| Known tech debt | `docs/exec-plans/tech-debt-tracker.md` |
-| Product specs | `docs/product-specs/index.md` |
+| Known tech debt | `docs/plans/tech-debt-tracker.md` |
+| Product specs | `docs/specs/index.md` |
 
 ## Key modules (quick reference)
 

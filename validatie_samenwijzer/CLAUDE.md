@@ -152,7 +152,7 @@ Toon `LAGE_RELEVANTIE_BERICHT` wanneer `laad_oer_tekst()` een lege string terugg
 claim de OER-aanduiding (multi), sectie of paginanummer, **én een woordelijk citaat tussen
 aanhalingstekens**. Reden: een OER is een juridisch document — antwoorden moeten verifieerbaar
 zijn. Markdown-blockquotes uit het AI-antwoord renderen via CSS als pull-quote citaten.
-Spec: `docs/superpowers/specs/2026-05-06-publieke-oer-citaten-en-pdf-design.md` (vanuit repo-root).
+Spec: `docs/specs/2026-05-06-publieke-oer-citaten-en-pdf-design.md` (vanuit repo-root).
 
 **PDF-bekijken op publieke pagina** (`0_oer_vraag.py`): `pub_oer_paden: list[Path]` in session
 state parallel aan `pub_oer_labels`. Per geladen OER een `📄 Bekijk OER N` knop boven de chat;
