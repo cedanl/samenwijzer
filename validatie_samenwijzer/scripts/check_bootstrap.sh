@@ -28,7 +28,7 @@ from validatie_samenwijzer.chat import resolve_oer_pad
 # in main zijn gemerged.
 EXPECTED_OERS = {
     "Aeres MBO":        (29, 29),    # totaal, geïndexeerd
-    "Da Vinci College": (81, 68),
+    "Da Vinci College": (68, 68),    # zombie rows opgeruimd door seed_bulk._reset_database
     "ROC Utrecht":      (111, 111),
     "Rijn IJssel":      (50, 50),
     "Talland":          (238, 238),
