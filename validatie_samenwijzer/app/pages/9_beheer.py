@@ -147,25 +147,22 @@ with tab_bootstrap:
         "Tijdens de run is de app niet bruikbaar; subprocess-output verschijnt hieronder."
     )
 
-    col_skip_sync, col_skip_seed, col_bulk = st.columns(3)
-    with col_skip_sync:
-        skip_sync = st.checkbox(
-            "Skip sync",
-            value=False,
-            help="Sla `rclone copy` over (oeren/ is al up-to-date).",
-        )
-    with col_skip_seed:
-        skip_seed = st.checkbox(
-            "Skip seed",
-            value=False,
-            help="Geen testaccounts aanmaken.",
-        )
-    with col_bulk:
-        seed_bulk = st.checkbox(
-            "Seed bulk (~1000 studenten)",
-            value=False,
-            help="Naast basis-accounts ook `seed_bulk.py` draaien.",
-        )
+    seed_keuze = st.radio(
+        "Seed-data",
+        options=["bulk", "minimal", "geen"],
+        format_func=lambda v: {
+            "bulk": "Bulk (~1000 studenten over alle OERs) — default",
+            "minimal": "Minimaal (3 studenten + 2 mentoren, dev-demo)",
+            "geen": "Geen seed-data aanmaken",
+        }[v],
+        index=0,
+        horizontal=False,
+    )
+    skip_sync = st.checkbox(
+        "Skip oeren-sync (oeren/ is al up-to-date)",
+        value=False,
+        help="Sla `rclone copy` over en gebruik wat lokaal staat.",
+    )
 
     bevestig = st.checkbox(
         "Ja, ik weet dat dit de DB volledig herbouwt",
@@ -177,10 +174,10 @@ with tab_bootstrap:
         cmd = ["bash", "scripts/bootstrap.sh"]
         if skip_sync:
             cmd.append("--skip-sync")
-        if skip_seed:
+        if seed_keuze == "minimal":
+            cmd.append("--seed-minimal")
+        elif seed_keuze == "geen":
             cmd.append("--skip-seed")
-        if seed_bulk:
-            cmd.append("--seed-bulk")
         _run_in_placeholder(cmd)
 
 
@@ -231,13 +228,20 @@ with tab_seed:
 
     col_a, col_b = st.columns(2)
     with col_a:
-        st.markdown("**Basis (3 studenten + 2 mentoren)**")
+        st.markdown("**Bulk (~1000 studenten)** — default werkdata")
+        st.caption(
+            "Verdeelt 1000 studenten over de top OERs van alle 5 instellingen "
+            "met deterministische seed (RNG=2026). Vereist dat OERs eerst zijn geïngest."
+        )
+        if st.button("Run seed_bulk.py", type="primary"):
+            _run_in_placeholder(["uv", "run", "python", "scripts/seed_bulk.py"])
+    with col_b:
+        st.markdown("**Minimaal (3 + 2)** — dev-demo")
+        st.caption(
+            "Hardcoded subset: 2 instellingen, 2 OERs, 3 studenten, 2 mentoren. "
+            "Bedoeld voor handmatige UI-tests. Geen vervanging voor bulk-seed."
+        )
         if st.button("Run seed.py"):
             _run_in_placeholder(["uv", "run", "python", "scripts/seed.py"])
-    with col_b:
-        st.markdown("**Bulk (~1000 studenten over alle OERs)**")
-        st.caption("Vereist dat OERs eerst zijn geïngest.")
-        if st.button("Run seed_bulk.py"):
-            _run_in_placeholder(["uv", "run", "python", "scripts/seed_bulk.py"])
 
 render_footer()
