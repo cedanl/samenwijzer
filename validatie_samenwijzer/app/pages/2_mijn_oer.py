@@ -1,8 +1,6 @@
 """Student: volledig OER inzien of downloaden."""
 
 import base64
-import os
-from pathlib import Path
 
 import streamlit as st
 from dotenv import load_dotenv
@@ -13,6 +11,7 @@ st.set_page_config(page_title="Mijn OER", page_icon="📄", layout="wide")
 
 from validatie_samenwijzer._db import get_conn  # noqa: E402
 from validatie_samenwijzer.auth import vereist_student  # noqa: E402
+from validatie_samenwijzer.chat import resolve_oer_pad  # noqa: E402
 from validatie_samenwijzer.ingest import extraheer_tekst_html  # noqa: E402
 from validatie_samenwijzer.styles import (  # noqa: E402
     CSS,
@@ -26,8 +25,6 @@ vereist_student()
 render_nav()
 render_student_info()
 
-OEREN_PAD = Path(os.environ.get("OEREN_PAD", "oeren"))
-
 
 oer_id = st.session_state.get("oer_id")
 opleiding = st.session_state.get("opleiding", "")
@@ -40,10 +37,7 @@ if not oer:
     st.warning("Geen OER gekoppeld aan jouw profiel.")
 else:
     st.caption(f"Crebo {oer['crebo']} · {oer['leerweg']} · Cohort {oer['cohort']}")
-    pad = Path(oer["bestandspad"])
-
-    if not pad.is_absolute():
-        pad = OEREN_PAD.parent / pad
+    pad = resolve_oer_pad(oer["bestandspad"])
 
     if not pad.exists():
         st.warning(f"OER-bestand niet gevonden op: {pad}")

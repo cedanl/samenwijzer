@@ -2,7 +2,6 @@
 
 import html
 import logging
-from pathlib import Path
 
 import streamlit as st
 from dotenv import load_dotenv
@@ -22,6 +21,7 @@ from validatie_samenwijzer.chat import (  # noqa: E402
     bouw_systeem,
     genereer_antwoord,
     laad_oer_tekst,
+    resolve_oer_pad,
 )
 from validatie_samenwijzer.styles import (  # noqa: E402
     CSS,
@@ -48,7 +48,7 @@ if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 if "oer_systeem" not in st.session_state:
     # Laad OER eenmalig per sessie
-    oer_tekst = laad_oer_tekst(Path(bestandspad)) if bestandspad else ""
+    oer_tekst = laad_oer_tekst(resolve_oer_pad(bestandspad)) if bestandspad else ""
     st.session_state.oer_systeem = (
         bouw_systeem(oer_tekst, opleiding, instelling) if oer_tekst else ""
     )
