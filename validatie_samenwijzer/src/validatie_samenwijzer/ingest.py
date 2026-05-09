@@ -6,6 +6,7 @@ import logging
 import os
 import re
 import sqlite3
+import time
 from pathlib import Path
 
 log = logging.getLogger(__name__)
@@ -36,7 +37,14 @@ _OPLEIDING_LIJN = re.compile(
 # Generieke woorden die niet als opleidingsnaam tellen — alleen op deze
 # overhouden geldt de stem als oninformatief.
 _GENERIEKE_OPLEIDINGSWOORDEN = {
-    "examenplan", "examenplannen", "oer", "addendum", "bol", "bbl", "mbo", "roc",
+    "examenplan",
+    "examenplannen",
+    "oer",
+    "addendum",
+    "bol",
+    "bbl",
+    "mbo",
+    "roc",
 }
 
 
@@ -45,8 +53,7 @@ def _stem_heeft_opleidingsnaam(stem: str) -> bool:
     rest = _PREFIX_PATROON.sub("", stem).lower()
     tokens = [w for w in re.split(r"[_\W]+", rest) if w]
     return any(
-        len(w) >= 3 and not w.isdigit() and w not in _GENERIEKE_OPLEIDINGSWOORDEN
-        for w in tokens
+        len(w) >= 3 and not w.isdigit() and w not in _GENERIEKE_OPLEIDINGSWOORDEN for w in tokens
     )
 
 
@@ -355,8 +362,10 @@ def _resolveer_oer(
         # Werk de opleidingsnaam bij als de nieuwe variant informatiever is
         # dan wat eerder is opgeslagen (bv. PDF-titelpagina vs. generieke
         # filename als "Examenplan - 25698").
-        if opleiding != oer["opleiding"] and _stem_heeft_opleidingsnaam(opleiding) and not (
-            _stem_heeft_opleidingsnaam(oer["opleiding"])
+        if (
+            opleiding != oer["opleiding"]
+            and _stem_heeft_opleidingsnaam(opleiding)
+            and not (_stem_heeft_opleidingsnaam(oer["opleiding"]))
         ):
             log.info("Opleiding bijgewerkt: '%s' → '%s'.", oer["opleiding"], opleiding)
             update_oer_opleiding(conn, oer_id, opleiding)
@@ -465,8 +474,6 @@ def main() -> None:
 
     for naam, display in _INSTELLINGEN.items():
         voeg_instelling_toe(conn, naam, display)
-
-    import time
 
     start = time.monotonic()
     scope: str | None = None

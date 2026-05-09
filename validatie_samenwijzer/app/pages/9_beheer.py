@@ -10,6 +10,8 @@ from __future__ import annotations
 import os
 import shlex
 import subprocess
+import time
+from collections import deque
 from collections.abc import Iterator
 from pathlib import Path
 
@@ -25,9 +27,10 @@ from validatie_samenwijzer.db import (  # noqa: E402
     init_db,
     laatste_ingest_run,
 )
-from validatie_samenwijzer.styles import CSS, render_footer  # noqa: E402
+from validatie_samenwijzer.styles import CSS, render_footer, render_nav  # noqa: E402
 
 st.markdown(CSS, unsafe_allow_html=True)
+render_nav()
 
 # ── Toegangscontrole ───────────────────────────────────────────────────────────
 if os.environ.get("BEHEER_ENABLED", "").lower() != "true":
@@ -42,8 +45,12 @@ _PROJECT_ROOT = Path(__file__).resolve().parents[2]
 _INSTELLING_KEYS = ["aeres", "davinci", "rijn_ijssel", "talland", "utrecht"]
 
 
-def _stream_lines(cmd: list[str], cwd: Path) -> Iterator[str]:
-    """Run cmd en yield stdout-regels live."""
+_BUFFER_REGELS = 300
+_PAINT_INTERVAL_S = 0.2
+
+
+def _stream_lines(cmd: list[str], cwd: Path) -> Iterator[tuple[str, int | None]]:
+    """Run cmd en yield (regel, returncode); returncode is None tot het proces eindigt."""
     proc = subprocess.Popen(  # noqa: S603 — input is uit hardcoded keuzes, niet user-text
         cmd,
         cwd=str(cwd),
@@ -52,10 +59,12 @@ def _stream_lines(cmd: list[str], cwd: Path) -> Iterator[str]:
         text=True,
         bufsize=1,
     )
-    assert proc.stdout is not None
-    yield from iter(proc.stdout.readline, "")
+    if proc.stdout is None:
+        raise RuntimeError("Popen leverde geen stdout op — kan output niet streamen.")
+    for regel in iter(proc.stdout.readline, ""):
+        yield regel, None
     proc.wait()
-    yield f"\n[exit={proc.returncode}]\n"
+    yield f"\n[exit={proc.returncode}]\n", proc.returncode
 
 
 def _run_in_placeholder(cmd: list[str], cwd: Path | None = None) -> None:
@@ -63,10 +72,25 @@ def _run_in_placeholder(cmd: list[str], cwd: Path | None = None) -> None:
     cwd = cwd or _PROJECT_ROOT
     st.caption(f"$ {shlex.join(cmd)}  (cwd={cwd})")
     placeholder = st.empty()
-    buffer: list[str] = []
-    for regel in _stream_lines(cmd, cwd):
+    # deque voorkomt onbegrensde groei bij langlopende subprocesses (bv. een 30-min
+    # bootstrap kan tienduizenden regels rclone-progress produceren).
+    buffer: deque[str] = deque(maxlen=_BUFFER_REGELS)
+    laatste_paint = 0.0
+    returncode: int | None = None
+    for regel, rc in _stream_lines(cmd, cwd):
         buffer.append(regel)
-        placeholder.code("".join(buffer[-300:]), language="bash")
+        if rc is not None:
+            returncode = rc
+        # Throttle: bij snel-producerende subprocessen zou per-regel re-rendering de
+        # Streamlit-WebSocket overbelasten en de browser laten haperen.
+        nu = time.monotonic()
+        if nu - laatste_paint > _PAINT_INTERVAL_S or rc is not None:
+            placeholder.code("".join(buffer), language="bash")
+            laatste_paint = nu
+    if returncode == 0:
+        st.success(f"✅ Klaar (exit=0): `{shlex.join(cmd)}`")
+    else:
+        st.error(f"❌ Subprocess gefaald (exit={returncode}): `{shlex.join(cmd)}`")
 
 
 # ── Pagina-header ──────────────────────────────────────────────────────────────
@@ -107,9 +131,16 @@ with tab_status:
     ).fetchall()
     if rijen:
         st.dataframe(
-            [{"Instelling": r["display_naam"], "Totaal OERs": r["totaal"],
-              "Geïndexeerd": r["geindexeerd"]} for r in rijen],
-            hide_index=True, use_container_width=False,
+            [
+                {
+                    "Instelling": r["display_naam"],
+                    "Totaal OERs": r["totaal"],
+                    "Geïndexeerd": r["geindexeerd"],
+                }
+                for r in rijen
+            ],
+            hide_index=True,
+            use_container_width=False,
         )
     else:
         st.info("Geen OERs in DB. Draai eerst een ingest.")
@@ -129,8 +160,12 @@ with tab_status:
     if not oeren_pad.is_absolute():
         oeren_pad = (_PROJECT_ROOT / oeren_pad).resolve()
     if oeren_pad.exists():
-        n_pdf = sum(1 for _ in oeren_pad.rglob("*.pdf"))
-        n_md = sum(1 for _ in oeren_pad.rglob("*.md"))
+        n_pdf = n_md = 0
+        for pad in oeren_pad.rglob("*"):
+            if pad.suffix == ".pdf":
+                n_pdf += 1
+            elif pad.suffix == ".md":
+                n_md += 1
         st.write(f"📁 `{oeren_pad}` — {n_pdf} PDFs, {n_md} markdown-bestanden")
     else:
         st.warning(f"Map `{oeren_pad}` niet gevonden — draai eerst sync.")
