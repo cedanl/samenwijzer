@@ -31,7 +31,7 @@ Inloggen: wachtwoord **Welkom123** voor alle accounts.
 | mentor | `A. Mulder (39665)` | Da Vinci College |
 | mentor | `A. Bakker (25655)` | ROC Utrecht |
 
-(De exacte studentnummers en namen volgen uit `seed/bulk_seed.py` met `RNG = random.Random(2026)` toegepast op de huidige geïndexeerde OER-set in `data/validatie.db`. Run `seed/bulk_seed.py` opnieuw om actuele accounts te zien.)
+(De exacte studentnummers en namen volgen uit `scripts/seed_bulk.py` met `RNG = random.Random(2026)` toegepast op de huidige geïndexeerde OER-set in `data/validatie.db`. Run `scripts/seed_bulk.py` opnieuw om actuele accounts te zien.)
 
 ## OERs indexeren én testdata seeden
 
@@ -41,12 +41,12 @@ Zet daarom eerst je PDFs op de juiste plek en draai dan in volgorde:
 ```bash
 # 1. Zet PDFs in oeren/<instelling_naam>/ (utrecht_oeren, davinci_oeren, …)
 # 2. Bestandsnamen aanvullen met crebo/leerweg/cohort + indexeren
-./tools/verwerk_oers.sh              # hernoem + indexeer (productie)
-./tools/verwerk_oers.sh --preview    # droge run
+./scripts/verwerk_oers.sh              # hernoem + indexeer (productie)
+./scripts/verwerk_oers.sh --preview    # droge run
 
 # 3. Synthetische gebruikers seeden (vereist een geïndexeerde DB)
-uv run python seed/seed.py           # 3 studenten + 2 mentoren (sanity check)
-uv run python seed/bulk_seed.py      # ~600 studenten over geïndexeerde OERs
+uv run python scripts/seed.py           # 3 studenten + 2 mentoren (sanity check)
+uv run python scripts/seed_bulk.py      # ~600 studenten over geïndexeerde OERs
 ```
 
 `bulk_seed` faalt met instructie als stap 2 niet is gedraaid. Het rapporteert

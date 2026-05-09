@@ -6,7 +6,7 @@ Wist bestaande studenten en mentoren, en vult de database opnieuw met:
 - ~20 studenten per mentor; mentoren worden round-robin toegewezen
 
 Gebruik:
-    uv run python seed/rebuild_students.py
+    uv run python scripts/seed_rebuild_students.py
 """
 
 import math

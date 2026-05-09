@@ -2,8 +2,8 @@
 # Volledige OER-verwerkingspipeline: hernoem → indexeer
 #
 # Gebruik:
-#   ./tools/verwerk_oers.sh            # alles verwerken
-#   ./tools/verwerk_oers.sh --preview  # alleen laten zien wat er hernoemd wordt
+#   ./scripts/verwerk_oers.sh            # alles verwerken
+#   ./scripts/verwerk_oers.sh --preview  # alleen laten zien wat er hernoemd wordt
 
 set -euo pipefail
 
@@ -14,13 +14,13 @@ fi
 
 echo "=== Stap 1: bestandsnamen aanvullen met crebo/leerweg/cohort ==="
 if $PREVIEW; then
-    uv run python tools/rename_oers.py --dry-run
+    uv run python scripts/rename_oers.py --dry-run
     echo ""
-    echo "Preview klaar. Voer './tools/verwerk_oers.sh' uit om daadwerkelijk te verwerken."
+    echo "Preview klaar. Voer './scripts/verwerk_oers.sh' uit om daadwerkelijk te verwerken."
     exit 0
 fi
 
-uv run python tools/rename_oers.py
+uv run python scripts/rename_oers.py
 
 echo ""
 echo "=== Stap 2: OERs indexeren in vectordatabase ==="
