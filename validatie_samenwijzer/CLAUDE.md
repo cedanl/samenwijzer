@@ -47,10 +47,12 @@ uv run python scripts/seed_bulk.py   # ~1000 studenten over geïndexeerde OERs (
 ./scripts/verwerk_oers.sh --preview  # droge run
 ./scripts/verwerk_oers.sh            # hernoem + indexeer
 
-# Multi-machine setup: sync oeren vanuit Box + ingest + seed in één commando
-./scripts/bootstrap.sh               # volledige setup
-./scripts/bootstrap.sh --skip-sync   # alleen ingest + seed (oeren/ al lokaal)
-./scripts/sync_oeren.sh              # alleen rclone copy
+# Multi-machine setup: sync oeren vanuit Box + ingest + bulk-seed in één commando
+./scripts/bootstrap.sh                  # default = bulk-seed (~1000 studenten)
+./scripts/bootstrap.sh --skip-sync      # alleen ingest + seed (oeren/ al lokaal)
+./scripts/bootstrap.sh --seed-minimal   # 3+2 dev-demo i.p.v. bulk
+./scripts/bootstrap.sh --skip-seed      # geen testdata
+./scripts/sync_oeren.sh                 # alleen rclone copy
 ```
 
 ## Omgeving
@@ -102,7 +104,7 @@ Tabs:
 - **Sync oeren** — wrapper rond `scripts/sync_oeren.sh`.
 - **Re-ingest** — scope-dropdown (alles/aeres/davinci/rijn_ijssel/talland/utrecht)
   + `--reset` checkbox.
-- **Seed** — `seed.py` (basis-accounts) of `seed_bulk.py` (~1000 studenten).
+- **Seed** — `seed_bulk.py` (~1000 studenten, default werkdata) of `seed.py` (3+2 dev-demo).
 
 ## Architectuur
 
