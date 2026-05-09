@@ -24,6 +24,82 @@ _JAAR = re.compile(r"(?<!\d)(20[2-3]\d)(?!\d)")
 
 _HUIDIG_COHORT = "2025"
 
+# ── Opleidingsnaam afleiden ──────────────────────────────────────────────────
+
+# Standaard prefix die rename_oers.py voor de stem zet (`<crebo>_<leerweg>_<cohort>__`)
+_PREFIX_PATROON = re.compile(r"^\d{5}_(?:BOL|BBL)_\d{4}__", re.IGNORECASE)
+# Examenplannen leggen de profielnaam expliciet vast op de titelpagina
+_OPLEIDING_LIJN = re.compile(
+    r"^\s*Kwalificatie\s*\(profiel\)\s*[:\-]?\s*(.+?)\s*$",
+    re.IGNORECASE | re.MULTILINE,
+)
+# Generieke woorden die niet als opleidingsnaam tellen — alleen op deze
+# overhouden geldt de stem als oninformatief.
+_GENERIEKE_OPLEIDINGSWOORDEN = {
+    "examenplan", "examenplannen", "oer", "addendum", "bol", "bbl", "mbo", "roc",
+}
+
+
+def _stem_heeft_opleidingsnaam(stem: str) -> bool:
+    """True als de stem na de metadata-prefix ten minste één opleidingswoord bevat."""
+    rest = _PREFIX_PATROON.sub("", stem).lower()
+    tokens = [w for w in re.split(r"[_\W]+", rest) if w]
+    return any(
+        len(w) >= 3 and not w.isdigit() and w not in _GENERIEKE_OPLEIDINGSWOORDEN
+        for w in tokens
+    )
+
+
+def _extraheer_opleiding_uit_pdf(pad: Path) -> str | None:
+    """Lees de eerste pagina en haal de profiel-kwalificatienaam op.
+
+    Werkt voor het ROC Utrecht 'Examenplan' formaat dat een vaste key/value-tabel
+    op de eerste pagina heeft. Geeft None als de PDF niet leesbaar is of het
+    patroon niet matcht.
+    """
+    if pad.suffix.lower() != ".pdf":
+        return None
+    try:
+        import pdfplumber
+
+        with pdfplumber.open(str(pad)) as pdf:
+            tekst = pdf.pages[0].extract_text() or ""
+    except Exception as e:
+        log.debug("Kan eerste pagina niet lezen voor '%s': %s", pad.name, e)
+        return None
+    m = _OPLEIDING_LIJN.search(tekst)
+    if m:
+        return m.group(1).strip()[:100]
+    return None
+
+
+def _pad_relatief_aan_oeren_root(pad: Path) -> str:
+    """Normaliseer naar `oeren/<map>/<bestand>` voor opslag in de DB.
+
+    OEREN_PAD wijst vanuit dit subproject naar `../oeren`; zonder normalisatie
+    krijgt de DB `../oeren/...`-paden, en `resolve_oer_pad()` rekent dan een
+    map te ver naar boven (`samenwijzer/..` → `projects/`).
+    """
+    parts = pad.parts
+    for i, part in enumerate(parts):
+        if part == "oeren":
+            return str(Path(*parts[i:]))
+    return str(pad)
+
+
+def _bepaal_opleiding(pad: Path) -> str:
+    """Geef de beste opleidingsnaam voor een OER-bestand.
+
+    Default is de bestandsnaam zonder extensie. Wanneer die geen
+    opleidingswoord bevat (bv. `25698_BOL_2026__Examenplan - 25698`),
+    valt het terug op de profielnaam uit de PDF-titelpagina.
+    """
+    stem = pad.stem[:100]
+    if _stem_heeft_opleidingsnaam(stem):
+        return stem
+    pdf_naam = _extraheer_opleiding_uit_pdf(pad)
+    return pdf_naam or stem
+
 
 def parseer_bestandsnaam(bestandsnaam: str) -> dict | None:
     """Haal crebo, leerweg en cohort op uit de bestandsnaam.
@@ -235,6 +311,7 @@ def _resolveer_oer(
         get_instelling_by_naam,
         get_oer_document,
         update_oer_bestandspad,
+        update_oer_opleiding,
         voeg_oer_document_toe,
     )
 
@@ -248,30 +325,41 @@ def _resolveer_oer(
         log.error("Instelling '%s' niet gevonden in database.", instelling_naam)
         return None
 
+    opleiding = _bepaal_opleiding(pad)
+    bestandspad_db = _pad_relatief_aan_oeren_root(pad)
+
     oer = get_oer_document(conn, inst["id"], meta["crebo"], meta["cohort"], meta["leerweg"])
     if oer is None:
         oer_id = voeg_oer_document_toe(
             conn,
             instelling_id=inst["id"],
-            opleiding=pad.stem[:100],
+            opleiding=opleiding,
             crebo=meta["crebo"],
             cohort=meta["cohort"],
             leerweg=meta["leerweg"],
-            bestandspad=str(pad),
+            bestandspad=bestandspad_db,
         )
     else:
         oer_id = oer["id"]
-        if str(pad) == oer["bestandspad"] and oer["geindexeerd"] and not reset:
+        if bestandspad_db == oer["bestandspad"] and oer["geindexeerd"] and not reset:
             log.info("'%s' al geïndexeerd — overgeslagen.", pad.name)
             return None
         # PDF heeft prioriteit boven MD; update als pad afwijkt.
         stored_suffix = Path(oer["bestandspad"]).suffix.lower()
         incoming_suffix = pad.suffix.lower()
-        if (incoming_suffix == ".pdf" or stored_suffix not in {".pdf"}) and str(
-            pad
-        ) != oer["bestandspad"]:
+        if (incoming_suffix == ".pdf" or stored_suffix not in {".pdf"}) and (
+            bestandspad_db != oer["bestandspad"]
+        ):
             log.info("Bestandspad bijgewerkt naar '%s'.", pad.name)
-            update_oer_bestandspad(conn, oer_id, str(pad))
+            update_oer_bestandspad(conn, oer_id, bestandspad_db)
+        # Werk de opleidingsnaam bij als de nieuwe variant informatiever is
+        # dan wat eerder is opgeslagen (bv. PDF-titelpagina vs. generieke
+        # filename als "Examenplan - 25698").
+        if opleiding != oer["opleiding"] and _stem_heeft_opleidingsnaam(opleiding) and not (
+            _stem_heeft_opleidingsnaam(oer["opleiding"])
+        ):
+            log.info("Opleiding bijgewerkt: '%s' → '%s'.", oer["opleiding"], opleiding)
+            update_oer_opleiding(conn, oer_id, opleiding)
 
     return oer_id, meta
 

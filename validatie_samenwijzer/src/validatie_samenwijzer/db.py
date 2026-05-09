@@ -165,6 +165,16 @@ def update_oer_bestandspad(conn: sqlite3.Connection, oer_id: int, bestandspad: s
     conn.commit()
 
 
+def update_oer_opleiding(conn: sqlite3.Connection, oer_id: int, opleiding: str) -> None:
+    """Overschrijf de opleidingsnaam van een OER-document.
+
+    Gebruikt door de ingest wanneer een betere naam (bv. uit de PDF-titelpagina)
+    is afgeleid dan wat oorspronkelijk uit de bestandsnaam kwam.
+    """
+    conn.execute("UPDATE oer_documenten SET opleiding = ? WHERE id = ?", (opleiding, oer_id))
+    conn.commit()
+
+
 def voeg_kerntaak_toe(
     conn: sqlite3.Connection, oer_id: int, code: str, naam: str, type: str, volgorde: int
 ) -> int:
