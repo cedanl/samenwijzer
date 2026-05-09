@@ -436,7 +436,12 @@ def main() -> None:
 
     from dotenv import load_dotenv
 
-    from validatie_samenwijzer.db import get_connection, init_db, voeg_instelling_toe
+    from validatie_samenwijzer.db import (
+        get_connection,
+        init_db,
+        voeg_ingest_run_toe,
+        voeg_instelling_toe,
+    )
 
     load_dotenv()
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
@@ -461,17 +466,37 @@ def main() -> None:
     for naam, display in _INSTELLINGEN.items():
         voeg_instelling_toe(conn, naam, display)
 
+    import time
+
+    start = time.monotonic()
+    scope: str | None = None
     if args.bestand:
         pad = Path(args.bestand)
         inst = pad.parent.name.replace("_oeren", "").replace("_oer", "")
         _verwerk_bestand(pad, inst, conn, reset=args.reset)
+        scope = f"bestand:{pad.name}"
     elif args.instelling:
         _verwerk_instelling(args.instelling, oeren_pad, conn, reset=args.reset)
+        scope = f"instelling:{args.instelling}"
     elif args.alles:
         for naam in _INSTELLINGEN:
             _verwerk_instelling(naam, oeren_pad, conn, reset=args.reset)
+        scope = "alles"
     else:
         parser.print_help()
+
+    if scope is not None:
+        n_oers = conn.execute(
+            "SELECT COUNT(*) FROM oer_documenten WHERE geindexeerd = 1"
+        ).fetchone()[0]
+        n_kerntaken = conn.execute("SELECT COUNT(*) FROM kerntaken").fetchone()[0]
+        voeg_ingest_run_toe(
+            conn,
+            scope=scope,
+            n_oers=n_oers,
+            n_kerntaken=n_kerntaken,
+            duur_seconden=time.monotonic() - start,
+        )
 
 
 if __name__ == "__main__":

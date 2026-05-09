@@ -46,6 +46,11 @@ uv run python scripts/seed_bulk.py   # ~1000 studenten over geïndexeerde OERs (
 # Bestandsnamen aanvullen + indexeren (alles-in-één)
 ./scripts/verwerk_oers.sh --preview  # droge run
 ./scripts/verwerk_oers.sh            # hernoem + indexeer
+
+# Multi-machine setup: sync oeren vanuit Box + ingest + seed in één commando
+./scripts/bootstrap.sh               # volledige setup
+./scripts/bootstrap.sh --skip-sync   # alleen ingest + seed (oeren/ al lokaal)
+./scripts/sync_oeren.sh              # alleen rclone copy
 ```
 
 ## Omgeving
@@ -56,7 +61,48 @@ uv run python scripts/seed_bulk.py   # ~1000 studenten over geïndexeerde OERs (
 ANTHROPIC_API_KEY=sk-ant-...
 DB_PATH=data/validatie.db   # default
 OEREN_PAD=../oeren          # default in dit subproject (root-oeren/ hergebruikt)
+BEHEER_ENABLED=true         # activeer beheerpagina (alleen op dev-machines)
 ```
+
+## Multi-machine workflow
+
+`oeren/` (PDFs) en `validatie.db` zijn beide **gitignored** — te groot voor git en
+copyright-gevoelig. Oeren staan centraal in een Box-folder; de DB wordt per machine
+opgebouwd uit de oeren-tree.
+
+**Eenmalige setup per machine** (vereist `rclone`):
+
+```bash
+# 1. Installeer rclone
+curl https://rclone.org/install.sh | sudo bash
+# 2. Configureer Box-remote (OAuth-flow in browser)
+rclone config       # type "n", naam "box", storage "box", default-flags
+# 3. Clone repo + run bootstrap
+git clone git@github.com:cedanl/samenwijzer.git
+cd samenwijzer/validatie_samenwijzer
+./scripts/bootstrap.sh
+```
+
+Override de remote/pad via env-vars als je een andere Box-locatie of remote-naam hebt:
+
+```bash
+RCLONE_REMOTE=mijnbox RCLONE_OEREN_PAD=team/oeren ./scripts/sync_oeren.sh
+```
+
+## Beheerpagina
+
+`app/pages/9_beheer.py` bundelt sync, re-ingest, seed en DB-status achter knoppen.
+Bereikbaar op `/beheer` als `BEHEER_ENABLED=true` staat in `.env`. Subprocesses
+draaien op de host en de output wordt live gestreamd in de UI. Niet aanzetten op
+gedeelde servers — de pagina kan rclone, ingest en seed-scripts triggeren.
+
+Tabs:
+- **Status** — # OERs per instelling, # geïndexeerd, laatste ingest-run (uit
+  tabel `ingest_runs`), aantal PDFs/markdown op schijf.
+- **Sync oeren** — wrapper rond `scripts/sync_oeren.sh`.
+- **Re-ingest** — scope-dropdown (alles/aeres/davinci/rijn_ijssel/talland/utrecht)
+  + `--reset` checkbox.
+- **Seed** — `seed.py` (basis-accounts) of `seed_bulk.py` (~1000 studenten).
 
 ## Architectuur
 

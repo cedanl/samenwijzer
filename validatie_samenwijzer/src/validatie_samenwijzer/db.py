@@ -76,6 +76,15 @@ def init_db(conn: sqlite3.Connection) -> None:
             score       REAL NOT NULL,
             PRIMARY KEY (student_id, kerntaak_id)
         );
+
+        CREATE TABLE IF NOT EXISTS ingest_runs (
+            id            INTEGER PRIMARY KEY AUTOINCREMENT,
+            tijdstip      TEXT NOT NULL DEFAULT (datetime('now')),
+            scope         TEXT NOT NULL,
+            n_oers        INTEGER NOT NULL DEFAULT 0,
+            n_kerntaken   INTEGER NOT NULL DEFAULT 0,
+            duur_seconden REAL
+        );
     """)
     conn.commit()
 
@@ -163,6 +172,29 @@ def update_oer_bestandspad(conn: sqlite3.Connection, oer_id: int, bestandspad: s
     """Overschrijf het bestandspad van een OER-document (bijv. upgrade van TXT naar PDF)."""
     conn.execute("UPDATE oer_documenten SET bestandspad = ? WHERE id = ?", (bestandspad, oer_id))
     conn.commit()
+
+
+def voeg_ingest_run_toe(
+    conn: sqlite3.Connection,
+    *,
+    scope: str,
+    n_oers: int,
+    n_kerntaken: int,
+    duur_seconden: float,
+) -> None:
+    """Log een afgeronde ingest-run voor de beheerpagina."""
+    conn.execute(
+        "INSERT INTO ingest_runs (scope, n_oers, n_kerntaken, duur_seconden) VALUES (?, ?, ?, ?)",
+        (scope, n_oers, n_kerntaken, duur_seconden),
+    )
+    conn.commit()
+
+
+def laatste_ingest_run(conn: sqlite3.Connection) -> sqlite3.Row | None:
+    """Geef de meest recente ingest-run terug (of None als de tabel leeg is)."""
+    return conn.execute(
+        "SELECT * FROM ingest_runs ORDER BY id DESC LIMIT 1"
+    ).fetchone()
 
 
 def update_oer_opleiding(conn: sqlite3.Connection, oer_id: int, opleiding: str) -> None:
