@@ -218,13 +218,16 @@ def identificeer_oer_kandidaten(oers: list, tekst: str, min_score: int = 0) -> l
         if d["cohort"] in tekst_woorden:
             score += 2
 
-        # CamelCase split (VerzorgendeIG → Verzorgende IG) + underscore als separator
+        # CamelCase split (VerzorgendeIG → Verzorgende IG) + underscore als separator.
+        # Dedupliceren met set: filename-prefixen herhalen vaak BOL/BBL/jaar, anders
+        # zou een opleiding "Kok BOL" via een prefix "_BOL_" dubbel scoren.
+        # Sluit BOL/BBL uit; die worden al via `leerweg` gescoord.
         opl_gesplit = re.sub(r"(?<=[a-z])(?=[A-Z])", " ", d["opleiding"])
-        woorden = [
+        woorden = {
             w
             for w in re.sub(r"[_\W]+", " ", opl_gesplit).lower().split()
-            if len(w) > 3 and not w.isdigit()
-        ]
+            if len(w) >= 3 and not w.isdigit() and w not in {"bol", "bbl"}
+        }
         score += min(sum(1 for w in woorden if w in tekst_woorden), 2)
 
         for deel in d["display_naam"].lower().split():

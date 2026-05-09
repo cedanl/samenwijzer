@@ -25,6 +25,7 @@ from validatie_samenwijzer.chat import (  # noqa: E402
     genereer_intake_antwoord,
     identificeer_oer_kandidaten,
     laad_oer_tekst,
+    resolve_oer_pad,
 )
 from validatie_samenwijzer.db import get_alle_oers_met_instelling  # noqa: E402
 from validatie_samenwijzer.ingest import extraheer_tekst_html  # noqa: E402
@@ -200,7 +201,7 @@ if st.session_state.pub_kandidaten:
         paden = []
         for lbl in geselecteerd:
             k = opties[lbl]
-            pad = Path(k["bestandspad"])
+            pad = resolve_oer_pad(k["bestandspad"])
             tekst = laad_oer_tekst(pad)
             if tekst:
                 oer_items.append(
@@ -275,44 +276,63 @@ gebruiker_tekst = (
 )
 kandidaten = identificeer_oer_kandidaten(list(alle_oers), gebruiker_tekst, min_score=1)
 
-if len(kandidaten) == 1:
-    k = kandidaten[0]
-    pad = Path(k["bestandspad"])
-    tekst = laad_oer_tekst(pad)
-    if tekst:
-        st.session_state.pub_oer_systeem = bouw_gecombineerd_systeem(
-            [
-                {
-                    "tekst": tekst,
-                    "opleiding": k["opleiding"],
-                    "display_naam": k["display_naam"],
-                    "leerweg": k["leerweg"],
-                    "cohort": k["cohort"],
-                }
+if kandidaten:
+    # Beperk tot kandidaten met de hoogste score: dat zijn de meest specifieke
+    # matches voor deze query. Bij één duidelijke winnaar laden we direct;
+    # bij meerdere ties tonen we een dropdown.
+    top_score = max(k["_score"] for k in kandidaten)
+    top_tier = [k for k in kandidaten if k["_score"] == top_score]
+
+    if len(top_tier) == 1:
+        k = top_tier[0]
+        pad = resolve_oer_pad(k["bestandspad"])
+        tekst = laad_oer_tekst(pad)
+        if tekst:
+            st.session_state.pub_oer_systeem = bouw_gecombineerd_systeem(
+                [
+                    {
+                        "tekst": tekst,
+                        "opleiding": k["opleiding"],
+                        "display_naam": k["display_naam"],
+                        "leerweg": k["leerweg"],
+                        "cohort": k["cohort"],
+                    }
+                ]
+            )
+            st.session_state.pub_oer_labels = [
+                f"{k['display_naam']} · {k['opleiding'][:40]} · {k['leerweg']} {k['cohort']}"
             ]
-        )
-        st.session_state.pub_oer_labels = [
-            f"{k['display_naam']} · {k['opleiding'][:40]} · {k['leerweg']} {k['cohort']}"
-        ]
-        st.session_state.pub_oer_paden = [pad]
-        berichten = bouw_berichten(st.session_state.pub_chat_history, vraag)
-        antwoord = _stream_antwoord(st.session_state.pub_oer_systeem, berichten)
+            st.session_state.pub_oer_paden = [pad]
+            berichten = bouw_berichten(st.session_state.pub_chat_history, vraag)
+            antwoord = _stream_antwoord(st.session_state.pub_oer_systeem, berichten)
+            # Persist en rerun zodat de "geraadpleegd"-header en bekijk-knoppen
+            # direct zichtbaar worden bij de eerste auto-loaded vraag.
+            st.session_state.pub_chat_history.extend(
+                [
+                    {"role": "user", "content": vraag},
+                    {"role": "assistant", "content": antwoord},
+                ]
+            )
+            if len(st.session_state.pub_chat_history) > MAX_GESCHIEDENIS:
+                st.session_state.pub_chat_history = st.session_state.pub_chat_history[
+                    -MAX_GESCHIEDENIS:
+                ]
+            st.rerun()
+        else:
+            antwoord = LAGE_RELEVANTIE_BERICHT
+            st.info(antwoord)
     else:
-        antwoord = LAGE_RELEVANTIE_BERICHT
-        st.info(antwoord)
+        # Meerdere top-matches — toon dropdown gesorteerd op (cohort desc,
+        # instelling, opleiding) zodat ties op een nuttige volgorde staan.
+        def _sorteer_sleutel(k: dict) -> tuple:
+            cohort_int = int(k["cohort"]) if str(k["cohort"]).isdigit() else 0
+            return (-cohort_int, k["display_naam"], k["opleiding"])
 
-elif len(kandidaten) >= 2:
-    # Meerdere matches — toon top-N in de dropdown gesorteerd op (score desc,
-    # cohort desc, instelling, opleiding) zodat ties op een nuttige volgorde staan.
-    def _sorteer_sleutel(k: dict) -> tuple:
-        cohort_int = int(k["cohort"]) if str(k["cohort"]).isdigit() else 0
-        return (-int(k["_score"]), -cohort_int, k["display_naam"], k["opleiding"])
-
-    keuze_lijst = sorted(kandidaten, key=_sorteer_sleutel)[:MAX_KANDIDATEN]
-    st.session_state.pub_kandidaten = keuze_lijst
-    st.session_state.pub_wachtende_vraag = vraag
-    st.session_state.pub_chat_history.append({"role": "user", "content": vraag})
-    st.rerun()
+        keuze_lijst = sorted(top_tier, key=_sorteer_sleutel)[:MAX_KANDIDATEN]
+        st.session_state.pub_kandidaten = keuze_lijst
+        st.session_state.pub_wachtende_vraag = vraag
+        st.session_state.pub_chat_history.append({"role": "user", "content": vraag})
+        st.rerun()
 
 else:
     # Geen matches: conversationele intake via Claude
