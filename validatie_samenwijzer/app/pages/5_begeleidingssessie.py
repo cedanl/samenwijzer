@@ -25,6 +25,7 @@ from validatie_samenwijzer.chat import (  # noqa: E402
     bouw_systeem,
     genereer_antwoord,
     laad_oer_tekst,
+    resolve_oer_pad,
 )
 from validatie_samenwijzer.db import get_kerntaak_scores_by_student_id  # noqa: E402
 from validatie_samenwijzer.ingest import extraheer_tekst_html  # noqa: E402
@@ -149,11 +150,7 @@ with col_chat:
             # Laad OER eenmalig per sessie
             oer_tekst = ""
             if oer:
-                pad = Path(oer["bestandspad"])
-                if not pad.is_absolute():
-                    OEREN_PAD = Path(os.environ.get("OEREN_PAD", "oeren")).resolve()
-                    pad = OEREN_PAD.parent / pad
-                oer_tekst = laad_oer_tekst(pad)
+                oer_tekst = laad_oer_tekst(resolve_oer_pad(oer["bestandspad"]))
             st.session_state.oer_systeem = (
                 bouw_systeem(oer_tekst, opleiding, instelling) if oer_tekst else ""
             )
@@ -214,12 +211,9 @@ with col_chat:
         if not oer:
             st.warning("Geen OER gekoppeld aan deze student.")
         else:
-            OEREN_PAD = Path(os.environ.get("OEREN_PAD", "oeren")).resolve()
-            pad = Path(oer["bestandspad"])
-            if not pad.is_absolute():
-                pad = OEREN_PAD.parent / pad
-            pad = pad.resolve()
-            if not pad.is_relative_to(OEREN_PAD):
+            pad = resolve_oer_pad(oer["bestandspad"]).resolve()
+            oeren_root = Path(os.environ.get("OEREN_PAD", "oeren")).resolve()
+            if not pad.is_relative_to(oeren_root):
                 st.error("Ongeldig OER-bestandspad.")
                 st.stop()
 

@@ -8,7 +8,7 @@
 
 **Tech Stack:** Python 3.13, SQLite (stdlib), pandas, pytest, ruff, ty. `uv` voor package management. TDD per taak.
 
-**Spec:** `docs/superpowers/specs/2026-05-04-synthetisch-dataset-design.md`
+**Spec:** `docs/specs/2026-05-04-synthetisch-dataset-design.md`
 
 ---
 

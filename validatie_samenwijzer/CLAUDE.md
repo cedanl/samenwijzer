@@ -27,7 +27,7 @@ uv sync --extra dev && uv run python -m pytest
 uv run python -m pytest tests/test_ingest.py::test_parseer_bestandsnaam_davinci -v
 
 # Lint
-uv run ruff check src/ app/ seed/ tools/
+uv run ruff check src/ app/ scripts/
 uv run ruff check --fix src/ app/
 
 # Ingestie-pipeline
@@ -40,12 +40,12 @@ uv run python -m validatie_samenwijzer.watcher          # bewaakt oeren/ (defaul
 uv run python -m validatie_samenwijzer.watcher --oeren-pad /pad/naar/oeren
 
 # Seed testdata
-uv run python seed/seed.py        # 3 studenten + 2 mentoren
-uv run python seed/bulk_seed.py   # ~1000 studenten over geïndexeerde OERs (vereist eerst `ingest --alles`)
+uv run python scripts/seed.py        # 3 studenten + 2 mentoren
+uv run python scripts/seed_bulk.py   # ~1000 studenten over geïndexeerde OERs (vereist eerst `ingest --alles`)
 
 # Bestandsnamen aanvullen + indexeren (alles-in-één)
-./tools/verwerk_oers.sh --preview  # droge run
-./tools/verwerk_oers.sh            # hernoem + indexeer
+./scripts/verwerk_oers.sh --preview  # droge run
+./scripts/verwerk_oers.sh            # hernoem + indexeer
 ```
 
 ## Omgeving
@@ -55,7 +55,7 @@ uv run python seed/bulk_seed.py   # ~1000 studenten over geïndexeerde OERs (ver
 ```
 ANTHROPIC_API_KEY=sk-ant-...
 DB_PATH=data/validatie.db   # default
-OEREN_PAD=oeren             # default
+OEREN_PAD=../oeren          # default in dit subproject (root-oeren/ hergebruikt)
 ```
 
 ## Architectuur
@@ -88,7 +88,7 @@ fallback: pdfplumber over de PDF).
 1. Da Vinci-stijl: `25168BOL2025Examenplan.pdf` — crebo+leerweg+jaar aaneengesloten
 2. Fallback: 5-cijferig getal als crebo, BOL/BBL en jaar los — dekt Rijn IJssel en Talland
 
-Bestanden zonder crebo in naam (Aeres, Utrecht) worden hernoemd via `tools/rename_oers.py`
+Bestanden zonder crebo in naam (Aeres, Utrecht) worden hernoemd via `scripts/rename_oers.py`
 dat de titelpagina uitleest.
 
 ### Sessiemodel
@@ -152,7 +152,7 @@ Toon `LAGE_RELEVANTIE_BERICHT` wanneer `laad_oer_tekst()` een lege string terugg
 claim de OER-aanduiding (multi), sectie of paginanummer, **én een woordelijk citaat tussen
 aanhalingstekens**. Reden: een OER is een juridisch document — antwoorden moeten verifieerbaar
 zijn. Markdown-blockquotes uit het AI-antwoord renderen via CSS als pull-quote citaten.
-Spec: `docs/superpowers/specs/2026-05-06-publieke-oer-citaten-en-pdf-design.md` (vanuit repo-root).
+Spec: `docs/specs/2026-05-06-publieke-oer-citaten-en-pdf-design.md` (vanuit repo-root).
 
 **PDF-bekijken op publieke pagina** (`0_oer_vraag.py`): `pub_oer_paden: list[Path]` in session
 state parallel aan `pub_oer_labels`. Per geladen OER een `📄 Bekijk OER N` knop boven de chat;

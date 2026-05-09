@@ -1,7 +1,7 @@
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 from rename_oers import (
     _extraheer_uit_bestandsnaam,
     _extraheer_uit_tekst,

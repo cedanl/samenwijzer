@@ -350,7 +350,7 @@ def _schrijf_overzicht(
         "Wachtwoord voor alle accounts: Welkom123",
         "=" * 42,
         "",
-        "Auto-gegenereerd door seed/bulk_seed.py — niet handmatig wijzigen.",
+        "Auto-gegenereerd door scripts/seed_bulk.py — niet handmatig wijzigen.",
         "Bij elke seed-run wordt dit bestand overschreven.",
         "",
         f"{'Instelling':<25} {'OERs':>5} {'Mentoren':>9} {'Studenten':>10}",

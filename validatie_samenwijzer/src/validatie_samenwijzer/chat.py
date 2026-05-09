@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import os
 import re
 from collections.abc import Generator
 from pathlib import Path
@@ -32,6 +33,20 @@ Antwoord in het Nederlands.
 
 OER:
 {oer_tekst}"""
+
+
+def resolve_oer_pad(bestandspad: str) -> Path:
+    """Maak een DB-`bestandspad` (relatief, bv. `oeren/talland_oeren/x.pdf`) absoluut.
+
+    De DB bewaart paden onder de oeren/-tree. OEREN_PAD wijst naar die tree
+    (default `oeren`, na de root-dedupe `../oeren` vanuit validatie_samenwijzer/).
+    De parent van OEREN_PAD is de bovenliggende projectroot — daarmee wordt
+    `oeren/...` correct geresolved naar het echte bestand.
+    """
+    pad = Path(bestandspad)
+    if pad.is_absolute():
+        return pad
+    return Path(os.environ.get("OEREN_PAD", "oeren")).resolve().parent / pad
 
 
 def laad_oer_tekst(bestandspad: Path) -> str:

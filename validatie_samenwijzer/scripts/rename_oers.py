@@ -3,9 +3,9 @@
 Ondersteunt .pdf en .txt bestanden.
 
 Gebruik:
-    uv run python tools/rename_oers.py --dry-run        # voorbeeld zonder hernoemen
-    uv run python tools/rename_oers.py                  # hernoem bestanden
-    uv run python tools/rename_oers.py --map talland_oeren
+    uv run python scripts/rename_oers.py --dry-run        # voorbeeld zonder hernoemen
+    uv run python scripts/rename_oers.py                  # hernoem bestanden
+    uv run python scripts/rename_oers.py --map talland_oeren
 """
 
 import argparse
