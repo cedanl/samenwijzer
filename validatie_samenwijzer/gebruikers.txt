@@ -2,7 +2,7 @@ Testgebruikers — validatie_samenwijzer
 Wachtwoord voor alle accounts: Welkom123
 ==========================================
 
-Auto-gegenereerd door seed/bulk_seed.py — niet handmatig wijzigen.
+Auto-gegenereerd door scripts/seed_bulk.py — niet handmatig wijzigen.
 Bij elke seed-run wordt dit bestand overschreven.
 
 Instelling                 OERs  Mentoren  Studenten
@@ -31,12 +31,12 @@ Da Vinci College · 39665_BOL_2026__OER Studiegids (crebo 39665, BOL 2026)
   100202  Kevin Hendriks
   100203  Kevin van den Berg
 
-ROC Utrecht · 25880_BOL_2025__Examenplan - 25880 (crebo 25880, BOL 2025)
+ROC Utrecht · Ondernemer handel (crebo 25880, BOL 2025)
   100501  Lena Kowalski
   100502  Ruben van den Broek
   100503  Rick Visser
 
-ROC Utrecht · 25749_BOL_2025__Examenplan - 25749 (crebo 25749, BOL 2025)
+ROC Utrecht · Medewerker evenementenorganisatie (crebo 25749, BOL 2025)
   100401  Nora Visser
   100402  Anouk Janssen
   100403  Lars Bakker
@@ -70,14 +70,14 @@ Da Vinci College · 39665_BOL_2026__OER Studiegids (crebo 39665, BOL 2026)
   Roos van den Broek (39665)
   Omar van der Berg (39665)
 
-ROC Utrecht · 25880_BOL_2025__Examenplan - 25880 (crebo 25880, BOL 2025)
+ROC Utrecht · Ondernemer handel (crebo 25880, BOL 2025)
   Nora Peeters (25880)
   Fatima Meijer (25880)
   Aisha de Vries (25880)
   Daan Nguyen (25880)
   Jesse Postma (25880)
 
-ROC Utrecht · 25749_BOL_2025__Examenplan - 25749 (crebo 25749, BOL 2025)
+ROC Utrecht · Medewerker evenementenorganisatie (crebo 25749, BOL 2025)
   Lars Janssen (25749)
   Rayan Visser (25749)
   Kevin de Jong (25749)
