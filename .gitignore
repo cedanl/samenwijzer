@@ -26,6 +26,7 @@ validatie_samenwijzer/data/chroma/
 .vscode/
 .idea/
 *.swp
+*~
 
 # OS
 .DS_Store
