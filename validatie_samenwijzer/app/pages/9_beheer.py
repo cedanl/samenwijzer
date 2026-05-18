@@ -12,7 +12,6 @@ import shlex
 import subprocess
 import time
 from collections import deque
-from collections.abc import Iterator
 from pathlib import Path
 
 import streamlit as st
@@ -49,8 +48,11 @@ _BUFFER_REGELS = 300
 _PAINT_INTERVAL_S = 0.2
 
 
-def _stream_lines(cmd: list[str], cwd: Path) -> Iterator[tuple[str, int | None]]:
-    """Run cmd en yield (regel, returncode); returncode is None tot het proces eindigt."""
+def _run_in_placeholder(cmd: list[str], cwd: Path | None = None) -> None:
+    """Toon live output van cmd in een code-block met scrollende tail."""
+    cwd = cwd or _PROJECT_ROOT
+    st.caption(f"$ {shlex.join(cmd)}  (cwd={cwd})")
+    placeholder = st.empty()
     proc = subprocess.Popen(  # noqa: S603 — input is uit hardcoded keuzes, niet user-text
         cmd,
         cwd=str(cwd),
@@ -61,36 +63,23 @@ def _stream_lines(cmd: list[str], cwd: Path) -> Iterator[tuple[str, int | None]]
     )
     if proc.stdout is None:
         raise RuntimeError("Popen leverde geen stdout op — kan output niet streamen.")
-    for regel in iter(proc.stdout.readline, ""):
-        yield regel, None
-    proc.wait()
-    yield f"\n[exit={proc.returncode}]\n", proc.returncode
-
-
-def _run_in_placeholder(cmd: list[str], cwd: Path | None = None) -> None:
-    """Toon live output van cmd in een code-block met scrollende tail."""
-    cwd = cwd or _PROJECT_ROOT
-    st.caption(f"$ {shlex.join(cmd)}  (cwd={cwd})")
-    placeholder = st.empty()
-    # deque voorkomt onbegrensde groei bij langlopende subprocesses (bv. een 30-min
-    # bootstrap kan tienduizenden regels rclone-progress produceren).
+    # Bounded buffer: een 30-min bootstrap kan tienduizenden rclone-regels produceren.
     buffer: deque[str] = deque(maxlen=_BUFFER_REGELS)
     laatste_paint = 0.0
-    returncode: int | None = None
-    for regel, rc in _stream_lines(cmd, cwd):
+    for regel in iter(proc.stdout.readline, ""):
         buffer.append(regel)
-        if rc is not None:
-            returncode = rc
-        # Throttle: bij snel-producerende subprocessen zou per-regel re-rendering de
-        # Streamlit-WebSocket overbelasten en de browser laten haperen.
+        # Throttle: per-regel rerender zou de Streamlit-WebSocket overbelasten.
         nu = time.monotonic()
-        if nu - laatste_paint > _PAINT_INTERVAL_S or rc is not None:
+        if nu - laatste_paint > _PAINT_INTERVAL_S:
             placeholder.code("".join(buffer), language="bash")
             laatste_paint = nu
-    if returncode == 0:
+    proc.wait()
+    buffer.append(f"\n[exit={proc.returncode}]\n")
+    placeholder.code("".join(buffer), language="bash")
+    if proc.returncode == 0:
         st.success(f"✅ Klaar (exit=0): `{shlex.join(cmd)}`")
     else:
-        st.error(f"❌ Subprocess gefaald (exit={returncode}): `{shlex.join(cmd)}`")
+        st.error(f"❌ Subprocess gefaald (exit={proc.returncode}): `{shlex.join(cmd)}`")
 
 
 # ── Pagina-header ──────────────────────────────────────────────────────────────
