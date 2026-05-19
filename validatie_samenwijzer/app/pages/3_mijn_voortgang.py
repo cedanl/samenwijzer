@@ -17,11 +17,10 @@ from validatie_samenwijzer.db import (  # noqa: E402
 )
 from validatie_samenwijzer.styles import (  # noqa: E402
     CSS,
-    GROEN,
-    ORANJE,
-    ROOD,
+    bepaal_kleur,
     render_footer,
     render_nav,
+    render_progress_bar,
     render_student_info,
 )
 
@@ -48,13 +47,9 @@ afwn = student["absence_unauthorized"] or 0.0
 
 col1, col2, col3 = st.columns(3)
 with col1:
-    kleur = GROEN if vg >= 0.7 else (ORANJE if vg >= 0.5 else ROOD)
+    kleur = bepaal_kleur(vg, schaal="0-1")
     st.metric("Voortgang", f"{vg * 100:.0f}%")
-    st.markdown(
-        f'<div class="progress-bar-bg"><div class="progress-bar-fill" '
-        f'style="width:{vg * 100:.0f}%;background:{kleur}"></div></div>',
-        unsafe_allow_html=True,
-    )
+    st.markdown(render_progress_bar(vg, kleur, schaal="0-1"), unsafe_allow_html=True)
 with col2:
     st.metric("BSA behaald", f"{bsa_b:.0f} / {bsa_v:.0f} uur", f"{bsa_pct * 100:.0f}%")
 with col3:
@@ -79,18 +74,12 @@ def _dedup_op_naam(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return uniek
 
 
-def _bepaal_kleur(score: float) -> str:
-    pct = score / 100
-    return GROEN if pct >= 0.7 else (ORANJE if pct >= 0.5 else ROOD)
-
-
 def _render_kerntaak(kt: dict[str, Any]) -> None:
     col_a, col_b = st.columns([3, 1])
     with col_a:
         st.markdown(f"**{kt['naam']}**")
         st.markdown(
-            f'<div class="progress-bar-bg"><div class="progress-bar-fill" '
-            f'style="width:{kt["score"]:.0f}%;background:{_bepaal_kleur(kt["score"])}"></div></div>',
+            render_progress_bar(kt["score"], bepaal_kleur(kt["score"])),
             unsafe_allow_html=True,
         )
     with col_b:
@@ -100,12 +89,12 @@ def _render_kerntaak(kt: dict[str, Any]) -> None:
 def _render_werkproces(wp: dict[str, Any]) -> None:
     col_a, col_b = st.columns([3, 1])
     with col_a:
+        bar = render_progress_bar(wp["score"], bepaal_kleur(wp["score"]))
         st.markdown(
             f'<div class="werkproces-row">'
             f'<span class="werkproces-label">↳ {wp["naam"]}</span>'
-            f'<div class="progress-bar-bg"><div class="progress-bar-fill" '
-            f'style="width:{wp["score"]:.0f}%;background:{_bepaal_kleur(wp["score"])}"></div>'
-            f"</div></div>",
+            f"{bar}"
+            f"</div>",
             unsafe_allow_html=True,
         )
     with col_b:
