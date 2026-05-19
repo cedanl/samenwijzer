@@ -192,9 +192,7 @@ def voeg_ingest_run_toe(
 
 def laatste_ingest_run(conn: sqlite3.Connection) -> sqlite3.Row | None:
     """Geef de meest recente ingest-run terug (of None als de tabel leeg is)."""
-    return conn.execute(
-        "SELECT * FROM ingest_runs ORDER BY id DESC LIMIT 1"
-    ).fetchone()
+    return conn.execute("SELECT * FROM ingest_runs ORDER BY id DESC LIMIT 1").fetchone()
 
 
 def update_oer_opleiding(conn: sqlite3.Connection, oer_id: int, opleiding: str) -> None:

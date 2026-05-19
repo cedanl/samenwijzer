@@ -48,6 +48,7 @@ def main() -> None:
         return
 
     from markitdown import MarkItDown
+
     md_converter = MarkItDown()
 
     geconverteerd = overgeslagen = mislukt = 0
@@ -62,8 +63,11 @@ def main() -> None:
             # Stille skip — toon alleen als bijna klaar of elke 25 bestanden
             if i % 25 == 0 or i == totaal:
                 verstreken = time.monotonic() - start
-                print(f"{prefix} ... {overgeslagen} overgeslagen, {geconverteerd} geconverteerd "
-                      f"({_formatteer_tijd(verstreken)} verstreken)", flush=True)
+                print(
+                    f"{prefix} ... {overgeslagen} overgeslagen, {geconverteerd} geconverteerd "
+                    f"({_formatteer_tijd(verstreken)} verstreken)",
+                    flush=True,
+                )
             continue
 
         if args.preview:
@@ -86,8 +90,10 @@ def main() -> None:
             mislukt += 1
 
     verstreken = time.monotonic() - start
-    print(f"\nKlaar in {_formatteer_tijd(verstreken)} — "
-          f"geconverteerd: {geconverteerd}, overgeslagen: {overgeslagen}, mislukt: {mislukt}")
+    print(
+        f"\nKlaar in {_formatteer_tijd(verstreken)} — "
+        f"geconverteerd: {geconverteerd}, overgeslagen: {overgeslagen}, mislukt: {mislukt}"
+    )
 
 
 if __name__ == "__main__":

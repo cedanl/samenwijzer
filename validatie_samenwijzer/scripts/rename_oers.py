@@ -215,9 +215,7 @@ def main() -> None:
     for map_pad in mappen:
         if not map_pad.is_dir():
             continue
-        pdfs = sorted(
-            p for p in map_pad.iterdir() if p.suffix.lower() in {".pdf", ".txt"}
-        )
+        pdfs = sorted(p for p in map_pad.iterdir() if p.suffix.lower() in {".pdf", ".txt"})
         logger.info("── %s (%d bestanden) ──", map_pad.name, len(pdfs))
         for pdf in pdfs:
             uitkomst = _verwerk(pdf, dry_run=args.dry_run)
