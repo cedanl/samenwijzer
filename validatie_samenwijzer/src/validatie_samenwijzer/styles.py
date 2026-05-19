@@ -201,6 +201,16 @@ header[data-testid="stHeader"] {{ display: none !important; }}
     border-radius: 4px;
     transition: width 0.4s ease;
 }}
+.werkproces-row {{
+    padding-left: 1.5rem;
+}}
+.werkproces-label {{
+    color: {GRIJS_TEKST};
+    font-size: 0.9rem;
+}}
+.werkproces-row .progress-bar-bg {{
+    margin-left: 0;
+}}
 
 /* ── Bron-kaartje ───────────────────────────────────────────────────────── */
 .bron-kaartje {{
