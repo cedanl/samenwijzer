@@ -1,5 +1,7 @@
 """Student: kerntaakscores, BSA en aanwezigheid."""
 
+from typing import Any
+
 import streamlit as st
 from dotenv import load_dotenv
 
@@ -64,7 +66,7 @@ st.subheader("Kerntaken en werkprocessen")
 scores = get_kerntaak_scores_by_student_id(get_conn(), student["id"])
 
 
-def _dedup_op_naam(items: list) -> list:
+def _dedup_op_naam(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Veiligheidsnet tegen duplicate kerntaak-namen — UNIQUE-constraint op DB
     voorkomt het structureel, maar deze guard blijft expliciet."""
     gezien: set[str] = set()
@@ -77,33 +79,33 @@ def _dedup_op_naam(items: list) -> list:
     return uniek
 
 
-def _kleur(score: float) -> str:
+def _bepaal_kleur(score: float) -> str:
     pct = score / 100
     return GROEN if pct >= 0.7 else (ORANJE if pct >= 0.5 else ROOD)
 
 
-def _render_kerntaak(kt: dict) -> None:
+def _render_kerntaak(kt: dict[str, Any]) -> None:
     col_a, col_b = st.columns([3, 1])
     with col_a:
         st.markdown(f"**{kt['naam']}**")
         st.markdown(
             f'<div class="progress-bar-bg"><div class="progress-bar-fill" '
-            f'style="width:{kt["score"]:.0f}%;background:{_kleur(kt["score"])}"></div></div>',
+            f'style="width:{kt["score"]:.0f}%;background:{_bepaal_kleur(kt["score"])}"></div></div>',
             unsafe_allow_html=True,
         )
     with col_b:
         st.markdown(f"**{kt['score']:.0f}**")
 
 
-def _render_werkproces(wp: dict) -> None:
+def _render_werkproces(wp: dict[str, Any]) -> None:
     col_a, col_b = st.columns([3, 1])
     with col_a:
         st.markdown(
-            f'<div style="padding-left:1.5rem"><span style="color:#6b7280;font-size:0.9rem">'
-            f"↳ {wp['naam']}</span>"
-            f'<div class="progress-bar-bg" style="margin-left:0">'
-            f'<div class="progress-bar-fill" '
-            f'style="width:{wp["score"]:.0f}%;background:{_kleur(wp["score"])}"></div></div></div>',
+            f'<div class="werkproces-row">'
+            f'<span class="werkproces-label">↳ {wp["naam"]}</span>'
+            f'<div class="progress-bar-bg"><div class="progress-bar-fill" '
+            f'style="width:{wp["score"]:.0f}%;background:{_bepaal_kleur(wp["score"])}"></div>'
+            f"</div></div>",
             unsafe_allow_html=True,
         )
     with col_b:
