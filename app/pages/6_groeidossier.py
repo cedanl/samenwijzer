@@ -7,7 +7,7 @@ import pandas as pd
 import streamlit as st
 
 from samenwijzer._ai import APITimeoutError, vriendelijke_fout
-from samenwijzer.analyze import _oer_label, get_student
+from samenwijzer.analyze import get_student, oer_label
 from samenwijzer.auth import mentor_filter
 from samenwijzer.groei import delta_t_o_v_vorige
 from samenwijzer.groei_store import (
@@ -98,7 +98,7 @@ with tab_scores:
     nieuwe_waarden: dict[str, tuple[int, str]] = {}
 
     for kt_col in kt_cols:
-        kt_label = _oer_label(opleiding, kt_col, crebo)
+        kt_label = oer_label(opleiding, kt_col, crebo)
         kt_eigen_wp = _wp_van_kt(kt_col)
         if not kt_eigen_wp:
             continue
@@ -120,7 +120,7 @@ with tab_scores:
                 )
 
             for wp_col in kt_eigen_wp:
-                wp_label = _oer_label(opleiding, wp_col, crebo)
+                wp_label = oer_label(opleiding, wp_col, crebo)
                 huidige = _huidige_score(wp_col)
                 huidige_v = _huidige_verantwoording(wp_col)
 
@@ -150,7 +150,7 @@ with tab_scores:
                     with cols_ai[0]:
                         klik_aanscherp = st.button(
                             "✨ Aanscherpen",
-                            key=f"btn_aanscherp_{wp_col}",
+                            key=f"btn_aanscherp_{studentnummer}_{wp_col}",
                             help="Vraag de tutor om je verantwoording aan te scherpen",
                         )
                     with cols_ai[1]:
@@ -205,7 +205,10 @@ with tab_scores:
     else:
         st.markdown("### Mentor-feedback per kerntaak")
         for kt_col in kt_cols:
-            kt_label = _oer_label(opleiding, kt_col, crebo)
+            kt_eigen_wp = _wp_van_kt(kt_col)
+            if not kt_eigen_wp or all(pd.isna(student.get(w, float("nan"))) for w in kt_eigen_wp):
+                continue
+            kt_label = oer_label(opleiding, kt_col, crebo)
             huidige_fb = feedback[kt_col].tekst if kt_col in feedback else ""
             tekst = st.text_area(
                 f"Feedback op {kt_label}",
@@ -213,7 +216,7 @@ with tab_scores:
                 key=f"fb_{studentnummer}_{kt_col}",
                 max_chars=1000,
             )
-            if st.button(f"💬 Feedback opslaan ({kt_col})", key=f"btn_fb_{kt_col}"):
+            if st.button(f"💬 Feedback opslaan ({kt_col})", key=f"btn_fb_{studentnummer}_{kt_col}"):
                 upsert_mentor_feedback(
                     MentorFeedback(
                         studentnummer=studentnummer,
@@ -238,7 +241,7 @@ with tab_history:
             [
                 {
                     "datum": h.opgeslagen_op[:10],
-                    "werkproces": _oer_label(opleiding, h.wp_kolom, crebo),
+                    "werkproces": oer_label(opleiding, h.wp_kolom, crebo),
                     "score": h.score,
                 }
                 for h in historie
@@ -257,7 +260,7 @@ with tab_history:
                 kleur = "#27ae60" if d > 0 else ("#c0392b" if d < 0 else "#999")
                 st.markdown(
                     f"<div style='border:1px solid #eee;padding:10px;border-radius:6px;'>"
-                    f"<small>{_oer_label(opleiding, wp_col, crebo)}</small><br>"
+                    f"<small>{oer_label(opleiding, wp_col, crebo)}</small><br>"
                     f"<span style='color:{kleur};font-size:1.4rem;font-weight:700;'>"
                     f"{pijl} {abs(d)}</span></div>",
                     unsafe_allow_html=True,
