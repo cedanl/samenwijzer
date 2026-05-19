@@ -1,5 +1,6 @@
 """Business-logic voor het groeidossier: overlay van zelf-scores en kt-aggregatie."""
 
+import re
 from pathlib import Path
 
 import pandas as pd
@@ -12,6 +13,7 @@ from samenwijzer.groei_store import (
 
 _KT_PREFIX = "kt_"
 _WP_PREFIX = "wp_"
+_KT_INDEX_PATROON = re.compile(r"^kt_\d+$")
 
 
 def bereken_kt_uit_wp(rij: pd.Series, kt_index: int) -> float:
@@ -57,8 +59,10 @@ def overlay_self_scores(df: pd.DataFrame, db_path: Path = _DB_PATH) -> pd.DataFr
                 continue
             overlaid.at[idx, rij.wp_kolom] = float(rij.score)
 
-        # Herbereken alle kt's voor deze student
-        for kt_col in [c for c in overlaid.columns if c.startswith(_KT_PREFIX)]:
+        # Herbereken kt-scores: alleen kt_<int>-kolommen (kt_gemiddelde e.d. overslaan).
+        for kt_col in overlaid.columns:
+            if not _KT_INDEX_PATROON.match(kt_col):
+                continue
             kt_index = int(kt_col.removeprefix(_KT_PREFIX))
             nieuwe_kt = bereken_kt_uit_wp(overlaid.loc[idx], kt_index=kt_index)
             if not pd.isna(nieuwe_kt):

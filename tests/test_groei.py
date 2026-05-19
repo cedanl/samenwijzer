@@ -123,3 +123,18 @@ def test_heeft_self_rating_voor_onbekende_student(db: Path) -> None:
     heeft, laatst = heeft_self_rating("S999", db_path=db)
     assert heeft is False
     assert laatst is None
+
+
+def test_overlay_negeert_kt_gemiddelde_kolom(db) -> None:
+    """Regressie: overlay_self_scores moet kt_gemiddelde (en andere niet-int suffixes) overslaan.
+
+    De transform-laag voegt een `kt_gemiddelde`-aggregatie toe. Een naïeve loop over
+    alle kolommen met prefix 'kt_' crasht dan op `int('gemiddelde')`.
+    """
+    df = pd.DataFrame([{**_basisrij("S001"), "kt_gemiddelde": 35.0}])
+    sla_groei_op(
+        "S001",
+        [GroeiActueel("S001", "wp_1_1", 90, "", "2026-05-19T10:00:00")],
+        db,
+    )
+    overlay_self_scores(df, db_path=db)  # mag niet crashen
