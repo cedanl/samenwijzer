@@ -103,6 +103,8 @@ uv run python -m validatie_samenwijzer.ingest --bestand oeren/davinci_oeren/2575
 # Bestandswatcher (herindexeer automatisch bij wijzigingen in oeren/)
 uv run python -m validatie_samenwijzer.watcher          # bewaakt oeren/ (default)
 uv run python -m validatie_samenwijzer.watcher --oeren-pad /pad/naar/oeren
+# `ingest` en `watcher` zijn ook geregistreerd als project scripts (zie pyproject.toml)
+# — `uv run ingest --alles` en `uv run watcher` werken identiek.
 
 # Seed testdata
 uv run python scripts/seed.py        # 3 studenten + 2 mentoren
@@ -119,6 +121,15 @@ uv run python scripts/seed_bulk.py   # ~1000 studenten over geïndexeerde OERs (
 ./scripts/bootstrap.sh --skip-seed      # geen testdata
 ./scripts/sync_oeren.sh                 # alleen rclone copy
 ```
+
+Overige scripts in `scripts/` (`seed_rebuild_students.py`, `convert_oers_markdown.py`,
+`push_oeren.sh`, `check_bootstrap.sh`) zijn supporting tooling — bekijk de bestanden voor
+gebruik.
+
+## Tests
+
+Tests in `tests/`; pytest discovery via `[tool.pytest.ini_options]` in `pyproject.toml`.
+Coverage en fixtures worden niet centraal beheerd — bekijk individuele testbestanden.
 
 ## Omgeving
 
@@ -236,6 +247,8 @@ Login: studenten op studentnummer, mentoren op naam.
 | `3_mijn_voortgang.py` | student | Voortgang, BSA, scores visualiseren |
 | `4_mijn_studenten.py` | mentor | Studentenlijst van eigen koppeling |
 | `5_begeleidingssessie.py` | mentor | Profiel + twee tabs: OER-chat en volledig OER bekijken |
+| `9_beheer.py` | dev | Sync/ingest/seed/status (alleen als `BEHEER_ENABLED=true`) |
+| `uitloggen.py` | beide | Sessie wissen + redirect naar `/` |
 
 ### AI-isolatie
 
