@@ -109,6 +109,28 @@ def laatste_twee_metingen_per_wp(
     return resultaat
 
 
+def klas_gemiddelden_per_wp(
+    df: pd.DataFrame,
+    opleiding: str,
+    cohort: str,
+    wp_kolommen: list[str],
+) -> dict[str, float]:
+    """Gemiddelde wp-score over peer-studenten (zelfde opleiding + cohort).
+
+    Returns een dict {wp_kolom: gemiddelde} of NaN als er geen peers/data zijn.
+    NaN-werkprocessen (= niet in opleiding) tellen niet mee.
+    """
+    peers = df[(df["opleiding"] == opleiding) & (df["cohort"].astype(str) == str(cohort))]
+    resultaat: dict[str, float] = {}
+    for wp in wp_kolommen:
+        if wp not in peers.columns:
+            resultaat[wp] = float("nan")
+            continue
+        scores = pd.to_numeric(peers[wp], errors="coerce").dropna()
+        resultaat[wp] = float(scores.mean()) if not scores.empty else float("nan")
+    return resultaat
+
+
 def heeft_self_rating(studentnummer: str, db_path: Path = _DB_PATH) -> tuple[bool, str | None]:
     """Returns (heeft_rating, laatst_gewijzigd_iso). Voor de bron-badge op voortgang-pagina."""
     alle = get_alle_actueel(db_path)

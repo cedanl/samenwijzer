@@ -162,3 +162,42 @@ def test_overlay_negeert_kt_gemiddelde_kolom(db) -> None:
         db,
     )
     overlay_self_scores(df, db_path=db)  # mag niet crashen
+
+
+def test_klas_gemiddelden_per_wp_neemt_gemiddelde_van_zelfde_opleiding_en_cohort() -> None:
+    from samenwijzer.groei import klas_gemiddelden_per_wp
+
+    df = pd.DataFrame(
+        [
+            {**_basisrij("S001"), "opleiding": "OA", "cohort": "2025", "wp_1_1": 60.0},
+            {**_basisrij("S002"), "opleiding": "OA", "cohort": "2025", "wp_1_1": 80.0},
+            {**_basisrij("S003"), "opleiding": "OA", "cohort": "2024", "wp_1_1": 100.0},
+            {**_basisrij("S004"), "opleiding": "ICT", "cohort": "2025", "wp_1_1": 100.0},
+        ]
+    )
+
+    resultaat = klas_gemiddelden_per_wp(df, "OA", "2025", ["wp_1_1"])
+    assert resultaat["wp_1_1"] == pytest.approx(70.0)  # alleen S001 en S002
+
+
+def test_klas_gemiddelden_per_wp_negeert_nan() -> None:
+    from samenwijzer.groei import klas_gemiddelden_per_wp
+
+    df = pd.DataFrame(
+        [
+            {**_basisrij("S001"), "opleiding": "OA", "cohort": "2025", "wp_1_1": 60.0},
+            {**_basisrij("S002"), "opleiding": "OA", "cohort": "2025", "wp_1_1": float("nan")},
+        ]
+    )
+    resultaat = klas_gemiddelden_per_wp(df, "OA", "2025", ["wp_1_1"])
+    assert resultaat["wp_1_1"] == pytest.approx(60.0)
+
+
+def test_klas_gemiddelden_per_wp_zonder_peers_geeft_nan() -> None:
+    import math
+
+    from samenwijzer.groei import klas_gemiddelden_per_wp
+
+    df = pd.DataFrame([{**_basisrij("S001"), "opleiding": "OA", "cohort": "2025"}])
+    resultaat = klas_gemiddelden_per_wp(df, "ICT", "2025", ["wp_1_1"])
+    assert math.isnan(resultaat["wp_1_1"])
