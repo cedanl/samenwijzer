@@ -77,42 +77,58 @@ def _dedup_op_naam(items: list) -> list:
     return uniek
 
 
+def _kleur(score: float) -> str:
+    pct = score / 100
+    return GROEN if pct >= 0.7 else (ORANJE if pct >= 0.5 else ROOD)
+
+
+def _render_kerntaak(kt: dict) -> None:
+    col_a, col_b = st.columns([3, 1])
+    with col_a:
+        st.markdown(f"_{kt['naam']}_")
+        st.markdown(
+            f'<div class="progress-bar-bg"><div class="progress-bar-fill" '
+            f'style="width:{kt["score"]:.0f}%;background:{_kleur(kt["score"])}"></div></div>',
+            unsafe_allow_html=True,
+        )
+    with col_b:
+        st.markdown(f"**{kt['score']:.0f}**")
+
+
+def _render_werkproces(wp: dict) -> None:
+    col_a, col_b = st.columns([3, 1])
+    with col_a:
+        st.markdown(
+            f'<div style="padding-left:1.5rem"><span style="color:#6b7280;font-size:0.9rem">'
+            f"↳ {wp['naam']}</span>"
+            f'<div class="progress-bar-bg" style="margin-left:0">'
+            f'<div class="progress-bar-fill" '
+            f'style="width:{wp["score"]:.0f}%;background:{_kleur(wp["score"])}"></div></div></div>',
+            unsafe_allow_html=True,
+        )
+    with col_b:
+        st.caption(f"{wp['score']:.0f}")
+
+
 if not scores:
     st.info("Nog geen scores beschikbaar.")
 else:
     kerntaken = _dedup_op_naam([s for s in scores if s["type"] == "kerntaak"])
     werkprocessen = _dedup_op_naam([s for s in scores if s["type"] == "werkproces"])
 
-    if kerntaken:
-        st.markdown("**Kerntaken**")
-        for kt in kerntaken:
-            pct = kt["score"] / 100
-            kleur = GROEN if pct >= 0.7 else (ORANJE if pct >= 0.5 else ROOD)
-            col_a, col_b = st.columns([3, 1])
-            with col_a:
-                st.markdown(f"_{kt['naam']}_")
-                st.markdown(
-                    f'<div class="progress-bar-bg"><div class="progress-bar-fill" '
-                    f'style="width:{kt["score"]:.0f}%;background:{kleur}"></div></div>',
-                    unsafe_allow_html=True,
-                )
-            with col_b:
-                st.markdown(f"**{kt['score']:.0f}**")
+    overige_wp = list(werkprocessen)
+    for kt in kerntaken:
+        _render_kerntaak(kt)
+        kt_code = kt["code"]
+        kinderen = [wp for wp in overige_wp if wp["code"].startswith(f"{kt_code}-")]
+        for wp in kinderen:
+            _render_werkproces(wp)
+            overige_wp.remove(wp)
+        st.markdown("")
 
-    if werkprocessen:
-        with st.expander("Werkprocessen"):
-            for wp in werkprocessen:
-                pct = wp["score"] / 100
-                kleur = GROEN if pct >= 0.7 else (ORANJE if pct >= 0.5 else ROOD)
-                col_a, col_b = st.columns([3, 1])
-                with col_a:
-                    st.caption(wp["naam"])
-                    st.markdown(
-                        f'<div class="progress-bar-bg"><div class="progress-bar-fill" '
-                        f'style="width:{wp["score"]:.0f}%;background:{kleur}"></div></div>',
-                        unsafe_allow_html=True,
-                    )
-                with col_b:
-                    st.caption(f"{wp['score']:.0f}")
+    if overige_wp:
+        st.markdown("**Overige werkprocessen**")
+        for wp in overige_wp:
+            _render_werkproces(wp)
 
 render_footer()
