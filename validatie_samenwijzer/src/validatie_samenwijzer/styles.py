@@ -7,12 +7,12 @@ General Sans typografie, geen serif, geen drop caps.
 
 # ── Palet ──────────────────────────────────────────────────────────────────
 WIT = "#ffffff"
-MIST = "#fafafa"               # cards, citatie-blokjes, hover-tints
-LIJN = "#e5e5e7"               # borders, scheidingslijnen
-GRIJS_TEKST = "#6b7280"        # secondary text, labels, meta
-INKT = "#1a1a1a"               # body, koppen
-TERRACOTTA = "#c8785a"         # primaire accent — links, knoppen, tab-highlight
-TERRACOTTA_LICHT = "#fae3d6"   # vraag-bubble, focus-glow
+MIST = "#fafafa"  # cards, citatie-blokjes, hover-tints
+LIJN = "#e5e5e7"  # borders, scheidingslijnen
+GRIJS_TEKST = "#6b7280"  # secondary text, labels, meta
+INKT = "#1a1a1a"  # body, koppen
+TERRACOTTA = "#c8785a"  # primaire accent — links, knoppen, tab-highlight
+TERRACOTTA_LICHT = "#fae3d6"  # vraag-bubble, focus-glow
 TERRACOTTA_DONKER = "#a85f44"  # hover op primaire knop
 
 # Status-tinten — gebruikt in pagina's voor voortgang/risico-indicatoren
@@ -481,9 +481,9 @@ def render_student_info() -> None:
     opleiding_label = _opleiding_naam(opleiding, crebo) if opleiding and crebo else opleiding
     onderdelen = [x for x in [naam, leerweg, opleiding_label, instelling] if x]
     st.markdown(
-        f'<p style="color:{GRIJS_TEKST};font-size:0.85rem;'
-        f"font-family:'General Sans',sans-serif;margin:0.4rem 0 0.8rem 0\">"
-        f"{'&nbsp;&nbsp;|&nbsp;&nbsp;'.join(onderdelen)}</p>",
+        f'<p style="color:{INKT};font-size:1.15rem;font-weight:500;text-align:center;'
+        f"font-family:'General Sans',sans-serif;margin:1rem 0 1.2rem 0\">"
+        f"{'&nbsp;&nbsp;·&nbsp;&nbsp;'.join(onderdelen)}</p>",
         unsafe_allow_html=True,
     )
 
@@ -497,19 +497,11 @@ def render_nav() -> None:
         return
 
     nav_items = _NAV_STUDENT if rol == "student" else _NAV_MENTOR
-    gebruiker = st.session_state.get("gebruiker_naam", "")
-    opleiding = st.session_state.get("opleiding", "")
 
-    cols = st.columns([2] * len(nav_items) + [4, 1])
+    cols = st.columns([2] * len(nav_items) + [1])
     for i, (label, page) in enumerate(nav_items):
         with cols[i]:
             st.page_link(page, label=label)
-    with cols[-2]:
-        st.markdown(
-            f'<span style="color:{GRIJS_TEKST};font-size:0.78rem;'
-            f"font-family:'General Sans',sans-serif\">{gebruiker} · {opleiding}</span>",
-            unsafe_allow_html=True,
-        )
     with cols[-1]:
         st.page_link("pages/uitloggen.py", label="🚪")
 
