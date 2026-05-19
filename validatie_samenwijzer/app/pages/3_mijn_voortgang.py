@@ -32,7 +32,7 @@ render_student_info()
 studentnummer = st.session_state.get("studentnummer")
 student = get_student_by_studentnummer(get_conn(), studentnummer)
 
-st.subheader("📊 Mijn voortgang")
+st.subheader("Mijn voortgang")
 
 if not student:
     st.error("Studentprofiel niet gevonden.")
@@ -85,7 +85,7 @@ def _kleur(score: float) -> str:
 def _render_kerntaak(kt: dict) -> None:
     col_a, col_b = st.columns([3, 1])
     with col_a:
-        st.markdown(f"_{kt['naam']}_")
+        st.markdown(f"**{kt['naam']}**")
         st.markdown(
             f'<div class="progress-bar-bg"><div class="progress-bar-fill" '
             f'style="width:{kt["score"]:.0f}%;background:{_kleur(kt["score"])}"></div></div>',

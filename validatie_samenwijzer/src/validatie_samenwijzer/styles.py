@@ -481,7 +481,7 @@ def render_student_info() -> None:
     opleiding_label = _opleiding_naam(opleiding, crebo) if opleiding and crebo else opleiding
     onderdelen = [x for x in [naam, leerweg, opleiding_label, instelling] if x]
     st.markdown(
-        f'<p style="color:{INKT};font-size:1.15rem;font-weight:500;text-align:center;'
+        f'<p style="color:{INKT};font-size:1.15rem;font-weight:500;'
         f"font-family:'General Sans',sans-serif;margin:1rem 0 1.2rem 0\">"
         f"{'&nbsp;&nbsp;·&nbsp;&nbsp;'.join(onderdelen)}</p>",
         unsafe_allow_html=True,
