@@ -5,6 +5,8 @@ met witte achtergrond en lucht in plaats van de roze CEDA-achtergrond.
 General Sans typografie, geen serif, geen drop caps.
 """
 
+from typing import Literal
+
 # ── Palet ──────────────────────────────────────────────────────────────────
 WIT = "#ffffff"
 MIST = "#fafafa"  # cards, citatie-blokjes, hover-tints
@@ -477,6 +479,24 @@ def _opleiding_naam(opleiding: str, crebo: str) -> str:
         naam = re.sub(r"[-_]cohort[-_]\d{4}$", "", naam)
         naam = naam.replace("-", " ").replace("_", " ").strip()
     return f"{naam} ({crebo})" if naam else f"Opleiding {crebo}"
+
+
+Schaal = Literal["0-1", "0-100"]
+
+
+def bepaal_kleur(score: float, schaal: Schaal = "0-100") -> str:
+    """GROEN/ORANJE/ROOD op basis van standaard voortgangsdrempels (0.7 / 0.5)."""
+    pct = score if schaal == "0-1" else score / 100
+    return GROEN if pct >= 0.7 else (ORANJE if pct >= 0.5 else ROOD)
+
+
+def render_progress_bar(score: float, kleur: str, schaal: Schaal = "0-100") -> str:
+    """HTML voor een voortgangsbalk; caller doet `st.markdown(..., unsafe_allow_html=True)`."""
+    width = score * 100 if schaal == "0-1" else score
+    return (
+        f'<div class="progress-bar-bg"><div class="progress-bar-fill" '
+        f'style="width:{width:.0f}%;background:{kleur}"></div></div>'
+    )
 
 
 def render_student_info() -> None:

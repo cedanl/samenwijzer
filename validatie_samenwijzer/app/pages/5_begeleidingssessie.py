@@ -34,8 +34,10 @@ from validatie_samenwijzer.styles import (  # noqa: E402
     GROEN,
     ORANJE,
     ROOD,
+    bepaal_kleur,
     render_footer,
     render_nav,
+    render_progress_bar,
 )
 
 st.markdown(CSS, unsafe_allow_html=True)
@@ -76,7 +78,7 @@ with col_profiel:
     bsa_pct = min(bsa_b / bsa_v, 1.0) if bsa_v else 0.0
     afwn = student.get("absence_unauthorized") or 0.0
 
-    kleur_vg = GROEN if vg >= 0.7 else (ORANJE if vg >= 0.5 else ROOD)
+    kleur_vg = bepaal_kleur(vg, schaal="0-1")
 
     with st.container(border=True):
         st.markdown("**Voortgang**")
@@ -85,11 +87,7 @@ with col_profiel:
             f"{vg * 100:.0f}%</span>",
             unsafe_allow_html=True,
         )
-        st.markdown(
-            f'<div class="progress-bar-bg"><div class="progress-bar-fill" '
-            f'style="width:{vg * 100:.0f}%;background:{kleur_vg}"></div></div>',
-            unsafe_allow_html=True,
-        )
+        st.markdown(render_progress_bar(vg, kleur_vg, schaal="0-1"), unsafe_allow_html=True)
         st.markdown(f"BSA: **{bsa_b:.0f}/{bsa_v:.0f} uur** ({bsa_pct * 100:.0f}%)")
         kleur_afw = ROOD if afwn > 10 else (ORANJE if afwn > 5 else GROEN)
         st.markdown(
@@ -114,11 +112,10 @@ with col_profiel:
         with st.container(border=True):
             st.markdown("**Kerntaken**")
             for s in unieke_kerntaken:
-                kleur = GROEN if s["score"] >= 70 else (ORANJE if s["score"] >= 50 else ROOD)
+                kleur = bepaal_kleur(s["score"])
                 st.markdown(f"<small>{html.escape(s['naam'])}</small>", unsafe_allow_html=True)
                 st.markdown(
-                    f'<div class="progress-bar-bg"><div class="progress-bar-fill" '
-                    f'style="width:{s["score"]:.0f}%;background:{kleur}"></div></div>',
+                    render_progress_bar(s["score"], kleur),
                     unsafe_allow_html=True,
                 )
                 if s["score"] < 50:
