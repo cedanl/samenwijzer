@@ -8,6 +8,7 @@ from pathlib import Path
 
 _DB_PATH = Path(__file__).parent.parent.parent / "data" / "02-prepared" / "groei.db"
 
+# Paden waarvoor init_db() al is uitgevoerd in deze sessie.
 _geinitialiseerd: set[Path] = set()
 
 
