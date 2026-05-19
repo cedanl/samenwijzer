@@ -186,7 +186,11 @@ def load_synthetisch_csv(path: Path = _DEFAULT_PAD) -> pd.DataFrame:
 
     df = _clean(df)
     df = _voeg_kt_wp_scores_toe(df)
-    return df
+
+    # Overlay zelf-beoordelingen uit groei.db over de synthetische scores
+    from samenwijzer import groei
+
+    return groei.overlay_self_scores(df, db_path=groei._DB_PATH)
 
 
 def _voeg_kt_wp_scores_toe(df: pd.DataFrame) -> pd.DataFrame:

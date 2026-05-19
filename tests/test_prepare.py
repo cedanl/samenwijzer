@@ -365,6 +365,42 @@ def test_load_synthetisch_csv_geen_leesrechten(tmp_path: Path) -> None:
         p.chmod(0o644)
 
 
+def test_load_synthetisch_csv_past_self_scores_overlay_toe(
+    tmp_path,
+    monkeypatch,
+) -> None:
+    """Na het laden moeten self-scores uit groei.db de synthetische scores overschrijven."""
+    from samenwijzer.groei_store import GroeiActueel, init_db, sla_groei_op
+    from samenwijzer.prepare import load_synthetisch_csv
+
+    # Wijs naar tijdelijke DB
+    test_db = tmp_path / "groei.db"
+    init_db(test_db)
+    monkeypatch.setattr("samenwijzer.groei._DB_PATH", test_db, raising=True)
+
+    df = load_synthetisch_csv()
+    assert not df.empty
+
+    # Kies een student die wp_1_1 heeft (niet NaN) — overlay slaat NaN over.
+    mask = df["wp_1_1"].notna()
+    assert mask.any(), "Geen student met wp_1_1 in dataset"
+    eerste_rij = df[mask].iloc[0]
+    eerste_student = str(eerste_rij["studentnummer"])
+    synthetisch_was = float(eerste_rij["wp_1_1"])
+
+    # Schrijf een afwijkende self-rating
+    sla_groei_op(
+        eerste_student,
+        [GroeiActueel(eerste_student, "wp_1_1", 99, "", "2026-05-19T10:00:00")],
+        test_db,
+    )
+
+    df2 = load_synthetisch_csv()
+    rij = df2[df2["studentnummer"] == eerste_student].iloc[0]
+    assert rij["wp_1_1"] == 99
+    assert rij["wp_1_1"] != synthetisch_was
+
+
 def test_kt_wp_scores_zijn_reproduceerbaar(tmp_path: Path, db_pad_met_oer: Path) -> None:
     """Regressie: kt/wp-scores zijn deterministisch — niet afhankelijk van PYTHONHASHSEED."""
     csv_pad = tmp_path / "studenten.csv"
