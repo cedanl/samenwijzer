@@ -11,6 +11,7 @@ from pathlib import Path
 import streamlit as st
 from dotenv import load_dotenv
 
+from samenwijzer.groei import overlay_self_scores
 from samenwijzer.prepare import load_synthetisch_csv
 from samenwijzer.styles import CSS, render_footer, render_nav
 from samenwijzer.transform import transform_student_data
@@ -34,9 +35,11 @@ def _laad_data(path: Path) -> object:
     return transform_student_data(df)
 
 
-if "df" not in st.session_state:
-    st.session_state["df"] = _laad_data(_STUDENTEN_CSV)
+if "df_basis" not in st.session_state:
+    st.session_state["df_basis"] = _laad_data(_STUDENTEN_CSV)
 
+# Self-scores overlayen op elke pageload zodat verse data uit groei.db meegenomen wordt.
+st.session_state["df"] = overlay_self_scores(st.session_state["df_basis"])
 df = st.session_state["df"]
 
 # ── Loginscherm ───────────────────────────────────────────────────────────────

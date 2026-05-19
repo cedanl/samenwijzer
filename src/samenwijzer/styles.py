@@ -38,6 +38,7 @@ FOOTER_HTML = """
 _NAV_STUDENT = [
     ("📚 Home", "main.py"),
     ("📊 Mijn voortgang", "pages/1_mijn_voortgang.py"),
+    ("🌱 Groeidossier", "pages/6_groeidossier.py"),
     ("🎓 Leercoach", "pages/3_leercoach.py"),
     ("💚 Welzijn", "pages/5_welzijn.py"),
 ]
@@ -45,6 +46,7 @@ _NAV_STUDENT = [
 _NAV_DOCENT = [
     ("📚 Home", "main.py"),
     ("👥 Groepsoverzicht", "pages/2_groepsoverzicht.py"),
+    ("🌱 Groeidossier", "pages/6_groeidossier.py"),
     ("📬 Outreach", "pages/4_outreach.py"),
     ("🎓 Leercoach", "pages/3_leercoach.py"),
 ]
@@ -165,9 +167,9 @@ section[data-testid="stSidebar"] { display: none !important; }
     background: transparent !important;
 }
 
-/* Spatie-kolom (5e kolom) vult de resterende ruimte op */
+/* Spatie-kolom (6e kolom) vult de resterende ruimte op */
 [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] [data-testid="stPageLink"])
-    [data-testid="stColumn"]:nth-child(5) {
+    [data-testid="stColumn"]:nth-child(6) {
     flex: 1 1 auto !important;
     min-width: 0 !important;
     width: auto !important;

@@ -56,6 +56,10 @@ def _oer_label(opleiding: str, kolom: str, crebo: str = "") -> str:
     return kolom
 
 
+# Publieke alias zodat pages het kunnen importeren zonder een private naam te gebruiken.
+oer_label = _oer_label
+
+
 def get_student(df: pd.DataFrame, studentnummer: str) -> pd.Series:
     """Haal één student op uit het DataFrame.
 

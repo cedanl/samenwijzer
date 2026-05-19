@@ -17,6 +17,7 @@ from samenwijzer.analyze import (
 )
 from samenwijzer.auth import mentor_filter
 from samenwijzer.coach import genereer_weekplan
+from samenwijzer.groei import heeft_self_rating
 from samenwijzer.styles import CSS, render_footer, render_nav
 from samenwijzer.visualize import (
     bsa_staaf,
@@ -75,6 +76,14 @@ st.markdown(
 </div>""",
     unsafe_allow_html=True,
 )
+
+# ── Bron-badge: zelf beoordeeld of synthetische schatting? ──
+heeft_rating, laatst = heeft_self_rating(studentnummer)
+if heeft_rating:
+    datum_kort = (laatst or "")[:10]
+    st.caption(f"📝 Zelf beoordeeld op {datum_kort}")
+else:
+    st.caption("🤖 Schatting op basis van OER — vul je groeidossier in voor je eigen scores")
 
 # ── Drie statistieken ─────────────────────────────────────────────────────────
 positie_info = cohort_positie(df, studentnummer)
