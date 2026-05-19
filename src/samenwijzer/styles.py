@@ -135,7 +135,7 @@ header[data-testid="stHeader"] { display: none !important; }
 section[data-testid="stSidebar"] { display: none !important; }
 
 /* ── Vaste navigatiebalk ────────────────────────────────────────────────── */
-.block-container > div > [data-testid="stHorizontalBlock"]:first-of-type {
+[data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] [data-testid="stPageLink"]) {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
@@ -148,28 +148,29 @@ section[data-testid="stSidebar"] { display: none !important; }
     max-width: none !important;
     box-shadow: none !important;
     align-items: center !important;
-    gap: 4px !important;
+    gap: 18px !important;
 }
 
 /* Nav-kolommen: auto-breedte, transparante achtergrond */
-.block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
+[data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] [data-testid="stPageLink"])
     [data-testid="stColumn"],
-.block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
+[data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] [data-testid="stPageLink"])
     [data-testid="stVerticalBlock"],
-.block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
+[data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] [data-testid="stPageLink"])
     [data-testid="element-container"] {
     flex: 0 0 auto !important;
-    min-width: fit-content !important;
-    width: auto !important;
+    min-width: max-content !important;
+    width: max-content !important;
     overflow: visible !important;
     background: transparent !important;
 }
 
 /* Spatie-kolom (5e kolom) vult de resterende ruimte op */
-.block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
+[data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] [data-testid="stPageLink"])
     [data-testid="stColumn"]:nth-child(5) {
     flex: 1 1 auto !important;
     min-width: 0 !important;
+    width: auto !important;
 }
 
 .block-container {
@@ -190,7 +191,7 @@ p, li { color: #333; line-height: 1.6; }
 }
 
 /* Nav-links: wit op donker, geen pill-schaduw */
-.block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
+[data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] [data-testid="stPageLink"])
     [data-testid="stPageLink"] a {
     display: inline-block !important;
     background: transparent !important;
@@ -207,7 +208,7 @@ p, li { color: #333; line-height: 1.6; }
     transition: background 0.15s, color 0.15s !important;
 }
 
-.block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
+[data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] [data-testid="stPageLink"])
     [data-testid="stPageLink"] a:hover {
     background: rgba(255,255,255,0.10) !important;
     color: #ffffff !important;
@@ -215,11 +216,11 @@ p, li { color: #333; line-height: 1.6; }
 }
 
 /* Fix truncatie: alle child-elementen van page_link mogen niet afkappen */
-.block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
+[data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] [data-testid="stPageLink"])
     [data-testid="stPageLink"] a div,
-.block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
+[data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] [data-testid="stPageLink"])
     [data-testid="stPageLink"] a p,
-.block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
+[data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] [data-testid="stPageLink"])
     [data-testid="stPageLink"] a span {
     overflow: visible !important;
     text-overflow: unset !important;
