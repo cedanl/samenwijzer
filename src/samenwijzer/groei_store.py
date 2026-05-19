@@ -122,3 +122,106 @@ def _zorg_voor_db(db_path: Path) -> None:
     """Initialiseer de database eenmalig per pad per proces."""
     if db_path not in _geinitialiseerd:
         init_db(db_path)
+
+
+def sla_groei_op(
+    studentnummer: str,
+    rijen: list[GroeiActueel],
+    db_path: Path = _DB_PATH,
+) -> None:
+    """Sla een batch wp-scores in één transactie op (upsert actueel + insert historie).
+
+    Bij elke wp wordt een snapshot in groei_historie geschreven, zodat de
+    voortgang over tijd te volgen is.
+    """
+    _zorg_voor_db(db_path)
+    with _verbinding(db_path) as conn:
+        for rij in rijen:
+            conn.execute(
+                """
+                INSERT INTO groei_actueel
+                    (studentnummer, wp_kolom, score, verantwoording, laatst_gewijzigd)
+                VALUES (?, ?, ?, ?, ?)
+                ON CONFLICT(studentnummer, wp_kolom) DO UPDATE SET
+                    score = excluded.score,
+                    verantwoording = excluded.verantwoording,
+                    laatst_gewijzigd = excluded.laatst_gewijzigd
+                """,
+                (
+                    studentnummer,
+                    rij.wp_kolom,
+                    rij.score,
+                    rij.verantwoording,
+                    rij.laatst_gewijzigd,
+                ),
+            )
+            conn.execute(
+                """
+                INSERT INTO groei_historie
+                    (studentnummer, wp_kolom, score, verantwoording, opgeslagen_op)
+                VALUES (?, ?, ?, ?, ?)
+                """,
+                (
+                    studentnummer,
+                    rij.wp_kolom,
+                    rij.score,
+                    rij.verantwoording,
+                    rij.laatst_gewijzigd,
+                ),
+            )
+
+
+def get_actueel(studentnummer: str, db_path: Path = _DB_PATH) -> list[GroeiActueel]:
+    """Geef de huidige wp-scores van een student als lijst (leeg = nog niets opgeslagen)."""
+    _zorg_voor_db(db_path)
+    with _verbinding(db_path) as conn:
+        rows = conn.execute(
+            """
+            SELECT studentnummer, wp_kolom, score, verantwoording, laatst_gewijzigd
+            FROM groei_actueel
+            WHERE studentnummer = ?
+            ORDER BY wp_kolom
+            """,
+            (studentnummer,),
+        ).fetchall()
+    return [GroeiActueel(*r) for r in rows]
+
+
+def get_alle_actueel(db_path: Path = _DB_PATH) -> dict[str, list[GroeiActueel]]:
+    """Geef alle actuele scores als dict (studentnummer → lijst). Voor overlay op df."""
+    _zorg_voor_db(db_path)
+    with _verbinding(db_path) as conn:
+        rows = conn.execute(
+            "SELECT studentnummer, wp_kolom, score, verantwoording, laatst_gewijzigd "
+            "FROM groei_actueel"
+        ).fetchall()
+    resultaat: dict[str, list[GroeiActueel]] = {}
+    for r in rows:
+        resultaat.setdefault(r[0], []).append(GroeiActueel(*r))
+    return resultaat
+
+
+def get_historie(studentnummer: str, db_path: Path = _DB_PATH) -> list[GroeiHistorieRij]:
+    """Geef de volledige historie van een student, oudste eerst."""
+    _zorg_voor_db(db_path)
+    with _verbinding(db_path) as conn:
+        rows = conn.execute(
+            """
+            SELECT id, studentnummer, wp_kolom, score, verantwoording, opgeslagen_op
+            FROM groei_historie
+            WHERE studentnummer = ?
+            ORDER BY opgeslagen_op ASC, id ASC
+            """,
+            (studentnummer,),
+        ).fetchall()
+    return [
+        GroeiHistorieRij(
+            id=r[0],
+            studentnummer=r[1],
+            wp_kolom=r[2],
+            score=r[3],
+            verantwoording=r[4],
+            opgeslagen_op=r[5],
+        )
+        for r in rows
+    ]

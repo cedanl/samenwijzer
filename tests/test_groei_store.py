@@ -94,3 +94,85 @@ def test_dataclasses_zijn_instantieerbaar() -> None:
     assert bewijs.kt_kolom is None
     assert bewijs.toelichting == ""
     assert bewijs.id is None
+
+
+def test_sla_groei_op_schrijft_actueel_en_historie(db: Path) -> None:
+    from samenwijzer.groei_store import get_actueel, get_historie, sla_groei_op
+
+    rijen = [
+        GroeiActueel("S001", "wp_1_1", 60, "ik kan dit", "2026-05-19T10:00:00"),
+        GroeiActueel("S001", "wp_1_2", 75, "soms", "2026-05-19T10:00:00"),
+    ]
+    sla_groei_op("S001", rijen, db)
+
+    actueel = get_actueel("S001", db)
+    assert {r.wp_kolom for r in actueel} == {"wp_1_1", "wp_1_2"}
+    assert next(r for r in actueel if r.wp_kolom == "wp_1_1").score == 60
+
+    historie = get_historie("S001", db)
+    assert len(historie) == 2
+
+
+def test_sla_groei_op_upserts_en_voegt_historie_toe(db: Path) -> None:
+    from samenwijzer.groei_store import get_actueel, get_historie, sla_groei_op
+
+    sla_groei_op(
+        "S001",
+        [GroeiActueel("S001", "wp_1_1", 40, "v1", "2026-05-19T10:00:00")],
+        db,
+    )
+    sla_groei_op(
+        "S001",
+        [GroeiActueel("S001", "wp_1_1", 70, "v2", "2026-05-19T11:00:00")],
+        db,
+    )
+
+    actueel = get_actueel("S001", db)
+    assert len(actueel) == 1
+    assert actueel[0].score == 70
+    assert actueel[0].verantwoording == "v2"
+
+    historie = get_historie("S001", db)
+    assert len(historie) == 2
+    assert {h.score for h in historie} == {40, 70}
+
+
+def test_sla_groei_op_is_atomic_bij_fout(db: Path) -> None:
+    """Als een rij in de batch ongeldig is, mag geen enkele wijziging blijven hangen."""
+    from samenwijzer.groei_store import get_actueel, sla_groei_op
+
+    rijen = [
+        GroeiActueel("S001", "wp_1_1", 50, "ok", "2026-05-19T10:00:00"),
+        GroeiActueel("S001", "wp_1_1", None, "fout", "2026-05-19T10:00:00"),  # type: ignore[arg-type]
+    ]
+    with pytest.raises(sqlite3.IntegrityError):
+        sla_groei_op("S001", rijen, db)
+
+    actueel = get_actueel("S001", db)
+    assert actueel == []
+
+
+def test_get_actueel_voor_onbekende_student(db: Path) -> None:
+    from samenwijzer.groei_store import get_actueel
+
+    assert get_actueel("S999", db) == []
+
+
+def test_get_alle_actueel_groepeert_per_studentnummer(db: Path) -> None:
+    from samenwijzer.groei_store import get_alle_actueel, sla_groei_op
+
+    sla_groei_op(
+        "S001",
+        [GroeiActueel("S001", "wp_1_1", 50, "", "2026-05-19T10:00:00")],
+        db,
+    )
+    sla_groei_op(
+        "S002",
+        [GroeiActueel("S002", "wp_2_1", 80, "", "2026-05-19T10:00:00")],
+        db,
+    )
+
+    alle = get_alle_actueel(db)
+    assert set(alle.keys()) == {"S001", "S002"}
+    assert alle["S001"][0].wp_kolom == "wp_1_1"
+    assert alle["S002"][0].score == 80
