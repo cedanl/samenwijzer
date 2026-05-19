@@ -74,6 +74,4 @@ def test_verwijderen_van_pad_buiten_root_geweigerd(root: Path) -> None:
 
 
 def test_toegestane_extensies_zijn_pdf_jpg_png_docx_xlsx() -> None:
-    assert TOEGESTANE_EXTENSIES == frozenset(
-        {".pdf", ".jpg", ".jpeg", ".png", ".docx", ".xlsx"}
-    )
+    assert TOEGESTANE_EXTENSIES == frozenset({".pdf", ".jpg", ".jpeg", ".png", ".docx", ".xlsx"})

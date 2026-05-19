@@ -24,9 +24,7 @@ def db(tmp_path: Path) -> Path:
 def _tabelnamen(db_path: Path) -> set[str]:
     conn = sqlite3.connect(db_path)
     try:
-        rows = conn.execute(
-            "SELECT name FROM sqlite_master WHERE type='table'"
-        ).fetchall()
+        rows = conn.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchall()
     finally:
         conn.close()
     return {r[0] for r in rows}
