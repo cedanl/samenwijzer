@@ -176,3 +176,72 @@ def test_get_alle_actueel_groepeert_per_studentnummer(db: Path) -> None:
     assert set(alle.keys()) == {"S001", "S002"}
     assert alle["S001"][0].wp_kolom == "wp_1_1"
     assert alle["S002"][0].score == 80
+
+
+def test_upsert_mentor_feedback_en_lezen(db: Path) -> None:
+    from samenwijzer.groei_store import get_mentor_feedback, upsert_mentor_feedback
+
+    upsert_mentor_feedback(
+        MentorFeedback("S001", "kt_1", "Jan Jansen", "Mooie groei!", "2026-05-19T10:00:00"),
+        db,
+    )
+    fb = get_mentor_feedback("S001", db)
+    assert fb["kt_1"].tekst == "Mooie groei!"
+
+    upsert_mentor_feedback(
+        MentorFeedback("S001", "kt_1", "Jan Jansen", "Update", "2026-05-19T11:00:00"),
+        db,
+    )
+    fb = get_mentor_feedback("S001", db)
+    assert fb["kt_1"].tekst == "Update"
+
+
+def test_bewijsstuk_insert_en_lijst(db: Path) -> None:
+    from samenwijzer.groei_store import (
+        get_bewijsstukken,
+        insert_bewijsstuk,
+        verwijder_bewijsstuk,
+    )
+
+    meta = BewijsstukMeta(
+        studentnummer="S001",
+        wp_kolom="wp_1_1",
+        bestandsnaam="stage.pdf",
+        bestandspad="S001/abc.pdf",
+        mime_type="application/pdf",
+        grootte_bytes=12345,
+        toelichting="stageverslag",
+        geupload_op="2026-05-19T10:00:00",
+    )
+    bewijsstuk_id = insert_bewijsstuk(meta, db)
+    assert bewijsstuk_id > 0
+
+    lijst = get_bewijsstukken("S001", db)
+    assert len(lijst) == 1
+    assert lijst[0].bestandsnaam == "stage.pdf"
+    assert lijst[0].id == bewijsstuk_id
+
+    verwijder_bewijsstuk(bewijsstuk_id, db)
+    assert get_bewijsstukken("S001", db) == []
+
+
+def test_bewijsstuk_get_via_id(db: Path) -> None:
+    from samenwijzer.groei_store import get_bewijsstuk, insert_bewijsstuk
+
+    meta = BewijsstukMeta(
+        studentnummer="S001",
+        kt_kolom="kt_1",
+        bestandsnaam="kt.docx",
+        bestandspad="S001/kt.docx",
+        mime_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        grootte_bytes=2048,
+        geupload_op="2026-05-19T10:00:00",
+    )
+    new_id = insert_bewijsstuk(meta, db)
+    opgehaald = get_bewijsstuk(new_id, db)
+    assert opgehaald is not None
+    assert opgehaald.bestandsnaam == "kt.docx"
+    assert opgehaald.kt_kolom == "kt_1"
+    assert opgehaald.wp_kolom is None
+
+    assert get_bewijsstuk(99999, db) is None

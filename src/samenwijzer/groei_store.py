@@ -225,3 +225,140 @@ def get_historie(studentnummer: str, db_path: Path = _DB_PATH) -> list[GroeiHist
         )
         for r in rows
     ]
+
+
+def upsert_mentor_feedback(feedback: MentorFeedback, db_path: Path = _DB_PATH) -> None:
+    """Schrijf of update de mentor-feedback voor één kerntaak."""
+    _zorg_voor_db(db_path)
+    with _verbinding(db_path) as conn:
+        conn.execute(
+            """
+            INSERT INTO mentor_feedback
+                (studentnummer, kt_kolom, mentor_naam, tekst, geschreven_op)
+            VALUES (?, ?, ?, ?, ?)
+            ON CONFLICT(studentnummer, kt_kolom) DO UPDATE SET
+                mentor_naam = excluded.mentor_naam,
+                tekst = excluded.tekst,
+                geschreven_op = excluded.geschreven_op
+            """,
+            (
+                feedback.studentnummer,
+                feedback.kt_kolom,
+                feedback.mentor_naam,
+                feedback.tekst,
+                feedback.geschreven_op,
+            ),
+        )
+
+
+def get_mentor_feedback(
+    studentnummer: str,
+    db_path: Path = _DB_PATH,
+) -> dict[str, MentorFeedback]:
+    """Geef alle mentor-feedback van een student als dict (kt_kolom → MentorFeedback)."""
+    _zorg_voor_db(db_path)
+    with _verbinding(db_path) as conn:
+        rows = conn.execute(
+            """
+            SELECT studentnummer, kt_kolom, mentor_naam, tekst, geschreven_op
+            FROM mentor_feedback WHERE studentnummer = ?
+            """,
+            (studentnummer,),
+        ).fetchall()
+    return {r[1]: MentorFeedback(*r) for r in rows}
+
+
+def insert_bewijsstuk(meta: BewijsstukMeta, db_path: Path = _DB_PATH) -> int:
+    """Sla bewijsstuk-metadata op en geef het AUTOINCREMENT-id terug."""
+    _zorg_voor_db(db_path)
+    with _verbinding(db_path) as conn:
+        cur = conn.execute(
+            """
+            INSERT INTO bewijsstuk
+                (studentnummer, wp_kolom, kt_kolom, bestandsnaam, bestandspad,
+                 mime_type, grootte_bytes, toelichting, geupload_op)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                meta.studentnummer,
+                meta.wp_kolom,
+                meta.kt_kolom,
+                meta.bestandsnaam,
+                meta.bestandspad,
+                meta.mime_type,
+                meta.grootte_bytes,
+                meta.toelichting,
+                meta.geupload_op,
+            ),
+        )
+        new_id = cur.lastrowid
+    assert new_id is not None
+    return new_id
+
+
+def get_bewijsstukken(
+    studentnummer: str,
+    db_path: Path = _DB_PATH,
+) -> list[BewijsstukMeta]:
+    """Geef alle bewijsstukken van een student, nieuwste eerst."""
+    _zorg_voor_db(db_path)
+    with _verbinding(db_path) as conn:
+        rows = conn.execute(
+            """
+            SELECT id, studentnummer, wp_kolom, kt_kolom, bestandsnaam, bestandspad,
+                   mime_type, grootte_bytes, toelichting, geupload_op
+            FROM bewijsstuk WHERE studentnummer = ?
+            ORDER BY geupload_op DESC, id DESC
+            """,
+            (studentnummer,),
+        ).fetchall()
+    return [
+        BewijsstukMeta(
+            id=r[0],
+            studentnummer=r[1],
+            wp_kolom=r[2],
+            kt_kolom=r[3],
+            bestandsnaam=r[4],
+            bestandspad=r[5],
+            mime_type=r[6],
+            grootte_bytes=r[7],
+            toelichting=r[8],
+            geupload_op=r[9],
+        )
+        for r in rows
+    ]
+
+
+def verwijder_bewijsstuk(bewijsstuk_id: int, db_path: Path = _DB_PATH) -> None:
+    """Verwijder bewijsstuk-metadata (filesystem-cleanup gebeurt in bewijsstuk_store)."""
+    _zorg_voor_db(db_path)
+    with _verbinding(db_path) as conn:
+        conn.execute("DELETE FROM bewijsstuk WHERE id = ?", (bewijsstuk_id,))
+
+
+def get_bewijsstuk(bewijsstuk_id: int, db_path: Path = _DB_PATH) -> BewijsstukMeta | None:
+    """Haal één bewijsstuk op via id (None als niet gevonden)."""
+    _zorg_voor_db(db_path)
+    with _verbinding(db_path) as conn:
+        r = conn.execute(
+            """
+            SELECT id, studentnummer, wp_kolom, kt_kolom, bestandsnaam, bestandspad,
+                   mime_type, grootte_bytes, toelichting, geupload_op
+            FROM bewijsstuk WHERE id = ?
+            """,
+            (bewijsstuk_id,),
+        ).fetchone()
+    if r is None:
+        return None
+    return BewijsstukMeta(
+        id=r[0],
+        studentnummer=r[1],
+        wp_kolom=r[2],
+        kt_kolom=r[3],
+        bestandsnaam=r[4],
+        bestandspad=r[5],
+        mime_type=r[6],
+        grootte_bytes=r[7],
+        toelichting=r[8],
+        geupload_op=r[9],
+    )
