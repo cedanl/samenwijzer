@@ -1,5 +1,6 @@
 """Pagina: Groeidossier — student-zelfbeoordeling en mentor-feedback."""
 
+import html
 import logging
 from datetime import datetime
 
@@ -208,11 +209,12 @@ with tab_scores:
 
             # Mentor-feedback (indien aanwezig)
             if kt_col in feedback:
+                _naam = html.escape(feedback[kt_col].mentor_naam)
+                _tekst = html.escape(feedback[kt_col].tekst).replace("\n", "<br>")
                 st.markdown(
                     f"<div style='background:#f4f4f4;padding:12px;border-radius:6px;"
                     f"margin-bottom:12px;'>"
-                    f"<b>📣 Feedback van {feedback[kt_col].mentor_naam}</b><br>"
-                    f"{feedback[kt_col].tekst}</div>",
+                    f"<b>📣 Feedback van {_naam}</b><br>{_tekst}</div>",
                     unsafe_allow_html=True,
                 )
 
@@ -252,10 +254,12 @@ with tab_scores:
                         )
                     with cols_ai[1]:
                         if aanscherp_sleutel in st.session_state:
+                            _sug = html.escape(st.session_state[aanscherp_sleutel]).replace(
+                                "\n", "<br>"
+                            )
                             st.markdown(
                                 f"<div style='background:#fffbe6;padding:8px;border-radius:6px;'>"
-                                f"<b>💡 Suggestie:</b><br>{st.session_state[aanscherp_sleutel]}"
-                                f"</div>",
+                                f"<b>💡 Suggestie:</b><br>{_sug}</div>",
                                 unsafe_allow_html=True,
                             )
 
