@@ -18,7 +18,7 @@ from samenwijzer.bewijsstuk_store import (
 )
 from samenwijzer.bewijsstuk_store import opslaan as bewijsstuk_opslaan
 from samenwijzer.bewijsstuk_store import verwijderen as bewijsstuk_verwijderen
-from samenwijzer.groei import delta_t_o_v_vorige
+from samenwijzer.groei import delta_t_o_v_vorige, laatste_twee_metingen_per_wp
 from samenwijzer.groei_store import (
     BewijsstukMeta,
     GroeiActueel,
@@ -190,7 +190,9 @@ def _render_bewijsstuk_expander(wp_col: str, wp_label: str) -> None:
                         st.error(str(e))
 
 
-tab_scores, tab_history = st.tabs(["📊 Mijn beoordeling", "📈 Groei over tijd"])
+tab_scores, tab_history, tab_spinneweb = st.tabs(
+    ["📊 Mijn beoordeling", "📈 Groei over tijd", "🕸️ Spinneweb"]
+)
 
 with tab_scores:
     nieuwe_waarden: dict[str, tuple[int, str]] = {}
@@ -367,5 +369,63 @@ with tab_history:
                     f"{pijl} {abs(d)}</span></div>",
                     unsafe_allow_html=True,
                 )
+
+with tab_spinneweb:
+    st.caption(
+        "Per kerntaak een radar van je werkprocessen. "
+        "De gevulde vlak is je huidige meting; de stippellijn is je vorige meting."
+    )
+
+    import plotly.graph_objects as go
+
+    for kt_col in kt_cols:
+        kt_eigen_wp = _wp_van_kt(kt_col)
+        if not kt_eigen_wp or all(pd.isna(student.get(w, float("nan"))) for w in kt_eigen_wp):
+            continue
+
+        metingen = laatste_twee_metingen_per_wp(studentnummer, kt_eigen_wp)
+        labels = [oer_label(opleiding, w, crebo) for w in kt_eigen_wp]
+        huidig = [metingen[w][0] if metingen[w][0] is not None else 0 for w in kt_eigen_wp]
+        vorig = [metingen[w][1] for w in kt_eigen_wp]
+        heeft_vorig = any(v is not None for v in vorig)
+
+        if not any(metingen[w][0] is not None for w in kt_eigen_wp):
+            st.info(
+                f"Nog geen metingen voor *{oer_label(opleiding, kt_col, crebo)}* — "
+                "sla je beoordeling op om het spinneweb te zien."
+            )
+            continue
+
+        fig = go.Figure()
+        # Sluit de polygon: voeg eerste punt aan einde toe
+        fig.add_trace(
+            go.Scatterpolar(
+                r=huidig + [huidig[0]],
+                theta=labels + [labels[0]],
+                fill="toself",
+                name="Huidige meting",
+                line={"color": "#27ae60"},
+                fillcolor="rgba(39, 174, 96, 0.25)",
+            )
+        )
+        if heeft_vorig:
+            vorig_voor_plot = [v if v is not None else 0 for v in vorig]
+            fig.add_trace(
+                go.Scatterpolar(
+                    r=vorig_voor_plot + [vorig_voor_plot[0]],
+                    theta=labels + [labels[0]],
+                    fill="none",
+                    name="Vorige meting",
+                    line={"color": "#999", "dash": "dash"},
+                )
+            )
+        fig.update_layout(
+            polar={"radialaxis": {"visible": True, "range": [0, 100]}},
+            showlegend=True,
+            title=oer_label(opleiding, kt_col, crebo),
+            height=420,
+            margin={"l": 40, "r": 40, "t": 60, "b": 40},
+        )
+        st.plotly_chart(fig, use_container_width=True)
 
 render_footer()

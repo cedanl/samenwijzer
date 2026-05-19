@@ -125,6 +125,30 @@ def test_heeft_self_rating_voor_onbekende_student(db: Path) -> None:
     assert laatst is None
 
 
+def test_laatste_twee_metingen_per_wp(db) -> None:
+    from samenwijzer.groei import laatste_twee_metingen_per_wp
+
+    # Eén meting voor wp_1_1, twee voor wp_1_2, geen voor wp_2_1
+    sla_groei_op(
+        "S001",
+        [
+            GroeiActueel("S001", "wp_1_1", 50, "", "2026-05-19T10:00:00"),
+            GroeiActueel("S001", "wp_1_2", 40, "", "2026-05-19T10:00:00"),
+        ],
+        db,
+    )
+    sla_groei_op(
+        "S001",
+        [GroeiActueel("S001", "wp_1_2", 70, "", "2026-05-19T11:00:00")],
+        db,
+    )
+
+    resultaat = laatste_twee_metingen_per_wp("S001", ["wp_1_1", "wp_1_2", "wp_2_1"], db_path=db)
+    assert resultaat["wp_1_1"] == (50, None)  # alleen huidige
+    assert resultaat["wp_1_2"] == (70, 40)  # huidige + vorige
+    assert resultaat["wp_2_1"] == (None, None)  # geen meting
+
+
 def test_overlay_negeert_kt_gemiddelde_kolom(db) -> None:
     """Regressie: overlay_self_scores moet kt_gemiddelde (en andere niet-int suffixes) overslaan.
 
