@@ -18,7 +18,11 @@ from samenwijzer.bewijsstuk_store import (
 )
 from samenwijzer.bewijsstuk_store import opslaan as bewijsstuk_opslaan
 from samenwijzer.bewijsstuk_store import verwijderen as bewijsstuk_verwijderen
-from samenwijzer.groei import delta_t_o_v_vorige, laatste_twee_metingen_per_wp
+from samenwijzer.groei import (
+    delta_t_o_v_vorige,
+    klas_gemiddelden_per_wp,
+    laatste_twee_metingen_per_wp,
+)
 from samenwijzer.groei_store import (
     BewijsstukMeta,
     GroeiActueel,
@@ -373,10 +377,13 @@ with tab_history:
 with tab_spinneweb:
     st.caption(
         "Per kerntaak een radar van je werkprocessen. "
-        "De gevulde vlak is je huidige meting; de stippellijn is je vorige meting."
+        "Groen gevuld = jouw huidige meting · grijze stippellijn = jouw vorige meting · "
+        f"blauwe lijn = klasgemiddelde ({opleiding}, cohort {student['cohort']})."
     )
 
     import plotly.graph_objects as go
+
+    klas_gem = klas_gemiddelden_per_wp(df, opleiding, str(student["cohort"]), wp_cols)
 
     for kt_col in kt_cols:
         kt_eigen_wp = _wp_van_kt(kt_col)
@@ -388,6 +395,8 @@ with tab_spinneweb:
         huidig = [metingen[w][0] if metingen[w][0] is not None else 0 for w in kt_eigen_wp]
         vorig = [metingen[w][1] for w in kt_eigen_wp]
         heeft_vorig = any(v is not None for v in vorig)
+        klas = [klas_gem.get(w, float("nan")) for w in kt_eigen_wp]
+        heeft_klas = any(not pd.isna(k) for k in klas)
 
         if not any(metingen[w][0] is not None for w in kt_eigen_wp):
             st.info(
@@ -417,6 +426,17 @@ with tab_spinneweb:
                     fill="none",
                     name="Vorige meting",
                     line={"color": "#999", "dash": "dash"},
+                )
+            )
+        if heeft_klas:
+            klas_voor_plot = [0 if pd.isna(k) else float(k) for k in klas]
+            fig.add_trace(
+                go.Scatterpolar(
+                    r=klas_voor_plot + [klas_voor_plot[0]],
+                    theta=labels + [labels[0]],
+                    fill="none",
+                    name="Klasgemiddelde",
+                    line={"color": "#2980b9", "dash": "dot"},
                 )
             )
         fig.update_layout(
