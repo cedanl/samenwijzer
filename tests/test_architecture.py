@@ -85,9 +85,7 @@ _HOGER_DAN_PREPARE = {
 
 def test_prepare_importeert_geen_hogere_laag() -> None:
     imports = _samenwijzer_imports(SRC / "prepare.py")
-    # `groei` is een toegestane lazy-import binnen load_synthetisch_csv om
-    # zelf-beoordelingen over de synthetische scores te leggen.
-    schendingen = [i for i in imports if i in _HOGER_DAN_PREPARE and i != "groei"]
+    schendingen = [i for i in imports if i in _HOGER_DAN_PREPARE]
     assert not schendingen, f"prepare.py importeert uit hogere laag: {schendingen}"
 
 
