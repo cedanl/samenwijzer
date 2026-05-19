@@ -9,16 +9,28 @@ import streamlit as st
 from samenwijzer._ai import APITimeoutError, vriendelijke_fout
 from samenwijzer.analyze import get_student, oer_label
 from samenwijzer.auth import mentor_filter
+from samenwijzer.bewijsstuk_store import (
+    MAX_GROOTTE_BYTES,
+    TOEGESTANE_EXTENSIES,
+    BewijsstukFout,
+    open_bestand,
+)
+from samenwijzer.bewijsstuk_store import opslaan as bewijsstuk_opslaan
+from samenwijzer.bewijsstuk_store import verwijderen as bewijsstuk_verwijderen
 from samenwijzer.groei import delta_t_o_v_vorige
 from samenwijzer.groei_store import (
+    BewijsstukMeta,
     GroeiActueel,
     MentorFeedback,
     get_actueel,
+    get_bewijsstukken,
     get_historie,
     get_mentor_feedback,
+    insert_bewijsstuk,
     sla_groei_op,
     upsert_mentor_feedback,
 )
+from samenwijzer.groei_store import verwijder_bewijsstuk as verwijder_bewijsstuk_meta
 from samenwijzer.styles import CSS, render_footer, render_nav
 from samenwijzer.transform import get_kerntaak_columns, get_werkproces_columns
 from samenwijzer.tutor import aanscherp_verantwoording
@@ -53,6 +65,9 @@ else:
         st.stop()
     keuze = st.selectbox("Selecteer een student uit jouw groep", opties)
     studentnummer = keuze.split("(")[-1].rstrip(")")
+    if studentnummer not in groep["studentnummer"].values:
+        st.error("Geen toegang tot deze student.")
+        st.stop()
     is_eigenaar = False
 
 student = get_student(df, studentnummer)
@@ -90,6 +105,88 @@ def _huidige_score(wp_col: str) -> int:
 
 def _huidige_verantwoording(wp_col: str) -> str:
     return actueel[wp_col].verantwoording if wp_col in actueel else ""
+
+
+def _render_bewijsstuk_expander(wp_col: str, wp_label: str) -> None:
+    """Toon bewijsstukken voor één werkproces + upload + verwijder."""
+    stukken = [b for b in get_bewijsstukken(studentnummer) if b.wp_kolom == wp_col]
+    with st.expander(f"📎 Bewijsstukken ({len(stukken)})"):
+        for stuk in stukken:
+            cols = st.columns([5, 2, 1])
+            with cols[0]:
+                grootte_kb = stuk.grootte_bytes // 1024
+                st.markdown(f"**{stuk.bestandsnaam}** _{grootte_kb} kB_")
+                if stuk.toelichting:
+                    st.caption(stuk.toelichting)
+            with cols[1]:
+                try:
+                    inhoud = open_bestand(stuk.bestandspad)
+                    st.download_button(
+                        "⬇️ Download",
+                        data=inhoud,
+                        file_name=stuk.bestandsnaam,
+                        mime=stuk.mime_type,
+                        key=f"dl_{stuk.id}",
+                    )
+                except FileNotFoundError:
+                    st.warning("Bestand ontbreekt op disk.")
+                except BewijsstukFout as e:
+                    log.warning("Bewijsstuk %s onbereikbaar: %s", stuk.id, e)
+            with cols[2]:
+                if is_eigenaar and st.button("🗑️", key=f"del_{stuk.id}"):
+                    try:
+                        bewijsstuk_verwijderen(stuk.bestandspad)
+                    except BewijsstukFout as e:
+                        log.warning("FS-verwijdering mislukt: %s", e)
+                    assert stuk.id is not None
+                    verwijder_bewijsstuk_meta(stuk.id)
+                    st.rerun()
+
+        if is_eigenaar:
+            st.markdown("---")
+            upload = st.file_uploader(
+                f"Voeg bewijsstuk toe voor {wp_label}",
+                type=[e.lstrip(".") for e in TOEGESTANE_EXTENSIES],
+                key=f"upl_{studentnummer}_{wp_col}",
+                accept_multiple_files=False,
+            )
+            toelichting = st.text_input(
+                "Toelichting (optioneel)",
+                key=f"upl_toel_{studentnummer}_{wp_col}",
+                max_chars=200,
+            )
+            if upload is not None and st.button(
+                "📤 Uploaden", key=f"btn_upl_{studentnummer}_{wp_col}"
+            ):
+                inhoud = upload.getvalue()
+                if len(inhoud) > MAX_GROOTTE_BYTES:
+                    st.error(
+                        f"Bestand is te groot ({len(inhoud) // 1024} kB); "
+                        f"max {MAX_GROOTTE_BYTES // 1024 // 1024} MB."
+                    )
+                else:
+                    try:
+                        rel_pad = bewijsstuk_opslaan(
+                            studentnummer=studentnummer,
+                            bestandsnaam=upload.name,
+                            inhoud=inhoud,
+                        )
+                        insert_bewijsstuk(
+                            BewijsstukMeta(
+                                studentnummer=studentnummer,
+                                wp_kolom=wp_col,
+                                bestandsnaam=upload.name,
+                                bestandspad=rel_pad,
+                                mime_type=upload.type or "application/octet-stream",
+                                grootte_bytes=len(inhoud),
+                                toelichting=toelichting,
+                                geupload_op=datetime.now().isoformat(timespec="seconds"),
+                            )
+                        )
+                        st.success(f"Bewijsstuk '{upload.name}' geüpload.")
+                        st.rerun()
+                    except BewijsstukFout as e:
+                        st.error(str(e))
 
 
 tab_scores, tab_history = st.tabs(["📊 Mijn beoordeling", "📈 Groei over tijd"])
@@ -183,6 +280,7 @@ with tab_scores:
                             log.exception("Aanscherpen mislukt")
                             st.error(vriendelijke_fout(e))
 
+                _render_bewijsstuk_expander(wp_col, wp_label)
                 nieuwe_waarden[wp_col] = (score, verant)
                 st.markdown("---")
 
