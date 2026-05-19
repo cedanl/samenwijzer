@@ -128,6 +128,37 @@ def test_ai_modules_importeren_niet_uit_app() -> None:
 # ── 6. Regressie: geen 'berend'-vermeldingen meer in code ────────────────────
 
 
+# ── 7. groei-modules respecteren de laagvolgorde ─────────────────────────────
+
+_VERBODEN_VOOR_GROEI = {
+    "coach",
+    "tutor",
+    "welzijn",
+    "outreach",
+    "outreach_store",
+}
+
+
+def test_groei_importeert_geen_ai_modules_of_app() -> None:
+    """groei.py mag alleen leunen op groei_store en stdlib/pandas."""
+    imports = _importnamen(SRC / "groei.py")
+    schendingen = [i for i in imports if i in _VERBODEN_VOOR_GROEI or i == "streamlit"]
+    assert not schendingen, f"groei.py importeert verboden: {schendingen}"
+
+
+def test_groei_store_importeert_geen_hogere_laag() -> None:
+    imports = _samenwijzer_imports(SRC / "groei_store.py")
+    schendingen = [
+        i for i in imports if i in {"groei", "tutor", "coach", "welzijn", "outreach", "app"}
+    ]
+    assert not schendingen, f"groei_store.py importeert hogere laag: {schendingen}"
+
+
+def test_bewijsstuk_store_importeert_alleen_stdlib() -> None:
+    imports = _samenwijzer_imports(SRC / "bewijsstuk_store.py")
+    assert imports == [], f"bewijsstuk_store.py moet stdlib-only zijn, vond: {imports}"
+
+
 def test_geen_b_erend_meer_in_code() -> None:
     """Regressie: 'berend' is volledig vervangen door 'synthetisch'."""
     import re
