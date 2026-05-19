@@ -141,3 +141,51 @@ def stuur_bericht(
         raise
 
     sessie.voeg_toe("assistant", "".join(volledige_reactie))
+
+
+def aanscherp_verantwoording(
+    werkproces_label: str,
+    kerntaak_label: str,
+    opleiding: str,
+    huidige_tekst: str,
+    score: int,
+    *,
+    api_key: str | None = None,
+) -> Generator[str]:
+    """Laat de tutor een aangescherpte verantwoording suggereren.
+
+    Args:
+        werkproces_label: OER-label van het werkproces.
+        kerntaak_label: OER-label van de bovenliggende kerntaak.
+        opleiding: Opleidingsnaam van de student.
+        huidige_tekst: De huidige verantwoording die de student heeft getypt.
+        score: De zelf-gegeven score 0..100 voor dit werkproces.
+        api_key: Optionele override; gebruikt ANTHROPIC_API_KEY als None.
+
+    Yields:
+        Tekstfragmenten van de aangescherpte versie (streaming).
+    """
+    client = _client(api_key)
+
+    systeem = (
+        "Je bent een leercoach voor een MBO-student. Help de student z'n eigen "
+        "verantwoording aanscherpen. Schrijf in de ik-vorm van de student, in "
+        "2 tot 4 zinnen, met concreet voorbeeldgedrag dat past bij de OER-formulering. "
+        "Voeg geen kop, geen bullets, geen tussenkopjes toe — alleen lopende tekst."
+    )
+    gebruikersbericht = (
+        f"Werkproces: {werkproces_label}\n"
+        f"Kerntaak: {kerntaak_label}\n"
+        f"Opleiding: {opleiding}\n"
+        f"Zelf-gegeven score: {score}/100\n"
+        f"Huidige verantwoording: {huidige_tekst or '(nog leeg)'}\n\n"
+        "Geef een aangescherpte versie."
+    )
+
+    with client.messages.stream(
+        model=_MODEL,
+        max_tokens=400,
+        system=[{"type": "text", "text": systeem}],
+        messages=[{"role": "user", "content": gebruikersbericht}],
+    ) as stream:
+        yield from stream.text_stream
