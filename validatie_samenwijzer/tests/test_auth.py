@@ -22,8 +22,26 @@ def conn():
     oer_id = voeg_oer_document_toe(c, inst["id"], "VZ", "25655", "2025", "BOL", "pad.pdf")
     wh = hash_wachtwoord("Welkom123")
     mentor_id = voeg_mentor_toe(c, "Jansen", wh, inst["id"])
-    voeg_student_toe(c, "100001", "Fatima", wh, inst["id"], oer_id, mentor_id,
-                     19, "V", "VZ-1A", 0.54, 37.0, 60.0, 8.0, 2.0, "VMBO_TL", "Zorg", False)
+    voeg_student_toe(
+        c,
+        "100001",
+        "Fatima",
+        wh,
+        inst["id"],
+        oer_id,
+        mentor_id,
+        19,
+        "V",
+        "VZ-1A",
+        0.54,
+        37.0,
+        60.0,
+        8.0,
+        2.0,
+        "VMBO_TL",
+        "Zorg",
+        False,
+    )
     yield c
     c.close()
 

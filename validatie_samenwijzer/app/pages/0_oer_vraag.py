@@ -146,16 +146,13 @@ if st.session_state.pub_oer_paden:
     knop_cols = st.columns(len(st.session_state.pub_oer_paden))
     for i, col in enumerate(knop_cols):
         with col:
-            if st.button(f"📄 Bekijk OER {i + 1}", key=f"toon_oer_{i}",
-                         use_container_width=True):
-                st.session_state[f"pub_toon_oer_{i}"] = (
-                    not st.session_state.get(f"pub_toon_oer_{i}", False)
+            if st.button(f"📄 Bekijk OER {i + 1}", key=f"toon_oer_{i}", use_container_width=True):
+                st.session_state[f"pub_toon_oer_{i}"] = not st.session_state.get(
+                    f"pub_toon_oer_{i}", False
                 )
     for i, pad in enumerate(st.session_state.pub_oer_paden):
         if st.session_state.get(f"pub_toon_oer_{i}"):
-            with st.expander(
-                f"📄 {st.session_state.pub_oer_labels[i]}", expanded=True
-            ):
+            with st.expander(f"📄 {st.session_state.pub_oer_labels[i]}", expanded=True):
                 _render_oer_bestand(pad)
 
 # ── Chatgeschiedenis ───────────────────────────────────────────────────────────
@@ -246,8 +243,6 @@ st.markdown(
     f'<div class="chat-vraag">💬 {html.escape(vraag)}</div>',
     unsafe_allow_html=True,
 )
-
-
 
 
 # ── OER al geladen: antwoord direct ───────────────────────────────────────────
