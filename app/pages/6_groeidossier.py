@@ -1,0 +1,266 @@
+"""Pagina: Groeidossier — student-zelfbeoordeling en mentor-feedback."""
+
+import logging
+from datetime import datetime
+
+import pandas as pd
+import streamlit as st
+
+from samenwijzer._ai import APITimeoutError, vriendelijke_fout
+from samenwijzer.analyze import _oer_label, get_student
+from samenwijzer.auth import mentor_filter
+from samenwijzer.groei import delta_t_o_v_vorige
+from samenwijzer.groei_store import (
+    GroeiActueel,
+    MentorFeedback,
+    get_actueel,
+    get_historie,
+    get_mentor_feedback,
+    sla_groei_op,
+    upsert_mentor_feedback,
+)
+from samenwijzer.styles import CSS, render_footer, render_nav
+from samenwijzer.transform import get_kerntaak_columns, get_werkproces_columns
+from samenwijzer.tutor import aanscherp_verantwoording
+
+log = logging.getLogger(__name__)
+
+st.set_page_config(page_title="Groeidossier — Samenwijzer", page_icon="🌱", layout="wide")
+st.markdown(CSS, unsafe_allow_html=True)
+render_nav()
+
+if "df" not in st.session_state or "rol" not in st.session_state:
+    st.warning("Ga eerst naar de [startpagina](/) om in te loggen.")
+    st.stop()
+
+df = st.session_state["df"]
+rol = st.session_state["rol"]
+
+# ── Studentselectie ──────────────────────────────────────────────────────────
+if rol == "student":
+    studentnummer = st.session_state["studentnummer"]
+    is_eigenaar = True
+else:
+    groep = mentor_filter(df)
+    opties = (
+        groep.sort_values("naam")[["naam", "studentnummer"]]
+        .apply(lambda r: f"{r['naam']} ({r['studentnummer']})", axis=1)
+        .tolist()
+    )
+    if not opties:
+        st.info("Je hebt geen studenten in je groep.")
+        render_footer()
+        st.stop()
+    keuze = st.selectbox("Selecteer een student uit jouw groep", opties)
+    studentnummer = keuze.split("(")[-1].rstrip(")")
+    is_eigenaar = False
+
+student = get_student(df, studentnummer)
+opleiding = str(student["opleiding"])
+crebo = str(student.get("crebo", ""))
+
+st.markdown(f"## 🌱 Groeidossier — {student['naam']}")
+st.caption(f"{opleiding} · Niveau {student['niveau']} · Cohort {student['cohort']}")
+
+# ── Huidige data ─────────────────────────────────────────────────────────────
+actueel_lijst = get_actueel(studentnummer)
+actueel = {r.wp_kolom: r for r in actueel_lijst}
+feedback = get_mentor_feedback(studentnummer)
+
+kt_cols = get_kerntaak_columns(df)
+wp_cols = get_werkproces_columns(df)
+
+_NIVEAU_LABELS = "Starter  ·  Op weg  ·  Gevorderd  ·  Beroepsbekwaam"
+
+
+def _wp_van_kt(kt_col: str) -> list[str]:
+    idx = kt_col.removeprefix("kt_")
+    return [w for w in wp_cols if w.startswith(f"wp_{idx}_")]
+
+
+def _huidige_score(wp_col: str) -> int:
+    if wp_col in actueel:
+        return actueel[wp_col].score
+    df_waarde = student.get(wp_col)
+    try:
+        return int(float(df_waarde)) if df_waarde is not None else 50
+    except (TypeError, ValueError):
+        return 50
+
+
+def _huidige_verantwoording(wp_col: str) -> str:
+    return actueel[wp_col].verantwoording if wp_col in actueel else ""
+
+
+tab_scores, tab_history = st.tabs(["📊 Mijn beoordeling", "📈 Groei over tijd"])
+
+with tab_scores:
+    nieuwe_waarden: dict[str, tuple[int, str]] = {}
+
+    for kt_col in kt_cols:
+        kt_label = _oer_label(opleiding, kt_col, crebo)
+        kt_eigen_wp = _wp_van_kt(kt_col)
+        if not kt_eigen_wp:
+            continue
+        # Skip kerntaken waarvan álle wp's NaN zijn (opleiding heeft ze niet)
+        if all(pd.isna(student.get(w, float("nan"))) for w in kt_eigen_wp):
+            continue
+
+        with st.container(border=True):
+            st.markdown(f"### {kt_label}")
+
+            # Mentor-feedback (indien aanwezig)
+            if kt_col in feedback:
+                st.markdown(
+                    f"<div style='background:#f4f4f4;padding:12px;border-radius:6px;"
+                    f"margin-bottom:12px;'>"
+                    f"<b>📣 Feedback van {feedback[kt_col].mentor_naam}</b><br>"
+                    f"{feedback[kt_col].tekst}</div>",
+                    unsafe_allow_html=True,
+                )
+
+            for wp_col in kt_eigen_wp:
+                wp_label = _oer_label(opleiding, wp_col, crebo)
+                huidige = _huidige_score(wp_col)
+                huidige_v = _huidige_verantwoording(wp_col)
+
+                st.markdown(f"**{wp_label}**")
+                st.caption(_NIVEAU_LABELS)
+
+                score = st.slider(
+                    "Score",
+                    min_value=0,
+                    max_value=100,
+                    value=huidige,
+                    key=f"slider_{studentnummer}_{wp_col}",
+                    label_visibility="collapsed",
+                    disabled=not is_eigenaar,
+                )
+                verant = st.text_area(
+                    "Waarom vind je dit?",
+                    value=huidige_v,
+                    max_chars=1000,
+                    key=f"verant_{studentnummer}_{wp_col}",
+                    disabled=not is_eigenaar,
+                )
+
+                if is_eigenaar:
+                    aanscherp_sleutel = f"sw_aanscherp_{studentnummer}_{wp_col}"
+                    cols_ai = st.columns([1, 4])
+                    with cols_ai[0]:
+                        klik_aanscherp = st.button(
+                            "✨ Aanscherpen",
+                            key=f"btn_aanscherp_{wp_col}",
+                            help="Vraag de tutor om je verantwoording aan te scherpen",
+                        )
+                    with cols_ai[1]:
+                        if aanscherp_sleutel in st.session_state:
+                            st.markdown(
+                                f"<div style='background:#fffbe6;padding:8px;border-radius:6px;'>"
+                                f"<b>💡 Suggestie:</b><br>{st.session_state[aanscherp_sleutel]}"
+                                f"</div>",
+                                unsafe_allow_html=True,
+                            )
+
+                    if klik_aanscherp:
+                        st.session_state.pop(aanscherp_sleutel, None)
+                        try:
+                            with st.spinner("Tutor denkt mee…"):
+                                tekst = st.write_stream(
+                                    aanscherp_verantwoording(
+                                        werkproces_label=wp_label,
+                                        kerntaak_label=kt_label,
+                                        opleiding=opleiding,
+                                        huidige_tekst=verant,
+                                        score=score,
+                                    )
+                                )
+                            st.session_state[aanscherp_sleutel] = tekst
+                            st.rerun()
+                        except APITimeoutError:
+                            st.error("De AI-service reageert niet. Probeer het later opnieuw.")
+                        except Exception as e:
+                            log.exception("Aanscherpen mislukt")
+                            st.error(vriendelijke_fout(e))
+
+                nieuwe_waarden[wp_col] = (score, verant)
+                st.markdown("---")
+
+    if is_eigenaar:
+        if st.button("💾 Opslaan", type="primary", use_container_width=True):
+            nu = datetime.now().isoformat(timespec="seconds")
+            rijen = [
+                GroeiActueel(studentnummer, wp, score, verant, nu)
+                for wp, (score, verant) in nieuwe_waarden.items()
+                if (wp not in actueel)
+                or actueel[wp].score != score
+                or actueel[wp].verantwoording != verant
+            ]
+            if not rijen:
+                st.info("Niets gewijzigd om op te slaan.")
+            else:
+                sla_groei_op(studentnummer, rijen)
+                st.success(f"{len(rijen)} wijziging(en) opgeslagen.")
+                st.rerun()
+    else:
+        st.markdown("### Mentor-feedback per kerntaak")
+        for kt_col in kt_cols:
+            kt_label = _oer_label(opleiding, kt_col, crebo)
+            huidige_fb = feedback[kt_col].tekst if kt_col in feedback else ""
+            tekst = st.text_area(
+                f"Feedback op {kt_label}",
+                value=huidige_fb,
+                key=f"fb_{studentnummer}_{kt_col}",
+                max_chars=1000,
+            )
+            if st.button(f"💬 Feedback opslaan ({kt_col})", key=f"btn_fb_{kt_col}"):
+                upsert_mentor_feedback(
+                    MentorFeedback(
+                        studentnummer=studentnummer,
+                        kt_kolom=kt_col,
+                        mentor_naam=st.session_state.get("mentor_naam", "onbekend"),
+                        tekst=tekst,
+                        geschreven_op=datetime.now().isoformat(timespec="seconds"),
+                    )
+                )
+                st.success("Feedback opgeslagen.")
+                st.rerun()
+
+
+with tab_history:
+    historie = get_historie(studentnummer)
+    if not historie:
+        st.info(
+            "Nog geen groeihistorie — sla je beoordeling op om je eerste meetpunt vast te leggen."
+        )
+    else:
+        hist_df = pd.DataFrame(
+            [
+                {
+                    "datum": h.opgeslagen_op[:10],
+                    "werkproces": _oer_label(opleiding, h.wp_kolom, crebo),
+                    "score": h.score,
+                }
+                for h in historie
+            ]
+        )
+        st.line_chart(hist_df, x="datum", y="score", color="werkproces")
+
+        st.markdown("#### Delta t.o.v. vorige meting")
+        cols = st.columns(min(len(wp_cols), 3))
+        for i, wp_col in enumerate(wp_cols):
+            d = delta_t_o_v_vorige(studentnummer, wp_col)
+            if d is None:
+                continue
+            with cols[i % 3]:
+                pijl = "▲" if d > 0 else ("▼" if d < 0 else "■")
+                kleur = "#27ae60" if d > 0 else ("#c0392b" if d < 0 else "#999")
+                st.markdown(
+                    f"<div style='border:1px solid #eee;padding:10px;border-radius:6px;'>"
+                    f"<small>{_oer_label(opleiding, wp_col, crebo)}</small><br>"
+                    f"<span style='color:{kleur};font-size:1.4rem;font-weight:700;'>"
+                    f"{pijl} {abs(d)}</span></div>",
+                    unsafe_allow_html=True,
+                )
+
+render_footer()
