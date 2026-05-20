@@ -206,3 +206,12 @@ img[src*="powerpoint_illustrations"] {
 .highlight-box h3 {
   color: white !important;
 }
+
+/* Slidev 52.14.1: goto-dialog gesloten staat steekt in beeld.
+   De "verborgen" stand gebruikt top:-80px (-top-20), maar de
+   autocomplete-list maakt het dialoog ~686px hoog — 606px blijft
+   zichtbaar. Verberg het volledig in gesloten staat; bij 'g' wisselt
+   Slidev naar `top-5` en wordt het dialoog weer getoond. */
+#slidev-goto-dialog.\-top-20 {
+  display: none;
+}
