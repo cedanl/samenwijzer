@@ -5,14 +5,16 @@ met witte achtergrond en lucht in plaats van de roze CEDA-achtergrond.
 General Sans typografie, geen serif, geen drop caps.
 """
 
+from typing import Literal
+
 # ── Palet ──────────────────────────────────────────────────────────────────
 WIT = "#ffffff"
-MIST = "#fafafa"               # cards, citatie-blokjes, hover-tints
-LIJN = "#e5e5e7"               # borders, scheidingslijnen
-GRIJS_TEKST = "#6b7280"        # secondary text, labels, meta
-INKT = "#1a1a1a"               # body, koppen
-TERRACOTTA = "#c8785a"         # primaire accent — links, knoppen, tab-highlight
-TERRACOTTA_LICHT = "#fae3d6"   # vraag-bubble, focus-glow
+MIST = "#fafafa"  # cards, citatie-blokjes, hover-tints
+LIJN = "#e5e5e7"  # borders, scheidingslijnen
+GRIJS_TEKST = "#6b7280"  # secondary text, labels, meta
+INKT = "#1a1a1a"  # body, koppen
+TERRACOTTA = "#c8785a"  # primaire accent — links, knoppen, tab-highlight
+TERRACOTTA_LICHT = "#fae3d6"  # vraag-bubble, focus-glow
 TERRACOTTA_DONKER = "#a85f44"  # hover op primaire knop
 
 # Status-tinten — gebruikt in pagina's voor voortgang/risico-indicatoren
@@ -200,6 +202,16 @@ header[data-testid="stHeader"] {{ display: none !important; }}
     background: {TERRACOTTA};
     border-radius: 4px;
     transition: width 0.4s ease;
+}}
+.werkproces-row {{
+    padding-left: 1.5rem;
+}}
+.werkproces-label {{
+    color: {GRIJS_TEKST};
+    font-size: 0.9rem;
+}}
+.werkproces-row .progress-bar-bg {{
+    margin-left: 0;
 }}
 
 /* ── Bron-kaartje ───────────────────────────────────────────────────────── */
@@ -469,6 +481,24 @@ def _opleiding_naam(opleiding: str, crebo: str) -> str:
     return f"{naam} ({crebo})" if naam else f"Opleiding {crebo}"
 
 
+Schaal = Literal["0-1", "0-100"]
+
+
+def bepaal_kleur(score: float, schaal: Schaal = "0-100") -> str:
+    """GROEN/ORANJE/ROOD op basis van standaard voortgangsdrempels (0.7 / 0.5)."""
+    pct = score if schaal == "0-1" else score / 100
+    return GROEN if pct >= 0.7 else (ORANJE if pct >= 0.5 else ROOD)
+
+
+def render_progress_bar(score: float, kleur: str, schaal: Schaal = "0-100") -> str:
+    """HTML voor een voortgangsbalk; caller doet `st.markdown(..., unsafe_allow_html=True)`."""
+    width = score * 100 if schaal == "0-1" else score
+    return (
+        f'<div class="progress-bar-bg"><div class="progress-bar-fill" '
+        f'style="width:{width:.0f}%;background:{kleur}"></div></div>'
+    )
+
+
 def render_student_info() -> None:
     """Render de student-identiteitsbalk onder de navigatie."""
     import streamlit as st
@@ -481,9 +511,9 @@ def render_student_info() -> None:
     opleiding_label = _opleiding_naam(opleiding, crebo) if opleiding and crebo else opleiding
     onderdelen = [x for x in [naam, leerweg, opleiding_label, instelling] if x]
     st.markdown(
-        f'<p style="color:{GRIJS_TEKST};font-size:0.85rem;'
-        f"font-family:'General Sans',sans-serif;margin:0.4rem 0 0.8rem 0\">"
-        f"{'&nbsp;&nbsp;|&nbsp;&nbsp;'.join(onderdelen)}</p>",
+        f'<p style="color:{INKT};font-size:1.15rem;font-weight:500;'
+        f"font-family:'General Sans',sans-serif;margin:1rem 0 1.2rem 0\">"
+        f"{'&nbsp;&nbsp;·&nbsp;&nbsp;'.join(onderdelen)}</p>",
         unsafe_allow_html=True,
     )
 
@@ -497,19 +527,11 @@ def render_nav() -> None:
         return
 
     nav_items = _NAV_STUDENT if rol == "student" else _NAV_MENTOR
-    gebruiker = st.session_state.get("gebruiker_naam", "")
-    opleiding = st.session_state.get("opleiding", "")
 
-    cols = st.columns([2] * len(nav_items) + [4, 1])
+    cols = st.columns([2] * len(nav_items) + [1])
     for i, (label, page) in enumerate(nav_items):
         with cols[i]:
             st.page_link(page, label=label)
-    with cols[-2]:
-        st.markdown(
-            f'<span style="color:{GRIJS_TEKST};font-size:0.78rem;'
-            f"font-family:'General Sans',sans-serif\">{gebruiker} · {opleiding}</span>",
-            unsafe_allow_html=True,
-        )
     with cols[-1]:
         st.page_link("pages/uitloggen.py", label="🚪")
 

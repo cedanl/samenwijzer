@@ -17,10 +17,10 @@ from samenwijzer.analyze import (
 )
 from samenwijzer.auth import mentor_filter
 from samenwijzer.coach import genereer_weekplan
+from samenwijzer.groei import heeft_self_rating
 from samenwijzer.styles import CSS, render_footer, render_nav
 from samenwijzer.visualize import (
     bsa_staaf,
-    kerntaak_grafiek,
     voortgang_gauge,
     werkproces_grafiek,
 )
@@ -76,6 +76,14 @@ st.markdown(
 </div>""",
     unsafe_allow_html=True,
 )
+
+# ── Bron-badge: zelf beoordeeld of synthetische schatting? ──
+heeft_rating, laatst = heeft_self_rating(studentnummer)
+if heeft_rating:
+    datum_kort = (laatst or "")[:10]
+    st.caption(f"📝 Zelf beoordeeld op {datum_kort}")
+else:
+    st.caption("🤖 Schatting op basis van OER — vul je groeidossier in voor je eigen scores")
 
 # ── Drie statistieken ─────────────────────────────────────────────────────────
 positie_info = cohort_positie(df, studentnummer)
@@ -142,23 +150,29 @@ with tab_scores:
     kt_df = kerntaak_scores(df, studentnummer)
     wp_df = werkproces_scores(df, studentnummer)
 
-    col_kt, col_wp = st.columns(2)
+    if kt_df.empty:
+        st.info("Geen kerntaakscores beschikbaar.")
+    else:
+        for _, kt in kt_df.iterrows():
+            kt_idx = str(kt["kerntaak"]).removeprefix("kt_")
+            wps = wp_df[wp_df["werkproces"].str.startswith(f"wp_{kt_idx}_")]
 
-    with col_kt:
-        with st.container(border=True):
-            st.markdown("<p class='section-label'>Kerntaken</p>", unsafe_allow_html=True)
-            if not kt_df.empty:
-                st.altair_chart(kerntaak_grafiek(kt_df), use_container_width=True)
-            else:
-                st.info("Geen kerntaakscores beschikbaar.")
-
-    with col_wp:
-        with st.container(border=True):
-            st.markdown("<p class='section-label'>Werkprocessen</p>", unsafe_allow_html=True)
-            if not wp_df.empty:
-                st.altair_chart(werkproces_grafiek(wp_df), use_container_width=True)
-            else:
-                st.info("Geen werkprocesscores beschikbaar.")
+            with st.container(border=True):
+                st.markdown(
+                    f"<p class='section-label'>Kerntaak {kt_idx} · {kt['label']}</p>"
+                    f"<p style='font-size:1.6rem;font-weight:700;color:#1a1a1a;"
+                    f"margin:0 0 12px;line-height:1;'>"
+                    f"{kt['score']:.0f}"
+                    f"<span style='font-size:0.9rem;color:#999;font-weight:500;'>"
+                    f" / 100</span></p>",
+                    unsafe_allow_html=True,
+                )
+                if not wps.empty:
+                    st.markdown(
+                        "<p class='section-label' style='margin-top:8px;'>Werkprocessen</p>",
+                        unsafe_allow_html=True,
+                    )
+                    st.altair_chart(werkproces_grafiek(wps), use_container_width=True)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # TAB 2: AANDACHTSPUNTEN

@@ -2,6 +2,71 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
+
+**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
+
+## 1. Think Before Coding
+
+**Don't assume. Don't hide confusion. Surface tradeoffs.**
+
+Before implementing:
+- State your assumptions explicitly. If uncertain, ask.
+- If multiple interpretations exist, present them - don't pick silently.
+- If a simpler approach exists, say so. Push back when warranted.
+- If something is unclear, stop. Name what's confusing. Ask.
+
+## 2. Simplicity First
+
+**Minimum code that solves the problem. Nothing speculative.**
+
+- No features beyond what was asked.
+- No abstractions for single-use code.
+- No "flexibility" or "configurability" that wasn't requested.
+- No error handling for impossible scenarios.
+- If you write 200 lines and it could be 50, rewrite it.
+
+Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
+
+## 3. Surgical Changes
+
+**Touch only what you must. Clean up only your own mess.**
+
+When editing existing code:
+- Don't "improve" adjacent code, comments, or formatting.
+- Don't refactor things that aren't broken.
+- Match existing style, even if you'd do it differently.
+- If you notice unrelated dead code, mention it - don't delete it.
+
+When your changes create orphans:
+- Remove imports/variables/functions that YOUR changes made unused.
+- Don't remove pre-existing dead code unless asked.
+
+The test: Every changed line should trace directly to the user's request.
+
+## 4. Goal-Driven Execution
+
+**Define success criteria. Loop until verified.**
+
+Transform tasks into verifiable goals:
+- "Add validation" → "Write tests for invalid inputs, then make them pass"
+- "Fix the bug" → "Write a test that reproduces it, then make it pass"
+- "Refactor X" → "Ensure tests pass before and after"
+
+For multi-step tasks, state a brief plan:
+```
+1. [Step] → verify: [check]
+2. [Step] → verify: [check]
+3. [Step] → verify: [check]
+```
+
+Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+
+---
+
+**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+
+
 ## Wat dit project is
 
 Standalone Streamlit-app (`validatie_samenwijzer/`) die MBO-studenten en mentoren laat chatten
@@ -38,6 +103,8 @@ uv run python -m validatie_samenwijzer.ingest --bestand oeren/davinci_oeren/2575
 # Bestandswatcher (herindexeer automatisch bij wijzigingen in oeren/)
 uv run python -m validatie_samenwijzer.watcher          # bewaakt oeren/ (default)
 uv run python -m validatie_samenwijzer.watcher --oeren-pad /pad/naar/oeren
+# `ingest` en `watcher` zijn ook geregistreerd als project scripts (zie pyproject.toml)
+# — `uv run ingest --alles` en `uv run watcher` werken identiek.
 
 # Seed testdata
 uv run python scripts/seed.py        # 3 studenten + 2 mentoren
@@ -54,6 +121,15 @@ uv run python scripts/seed_bulk.py   # ~1000 studenten over geïndexeerde OERs (
 ./scripts/bootstrap.sh --skip-seed      # geen testdata
 ./scripts/sync_oeren.sh                 # alleen rclone copy
 ```
+
+Overige scripts in `scripts/` (`seed_rebuild_students.py`, `convert_oers_markdown.py`,
+`push_oeren.sh`, `check_bootstrap.sh`) zijn supporting tooling — bekijk de bestanden voor
+gebruik.
+
+## Tests
+
+Tests in `tests/`; pytest discovery via `[tool.pytest.ini_options]` in `pyproject.toml`.
+Coverage en fixtures worden niet centraal beheerd — bekijk individuele testbestanden.
 
 ## Omgeving
 
@@ -171,6 +247,8 @@ Login: studenten op studentnummer, mentoren op naam.
 | `3_mijn_voortgang.py` | student | Voortgang, BSA, scores visualiseren |
 | `4_mijn_studenten.py` | mentor | Studentenlijst van eigen koppeling |
 | `5_begeleidingssessie.py` | mentor | Profiel + twee tabs: OER-chat en volledig OER bekijken |
+| `9_beheer.py` | dev | Sync/ingest/seed/status (alleen als `BEHEER_ENABLED=true`) |
+| `uitloggen.py` | beide | Sessie wissen + redirect naar `/` |
 
 ### AI-isolatie
 
@@ -237,3 +315,22 @@ Snelle DOM-check of nieuwe CSS geladen is:
 ```js
 Array.from(document.querySelectorAll('style')).some(s => s.textContent.includes('<class-naam>'))
 ```
+
+## Presentatie
+
+`presentatie/` bevat een **zelfstandige Slidev-deck** (CEDA/Npuls-huisstijl) over de evolutie
+van vector store/RAG naar full-document context. Thema en assets zijn ingesloten, dus geen
+externe repo nodig. Vereist Node:
+
+```bash
+cd presentatie
+./start.sh        # = npm install (indien nodig) + npm run dev → http://localhost:3030
+```
+
+`node_modules/`, `dist/` en geëxporteerde PDF's zijn gegitignored; de slides, het thema en de
+assets (incl. `public/screenshots/`) worden wél meegesynct.
+
+> **Pin niet bumpen**: `@slidev/cli` staat vast op **52.14.1**. Vanaf 52.15.2 weigert de
+> `slide-guard`-check de `public/`-assets omdat de deck genest in de samenwijzer-repo draait
+> (dev-server geeft dan 500 op elke slide). Verifieer een versie-bump altijd in de **browser**,
+> niet alleen via HTTP 200 of `slidev export` — die paden raken de bug niet.

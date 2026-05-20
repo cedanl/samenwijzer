@@ -117,9 +117,7 @@ def test_identificeer_opleiding_woorden_max_2():
     oers = [_oer_row(opleiding="Verzorgende IG zorg medewerker")]
     # Drie matchende woorden (>3 chars: verzorgende, zorg, medewerker)
     # maar score is gecapt op 2
-    resultaat = identificeer_oer_kandidaten(
-        oers, "verzorgende zorg medewerker info", min_score=0
-    )
+    resultaat = identificeer_oer_kandidaten(oers, "verzorgende zorg medewerker info", min_score=0)
     # Score ≤ 2 + 0 (geen leerweg/cohort match) + 0 (display_naam 'Rijn'/'IJssel' niet in tekst)
     assert resultaat[0]["_score"] == 2
 

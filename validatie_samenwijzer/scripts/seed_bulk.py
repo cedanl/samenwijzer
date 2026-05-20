@@ -20,6 +20,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 from validatie_samenwijzer.auth import hash_wachtwoord
+from validatie_samenwijzer.chat import resolve_oer_pad
 from validatie_samenwijzer.db import (
     get_connection,
     init_db,
@@ -209,10 +210,14 @@ def _reset_database(conn: sqlite3.Connection) -> None:
     """)
     # Verwijder OER-records die nooit geïndexeerd raakten en waarvan het bronbestand
     # ook niet meer bestaat — typisch overblijfsels van eerdere bulk_seed-runs.
+    # Paden in de DB zijn relatief aan de oeren-tree (bv. `oeren/davinci_oeren/x.pdf`);
+    # resolve_oer_pad past OEREN_PAD toe zodat de exists()-check vanuit elke cwd klopt.
     weeskinderen = conn.execute(
         "SELECT id, bestandspad FROM oer_documenten WHERE geindexeerd = 0"
     ).fetchall()
-    voor_verwijdering = [r["id"] for r in weeskinderen if not Path(r["bestandspad"]).exists()]
+    voor_verwijdering = [
+        r["id"] for r in weeskinderen if not resolve_oer_pad(r["bestandspad"]).exists()
+    ]
     for oer_id in voor_verwijdering:
         conn.execute("DELETE FROM kerntaken WHERE oer_id = ?", (oer_id,))
         conn.execute("DELETE FROM oer_documenten WHERE id = ?", (oer_id,))

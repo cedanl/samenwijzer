@@ -15,6 +15,7 @@ from validatie_samenwijzer.styles import (  # noqa: E402
     GROEN,
     ORANJE,
     ROOD,
+    bepaal_kleur,
     render_footer,
     render_nav,
 )
@@ -55,7 +56,7 @@ for student in studenten:
     bsa_pct = min(bsa_b / bsa_v, 1.0) if bsa_v else 0.0
     afwn = student["absence_unauthorized"] or 0.0
 
-    kleur_vg = GROEN if vg >= 0.7 else (ORANJE if vg >= 0.5 else ROOD)
+    kleur_vg = bepaal_kleur(vg, schaal="0-1")
     kleur_bsa = GROEN if bsa_pct >= 0.8 else (ORANJE if bsa_pct >= 0.6 else ROOD)
     kleur_afw = ROOD if afwn > 10 else (ORANJE if afwn > 5 else GROEN)
 

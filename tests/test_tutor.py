@@ -201,3 +201,40 @@ def test_stuur_bericht_fout_mid_stream_propagates(
     assert next(gen) == "begin..."
     with pytest.raises(TimeoutError):
         next(gen)
+
+
+def test_aanscherp_verantwoording_streamt_en_geeft_tekst_terug(monkeypatch) -> None:
+    """De aanscherpfunctie moet streamen via _ai._client en de tekstfragmenten yielden."""
+    from samenwijzer.tutor import aanscherp_verantwoording
+
+    fragmenten = ["Ik ", "kan ", "klanten ", "te woord ", "staan."]
+
+    class _DummyStream:
+        def __init__(self) -> None:
+            self.text_stream = iter(fragmenten)
+
+        def __enter__(self) -> "_DummyStream":
+            return self
+
+        def __exit__(self, *args: object) -> None:
+            return None
+
+    class _DummyMessages:
+        def stream(self, **kwargs: object) -> _DummyStream:
+            return _DummyStream()
+
+    class _DummyClient:
+        messages = _DummyMessages()
+
+    monkeypatch.setattr("samenwijzer.tutor._client", lambda api_key=None: _DummyClient())
+
+    result = "".join(
+        aanscherp_verantwoording(
+            werkproces_label="Treedt op als aanspreekpunt",
+            kerntaak_label="Voert taken uit binnen zakelijke dienstverlening",
+            opleiding="Medewerker Secretarieel",
+            huidige_tekst="ik kan dit wel",
+            score=65,
+        )
+    )
+    assert result == "Ik kan klanten te woord staan."
