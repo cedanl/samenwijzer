@@ -315,3 +315,22 @@ Snelle DOM-check of nieuwe CSS geladen is:
 ```js
 Array.from(document.querySelectorAll('style')).some(s => s.textContent.includes('<class-naam>'))
 ```
+
+## Presentatie
+
+`presentatie/` bevat een **zelfstandige Slidev-deck** (CEDA/Npuls-huisstijl) over de evolutie
+van vector store/RAG naar full-document context. Thema en assets zijn ingesloten, dus geen
+externe repo nodig. Vereist Node:
+
+```bash
+cd presentatie
+./start.sh        # = npm install (indien nodig) + npm run dev → http://localhost:3030
+```
+
+`node_modules/`, `dist/` en geëxporteerde PDF's zijn gegitignored; de slides, het thema en de
+assets (incl. `public/screenshots/`) worden wél meegesynct.
+
+> **Pin niet bumpen**: `@slidev/cli` staat vast op **52.14.1**. Vanaf 52.15.2 weigert de
+> `slide-guard`-check de `public/`-assets omdat de deck genest in de samenwijzer-repo draait
+> (dev-server geeft dan 500 op elke slide). Verifieer een versie-bump altijd in de **browser**,
+> niet alleen via HTTP 200 of `slidev export` — die paden raken de bug niet.
