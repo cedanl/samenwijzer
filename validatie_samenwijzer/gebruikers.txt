@@ -2,7 +2,7 @@ Testgebruikers — validatie_samenwijzer
 Wachtwoord voor alle accounts: Welkom123
 ==========================================
 
-Auto-gegenereerd door seed/bulk_seed.py — niet handmatig wijzigen.
+Auto-gegenereerd door scripts/seed_bulk.py — niet handmatig wijzigen.
 Bij elke seed-run wordt dit bestand overschreven.
 
 Instelling                 OERs  Mentoren  Studenten
@@ -21,79 +21,79 @@ Studentnummers: 100001 t/m 100600
 STUDENTEN (login op studentnummer) — eerste 3 per OER
 ------------------------------------------------------------
 
-Da Vinci College · 25960_BOL_2025__25960BOL2025MJP_Dienstverlening_HZW_2-JARIG (crebo 25960, BOL 2025)
-  100301  Lisa Nguyen
-  100302  Sofie de Boer
-  100303  Amy de Boer
-
 Da Vinci College · 39665_BOL_2026__OER Studiegids (crebo 39665, BOL 2026)
-  100201  Laura Vermeer
-  100202  Kevin Hendriks
-  100203  Kevin van den Berg
+  100201  Nathalie Yilmaz
+  100202  Vera Vermeer
+  100203  Sanne Visser
 
-ROC Utrecht · 25880_BOL_2025__Examenplan - 25880 (crebo 25880, BOL 2025)
-  100501  Lena Kowalski
-  100502  Ruben van den Broek
-  100503  Rick Visser
+Da Vinci College · 25960_BOL_2025__25960BOLBBL2025_Examenplan_HelpendeZorgEnWelzijn2 (crebo 25960, BOL 2025)
+  100301  Bilal Nguyen
+  100302  Fatima de Jong
+  100303  Zoë Willemsen
 
-ROC Utrecht · 25749_BOL_2025__Examenplan - 25749 (crebo 25749, BOL 2025)
-  100401  Nora Visser
-  100402  Anouk Janssen
-  100403  Lars Bakker
+ROC Utrecht · 25655_BOL_2025__OER (OUD) - 25655B36S - MBO-Verpleegkundige (crebo 25655, BOL 2025)
+  100401  Jesse van der Berg
+  100402  Iris de Jong
+  100403  Joris Janssen
 
-Talland · 2021 - 25656 OER VIG OVO FL Geriatrische zorg (crebo 25656, BOL 2021)
-  100101  Lena Ferreira
-  100102  Omar van Dijk
-  100103  Omar Dekker
+ROC Utrecht · 25656_BOL_2025__OER (OUD) - 25656B24S- Verzorgende IG (crebo 25656, BOL 2025)
+  100501  Nathalie Hendriks
+  100502  Luca de Boer
+  100503  Anna Dijkstra
 
-Talland · 2021 - 26027 OER MZG BOL Vastgesteld (crebo 26027, BOL 2021)
+Talland · 2020 - 25184 Manager ondernemer horeca versie 1.4 (crebo 25184, BOL 2020)
   100001  Fleur Bouzid
-  100002  Hanna Nguyen
-  100003  Niels Vos
+  100002  Emma Ozturk
+  100003  Stijn Kuijpers
+
+Talland · 2021 - 25415 SB N3 Vastgesteld (crebo 25415, BOL 2021)
+  100101  Mohammed Singh
+  100102  Yasmin Visser
+  100103  Isabel van den Berg
 
 
 MENTOREN (login op volledige naam-string, bv. 'Manon Willemsen (25742)')
 ------------------------------------------------------------
 Per OER zijn er 5 mentoren — alle 50 hieronder, gegroepeerd per OER:
 
-Da Vinci College · 25960_BOL_2025__25960BOL2025MJP_Dienstverlening_HZW_2-JARIG (crebo 25960, BOL 2025)
-  Laura Yilmaz (25960)
-  Sophie Ferreira (25960)
-  Isabel El Amrani (25960)
-  Hamza Hoekstra (25960)
-  Yasmin Hoekstra (25960)
-
 Da Vinci College · 39665_BOL_2026__OER Studiegids (crebo 39665, BOL 2026)
-  Pieter Bouzid (39665)
-  Hamza Kaur (39665)
-  Fleur Visser (39665)
-  Roos van den Broek (39665)
-  Omar van der Berg (39665)
+  Sem de Boer (39665)
+  Emma Bos (39665)
+  Mark Bouzid (39665)
+  Lars van der Berg (39665)
+  Fenna Kuijpers (39665)
 
-ROC Utrecht · 25880_BOL_2025__Examenplan - 25880 (crebo 25880, BOL 2025)
-  Nora Peeters (25880)
-  Fatima Meijer (25880)
-  Aisha de Vries (25880)
-  Daan Nguyen (25880)
-  Jesse Postma (25880)
+Da Vinci College · 25960_BOL_2025__25960BOLBBL2025_Examenplan_HelpendeZorgEnWelzijn2 (crebo 25960, BOL 2025)
+  Thomas Postma (25960)
+  Luca Jacobs (25960)
+  Hanna Singh (25960)
+  Sander van den Broek (25960)
+  Mariam Bakker (25960)
 
-ROC Utrecht · 25749_BOL_2025__Examenplan - 25749 (crebo 25749, BOL 2025)
-  Lars Janssen (25749)
-  Rayan Visser (25749)
-  Kevin de Jong (25749)
-  Thijs El Amrani (25749)
-  Isabel Singh (25749)
+ROC Utrecht · 25655_BOL_2025__OER (OUD) - 25655B36S - MBO-Verpleegkundige (crebo 25655, BOL 2025)
+  Noah Dekker (25655)
+  Nora Al-Hassan (25655)
+  Sofie Bos (25655)
+  Hanna Dekker (25655)
+  Sem Nguyen (25655)
 
-Talland · 2021 - 25656 OER VIG OVO FL Geriatrische zorg (crebo 25656, BOL 2021)
-  Sem Kaur (25656)
-  Rick Maas (25656)
-  Ryan Bakker (25656)
-  Jesse Smit (25656)
-  Mohammed Kaur (25656)
+ROC Utrecht · 25656_BOL_2025__OER (OUD) - 25656B24S- Verzorgende IG (crebo 25656, BOL 2025)
+  Lina Willemsen (25656)
+  Thijs Ozturk (25656)
+  Rick van Leeuwen (25656)
+  Justin Al-Hassan (25656)
+  Niels Peters (25656)
 
-Talland · 2021 - 26027 OER MZG BOL Vastgesteld (crebo 26027, BOL 2021)
-  Jesse Peeters (26027)
-  Julia Yilmaz (26027)
-  Aisha Visser (26027)
-  Sanne Vos (26027)
-  Anouk Singh (26027)
+Talland · 2020 - 25184 Manager ondernemer horeca versie 1.4 (crebo 25184, BOL 2020)
+  Jesse Peeters (25184)
+  Julia Yilmaz (25184)
+  Aisha Visser (25184)
+  Sanne Vos (25184)
+  Anouk Singh (25184)
+
+Talland · 2021 - 25415 SB N3 Vastgesteld (crebo 25415, BOL 2021)
+  Vera Al-Hassan (25415)
+  Bram Vermeer (25415)
+  Daan de Vries (25415)
+  Zoë Postma (25415)
+  Hamza Postma (25415)
