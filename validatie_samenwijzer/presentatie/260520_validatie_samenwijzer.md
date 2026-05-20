@@ -280,6 +280,31 @@ minder afhankelijkheden, minder dat stuk kan.
 
 ---
 
+<!-- DEMO — SCREENSHOT (Slide4.PNG) -->
+<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
+  <img src="/npuls/powerpoint_slides/Slide4.PNG" style="width: 100%; height: 100%; object-fit: cover;" />
+</div>
+
+<div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1rem 3rem; z-index: 1;">
+
+<div style="font-size: 1.5rem; font-weight: 600; color: #DD784B; margin-bottom: 0.6rem;">Live: een verifieerbaar antwoord</div>
+
+<img src="/screenshots/demo-oer-chat.png" style="max-height: 64vh; width: auto; border: 1px solid #e7e7e7; border-radius: 8px; box-shadow: 0 6px 24px rgba(0,0,0,0.12);" />
+
+<div style="font-size: 0.85rem; line-height: 1.5; margin-top: 0.7rem; color: #000; text-align: center;">
+De OER-assistent citeert <strong>woordelijk uit sectie 4.8</strong> — verifieerbaar, want het model ziet het hele document.
+</div>
+</div>
+
+<!--
+Demo van de student-OER-chat (Talland, opleiding MZG). De vraag over herkansing wordt
+beantwoord met een letterlijk citaat uit de OER plus de sectie-aanduiding — precies de
+juridische citatieplicht die met losse chunks niet te garanderen was. Eventueel hier
+live de app tonen op poort 8503.
+-->
+
+---
+
 <!-- WAT HET OPLEVERDE (Slide3.PNG) -->
 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
   <img src="/npuls/powerpoint_slides/Slide3.PNG" style="width: 100%; height: 100%; object-fit: cover;" />
