@@ -16,5 +16,8 @@
     "@slidev/cli": "52.14.1",
     "@slidev/theme-default": "^0.25.0",
     "@unocss/reset": "^66.6.6"
+  },
+  "overrides": {
+    "dompurify": "^3.4.0"
   }
 }
