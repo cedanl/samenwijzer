@@ -1,0 +1,208 @@
+/* ============================================================
+   Npuls Theme voor Slidev — CEDA
+   Centraliseer hier alle branding. Presentaties hoeven geen
+   <style> blok te bevatten.
+   ============================================================ */
+
+/* Lettertypen */
+@font-face {
+  font-family: 'General Sans';
+  src: url('/npuls/Npuls_lettertype/Npuls_lettertype_generalsans_regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('/npuls/Npuls_lettertype/Npuls_lettertype_generalsans_semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cooper Light BT';
+  src: url('/npuls/Npuls_lettertype/Npuls_lettertype_cooper_light_bt.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Kleurvariabelen */
+:root {
+  --npuls-blue: #3D68EC;
+  --npuls-orange: #DD784B;
+  --npuls-green: #00AF81;
+  --npuls-yellow: #F4D74B;
+  --npuls-pink: #F4D9DC;
+}
+
+/* Basislettertype */
+.slidev-layout {
+  font-family: 'General Sans', Arial, Helvetica, sans-serif;
+}
+
+/* Overlay verwijderen (voorkomt donkere laag over achtergronden) */
+* {
+  box-shadow: none !important;
+}
+
+#slide-content,
+.slidev-layout,
+.slide-container,
+[class*="slide"],
+[id*="slide"] {
+  background-color: transparent !important;
+  filter: none !important;
+}
+
+#slide-content::before, #slide-content::after,
+.slidev-layout::before, .slidev-layout::after,
+.slide-container::before, .slide-container::after,
+[class*="slide"]::before, [class*="slide"]::after,
+[class*="cover"]::before, [class*="cover"]::after,
+[class*="background"]::before, [class*="background"]::after {
+  display: none !important;
+  content: none !important;
+  opacity: 0 !important;
+}
+
+/* Koppen */
+h1 {
+  color: var(--npuls-orange) !important;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h2 {
+  color: var(--npuls-orange) !important;
+  font-weight: 600;
+}
+
+h3, h4, h5, h6 {
+  color: #000000 !important;
+  font-weight: 600;
+}
+
+/* Links en bold */
+a {
+  color: var(--npuls-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--npuls-orange);
+}
+
+strong {
+  color: var(--npuls-blue);
+  font-weight: 600;
+}
+
+/* Code */
+pre {
+  border-left: 4px solid var(--npuls-blue) !important;
+  border-radius: 0.5rem !important;
+}
+
+code {
+  color: var(--npuls-blue) !important;
+}
+
+/* Illustraties altijd volledig zichtbaar */
+img[src*="powerpoint_illustrations"] {
+  opacity: 1 !important;
+}
+
+/* Npuls logo rechtsonder op elke slide */
+.slidev-layout::after {
+  content: '';
+  position: absolute;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  width: 85px;
+  height: auto;
+  aspect-ratio: 3/1;
+  background-image: url('/npuls/npuls_logo.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.9;
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* Animaties */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in-up { animation: fadeInUp 0.6s ease-out; }
+.animate-scale-in   { animation: scaleIn 0.5s ease-out; }
+
+/* ============================================================
+   Hulpklassen — gebruik in presentaties via class="..."
+   ============================================================ */
+
+/* Titelslide centrering */
+.title-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
+  padding: 2rem 4rem;
+}
+
+/* Titelslide koppen */
+.title-center h1 {
+  font-size: 3.8rem;
+  line-height: 1.15;
+}
+
+.title-center h2 {
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-top: 0.5rem;
+}
+
+/* Titelslide subtitel */
+.title-subtitle {
+  color: #000000 !important;
+  font-weight: 400 !important;
+}
+
+/* Impacttekst */
+.big-impact {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--npuls-orange);
+  line-height: 1.1;
+  text-align: center;
+}
+
+.medium-impact {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--npuls-blue);
+  text-align: center;
+}
+
+/* Highlight box */
+.highlight-box {
+  background: linear-gradient(135deg, var(--npuls-blue) 0%, var(--npuls-orange) 100%);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  color: white;
+  text-align: center;
+}
+
+.highlight-box h3 {
+  color: white !important;
+}

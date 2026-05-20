@@ -1,0 +1,20 @@
+{
+  "name": "validatie-samenwijzer-presentatie",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Slidev-presentatie (CEDA/Npuls-huisstijl) over de Validatie Samenwijzer: van vector store naar full-document context.",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "slidev 260520_validatie_samenwijzer.md --open",
+    "build": "slidev build 260520_validatie_samenwijzer.md",
+    "export": "slidev export 260520_validatie_samenwijzer.md"
+  },
+  "devDependencies": {
+    "@iconify-json/carbon": "^1.2.19",
+    "@iconify-json/logos": "^1.2.10",
+    "@iconify-json/mdi": "^1.2.3",
+    "@slidev/cli": "^52.14.1",
+    "@slidev/theme-default": "^0.25.0",
+    "@unocss/reset": "^66.6.6"
+  }
+}
