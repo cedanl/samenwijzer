@@ -168,7 +168,8 @@ def sla_groei_op(
                     score = excluded.score,
                     verantwoording = excluded.verantwoording,
                     laatst_gewijzigd = excluded.laatst_gewijzigd,
-                    status = 'concept'
+                    status = 'concept',
+                    mentor_opmerking = ''
                 """,
                 (
                     studentnummer,
@@ -231,7 +232,7 @@ def keur_goed(
                 mentor_opmerking = '',
                 beoordeeld_door = ?,
                 beoordeeld_op = ?
-            WHERE studentnummer = ? AND wp_kolom = ?
+            WHERE studentnummer = ? AND wp_kolom = ? AND status = 'ingediend'
             """,
             (mentor_naam, nu, studentnummer, wp_kolom),
         )
@@ -255,7 +256,7 @@ def geef_terug(
                 mentor_opmerking = ?,
                 beoordeeld_door = ?,
                 beoordeeld_op = ?
-            WHERE studentnummer = ? AND wp_kolom = ?
+            WHERE studentnummer = ? AND wp_kolom = ? AND status = 'ingediend'
             """,
             (opmerking, mentor_naam, nu, studentnummer, wp_kolom),
         )

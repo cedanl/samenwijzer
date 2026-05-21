@@ -319,6 +319,7 @@ def test_sla_groei_op_zet_status_concept_en_behoudt_goedkeuring(db: Path) -> Non
     assert rij.status == "concept"
     assert rij.goedgekeurde_score is None
 
+    dien_in("S001", ["wp_1_1"], db)
     keur_goed("S001", "wp_1_1", "Mentor A", db)
     sla_groei_op("S001", [GroeiActueel("S001", "wp_1_1", 85, "beter", "2026-05-21T10:00:00")], db)
     rij = get_actueel("S001", db)[0]
@@ -347,6 +348,7 @@ def test_dien_in_zet_concept_naar_ingediend(db: Path) -> None:
 
 def test_dien_in_negeert_goedgekeurd(db: Path) -> None:
     sla_groei_op("S001", [GroeiActueel("S001", "wp_1_1", 60, "x", "2026-05-20T10:00:00")], db)
+    dien_in("S001", ["wp_1_1"], db)
     keur_goed("S001", "wp_1_1", "Mentor A", db)
     dien_in("S001", ["wp_1_1"], db)
     assert get_actueel("S001", db)[0].status == "goedgekeurd"
@@ -384,3 +386,25 @@ def test_geef_terug_zet_status_en_opmerking_behoudt_goedkeuring(db: Path) -> Non
     assert rij.mentor_opmerking == "Onderbouw dit met een bewijsstuk."
     assert rij.goedgekeurde_score == 80
     assert rij.beoordeeld_door == "Mentor A"
+
+
+def test_keur_goed_negeert_niet_ingediend(db: Path) -> None:
+    """Een werkproces dat niet is ingediend kan niet worden goedgekeurd."""
+    sla_groei_op("S001", [GroeiActueel("S001", "wp_1_1", 80, "x", "2026-05-20T10:00:00")], db)
+    keur_goed("S001", "wp_1_1", "Mentor A", db)  # status is 'concept', geen no-op verwacht
+    rij = get_actueel("S001", db)[0]
+    assert rij.status == "concept"
+    assert rij.goedgekeurde_score is None
+
+
+def test_sla_groei_op_wist_oude_verbeterfeedback(db: Path) -> None:
+    """Bij het herzien van een teruggegeven werkproces verdwijnt de oude opmerking."""
+    sla_groei_op("S001", [GroeiActueel("S001", "wp_1_1", 60, "x", "2026-05-20T10:00:00")], db)
+    dien_in("S001", ["wp_1_1"], db)
+    geef_terug("S001", "wp_1_1", "Mentor A", "Voeg een voorbeeld toe.", db)
+    assert get_actueel("S001", db)[0].mentor_opmerking == "Voeg een voorbeeld toe."
+
+    sla_groei_op("S001", [GroeiActueel("S001", "wp_1_1", 75, "beter", "2026-05-21T10:00:00")], db)
+    rij = get_actueel("S001", db)[0]
+    assert rij.status == "concept"
+    assert rij.mentor_opmerking == ""
