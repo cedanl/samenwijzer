@@ -22,16 +22,20 @@ from samenwijzer.groei import (
     delta_t_o_v_vorige,
     klas_gemiddelden_per_wp,
     laatste_twee_metingen_per_wp,
+    overlay_self_scores,  # noqa: F401  — Task 8 uses this in the mentor branch
 )
 from samenwijzer.groei_store import (
     BewijsstukMeta,
     GroeiActueel,
     MentorFeedback,
+    dien_in,
+    geef_terug,  # noqa: F401  — used in mentor branch (later task)
     get_actueel,
     get_bewijsstukken,
     get_historie,
     get_mentor_feedback,
     insert_bewijsstuk,
+    keur_goed,  # noqa: F401  — used in mentor branch (later task)
     sla_groei_op,
     upsert_mentor_feedback,
 )
@@ -230,6 +234,19 @@ with tab_scores:
                 huidige_v = _huidige_verantwoording(wp_col)
 
                 st.markdown(f"**{wp_label}**")
+                _status = actueel[wp_col].status if wp_col in actueel else None
+                _badges = {
+                    "concept": "🟡 Concept",
+                    "ingediend": "📤 Ingediend — wacht op mentor",
+                    "goedgekeurd": "✅ Goedgekeurd",
+                    "teruggegeven": "↩️ Teruggegeven — pas aan en dien opnieuw in",
+                }
+                if _status in _badges:
+                    st.caption(_badges[_status])
+                if _status == "teruggegeven" and actueel[wp_col].mentor_opmerking:
+                    st.warning(
+                        f"**Verbeterpunt van je mentor:** {actueel[wp_col].mentor_opmerking}"
+                    )
                 st.caption(_NIVEAU_LABELS)
 
                 score = st.slider(
@@ -295,7 +312,13 @@ with tab_scores:
                 st.markdown("---")
 
     if is_eigenaar:
-        if st.button("💾 Opslaan", type="primary", use_container_width=True):
+        col_opslaan, col_indienen = st.columns(2)
+        with col_opslaan:
+            opslaan = st.button("💾 Concept opslaan", use_container_width=True)
+        with col_indienen:
+            indienen = st.button("📤 Indienen bij mentor", type="primary", use_container_width=True)
+
+        if opslaan or indienen:
             nu = datetime.now().isoformat(timespec="seconds")
             rijen = [
                 GroeiActueel(studentnummer, wp, score, verant, nu)
@@ -304,12 +327,21 @@ with tab_scores:
                 or actueel[wp].score != score
                 or actueel[wp].verantwoording != verant
             ]
-            if not rijen:
-                st.info("Niets gewijzigd om op te slaan.")
-            else:
+            if rijen:
                 sla_groei_op(studentnummer, rijen)
-                st.success(f"{len(rijen)} wijziging(en) opgeslagen.")
-                st.rerun()
+            if indienen:
+                in_te_dienen = [
+                    wp
+                    for wp in nieuwe_waarden
+                    if (wp not in actueel) or actueel[wp].status != "goedgekeurd"
+                ]
+                dien_in(studentnummer, in_te_dienen)
+                st.success("Ingediend bij je mentor.")
+            elif rijen:
+                st.success(f"{len(rijen)} wijziging(en) opgeslagen als concept.")
+            else:
+                st.info("Niets gewijzigd om op te slaan.")
+            st.rerun()
     else:
         st.markdown("### Mentor-feedback per kerntaak")
         for kt_col in kt_cols:
@@ -377,7 +409,7 @@ with tab_history:
 with tab_spinneweb:
     st.caption(
         "Per kerntaak een radar van je werkprocessen. "
-        "Groen gevuld = jouw huidige meting · grijze stippellijn = jouw vorige meting · "
+        "Groen gevuld = jouw huidige meting · oranje stippellijn = jouw vorige meting · "
         f"blauwe lijn = klasgemiddelde ({opleiding}, cohort {student['cohort']})."
     )
 
@@ -425,7 +457,7 @@ with tab_spinneweb:
                     theta=labels + [labels[0]],
                     fill="none",
                     name="Vorige meting",
-                    line={"color": "#999", "dash": "dash"},
+                    line={"color": "#e67e22", "dash": "dash"},
                 )
             )
         if heeft_klas:
