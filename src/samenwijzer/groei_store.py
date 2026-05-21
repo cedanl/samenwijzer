@@ -4,6 +4,7 @@ import sqlite3
 from collections.abc import Generator
 from contextlib import contextmanager
 from dataclasses import dataclass
+from datetime import datetime
 from pathlib import Path
 
 _DB_PATH = Path(__file__).parent.parent.parent / "data" / "02-prepared" / "groei.db"
@@ -33,6 +34,11 @@ class GroeiActueel:
     score: int
     verantwoording: str
     laatst_gewijzigd: str
+    status: str = "concept"
+    goedgekeurde_score: int | None = None
+    mentor_opmerking: str = ""
+    beoordeeld_door: str | None = None
+    beoordeeld_op: str | None = None
 
 
 @dataclass
@@ -74,11 +80,16 @@ def init_db(db_path: Path = _DB_PATH) -> None:
     with _verbinding(db_path) as conn:
         conn.executescript("""
             CREATE TABLE IF NOT EXISTS groei_actueel (
-                studentnummer    TEXT NOT NULL,
-                wp_kolom         TEXT NOT NULL,
-                score            INTEGER NOT NULL,
-                verantwoording   TEXT NOT NULL DEFAULT '',
-                laatst_gewijzigd TEXT NOT NULL,
+                studentnummer      TEXT NOT NULL,
+                wp_kolom           TEXT NOT NULL,
+                score              INTEGER NOT NULL,
+                verantwoording     TEXT NOT NULL DEFAULT '',
+                laatst_gewijzigd   TEXT NOT NULL,
+                status             TEXT NOT NULL DEFAULT 'concept',
+                goedgekeurde_score INTEGER,
+                mentor_opmerking   TEXT NOT NULL DEFAULT '',
+                beoordeeld_door    TEXT,
+                beoordeeld_op      TEXT,
                 PRIMARY KEY (studentnummer, wp_kolom)
             );
             CREATE TABLE IF NOT EXISTS groei_historie (
@@ -115,6 +126,17 @@ def init_db(db_path: Path = _DB_PATH) -> None:
             CREATE INDEX IF NOT EXISTS idx_bewijs_student
                 ON bewijsstuk(studentnummer);
         """)
+        bestaande = {r[1] for r in conn.execute("PRAGMA table_info(groei_actueel)")}
+        migraties = [
+            ("status", "status TEXT NOT NULL DEFAULT 'concept'"),
+            ("goedgekeurde_score", "goedgekeurde_score INTEGER"),
+            ("mentor_opmerking", "mentor_opmerking TEXT NOT NULL DEFAULT ''"),
+            ("beoordeeld_door", "beoordeeld_door TEXT"),
+            ("beoordeeld_op", "beoordeeld_op TEXT"),
+        ]
+        for kolom, ddl in migraties:
+            if kolom not in bestaande:
+                conn.execute(f"ALTER TABLE groei_actueel ADD COLUMN {ddl}")
     _geinitialiseerd.add(db_path)
 
 
@@ -140,12 +162,13 @@ def sla_groei_op(
             conn.execute(
                 """
                 INSERT INTO groei_actueel
-                    (studentnummer, wp_kolom, score, verantwoording, laatst_gewijzigd)
-                VALUES (?, ?, ?, ?, ?)
+                    (studentnummer, wp_kolom, score, verantwoording, laatst_gewijzigd, status)
+                VALUES (?, ?, ?, ?, ?, 'concept')
                 ON CONFLICT(studentnummer, wp_kolom) DO UPDATE SET
                     score = excluded.score,
                     verantwoording = excluded.verantwoording,
-                    laatst_gewijzigd = excluded.laatst_gewijzigd
+                    laatst_gewijzigd = excluded.laatst_gewijzigd,
+                    status = 'concept'
                 """,
                 (
                     studentnummer,
@@ -171,13 +194,81 @@ def sla_groei_op(
             )
 
 
+def dien_in(
+    studentnummer: str,
+    wp_kolommen: list[str],
+    db_path: Path = _DB_PATH,
+) -> None:
+    """Zet de opgegeven werkprocessen van concept/teruggegeven naar 'ingediend'."""
+    _zorg_voor_db(db_path)
+    with _verbinding(db_path) as conn:
+        for wp in wp_kolommen:
+            conn.execute(
+                """
+                UPDATE groei_actueel SET status = 'ingediend'
+                WHERE studentnummer = ? AND wp_kolom = ?
+                  AND status IN ('concept', 'teruggegeven')
+                """,
+                (studentnummer, wp),
+            )
+
+
+def keur_goed(
+    studentnummer: str,
+    wp_kolom: str,
+    mentor_naam: str,
+    db_path: Path = _DB_PATH,
+) -> None:
+    """Keur een werkproces goed: goedgekeurde_score := score, status 'goedgekeurd'."""
+    _zorg_voor_db(db_path)
+    nu = datetime.now().isoformat(timespec="seconds")
+    with _verbinding(db_path) as conn:
+        conn.execute(
+            """
+            UPDATE groei_actueel
+            SET status = 'goedgekeurd',
+                goedgekeurde_score = score,
+                mentor_opmerking = '',
+                beoordeeld_door = ?,
+                beoordeeld_op = ?
+            WHERE studentnummer = ? AND wp_kolom = ?
+            """,
+            (mentor_naam, nu, studentnummer, wp_kolom),
+        )
+
+
+def geef_terug(
+    studentnummer: str,
+    wp_kolom: str,
+    mentor_naam: str,
+    opmerking: str,
+    db_path: Path = _DB_PATH,
+) -> None:
+    """Geef een werkproces terug met verbeterfeedback; goedgekeurde_score blijft staan."""
+    _zorg_voor_db(db_path)
+    nu = datetime.now().isoformat(timespec="seconds")
+    with _verbinding(db_path) as conn:
+        conn.execute(
+            """
+            UPDATE groei_actueel
+            SET status = 'teruggegeven',
+                mentor_opmerking = ?,
+                beoordeeld_door = ?,
+                beoordeeld_op = ?
+            WHERE studentnummer = ? AND wp_kolom = ?
+            """,
+            (opmerking, mentor_naam, nu, studentnummer, wp_kolom),
+        )
+
+
 def get_actueel(studentnummer: str, db_path: Path = _DB_PATH) -> list[GroeiActueel]:
     """Geef de huidige wp-scores van een student als lijst (leeg = nog niets opgeslagen)."""
     _zorg_voor_db(db_path)
     with _verbinding(db_path) as conn:
         rows = conn.execute(
             """
-            SELECT studentnummer, wp_kolom, score, verantwoording, laatst_gewijzigd
+            SELECT studentnummer, wp_kolom, score, verantwoording, laatst_gewijzigd,
+                   status, goedgekeurde_score, mentor_opmerking, beoordeeld_door, beoordeeld_op
             FROM groei_actueel
             WHERE studentnummer = ?
             ORDER BY wp_kolom
@@ -192,7 +283,8 @@ def get_alle_actueel(db_path: Path = _DB_PATH) -> dict[str, list[GroeiActueel]]:
     _zorg_voor_db(db_path)
     with _verbinding(db_path) as conn:
         rows = conn.execute(
-            "SELECT studentnummer, wp_kolom, score, verantwoording, laatst_gewijzigd "
+            "SELECT studentnummer, wp_kolom, score, verantwoording, laatst_gewijzigd, "
+            "status, goedgekeurde_score, mentor_opmerking, beoordeeld_door, beoordeeld_op "
             "FROM groei_actueel"
         ).fetchall()
     resultaat: dict[str, list[GroeiActueel]] = {}

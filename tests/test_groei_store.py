@@ -10,7 +10,12 @@ from samenwijzer.groei_store import (
     GroeiActueel,
     GroeiHistorieRij,
     MentorFeedback,
+    dien_in,
+    geef_terug,
+    get_actueel,
     init_db,
+    keur_goed,
+    sla_groei_op,
 )
 
 
@@ -34,6 +39,14 @@ def _count(db_path: Path, tabel: str) -> int:
     conn = sqlite3.connect(db_path)
     try:
         return conn.execute(f"SELECT COUNT(*) FROM {tabel}").fetchone()[0]
+    finally:
+        conn.close()
+
+
+def _kolomnamen(db_path: Path, tabel: str) -> set[str]:
+    conn = sqlite3.connect(db_path)
+    try:
+        return {r[1] for r in conn.execute(f"PRAGMA table_info({tabel})")}
     finally:
         conn.close()
 
@@ -95,8 +108,6 @@ def test_dataclasses_zijn_instantieerbaar() -> None:
 
 
 def test_sla_groei_op_schrijft_actueel_en_historie(db: Path) -> None:
-    from samenwijzer.groei_store import get_actueel, get_historie, sla_groei_op
-
     rijen = [
         GroeiActueel("S001", "wp_1_1", 60, "ik kan dit", "2026-05-19T10:00:00"),
         GroeiActueel("S001", "wp_1_2", 75, "soms", "2026-05-19T10:00:00"),
@@ -107,12 +118,14 @@ def test_sla_groei_op_schrijft_actueel_en_historie(db: Path) -> None:
     assert {r.wp_kolom for r in actueel} == {"wp_1_1", "wp_1_2"}
     assert next(r for r in actueel if r.wp_kolom == "wp_1_1").score == 60
 
+    from samenwijzer.groei_store import get_historie
+
     historie = get_historie("S001", db)
     assert len(historie) == 2
 
 
 def test_sla_groei_op_upserts_en_voegt_historie_toe(db: Path) -> None:
-    from samenwijzer.groei_store import get_actueel, get_historie, sla_groei_op
+    from samenwijzer.groei_store import get_historie
 
     sla_groei_op(
         "S001",
@@ -137,8 +150,6 @@ def test_sla_groei_op_upserts_en_voegt_historie_toe(db: Path) -> None:
 
 def test_sla_groei_op_is_atomic_bij_fout(db: Path) -> None:
     """Als een rij in de batch ongeldig is, mag geen enkele wijziging blijven hangen."""
-    from samenwijzer.groei_store import get_actueel, sla_groei_op
-
     rijen = [
         GroeiActueel("S001", "wp_1_1", 50, "ok", "2026-05-19T10:00:00"),
         GroeiActueel("S001", "wp_1_1", None, "fout", "2026-05-19T10:00:00"),  # type: ignore[arg-type]
@@ -151,13 +162,11 @@ def test_sla_groei_op_is_atomic_bij_fout(db: Path) -> None:
 
 
 def test_get_actueel_voor_onbekende_student(db: Path) -> None:
-    from samenwijzer.groei_store import get_actueel
-
     assert get_actueel("S999", db) == []
 
 
 def test_get_alle_actueel_groepeert_per_studentnummer(db: Path) -> None:
-    from samenwijzer.groei_store import get_alle_actueel, sla_groei_op
+    from samenwijzer.groei_store import get_alle_actueel
 
     sla_groei_op(
         "S001",
@@ -243,3 +252,135 @@ def test_bewijsstuk_get_via_id(db: Path) -> None:
     assert opgehaald.wp_kolom is None
 
     assert get_bewijsstuk(99999, db) is None
+
+
+# Task 1 tests
+
+
+def test_groei_actueel_heeft_goedkeuringskolommen(db: Path) -> None:
+    kolommen = _kolomnamen(db, "groei_actueel")
+    assert {
+        "status",
+        "goedgekeurde_score",
+        "mentor_opmerking",
+        "beoordeeld_door",
+        "beoordeeld_op",
+    } <= kolommen
+
+
+def _haal_rij(db_path: Path) -> tuple:
+    conn = sqlite3.connect(db_path)
+    try:
+        return conn.execute(
+            "SELECT studentnummer, wp_kolom, score, verantwoording, laatst_gewijzigd, "
+            "status, goedgekeurde_score, mentor_opmerking, beoordeeld_door, beoordeeld_op "
+            "FROM groei_actueel WHERE studentnummer='S001'"
+        ).fetchone()
+    finally:
+        conn.close()
+
+
+def test_init_db_migreert_oude_groei_actueel(tmp_path: Path) -> None:
+    """Een bestaande DB zonder de nieuwe kolommen wordt idempotent gemigreerd."""
+    pad = tmp_path / "oud.db"
+    conn = sqlite3.connect(pad)
+    conn.executescript(
+        """
+        CREATE TABLE groei_actueel (
+            studentnummer    TEXT NOT NULL,
+            wp_kolom         TEXT NOT NULL,
+            score            INTEGER NOT NULL,
+            verantwoording   TEXT NOT NULL DEFAULT '',
+            laatst_gewijzigd TEXT NOT NULL,
+            PRIMARY KEY (studentnummer, wp_kolom)
+        );
+        INSERT INTO groei_actueel VALUES ('S001', 'wp_1_1', 70, 'x', '2026-05-20T10:00:00');
+        """
+    )
+    conn.commit()
+    conn.close()
+
+    init_db(pad)  # mag niet crashen, voegt kolommen toe
+    init_db(pad)  # tweede keer = idempotent
+
+    kolommen = _kolomnamen(pad, "groei_actueel")
+    assert "status" in kolommen
+    rij = GroeiActueel(*_haal_rij(pad))
+    assert rij.status == "concept"  # default voor bestaande rij
+    assert rij.goedgekeurde_score is None
+
+
+# Task 2 tests
+
+
+def test_sla_groei_op_zet_status_concept_en_behoudt_goedkeuring(db: Path) -> None:
+    sla_groei_op("S001", [GroeiActueel("S001", "wp_1_1", 60, "x", "2026-05-20T10:00:00")], db)
+    rij = get_actueel("S001", db)[0]
+    assert rij.status == "concept"
+    assert rij.goedgekeurde_score is None
+
+    keur_goed("S001", "wp_1_1", "Mentor A", db)
+    sla_groei_op("S001", [GroeiActueel("S001", "wp_1_1", 85, "beter", "2026-05-21T10:00:00")], db)
+    rij = get_actueel("S001", db)[0]
+    assert rij.status == "concept"
+    assert rij.score == 85
+    assert rij.goedgekeurde_score == 60  # eerder goedgekeurde waarde blijft staan
+
+
+# Task 3 tests
+
+
+def test_dien_in_zet_concept_naar_ingediend(db: Path) -> None:
+    sla_groei_op(
+        "S001",
+        [
+            GroeiActueel("S001", "wp_1_1", 60, "x", "2026-05-20T10:00:00"),
+            GroeiActueel("S001", "wp_1_2", 70, "y", "2026-05-20T10:00:00"),
+        ],
+        db,
+    )
+    dien_in("S001", ["wp_1_1"], db)
+    per_wp = {r.wp_kolom: r for r in get_actueel("S001", db)}
+    assert per_wp["wp_1_1"].status == "ingediend"
+    assert per_wp["wp_1_2"].status == "concept"
+
+
+def test_dien_in_negeert_goedgekeurd(db: Path) -> None:
+    sla_groei_op("S001", [GroeiActueel("S001", "wp_1_1", 60, "x", "2026-05-20T10:00:00")], db)
+    keur_goed("S001", "wp_1_1", "Mentor A", db)
+    dien_in("S001", ["wp_1_1"], db)
+    assert get_actueel("S001", db)[0].status == "goedgekeurd"
+
+
+# Task 4 tests
+
+
+def test_keur_goed_zet_goedgekeurde_score_en_status(db: Path) -> None:
+    sla_groei_op("S001", [GroeiActueel("S001", "wp_1_1", 80, "x", "2026-05-20T10:00:00")], db)
+    dien_in("S001", ["wp_1_1"], db)
+    keur_goed("S001", "wp_1_1", "Mentor A", db)
+    rij = get_actueel("S001", db)[0]
+    assert rij.status == "goedgekeurd"
+    assert rij.goedgekeurde_score == 80
+    assert rij.beoordeeld_door == "Mentor A"
+    assert rij.beoordeeld_op is not None
+    assert rij.mentor_opmerking == ""
+
+
+# Task 5 tests
+
+
+def test_geef_terug_zet_status_en_opmerking_behoudt_goedkeuring(db: Path) -> None:
+    sla_groei_op("S001", [GroeiActueel("S001", "wp_1_1", 80, "x", "2026-05-20T10:00:00")], db)
+    dien_in("S001", ["wp_1_1"], db)
+    keur_goed("S001", "wp_1_1", "Mentor A", db)
+
+    sla_groei_op("S001", [GroeiActueel("S001", "wp_1_1", 95, "nu top", "2026-05-21T09:00:00")], db)
+    dien_in("S001", ["wp_1_1"], db)
+    geef_terug("S001", "wp_1_1", "Mentor A", "Onderbouw dit met een bewijsstuk.", db)
+
+    rij = get_actueel("S001", db)[0]
+    assert rij.status == "teruggegeven"
+    assert rij.mentor_opmerking == "Onderbouw dit met een bewijsstuk."
+    assert rij.goedgekeurde_score == 80
+    assert rij.beoordeeld_door == "Mentor A"
