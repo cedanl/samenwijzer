@@ -22,16 +22,20 @@ from samenwijzer.groei import (
     delta_t_o_v_vorige,
     klas_gemiddelden_per_wp,
     laatste_twee_metingen_per_wp,
+    overlay_self_scores,
 )
 from samenwijzer.groei_store import (
     BewijsstukMeta,
     GroeiActueel,
     MentorFeedback,
+    dien_in,
+    geef_terug,
     get_actueel,
     get_bewijsstukken,
     get_historie,
     get_mentor_feedback,
     insert_bewijsstuk,
+    keur_goed,
     sla_groei_op,
     upsert_mentor_feedback,
 )
@@ -230,6 +234,19 @@ with tab_scores:
                 huidige_v = _huidige_verantwoording(wp_col)
 
                 st.markdown(f"**{wp_label}**")
+                _status = actueel[wp_col].status if wp_col in actueel else None
+                _badges = {
+                    "concept": "🟡 Concept",
+                    "ingediend": "📤 Ingediend — wacht op mentor",
+                    "goedgekeurd": "✅ Goedgekeurd",
+                    "teruggegeven": "↩️ Teruggegeven — pas aan en dien opnieuw in",
+                }
+                if _status in _badges:
+                    st.caption(_badges[_status])
+                if _status == "teruggegeven" and actueel[wp_col].mentor_opmerking:
+                    st.warning(
+                        f"**Verbeterpunt van je mentor:** {actueel[wp_col].mentor_opmerking}"
+                    )
                 st.caption(_NIVEAU_LABELS)
 
                 score = st.slider(
@@ -295,7 +312,13 @@ with tab_scores:
                 st.markdown("---")
 
     if is_eigenaar:
-        if st.button("💾 Opslaan", type="primary", use_container_width=True):
+        col_opslaan, col_indienen = st.columns(2)
+        with col_opslaan:
+            opslaan = st.button("💾 Concept opslaan", use_container_width=True)
+        with col_indienen:
+            indienen = st.button("📤 Indienen bij mentor", type="primary", use_container_width=True)
+
+        if opslaan or indienen:
             nu = datetime.now().isoformat(timespec="seconds")
             rijen = [
                 GroeiActueel(studentnummer, wp, score, verant, nu)
@@ -304,14 +327,100 @@ with tab_scores:
                 or actueel[wp].score != score
                 or actueel[wp].verantwoording != verant
             ]
-            if not rijen:
-                st.info("Niets gewijzigd om op te slaan.")
-            else:
+            if rijen:
                 sla_groei_op(studentnummer, rijen)
-                st.success(f"{len(rijen)} wijziging(en) opgeslagen.")
-                st.rerun()
+            if indienen:
+                gewijzigde_wps = {r.wp_kolom for r in rijen}
+                in_te_dienen = [
+                    wp
+                    for wp in nieuwe_waarden
+                    if wp in gewijzigde_wps
+                    or (wp not in actueel)
+                    or actueel[wp].status != "goedgekeurd"
+                ]
+                aantal = dien_in(studentnummer, in_te_dienen)
+                if aantal:
+                    st.success(f"{aantal} werkproces(sen) ingediend bij je mentor.")
+                else:
+                    st.info("Niets om in te dienen — sla eerst een concept op.")
+            elif rijen:
+                st.success(f"{len(rijen)} wijziging(en) opgeslagen als concept.")
+            else:
+                st.info("Niets gewijzigd om op te slaan.")
+            st.rerun()
     else:
-        st.markdown("### Mentor-feedback per kerntaak")
+        st.markdown("### Beoordeel ingediende werkprocessen")
+        for kt_col in kt_cols:
+            kt_eigen_wp = _wp_van_kt(kt_col)
+            if not kt_eigen_wp or all(pd.isna(student.get(w, float("nan"))) for w in kt_eigen_wp):
+                continue
+            kt_label = oer_label(opleiding, kt_col, crebo)
+            st.markdown(f"#### {kt_label}")
+
+            for wp_col in kt_eigen_wp:
+                if wp_col not in actueel:
+                    continue
+                rij = actueel[wp_col]
+                wp_label = oer_label(opleiding, wp_col, crebo)
+                _badges = {
+                    "concept": "🟡 Concept (nog niet ingediend)",
+                    "ingediend": "📤 Ingediend",
+                    "goedgekeurd": "✅ Goedgekeurd",
+                    "teruggegeven": "↩️ Teruggegeven",
+                }
+                st.markdown(f"**{wp_label}** — {_badges.get(rij.status, rij.status)}")
+                st.caption(
+                    f"Score student: {rij.score} · {rij.verantwoording or '(geen toelichting)'}"
+                )
+
+                if rij.status == "ingediend":
+                    opmerking = st.text_area(
+                        "Verbeterfeedback (verplicht bij teruggeven)",
+                        key=f"opm_{studentnummer}_{wp_col}",
+                        max_chars=1000,
+                    )
+                    col_goed, col_terug = st.columns(2)
+                    with col_goed:
+                        if st.button(
+                            "✅ Goedkeuren",
+                            key=f"goed_{studentnummer}_{wp_col}",
+                            use_container_width=True,
+                        ):
+                            keur_goed(
+                                studentnummer,
+                                wp_col,
+                                st.session_state.get("mentor_naam", "onbekend"),
+                            )
+                            st.session_state["df"] = overlay_self_scores(
+                                st.session_state["df_basis"]
+                            )
+                            st.success("Goedgekeurd.")
+                            st.rerun()
+                    with col_terug:
+                        if st.button(
+                            "↩️ Teruggeven",
+                            key=f"terug_{studentnummer}_{wp_col}",
+                            use_container_width=True,
+                        ):
+                            if not opmerking.strip():
+                                st.error("Geef verbeterfeedback mee bij het teruggeven.")
+                            else:
+                                geef_terug(
+                                    studentnummer,
+                                    wp_col,
+                                    st.session_state.get("mentor_naam", "onbekend"),
+                                    opmerking.strip(),
+                                )
+                                st.session_state["df"] = overlay_self_scores(
+                                    st.session_state["df_basis"]
+                                )
+                                st.success("Teruggegeven met feedback.")
+                                st.rerun()
+                elif rij.status == "teruggegeven" and rij.mentor_opmerking:
+                    st.caption(f"Jouw eerdere feedback: {rij.mentor_opmerking}")
+                st.markdown("---")
+
+        st.markdown("### Algemene feedback per kerntaak")
         for kt_col in kt_cols:
             kt_eigen_wp = _wp_van_kt(kt_col)
             if not kt_eigen_wp or all(pd.isna(student.get(w, float("nan"))) for w in kt_eigen_wp):
@@ -377,7 +486,7 @@ with tab_history:
 with tab_spinneweb:
     st.caption(
         "Per kerntaak een radar van je werkprocessen. "
-        "Groen gevuld = jouw huidige meting · grijze stippellijn = jouw vorige meting · "
+        "Groen gevuld = jouw huidige meting · oranje stippellijn = jouw vorige meting · "
         f"blauwe lijn = klasgemiddelde ({opleiding}, cohort {student['cohort']})."
     )
 
@@ -425,7 +534,7 @@ with tab_spinneweb:
                     theta=labels + [labels[0]],
                     fill="none",
                     name="Vorige meting",
-                    line={"color": "#999", "dash": "dash"},
+                    line={"color": "#e67e22", "dash": "dash"},
                 )
             )
         if heeft_klas:

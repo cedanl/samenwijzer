@@ -10,6 +10,7 @@ from samenwijzer.groei_store import (
     get_alle_actueel,
     get_historie,
 )
+from samenwijzer.transform import _bereken_risico
 
 _KT_PREFIX = "kt_"
 _WP_PREFIX = "wp_"
@@ -30,11 +31,12 @@ def bereken_kt_uit_wp(rij: pd.Series, kt_index: int) -> float:
 
 
 def overlay_self_scores(df: pd.DataFrame, db_path: Path = _DB_PATH) -> pd.DataFrame:
-    """Overschrijf wp-scores met self-ratings uit groei.db en herbereken kt-scores.
+    """Overschrijf wp-scores met goedgekeurde self-ratings uit groei.db en herbereken kt-scores.
 
+    - Alleen scores met status 'goedgekeurd' (goedgekeurde_score is not None) tellen mee.
     - wp-kolommen die NaN zijn in df (= niet in opleiding) blijven NaN.
     - kt-kolommen worden hercalculeerd als gemiddelde van hun wp's.
-    - Studenten zonder self-rating houden hun synthetische scores.
+    - Studenten zonder goedgekeurde score houden hun synthetische voortgang/risico.
 
     Returns:
         Nieuwe DataFrame (origineel blijft ongewijzigd).
@@ -44,29 +46,47 @@ def overlay_self_scores(df: pd.DataFrame, db_path: Path = _DB_PATH) -> pd.DataFr
         return df.copy()
 
     overlaid = df.copy()
-    studentnummer_kolom = "studentnummer"
+    kt_kolommen = [c for c in overlaid.columns if _KT_INDEX_PATROON.match(c)]
+    iets_gewijzigd = False
 
     for studentnummer, rijen in alle_actueel.items():
-        mask = overlaid[studentnummer_kolom] == studentnummer
+        mask = overlaid["studentnummer"] == studentnummer
         if not mask.any():
             continue
         idx = overlaid.index[mask][0]
+
+        student_gewijzigd = False
         for rij in rijen:
+            if rij.goedgekeurde_score is None:
+                continue
             if rij.wp_kolom not in overlaid.columns:
                 continue
             if pd.isna(overlaid.at[idx, rij.wp_kolom]):
                 # NaN betekent: opleiding heeft deze wp niet — niet overschrijven.
                 continue
-            overlaid.at[idx, rij.wp_kolom] = float(rij.score)
+            overlaid.at[idx, rij.wp_kolom] = float(rij.goedgekeurde_score)
+            student_gewijzigd = True
 
-        # Herbereken kt-scores: alleen kt_<int>-kolommen (kt_gemiddelde e.d. overslaan).
-        for kt_col in overlaid.columns:
-            if not _KT_INDEX_PATROON.match(kt_col):
-                continue
+        if not student_gewijzigd:
+            continue
+        iets_gewijzigd = True
+
+        # Herbereken kt-scores als gemiddelde van hun werkprocessen.
+        for kt_col in kt_kolommen:
             kt_index = int(kt_col.removeprefix(_KT_PREFIX))
             nieuwe_kt = bereken_kt_uit_wp(overlaid.loc[idx], kt_index=kt_index)
             if not pd.isna(nieuwe_kt):
                 overlaid.at[idx, kt_col] = nieuwe_kt
+
+        # Herbereken headline-voortgang als gemiddelde van de kt-scores / 100.
+        if "voortgang" in overlaid.columns:
+            kt_scores = pd.to_numeric(overlaid.loc[idx, kt_kolommen], errors="coerce").dropna()
+            if not kt_scores.empty:
+                overlaid.at[idx, "voortgang"] = float(min(max(kt_scores.mean() / 100, 0.0), 1.0))
+
+    # Risico-vlag herberekenen zodat mentor-goedgekeurde groei de triage volgt.
+    if iets_gewijzigd and {"risico", "bsa_percentage", "voortgang"} <= set(overlaid.columns):
+        overlaid["risico"] = _bereken_risico(overlaid)
 
     return overlaid
 

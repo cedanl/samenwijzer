@@ -113,8 +113,9 @@ Zie `README.md` voor de volledige lijst.
 Source-package leeft in `src/samenwijzer/` (importeerbaar als `samenwijzer.*`). UI in `app/`,
 scripts in `scripts/`, tests in `tests/`.
 
-Dependency-richting **strikt**: `prepare → transform → analyze → visualize/coach/tutor/welzijn → app`.
-Nooit omgekeerd. UI-laag (`app/`) bevat geen business logic. De laagregel wordt afgedwongen door
+Dependency-richting **strikt**: `prepare → transform → analyze → visualize/coach/tutor/welzijn/groei → app`.
+Nooit omgekeerd. `groei.py` (groeidossier-businesslogic) leunt uitsluitend op `groei_store.py` +
+stdlib/pandas — geen AI- of app-imports (afgedwongen in `tests/test_architecture.py`). UI-laag (`app/`) bevat geen business logic. De laagregel wordt afgedwongen door
 `tests/test_architecture.py` — laagovertredingen breken CI, niet alleen conventie.
 
 **AI-isolatie**: alle Anthropic-calls zitten in `tutor.py`, `coach.py`, `outreach.py`, `welzijn.py`,
@@ -126,7 +127,12 @@ instantiëren, en nooit `anthropic` direct importeren in `app/`.
 nooit opnieuw laden.
 
 **SQLite-isolatie**: schrijfbewerkingen naar `outreach.db` lopen uitsluitend via `outreach_store.py`,
-naar `whatsapp.db` via `whatsapp_store.py`. Nooit raw SQL in `app/`. Beide DBs zijn gitignored.
+naar `whatsapp.db` via `whatsapp_store.py`, naar `groei.db` (groeidossier) via `groei_store.py`.
+Nooit raw SQL in `app/`. Alle drie DBs zijn gitignored.
+
+**Bewijsstukken**: file-uploads in het groeidossier lopen via `bewijsstuk_store.py` (filesystem-IO
+onder `data/bewijsstukken/<studentnummer>/`, max 10 MB, alleen pdf/jpg/jpeg/png/docx/xlsx). Validatie
+van studentnummer en extensie gebeurt daar — `app/` doet geen directe filesystem-writes.
 
 Volledige laagbeschrijving en module-rollen: zie `ARCHITECTURE.md` en `AGENTS.md`.
 
