@@ -4,12 +4,11 @@ import logging
 import smtplib
 from collections.abc import Generator
 
-from samenwijzer._ai import _client
+from samenwijzer._ai import MODEL, _client
 from samenwijzer.outreach import email_config_uit_env, verstuur_email
 
 log = logging.getLogger(__name__)
 
-_MODEL = "claude-sonnet-4-6"
 _MAX_TOKENS = 512
 
 CATEGORIEËN = ["studieplanning", "welzijn", "financiën", "werkplekleren", "overig"]
@@ -74,7 +73,7 @@ def genereer_welzijnsreactie(
     )
 
     with _client(api_key).messages.stream(
-        model=_MODEL,
+        model=MODEL,
         max_tokens=_MAX_TOKENS,
         messages=[{"role": "user", "content": prompt}],
     ) as stream:

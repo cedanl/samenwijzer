@@ -6,6 +6,10 @@ import anthropic
 
 APITimeoutError = anthropic.APITimeoutError
 
+# Standaardmodel voor tutor, coach, outreach en welzijn.
+# whatsapp.py kiest bewust een eigen (lichter) model.
+MODEL = "claude-sonnet-4-6"
+
 
 def vriendelijke_fout(e: Exception) -> str:
     """Vertaal een Anthropic-API-fout naar een leesbare boodschap voor de UI.

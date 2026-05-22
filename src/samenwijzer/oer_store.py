@@ -5,7 +5,7 @@ from collections.abc import Generator
 from contextlib import contextmanager
 from pathlib import Path
 
-_DB_PAD = Path(__file__).parent.parent.parent / "data" / "02-prepared" / "oeren.db"
+OEREN_DB_PAD = Path(__file__).parent.parent.parent / "data" / "02-prepared" / "oeren.db"
 
 # Init-guard: voorkomt herhaald CREATE TABLE in dezelfde sessie.
 _geinitialiseerd: set[Path] = set()
@@ -26,7 +26,7 @@ def _verbinding(db_pad: Path) -> Generator[sqlite3.Connection]:
         conn.close()
 
 
-def init_db(db_pad: Path = _DB_PAD) -> None:
+def init_db(db_pad: Path = OEREN_DB_PAD) -> None:
     """Maak instellingen-, oer_documenten- en kerntaken-tabellen aan als nog niet aanwezig."""
     if db_pad in _geinitialiseerd:
         return

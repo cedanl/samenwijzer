@@ -7,7 +7,7 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from samenwijzer import oer_store, prepare
+from samenwijzer import oer_store
 from samenwijzer.prepare import load_student_csv, load_synthetisch_csv
 
 
@@ -175,7 +175,7 @@ def db_pad_met_oer(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     oer_store.voeg_kerntaak_toe(db, oer_id2, "B1-K1", "Enige KT", "kerntaak", None, 1)
     oer_store.voeg_kerntaak_toe(db, oer_id2, "B1-K1-W1", "Enige WP", "werkproces", "B1-K1", 1)
 
-    monkeypatch.setattr(prepare, "_DB_PAD_VOOR_KT", db)
+    monkeypatch.setattr(oer_store, "OEREN_DB_PAD", db)
     return db
 
 

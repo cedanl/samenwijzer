@@ -10,7 +10,6 @@ WELZIJN_REQUIRED_COLUMNS = {"studentnummer", "datum", "antwoord"}
 _DEFAULT_PAD = (
     Path(__file__).parent.parent.parent / "data" / "01-raw" / "synthetisch" / "studenten.csv"
 )
-_DB_PAD_VOOR_KT = Path(__file__).parent.parent.parent / "data" / "02-prepared" / "oeren.db"
 
 REQUIRED_COLUMNS = {
     "studentnummer",
@@ -220,7 +219,7 @@ def _voeg_kt_wp_scores_toe(df: pd.DataFrame) -> pd.DataFrame:
     for idx, row in df.iterrows():
         crebo = str(row["crebo"])
         if crebo not in cache:
-            kts = oer_store.get_kerntaken_voor_crebo(_DB_PAD_VOOR_KT, crebo)
+            kts = oer_store.get_kerntaken_voor_crebo(oer_store.OEREN_DB_PAD, crebo)
             n_kt = sum(1 for k in kts if k["type"] == "kerntaak")
             n_wp = sum(1 for k in kts if k["type"] == "werkproces")
             cache[crebo] = (n_kt, n_wp)

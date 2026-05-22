@@ -9,7 +9,6 @@ log = logging.getLogger(__name__)
 
 _MAX_TEKENS = 120_000
 _PROJECT_ROOT = Path(__file__).parent.parent.parent
-_DB_PAD = _PROJECT_ROOT / "data" / "02-prepared" / "oeren.db"
 
 
 def laad_oer_tekst(bestandspad: str | Path) -> str:
@@ -32,7 +31,7 @@ def haal_oer_context_op(student_row: dict) -> str:
         from samenwijzer import oer_store  # lazy import — DB hoeft niet aanwezig te zijn
 
         rij = oer_store.get_oer_voor_student_display_naam(
-            db_pad=_DB_PAD,
+            db_pad=oer_store.OEREN_DB_PAD,
             display_naam=str(student_row.get("instelling", "") or ""),
             crebo=str(student_row.get("crebo", "") or ""),
             leerweg=str(student_row.get("leerweg", "") or ""),

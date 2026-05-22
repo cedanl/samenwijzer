@@ -40,7 +40,7 @@ def test_laad_oer_tekst_relatief_pad_bestaat_niet() -> None:
 def test_haal_oer_context_op_geen_db(tmp_path: Path) -> None:
     """Geeft lege string terug als oeren.db niet bestaat."""
     student = {"instelling": "Da Vinci", "crebo": "25491", "leerweg": "BOL", "cohort": "2024"}
-    with patch("samenwijzer.oer_context._DB_PAD", tmp_path / "bestaat_niet.db"):
+    with patch("samenwijzer.oer_store.OEREN_DB_PAD", tmp_path / "bestaat_niet.db"):
         resultaat = haal_oer_context_op(student)
     assert resultaat == ""
 
@@ -78,7 +78,7 @@ def test_haal_oer_context_op_student_niet_gevonden(tmp_path: Path) -> None:
     _maak_test_db(db_pad, "oeren/da_vinci/oer.md")
 
     student = {"instelling": "rijn_ijssel", "crebo": "99999", "leerweg": "BOL", "cohort": "2024"}
-    with patch("samenwijzer.oer_context._DB_PAD", db_pad):
+    with patch("samenwijzer.oer_store.OEREN_DB_PAD", db_pad):
         resultaat = haal_oer_context_op(student)
     assert resultaat == ""
 
@@ -89,7 +89,7 @@ def test_haal_oer_context_op_bestand_niet_beschikbaar(tmp_path: Path) -> None:
     _maak_test_db(db_pad, "oeren/da_vinci/niet_bestaand.md")
 
     student = {"instelling": "Da Vinci", "crebo": "25491", "leerweg": "BOL", "cohort": "2024"}
-    with patch("samenwijzer.oer_context._DB_PAD", db_pad):
+    with patch("samenwijzer.oer_store.OEREN_DB_PAD", db_pad):
         resultaat = haal_oer_context_op(student)
     assert resultaat == ""
 
@@ -103,7 +103,7 @@ def test_haal_oer_context_op_met_bestand(tmp_path: Path) -> None:
     _maak_test_db(db_pad, str(oer_bestand))  # absoluut pad om project-root-lookup te omzeilen
 
     student = {"instelling": "Da Vinci", "crebo": "25491", "leerweg": "BOL", "cohort": "2024"}
-    with patch("samenwijzer.oer_context._DB_PAD", db_pad):
+    with patch("samenwijzer.oer_store.OEREN_DB_PAD", db_pad):
         resultaat = haal_oer_context_op(student)
     assert "Kerntaak 1" in resultaat
     assert "Werkproces 1.1" in resultaat
@@ -121,6 +121,6 @@ def test_haal_oer_context_op_pandas_series(tmp_path: Path) -> None:
     student_series = pd.Series(
         {"instelling": "Da Vinci", "crebo": "25491", "leerweg": "BOL", "cohort": "2024"}
     )
-    with patch("samenwijzer.oer_context._DB_PAD", db_pad):
+    with patch("samenwijzer.oer_store.OEREN_DB_PAD", db_pad):
         resultaat = haal_oer_context_op(student_series)
     assert "OER-inhoud" in resultaat

@@ -71,14 +71,12 @@ def overlay_self_scores(df: pd.DataFrame, db_path: Path = _DB_PATH) -> pd.DataFr
             continue
         iets_gewijzigd = True
 
-        # Herbereken kt-scores als gemiddelde van hun werkprocessen.
         for kt_col in kt_kolommen:
             kt_index = int(kt_col.removeprefix(_KT_PREFIX))
             nieuwe_kt = bereken_kt_uit_wp(overlaid.loc[idx], kt_index=kt_index)
             if not pd.isna(nieuwe_kt):
                 overlaid.at[idx, kt_col] = nieuwe_kt
 
-        # Herbereken headline-voortgang als gemiddelde van de kt-scores / 100.
         if "voortgang" in overlaid.columns:
             kt_scores = pd.to_numeric(overlaid.loc[idx, kt_kolommen], errors="coerce").dropna()
             if not kt_scores.empty:
