@@ -3,12 +3,32 @@
 from os import environ
 
 import anthropic
+from anthropic.types import TextBlockParam
 
 APITimeoutError = anthropic.APITimeoutError
 
 # Standaardmodel voor tutor, coach, outreach en welzijn.
 # whatsapp.py kiest bewust een eigen (lichter) model.
 MODEL = "claude-sonnet-4-6"
+
+
+def oer_systeem_prompt(oer_tekst: str) -> list[TextBlockParam]:
+    """Bouw een system-prompt-blok met de OER-context van de student.
+
+    De OER-tekst is groot en per student identiek over opeenvolgende calls; door
+    het als apart blok met `cache_control=ephemeral` te markeren wordt het door
+    Anthropic gecachet en niet elke call opnieuw in rekening gebracht. Geeft een
+    lege lijst terug als er geen OER-tekst is, zodat de caller `system` weglaat.
+    """
+    if not oer_tekst:
+        return []
+    return [
+        {
+            "type": "text",
+            "text": f"## OER van de student\n{oer_tekst}",
+            "cache_control": {"type": "ephemeral"},
+        }
+    ]
 
 
 def vriendelijke_fout(e: Exception) -> str:

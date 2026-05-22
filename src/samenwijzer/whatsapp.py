@@ -272,7 +272,7 @@ def sla_whatsapp_gesprek_op(studentnummer: str, context: list[dict], datum: date
     """
     _GESPREKKEN_PAD.mkdir(parents=True, exist_ok=True)
     pad = (_GESPREKKEN_PAD / f"whatsapp_context_{studentnummer}.json").resolve()
-    if not str(pad).startswith(str(_GESPREKKEN_PAD.resolve())):
+    if not pad.is_relative_to(_GESPREKKEN_PAD.resolve()):
         raise ValueError(f"Ongeldig studentnummer voor bestandsopslag: {studentnummer!r}")
     payload = {"studentnummer": studentnummer, "datum": datum.isoformat(), "gesprek": context}
     pad.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -284,7 +284,7 @@ def sla_whatsapp_gesprek_op(studentnummer: str, context: list[dict], datum: date
 def laad_whatsapp_gesprek(studentnummer: str) -> dict | None:
     """Laad het meest recente WhatsApp-gesprek voor een student, of None als er geen is."""
     pad = (_GESPREKKEN_PAD / f"whatsapp_context_{studentnummer}.json").resolve()
-    if not str(pad).startswith(str(_GESPREKKEN_PAD.resolve())):
+    if not pad.is_relative_to(_GESPREKKEN_PAD.resolve()):
         return None
     if not pad.exists():
         return None

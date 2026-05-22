@@ -6,7 +6,7 @@ import anthropic
 import httpx
 import pytest
 
-from samenwijzer._ai import vriendelijke_fout
+from samenwijzer._ai import oer_systeem_prompt, vriendelijke_fout
 
 
 def _maak_status_error(status_code: int) -> anthropic.APIStatusError:
@@ -49,6 +49,18 @@ def test_bad_request_error():
 def test_unknown_exception_includes_class_name():
     melding = vriendelijke_fout(ValueError("iets vreemds"))
     assert "ValueError" in melding
+
+
+def test_oer_systeem_prompt_markeert_caching():
+    """De OER-context wordt als cache_control=ephemeral-blok gestuurd (prompt-caching)."""
+    blokken = oer_systeem_prompt("Kerntaak 1: zorg verlenen")
+    assert blokken[0]["cache_control"] == {"type": "ephemeral"}
+    assert "Kerntaak 1: zorg verlenen" in blokken[0]["text"]
+
+
+def test_oer_systeem_prompt_leeg_zonder_tekst():
+    """Zonder OER-tekst een lege lijst, zodat de caller `system` weglaat."""
+    assert oer_systeem_prompt("") == []
 
 
 @pytest.mark.parametrize(

@@ -3,6 +3,8 @@
 from unittest.mock import MagicMock, patch
 
 import pytest
+from anthropic import omit
+from anthropic.types import TextBlock
 
 from samenwijzer.coach import (
     SCENARIO_OPTIES,
@@ -23,7 +25,7 @@ from tests.helpers import mock_stream, mock_stream_fragmenten, mock_stream_met_f
 def _mock_response(tekst: str) -> MagicMock:
     """Bouw een mock messages.create-response."""
     mock_msg = MagicMock()
-    mock_msg.content = [MagicMock(type="text", text=tekst)]
+    mock_msg.content = [TextBlock(type="text", text=tekst, citations=None)]
     return mock_msg
 
 
@@ -461,7 +463,7 @@ def test_genereer_oefentoets_geeft_volledige_tekst_terug(mock_cls: MagicMock) ->
 
     toets_tekst = "Vraag 1: ...\nANTWOORDEN: 1=A"
     mock_response = MagicMock()
-    mock_response.content = [MagicMock(type="text", text=toets_tekst)]
+    mock_response.content = [TextBlock(type="text", text=toets_tekst, citations=None)]
     mock_client = MagicMock()
     mock_client.messages.create.return_value = mock_response
     mock_cls.return_value = mock_client
@@ -491,14 +493,15 @@ def test_genereer_lesmateriaal_oer_tekst_in_systeem(mock_cls: MagicMock) -> None
     )
 
     call_kwargs = mock_client.messages.stream.call_args.kwargs
-    assert "system" in call_kwargs
-    assert "OER van de student" in call_kwargs["system"]
-    assert "Kerntaak 1: Bereiden van gerechten" in call_kwargs["system"]
+    oer_blok = call_kwargs["system"][0]
+    assert oer_blok["cache_control"] == {"type": "ephemeral"}
+    assert "OER van de student" in oer_blok["text"]
+    assert "Kerntaak 1: Bereiden van gerechten" in oer_blok["text"]
 
 
 @patch("samenwijzer._ai.anthropic.Anthropic")
 def test_genereer_lesmateriaal_zonder_oer_tekst_geen_systeem(mock_cls: MagicMock) -> None:
-    """Zonder OER-tekst wordt geen system-parameter meegegeven."""
+    """Zonder OER-tekst wordt `omit` als system meegegeven (= geen system naar de API)."""
     mock_client = MagicMock()
     mock_client.messages.stream.return_value = mock_stream("OK")
     mock_cls.return_value = mock_client
@@ -506,7 +509,7 @@ def test_genereer_lesmateriaal_zonder_oer_tekst_geen_systeem(mock_cls: MagicMock
     list(genereer_lesmateriaal("hygiëne", "Horeca", "Starter", api_key="test"))
 
     call_kwargs = mock_client.messages.stream.call_args.kwargs
-    assert "system" not in call_kwargs
+    assert call_kwargs["system"] is omit
 
 
 @patch("samenwijzer._ai.anthropic.Anthropic")
@@ -526,8 +529,9 @@ def test_geef_feedback_op_werk_oer_tekst_in_systeem(mock_cls: MagicMock) -> None
     )
 
     call_kwargs = mock_client.messages.stream.call_args.kwargs
-    assert "OER van de student" in call_kwargs["system"]
-    assert "OER sectie 3" in call_kwargs["system"]
+    systeem_tekst = call_kwargs["system"][0]["text"]
+    assert "OER van de student" in systeem_tekst
+    assert "OER sectie 3" in systeem_tekst
 
 
 @patch("samenwijzer._ai.anthropic.Anthropic")
