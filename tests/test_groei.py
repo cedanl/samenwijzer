@@ -90,6 +90,22 @@ def test_overlay_herberekent_voortgang_uit_kt(db: Path) -> None:
     assert s002["voortgang"] == pytest.approx(0.35)
 
 
+def test_overlay_telt_heraccordering_na_bewerking(db: Path) -> None:
+    """Een goedgekeurde score telt; na bewerken telt de oude tot heraccordering, dan de nieuwe."""
+    df = pd.DataFrame([_basisrij("S001")])
+    _keur_goed(db, "S001", {"wp_1_1": 60})
+    assert overlay_self_scores(df, db_path=db).iloc[0]["wp_1_1"] == 60
+
+    # Student verhoogt naar 90 (concept) en dient in — nog niet goedgekeurd:
+    sla_groei_op("S001", [GroeiActueel("S001", "wp_1_1", 90, "", "2026-05-20T10:00:00")], db)
+    dien_in("S001", ["wp_1_1"], db)
+    assert overlay_self_scores(df, db_path=db).iloc[0]["wp_1_1"] == 60  # oude goedkeuring telt nog
+
+    # Mentor keurt de nieuwe waarde goed:
+    keur_goed("S001", "wp_1_1", "Mentor A", db)
+    assert overlay_self_scores(df, db_path=db).iloc[0]["wp_1_1"] == 90  # nu telt de nieuwe
+
+
 def test_overlay_zonder_voortgang_kolom_crasht_niet(db: Path) -> None:
     df = pd.DataFrame([_basisrij("S001")])
     _keur_goed(db, "S001", {"wp_1_1": 90})

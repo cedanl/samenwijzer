@@ -330,10 +330,13 @@ with tab_scores:
             if rijen:
                 sla_groei_op(studentnummer, rijen)
             if indienen:
+                gewijzigde_wps = {r.wp_kolom for r in rijen}
                 in_te_dienen = [
                     wp
                     for wp in nieuwe_waarden
-                    if (wp not in actueel) or actueel[wp].status != "goedgekeurd"
+                    if wp in gewijzigde_wps
+                    or (wp not in actueel)
+                    or actueel[wp].status != "goedgekeurd"
                 ]
                 dien_in(studentnummer, in_te_dienen)
                 st.success("Ingediend bij je mentor.")
