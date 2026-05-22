@@ -1,6 +1,5 @@
-"""Tests voor app/webhook.py — TwiML-helpers, CSV-schrijven, handtekeningvalidatie en endpoint."""
+"""Tests voor app/webhook.py — TwiML-helpers, handtekeningvalidatie en endpoint."""
 
-import csv
 import sys
 from datetime import date
 from pathlib import Path
@@ -74,60 +73,6 @@ def test_twiml_leeg_geeft_lege_response() -> None:
     root = ET.fromstring(resp.body)
     assert root.tag == "Response"
     assert len(list(root)) == 0  # geen child-elementen
-
-
-# ── _sla_welzijnscheck_op ─────────────────────────────────────────────────────
-
-
-def test_sla_welzijnscheck_op_schrijft_header_bij_nieuw_bestand(csv_pad) -> None:
-    from app.webhook import _sla_welzijnscheck_op
-    from samenwijzer.wellbeing import WelzijnsCheck
-
-    check = WelzijnsCheck(studentnummer="100001", datum=date(2026, 4, 14), antwoord=2)
-    _sla_welzijnscheck_op(check)
-
-    assert csv_pad.exists()
-    with csv_pad.open(encoding="utf-8") as fh:
-        reader = csv.DictReader(fh)
-        rijen = list(reader)
-
-    assert len(rijen) == 1
-    assert rijen[0]["studentnummer"] == "100001"
-    assert rijen[0]["datum"] == "2026-04-14"
-    assert rijen[0]["antwoord"] == "2"
-
-
-def test_sla_welzijnscheck_op_voegt_toe_zonder_extra_header(csv_pad) -> None:
-    from app.webhook import _sla_welzijnscheck_op
-    from samenwijzer.wellbeing import WelzijnsCheck
-
-    _sla_welzijnscheck_op(
-        WelzijnsCheck(studentnummer="100001", datum=date(2026, 4, 14), antwoord=1)
-    )
-    _sla_welzijnscheck_op(
-        WelzijnsCheck(studentnummer="100002", datum=date(2026, 4, 15), antwoord=3)
-    )
-
-    with csv_pad.open(encoding="utf-8") as fh:
-        reader = csv.DictReader(fh)
-        rijen = list(reader)
-
-    assert len(rijen) == 2
-    assert rijen[1]["studentnummer"] == "100002"
-
-
-def test_sla_welzijnscheck_op_toelichting_is_leeg(csv_pad) -> None:
-    from app.webhook import _sla_welzijnscheck_op
-    from samenwijzer.wellbeing import WelzijnsCheck
-
-    _sla_welzijnscheck_op(
-        WelzijnsCheck(studentnummer="100001", datum=date(2026, 4, 14), antwoord=2)
-    )
-
-    with csv_pad.open(encoding="utf-8") as fh:
-        reader = csv.DictReader(fh)
-        rij = next(reader)
-    assert rij["toelichting"] == ""
 
 
 # ── _valideer_twilio_handtekening ─────────────────────────────────────────────
@@ -223,18 +168,18 @@ def test_endpoint_slaat_welzijnscheck_op(client, csv_pad) -> None:
     check = WelzijnsCheck(studentnummer="100001", datum=date(2026, 4, 14), antwoord=2)
     with patch("app.webhook.verwerk_inkomend_bericht") as mock_verwerk:
         mock_verwerk.return_value = _maak_verwerk_resultaat("OK", check)
-        with patch("app.webhook._sla_welzijnscheck_op") as mock_sla:
+        with patch("app.webhook.sla_welzijnscheck_op") as mock_sla:
             client.post(
                 "/webhook/whatsapp",
                 data={"From": "whatsapp:+31612345678", "Body": "2"},
             )
-    mock_sla.assert_called_once_with(check)
+    mock_sla.assert_called_once_with(csv_pad, check)
 
 
 def test_endpoint_slaat_geen_welzijnscheck_op_zonder_check(client) -> None:
     with patch("app.webhook.verwerk_inkomend_bericht") as mock_verwerk:
         mock_verwerk.return_value = _maak_verwerk_resultaat("Stop bevestiging", welzijns_check=None)
-        with patch("app.webhook._sla_welzijnscheck_op") as mock_sla:
+        with patch("app.webhook.sla_welzijnscheck_op") as mock_sla:
             client.post(
                 "/webhook/whatsapp",
                 data={"From": "whatsapp:+31612345678", "Body": "stop"},

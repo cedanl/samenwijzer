@@ -8,7 +8,6 @@ De handler verwerkt het bericht, slaat een eventuele WelzijnsCheck op in
 data/02-prepared/welzijn.csv, en stuurt het antwoord terug via TwiML.
 """
 
-import csv
 import logging
 import os
 import sys
@@ -25,7 +24,7 @@ from twilio.request_validator import RequestValidator
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 load_dotenv(Path(__file__).parent.parent / ".env")
 
-from samenwijzer.wellbeing import WelzijnsCheck  # noqa: E402
+from samenwijzer.wellbeing import sla_welzijnscheck_op  # noqa: E402
 from samenwijzer.whatsapp import verwerk_inkomend_bericht  # noqa: E402
 
 log = logging.getLogger(__name__)
@@ -34,9 +33,6 @@ logging.basicConfig(level=logging.INFO)
 app = FastAPI(title="Samenwijzer WhatsApp Webhook")
 
 _WELZIJN_CSV = Path(__file__).parent.parent / "data" / "02-prepared" / "welzijn.csv"
-_WELZIJN_CSV.parent.mkdir(parents=True, exist_ok=True)
-
-_KOLOMMEN = ["studentnummer", "datum", "antwoord", "toelichting"]
 
 
 # ── Hulpfuncties ──────────────────────────────────────────────────────────────
@@ -48,29 +44,6 @@ def _valideer_twilio_handtekening(request: Request, auth_token: str, params: dic
     url = str(request.url)
     signature = request.headers.get("X-Twilio-Signature", "")
     return validator.validate(url, params, signature)
-
-
-def _sla_welzijnscheck_op(check: WelzijnsCheck) -> None:
-    """Voeg een WelzijnsCheck toe aan de welzijn.csv."""
-    bestaat = _WELZIJN_CSV.exists()
-    with _WELZIJN_CSV.open("a", newline="", encoding="utf-8") as fh:
-        writer = csv.DictWriter(fh, fieldnames=_KOLOMMEN)
-        if not bestaat:
-            writer.writeheader()
-        writer.writerow(
-            {
-                "studentnummer": check.studentnummer,
-                "datum": check.datum.isoformat(),
-                "antwoord": check.antwoord,
-                "toelichting": "",
-            }
-        )
-    log.info(
-        "WelzijnsCheck opgeslagen: student=%s datum=%s antwoord=%s",
-        check.studentnummer,
-        check.datum,
-        check.antwoord,
-    )
 
 
 def _twiml_antwoord(tekst: str) -> Response:
@@ -126,7 +99,7 @@ async def whatsapp_webhook(
     )
 
     if resultaat.welzijns_check:
-        _sla_welzijnscheck_op(resultaat.welzijns_check)
+        sla_welzijnscheck_op(_WELZIJN_CSV, resultaat.welzijns_check)
 
     if resultaat.antwoord_tekst:
         return _twiml_antwoord(resultaat.antwoord_tekst)

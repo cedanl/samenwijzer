@@ -1,5 +1,6 @@
 """Welzijnsdata: datamodel, risicoscoreberekening, signalering en notities."""
 
+import csv
 from dataclasses import dataclass
 from datetime import date, datetime
 from pathlib import Path
@@ -64,6 +65,32 @@ def heeft_signaal(check: WelzijnsCheck, drempel: float = 0.55) -> bool:
         True als er een signaal is.
     """
     return welzijnswaarde(check) < drempel
+
+
+_WELZIJN_CHECK_KOLOMMEN = ["studentnummer", "datum", "antwoord", "toelichting"]
+
+
+def sla_welzijnscheck_op(path: Path, check: WelzijnsCheck) -> None:
+    """Voeg een WelzijnsCheck toe aan de welzijn-CSV (append; header bij nieuw bestand).
+
+    Args:
+        path: Pad naar het welzijn-CSV-bestand (wordt aangemaakt indien nodig).
+        check: De op te slaan welzijnscheck.
+    """
+    bestaat = path.exists()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", newline="", encoding="utf-8") as fh:
+        writer = csv.DictWriter(fh, fieldnames=_WELZIJN_CHECK_KOLOMMEN)
+        if not bestaat:
+            writer.writeheader()
+        writer.writerow(
+            {
+                "studentnummer": check.studentnummer,
+                "datum": check.datum.isoformat(),
+                "antwoord": check.antwoord,
+                "toelichting": check.toelichting or "",
+            }
+        )
 
 
 # ── Notities ──────────────────────────────────────────────────────────────────
