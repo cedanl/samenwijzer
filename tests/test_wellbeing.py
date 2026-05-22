@@ -17,6 +17,7 @@ from samenwijzer.wellbeing import (
     heeft_signaal,
     laad_notities,
     sla_notitie_op,
+    sla_welzijnscheck_op,
     welzijnswaarde,
 )
 
@@ -307,3 +308,51 @@ def test_sla_notitie_op_geen_schrijfrechten(tmp_path: Path) -> None:
             sla_notitie_op(beveiligde_map / "notities.csv", "S001", "M. Bakker", "Test")
     finally:
         beveiligde_map.chmod(0o755)
+
+
+# ── sla_welzijnscheck_op ──────────────────────────────────────────────────────
+
+
+def test_sla_welzijnscheck_op_schrijft_header_bij_nieuw_bestand(tmp_path):
+    import csv
+
+    pad = tmp_path / "welzijn.csv"
+    sla_welzijnscheck_op(pad, WelzijnsCheck("100001", date(2026, 4, 14), 2))
+
+    assert pad.exists()
+    with pad.open(encoding="utf-8") as fh:
+        rijen = list(csv.DictReader(fh))
+
+    assert len(rijen) == 1
+    assert rijen[0]["studentnummer"] == "100001"
+    assert rijen[0]["datum"] == "2026-04-14"
+    assert rijen[0]["antwoord"] == "2"
+
+
+def test_sla_welzijnscheck_op_voegt_toe_zonder_extra_header(tmp_path):
+    import csv
+
+    pad = tmp_path / "welzijn.csv"
+    sla_welzijnscheck_op(pad, WelzijnsCheck("100001", date(2026, 4, 14), 1))
+    sla_welzijnscheck_op(pad, WelzijnsCheck("100002", date(2026, 4, 15), 3))
+
+    with pad.open(encoding="utf-8") as fh:
+        rijen = list(csv.DictReader(fh))
+
+    assert len(rijen) == 2
+    assert rijen[1]["studentnummer"] == "100002"
+
+
+def test_sla_welzijnscheck_op_schrijft_toelichting(tmp_path):
+    """Lege toelichting blijft leeg; ingevulde toelichting wordt meegeschreven."""
+    import csv
+
+    pad = tmp_path / "welzijn.csv"
+    sla_welzijnscheck_op(pad, WelzijnsCheck("100001", date(2026, 4, 14), 2))
+    sla_welzijnscheck_op(pad, WelzijnsCheck("100002", date(2026, 4, 15), 3, toelichting="zwaar"))
+
+    with pad.open(encoding="utf-8") as fh:
+        rijen = list(csv.DictReader(fh))
+
+    assert rijen[0]["toelichting"] == ""
+    assert rijen[1]["toelichting"] == "zwaar"
