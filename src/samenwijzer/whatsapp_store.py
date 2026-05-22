@@ -10,7 +10,7 @@ import logging
 import os
 import sqlite3
 from dataclasses import asdict, dataclass
-from datetime import datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
 from cryptography.fernet import Fernet, InvalidToken
@@ -290,3 +290,18 @@ def verwijder_sessie(from_number: str) -> None:
     """
     with _verbinding() as conn:
         conn.execute("DELETE FROM whatsapp_sessies WHERE from_number=?", (from_number,))
+
+
+def verwijder_oude_sessies(max_dagen: int = 30, *, peildatum: date | None = None) -> int:
+    """Verwijder gesprekssessies ouder dan max_dagen (AVG-retentie); geeft het aantal terug.
+
+    Vergelijkt op `gestart_op` (date-isoformat, lexicografisch correct) t.o.v. `peildatum`
+    (default vandaag). Rijen zonder gestart_op blijven staan — die zijn niet te dateren.
+    """
+    grens = ((peildatum or date.today()) - timedelta(days=max_dagen)).isoformat()
+    with _verbinding() as conn:
+        cur = conn.execute(
+            "DELETE FROM whatsapp_sessies WHERE gestart_op IS NOT NULL AND gestart_op < ?",
+            (grens,),
+        )
+        return cur.rowcount

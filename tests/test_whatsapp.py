@@ -23,6 +23,12 @@ def tmp_db(tmp_path, monkeypatch):
     yield db_pad
 
 
+@pytest.fixture(autouse=True)
+def _tmp_gesprekken_pad(tmp_path, monkeypatch):
+    """Houd gespreksbestand-IO (incl. de lazy AVG-purge) uit de echte data/-map."""
+    monkeypatch.setattr("samenwijzer.whatsapp._GESPREKKEN_PAD", tmp_path)
+
+
 # ── whatsapp_store ─────────────────────────────────────────────────────────────
 
 
@@ -711,3 +717,51 @@ def test_whatsapp_gesprek_roundtrip(tmp_path, monkeypatch):
 
     assert laad_whatsapp_gesprek("S0001")["gesprek"] == context
     assert laad_whatsapp_gesprek("../../../../../../etc/passwd") is None
+
+
+# ── AVG-retentie ──────────────────────────────────────────────────────────────
+
+
+def test_verwijder_oude_sessies():
+    """Sessies ouder dan 30 dagen worden verwijderd, recente blijven staan."""
+    from datetime import timedelta
+
+    from samenwijzer.whatsapp_store import (
+        WhatsappSessie,
+        get_sessie,
+        sla_sessie_op,
+        verwijder_oude_sessies,
+    )
+
+    oud = (date.today() - timedelta(days=40)).isoformat()
+    recent = date.today().isoformat()
+    sla_sessie_op(WhatsappSessie("+3110", "checkin", 0, "[]", oud))
+    sla_sessie_op(WhatsappSessie("+3120", "checkin", 0, "[]", recent))
+
+    aantal = verwijder_oude_sessies(max_dagen=30)
+
+    assert aantal == 1
+    assert get_sessie("+3110") is None
+    assert get_sessie("+3120") is not None
+
+
+def test_verwijder_verouderde_gesprekshistorie_bestanden(tmp_path, monkeypatch):
+    """Contextbestanden ouder dan 30 dagen (mtime) worden verwijderd, recente blijven."""
+    import os
+    from datetime import datetime, timedelta
+
+    from samenwijzer import whatsapp
+
+    monkeypatch.setattr("samenwijzer.whatsapp._GESPREKKEN_PAD", tmp_path)
+    oud = tmp_path / "whatsapp_context_S0001.json"
+    nieuw = tmp_path / "whatsapp_context_S0002.json"
+    oud.write_text("{}", encoding="utf-8")
+    nieuw.write_text("{}", encoding="utf-8")
+    veertig_dagen_terug = (datetime.now() - timedelta(days=40)).timestamp()
+    os.utime(oud, (veertig_dagen_terug, veertig_dagen_terug))
+
+    resultaat = whatsapp.verwijder_verouderde_gesprekshistorie(max_dagen=30)
+
+    assert not oud.exists()
+    assert nieuw.exists()
+    assert resultaat["bestanden"] == 1

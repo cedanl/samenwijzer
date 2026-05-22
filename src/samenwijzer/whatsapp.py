@@ -13,7 +13,7 @@ import json
 import logging
 import os
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, datetime, time, timedelta
 from pathlib import Path
 from typing import Literal
 
@@ -29,6 +29,7 @@ from samenwijzer.whatsapp_store import (
     get_sessie,
     get_studentnummer_voor_telefoon,
     sla_sessie_op,
+    verwijder_oude_sessies,
     verwijder_sessie,
 )
 
@@ -240,6 +241,13 @@ def verwerk_inkomend_bericht(
     Returns:
         VerwerkResultaat met antwoord_tekst (None = niets sturen) en welzijns_check.
     """
+    try:
+        # Lazy AVG-opschoning: draait waar de echte data leeft. Mag een live gesprek
+        # nooit breken, dus fouten worden gelogd en genegeerd.
+        verwijder_verouderde_gesprekshistorie(peildatum=ontvangen_op)
+    except Exception:
+        log.exception("AVG-retentie-opschoning mislukt")
+
     antwoord = parseer_antwoord(body)
 
     if antwoord.soort == "stop":
@@ -292,6 +300,35 @@ def laad_whatsapp_gesprek(studentnummer: str) -> dict | None:
         return json.loads(pad.read_text(encoding="utf-8"))
     except (json.JSONDecodeError, OSError):
         return None
+
+
+def verwijder_verouderde_gesprekshistorie(
+    max_dagen: int = 30, *, peildatum: date | None = None
+) -> dict:
+    """Verwijder gesprekshistorie ouder dan max_dagen (AVG): sessies én opgeslagen contexten.
+
+    AVG vereist dat WhatsApp-gesprekshistorie maximaal 30 dagen bewaard blijft. Gerekend
+    vanaf `peildatum` (default vandaag; bij een inkomend bericht de ontvangstdatum). De
+    contextbestanden worden op bestands-mtime beoordeeld (ze worden één keer geschreven
+    bij afsluiten van een gesprek). Telefoonregistraties (opt-in-toestemming) blijven
+    buiten schot — dat is geen gesprekshistorie.
+    """
+    peil = peildatum or date.today()
+    sessies = verwijder_oude_sessies(max_dagen, peildatum=peil)
+    grens = (datetime.combine(peil, time.min) - timedelta(days=max_dagen)).timestamp()
+    bestanden = 0
+    for pad in _GESPREKKEN_PAD.glob("whatsapp_context_*.json"):
+        try:
+            if pad.stat().st_mtime < grens:
+                pad.unlink(missing_ok=True)
+                bestanden += 1
+        except OSError:
+            continue
+    if sessies or bestanden:
+        log.info(
+            "AVG-retentie: %d sessie(s) en %d gespreksbestand(en) verwijderd", sessies, bestanden
+        )
+    return {"sessies": sessies, "bestanden": bestanden}
 
 
 # ── AI ────────────────────────────────────────────────────────────────────────
