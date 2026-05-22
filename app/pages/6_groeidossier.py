@@ -9,7 +9,7 @@ import streamlit as st
 
 from samenwijzer._ai import APITimeoutError, vriendelijke_fout
 from samenwijzer.analyze import get_student, oer_label
-from samenwijzer.auth import mentor_filter
+from samenwijzer.auth import mentor_filter, vereist_eigen_student
 from samenwijzer.bewijsstuk_store import (
     MAX_GROOTTE_BYTES,
     TOEGESTANE_EXTENSIES,
@@ -74,9 +74,8 @@ else:
         st.stop()
     keuze = st.selectbox("Selecteer een student uit jouw groep", opties)
     studentnummer = keuze.split("(")[-1].rstrip(")")
-    if studentnummer not in groep["studentnummer"].values:
-        st.error("Geen toegang tot deze student.")
-        st.stop()
+    # Centrale eigenaarscheck: een docent mag alleen z'n eigen studenten beoordelen.
+    vereist_eigen_student(df, studentnummer)
     is_eigenaar = False
 
 student = get_student(df, studentnummer)
