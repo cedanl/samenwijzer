@@ -685,3 +685,29 @@ class TestEncryptieFoutpaden:
 
         with pytest.raises(InvalidToken):
             ontsleutel(versleuteld)
+
+
+# ── whatsapp gespreksopslag (path-guard) ──────────────────────────────────────
+
+
+def test_sla_whatsapp_gesprek_op_weigert_path_traversal(tmp_path, monkeypatch):
+    """Een studentnummer met path-traversal valt buiten de opslagmap en wordt geweigerd."""
+    from samenwijzer.whatsapp import sla_whatsapp_gesprek_op
+
+    monkeypatch.setattr("samenwijzer.whatsapp._GESPREKKEN_PAD", tmp_path)
+    with pytest.raises(ValueError, match="Ongeldig studentnummer"):
+        sla_whatsapp_gesprek_op(
+            "../../../../../../etc/passwd", [{"rol": "student", "tekst": "hoi"}], date(2026, 5, 22)
+        )
+
+
+def test_whatsapp_gesprek_roundtrip(tmp_path, monkeypatch):
+    """Geldig studentnummer: opslaan en weer inlezen levert hetzelfde gesprek; traversal → None."""
+    from samenwijzer.whatsapp import laad_whatsapp_gesprek, sla_whatsapp_gesprek_op
+
+    monkeypatch.setattr("samenwijzer.whatsapp._GESPREKKEN_PAD", tmp_path)
+    context = [{"rol": "student", "tekst": "hoi"}]
+    sla_whatsapp_gesprek_op("S0001", context, date(2026, 5, 22))
+
+    assert laad_whatsapp_gesprek("S0001")["gesprek"] == context
+    assert laad_whatsapp_gesprek("../../../../../../etc/passwd") is None

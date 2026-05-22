@@ -3,9 +3,10 @@
 from collections.abc import Generator
 from dataclasses import dataclass, field
 
-from anthropic.types import MessageParam
+from anthropic import omit
+from anthropic.types import MessageParam, TextBlock
 
-from samenwijzer._ai import MODEL, _client
+from samenwijzer._ai import MODEL, _client, oer_systeem_prompt
 
 _MAX_TOKENS = 2048
 
@@ -43,16 +44,12 @@ def genereer_lesmateriaal(
         "Voeg aan het einde 2-3 reflectievragen toe om begrip te toetsen."
     )
 
-    stream_kwargs: dict = {}
-    if oer_tekst:
-        stream_kwargs["system"] = f"## OER van de student\n{oer_tekst}"
-
     client = _client(api_key)
     with client.messages.stream(
         model=MODEL,
         max_tokens=_MAX_TOKENS,
         messages=[{"role": "user", "content": prompt}],
-        **stream_kwargs,
+        system=oer_systeem_prompt(oer_tekst) or omit,
     ) as stream:
         yield from stream.text_stream
 
@@ -234,18 +231,14 @@ def genereer_oefentoets(
         "ANTWOORDEN: 1=A, 2=C, 3=B, 4=D, 5=A"
     )
 
-    create_kwargs: dict = {}
-    if oer_tekst:
-        create_kwargs["system"] = f"## OER van de student\n{oer_tekst}"
-
     client = _client(api_key)
     response = client.messages.create(
         model=MODEL,
         max_tokens=_MAX_TOKENS,
         messages=[{"role": "user", "content": prompt}],
-        **create_kwargs,
+        system=oer_systeem_prompt(oer_tekst) or omit,
     )
-    return next(b.text for b in response.content if b.type == "text")
+    return next(b.text for b in response.content if isinstance(b, TextBlock))
 
 
 def controleer_antwoorden(
@@ -351,16 +344,12 @@ def genereer_weekplan(
         "- Schrijf in het Nederlands"
     )
 
-    stream_kwargs: dict = {}
-    if oer_tekst:
-        stream_kwargs["system"] = f"## OER van de student\n{oer_tekst}"
-
     client = _client(api_key)
     with client.messages.stream(
         model=MODEL,
         max_tokens=_MAX_TOKENS,
         messages=[{"role": "user", "content": prompt}],
-        **stream_kwargs,
+        system=oer_systeem_prompt(oer_tekst) or omit,
     ) as stream:
         yield from stream.text_stream
 
@@ -394,15 +383,11 @@ def geef_feedback_op_werk(
         f"Werk van de student:\n{werk}"
     )
 
-    stream_kwargs: dict = {}
-    if oer_tekst:
-        stream_kwargs["system"] = f"## OER van de student\n{oer_tekst}"
-
     client = _client(api_key)
     with client.messages.stream(
         model=MODEL,
         max_tokens=_MAX_TOKENS,
         messages=[{"role": "user", "content": prompt}],
-        **stream_kwargs,
+        system=oer_systeem_prompt(oer_tekst) or omit,
     ) as stream:
         yield from stream.text_stream
