@@ -51,6 +51,9 @@ Target users: students (progress, AI tutor, wellbeing check) and internal daily 
 | `whatsapp_store.py` | SQLite: WhatsApp-registraties (Fernet-versleuteld) en sessies |
 | `scheduler.py` | Wekelijkse check-in verzender (GitHub Actions cron entry point) |
 | `oer_context.py` | OER-tekst ophalen per student (`haal_oer_context_op(student_row)`); inject in AI-calls |
+| `groei.py` | Groeidossier-logic: `overlay_self_scores()` (alleen goedgekeurde scores), recalc kt/voortgang/risico |
+| `groei_store.py` | SQLite (groei.db): `groei_actueel` (status-workflow, `dien_in`/`keur_goed`/`geef_terug`), `groei_historie`, `mentor_feedback`, `bewijsstuk` |
+| `bewijsstuk_store.py` | Bewijsstuk-uploads: `data/bewijsstukken/<studentnummer>/<uuid>.<ext>` + metadata |
 | `_ai.py` | Gedeelde Anthropic client factory (`_client()`) |
 | `styles.py` | EduPulse CSS + `render_nav()` (vaste header) + `render_footer()` |
 

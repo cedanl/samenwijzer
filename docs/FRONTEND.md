@@ -59,6 +59,7 @@ studentnummer = st.session_state["studentnummer"]
 | `3_leercoach.py` | 🎓 | student | AI tutor, lesmateriaal, oefentoets; OER-context geladen bij paginastart |
 | `4_outreach.py` | 📬 | docent | Werklijst, campagnes, effectiviteit |
 | `5_welzijn.py` | 💚 | student | Self-assessment + AI-reactie |
+| `6_groeidossier.py` | 🌱 | student/docent | Student: self-rating + bewijsstukken per werkproces, concept opslaan / indienen. Docent: per werkproces goedkeuren of teruggeven met verbeterfeedback. Tabs: beoordeling, groei over tijd, spinneweb |
 | `uitloggen.py` | — | — | Sessie wissen + redirect naar `/` |
 
 ## AI call conventions
