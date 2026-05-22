@@ -134,6 +134,16 @@ Nooit raw SQL in `app/`. Alle drie DBs zijn gitignored.
 onder `data/bewijsstukken/<studentnummer>/`, max 10 MB, alleen pdf/jpg/jpeg/png/docx/xlsx). Validatie
 van studentnummer en extensie gebeurt daar — `app/` doet geen directe filesystem-writes.
 
+**Groeidossier-goedkeuring**: elk werkproces in `groei_actueel` heeft een status
+(`concept → ingediend → goedgekeurd / teruggegeven`). De student dient in (`dien_in`), de mentor
+keurt goed (`keur_goed`) of geeft terug met verbeterfeedback (`geef_terug`). **Alleen
+`goedgekeurde_score` telt mee**: `groei.overlay_self_scores()` legt uitsluitend goedgekeurde scores
+over `df` en herberekent kt-scores, `voortgang` én de `risico`-vlag (via `transform._bereken_risico`).
+Concept/ingediend tellen nooit mee; bewerken van een goedgekeurd werkproces zet het terug naar
+concept terwijl de oude goedgekeurde score blijft tellen tot heraccordering. De store dwingt de
+statusovergangen af via SQL-guards. Na een mentor-actie wordt `st.session_state["df"]` ververst zodat
+voortgang/risico meteen meebewegen.
+
 Volledige laagbeschrijving en module-rollen: zie `ARCHITECTURE.md` en `AGENTS.md`.
 
 ## UI- & paginaconventies

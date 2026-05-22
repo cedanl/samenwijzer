@@ -33,6 +33,9 @@ Cross-cutting modules (no layer restriction, import explicitly):
   oer_store.py      ← SQLite persistence voor OER-catalog (oeren.db): instellingen, oer_documenten, kerntaken
   oer_parsing.py    ← OER PDF/bestandsnaam parsing: crebo, opleiding, niveau, kerntaken
   oer_context.py    ← OER-tekst ophalen per student (display_naam lookup + markitdown-tekst laden)
+  groei.py          ← Groeidossier business-logic: overlay van goedgekeurde self-scores, herberekening kt/voortgang/risico
+  groei_store.py    ← SQLite persistence voor groeidossier (groei.db): groei_actueel (status-workflow), groei_historie, mentor_feedback, bewijsstuk
+  bewijsstuk_store.py ← Bewijsstuk-uploads: filesystem (data/bewijsstukken/<studentnummer>/) + metadata via groei_store
 ```
 
 Dependency direction is strictly left-to-right (prepare → export).
@@ -51,6 +54,12 @@ the outreach page (docent) and the welzijn page (student).
 SQLite (`data/02-prepared/oeren.db`) is built once by `scripts/build_oer_catalog.py` from OER
 PDFs in `oeren/`. Tables: `instellingen`, `oer_documenten`, `kerntaken`. Read by
 `prepare._voeg_kt_wp_scores_toe()` and `analyze._oer_label()` to resolve kerntaak names.
+
+SQLite (`data/02-prepared/groei.db`) is written exclusively by `groei_store.py` and holds de
+groeidossier-data: `groei_actueel` (self-rating per werkproces met goedkeuringsstatus
+concept→ingediend→goedgekeurd/teruggegeven + `goedgekeurde_score`), `groei_historie` (snapshots),
+`mentor_feedback`, `bewijsstuk`. `groei.overlay_self_scores()` legt **alleen goedgekeurde** scores
+over de sessie-`df` en herberekent kt-scores, `voortgang` en de `risico`-vlag.
 
 ## AI integration
 
