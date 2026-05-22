@@ -90,6 +90,27 @@ def test_oer_label_lege_opleiding_geeft_kolom_terug(oer_db: Path) -> None:
     assert _oer_label("", "kt_1") == "kt_1"
 
 
+def test_oer_label_cachet_kerntaken_lookup(oer_db: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Herhaalde _oer_label-calls met dezelfde crebo doen één SQLite-lookup (geen N+1)."""
+    from samenwijzer import analyze
+
+    calls = 0
+    origineel = oer_store.get_kerntaken_voor_crebo
+
+    def tellende_lookup(db_pad, crebo):
+        nonlocal calls
+        calls += 1
+        return origineel(db_pad, crebo)
+
+    monkeypatch.setattr(oer_store, "get_kerntaken_voor_crebo", tellende_lookup)
+
+    for _ in range(5):
+        analyze._oer_label("Verzorgende IG", "kt_1", crebo="25655")
+        analyze._oer_label("Verzorgende IG", "wp_1_1", crebo="25655")
+
+    assert calls == 1
+
+
 @pytest.fixture
 def df() -> pd.DataFrame:
     raw = pd.DataFrame(

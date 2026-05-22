@@ -1,10 +1,31 @@
 """Analyse: voortgang per student en groepsstatistieken."""
 
+import sqlite3
+from functools import lru_cache
+from pathlib import Path
+
 import pandas as pd
 
 from samenwijzer import oer_store
 from samenwijzer.transform import get_kerntaak_columns, get_werkproces_columns
 from samenwijzer.wellbeing import WelzijnsCheck, welzijnswaarde
+
+
+@lru_cache(maxsize=128)
+def _kerntaken_voor(db_pad: Path, crebo: str, opleiding: str) -> tuple[sqlite3.Row, ...]:
+    """Gecachte kerntakenlijst voor een (crebo, opleiding); lookup-prioriteit crebo → opleiding.
+
+    `peer_profielen` roept `_oer_label` ~2× per student aan terwijl studenten crebo's
+    delen (~14 opleidingen), dus zonder cache zijn dat duizenden identieke SQLite-lookups.
+    oeren.db is een read-only catalog, dus caching is veilig; `db_pad` zit in de sleutel
+    zodat tests met een tijdelijke DB geïsoleerd blijven (zie conftest cache-reset).
+    """
+    kts: list[sqlite3.Row] = []
+    if crebo:
+        kts = oer_store.get_kerntaken_voor_crebo(db_pad, crebo)
+    if not kts and opleiding:
+        kts = oer_store.get_kerntaken_voor_opleiding(db_pad, opleiding)
+    return tuple(kts)
 
 
 def _oer_label(opleiding: str, kolom: str, crebo: str = "") -> str:
@@ -19,11 +40,7 @@ def _oer_label(opleiding: str, kolom: str, crebo: str = "") -> str:
     Geeft de kolom-naam zelf terug als er geen kerntakenlijst is of als de mapping
     niet kan worden bepaald.
     """
-    kts: list = []
-    if crebo:
-        kts = oer_store.get_kerntaken_voor_crebo(oer_store.OEREN_DB_PAD, crebo)
-    if not kts and opleiding:
-        kts = oer_store.get_kerntaken_voor_opleiding(oer_store.OEREN_DB_PAD, opleiding)
+    kts = _kerntaken_voor(oer_store.OEREN_DB_PAD, crebo, opleiding)
     if not kts:
         return kolom
 
