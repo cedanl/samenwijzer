@@ -397,6 +397,21 @@ def test_keur_goed_negeert_niet_ingediend(db: Path) -> None:
     assert rij.goedgekeurde_score is None
 
 
+def test_dien_in_geeft_aantal_getransitioneerd_terug(db: Path) -> None:
+    sla_groei_op(
+        "S001",
+        [
+            GroeiActueel("S001", "wp_1_1", 60, "x", "2026-05-20T10:00:00"),
+            GroeiActueel("S001", "wp_1_2", 70, "y", "2026-05-20T10:00:00"),
+        ],
+        db,
+    )
+    # twee concepten + een niet-bestaand wp → alleen de twee tellen
+    assert dien_in("S001", ["wp_1_1", "wp_1_2", "wp_9_9"], db) == 2
+    # opnieuw indienen: ze staan al op 'ingediend' → 0 getransitioneerd
+    assert dien_in("S001", ["wp_1_1", "wp_1_2"], db) == 0
+
+
 def test_sla_groei_op_wist_oude_verbeterfeedback(db: Path) -> None:
     """Bij het herzien van een teruggegeven werkproces verdwijnt de oude opmerking."""
     sla_groei_op("S001", [GroeiActueel("S001", "wp_1_1", 60, "x", "2026-05-20T10:00:00")], db)

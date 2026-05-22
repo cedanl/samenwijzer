@@ -338,8 +338,11 @@ with tab_scores:
                     or (wp not in actueel)
                     or actueel[wp].status != "goedgekeurd"
                 ]
-                dien_in(studentnummer, in_te_dienen)
-                st.success("Ingediend bij je mentor.")
+                aantal = dien_in(studentnummer, in_te_dienen)
+                if aantal:
+                    st.success(f"{aantal} werkproces(sen) ingediend bij je mentor.")
+                else:
+                    st.info("Niets om in te dienen — sla eerst een concept op.")
             elif rijen:
                 st.success(f"{len(rijen)} wijziging(en) opgeslagen als concept.")
             else:

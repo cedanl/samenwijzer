@@ -199,12 +199,16 @@ def dien_in(
     studentnummer: str,
     wp_kolommen: list[str],
     db_path: Path = _DB_PATH,
-) -> None:
-    """Zet de opgegeven werkprocessen van concept/teruggegeven naar 'ingediend'."""
+) -> int:
+    """Zet de opgegeven werkprocessen van concept/teruggegeven naar 'ingediend'.
+
+    Returns het aantal werkprocessen dat daadwerkelijk is getransitioneerd.
+    """
     _zorg_voor_db(db_path)
+    aantal = 0
     with _verbinding(db_path) as conn:
         for wp in wp_kolommen:
-            conn.execute(
+            cur = conn.execute(
                 """
                 UPDATE groei_actueel SET status = 'ingediend'
                 WHERE studentnummer = ? AND wp_kolom = ?
@@ -212,6 +216,8 @@ def dien_in(
                 """,
                 (studentnummer, wp),
             )
+            aantal += cur.rowcount
+    return aantal
 
 
 def keur_goed(
