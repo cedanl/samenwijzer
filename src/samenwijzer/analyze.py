@@ -240,7 +240,7 @@ def cohort_positie(df: pd.DataFrame, studentnummer: str) -> dict:
     """Geef de anonieme rangpositie van een student binnen zijn cohort op voortgang.
 
     Returns:
-        Dict met 'positie', 'totaal' en 'cohort'.
+        Dict met 'positie', 'totaal', 'cohort' en 'gemiddelde_voortgang' (fractie 0–1).
     """
     student = get_student(df, studentnummer)
     cohort_df = (
@@ -249,7 +249,12 @@ def cohort_positie(df: pd.DataFrame, studentnummer: str) -> dict:
         .reset_index(drop=True)
     )
     positie = int(cohort_df[cohort_df["studentnummer"] == studentnummer].index[0]) + 1
-    return {"positie": positie, "totaal": len(cohort_df), "cohort": student["cohort"]}
+    return {
+        "positie": positie,
+        "totaal": len(cohort_df),
+        "cohort": student["cohort"],
+        "gemiddelde_voortgang": float(cohort_df["voortgang"].mean()),
+    }
 
 
 def peer_profielen(df: pd.DataFrame) -> pd.DataFrame:

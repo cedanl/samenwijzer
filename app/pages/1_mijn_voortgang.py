@@ -91,7 +91,7 @@ pos = positie_info["positie"]
 totaal_cohort = positie_info["totaal"]
 cohort = positie_info["cohort"]
 voortgang_pct = int(student["voortgang"] * 100)
-gem_pct = int(df[df["cohort"] == cohort]["voortgang"].mean() * 100)
+gem_pct = int(positie_info["gemiddelde_voortgang"] * 100)
 delta = voortgang_pct - gem_pct
 delta_kleur = "#27ae60" if delta >= 0 else "#c0392b"
 delta_teken = "+" if delta >= 0 else ""
