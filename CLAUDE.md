@@ -218,6 +218,10 @@ Zet de ngrok-URL op **Twilio Console → Messaging → Sandbox → "When a messa
 `https://<ngrok-url>/webhook/whatsapp`.
 
 Telefoonnummers worden Fernet-versleuteld opgeslagen; gesprekshistorie max 30 dagen bewaren (AVG).
+De retentie wordt **lazy** afgedwongen: `verwerk_inkomend_bericht` roept bij elk inkomend bericht
+`whatsapp.verwijder_verouderde_gesprekshistorie(peildatum=ontvangen_op)` aan, die `whatsapp_sessies`
+(op `gestart_op`) én de `whatsapp_context_*.json`-bestanden (op mtime) ouder dan 30 dagen verwijdert.
+Telefoonregistraties zijn opt-in-toestemming, geen gesprekshistorie, en blijven bewaard.
 
 `scheduler.py` is het entry point voor de wekelijkse check-in cron (GitHub Actions, ma 08:00):
 ```bash
