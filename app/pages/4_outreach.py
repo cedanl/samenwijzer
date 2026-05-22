@@ -11,8 +11,11 @@ from samenwijzer.analyze import detecteer_transitiemoment, transitiemoment_label
 from samenwijzer.auth import mentor_filter, vereist_docent
 from samenwijzer.outreach import (
     at_risk_studenten,
+    bereken_effectiviteit,
     email_config_uit_env,
     genereer_outreach_bericht,
+    interventie_log,
+    interventies_per_mentor,
     suggereer_verwijzing,
     verstuur_email,
 )
@@ -370,70 +373,34 @@ with tab_effectiviteit:
     if not alle:
         st.info("Nog geen interventies geregistreerd.")
     else:
-        log_df = pd.DataFrame(
-            [
-                {
-                    "datum": iv.timestamp[:10],
-                    "student": iv.studentnummer,
-                    "mentor": iv.mentor,
-                    "status_voor": iv.status_voor,
-                    "status_na": iv.status_na,
-                    "voortgang": iv.voortgang_op_moment,
-                    "bsa_pct": iv.bsa_percentage_op_moment,
-                }
-                for iv in alle
-            ]
-        )
-
-        # ── Overzichtsmetrics ─────────────────────────────────────────────
-        totaal_contacten = len(log_df)
-        uniek_studenten = log_df["student"].nunique()
-
-        status_teller = {"gecontacteerd": 0, "gereageerd": 0, "opgelost": 0}
-        for s in statussen_alle.values():
-            if s.status in status_teller:
-                status_teller[s.status] += 1
-
-        totaal_at_risk = len(at_risk)
-        gecontacteerd_n = sum(
-            1
-            for s in statussen_alle.values()
-            if s.status in ("gecontacteerd", "gereageerd", "opgelost")
-        )
-        gereageerd_n = sum(
-            1 for s in statussen_alle.values() if s.status in ("gereageerd", "opgelost")
-        )
-        opgelost_n = status_teller["opgelost"]
-
-        contact_rate = gecontacteerd_n / totaal_at_risk * 100 if totaal_at_risk else 0
-        respons_rate = gereageerd_n / gecontacteerd_n * 100 if gecontacteerd_n else 0
-        oplossing_rate = opgelost_n / gereageerd_n * 100 if gereageerd_n else 0
+        log_df = interventie_log(alle)
+        metrics = bereken_effectiviteit(list(statussen_alle.values()), len(at_risk))
 
         m1, m2, m3, m4 = st.columns(4)
         with m1:
             st.markdown(
                 f"<div class='stat-card'><p class='stat-card__label'>Totaal interventies</p>"
-                f"<p class='stat-card__value'>{totaal_contacten}</p></div>",
+                f"<p class='stat-card__value'>{len(log_df)}</p></div>",
                 unsafe_allow_html=True,
             )
         with m2:
             st.markdown(
                 f"<div class='stat-card'><p class='stat-card__label'>Contactratio</p>"
-                f"<p class='stat-card__value'>{contact_rate:.0f}%</p>"
+                f"<p class='stat-card__value'>{metrics.contact_rate:.0f}%</p>"
                 f"<p class='stat-card__sub'>Gecontacteerd / at-risk</p></div>",
                 unsafe_allow_html=True,
             )
         with m3:
             st.markdown(
                 f"<div class='stat-card'><p class='stat-card__label'>Responsratio</p>"
-                f"<p class='stat-card__value'>{respons_rate:.0f}%</p>"
+                f"<p class='stat-card__value'>{metrics.respons_rate:.0f}%</p>"
                 f"<p class='stat-card__sub'>Gereageerd / gecontacteerd</p></div>",
                 unsafe_allow_html=True,
             )
         with m4:
             st.markdown(
                 f"<div class='stat-card'><p class='stat-card__label'>Opgelost</p>"
-                f"<p class='stat-card__value'>{oplossing_rate:.0f}%</p>"
+                f"<p class='stat-card__value'>{metrics.oplossing_rate:.0f}%</p>"
                 f"<p class='stat-card__sub'>Opgelost / gereageerd</p></div>",
                 unsafe_allow_html=True,
             )
@@ -442,11 +409,17 @@ with tab_effectiviteit:
 
         # ── Statustrechter ─────────────────────────────────────────────────
         st.markdown("**Statustrechter**")
-        trechter_data = {
-            "Fase": ["At-risk", "Gecontacteerd", "Gereageerd", "Opgelost"],
-            "Aantal": [totaal_at_risk, gecontacteerd_n, gereageerd_n, opgelost_n],
-        }
-        trechter_df = pd.DataFrame(trechter_data)
+        trechter_df = pd.DataFrame(
+            {
+                "Fase": ["At-risk", "Gecontacteerd", "Gereageerd", "Opgelost"],
+                "Aantal": [
+                    metrics.totaal_at_risk,
+                    metrics.gecontacteerd,
+                    metrics.gereageerd,
+                    metrics.opgelost,
+                ],
+            }
+        )
         st.dataframe(
             trechter_df.style.background_gradient(subset=["Aantal"], cmap="Greens"),
             use_container_width=True,
@@ -457,18 +430,12 @@ with tab_effectiviteit:
 
         # ── Interventies per mentor ────────────────────────────────────────
         st.markdown("**Interventies per mentor**")
-        mentor_counts = (
-            log_df.groupby("mentor")
-            .agg(interventies=("student", "count"), uniek_studenten=("student", "nunique"))
-            .reset_index()
-            .rename(
-                columns={
-                    "mentor": "Mentor",
-                    "interventies": "Interventies",
-                    "uniek_studenten": "Unieke studenten",
-                }
-            )
-            .sort_values("Interventies", ascending=False)
+        mentor_counts = interventies_per_mentor(log_df).rename(
+            columns={
+                "mentor": "Mentor",
+                "interventies": "Interventies",
+                "uniek_studenten": "Unieke studenten",
+            }
         )
         st.dataframe(mentor_counts, use_container_width=True, hide_index=True)
 

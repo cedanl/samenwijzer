@@ -2,14 +2,19 @@
 
 import smtplib
 from collections.abc import Generator
+from dataclasses import dataclass
 from email.mime.text import MIMEText
 from os import environ
 
 import pandas as pd
 
 from samenwijzer._ai import MODEL, _client
+from samenwijzer.outreach_store import Interventie, StudentStatus
 
 _MAX_TOKENS = 1024
+
+_GECONTACTEERD_STATUSSEN = ("gecontacteerd", "gereageerd", "opgelost")
+_GEREAGEERD_STATUSSEN = ("gereageerd", "opgelost")
 
 
 def at_risk_studenten(df: pd.DataFrame) -> pd.DataFrame:
@@ -27,6 +32,69 @@ def at_risk_studenten(df: pd.DataFrame) -> pd.DataFrame:
         df["risico"] | (df["voortgang"] < 0.40) | (df["bsa_behaald"] < 0.75 * df["bsa_vereist"])
     )
     return df[masker].sort_values("voortgang").reset_index(drop=True)
+
+
+def interventie_log(interventies: list[Interventie]) -> pd.DataFrame:
+    """Bouw een interventie-log-DataFrame uit ruwe Interventie-records (voor weergave)."""
+    return pd.DataFrame(
+        [
+            {
+                "datum": iv.timestamp[:10],
+                "student": iv.studentnummer,
+                "mentor": iv.mentor,
+                "status_voor": iv.status_voor,
+                "status_na": iv.status_na,
+                "voortgang": iv.voortgang_op_moment,
+                "bsa_pct": iv.bsa_percentage_op_moment,
+            }
+            for iv in interventies
+        ]
+    )
+
+
+def interventies_per_mentor(log_df: pd.DataFrame) -> pd.DataFrame:
+    """Tel interventies en unieke studenten per mentor, aflopend gesorteerd.
+
+    Returns:
+        DataFrame met kolommen: mentor, interventies, uniek_studenten.
+    """
+    return (
+        log_df.groupby("mentor")
+        .agg(interventies=("student", "count"), uniek_studenten=("student", "nunique"))
+        .reset_index()
+        .sort_values("interventies", ascending=False)
+    )
+
+
+@dataclass
+class EffectiviteitMetrics:
+    """Outreach-trechter en conversieratio's (percentages 0–100)."""
+
+    totaal_at_risk: int
+    gecontacteerd: int
+    gereageerd: int
+    opgelost: int
+    contact_rate: float
+    respons_rate: float
+    oplossing_rate: float
+
+
+def bereken_effectiviteit(
+    statussen: list[StudentStatus], totaal_at_risk: int
+) -> EffectiviteitMetrics:
+    """Bereken de outreach-trechter en conversieratio's uit de huidige studentstatussen."""
+    gecontacteerd = sum(1 for s in statussen if s.status in _GECONTACTEERD_STATUSSEN)
+    gereageerd = sum(1 for s in statussen if s.status in _GEREAGEERD_STATUSSEN)
+    opgelost = sum(1 for s in statussen if s.status == "opgelost")
+    return EffectiviteitMetrics(
+        totaal_at_risk=totaal_at_risk,
+        gecontacteerd=gecontacteerd,
+        gereageerd=gereageerd,
+        opgelost=opgelost,
+        contact_rate=gecontacteerd / totaal_at_risk * 100 if totaal_at_risk else 0.0,
+        respons_rate=gereageerd / gecontacteerd * 100 if gecontacteerd else 0.0,
+        oplossing_rate=opgelost / gereageerd * 100 if gereageerd else 0.0,
+    )
 
 
 def genereer_outreach_bericht(

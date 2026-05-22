@@ -281,6 +281,7 @@ def test_cohort_positie_alice_eerste(df: pd.DataFrame) -> None:
     assert pos["positie"] == 1
     assert pos["totaal"] == 2
     assert pos["cohort"] == "2024-2025"
+    assert pos["gemiddelde_voortgang"] == pytest.approx((0.83 + 0.33) / 2)
 
 
 def test_cohort_positie_bob_tweede(df: pd.DataFrame) -> None:

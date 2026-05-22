@@ -5,7 +5,15 @@ from unittest.mock import MagicMock, patch
 import pandas as pd
 import pytest
 
-from samenwijzer.outreach import at_risk_studenten, genereer_outreach_bericht, suggereer_verwijzing
+from samenwijzer.outreach import (
+    at_risk_studenten,
+    bereken_effectiviteit,
+    genereer_outreach_bericht,
+    interventie_log,
+    interventies_per_mentor,
+    suggereer_verwijzing,
+)
+from samenwijzer.outreach_store import Interventie, StudentStatus
 from tests.helpers import mock_stream
 
 
@@ -228,3 +236,72 @@ def test_genereer_outreach_bericht_bsa_op_schema(
 
     prompt = mock_client.messages.stream.call_args.kwargs["messages"][0]["content"]
     assert "op schema" in prompt
+
+
+# ── Effectiviteit ─────────────────────────────────────────────────────────────
+
+
+def _interventie(studentnummer: str, mentor: str, status_na: str) -> Interventie:
+    return Interventie(
+        studentnummer=studentnummer,
+        timestamp="2026-04-14T10:00:00",
+        mentor=mentor,
+        status_voor="niet_gecontacteerd",
+        status_na=status_na,
+        bericht_samenvatting="",
+        voortgang_op_moment=0.3,
+        bsa_percentage_op_moment=0.5,
+    )
+
+
+def test_interventie_log_kolommen_en_datum():
+    log = interventie_log([_interventie("S001", "M. Bakker", "gecontacteerd")])
+    assert list(log.columns) == [
+        "datum",
+        "student",
+        "mentor",
+        "status_voor",
+        "status_na",
+        "voortgang",
+        "bsa_pct",
+    ]
+    assert log.iloc[0]["datum"] == "2026-04-14"  # timestamp afgekapt op 10 tekens
+
+
+def test_bereken_effectiviteit_ratios():
+    statussen = [
+        StudentStatus("S001", "opgelost"),
+        StudentStatus("S002", "gereageerd"),
+        StudentStatus("S003", "gecontacteerd"),
+        StudentStatus("S004", "niet_gecontacteerd"),
+    ]
+    m = bereken_effectiviteit(statussen, totaal_at_risk=5)
+
+    assert (m.gecontacteerd, m.gereageerd, m.opgelost) == (3, 2, 1)
+    assert m.contact_rate == pytest.approx(60.0)  # 3/5
+    assert m.respons_rate == pytest.approx(2 / 3 * 100)  # 2/3
+    assert m.oplossing_rate == pytest.approx(50.0)  # 1/2
+
+
+def test_bereken_effectiviteit_zonder_at_risk_geen_deling_door_nul():
+    m = bereken_effectiviteit([], totaal_at_risk=0)
+    assert m.contact_rate == 0.0
+    assert m.respons_rate == 0.0
+    assert m.oplossing_rate == 0.0
+
+
+def test_interventies_per_mentor_telt_en_sorteert():
+    log = interventie_log(
+        [
+            _interventie("S001", "M. Bakker", "gecontacteerd"),
+            _interventie("S002", "M. Bakker", "gereageerd"),
+            _interventie("S001", "M. Bakker", "opgelost"),
+            _interventie("S003", "P. de Vries", "gecontacteerd"),
+        ]
+    )
+    per_mentor = interventies_per_mentor(log)
+
+    assert list(per_mentor["mentor"]) == ["M. Bakker", "P. de Vries"]  # aflopend op interventies
+    bakker = per_mentor[per_mentor["mentor"] == "M. Bakker"].iloc[0]
+    assert bakker["interventies"] == 3
+    assert bakker["uniek_studenten"] == 2
