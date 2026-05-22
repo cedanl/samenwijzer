@@ -28,7 +28,7 @@ from samenwijzer.transform import transform_student_data
 def oer_db(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     """Mini-oeren.db met één opleiding 'Verzorgende IG' inclusief kerntaken.
 
-    Patcht `analyze._DB_PAD_VOOR_LABELS` zodat `_oer_label()` deze db gebruikt.
+    Patcht `oer_store.OEREN_DB_PAD` zodat `_oer_label()` deze db gebruikt.
     """
     db = tmp_path / "oeren.db"
     oer_store.voeg_instelling_toe(db, "rijn_ijssel", "Rijn IJssel")
@@ -60,9 +60,7 @@ def oer_db(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
         db, oer_id, "B1-K2-W3", "Draagt bij aan kwaliteit", "werkproces", "B1-K2", 7
     )
 
-    from samenwijzer import analyze
-
-    monkeypatch.setattr(analyze, "_DB_PAD_VOOR_LABELS", db)
+    monkeypatch.setattr(oer_store, "OEREN_DB_PAD", db)
     return db
 
 

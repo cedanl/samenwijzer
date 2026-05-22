@@ -12,9 +12,8 @@ from typing import Literal
 
 from anthropic.types import MessageParam
 
-from samenwijzer._ai import _client
+from samenwijzer._ai import MODEL, _client
 
-_MODEL = "claude-sonnet-4-6"
 _MAX_TOKENS = 2048
 
 
@@ -119,7 +118,7 @@ def stuur_bericht(
 
     try:
         with client.messages.stream(
-            model=_MODEL,
+            model=MODEL,
             max_tokens=_MAX_TOKENS,
             system=[
                 {
@@ -183,7 +182,7 @@ def aanscherp_verantwoording(
     )
 
     with client.messages.stream(
-        model=_MODEL,
+        model=MODEL,
         max_tokens=400,
         system=[{"type": "text", "text": systeem}],
         messages=[{"role": "user", "content": gebruikersbericht}],

@@ -194,6 +194,11 @@ zonder parsebare kwalificatiestructuur (bv. crebo 25736).
 `oer_context.haal_oer_context_op(student_row)` levert OER-tekst als context aan `tutor.py` en
 `coach.py`.
 
+**OER-parsing** (`oer_parsing.py`): regex-helpers voor bestandsnaam → crebo/leerweg/jaar,
+kerntaken, opleidingsnaam en niveau. Bewust **gesynchroniseerd** uit het `validatie_samenwijzer`-
+subproject (`src/validatie_samenwijzer/ingest.py`) — houd functioneel gelijk; wijzig hier alleen
+samen met de bron, niet los.
+
 ## Welzijn & gevoeligheid
 
 Twee aparte modules: `welzijn.py` (student self-assessment via webapp; 5 hulpcategorieën, 3 urgentieniveaus)

@@ -7,9 +7,8 @@ from os import environ
 
 import pandas as pd
 
-from samenwijzer._ai import _client
+from samenwijzer._ai import MODEL, _client
 
-_MODEL = "claude-sonnet-4-6"
 _MAX_TOKENS = 1024
 
 
@@ -80,7 +79,7 @@ def genereer_outreach_bericht(
     )
 
     with _client(api_key).messages.stream(
-        model=_MODEL,
+        model=MODEL,
         max_tokens=_MAX_TOKENS,
         messages=[{"role": "user", "content": prompt}],
     ) as stream:

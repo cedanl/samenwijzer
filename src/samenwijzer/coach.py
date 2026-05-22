@@ -5,9 +5,8 @@ from dataclasses import dataclass, field
 
 from anthropic.types import MessageParam
 
-from samenwijzer._ai import _client
+from samenwijzer._ai import MODEL, _client
 
-_MODEL = "claude-sonnet-4-6"
 _MAX_TOKENS = 2048
 
 
@@ -50,7 +49,7 @@ def genereer_lesmateriaal(
 
     client = _client(api_key)
     with client.messages.stream(
-        model=_MODEL,
+        model=MODEL,
         max_tokens=_MAX_TOKENS,
         messages=[{"role": "user", "content": prompt}],
         **stream_kwargs,
@@ -143,7 +142,7 @@ def stuur_rollenspel_bericht(
     client = _client(api_key)
     try:
         with client.messages.stream(
-            model=_MODEL,
+            model=MODEL,
             max_tokens=_MAX_TOKENS,
             system=[
                 {
@@ -201,7 +200,7 @@ def genereer_rollenspel_feedback(
 
     client = _client(api_key)
     with client.messages.stream(
-        model=_MODEL,
+        model=MODEL,
         max_tokens=512,
         messages=[{"role": "user", "content": prompt}],
     ) as stream:
@@ -241,7 +240,7 @@ def genereer_oefentoets(
 
     client = _client(api_key)
     response = client.messages.create(
-        model=_MODEL,
+        model=MODEL,
         max_tokens=_MAX_TOKENS,
         messages=[{"role": "user", "content": prompt}],
         **create_kwargs,
@@ -279,7 +278,7 @@ def controleer_antwoorden(
 
     client = _client(api_key)
     with client.messages.stream(
-        model=_MODEL,
+        model=MODEL,
         max_tokens=_MAX_TOKENS,
         messages=[{"role": "user", "content": prompt}],
     ) as stream:
@@ -358,7 +357,7 @@ def genereer_weekplan(
 
     client = _client(api_key)
     with client.messages.stream(
-        model=_MODEL,
+        model=MODEL,
         max_tokens=_MAX_TOKENS,
         messages=[{"role": "user", "content": prompt}],
         **stream_kwargs,
@@ -401,7 +400,7 @@ def geef_feedback_op_werk(
 
     client = _client(api_key)
     with client.messages.stream(
-        model=_MODEL,
+        model=MODEL,
         max_tokens=_MAX_TOKENS,
         messages=[{"role": "user", "content": prompt}],
         **stream_kwargs,

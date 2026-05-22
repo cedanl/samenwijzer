@@ -1,14 +1,10 @@
 """Analyse: voortgang per student en groepsstatistieken."""
 
-from pathlib import Path
-
 import pandas as pd
 
 from samenwijzer import oer_store
 from samenwijzer.transform import get_kerntaak_columns, get_werkproces_columns
 from samenwijzer.wellbeing import WelzijnsCheck, welzijnswaarde
-
-_DB_PAD_VOOR_LABELS = Path(__file__).parent.parent.parent / "data" / "02-prepared" / "oeren.db"
 
 
 def _oer_label(opleiding: str, kolom: str, crebo: str = "") -> str:
@@ -25,9 +21,9 @@ def _oer_label(opleiding: str, kolom: str, crebo: str = "") -> str:
     """
     kts: list = []
     if crebo:
-        kts = oer_store.get_kerntaken_voor_crebo(_DB_PAD_VOOR_LABELS, crebo)
+        kts = oer_store.get_kerntaken_voor_crebo(oer_store.OEREN_DB_PAD, crebo)
     if not kts and opleiding:
-        kts = oer_store.get_kerntaken_voor_opleiding(_DB_PAD_VOOR_LABELS, opleiding)
+        kts = oer_store.get_kerntaken_voor_opleiding(oer_store.OEREN_DB_PAD, opleiding)
     if not kts:
         return kolom
 
