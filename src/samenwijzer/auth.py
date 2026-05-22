@@ -33,3 +33,23 @@ def mentor_filter(df: pd.DataFrame) -> pd.DataFrame:
     if not mentor_naam:
         return df
     return df[df["mentor"] == mentor_naam].reset_index(drop=True)
+
+
+def bezit_student(df: pd.DataFrame, studentnummer: str) -> bool:
+    """True als de ingelogde mentor deze student in zijn groep heeft.
+
+    Gebruikt `mentor_filter`, dus een sessie zonder `mentor_naam` (admin) bezit
+    iedereen. Onbekende studentnummers geven False.
+    """
+    return studentnummer in mentor_filter(df)["studentnummer"].values
+
+
+def vereist_eigen_student(df: pd.DataFrame, studentnummer: str) -> None:
+    """Stop de pagina als de student niet bij de ingelogde mentor hoort.
+
+    Centrale eigenaarscheck voor mentor-acties (bv. groei goedkeuren/teruggeven):
+    voorkomt dat een docent een student buiten zijn eigen groep beoordeelt.
+    """
+    if not bezit_student(df, studentnummer):
+        st.error("🔒 Geen toegang tot deze student.")
+        st.stop()
