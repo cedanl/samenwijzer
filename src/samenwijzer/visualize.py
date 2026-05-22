@@ -1,7 +1,11 @@
-"""Visualisaties voor studiedata (Altair-based, Streamlit-compatible)."""
+"""Visualisaties voor studiedata (Altair-based, Streamlit-compatible).
+
+Het groei-spinneweb is een radar (Plotly Scatterpolar) — Altair kent geen poolcoördinaten.
+"""
 
 import altair as alt
 import pandas as pd
+import plotly.graph_objects as go
 
 _SCORE_DOMAIN = [0, 100]
 _VOORTGANG_DOMAIN = [0, 1]
@@ -208,3 +212,77 @@ def groep_voortgang_grafiek(overzicht_df: pd.DataFrame) -> alt.Chart:
         )
         .properties(height=350, background="white")
     )
+
+
+def _spinneweb_dicht(reeks: list[float | None]) -> list[float]:
+    """Vervang None/NaN door 0 en sluit de polygon door het eerste punt te herhalen."""
+    schoon = [0.0 if v is None or pd.isna(v) else float(v) for v in reeks]
+    return schoon + schoon[:1]
+
+
+def _spinneweb_heeft_waarde(reeks: list[float | None]) -> bool:
+    """True als de reeks minstens één echte (niet-None, niet-NaN) waarde bevat."""
+    return any(v is not None and not pd.isna(v) for v in reeks)
+
+
+def spinneweb_figuur(
+    titel: str,
+    labels: list[str],
+    huidig: list[float | None],
+    vorig: list[float | None] | None = None,
+    klas: list[float | None] | None = None,
+) -> go.Figure:
+    """Radar (Scatterpolar) per kerntaak: huidige meting, optioneel vorige + klasgemiddelde.
+
+    None/NaN-waarden worden als 0 geplot; een reeks die volledig leeg is krijgt geen lijn.
+
+    Args:
+        titel: Titel boven het spinneweb (meestal het kerntaaklabel).
+        labels: Werkproces-labels op de assen.
+        huidig: Huidige scores per werkproces (0–100).
+        vorig: Vorige scores, of None als er geen vorige meting is.
+        klas: Klasgemiddelden per werkproces, of None.
+
+    Returns:
+        Plotly Figure.
+    """
+    theta = labels + labels[:1]
+    fig = go.Figure()
+    fig.add_trace(
+        go.Scatterpolar(
+            r=_spinneweb_dicht(huidig),
+            theta=theta,
+            fill="toself",
+            name="Huidige meting",
+            line={"color": "#27ae60"},
+            fillcolor="rgba(39, 174, 96, 0.25)",
+        )
+    )
+    if vorig is not None and _spinneweb_heeft_waarde(vorig):
+        fig.add_trace(
+            go.Scatterpolar(
+                r=_spinneweb_dicht(vorig),
+                theta=theta,
+                fill="none",
+                name="Vorige meting",
+                line={"color": "#e67e22", "dash": "dash"},
+            )
+        )
+    if klas is not None and _spinneweb_heeft_waarde(klas):
+        fig.add_trace(
+            go.Scatterpolar(
+                r=_spinneweb_dicht(klas),
+                theta=theta,
+                fill="none",
+                name="Klasgemiddelde",
+                line={"color": "#2980b9", "dash": "dot"},
+            )
+        )
+    fig.update_layout(
+        polar={"radialaxis": {"visible": True, "range": [0, 100]}},
+        showlegend=True,
+        title=titel,
+        height=420,
+        margin={"l": 40, "r": 40, "t": 60, "b": 40},
+    )
+    return fig
