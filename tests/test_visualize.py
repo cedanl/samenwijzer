@@ -8,6 +8,7 @@ from samenwijzer.visualize import (
     bsa_staaf,
     groep_voortgang_grafiek,
     kerntaak_grafiek,
+    spinneweb_figuur,
     voortgang_gauge,
     werkproces_grafiek,
 )
@@ -151,3 +152,32 @@ def test_groep_voortgang_grafiek_muteert_origineel_niet(overzicht_df: pd.DataFra
     # groep_voortgang_grafiek doet een .copy() — origineel mag geen risico_label krijgen
     groep_voortgang_grafiek(overzicht_df)
     assert "risico_label" not in overzicht_df.columns
+
+
+# ── spinneweb_figuur ──────────────────────────────────────────────────────────
+
+
+def test_spinneweb_figuur_alleen_huidig_één_trace():
+    fig = spinneweb_figuur("KT1", ["WP1", "WP2"], [80, 60])
+    assert [t.name for t in fig.data] == ["Huidige meting"]
+
+
+def test_spinneweb_figuur_drie_traces_bij_vorig_en_klas():
+    fig = spinneweb_figuur("KT1", ["WP1", "WP2"], [80, 60], vorig=[70, 50], klas=[65.0, 55.0])
+    assert [t.name for t in fig.data] == ["Huidige meting", "Vorige meting", "Klasgemiddelde"]
+
+
+def test_spinneweb_figuur_lege_reeksen_geen_extra_lijn():
+    """vorig met alleen None en klas met alleen NaN leveren geen extra trace op."""
+    fig = spinneweb_figuur(
+        "KT1", ["WP1", "WP2"], [80, 60], vorig=[None, None], klas=[float("nan"), float("nan")]
+    )
+    assert [t.name for t in fig.data] == ["Huidige meting"]
+
+
+def test_spinneweb_figuur_sluit_polygon_en_vervangt_none():
+    """De polygon wordt gesloten (n+1 punten) en None/NaN worden 0."""
+    fig = spinneweb_figuur("KT1", ["WP1", "WP2"], [80, None])
+    huidig = fig.data[0]
+    assert list(huidig.r) == [80.0, 0.0, 80.0]
+    assert len(huidig.theta) == 3

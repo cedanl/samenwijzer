@@ -43,6 +43,7 @@ from samenwijzer.groei_store import verwijder_bewijsstuk as verwijder_bewijsstuk
 from samenwijzer.styles import CSS, render_footer, render_nav
 from samenwijzer.transform import get_kerntaak_columns, get_werkproces_columns
 from samenwijzer.tutor import aanscherp_verantwoording
+from samenwijzer.visualize import spinneweb_figuur
 
 log = logging.getLogger(__name__)
 
@@ -489,8 +490,6 @@ with tab_spinneweb:
         f"blauwe lijn = klasgemiddelde ({opleiding}, cohort {student['cohort']})."
     )
 
-    import plotly.graph_objects as go
-
     klas_gem = klas_gemiddelden_per_wp(df, opleiding, str(student["cohort"]), wp_cols)
 
     for kt_col in kt_cols:
@@ -499,60 +498,20 @@ with tab_spinneweb:
             continue
 
         metingen = laatste_twee_metingen_per_wp(studentnummer, kt_eigen_wp)
-        labels = [oer_label(opleiding, w, crebo) for w in kt_eigen_wp]
-        huidig = [metingen[w][0] if metingen[w][0] is not None else 0 for w in kt_eigen_wp]
-        vorig = [metingen[w][1] for w in kt_eigen_wp]
-        heeft_vorig = any(v is not None for v in vorig)
-        klas = [klas_gem.get(w, float("nan")) for w in kt_eigen_wp]
-        heeft_klas = any(not pd.isna(k) for k in klas)
-
-        if not any(metingen[w][0] is not None for w in kt_eigen_wp):
+        huidig = [metingen[w][0] for w in kt_eigen_wp]
+        if not any(v is not None for v in huidig):
             st.info(
                 f"Nog geen metingen voor *{oer_label(opleiding, kt_col, crebo)}* — "
                 "sla je beoordeling op om het spinneweb te zien."
             )
             continue
 
-        fig = go.Figure()
-        # Sluit de polygon: voeg eerste punt aan einde toe
-        fig.add_trace(
-            go.Scatterpolar(
-                r=huidig + [huidig[0]],
-                theta=labels + [labels[0]],
-                fill="toself",
-                name="Huidige meting",
-                line={"color": "#27ae60"},
-                fillcolor="rgba(39, 174, 96, 0.25)",
-            )
-        )
-        if heeft_vorig:
-            vorig_voor_plot = [v if v is not None else 0 for v in vorig]
-            fig.add_trace(
-                go.Scatterpolar(
-                    r=vorig_voor_plot + [vorig_voor_plot[0]],
-                    theta=labels + [labels[0]],
-                    fill="none",
-                    name="Vorige meting",
-                    line={"color": "#e67e22", "dash": "dash"},
-                )
-            )
-        if heeft_klas:
-            klas_voor_plot = [0 if pd.isna(k) else float(k) for k in klas]
-            fig.add_trace(
-                go.Scatterpolar(
-                    r=klas_voor_plot + [klas_voor_plot[0]],
-                    theta=labels + [labels[0]],
-                    fill="none",
-                    name="Klasgemiddelde",
-                    line={"color": "#2980b9", "dash": "dot"},
-                )
-            )
-        fig.update_layout(
-            polar={"radialaxis": {"visible": True, "range": [0, 100]}},
-            showlegend=True,
-            title=oer_label(opleiding, kt_col, crebo),
-            height=420,
-            margin={"l": 40, "r": 40, "t": 60, "b": 40},
+        fig = spinneweb_figuur(
+            titel=oer_label(opleiding, kt_col, crebo),
+            labels=[oer_label(opleiding, w, crebo) for w in kt_eigen_wp],
+            huidig=huidig,
+            vorig=[metingen[w][1] for w in kt_eigen_wp],
+            klas=[klas_gem.get(w, float("nan")) for w in kt_eigen_wp],
         )
         st.plotly_chart(fig, use_container_width=True)
 
