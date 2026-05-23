@@ -2,7 +2,7 @@
 
 Regels (zie ARCHITECTURE.md):
   prepare → transform → analyze → {visualize, coach, tutor, welzijn,
-                                    outreach, outreach_store, auth, styles, export}
+                                    outreach, outreach_store, auth, styles}
                                  → app
 
 Verboden:
@@ -79,7 +79,6 @@ _HOGER_DAN_PREPARE = {
     "outreach_store",
     "auth",
     "styles",
-    "export",
 }
 
 
