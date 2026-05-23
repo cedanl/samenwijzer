@@ -15,7 +15,6 @@ src/samenwijzer/
   transform.py  ← Shape data for analysis
   analyze.py    ← Core learning analytics + transitiemoment detection
   visualize.py  ← Chart/figure generation
-  export.py     ← Write results to data/03-output/
 
 Cross-cutting modules (no layer restriction, import explicitly):
   _ai.py            ← Shared Anthropic client factory (_client())
@@ -38,14 +37,13 @@ Cross-cutting modules (no layer restriction, import explicitly):
   bewijsstuk_store.py ← Bewijsstuk-uploads: filesystem (data/bewijsstukken/<studentnummer>/) + metadata via groei_store
 ```
 
-Dependency direction is strictly left-to-right (prepare → export).
+Dependency direction is strictly left-to-right (prepare → visualize).
 Cross-cutting concerns (auth, outreach, welzijn, styles) come in via explicit imports, not globals.
 
 ## Data flow
 
 ```
 data/01-raw/ → prepare → data/02-prepared/ → transform → analyze → visualize → app
-                                                                  → export → data/03-output/
 ```
 
 SQLite (`data/02-prepared/outreach.db`) is written by `outreach_store.py` and read by both
