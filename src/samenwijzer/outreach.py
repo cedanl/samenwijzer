@@ -34,6 +34,11 @@ def at_risk_studenten(df: pd.DataFrame) -> pd.DataFrame:
     return df[masker].sort_values("voortgang").reset_index(drop=True)
 
 
+def bsa_percentage(behaald: float, vereist: float) -> float:
+    """BSA-percentage als fractie (behaald/vereist); 0.0 als vereist ≤ 0 (geen norm gezet)."""
+    return behaald / vereist if vereist > 0 else 0.0
+
+
 def interventie_log(interventies: list[Interventie]) -> pd.DataFrame:
     """Bouw een interventie-log-DataFrame uit ruwe Interventie-records (voor weergave)."""
     return pd.DataFrame(
