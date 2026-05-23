@@ -12,6 +12,7 @@ from samenwijzer.auth import mentor_filter, vereist_docent
 from samenwijzer.outreach import (
     at_risk_studenten,
     bereken_effectiviteit,
+    bsa_percentage,
     email_config_uit_env,
     genereer_outreach_bericht,
     interventie_log,
@@ -219,10 +220,9 @@ with tab_werklijst:
                                 status_na=nieuwe_status,
                                 bericht_samenvatting=bericht_tekst[:500],
                                 voortgang_op_moment=float(student["voortgang"]),
-                                bsa_percentage_op_moment=float(student["bsa_behaald"])
-                                / float(student["bsa_vereist"])
-                                if student["bsa_vereist"] > 0
-                                else 0.0,
+                                bsa_percentage_op_moment=bsa_percentage(
+                                    float(student["bsa_behaald"]), float(student["bsa_vereist"])
+                                ),
                             )
                         )
 

@@ -8,6 +8,7 @@ import pytest
 from samenwijzer.outreach import (
     at_risk_studenten,
     bereken_effectiviteit,
+    bsa_percentage,
     genereer_outreach_bericht,
     interventie_log,
     interventies_per_mentor,
@@ -288,6 +289,14 @@ def test_bereken_effectiviteit_zonder_at_risk_geen_deling_door_nul():
     assert m.contact_rate == 0.0
     assert m.respons_rate == 0.0
     assert m.oplossing_rate == 0.0
+
+
+def test_bsa_percentage():
+    """Normale fractie + guard tegen deling door nul wanneer geen BSA-norm gezet is."""
+    assert bsa_percentage(30, 60) == pytest.approx(0.5)
+    assert bsa_percentage(0, 60) == 0.0
+    assert bsa_percentage(30, 0) == 0.0  # vereist == 0 → 0, geen ZeroDivisionError
+    assert bsa_percentage(30, -5) == 0.0  # negatieve norm telt ook als "niet gezet"
 
 
 def test_interventies_per_mentor_telt_en_sorteert():
