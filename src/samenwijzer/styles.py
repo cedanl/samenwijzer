@@ -1,6 +1,20 @@
-"""EduPulse / Samenwijzer huisstijl — kleuren en CSS-injectie."""
+"""Samenwijzer huisstijl — dual-theme tokens, CSS-injectie en componentbibliotheek.
 
-# ── Kleuren ───────────────────────────────────────────────────────────────────
+Twee thema's bovenop één gedeeld fundament:
+
+* **student** — donker (#0F0F12) met lime-accent (#A8FF60), mobile-first, energiek.
+* **docent**  — paper (#F0EBE1) met sage-accent (#6F8265), desktop, atelier-rustig.
+
+Pagina's roepen :func:`inject_theme` aan met de huidige rol; de helpers
+(:func:`hero`, :func:`stat_card`, :func:`badge`, :func:`alert`,
+:func:`section_label`, :func:`action_tile`) renderen consistent in beide thema's.
+"""
+
+from __future__ import annotations
+
+import streamlit as st
+
+# ── Kleur-constanten (behouden voor backwards-compat met visualize/etc.) ──────
 TERRACOTTA = "#c8785a"
 ROZE_BG = "#f0d4d4"
 ROZE_LICHT = "#fae8e8"
@@ -9,141 +23,76 @@ ROOD = "#c0392b"
 ORANJE = "#e67e22"
 GROEN = "#27ae60"
 
-# ── CSS ───────────────────────────────────────────────────────────────────────
-FOOTER_HTML = """
-<div style="
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #ffffff;
-    padding: 10px 24px;
-    text-align: center;
-    font-family: 'General Sans', sans-serif;
-    font-size: 12px;
-    color: #333;
-    line-height: 1.7;
-    z-index: 999;
-">
-    <p style="text-align:center; font-size:0.5rem; font-weight:500; color:#1a1a1a; font-family:'General Sans',sans-serif; margin:1px 0;"><br>
-        <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 2em;max-height:3em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 2em;max-height:3em;margin-left: .2em;"> Op deze analytics tool is de Creative Commons ShareAlike
-        Naamsvermelding 4.0-licentie van toepassing. <br>Maak bij gebruik van dit werk
-        vermelding van de volgende referentie: AI en data waarde(n)vol inzetten: CEDA
-        2026 Samenwijzer. Utrecht: Npuls
-    </p>
-</div>
-"""
-
-# Bestandspaden relatief aan app/main.py — vereist door st.page_link()
-_NAV_STUDENT = [
-    ("📚 Home", "main.py"),
-    ("📊 Mijn voortgang", "pages/1_mijn_voortgang.py"),
-    ("🌱 Groeidossier", "pages/6_groeidossier.py"),
-    ("🎓 Leercoach", "pages/3_leercoach.py"),
-    ("💚 Welzijn", "pages/5_welzijn.py"),
-]
-
-_NAV_DOCENT = [
-    ("📚 Home", "main.py"),
-    ("👥 Groepsoverzicht", "pages/2_groepsoverzicht.py"),
-    ("🌱 Groeidossier", "pages/6_groeidossier.py"),
-    ("📬 Outreach", "pages/4_outreach.py"),
-    ("🎓 Leercoach", "pages/3_leercoach.py"),
-]
+# Nieuwe thema-accenten (voor gebruik in Altair/Plotly grafieken).
+STUDENT_ACCENT = "#A8FF60"
+STUDENT_ALERT = "#FF5E3A"
+STUDENT_BG = "#0F0F12"
+STUDENT_SURFACE = "#1A1A1F"
+DOCENT_ACCENT = "#6F8265"
+DOCENT_ALERT = "#B04A1A"
+DOCENT_BG = "#F0EBE1"
+DOCENT_SURFACE = "#FAF5EC"
+DOCENT_INK = "#1F1D18"
 
 
-def render_nav() -> None:
-    """Render de navigatiebalk bovenaan de pagina via st.page_link().
+# ── BASE CSS — fonts, reset, layout, en alle component-classes via tokens ─────
+_BASE_CSS = """
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&f[]=cabinet-grotesk@500,700,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
 
-    Gebruikt Streamlit's eigen client-side navigatie zodat session_state
-    bewaard blijft bij het wisselen van pagina. HTML-ankers (<a href="...">)
-    starten een volledige herlaad en wissen de sessie — vandaar st.page_link().
-
-    Aanroepen direct ná st.markdown(CSS, unsafe_allow_html=True).
-    """
-    import streamlit as st
-
-    rol = st.session_state.get("rol")
-    if not rol:
-        return
-
-    nav_items = _NAV_STUDENT if rol == "student" else _NAV_DOCENT
-    gebruiker = (
-        st.session_state.get("studentnummer", "")
-        if rol == "student"
-        else st.session_state.get("mentor_naam", "")
-    )
-
-    n = len(nav_items)
-    # kolommen: nav-items | spatie | gebruikersnaam | uitloggen
-    cols = st.columns([2] * n + [3, 2, 2])
-
-    for i, (label, page) in enumerate(nav_items):
-        with cols[i]:
-            st.page_link(page, label=label)
-
-    with cols[n + 1]:
-        st.markdown(
-            f'<div style="text-align:right;color:rgba(255,255,255,0.45);font-size:12px;'
-            f"font-weight:600;padding-top:6px;font-family:'General Sans',sans-serif;\">"
-            f"👤 {gebruiker}</div>",
-            unsafe_allow_html=True,
-        )
-
-    with cols[n + 2]:
-        st.page_link("pages/uitloggen.py", label="Uitloggen")
-
-
-def render_footer() -> None:
-    """Render de huisstijl footer onderaan de pagina."""
-    import streamlit as st
-
-    st.markdown(FOOTER_HTML, unsafe_allow_html=True)
-
-
-CSS = """
-<style>
-@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
-
-[data-testid="stApp"] {
-    background-color: #FAFAF8;
-    font-family: 'General Sans', sans-serif;
-    font-weight: 500;
+:root {
+    --space-1: 4px;  --space-2: 8px;  --space-3: 12px;
+    --space-4: 16px; --space-5: 24px; --space-6: 32px; --space-7: 48px;
+    --font-display: 'Cabinet Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body:    'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono:    'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --dur-fast: 150ms;
+    --dur-base: 240ms;
 }
 
-h1 {
-    font-family: 'Instrument Serif', Georgia, serif !important;
-    font-weight: 400 !important;
-    font-size: 2.8rem !important;
-    letter-spacing: -0.01em !important;
-    color: #1a1a1a !important;
-}
-
-h2 {
-    font-family: 'Instrument Serif', Georgia, serif !important;
-    font-weight: 400 !important;
-}
-
-/* Streamlit-header verbergen */
+/* Streamlit-chrome verbergen */
 [data-testid="stHeader"],
 [data-testid="stHeader"] > *,
 header[data-testid="stHeader"] { display: none !important; }
-
-/* Sidebar volledig verbergen */
 [data-testid="stSidebar"],
 [data-testid="stSidebarNav"],
 [data-testid="stSidebarCollapsedControl"],
 section[data-testid="stSidebar"] { display: none !important; }
 
-/* ── Vaste navigatiebalk ────────────────────────────────────────────────── */
+[data-testid="stApp"] {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 500;
+}
+
+.block-container {
+    padding-top: 68px !important;
+    padding-bottom: 100px !important;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ── Typografie ───────────────────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin: 0 0 var(--space-2);
+}
+h1 { font-size: 2.2rem; line-height: 1.1; }
+h2 { font-size: 1.5rem; line-height: 1.15; }
+h3 { font-size: 1.15rem; }
+p, li { color: var(--text); line-height: 1.55; }
+
+/* ── Vaste navigatiebalk ──────────────────────────────────────────────────── */
 [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] [data-testid="stPageLink"]) {
     position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
+    top: 0 !important; left: 0 !important; right: 0 !important;
     height: 52px !important;
-    background: #1a1a1a !important;
+    background: var(--nav-bg) !important;
     z-index: 9999 !important;
     padding: 0 24px !important;
     margin: 0 !important;
@@ -152,8 +101,6 @@ section[data-testid="stSidebar"] { display: none !important; }
     align-items: center !important;
     gap: 18px !important;
 }
-
-/* Nav-kolommen: auto-breedte, transparante achtergrond */
 [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] [data-testid="stPageLink"])
     [data-testid="stColumn"],
 [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] [data-testid="stPageLink"])
@@ -166,8 +113,6 @@ section[data-testid="stSidebar"] { display: none !important; }
     overflow: visible !important;
     background: transparent !important;
 }
-
-/* Spatie-kolom (6e kolom) vult de resterende ruimte op */
 [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] [data-testid="stPageLink"])
     [data-testid="stColumn"]:nth-child(6) {
     flex: 1 1 auto !important;
@@ -175,220 +120,763 @@ section[data-testid="stSidebar"] { display: none !important; }
     width: auto !important;
 }
 
-.block-container {
-    padding-top: 68px !important;
-    max-width: 900px;
-    margin: 0 auto;
-    padding-bottom: 80px !important;
-}
-
-h1 { font-size: 3.2rem; font-weight: 600; line-height: 1.15; }
-p, li { color: #333; line-height: 1.6; }
-
-/* ── Navigatie — st.page_link in donkere header ─────────────────────────── */
-[data-testid="stPageLink"] {
-    height: auto !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-/* Nav-links: wit op donker, geen pill-schaduw */
+/* Nav-links in vaste header */
+[data-testid="stPageLink"] { height: auto !important; padding: 0 !important; margin: 0 !important; }
 [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] [data-testid="stPageLink"])
     [data-testid="stPageLink"] a {
     display: inline-block !important;
     background: transparent !important;
     border-radius: 6px !important;
-    padding: 6px 14px !important;
-    font-size: 13px !important;
+    padding: 6px 12px !important;
+    font-family: var(--font-body) !important;
+    font-size: 12.5px !important;
     font-weight: 600 !important;
-    color: rgba(255,255,255,0.72) !important;
+    color: var(--nav-link) !important;
     text-decoration: none !important;
     white-space: nowrap !important;
-    box-shadow: none !important;
-    letter-spacing: 0.04em !important;
-    font-family: 'General Sans', sans-serif !important;
-    transition: background 0.15s, color 0.15s !important;
+    letter-spacing: 0.02em !important;
+    transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease) !important;
 }
-
 [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] [data-testid="stPageLink"])
     [data-testid="stPageLink"] a:hover {
-    background: rgba(255,255,255,0.10) !important;
-    color: #ffffff !important;
-    text-decoration: none !important;
+    background: var(--nav-link-hover-bg) !important;
+    color: var(--nav-link-hover) !important;
 }
-
-/* Fix truncatie: alle child-elementen van page_link mogen niet afkappen */
 [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] [data-testid="stPageLink"])
     [data-testid="stPageLink"] a div,
 [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] [data-testid="stPageLink"])
     [data-testid="stPageLink"] a p,
 [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] [data-testid="stPageLink"])
     [data-testid="stPageLink"] a span {
-    overflow: visible !important;
-    text-overflow: unset !important;
-    white-space: nowrap !important;
-    max-width: none !important;
-    width: auto !important;
-    color: inherit !important;
+    overflow: visible !important; text-overflow: unset !important; white-space: nowrap !important;
+    max-width: none !important; width: auto !important; color: inherit !important;
 }
-
-/* Elders op de pagina: page_link behoudt neutrale stijl */
+/* Elders op de pagina: page_link in body */
 [data-testid="stPageLink"] a {
     display: inline-block !important;
-    background: transparent !important;
-    border-radius: 6px !important;
+    background: transparent !important; border-radius: 6px !important;
     padding: 4px 10px !important;
-    font-size: 13px !important;
-    font-weight: 600 !important;
-    color: #1a1a1a !important;
-    text-decoration: none !important;
+    font-family: var(--font-body) !important;
+    font-size: 12.5px !important; font-weight: 600 !important;
+    color: var(--text) !important; text-decoration: none !important;
     white-space: nowrap !important;
-    box-shadow: none !important;
-    font-family: 'General Sans', sans-serif !important;
 }
+[data-testid="stPageLink"] a:hover { background: var(--surface-2) !important; }
 
-[data-testid="stPageLink"] a:hover {
-    background: #f5f5f5 !important;
-    text-decoration: none !important;
-}
-
-/* ── Knoppen ────────────────────────────────────────────────────────────── */
+/* ── Knoppen (primary / secondary) ────────────────────────────────────────── */
 [data-testid="stBaseButton-primary"],
 [data-testid="stBaseButton-primary"] p,
 [data-testid="stBaseButton-primary"] span {
-    background-color: #1a1a1a !important;
-    color: white !important;
-    border-radius: 50px !important;
-    font-weight: 700 !important;
+    background-color: var(--btn-prim-bg) !important;
+    color: var(--btn-prim-fg) !important;
     border: none !important;
-    letter-spacing: 0.04em !important;
+    border-radius: var(--btn-radius) !important;
+    font-family: var(--font-body) !important;
+    font-weight: 700 !important;
     font-size: 13px !important;
+    letter-spacing: 0.03em !important;
+    transition: background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease) !important;
 }
-[data-testid="stBaseButton-primary"]:hover { background-color: #333 !important; }
-
+[data-testid="stBaseButton-primary"]:hover {
+    background-color: var(--btn-prim-bg-hover) !important;
+    transform: translateY(-1px);
+}
 [data-testid="stBaseButton-secondary"],
 [data-testid="stBaseButton-secondary"] p,
 [data-testid="stBaseButton-secondary"] span {
-    background-color: white !important;
-    border-radius: 50px !important;
-    border: none !important;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.20) !important;
+    background-color: var(--btn-sec-bg) !important;
+    color: var(--btn-sec-fg) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--btn-radius) !important;
+    font-family: var(--font-body) !important;
     font-weight: 700 !important;
-    letter-spacing: 0.03em !important;
     font-size: 13px !important;
+    letter-spacing: 0.03em !important;
+    box-shadow: none !important;
 }
 [data-testid="stBaseButton-secondary"]:hover {
-    background-color: #f5f5f5 !important;
-    box-shadow: 0 10px 28px rgba(0,0,0,0.25) !important;
+    background-color: var(--surface-2) !important;
 }
 
+/* ── Container-border (st.container(border=True)) ─────────────────────────── */
 [data-testid="stVerticalBlockBorderWrapper"] {
-    background: #ffffff !important;
-    border-radius: 18px !important;
-    border: 1px solid rgba(0,0,0,0.06) !important;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
-    padding: 4px 8px;
+    background: var(--surface) !important;
+    border-radius: var(--radius-md) !important;
+    border: 1px solid var(--border) !important;
+    box-shadow: var(--shadow);
+    padding: var(--space-2) var(--space-3);
 }
 
-[data-testid="stSelectbox"] > div > div {
-    border-radius: 50px;
-    border: 2px solid #1a1a1a;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    background: white;
+/* ── Inputs (selectbox, text input, text area, slider) ────────────────────── */
+[data-testid="stSelectbox"] > div > div,
+[data-testid="stTextInput"] input,
+[data-testid="stTextArea"] textarea,
+[data-testid="stNumberInput"] input,
+[data-testid="stDateInput"] input {
+    background: var(--surface) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-sm) !important;
+    font-family: var(--font-body) !important;
+    font-size: 14px !important;
 }
-
-[data-testid="stBottom"]               { background-color: #ffffff !important; }
-[data-testid="stBottomBlockContainer"] { background-color: #ffffff !important; }
-
+[data-testid="stTextInput"] input::placeholder,
+[data-testid="stTextArea"] textarea::placeholder {
+    color: var(--text-faint) !important;
+}
 [data-testid="stSlider"] [data-baseweb="slider"] [role="slider"] {
-    background-color: #c8785a !important;
-    border-color: #c8785a !important;
+    background-color: var(--accent) !important;
+    border-color: var(--accent) !important;
 }
 
-/* ── st.metric() opmaak ─────────────────────────────────────────────────── */
-[data-testid="stMetric"] { background:#ffffff; border-radius:16px; padding:16px 20px; box-shadow:0 4px 24px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04); }
-[data-testid="stMetricLabel"] p { font-size:0.68rem!important; font-weight:700!important; letter-spacing:0.10em!important; text-transform:uppercase!important; color:#999!important; }
-[data-testid="stMetricValue"] { font-size:2.2rem!important; font-weight:700!important; color:#1a1a1a!important; }
-[data-testid="stMetricDelta"] svg { display:none; }
-[data-testid="stMetricDelta"]>div { font-size:0.82rem!important; font-weight:700!important; }
+[data-testid="stBottom"] { background-color: var(--bg) !important; }
+[data-testid="stBottomBlockContainer"] { background-color: var(--bg) !important; }
 
-/* ── Tabs ────────────────────────────────────────────────────────────────── */
-[data-testid="stTabs"] [role="tablist"] { border-bottom:2px solid #f0d4d4; gap:4px; }
-[data-testid="stTabs"] button[role="tab"] { font-family:'General Sans',sans-serif!important; font-weight:600!important; font-size:13px!important; color:#888!important; border-radius:8px 8px 0 0!important; padding:8px 16px!important; border:none!important; background:transparent!important; }
-[data-testid="stTabs"] button[role="tab"][aria-selected="true"] { color:#1a1a1a!important; background:white!important; border-bottom:2px solid #c8785a!important; }
+/* ── st.metric — gebruikt door legacy code; matchen we aan stat-card stijl ── */
+[data-testid="stMetric"] {
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    box-shadow: var(--shadow);
+}
+[data-testid="stMetricLabel"] p {
+    font-family: var(--font-mono) !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.10em !important;
+    text-transform: uppercase !important;
+    color: var(--text-faint) !important;
+}
+[data-testid="stMetricValue"] {
+    font-family: var(--font-display) !important;
+    font-size: 2rem !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.025em !important;
+    color: var(--text) !important;
+}
+[data-testid="stMetricDelta"] svg { display: none; }
+[data-testid="stMetricDelta"] > div {
+    font-family: var(--font-mono) !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+}
 
-/* ── Expanders ───────────────────────────────────────────────────────────── */
-[data-testid="stExpander"] { border:1px solid #f0d4d4!important; border-radius:12px!important; background:white!important; }
-[data-testid="stExpander"] summary { font-family:'General Sans',sans-serif!important; font-weight:600!important; font-size:0.9rem!important; color:#1a1a1a!important; padding:12px 16px!important; }
-[data-testid="stExpander"] summary:hover { background:#fae8e8!important; border-radius:12px 12px 0 0!important; }
+/* ── Tabs ──────────────────────────────────────────────────────────────────── */
+[data-testid="stTabs"] [role="tablist"] {
+    border-bottom: 1px solid var(--border);
+    gap: 4px;
+}
+[data-testid="stTabs"] button[role="tab"] {
+    font-family: var(--font-body) !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    color: var(--text-dim) !important;
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid transparent !important;
+    border-radius: 0 !important;
+    padding: 10px 16px !important;
+    margin-bottom: -1px !important;
+}
+[data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
+    color: var(--accent-strong) !important;
+    border-bottom-color: var(--accent) !important;
+    background: transparent !important;
+}
 
-/* ── .stat-card ──────────────────────────────────────────────────────────── */
-.stat-card { background:white; border-radius:16px; padding:20px 20px 16px; box-shadow:0 4px 24px rgba(0,0,0,0.08); }
-.stat-card__label { font-size:0.68rem; font-weight:700; letter-spacing:0.10em; text-transform:uppercase; color:#999; margin:0 0 6px; }
-.stat-card__value { font-size:2.4rem; font-weight:700; color:#1a1a1a; line-height:1; margin:0; }
-.stat-card__sub { font-size:0.82rem; color:#bbb; font-weight:500; margin:4px 0 0; }
-.stat-card__delta--pos { color:#27ae60; font-weight:700; font-size:0.85rem; }
-.stat-card__delta--neg { color:#c0392b; font-weight:700; font-size:0.85rem; }
+/* ── Expanders ────────────────────────────────────────────────────────────── */
+[data-testid="stExpander"] {
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-md) !important;
+    background: var(--surface) !important;
+}
+[data-testid="stExpander"] summary {
+    font-family: var(--font-body) !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    color: var(--text) !important;
+    padding: 12px 16px !important;
+}
+[data-testid="stExpander"] summary:hover { background: var(--surface-2) !important; }
 
-/* ── .badge ──────────────────────────────────────────────────────────────── */
-.badge { display:inline-block; border-radius:50px; padding:4px 14px; font-size:0.75rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; white-space:nowrap; }
-.badge--starter    { background:#e67e2220; color:#e67e22; }
-.badge--onderweg   { background:#3498db20; color:#3498db; }
-.badge--gevorderde { background:#27ae6020; color:#27ae60; }
-.badge--expert     { background:#c8785a22; color:#c8785a; }
-.badge--niet-gecontacteerd { background:#e74c3c18; color:#c0392b; }
-.badge--gecontacteerd      { background:#f39c1218; color:#e67e22; }
-.badge--gereageerd         { background:#3498db18; color:#2980b9; }
-.badge--opgelost           { background:#27ae6018; color:#27ae60; }
-.badge--urgentie-1 { background:#27ae6018; color:#27ae60; }
-.badge--urgentie-2 { background:#f39c1218; color:#e67e22; }
-.badge--urgentie-3 { background:#e74c3c18; color:#c0392b; }
-.badge--transitie  { background:#c8785a18; color:#c8785a; }
+/* ── Info/Warning/Error/Success banners ───────────────────────────────────── */
+[data-testid="stAlertContainer"] {
+    border-radius: var(--radius-md) !important;
+    border: 1px solid var(--border) !important;
+}
 
-/* ── .hero-card ──────────────────────────────────────────────────────────── */
-.hero-card { background:white; border-radius:20px; padding:28px 28px 24px; box-shadow:0 4px 32px rgba(0,0,0,0.09); margin-bottom:4px; }
-.hero-card__naam { font-size:1.9rem; font-weight:700; color:#1a1a1a; margin:0 0 4px; line-height:1.2; }
-.hero-card__meta { color:#888; font-size:0.88rem; margin:0 0 4px; }
-.hero-card__mentor { color:#bbb; font-size:0.80rem; margin:0 0 14px; }
-
-/* ── .section-label ──────────────────────────────────────────────────────── */
-.section-label { font-size:0.68rem; font-weight:700; letter-spacing:0.10em; color:#999; text-transform:uppercase; margin:0 0 8px; }
-.section-label--warning { color:#e67e22; }
-
-/* ── .welzijn-intro / .check-item ────────────────────────────────────────── */
-.welzijn-intro { background:linear-gradient(135deg,#fae8e8 0%,#f0d4d4 100%); border-radius:16px; padding:24px 28px; margin-bottom:20px; border-left:4px solid #c8785a; }
-.welzijn-intro__title { font-size:1.1rem; font-weight:700; color:#1a1a1a; margin:0 0 6px; }
-.welzijn-intro__body { color:#555; font-size:0.9rem; line-height:1.5; margin:0; }
-.check-item { display:flex; align-items:baseline; gap:10px; padding:10px 0; border-bottom:1px solid #f0d4d440; }
-.check-item__date { color:#aaa; font-size:0.78rem; min-width:80px; font-weight:600; }
-.check-item__label { font-size:0.85rem; color:#1a1a1a; font-weight:600; }
-.check-item__note { color:#888; font-size:0.82rem; font-style:italic; }
-
-/* ── Leercoach reset-knop uitlijning ─────────────────────────────────────── */
-[data-testid="stColumn"]:has([data-testid="stBaseButton-secondary"]) { display:flex; align-items:flex-end; }
-
-/* ── Grafiek-kaartjes ────────────────────────────────────────────────────── */
+/* ── Altair/Plotly chart containers ───────────────────────────────────────── */
 [data-testid="stArrowVegaLiteChart"],
-[data-testid="stVegaLiteChart"] {
-    background: white !important;
-    border-radius: 16px !important;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.09) !important;
+[data-testid="stVegaLiteChart"],
+[data-testid="stPlotlyChart"] {
+    background: var(--surface) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: var(--shadow) !important;
     padding: 12px !important;
 }
 
-/* Gebruik de paginaachtergrond als basis — witte kaartjes hangen er bovenop */
 [data-testid="stVerticalBlock"],
 [data-testid="stHorizontalBlock"],
 [data-testid="element-container"],
-[data-testid="stColumn"] {
-    background: transparent;
+[data-testid="stColumn"] { background: transparent; }
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* Componenten — alles met sw- prefix om Streamlit-classes niet te raken      */
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+/* ── sw-hero ───────────────────────────────────────────────────────────────── */
+.sw-hero {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-4) var(--space-5);
+    margin: 0 0 var(--space-4);
+    box-shadow: var(--shadow);
+}
+.sw-hero__name {
+    font-family: var(--font-display) !important;
+    font-weight: 800 !important;
+    font-size: 1.9rem !important;
+    letter-spacing: -0.03em !important;
+    line-height: 1.05 !important;
+    color: var(--text) !important;
+    margin: 0 0 4px !important;
+}
+.sw-hero__name em {
+    font-style: normal;
+    color: var(--accent-strong);
+}
+.sw-hero__meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin: 0 0 var(--space-3);
+}
+.sw-hero__badges { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* ── sw-stat ──────────────────────────────────────────────────────────────── */
+.sw-stat {
+    display: flex; align-items: center; gap: var(--space-3);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-4);
+    box-shadow: var(--shadow);
+    min-height: 88px;
+}
+.sw-stat__ring { width: 52px; height: 52px; flex-shrink: 0; }
+.sw-stat__ring-bg { stroke: var(--ring-bg); stroke-width: 5; fill: none; }
+.sw-stat__ring-fg { stroke: var(--accent); stroke-width: 5; fill: none; }
+.sw-stat__ring-fg.alert { stroke: var(--alert); }
+.sw-stat__body { flex: 1; min-width: 0; }
+.sw-stat__label {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin: 0 0 4px;
+}
+.sw-stat__value {
+    font-family: var(--font-display) !important;
+    font-weight: 800 !important;
+    font-size: 1.9rem !important;
+    letter-spacing: -0.025em !important;
+    line-height: 1 !important;
+    color: var(--text) !important;
+    margin: 0 !important;
+}
+.sw-stat__value-sub {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    font-weight: 600;
+}
+.sw-stat__delta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    margin: 4px 0 0;
+    color: var(--accent-strong);
+}
+.sw-stat__delta.neg { color: var(--alert); }
+.sw-stat__sub {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--text-faint);
+    margin: 2px 0 0;
+    letter-spacing: 0.06em;
 }
 
-/* Alleen stApp zelf krijgt achtergrondkleur; kaartjes zijn #fff */
-[data-testid="stApp"] {
-    background-color: #FAFAF8 !important;
+/* ── sw-badge ─────────────────────────────────────────────────────────────── */
+.sw-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: var(--badge-radius);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    background: var(--surface-2);
+    color: var(--text-dim);
+    border: 1px solid var(--border);
 }
-</style>
+.sw-badge--starter    { background: var(--badge-starter-bg);    color: var(--badge-starter-fg);    border-color: var(--badge-starter-border); }
+.sw-badge--onderweg   { background: var(--badge-onderweg-bg);   color: var(--badge-onderweg-fg);   border-color: var(--badge-onderweg-border); }
+.sw-badge--gevorderde { background: var(--badge-gev-bg);        color: var(--badge-gev-fg);        border-color: var(--badge-gev-border); }
+.sw-badge--expert     { background: var(--badge-exp-bg);        color: var(--badge-exp-fg);        border-color: var(--badge-exp-border); }
+.sw-badge--onschema   { background: var(--badge-ok-bg);         color: var(--badge-ok-fg);         border-color: var(--badge-ok-border); }
+.sw-badge--urgent     { background: var(--badge-urg-bg);        color: var(--badge-urg-fg);        border-color: var(--badge-urg-border); }
+.sw-badge--accent     { background: var(--accent); color: var(--bg); font-weight: 700; border-color: var(--accent); }
+
+/* Outreach-statussen */
+.sw-badge--niet-gecontacteerd { background: var(--badge-urg-bg); color: var(--badge-urg-fg); border-color: var(--badge-urg-border); }
+.sw-badge--gecontacteerd      { background: var(--badge-starter-bg); color: var(--badge-starter-fg); border-color: var(--badge-starter-border); }
+.sw-badge--gereageerd         { background: var(--badge-onderweg-bg); color: var(--badge-onderweg-fg); border-color: var(--badge-onderweg-border); }
+.sw-badge--opgelost           { background: var(--badge-ok-bg); color: var(--badge-ok-fg); border-color: var(--badge-ok-border); }
+.sw-badge--transitie          { background: var(--badge-exp-bg); color: var(--badge-exp-fg); border-color: var(--badge-exp-border); }
+
+/* Welzijn-urgentie */
+.sw-badge--urgentie-1 { background: var(--badge-ok-bg); color: var(--badge-ok-fg); border-color: var(--badge-ok-border); }
+.sw-badge--urgentie-2 { background: var(--badge-starter-bg); color: var(--badge-starter-fg); border-color: var(--badge-starter-border); }
+.sw-badge--urgentie-3 { background: var(--badge-urg-bg); color: var(--badge-urg-fg); border-color: var(--badge-urg-border); }
+
+/* ── sw-alert ─────────────────────────────────────────────────────────────── */
+.sw-alert {
+    display: flex; align-items: center; gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    margin: var(--space-3) 0;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+}
+.sw-alert--info     { background: var(--surface-2); color: var(--text-dim); border: 1px solid var(--border); }
+.sw-alert--warning  { background: var(--badge-starter-bg); color: var(--badge-starter-fg); border: 1px solid var(--badge-starter-border); }
+.sw-alert--urgent   { background: var(--badge-urg-bg); color: var(--badge-urg-fg); border: 1px solid var(--badge-urg-border); }
+.sw-alert__icon {
+    width: 28px; height: 28px; flex-shrink: 0;
+    border-radius: var(--radius-sm);
+    background: currentColor; opacity: 0.85;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--bg); font-weight: 800; font-size: 13px;
+}
+
+/* ── sw-label / sw-section-label ──────────────────────────────────────────── */
+.sw-label {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin: 0 0 var(--space-2);
+}
+.sw-label--warning { color: var(--alert); }
+
+/* ── sw-tile (action tile op home) ────────────────────────────────────────── */
+.sw-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    box-shadow: var(--shadow);
+}
+.sw-tile__icon {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin: 0 0 6px;
+}
+.sw-tile__title {
+    font-family: var(--font-display) !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    letter-spacing: -0.015em !important;
+    line-height: 1.2 !important;
+    color: var(--text) !important;
+    margin: 0 0 4px !important;
+}
+.sw-tile__sub {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 12.5px;
+    color: var(--text-dim);
+    line-height: 1.4;
+    margin: 0 0 var(--space-3);
+}
+
+/* ── sw-rule (subtiele scheidingslijn) ────────────────────────────────────── */
+.sw-rule { height: 1px; background: var(--border); margin: var(--space-5) 0; border: none; }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .block-container { padding-top: 62px !important; padding-left: 14px !important; padding-right: 14px !important; }
+    h1 { font-size: 1.8rem; }
+    .sw-hero__name { font-size: 1.6rem; }
+    .sw-stat__value { font-size: 1.6rem; }
+}
 """
+
+
+# ── STUDENT theme — donker + lime ─────────────────────────────────────────────
+_STUDENT_CSS = """
+:root {
+    --bg: #0F0F12;
+    --surface: #1A1A1F;
+    --surface-2: rgba(255,255,255,0.04);
+    --border: rgba(255,255,255,0.08);
+    --text: #FFFFFF;
+    --text-dim: rgba(255,255,255,0.85);
+    --text-faint: rgba(255,255,255,0.68);
+    --accent: #A8FF60;
+    --accent-strong: #A8FF60;
+    --alert: #FF5E3A;
+    --shadow: 0 4px 24px rgba(0,0,0,0.40);
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+    --badge-radius: 50px;
+    --btn-radius: 50px;
+    --ring-bg: rgba(255,255,255,0.10);
+
+    /* nav */
+    --nav-bg: #1A1A1F;
+    --nav-link: rgba(255,255,255,0.78);
+    --nav-link-hover-bg: rgba(168,255,96,0.18);
+    --nav-link-hover: #A8FF60;
+
+    /* buttons */
+    --btn-prim-bg: #A8FF60;
+    --btn-prim-fg: #0F0F12;
+    --btn-prim-bg-hover: #BFFF7F;
+    --btn-sec-bg: rgba(255,255,255,0.06);
+    --btn-sec-fg: #FFFFFF;
+
+    /* badges */
+    --badge-starter-bg: rgba(255,94,58,0.15); --badge-starter-fg: #FF8E6E; --badge-starter-border: rgba(255,94,58,0.30);
+    --badge-onderweg-bg: rgba(96,165,255,0.15); --badge-onderweg-fg: #84B8FF; --badge-onderweg-border: rgba(96,165,255,0.30);
+    --badge-gev-bg: rgba(168,255,96,0.18); --badge-gev-fg: #A8FF60; --badge-gev-border: rgba(168,255,96,0.35);
+    --badge-exp-bg: rgba(255,255,255,0.10); --badge-exp-fg: #FFFFFF; --badge-exp-border: rgba(255,255,255,0.30);
+    --badge-ok-bg: rgba(168,255,96,0.15); --badge-ok-fg: #A8FF60; --badge-ok-border: rgba(168,255,96,0.30);
+    --badge-urg-bg: rgba(255,94,58,0.15); --badge-urg-fg: #FF5E3A; --badge-urg-border: rgba(255,94,58,0.30);
+}
+/* Student-specific tweaks */
+.sw-hero { background: linear-gradient(180deg, rgba(168,255,96,0.04), rgba(168,255,96,0.0)); border-color: rgba(168,255,96,0.18); }
+.sw-stat { background: rgba(255,255,255,0.03); }
+"""
+
+
+# ── DOCENT theme — paper + sage ───────────────────────────────────────────────
+_DOCENT_CSS = """
+:root {
+    --bg: #F0EBE1;
+    --surface: #FAF5EC;
+    --surface-2: #F5EFE1;
+    --border: rgba(31,29,24,0.10);
+    --text: #1F1D18;
+    --text-dim: #6A6354;
+    --text-faint: #8A8270;
+    --accent: #6F8265;
+    --accent-strong: #4D6044;
+    --alert: #B04A1A;
+    --shadow: 0 2px 12px rgba(31,29,24,0.06);
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --badge-radius: 6px;
+    --btn-radius: 8px;
+    --ring-bg: rgba(31,29,24,0.10);
+
+    /* nav */
+    --nav-bg: #1F1D18;
+    --nav-link: rgba(250,245,236,0.55);
+    --nav-link-hover-bg: rgba(111,130,101,0.30);
+    --nav-link-hover: #D9E0D3;
+
+    /* buttons */
+    --btn-prim-bg: #1F1D18;
+    --btn-prim-fg: #FAF5EC;
+    --btn-prim-bg-hover: #2F2A20;
+    --btn-sec-bg: #FAF5EC;
+    --btn-sec-fg: #1F1D18;
+
+    /* badges */
+    --badge-starter-bg: #F5E0D3; --badge-starter-fg: #B04A1A; --badge-starter-border: #E8C9B3;
+    --badge-onderweg-bg: #E6EBE2; --badge-onderweg-fg: #4D6044; --badge-onderweg-border: #D0D9C8;
+    --badge-gev-bg: #DDE6D6; --badge-gev-fg: #3E5237; --badge-gev-border: #C5D4BA;
+    --badge-exp-bg: #1F1D18; --badge-exp-fg: #FAF5EC; --badge-exp-border: #1F1D18;
+    --badge-ok-bg: #DDE6D6; --badge-ok-fg: #3E5237; --badge-ok-border: #C5D4BA;
+    --badge-urg-bg: #F5DCD0; --badge-urg-fg: #B04A1A; --badge-urg-border: #ECC3AC;
+}
+"""
+
+
+def inject_theme(rol: str | None = None) -> None:
+    """Injecteer base-CSS + thema-CSS in de pagina.
+
+    Aanroepen direct ná ``st.set_page_config(...)``. Bij ontbrekende rol (login)
+    valt de docent-stijl in als veilige default — paper-achtergrond werkt voor
+    beide.
+
+    Args:
+        rol: ``"student"``, ``"docent"`` of ``None``.
+    """
+    theme = _STUDENT_CSS if rol == "student" else _DOCENT_CSS
+    st.markdown(f"<style>{_BASE_CSS}{theme}</style>", unsafe_allow_html=True)
+
+
+# Backwards-compat: CSS = docent-thema-bundle. Bestaande aanroepen blijven werken
+# tot pagina's gemigreerd zijn naar inject_theme().
+CSS = f"<style>{_BASE_CSS}{_DOCENT_CSS}</style>"
+
+
+# ── Navigatie ─────────────────────────────────────────────────────────────────
+_NAV_STUDENT = [
+    ("Home", "main.py"),
+    ("Voortgang", "pages/1_mijn_voortgang.py"),
+    ("Groeidossier", "pages/6_groeidossier.py"),
+    ("Leercoach", "pages/3_leercoach.py"),
+    ("Welzijn", "pages/5_welzijn.py"),
+]
+
+_NAV_DOCENT = [
+    ("Home", "main.py"),
+    ("Groep", "pages/2_groepsoverzicht.py"),
+    ("Groeidossier", "pages/6_groeidossier.py"),
+    ("Outreach", "pages/4_outreach.py"),
+    ("Leercoach", "pages/3_leercoach.py"),
+]
+
+
+def render_nav() -> None:
+    """Render de bovenbalk via ``st.page_link``.
+
+    Gebruikt Streamlit's client-side navigatie (HTML <a> zou een full reload
+    triggeren en de sessie wissen). Aanroepen direct ná :func:`inject_theme`.
+    """
+    rol = st.session_state.get("rol")
+    if not rol:
+        return
+
+    nav_items = _NAV_STUDENT if rol == "student" else _NAV_DOCENT
+    gebruiker = (
+        st.session_state.get("studentnummer", "")
+        if rol == "student"
+        else st.session_state.get("mentor_naam", "")
+    )
+
+    n = len(nav_items)
+    cols = st.columns([2] * n + [3, 2, 2])
+
+    for i, (label, page) in enumerate(nav_items):
+        with cols[i]:
+            st.page_link(page, label=label)
+
+    with cols[n + 1]:
+        st.markdown(
+            f'<div style="text-align:right;color:rgba(255,255,255,0.45);'
+            f"font-size:11px;font-weight:600;padding-top:6px;"
+            f"font-family:'JetBrains Mono',monospace;letter-spacing:0.08em;"
+            f'text-transform:uppercase;">{gebruiker}</div>',
+            unsafe_allow_html=True,
+        )
+
+    with cols[n + 2]:
+        st.page_link("pages/uitloggen.py", label="Uitloggen")
+
+
+# ── Footer ────────────────────────────────────────────────────────────────────
+_FOOTER_HTML = """
+<div style="
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background-color: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 8px 24px; text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--text-faint); line-height: 1.5; z-index: 999;">
+    <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt=""
+         style="height:1.1em;vertical-align:middle;opacity:0.5;">
+    <img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt=""
+         style="height:1.1em;vertical-align:middle;opacity:0.5;margin-right:6px;">
+    CC BY-SA 4.0 · AI en data waarde(n)vol inzetten · CEDA 2026 Samenwijzer · Utrecht: Npuls
+</div>
+"""
+
+
+def render_footer() -> None:
+    """Render de CEDA/Npuls-credit onderaan de pagina."""
+    st.markdown(_FOOTER_HTML, unsafe_allow_html=True)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Component-helpers — alle gebruik sw- prefix, alle thema-bewust via CSS-vars
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+def _esc(text: str) -> str:
+    """Minimale HTML-escape voor user-content in markdown blocks."""
+    return (
+        text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+    )
+
+
+def hero(
+    naam: str,
+    meta: str,
+    badges: list[tuple[str, str]] | None = None,
+    *,
+    accent_naam: bool = False,
+) -> None:
+    """Render een hero-blok bovenaan een pagina.
+
+    Args:
+        naam: Naam of begroeting. Bij ``accent_naam=True`` wordt de tekst in de
+            accent-kleur getoond (handig voor "Hey, **Lisa**" op student-home).
+        meta: Sub-regel (cohort, opleiding, datum, etc.). Wordt mono-uppercase.
+        badges: Optionele lijst van ``(kind, label)``-tuples — zie :func:`badge`
+            voor toegestane kinds.
+    """
+    naam_html = f"<em>{_esc(naam)}</em>" if accent_naam else _esc(naam)
+    badges_html = ""
+    if badges:
+        badges_html = (
+            '<div class="sw-hero__badges">' + "".join(badge(k, t) for k, t in badges) + "</div>"
+        )
+    st.markdown(
+        f'<div class="sw-hero">'
+        f'<p class="sw-hero__name">{naam_html}</p>'
+        f'<p class="sw-hero__meta">{_esc(meta)}</p>'
+        f"{badges_html}"
+        f"</div>",
+        unsafe_allow_html=True,
+    )
+
+
+def stat_card(
+    label: str,
+    value: str,
+    *,
+    value_sub: str | None = None,
+    delta: str | None = None,
+    delta_negative: bool = False,
+    sub: str | None = None,
+    progress: float | None = None,
+    alert_ring: bool = False,
+) -> None:
+    """Render een stat-kaart met optionele inline progress-ring.
+
+    Args:
+        label: Korte mono-label (bv. "Studievoortgang").
+        value: Grote waarde (bv. ``"62%"`` of ``"42"``).
+        value_sub: Subtiele suffix achter ``value`` (bv. ``"/ 60"``).
+        delta: Klein delta-regeltje onder de waarde (bv. ``"+8% vs. cohort"``).
+        delta_negative: Kleur het delta-regeltje in alert-kleur.
+        sub: Extra mono-regel onderaan (bv. cohortnaam).
+        progress: ``0.0``–``1.0`` voor de inline-ring; ``None`` = geen ring.
+        alert_ring: Toon de ring in ``--alert`` ipv ``--accent``.
+    """
+    ring_html = ""
+    if progress is not None:
+        pct = max(0.0, min(1.0, progress))
+        # circumference = 2*pi*r met r=20 ≈ 125.66
+        offset = round(125.66 * (1 - pct), 1)
+        ring_cls = "sw-stat__ring-fg alert" if alert_ring else "sw-stat__ring-fg"
+        ring_html = (
+            '<svg class="sw-stat__ring" viewBox="0 0 50 50">'
+            '<circle cx="25" cy="25" r="20" class="sw-stat__ring-bg" />'
+            f'<circle cx="25" cy="25" r="20" class="{ring_cls}" '
+            f'stroke-dasharray="125.66" stroke-dashoffset="{offset}" '
+            'stroke-linecap="round" transform="rotate(-90 25 25)" />'
+            "</svg>"
+        )
+    value_sub_html = (
+        f'<span class="sw-stat__value-sub">{_esc(value_sub)}</span>' if value_sub else ""
+    )
+    delta_cls = "sw-stat__delta neg" if delta_negative else "sw-stat__delta"
+    delta_html = f'<p class="{delta_cls}">{_esc(delta)}</p>' if delta else ""
+    sub_html = f'<p class="sw-stat__sub">{_esc(sub)}</p>' if sub else ""
+    st.markdown(
+        f'<div class="sw-stat">{ring_html}'
+        f'<div class="sw-stat__body">'
+        f'<p class="sw-stat__label">{_esc(label)}</p>'
+        f'<p class="sw-stat__value">{_esc(value)}{value_sub_html}</p>'
+        f"{delta_html}{sub_html}"
+        f"</div></div>",
+        unsafe_allow_html=True,
+    )
+
+
+def badge(kind: str, text: str) -> str:
+    """Geef een badge als HTML-string voor inline gebruik.
+
+    Toegestane ``kind``-waarden: ``starter``, ``onderweg``, ``gevorderde``,
+    ``expert``, ``onschema``, ``urgent``, ``accent``, en de outreach-/welzijn-
+    specifieke vormen ``niet-gecontacteerd``, ``gecontacteerd``, ``gereageerd``,
+    ``opgelost``, ``transitie``, ``urgentie-1``, ``urgentie-2``, ``urgentie-3``.
+    """
+    return f'<span class="sw-badge sw-badge--{kind}">{_esc(text)}</span>'
+
+
+def render_badge(kind: str, text: str) -> None:
+    """Render een badge direct (wrapper rond :func:`badge`)."""
+    st.markdown(badge(kind, text), unsafe_allow_html=True)
+
+
+def alert(text: str, level: str = "info", *, icon: str | None = None) -> None:
+    """Render een inline alert-balk.
+
+    Args:
+        text: Tekst in de balk.
+        level: ``"info"``, ``"warning"`` of ``"urgent"``.
+        icon: Optioneel één teken voor het ronde icoon vóór de tekst (bv. ``"!"``).
+    """
+    icon_html = f'<span class="sw-alert__icon">{_esc(icon)}</span>' if icon else ""
+    st.markdown(
+        f'<div class="sw-alert sw-alert--{level}">{icon_html}<span>{_esc(text)}</span></div>',
+        unsafe_allow_html=True,
+    )
+
+
+def section_label(text: str, *, warning: bool = False) -> None:
+    """Render een kleine mono-uppercase label-tekst (bv. boven een sectie)."""
+    cls = "sw-label sw-label--warning" if warning else "sw-label"
+    st.markdown(f'<p class="{cls}">{_esc(text)}</p>', unsafe_allow_html=True)
+
+
+def action_tile(
+    icon: str,
+    titel: str,
+    sub: str,
+    page: str,
+    *,
+    key: str,
+) -> None:
+    """Render een klikbare home-actie-tile.
+
+    Combineert een visuele kaart (icon/titel/sub) met een Streamlit-knop die
+    via :func:`st.switch_page` navigeert. De knop draagt de pagina-redirect; de
+    HTML-kaart toont de presentatie. Aanroepen binnen een ``st.container``.
+    """
+    st.markdown(
+        f'<div class="sw-tile">'
+        f'<p class="sw-tile__icon">{_esc(icon)}</p>'
+        f'<p class="sw-tile__title">{_esc(titel)}</p>'
+        f'<p class="sw-tile__sub">{_esc(sub)}</p>'
+        f"</div>",
+        unsafe_allow_html=True,
+    )
+    if st.button("OPEN", key=key, type="primary", use_container_width=True):
+        st.switch_page(page)
+
+
+def rule() -> None:
+    """Subtiele scheidingslijn."""
+    st.markdown('<hr class="sw-rule" />', unsafe_allow_html=True)

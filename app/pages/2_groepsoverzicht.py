@@ -7,7 +7,7 @@ import streamlit as st
 from samenwijzer.analyze import cohort_gemiddelden, groepsoverzicht, peer_profielen, signaleringen
 from samenwijzer.auth import mentor_filter, vereist_docent
 from samenwijzer.prepare import load_welzijn_csv
-from samenwijzer.styles import CSS, render_footer, render_nav
+from samenwijzer.styles import hero, inject_theme, render_footer, render_nav, stat_card
 from samenwijzer.visualize import groep_voortgang_grafiek
 from samenwijzer.wellbeing import (
     antwoord_label,
@@ -21,54 +21,46 @@ _WELZIJN_CSV = _ROOT / "data" / "01-raw" / "synthetisch" / "welzijn.csv"
 _NOTITIES_PAD = _ROOT / "data" / "02-prepared" / "notities.csv"
 
 st.set_page_config(page_title="Groepsoverzicht — Samenwijzer", page_icon="👥", layout="wide")
-st.markdown(CSS, unsafe_allow_html=True)
-render_nav()
-vereist_docent()
-st.title("👥 Groepsoverzicht")
 
 if "df" not in st.session_state:
+    inject_theme(None)
     st.warning("Ga eerst naar de startpagina om de data te laden.")
     st.stop()
 
+inject_theme(st.session_state.get("rol", "docent"))
+render_nav()
+vereist_docent()
+
 df = mentor_filter(st.session_state["df"])
 mentor_naam = st.session_state.get("mentor_naam", "")
-st.caption(f"Mentor: **{mentor_naam}** · {len(df)} studenten")
 
-# ── Overzichtsmetrics (eerst getoond, filters daarna) ─────────────────────────
+hero(
+    "Groepsoverzicht",
+    f"Mentor {mentor_naam} · {len(df)} studenten",
+)
+
+# ── Overzichtsmetrics (vóór filters — totalen van eigen groep) ───────────────
 totaal_alle = len(df)
 risico_alle = int(df["risico"].sum())
-gem_voortgang_alle = f"{df['voortgang'].mean() * 100:.0f}%" if totaal_alle else "—"
+op_schema = totaal_alle - risico_alle
+gem_voortgang = df["voortgang"].mean() if totaal_alle else 0.0
 
 m1, m2, m3, m4 = st.columns(4)
 with m1:
-    st.markdown(
-        f"<div class='stat-card'><p class='stat-card__label'>Studenten</p>"
-        f"<p class='stat-card__value'>{totaal_alle}</p></div>",
-        unsafe_allow_html=True,
-    )
+    stat_card("Studenten", str(totaal_alle))
 with m2:
-    st.markdown(
-        f"<div class='stat-card'><p class='stat-card__label'>Op schema</p>"
-        f"<p class='stat-card__value'>{totaal_alle - risico_alle}</p></div>",
-        unsafe_allow_html=True,
-    )
+    stat_card("Op schema", str(op_schema), progress=op_schema / totaal_alle if totaal_alle else 0)
 with m3:
-    risico_delta_klasse = "stat-card__delta--neg" if risico_alle > 0 else "stat-card__delta--pos"
-    risico_pct_alle = f"{risico_alle / totaal_alle * 100:.0f}%" if totaal_alle else "—"
-    st.markdown(
-        f"<div class='stat-card'><p class='stat-card__label'>Aandacht nodig</p>"
-        f"<p class='stat-card__value'>{risico_alle}</p>"
-        f"<p class='{risico_delta_klasse}'>{risico_pct_alle} van de groep</p></div>",
-        unsafe_allow_html=True,
+    stat_card(
+        "Aandacht nodig",
+        str(risico_alle),
+        sub=f"{risico_alle / totaal_alle * 100:.0f}% van de groep" if totaal_alle else None,
+        delta_negative=risico_alle > 0,
+        alert_ring=True,
+        progress=risico_alle / totaal_alle if totaal_alle else 0,
     )
 with m4:
-    st.markdown(
-        f"<div class='stat-card'><p class='stat-card__label'>Gem. voortgang</p>"
-        f"<p class='stat-card__value'>{gem_voortgang_alle}</p></div>",
-        unsafe_allow_html=True,
-    )
-
-st.divider()
+    stat_card("Gem. voortgang", f"{gem_voortgang * 100:.0f}%", progress=gem_voortgang)
 
 # ── Filters ───────────────────────────────────────────────────────────────────
 with st.expander("Filters", expanded=True):

@@ -12,7 +12,13 @@ from samenwijzer.outreach_store import (
     get_welzijnschecks_student,
     sla_welzijnscheck_op,
 )
-from samenwijzer.styles import CSS, render_footer, render_nav
+from samenwijzer.styles import (
+    hero,
+    inject_theme,
+    render_footer,
+    render_nav,
+    section_label,
+)
 from samenwijzer.welzijn import (
     CATEGORIEËN,
     categorie_label,
@@ -26,21 +32,24 @@ load_dotenv()
 log = logging.getLogger(__name__)
 
 st.set_page_config(page_title="Welzijnscheck — Samenwijzer", page_icon="💚", layout="wide")
-st.markdown(CSS, unsafe_allow_html=True)
-render_nav()
 
 # ── Toegangscheck ─────────────────────────────────────────────────────────────
 if "rol" not in st.session_state or st.session_state["rol"] != "student":
+    inject_theme(None)
     st.warning("Deze pagina is alleen beschikbaar voor studenten.")
     st.stop()
 
 if "studentnummer" not in st.session_state:
+    inject_theme(None)
     st.warning("Ga eerst naar de [startpagina](/) om in te loggen.")
     st.stop()
 
+inject_theme("student")
+render_nav()
+
 studentnummer = st.session_state["studentnummer"]
 df = st.session_state.get("df")
-voornaam = studentnummer  # fallback
+voornaam = studentnummer
 student_naam = studentnummer
 mentor_naam = ""
 if df is not None:
@@ -50,15 +59,17 @@ if df is not None:
         student_naam = rij.iloc[0]["naam"]
         mentor_naam = rij.iloc[0]["mentor"]
 
-st.markdown(
-    f"""<div class="welzijn-intro">
-  <p class="welzijn-intro__title">💚 Hallo {voornaam}, hoe gaat het?</p>
-  <p class="welzijn-intro__body">Geef aan waar je tegenaan loopt — je mentor krijgt een signaal en kan je helpen. Alles is veilig en vertrouwelijk.</p>
-</div>""",
-    unsafe_allow_html=True,
+# ── Hero — zacht ingangsmoment ───────────────────────────────────────────────
+hero(
+    f"Hoe gaat het, {voornaam}?",
+    "Veilig · alleen jij en je mentor zien de details",
 )
 
+st.caption("Je mentor krijgt een signaal en kan je helpen. Alles is veilig en vertrouwelijk.")
+
 # ── Check-formulier ───────────────────────────────────────────────────────────
+section_label("Wat speelt er?")
+
 with st.container(border=True):
     with st.form("welzijnscheck"):
         categorie = st.selectbox(
@@ -69,7 +80,7 @@ with st.container(border=True):
         toelichting = st.text_area(
             "Vertel er iets meer over (optioneel)",
             placeholder="Beschrijf kort wat er speelt…",
-            height=100,
+            height=120,
         )
         urgentie = st.radio(
             "Hoe dringend is het?",
@@ -77,9 +88,7 @@ with st.container(border=True):
             format_func=urgentie_label,
             horizontal=True,
         )
-        verzend = st.form_submit_button(
-            "💚 Verstuur check", type="primary", use_container_width=True
-        )
+        verzend = st.form_submit_button("Verstuur check", type="primary", use_container_width=True)
 
 if verzend:
     check = WelzijnsCheck(
@@ -106,19 +115,17 @@ if verzend:
         st.success("Je check is verstuurd. Je mentor wordt op de hoogte gesteld.")
 
     with st.container(border=True):
-        st.markdown("<p class='section-label'>Reactie van Samenwijzer</p>", unsafe_allow_html=True)
+        section_label("Reactie van Samenwijzer")
         try:
             with st.spinner("Reactie genereren…"):
-                reactie = st.write_stream(
+                st.write_stream(
                     genereer_welzijnsreactie(voornaam, categorie, toelichting.strip(), urgentie)
                 )
         except APITimeoutError:
             st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
-            reactie = ""
         except Exception as e:
             log.exception("Welzijnsreactie kon niet worden gegenereerd")
             st.error(vriendelijke_fout(e))
-            reactie = ""
 
 # ── Eerdere checks ────────────────────────────────────────────────────────────
 eerdere = get_welzijnschecks_student(studentnummer)
@@ -126,16 +133,17 @@ if eerdere:
     with st.expander(f"Eerdere checks ({len(eerdere)})"):
         for c in eerdere[:5]:
             note = (
-                f"<span class='check-item__note'>{c.toelichting[:80]}</span>"
+                f"<br><span style='color:var(--text-faint);font-size:12px;'>{c.toelichting[:120]}</span>"
                 if c.toelichting
                 else ""
             )
             st.markdown(
-                f"""<div class="check-item">
-  <span class="check-item__date">{c.timestamp[:10]}</span>
-  <span class="check-item__label">{categorie_label(c.categorie)} · {urgentie_label(c.urgentie)}</span>
-  {note}
-</div>""",
+                f"<div style='padding:10px 0;border-bottom:1px solid var(--border);"
+                f"font-family:var(--font-mono);font-size:11px;color:var(--text-faint);"
+                f"letter-spacing:0.06em;text-transform:uppercase;'>"
+                f"{c.timestamp[:10]} · "
+                f"<span style='color:var(--text);'>{categorie_label(c.categorie)} · "
+                f"{urgentie_label(c.urgentie)}</span>{note}</div>",
                 unsafe_allow_html=True,
             )
 
