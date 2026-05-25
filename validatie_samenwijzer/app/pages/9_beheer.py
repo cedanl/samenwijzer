@@ -209,7 +209,8 @@ with tab_status:
 with tab_bootstrap:
     st.subheader("🚀 Volledige machine-setup")
     st.caption(
-        "Eén klik = `uv sync` → `rclone copy` (Box) → `ingest --alles` → `seed`. "
+        "Eén klik = `uv sync` → `rclone copy oeren/` → `rclone copy "
+        "kwalificatiedossiers/` → `ingest --alles` → `seed`. "
         "Gebruik dit op een nieuwe machine of als je de DB volledig wil herbouwen."
     )
     st.warning(

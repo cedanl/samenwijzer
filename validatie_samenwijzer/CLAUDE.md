@@ -347,6 +347,13 @@ Conversie naar markdown gebruikt dezelfde markitdown-pipeline als de OER-convers
 voor 240 PDFs). Bij een ontbrekende `<crebo>.md` geeft `laad_kwalificatiedossier_tekst("")`
 terug en werkt de chat OER-only — geen errors.
 
+**Kosten-impact** (Sonnet 4.6, gemeten 2026-05 op crebo 25656 / VIG BBL FLEX, 3 typische
+vragen): KD voegt ~40K extra prompt-tekens toe (mediane KD ≈ 85K tekens, range 26K-394K).
+Eerste vraag in een sessie: ~$0.09 (OER-only) → ~$0.14 (OER+KD); vervolgvragen halen
+prompt-cache en kosten ~$0.013 → ~$0.018. Totaal per sessie ≈ +47% (~$0.05). De
+`_MAX_DOSSIER_TEKST_TEKENS = 300_000`-cap snijdt 7 van de 240 KDs af (3%); er is geen
+aanleiding deze cap nu te verlagen. Herhaal de meting met `scripts/meet_token_kosten.py`.
+
 ## Bekende valkuilen
 
 **Niet-geïndexeerde OER**: een student die aan een OER met `geindexeerd=0` gekoppeld is krijgt
