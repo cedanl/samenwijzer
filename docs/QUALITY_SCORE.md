@@ -7,7 +7,7 @@ Tracks coverage and quality gaps per domain. Updated by the doc-gardening agent.
 | prepare | 100% | complete | 2026-05-05 |
 | transform | 100% | complete | 2026-04-24 |
 | analyze | 97% | complete | 2026-04-24 |
-| visualize | 100% | complete | 2026-04-24 |
+| visualize | 100% | complete | 2026-05-25 |
 | export | 0% | stub | — |
 | auth | 100% | complete | 2026-04-24 |
 | outreach | 74% | complete | 2026-04-24 |
@@ -18,7 +18,7 @@ Tracks coverage and quality gaps per domain. Updated by the doc-gardening agent.
 | whatsapp_store | 100% | complete | 2026-04-24 |
 | scheduler | 98% | complete | 2026-04-24 |
 | _ai | 100% | complete | 2026-04-24 |
-| styles | 0% | complete | 2026-04-24 |
+| styles | 0% | complete | 2026-05-25 |
 | tutor | 100% | complete | 2026-05-05 |
 | coach | 100% | complete | 2026-05-05 |
 | oer_store | 100% | complete | 2026-05-05 |
@@ -28,13 +28,13 @@ Tracks coverage and quality gaps per domain. Updated by the doc-gardening agent.
 | app/webhook | ~90% | complete | 2026-04-24 |
 | app/UI | n/a | complete | 2026-04-24 |
 
-**Totaal:** 93% (src/samenwijzer) — 408 tests, 5 overgeslagen (permission-tests bij root).
+**Totaal:** 91% (src/samenwijzer) — 504 tests, 5 overgeslagen (permission-tests bij root).
 
 ## Notes
 
-- Coverage gemeten met `uv run pytest` (408 tests, 5 skipped als root — 2026-05-05).
-- `export` heeft 0% coverage — stub implementatie (`NotImplementedError`), nog niet klaar om te testen.
-- `styles` heeft 0% coverage — puur CSS/HTML-constanten, geen testbare logica.
+- Coverage gemeten met `uv run pytest` (504 tests, 5 skipped als root — 2026-05-25).
+- `export` is in #98 verwijderd (was stub) — niet meer in de tabel.
+- `styles` heeft 0% coverage — bevat naast CSS-constanten nu ook component-helpers (`hero`, `stat_card`, `badge`, `alert`, `action_tile`, `inject_theme`). Output is HTML voor Streamlit; visuele verificatie via browser smoke-test ipv pytest.
 - `outreach` op 74%: `email_config_uit_env()` (regel 135) en de SMTP-verbindingscode in `verstuur_email()` (regels 166-174) worden niet geraakt in unit tests (vereisen echte SMTP-server).
 - `outreach_store` op 97%: `_verbinding()` context manager body (regels 25-27) en één indirect pad (regel 124) niet gedekt — verwaarloosbaar.
 - `whatsapp` op 80%: Twilio API-aanroepen en `stuur_checkin()`-internals niet gedekt (vereisen externe service). Parseerlogica, foutpaden, encryptie en score-verwerking volledig gedekt.
