@@ -151,7 +151,7 @@ with tab_scores:
                 )
                 if not wps.empty:
                     section_label("Werkprocessen")
-                    st.altair_chart(werkproces_grafiek(wps), use_container_width=True)
+                    st.altair_chart(werkproces_grafiek(wps, rol=rol), use_container_width=True)
 
 # ── TAB 2: AANDACHTSPUNTEN ───────────────────────────────────────────────────
 with tab_aandacht:

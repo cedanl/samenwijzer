@@ -91,7 +91,10 @@ with tab_voortgang:
     st.subheader("Voortgang vs. BSA per student")
     if not gefilterd.empty:
         overzicht = groepsoverzicht(gefilterd)
-        st.altair_chart(groep_voortgang_grafiek(overzicht), use_container_width=True)
+        st.altair_chart(
+            groep_voortgang_grafiek(overzicht, rol=st.session_state.get("rol")),
+            use_container_width=True,
+        )
 
     st.divider()
 

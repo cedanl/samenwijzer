@@ -526,6 +526,7 @@ with tab_spinneweb:
             huidig=huidig,
             vorig=[metingen[w][1] for w in kt_eigen_wp],
             klas=[klas_gem.get(w, float("nan")) for w in kt_eigen_wp],
+            rol=rol,
         )
         st.plotly_chart(fig, use_container_width=True)
 
