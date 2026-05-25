@@ -24,6 +24,7 @@ from validatie_samenwijzer.chat import (  # noqa: E402
     bouw_berichten,
     bouw_systeem,
     genereer_antwoord,
+    laad_kwalificatiedossier_tekst,
     laad_oer_tekst,
     resolve_oer_pad,
 )
@@ -144,12 +145,22 @@ with col_chat:
         if "chat_history" not in st.session_state:
             st.session_state.chat_history = []
         if "oer_systeem" not in st.session_state:
-            # Laad OER eenmalig per sessie
+            # Laad OER + kwalificatiedossier eenmalig per sessie
             oer_tekst = ""
+            crebo = oer["crebo"] if oer else ""
             if oer:
                 oer_tekst = laad_oer_tekst(resolve_oer_pad(oer["bestandspad"]))
+            dossier_tekst = laad_kwalificatiedossier_tekst(crebo)
             st.session_state.oer_systeem = (
-                bouw_systeem(oer_tekst, opleiding, instelling) if oer_tekst else ""
+                bouw_systeem(
+                    oer_tekst,
+                    opleiding,
+                    instelling,
+                    dossier_tekst=dossier_tekst,
+                    crebo=crebo,
+                )
+                if oer_tekst
+                else ""
             )
 
         for bericht in st.session_state.chat_history:

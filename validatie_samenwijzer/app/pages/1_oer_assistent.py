@@ -20,6 +20,7 @@ from validatie_samenwijzer.chat import (  # noqa: E402
     bouw_berichten,
     bouw_systeem,
     genereer_antwoord,
+    laad_kwalificatiedossier_tekst,
     laad_oer_tekst,
     resolve_oer_pad,
 )
@@ -40,6 +41,7 @@ MAX_GESCHIEDENIS = 20  # 10 uitwisselingen
 opleiding = st.session_state.get("opleiding", "")
 instelling = st.session_state.get("instelling", "")
 bestandspad = st.session_state.get("bestandspad", "")
+crebo = st.session_state.get("crebo", "")
 
 st.subheader(f"💬 OER-assistent — {opleiding}")
 st.caption(f"{instelling} · Jouw vragen, beantwoord vanuit jouw OER")
@@ -47,10 +49,19 @@ st.caption(f"{instelling} · Jouw vragen, beantwoord vanuit jouw OER")
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 if "oer_systeem" not in st.session_state:
-    # Laad OER eenmalig per sessie
+    # Laad OER + kwalificatiedossier eenmalig per sessie
     oer_tekst = laad_oer_tekst(resolve_oer_pad(bestandspad)) if bestandspad else ""
+    dossier_tekst = laad_kwalificatiedossier_tekst(crebo)
     st.session_state.oer_systeem = (
-        bouw_systeem(oer_tekst, opleiding, instelling) if oer_tekst else ""
+        bouw_systeem(
+            oer_tekst,
+            opleiding,
+            instelling,
+            dossier_tekst=dossier_tekst,
+            crebo=crebo,
+        )
+        if oer_tekst
+        else ""
     )
 
 for bericht in st.session_state.chat_history:

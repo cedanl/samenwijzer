@@ -13,6 +13,7 @@ import anthropic
 logger = logging.getLogger(__name__)
 
 _MAX_OER_TEKST_TEKENS = 500_000  # ruim voldoende voor elke OER binnen Sonnet 4.6 (1M context)
+_MAX_DOSSIER_TEKST_TEKENS = 300_000
 
 LAGE_RELEVANTIE_BERICHT = (
     "Ik kon geen OER-tekst laden voor deze student. "
@@ -20,19 +21,40 @@ LAGE_RELEVANTIE_BERICHT = (
 )
 
 _SYSTEEM_TEMPLATE = """\
-Je bent een OER-assistent voor de opleiding {opleiding} bij {instelling}.
-Hieronder staat de volledige Onderwijs- en Examenregeling (OER).
-Beantwoord vragen uitsluitend op basis van deze OER — nooit vanuit eigen kennis.
-Geef volledige, goed gestructureerde antwoorden met kopjes of opsommingen waar dat helpt.
-Omdat de OER een juridisch document is, MOET je bij elke claim:
-1. de sectie of het paginanummer uit de OER noemen, en
-2. de relevante passage woordelijk citeren tussen aanhalingstekens.
-Bijvoorbeeld: 'Volgens sectie 3.2: "..."' of 'Op pagina 12 staat: "..."'.
-Als de informatie niet in de OER staat, zeg dat dan expliciet.
-Antwoord in het Nederlands.
+Je bent een onderwijs-assistent voor de opleiding {opleiding} bij {instelling}.
 
-OER:
-{oer_tekst}"""
+PRIMAIRE BRON — de Onderwijs- en Examenregeling (OER) van deze opleiding.
+Dit is het leidende, schoolspecifieke document. Beantwoord vragen primair op
+basis van de OER.
+
+AANVULLENDE BRON — het landelijke kwalificatiedossier (KD). Raadpleeg het KD
+alléén als de OER het onderwerp niet of onvoldoende behandelt. Geef niet
+onnodig een tweede antwoord uit het KD als de OER de vraag al beantwoordt —
+de OER is leidend.
+
+CITATIEPLICHT (de OER is een juridisch document).
+Bij ELKE claim die je doet, MOET je:
+1. de bron noemen ("Volgens de OER" of "Volgens het kwalificatiedossier"),
+2. de exacte vindplaats noemen — sectie-nummer, kopje, artikel of paginanummer,
+3. de relevante passage WOORDELIJK citeren tussen dubbele aanhalingstekens.
+
+Voorbeeld OER: Volgens de OER, sectie 3.2 "Bindend studieadvies": "De student
+ontvangt uiterlijk in juli van het eerste studiejaar een bindend studieadvies."
+
+Voorbeeld KD: De OER beschrijft dit niet. Volgens het kwalificatiedossier,
+kerntaak B1-K1 "Bieden van zorg en ondersteuning": "...".
+
+Een claim zonder bron + vindplaats + woordelijk citaat is niet toegestaan.
+Parafraseren mag alleen ter inleiding van een citaat, niet ter vervanging ervan.
+Als een passage te lang is, citeer dan een representatief fragment en geef de
+vindplaats van de rest. Beantwoord vragen uitsluitend op basis van deze bronnen
+— nooit vanuit eigen kennis. Als de informatie in geen van beide bronnen staat,
+zeg dat dan expliciet. Antwoord in het Nederlands.
+
+=== ONDERWIJS- EN EXAMENREGELING (OER) ===
+{oer_tekst}{dossier_blok}"""
+
+_DOSSIER_BLOK_TEMPLATE = "\n\n=== KWALIFICATIEDOSSIER (Crebo {crebo}) ===\n{dossier_tekst}"
 
 
 def resolve_oer_pad(bestandspad: str) -> Path:
@@ -95,12 +117,53 @@ def laad_oer_tekst(bestandspad: Path) -> str:
     return ""
 
 
-def bouw_systeem(oer_tekst: str, opleiding: str, instelling: str) -> str:
-    """Stel de systeemprompt samen met de volledige OER als context."""
+def pad_kwalificatiedossier(crebo: str) -> Path:
+    """Pad naar het markdown-bestand van het kwalificatiedossier voor een crebo.
+
+    Default: ``<repo-root>/kwalificatiedossiers/pdfs/<crebo>.md``. Override via
+    ``KWALDOSSIERS_PAD`` (absolute of relatief; valt terug op default als de
+    env-var ontbreekt).
+    """
+    base = os.environ.get("KWALDOSSIERS_PAD")
+    if base:
+        directory = Path(base).resolve()
+    else:
+        # chat.py → parents[3] = repo-root → kwalificatiedossiers/pdfs
+        directory = (
+            Path(__file__).resolve().parents[3] / "kwalificatiedossiers" / "pdfs"
+        )
+    return directory / f"{crebo}.md"
+
+
+def laad_kwalificatiedossier_tekst(crebo: str | None) -> str:
+    """Laad de markdown-tekst van een kwalificatiedossier op crebo, of lege string."""
+    if not crebo:
+        return ""
+    md_pad = pad_kwalificatiedossier(str(crebo))
+    if not md_pad.exists():
+        return ""
+    return md_pad.read_text(encoding="utf-8", errors="replace")[:_MAX_DOSSIER_TEKST_TEKENS]
+
+
+def bouw_systeem(
+    oer_tekst: str,
+    opleiding: str,
+    instelling: str,
+    dossier_tekst: str = "",
+    crebo: str | None = None,
+) -> str:
+    """Stel de systeemprompt samen met OER en optioneel kwalificatiedossier als context."""
+    dossier_blok = ""
+    if dossier_tekst:
+        dossier_blok = _DOSSIER_BLOK_TEMPLATE.format(
+            crebo=crebo or "onbekend",
+            dossier_tekst=dossier_tekst,
+        )
     return _SYSTEEM_TEMPLATE.format(
         opleiding=opleiding,
         instelling=instelling,
         oer_tekst=oer_tekst,
+        dossier_blok=dossier_blok,
     )
 
 
@@ -143,16 +206,30 @@ def genereer_antwoord(
 # ── Multi-OER ──────────────────────────────────────────────────────────────────
 
 _MULTI_SYSTEEM_TEMPLATE = """\
-Je bent een OER-assistent voor MBO-opleidingen.
-Hieronder staan {n} Onderwijs- en Examenregelingen (OERs).
-Beantwoord vragen uitsluitend op basis van deze OERs — nooit vanuit eigen kennis.
-Geef volledige, goed gestructureerde antwoorden.
-Omdat een OER een juridisch document is, MOET je bij elke claim:
-1. de betreffende OER noemen (gebruik de aanduiding uit de koppen hieronder),
-2. de sectie of het paginanummer noemen, en
-3. de relevante passage woordelijk citeren tussen aanhalingstekens.
-Bijvoorbeeld: 'OER 1, sectie 3.2: "..."' of 'OER 2, pagina 12: "..."'.
-Als de informatie niet in de OERs staat, zeg dat dan expliciet.
+Je bent een onderwijs-assistent voor MBO-opleidingen.
+Hieronder staan {n} Onderwijs- en Examenregelingen (OERs), elk waar beschikbaar
+gevolgd door het bijbehorende kwalificatiedossier (KD).
+
+PRIMAIRE BRON — de OERs (schoolspecifieke afspraken). Dit is leidend.
+AANVULLENDE BRON — de KDs (landelijke eisen, kerntaken, werkprocessen).
+Raadpleeg een KD alléén als de bijbehorende OER het onderwerp niet of
+onvoldoende behandelt. Geef niet onnodig een tweede antwoord uit het KD als
+de OER de vraag al beantwoordt — de OER is leidend.
+
+CITATIEPLICHT (de OER is een juridisch document).
+Bij ELKE claim MOET je:
+1. de bron noemen ("OER N" of "Kwalificatiedossier N", zie de koppen hieronder),
+2. de exacte vindplaats noemen — sectie-nummer, kopje, artikel of paginanummer,
+3. de relevante passage WOORDELIJK citeren tussen dubbele aanhalingstekens.
+
+Voorbeeld: OER 1, sectie 3.2 "Bindend studieadvies": "De student ontvangt
+uiterlijk in juli...". Voor het KD: De OER beschrijft dit niet. Volgens
+Kwalificatiedossier 1, kerntaak B1-K1: "...".
+
+Een claim zonder bron + vindplaats + woordelijk citaat is niet toegestaan.
+Parafraseren mag alleen ter inleiding van een citaat, niet ter vervanging ervan.
+Beantwoord uitsluitend op basis van deze bronnen — nooit vanuit eigen kennis.
+Als de informatie in geen van de bronnen staat, zeg dat dan expliciet.
 Antwoord in het Nederlands.
 
 {oer_blokken}"""
@@ -163,16 +240,31 @@ def bouw_gecombineerd_systeem(oer_items: list[dict]) -> str:
 
     Args:
         oer_items: lijst van dict met sleutels 'tekst', 'opleiding',
-                   'display_naam', 'leerweg', 'cohort'.
+                   'display_naam', 'leerweg', 'cohort'. Optioneel:
+                   'dossier_tekst' en 'crebo' om het landelijke
+                   kwalificatiedossier mee in te bedden.
     """
     if len(oer_items) == 1:
         item = oer_items[0]
-        return bouw_systeem(item["tekst"], item["opleiding"], item["display_naam"])
+        return bouw_systeem(
+            item["tekst"],
+            item["opleiding"],
+            item["display_naam"],
+            dossier_tekst=item.get("dossier_tekst", ""),
+            crebo=item.get("crebo"),
+        )
 
     blokken = []
     for i, item in enumerate(oer_items, 1):
         label = f"{item['display_naam']} · {item['opleiding']} · {item['leerweg']} {item['cohort']}"
-        blokken.append(f"=== OER {i}: {label} ===\n\n{item['tekst']}")
+        oer_blok = f"=== OER {i}: {label} ===\n\n{item['tekst']}"
+        dossier_tekst = item.get("dossier_tekst", "")
+        if dossier_tekst:
+            crebo_label = item.get("crebo", "onbekend")
+            oer_blok += (
+                f"\n\n=== KWALIFICATIEDOSSIER {i} (Crebo {crebo_label}) ===\n\n{dossier_tekst}"
+            )
+        blokken.append(oer_blok)
     return _MULTI_SYSTEEM_TEMPLATE.format(
         n=len(oer_items),
         oer_blokken="\n\n---\n\n".join(blokken),
