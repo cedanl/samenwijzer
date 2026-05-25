@@ -163,10 +163,13 @@ p, li { color: var(--text); line-height: 1.55; }
 }
 [data-testid="stPageLink"] a:hover { background: var(--surface-2) !important; }
 
-/* ── Knoppen (primary / secondary) ────────────────────────────────────────── */
+/* ── Knoppen (primary / secondary, ook binnen st.form) ────────────────────── */
 [data-testid="stBaseButton-primary"],
+[data-testid="stBaseButton-primaryFormSubmit"],
 [data-testid="stBaseButton-primary"] p,
-[data-testid="stBaseButton-primary"] span {
+[data-testid="stBaseButton-primary"] span,
+[data-testid="stBaseButton-primaryFormSubmit"] p,
+[data-testid="stBaseButton-primaryFormSubmit"] span {
     background-color: var(--btn-prim-bg) !important;
     color: var(--btn-prim-fg) !important;
     border: none !important;
@@ -177,13 +180,17 @@ p, li { color: var(--text); line-height: 1.55; }
     letter-spacing: 0.03em !important;
     transition: background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease) !important;
 }
-[data-testid="stBaseButton-primary"]:hover {
+[data-testid="stBaseButton-primary"]:hover,
+[data-testid="stBaseButton-primaryFormSubmit"]:hover {
     background-color: var(--btn-prim-bg-hover) !important;
     transform: translateY(-1px);
 }
 [data-testid="stBaseButton-secondary"],
+[data-testid="stBaseButton-secondaryFormSubmit"],
 [data-testid="stBaseButton-secondary"] p,
-[data-testid="stBaseButton-secondary"] span {
+[data-testid="stBaseButton-secondary"] span,
+[data-testid="stBaseButton-secondaryFormSubmit"] p,
+[data-testid="stBaseButton-secondaryFormSubmit"] span {
     background-color: var(--btn-sec-bg) !important;
     color: var(--btn-sec-fg) !important;
     border: 1px solid var(--border) !important;
@@ -194,7 +201,8 @@ p, li { color: var(--text); line-height: 1.55; }
     letter-spacing: 0.03em !important;
     box-shadow: none !important;
 }
-[data-testid="stBaseButton-secondary"]:hover {
+[data-testid="stBaseButton-secondary"]:hover,
+[data-testid="stBaseButton-secondaryFormSubmit"]:hover {
     background-color: var(--surface-2) !important;
 }
 
@@ -299,6 +307,13 @@ p, li { color: var(--text); line-height: 1.55; }
     padding: 12px 16px !important;
 }
 [data-testid="stExpander"] summary:hover { background: var(--surface-2) !important; }
+[data-testid="stExpander"] summary [data-testid="stIconMaterial"] {
+    color: var(--text-faint) !important;
+}
+[data-testid="stExpanderDetails"] {
+    padding: var(--space-2) var(--space-4) var(--space-4) !important;
+    border-top: 1px solid var(--border) !important;
+}
 
 /* ── Info/Warning/Error/Success banners ───────────────────────────────────── */
 [data-testid="stAlertContainer"] {
@@ -582,8 +597,8 @@ _DOCENT_CSS = """
     --surface-2: #F5EFE1;
     --border: rgba(31,29,24,0.10);
     --text: #1F1D18;
-    --text-dim: #6A6354;
-    --text-faint: #8A8270;
+    --text-dim: #5D5749;
+    --text-faint: #6E6856;
     --accent: #6F8265;
     --accent-strong: #4D6044;
     --alert: #B04A1A;
