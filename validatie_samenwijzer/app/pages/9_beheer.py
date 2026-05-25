@@ -209,7 +209,8 @@ with tab_status:
 with tab_bootstrap:
     st.subheader("🚀 Volledige machine-setup")
     st.caption(
-        "Eén klik = `uv sync` → `rclone copy` (Box) → `ingest --alles` → `seed`. "
+        "Eén klik = `uv sync` → `rclone copy oeren/` → `rclone copy "
+        "kwalificatiedossiers/` → `ingest --alles` → `seed`. "
         "Gebruik dit op een nieuwe machine of als je de DB volledig wil herbouwen."
     )
     st.warning(
@@ -229,9 +230,9 @@ with tab_bootstrap:
         horizontal=False,
     )
     skip_sync = st.checkbox(
-        "Skip oeren-sync (oeren/ is al up-to-date)",
+        "Skip alle Box-syncs (oeren/ én kwalificatiedossiers/ zijn al up-to-date)",
         value=False,
-        help="Sla `rclone copy` over en gebruik wat lokaal staat.",
+        help="Sla beide `rclone copy`-stappen over en gebruik wat lokaal staat.",
     )
 
     bevestig = st.checkbox(
