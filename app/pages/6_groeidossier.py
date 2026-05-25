@@ -40,7 +40,7 @@ from samenwijzer.groei_store import (
     upsert_mentor_feedback,
 )
 from samenwijzer.groei_store import verwijder_bewijsstuk as verwijder_bewijsstuk_meta
-from samenwijzer.styles import CSS, render_footer, render_nav
+from samenwijzer.styles import hero, inject_theme, render_footer, render_nav
 from samenwijzer.transform import get_kerntaak_columns, get_werkproces_columns
 from samenwijzer.tutor import aanscherp_verantwoording
 from samenwijzer.visualize import spinneweb_figuur
@@ -48,15 +48,16 @@ from samenwijzer.visualize import spinneweb_figuur
 log = logging.getLogger(__name__)
 
 st.set_page_config(page_title="Groeidossier — Samenwijzer", page_icon="🌱", layout="wide")
-st.markdown(CSS, unsafe_allow_html=True)
-render_nav()
 
 if "df" not in st.session_state or "rol" not in st.session_state:
+    inject_theme(None)
     st.warning("Ga eerst naar de [startpagina](/) om in te loggen.")
     st.stop()
 
 df = st.session_state["df"]
 rol = st.session_state["rol"]
+inject_theme(rol)
+render_nav()
 
 # ── Studentselectie ──────────────────────────────────────────────────────────
 if rol == "student":
@@ -83,8 +84,10 @@ student = get_student(df, studentnummer)
 opleiding = str(student["opleiding"])
 crebo = str(student.get("crebo", ""))
 
-st.markdown(f"## 🌱 Groeidossier — {student['naam']}")
-st.caption(f"{opleiding} · Niveau {student['niveau']} · Cohort {student['cohort']}")
+hero(
+    f"Groeidossier — {student['naam']}",
+    f"{opleiding} · Niveau {student['niveau']} · Cohort {student['cohort']}",
+)
 
 # ── Huidige data ─────────────────────────────────────────────────────────────
 actueel_lijst = get_actueel(studentnummer)
@@ -222,9 +225,10 @@ with tab_scores:
                 _naam = html.escape(feedback[kt_col].mentor_naam)
                 _tekst = html.escape(feedback[kt_col].tekst).replace("\n", "<br>")
                 st.markdown(
-                    f"<div style='background:#f4f4f4;padding:12px;border-radius:6px;"
-                    f"margin-bottom:12px;'>"
-                    f"<b>📣 Feedback van {_naam}</b><br>{_tekst}</div>",
+                    f"<div style='background:var(--surface-2);padding:12px 16px;"
+                    f"border-radius:var(--radius-sm);margin-bottom:12px;"
+                    f"border-left:3px solid var(--accent);'>"
+                    f"<b>Feedback van {_naam}</b><br>{_tekst}</div>",
                     unsafe_allow_html=True,
                 )
 
@@ -281,8 +285,10 @@ with tab_scores:
                                 "\n", "<br>"
                             )
                             st.markdown(
-                                f"<div style='background:#fffbe6;padding:8px;border-radius:6px;'>"
-                                f"<b>💡 Suggestie:</b><br>{_sug}</div>",
+                                f"<div style='background:var(--surface-2);padding:10px 14px;"
+                                f"border-radius:var(--radius-sm);"
+                                f"border-left:3px solid var(--accent);'>"
+                                f"<b>Suggestie:</b><br>{_sug}</div>",
                                 unsafe_allow_html=True,
                             )
 
@@ -474,11 +480,19 @@ with tab_history:
                 continue
             with cols[i % 3]:
                 pijl = "▲" if d > 0 else ("▼" if d < 0 else "■")
-                kleur = "#27ae60" if d > 0 else ("#c0392b" if d < 0 else "#999")
+                kleur = (
+                    "var(--accent-strong)"
+                    if d > 0
+                    else ("var(--alert)" if d < 0 else "var(--text-faint)")
+                )
                 st.markdown(
-                    f"<div style='border:1px solid #eee;padding:10px;border-radius:6px;'>"
-                    f"<small>{oer_label(opleiding, wp_col, crebo)}</small><br>"
-                    f"<span style='color:{kleur};font-size:1.4rem;font-weight:700;'>"
+                    f"<div style='background:var(--surface);border:1px solid var(--border);"
+                    f"padding:12px 14px;border-radius:var(--radius-sm);box-shadow:var(--shadow);'>"
+                    f"<small style='color:var(--text-faint);font-family:var(--font-mono);"
+                    f"font-size:11px;letter-spacing:0.08em;text-transform:uppercase;'>"
+                    f"{oer_label(opleiding, wp_col, crebo)}</small><br>"
+                    f"<span style='color:{kleur};font-family:var(--font-display);"
+                    f"font-size:1.4rem;font-weight:800;letter-spacing:-0.02em;'>"
                     f"{pijl} {abs(d)}</span></div>",
                     unsafe_allow_html=True,
                 )
@@ -512,6 +526,7 @@ with tab_spinneweb:
             huidig=huidig,
             vorig=[metingen[w][1] for w in kt_eigen_wp],
             klas=[klas_gem.get(w, float("nan")) for w in kt_eigen_wp],
+            rol=rol,
         )
         st.plotly_chart(fig, use_container_width=True)
 

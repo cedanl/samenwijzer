@@ -26,7 +26,7 @@ from samenwijzer.coach import (
     stuur_rollenspel_bericht,
 )
 from samenwijzer.oer_context import haal_oer_context_op
-from samenwijzer.styles import CSS, render_footer, render_nav
+from samenwijzer.styles import hero, inject_theme, render_footer, render_nav
 from samenwijzer.tutor import StudentContext, TutorSessie, stuur_bericht
 from samenwijzer.whatsapp import laad_whatsapp_gesprek
 
@@ -35,14 +35,15 @@ load_dotenv()
 log = logging.getLogger(__name__)
 
 st.set_page_config(page_title="AI Leerondersteuning — Samenwijzer", page_icon="🎓", layout="wide")
-st.markdown(CSS, unsafe_allow_html=True)
-render_nav()
-st.title("🎓 AI Leerondersteuning")
 
 # ── Vereisten ──────────────────────────────────────────────────────────────────
 if "df" not in st.session_state or "rol" not in st.session_state:
+    inject_theme(None)
     st.warning("Ga eerst naar de startpagina om in te loggen.")
     st.stop()
+
+inject_theme(st.session_state["rol"])
+render_nav()
 
 if not os.environ.get("ANTHROPIC_API_KEY"):
     st.error(
@@ -56,39 +57,32 @@ rol = st.session_state["rol"]
 
 # ── Studentselectie (rol-afhankelijk) ──────────────────────────────────────────
 if rol == "student":
-    # Student ziet altijd en alleen zijn eigen gegevens — geen selector tonen
     studentnummer = st.session_state["studentnummer"]
     student = get_student(df, studentnummer)
     leerpad = leerpad_niveau(student)
     opleiding = student["opleiding"]
-    leerpad_klasse = leerpad.lower()
-    st.markdown(
-        f"<span class='badge badge--{leerpad_klasse}'>{leerpad}</span> "
-        f"<span style='color:#888; font-size:0.85rem; margin-left:8px'>{opleiding}</span>",
-        unsafe_allow_html=True,
+    hero(
+        "AI Leerondersteuning",
+        f"{opleiding} · Niveau {student['niveau']}",
+        badges=[(leerpad.lower(), leerpad)],
     )
 else:
-    # Docent ziet alleen studenten uit eigen groep
     groep = mentor_filter(df)
     opties = (
         groep.sort_values("naam")[["naam", "studentnummer"]]
         .apply(lambda r: f"{r['naam']} ({r['studentnummer']})", axis=1)
         .tolist()
     )
-    col_sel, col_info = st.columns([2, 1])
-    with col_sel:
-        keuze = st.selectbox("Selecteer een student", opties)
+    keuze = st.selectbox("Selecteer een student", opties)
     studentnummer = keuze.split("(")[-1].rstrip(")")
     student = get_student(df, studentnummer)
     leerpad = leerpad_niveau(student)
     opleiding = student["opleiding"]
-    with col_info:
-        leerpad_klasse = leerpad.lower()
-        st.markdown(
-            f"<span class='badge badge--{leerpad_klasse}'>{leerpad}</span> "
-            f"<span style='color:#888; font-size:0.85rem; margin-left:8px'>{opleiding}</span>",
-            unsafe_allow_html=True,
-        )
+    hero(
+        f"Leercoach voor {student['naam']}",
+        f"{opleiding} · Niveau {student['niveau']}",
+        badges=[(leerpad.lower(), leerpad)],
+    )
 
 zkt = zwakste_kerntaak(df, studentnummer)
 zwakste_kt_label = zkt[0] if zkt else ""

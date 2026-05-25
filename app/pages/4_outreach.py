@@ -32,7 +32,7 @@ from samenwijzer.outreach_store import (
     sluit_campagne,
     upsert_status,
 )
-from samenwijzer.styles import CSS, render_footer, render_nav
+from samenwijzer.styles import badge, hero, inject_theme, render_footer, render_nav, stat_card
 from samenwijzer.welzijn import CATEGORIEËN, categorie_label
 
 load_dotenv()
@@ -45,21 +45,28 @@ _STATUS_KLASSE = {
 }
 
 st.set_page_config(page_title="Outreach — Samenwijzer", page_icon="📬", layout="wide")
-st.markdown(CSS, unsafe_allow_html=True)
-render_nav()
-vereist_docent()
-st.title("📬 Outreach")
 
 if "df" not in st.session_state:
+    inject_theme(None)
     st.warning("Ga eerst naar de [startpagina](/) om de data te laden.")
     st.stop()
+
+inject_theme(st.session_state.get("rol", "docent"))
+render_nav()
+vereist_docent()
 
 df = mentor_filter(st.session_state["df"])
 at_risk = at_risk_studenten(df)
 
+mentor_naam_hero = st.session_state.get("mentor_naam", "")
+hero(
+    "Outreach",
+    f"Mentor {mentor_naam_hero} · {len(at_risk)} studenten vragen aandacht",
+)
+
 # ── Tabs ──────────────────────────────────────────────────────────────────────
 tab_werklijst, tab_campagnes, tab_effectiviteit = st.tabs(
-    ["📋 Werklijst", "📣 Campagnes", "📊 Effectiviteit"]
+    ["Werklijst", "Campagnes", "Effectiviteit"]
 )
 
 # ════════════════════════════════════════════════════════════════════════════
@@ -102,14 +109,11 @@ with tab_werklijst:
 
             with col_info:
                 transitie_deel = (
-                    f" &nbsp; <span class='badge badge--transitie'>{moment_badge}</span>"
-                    if moment_badge
-                    else ""
+                    " &nbsp; " + badge("transitie", moment_badge) if moment_badge else ""
                 )
                 st.markdown(
                     f"<strong>{student['naam']}</strong> &nbsp; "
-                    f"<span class='badge badge--{status_klasse}'>"
-                    f"{opgeslagen.status.replace('_', ' ')}</span>"
+                    f"{badge(status_klasse, opgeslagen.status.replace('_', ' '))}"
                     f"{transitie_deel}",
                     unsafe_allow_html=True,
                 )
@@ -340,7 +344,7 @@ with tab_campagnes:
                         moment_tekst = transitiemoment_label(camp.transitiemoment)
                         st.markdown(
                             f"<strong>{camp.naam}</strong> &nbsp; "
-                            f"<span class='badge badge--transitie'>{moment_tekst}</span>",
+                            f"{badge('transitie', moment_tekst)}",
                             unsafe_allow_html=True,
                         )
                         st.caption(
@@ -378,31 +382,27 @@ with tab_effectiviteit:
 
         m1, m2, m3, m4 = st.columns(4)
         with m1:
-            st.markdown(
-                f"<div class='stat-card'><p class='stat-card__label'>Totaal interventies</p>"
-                f"<p class='stat-card__value'>{len(log_df)}</p></div>",
-                unsafe_allow_html=True,
-            )
+            stat_card("Totaal interventies", str(len(log_df)))
         with m2:
-            st.markdown(
-                f"<div class='stat-card'><p class='stat-card__label'>Contactratio</p>"
-                f"<p class='stat-card__value'>{metrics.contact_rate:.0f}%</p>"
-                f"<p class='stat-card__sub'>Gecontacteerd / at-risk</p></div>",
-                unsafe_allow_html=True,
+            stat_card(
+                "Contactratio",
+                f"{metrics.contact_rate:.0f}%",
+                sub="Gecontacteerd / at-risk",
+                progress=metrics.contact_rate / 100,
             )
         with m3:
-            st.markdown(
-                f"<div class='stat-card'><p class='stat-card__label'>Responsratio</p>"
-                f"<p class='stat-card__value'>{metrics.respons_rate:.0f}%</p>"
-                f"<p class='stat-card__sub'>Gereageerd / gecontacteerd</p></div>",
-                unsafe_allow_html=True,
+            stat_card(
+                "Responsratio",
+                f"{metrics.respons_rate:.0f}%",
+                sub="Gereageerd / gecontacteerd",
+                progress=metrics.respons_rate / 100,
             )
         with m4:
-            st.markdown(
-                f"<div class='stat-card'><p class='stat-card__label'>Opgelost</p>"
-                f"<p class='stat-card__value'>{metrics.oplossing_rate:.0f}%</p>"
-                f"<p class='stat-card__sub'>Opgelost / gereageerd</p></div>",
-                unsafe_allow_html=True,
+            stat_card(
+                "Opgelost",
+                f"{metrics.oplossing_rate:.0f}%",
+                sub="Opgelost / gereageerd",
+                progress=metrics.oplossing_rate / 100,
             )
 
         st.divider()

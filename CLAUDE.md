@@ -2,70 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
-
-**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
-
-## 1. Think Before Coding
-
-**Don't assume. Don't hide confusion. Surface tradeoffs.**
-
-Before implementing:
-- State your assumptions explicitly. If uncertain, ask.
-- If multiple interpretations exist, present them - don't pick silently.
-- If a simpler approach exists, say so. Push back when warranted.
-- If something is unclear, stop. Name what's confusing. Ask.
-
-## 2. Simplicity First
-
-**Minimum code that solves the problem. Nothing speculative.**
-
-- No features beyond what was asked.
-- No abstractions for single-use code.
-- No "flexibility" or "configurability" that wasn't requested.
-- No error handling for impossible scenarios.
-- If you write 200 lines and it could be 50, rewrite it.
-
-Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
-
-## 3. Surgical Changes
-
-**Touch only what you must. Clean up only your own mess.**
-
-When editing existing code:
-- Don't "improve" adjacent code, comments, or formatting.
-- Don't refactor things that aren't broken.
-- Match existing style, even if you'd do it differently.
-- If you notice unrelated dead code, mention it - don't delete it.
-
-When your changes create orphans:
-- Remove imports/variables/functions that YOUR changes made unused.
-- Don't remove pre-existing dead code unless asked.
-
-The test: Every changed line should trace directly to the user's request.
-
-## 4. Goal-Driven Execution
-
-**Define success criteria. Loop until verified.**
-
-Transform tasks into verifiable goals:
-- "Add validation" → "Write tests for invalid inputs, then make them pass"
-- "Fix the bug" → "Write a test that reproduces it, then make it pass"
-- "Refactor X" → "Ensure tests pass before and after"
-
-For multi-step tasks, state a brief plan:
-```
-1. [Step] → verify: [check]
-2. [Step] → verify: [check]
-3. [Step] → verify: [check]
-```
-
-Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
-
----
-
-**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
-
+Werkstijl: vraag bij twijfel vóór je begint; lever de kleinste oplossing die het probleem afdekt; raak alleen aan wat de taak vereist (geen ongevraagde refactors van aangrenzende code); definieer per taak een verifieerbaar success-criterium. Volledige agent-regels: `AGENTS.md`.
 
 ## Overview
 
@@ -77,9 +14,10 @@ CEDA technical standards: https://github.com/cedanl/.github/tree/main/standards/
 
 ## Tech & tooling
 
-Python 3.13, Streamlit, pandas, Anthropic SDK. Package manager: `uv`. Type checker: `ty`.
-Linter/formatter: `ruff` (line-length 100, selectie `E,F,I,N,W,UP`; HTML-strings in `styles.py`,
-`app/main.py` en `app/pages/*.py` zijn vrijgesteld van E501).
+Python 3.13, Streamlit, pandas, Anthropic SDK. Package manager: `uv`. Type checker: `ty`
+(lokaal — CI gate is alleen `ruff check`, `ruff format --check` en `pytest`; draai `ty check`
+zelf vóór een PR). Linter/formatter: `ruff` (line-length 100, selectie `E,F,I,N,W,UP`;
+HTML-strings in `styles.py`, `app/main.py` en `app/pages/*.py` zijn vrijgesteld van E501).
 
 **pandas, niet polars** — bewuste keuze: Altair en Streamlit verwachten pandas, en de dataset
 (1000 studenten) maakt conversie nutteloos.
@@ -113,10 +51,14 @@ Zie `README.md` voor de volledige lijst.
 Source-package leeft in `src/samenwijzer/` (importeerbaar als `samenwijzer.*`). UI in `app/`,
 scripts in `scripts/`, tests in `tests/`.
 
-Dependency-richting **strikt**: `prepare → transform → analyze → visualize/coach/tutor/welzijn/groei → app`.
-Nooit omgekeerd. `groei.py` (groeidossier-businesslogic) leunt uitsluitend op `groei_store.py` +
-stdlib/pandas — geen AI- of app-imports (afgedwongen in `tests/test_architecture.py`). UI-laag (`app/`) bevat geen business logic. De laagregel wordt afgedwongen door
-`tests/test_architecture.py` — laagovertredingen breken CI, niet alleen conventie.
+Dependency-richting **strikt**: `prepare → transform → analyze → feature-laag → app`.
+Feature-laag (afgedwongen in `tests/test_architecture.py`) = `visualize, coach, tutor, welzijn,
+wellbeing, outreach, outreach_store, whatsapp, whatsapp_store, auth, styles`. Nooit omgekeerd.
+`groei.py` (groeidossier-businesslogic) staat naast die feature-laag en leunt uitsluitend op
+`groei_store.py` + stdlib/pandas — geen AI- of app-imports. UI-laag (`app/`) bevat geen
+business logic; pagina-refactors (bv. PR #95–#99) verplaatsten BSA-percentage, effectiviteit-
+aggregatie en spinneweb-figuren naar respectievelijk `outreach.py`, `visualize.py` en
+`wellbeing.py`. Laagovertredingen breken CI, niet alleen conventie.
 
 **AI-isolatie**: alle Anthropic-calls zitten in `tutor.py`, `coach.py`, `outreach.py`, `welzijn.py`,
 `whatsapp.py`. Maak de client **altijd** via `_ai._client()` — nooit een eigen `anthropic.Anthropic()`
@@ -150,7 +92,8 @@ Volledige laagbeschrijving en module-rollen: zie `ARCHITECTURE.md` en `AGENTS.md
 
 Geen sidebar — volledig verborgen via `.streamlit/config.toml` + CSS. Elke pagina:
 1. `st.set_page_config(...)`
-2. `st.markdown(CSS, unsafe_allow_html=True)` (uit `styles.py`)
+2. `inject_theme(rol)` (uit `styles.py`) — kiest student- of docent-thema op basis van
+   `st.session_state["rol"]`. Bij ontbrekende rol (login of toegangsfout) `inject_theme(None)`.
 3. `render_nav()` direct daarna (vaste header, `position:fixed`)
 4. `render_footer()` onderaan
 5. AI-calls > ~1 seconde in `st.spinner()`, met try/except voor `anthropic.APITimeoutError` (timeout = 30s)
@@ -159,6 +102,32 @@ Geen sidebar — volledig verborgen via `.streamlit/config.toml` + CSS. Elke pag
 
 Uitloggen verloopt via `app/pages/uitloggen.py` (sessie wissen + redirect naar `/`).
 
+### Dual-theme design-systeem
+
+`styles.py` exporteert twee thema's bovenop één gedeeld fundament:
+
+* **student** — donker (#0F0F12 + #1A1A1F) met lime-accent (#A8FF60) en coral-alert (#FF5E3A).
+  Mobile-first, energiek, pill-vormige badges en knoppen.
+* **docent** — paper (#F0EBE1 + #FAF5EC) met sage-accent (#6F8265) en rust-alert (#B04A1A).
+  Desktop-georiënteerd, atelier-rustig, rechthoekige chips en knoppen.
+
+Gedeeld: Cabinet Grotesk display, Satoshi body, JetBrains Mono labels, spacing-scale, motion-curves.
+
+**Component-helpers** in `styles.py` (gebruik die ipv inline HTML):
+
+| Helper | Doel |
+|---|---|
+| `inject_theme(rol)` | Base + thema-CSS injecteren |
+| `hero(naam, meta, badges=[])` | Hero-blok bovenaan pagina |
+| `stat_card(label, value, *, value_sub, delta, delta_negative, sub, progress, alert_ring)` | Stat-card met optionele inline progress-ring |
+| `badge(kind, text)` | HTML-string voor inline gebruik (in `st.markdown`) |
+| `alert(text, level)` | Inline alert-balk (info/warning/urgent) |
+| `section_label(text, *, warning)` | Mono-uppercase label |
+| `action_tile(icon, titel, sub, page, *, key)` | Klikbare home-tegel (kaart + button + switch_page) |
+
+Inline `st.markdown("<p style='...'>")` voor onderdelen die een helper hebben is niet
+toegestaan — gebruik de helper zodat beide thema's correct meebewegen.
+
 ## Auth & toegangsbeheer
 
 Login via `app/main.py`. Wachtwoord voor student én docent: **Welkom123** (SHA-256 gehashed).
@@ -166,6 +135,12 @@ Login via `app/main.py`. Wachtwoord voor student én docent: **Welkom123** (SHA-
 Test-accounts (10 studenten, 10 mentoren, verspreid over 4 instellingen en risicocategorieën):
 zie `gebruikers.txt` in de root. Daar staan de actuele studentnummers, mentor-namen en hun
 voortgangsprofielen — gebruik die voor UI-tests in plaats van willekeurige IDs.
+
+**UI-smoke-test verplicht** bij wijzigingen aan pagina's, navigatie, sessie-state of file-paths:
+pytest groen ≠ feature werkt. Start de app (`uv run streamlit run app/main.py`), log in via
+`chrome-devtools-mcp` met een account uit `gebruikers.txt` dat het gewijzigde scenario raakt
+(bv. risico-student voor outreach, mentor voor groepsoverzicht) en doorloop de feature voordat
+je "klaar" claimt.
 
 `st.session_state` na login: `rol` ∈ {`"student"`, `"docent"`}, `df`, plus `studentnummer`
 (student) of `mentor_naam` (docent).

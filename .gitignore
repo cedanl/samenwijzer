@@ -47,3 +47,4 @@ htmlcov/
 .worktrees/
 
 # B3a: OER-catalog
+.superpowers/
