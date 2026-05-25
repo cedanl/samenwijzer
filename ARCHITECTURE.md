@@ -28,7 +28,7 @@ Cross-cutting modules (no layer restriction, import explicitly):
   scheduler.py      ← Wekelijkse check-in verzender (GitHub Actions cron entry point)
   tutor.py          ← AI tutor with direct answers (Anthropic SDK, streaming)
   coach.py          ← Study material, practice tests, work feedback (Anthropic SDK)
-  styles.py         ← EduPulse CSS + render_nav() (vaste header) + render_footer()
+  styles.py         ← Dual-theme tokens (student-donker / docent-paper) + inject_theme(rol) + component-helpers (hero, stat_card, badge, alert, action_tile, section_label) + render_nav() + render_footer()
   oer_store.py      ← SQLite persistence voor OER-catalog (oeren.db): instellingen, oer_documenten, kerntaken
   oer_parsing.py    ← OER PDF/bestandsnaam parsing: crebo, opleiding, niveau, kerntaken
   oer_context.py    ← OER-tekst ophalen per student (display_naam lookup + markitdown-tekst laden)

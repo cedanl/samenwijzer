@@ -55,7 +55,7 @@ Target users: students (progress, AI tutor, wellbeing check) and internal daily 
 | `groei_store.py` | SQLite (groei.db): `groei_actueel` (status-workflow, `dien_in`/`keur_goed`/`geef_terug`), `groei_historie`, `mentor_feedback`, `bewijsstuk` |
 | `bewijsstuk_store.py` | Bewijsstuk-uploads: `data/bewijsstukken/<studentnummer>/<uuid>.<ext>` + metadata |
 | `_ai.py` | Gedeelde Anthropic client factory (`_client()`) |
-| `styles.py` | EduPulse CSS + `render_nav()` (vaste header) + `render_footer()` |
+| `styles.py` | Dual-theme tokens (student-donker/docent-paper) + `inject_theme(rol)` + component-helpers (`hero`, `stat_card`, `badge`, `alert`, `action_tile`, `section_label`) + `render_nav()` + `render_footer()` |
 
 ## How to run
 
