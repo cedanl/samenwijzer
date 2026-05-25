@@ -230,9 +230,9 @@ with tab_bootstrap:
         horizontal=False,
     )
     skip_sync = st.checkbox(
-        "Skip oeren-sync (oeren/ is al up-to-date)",
+        "Skip alle Box-syncs (oeren/ én kwalificatiedossiers/ zijn al up-to-date)",
         value=False,
-        help="Sla `rclone copy` over en gebruik wat lokaal staat.",
+        help="Sla beide `rclone copy`-stappen over en gebruik wat lokaal staat.",
     )
 
     bevestig = st.checkbox(
