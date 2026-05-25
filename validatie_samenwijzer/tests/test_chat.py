@@ -4,6 +4,8 @@ from validatie_samenwijzer.chat import (
     bouw_gecombineerd_systeem,
     bouw_systeem,
     identificeer_oer_kandidaten,
+    laad_kwalificatiedossier_tekst,
+    pad_kwalificatiedossier,
 )
 
 
@@ -111,6 +113,71 @@ def test_identificeer_leerweg_case_insensitive():
     oers = [_oer_row(leerweg="BBL")]
     resultaat = identificeer_oer_kandidaten(oers, "ik volg de bbl-route")
     assert resultaat[0]["_score"] >= 2
+
+
+# ── kwalificatiedossier ───────────────────────────────────────────────────────
+
+
+def test_bouw_systeem_met_dossier_bevat_beide_bronnen():
+    systeem = bouw_systeem(
+        "OER-tekst hier.",
+        "Kok",
+        "Da Vinci",
+        dossier_tekst="Kerntaak 1: bereid maaltijden.",
+        crebo="25180",
+    )
+    assert "OER-tekst hier." in systeem
+    assert "Kerntaak 1: bereid maaltijden." in systeem
+    assert "KWALIFICATIEDOSSIER" in systeem
+    assert "25180" in systeem
+
+
+def test_bouw_systeem_zonder_dossier_heeft_geen_kd_blok():
+    systeem = bouw_systeem("OER-tekst", "Kok", "Da Vinci")
+    assert "KWALIFICATIEDOSSIER" not in systeem
+
+
+def test_laad_kwalificatiedossier_leeg_zonder_crebo():
+    assert laad_kwalificatiedossier_tekst(None) == ""
+    assert laad_kwalificatiedossier_tekst("") == ""
+
+
+def test_laad_kwalificatiedossier_leest_bestaande_md(tmp_path, monkeypatch):
+    monkeypatch.setenv("KWALDOSSIERS_PAD", str(tmp_path))
+    (tmp_path / "12345.md").write_text("Dossier-inhoud voor crebo 12345.")
+    assert "Dossier-inhoud" in laad_kwalificatiedossier_tekst("12345")
+
+
+def test_pad_kwalificatiedossier_respecteert_env(tmp_path, monkeypatch):
+    monkeypatch.setenv("KWALDOSSIERS_PAD", str(tmp_path))
+    assert pad_kwalificatiedossier("99999") == tmp_path / "99999.md"
+
+
+def test_bouw_gecombineerd_systeem_includeert_dossier_per_oer():
+    items = [
+        {
+            "tekst": "OER A",
+            "opleiding": "Kok",
+            "display_naam": "Da Vinci",
+            "leerweg": "BOL",
+            "cohort": "2025",
+            "crebo": "25180",
+            "dossier_tekst": "KD-tekst voor Kok.",
+        },
+        {
+            "tekst": "OER B",
+            "opleiding": "Verzorgende IG",
+            "display_naam": "Rijn IJssel",
+            "leerweg": "BOL",
+            "cohort": "2025",
+        },
+    ]
+    systeem = bouw_gecombineerd_systeem(items)
+    assert "KD-tekst voor Kok." in systeem
+    assert "KWALIFICATIEDOSSIER 1" in systeem
+    assert "25180" in systeem
+    # tweede OER heeft geen dossier — geen KD 2 blok
+    assert "KWALIFICATIEDOSSIER 2" not in systeem
 
 
 def test_identificeer_opleiding_woorden_max_2():

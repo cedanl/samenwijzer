@@ -24,6 +24,7 @@ from validatie_samenwijzer.chat import (  # noqa: E402
     genereer_antwoord,
     genereer_intake_antwoord,
     identificeer_oer_kandidaten,
+    laad_kwalificatiedossier_tekst,
     laad_oer_tekst,
     resolve_oer_pad,
 )
@@ -208,6 +209,8 @@ if st.session_state.pub_kandidaten:
                         "display_naam": k["display_naam"],
                         "leerweg": k["leerweg"],
                         "cohort": k["cohort"],
+                        "crebo": k.get("crebo", ""),
+                        "dossier_tekst": laad_kwalificatiedossier_tekst(k.get("crebo")),
                     }
                 )
                 labels.append(_label(k))
@@ -291,6 +294,8 @@ if kandidaten:
                         "display_naam": k["display_naam"],
                         "leerweg": k["leerweg"],
                         "cohort": k["cohort"],
+                        "crebo": k.get("crebo", ""),
+                        "dossier_tekst": laad_kwalificatiedossier_tekst(k.get("crebo")),
                     }
                 ]
             )
