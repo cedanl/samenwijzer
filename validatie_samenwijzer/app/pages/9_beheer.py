@@ -85,13 +85,21 @@ def _run_in_placeholder(cmd: list[str], cwd: Path | None = None) -> None:
 # ── Pagina-header ──────────────────────────────────────────────────────────────
 st.title("🛠 Beheer")
 st.caption(
-    "Tools voor lokaal database-beheer: synchroniseer OERs vanuit Box, "
-    "herindexeer bestanden, regenereer testdata en bekijk DB-status. "
-    "Subprocesses draaien op deze machine en kunnen meerdere minuten duren."
+    "Tools voor lokaal database-beheer: synchroniseer OERs en "
+    "kwalificatiedossiers vanuit Box, herindexeer bestanden, regenereer "
+    "testdata en bekijk DB-status. Subprocesses draaien op deze machine en "
+    "kunnen meerdere minuten duren."
 )
 
-tab_status, tab_bootstrap, tab_sync, tab_ingest, tab_seed = st.tabs(
-    ["📊 Status", "🚀 Bootstrap", "☁️ Sync oeren", "🗄 Re-ingest", "🌱 Seed"]
+tab_status, tab_bootstrap, tab_sync, tab_ingest, tab_kd, tab_seed = st.tabs(
+    [
+        "📊 Status",
+        "🚀 Bootstrap",
+        "☁️ Sync oeren",
+        "🗄 Re-ingest",
+        "📚 Kwalificatiedossiers",
+        "🌱 Seed",
+    ]
 )
 
 # ── Tab: Status ────────────────────────────────────────────────────────────────
@@ -158,6 +166,44 @@ with tab_status:
         st.write(f"📁 `{oeren_pad}` — {n_pdf} PDFs, {n_md} markdown-bestanden")
     else:
         st.warning(f"Map `{oeren_pad}` niet gevonden — draai eerst sync.")
+
+    st.subheader("Kwalificatiedossiers (aanvullende AI-bron)")
+    kd_pad = Path(
+        os.environ.get(
+            "KWALDOSSIERS_PAD",
+            str(_PROJECT_ROOT.parent / "kwalificatiedossiers" / "pdfs"),
+        )
+    )
+    if not kd_pad.is_absolute():
+        kd_pad = (_PROJECT_ROOT / kd_pad).resolve()
+    if kd_pad.exists():
+        kd_pdfs = {p.stem for p in kd_pad.glob("*.pdf")}
+        kd_mds = {p.stem for p in kd_pad.glob("*.md")}
+        db_crebos = {
+            r["crebo"]
+            for r in conn.execute(
+                "SELECT DISTINCT crebo FROM oer_documenten WHERE crebo IS NOT NULL"
+            ).fetchall()
+        }
+        gedekt = db_crebos & kd_mds
+        ontbreekt = db_crebos - kd_mds
+        n_db = len(db_crebos)
+        pct = (len(gedekt) / n_db * 100) if n_db else 0.0
+        st.write(
+            f"📁 `{kd_pad}` — {len(kd_pdfs)} PDFs, {len(kd_mds)} markdown-bestanden"
+        )
+        st.write(
+            f"🎯 **Coverage**: {len(gedekt)}/{n_db} crebo's in DB hebben een "
+            f"KD-markdown ({pct:.0f}%)"
+        )
+        if ontbreekt:
+            with st.expander(f"⚠️ {len(ontbreekt)} crebo's zonder KD-markdown"):
+                st.code(", ".join(sorted(ontbreekt)))
+    else:
+        st.warning(
+            f"Map `{kd_pad}` niet gevonden — draai sync of download in de "
+            "Kwalificatiedossiers-tab."
+        )
 
 # ── Tab: Bootstrap ─────────────────────────────────────────────────────────────
 with tab_bootstrap:
@@ -241,6 +287,78 @@ with tab_ingest:
         if reset:
             cmd.append("--reset")
         _run_in_placeholder(cmd)
+
+# ── Tab: Kwalificatiedossiers ──────────────────────────────────────────────────
+with tab_kd:
+    st.subheader("📚 Kwalificatiedossiers (landelijke aanvullende bron)")
+    st.caption(
+        "De OER blijft leidend; deze landelijke kwalificatiedossiers worden "
+        "alleen geraadpleegd als de OER een onderwerp niet of onvoldoende "
+        "behandelt. Bestanden leven in `kwalificatiedossiers/` (gitignored) "
+        "en synchroniseren via Box, parallel aan `oeren/`."
+    )
+
+    col_sync, col_convert, col_download = st.columns(3)
+
+    with col_sync:
+        st.markdown("**☁️ Sync vanuit Box**")
+        st.caption(
+            "Spiegelt `box:samenwijzer/kwalificatiedossiers/` naar lokaal via "
+            "`scripts/sync_kwalificatiedossiers.sh`. Snelste pad voor nieuwe "
+            "machines."
+        )
+        if st.button("Start sync", type="primary", key="kd_sync"):
+            _run_in_placeholder(["bash", "scripts/sync_kwalificatiedossiers.sh"])
+
+    with col_convert:
+        st.markdown("**📝 Re-convert PDFs → markdown**")
+        st.caption(
+            "Draait `scripts/convert_kwalificatiedossiers_md.py` (markitdown, "
+            "8 workers parallel). Bestaande `.md`-bestanden worden "
+            "overgeslagen — verwijder ze handmatig voor een schone "
+            "herconversie."
+        )
+        if st.button("Start conversie", key="kd_convert"):
+            _run_in_placeholder(
+                ["uv", "run", "python", "scripts/convert_kwalificatiedossiers_md.py"]
+            )
+
+    with col_download:
+        st.markdown("**⬇️ Herbouw uit s-bb.nl**")
+        st.caption(
+            "Volledige rebuild: download crebolijsten + bron-zips van s-bb en "
+            "kopieer PDFs per crebo. Bestaande PDFs worden overschreven. "
+            "Alleen nodig bij een nieuwe s-bb-herziening."
+        )
+        bevestig_kd = st.checkbox(
+            "Ja, ik wil PDFs opnieuw downloaden",
+            value=False,
+            key="kd_download_bevestig",
+        )
+        if st.button("Start rebuild", disabled=not bevestig_kd, key="kd_download"):
+            _run_in_placeholder(
+                [
+                    "uv",
+                    "run",
+                    "--with",
+                    "openpyxl",
+                    "python",
+                    "scripts/download_kwalificatiedossiers.py",
+                ]
+            )
+
+    st.divider()
+    st.markdown("**Upload lokale wijzigingen naar Box**")
+    st.caption(
+        "Gebruik dit alleen nadat je de PDF/MD-set hebt herbouwd op deze "
+        "machine en andere machines de nieuwe versie moeten kunnen syncen. "
+        "Skipt de bron-zips automatisch."
+    )
+    if st.button("Upload naar Box", key="kd_upload"):
+        _run_in_placeholder(
+            ["bash", "scripts/sync_kwalificatiedossiers.sh", "--upload"]
+        )
+
 
 # ── Tab: Seed ──────────────────────────────────────────────────────────────────
 with tab_seed:

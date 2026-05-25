@@ -220,7 +220,7 @@ DRY_RUN=true uv run python -m samenwijzer.scheduler  # alleen loggen
 | Betrouwbaarheid | `docs/RELIABILITY.md` |
 | Tech debt | `docs/plans/tech-debt-tracker.md` |
 | Test-accounts | `gebruikers.txt` |
-| OER-chat subproject (poort 8503) | `validatie_samenwijzer/` — Streamlit-app voor conversationeel chatten met de eigen OER via volledige Claude-documentcontext (eigen `CLAUDE.md`) |
+| OER-chat subproject (poort 8503) | `validatie_samenwijzer/` — Streamlit-app voor conversationeel chatten met de eigen OER via volledige Claude-documentcontext, met landelijke kwalificatiedossiers als aanvullende bron (eigen `CLAUDE.md`) |
 | Presentatie (Slidev, poort 3030) | `validatie_samenwijzer/presentatie/` — zelfstandige CEDA/Npuls-deck over vector store → full-document context; `./start.sh` |
 
 ## Agent rules (samenvatting van AGENTS.md)

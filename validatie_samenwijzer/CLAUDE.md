@@ -71,8 +71,10 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 
 Standalone Streamlit-app (`validatie_samenwijzer/`) die MBO-studenten en mentoren laat chatten
 met hun OER (Onderwijs- en Examenregeling) via Claude streaming met de **volledige OER als
-context** (Sonnet 4.6, 1M-tokenvenster). Leeft als subproject binnen de `samenwijzer`-monorepo
-maar heeft zijn eigen `pyproject.toml`, `.venv` en database.
+context** (Sonnet 4.6, 1M-tokenvenster). Het landelijke **kwalificatiedossier (KD)** wordt waar
+beschikbaar mee-ingebed als aanvullende bron — de OER blijft leidend; het KD wordt alleen
+geraadpleegd als de OER het onderwerp niet of onvoldoende behandelt. Leeft als subproject binnen
+de `samenwijzer`-monorepo maar heeft zijn eigen `pyproject.toml`, `.venv` en database.
 
 > **Geen vector store**: PR #33 (mei 2026) heeft ChromaDB en OpenAI-embeddings verwijderd. De
 > retrieval-laag is vervangen door full-document context. Zie ook `chat.py:_MAX_OER_TEKST_TEKENS`.
@@ -120,6 +122,12 @@ uv run python scripts/seed_bulk.py   # ~1000 studenten over geïndexeerde OERs (
 ./scripts/bootstrap.sh --seed-minimal   # 3+2 dev-demo i.p.v. bulk
 ./scripts/bootstrap.sh --skip-seed      # geen testdata
 ./scripts/sync_oeren.sh                 # alleen rclone copy
+
+# Kwalificatiedossiers (aanvullende AI-bron, gemapt op crebo)
+uv run --with openpyxl python scripts/download_kwalificatiedossiers.py  # s-bb → kwalificatiedossiers/pdfs/<crebo>.pdf
+uv run python scripts/convert_kwalificatiedossiers_md.py                 # PDF → <crebo>.md (markitdown, parallel)
+./scripts/sync_kwalificatiedossiers.sh                                   # Box → lokaal
+./scripts/sync_kwalificatiedossiers.sh --upload                          # lokaal → Box
 ```
 
 Overige scripts in `scripts/` (`seed_rebuild_students.py`, `convert_oers_markdown.py`,
@@ -271,14 +279,23 @@ Nooit `anthropic.Anthropic()` direct instantiëren.
 `laad_oer_tekst()` voorkeursvolgorde: `<stem>.md` (markitdown-output) → bron-`.md` →
 pdfplumber over PDF. Hard cap: `_MAX_OER_TEKST_TEKENS = 500_000` tekens.
 
+`laad_kwalificatiedossier_tekst(crebo)` leest `kwalificatiedossiers/pdfs/<crebo>.md` (hard cap
+`_MAX_DOSSIER_TEKST_TEKENS = 300_000`). Pad-resolutie via `pad_kwalificatiedossier(crebo)`:
+default `<repo>/kwalificatiedossiers/pdfs`, override via env-var `KWALDOSSIERS_PAD`. Lege
+string als de crebo geen KD heeft — de chat werkt dan OER-only.
+
 Toon `LAGE_RELEVANTIE_BERICHT` wanneer `laad_oer_tekst()` een lege string teruggeeft
 (bestand ontbreekt of niet leesbaar).
 
 **Juridische citatieplicht**: zowel `_SYSTEEM_TEMPLATE` als `_MULTI_SYSTEEM_TEMPLATE` eisen per
-claim de OER-aanduiding (multi), sectie of paginanummer, **én een woordelijk citaat tussen
-aanhalingstekens**. Reden: een OER is een juridisch document — antwoorden moeten verifieerbaar
-zijn. Markdown-blockquotes uit het AI-antwoord renderen via CSS als pull-quote citaten.
-Spec: `docs/specs/2026-05-06-publieke-oer-citaten-en-pdf-design.md` (vanuit repo-root).
+claim drie elementen: **bron** ("Volgens de OER" of "Volgens het kwalificatiedossier"),
+**vindplaats** (sectie-nummer, kopje, artikel of paginanummer) en een **woordelijk citaat
+tussen dubbele aanhalingstekens**. Reden: een OER is een juridisch document — antwoorden
+moeten verifieerbaar zijn. De OER is leidend; het KD wordt alleen geraadpleegd als de OER het
+onderwerp niet of onvoldoende behandelt, met de inleider "De OER beschrijft dit niet; volgens
+het kwalificatiedossier…". Markdown-blockquotes uit het AI-antwoord renderen via CSS als
+pull-quote citaten. Spec: `docs/specs/2026-05-06-publieke-oer-citaten-en-pdf-design.md`
+(vanuit repo-root).
 
 **PDF-bekijken op publieke pagina** (`0_oer_vraag.py`): `pub_oer_paden: list[Path]` in session
 state parallel aan `pub_oer_labels`. Per geladen OER een `📄 Bekijk OER N` knop boven de chat;
@@ -288,6 +305,47 @@ spiegelt de logica van `2_mijn_oer.py`.
 ### OER-bestanden
 
 `oeren/` is gitignored. Structuur: één submap per instelling (`davinci_oeren/`, `rijn_ijssel_oer/`, `talland_oeren/`, `aeres_oeren/`, `utrecht_oeren/`). Geïndexeerde OERs staan als `geindexeerd=1` in `oer_documenten`. Studenten met `oer_id` naar niet-geïndexeerde OERs krijgen geen chatantwoorden.
+
+### Kwalificatiedossiers (aanvullende bron)
+
+`kwalificatiedossiers/` (in repo-root, gitignored) bevat de landelijke kwalificatiedossiers
+gemapt op crebo:
+
+```
+kwalificatiedossiers/
+├── pdfs/<crebo>.pdf      # 240 PDFs, gedownload van s-bb.nl
+├── pdfs/<crebo>.md       # markitdown-conversie naast iedere PDF (chat-bron)
+├── lijsten/crebo_*.xlsx  # s-bb crebolijsten 2017-2026 (download-bron-mapping)
+├── *.zip                 # 4 alfabetische bron-zips van s-bb
+├── mapping.json
+└── download_rapport.json # audit: welke crebo's gemapt, welke niet
+```
+
+**Multi-machine sync** verloopt via Box (`box:samenwijzer/kwalificatiedossiers/`, parallel aan
+`oeren/`):
+
+```bash
+./scripts/sync_kwalificatiedossiers.sh           # Box → lokaal (default)
+./scripts/sync_kwalificatiedossiers.sh --upload  # lokaal → Box (skipt *.zip)
+```
+
+**Opnieuw opbouwen** (alleen op de master-machine; andere machines syncen):
+
+```bash
+uv run --with openpyxl python scripts/download_kwalificatiedossiers.py
+uv run python scripts/convert_kwalificatiedossiers_md.py
+```
+
+Het download-script bouwt crebo→dossier-mapping uit de s-bb crebolijsten (Complete lijst +
+Vervallen/Wijzigingen-sheets) en handmatige overrides voor de recente "Gewijzigd 2024"-
+herziening die nog niet in de lijsten staat. Coverage: 240/247 (97%) van de unieke crebo's in
+`validatie.db`; de 7 missende crebo's zijn school-interne codes of opleidingsdomein-codes die
+niet in het s-bb register voorkomen.
+
+Conversie naar markdown gebruikt dezelfde markitdown-pipeline als de OER-conversie
+(`ingest.converteer_naar_markdown`); de bulk-converter parallelliseert met 8 workers (~5min
+voor 240 PDFs). Bij een ontbrekende `<crebo>.md` geeft `laad_kwalificatiedossier_tekst("")`
+terug en werkt de chat OER-only — geen errors.
 
 ## Bekende valkuilen
 
