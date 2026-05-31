@@ -14,7 +14,8 @@ CEDA technical standards: https://github.com/cedanl/.github/tree/main/standards/
 
 ## Tech & tooling
 
-Python 3.13, Streamlit, pandas, Anthropic SDK. Package manager: `uv`. Type checker: `ty`
+Python 3.13, Streamlit, pandas, Anthropic SDK. Visualisatie: Altair + Plotly. Webhook:
+FastAPI + uvicorn. Encryptie: cryptography (Fernet). Package manager: `uv`. Type checker: `ty`
 (lokaal — CI gate is alleen `ruff check`, `ruff format --check` en `pytest`; draai `ty check`
 zelf vóór een PR). Linter/formatter: `ruff` (line-length 100, selectie `E,F,I,N,W,UP`;
 HTML-strings in `styles.py`, `app/main.py` en `app/pages/*.py` zijn vrijgesteld van E501).
@@ -70,7 +71,9 @@ nooit opnieuw laden.
 
 **SQLite-isolatie**: schrijfbewerkingen naar `outreach.db` lopen uitsluitend via `outreach_store.py`,
 naar `whatsapp.db` via `whatsapp_store.py`, naar `groei.db` (groeidossier) via `groei_store.py`.
-Nooit raw SQL in `app/`. Alle drie DBs zijn gitignored.
+Nooit raw SQL in `app/`. Alle drie DBs zijn gitignored. De read-only OER-catalog `oeren.db`
+(eveneens gitignored) wordt uitsluitend gelezen via `oer_store.py` en alleen geschreven door
+`scripts/build_oer_catalog.py` — herbouw lokaal als hij ontbreekt.
 
 **Bewijsstukken**: file-uploads in het groeidossier lopen via `bewijsstuk_store.py` (filesystem-IO
 onder `data/bewijsstukken/<studentnummer>/`, max 10 MB, alleen pdf/jpg/jpeg/png/docx/xlsx). Validatie
@@ -168,6 +171,10 @@ zonder parsebare kwalificatiestructuur (bv. crebo 25736).
 
 `oer_context.haal_oer_context_op(student_row)` levert OER-tekst als context aan `tutor.py` en
 `coach.py`.
+
+**Data dictionary**: `src/samenwijzer/metadata/data_dictionary.csv` beschrijft de kolommen van
+de synthetische dataset — raadpleeg dit bij twijfel over veldbetekenis (is een tracked package-asset,
+geen gegenereerde data).
 
 **OER-parsing** (`oer_parsing.py`): regex-helpers voor bestandsnaam → crebo/leerweg/jaar,
 kerntaken, opleidingsnaam en niveau. Bewust **gesynchroniseerd** uit het `validatie_samenwijzer`-
