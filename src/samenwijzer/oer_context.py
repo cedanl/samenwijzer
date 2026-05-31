@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import sqlite3
 from pathlib import Path
 
 log = logging.getLogger(__name__)
@@ -40,6 +41,8 @@ def haal_oer_context_op(student_row: dict) -> str:
         if rij is None:
             return ""
         return laad_oer_tekst(rij["bestandspad"])
-    except Exception:
-        log.debug("OER-context niet beschikbaar", exc_info=True)
+    except (sqlite3.Error, OSError):
+        # Catalog-DB of OER-bestand niet bruikbaar (corrupt/permissie). Degradeer naar
+        # lege context — OER is optionele augmentatie. Andere fouten (bugs) propageren.
+        log.warning("OER-context niet beschikbaar", exc_info=True)
         return ""
