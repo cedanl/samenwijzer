@@ -1,6 +1,6 @@
 # Validatie Samenwijzer
 
-Standalone Streamlit-app waarmee MBO-studenten en mentoren conversationeel kunnen chatten met hun OER (Onderwijs- en Examenregeling) via volledige Claude-documentcontext.
+Standalone Streamlit-app waarmee MBO-studenten en mentoren conversationeel kunnen chatten met hun OER (Onderwijs- en Examenregeling) via volledige Claude-documentcontext, aangevuld met landelijke kwalificatiedossiers en een skills-taxonomie (CompetentNL/ESCO) — zodat de chat ook "welke skills heb ik nodig voor mijn beroep?" beantwoordt.
 
 ## Vereisten
 
@@ -47,7 +47,13 @@ Zet daarom eerst je PDFs op de juiste plek en draai dan in volgorde:
 # 3. Synthetische gebruikers seeden (vereist een geïndexeerde DB)
 uv run python scripts/seed.py           # 3 studenten + 2 mentoren (sanity check)
 uv run python scripts/seed_bulk.py      # ~600 studenten over geïndexeerde OERs
+
+# 4. Afgeleide bronnen (KD + skills) reconciliëren — bouwt alleen ontbrekende
+uv run python -m validatie_samenwijzer.sync_afgeleid --alles
 ```
+
+`bootstrap.sh` doet stap 4 automatisch (stap 6), en de `watcher` reconcilieert per
+crebo zodra OER-bestanden wijzigen.
 
 `bulk_seed` faalt met instructie als stap 2 niet is gedraaid. Het rapporteert
 expliciet welke instellingen overgeslagen zijn (typisch wanneer

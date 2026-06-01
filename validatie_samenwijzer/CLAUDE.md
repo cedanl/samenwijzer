@@ -102,7 +102,7 @@ uv run python -m validatie_samenwijzer.ingest --alles          # nieuw indexeren
 uv run python -m validatie_samenwijzer.ingest --alles --reset  # alles herindexeren
 uv run python -m validatie_samenwijzer.ingest --bestand oeren/davinci_oeren/25751BBL2025Examenplan.pdf
 
-# Bestandswatcher (herindexeer automatisch bij wijzigingen in oeren/)
+# Bestandswatcher (herindexeer + reconcilieer KD/skills automatisch bij wijzigingen in oeren/)
 uv run python -m validatie_samenwijzer.watcher          # bewaakt oeren/ (default)
 uv run python -m validatie_samenwijzer.watcher --oeren-pad /pad/naar/oeren
 # `ingest` en `watcher` zijn ook geregistreerd als project scripts (zie pyproject.toml)
@@ -129,10 +129,14 @@ uv run python scripts/convert_kwalificatiedossiers_md.py                 # PDF �
 ./scripts/sync_kwalificatiedossiers.sh                                   # Box → lokaal
 ./scripts/sync_kwalificatiedossiers.sh --upload                          # lokaal → Box
 
-# Skills-taxonomie (aanvullende AI-bron, OER → beroep → skills via ESCO)
+# Skills-taxonomie (aanvullende AI-bron, hybride: CompetentNL crebo-direct → ESCO fallback)
 uv run python scripts/build_skills_taxonomie.py            # alle ontbrekende crebo's
 uv run python scripts/build_skills_taxonomie.py --reset    # alles opnieuw matchen
 uv run python scripts/build_skills_taxonomie.py --crebo 25180   # één crebo
+
+# Afgeleide bronnen reconciliëren (KD + skills) — bouwt alleen ontbrekende, idempotent
+uv run python -m validatie_samenwijzer.sync_afgeleid --alles      # alle geïndexeerde crebo's
+uv run python -m validatie_samenwijzer.sync_afgeleid --crebo 25180 # één crebo
 ```
 
 Overige scripts in `scripts/` (`seed_rebuild_students.py`, `convert_oers_markdown.py`,
@@ -407,6 +411,29 @@ open-license, dus de gecureerde matches zitten in de repo en werken op elke mach
 en wordt zo gepind); `--reset` forceert herbouw. De review-CSV is bedoeld voor **handmatige
 eyeballing** — vooral de ESCO-matches (een match-score is geen correctheidscheck; taxonomiegaten
 zoals "mediamaker" passeren stil). CompetentNL-matches zijn crebo-direct en betrouwbaar.
+
+### Afgeleide bronnen automatisch bijwerken (reconciliatie)
+
+Zodra OER's wijzigen (nieuwe OER's, updates, nieuwe instellingen) moeten KD + skills meebewegen.
+De motor is **desired-state reconciliatie** (`sync_afgeleid.py` → `werk_afgeleide_bronnen_bij`):
+vergelijk de geïndexeerde crebo's met de bestaande artefacten en bouw alleen wat ontbreekt.
+Idempotent; **working-tree only** (raakt git/Box niet aan) en rapporteert wat te distribueren —
+nieuwe skills (→ commit/PR), nieuwe KD (→ Box-sync), plus **KD-gaten** (geen dossier in de
+s-bb-bundle) én **skills-gaten** (crebo zonder passend beroep).
+
+```bash
+uv run python -m validatie_samenwijzer.sync_afgeleid --alles       # alle crebo's
+uv run python -m validatie_samenwijzer.sync_afgeleid --crebo 25180  # één crebo
+```
+
+Drie aanroepers: **`bootstrap.sh`** (stap 6, `--alles` ná ingest+seed; `--skip-derived` om over te
+slaan), de **watcher** (per crebo ná een succesvolle ingest — latency-optimalisatie, draait inline
+in de event-loop) en handmatig. De asymmetrie: **skills** zijn live per crebo (CompetentNL/ESCO,
+altijd bouwbaar); **KD** komt uit de lokale s-bb-bundle, dus KD-reconciliatie werkt alleen op een
+machine mét die bundle (master) — andere machines syncen KD via Box. Een OER-inhoudswijziging met
+ongewijzigde crebo triggert niets (beide bronnen zijn crebo-gekoppeld). Volledig plan + fasering:
+`docs/plans/auto-sync-afgeleide-bronnen.md` (Fase 1+2 geïmplementeerd; Fase 3 — `--refresh-fallbacks`
++ s-bb-bundle-refresh — staat nog open).
 
 ## Bekende valkuilen
 
