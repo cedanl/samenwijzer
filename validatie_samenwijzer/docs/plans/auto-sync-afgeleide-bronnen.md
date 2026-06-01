@@ -1,6 +1,6 @@
 # Plan: automatische sync van KD + skills bij oeren-wijzigingen
 
-**Status:** plan (nog niet geïmplementeerd) · **Datum:** 2026-06-01
+**Status:** Fase 1 + 2 geïmplementeerd (PR #110, #111); Fase 3 open · **Datum:** 2026-06-01
 
 ## Doel
 
@@ -74,11 +74,11 @@ API-keys. Het moet op een machine met Box-synced data + keys.
 
 ## Fasering
 
-| Fase | Werk | Verificatie |
-|---|---|---|
-| **1** | Orchestrator `sync_afgeleid.py` + single-crebo entry points (KD-download + markitdown-convert per losse crebo; skills heeft al `--crebo`). `--crebo`/`--alles`, idempotent, KD-gat → loggen. | nieuwe crebo in DB → `--alles` maakt KD (indien in bundle) + skills; gat wordt gelogd |
-| **2** | Ingest- + watcher-hook + change-rapportage (samenvatting van wat te committen/syncen) | bestand in `oeren/` → KD+skills verschijnen + samenvatting toont vervolgacties |
-| **3** (later) | `--refresh-fallbacks`: de ESCO-crebo's periodiek opnieuw tegen CompetentNL checken (groeit ~20-30 beroepen/kwartaal); kwartaal s-bb-bundle-refresh | ESCO-crebo die later in CompetentNL komt, upgrade't naar CompetentNL |
+| Fase | Werk | Verificatie | Status |
+|---|---|---|---|
+| **1** | Orchestrator `sync_afgeleid.py` + single-crebo entry points (KD-download + markitdown-convert per losse crebo; skills heeft al `--crebo`). `--crebo`/`--alles`, idempotent, KD-gat → loggen. | nieuwe crebo in DB → `--alles` maakt KD (indien in bundle) + skills; gat wordt gelogd | ✅ PR #110 |
+| **2** | Ingest- + watcher-hook + change-rapportage (samenvatting van wat te committen/syncen) | bestand in `oeren/` → KD+skills verschijnen + samenvatting toont vervolgacties | ✅ PR #111 |
+| **3** (later) | `--refresh-fallbacks`: de ESCO-crebo's periodiek opnieuw tegen CompetentNL checken (groeit ~20-30 beroepen/kwartaal); kwartaal s-bb-bundle-refresh | ESCO-crebo die later in CompetentNL komt, upgrade't naar CompetentNL | ⏳ open |
 
 ## Bewust buiten scope
 
