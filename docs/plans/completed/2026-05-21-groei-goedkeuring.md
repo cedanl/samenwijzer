@@ -8,7 +8,7 @@
 
 **Tech Stack:** Python 3.13, SQLite (`groei.db`), pandas, Streamlit. Tools: `uv`, `pytest`, `ruff`, `ty`.
 
-**Spec:** `docs/superpowers/specs/2026-05-21-groei-goedkeuring-design.md`
+**Spec:** `docs/specs/2026-05-21-groei-goedkeuring-design.md`
 
 ---
 

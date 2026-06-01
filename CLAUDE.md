@@ -230,6 +230,12 @@ DRY_RUN=true uv run python -m samenwijzer.scheduler  # alleen loggen
 | OER-chat subproject (poort 8503) | `validatie_samenwijzer/` — Streamlit-app voor conversationeel chatten met de eigen OER via volledige Claude-documentcontext, met landelijke kwalificatiedossiers én een skills-taxonomie (CompetentNL/ESCO) als aanvullende bronnen; afgeleide bronnen worden automatisch gereconcilieerd bij oeren-wijzigingen (eigen `CLAUDE.md`) |
 | Presentatie (Slidev, poort 3030) | `validatie_samenwijzer/presentatie/` — zelfstandige CEDA/Npuls-deck over vector store → full-document context; `./start.sh` |
 
+**Doc-locatie-conventie** (overschrijft skill-defaults): specs horen in `docs/specs/`, plannen in
+`docs/plans/{active,completed}/`, ontwerpbeslissingen in `docs/designs/`. Schrijf **niet** naar
+`docs/superpowers/` — die map is bij de folderstructuur-opschoning opgeheven. De brainstorming- en
+writing-plans-skills defaulten naar `docs/superpowers/`; honoreer hier deze conventie als override.
+In het `validatie_samenwijzer/`-subproject geldt `docs/plans/` voor zowel specs als plannen.
+
 ## Agent rules (samenvatting van AGENTS.md)
 
 1. No handwritten code — every line is agent-generated.
