@@ -1,256 +1,134 @@
 {
   "crebo": "25736",
   "opleiding": "25736_BOL_2025__25736BOL2025MJP-Eerste-Monteur-Elektrotechnische-Installaties-in-de-Gebouwde-Omgevin",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "monteur elektrische installaties gebouwen",
-    "uri": "http://data.europa.eu/esco/occupation/33960bab-4423-4808-af6c-ec2b485dba41",
-    "definitie": "Monteurs elektrische installaties gebouwen installeren en onderhouden elektriciteitskabels en andere elektrische infrastructuur in gebouwen. Zij zorgen ervoor dat de geïnstalleerde elektrische apparatuur geïsoleerd is en dat er geen brandgevaar bestaat. Zij hebben inzicht in de situatie en zorgen ervoor dat verbeteringen worden aangebracht als deze nodig zijn."
+    "label": "Eerste monteur elektrotechnische installaties in de gebouwde omgeving",
+    "uri": "",
+    "definitie": "De Eerste monteur elektrotechnische installaties in de gebouwde omgeving werkt zelfstandig bij een bedrijf dat elektrotechnische installaties en systemen aanlegt, monteert, repareert en renoveert en/of demonteert. Dit zijn installaties zoals algemene besturings- en verdeelsystemen, licht- en krachtinstallaties, gebouwbeheerssystemen, data- en telecominstallaties, beveiligingsinstallaties en zonnestroomsystemen. Hij/zij werkt zelfstandig of samen met collega bij bedrijven en bij particulieren op uiteenlopende locaties, bijvoorbeeld woningen, winkelbedrijven en utiliteitsgebouwen. De Eerste monteur elektrotechnische installaties in de gebouwde omgeving heeft de verantwoording over het gemaakte werk. In de praktijk kan hi/zij ook te maken krijgen met domoticasystemen. Hij/zij geeft beperkt leiding aan een collega-monteur en stagiairs, stemt de opdracht af met alle betrokken partijen (zoals de klant) en bewaakt de voortgang van het werk."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "monteur elektrische installaties woningbouw",
-    "monteur elektrische installaties utiliteitsbouw",
-    "monteur elektrische installaties",
-    "monteur elektrische installaties gebouwen",
-    "elektromechanicus",
-    "monteur van installaties om vliegtuigen ijsvrij te maken",
-    "monteur machines smederij",
-    "elektricien evenementen",
-    "elektrotechnicus",
-    "ingenieur elektriciteit",
-    "assemblagemonteur industriële installaties"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "kabel splitsen",
-      "uri": "http://data.europa.eu/esco/skill/4a30802f-827c-4706-9099-de85beee6cb5",
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
       "categorie": "essentieel"
     },
     {
-      "label": "op gebeurtenissen in tijdkritieke omgevingen reageren",
-      "uri": "http://data.europa.eu/esco/skill/be7c80ee-0b7a-455c-8928-055cfa65076c",
+      "label": "Repareren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1C1D574677",
       "categorie": "essentieel"
     },
     {
-      "label": "elektrische materialen inspecteren",
-      "uri": "http://data.europa.eu/esco/skill/2179e0fd-7431-41a3-bbf4-76451c615ce2",
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
       "categorie": "essentieel"
     },
     {
-      "label": "storingen aan apparatuur oplossen",
-      "uri": "http://data.europa.eu/esco/skill/1de6b87b-2c7d-49aa-bcc0-3b2ef75f064f",
+      "label": "Begrijpend lezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/2E80D9179C",
       "categorie": "essentieel"
     },
     {
-      "label": "bouwmaterialen inspecteren",
-      "uri": "http://data.europa.eu/esco/skill/50f2d23c-b3fb-48a5-967b-14fd0a6dd205",
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
       "categorie": "essentieel"
     },
     {
-      "label": "gezondheids- en veiligheidsprocedures in de bouw in acht nemen",
-      "uri": "http://data.europa.eu/esco/skill/86df7af2-f9f3-4c06-a500-7f1fba9e78fe",
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
       "categorie": "essentieel"
     },
     {
-      "label": "elektrische schakelaars installeren",
-      "uri": "http://data.europa.eu/esco/skill/c3d1ada5-1d97-4a23-be2a-9ff39296775b",
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
       "categorie": "essentieel"
     },
     {
-      "label": "elektrische aansluitschema’s",
-      "uri": "http://data.europa.eu/esco/skill/d15e92c4-c8dc-48cd-a1f6-94fe13347f87",
+      "label": "Procedures volgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/752EEDBE89",
       "categorie": "essentieel"
     },
     {
-      "label": "controletechnologie voor gebouwinstallaties",
-      "uri": "http://data.europa.eu/esco/skill/0e8d16c9-e2db-4862-ac06-1567f01ef806",
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
       "categorie": "essentieel"
     },
     {
-      "label": "precisie-instrumenten gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/a99c6783-50c0-4f7a-99df-bf93429ef6dc",
+      "label": "Delegeren ",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C8730D1BAB",
       "categorie": "essentieel"
     },
     {
-      "label": "elektronische eenheden testen",
-      "uri": "http://data.europa.eu/esco/skill/baf501a8-f0fe-4ad7-9b69-8e920fa1a87b",
+      "label": "(digitale) Informatie beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CD7B4C0F34",
       "categorie": "essentieel"
     },
     {
-      "label": "elektrische stopcontacten installeren",
-      "uri": "http://data.europa.eu/esco/skill/52d6eb67-56c0-4ad7-b5c2-71e7c2362ece",
+      "label": "Installeren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5AD4F0905",
       "categorie": "essentieel"
     },
     {
-      "label": "procedures bij verdeling van elektriciteit testen",
-      "uri": "http://data.europa.eu/esco/skill/0dc8813a-cebd-4a42-acc8-9a7c4e6e3663",
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
       "categorie": "essentieel"
     },
     {
-      "label": "elektriciteit",
-      "uri": "http://data.europa.eu/esco/skill/c8ac1986-38fa-43b2-89dc-50a4beeb420e",
+      "label": "Elektrotechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/1EC7181B0B",
       "categorie": "essentieel"
     },
     {
-      "label": "ergonomisch werken",
-      "uri": "http://data.europa.eu/esco/skill/156f8c5b-894a-4ccc-a70e-37a2726f3f00",
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
       "categorie": "essentieel"
     },
     {
-      "label": "veiligheidsuitrusting gebruiken tijdens bouwwerkzaamheden",
-      "uri": "http://data.europa.eu/esco/skill/c643e59b-d74c-4f44-b76e-6e1d96c05ec4",
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
       "categorie": "essentieel"
     },
     {
-      "label": "meetinstrumenten gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/b92758d4-4591-4df1-9ceb-f907aa71ebd9",
+      "label": "Installatietechniek (elektro)",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3F26F4FE84",
       "categorie": "essentieel"
     },
     {
-      "label": "elektrische en elektronische apparatuur installeren",
-      "uri": "http://data.europa.eu/esco/skill/52797dce-911c-4e6d-b0cb-491f6469014f",
+      "label": "Installatietechniek (bouwkunde)",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/41B99A9CBB",
       "categorie": "essentieel"
     },
     {
-      "label": "problemen oplossen",
-      "uri": "http://data.europa.eu/esco/skill/334e3e49-fb02-4051-809a-f06adfdc1c40",
-      "categorie": "optioneel"
+      "label": "Milieutechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/58823180FE",
+      "categorie": "essentieel"
     },
     {
-      "label": "energieprestaties van gebouwen",
-      "uri": "http://data.europa.eu/esco/skill/4e09e2d2-e317-47d2-bf5e-1d6c66be3efc",
-      "categorie": "optioneel"
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
     },
     {
-      "label": "elektromechanica",
-      "uri": "http://data.europa.eu/esco/skill/2bbdea06-a265-42b5-bb4f-7241b661f069",
-      "categorie": "optioneel"
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
     },
     {
-      "label": "benodigde bouwmaterialen berekenen",
-      "uri": "http://data.europa.eu/esco/skill/5d9dd44a-81f8-4710-bd4d-af27ec5c2139",
-      "categorie": "optioneel"
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
     },
     {
-      "label": "gegevens over de voortgang van het werk bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/ccfbdaad-b91d-4bfe-bd0e-d30b33587f19",
-      "categorie": "optioneel"
+      "label": "Elektrische energietechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C3DA1C1A44",
+      "categorie": "essentieel"
     },
     {
-      "label": "elektrische componenten monteren",
-      "uri": "http://data.europa.eu/esco/skill/415cb0c2-e169-4f99-ba3e-d1c433b75368",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "schuurmachine gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/2aa6039e-c747-4f74-a61e-e96a195f3260",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "elektronische apparatuur onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/ba45db8f-34e8-4f29-af0b-e6645e1d693f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "elektronische eenheden monteren",
-      "uri": "http://data.europa.eu/esco/skill/4ed385bf-3e87-476a-9f06-08c2e801133a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "persoonlijke administratie bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/9df34bc3-25d4-4452-a896-4d19b94ef896",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "elektronica",
-      "uri": "http://data.europa.eu/esco/skill/95c35c3a-035f-47c2-90cf-7e934d20fc08",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "prijsaanvragen beantwoorden",
-      "uri": "http://data.europa.eu/esco/skill/2206af0c-3deb-48c5-a544-b9983d347da3",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "elektronica solderen",
-      "uri": "http://data.europa.eu/esco/skill/26ed52cf-30ca-451e-9699-a6c04a30649f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "binnenkomende bouwmaterialen verwerken",
-      "uri": "http://data.europa.eu/esco/skill/a3e0224a-c952-4b4e-b664-d7186f62715b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "werken in een bouwteam",
-      "uri": "http://data.europa.eu/esco/skill/4fa2d6ba-4fff-4f21-bddd-4a54ae840955",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "defecte onderdelen vervangen",
-      "uri": "http://data.europa.eu/esco/skill/87af00b5-30fa-41c8-bfa5-357f22c8d589",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bedrading repareren",
-      "uri": "http://data.europa.eu/esco/skill/af1c7b89-679b-4fae-b67c-ed05c669719c",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bouwmaterialen bestellen",
-      "uri": "http://data.europa.eu/esco/skill/9f1bd2a4-91af-4b60-aeb3-0fe1f4434966",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "montagesystemen voor zonnepanelen",
-      "uri": "http://data.europa.eu/esco/skill/9f719da2-5ba8-46b8-b20b-3d5f59208f49",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muursleuven inslijpen",
-      "uri": "http://data.europa.eu/esco/skill/ca1e4742-42cc-463a-9b12-a1733f06d7a3",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "firmware programmeren",
-      "uri": "http://data.europa.eu/esco/skill/cf200547-25b5-47c8-9eda-bca4aedc13fb",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "automatiseringstechnologie",
-      "uri": "http://data.europa.eu/esco/skill/f4a6e9f7-5cff-46c0-894c-59c20bb78694",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bouwprofielen installeren",
-      "uri": "http://data.europa.eu/esco/skill/8ed53702-3e4e-4637-a4c3-9dc8f4281019",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "producteigenschappen demonstreren",
-      "uri": "http://data.europa.eu/esco/skill/de7b8c6c-9ed4-4776-924c-4265dd1d9cde",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "systemen voor bliksembeveiliging installeren",
-      "uri": "http://data.europa.eu/esco/skill/cbcce641-a001-47eb-b15b-476da8dfc9ce",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "stroomonderbrekers installeren",
-      "uri": "http://data.europa.eu/esco/skill/76b9e515-715d-4a53-a702-019adad1059b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "inspectierapporten schrijven",
-      "uri": "http://data.europa.eu/esco/skill/cdd2b6cc-b4a9-42a0-824b-766f52176fd3",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "elektrische apparatuur onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/386774ac-fe5b-431a-b485-9aec0bf5c09e",
-      "categorie": "optioneel"
+      "label": "Industriële procesautomatisering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D9B1D9D2D5",
+      "categorie": "essentieel"
     }
   ]
 }

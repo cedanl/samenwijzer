@@ -153,6 +153,7 @@ ANTHROPIC_API_KEY=sk-ant-...
 DB_PATH=data/validatie.db   # default
 OEREN_PAD=../oeren          # default in dit subproject (root-oeren/ hergebruikt)
 BEHEER_ENABLED=true         # activeer beheerpagina (alleen op dev-machines)
+COMPETENTNL_API_KEY=...      # optioneel: skills-build gebruikt CompetentNL ipv ESCO (zie Skills)
 ```
 
 ## Multi-machine workflow
@@ -371,19 +372,21 @@ aanleiding deze cap nu te verlagen. Herhaal de meting met `scripts/meet_token_ko
 ### Skills-taxonomie (aanvullende bron)
 
 Een OER leidt op voor een beroep; van dat beroep willen we de benodigde **skills** kunnen tonen
-("welke skills heb ik nodig voor het beroep Kok?"). Anders dan bij OER↔KD is er **geen directe
-crebo-sleutel** naar een skills-bron — de koppeling loopt **OER → beroep → skills** via
-tekstmatching.
+("welke skills heb ik nodig voor het beroep Kok?"). De skills-build is **hybride met twee bronnen**
+en een uniform, bron-agnostisch artefact per crebo.
 
-**Bron: ESCO** (European Skills, Competences, Qualifications and Occupations) — de keyless
-REST-API `https://ec.europa.eu/esco/api` met Nederlandstalige labels. ESCO mapt elk beroep op
-essentiële + optionele skills. Onderzocht alternatief is **CompetentNL** (de bron áchter het
-UWV-skills-dashboard, zelf op ESCO gebaseerd): rijkere NL-data, crebo-gekoppeld via
-`EducationalNorm.ksmo:opleidingscode`, maar het SPARQL-endpoint `https://sparql.competentnl.nl/v1`
-vereist een API-key (DevPortal-registratie + ~2 dagen goedkeuring). Het artefact-formaat is
-**bron-agnostisch** zodat CompetentNL later onder ESCO kan schuiven zonder schemawijziging.
+**Bron 1 — CompetentNL** (`competentnl_bron.py`, voorkeur): de gecureerde NL skills-set áchter het
+UWV-skills-dashboard. **Crebo-direct**, geen beroep-matching: een `cnlo:EducationalNorm` met
+`ksmo:opleidingscode = <crebo>` verwijst via `prescribesHATEssential` / `prescribesHATImportant`
+rechtstreeks naar skills (`humancapability` + `knowledgearea`) → categorieën `essentieel` /
+`belangrijk`. SPARQL-endpoint `https://sparql.competentnl.nl/v1`, header `apikey` =
+`COMPETENTNL_API_KEY`. Zonder key (of crebo niet in CompetentNL, ~58% dekking) → `None` → val terug
+op ESCO. `prescribesHATImportant` kan ook naar `LanguageProficiency`-nodes wijzen (taalvereisten
+zonder prefLabel); die worden overgeslagen.
 
-**Pipeline** (`skills_bron.py`):
+**Bron 2 — ESCO** (`skills_bron.py`, fallback): de keyless REST-API `https://ec.europa.eu/esco/api`.
+Geen crebo-sleutel, dus **OER → beroep → skills** via tekstmatching → categorieën `essentieel` /
+`optioneel`:
 ```
 opleidingsnaam → schoon_opleidingsnaam()  → beroep-zoekterm (strip crebo/jaar/leerweg/OER-ruis)
 zoekterm+KD-domein → zoek_esco_beroepen() → kandidaat-beroepen (ESCO occupation-search, nl)
@@ -395,15 +398,15 @@ De **LLM-keuze** is essentieel: ESCO's top-1 is onbetrouwbaar (`chauffeur wegver
 met de opleidingsnaam **én het KD-domein** als context; brede instroomopleidingen (zoals
 "Entree") krijgen bewust "GEEN" i.p.v. een willekeurig beroep.
 
-**Artefact**: `scripts/build_skills_taxonomie.py` schrijft per crebo een uniform
-`data/skills/<crebo>.json` plus een reviewbare `data/skills/_match_overzicht.csv`. Anders dan de
-rest van `data/` (gitignored) is **`data/skills/` wél getrackt** (via `.gitignore`-negatie): de
-artefacten zijn klein + ESCO-afgeleid (CC BY), dus de gecureerde matches zitten in de repo en
-werken op elke machine zonder rebuild. **Idempotent**: bestaande bestanden worden overgeslagen
-(de LLM-match is niet-deterministisch en wordt zo gepind); `--reset` forceert herbouw. Coverage (2026-05, 247 crebo's): **215 gematcht (87%)**, 32 bewust ongematcht (geen
-passend beroep). De review-CSV is bedoeld voor **handmatige eyeballing** — een match-score is
-geen correctheidscheck, en verkeerde-maar-plausibele matches (taxonomiegaten, bv. "mediamaker")
-passeren stil. Lees de CSV bij twijfel.
+**Hybride build** (`scripts/build_skills_taxonomie.py`): per crebo eerst CompetentNL, anders ESCO;
+het `bron`-veld in elk `data/skills/<crebo>.json` toont welke gebruikt is. Plus een reviewbare
+`data/skills/_match_overzicht.csv` (met `bron`-kolom). Anders dan de rest van `data/` (gitignored)
+is **`data/skills/` wél getrackt** (via `.gitignore`-negatie): de artefacten zijn klein +
+open-license, dus de gecureerde matches zitten in de repo en werken op elke machine zonder rebuild.
+**Idempotent**: bestaande bestanden worden overgeslagen (de ESCO-LLM-match is niet-deterministisch
+en wordt zo gepind); `--reset` forceert herbouw. De review-CSV is bedoeld voor **handmatige
+eyeballing** — vooral de ESCO-matches (een match-score is geen correctheidscheck; taxonomiegaten
+zoals "mediamaker" passeren stil). CompetentNL-matches zijn crebo-direct en betrouwbaar.
 
 ## Bekende valkuilen
 

@@ -1,213 +1,114 @@
 {
   "crebo": "25895",
   "opleiding": "25895_BOL_2025__25895BOL2025MJP_Allround-medewerker-productietechniek",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "operator rubberproductie",
-    "uri": "http://data.europa.eu/esco/occupation/fcab4bb1-c05b-43e3-98d8-f60b13c152f2",
-    "definitie": "Operators rubberproductie bedienen machines voor het coaguleren van synthetisch rubber-latex tot rubbergranulaat. Ze bereiden dit rubbergranulaat voor voor afwerkingsprocessen. Operators rubberproductie bekijken het granulaat nauwkeurig en passen de werking van de filters, schudschermen en hamermolens aan om vocht uit het rubbergranulaat te verwijderen."
+    "label": "Allround medewerker productietechniek",
+    "uri": "",
+    "definitie": "De Allround medewerker productietechniek werkt binnen de maakindustrie in een afgebakend deel van de productieketen binnen of op locatie aan taken binnen het productieproces. Hij/zij geeft vaktechnische aanwijzingen aan minder ervaren collega's en ontvangt ook zelf instructies van zijn direct leidinggevende. De Allround medewerker signaleert en rapporteert de voortgang. Hij/zij neemt zijn verantwoordelijkheid voor de realisatie van de opdrachten in relatie tot de afgesproken leveringstijden. De werkzaamheden omvatten het verrichten van complexe bewerkingen aan producten en onderdelen, waarbij hij/zij machines en gereedschappen afstelt en de eindproducten meet en controleert."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "signmaker",
-    "manager kledingwinkel",
-    "operator rubberproductie",
-    "medewerker vetzuivering",
-    "medewerker fastfood",
-    "tuinbouwmedewerker",
-    "medewerker diervoeding",
-    "medewerker linnenkamer"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "pneumatische transportbanden bedienen",
-      "uri": "http://data.europa.eu/esco/skill/f28e74ac-ab8b-4f15-9bdd-8bb5c220e9ad",
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
       "categorie": "essentieel"
     },
     {
-      "label": "verontreiniging vermijden",
-      "uri": "http://data.europa.eu/esco/skill/5483c363-e942-4787-8686-0f29c593357f",
+      "label": "Meten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/0EBFAD3C80",
       "categorie": "essentieel"
     },
     {
-      "label": "vetzuur afscheiden",
-      "uri": "http://data.europa.eu/esco/skill/bf9bb36d-a682-4d91-9bbd-ba8016c13514",
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
       "categorie": "essentieel"
     },
     {
-      "label": "materialen wegen",
-      "uri": "http://data.europa.eu/esco/skill/418765cd-77f9-4c6f-8b00-e56ebec767bb",
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
       "categorie": "essentieel"
     },
     {
-      "label": "grondstoffen scheiden",
-      "uri": "http://data.europa.eu/esco/skill/5285c378-8129-49fb-a608-e9e0e4951351",
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
       "categorie": "essentieel"
     },
     {
-      "label": "pneumatiek",
-      "uri": "http://data.europa.eu/esco/skill/bf419e00-8548-491a-a06f-d72ab439df2f",
+      "label": "Machines bedienen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D0866C5206",
       "categorie": "essentieel"
     },
     {
-      "label": "mengtanks vullen",
-      "uri": "http://data.europa.eu/esco/skill/cc4443ee-af7e-4697-9511-75ea4a9049dd",
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
       "categorie": "essentieel"
     },
     {
-      "label": "defecte productiematerialen melden",
-      "uri": "http://data.europa.eu/esco/skill/a349fbfc-8b65-44f2-a112-761be2218cbc",
+      "label": "Productietechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/04541FC2D1",
       "categorie": "essentieel"
     },
     {
-      "label": "pasta van rubbergranulaat ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/45693c04-fa40-407e-84a9-ec4a31fe6254",
+      "label": "Elektrotechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/1EC7181B0B",
       "categorie": "essentieel"
     },
     {
-      "label": "pompen voor de overdracht van latex bedienen",
-      "uri": "http://data.europa.eu/esco/skill/7513f9db-f271-4beb-9fd7-40471887f792",
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
       "categorie": "essentieel"
     },
     {
-      "label": "persoonlijk beschermingsmateriaal",
-      "uri": "http://data.europa.eu/esco/skill/66ea3249-a079-45ad-b4f2-e6a79b59f10f",
+      "label": "Metaalkunde, metaalbewerking",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/800D4C8975",
       "categorie": "essentieel"
     },
     {
-      "label": "precisiemeetinstrumenten hanteren",
-      "uri": "http://data.europa.eu/esco/skill/42c25baf-ccb3-47d9-a872-bb2ceb615538",
+      "label": "Ontwerpen met de computer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8F02A2B716",
       "categorie": "essentieel"
     },
     {
-      "label": "grondstoffen meten",
-      "uri": "http://data.europa.eu/esco/skill/fe490d6c-851b-44a8-949b-808e24c2cc54",
+      "label": "Informatiemanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9212BF2426",
       "categorie": "essentieel"
     },
     {
-      "label": "latexmengsels verwerken",
-      "uri": "http://data.europa.eu/esco/skill/26818ab1-0ee9-4f70-9a81-396682952aad",
+      "label": "Applicatiebouw en programmeren",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/92920D678A",
       "categorie": "essentieel"
     },
     {
-      "label": "thermometer van tank controleren",
-      "uri": "http://data.europa.eu/esco/skill/06b6ab55-11b4-495e-9061-88684c8825bb",
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
       "categorie": "essentieel"
     },
     {
-      "label": "parameters van productieprocessen optimaliseren",
-      "uri": "http://data.europa.eu/esco/skill/0f0698e7-04e4-4bf7-9af2-e3191147525a",
+      "label": "Industriële procesautomatisering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D9B1D9D2D5",
       "categorie": "essentieel"
     },
     {
-      "label": "stollingstanks bedienen",
-      "uri": "http://data.europa.eu/esco/skill/175089b3-8c71-4470-afef-aea6a73369c0",
+      "label": "Werken met digitale apparaten en toepassingen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DA95C063A4",
       "categorie": "essentieel"
     },
     {
-      "label": "kleppen controleren",
-      "uri": "http://data.europa.eu/esco/skill/f4349677-549e-419a-8f8e-eb10bfe10720",
+      "label": "Constructiewerken, machinebankwerken, lassen, smeden, gieten",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/EF31BD21E3",
       "categorie": "essentieel"
     },
     {
-      "label": "synthetische materialen",
-      "uri": "http://data.europa.eu/esco/skill/b81a56c8-959d-45cf-a8b7-08227f84301f",
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
       "categorie": "essentieel"
     },
     {
-      "label": "persoonlijke beschermingsmiddelen gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/51754b8a-3e2c-4cc1-86e6-cf510d9c6fe4",
+      "label": "Reiniging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FB169E4860",
       "categorie": "essentieel"
-    },
-    {
-      "label": "opslagruimten bewaken",
-      "uri": "http://data.europa.eu/esco/skill/5461dd07-62e9-429c-af24-15810a17c230",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "documentatie over de registratie van de partij opstellen",
-      "uri": "http://data.europa.eu/esco/skill/c438aa25-949e-47e6-a79c-a805d774946e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "hydraulische pompen bedienen",
-      "uri": "http://data.europa.eu/esco/skill/a6dcd5bd-d498-4469-96c9-cbc46e8efd04",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "materialen selecteren om te verwerken",
-      "uri": "http://data.europa.eu/esco/skill/d55e3866-3ec1-4bbb-b946-2c16696d0dcb",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "latexmonsters analyseren",
-      "uri": "http://data.europa.eu/esco/skill/8e216316-5701-4891-aca1-0cc206c8428d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "rubbermachines afstellen",
-      "uri": "http://data.europa.eu/esco/skill/1874fc9d-9f87-44f4-8509-4539c36d5dd7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "omgevingsparameters controleren",
-      "uri": "http://data.europa.eu/esco/skill/3d69b305-4051-4c1d-ba1e-d8c5b35e22db",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "zeepfilter vervangen",
-      "uri": "http://data.europa.eu/esco/skill/32424a31-bda5-4332-8993-cb5272aaf977",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "mechanica",
-      "uri": "http://data.europa.eu/esco/skill/efa141df-f382-418f-9121-bd88fd735669",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "rubber bewerken",
-      "uri": "http://data.europa.eu/esco/skill/4f10a6e3-1323-4a37-8670-387493d1cce5",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "ingrediënten met latex mengen",
-      "uri": "http://data.europa.eu/esco/skill/57a19dbb-2fac-4fc1-810b-5c7ccc906004",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "mixer schoonmaken",
-      "uri": "http://data.europa.eu/esco/skill/f57cb4e5-562a-4bc9-b657-a0e7804365a5",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "dichtheid van oplossingen wijzigen",
-      "uri": "http://data.europa.eu/esco/skill/e65cd20a-1439-41bc-9487-ccb328db63a2",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "rubbermengmachines bedienen",
-      "uri": "http://data.europa.eu/esco/skill/6e0e1512-eaa9-4d83-8e3c-682a2be9b58a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "rubberen materialen klaarmaken",
-      "uri": "http://data.europa.eu/esco/skill/cd75dbd2-fb29-47a6-b49b-3146ff97fc20",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "verfkwaliteit inspecteren",
-      "uri": "http://data.europa.eu/esco/skill/026db24f-6972-460b-a784-d34afaf8d498",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "pompapparatuur bedienen",
-      "uri": "http://data.europa.eu/esco/skill/11dc8e6b-dffa-42e4-9de1-c47293a848ff",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "materiaal onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/5033c2fb-ec55-4b8e-b0a4-9379593f1e1c",
-      "categorie": "optioneel"
     }
   ]
 }

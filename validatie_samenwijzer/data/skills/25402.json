@@ -24,53 +24,13 @@
   ],
   "skills": [
     {
+      "label": "werkschema's volgen",
+      "uri": "http://data.europa.eu/esco/skill/194c05ed-253c-485a-8bf0-0c8de1aaafda",
+      "categorie": "essentieel"
+    },
+    {
       "label": "make-uptechnieken",
       "uri": "http://data.europa.eu/esco/skill/8599fe11-e263-4e6c-a4a2-d6e8d2498b5a",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "prothesen repareren",
-      "uri": "http://data.europa.eu/esco/skill/ed56ba0b-e0e1-4762-ac98-03e6e2a94a92",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "veilig met chemicaliën werken",
-      "uri": "http://data.europa.eu/esco/skill/89d2bb53-67fc-4b9e-80c7-07b6c587bc0d",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "behoefte aan technische middelen analyseren",
-      "uri": "http://data.europa.eu/esco/skill/8c8d0196-4acd-4217-89cb-abaf96845b14",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "artistiek werk in een context plaatsen",
-      "uri": "http://data.europa.eu/esco/skill/8bbf9c69-ba9d-4e6d-a50a-ba4f666e0d25",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "instructies van de regisseur volgen",
-      "uri": "http://data.europa.eu/esco/skill/b31ccede-907f-49de-8047-4d851bd4add3",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "continuïteit in de stijl van de artiesten garanderen",
-      "uri": "http://data.europa.eu/esco/skill/58b934cc-b243-4267-b2b8-5c7babe95728",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "werken met aandacht voor de eigen veiligheid",
-      "uri": "http://data.europa.eu/esco/skill/b73035a9-bf06-412c-9796-db579f85995c",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "make-up testen",
-      "uri": "http://data.europa.eu/esco/skill/2c6439c2-77a5-436a-b222-5e12d435c3eb",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "snel make-up veranderen",
-      "uri": "http://data.europa.eu/esco/skill/1e159aa3-0ed2-4211-8096-9c010e881778",
       "categorie": "essentieel"
     },
     {
@@ -79,23 +39,8 @@
       "categorie": "essentieel"
     },
     {
-      "label": "ergonomisch werken",
-      "uri": "http://data.europa.eu/esco/skill/156f8c5b-894a-4ccc-a70e-37a2726f3f00",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "optredende artiesten schminken",
-      "uri": "http://data.europa.eu/esco/skill/5769c02b-01f0-4bfc-b5e4-02f80ae6daf6",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "kunstgeschiedenis",
-      "uri": "http://data.europa.eu/esco/skill/6c6f0d6e-1f31-4413-b2ee-dabe135b29a7",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "artistieke concepten omzetten in technische ontwerpen",
-      "uri": "http://data.europa.eu/esco/skill/88de5ff4-310a-4f4f-9b47-349eb5589902",
+      "label": "artistieke aanpak definiëren",
+      "uri": "http://data.europa.eu/esco/skill/bff8e986-204f-41f0-b760-6fc9bf6029fd",
       "categorie": "essentieel"
     },
     {
@@ -104,43 +49,38 @@
       "categorie": "essentieel"
     },
     {
-      "label": "cosmetica",
-      "uri": "http://data.europa.eu/esco/skill/7d9d73a8-08df-4624-a5df-95cb220c0736",
+      "label": "kunstgeschiedenis",
+      "uri": "http://data.europa.eu/esco/skill/6c6f0d6e-1f31-4413-b2ee-dabe135b29a7",
       "categorie": "essentieel"
     },
     {
-      "label": "persoonlijke professionele ontwikkeling beheren",
-      "uri": "http://data.europa.eu/esco/skill/a8d24a95-47b3-4f88-92e7-06600bcd3612",
+      "label": "continuïteit in de stijl van de artiesten garanderen",
+      "uri": "http://data.europa.eu/esco/skill/58b934cc-b243-4267-b2b8-5c7babe95728",
       "categorie": "essentieel"
     },
     {
-      "label": "artistieke concepten begrijpen",
-      "uri": "http://data.europa.eu/esco/skill/1633770e-5606-4422-b293-6c8c551fe663",
+      "label": "prothesen repareren",
+      "uri": "http://data.europa.eu/esco/skill/ed56ba0b-e0e1-4762-ac98-03e6e2a94a92",
       "categorie": "essentieel"
     },
     {
-      "label": "huidtype bepalen",
-      "uri": "http://data.europa.eu/esco/skill/c4671551-a0f8-49fd-92fd-c190863a0154",
+      "label": "make-up testen",
+      "uri": "http://data.europa.eu/esco/skill/2c6439c2-77a5-436a-b222-5e12d435c3eb",
       "categorie": "essentieel"
     },
     {
-      "label": "artistieke aanpak definiëren",
-      "uri": "http://data.europa.eu/esco/skill/bff8e986-204f-41f0-b760-6fc9bf6029fd",
+      "label": "optredende artiesten schminken",
+      "uri": "http://data.europa.eu/esco/skill/5769c02b-01f0-4bfc-b5e4-02f80ae6daf6",
       "categorie": "essentieel"
     },
     {
-      "label": "projecten binnen het budget afwerken",
-      "uri": "http://data.europa.eu/esco/skill/7d092d81-d1e2-4c34-b3cb-c1c9f2e68b7d",
+      "label": "artistieke concepten omzetten in technische ontwerpen",
+      "uri": "http://data.europa.eu/esco/skill/88de5ff4-310a-4f4f-9b47-349eb5589902",
       "categorie": "essentieel"
     },
     {
-      "label": "werkschema's volgen",
-      "uri": "http://data.europa.eu/esco/skill/194c05ed-253c-485a-8bf0-0c8de1aaafda",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "huidtypen",
-      "uri": "http://data.europa.eu/esco/skill/db85a2ca-04c4-4275-ba7a-b615c3686e09",
+      "label": "werken met aandacht voor de eigen veiligheid",
+      "uri": "http://data.europa.eu/esco/skill/b73035a9-bf06-412c-9796-db579f85995c",
       "categorie": "essentieel"
     },
     {
@@ -149,8 +89,43 @@
       "categorie": "essentieel"
     },
     {
-      "label": "artistieke kwaliteit van een voorstelling beschermen",
-      "uri": "http://data.europa.eu/esco/skill/1e8751e3-9b7a-4230-a6e5-83bf57fb70b6",
+      "label": "behoefte aan technische middelen analyseren",
+      "uri": "http://data.europa.eu/esco/skill/8c8d0196-4acd-4217-89cb-abaf96845b14",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "projecten binnen het budget afwerken",
+      "uri": "http://data.europa.eu/esco/skill/7d092d81-d1e2-4c34-b3cb-c1c9f2e68b7d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "instructies van de regisseur volgen",
+      "uri": "http://data.europa.eu/esco/skill/b31ccede-907f-49de-8047-4d851bd4add3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "huidtypen",
+      "uri": "http://data.europa.eu/esco/skill/db85a2ca-04c4-4275-ba7a-b615c3686e09",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ergonomisch werken",
+      "uri": "http://data.europa.eu/esco/skill/156f8c5b-894a-4ccc-a70e-37a2726f3f00",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "cosmetica",
+      "uri": "http://data.europa.eu/esco/skill/7d9d73a8-08df-4624-a5df-95cb220c0736",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "artistiek werk in een context plaatsen",
+      "uri": "http://data.europa.eu/esco/skill/8bbf9c69-ba9d-4e6d-a50a-ba4f666e0d25",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "huidtype bepalen",
+      "uri": "http://data.europa.eu/esco/skill/c4671551-a0f8-49fd-92fd-c190863a0154",
       "categorie": "essentieel"
     },
     {
@@ -159,28 +134,33 @@
       "categorie": "essentieel"
     },
     {
-      "label": "werken met de belichtingsploeg",
-      "uri": "http://data.europa.eu/esco/skill/ecea634c-1622-47c6-a394-253d868d62e7",
-      "categorie": "optioneel"
+      "label": "persoonlijke professionele ontwikkeling beheren",
+      "uri": "http://data.europa.eu/esco/skill/a8d24a95-47b3-4f88-92e7-06600bcd3612",
+      "categorie": "essentieel"
     },
     {
-      "label": "make-upeffecten ontwerpen",
-      "uri": "http://data.europa.eu/esco/skill/f5eed756-2883-46fe-8990-729100cc3e4b",
-      "categorie": "optioneel"
+      "label": "veilig met chemicaliën werken",
+      "uri": "http://data.europa.eu/esco/skill/89d2bb53-67fc-4b9e-80c7-07b6c587bc0d",
+      "categorie": "essentieel"
     },
     {
-      "label": "werken met de cameraploeg",
-      "uri": "http://data.europa.eu/esco/skill/1d6ad7ed-a600-4bd4-8ae0-7bfc6625f480",
-      "categorie": "optioneel"
+      "label": "artistieke kwaliteit van een voorstelling beschermen",
+      "uri": "http://data.europa.eu/esco/skill/1e8751e3-9b7a-4230-a6e5-83bf57fb70b6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "snel make-up veranderen",
+      "uri": "http://data.europa.eu/esco/skill/1e159aa3-0ed2-4211-8096-9c010e881778",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "artistieke concepten begrijpen",
+      "uri": "http://data.europa.eu/esco/skill/1633770e-5606-4422-b293-6c8c551fe663",
+      "categorie": "essentieel"
     },
     {
       "label": "zichzelf promoten",
       "uri": "http://data.europa.eu/esco/skill/a04c2655-5996-4744-bca2-4f4c8b3e4667",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "beslissen over het make-upproces",
-      "uri": "http://data.europa.eu/esco/skill/0f36a58f-56ba-47dc-8bae-d3df3e5398fe",
       "categorie": "optioneel"
     },
     {
@@ -189,38 +169,13 @@
       "categorie": "optioneel"
     },
     {
+      "label": "werken met de belichtingsploeg",
+      "uri": "http://data.europa.eu/esco/skill/ecea634c-1622-47c6-a394-253d868d62e7",
+      "categorie": "optioneel"
+    },
+    {
       "label": "repetities bijwonen",
       "uri": "http://data.europa.eu/esco/skill/4b973dcf-3ffc-4c70-b84a-8360e63db7cd",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "klant raad geven over technische mogelijkheden",
-      "uri": "http://data.europa.eu/esco/skill/7b3abd38-61ae-42a4-88bb-0884784f9ee1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "eigen werkwijze documenteren",
-      "uri": "http://data.europa.eu/esco/skill/cdf83a12-56d4-4e3c-ad0b-af1c1f21c62a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "artistieke projectbudgetten opstellen",
-      "uri": "http://data.europa.eu/esco/skill/8157b8e0-433b-4fe6-b520-3fc7377c8d2e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bodypaint aanbrengen",
-      "uri": "http://data.europa.eu/esco/skill/93162788-fa22-4e71-b283-f581c04fa079",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "stylingschema's opstellen",
-      "uri": "http://data.europa.eu/esco/skill/df9b0002-7d83-47ef-962e-46b9f5228c85",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "pruiken herstellen",
-      "uri": "http://data.europa.eu/esco/skill/216f5c68-d45c-404a-9e1e-4374687d7471",
       "categorie": "optioneel"
     },
     {
@@ -229,13 +184,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "verlichtingstechniek",
-      "uri": "http://data.europa.eu/esco/skill/c39b8441-359e-4cf9-8a52-c5f6dd918813",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voorraad verbruiksgoederen beheren",
-      "uri": "http://data.europa.eu/esco/skill/0c8f1351-d1fe-4542-89fe-b70729679c52",
+      "label": "eigen werkwijze documenteren",
+      "uri": "http://data.europa.eu/esco/skill/cdf83a12-56d4-4e3c-ad0b-af1c1f21c62a",
       "categorie": "optioneel"
     },
     {
@@ -244,18 +194,33 @@
       "categorie": "optioneel"
     },
     {
-      "label": "werken met de cinematograaf",
-      "uri": "http://data.europa.eu/esco/skill/65030093-f22d-486e-a978-ae7825829af1",
+      "label": "klant raad geven over technische mogelijkheden",
+      "uri": "http://data.europa.eu/esco/skill/7b3abd38-61ae-42a4-88bb-0884784f9ee1",
       "categorie": "optioneel"
     },
     {
-      "label": "make-upontwerpen schetsen",
-      "uri": "http://data.europa.eu/esco/skill/9f8ace7a-46e0-4c00-a51c-a0ba9babe9de",
+      "label": "onderwijsactiviteiten ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/88cc9573-e12f-4915-a915-5c3ee19891cb",
       "categorie": "optioneel"
     },
     {
-      "label": "persoonlijke administratie bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/9df34bc3-25d4-4452-a896-4d19b94ef896",
+      "label": "pruiken herstellen",
+      "uri": "http://data.europa.eu/esco/skill/216f5c68-d45c-404a-9e1e-4374687d7471",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "beslissen over het make-upproces",
+      "uri": "http://data.europa.eu/esco/skill/0f36a58f-56ba-47dc-8bae-d3df3e5398fe",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "prothesen onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/9c264fb3-31d2-43c2-9640-ef87d123a681",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "make-upeffecten ontwerpen",
+      "uri": "http://data.europa.eu/esco/skill/f5eed756-2883-46fe-8990-729100cc3e4b",
       "categorie": "optioneel"
     },
     {
@@ -264,8 +229,28 @@
       "categorie": "optioneel"
     },
     {
-      "label": "onderwijsmiddelen ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/3a5b7435-c262-4a9d-893d-ee6c19bd9d92",
+      "label": "make-upontwerpen schetsen",
+      "uri": "http://data.europa.eu/esco/skill/9f8ace7a-46e0-4c00-a51c-a0ba9babe9de",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "artistieke projectbudgetten opstellen",
+      "uri": "http://data.europa.eu/esco/skill/8157b8e0-433b-4fe6-b520-3fc7377c8d2e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werken met de cinematograaf",
+      "uri": "http://data.europa.eu/esco/skill/65030093-f22d-486e-a978-ae7825829af1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "persoonlijke administratie bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/9df34bc3-25d4-4452-a896-4d19b94ef896",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verlichtingstechniek",
+      "uri": "http://data.europa.eu/esco/skill/c39b8441-359e-4cf9-8a52-c5f6dd918813",
       "categorie": "optioneel"
     },
     {
@@ -279,18 +264,33 @@
       "categorie": "optioneel"
     },
     {
-      "label": "prothesen onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/9c264fb3-31d2-43c2-9640-ef87d123a681",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "onderwijsactiviteiten ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/88cc9573-e12f-4915-a915-5c3ee19891cb",
-      "categorie": "optioneel"
-    },
-    {
       "label": "deelnemen aan artistieke bemiddelingsactiviteiten",
       "uri": "http://data.europa.eu/esco/skill/f264ce55-d1bf-4be5-9c25-08f9c14ed5e0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bodypaint aanbrengen",
+      "uri": "http://data.europa.eu/esco/skill/93162788-fa22-4e71-b283-f581c04fa079",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderwijsmiddelen ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/3a5b7435-c262-4a9d-893d-ee6c19bd9d92",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "stylingschema's opstellen",
+      "uri": "http://data.europa.eu/esco/skill/df9b0002-7d83-47ef-962e-46b9f5228c85",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voorraad verbruiksgoederen beheren",
+      "uri": "http://data.europa.eu/esco/skill/0c8f1351-d1fe-4542-89fe-b70729679c52",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werken met de cameraploeg",
+      "uri": "http://data.europa.eu/esco/skill/1d6ad7ed-a600-4bd4-8ae0-7bfc6625f480",
       "categorie": "optioneel"
     }
   ]

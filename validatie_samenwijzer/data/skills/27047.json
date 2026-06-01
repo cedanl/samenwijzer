@@ -1,207 +1,119 @@
 {
   "crebo": "27047",
   "opleiding": "27047_BOL_2025__OER_2025_-_Leidinggevende_teamafdelingproject",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "chef machinebediening",
-    "uri": "http://data.europa.eu/esco/occupation/2cec9e4a-5a37-4cb1-a8b7-2e8d94766417",
-    "definitie": "Chefs machinebediening coördineren en begeleiden werknemers die machines instellen en bedienen. Zij monitoren het productieproces en de materiaalstroom en zorgen ervoor dat de producten aan de eisen voldoen."
+    "label": "Leidinggevende van een team/afdeling/project",
+    "uri": "",
+    "definitie": "De leidinggevende van een team, afdeling en/of project geeft direct leiding aan medewerkers. In veel gevallen is die meewerkend leidinggevende en stuurt vanuit diens expertise aan. De leidinggevende ondersteunt bij de uitvoering van personeelsbeleid."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "leidinggevende waterterugwinning",
-    "productieleider textielindustrie",
-    "distilleerderij-opzichter",
-    "chef machinebediening",
-    "manager luchtvaart",
-    "leidinggevende gasverwerkingsinstallatie",
-    "leidinggevende precisiemechanica",
-    "leidinggevende aquacultuurbedrijf",
-    "risicokapitaalinvesteerder",
-    "survivalinstructeur",
-    "magazijnchef",
-    "productieleider houtindustrie"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "technische middelen raadplegen",
-      "uri": "http://data.europa.eu/esco/skill/9f34107c-8db0-4b00-84d8-3f64e400c80c",
+      "label": "Categoriseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/22799303D1",
       "categorie": "essentieel"
     },
     {
-      "label": "toezien op de productievoorwaarden",
-      "uri": "http://data.europa.eu/esco/skill/277f489c-7a47-4791-bd87-61ca01737f96",
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
       "categorie": "essentieel"
     },
     {
-      "label": "werk van werknemers beoordelen",
-      "uri": "http://data.europa.eu/esco/skill/8a98707e-b2ee-48fe-9f36-e47e3555ecf7",
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
       "categorie": "essentieel"
     },
     {
-      "label": "productiegegevens registreren voor kwaliteitscontrole",
-      "uri": "http://data.europa.eu/esco/skill/2879a6f9-868b-40a1-a424-d50007ca8354",
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
       "categorie": "essentieel"
     },
     {
-      "label": "productieschema’s volgen",
-      "uri": "http://data.europa.eu/esco/skill/c8f14c32-7f24-41bb-9e8f-b24d6fd3ca86",
+      "label": "Monitoren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B03F4F484C",
       "categorie": "essentieel"
     },
     {
-      "label": "over productieresultaten rapporteren",
-      "uri": "http://data.europa.eu/esco/skill/d73cb129-b385-4776-8303-f3f926b2e481",
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
       "categorie": "essentieel"
     },
     {
-      "label": "materiële middelen controleren",
-      "uri": "http://data.europa.eu/esco/skill/d1a2437d-7eee-4c13-9104-0bb3dd7b45d6",
+      "label": "Schrijven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/BC98BE9135",
       "categorie": "essentieel"
     },
     {
-      "label": "problemen doorgeven aan ervaren collega’s",
-      "uri": "http://data.europa.eu/esco/skill/91be6910-bd67-4e1f-95b0-32513b399b24",
+      "label": "Reflecteren op jezelf",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C21A058358",
       "categorie": "essentieel"
     },
     {
-      "label": "oplossingen voor problemen creëren",
-      "uri": "http://data.europa.eu/esco/skill/03b9b491-fc9b-4868-914a-bf7cd47b5041",
+      "label": "Delegeren ",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C8730D1BAB",
       "categorie": "essentieel"
     },
     {
-      "label": "productieprocessen",
-      "uri": "http://data.europa.eu/esco/skill/12c7b323-d870-4f5b-9d7d-d9f525206d77",
+      "label": "Adviseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CECB22E3FA",
       "categorie": "essentieel"
     },
     {
-      "label": "waarborgen dat het eindproduct aan de vereisten voldoet",
-      "uri": "http://data.europa.eu/esco/skill/68269b0a-35c5-4867-bc17-a0b0230fe60c",
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
       "categorie": "essentieel"
     },
     {
-      "label": "de bediening van een machine installeren",
-      "uri": "http://data.europa.eu/esco/skill/d9818afc-1dec-4944-8c9c-e3ae8fad176d",
+      "label": "Psychologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/17998456DE",
       "categorie": "essentieel"
     },
     {
-      "label": "werking van machines volgen",
-      "uri": "http://data.europa.eu/esco/skill/188048ff-18bf-43c4-a1a0-7adb6e68f421",
+      "label": "Persoonlijke ontplooiing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/1A87720C54",
       "categorie": "essentieel"
     },
     {
-      "label": "kwaliteitsstandaarden",
-      "uri": "http://data.europa.eu/esco/skill/8d4271ca-c9fd-40b3-875f-15f78332a49e",
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
       "categorie": "essentieel"
     },
     {
-      "label": "regulier onderhoud van machines programmeren",
-      "uri": "http://data.europa.eu/esco/skill/a7b9039e-0145-4e3e-bbf8-30151d3e6cc0",
+      "label": "Filosofie en ethiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/38D92CCA7E",
       "categorie": "essentieel"
     },
     {
-      "label": "kwaliteitsnormen voor productie controleren",
-      "uri": "http://data.europa.eu/esco/skill/3edfcb2b-2d0e-4673-87ce-f55c37eb5fca",
+      "label": "Samenwerking en netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/95C3218741",
       "categorie": "essentieel"
     },
     {
-      "label": "functies van machines",
-      "uri": "http://data.europa.eu/esco/skill/9b55d4b6-d015-4605-985e-5313a1e3face",
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
       "categorie": "essentieel"
     },
     {
-      "label": "advies geven over machineonderhoud",
-      "uri": "http://data.europa.eu/esco/skill/adc82bc2-8b95-4826-a6b5-e7189989bdb9",
-      "categorie": "optioneel"
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
     },
     {
-      "label": "nieuwe producten in de productie integreren",
-      "uri": "http://data.europa.eu/esco/skill/8a753714-9a19-4418-9b37-77e79d72c705",
-      "categorie": "optioneel"
+      "label": "Personeelswerk",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AA15132AFE",
+      "categorie": "essentieel"
     },
     {
-      "label": "werknemers opleiden",
-      "uri": "http://data.europa.eu/esco/skill/e54ff029-1ce9-447d-a5b2-eb7283a23e6e",
-      "categorie": "optioneel"
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
+      "categorie": "essentieel"
     },
     {
-      "label": "omgaan met managers",
-      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "samenwerken met de verantwoordelijke voor kwaliteitscontrole",
-      "uri": "http://data.europa.eu/esco/skill/99ca6ed2-b6b8-4eb0-8180-92e750e546be",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "passende beschermende uitrusting dragen",
-      "uri": "http://data.europa.eu/esco/skill/6122d586-5978-431f-8e7a-96e61fc1f3fc",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "behoefte aan technische middelen analyseren",
-      "uri": "http://data.europa.eu/esco/skill/8c8d0196-4acd-4217-89cb-abaf96845b14",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "inspecties uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/36e9c099-614e-44f1-ab0a-5e6fda4a0763",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "communicatie binnen een team coördineren",
-      "uri": "http://data.europa.eu/esco/skill/cd85312f-0e0b-460b-addd-57d6df800595",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "productieprocessen analyseren voor verbetering",
-      "uri": "http://data.europa.eu/esco/skill/f1b5800e-b763-4740-9586-3fef30568e81",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "machineonderhoud uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/8a4e99e0-f259-4931-888f-604cfdc15b31",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "zorgen voor naleving van de milieuwetgeving",
-      "uri": "http://data.europa.eu/esco/skill/089ee650-297e-4716-87d1-440743b70a0d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "personeel werven",
-      "uri": "http://data.europa.eu/esco/skill/65715f7a-c791-416b-b88a-2933a1c81647",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "technisch veeleisende taken uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/2d780738-9b34-40a3-adbb-590001f6ff86",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "toezicht houden op kwaliteitscontroles",
-      "uri": "http://data.europa.eu/esco/skill/5d34adde-0b78-42b4-9d3d-69e9388d8398",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "advies geven aan technici",
-      "uri": "http://data.europa.eu/esco/skill/8c474534-707f-46f3-b356-810bbfe8b693",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "risico’s op de werkplek identificeren",
-      "uri": "http://data.europa.eu/esco/skill/5f97fac8-2001-4b81-ae8b-22f9062d921a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "planlezen",
-      "uri": "http://data.europa.eu/esco/skill/68b6ef08-d823-489d-a95c-752ae6f6e6a7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "methoden voor kwaliteitsgarantie",
-      "uri": "http://data.europa.eu/esco/skill/c7cc6dc5-d56b-4323-8e5c-47c4022f615f",
-      "categorie": "optioneel"
+      "label": "Projectmanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F248B939CD",
+      "categorie": "essentieel"
     }
   ]
 }

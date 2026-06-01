@@ -1,150 +1,124 @@
 {
   "crebo": "25811",
   "opleiding": "25811_BOL_2025__Ruimtelijk_Vormgever_25811",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "interieurontwerper",
-    "uri": "http://data.europa.eu/esco/occupation/73e776fb-4d99-4031-bad4-7716f121155d",
-    "definitie": "Interieurontwerpers ontwerpen of renoveren interne ruimten, met inbegrip van structurele veranderingen, inrichting en fittings, verlichtingstoestellen en kleurregelingen, stoffering. Zij combineren het efficiënte en functionele gebruik van de ruimte met kennis van esthetiek."
+    "label": "Ruimtelijk vormgever",
+    "uri": "",
+    "definitie": "De ruimtelijk vormgever onderzoekt de opdracht die hij krijgt voor ruimtelijke vormgeving. Hij ontwikkelt een concept en maakt een ruimtelijk ontwerp. Dat visualiseert en presenteert hij aan de opdrachtgever. Vervolgens wordt het ruimtelijk ontwerp gerealiseerd. Dat doet de ruimtelijk vormgever zelf of hij levert de realisatieplannen daarvoor aan.\nHij is in staat zich te begeven op de voor zijn beroep relevante arbeidsmarkt."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "interieurontwerper",
-    "keramist",
-    "vormgever keramiek en porselein",
-    "desktoppublisher",
-    "planoloog",
-    "grafisch ontwerper",
-    "industrieel ontwerper",
-    "manager volkshuisvesting",
-    "vakdocent industriële vormgeving beroepsonderwijs",
-    "vakdocent ontwerp en toegepaste kunst beroepsonderwijs",
-    "overheidsfunctionaris vergunningen",
-    "metaalbewerker-siersmid",
-    "prepresstechnicus",
-    "bediener vormpers",
-    "machinaal houtbewerker: draaier"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "gedetailleerde ontwerpvoorstellen indienen",
-      "uri": "http://data.europa.eu/esco/skill/b87f6102-5bab-4e99-a5d8-11b6be1b99c2",
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
       "categorie": "essentieel"
     },
     {
-      "label": "nieuwe ideeën onderzoeken",
-      "uri": "http://data.europa.eu/esco/skill/4fc1d2b4-9645-4fda-be99-abdf8e66c88d",
+      "label": "Netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3DECCF2E7C",
       "categorie": "essentieel"
     },
     {
-      "label": "samenwerken met ontwerpers",
-      "uri": "http://data.europa.eu/esco/skill/d52382fe-f236-421f-95fe-34fe69d48dbd",
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
       "categorie": "essentieel"
     },
     {
-      "label": "budgetten beheren",
-      "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
+      "label": "Presenteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/590AC2FC12",
       "categorie": "essentieel"
     },
     {
-      "label": "gedetailleerde werktekeningen voorbereiden voor interieurinrichting",
-      "uri": "http://data.europa.eu/esco/skill/8645704c-a896-4ac1-8189-9ac5586d5c3a",
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
       "categorie": "essentieel"
     },
     {
-      "label": "gespecialiseerde ontwerpsoftware gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/3c1af34b-4562-4c39-a30e-0812b84a147e",
+      "label": "Ontwerpen van systemen en producten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B4866702BB",
       "categorie": "essentieel"
     },
     {
-      "label": "artistieke portfolio's bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/473c68ee-1ab3-4bcf-b286-f7a8df0acec6",
+      "label": "Financiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/BC3AB34C1A",
       "categorie": "essentieel"
     },
     {
-      "label": "moodboards maken",
-      "uri": "http://data.europa.eu/esco/skill/26343dda-6dda-4c14-a329-34828135ecbc",
+      "label": "Rekenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5BBA931FB",
       "categorie": "essentieel"
     },
     {
-      "label": "referentiemateriaal voor kunstwerken verzamelen",
-      "uri": "http://data.europa.eu/esco/skill/d9c7afc0-2c34-4757-b9f1-cc9137f11a29",
+      "label": "Visualiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DC1C2EC0BB",
       "categorie": "essentieel"
     },
     {
-      "label": "projectbeheer uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/cd5efa8c-e44d-4cbc-91c6-796018dbed68",
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
       "categorie": "essentieel"
     },
     {
-      "label": "portfolio beheren",
-      "uri": "http://data.europa.eu/esco/skill/b90316c1-67e9-4338-b4dd-c950831ce33e",
+      "label": "Promoten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E06265451B",
       "categorie": "essentieel"
     },
     {
-      "label": "kerninformatie krijgen over projecten",
-      "uri": "http://data.europa.eu/esco/skill/d7a04dc3-22a7-4ec1-bfcf-39b04c6492a1",
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
       "categorie": "essentieel"
     },
     {
-      "label": "sociologische tendensen observeren",
-      "uri": "http://data.europa.eu/esco/skill/2cc30e4e-2139-411a-9fa9-f0d616b64c57",
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
       "categorie": "essentieel"
     },
     {
-      "label": "specifiek interieurontwerp ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/ac51e567-2261-48c7-b0cb-97c07fc60b6c",
+      "label": "Materiaalkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/519323C152",
       "categorie": "essentieel"
     },
     {
-      "label": "trends in interieurontwerp volgen",
-      "uri": "http://data.europa.eu/esco/skill/ccb5a740-1469-4be6-80e6-41574b749b6c",
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
       "categorie": "essentieel"
     },
     {
-      "label": "ontwikkelingen in de textielproductie volgen",
-      "uri": "http://data.europa.eu/esco/skill/3767a7e2-2f0c-41fb-aa14-40af1e00d430",
+      "label": "Artistieke productvormgeving",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/741C671070",
       "categorie": "essentieel"
     },
     {
-      "label": "operationele begroting beheren",
-      "uri": "http://data.europa.eu/esco/skill/51b53bb3-7a67-4ce8-b959-c7f6c4af3456",
+      "label": "Ontwerpen met de computer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8F02A2B716",
       "categorie": "essentieel"
     },
     {
-      "label": "ontwikkelingen in de kunstwereld opvolgen",
-      "uri": "http://data.europa.eu/esco/skill/6a025696-1aae-4904-9bf3-342dadb634a9",
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
       "categorie": "essentieel"
     },
     {
-      "label": "vereisten van concepten vertalen naar visueel ontwerp",
-      "uri": "http://data.europa.eu/esco/skill/2d6d4784-0992-48e7-b100-22d7229b3f0a",
+      "label": "Etaleren en decoreren",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/CF6F4EDADB",
       "categorie": "essentieel"
     },
     {
-      "label": "een team leiden",
-      "uri": "http://data.europa.eu/esco/skill/cb668e89-6ef5-4ff3-ab4a-506010e7e70b",
+      "label": "Bouwtechnisch tekenen en construeren",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D5DD27C02E",
       "categorie": "essentieel"
     },
     {
-      "label": "artistieke concepten begrijpen",
-      "uri": "http://data.europa.eu/esco/skill/1633770e-5606-4422-b293-6c8c551fe663",
-      "categorie": "optioneel"
+      "label": "Constructiewerken, machinebankwerken, lassen, smeden, gieten",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/EF31BD21E3",
+      "categorie": "essentieel"
     },
     {
-      "label": "didactisch materiaal voor multimediacampagnes ontwerpen",
-      "uri": "http://data.europa.eu/esco/skill/b1a5d83a-e02a-449f-a68b-539b34821078",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "ontwerpconcepten ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/dade132a-487b-40fb-9d8e-f20ce5e6c076",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "samenwerken met technisch personeel in artistieke producties",
-      "uri": "http://data.europa.eu/esco/skill/94d02529-72e1-4180-9d93-4008342ac481",
-      "categorie": "optioneel"
+      "label": "Ergonomie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/EFB2737958",
+      "categorie": "essentieel"
     }
   ]
 }

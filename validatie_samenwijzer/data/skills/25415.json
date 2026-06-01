@@ -28,8 +28,38 @@
   ],
   "skills": [
     {
-      "label": "trainingssessies voorbereiden",
-      "uri": "http://data.europa.eu/esco/skill/108ac398-6a84-454a-b56c-8bb0dee1bbf2",
+      "label": "informatie over de geschiktheid van klanten verzamelen",
+      "uri": "http://data.europa.eu/esco/skill/ef07f206-1ea8-4dc6-a4b0-1b312a9db47c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "oefeningen voorschrijven voor personen met gezondheidsaandoeningen die onder controle zijn",
+      "uri": "http://data.europa.eu/esco/skill/25619418-10ff-4fd1-af06-149a555447ed",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "fitnessoefeningen aanpassen",
+      "uri": "http://data.europa.eu/esco/skill/5d589320-2a07-4994-837d-334b57f283d5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheidsdoelstellingen identificeren",
+      "uri": "http://data.europa.eu/esco/skill/cf1e936b-9689-487e-96e2-1bbb254ac12e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "fitnessklanten motiveren",
+      "uri": "http://data.europa.eu/esco/skill/da624cb9-3d9d-40c8-a2e9-e8fc26085416",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sportwetenschappen in het ontwerp van het programma opnemen",
+      "uri": "http://data.europa.eu/esco/skill/957598c7-0f63-4fba-9d5a-4babb39fd586",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "professionele houding tegenover klanten demonstreren",
+      "uri": "http://data.europa.eu/esco/skill/4adb861b-3ad8-4f0d-9343-decf59748d56",
       "categorie": "essentieel"
     },
     {
@@ -43,8 +73,13 @@
       "categorie": "essentieel"
     },
     {
-      "label": "professionele houding tegenover klanten demonstreren",
-      "uri": "http://data.europa.eu/esco/skill/4adb861b-3ad8-4f0d-9343-decf59748d56",
+      "label": "professionele verantwoordelijkheid tonen",
+      "uri": "http://data.europa.eu/esco/skill/59ad10b1-6f71-4dd4-ad1f-a1fdf68bc2fb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "trainingssessies voorbereiden",
+      "uri": "http://data.europa.eu/esco/skill/108ac398-6a84-454a-b56c-8bb0dee1bbf2",
       "categorie": "essentieel"
     },
     {
@@ -53,23 +88,8 @@
       "categorie": "essentieel"
     },
     {
-      "label": "sportwetenschappen in het ontwerp van het programma opnemen",
-      "uri": "http://data.europa.eu/esco/skill/957598c7-0f63-4fba-9d5a-4babb39fd586",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "risicobeoordeling van conditie uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/951cf2b2-cff4-4079-8bd3-3e14aa839cef",
-      "categorie": "essentieel"
-    },
-    {
       "label": "trainingsprincipes integreren",
       "uri": "http://data.europa.eu/esco/skill/a37557b6-5151-4ce6-bfcd-b0890444a391",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "oefeningen voorschrijven voor personen met gezondheidsaandoeningen die onder controle zijn",
-      "uri": "http://data.europa.eu/esco/skill/25619418-10ff-4fd1-af06-149a555447ed",
       "categorie": "essentieel"
     },
     {
@@ -78,33 +98,13 @@
       "categorie": "essentieel"
     },
     {
-      "label": "gezondheidsdoelstellingen identificeren",
-      "uri": "http://data.europa.eu/esco/skill/cf1e936b-9689-487e-96e2-1bbb254ac12e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "fitnessoefeningen aanpassen",
-      "uri": "http://data.europa.eu/esco/skill/5d589320-2a07-4994-837d-334b57f283d5",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "informatie over de geschiktheid van klanten verzamelen",
-      "uri": "http://data.europa.eu/esco/skill/ef07f206-1ea8-4dc6-a4b0-1b312a9db47c",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "professionele verantwoordelijkheid tonen",
-      "uri": "http://data.europa.eu/esco/skill/59ad10b1-6f71-4dd4-ad1f-a1fdf68bc2fb",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "fitnessklanten motiveren",
-      "uri": "http://data.europa.eu/esco/skill/da624cb9-3d9d-40c8-a2e9-e8fc26085416",
-      "categorie": "essentieel"
-    },
-    {
       "label": "veiligheid van de oefenomgeving garanderen",
       "uri": "http://data.europa.eu/esco/skill/50406b39-45ee-4c03-83fe-0ad1a9442695",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "risicobeoordeling van conditie uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/951cf2b2-cff4-4079-8bd3-3e14aa839cef",
       "categorie": "essentieel"
     }
   ]

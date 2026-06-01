@@ -26,58 +26,8 @@
   ],
   "skills": [
     {
-      "label": "toezicht houden op montagewerkzaamheden",
-      "uri": "http://data.europa.eu/esco/skill/6b9194f0-f8bb-4b9a-96a5-2203c9c2671b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "waarborgen dat het eindproduct aan de vereisten voldoet",
-      "uri": "http://data.europa.eu/esco/skill/68269b0a-35c5-4867-bc17-a0b0230fe60c",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "planlezen",
-      "uri": "http://data.europa.eu/esco/skill/68b6ef08-d823-489d-a95c-752ae6f6e6a7",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "diensten van werknemers plannen",
-      "uri": "http://data.europa.eu/esco/skill/85aa1871-db96-42f7-801f-c39f924de2d7",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "fijnmechanica",
-      "uri": "http://data.europa.eu/esco/skill/2fea2558-630e-480d-9e12-47a05bc19b55",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "kwaliteitsstandaarden",
-      "uri": "http://data.europa.eu/esco/skill/8d4271ca-c9fd-40b3-875f-15f78332a49e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "over productieresultaten rapporteren",
-      "uri": "http://data.europa.eu/esco/skill/d73cb129-b385-4776-8303-f3f926b2e481",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "omgaan met managers",
-      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "mechanica",
-      "uri": "http://data.europa.eu/esco/skill/efa141df-f382-418f-9121-bd88fd735669",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "communicatie binnen een team coördineren",
-      "uri": "http://data.europa.eu/esco/skill/cd85312f-0e0b-460b-addd-57d6df800595",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "technische middelen raadplegen",
-      "uri": "http://data.europa.eu/esco/skill/9f34107c-8db0-4b00-84d8-3f64e400c80c",
+      "label": "toezien op de productievoorwaarden",
+      "uri": "http://data.europa.eu/esco/skill/277f489c-7a47-4791-bd87-61ca01737f96",
       "categorie": "essentieel"
     },
     {
@@ -86,18 +36,18 @@
       "categorie": "essentieel"
     },
     {
-      "label": "toezien op de productievoorwaarden",
-      "uri": "http://data.europa.eu/esco/skill/277f489c-7a47-4791-bd87-61ca01737f96",
+      "label": "diensten van werknemers plannen",
+      "uri": "http://data.europa.eu/esco/skill/85aa1871-db96-42f7-801f-c39f924de2d7",
       "categorie": "essentieel"
     },
     {
-      "label": "micromechanica",
-      "uri": "http://data.europa.eu/esco/skill/b27411a8-c401-4241-841b-c742ae32a8d3",
+      "label": "communicatie binnen een team coördineren",
+      "uri": "http://data.europa.eu/esco/skill/cd85312f-0e0b-460b-addd-57d6df800595",
       "categorie": "essentieel"
     },
     {
-      "label": "problemen doorgeven aan ervaren collega’s",
-      "uri": "http://data.europa.eu/esco/skill/91be6910-bd67-4e1f-95b0-32513b399b24",
+      "label": "kwaliteitsstandaarden",
+      "uri": "http://data.europa.eu/esco/skill/8d4271ca-c9fd-40b3-875f-15f78332a49e",
       "categorie": "essentieel"
     },
     {
@@ -106,23 +56,73 @@
       "categorie": "essentieel"
     },
     {
-      "label": "technisch veeleisende taken uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/2d780738-9b34-40a3-adbb-590001f6ff86",
+      "label": "micromechanica",
+      "uri": "http://data.europa.eu/esco/skill/b27411a8-c401-4241-841b-c742ae32a8d3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toezicht houden op montagewerkzaamheden",
+      "uri": "http://data.europa.eu/esco/skill/6b9194f0-f8bb-4b9a-96a5-2203c9c2671b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "mechanica",
+      "uri": "http://data.europa.eu/esco/skill/efa141df-f382-418f-9121-bd88fd735669",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "problemen doorgeven aan ervaren collega’s",
+      "uri": "http://data.europa.eu/esco/skill/91be6910-bd67-4e1f-95b0-32513b399b24",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "planlezen",
+      "uri": "http://data.europa.eu/esco/skill/68b6ef08-d823-489d-a95c-752ae6f6e6a7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "over productieresultaten rapporteren",
+      "uri": "http://data.europa.eu/esco/skill/d73cb129-b385-4776-8303-f3f926b2e481",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "fijnmechanica",
+      "uri": "http://data.europa.eu/esco/skill/2fea2558-630e-480d-9e12-47a05bc19b55",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "omgaan met managers",
+      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "technische middelen raadplegen",
+      "uri": "http://data.europa.eu/esco/skill/9f34107c-8db0-4b00-84d8-3f64e400c80c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "waarborgen dat het eindproduct aan de vereisten voldoet",
+      "uri": "http://data.europa.eu/esco/skill/68269b0a-35c5-4867-bc17-a0b0230fe60c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronica",
+      "uri": "http://data.europa.eu/esco/skill/95c35c3a-035f-47c2-90cf-7e934d20fc08",
       "categorie": "optioneel"
     },
     {
-      "label": "technische communicatievaardigheden toepassen",
-      "uri": "http://data.europa.eu/esco/skill/c32ad607-0c4d-4e34-b73f-668298f7bf13",
+      "label": "materiële middelen controleren",
+      "uri": "http://data.europa.eu/esco/skill/d1a2437d-7eee-4c13-9104-0bb3dd7b45d6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "precisie-instrumenten gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/a99c6783-50c0-4f7a-99df-bf93429ef6dc",
       "categorie": "optioneel"
     },
     {
       "label": "werknemers opleiden",
       "uri": "http://data.europa.eu/esco/skill/e54ff029-1ce9-447d-a5b2-eb7283a23e6e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "toezicht houden op de logistiek van eindproducten",
-      "uri": "http://data.europa.eu/esco/skill/40f27736-0d98-4446-8234-11646e4f4bc3",
       "categorie": "optioneel"
     },
     {
@@ -136,13 +136,13 @@
       "categorie": "optioneel"
     },
     {
-      "label": "werk van werknemers beoordelen",
-      "uri": "http://data.europa.eu/esco/skill/8a98707e-b2ee-48fe-9f36-e47e3555ecf7",
+      "label": "inspectierapporten schrijven",
+      "uri": "http://data.europa.eu/esco/skill/cdd2b6cc-b4a9-42a0-824b-766f52176fd3",
       "categorie": "optioneel"
     },
     {
-      "label": "precisie-instrumenten gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/a99c6783-50c0-4f7a-99df-bf93429ef6dc",
+      "label": "technische communicatievaardigheden toepassen",
+      "uri": "http://data.europa.eu/esco/skill/c32ad607-0c4d-4e34-b73f-668298f7bf13",
       "categorie": "optioneel"
     },
     {
@@ -151,43 +151,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "advies geven aan technici",
-      "uri": "http://data.europa.eu/esco/skill/8c474534-707f-46f3-b356-810bbfe8b693",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "de bediening van een machine installeren",
-      "uri": "http://data.europa.eu/esco/skill/d9818afc-1dec-4944-8c9c-e3ae8fad176d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "materiële middelen controleren",
-      "uri": "http://data.europa.eu/esco/skill/d1a2437d-7eee-4c13-9104-0bb3dd7b45d6",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "passende beschermende uitrusting dragen",
-      "uri": "http://data.europa.eu/esco/skill/6122d586-5978-431f-8e7a-96e61fc1f3fc",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "toezicht houden op kwaliteitscontroles",
-      "uri": "http://data.europa.eu/esco/skill/5d34adde-0b78-42b4-9d3d-69e9388d8398",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "producteigenschappen demonstreren",
-      "uri": "http://data.europa.eu/esco/skill/de7b8c6c-9ed4-4776-924c-4265dd1d9cde",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "elektronica",
-      "uri": "http://data.europa.eu/esco/skill/95c35c3a-035f-47c2-90cf-7e934d20fc08",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "risico’s op de werkplek identificeren",
-      "uri": "http://data.europa.eu/esco/skill/5f97fac8-2001-4b81-ae8b-22f9062d921a",
+      "label": "inspecties uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/36e9c099-614e-44f1-ab0a-5e6fda4a0763",
       "categorie": "optioneel"
     },
     {
@@ -196,13 +161,48 @@
       "categorie": "optioneel"
     },
     {
-      "label": "inspectierapporten schrijven",
-      "uri": "http://data.europa.eu/esco/skill/cdd2b6cc-b4a9-42a0-824b-766f52176fd3",
+      "label": "risico’s op de werkplek identificeren",
+      "uri": "http://data.europa.eu/esco/skill/5f97fac8-2001-4b81-ae8b-22f9062d921a",
       "categorie": "optioneel"
     },
     {
-      "label": "inspecties uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/36e9c099-614e-44f1-ab0a-5e6fda4a0763",
+      "label": "de bediening van een machine installeren",
+      "uri": "http://data.europa.eu/esco/skill/d9818afc-1dec-4944-8c9c-e3ae8fad176d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toezicht houden op kwaliteitscontroles",
+      "uri": "http://data.europa.eu/esco/skill/5d34adde-0b78-42b4-9d3d-69e9388d8398",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "passende beschermende uitrusting dragen",
+      "uri": "http://data.europa.eu/esco/skill/6122d586-5978-431f-8e7a-96e61fc1f3fc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "advies geven aan technici",
+      "uri": "http://data.europa.eu/esco/skill/8c474534-707f-46f3-b356-810bbfe8b693",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werk van werknemers beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/8a98707e-b2ee-48fe-9f36-e47e3555ecf7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "producteigenschappen demonstreren",
+      "uri": "http://data.europa.eu/esco/skill/de7b8c6c-9ed4-4776-924c-4265dd1d9cde",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "technisch veeleisende taken uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/2d780738-9b34-40a3-adbb-590001f6ff86",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toezicht houden op de logistiek van eindproducten",
+      "uri": "http://data.europa.eu/esco/skill/40f27736-0d98-4446-8234-11646e4f4bc3",
       "categorie": "optioneel"
     }
   ]

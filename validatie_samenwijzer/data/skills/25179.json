@@ -1,251 +1,189 @@
 {
   "crebo": "25179",
   "opleiding": "25179_BBL_2025__25179 Gespecialiseerd kok 48 maanden BBL",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "chefkok",
-    "uri": "http://data.europa.eu/esco/occupation/01484951-15e6-4b88-a20f-1201868d36a0",
-    "definitie": "Chefkoks beheren de keuken en houden toezicht op de bereiding, het koken en het serveren van voedsel."
+    "label": "Gespecialiseerd kok",
+    "uri": "",
+    "definitie": "De gespecialiseerd kok werkt in een keuken die in verschillende delen is opgedeeld. Hij bereidt bijzondere, creatieve of luxe gerechten en denkt na over de samenstelling van de menukaart. Hij coördineert en organiseert de werkzaamheden binnen de verschillende delen van de keuken. Hij bewaakt de kwaliteit van de gemaakte gerechten of onderdelen daarvan en zorgt ervoor dat deze aan de verwachtingen van de gasten voldoen. Ook is hij verantwoordelijk voor het inkopen van ingrediënten en producten en het verwerken daarvan. Hij kan kostenbewust handelen en is commercieel ingesteld. Een gespecialiseerd kok heeft een sociale, operationele beroepshouding. Hij geeft leiding aan medewerkers binnen zijn afdeling. De belangrijkste taak van een gespecialiseerd kok is het combineren van ingrediënten, om nieuwe of onverwachte gerechten te maken."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "vakdocent voeding beroepsonderwijs",
-    "distributiemanager gespecialiseerde artikelen",
-    "gespecialiseerd apotheker",
-    "verkoopspecialist meubelen",
-    "verkoopspecialist",
-    "gespecialiseerde outdooranimator",
-    "verkoopspecialist dranken",
-    "verkoopspecialist suikerwaren",
-    "medewerker keuken",
-    "keukenhulp",
-    "chefkok",
-    "industriële kok",
-    "restaurantmanager",
-    "keukenmonteur",
-    "verkoopmanager keukens en badkamers",
-    "chef"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "voedselbereidingsplek overhandigen",
-      "uri": "http://data.europa.eu/esco/skill/9ccd8da7-733b-4aff-a49f-94c390aeb618",
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
       "categorie": "essentieel"
     },
     {
-      "label": "voorraadrotatie beheren",
-      "uri": "http://data.europa.eu/esco/skill/e705db38-4fcf-4069-b01f-3fbdda894cc1",
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
       "categorie": "essentieel"
     },
     {
-      "label": "leiding geven aan personeel",
-      "uri": "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
+      "label": "Ideeën bedenken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/2492D7AE9B",
       "categorie": "essentieel"
     },
     {
-      "label": "voor regelmatig onderhoud van keukenmateriaal zorgen",
-      "uri": "http://data.europa.eu/esco/skill/36a48e03-4466-4ea3-b463-cbce02cbd7bb",
+      "label": "Informatie ordenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/299CE88E49",
       "categorie": "essentieel"
     },
     {
-      "label": "toezicht houden op de voedselkwaliteit",
-      "uri": "http://data.europa.eu/esco/skill/9b67cbf3-085c-4578-8a8e-8d130ed3fced",
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
       "categorie": "essentieel"
     },
     {
-      "label": "menu's plannen",
-      "uri": "http://data.europa.eu/esco/skill/5c6ca864-76d5-4217-b3e1-9a7ba7f8f47b",
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
       "categorie": "essentieel"
     },
     {
-      "label": "prijzen op het menu bepalen",
-      "uri": "http://data.europa.eu/esco/skill/3b902c9f-3def-4c0b-b940-02924d698675",
+      "label": "Ondernemerszin tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/518455478C",
       "categorie": "essentieel"
     },
     {
-      "label": "gezondheids-, veiligheids- en hygiënewetgeving op het gebied van voedsel naleven",
-      "uri": "http://data.europa.eu/esco/skill/0ff99f51-40d9-42f1-a1ec-377b2bb5e15f",
+      "label": "Materiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/5C8ADA7777",
       "categorie": "essentieel"
     },
     {
-      "label": "beheersing van uitgaven",
-      "uri": "http://data.europa.eu/esco/skill/e1f5c539-7c93-49ee-917d-a24e0d887686",
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
       "categorie": "essentieel"
     },
     {
-      "label": "klanten helpen",
-      "uri": "http://data.europa.eu/esco/skill/61970f8b-099c-4e7e-82e0-9ccdced0baf3",
+      "label": "Teamgeest bevorderen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/647BB5C0A7",
       "categorie": "essentieel"
     },
     {
-      "label": "op de hoogte blijven van trends op het gebied van uit eten gaan",
-      "uri": "http://data.europa.eu/esco/skill/5d3c59e6-c797-48c1-9f98-97e1bf2a38fd",
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
       "categorie": "essentieel"
     },
     {
-      "label": "de werkomgeving veilig hygiënisch en beveiligd houden",
-      "uri": "http://data.europa.eu/esco/skill/c87c5366-c9a9-4205-8333-4938a9c384ad",
+      "label": "Instrueren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6AE2F3F890",
       "categorie": "essentieel"
     },
     {
-      "label": "opslag van voedingsmiddelen",
-      "uri": "http://data.europa.eu/esco/skill/b4b3b539-81ae-43aa-a540-0e2ea2c7e802",
+      "label": "Bedrijfsprocessen verbeteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7C37C4FF38",
       "categorie": "essentieel"
     },
     {
-      "label": "opwarmtechnieken gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/a02d7f88-a240-4644-911b-169af470be5a",
+      "label": "Creatief denken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/9DC1DB64EA",
       "categorie": "essentieel"
     },
     {
-      "label": "de kosten van benodigde voorraden inschatten",
-      "uri": "http://data.europa.eu/esco/skill/d1724ca5-ebd3-472a-bea9-fad9fe9004bf",
+      "label": "Ontwerpen van systemen en producten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B4866702BB",
       "categorie": "essentieel"
     },
     {
-      "label": "horeca-inkomsten beheren",
-      "uri": "http://data.europa.eu/esco/skill/c1eb6a1a-e830-482a-8f13-f5c2f5b11b5d",
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
       "categorie": "essentieel"
     },
     {
-      "label": "budgetten beheren",
-      "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
+      "label": "Financiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/BC3AB34C1A",
       "categorie": "essentieel"
     },
     {
-      "label": "inkoopactiviteiten beheren",
-      "uri": "http://data.europa.eu/esco/skill/9e9a4209-c7cf-4f6e-973e-dc2ffadccc74",
+      "label": "Delegeren ",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C8730D1BAB",
       "categorie": "essentieel"
     },
     {
-      "label": "werknemers opleiden",
-      "uri": "http://data.europa.eu/esco/skill/e54ff029-1ce9-447d-a5b2-eb7283a23e6e",
+      "label": "Leergierig zijn",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CB768EFA19",
       "categorie": "essentieel"
     },
     {
-      "label": "kooktechnieken gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+      "label": "Verplaatsen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D16A30C42A",
       "categorie": "essentieel"
     },
     {
-      "label": "recepten samenstellen",
-      "uri": "http://data.europa.eu/esco/skill/f4a30153-2b27-4c15-82ea-e0216bd0012f",
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
       "categorie": "essentieel"
     },
     {
-      "label": "voedselbereidingstechnieken toepassen",
-      "uri": "http://data.europa.eu/esco/skill/4b15a965-9bb4-42f1-8e44-1024aeb0b08c",
+      "label": "Actiegericht leren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DB6B8EEBD1",
       "categorie": "essentieel"
     },
     {
-      "label": "dienstroosters opstellen",
-      "uri": "http://data.europa.eu/esco/skill/a9e4a63b-6b88-44f6-b37f-94309856f5ba",
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
       "categorie": "essentieel"
     },
     {
-      "label": "technieken voor culinaire afwerking toepassen",
-      "uri": "http://data.europa.eu/esco/skill/bb84d739-1b06-477b-9195-251650bb3c14",
+      "label": "Handvaardigheid",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E66E6D3B86",
       "categorie": "essentieel"
     },
     {
-      "label": "met chemische reinigingsmiddelen werken",
-      "uri": "http://data.europa.eu/esco/skill/51a26193-9abe-4bce-9108-f50835be1c35",
+      "label": "Bedrijfsadministratie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/10FFC5435D",
       "categorie": "essentieel"
     },
     {
-      "label": "klachten van klanten afhandelen",
-      "uri": "http://data.europa.eu/esco/skill/28d715e3-3e5b-4fb6-8dd2-4be4919c8587",
+      "label": "Gastvrijheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3F97DB848A",
       "categorie": "essentieel"
     },
     {
-      "label": "toezicht houden op het gebruik van keukenapparatuur",
-      "uri": "http://data.europa.eu/esco/skill/fd60eb61-262e-4719-bb5c-e5ff4b531ae8",
+      "label": "Reuk- en smaakbeleving",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/44268FF066",
       "categorie": "essentieel"
     },
     {
-      "label": "personeel aanwerven",
-      "uri": "http://data.europa.eu/esco/skill/496932f1-0b6b-4f73-9432-d95c7ddcd43b",
+      "label": "Bedrijfseconomie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/53B4B474D1",
       "categorie": "essentieel"
     },
     {
-      "label": "creatief denken over voedingsmiddelen en dranken",
-      "uri": "http://data.europa.eu/esco/skill/4cc3ae6a-c53e-4113-aced-41476cd22eb3",
-      "categorie": "optioneel"
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
     },
     {
-      "label": "afspraken met leveranciers onderhandelen",
-      "uri": "http://data.europa.eu/esco/skill/c842be42-81b3-40f2-904c-ea8790ac88bd",
-      "categorie": "optioneel"
+      "label": "Ambachtelijke voedselbereiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/931B9AE84C",
+      "categorie": "essentieel"
     },
     {
-      "label": "koelprocessen voor voedingsmiddelen uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/728cd984-19ad-441c-8145-b8edc9c53445",
-      "categorie": "optioneel"
+      "label": "Samenwerking en netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/95C3218741",
+      "categorie": "essentieel"
     },
     {
-      "label": "leveringen bij ontvangst controleren",
-      "uri": "http://data.europa.eu/esco/skill/f7f56b20-8f05-4731-a1bf-79fdcffc72ce",
-      "categorie": "optioneel"
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
     },
     {
-      "label": "contractuele geschillen beheren",
-      "uri": "http://data.europa.eu/esco/skill/f79e4715-5776-485c-ab7d-631c9b8d70ad",
-      "categorie": "optioneel"
+      "label": "Personeelswerk",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AA15132AFE",
+      "categorie": "essentieel"
     },
     {
-      "label": "doelstellingen voor de middellange en lange termijn plannen",
-      "uri": "http://data.europa.eu/esco/skill/cc3b901c-4d66-48f8-90b9-41883be1e1ed",
-      "categorie": "optioneel"
+      "label": "Marketing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E6A75FB995",
+      "categorie": "essentieel"
     },
     {
-      "label": "apparatuurinspecties beheren",
-      "uri": "http://data.europa.eu/esco/skill/11245eee-fcbd-44c7-aa6a-3db2eb40106c",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "geflambeerde gerechten bereiden",
-      "uri": "http://data.europa.eu/esco/skill/fd728a62-6be0-4874-9d68-5946b87f29da",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "doelstellingen op middellange termijn beheren",
-      "uri": "http://data.europa.eu/esco/skill/f077719c-82ff-4035-9426-47c5eb554454",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "leveranciers identificeren",
-      "uri": "http://data.europa.eu/esco/skill/11747665-0e98-4f27-bd0d-536862cd5746",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "levensmiddelen aantrekkelijk presenteren",
-      "uri": "http://data.europa.eu/esco/skill/efd806d5-8390-4591-9c52-14d8f74bfa43",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "toekomstige bedrijfsniveaus voorspellen",
-      "uri": "http://data.europa.eu/esco/skill/ab167ae1-dfd8-4607-8dc4-d6d500622e1d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "producten bijverkopen",
-      "uri": "http://data.europa.eu/esco/skill/306a1555-9fa2-47af-b996-a0a8833cbe81",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "gebak bereiden",
-      "uri": "http://data.europa.eu/esco/skill/15d5041a-4ff3-4527-ba5c-2445a4fd044a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "op details letten bij voedingsmiddelen en dranken",
-      "uri": "http://data.europa.eu/esco/skill/5ef6d0cf-1ce3-487e-97e6-90670353d030",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "klanten adviseren over menu's voor speciale gelegenheden en evenementen",
-      "uri": "http://data.europa.eu/esco/skill/449f85e3-22e6-44d3-a295-b2fb1ab8b494",
-      "categorie": "optioneel"
+      "label": "Voeding en diëtetiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FF24F7C483",
+      "categorie": "essentieel"
     }
   ]
 }

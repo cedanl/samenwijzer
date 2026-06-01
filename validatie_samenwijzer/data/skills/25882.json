@@ -1,9 +1,139 @@
 {
   "crebo": "25882",
   "opleiding": "25882_BOL_2025__25882BOL2025Examenplan",
-  "bron": "ESCO",
-  "beroep": null,
-  "match_methode": "geen-kandidaten",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Mediaredactiemedewerker",
+    "uri": "",
+    "definitie": "De mediaredactiemedewerker werkt meestal in de dynamische omgeving van de media-industrie, waarin digitale platforms, traditionele media en marketing samenkomen. Die kan werkzaam zijn bij mediabedrijven, marketingbureaus, uitgeverijen of op de communicatieafdelingen van diverse organisaties buiten de mediabranche. De mediaredactiemedewerker heeft uitstekende taalvaardigheid, met name schriftelijke taalvaardigheid. Daarnaast is die nieuwsgierig/nieuwssensitief. De mediaredactiemedewerker heeft een onderzoekende houding en  gaat proactief op zoek naar nieuws en informatie en weet welk nieuws en welke informatie interessant en bruikbaar is. De Mediaredactiemedewerker is inventief als het gaat om het inspelen op nieuwe mediatoepassingen.\n\nDe mediaredactiemedewerker is verantwoordelijk voor het creëren, redigeren en publiceren van diverse media-inhoud, zoals artikelen, video's en afbeeldingen. Met journalisten, videoproducenten en andere teamleden werkt die nauw samen om boeiende en relevante content te produceren voor verschillende mediaplatforms. Het monitoren van trends en ontwikkelingen in de media-industrie is essentieel om de content actueel en aantrekkelijk te houden. De mediaredactiemedewerker houdt zich ook bezig met het beheren van archieven en het naleven van redactionele richtlijnen en beleid."
+  },
+  "match_methode": "crebo-direct",
   "kandidaten": [],
-  "skills": []
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ideeën bedenken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/2492D7AE9B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Digitale content ontwikkelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3679757482",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Actief luisteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/8500CACF46",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beslissingen nemen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/9DD6D3E301",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Schrijven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/BC98BE9135",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Delegeren ",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C8730D1BAB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CD7B4C0F34",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kritisch nadenken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E1F935288C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Sociologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/59637E5D42",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Fotografie, film, video",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/64914742BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Informatietechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7459B5FEB9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Multimediadesign",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8D18873311",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Journalistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8F2F5549B3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Informatiemanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9212BF2426",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsinformatica",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D313E86D1B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Public relations",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DDB33F7221",
+      "categorie": "essentieel"
+    }
+  ]
 }

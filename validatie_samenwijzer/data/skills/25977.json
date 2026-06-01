@@ -1,208 +1,104 @@
 {
   "crebo": "25977",
   "opleiding": "25977_BOL_2024__Examenplannen Voeding 24-25",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "voedingsdeskundige bereide maaltijden",
-    "uri": "http://data.europa.eu/esco/occupation/c37d0026-989b-4705-9bcb-30cccd8308fa",
-    "definitie": "Bereide maaltijden, voedingsdeskundigen op basis van voedingswaarde, productieprocessen en levensmiddelen om de voedingskwaliteit en de geschiktheid van bereide maaltijden en schotels te garanderen. Zij bestuderen de voedingswaarde van levensmiddelen en schotels en geven advies over de samenstelling van verschillende maaltijden of schotels voor menselijke voeding (allergene elementen, macro- en micronutriënten,...)"
+    "label": "Medewerker voeding, technologie en techniek",
+    "uri": "",
+    "definitie": "De medewerker voeding, technologie en techniek werkt in voedselverwerkende bedrijven, fabrieken en productie-installaties, waar ze verantwoordelijk zijn voor het bedienen en onderhouden van machines en apparatuur die worden gebruikt bij het productieproces. Diens taken omvat onder meer het instellen van machines, het uitvoeren van kwaliteitscontroles, het oplossen van eenvoudige technische storingen, het uitvoerenvan klein onderhoud en het waarborgen van voedselveiligheid en hygiënevoorschriften tijdens het productieproces. De medewerker voeding, technologie en techniek is inzetbaar bij verschillende producten en processen en op verschillende werkplekken. Deze neemt de receptuur, productiegegevens, en –planning door, zet ingrediënten en verpakkingen klaar. De medewerker voeding, technologie en techniek werkt volgens standaardprocedures en zorgsystemen, in een vastgesteld tempo. Resultaat van het werk is dat producten tijdig en in de juiste hoeveelheden zijn ontwikkeld, geproduceerd of verpakt volgens de richtlijnen en procedures van het bedrijf."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "docent voedingskunde",
-    "voedingsdeskundige bereide maaltijden",
-    "vakdocent voeding beroepsonderwijs",
-    "voedingsbiotechnoloog",
-    "diervoedingsdeskundige",
-    "specialist voedselveiligheid",
-    "opkweekmanager in de aquacultuur",
-    "voedingsanalist"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "kwaliteit van producten op een productielijn controleren",
-      "uri": "http://data.europa.eu/esco/skill/5d05068e-7ae7-4ff6-8fa3-e35ea03b48b1",
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
       "categorie": "essentieel"
     },
     {
-      "label": "toezicht houden op voeding in de gezondheidszorg",
-      "uri": "http://data.europa.eu/esco/skill/38bceda2-af8c-40f5-943b-c9f3f13db6e6",
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
       "categorie": "essentieel"
     },
     {
-      "label": "kant-en-klaargerechten",
-      "uri": "http://data.europa.eu/esco/skill/c1bbc099-92c5-493c-9f65-8d7acfce5851",
+      "label": "Materiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/5C8ADA7777",
       "categorie": "essentieel"
     },
     {
-      "label": "productievoorschriften voor voedingsmiddelen en dranken toepassen",
-      "uri": "http://data.europa.eu/esco/skill/bc250150-3372-42c9-834a-a1b65f89ca0b",
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
       "categorie": "essentieel"
     },
     {
-      "label": "productiemonsters onderzoeken",
-      "uri": "http://data.europa.eu/esco/skill/f4751ef2-75fb-4c3b-9827-143895ee6218",
+      "label": "Zorgvuldig werken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/73CE64DACE",
       "categorie": "essentieel"
     },
     {
-      "label": "hygiëne waarborgen",
-      "uri": "http://data.europa.eu/esco/skill/0c944316-12f6-4949-a156-a03dbaae790f",
+      "label": "Machines bedienen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D0866C5206",
       "categorie": "essentieel"
     },
     {
-      "label": "trends in de voedingsmiddelen- en drankenindustrie analyseren",
-      "uri": "http://data.europa.eu/esco/skill/5faaac96-9273-4156-93fb-8b3d48cf20f4",
+      "label": "Productietechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/04541FC2D1",
       "categorie": "essentieel"
     },
     {
-      "label": "gevarenanalyse van kritische controlepunten toepassen",
-      "uri": "http://data.europa.eu/esco/skill/5ba1d5b9-3f8d-46ca-bf9f-2e9ca65d1350",
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
       "categorie": "essentieel"
     },
     {
-      "label": "nieuwe kookmethoden onderzoeken",
-      "uri": "http://data.europa.eu/esco/skill/f5d8db86-12fe-4b17-80ee-dc126bab8335",
+      "label": "Levensmiddelentechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4B57E632B0",
       "categorie": "essentieel"
     },
     {
-      "label": "correcte etikettering van goederen waarborgen",
-      "uri": "http://data.europa.eu/esco/skill/6fcf2fc7-7b74-42e5-845f-f5854fd44f37",
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
       "categorie": "essentieel"
     },
     {
-      "label": "voedingswaarde van voedsel bepalen",
-      "uri": "http://data.europa.eu/esco/skill/2846ad39-6535-48cf-a4c4-64f0ae9066c1",
+      "label": "Ambachtelijke voedselbereiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/931B9AE84C",
       "categorie": "essentieel"
     },
     {
-      "label": "gebruik van additieven voor de voedselproductie beheren",
-      "uri": "http://data.europa.eu/esco/skill/6338e1e5-1cce-47ab-9e55-8914d8adc2f0",
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
       "categorie": "essentieel"
     },
     {
-      "label": "voedingsmiddelenwetenschap",
-      "uri": "http://data.europa.eu/esco/skill/78521a78-d0b6-41ca-ae11-d1af9da8a3cb",
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
       "categorie": "essentieel"
     },
     {
-      "label": "hygiënische procedures volgen tijdens de voedselverwerking",
-      "uri": "http://data.europa.eu/esco/skill/a34f4fd4-1aff-4941-82d5-542ac94f81c3",
+      "label": "Voeding en gezondheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C3247434CD",
       "categorie": "essentieel"
     },
     {
-      "label": "opslag van voedingsmiddelen",
-      "uri": "http://data.europa.eu/esco/skill/b4b3b539-81ae-43aa-a540-0e2ea2c7e802",
+      "label": "Scheikunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/EE4D07D17E",
       "categorie": "essentieel"
     },
     {
-      "label": "bij de productie van voedingsmiddelen naar een betere voedingswaarde streven",
-      "uri": "http://data.europa.eu/esco/skill/960e6f79-2606-4a45-8971-b74876cb584c",
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
       "categorie": "essentieel"
     },
     {
-      "label": "goede productiepraktijken toepassen",
-      "uri": "http://data.europa.eu/esco/skill/bf7a45c4-0d72-4e6e-9da7-127b2b6656b7",
+      "label": "Statistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F86A9B4290",
       "categorie": "essentieel"
     },
     {
-      "label": "nieuwe voedingsingrediënten onderzoeken",
-      "uri": "http://data.europa.eu/esco/skill/1edd57be-9746-42ad-87e4-f468f0950628",
+      "label": "Reiniging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FB169E4860",
       "categorie": "essentieel"
-    },
-    {
-      "label": "voedingskenmerken van voedingsmiddelen beoordelen",
-      "uri": "http://data.europa.eu/esco/skill/01267c89-b27f-4de0-b555-3683c5a5d66e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "combinatie van texturen",
-      "uri": "http://data.europa.eu/esco/skill/9e8377c5-ff35-4dd1-a7e4-f50bc7e6f39e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "diëtetiek",
-      "uri": "http://data.europa.eu/esco/skill/f190355a-cea5-4cd0-b6cd-a5c3d9a14985",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "functionele eigenschappen van voedingsmiddelen",
-      "uri": "http://data.europa.eu/esco/skill/d11fd23b-ad01-4f12-85f4-e0d2ed16d5af",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "smaakcombinaties",
-      "uri": "http://data.europa.eu/esco/skill/8a203a8c-d42e-4063-9036-970434c424e4",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "beleid voor voedingsprogramma’s ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/04e52ec7-5107-455b-a943-8004015d5b26",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "leveranciers identificeren",
-      "uri": "http://data.europa.eu/esco/skill/11747665-0e98-4f27-bd0d-536862cd5746",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "dieetmaaltijden bereiden",
-      "uri": "http://data.europa.eu/esco/skill/6b6babbe-2243-4772-9f8b-daa4c43c92a0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "monsters voor analyse verzamelen",
-      "uri": "http://data.europa.eu/esco/skill/4bbb309f-9162-49b9-93da-fb2c371e5c5f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "samenstelling van diëten",
-      "uri": "http://data.europa.eu/esco/skill/6b69101a-0e51-45c6-a7e5-5a60a1c85da0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voedingsonderzoek uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/6fa976e9-da4e-47a4-8655-36aa6a4e293f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "nieuwe voedingsmiddelen ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/090ae6b3-12ab-4c72-b98a-17b790cf416e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "nieuwe recepten creëren",
-      "uri": "http://data.europa.eu/esco/skill/c19c5b7d-ce2f-451f-9ae3-59cf823aa490",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "deelnemen aan de ontwikkeling van nieuwe voedingsmiddelen",
-      "uri": "http://data.europa.eu/esco/skill/76437256-e318-4b8b-af67-32bdae072b17",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "marktonderzoek uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/fe39d4db-4cb5-4299-bb9f-896c8fd6ab13",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voedingsmiddelen etiketteren",
-      "uri": "http://data.europa.eu/esco/skill/3c519634-ed10-47af-9685-00418f3a85a3",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voedselrisicoanalyses uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/ef258352-7226-4eb8-a943-4be6eaa5ec00",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "traceerbaarheid in de voedingssector",
-      "uri": "http://data.europa.eu/esco/skill/f81ff65a-f235-41ea-af47-620e535c51e0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "diëten",
-      "uri": "http://data.europa.eu/esco/skill/655d3d08-680a-40ea-8ffd-7e66916272fb",
-      "categorie": "optioneel"
     }
   ]
 }

@@ -1,130 +1,84 @@
 {
   "crebo": "25168",
   "opleiding": "Gastheer/-vrouw",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "gastheer/gastvrouw",
-    "uri": "http://data.europa.eu/esco/occupation/a1b86a8b-ad91-4192-b386-bbf89bb11699",
-    "definitie": "Gastheren/gastvrouwen verwelkomen klanten in een horecadienst en verlenen initiële diensten."
+    "label": "Gastheer/-vrouw",
+    "uri": "",
+    "definitie": "De gastheer/-vrouw werkt in horecabedrijven met verschillende formules zoals restaurants, bars, feestruimten en vergader-/congrescentra. Soms bedient hij internationale gasten. Hij stemt zijn werkzaamheden, producten en diensten af op de wensen van de gast. De grote variatie van opdrachten, onvoorspelbaarheid van gasten en onverwachte werkdruk zorgt dat de gastheer/- vrouw zich flexibel opstelt. De gastheer/-vrouw zorgt dat de gastenruimte klaar is en voorraden aangevuld. Hij ontvangst de gasten, adviseert hen en neemt bestellingen op. Hij maakt drankbestellingen klaar en serveert deze met de maaltijden uit. In het contact met de gasten richt hij zich op het creëren van een optimale beleving en houdt hij ook het commerciële belang in het oog. Hij rekent af met de gast en ruimt op. Hij werkt volgens het gastvrijheidsconcept en volgt het sociaal-hygiënisch beleid. Hij overleg met collega’s, leidinggevende en de keukenbrigade."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "campingmedewerker",
-    "gastheer/gastvrouw",
-    "clubhost",
-    "medewerker uitvaartondernemer",
-    "stuntman",
-    "geluidsman",
-    "cameraman",
-    "brandweerman te water",
-    "hoofdsommelier",
-    "hotelbutler",
-    "derrickhand",
-    "operator draadsnijmachine",
-    "bediener hydraulische smeedpers",
-    "operator stuikmachine",
-    "roerganger"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "speciale zitplaatsen regelen",
-      "uri": "http://data.europa.eu/esco/skill/e32a8119-ca4e-48be-9470-6d45b5a7219f",
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
       "categorie": "essentieel"
     },
     {
-      "label": "klanten volgens een wachtlijst naar hun plaats begeleiden",
-      "uri": "http://data.europa.eu/esco/skill/44710f95-262e-481c-be41-495b9aae8ef4",
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
       "categorie": "essentieel"
     },
     {
-      "label": "reserveringen verwerken",
-      "uri": "http://data.europa.eu/esco/skill/936a42f0-a586-4595-9e47-ca93210761fd",
+      "label": "Materiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/5C8ADA7777",
       "categorie": "essentieel"
     },
     {
-      "label": "klanten helpen",
-      "uri": "http://data.europa.eu/esco/skill/61970f8b-099c-4e7e-82e0-9ccdced0baf3",
+      "label": "Aandacht en begrip tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B620732163",
       "categorie": "essentieel"
     },
     {
-      "label": "vip-gasten assisteren",
-      "uri": "http://data.europa.eu/esco/skill/496fd702-885e-488c-a48a-27e0ab692292",
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
       "categorie": "essentieel"
     },
     {
-      "label": "controleren of de eetzaal schoon is",
-      "uri": "http://data.europa.eu/esco/skill/ea4a7e5e-923d-4a15-ad55-362a3ff41641",
+      "label": "Adviseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CECB22E3FA",
       "categorie": "essentieel"
     },
     {
-      "label": "klantenservice verlenen",
-      "uri": "http://data.europa.eu/esco/skill/75dfe1ee-5935-42ce-b820-697f827825c3",
+      "label": "Rekenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5BBA931FB",
       "categorie": "essentieel"
     },
     {
-      "label": "tafels schikken",
-      "uri": "http://data.europa.eu/esco/skill/906d21c9-7a9c-4919-817d-10676f9ddfe4",
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
       "categorie": "essentieel"
     },
     {
-      "label": "gasten bij hun vertrek helpen",
-      "uri": "http://data.europa.eu/esco/skill/094e594d-83cc-4480-bad8-fae0ec2ed8ab",
+      "label": "Handvaardigheid",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E66E6D3B86",
       "categorie": "essentieel"
     },
     {
-      "label": "klachten van klanten afhandelen",
-      "uri": "http://data.europa.eu/esco/skill/28d715e3-3e5b-4fb6-8dd2-4be4919c8587",
+      "label": "Dienstbaarheid tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/F755E32480",
       "categorie": "essentieel"
     },
     {
-      "label": "gezondheids-, veiligheids- en hygiënewetgeving op het gebied van voedsel naleven",
-      "uri": "http://data.europa.eu/esco/skill/0ff99f51-40d9-42f1-a1ec-377b2bb5e15f",
+      "label": "Sociale veiligheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3C86F6FEAB",
       "categorie": "essentieel"
     },
     {
-      "label": "restaurantgasten ontvangen",
-      "uri": "http://data.europa.eu/esco/skill/99b95aca-221d-415c-9de5-564e1a273701",
+      "label": "Horeca",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/51712822B5",
       "categorie": "essentieel"
     },
     {
-      "label": "menu's presenteren",
-      "uri": "http://data.europa.eu/esco/skill/b7553d1b-31b4-42e6-b6be-2a90189ef7d6",
+      "label": "Redding, noodopruiming, brandweer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F8A6F0DADD",
       "categorie": "essentieel"
     },
     {
-      "label": "klanten adviseren over menu's voor speciale gelegenheden en evenementen",
-      "uri": "http://data.europa.eu/esco/skill/449f85e3-22e6-44d3-a295-b2fb1ab8b494",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "speciale promoties bedenken",
-      "uri": "http://data.europa.eu/esco/skill/fef5a450-6230-4a34-b3e3-764252dbdcec",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "relaties met klanten onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/2239694b-771a-4586-8b54-2794e361a9ae",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "oppervlakken schoonmaken",
-      "uri": "http://data.europa.eu/esco/skill/6ff01827-907d-43d8-b6e4-7162c1cf0aca",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bestellingen voor eten en drinken van gasten opnemen",
-      "uri": "http://data.europa.eu/esco/skill/704bed2c-737a-4585-b840-1d28bbcab9b4",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "in een team werken in het hotel- en restaurantwezen",
-      "uri": "http://data.europa.eu/esco/skill/8c8da904-cdb3-47d9-bfbf-15ade747d9ec",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "klanten met bijzondere behoeften assisteren",
-      "uri": "http://data.europa.eu/esco/skill/b6b2e665-1085-4f4d-9973-e979721815d7",
-      "categorie": "optioneel"
+      "label": "Reiniging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FB169E4860",
+      "categorie": "essentieel"
     }
   ]
 }

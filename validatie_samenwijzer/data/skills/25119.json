@@ -1,271 +1,154 @@
 {
   "crebo": "25119",
   "opleiding": "2021 - 25119 VG BIS OER Uitvoerder Bouw BBL4",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "opperman bouw",
-    "uri": "http://data.europa.eu/esco/occupation/fb7e2f4f-1545-42f1-972e-94082e49c6dc",
-    "definitie": "Oppermannen bouw bereiden bouwactiviteiten op bouwplaatsen voor en houden deze gaande. Zij verrichten voorbereidende en schoonmaakwerkzaamheden ten behoeve van gespecialiseerde bouwvakkers."
+    "label": "Uitvoerder bouw/infra",
+    "uri": "",
+    "definitie": "De uitvoerder bouw/infra bereidt de uit te voeren werkzaamheden van een project voor. Hij organiseert en bewaakt de voortgang. De uitvoerder bouw/infra zet personeel en middelen op het juiste moment in. Hij heeft contact met leveranciers en onderaannemers. De uitvoerder bouw/infra verzamelt informatie om een project te kunnen uitvoeren, bewaakt de begroting, de kwaliteit en de voortgang van het werk. Hij stuurt daar waar nodig bij. Hij stuurt zijn personeel aan en kan leidinggevende stijlen toepassen. De uitvoerder bouw/infra is verantwoordelijk voor de veiligheid op de bouwplaats. Hij maakt medewerkers bewust van de risico’s. Hij durft beslissingen te nemen en toont initiatief."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "onderhoudstechnicus sporen",
-    "veiligheidsinspecteur bouw",
-    "opperman bouw",
-    "veiligheidsmanager bouw",
-    "aannemer bouw",
-    "bouwopzichter",
-    "manager bouwkwaliteit",
-    "hoofdaannemer bouw",
-    "uitvoerend kunstenaar",
-    "uitvoerend producent",
-    "uitvoerend medewerker bosbouw",
-    "steigerbouwer",
-    "wegwerker",
-    "fietsenmaker",
-    "kwaliteitscontroleur",
-    "schoorsteenveger"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "muur klaarmaken voor behangpapier",
-      "uri": "http://data.europa.eu/esco/skill/62f058fc-dfe4-4e77-ab11-031f0d7ca564",
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
       "categorie": "essentieel"
     },
     {
-      "label": "bouwmaterialen vervoeren",
-      "uri": "http://data.europa.eu/esco/skill/4af56376-7b2f-4ced-ac58-0c3967bd1e83",
+      "label": "Materiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/5C8ADA7777",
       "categorie": "essentieel"
     },
     {
-      "label": "polijsten",
-      "uri": "http://data.europa.eu/esco/skill/2d28964f-0a2d-4aa2-bc2d-c73f7a4442d6",
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
       "categorie": "essentieel"
     },
     {
-      "label": "machinaal grond uitgraven",
-      "uri": "http://data.europa.eu/esco/skill/425ddacc-bbf0-4a98-b925-40012d1b6060",
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
       "categorie": "essentieel"
     },
     {
-      "label": "gezondheids- en veiligheidsprocedures in de bouw in acht nemen",
-      "uri": "http://data.europa.eu/esco/skill/86df7af2-f9f3-4c06-a500-7f1fba9e78fe",
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
       "categorie": "essentieel"
     },
     {
-      "label": "gipsplaten plaatsen",
-      "uri": "http://data.europa.eu/esco/skill/fd8a3c14-fe25-4490-a85d-0215d0a5aa6f",
+      "label": "Financiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/BC3AB34C1A",
       "categorie": "essentieel"
     },
     {
-      "label": "bouwmaterialen inspecteren",
-      "uri": "http://data.europa.eu/esco/skill/50f2d23c-b3fb-48a5-967b-14fd0a6dd205",
+      "label": "Delegeren ",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C8730D1BAB",
       "categorie": "essentieel"
     },
     {
-      "label": "oppervlak klaarmaken om te bepleisteren",
-      "uri": "http://data.europa.eu/esco/skill/db036259-fc59-4bc4-9c7f-8c414c88f2c7",
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
       "categorie": "essentieel"
     },
     {
-      "label": "veiligheidsuitrusting gebruiken tijdens bouwwerkzaamheden",
-      "uri": "http://data.europa.eu/esco/skill/c643e59b-d74c-4f44-b76e-6e1d96c05ec4",
+      "label": "Bedrijfsadministratie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/10FFC5435D",
       "categorie": "essentieel"
     },
     {
-      "label": "compatibiliteit van materialen controleren",
-      "uri": "http://data.europa.eu/esco/skill/3892f2ff-714e-4201-823d-5d6fc5bab621",
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
       "categorie": "essentieel"
     },
     {
-      "label": "beton gieten",
-      "uri": "http://data.europa.eu/esco/skill/46994031-5490-4a02-9937-c61f6e2d4fc9",
+      "label": "Transport en logistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2F8C9BA908",
       "categorie": "essentieel"
     },
     {
-      "label": "oppervlak klaarmaken om te verven",
-      "uri": "http://data.europa.eu/esco/skill/7d2a1c45-fae0-4bd6-b570-c668c9d4eda7",
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
       "categorie": "essentieel"
     },
     {
-      "label": "graafmachines gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/4e6bf27c-e5eb-4653-80cf-63295f731cb1",
+      "label": "Bouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3FC6552A85",
       "categorie": "essentieel"
     },
     {
-      "label": "bouwprofielen installeren",
-      "uri": "http://data.europa.eu/esco/skill/8ed53702-3e4e-4637-a4c3-9dc8f4281019",
+      "label": "Installatietechniek (bouwkunde)",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/41B99A9CBB",
       "categorie": "essentieel"
     },
     {
-      "label": "beton mengen",
-      "uri": "http://data.europa.eu/esco/skill/5cc37935-e6c9-4f28-b800-25e177e63e68",
+      "label": "Afbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/545738E767",
       "categorie": "essentieel"
     },
     {
-      "label": "metselwerk inspecteren",
-      "uri": "http://data.europa.eu/esco/skill/2e04e83a-20ae-4653-91e7-54a9a8cad299",
+      "label": "Beheer afwatering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/63DB9FDAB5",
       "categorie": "essentieel"
     },
     {
-      "label": "werken in een bouwteam",
-      "uri": "http://data.europa.eu/esco/skill/4fa2d6ba-4fff-4f21-bddd-4a54ae840955",
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
       "categorie": "essentieel"
     },
     {
-      "label": "grond verplaatsen",
-      "uri": "http://data.europa.eu/esco/skill/8276e91a-d2c4-4723-9237-ba67da54ff1e",
+      "label": "Samenwerking en netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/95C3218741",
       "categorie": "essentieel"
     },
     {
-      "label": "houten elementen in constructies installeren",
-      "uri": "http://data.europa.eu/esco/skill/11c0bfec-6bc8-4ec0-a535-91bd65be92c5",
+      "label": "Installatietechniek (infra)",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A767523AD9",
       "categorie": "essentieel"
     },
     {
-      "label": "communiceren met bouwvakkers",
-      "uri": "http://data.europa.eu/esco/skill/32abc65b-333e-4af8-88df-ae2938018fb9",
-      "categorie": "optioneel"
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
     },
     {
-      "label": "gereedschap voor loodgieterij",
-      "uri": "http://data.europa.eu/esco/skill/0f58f88f-d46d-45d7-b0a1-46364e5f7013",
-      "categorie": "optioneel"
+      "label": "Timmeren",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C608B1FD0D",
+      "categorie": "essentieel"
     },
     {
-      "label": "beton aanstrijken",
-      "uri": "http://data.europa.eu/esco/skill/ca3ee513-2285-42c0-9b2a-287d65b5f7a2",
-      "categorie": "optioneel"
+      "label": "Grondwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/CF0369B840",
+      "categorie": "essentieel"
     },
     {
-      "label": "bekisting plaatsen",
-      "uri": "http://data.europa.eu/esco/skill/aa95f606-13ec-4242-a6bc-635a1aaa841c",
-      "categorie": "optioneel"
+      "label": "Bouwtechnisch tekenen en construeren",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D5DD27C02E",
+      "categorie": "essentieel"
     },
     {
-      "label": "soorten gipsmaterialen",
-      "uri": "http://data.europa.eu/esco/skill/43bdb744-8072-4db9-b6e8-beea2171de1b",
-      "categorie": "optioneel"
+      "label": "Milieumanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DD938609F7",
+      "categorie": "essentieel"
     },
     {
-      "label": "slooptechnieken",
-      "uri": "http://data.europa.eu/esco/skill/2d7b7e10-b33b-489b-9c2e-350c3be162e7",
-      "categorie": "optioneel"
+      "label": "Bouwmanagement, aanneming, werkvoorbereiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DF68BB9CD4",
+      "categorie": "essentieel"
     },
     {
-      "label": "oppervlakken bepleisteren",
-      "uri": "http://data.europa.eu/esco/skill/20f56226-24ed-495f-8bf5-0b2aa6413ba1",
-      "categorie": "optioneel"
+      "label": "Beheer en verwerking van afval",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E360B68955",
+      "categorie": "essentieel"
     },
     {
-      "label": "bouwmethoden",
-      "uri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
-      "categorie": "optioneel"
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
     },
     {
-      "label": "zware constructiewerktuigen bevestigen",
-      "uri": "http://data.europa.eu/esco/skill/db7c49f2-dc93-461d-845d-a6bdf780a9f7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "planlezen",
-      "uri": "http://data.europa.eu/esco/skill/68b6ef08-d823-489d-a95c-752ae6f6e6a7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "dakramen plaatsen",
-      "uri": "http://data.europa.eu/esco/skill/41bbfa08-ce0b-478f-beaa-f51c62e61796",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "soorten betonpompen",
-      "uri": "http://data.europa.eu/esco/skill/1ffdea5d-cd82-490f-bebe-22db7e0a5f45",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bouwsector",
-      "uri": "http://data.europa.eu/esco/skill/fe77f9ca-7bd2-4a68-98f4-8463a4fb8301",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "soorten betonnen vormen",
-      "uri": "http://data.europa.eu/esco/skill/19fad65e-26e4-432a-af72-b5a0371e0957",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bouwsites inspecteren",
-      "uri": "http://data.europa.eu/esco/skill/4f9f0410-5db0-4b3b-8de3-1ded1600c719",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "mortelvoegen afwerken",
-      "uri": "http://data.europa.eu/esco/skill/ca309d1f-e080-42a3-b828-1c16e74aa9e7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "principes voor bouwconstructie",
-      "uri": "http://data.europa.eu/esco/skill/6c190890-d5ab-46ab-915b-04e995dc0d76",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "sanitaire systemen installeren",
-      "uri": "http://data.europa.eu/esco/skill/8755734c-2919-41a3-9ca6-1e3d1f169213",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "tegels leggen",
-      "uri": "http://data.europa.eu/esco/skill/504d99c7-395b-479c-815b-2f77ef769e75",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bouwmaterialensector",
-      "uri": "http://data.europa.eu/esco/skill/e26e07ca-4a35-42e3-940d-e5868fd38fba",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "timmerwerk",
-      "uri": "http://data.europa.eu/esco/skill/19858dd3-a5fe-4855-b644-6ecfefd1c384",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "betonpompen bedienen",
-      "uri": "http://data.europa.eu/esco/skill/31634929-4549-4109-b1ae-f56a068f546c",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bouw van huizen plannen",
-      "uri": "http://data.europa.eu/esco/skill/d7a67428-3afb-4bbd-932b-f6718ca489c5",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "houten daken bouwen",
-      "uri": "http://data.europa.eu/esco/skill/d03444d5-e127-4087-9295-29f0666c84d0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "motorzagen voor metselwerk bedienen",
-      "uri": "http://data.europa.eu/esco/skill/313ca66d-01e6-49af-aa8c-cf8f27c00814",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "deuren bevestigen",
-      "uri": "http://data.europa.eu/esco/skill/cd70c768-aab6-46e6-8fb4-3aad7fe4b4cb",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "ramen plaatsen",
-      "uri": "http://data.europa.eu/esco/skill/c1f78abb-c9ee-4d0c-abbd-2d3b5da35a35",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muursleuven inslijpen",
-      "uri": "http://data.europa.eu/esco/skill/ca1e4742-42cc-463a-9b12-a1733f06d7a3",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "klevende wandcoating aanbrengen",
-      "uri": "http://data.europa.eu/esco/skill/c3b0b86c-c147-4544-8934-dba667a3e8be",
-      "categorie": "optioneel"
+      "label": "Weg- en waterbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FA50514C2A",
+      "categorie": "essentieel"
     }
   ]
 }

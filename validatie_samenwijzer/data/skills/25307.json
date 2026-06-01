@@ -28,13 +28,28 @@
   ],
   "skills": [
     {
-      "label": "motoren repareren",
-      "uri": "http://data.europa.eu/esco/skill/1bc7c69b-4292-4592-b854-f48165a06082",
+      "label": "motoren ontmantelen",
+      "uri": "http://data.europa.eu/esco/skill/db3c8181-31b4-4950-bf0b-de01f93c372b",
       "categorie": "essentieel"
     },
     {
-      "label": "elektronica",
-      "uri": "http://data.europa.eu/esco/skill/95c35c3a-035f-47c2-90cf-7e934d20fc08",
+      "label": "machinebouw",
+      "uri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "engineeringprocessen",
+      "uri": "http://data.europa.eu/esco/skill/72a74f69-5cf1-43c5-99b9-62a444578919",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektrotechniek",
+      "uri": "http://data.europa.eu/esco/skill/3e40c7d0-0e36-4b33-bc33-0aa87eda0561",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor de naleving van de veiligheidsmaatregelen op luchthavens",
+      "uri": "http://data.europa.eu/esco/skill/62b7060c-3055-4ab8-bcf2-8080fd7c01f3",
       "categorie": "essentieel"
     },
     {
@@ -43,8 +58,18 @@
       "categorie": "essentieel"
     },
     {
-      "label": "mechanica",
-      "uri": "http://data.europa.eu/esco/skill/efa141df-f382-418f-9121-bd88fd735669",
+      "label": "elektrisch gereedschap gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/5bf7f85a-b080-4b27-8ddc-9f62af4643f5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "passende beschermende uitrusting dragen",
+      "uri": "http://data.europa.eu/esco/skill/6122d586-5978-431f-8e7a-96e61fc1f3fc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "technische documentatie gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/cffc3e97-e942-4b13-a2f3-0bf4910c06d3",
       "categorie": "essentieel"
     },
     {
@@ -58,33 +83,8 @@
       "categorie": "essentieel"
     },
     {
-      "label": "richtlijnen van de producent volgen bij het gebruik van luchthavenapparatuur",
-      "uri": "http://data.europa.eu/esco/skill/faf1930e-1818-4710-a85e-c690a153eeca",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "elektriciteit",
-      "uri": "http://data.europa.eu/esco/skill/c8ac1986-38fa-43b2-89dc-50a4beeb420e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "motoronderdelen",
-      "uri": "http://data.europa.eu/esco/skill/f5fa2654-52cc-45d2-ac92-ac979dee5d12",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "engineeringprocessen",
-      "uri": "http://data.europa.eu/esco/skill/72a74f69-5cf1-43c5-99b9-62a444578919",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "zorgen voor de naleving van de veiligheidsmaatregelen op luchthavens",
-      "uri": "http://data.europa.eu/esco/skill/62b7060c-3055-4ab8-bcf2-8080fd7c01f3",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "vliegtuigmechanica",
-      "uri": "http://data.europa.eu/esco/skill/532bcdca-a889-4dea-8f7f-4e03d8cfd0d2",
+      "label": "elektromechanica",
+      "uri": "http://data.europa.eu/esco/skill/2bbdea06-a265-42b5-bb4f-7241b661f069",
       "categorie": "essentieel"
     },
     {
@@ -93,33 +93,8 @@
       "categorie": "essentieel"
     },
     {
-      "label": "elektrisch gereedschap gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/5bf7f85a-b080-4b27-8ddc-9f62af4643f5",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "technische tekeningen",
-      "uri": "http://data.europa.eu/esco/skill/59ea80e1-463a-4dba-82c6-d0b6d577d532",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "elektrotechniek",
-      "uri": "http://data.europa.eu/esco/skill/3e40c7d0-0e36-4b33-bc33-0aa87eda0561",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "veelvoorkomende veiligheidsvoorschriften in de luchtvaart",
-      "uri": "http://data.europa.eu/esco/skill/d5b63f98-28ce-4cbb-b075-6ac539a685b0",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "motoren ontmantelen",
-      "uri": "http://data.europa.eu/esco/skill/db3c8181-31b4-4950-bf0b-de01f93c372b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "naleving van gezondheids- veiligheids- en hygiënenormen waarborgen",
-      "uri": "http://data.europa.eu/esco/skill/44e2c4c4-9fd2-42d4-a133-d81360ded4bc",
+      "label": "motoronderdelen",
+      "uri": "http://data.europa.eu/esco/skill/f5fa2654-52cc-45d2-ac92-ac979dee5d12",
       "categorie": "essentieel"
     },
     {
@@ -128,28 +103,13 @@
       "categorie": "essentieel"
     },
     {
-      "label": "motorprestaties evalueren",
-      "uri": "http://data.europa.eu/esco/skill/ed938748-60ae-4964-a657-ff2685ecc0d0",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "machinebouw",
-      "uri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
-      "categorie": "essentieel"
-    },
-    {
       "label": "technische communicatievaardigheden toepassen",
       "uri": "http://data.europa.eu/esco/skill/c32ad607-0c4d-4e34-b73f-668298f7bf13",
       "categorie": "essentieel"
     },
     {
-      "label": "elektromechanica",
-      "uri": "http://data.europa.eu/esco/skill/2bbdea06-a265-42b5-bb4f-7241b661f069",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "technische documentatie gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/cffc3e97-e942-4b13-a2f3-0bf4910c06d3",
+      "label": "mechanica",
+      "uri": "http://data.europa.eu/esco/skill/efa141df-f382-418f-9121-bd88fd735669",
       "categorie": "essentieel"
     },
     {
@@ -158,13 +118,48 @@
       "categorie": "essentieel"
     },
     {
+      "label": "technische tekeningen",
+      "uri": "http://data.europa.eu/esco/skill/59ea80e1-463a-4dba-82c6-d0b6d577d532",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vliegtuigmechanica",
+      "uri": "http://data.europa.eu/esco/skill/532bcdca-a889-4dea-8f7f-4e03d8cfd0d2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "richtlijnen van de producent volgen bij het gebruik van luchthavenapparatuur",
+      "uri": "http://data.europa.eu/esco/skill/faf1930e-1818-4710-a85e-c690a153eeca",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "motoren repareren",
+      "uri": "http://data.europa.eu/esco/skill/1bc7c69b-4292-4592-b854-f48165a06082",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronica",
+      "uri": "http://data.europa.eu/esco/skill/95c35c3a-035f-47c2-90cf-7e934d20fc08",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veelvoorkomende veiligheidsvoorschriften in de luchtvaart",
+      "uri": "http://data.europa.eu/esco/skill/d5b63f98-28ce-4cbb-b075-6ac539a685b0",
+      "categorie": "essentieel"
+    },
+    {
       "label": "solderen",
       "uri": "http://data.europa.eu/esco/skill/f30a7ea4-77dd-452c-8a2d-b06c12606a7f",
       "categorie": "essentieel"
     },
     {
-      "label": "passende beschermende uitrusting dragen",
-      "uri": "http://data.europa.eu/esco/skill/6122d586-5978-431f-8e7a-96e61fc1f3fc",
+      "label": "elektriciteit",
+      "uri": "http://data.europa.eu/esco/skill/c8ac1986-38fa-43b2-89dc-50a4beeb420e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "naleving van gezondheids- veiligheids- en hygiënenormen waarborgen",
+      "uri": "http://data.europa.eu/esco/skill/44e2c4c4-9fd2-42d4-a133-d81360ded4bc",
       "categorie": "essentieel"
     },
     {
@@ -173,28 +168,13 @@
       "categorie": "essentieel"
     },
     {
-      "label": "besturingssystemen van vliegtuigen",
-      "uri": "http://data.europa.eu/esco/skill/2672f6a9-1e70-43c5-859d-e6a0fc9ea0f1",
-      "categorie": "optioneel"
+      "label": "motorprestaties evalueren",
+      "uri": "http://data.europa.eu/esco/skill/ed938748-60ae-4964-a657-ff2685ecc0d0",
+      "categorie": "essentieel"
     },
     {
       "label": "computersystemen voor het beheer van onderhoud gebruiken",
       "uri": "http://data.europa.eu/esco/skill/a28df07f-976c-4eb4-b29a-06161af39756",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "prestatietests uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/bbd57056-80e0-45bb-a2c1-658ed99a1251",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "elektrische systemen die worden gebruikt bij vervoer",
-      "uri": "http://data.europa.eu/esco/skill/5088c536-13fb-4b6b-85e7-4053578e1451",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "testapparatuur gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/74374d09-7a54-4a05-ae78-d5940423de7c",
       "categorie": "optioneel"
     },
     {
@@ -203,13 +183,33 @@
       "categorie": "optioneel"
     },
     {
-      "label": "luchtwaardigheid van vliegtuigen controleren",
-      "uri": "http://data.europa.eu/esco/skill/2c02af08-a7f9-4535-889d-f4172cfc9a17",
+      "label": "elektrische systemen die worden gebruikt bij vervoer",
+      "uri": "http://data.europa.eu/esco/skill/5088c536-13fb-4b6b-85e7-4053578e1451",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "besturingssystemen van vliegtuigen",
+      "uri": "http://data.europa.eu/esco/skill/2672f6a9-1e70-43c5-859d-e6a0fc9ea0f1",
       "categorie": "optioneel"
     },
     {
       "label": "elektronische eenheden testen",
       "uri": "http://data.europa.eu/esco/skill/baf501a8-f0fe-4ad7-9b69-8e920fa1a87b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "testapparatuur gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/74374d09-7a54-4a05-ae78-d5940423de7c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "prestatietests uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/bbd57056-80e0-45bb-a2c1-658ed99a1251",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "luchtwaardigheid van vliegtuigen controleren",
+      "uri": "http://data.europa.eu/esco/skill/2c02af08-a7f9-4535-889d-f4172cfc9a17",
       "categorie": "optioneel"
     }
   ]

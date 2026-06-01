@@ -1,190 +1,189 @@
 {
   "crebo": "25877",
   "opleiding": "25877_BOL_2025__OER_2025_Junior_Accountmanager_25877",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "accountmanager",
-    "uri": "http://data.europa.eu/esco/occupation/2eac08c2-a81a-46fc-8d75-eb0e0f3e0f6d",
-    "definitie": "Accountmanagers fungeren als intermediair tussen klanten en de organisatie, en beheren zowel de verkoop als de langetermijnrelaties met de klant. Zij hebben kennis over producten en diensten en ontwikkelen contracten met klanten."
+    "label": "Junior accountmanager",
+    "uri": "",
+    "definitie": "Een junior accountmanager werkt (meestal) in een kantooromgeving van een (hybride) handelsonderneming (MKB), bijvoorbeeld frontoffice bij een groothandel. Deze commerciële functie is primair gericht op verkopen in de buitendienst en het ondersteunen van accountmanagers en komt, behalve bij veel groothandels, ook in allerlei andere sectoren, branches en ondernemingen voor. Voorbeelden hiervan zijn een bouwonderneming, een keukenspeciaalzaak met diverse vestigingen en bij een onderneming die roerende goederen verhuurt. Veel gebruikte alternatieve benamingen voor junior accountmanager zijn sales manager, verkoopconsultant en vertegenwoordiger.\n\nEen junior accountmanager combineert in de beroepsuitoefening een drietal rollen/functies, namelijk 1) relatiebeheerder, 2) vertegenwoordiger en 3) commercieel beleidsondersteuner. Vanuit deze rollen/functies en voor de meeste werkzaamheden geldt een focus op fasen van de customer journey. Want het gaat uiteindelijk om het leveren van een toegevoegde waarde aan en de tevredenheid van de klant. Voor het uitvoeren van de werkzaamheden is beheersing van de Engelse taal nodig."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "accountmanager",
-    "manager zakenbank",
-    "manager pensioenverzekeringen",
-    "administratief medewerker hypotheken",
-    "cliëntadviseur bankbedrijf",
-    "adviseur kredieten",
-    "logistiek manager",
-    "commercieel vertegenwoordiger",
-    "commercieel vertegenwoordiger elektriciteit",
-    "commercieel medewerker spoorwegen",
-    "commercieel piloot",
-    "commercieel vertegenwoordiger duurzame energie",
-    "medewerker verhuur van vastgoed",
-    "commercieel directeur",
-    "salesmanager"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "ondernemingsbeleid toepassen",
-      "uri": "http://data.europa.eu/esco/skill/0a43729f-2a79-4dae-9faa-95520daae79f",
+      "label": "Overtuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/26D3098394",
       "categorie": "essentieel"
     },
     {
-      "label": "klanten werven",
-      "uri": "http://data.europa.eu/esco/skill/6d97bf55-6fb6-4795-8282-3ef915ae0bb8",
+      "label": "Informatie ordenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/299CE88E49",
       "categorie": "essentieel"
     },
     {
-      "label": "analyses van de behoeften van klanten uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/31c83903-8fc8-4bd8-9ca4-7a98a9c31eae",
+      "label": "Netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3DECCF2E7C",
       "categorie": "essentieel"
     },
     {
-      "label": "gegevens over de verkoop bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/f4d3a8ff-2db1-4015-aa28-d4564afef3fd",
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
       "categorie": "essentieel"
     },
     {
-      "label": "eigenschappen van producten",
-      "uri": "http://data.europa.eu/esco/skill/1585fc98-bfe4-461f-97fc-734055a2c3ce",
+      "label": "Ondernemerszin tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/518455478C",
       "categorie": "essentieel"
     },
     {
-      "label": "kenmerken van diensten",
-      "uri": "http://data.europa.eu/esco/skill/fb3bc9b5-2297-4bba-85b1-60f696a92db8",
+      "label": "Problemen oplossen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/53E033E58A",
       "categorie": "essentieel"
     },
     {
-      "label": "opvolging van klanten implementeren",
-      "uri": "http://data.europa.eu/esco/skill/50181a4b-1cfd-4fbd-ac9a-c1a494b9c5d0",
+      "label": "Verplichtingen nakomen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6EDDE6185F",
       "categorie": "essentieel"
     },
     {
-      "label": "verkoopcijfers van producten bestuderen",
-      "uri": "http://data.europa.eu/esco/skill/171eee55-19b9-46d6-aded-33193ba8ccf1",
+      "label": "Bedrijfsprocessen verbeteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7C37C4FF38",
       "categorie": "essentieel"
     },
     {
-      "label": "klantgegevens vastleggen",
-      "uri": "http://data.europa.eu/esco/skill/c753a3b5-d5cc-406d-adfe-3372bb267f4b",
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
       "categorie": "essentieel"
     },
     {
-      "label": "software voor het beheer van klantrelaties gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/9889b795-d755-41b2-8afd-2e3c87a65a38",
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
       "categorie": "essentieel"
     },
     {
-      "label": "rekeningmetrieken voorspellen",
-      "uri": "http://data.europa.eu/esco/skill/59fe85c4-8202-46ac-b6a5-e28ea25d1848",
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
       "categorie": "essentieel"
     },
     {
-      "label": "productkennis",
-      "uri": "http://data.europa.eu/esco/skill/d6d3fee7-47e2-47f4-a0ec-6c75f28c6abd",
+      "label": "Promoten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E06265451B",
       "categorie": "essentieel"
     },
     {
-      "label": "verkoopverslagen opstellen",
-      "uri": "http://data.europa.eu/esco/skill/b0565bd9-29c8-42f6-b174-702970fc2f4f",
+      "label": "Kritisch nadenken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E1F935288C",
       "categorie": "essentieel"
     },
     {
-      "label": "verkoopopbrengsten maximaliseren",
-      "uri": "http://data.europa.eu/esco/skill/9f10e94b-a43d-4772-9f60-24e9bbbdedb7",
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
       "categorie": "essentieel"
     },
     {
-      "label": "ondernemingsbeleid",
-      "uri": "http://data.europa.eu/esco/skill/f75b740c-b36c-495e-bc67-efe347bbc6b5",
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
       "categorie": "essentieel"
     },
     {
-      "label": "klantgericht zijn",
-      "uri": "http://data.europa.eu/esco/skill/13e93abd-618c-46df-abbe-1af38ecd1aa2",
+      "label": "Grafisch ontwerpen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2DC70C1A23",
       "categorie": "essentieel"
     },
     {
-      "label": "zakenrelaties aangaan",
-      "uri": "http://data.europa.eu/esco/skill/dc72ad0a-c5dc-4abd-bc0d-ca43e82162e1",
+      "label": "Transport en logistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2F8C9BA908",
       "categorie": "essentieel"
     },
     {
-      "label": "gegevensanalyses uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/2b92a5b2-6758-4ee3-9fb4-b6387a55cc8f",
+      "label": "Bedrijfseconomie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/53B4B474D1",
       "categorie": "essentieel"
     },
     {
-      "label": "contracten beheren",
-      "uri": "http://data.europa.eu/esco/skill/92721092-fe7c-4689-96bd-4f02385bc0e7",
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
       "categorie": "essentieel"
     },
     {
-      "label": "over prijzen onderhandelen",
-      "uri": "http://data.europa.eu/esco/skill/7ee9fb56-91b1-4363-b51f-ea54ae1b5761",
+      "label": "Verzekeringen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7859C11150",
       "categorie": "essentieel"
     },
     {
-      "label": "klantendiensten",
-      "uri": "http://data.europa.eu/esco/skill/15a33d76-4640-438d-ae64-fdc0c1d3eebc",
+      "label": "Innovatiemethoden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/807C2437A2",
       "categorie": "essentieel"
     },
     {
-      "label": "communicatietechnieken gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/7ff2c668-0e86-418a-a962-4958262ee337",
-      "categorie": "optioneel"
+      "label": "Commerciële economie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8E7697EE1A",
+      "categorie": "essentieel"
     },
     {
-      "label": "software voor contentmanagementsystemen gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/56a10e3e-c9e7-4d39-b6f1-6013398fcb3a",
-      "categorie": "optioneel"
+      "label": "Informatiemanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9212BF2426",
+      "categorie": "essentieel"
     },
     {
-      "label": "verschillende talen spreken",
-      "uri": "http://data.europa.eu/esco/skill/2de4572a-4724-4f76-afc2-72a568a264ac",
-      "categorie": "optioneel"
+      "label": "Samenwerking en netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/95C3218741",
+      "categorie": "essentieel"
     },
     {
-      "label": "aanpassen aan veranderende situaties",
-      "uri": "http://data.europa.eu/esco/skill/5592ab32-4e7a-4cda-8e64-ca36d5de8a10",
-      "categorie": "optioneel"
+      "label": "Netwerk- en systeembeheer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/99C8D1BBD8",
+      "categorie": "essentieel"
     },
     {
-      "label": "marktonderzoek uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/fe39d4db-4cb5-4299-bb9f-896c8fd6ab13",
-      "categorie": "optioneel"
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
     },
     {
-      "label": "vragen stellen over documenten",
-      "uri": "http://data.europa.eu/esco/skill/8c4b7305-4b83-4586-9d42-2817f96c60ea",
-      "categorie": "optioneel"
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
+      "categorie": "essentieel"
     },
     {
-      "label": "consumentenbescherming",
-      "uri": "http://data.europa.eu/esco/skill/7ae62140-fe02-4ee3-a0c5-fb5668a2870d",
-      "categorie": "optioneel"
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
     },
     {
-      "label": "mededingingswetgeving",
-      "uri": "http://data.europa.eu/esco/skill/ce5598ec-5ca4-4f3e-92a2-c55c90ce6038",
-      "categorie": "optioneel"
+      "label": "Bedrijfsinformatica",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D313E86D1B",
+      "categorie": "essentieel"
     },
     {
-      "label": "arbeidswet",
-      "uri": "http://data.europa.eu/esco/skill/97b713f0-b9e8-4903-8dee-7e0b4019a1c0",
-      "categorie": "optioneel"
+      "label": "Werken met digitale apparaten en toepassingen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DA95C063A4",
+      "categorie": "essentieel"
     },
     {
-      "label": "verkoopgesprekken houden",
-      "uri": "http://data.europa.eu/esco/skill/2f573ad6-1fa6-46c5-a48d-912368fe55aa",
-      "categorie": "optioneel"
+      "label": "Public relations",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DDB33F7221",
+      "categorie": "essentieel"
     },
     {
-      "label": "boekhoudkundige technieken",
-      "uri": "http://data.europa.eu/esco/skill/880c54f9-866e-4f37-b5fa-25ef8a7d49b6",
-      "categorie": "optioneel"
+      "label": "Onderzoeksmethoden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E4B9A547C8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Marketing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E6A75FB995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Projectmanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F248B939CD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
     }
   ]
 }

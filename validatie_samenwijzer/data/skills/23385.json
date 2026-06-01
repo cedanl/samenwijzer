@@ -20,158 +20,8 @@
   ],
   "skills": [
     {
-      "label": "ondernemingsbeleid",
-      "uri": "http://data.europa.eu/esco/skill/f75b740c-b36c-495e-bc67-efe347bbc6b5",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gebruikers van diensten ondersteunen bij het gebruik van technologische hulpmiddelen",
-      "uri": "http://data.europa.eu/esco/skill/9a9272df-398b-4787-bd51-53d5e8d999eb",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "conflicten hanteren",
-      "uri": "http://data.europa.eu/esco/skill/96de2e86-e287-41f2-88ab-15a2343afc6f",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gebruikers van sociale diensten helpen bij het formuleren van klachten",
-      "uri": "http://data.europa.eu/esco/skill/eb2d56cf-4689-43d9-88c6-775c7bf6596d",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gebruikers van sociale dienstverlening met lichamelijke handicaps helpen",
-      "uri": "http://data.europa.eu/esco/skill/8ef1b45e-8499-4b1b-91f7-f8278bbb7767",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "rechten van gebruikers van diensten promoten",
-      "uri": "http://data.europa.eu/esco/skill/7838b15f-1beb-4da3-b4f2-22d8ae6e9079",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "kwetsbare gebruikers van sociale diensten beschermen",
-      "uri": "http://data.europa.eu/esco/skill/3aa7e88e-bebd-48b1-94ba-6efddeecf08f",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "actief luisteren",
-      "uri": "http://data.europa.eu/esco/skill/a17286c5-238d-4f0b-bc24-29e9121345de",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "persoonsgerichte zorg toepassen",
-      "uri": "http://data.europa.eu/esco/skill/7a63f944-6948-4ae4-9c1f-d08e492535c9",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "communiceren met gebruikers van sociale diensten",
-      "uri": "http://data.europa.eu/esco/skill/e8828961-9e8e-471f-bd24-0673a7e844ef",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gezondheid van gebruikers van een dienst controleren",
-      "uri": "http://data.europa.eu/esco/skill/453b6898-de72-4ff9-b217-4a3cd377e155",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "sociaal rechtvaardige werkbeginselen toepassen",
-      "uri": "http://data.europa.eu/esco/skill/bc401d18-9bea-4300-90fd-22bfa286bd77",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "holistische benadering toepassen binnen sociale diensten",
-      "uri": "http://data.europa.eu/esco/skill/afa3b020-a48c-45a8-a2ff-77d0b9df5381",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gebruikers van sociale diensten ondersteunen om thuis te wonen",
-      "uri": "http://data.europa.eu/esco/skill/941438bd-cc03-4326-91bf-677157dca170",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "kwaliteitsnormen toepassen bij sociale diensten",
-      "uri": "http://data.europa.eu/esco/skill/2f8a2712-d20c-4e5f-b34a-738f55486aa0",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "hulprelaties opbouwen met gebruikers van sociale diensten",
-      "uri": "http://data.europa.eu/esco/skill/fdb44237-c0b0-4924-9439-911332e0d884",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "privacy van gebruikers van diensten bewaren",
-      "uri": "http://data.europa.eu/esco/skill/73e7e2f4-7e5f-4e6c-86c2-3b5fbd191172",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "behoeften van oudere volwassenen",
-      "uri": "http://data.europa.eu/esco/skill/634865e0-2ec2-4b7f-bb7f-c196637f0f7b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "interviews afnemen bij sociale diensten",
-      "uri": "http://data.europa.eu/esco/skill/4f4afd0b-07e5-48fd-a7d4-0e8746c608df",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "sociale verandering promoten",
-      "uri": "http://data.europa.eu/esco/skill/644209ac-8452-4e81-959a-2b10050023cc",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "sociaal dienstverleningsplan evalueren",
-      "uri": "http://data.europa.eu/esco/skill/a95e0f9f-726e-4b0a-97c5-fa7a9d40ae8f",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "problemen oplossen bij sociale dienstverlening",
-      "uri": "http://data.europa.eu/esco/skill/30d49832-84bd-4d97-9441-aef97a76a8d0",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "benadeelde of misbruikte gebruikers van sociale diensten ondersteunen",
-      "uri": "http://data.europa.eu/esco/skill/04e84553-2795-4098-b0ad-e7921628b32c",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "sociale crisissen beheersen",
-      "uri": "http://data.europa.eu/esco/skill/a4d46d86-9de5-4734-881c-5b2059b9fccf",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "situatie van gebruikers van sociale diensten beoordelen",
-      "uri": "http://data.europa.eu/esco/skill/8d927aab-9202-4c02-9f39-5d478458f25c",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "verslag doen van sociale ontwikkelingen",
-      "uri": "http://data.europa.eu/esco/skill/c65795f8-69cc-47e0-9ba0-427671c965e6",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "integratie bevorderen",
-      "uri": "http://data.europa.eu/esco/skill/bcd2ce08-ba12-4d66-865f-f4ba36419707",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "vermogen van oudere volwassenen om voor zichzelf te zorgen beoordelen",
-      "uri": "http://data.europa.eu/esco/skill/b4910ea9-578d-4767-bd68-00a315a64e09",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "sociale diensten verlenen in cultureel diverse gemeenschappen",
-      "uri": "http://data.europa.eu/esco/skill/4b5d4fe3-4280-47c0-b1d2-ab08ace85557",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "organisatorische technieken gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/d3eccb86-f02d-4950-bfbd-20b9510774a1",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "voorzorgsmaatregelen voor gezondheid en veiligheid volgen bij socialezorgpraktijken",
-      "uri": "http://data.europa.eu/esco/skill/5e5d8826-92c4-4274-a6f9-3db6fca9eadc",
+      "label": "gebruikers van sociale diensten stimuleren hun onafhankelijkheid te bewaren in dagelijkse activiteiten",
+      "uri": "http://data.europa.eu/esco/skill/7e57eb3c-092b-4307-ad1c-c65f55adbc4e",
       "categorie": "essentieel"
     },
     {
@@ -180,133 +30,13 @@
       "categorie": "essentieel"
     },
     {
-      "label": "gebruikers van sociale diensten ondersteunen bij het beheer van vaardigheden",
-      "uri": "http://data.europa.eu/esco/skill/2d407c34-5699-42dc-ab58-373652d69aef",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "positieve instelling van gebruikers van sociale diensten ondersteunen",
-      "uri": "http://data.europa.eu/esco/skill/72ead619-88da-4557-8c98-607fd7e2cd47",
-      "categorie": "essentieel"
-    },
-    {
       "label": "eigen verantwoordelijkheid aanvaarden",
       "uri": "http://data.europa.eu/esco/skill/f90d4810-8bac-4e5e-b870-3e35a4138ff7",
       "categorie": "essentieel"
     },
     {
-      "label": "gebruikers van sociale diensten met specifieke communicatiebehoeften ondersteunen",
-      "uri": "http://data.europa.eu/esco/skill/e94773c9-c4be-4a01-a81f-d033dfeb21d4",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "empathisch zijn",
-      "uri": "http://data.europa.eu/esco/skill/996243ee-543f-4c36-a31a-e0f2403c0c5d",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "voldoen aan praktijknormen in sociale diensten",
-      "uri": "http://data.europa.eu/esco/skill/2b8386c1-eed6-42ff-bd99-349eca9ea46e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "stressbestendig zijn",
-      "uri": "http://data.europa.eu/esco/skill/d15f8745-28f8-4abf-a7b6-6cb8a304efd2",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gebruikers van diensten en verzorgers betrekken bij de planning van zorg",
-      "uri": "http://data.europa.eu/esco/skill/2806b5cb-964b-4148-84aa-7efdbeffe9e3",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "klantendiensten",
-      "uri": "http://data.europa.eu/esco/skill/15a33d76-4640-438d-ae64-fdc0c1d3eebc",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "wetgeving inzake sociale diensten naleven",
-      "uri": "http://data.europa.eu/esco/skill/fd8a70fb-1174-4263-b701-ea442fbbc324",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "beslissingen nemen binnen sociaal werk",
-      "uri": "http://data.europa.eu/esco/skill/a9661351-4d11-477e-9f8c-e22dab6596d6",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "verslagen van werk met gebruikers van diensten bewaren",
-      "uri": "http://data.europa.eu/esco/skill/bd17a64e-a9bd-439d-9b87-01c6bb1b7e09",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gebruikers van sociale diensten stimuleren hun onafhankelijkheid te bewaren in dagelijkse activiteiten",
-      "uri": "http://data.europa.eu/esco/skill/7e57eb3c-092b-4307-ad1c-c65f55adbc4e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "stress in organisaties beheersen",
-      "uri": "http://data.europa.eu/esco/skill/fbdfc3bf-56a0-4454-a17d-2f513fe57b53",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "personen met een handicap helpen om deel te nemen aan gemeenschapsactiviteiten",
-      "uri": "http://data.europa.eu/esco/skill/0f298334-ae4a-4ab7-96c2-0d90d2883768",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "leiderschap tonen bij sociale dienstverlening",
-      "uri": "http://data.europa.eu/esco/skill/524c4331-5090-4565-a0bc-0a9ae874938d",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "risicobeoordeling uitvoeren van gebruikers van sociale diensten",
-      "uri": "http://data.europa.eu/esco/skill/497705d7-7a03-4a68-99f3-69d2de9366f4",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "vertrouwen van gebruikers van diensten behouden",
-      "uri": "http://data.europa.eu/esco/skill/edf5a26c-8a71-4683-99b1-a8f567a603e2",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "sociale wetenschappen",
-      "uri": "http://data.europa.eu/esco/skill/4e097377-7950-4993-9e22-a61b067b5c00",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "sociale problemen voorkomen",
-      "uri": "http://data.europa.eu/esco/skill/6d80a4cb-cad2-435c-b899-e0e91fda07d6",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "professioneel communiceren met collega’s in andere vakgebieden",
-      "uri": "http://data.europa.eu/esco/skill/574bf430-50a1-4734-9719-a823e7d80b10",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "werken in een multiculturele omgeving in de gezondheidszorg",
-      "uri": "http://data.europa.eu/esco/skill/b55f61a4-5f9e-4741-ba95-9ac04b64119b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gebruikers van diensten verwijzen naar gemeenschapsmiddelen",
-      "uri": "http://data.europa.eu/esco/skill/d22ed03b-5385-4c53-b399-17bfec2b61f5",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "sociale rechtvaardigheid",
-      "uri": "http://data.europa.eu/esco/skill/e97c0d89-2f81-4840-8602-e668a949482f",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "wettelijke vereisten in de sociale sector",
-      "uri": "http://data.europa.eu/esco/skill/39dd50ae-814c-4a15-99e9-39afcc36bf9f",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "sociale begeleiding bieden",
-      "uri": "http://data.europa.eu/esco/skill/09d6ed43-95a1-4492-8bd7-d01039285afa",
+      "label": "gezondheid van gebruikers van een dienst controleren",
+      "uri": "http://data.europa.eu/esco/skill/453b6898-de72-4ff9-b217-4a3cd377e155",
       "categorie": "essentieel"
     },
     {
@@ -315,13 +45,53 @@
       "categorie": "essentieel"
     },
     {
-      "label": "pleiten voor gebruikers van sociale diensten",
-      "uri": "http://data.europa.eu/esco/skill/6b85a3ef-4518-42e1-84ff-55ff13c2641f",
+      "label": "verslag doen van sociale ontwikkelingen",
+      "uri": "http://data.europa.eu/esco/skill/c65795f8-69cc-47e0-9ba0-427671c965e6",
       "categorie": "essentieel"
     },
     {
-      "label": "beleidslijnen van de organisatie naleven",
-      "uri": "http://data.europa.eu/esco/skill/aa238394-8126-4ada-be2f-9dfe065cf314",
+      "label": "vermogen van oudere volwassenen om voor zichzelf te zorgen beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/b4910ea9-578d-4767-bd68-00a315a64e09",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale wetenschappen",
+      "uri": "http://data.europa.eu/esco/skill/4e097377-7950-4993-9e22-a61b067b5c00",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "professioneel communiceren met collega’s in andere vakgebieden",
+      "uri": "http://data.europa.eu/esco/skill/574bf430-50a1-4734-9719-a823e7d80b10",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "wettelijke vereisten in de sociale sector",
+      "uri": "http://data.europa.eu/esco/skill/39dd50ae-814c-4a15-99e9-39afcc36bf9f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "stressbestendig zijn",
+      "uri": "http://data.europa.eu/esco/skill/d15f8745-28f8-4abf-a7b6-6cb8a304efd2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "benadeelde of misbruikte gebruikers van sociale diensten ondersteunen",
+      "uri": "http://data.europa.eu/esco/skill/04e84553-2795-4098-b0ad-e7921628b32c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gebruikers van sociale diensten ondersteunen om thuis te wonen",
+      "uri": "http://data.europa.eu/esco/skill/941438bd-cc03-4326-91bf-677157dca170",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale begeleiding bieden",
+      "uri": "http://data.europa.eu/esco/skill/09d6ed43-95a1-4492-8bd7-d01039285afa",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "hulprelaties opbouwen met gebruikers van sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/fdb44237-c0b0-4924-9439-911332e0d884",
       "categorie": "essentieel"
     },
     {
@@ -330,13 +100,243 @@
       "categorie": "essentieel"
     },
     {
+      "label": "werken in een multiculturele omgeving in de gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/b55f61a4-5f9e-4741-ba95-9ac04b64119b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "persoonsgerichte zorg toepassen",
+      "uri": "http://data.europa.eu/esco/skill/7a63f944-6948-4ae4-9c1f-d08e492535c9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwetsbare gebruikers van sociale diensten beschermen",
+      "uri": "http://data.europa.eu/esco/skill/3aa7e88e-bebd-48b1-94ba-6efddeecf08f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociaal dienstverleningsplan evalueren",
+      "uri": "http://data.europa.eu/esco/skill/a95e0f9f-726e-4b0a-97c5-fa7a9d40ae8f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "integratie bevorderen",
+      "uri": "http://data.europa.eu/esco/skill/bcd2ce08-ba12-4d66-865f-f4ba36419707",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "wetgeving inzake sociale diensten naleven",
+      "uri": "http://data.europa.eu/esco/skill/fd8a70fb-1174-4263-b701-ea442fbbc324",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "problemen oplossen bij sociale dienstverlening",
+      "uri": "http://data.europa.eu/esco/skill/30d49832-84bd-4d97-9441-aef97a76a8d0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "actief luisteren",
+      "uri": "http://data.europa.eu/esco/skill/a17286c5-238d-4f0b-bc24-29e9121345de",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "privacy van gebruikers van diensten bewaren",
+      "uri": "http://data.europa.eu/esco/skill/73e7e2f4-7e5f-4e6c-86c2-3b5fbd191172",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beslissingen nemen binnen sociaal werk",
+      "uri": "http://data.europa.eu/esco/skill/a9661351-4d11-477e-9f8c-e22dab6596d6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vertrouwen van gebruikers van diensten behouden",
+      "uri": "http://data.europa.eu/esco/skill/edf5a26c-8a71-4683-99b1-a8f567a603e2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gebruikers van sociale diensten met specifieke communicatiebehoeften ondersteunen",
+      "uri": "http://data.europa.eu/esco/skill/e94773c9-c4be-4a01-a81f-d033dfeb21d4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale crisissen beheersen",
+      "uri": "http://data.europa.eu/esco/skill/a4d46d86-9de5-4734-881c-5b2059b9fccf",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gebruikers van diensten ondersteunen bij het gebruik van technologische hulpmiddelen",
+      "uri": "http://data.europa.eu/esco/skill/9a9272df-398b-4787-bd51-53d5e8d999eb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "leiderschap tonen bij sociale dienstverlening",
+      "uri": "http://data.europa.eu/esco/skill/524c4331-5090-4565-a0bc-0a9ae874938d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "positieve instelling van gebruikers van sociale diensten ondersteunen",
+      "uri": "http://data.europa.eu/esco/skill/72ead619-88da-4557-8c98-607fd7e2cd47",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "interviews afnemen bij sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/4f4afd0b-07e5-48fd-a7d4-0e8746c608df",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "risicobeoordeling uitvoeren van gebruikers van sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/497705d7-7a03-4a68-99f3-69d2de9366f4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "organisatorische technieken gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/d3eccb86-f02d-4950-bfbd-20b9510774a1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gebruikers van sociale diensten ondersteunen bij het beheer van vaardigheden",
+      "uri": "http://data.europa.eu/esco/skill/2d407c34-5699-42dc-ab58-373652d69aef",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gebruikers van sociale diensten helpen bij het formuleren van klachten",
+      "uri": "http://data.europa.eu/esco/skill/eb2d56cf-4689-43d9-88c6-775c7bf6596d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "situatie van gebruikers van sociale diensten beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/8d927aab-9202-4c02-9f39-5d478458f25c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "behoeften van oudere volwassenen",
+      "uri": "http://data.europa.eu/esco/skill/634865e0-2ec2-4b7f-bb7f-c196637f0f7b",
+      "categorie": "essentieel"
+    },
+    {
       "label": "gebruikers van diensten ondersteunen bij het ontwikkelen van vaardigheden",
       "uri": "http://data.europa.eu/esco/skill/74beca00-bd58-4c27-812d-0d5933c76d6f",
       "categorie": "essentieel"
     },
     {
+      "label": "beleidslijnen van de organisatie naleven",
+      "uri": "http://data.europa.eu/esco/skill/aa238394-8126-4ada-be2f-9dfe065cf314",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gebruikers van diensten verwijzen naar gemeenschapsmiddelen",
+      "uri": "http://data.europa.eu/esco/skill/d22ed03b-5385-4c53-b399-17bfec2b61f5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ondernemingsbeleid",
+      "uri": "http://data.europa.eu/esco/skill/f75b740c-b36c-495e-bc67-efe347bbc6b5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "empathisch zijn",
+      "uri": "http://data.europa.eu/esco/skill/996243ee-543f-4c36-a31a-e0f2403c0c5d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale verandering promoten",
+      "uri": "http://data.europa.eu/esco/skill/644209ac-8452-4e81-959a-2b10050023cc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale problemen voorkomen",
+      "uri": "http://data.europa.eu/esco/skill/6d80a4cb-cad2-435c-b899-e0e91fda07d6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale diensten verlenen in cultureel diverse gemeenschappen",
+      "uri": "http://data.europa.eu/esco/skill/4b5d4fe3-4280-47c0-b1d2-ab08ace85557",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "stress in organisaties beheersen",
+      "uri": "http://data.europa.eu/esco/skill/fbdfc3bf-56a0-4454-a17d-2f513fe57b53",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klantendiensten",
+      "uri": "http://data.europa.eu/esco/skill/15a33d76-4640-438d-ae64-fdc0c1d3eebc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "holistische benadering toepassen binnen sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/afa3b020-a48c-45a8-a2ff-77d0b9df5381",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voorzorgsmaatregelen voor gezondheid en veiligheid volgen bij socialezorgpraktijken",
+      "uri": "http://data.europa.eu/esco/skill/5e5d8826-92c4-4274-a6f9-3db6fca9eadc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "communiceren met gebruikers van sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/e8828961-9e8e-471f-bd24-0673a7e844ef",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "pleiten voor gebruikers van sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/6b85a3ef-4518-42e1-84ff-55ff13c2641f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gebruikers van sociale dienstverlening met lichamelijke handicaps helpen",
+      "uri": "http://data.europa.eu/esco/skill/8ef1b45e-8499-4b1b-91f7-f8278bbb7767",
+      "categorie": "essentieel"
+    },
+    {
       "label": "activiteiten delegeren",
       "uri": "http://data.europa.eu/esco/skill/b00e948c-19be-4951-8cff-60f88f1046e9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociaal rechtvaardige werkbeginselen toepassen",
+      "uri": "http://data.europa.eu/esco/skill/bc401d18-9bea-4300-90fd-22bfa286bd77",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gebruikers van diensten en verzorgers betrekken bij de planning van zorg",
+      "uri": "http://data.europa.eu/esco/skill/2806b5cb-964b-4148-84aa-7efdbeffe9e3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verslagen van werk met gebruikers van diensten bewaren",
+      "uri": "http://data.europa.eu/esco/skill/bd17a64e-a9bd-439d-9b87-01c6bb1b7e09",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "conflicten hanteren",
+      "uri": "http://data.europa.eu/esco/skill/96de2e86-e287-41f2-88ab-15a2343afc6f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "rechten van gebruikers van diensten promoten",
+      "uri": "http://data.europa.eu/esco/skill/7838b15f-1beb-4da3-b4f2-22d8ae6e9079",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voldoen aan praktijknormen in sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/2b8386c1-eed6-42ff-bd99-349eca9ea46e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale rechtvaardigheid",
+      "uri": "http://data.europa.eu/esco/skill/e97c0d89-2f81-4840-8602-e668a949482f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteitsnormen toepassen bij sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/2f8a2712-d20c-4e5f-b34a-738f55486aa0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "personen met een handicap helpen om deel te nemen aan gemeenschapsactiviteiten",
+      "uri": "http://data.europa.eu/esco/skill/0f298334-ae4a-4ab7-96c2-0d90d2883768",
       "categorie": "essentieel"
     }
   ]

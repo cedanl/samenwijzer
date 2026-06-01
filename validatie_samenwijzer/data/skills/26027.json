@@ -13,6 +13,11 @@
   ],
   "skills": [
     {
+      "label": "documentenbeheer",
+      "uri": "http://data.europa.eu/esco/skill/ea1bf5e5-e7f0-4d2c-a415-1c39c00512b1",
+      "categorie": "essentieel"
+    },
+    {
       "label": "beleidslijnen van de organisatie naleven",
       "uri": "http://data.europa.eu/esco/skill/aa238394-8126-4ada-be2f-9dfe065cf314",
       "categorie": "essentieel"
@@ -23,33 +28,13 @@
       "categorie": "essentieel"
     },
     {
-      "label": "medische terminologie",
-      "uri": "http://data.europa.eu/esco/skill/2806260f-6399-4add-8f11-070141423f9d",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "klinische codering",
-      "uri": "http://data.europa.eu/esco/skill/cf0b92de-4bd0-46ee-b383-7765b4cbcac9",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "documentenbeheer",
-      "uri": "http://data.europa.eu/esco/skill/ea1bf5e5-e7f0-4d2c-a415-1c39c00512b1",
-      "categorie": "essentieel"
-    },
-    {
       "label": "medische gegevens van patiënten controleren",
       "uri": "http://data.europa.eu/esco/skill/d5e9b47e-580f-41e7-bc6c-e7345566fcb4",
       "categorie": "essentieel"
     },
     {
-      "label": "vertrouwelijkheid van gegevens van gebruikers van gezondheidszorg verzekeren",
-      "uri": "http://data.europa.eu/esco/skill/51ece34f-c24e-4183-9bf4-9b6f28748aec",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gegevens van gebruikers van gezondheidszorg beheren",
-      "uri": "http://data.europa.eu/esco/skill/4d614c92-0c48-4a11-a5ed-416b34fd50d2",
+      "label": "klinische coderingsprocedures uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/f022b5ff-8496-4722-a7a3-ef3c072f01f6",
       "categorie": "essentieel"
     },
     {
@@ -58,8 +43,8 @@
       "categorie": "essentieel"
     },
     {
-      "label": "klinische coderingsprocedures uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/f022b5ff-8496-4722-a7a3-ef3c072f01f6",
+      "label": "klinische codering",
+      "uri": "http://data.europa.eu/esco/skill/cf0b92de-4bd0-46ee-b383-7765b4cbcac9",
       "categorie": "essentieel"
     },
     {
@@ -73,6 +58,46 @@
       "categorie": "essentieel"
     },
     {
+      "label": "gegevens van gebruikers van gezondheidszorg beheren",
+      "uri": "http://data.europa.eu/esco/skill/4d614c92-0c48-4a11-a5ed-416b34fd50d2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "medische terminologie",
+      "uri": "http://data.europa.eu/esco/skill/2806260f-6399-4add-8f11-070141423f9d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vertrouwelijkheid van gegevens van gebruikers van gezondheidszorg verzekeren",
+      "uri": "http://data.europa.eu/esco/skill/51ece34f-c24e-4183-9bf4-9b6f28748aec",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "medische informatica",
+      "uri": "http://data.europa.eu/esco/skill/b21e2984-c6b2-4352-bbe8-8f3b03bd50f6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "anatomie van de mens",
+      "uri": "http://data.europa.eu/esco/skill/9ec4252d-cbe8-4134-88fa-549dee1883f3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/9b63d92b-5a3a-46b0-b2ba-c98b39ea5aaf",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "medische dossiers van patiënten identificeren",
+      "uri": "http://data.europa.eu/esco/skill/9ec07ba9-f876-4dce-92b1-9e0cd68aa969",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "statistische gegevens over medische dossiers verzamelen",
+      "uri": "http://data.europa.eu/esco/skill/b22828a8-18e7-4639-8fbd-f2b33594382d",
+      "categorie": "optioneel"
+    },
+    {
       "label": "algemene gegevens van gebruikers van gezondheidszorg verzamelen",
       "uri": "http://data.europa.eu/esco/skill/7d08e3cd-3a68-4568-8273-5b53ac0cbc71",
       "categorie": "optioneel"
@@ -83,38 +108,13 @@
       "categorie": "optioneel"
     },
     {
-      "label": "statistische gegevens over medische dossiers verzamelen",
-      "uri": "http://data.europa.eu/esco/skill/b22828a8-18e7-4639-8fbd-f2b33594382d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "medische dossiers van patiënten identificeren",
-      "uri": "http://data.europa.eu/esco/skill/9ec07ba9-f876-4dce-92b1-9e0cd68aa969",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "menselijke fysiologie",
-      "uri": "http://data.europa.eu/esco/skill/51e53aff-6f8a-42ca-9cb9-47335130f4d7",
-      "categorie": "optioneel"
-    },
-    {
       "label": "beheer van gezondheidsgegevens",
       "uri": "http://data.europa.eu/esco/skill/5d7890d5-d229-4b79-a5da-6819e38a52b6",
       "categorie": "optioneel"
     },
     {
-      "label": "gezondheidszorg",
-      "uri": "http://data.europa.eu/esco/skill/9b63d92b-5a3a-46b0-b2ba-c98b39ea5aaf",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "anatomie van de mens",
-      "uri": "http://data.europa.eu/esco/skill/9ec4252d-cbe8-4134-88fa-549dee1883f3",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "medische informatica",
-      "uri": "http://data.europa.eu/esco/skill/b21e2984-c6b2-4352-bbe8-8f3b03bd50f6",
+      "label": "menselijke fysiologie",
+      "uri": "http://data.europa.eu/esco/skill/51e53aff-6f8a-42ca-9cb9-47335130f4d7",
       "categorie": "optioneel"
     }
   ]

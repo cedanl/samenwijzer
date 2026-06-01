@@ -28,58 +28,13 @@
   ],
   "skills": [
     {
+      "label": "nieuwe zakenkansen identificeren",
+      "uri": "http://data.europa.eu/esco/skill/d207a30b-2f80-4138-9b77-f88d549b8768",
+      "categorie": "essentieel"
+    },
+    {
       "label": "beschikken over computervaardigheden",
       "uri": "http://data.europa.eu/esco/skill/d15ce60f-ddab-41ce-ba56-398451b77b60",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "zakenrelaties aangaan",
-      "uri": "http://data.europa.eu/esco/skill/dc72ad0a-c5dc-4abd-bc0d-ca43e82162e1",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "onderhandelen over inkoopvoorwaarden",
-      "uri": "http://data.europa.eu/esco/skill/fde186df-c9c4-49f5-b2a5-d66adc7c43a5",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "productkennis",
-      "uri": "http://data.europa.eu/esco/skill/d6d3fee7-47e2-47f4-a0ec-6c75f28c6abd",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "onderhandelen over de verkoop van grondstoffen",
-      "uri": "http://data.europa.eu/esco/skill/d4c4df36-5f61-4677-afa4-82d9e93c657b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "behoeften van klanten identificeren",
-      "uri": "http://data.europa.eu/esco/skill/68698869-c13c-4563-adc7-118b7644f45d",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "verkoopstrategieën",
-      "uri": "http://data.europa.eu/esco/skill/e7219848-a27a-4bf4-8775-d367707be7c9",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "leveranciersrisico’s beoordelen",
-      "uri": "http://data.europa.eu/esco/skill/96ec2d53-4f41-4172-8ef2-70742c4bb540",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "financiële zakelijke terminologie begrijpen",
-      "uri": "http://data.europa.eu/esco/skill/81db5616-3c98-4317-a728-5dae08d44bd4",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "contact leggen met kopers",
-      "uri": "http://data.europa.eu/esco/skill/c1013d55-b503-428f-aa58-f45412350e28",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "onderhandelen over verkoopcontracten",
-      "uri": "http://data.europa.eu/esco/skill/71152876-b629-4a99-b9ea-0f25a0d07e4e",
       "categorie": "essentieel"
     },
     {
@@ -88,8 +43,18 @@
       "categorie": "essentieel"
     },
     {
-      "label": "financiële verslagen bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/faf8943c-72ff-4736-a587-25508695d6f0",
+      "label": "productkennis",
+      "uri": "http://data.europa.eu/esco/skill/d6d3fee7-47e2-47f4-a0ec-6c75f28c6abd",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderhandelen over inkoopvoorwaarden",
+      "uri": "http://data.europa.eu/esco/skill/fde186df-c9c4-49f5-b2a5-d66adc7c43a5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "internationale marktprestaties volgen",
+      "uri": "http://data.europa.eu/esco/skill/293301db-be3c-4cba-b3ee-6cc9c55fd70a",
       "categorie": "essentieel"
     },
     {
@@ -103,13 +68,23 @@
       "categorie": "essentieel"
     },
     {
-      "label": "leveranciers identificeren",
-      "uri": "http://data.europa.eu/esco/skill/11747665-0e98-4f27-bd0d-536862cd5746",
+      "label": "behoeften van klanten identificeren",
+      "uri": "http://data.europa.eu/esco/skill/68698869-c13c-4563-adc7-118b7644f45d",
       "categorie": "essentieel"
     },
     {
-      "label": "internationale marktprestaties volgen",
-      "uri": "http://data.europa.eu/esco/skill/293301db-be3c-4cba-b3ee-6cc9c55fd70a",
+      "label": "zakenrelaties aangaan",
+      "uri": "http://data.europa.eu/esco/skill/dc72ad0a-c5dc-4abd-bc0d-ca43e82162e1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderhandelen over de verkoop van grondstoffen",
+      "uri": "http://data.europa.eu/esco/skill/d4c4df36-5f61-4677-afa4-82d9e93c657b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "leveranciers identificeren",
+      "uri": "http://data.europa.eu/esco/skill/11747665-0e98-4f27-bd0d-536862cd5746",
       "categorie": "essentieel"
     },
     {
@@ -118,8 +93,33 @@
       "categorie": "essentieel"
     },
     {
-      "label": "nieuwe zakenkansen identificeren",
-      "uri": "http://data.europa.eu/esco/skill/d207a30b-2f80-4138-9b77-f88d549b8768",
+      "label": "contact leggen met kopers",
+      "uri": "http://data.europa.eu/esco/skill/c1013d55-b503-428f-aa58-f45412350e28",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "financiële zakelijke terminologie begrijpen",
+      "uri": "http://data.europa.eu/esco/skill/81db5616-3c98-4317-a728-5dae08d44bd4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verkoopstrategieën",
+      "uri": "http://data.europa.eu/esco/skill/e7219848-a27a-4bf4-8775-d367707be7c9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "leveranciersrisico’s beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/96ec2d53-4f41-4172-8ef2-70742c4bb540",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderhandelen over verkoopcontracten",
+      "uri": "http://data.europa.eu/esco/skill/71152876-b629-4a99-b9ea-0f25a0d07e4e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "financiële verslagen bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/faf8943c-72ff-4736-a587-25508695d6f0",
       "categorie": "essentieel"
     },
     {
@@ -128,13 +128,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "landbouwmateriaal",
-      "uri": "http://data.europa.eu/esco/skill/5f95f9c9-30ee-4735-ab63-8045ec8f78f8",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "schuldsystemen",
-      "uri": "http://data.europa.eu/esco/skill/b497a163-daf4-4f1b-a6ba-8c640d803979",
+      "label": "huid-, vel- en leerproducten",
+      "uri": "http://data.europa.eu/esco/skill/834c3caf-077c-4d38-883f-1baa2e470efa",
       "categorie": "optioneel"
     },
     {
@@ -143,183 +138,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "beginselen van de leveringsketen",
-      "uri": "http://data.europa.eu/esco/skill/cf579543-272b-43c8-b942-555836ae4241",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "commercieel recht",
-      "uri": "http://data.europa.eu/esco/skill/d63c2bad-817d-4116-b4d8-b927cb01212d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "drankproducten",
-      "uri": "http://data.europa.eu/esco/skill/922032c3-9dfa-45dd-9bcd-f14dedf4709e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "processen voor elektronische aankoop",
-      "uri": "http://data.europa.eu/esco/skill/378caeec-10a0-4162-b75c-ab374a42e93d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "afvalbeheer",
-      "uri": "http://data.europa.eu/esco/skill/40f65a56-ccbe-4601-9f32-1cc6cdd24f28",
-      "categorie": "optioneel"
-    },
-    {
       "label": "producten van levende dieren",
       "uri": "http://data.europa.eu/esco/skill/efd50a11-ccd9-424c-a5af-c6b4bb5ef006",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "huid-, vel- en leerproducten",
-      "uri": "http://data.europa.eu/esco/skill/834c3caf-077c-4d38-883f-1baa2e470efa",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "suiker-, chocolade- en suikerwerkproducten",
-      "uri": "http://data.europa.eu/esco/skill/6975d035-4523-4a5d-89ea-e414a473e077",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "textielproducten, half afgewerkte textielproducten en grondstoffen",
-      "uri": "http://data.europa.eu/esco/skill/6e250b10-f197-4045-b9c5-53837b044554",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "soorten zeeschepen",
-      "uri": "http://data.europa.eu/esco/skill/629c9139-8a87-447b-8f61-bfe678cf3e7c",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "horloges en sieraden",
-      "uri": "http://data.europa.eu/esco/skill/c50dc8c9-24b2-47c8-9e1a-894521f5b248",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "soorten vliegtuigen",
-      "uri": "http://data.europa.eu/esco/skill/55e286cf-b8a0-40bd-9e87-276cbc0284b9",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "computermateriaal",
-      "uri": "http://data.europa.eu/esco/skill/9983816d-cc78-4d3f-9e3c-c7baa9ebc77a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "kleding en schoenen",
-      "uri": "http://data.europa.eu/esco/skill/49f6c9f1-49a6-4737-8bb0-0f6ab3558211",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "machineproducten",
-      "uri": "http://data.europa.eu/esco/skill/70198e4e-86ad-4acc-a9eb-e24e2c107d18",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "groente- en fruitproducten",
-      "uri": "http://data.europa.eu/esco/skill/9babbf24-1523-4b74-9770-c07c447920cc",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "koffie, thee, cacao en specerijen",
-      "uri": "http://data.europa.eu/esco/skill/d648838c-2ccb-45bd-a4c3-1cf19f0b8733",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "afval- en restproducten",
-      "uri": "http://data.europa.eu/esco/skill/b9f67432-0057-4247-aa84-469f8c53b39d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "werktuigmachines",
-      "uri": "http://data.europa.eu/esco/skill/f5084a43-42c9-4bbb-b47c-b3029cf8381d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "verkoopactiviteiten",
-      "uri": "http://data.europa.eu/esco/skill/450de541-797a-4da0-9fe4-a81471c8047d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "industriële gereedschappen",
-      "uri": "http://data.europa.eu/esco/skill/a125a4c2-3b0a-4996-9a63-57043d4d9159",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "stressbestendig zijn",
-      "uri": "http://data.europa.eu/esco/skill/d15f8745-28f8-4abf-a7b6-6cb8a304efd2",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "metaal- en metaalertsproducten",
-      "uri": "http://data.europa.eu/esco/skill/0f850624-ae28-47c2-ab80-484290a96aea",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "tabaksproducten",
-      "uri": "http://data.europa.eu/esco/skill/5cfe62b1-98fe-43ed-93b9-902f2e434eb0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "vlees en vleesproducten",
-      "uri": "http://data.europa.eu/esco/skill/8df3dcf5-8ede-4e03-a69c-c8cf01eff429",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "regels inzake voorraadbeheer",
-      "uri": "http://data.europa.eu/esco/skill/5aaf2780-04d7-4bbf-8b06-af36eafe8eba",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "kantoormaterialen",
-      "uri": "http://data.europa.eu/esco/skill/5a234b3b-63b4-482f-b481-a1ff9d95bbf8",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "vis-, schaaldier- en weekdierproducten",
-      "uri": "http://data.europa.eu/esco/skill/68823c35-3033-45df-931c-7b01646006c8",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "parfum en cosmetische producten",
-      "uri": "http://data.europa.eu/esco/skill/c93527bc-6668-4c34-b1a1-47bcaf97c5ed",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "glaswerkproducten",
-      "uri": "http://data.europa.eu/esco/skill/f8aa753b-25d3-403f-9634-17c603ab1de0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "beginselen inzake uitvoercontrole",
-      "uri": "http://data.europa.eu/esco/skill/66dd1398-6be6-4a0d-a0d0-4a8b3941963a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "strategisch denken toepassen",
-      "uri": "http://data.europa.eu/esco/skill/6c870993-9341-438b-91c0-c7fe4f96d8f5",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "leveranciers bezoeken",
-      "uri": "http://data.europa.eu/esco/skill/2c02fb07-de47-46d3-8a99-b916137951ef",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "meubelen, tapijt en verlichtingsapparatuur",
-      "uri": "http://data.europa.eu/esco/skill/89f88666-e7cf-4659-9f6f-3a6ff65789b7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "huishoudelijke producten",
-      "uri": "http://data.europa.eu/esco/skill/e38215f6-be98-420c-8724-ba2e77881895",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "elektronische apparatuur en telecommunicatieapparatuur",
-      "uri": "http://data.europa.eu/esco/skill/49fed129-e32b-4f67-b80a-609d79e45b20",
       "categorie": "optioneel"
     },
     {
@@ -328,48 +148,18 @@
       "categorie": "optioneel"
     },
     {
-      "label": "farmaceutische producten",
-      "uri": "http://data.europa.eu/esco/skill/16b1f191-eafd-4821-a08a-9f0cc4e5a71a",
+      "label": "beginselen van de leveringsketen",
+      "uri": "http://data.europa.eu/esco/skill/cf579543-272b-43c8-b942-555836ae4241",
       "categorie": "optioneel"
     },
     {
-      "label": "kantoormeubelen",
-      "uri": "http://data.europa.eu/esco/skill/dcc40345-d002-497d-ae1e-9be30ff39f81",
+      "label": "elektronische apparatuur en telecommunicatieapparatuur",
+      "uri": "http://data.europa.eu/esco/skill/49fed129-e32b-4f67-b80a-609d79e45b20",
       "categorie": "optioneel"
     },
     {
-      "label": "apparatuur, loodgieters- en verwarmingsproducten",
-      "uri": "http://data.europa.eu/esco/skill/8f1a24be-d770-470d-94c8-d074f4087754",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bouwproducten",
-      "uri": "http://data.europa.eu/esco/skill/5ac07f1a-6436-4103-b891-c59a7ac505f0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bloem- en plantproducten",
-      "uri": "http://data.europa.eu/esco/skill/f2704539-8b55-4164-8911-e550a1f9c47f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "mijnbouw-, bouwkundige en civieltechnische machineproducten",
-      "uri": "http://data.europa.eu/esco/skill/ce4990a4-bf69-4f5f-becb-e4fd96da3a74",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "elektrische huishoudelijke apparatuur",
-      "uri": "http://data.europa.eu/esco/skill/a031363f-f190-4449-96ee-4b347b077324",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "relaties met klanten onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/2239694b-771a-4586-8b54-2794e361a9ae",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "zuivel- en eetbare olieproducten",
-      "uri": "http://data.europa.eu/esco/skill/676fdcdf-c4ae-4bdd-af92-444392b06a31",
+      "label": "parfum en cosmetische producten",
+      "uri": "http://data.europa.eu/esco/skill/c93527bc-6668-4c34-b1a1-47bcaf97c5ed",
       "categorie": "optioneel"
     },
     {
@@ -378,18 +168,38 @@
       "categorie": "optioneel"
     },
     {
-      "label": "agrarische grondstoffen, zaden en diervoeders",
-      "uri": "http://data.europa.eu/esco/skill/2facacc1-920c-45f4-9a69-5892e0d34fd8",
+      "label": "machineproducten voor de textielsector",
+      "uri": "http://data.europa.eu/esco/skill/3159d806-fa7b-4803-9288-0c0417b7871c",
       "categorie": "optioneel"
     },
     {
-      "label": "chemische producten",
-      "uri": "http://data.europa.eu/esco/skill/2aff15fb-1c24-42b5-89ca-17696df25370",
+      "label": "apparatuur, loodgieters- en verwarmingsproducten",
+      "uri": "http://data.europa.eu/esco/skill/8f1a24be-d770-470d-94c8-d074f4087754",
       "categorie": "optioneel"
     },
     {
-      "label": "elektronische communicatie",
-      "uri": "http://data.europa.eu/esco/skill/debef2fc-7af4-4bff-ac92-4d0317915a84",
+      "label": "machineproducten",
+      "uri": "http://data.europa.eu/esco/skill/70198e4e-86ad-4acc-a9eb-e24e2c107d18",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "landbouwmateriaal",
+      "uri": "http://data.europa.eu/esco/skill/5f95f9c9-30ee-4735-ab63-8045ec8f78f8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "commercieel recht",
+      "uri": "http://data.europa.eu/esco/skill/d63c2bad-817d-4116-b4d8-b927cb01212d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "schuldsystemen",
+      "uri": "http://data.europa.eu/esco/skill/b497a163-daf4-4f1b-a6ba-8c640d803979",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "groente- en fruitproducten",
+      "uri": "http://data.europa.eu/esco/skill/9babbf24-1523-4b74-9770-c07c447920cc",
       "categorie": "optioneel"
     },
     {
@@ -398,8 +208,198 @@
       "categorie": "optioneel"
     },
     {
-      "label": "machineproducten voor de textielsector",
-      "uri": "http://data.europa.eu/esco/skill/3159d806-fa7b-4803-9288-0c0417b7871c",
+      "label": "tabaksproducten",
+      "uri": "http://data.europa.eu/esco/skill/5cfe62b1-98fe-43ed-93b9-902f2e434eb0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "beginselen inzake uitvoercontrole",
+      "uri": "http://data.europa.eu/esco/skill/66dd1398-6be6-4a0d-a0d0-4a8b3941963a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "koffie, thee, cacao en specerijen",
+      "uri": "http://data.europa.eu/esco/skill/d648838c-2ccb-45bd-a4c3-1cf19f0b8733",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "mijnbouw-, bouwkundige en civieltechnische machineproducten",
+      "uri": "http://data.europa.eu/esco/skill/ce4990a4-bf69-4f5f-becb-e4fd96da3a74",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kantoormeubelen",
+      "uri": "http://data.europa.eu/esco/skill/dcc40345-d002-497d-ae1e-9be30ff39f81",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bouwproducten",
+      "uri": "http://data.europa.eu/esco/skill/5ac07f1a-6436-4103-b891-c59a7ac505f0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vlees en vleesproducten",
+      "uri": "http://data.europa.eu/esco/skill/8df3dcf5-8ede-4e03-a69c-c8cf01eff429",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werktuigmachines",
+      "uri": "http://data.europa.eu/esco/skill/f5084a43-42c9-4bbb-b47c-b3029cf8381d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "farmaceutische producten",
+      "uri": "http://data.europa.eu/esco/skill/16b1f191-eafd-4821-a08a-9f0cc4e5a71a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kantoormaterialen",
+      "uri": "http://data.europa.eu/esco/skill/5a234b3b-63b4-482f-b481-a1ff9d95bbf8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "meubelen, tapijt en verlichtingsapparatuur",
+      "uri": "http://data.europa.eu/esco/skill/89f88666-e7cf-4659-9f6f-3a6ff65789b7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zuivel- en eetbare olieproducten",
+      "uri": "http://data.europa.eu/esco/skill/676fdcdf-c4ae-4bdd-af92-444392b06a31",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "textielproducten, half afgewerkte textielproducten en grondstoffen",
+      "uri": "http://data.europa.eu/esco/skill/6e250b10-f197-4045-b9c5-53837b044554",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "afvalbeheer",
+      "uri": "http://data.europa.eu/esco/skill/40f65a56-ccbe-4601-9f32-1cc6cdd24f28",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "stressbestendig zijn",
+      "uri": "http://data.europa.eu/esco/skill/d15f8745-28f8-4abf-a7b6-6cb8a304efd2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "afval- en restproducten",
+      "uri": "http://data.europa.eu/esco/skill/b9f67432-0057-4247-aa84-469f8c53b39d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "metaal- en metaalertsproducten",
+      "uri": "http://data.europa.eu/esco/skill/0f850624-ae28-47c2-ab80-484290a96aea",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vis-, schaaldier- en weekdierproducten",
+      "uri": "http://data.europa.eu/esco/skill/68823c35-3033-45df-931c-7b01646006c8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "suiker-, chocolade- en suikerwerkproducten",
+      "uri": "http://data.europa.eu/esco/skill/6975d035-4523-4a5d-89ea-e414a473e077",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "drankproducten",
+      "uri": "http://data.europa.eu/esco/skill/922032c3-9dfa-45dd-9bcd-f14dedf4709e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "industriële gereedschappen",
+      "uri": "http://data.europa.eu/esco/skill/a125a4c2-3b0a-4996-9a63-57043d4d9159",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "computermateriaal",
+      "uri": "http://data.europa.eu/esco/skill/9983816d-cc78-4d3f-9e3c-c7baa9ebc77a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "agrarische grondstoffen, zaden en diervoeders",
+      "uri": "http://data.europa.eu/esco/skill/2facacc1-920c-45f4-9a69-5892e0d34fd8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten zeeschepen",
+      "uri": "http://data.europa.eu/esco/skill/629c9139-8a87-447b-8f61-bfe678cf3e7c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "processen voor elektronische aankoop",
+      "uri": "http://data.europa.eu/esco/skill/378caeec-10a0-4162-b75c-ab374a42e93d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektronische communicatie",
+      "uri": "http://data.europa.eu/esco/skill/debef2fc-7af4-4bff-ac92-4d0317915a84",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "leveranciers bezoeken",
+      "uri": "http://data.europa.eu/esco/skill/2c02fb07-de47-46d3-8a99-b916137951ef",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "huishoudelijke producten",
+      "uri": "http://data.europa.eu/esco/skill/e38215f6-be98-420c-8724-ba2e77881895",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verkoopactiviteiten",
+      "uri": "http://data.europa.eu/esco/skill/450de541-797a-4da0-9fe4-a81471c8047d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bloem- en plantproducten",
+      "uri": "http://data.europa.eu/esco/skill/f2704539-8b55-4164-8911-e550a1f9c47f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektrische huishoudelijke apparatuur",
+      "uri": "http://data.europa.eu/esco/skill/a031363f-f190-4449-96ee-4b347b077324",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "regels inzake voorraadbeheer",
+      "uri": "http://data.europa.eu/esco/skill/5aaf2780-04d7-4bbf-8b06-af36eafe8eba",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "strategisch denken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/6c870993-9341-438b-91c0-c7fe4f96d8f5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "relaties met klanten onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/2239694b-771a-4586-8b54-2794e361a9ae",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten vliegtuigen",
+      "uri": "http://data.europa.eu/esco/skill/55e286cf-b8a0-40bd-9e87-276cbc0284b9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "glaswerkproducten",
+      "uri": "http://data.europa.eu/esco/skill/f8aa753b-25d3-403f-9634-17c603ab1de0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "chemische producten",
+      "uri": "http://data.europa.eu/esco/skill/2aff15fb-1c24-42b5-89ca-17696df25370",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kleding en schoenen",
+      "uri": "http://data.europa.eu/esco/skill/49f6c9f1-49a6-4737-8bb0-0f6ab3558211",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "horloges en sieraden",
+      "uri": "http://data.europa.eu/esco/skill/c50dc8c9-24b2-47c8-9e1a-894521f5b248",
       "categorie": "optioneel"
     }
   ]

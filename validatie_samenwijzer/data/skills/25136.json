@@ -21,53 +21,13 @@
   ],
   "skills": [
     {
-      "label": "mensen profileren",
-      "uri": "http://data.europa.eu/esco/skill/e49c4d19-dea6-42a1-bde2-30d69dc0ca24",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "arbeidswet",
-      "uri": "http://data.europa.eu/esco/skill/97b713f0-b9e8-4903-8dee-7e0b4019a1c0",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gelijke behandeling van man en vrouw in zakelijke contexten bevorderen",
-      "uri": "http://data.europa.eu/esco/skill/19bf58ed-23b8-4763-b231-d4a1e98a225d",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "personen interviewen",
-      "uri": "http://data.europa.eu/esco/skill/66d47084-9437-48b2-819b-c4c8214ed650",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "arbeidswetgeving",
-      "uri": "http://data.europa.eu/esco/skill/08fe5910-8c4c-4679-a988-eb2ded3c4909",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "kennis van menselijk gedrag gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/a0e23745-6ba4-45e2-9510-df6e71ed1230",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "actief luisteren",
-      "uri": "http://data.europa.eu/esco/skill/a17286c5-238d-4f0b-bc24-29e9121345de",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "vacatures op de arbeidsmarkt",
-      "uri": "http://data.europa.eu/esco/skill/38a5c459-c591-4f76-a358-37de342bb11d",
-      "categorie": "essentieel"
-    },
-    {
       "label": "vertrouwelijkheid in acht nemen",
       "uri": "http://data.europa.eu/esco/skill/8d202e22-85e9-47b1-a1e0-3296d17244cd",
       "categorie": "essentieel"
     },
     {
-      "label": "telefonisch communiceren",
-      "uri": "http://data.europa.eu/esco/skill/de2f0ce8-f8d6-48c5-a213-4d065251cecf",
+      "label": "vacatures op de arbeidsmarkt",
+      "uri": "http://data.europa.eu/esco/skill/38a5c459-c591-4f76-a358-37de342bb11d",
       "categorie": "essentieel"
     },
     {
@@ -81,23 +41,53 @@
       "categorie": "essentieel"
     },
     {
+      "label": "mensen profileren",
+      "uri": "http://data.europa.eu/esco/skill/e49c4d19-dea6-42a1-bde2-30d69dc0ca24",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "telefonisch communiceren",
+      "uri": "http://data.europa.eu/esco/skill/de2f0ce8-f8d6-48c5-a213-4d065251cecf",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "arbeidswet",
+      "uri": "http://data.europa.eu/esco/skill/97b713f0-b9e8-4903-8dee-7e0b4019a1c0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "personen interviewen",
+      "uri": "http://data.europa.eu/esco/skill/66d47084-9437-48b2-819b-c4c8214ed650",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kennis van menselijk gedrag gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/a0e23745-6ba4-45e2-9510-df6e71ed1230",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gelijke behandeling van man en vrouw in zakelijke contexten bevorderen",
+      "uri": "http://data.europa.eu/esco/skill/19bf58ed-23b8-4763-b231-d4a1e98a225d",
+      "categorie": "essentieel"
+    },
+    {
       "label": "privacy van gebruikers van diensten bewaren",
       "uri": "http://data.europa.eu/esco/skill/73e7e2f4-7e5f-4e6c-86c2-3b5fbd191172",
       "categorie": "essentieel"
     },
     {
-      "label": "werkloosheidspercentage analyseren",
-      "uri": "http://data.europa.eu/esco/skill/0f9f8352-0488-4a1e-9171-2c5466c17f41",
-      "categorie": "optioneel"
+      "label": "actief luisteren",
+      "uri": "http://data.europa.eu/esco/skill/a17286c5-238d-4f0b-bc24-29e9121345de",
+      "categorie": "essentieel"
     },
     {
-      "label": "databases doorzoeken",
-      "uri": "http://data.europa.eu/esco/skill/a1388163-462a-4b76-8649-67470ea858a1",
-      "categorie": "optioneel"
+      "label": "arbeidswetgeving",
+      "uri": "http://data.europa.eu/esco/skill/08fe5910-8c4c-4679-a988-eb2ded3c4909",
+      "categorie": "essentieel"
     },
     {
-      "label": "klanten helpen bij persoonlijke ontwikkeling",
-      "uri": "http://data.europa.eu/esco/skill/98b32477-cccd-47ea-8c85-d4a16b18af08",
+      "label": "integratie in organisaties promoten",
+      "uri": "http://data.europa.eu/esco/skill/117df904-d348-4f14-bc92-feaaccba4ece",
       "categorie": "optioneel"
     },
     {
@@ -106,28 +96,13 @@
       "categorie": "optioneel"
     },
     {
-      "label": "toegang tot de arbeidsmarkt faciliteren",
-      "uri": "http://data.europa.eu/esco/skill/71057622-0cc1-4cce-b36c-b32a7071b017",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "werkgelegenheidsbeleid promoten",
-      "uri": "http://data.europa.eu/esco/skill/8b8ed44b-5d29-4a42-a87f-a77739b5bfcd",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "advies geven over carrière",
-      "uri": "http://data.europa.eu/esco/skill/855f15f1-3add-44b9-a724-7d0be617fdb2",
+      "label": "informatie over studieprogramma’s geven",
+      "uri": "http://data.europa.eu/esco/skill/3fcc49e8-71f8-4265-9e48-2e8c3465340a",
       "categorie": "optioneel"
     },
     {
       "label": "personeelsbeleid",
       "uri": "http://data.europa.eu/esco/skill/e437eba1-3e22-41f2-8703-741e94785cba",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "individuen begeleiden",
-      "uri": "http://data.europa.eu/esco/skill/a584a638-a2c0-4b3c-bdf3-a64f87225be9",
       "categorie": "optioneel"
     },
     {
@@ -141,8 +116,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "trainingen organiseren",
-      "uri": "http://data.europa.eu/esco/skill/90e8f54b-064f-4721-8ccc-b5f61968b227",
+      "label": "klanten helpen bij persoonlijke ontwikkeling",
+      "uri": "http://data.europa.eu/esco/skill/98b32477-cccd-47ea-8c85-d4a16b18af08",
       "categorie": "optioneel"
     },
     {
@@ -151,13 +126,38 @@
       "categorie": "optioneel"
     },
     {
-      "label": "integratie in organisaties promoten",
-      "uri": "http://data.europa.eu/esco/skill/117df904-d348-4f14-bc92-feaaccba4ece",
+      "label": "werkgelegenheidsbeleid promoten",
+      "uri": "http://data.europa.eu/esco/skill/8b8ed44b-5d29-4a42-a87f-a77739b5bfcd",
       "categorie": "optioneel"
     },
     {
-      "label": "informatie over studieprogramma’s geven",
-      "uri": "http://data.europa.eu/esco/skill/3fcc49e8-71f8-4265-9e48-2e8c3465340a",
+      "label": "databases doorzoeken",
+      "uri": "http://data.europa.eu/esco/skill/a1388163-462a-4b76-8649-67470ea858a1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "trainingen organiseren",
+      "uri": "http://data.europa.eu/esco/skill/90e8f54b-064f-4721-8ccc-b5f61968b227",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toegang tot de arbeidsmarkt faciliteren",
+      "uri": "http://data.europa.eu/esco/skill/71057622-0cc1-4cce-b36c-b32a7071b017",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "individuen begeleiden",
+      "uri": "http://data.europa.eu/esco/skill/a584a638-a2c0-4b3c-bdf3-a64f87225be9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "advies geven over carrière",
+      "uri": "http://data.europa.eu/esco/skill/855f15f1-3add-44b9-a724-7d0be617fdb2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werkloosheidspercentage analyseren",
+      "uri": "http://data.europa.eu/esco/skill/0f9f8352-0488-4a1e-9171-2c5466c17f41",
       "categorie": "optioneel"
     }
   ]

@@ -1,174 +1,179 @@
 {
   "crebo": "25806",
   "opleiding": "25806_BOL_2025__25806 Handhaver toezicht en veiligheid",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "handhaver toezicht en veiligheid",
-    "uri": "http://data.europa.eu/esco/occupation/4cbe5a17-056c-489a-9f10-f9d816905000",
-    "definitie": "Handhavers toezicht en veiligheid (straatwachten) patrouilleren in de aangewezen zones om een gevoel van veiligheid bij het publiek te waarborgen en algemene ondersteuning te bieden. Zij houden toezicht op verdacht gedrag en werken samen met de politie en andere lokale instellingen om de veiligheid en het welzijn van de gemeenschap en de wet te handhaven en sancties op te leggen wanneer dat nodig is."
+    "label": "Handhaver toezicht en veiligheid Openbare ruimte (domein I)",
+    "uri": "",
+    "definitie": "Handhavers toezicht en veiligheid in domein I surveilleren in hun werkgebied waarbij zij op specifieke situaties letten of waarbij zij meer algemeen dienstverlenend en preventief aanwezig zijn. Ze letten op afwijkende situaties en treden op tegen overlast, vernieling en vervuiling in hun werkgebied. Ze spreken mensen aan op hun gedrag en als het nodig is schrijven ze een boete uit. \nDe handhaver toezicht en veiligheid in domein I werkt bijvoorbeeld als parkeercontroleur, APV-controleur, gemeentelijk opsporingsambtenaar of controleur openbare ruimte. Hij/zij werkt samen in het veiligheidsnetwerk en overlegt met verschillende partijen over de aanpak van problemen in het werkgebied. De handhaver toezicht en veiligheid is zich bewust van zijn/haar publieke taak en voelt zich verantwoordelijk voor de leefbaarheid in het werkgebied. Dit betekent bijvoorbeeld dat hij/zij melding maakt van vervuiling en vernieling bij de juiste instanties. \nHet resultaat van het werk is een omgeving waar de veiligheid en leefbaarheid zo optimaal mogelijk zijn."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "handhaver toezicht en veiligheid",
-    "manager veiligheid niet-publieke deel luchthaven",
-    "veiligheidskundige",
-    "veiligheidsinspecteur mijnbouw",
-    "drilling engineer",
-    "exploitatietechnicus stoomturbine",
-    "teamleider in een mijn",
-    "servicemedewerker bioscoop, theater",
-    "medewerker veiligheid luchtvaart",
-    "verkeersbrigadier",
-    "veiligheidsinspecteur bouw",
-    "registrator tentoonstellingen",
-    "straatartiest",
-    "arbo-ingenieur"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "verschillende communicatiekanalen gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/415abd43-e8e5-4643-b5da-5f11307af57a",
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
       "categorie": "essentieel"
     },
     {
-      "label": "in gebieden patrouilleren",
-      "uri": "http://data.europa.eu/esco/skill/e95dc989-ae49-49c6-bfc4-9aef35e92f35",
+      "label": "Overtuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/26D3098394",
       "categorie": "essentieel"
     },
     {
-      "label": "conflicten hanteren",
-      "uri": "http://data.europa.eu/esco/skill/96de2e86-e287-41f2-88ab-15a2343afc6f",
+      "label": "Reageren op risicovolle omstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/29B470A4FC",
       "categorie": "essentieel"
     },
     {
-      "label": "hulpdiensten bijstaan",
-      "uri": "http://data.europa.eu/esco/skill/2adc2a4a-bb29-4a7f-aab7-d1a21bf08b9e",
+      "label": "Verplegen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3DA7BAB0C4",
       "categorie": "essentieel"
     },
     {
-      "label": "vragen beantwoorden",
-      "uri": "http://data.europa.eu/esco/skill/87cadd76-4e3a-47e5-b66d-559fbc1e8993",
+      "label": "Netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3DECCF2E7C",
       "categorie": "essentieel"
     },
     {
-      "label": "voldoen aan wettelijke bepalingen",
-      "uri": "http://data.europa.eu/esco/skill/3d3ee5c3-4286-457f-9f76-1704011f7e11",
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
       "categorie": "essentieel"
     },
     {
-      "label": "zorgen voor de openbare orde en veiligheid",
-      "uri": "http://data.europa.eu/esco/skill/499c05a2-6f36-4407-83c1-dc3448d35818",
+      "label": "Problemen signaleren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4D400FE127",
       "categorie": "essentieel"
     },
     {
-      "label": "publiek instrueren",
-      "uri": "http://data.europa.eu/esco/skill/ceb13e3a-835e-47e3-a1c9-34dfa21de0fd",
+      "label": "Conflicten oplossen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/5D8EA693BD",
       "categorie": "essentieel"
     },
     {
-      "label": "werkgerelateerde verslagen schrijven",
-      "uri": "http://data.europa.eu/esco/skill/918f5211-b99f-4b29-9a34-6e475583ef55",
-      "categorie": "optioneel"
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
     },
     {
-      "label": "overtreders aanhouden",
-      "uri": "http://data.europa.eu/esco/skill/d43dc4ac-e316-44cb-939d-ecf200895e0f",
-      "categorie": "optioneel"
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
     },
     {
-      "label": "officiële documenten controleren",
-      "uri": "http://data.europa.eu/esco/skill/a1efea8f-62a8-4f9e-bd07-7d0c193f725e",
-      "categorie": "optioneel"
+      "label": "Procedures volgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/752EEDBE89",
+      "categorie": "essentieel"
     },
     {
-      "label": "gevaren voor de veiligheid vaststellen",
-      "uri": "http://data.europa.eu/esco/skill/a4fd17bf-6309-47c5-b7fa-ae5560673acf",
-      "categorie": "optioneel"
+      "label": "Leerstrategieën toepassen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7555D32771",
+      "categorie": "essentieel"
     },
     {
-      "label": "risicoanalyses uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/1dd23dba-dd00-45ab-abf4-642902538317",
-      "categorie": "optioneel"
+      "label": "Actief luisteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/8500CACF46",
+      "categorie": "essentieel"
     },
     {
-      "label": "ordehandhaving",
-      "uri": "http://data.europa.eu/esco/skill/415f816c-07ae-4ac1-9ddb-ecaa9957a249",
-      "categorie": "optioneel"
+      "label": "Assertiviteit tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AA253D1EBA",
+      "categorie": "essentieel"
     },
     {
-      "label": "verkeer regelen",
-      "uri": "http://data.europa.eu/esco/skill/87454307-a3ad-40ce-8024-1aeb7c94f1e3",
-      "categorie": "optioneel"
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
+      "categorie": "essentieel"
     },
     {
-      "label": "tests op drugsmisbruik uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/7ad85aef-f74d-4c57-8dde-adc1d3e8269a",
-      "categorie": "optioneel"
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
+      "categorie": "essentieel"
     },
     {
-      "label": "zorgen voor de toepassing van wetten",
-      "uri": "http://data.europa.eu/esco/skill/f0153530-9ff3-4fe6-8f9e-012d06ac5b89",
-      "categorie": "optioneel"
+      "label": "Schrijven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/BC98BE9135",
+      "categorie": "essentieel"
     },
     {
-      "label": "ooggetuigenverslagen aanhoren",
-      "uri": "http://data.europa.eu/esco/skill/a1f79d57-2e4d-4876-a7ac-4ab19e0861dc",
-      "categorie": "optioneel"
+      "label": "Reflecteren op jezelf",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C21A058358",
+      "categorie": "essentieel"
     },
     {
-      "label": "wettelijk gebruik van geweld",
-      "uri": "http://data.europa.eu/esco/skill/42645b84-0699-4072-b9cf-335512434b67",
-      "categorie": "optioneel"
+      "label": "Leergierig zijn",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CB768EFA19",
+      "categorie": "essentieel"
     },
     {
-      "label": "kalm reageren in stressvolle situaties",
-      "uri": "http://data.europa.eu/esco/skill/49e1eb78-e6b1-4116-8e9f-f23316ee503e",
-      "categorie": "optioneel"
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
     },
     {
-      "label": "kennis van menselijk gedrag gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/a0e23745-6ba4-45e2-9510-df6e71ed1230",
-      "categorie": "optioneel"
+      "label": "Dienstbaarheid tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/F755E32480",
+      "categorie": "essentieel"
     },
     {
-      "label": "waakzaam zijn",
-      "uri": "http://data.europa.eu/esco/skill/f83c245f-4aa9-484f-8fd2-4ad65dd82ae5",
-      "categorie": "optioneel"
+      "label": "Psychologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/17998456DE",
+      "categorie": "essentieel"
     },
     {
-      "label": "verkeerswetgeving",
-      "uri": "http://data.europa.eu/esco/skill/48f480aa-c9a8-4552-b1c5-e94330912257",
-      "categorie": "optioneel"
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
     },
     {
-      "label": "gegeven instructies volgen",
-      "uri": "http://data.europa.eu/esco/skill/ab9f550c-fa8f-4fe8-9f9f-e02d45bff570",
-      "categorie": "optioneel"
+      "label": "Openbare orde en veiligheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/330F4A4BFD",
+      "categorie": "essentieel"
     },
     {
-      "label": "reageren op noodsituaties",
-      "uri": "http://data.europa.eu/esco/skill/0dcea846-04b4-4ffc-8c75-a35c991454b1",
-      "categorie": "optioneel"
+      "label": "Bestuursrecht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/431A7B3BDC",
+      "categorie": "essentieel"
     },
     {
-      "label": "orde handhaven op de plaats van ongevallen",
-      "uri": "http://data.europa.eu/esco/skill/51c9eb38-e148-4094-b23a-6b8e31c3bfa8",
-      "categorie": "optioneel"
+      "label": "Zelfkennis en zelfbewustzijn",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4E00BC89EC",
+      "categorie": "essentieel"
     },
     {
-      "label": "beginselen van zelfverdediging nakomen",
-      "uri": "http://data.europa.eu/esco/skill/574a76ad-b283-4138-8386-fa079e52fcee",
-      "categorie": "optioneel"
+      "label": "Sport en bewegen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/67945BB58E",
+      "categorie": "essentieel"
     },
     {
-      "label": "eerste hulp",
-      "uri": "http://data.europa.eu/esco/skill/eaa4cdc0-43e0-4388-9b8a-e2779218d10e",
-      "categorie": "optioneel"
+      "label": "Politie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/960FFA24A2",
+      "categorie": "essentieel"
     },
     {
-      "label": "boetes opleggen",
-      "uri": "http://data.europa.eu/esco/skill/eb31bbe9-f6ab-446d-ac6c-fdec0494f2f9",
-      "categorie": "optioneel"
+      "label": "Openbaar vervoer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AB21D4C344",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Sociale geografie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AD48565EA8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Veiligheidskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C34CD6448D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bestuurskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DD495E5E42",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Buitengewone opsporing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/EAE50C517C",
+      "categorie": "essentieel"
     }
   ]
 }

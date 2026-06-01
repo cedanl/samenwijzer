@@ -1,213 +1,69 @@
 {
   "crebo": "25641",
   "opleiding": "25641_BOL_2025__25641BOL2025MJP-kapper",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "kapper",
-    "uri": "http://data.europa.eu/esco/occupation/099c6bb0-22d3-4c5d-8bf5-70910af381ef",
-    "definitie": "Kappers bieden schoonheidsdiensten aan zoals het knippen, kleuren, bleken, permanent krullen en stijlen van het haar van de klant. Zij vragen hun klanten naar hun haarstijlvoorkeuren om maatdiensten aan te bieden. Kappers gebruiken tondeuses, scharen en scheermessen. Zij zorgen voor haar- en hoofdbehandelingen en wassen, conditioneren en spoelen haar."
+    "label": "Kapper",
+    "uri": "",
+    "definitie": "De kapper is werkzaam bij een kapperszaak of bij een bedrijf dat zich bezighoudt met haarverzorging. Hij is in staat standaardhandelingen voor een dame en heer uit te voeren, zoals het verzorgen van haar en hoofdhuid, knippen van het haar, (ont) kleuren van het haar en föhnen van het haar bij een dame. De kapper doet zijn werk op hygiënische wijze, waarbij hij rekening houdt met het milieu en de arbeidsomstandigheden. Hij werkt onder begeleiding van een leidinggevende. Het werk van de kapper heeft een sterke sociale kant, waarbij contact en converseren met de klant belangrijk zijn."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "kapper",
-    "vakdocent kapper beroepsonderwijs",
-    "toneelkapper",
-    "manager schoonheidssalon",
-    "kappershulp",
-    "grimeur",
-    "steenkapper",
-    "herenkapper"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "haar wassen",
-      "uri": "http://data.europa.eu/esco/skill/5fce4ae7-bbd6-4d91-9fd9-d7d6b0e6c3da",
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
       "categorie": "essentieel"
     },
     {
-      "label": "haarkleuring",
-      "uri": "http://data.europa.eu/esco/skill/26db1e50-aa8f-407c-87b9-87a48dd4d29a",
+      "label": "Adviseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CECB22E3FA",
       "categorie": "essentieel"
     },
     {
-      "label": "klantenservice verlenen",
-      "uri": "http://data.europa.eu/esco/skill/75dfe1ee-5935-42ce-b820-697f827825c3",
+      "label": "Rekenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5BBA931FB",
       "categorie": "essentieel"
     },
     {
-      "label": "haar stijlen",
-      "uri": "http://data.europa.eu/esco/skill/0b6c4174-a862-480d-8d55-44f7cf7ac365",
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
       "categorie": "essentieel"
     },
     {
-      "label": "ergonomisch werken",
-      "uri": "http://data.europa.eu/esco/skill/156f8c5b-894a-4ccc-a70e-37a2726f3f00",
+      "label": "Handvaardigheid",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E66E6D3B86",
       "categorie": "essentieel"
     },
     {
-      "label": "betalingen verwerken",
-      "uri": "http://data.europa.eu/esco/skill/bdcac0c8-b77a-4640-9eaf-c0cf3efd1e23",
+      "label": "Dienstbaarheid tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/F755E32480",
       "categorie": "essentieel"
     },
     {
-      "label": "materiaal onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/5033c2fb-ec55-4b8e-b0a4-9379593f1e1c",
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
       "categorie": "essentieel"
     },
     {
-      "label": "behoeften van klanten identificeren",
-      "uri": "http://data.europa.eu/esco/skill/68698869-c13c-4563-adc7-118b7644f45d",
+      "label": "Haarverzorging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/269B33BF53",
       "categorie": "essentieel"
     },
     {
-      "label": "apparatuur voor haarverzorging gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/5f27371a-1cf3-4a81-9faf-12fab80cb3e1",
+      "label": "Geneeskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/512B5B0194",
       "categorie": "essentieel"
     },
     {
-      "label": "op de hoogte blijven van modetrends inzake haarstijlen",
-      "uri": "http://data.europa.eu/esco/skill/e4bf6574-d0d0-4314-a4e0-d54a549e41d8",
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
       "categorie": "essentieel"
     },
     {
-      "label": "advies geven over haarstijl",
-      "uri": "http://data.europa.eu/esco/skill/5d715a3d-ddb1-4906-a599-e9737f4ca491",
+      "label": "Schoonheids-, lichaamsverzorging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C37A10D447",
       "categorie": "essentieel"
-    },
-    {
-      "label": "haarproducten",
-      "uri": "http://data.europa.eu/esco/skill/efb0eff5-ca8d-4638-b119-0c14a953f77c",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "haar verven",
-      "uri": "http://data.europa.eu/esco/skill/dbc20527-0852-4dde-a2e9-d25d8356115f",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "haar",
-      "uri": "http://data.europa.eu/esco/skill/c76d86b3-9860-4bc0-996d-cc724c669bcf",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "sociale competenties tonen",
-      "uri": "http://data.europa.eu/esco/skill/a9dc530e-0e1f-4eef-a739-47bdfe11930e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "klanten tevredenstellen",
-      "uri": "http://data.europa.eu/esco/skill/8330c86e-63cf-4be6-849f-4f77628cc5c5",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "haar krullen",
-      "uri": "http://data.europa.eu/esco/skill/9f76644e-45ce-424e-91dc-064cb166b323",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "productdisplay organiseren",
-      "uri": "http://data.europa.eu/esco/skill/77a11321-754a-41de-b9e4-80d747f528db",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "haarproducten verkopen",
-      "uri": "http://data.europa.eu/esco/skill/1def51e9-6fef-4f75-bed9-b4d9e03c1a62",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "haarkniptechnieken toepassen",
-      "uri": "http://data.europa.eu/esco/skill/96d1e352-6cfe-4400-bd4d-1e11c03aa20b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "toezicht houden op personeel",
-      "uri": "http://data.europa.eu/esco/skill/9601b2a8-68e4-4906-9306-a23679b8f0b0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "relaties met leveranciers onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/3cd35f5d-ce6d-4f14-9a09-53d7a28d834c",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voorraadniveaus bewaken",
-      "uri": "http://data.europa.eu/esco/skill/44f6a65f-6be7-4818-9a66-73908797283f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "hoofdhuidaandoeningen behandelen",
-      "uri": "http://data.europa.eu/esco/skill/3578782a-fbbd-4183-a97c-1e69ef93bad6",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "pruiken onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/49b82151-5a11-40e3-88ab-5d97c6b287a2",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "gezichtsbeharing behandelen",
-      "uri": "http://data.europa.eu/esco/skill/de8605cd-66fe-47b0-ba49-ff15a30f69cf",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "taakplanning beheren",
-      "uri": "http://data.europa.eu/esco/skill/0e1fe34b-f4e7-4642-8c8b-5a05ac3438e5",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "klein tot middelgroot bedrijf beheren",
-      "uri": "http://data.europa.eu/esco/skill/31032902-0909-44ac-a8e7-b6b1d5f52149",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "werknemers opleiden",
-      "uri": "http://data.europa.eu/esco/skill/e54ff029-1ce9-447d-a5b2-eb7283a23e6e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "klanten helpen met haarproblemen",
-      "uri": "http://data.europa.eu/esco/skill/a9085ca4-a832-4d2e-818a-d84257295053",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "goederen bestellen",
-      "uri": "http://data.europa.eu/esco/skill/210827e3-3129-45a2-8683-70399f3f561f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "afspraken beheren",
-      "uri": "http://data.europa.eu/esco/skill/933e7ccf-5d56-46ba-aca4-857f826a6b3a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "professionele administratie bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/8ebb2c0a-0baa-43bf-95cf-094047c57427",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "cosmetisch schoonheidsadvies bieden",
-      "uri": "http://data.europa.eu/esco/skill/3f43eed7-2424-4322-a065-d84d94685048",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "verkoopfacturen opstellen",
-      "uri": "http://data.europa.eu/esco/skill/e3e42d54-78bd-4337-aa87-bb31a7670c9a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "haarstijlen ontwerpen",
-      "uri": "http://data.europa.eu/esco/skill/dea0250b-edf7-473e-bc12-b7869c19bdd5",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "hygiëne van de werkruimte onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/5598739b-6718-4cff-8402-91d7f65b1505",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "cosmetica aanbevelen aan klanten",
-      "uri": "http://data.europa.eu/esco/skill/9bc5849d-4337-4163-aefc-89a097b9b1b1",
-      "categorie": "optioneel"
     }
   ]
 }

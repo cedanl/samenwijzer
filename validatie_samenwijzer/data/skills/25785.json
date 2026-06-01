@@ -1,13 +1,84 @@
 {
   "crebo": "25785",
   "opleiding": "25785_BBL_2025__25785BBL2025MJP-Allround-MetselaarN3",
-  "bron": "ESCO",
-  "beroep": null,
-  "match_methode": "geen-match",
-  "kandidaten": [
-    "manager kledingwinkel",
-    "signmaker",
-    "operator rubberproductie"
-  ],
-  "skills": []
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Allround Metselaar",
+    "uri": "",
+    "definitie": "De allround metselaar werkt op een bouwlocatie, deze verschilt per project. Hij maakt verschillende metselwerkconstructies, verlijmde kalksteenwanden, verlijmde lichte scheidingswanden en herstelt ook al bestaand metselwerk. Daarnaast organiseert en verdeelt hij de werkzaamheden van collega’s. Hij bezit kennis van A-blad metselen en heeft een nauwkeurige werkhouding. Hij schakelt gemakkelijk tussen zijn uitvoerende en leidinggevende rol. De allround metselaar heeft een zelfstandige functie en kiest binnen zijn project zelf een werkaanpak en stemt af met zijn leidinggevende. Hij is verantwoordelijk voor voldoende voorraad van het materiaal."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Delegeren ",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C8730D1BAB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3FC6552A85",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaalkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/519323C152",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieutechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/58823180FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouwmanagement, aanneming, werkvoorbereiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DF68BB9CD4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beheer en verwerking van afval",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E360B68955",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
+    }
+  ]
 }

@@ -14,18 +14,18 @@
   ],
   "skills": [
     {
-      "label": "werkgebied beveiligen",
-      "uri": "http://data.europa.eu/esco/skill/6ed2fb8d-3580-497f-8a21-30a0ada5caae",
+      "label": "2D-schema's interpreteren",
+      "uri": "http://data.europa.eu/esco/skill/dfce2aba-783e-4e17-9c17-e74aca505ec2",
       "categorie": "essentieel"
     },
     {
-      "label": "bouwmaterialen vervoeren",
-      "uri": "http://data.europa.eu/esco/skill/4af56376-7b2f-4ced-ac58-0c3967bd1e83",
+      "label": "veiligheidsuitrusting gebruiken tijdens bouwwerkzaamheden",
+      "uri": "http://data.europa.eu/esco/skill/c643e59b-d74c-4f44-b76e-6e1d96c05ec4",
       "categorie": "essentieel"
     },
     {
-      "label": "3D-schema's interpreteren",
-      "uri": "http://data.europa.eu/esco/skill/aafbb139-02c6-4f35-bc62-ff73faf97d6d",
+      "label": "veiligheidsprocedures volgen bij werken op hoogte",
+      "uri": "http://data.europa.eu/esco/skill/fafbb75f-ec35-4cc2-996a-20c85ef6c266",
       "categorie": "essentieel"
     },
     {
@@ -39,26 +39,6 @@
       "categorie": "essentieel"
     },
     {
-      "label": "gezondheids- en veiligheidsprocedures in de bouw in acht nemen",
-      "uri": "http://data.europa.eu/esco/skill/86df7af2-f9f3-4c06-a500-7f1fba9e78fe",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "veiligheidsuitrusting gebruiken tijdens bouwwerkzaamheden",
-      "uri": "http://data.europa.eu/esco/skill/c643e59b-d74c-4f44-b76e-6e1d96c05ec4",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "rechtheid van bakstenen muur controleren",
-      "uri": "http://data.europa.eu/esco/skill/b6239792-033c-41ba-b09b-21837655436a",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "veiligheidsprocedures volgen bij werken op hoogte",
-      "uri": "http://data.europa.eu/esco/skill/fafbb75f-ec35-4cc2-996a-20c85ef6c266",
-      "categorie": "essentieel"
-    },
-    {
       "label": "voegmiddelen mengen",
       "uri": "http://data.europa.eu/esco/skill/bfd96453-f2fd-43ea-afc1-fb2dc0d7367d",
       "categorie": "essentieel"
@@ -69,33 +49,8 @@
       "categorie": "essentieel"
     },
     {
-      "label": "bakstenen splijten",
-      "uri": "http://data.europa.eu/esco/skill/3e3f2ff8-cf80-4415-ac6a-020d52b175c1",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "bouwprofielen installeren",
-      "uri": "http://data.europa.eu/esco/skill/8ed53702-3e4e-4637-a4c3-9dc8f4281019",
-      "categorie": "essentieel"
-    },
-    {
       "label": "ergonomisch werken",
       "uri": "http://data.europa.eu/esco/skill/156f8c5b-894a-4ccc-a70e-37a2726f3f00",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "2D-schema's interpreteren",
-      "uri": "http://data.europa.eu/esco/skill/dfce2aba-783e-4e17-9c17-e74aca505ec2",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "afval sorteren",
-      "uri": "http://data.europa.eu/esco/skill/110d7aa3-e44e-4cce-a927-8d4de615f3d9",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "bakstenen leggen",
-      "uri": "http://data.europa.eu/esco/skill/13e1c0a2-b90d-46f4-be51-11730360b38d",
       "categorie": "essentieel"
     },
     {
@@ -104,9 +59,49 @@
       "categorie": "essentieel"
     },
     {
-      "label": "uitschuifbare stang om diagonalen te meten gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/2a2cf590-67fd-473b-8ae0-f1f7d46bcbe7",
-      "categorie": "optioneel"
+      "label": "bakstenen leggen",
+      "uri": "http://data.europa.eu/esco/skill/13e1c0a2-b90d-46f4-be51-11730360b38d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bouwmaterialen vervoeren",
+      "uri": "http://data.europa.eu/esco/skill/4af56376-7b2f-4ced-ac58-0c3967bd1e83",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werkgebied beveiligen",
+      "uri": "http://data.europa.eu/esco/skill/6ed2fb8d-3580-497f-8a21-30a0ada5caae",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "3D-schema's interpreteren",
+      "uri": "http://data.europa.eu/esco/skill/aafbb139-02c6-4f35-bc62-ff73faf97d6d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "rechtheid van bakstenen muur controleren",
+      "uri": "http://data.europa.eu/esco/skill/b6239792-033c-41ba-b09b-21837655436a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bouwprofielen installeren",
+      "uri": "http://data.europa.eu/esco/skill/8ed53702-3e4e-4637-a4c3-9dc8f4281019",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bakstenen splijten",
+      "uri": "http://data.europa.eu/esco/skill/3e3f2ff8-cf80-4415-ac6a-020d52b175c1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "afval sorteren",
+      "uri": "http://data.europa.eu/esco/skill/110d7aa3-e44e-4cce-a927-8d4de615f3d9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheids- en veiligheidsprocedures in de bouw in acht nemen",
+      "uri": "http://data.europa.eu/esco/skill/86df7af2-f9f3-4c06-a500-7f1fba9e78fe",
+      "categorie": "essentieel"
     },
     {
       "label": "beton gieten",
@@ -114,38 +109,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "landmeetapparatuur bedienen",
-      "uri": "http://data.europa.eu/esco/skill/af1df253-5103-46d7-a757-b17bf5a4e581",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "gegevens over de voortgang van het werk bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/ccfbdaad-b91d-4bfe-bd0e-d30b33587f19",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "persoonlijke administratie bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/9df34bc3-25d4-4452-a896-4d19b94ef896",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "reparatiekosten schatten",
-      "uri": "http://data.europa.eu/esco/skill/827ebc71-b406-483e-9617-33c63dd487a0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "restauratietechnieken toepassen",
-      "uri": "http://data.europa.eu/esco/skill/20b9852f-a445-4097-8273-4a18fa6bfff0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voorraadniveaus bewaken",
-      "uri": "http://data.europa.eu/esco/skill/44f6a65f-6be7-4818-9a66-73908797283f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "tijdelijke infrastructuur op bouwlocatie opzetten",
-      "uri": "http://data.europa.eu/esco/skill/ef2adfe8-d7a5-465d-bbe6-8f9e913ae7ed",
+      "label": "beton wapenen",
+      "uri": "http://data.europa.eu/esco/skill/2d0775c7-2dad-41fa-b8f3-988f73eb6897",
       "categorie": "optioneel"
     },
     {
@@ -154,38 +119,13 @@
       "categorie": "optioneel"
     },
     {
-      "label": "binnenkomende bouwmaterialen verwerken",
-      "uri": "http://data.europa.eu/esco/skill/a3e0224a-c952-4b4e-b664-d7186f62715b",
+      "label": "landmeetapparatuur bedienen",
+      "uri": "http://data.europa.eu/esco/skill/af1df253-5103-46d7-a757-b17bf5a4e581",
       "categorie": "optioneel"
     },
     {
-      "label": "steiger bouwen",
-      "uri": "http://data.europa.eu/esco/skill/91991706-cd8e-4795-9784-715fc0250c8d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "beton mengen",
-      "uri": "http://data.europa.eu/esco/skill/5cc37935-e6c9-4f28-b800-25e177e63e68",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "geleverd beton inspecteren",
-      "uri": "http://data.europa.eu/esco/skill/568d15cc-01da-4a18-b6fe-9fa30dae4cdd",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "benodigde bouwmaterialen berekenen",
-      "uri": "http://data.europa.eu/esco/skill/5d9dd44a-81f8-4710-bd4d-af27ec5c2139",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "afdichtingsmembranen aanbrengen",
-      "uri": "http://data.europa.eu/esco/skill/16801a68-549b-4eaf-9531-f2d516a9380c",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "polijsten",
-      "uri": "http://data.europa.eu/esco/skill/2d28964f-0a2d-4aa2-bc2d-c73f7a4442d6",
+      "label": "uitschuifbare stang om diagonalen te meten gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/2a2cf590-67fd-473b-8ae0-f1f7d46bcbe7",
       "categorie": "optioneel"
     },
     {
@@ -194,8 +134,73 @@
       "categorie": "optioneel"
     },
     {
+      "label": "lading vastmaken",
+      "uri": "http://data.europa.eu/esco/skill/43ea53b0-65a8-4c23-a0ef-b95389e7548e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "hygiëne van de werkruimte onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/5598739b-6718-4cff-8402-91d7f65b1505",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "restauratietechnieken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/20b9852f-a445-4097-8273-4a18fa6bfff0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "geleverd beton inspecteren",
+      "uri": "http://data.europa.eu/esco/skill/568d15cc-01da-4a18-b6fe-9fa30dae4cdd",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "beton mengen",
+      "uri": "http://data.europa.eu/esco/skill/5cc37935-e6c9-4f28-b800-25e177e63e68",
+      "categorie": "optioneel"
+    },
+    {
       "label": "stutten installeren",
       "uri": "http://data.europa.eu/esco/skill/8c5d42a6-a3a3-4d77-b704-4a92030f941f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bouwmaterialen bestellen",
+      "uri": "http://data.europa.eu/esco/skill/9f1bd2a4-91af-4b60-aeb3-0fe1f4434966",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "reparatiekosten schatten",
+      "uri": "http://data.europa.eu/esco/skill/827ebc71-b406-483e-9617-33c63dd487a0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "tijdelijke infrastructuur op bouwlocatie opzetten",
+      "uri": "http://data.europa.eu/esco/skill/ef2adfe8-d7a5-465d-bbe6-8f9e913ae7ed",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "binnenkomende bouwmaterialen verwerken",
+      "uri": "http://data.europa.eu/esco/skill/a3e0224a-c952-4b4e-b664-d7186f62715b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bekisting plaatsen",
+      "uri": "http://data.europa.eu/esco/skill/aa95f606-13ec-4242-a6bc-635a1aaa841c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bekisting verwijderen",
+      "uri": "http://data.europa.eu/esco/skill/7e420d23-3733-482b-8513-4611f8a70059",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gegevens over de voortgang van het werk bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/ccfbdaad-b91d-4bfe-bd0e-d30b33587f19",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voorraadniveaus bewaken",
+      "uri": "http://data.europa.eu/esco/skill/44f6a65f-6be7-4818-9a66-73908797283f",
       "categorie": "optioneel"
     },
     {
@@ -209,23 +214,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "bekisting verwijderen",
-      "uri": "http://data.europa.eu/esco/skill/7e420d23-3733-482b-8513-4611f8a70059",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "lading vastmaken",
-      "uri": "http://data.europa.eu/esco/skill/43ea53b0-65a8-4c23-a0ef-b95389e7548e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bouwmaterialen bestellen",
-      "uri": "http://data.europa.eu/esco/skill/9f1bd2a4-91af-4b60-aeb3-0fe1f4434966",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bekisting plaatsen",
-      "uri": "http://data.europa.eu/esco/skill/aa95f606-13ec-4242-a6bc-635a1aaa841c",
+      "label": "steiger bouwen",
+      "uri": "http://data.europa.eu/esco/skill/91991706-cd8e-4795-9784-715fc0250c8d",
       "categorie": "optioneel"
     },
     {
@@ -234,13 +224,18 @@
       "categorie": "optioneel"
     },
     {
-      "label": "beton wapenen",
-      "uri": "http://data.europa.eu/esco/skill/2d0775c7-2dad-41fa-b8f3-988f73eb6897",
+      "label": "polijsten",
+      "uri": "http://data.europa.eu/esco/skill/2d28964f-0a2d-4aa2-bc2d-c73f7a4442d6",
       "categorie": "optioneel"
     },
     {
-      "label": "hygiëne van de werkruimte onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/5598739b-6718-4cff-8402-91d7f65b1505",
+      "label": "persoonlijke administratie bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/9df34bc3-25d4-4452-a896-4d19b94ef896",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "benodigde bouwmaterialen berekenen",
+      "uri": "http://data.europa.eu/esco/skill/5d9dd44a-81f8-4710-bd4d-af27ec5c2139",
       "categorie": "optioneel"
     },
     {
@@ -251,6 +246,11 @@
     {
       "label": "onderzoeksactiviteiten documenteren",
       "uri": "http://data.europa.eu/esco/skill/65f375e1-6724-4539-8f8d-b35f4ba11af0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "afdichtingsmembranen aanbrengen",
+      "uri": "http://data.europa.eu/esco/skill/16801a68-549b-4eaf-9531-f2d516a9380c",
       "categorie": "optioneel"
     }
   ]

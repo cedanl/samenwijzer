@@ -1,191 +1,129 @@
 {
   "crebo": "25983",
   "opleiding": "25983_BOL_2024__Examenplannen Veehouderij  24-25",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "boerderijmanager",
-    "uri": "http://data.europa.eu/esco/occupation/4552095e-3396-4831-86ad-4fc34ec39a19",
-    "definitie": "Boerderijmanagers plannen en organiseren de dagelijkse activiteiten, de middelentoewijzing en het bedrijfsbeheer van de veehouderijen."
+    "label": "Medewerker veehouderij",
+    "uri": "",
+    "definitie": "De medewerker veehouderij voert routinematige werkzaamheden uit bij de verzorging van productiedieren en voedergewassen en werkt bij een productiebedrijf dat dieren houdt voor melk, vlees, opfok, eieren, pels of een combinatie daarvan. Kenmerkend voor het werk is dat dieren onvoorspelbaar zijn en elk dier individuele kenmerken en een karakter heeft. Dit vraagt in de uitvoering van het werk, dat voornamelijk plaatsvindt in stallen en in de buitenlucht, om voortdurende alertheid. Verder is de medewerker veehouderij zich bewust van de maatschappelijke impact bij de productie van dierlijke producten en heeft dan ook aandacht voor dierenwelzijn, duurzaamheid en diervriendelijke productiemethoden."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "boerderijmanager"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "agrarisch bedrijfsbeheer",
-      "uri": "http://data.europa.eu/esco/skill/518779a6-ea5d-4e4b-8029-8bc90b5bcb92",
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
       "categorie": "essentieel"
     },
     {
-      "label": "leningovereenkomsten regelen",
-      "uri": "http://data.europa.eu/esco/skill/c8aae1f6-eab3-41a9-9e2f-f5bc0f8ef0bd",
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
       "categorie": "essentieel"
     },
     {
-      "label": "agronomische productiebeginselen",
-      "uri": "http://data.europa.eu/esco/skill/5eafee30-f3b6-4cd6-baf8-517bb2f3d625",
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
       "categorie": "essentieel"
     },
     {
-      "label": "noodzaak van nieuwe landbouwtechnologieën beoordelen",
-      "uri": "http://data.europa.eu/esco/skill/b82f51d0-38d1-45f6-99a0-4586309c6b60",
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
       "categorie": "essentieel"
     },
     {
-      "label": "boerderijmiddelen beheren",
-      "uri": "http://data.europa.eu/esco/skill/ca0f9294-09f6-4528-bb3d-604955f8acfd",
+      "label": "Reflecteren op jezelf",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C21A058358",
       "categorie": "essentieel"
     },
     {
-      "label": "boerderijproducten beheren",
-      "uri": "http://data.europa.eu/esco/skill/568e4759-c698-4879-a6c2-708b4e6a0dc7",
+      "label": "Verzorgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DB59A57C01",
       "categorie": "essentieel"
     },
     {
-      "label": "preventie van verontreiniging",
-      "uri": "http://data.europa.eu/esco/skill/75f312e1-622b-4751-8d93-815b32feaf8d",
+      "label": "Operationeel toezicht houden",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/FAB3EE0CD1",
       "categorie": "essentieel"
     },
     {
-      "label": "boerderij-inrichting voorstellen",
-      "uri": "http://data.europa.eu/esco/skill/85c1377a-b96f-4ad0-adb4-8d11f8a2eecd",
+      "label": "Land- en tuinbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/15C8D6A390",
       "categorie": "essentieel"
     },
     {
-      "label": "boerderijproducten op de markt brengen",
-      "uri": "http://data.europa.eu/esco/skill/a551ec45-db14-4d5a-84ee-20abef51e739",
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
       "categorie": "essentieel"
     },
     {
-      "label": "toezien op hygiënische procedures in agrarische omgevingen",
-      "uri": "http://data.europa.eu/esco/skill/5a8d4d8c-ff64-4f82-945e-ec6f56e05cbe",
+      "label": "Veeteelt",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3C7D38D367",
       "categorie": "essentieel"
     },
     {
-      "label": "milieubeleid",
-      "uri": "http://data.europa.eu/esco/skill/081d7679-5070-4777-bece-a28c49f15636",
+      "label": "Landbouw- en teeltmechanisatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4719C3D0C1",
       "categorie": "essentieel"
     },
     {
-      "label": "productieondernemingen beheren",
-      "uri": "http://data.europa.eu/esco/skill/435d1751-8667-41ec-8b32-865b7cd3c684",
+      "label": "Meteorologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/51538F0F62",
       "categorie": "essentieel"
     },
     {
-      "label": "boerderij-apparatuur gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/d300a8db-f353-4acb-aa6e-9dc757daf1bf",
+      "label": "Biologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/54690E3D68",
       "categorie": "essentieel"
     },
     {
-      "label": "plannen beheren voor de opslag van organische nevenproducten",
-      "uri": "http://data.europa.eu/esco/skill/17447ce4-4c4a-4158-b1ea-03ed5364b4e8",
-      "categorie": "optioneel"
+      "label": "Milieutechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/58823180FE",
+      "categorie": "essentieel"
     },
     {
-      "label": "marketingstrategieën implementeren",
-      "uri": "http://data.europa.eu/esco/skill/13e2378e-0d10-450d-843a-b3592575826e",
-      "categorie": "optioneel"
+      "label": "Cultuurtechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6E3C9F1669",
+      "categorie": "essentieel"
     },
     {
-      "label": "soorten vee",
-      "uri": "http://data.europa.eu/esco/skill/c5f3e735-917b-4024-b2cf-19f4f75b2469",
-      "categorie": "optioneel"
+      "label": "Natuurbeheer en -bescherming",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6F92D368B4",
+      "categorie": "essentieel"
     },
     {
-      "label": "verbeteringsprogramma’s voor grond en planten maken",
-      "uri": "http://data.europa.eu/esco/skill/a5f836cc-7e6d-4f3d-a7ee-0146ebb84260",
-      "categorie": "optioneel"
+      "label": "Agrarische kennis",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/98A899BB98",
+      "categorie": "essentieel"
     },
     {
-      "label": "gezondheid en welzijn van vee beheren",
-      "uri": "http://data.europa.eu/esco/skill/7c6ab71d-c8d4-4a85-9f33-7ab3c2e23157",
-      "categorie": "optioneel"
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
     },
     {
-      "label": "milieu-incidenten melden",
-      "uri": "http://data.europa.eu/esco/skill/de131ede-cbfe-4e34-aff4-96f16831c3c4",
-      "categorie": "optioneel"
+      "label": "Agrarische economie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A4DEBBF783",
+      "categorie": "essentieel"
     },
     {
-      "label": "ongediertebestrijding bij planten",
-      "uri": "http://data.europa.eu/esco/skill/9d75efb9-0c77-4f86-b5e7-99100808564a",
-      "categorie": "optioneel"
+      "label": "Veiligheidskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C34CD6448D",
+      "categorie": "essentieel"
     },
     {
-      "label": "planten gezond houden",
-      "uri": "http://data.europa.eu/esco/skill/9d3490b2-a0e6-415b-81a4-a3a4a63268b0",
-      "categorie": "optioneel"
+      "label": "Bedrijfsinformatica",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D313E86D1B",
+      "categorie": "essentieel"
     },
     {
-      "label": "boerderijmateriaal onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/241f559e-d255-4e93-b448-19ae20406dea",
-      "categorie": "optioneel"
+      "label": "Scheikunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/EE4D07D17E",
+      "categorie": "essentieel"
     },
     {
-      "label": "vee beheren",
-      "uri": "http://data.europa.eu/esco/skill/d3d99bf2-cdad-4bdf-acd3-c94d599c4808",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "chemische producten voor bodem en planten beheren",
-      "uri": "http://data.europa.eu/esco/skill/87da57a8-ae40-41e3-998e-f517daa95c9a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "mechanisch gecontroleerde veeproductie-omgevingen beheren",
-      "uri": "http://data.europa.eu/esco/skill/cefb7674-cafa-4468-90ef-0ce6c3373d29",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "plannen beheren voor het gebruik van organische nevenproducten",
-      "uri": "http://data.europa.eu/esco/skill/8f98653a-4aee-4619-91c7-0cdc2f8e225a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "een computer gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/1007aa13-9f18-4bcf-96f3-e108c40baf69",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "oogstkosten inschatten",
-      "uri": "http://data.europa.eu/esco/skill/3ec9208f-991d-4253-a8b2-50d538bae017",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "beschermingsplannen voor oogst maken",
-      "uri": "http://data.europa.eu/esco/skill/a7573f65-d00c-417f-b952-441ebaeed675",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "verkoopstrategieën ten uitvoer brengen",
-      "uri": "http://data.europa.eu/esco/skill/b99aa3b8-0066-46b2-a027-30afae444ad8",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "begrazingsplannen controleren",
-      "uri": "http://data.europa.eu/esco/skill/10535df6-0496-4350-8b69-ef5c37871dee",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bestrijding van plantenziekten",
-      "uri": "http://data.europa.eu/esco/skill/f8460277-3c9a-4be4-b203-600a2a295f47",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "planten- en bodemvoeding beheren",
-      "uri": "http://data.europa.eu/esco/skill/6d53015b-6867-408f-8f3a-4eb9d5dae101",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "vee",
-      "uri": "http://data.europa.eu/esco/skill/f874149a-1d76-43ba-a3b9-338c6d83da30",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "werknemers opleiden",
-      "uri": "http://data.europa.eu/esco/skill/e54ff029-1ce9-447d-a5b2-eb7283a23e6e",
-      "categorie": "optioneel"
+      "label": "Dierverzorging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F46F3F7E96",
+      "categorie": "essentieel"
     }
   ]
 }

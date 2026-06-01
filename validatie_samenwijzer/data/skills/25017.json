@@ -27,13 +27,28 @@
   ],
   "skills": [
     {
-      "label": "houtproducten",
-      "uri": "http://data.europa.eu/esco/skill/c9026b8f-7c5c-44b4-9e59-ae1e72fb29c0",
+      "label": "houtdraaien",
+      "uri": "http://data.europa.eu/esco/skill/34bd22df-015b-4a85-9cfe-4074956a882a",
       "categorie": "essentieel"
     },
     {
-      "label": "originele meubelen ontwerpen",
-      "uri": "http://data.europa.eu/esco/skill/a4c40f64-e8d4-4677-a741-ec04e63fa284",
+      "label": "meubeltrends",
+      "uri": "http://data.europa.eu/esco/skill/2c71ffc8-dae9-4584-ae7f-5b3a78c8cc69",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "glad houtoppervlak maken",
+      "uri": "http://data.europa.eu/esco/skill/5df6be8c-c4ff-4bef-b744-3d502e5e5330",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "meubelraamwerken repareren",
+      "uri": "http://data.europa.eu/esco/skill/64f0b3c5-92ff-4fd7-9e34-cfe5eeb11c98",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "hout schuren",
+      "uri": "http://data.europa.eu/esco/skill/88ea614f-7e96-48fd-bf0b-96bf00bdb098",
       "categorie": "essentieel"
     },
     {
@@ -42,13 +57,18 @@
       "categorie": "essentieel"
     },
     {
-      "label": "houtdraaien",
-      "uri": "http://data.europa.eu/esco/skill/34bd22df-015b-4a85-9cfe-4074956a882a",
+      "label": "houtoppervlak reinigen",
+      "uri": "http://data.europa.eu/esco/skill/adf661fe-9429-4094-8671-ca69fb72ad02",
       "categorie": "essentieel"
     },
     {
-      "label": "technische tekeningen",
-      "uri": "http://data.europa.eu/esco/skill/59ea80e1-463a-4dba-82c6-d0b6d577d532",
+      "label": "boorapparatuur bedienen",
+      "uri": "http://data.europa.eu/esco/skill/db99d662-4230-49b3-a9e9-b0043a70c3c3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "soorten hout",
+      "uri": "http://data.europa.eu/esco/skill/cf2005ee-c788-4283-81d9-b443dfdf2c2e",
       "categorie": "essentieel"
     },
     {
@@ -62,23 +82,13 @@
       "categorie": "essentieel"
     },
     {
-      "label": "zandstraaltechnieken",
-      "uri": "http://data.europa.eu/esco/skill/95097774-1a0e-4501-a3d9-b0f31973e02d",
+      "label": "bouwproducten",
+      "uri": "http://data.europa.eu/esco/skill/5ac07f1a-6436-4103-b891-c59a7ac505f0",
       "categorie": "essentieel"
     },
     {
-      "label": "glad houtoppervlak maken",
-      "uri": "http://data.europa.eu/esco/skill/5df6be8c-c4ff-4bef-b744-3d502e5e5330",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "soorten hout",
-      "uri": "http://data.europa.eu/esco/skill/cf2005ee-c788-4283-81d9-b443dfdf2c2e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "houtoppervlak reinigen",
-      "uri": "http://data.europa.eu/esco/skill/adf661fe-9429-4094-8671-ca69fb72ad02",
+      "label": "originele meubelen ontwerpen",
+      "uri": "http://data.europa.eu/esco/skill/a4c40f64-e8d4-4677-a741-ec04e63fa284",
       "categorie": "essentieel"
     },
     {
@@ -87,23 +97,8 @@
       "categorie": "essentieel"
     },
     {
-      "label": "raamwerken voor meubelen maken",
-      "uri": "http://data.europa.eu/esco/skill/aedae903-74b5-4209-8765-7f6619f52545",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "meubeltrends",
-      "uri": "http://data.europa.eu/esco/skill/2c71ffc8-dae9-4584-ae7f-5b3a78c8cc69",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "hout schuren",
-      "uri": "http://data.europa.eu/esco/skill/88ea614f-7e96-48fd-bf0b-96bf00bdb098",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "boorapparatuur bedienen",
-      "uri": "http://data.europa.eu/esco/skill/db99d662-4230-49b3-a9e9-b0043a70c3c3",
+      "label": "houtzaagmachines bedienen",
+      "uri": "http://data.europa.eu/esco/skill/f2f9934c-b462-43e1-9172-432cf1904c8c",
       "categorie": "essentieel"
     },
     {
@@ -112,19 +107,29 @@
       "categorie": "essentieel"
     },
     {
-      "label": "meubelraamwerken repareren",
-      "uri": "http://data.europa.eu/esco/skill/64f0b3c5-92ff-4fd7-9e34-cfe5eeb11c98",
+      "label": "technische tekeningen",
+      "uri": "http://data.europa.eu/esco/skill/59ea80e1-463a-4dba-82c6-d0b6d577d532",
       "categorie": "essentieel"
     },
     {
-      "label": "houtzaagmachines bedienen",
-      "uri": "http://data.europa.eu/esco/skill/f2f9934c-b462-43e1-9172-432cf1904c8c",
+      "label": "raamwerken voor meubelen maken",
+      "uri": "http://data.europa.eu/esco/skill/aedae903-74b5-4209-8765-7f6619f52545",
       "categorie": "essentieel"
     },
     {
-      "label": "bouwproducten",
-      "uri": "http://data.europa.eu/esco/skill/5ac07f1a-6436-4103-b891-c59a7ac505f0",
+      "label": "zandstraaltechnieken",
+      "uri": "http://data.europa.eu/esco/skill/95097774-1a0e-4501-a3d9-b0f31973e02d",
       "categorie": "essentieel"
+    },
+    {
+      "label": "houtproducten",
+      "uri": "http://data.europa.eu/esco/skill/c9026b8f-7c5c-44b4-9e59-ae1e72fb29c0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "huishoudelijke artikelen verkopen",
+      "uri": "http://data.europa.eu/esco/skill/9783ee06-7ad3-48f3-8297-74cde9476894",
+      "categorie": "optioneel"
     },
     {
       "label": "meubeldelen repareren",
@@ -132,13 +137,38 @@
       "categorie": "optioneel"
     },
     {
-      "label": "meubilair voorbereiden voordat het wordt geverfd",
-      "uri": "http://data.europa.eu/esco/skill/efc8bf52-f724-4dc6-bd22-93d9e9253eed",
+      "label": "maquettes maken",
+      "uri": "http://data.europa.eu/esco/skill/a103bca9-6d00-4255-b61b-6c524dacfc8e",
       "categorie": "optioneel"
     },
     {
-      "label": "kleine krassen repareren",
-      "uri": "http://data.europa.eu/esco/skill/52a6ed58-d906-4905-a80c-4053247535a5",
+      "label": "graveertechnologieën",
+      "uri": "http://data.europa.eu/esco/skill/69c0689f-09dc-45a8-bc8e-4952b19f7df2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "glas bewerken",
+      "uri": "http://data.europa.eu/esco/skill/652b3110-1659-4b7d-bae9-ddb0e5e1f139",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "levering van meubilair afhandelen",
+      "uri": "http://data.europa.eu/esco/skill/28123a65-be06-4466-b117-e2ff289899f8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ecologische bouwmaterialen",
+      "uri": "http://data.europa.eu/esco/skill/60097ab6-722e-4a22-9f3e-40aecb24daef",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kleurlagen aanbrengen",
+      "uri": "http://data.europa.eu/esco/skill/35ccdf6c-6928-4ad1-967f-c984134b6bd9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "hout beitsen",
+      "uri": "http://data.europa.eu/esco/skill/571267c5-98e7-4dd2-b6bc-cde5aeec3eaa",
       "categorie": "optioneel"
     },
     {
@@ -147,8 +177,23 @@
       "categorie": "optioneel"
     },
     {
-      "label": "ecologische bouwmaterialen",
-      "uri": "http://data.europa.eu/esco/skill/60097ab6-722e-4a22-9f3e-40aecb24daef",
+      "label": "meubelen schoonmaken",
+      "uri": "http://data.europa.eu/esco/skill/29ac0064-fcd6-448e-8efb-a8b7842af9e6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "materialen snijden",
+      "uri": "http://data.europa.eu/esco/skill/5e0ead74-5711-45ef-ba64-a88b0572aafe",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "meubelindustrie",
+      "uri": "http://data.europa.eu/esco/skill/c6482540-4e20-42ab-9154-16deb6db7536",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "meubilair voorbereiden voordat het wordt geverfd",
+      "uri": "http://data.europa.eu/esco/skill/efc8bf52-f724-4dc6-bd22-93d9e9253eed",
       "categorie": "optioneel"
     },
     {
@@ -162,68 +207,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "maquettes maken",
-      "uri": "http://data.europa.eu/esco/skill/a103bca9-6d00-4255-b61b-6c524dacfc8e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "materialen snijden",
-      "uri": "http://data.europa.eu/esco/skill/5e0ead74-5711-45ef-ba64-a88b0572aafe",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "meubelen schoonmaken",
-      "uri": "http://data.europa.eu/esco/skill/29ac0064-fcd6-448e-8efb-a8b7842af9e6",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "levering van meubilair afhandelen",
-      "uri": "http://data.europa.eu/esco/skill/28123a65-be06-4466-b117-e2ff289899f8",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "kleurlagen aanbrengen",
-      "uri": "http://data.europa.eu/esco/skill/35ccdf6c-6928-4ad1-967f-c984134b6bd9",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "huishoudelijke artikelen verkopen",
-      "uri": "http://data.europa.eu/esco/skill/9783ee06-7ad3-48f3-8297-74cde9476894",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "hout beitsen",
-      "uri": "http://data.europa.eu/esco/skill/571267c5-98e7-4dd2-b6bc-cde5aeec3eaa",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "glas bewerken",
-      "uri": "http://data.europa.eu/esco/skill/652b3110-1659-4b7d-bae9-ddb0e5e1f139",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "meubilair verkopen",
-      "uri": "http://data.europa.eu/esco/skill/d48b4816-8e60-4d65-8542-29eb327551d1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "meubelindustrie",
-      "uri": "http://data.europa.eu/esco/skill/c6482540-4e20-42ab-9154-16deb6db7536",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "metaal bewerken",
-      "uri": "http://data.europa.eu/esco/skill/337e06b0-29e3-47bf-95a3-19bd84b311de",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "hout verven",
-      "uri": "http://data.europa.eu/esco/skill/9372cc5b-8f47-4805-8a37-fd0e85a948f4",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "CAD-software",
-      "uri": "http://data.europa.eu/esco/skill/a2b5dcf3-5b6a-453d-876c-cff540c0faf1",
+      "label": "kleine krassen repareren",
+      "uri": "http://data.europa.eu/esco/skill/52a6ed58-d906-4905-a80c-4053247535a5",
       "categorie": "optioneel"
     },
     {
@@ -232,13 +217,28 @@
       "categorie": "optioneel"
     },
     {
+      "label": "CAD-software",
+      "uri": "http://data.europa.eu/esco/skill/a2b5dcf3-5b6a-453d-876c-cff540c0faf1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "hout verven",
+      "uri": "http://data.europa.eu/esco/skill/9372cc5b-8f47-4805-8a37-fd0e85a948f4",
+      "categorie": "optioneel"
+    },
+    {
       "label": "meubilair decoreren",
       "uri": "http://data.europa.eu/esco/skill/ec410bec-db3c-4950-9f42-d4b3221868a7",
       "categorie": "optioneel"
     },
     {
-      "label": "graveertechnologieën",
-      "uri": "http://data.europa.eu/esco/skill/69c0689f-09dc-45a8-bc8e-4952b19f7df2",
+      "label": "meubilair verkopen",
+      "uri": "http://data.europa.eu/esco/skill/d48b4816-8e60-4d65-8542-29eb327551d1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "metaal bewerken",
+      "uri": "http://data.europa.eu/esco/skill/337e06b0-29e3-47bf-95a3-19bd84b311de",
       "categorie": "optioneel"
     }
   ]

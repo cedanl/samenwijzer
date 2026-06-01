@@ -28,28 +28,13 @@
   ],
   "skills": [
     {
+      "label": "meubelmakersmachines onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/326194b6-aeb7-441f-a198-3a223d7835b5",
+      "categorie": "essentieel"
+    },
+    {
       "label": "de bediening van een machine installeren",
       "uri": "http://data.europa.eu/esco/skill/d9818afc-1dec-4944-8c9c-e3ae8fad176d",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "machine met passende hulpmiddelen leveren",
-      "uri": "http://data.europa.eu/esco/skill/1f5148bb-1eb0-473d-a312-50e4ed24159f",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "verwerkt werkstuk verwijderen",
-      "uri": "http://data.europa.eu/esco/skill/357e1729-e2a8-49f4-8b42-dc8b278320fa",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "soorten hout",
-      "uri": "http://data.europa.eu/esco/skill/cf2005ee-c788-4283-81d9-b443dfdf2c2e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "meubelmakersmachines bedienen",
-      "uri": "http://data.europa.eu/esco/skill/289b28b6-6171-43ae-a634-009fa76de8b4",
       "categorie": "essentieel"
     },
     {
@@ -58,8 +43,18 @@
       "categorie": "essentieel"
     },
     {
+      "label": "machine met passende hulpmiddelen leveren",
+      "uri": "http://data.europa.eu/esco/skill/1f5148bb-1eb0-473d-a312-50e4ed24159f",
+      "categorie": "essentieel"
+    },
+    {
       "label": "werktuigmachines",
       "uri": "http://data.europa.eu/esco/skill/f5084a43-42c9-4bbb-b47c-b3029cf8381d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "meubelmakersmachines bedienen",
+      "uri": "http://data.europa.eu/esco/skill/289b28b6-6171-43ae-a634-009fa76de8b4",
       "categorie": "essentieel"
     },
     {
@@ -68,18 +63,8 @@
       "categorie": "essentieel"
     },
     {
-      "label": "meubelmakersmachines onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/326194b6-aeb7-441f-a198-3a223d7835b5",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "technische middelen raadplegen",
-      "uri": "http://data.europa.eu/esco/skill/9f34107c-8db0-4b00-84d8-3f64e400c80c",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "ontoereikende werkstukken verwijderen",
-      "uri": "http://data.europa.eu/esco/skill/31f01be9-7bbf-4afb-a647-bcd4931cfc8b",
+      "label": "soorten hout",
+      "uri": "http://data.europa.eu/esco/skill/cf2005ee-c788-4283-81d9-b443dfdf2c2e",
       "categorie": "essentieel"
     },
     {
@@ -88,18 +73,28 @@
       "categorie": "essentieel"
     },
     {
+      "label": "ontoereikende werkstukken verwijderen",
+      "uri": "http://data.europa.eu/esco/skill/31f01be9-7bbf-4afb-a647-bcd4931cfc8b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "technische middelen raadplegen",
+      "uri": "http://data.europa.eu/esco/skill/9f34107c-8db0-4b00-84d8-3f64e400c80c",
+      "categorie": "essentieel"
+    },
+    {
       "label": "machine leveren",
       "uri": "http://data.europa.eu/esco/skill/9ea652f6-accf-45bb-b9a8-590f06f7bd51",
       "categorie": "essentieel"
     },
     {
-      "label": "meubelmakersmachines repareren",
-      "uri": "http://data.europa.eu/esco/skill/c0f51665-5a3c-45ab-b9b0-443079cd7023",
-      "categorie": "optioneel"
+      "label": "verwerkt werkstuk verwijderen",
+      "uri": "http://data.europa.eu/esco/skill/357e1729-e2a8-49f4-8b42-dc8b278320fa",
+      "categorie": "essentieel"
     },
     {
-      "label": "levering van meubilair afhandelen",
-      "uri": "http://data.europa.eu/esco/skill/28123a65-be06-4466-b117-e2ff289899f8",
+      "label": "spuittechnieken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/5f146b0d-2f3d-45af-b1cf-c864ccc5d64d",
       "categorie": "optioneel"
     },
     {
@@ -108,8 +103,38 @@
       "categorie": "optioneel"
     },
     {
+      "label": "meubilair verkopen",
+      "uri": "http://data.europa.eu/esco/skill/d48b4816-8e60-4d65-8542-29eb327551d1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "snijtechnieken",
+      "uri": "http://data.europa.eu/esco/skill/2973b3bc-5893-4b3d-8953-22ef677a162f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "meubelindustrie",
+      "uri": "http://data.europa.eu/esco/skill/c6482540-4e20-42ab-9154-16deb6db7536",
+      "categorie": "optioneel"
+    },
+    {
       "label": "glasblazerij",
       "uri": "http://data.europa.eu/esco/skill/4e2d4d0a-fd08-4a02-994c-38d989ad9184",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "metalen samenvoegen",
+      "uri": "http://data.europa.eu/esco/skill/29d762da-1711-4a3c-b424-f0a404f4bf2d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "houtverwerkingsprocessen",
+      "uri": "http://data.europa.eu/esco/skill/0f9098d1-9bcd-453c-a9ec-e8b635705976",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verven met een verfpistool",
+      "uri": "http://data.europa.eu/esco/skill/4c68d1c3-66d9-4631-a6ff-b13d2ce9ff17",
       "categorie": "optioneel"
     },
     {
@@ -118,8 +143,13 @@
       "categorie": "optioneel"
     },
     {
-      "label": "glad houtoppervlak maken",
-      "uri": "http://data.europa.eu/esco/skill/5df6be8c-c4ff-4bef-b744-3d502e5e5330",
+      "label": "metaalbewerking",
+      "uri": "http://data.europa.eu/esco/skill/7077b2af-9169-4499-bccb-1b4f96364163",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "meubelen schoonmaken",
+      "uri": "http://data.europa.eu/esco/skill/29ac0064-fcd6-448e-8efb-a8b7842af9e6",
       "categorie": "optioneel"
     },
     {
@@ -133,18 +163,18 @@
       "categorie": "optioneel"
     },
     {
-      "label": "houtverwerkingsprocessen",
-      "uri": "http://data.europa.eu/esco/skill/0f9098d1-9bcd-453c-a9ec-e8b635705976",
+      "label": "houtelementen samenvoegen",
+      "uri": "http://data.europa.eu/esco/skill/2e8e2acf-5d58-4d99-807d-2ed77a6c8b17",
       "categorie": "optioneel"
     },
     {
-      "label": "meubelindustrie",
-      "uri": "http://data.europa.eu/esco/skill/c6482540-4e20-42ab-9154-16deb6db7536",
+      "label": "passende beschermende uitrusting dragen",
+      "uri": "http://data.europa.eu/esco/skill/6122d586-5978-431f-8e7a-96e61fc1f3fc",
       "categorie": "optioneel"
     },
     {
-      "label": "metaalbewerking",
-      "uri": "http://data.europa.eu/esco/skill/7077b2af-9169-4499-bccb-1b4f96364163",
+      "label": "glad houtoppervlak maken",
+      "uri": "http://data.europa.eu/esco/skill/5df6be8c-c4ff-4bef-b744-3d502e5e5330",
       "categorie": "optioneel"
     },
     {
@@ -153,13 +183,13 @@
       "categorie": "optioneel"
     },
     {
-      "label": "metalen samenvoegen",
-      "uri": "http://data.europa.eu/esco/skill/29d762da-1711-4a3c-b424-f0a404f4bf2d",
+      "label": "levering van meubilair afhandelen",
+      "uri": "http://data.europa.eu/esco/skill/28123a65-be06-4466-b117-e2ff289899f8",
       "categorie": "optioneel"
     },
     {
-      "label": "passende beschermende uitrusting dragen",
-      "uri": "http://data.europa.eu/esco/skill/6122d586-5978-431f-8e7a-96e61fc1f3fc",
+      "label": "meubelmakersmachines repareren",
+      "uri": "http://data.europa.eu/esco/skill/c0f51665-5a3c-45ab-b9b0-443079cd7023",
       "categorie": "optioneel"
     },
     {
@@ -170,36 +200,6 @@
     {
       "label": "meubeltrends",
       "uri": "http://data.europa.eu/esco/skill/2c71ffc8-dae9-4584-ae7f-5b3a78c8cc69",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "snijtechnieken",
-      "uri": "http://data.europa.eu/esco/skill/2973b3bc-5893-4b3d-8953-22ef677a162f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "meubelen schoonmaken",
-      "uri": "http://data.europa.eu/esco/skill/29ac0064-fcd6-448e-8efb-a8b7842af9e6",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "spuittechnieken toepassen",
-      "uri": "http://data.europa.eu/esco/skill/5f146b0d-2f3d-45af-b1cf-c864ccc5d64d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "meubilair verkopen",
-      "uri": "http://data.europa.eu/esco/skill/d48b4816-8e60-4d65-8542-29eb327551d1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "houtelementen samenvoegen",
-      "uri": "http://data.europa.eu/esco/skill/2e8e2acf-5d58-4d99-807d-2ed77a6c8b17",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "verven met een verfpistool",
-      "uri": "http://data.europa.eu/esco/skill/4c68d1c3-66d9-4631-a6ff-b13d2ce9ff17",
       "categorie": "optioneel"
     }
   ]

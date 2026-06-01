@@ -1,311 +1,124 @@
 {
   "crebo": "25912",
   "opleiding": "Trainer-coach/Instructeur",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "sportcoach",
-    "uri": "http://data.europa.eu/esco/occupation/3e9c1262-4fe2-4eb1-bf94-4fe64498393a",
-    "definitie": "Sportcoaches geven instructies in de sport waarin ze gespecialiseerd zijn in een recreatieve context onder al dan niet leeftijdsspecifieke deelnemers. Zij identificeren reeds verworven vaardigheden en voeren geschikte opleidingsprogramma’s uit voor de groepen of personen die zij onderwijzen om de lichamelijke en psychologische geschiktheid van de deelnemers te ontwikkelen. Zij scheppen de optimale omgeving voor de ontwikkeling van de vaardigheden van de deelnemers en stellen hen in staat hun prestaties te optimaliseren en tegelijkertijd de sportiviteit en de aard van alle deelnemers te bevorderen. Sportcoaches houden ook de vooruitgang van de deelnemers bij en geven waar nodig persoonlijke instructies. Zij houden toezicht op sportvoorzieningen en kleedkamers en onderhouden de uniformen en de uitrusting."
+    "label": "Trainer-coach/Instructeur ",
+    "uri": "",
+    "definitie": "De trainer-coach/instructeur is inzetbaar op een heel breed terrein van sportbeoefening. Hij/zij werkt vooral in organisaties die primair gericht zijn op sport en bewegen zoals sportverenigingen, fitnesscentra, sport- en bewegingscentra, buitensportondernemingen, zwembaden of commerciële sportaanbieders. Ook kan hij/zij werkzaam zijn bij organisaties waar sport en bewegen deel uitmaakt van de beroepsuitoefening, zoals defensie, brandweer, politie. De trainer-coach/instructeur heeft doorzettingsvermogen, wekt vertrouwen op bij sporters/deelnemers en inspireert hen en haalt het beste in hen naar boven. Het resultaat van de werkzaamheden is het behalen van gestelde doelstellingen betreffende de sportieve dan wel recreatieve prestaties van de sporters/deelnemers."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "schaatscoach",
-    "fitnessinstructeur",
-    "voetbaltrainer",
-    "sportcoach",
-    "personal trainer",
-    "skileraar",
-    "coach spreken in het openbaar",
-    "survivalinstructeur",
-    "sportinstructeur",
-    "bedrijfsleider verkoop sport- en kampeerartikelen",
-    "sportcoördinator",
-    "verhuurmedewerker sport- en recreatieartikelen",
-    "verkoopspecialist sport- en kampeerartikelen",
-    "beleidsmedewerker sport en recreatie",
-    "sportmanager",
-    "sport- en bewegingsleider"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "voorbeelden geven bij het leren",
-      "uri": "http://data.europa.eu/esco/skill/b32e593b-cc7f-4f38-bf50-e69431ec7ada",
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
       "categorie": "essentieel"
     },
     {
-      "label": "constructieve kritiek geven",
-      "uri": "http://data.europa.eu/esco/skill/b9bb1f03-15e2-4079-943e-7e483b21725b",
+      "label": "Instrueren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6AE2F3F890",
       "categorie": "essentieel"
     },
     {
-      "label": "lesprogramma's voor sport plannen",
-      "uri": "http://data.europa.eu/esco/skill/65baf502-04a6-41c9-962f-9629de5c5a0a",
+      "label": "Motiveren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/9744544CFB",
       "categorie": "essentieel"
     },
     {
-      "label": "studenten aanmoedigen hun prestaties te erkennen",
-      "uri": "http://data.europa.eu/esco/skill/f5dc20ae-8b2f-4c9b-b4fa-e9e8c81dbcf4",
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
       "categorie": "essentieel"
     },
     {
-      "label": "onderwijsstrategieën toepassen",
-      "uri": "http://data.europa.eu/esco/skill/59eb177a-2f30-4943-8b30-5f87dd51a80d",
+      "label": "Monitoren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B03F4F484C",
       "categorie": "essentieel"
     },
     {
-      "label": "studenten bijstaan bij het leren",
-      "uri": "http://data.europa.eu/esco/skill/d5e1e30e-44ab-4aba-abab-b8263e801b7a",
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
       "categorie": "essentieel"
     },
     {
-      "label": "zorgen voor risicobeheer in sport",
-      "uri": "http://data.europa.eu/esco/skill/ada1d7d1-c887-4a28-b399-0d589b938786",
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
       "categorie": "essentieel"
     },
     {
-      "label": "sportethiek",
-      "uri": "http://data.europa.eu/esco/skill/733db58b-f62e-4548-8078-b0f4e5182383",
+      "label": "Psychologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/17998456DE",
       "categorie": "essentieel"
     },
     {
-      "label": "onderwijs aanpassen aan de doelgroep",
-      "uri": "http://data.europa.eu/esco/skill/b2a9587a-49a4-4384-b134-0d394be806e3",
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
       "categorie": "essentieel"
     },
     {
-      "label": "studentenrelaties beheren",
-      "uri": "http://data.europa.eu/esco/skill/44da96fe-26a3-4a32-9a0f-c49614bb7298",
+      "label": "Didactiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4D223374A5",
       "categorie": "essentieel"
     },
     {
-      "label": "lesinhoud voorbereiden",
-      "uri": "http://data.europa.eu/esco/skill/20f57a7f-b90e-4403-8c77-5ddd89b5835b",
+      "label": "Biologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/54690E3D68",
       "categorie": "essentieel"
     },
     {
-      "label": "onderwijs aanpassen aan de capaciteiten van de student",
-      "uri": "http://data.europa.eu/esco/skill/573d3f91-c81c-407e-a56d-0f3a63272b43",
+      "label": "Sport en bewegen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/67945BB58E",
       "categorie": "essentieel"
     },
     {
-      "label": "sport- en bewegingsgeneeskunde",
-      "uri": "http://data.europa.eu/esco/skill/00506f28-e884-4496-800c-3477c67eb355",
+      "label": "Sociaal-cultureel werk, activiteitenbegeleiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6AA1C14325",
       "categorie": "essentieel"
     },
     {
-      "label": "sportlessen geven",
-      "uri": "http://data.europa.eu/esco/skill/dbadb531-2fb9-4361-b80b-9be8c3c54229",
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
       "categorie": "essentieel"
     },
     {
-      "label": "balans tussen rust en activiteit bevorderen",
-      "uri": "http://data.europa.eu/esco/skill/9efc639c-712f-4857-acf9-ad311b7d69f3",
+      "label": "Informatietechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7459B5FEB9",
       "categorie": "essentieel"
     },
     {
-      "label": "klassenmanagement uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/cedd0710-62ae-4ff4-89ae-ac52375f86ec",
+      "label": "Sportinstructie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9144FBEBE8",
       "categorie": "essentieel"
     },
     {
-      "label": "veiligheid van studenten garanderen",
-      "uri": "http://data.europa.eu/esco/skill/11f536f5-b0e2-46a6-95c1-bd765946604c",
+      "label": "Preventieve gezondheidszorg en - geneeskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BFE1C817CA",
       "categorie": "essentieel"
     },
     {
-      "label": "gebruik van sportmateriaal",
-      "uri": "http://data.europa.eu/esco/skill/61a9724c-ffab-4a69-a609-e593caf6f87b",
+      "label": "Voeding en gezondheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C3247434CD",
       "categorie": "essentieel"
     },
     {
-      "label": "motiveren tijdens het sporten",
-      "uri": "http://data.europa.eu/esco/skill/ece81686-331c-4381-bf3f-5ea610d47a7f",
+      "label": "Fysiotherapie, bewegingswetenschappen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/CD5F625891",
       "categorie": "essentieel"
     },
     {
-      "label": "interculturele onderwijsstrategieën toepassen",
-      "uri": "http://data.europa.eu/esco/skill/e3ef4981-2cba-4b34-b273-728c3a33d04f",
+      "label": "Projectmanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F248B939CD",
       "categorie": "essentieel"
     },
     {
-      "label": "coachingstijl ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/1d38a162-61a0-42e8-83ca-47ce3e881032",
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
       "categorie": "essentieel"
     },
     {
-      "label": "principes van teamwerk",
-      "uri": "http://data.europa.eu/esco/skill/a5b0cd5c-e13a-4ab3-8d93-4d242adcfb01",
+      "label": "Voeding en diëtetiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FF24F7C483",
       "categorie": "essentieel"
-    },
-    {
-      "label": "vooruitgang van leerlingen volgen",
-      "uri": "http://data.europa.eu/esco/skill/3377f3b2-4ba2-457f-b29d-8df59e8cfba8",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "trainingen organiseren",
-      "uri": "http://data.europa.eu/esco/skill/90e8f54b-064f-4721-8ccc-b5f61968b227",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "sportregels",
-      "uri": "http://data.europa.eu/esco/skill/b6e84c79-b9a3-415a-a1af-6149b3fba650",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "studenten helpen met materiaal",
-      "uri": "http://data.europa.eu/esco/skill/7530bc44-f09d-4dd2-8911-92b98333e442",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "middelen voor educatieve doeleinden beheren",
-      "uri": "http://data.europa.eu/esco/skill/860e85ee-5992-445a-b3d3-9bab524f7600",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "lichamelijke ontwikkeling van kinderen",
-      "uri": "http://data.europa.eu/esco/skill/3ff9d956-3e26-40d1-ae0e-f5f247943042",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "in lesmateriaal voorzien",
-      "uri": "http://data.europa.eu/esco/skill/d39a5880-7d0a-4573-9f70-a75ff875bf83",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "curriculumdoelstellingen",
-      "uri": "http://data.europa.eu/esco/skill/edff6d20-660d-4d33-b412-9a5b664a14be",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "atleten ondersteunen hun conditie te onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/b75131fa-3b2d-4b51-9cf0-ca256015fe03",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "sportprestaties beoordelen",
-      "uri": "http://data.europa.eu/esco/skill/e8a65528-0fe8-499d-8fcc-f2a447c917a6",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "talent identificeren",
-      "uri": "http://data.europa.eu/esco/skill/301bcf97-4444-461d-82a5-78f3830f9185",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "studenten raadplegen over leerinhoud",
-      "uri": "http://data.europa.eu/esco/skill/1be68ecc-7263-4118-8ca5-254e444f3bc0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "eigenschappen van sportuitrusting",
-      "uri": "http://data.europa.eu/esco/skill/e31ff919-3923-481d-82b5-2008a695710a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "gezondheidsvoorlichting bieden",
-      "uri": "http://data.europa.eu/esco/skill/60b2dd49-c677-4f47-816e-aff3b577e113",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "beoordelingsprocessen",
-      "uri": "http://data.europa.eu/esco/skill/31b67516-af16-4b97-8430-a8a8e0f84190",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "persoonlijke administratie bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/9df34bc3-25d4-4452-a896-4d19b94ef896",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "volwassenenonderwijs",
-      "uri": "http://data.europa.eu/esco/skill/60856bbb-e5db-4398-babb-300a24a7fe97",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "anatomie van de mens",
-      "uri": "http://data.europa.eu/esco/skill/9ec4252d-cbe8-4134-88fa-549dee1883f3",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "recentste bevindingen in de sportwetenschappen toepassen",
-      "uri": "http://data.europa.eu/esco/skill/4d083dc5-5147-489a-b7bd-5f8939e60430",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "sportevenementen",
-      "uri": "http://data.europa.eu/esco/skill/bd0e1723-ecd4-418a-9e76-b2539b75e660",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "tendensen in sportmateriaal volgen",
-      "uri": "http://data.europa.eu/esco/skill/afbe80ff-6e56-4ef9-a0a3-82cf8e76ee13",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "toezicht houden op buitenschoolse activiteiten",
-      "uri": "http://data.europa.eu/esco/skill/e9160feb-109a-41eb-9604-9f898c710d0f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "teamwork tussen studenten aanmoedigen",
-      "uri": "http://data.europa.eu/esco/skill/229b10cf-6f3a-490c-9706-01c107df0562",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "sportvoeding",
-      "uri": "http://data.europa.eu/esco/skill/57437c77-18a4-45f2-aedd-5e146fc56681",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "competitieve strategieën in sport ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/50558ad6-028f-4a08-95a4-2419b285cb65",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "advies geven over revalidatie-oefeningen",
-      "uri": "http://data.europa.eu/esco/skill/c823d9a1-5403-4f2d-b9a5-2fada5ee0966",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "budgetten beheren",
-      "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "sportprogramma's personaliseren",
-      "uri": "http://data.europa.eu/esco/skill/14db3283-8b66-4649-9192-41defda9c33e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "in een professionele sportomgeving werken",
-      "uri": "http://data.europa.eu/esco/skill/c668b9b2-0c11-43a5-a75f-c4b2eaa302cf",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "met verschillende doelgroepen werken",
-      "uri": "http://data.europa.eu/esco/skill/56ec6990-3e5b-475f-88e4-2c209f5625b3",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "sport in de media ondersteunen",
-      "uri": "http://data.europa.eu/esco/skill/9161e2c5-3edc-4b85-acc9-b91c78f4872a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "sportevenementen beheren",
-      "uri": "http://data.europa.eu/esco/skill/1d4c7049-6aa2-4e88-aeab-54fedaf14911",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "administratie van een sportorganisatie coördineren",
-      "uri": "http://data.europa.eu/esco/skill/319cc32a-d995-49fe-b220-0674206b7137",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "sportieve omgeving organiseren",
-      "uri": "http://data.europa.eu/esco/skill/e4edb520-b083-4685-92cd-00f6964cb372",
-      "categorie": "optioneel"
     }
   ]
 }

@@ -1,9 +1,139 @@
 {
   "crebo": "25926",
   "opleiding": "25926_BBL_2025__25926BBL2025MJP-AllroundMeubelmakerN3",
-  "bron": "ESCO",
-  "beroep": null,
-  "match_methode": "geen-kandidaten",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Allround meubelmaker/(scheeps)interieurbouwer",
+    "uri": "",
+    "definitie": "De allround meubelmaker/(scheeps)interieurbouwer maakt meubel- en (scheeps)interieurproducten volgens tekening uit massief hout en/of plaatmateriaal. Soms gebruikt die daarnaast ook andere materialen zoals metaal, kunststof, glas, textiel of natuursteen. De allround meubelmaker/(scheeps)interieurbouwer werkt in de productiehal van een bedrijf en/of monteert producten op locatie van de klant. Deze producten zijn bijvoorbeeld voor de inrichting van een winkel, restaurant of schip. Ook kan die bijvoorbeeld een maatwerkkeuken voor een particulier maken en plaatsen.  Naast het maken van nieuwe meubels en/of interieurs, voert die ook reparaties, renovaties en onderhoudswerkzaamheden uit. De werkzaamheden vinden afhankelijk van het soort product zelfstandig of in teamverband plaats. De allround meubelmaker/(scheeps)interieurbouwer gebruikt bij het werk naast diens creativiteit, gevoel voor verfijning en ruimtelijk inzicht verschillende elektrische en handgereedschappen en stationaire machines voor bijvoorbeeld zagen, schaven, frezen, schuren en lakken, om de materialen te bewerken en het product af te werken en te monteren. De allround meubelmaker/(scheeps)interieurbouwer werkt vaak nauw samen met ontwerpers, architecten en andere vaklieden om projecten te coördineren of te zorgen dat meubels en interieurs in de ruimte passen. Ook begeleidt en instrueert die medewerkers en bewaakt die de kwaliteit en het productietempo."
+  },
+  "match_methode": "crebo-direct",
   "kandidaten": [],
-  "skills": []
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Controleren van machines en systemen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/0A4C7D6130",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Informatie ordenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/299CE88E49",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beslissingen nemen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/9DD6D3E301",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Machines bedienen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D0866C5206",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplaatsen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D16A30C42A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installeren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5AD4F0905",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Productietechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/04541FC2D1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Industrieel houtbewerken, meubelmaken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/28A98D3215",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Afbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/545738E767",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ambachtelijk houtbewerken, meubelmaken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8221AA799A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reparatie en onderhoud van werktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/988374F8BD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voorraad- en magazijnbeheer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/99D6345CD2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ladingbehandeling en intern transport",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D27283387C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beheer en verwerking van afval",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E360B68955",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Textiel- en leerverwerking",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FACA2718F1",
+      "categorie": "essentieel"
+    }
+  ]
 }

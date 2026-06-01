@@ -28,23 +28,8 @@
   ],
   "skills": [
     {
-      "label": "elektrisch gereedschap gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/5bf7f85a-b080-4b27-8ddc-9f62af4643f5",
-      "categorie": "essentieel"
-    },
-    {
       "label": "in teams aan een assemblagelijn werken",
       "uri": "http://data.europa.eu/esco/skill/76dc6263-a4dc-4123-9aea-25b1fead6edd",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "elektronische eenheden monteren",
-      "uri": "http://data.europa.eu/esco/skill/4ed385bf-3e87-476a-9f06-08c2e801133a",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "zorgen voor de beschikbaarheid van materiaal",
-      "uri": "http://data.europa.eu/esco/skill/69f23426-9279-4fe6-a283-24c2aa4c855d",
       "categorie": "essentieel"
     },
     {
@@ -53,43 +38,18 @@
       "categorie": "essentieel"
     },
     {
-      "label": "mechanica van motorvoertuigen",
-      "uri": "http://data.europa.eu/esco/skill/7566f0b4-7f6e-455c-abb5-ec58e57f7e17",
+      "label": "elektrisch gereedschap gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/5bf7f85a-b080-4b27-8ddc-9f62af4643f5",
       "categorie": "essentieel"
     },
     {
-      "label": "technische documentatie gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/cffc3e97-e942-4b13-a2f3-0bf4910c06d3",
+      "label": "zorgen voor de beschikbaarheid van materiaal",
+      "uri": "http://data.europa.eu/esco/skill/69f23426-9279-4fe6-a283-24c2aa4c855d",
       "categorie": "essentieel"
     },
     {
-      "label": "met prototypes van motorvoertuigen rijden",
-      "uri": "http://data.europa.eu/esco/skill/9b9135e0-2da5-484d-a9d9-0ac2fe4a89a6",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "onderdeeltekeningen van gemotoriseerde voertuigen",
-      "uri": "http://data.europa.eu/esco/skill/1aa0f58e-790d-4965-afd2-18c581481c0c",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "componenten reinigen tijdens de montage",
-      "uri": "http://data.europa.eu/esco/skill/a380a391-08fd-44a6-9f8c-39de05dd996b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "toezicht houden op de productie van motorvoertuigen",
-      "uri": "http://data.europa.eu/esco/skill/09d79759-316b-48fe-b95d-a7b5954fb74f",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "mechanica",
-      "uri": "http://data.europa.eu/esco/skill/efa141df-f382-418f-9121-bd88fd735669",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "elektromechanica",
-      "uri": "http://data.europa.eu/esco/skill/2bbdea06-a265-42b5-bb4f-7241b661f069",
+      "label": "elektronische eenheden monteren",
+      "uri": "http://data.europa.eu/esco/skill/4ed385bf-3e87-476a-9f06-08c2e801133a",
       "categorie": "essentieel"
     },
     {
@@ -98,23 +58,13 @@
       "categorie": "essentieel"
     },
     {
-      "label": "technische tekeningen lezen",
-      "uri": "http://data.europa.eu/esco/skill/b07daddc-8625-4360-946e-ad2b0e56ebf6",
+      "label": "componenten reinigen tijdens de montage",
+      "uri": "http://data.europa.eu/esco/skill/a380a391-08fd-44a6-9f8c-39de05dd996b",
       "categorie": "essentieel"
     },
     {
-      "label": "elektriciteit",
-      "uri": "http://data.europa.eu/esco/skill/c8ac1986-38fa-43b2-89dc-50a4beeb420e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "metalen onderdelen monteren",
-      "uri": "http://data.europa.eu/esco/skill/26071360-b2b1-4089-9c73-b51792b29ed5",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "productieproces voor voertuigen",
-      "uri": "http://data.europa.eu/esco/skill/edb029e7-43a8-45a9-b37c-00ff730a1092",
+      "label": "elektrische componenten monteren",
+      "uri": "http://data.europa.eu/esco/skill/415cb0c2-e169-4f99-ba3e-d1c433b75368",
       "categorie": "essentieel"
     },
     {
@@ -123,13 +73,23 @@
       "categorie": "essentieel"
     },
     {
-      "label": "kwaliteitsstandaarden",
-      "uri": "http://data.europa.eu/esco/skill/8d4271ca-c9fd-40b3-875f-15f78332a49e",
+      "label": "elektromechanica",
+      "uri": "http://data.europa.eu/esco/skill/2bbdea06-a265-42b5-bb4f-7241b661f069",
       "categorie": "essentieel"
     },
     {
-      "label": "componenten vastmaken",
-      "uri": "http://data.europa.eu/esco/skill/cafc2723-c308-4058-9921-61306b5de924",
+      "label": "elektriciteit",
+      "uri": "http://data.europa.eu/esco/skill/c8ac1986-38fa-43b2-89dc-50a4beeb420e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "technische documentatie gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/cffc3e97-e942-4b13-a2f3-0bf4910c06d3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteitsstandaarden",
+      "uri": "http://data.europa.eu/esco/skill/8d4271ca-c9fd-40b3-875f-15f78332a49e",
       "categorie": "essentieel"
     },
     {
@@ -148,8 +108,33 @@
       "categorie": "essentieel"
     },
     {
-      "label": "elektrische componenten monteren",
-      "uri": "http://data.europa.eu/esco/skill/415cb0c2-e169-4f99-ba3e-d1c433b75368",
+      "label": "mechanica van motorvoertuigen",
+      "uri": "http://data.europa.eu/esco/skill/7566f0b4-7f6e-455c-abb5-ec58e57f7e17",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "metalen onderdelen monteren",
+      "uri": "http://data.europa.eu/esco/skill/26071360-b2b1-4089-9c73-b51792b29ed5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderdeeltekeningen van gemotoriseerde voertuigen",
+      "uri": "http://data.europa.eu/esco/skill/1aa0f58e-790d-4965-afd2-18c581481c0c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "met prototypes van motorvoertuigen rijden",
+      "uri": "http://data.europa.eu/esco/skill/9b9135e0-2da5-484d-a9d9-0ac2fe4a89a6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "productieproces voor voertuigen",
+      "uri": "http://data.europa.eu/esco/skill/edb029e7-43a8-45a9-b37c-00ff730a1092",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "mechanica",
+      "uri": "http://data.europa.eu/esco/skill/efa141df-f382-418f-9121-bd88fd735669",
       "categorie": "essentieel"
     },
     {
@@ -158,73 +143,23 @@
       "categorie": "essentieel"
     },
     {
-      "label": "onderdelen voorbereiden om samen te voegen",
-      "uri": "http://data.europa.eu/esco/skill/16da7f95-bd00-4a5c-b837-bf1c2a5a9f15",
-      "categorie": "optioneel"
+      "label": "technische tekeningen lezen",
+      "uri": "http://data.europa.eu/esco/skill/b07daddc-8625-4360-946e-ad2b0e56ebf6",
+      "categorie": "essentieel"
     },
     {
-      "label": "elektrische aansluitschema’s",
-      "uri": "http://data.europa.eu/esco/skill/d15e92c4-c8dc-48cd-a1f6-94fe13347f87",
-      "categorie": "optioneel"
+      "label": "componenten vastmaken",
+      "uri": "http://data.europa.eu/esco/skill/cafc2723-c308-4058-9921-61306b5de924",
+      "categorie": "essentieel"
     },
     {
-      "label": "diagnostische apparatuur voor automobielindustrie gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/5b264a14-d4db-4352-9278-fbb63c5ebed4",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "motoronderdelen",
-      "uri": "http://data.europa.eu/esco/skill/f5fa2654-52cc-45d2-ac92-ac979dee5d12",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "klinknageltangen hanteren",
-      "uri": "http://data.europa.eu/esco/skill/73c18a8e-6563-4254-a941-f56acfddbf24",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "testgegevens vastleggen",
-      "uri": "http://data.europa.eu/esco/skill/328733a7-6d84-420d-a65c-2a8014fadc60",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "hefapparatuur bedienen",
-      "uri": "http://data.europa.eu/esco/skill/c3d61bcf-e698-4d39-8db1-388284dbfc74",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "kwaliteit van producten controleren",
-      "uri": "http://data.europa.eu/esco/skill/1a3660c2-011c-4e96-9b1d-529afc305428",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "klinkmachines bedienen",
-      "uri": "http://data.europa.eu/esco/skill/df487cde-38d4-4e7f-a9e7-d60711aa522f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "laagspanningskabels installeren",
-      "uri": "http://data.europa.eu/esco/skill/fd60bbcc-c3b6-4fa5-936c-eef5ae0a2d44",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "solderen",
-      "uri": "http://data.europa.eu/esco/skill/f30a7ea4-77dd-452c-8a2d-b06c12606a7f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "testapparatuur gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/74374d09-7a54-4a05-ae78-d5940423de7c",
-      "categorie": "optioneel"
+      "label": "toezicht houden op de productie van motorvoertuigen",
+      "uri": "http://data.europa.eu/esco/skill/09d79759-316b-48fe-b95d-a7b5954fb74f",
+      "categorie": "essentieel"
     },
     {
       "label": "motorprestaties evalueren",
       "uri": "http://data.europa.eu/esco/skill/ed938748-60ae-4964-a657-ff2685ecc0d0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "prestatietests uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/bbd57056-80e0-45bb-a2c1-658ed99a1251",
       "categorie": "optioneel"
     },
     {
@@ -233,13 +168,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "precisiemeetinstrumenten hanteren",
-      "uri": "http://data.europa.eu/esco/skill/42c25baf-ccb3-47d9-a872-bb2ceb615538",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "soorten klinknagels",
-      "uri": "http://data.europa.eu/esco/skill/d3d9b3ab-9dc8-415b-b450-f3ecfbef684a",
+      "label": "kwaliteit van producten controleren",
+      "uri": "http://data.europa.eu/esco/skill/1a3660c2-011c-4e96-9b1d-529afc305428",
       "categorie": "optioneel"
     },
     {
@@ -248,23 +178,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "elektronische instrumenten kalibreren",
-      "uri": "http://data.europa.eu/esco/skill/8867088a-e54d-41bc-81e8-a21ff98e81d3",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "engineeringprocessen",
-      "uri": "http://data.europa.eu/esco/skill/72a74f69-5cf1-43c5-99b9-62a444578919",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "motorvoertuigen onder veeleisende omstandigheden testen",
-      "uri": "http://data.europa.eu/esco/skill/ca06223b-ce7c-4b30-b52a-e555ee08a653",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "lasapparatuur bedienen",
-      "uri": "http://data.europa.eu/esco/skill/2fcd95a4-1f9a-41cf-95a9-4701bde476b4",
+      "label": "testapparatuur gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/74374d09-7a54-4a05-ae78-d5940423de7c",
       "categorie": "optioneel"
     },
     {
@@ -273,23 +188,23 @@
       "categorie": "optioneel"
     },
     {
-      "label": "defecte motoren vaststellen",
-      "uri": "http://data.europa.eu/esco/skill/68162174-68c3-4601-840b-5e63c2dd7481",
+      "label": "diagnostische apparatuur voor automobielindustrie gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/5b264a14-d4db-4352-9278-fbb63c5ebed4",
       "categorie": "optioneel"
     },
     {
-      "label": "motoren ontmantelen",
-      "uri": "http://data.europa.eu/esco/skill/db3c8181-31b4-4950-bf0b-de01f93c372b",
+      "label": "precisiemeetinstrumenten hanteren",
+      "uri": "http://data.europa.eu/esco/skill/42c25baf-ccb3-47d9-a872-bb2ceb615538",
       "categorie": "optioneel"
     },
     {
-      "label": "motoren opnieuw monteren",
-      "uri": "http://data.europa.eu/esco/skill/92f54ff7-f6d8-4702-8e0f-2d7d3254a7fd",
+      "label": "laagspanningskabels installeren",
+      "uri": "http://data.europa.eu/esco/skill/fd60bbcc-c3b6-4fa5-936c-eef5ae0a2d44",
       "categorie": "optioneel"
     },
     {
-      "label": "bediening van verschillende motoren",
-      "uri": "http://data.europa.eu/esco/skill/204cd81a-b1f0-467c-8c5c-17e723eb62fd",
+      "label": "klinknageltangen hanteren",
+      "uri": "http://data.europa.eu/esco/skill/73c18a8e-6563-4254-a941-f56acfddbf24",
       "categorie": "optioneel"
     },
     {
@@ -298,13 +213,98 @@
       "categorie": "optioneel"
     },
     {
+      "label": "onderdelen voorbereiden om samen te voegen",
+      "uri": "http://data.europa.eu/esco/skill/16da7f95-bd00-4a5c-b837-bf1c2a5a9f15",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "prestatietests uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/bbd57056-80e0-45bb-a2c1-658ed99a1251",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "solderen",
+      "uri": "http://data.europa.eu/esco/skill/f30a7ea4-77dd-452c-8a2d-b06c12606a7f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "motoren opnieuw monteren",
+      "uri": "http://data.europa.eu/esco/skill/92f54ff7-f6d8-4702-8e0f-2d7d3254a7fd",
+      "categorie": "optioneel"
+    },
+    {
       "label": "defecte apparatuur terugsturen naar assemblagelijn",
       "uri": "http://data.europa.eu/esco/skill/c7194910-5738-45e9-9932-22dbe2293a0c",
       "categorie": "optioneel"
     },
     {
+      "label": "bediening van verschillende motoren",
+      "uri": "http://data.europa.eu/esco/skill/204cd81a-b1f0-467c-8c5c-17e723eb62fd",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "hefapparatuur bedienen",
+      "uri": "http://data.europa.eu/esco/skill/c3d61bcf-e698-4d39-8db1-388284dbfc74",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "lasapparatuur bedienen",
+      "uri": "http://data.europa.eu/esco/skill/2fcd95a4-1f9a-41cf-95a9-4701bde476b4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "motoren ontmantelen",
+      "uri": "http://data.europa.eu/esco/skill/db3c8181-31b4-4950-bf0b-de01f93c372b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektrische aansluitschema’s",
+      "uri": "http://data.europa.eu/esco/skill/d15e92c4-c8dc-48cd-a1f6-94fe13347f87",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektronische instrumenten kalibreren",
+      "uri": "http://data.europa.eu/esco/skill/8867088a-e54d-41bc-81e8-a21ff98e81d3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "motorvoertuigen onder veeleisende omstandigheden testen",
+      "uri": "http://data.europa.eu/esco/skill/ca06223b-ce7c-4b30-b52a-e555ee08a653",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "testgegevens vastleggen",
+      "uri": "http://data.europa.eu/esco/skill/328733a7-6d84-420d-a65c-2a8014fadc60",
+      "categorie": "optioneel"
+    },
+    {
       "label": "technische beginselen",
       "uri": "http://data.europa.eu/esco/skill/209a5498-3449-4689-8ed9-bd08cab4fd78",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klinkmachines bedienen",
+      "uri": "http://data.europa.eu/esco/skill/df487cde-38d4-4e7f-a9e7-d60711aa522f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "defecte motoren vaststellen",
+      "uri": "http://data.europa.eu/esco/skill/68162174-68c3-4601-840b-5e63c2dd7481",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten klinknagels",
+      "uri": "http://data.europa.eu/esco/skill/d3d9b3ab-9dc8-415b-b450-f3ecfbef684a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "engineeringprocessen",
+      "uri": "http://data.europa.eu/esco/skill/72a74f69-5cf1-43c5-99b9-62a444578919",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "motoronderdelen",
+      "uri": "http://data.europa.eu/esco/skill/f5fa2654-52cc-45d2-ac92-ac979dee5d12",
       "categorie": "optioneel"
     }
   ]

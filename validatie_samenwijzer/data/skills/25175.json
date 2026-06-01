@@ -20,68 +20,8 @@
   ],
   "skills": [
     {
-      "label": "faciliteitenbeheer in de organisatie",
-      "uri": "http://data.europa.eu/esco/skill/50f5e41d-7ce3-481b-aed7-ee9484545bc4",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "bedrijfsnormen volgen",
-      "uri": "http://data.europa.eu/esco/skill/f5f5b244-6cea-4fbc-8a50-8f712791bc09",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "leiding geven aan personeel",
-      "uri": "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "grond- en hulpstoffen beheren",
-      "uri": "http://data.europa.eu/esco/skill/020b3c27-bae1-4b85-9d6f-eccee0f5ed99",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "toezicht houden op werkzaamheden",
-      "uri": "http://data.europa.eu/esco/skill/b1fd9eda-3d2e-48ef-9c1d-0ba318e3c7e6",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "bouwkundige systemen inspecteren",
-      "uri": "http://data.europa.eu/esco/skill/887a5c70-5524-4c7d-96cc-6cdcf1c5309f",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "energiebeheer van installaties uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/885808f7-f42b-406e-95f2-28efcd45ddda",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "regelgeving inzake brandveiligheid",
-      "uri": "http://data.europa.eu/esco/skill/61268e22-9367-4c3b-91d9-b651e4c142e2",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "klachten van klanten afhandelen",
-      "uri": "http://data.europa.eu/esco/skill/28d715e3-3e5b-4fb6-8dd2-4be4919c8587",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "dagelijkse informatieactiviteiten leiden",
-      "uri": "http://data.europa.eu/esco/skill/9013b46e-5a9b-4929-8918-fcadfdfd37ce",
-      "categorie": "essentieel"
-    },
-    {
       "label": "logistiek beheren",
       "uri": "http://data.europa.eu/esco/skill/953c0b65-537a-42fe-a90b-26cd36c64361",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "facilitaire diensten promoten",
-      "uri": "http://data.europa.eu/esco/skill/c36b7871-f5ff-481a-a05e-6df005d1b822",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "klantenservice verlenen",
-      "uri": "http://data.europa.eu/esco/skill/75dfe1ee-5935-42ce-b820-697f827825c3",
       "categorie": "essentieel"
     },
     {
@@ -90,28 +30,13 @@
       "categorie": "essentieel"
     },
     {
-      "label": "contracten controleren voor gerelateerde onderhoudswerkzaamheden",
-      "uri": "http://data.europa.eu/esco/skill/a035c74a-d7af-480a-a6d6-e5baa4f3e0ec",
+      "label": "onderhoudswerkzaamheden beheren",
+      "uri": "http://data.europa.eu/esco/skill/c5bc42be-4970-4dce-80e2-af78bae42e84",
       "categorie": "essentieel"
     },
     {
-      "label": "maatschappelijk verantwoord ondernemen",
-      "uri": "http://data.europa.eu/esco/skill/66db424f-2abe-420d-8e5b-186607266b61",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "facilitaire diensten beheren",
-      "uri": "http://data.europa.eu/esco/skill/f41d4cd2-58ed-4ad6-b9c1-a5175c88d392",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "omgaan met managers",
-      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "beleid inzake faciliteitenbeheer plannen",
-      "uri": "http://data.europa.eu/esco/skill/746d4d58-7e6b-417c-a0b3-3f0c44564a2e",
+      "label": "bouwkundige systemen inspecteren",
+      "uri": "http://data.europa.eu/esco/skill/887a5c70-5524-4c7d-96cc-6cdcf1c5309f",
       "categorie": "essentieel"
     },
     {
@@ -120,58 +45,18 @@
       "categorie": "essentieel"
     },
     {
-      "label": "ruimtebenutting beheren",
-      "uri": "http://data.europa.eu/esco/skill/8c5d6b8a-55c9-4f5d-8d47-bf23e15ecb71",
+      "label": "maatschappelijk verantwoord ondernemen",
+      "uri": "http://data.europa.eu/esco/skill/66db424f-2abe-420d-8e5b-186607266b61",
       "categorie": "essentieel"
     },
     {
-      "label": "risicoanalyses uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/1dd23dba-dd00-45ab-abf4-642902538317",
+      "label": "bedrijfsnormen volgen",
+      "uri": "http://data.europa.eu/esco/skill/f5f5b244-6cea-4fbc-8a50-8f712791bc09",
       "categorie": "essentieel"
     },
     {
-      "label": "veiligheidsvoorschriften voor elektriciteit",
-      "uri": "http://data.europa.eu/esco/skill/6360d655-3494-45f6-bfc6-d5f63afc355b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "zorgen voor de beschikbaarheid van materiaal",
-      "uri": "http://data.europa.eu/esco/skill/69f23426-9279-4fe6-a283-24c2aa4c855d",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "onderhoudswerkzaamheden aan gebouwen plannen",
-      "uri": "http://data.europa.eu/esco/skill/cdb66bd3-e356-45a4-888b-6d1f69cd30a7",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "dagelijkse prioriteiten stellen",
-      "uri": "http://data.europa.eu/esco/skill/65ca5e3c-940c-46b2-b277-aff394cfdd4c",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "onderhoudswerkzaamheden beheren",
-      "uri": "http://data.europa.eu/esco/skill/c5bc42be-4970-4dce-80e2-af78bae42e84",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "toezicht houden op het budget van facilitaire diensten",
-      "uri": "http://data.europa.eu/esco/skill/3aef9d43-157e-4339-9b26-ef1108b12dc4",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "budgetten beheren",
-      "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "onderhoud van apparatuur garanderen",
-      "uri": "http://data.europa.eu/esco/skill/c927ec6e-9082-4b22-afd3-0c4e219eaf73",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gezondheids- en veiligheidsprocedures plannen",
-      "uri": "http://data.europa.eu/esco/skill/bb663409-5c88-4e3a-bc16-01aa1c8ce171",
+      "label": "facilitaire diensten promoten",
+      "uri": "http://data.europa.eu/esco/skill/c36b7871-f5ff-481a-a05e-6df005d1b822",
       "categorie": "essentieel"
     },
     {
@@ -180,8 +65,123 @@
       "categorie": "essentieel"
     },
     {
+      "label": "facilitaire diensten beheren",
+      "uri": "http://data.europa.eu/esco/skill/f41d4cd2-58ed-4ad6-b9c1-a5175c88d392",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "regelgeving inzake brandveiligheid",
+      "uri": "http://data.europa.eu/esco/skill/61268e22-9367-4c3b-91d9-b651e4c142e2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheids- en veiligheidsprocedures plannen",
+      "uri": "http://data.europa.eu/esco/skill/bb663409-5c88-4e3a-bc16-01aa1c8ce171",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "omgaan met managers",
+      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klachten van klanten afhandelen",
+      "uri": "http://data.europa.eu/esco/skill/28d715e3-3e5b-4fb6-8dd2-4be4919c8587",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toezicht houden op het budget van facilitaire diensten",
+      "uri": "http://data.europa.eu/esco/skill/3aef9d43-157e-4339-9b26-ef1108b12dc4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beleid inzake faciliteitenbeheer plannen",
+      "uri": "http://data.europa.eu/esco/skill/746d4d58-7e6b-417c-a0b3-3f0c44564a2e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "risicoanalyses uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/1dd23dba-dd00-45ab-abf4-642902538317",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "faciliteitenbeheer in de organisatie",
+      "uri": "http://data.europa.eu/esco/skill/50f5e41d-7ce3-481b-aed7-ee9484545bc4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor de beschikbaarheid van materiaal",
+      "uri": "http://data.europa.eu/esco/skill/69f23426-9279-4fe6-a283-24c2aa4c855d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klantenservice verlenen",
+      "uri": "http://data.europa.eu/esco/skill/75dfe1ee-5935-42ce-b820-697f827825c3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toezicht houden op werkzaamheden",
+      "uri": "http://data.europa.eu/esco/skill/b1fd9eda-3d2e-48ef-9c1d-0ba318e3c7e6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "leiding geven aan personeel",
+      "uri": "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ruimtebenutting beheren",
+      "uri": "http://data.europa.eu/esco/skill/8c5d6b8a-55c9-4f5d-8d47-bf23e15ecb71",
+      "categorie": "essentieel"
+    },
+    {
       "label": "relaties met klanten onderhouden",
       "uri": "http://data.europa.eu/esco/skill/2239694b-771a-4586-8b54-2794e361a9ae",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderhoud van apparatuur garanderen",
+      "uri": "http://data.europa.eu/esco/skill/c927ec6e-9082-4b22-afd3-0c4e219eaf73",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "dagelijkse informatieactiviteiten leiden",
+      "uri": "http://data.europa.eu/esco/skill/9013b46e-5a9b-4929-8918-fcadfdfd37ce",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veiligheidsvoorschriften voor elektriciteit",
+      "uri": "http://data.europa.eu/esco/skill/6360d655-3494-45f6-bfc6-d5f63afc355b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "grond- en hulpstoffen beheren",
+      "uri": "http://data.europa.eu/esco/skill/020b3c27-bae1-4b85-9d6f-eccee0f5ed99",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "budgetten beheren",
+      "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "dagelijkse prioriteiten stellen",
+      "uri": "http://data.europa.eu/esco/skill/65ca5e3c-940c-46b2-b277-aff394cfdd4c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "energiebeheer van installaties uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/885808f7-f42b-406e-95f2-28efcd45ddda",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "contracten controleren voor gerelateerde onderhoudswerkzaamheden",
+      "uri": "http://data.europa.eu/esco/skill/a035c74a-d7af-480a-a6d6-e5baa4f3e0ec",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderhoudswerkzaamheden aan gebouwen plannen",
+      "uri": "http://data.europa.eu/esco/skill/cdb66bd3-e356-45a4-888b-6d1f69cd30a7",
       "categorie": "essentieel"
     },
     {
@@ -190,18 +190,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "contacten leggen met veiligheidsautoriteiten",
-      "uri": "http://data.europa.eu/esco/skill/ea9c2308-cdd0-409f-b512-384a4fd83677",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "contractenrecht",
-      "uri": "http://data.europa.eu/esco/skill/5c606d18-6404-4047-b235-350f18e11827",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "energieprestaties van gebouwen",
-      "uri": "http://data.europa.eu/esco/skill/4e09e2d2-e317-47d2-bf5e-1d6c66be3efc",
+      "label": "planlezen",
+      "uri": "http://data.europa.eu/esco/skill/68b6ef08-d823-489d-a95c-752ae6f6e6a7",
       "categorie": "optioneel"
     },
     {
@@ -210,43 +200,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "omgaan met grote incidenten",
-      "uri": "http://data.europa.eu/esco/skill/8071881c-d652-46e7-9cf4-e06a7f1e57c7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "inkoopactiviteiten beheren",
-      "uri": "http://data.europa.eu/esco/skill/9e9a4209-c7cf-4f6e-973e-dc2ffadccc74",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "noodevacuatieplannen beheren",
-      "uri": "http://data.europa.eu/esco/skill/c1b0bfc2-4932-4e03-9077-92bc56042511",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "planlezen",
-      "uri": "http://data.europa.eu/esco/skill/68b6ef08-d823-489d-a95c-752ae6f6e6a7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "automatisering in gebouwen",
-      "uri": "http://data.europa.eu/esco/skill/6709e92c-7546-46a4-aa57-5e951bd4cb0f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "personeel aanwerven",
-      "uri": "http://data.europa.eu/esco/skill/496932f1-0b6b-4f73-9432-d95c7ddcd43b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "energiemarkt",
-      "uri": "http://data.europa.eu/esco/skill/071c7f1d-f659-4b96-a222-b21012297f3b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "arbeidswet",
-      "uri": "http://data.europa.eu/esco/skill/97b713f0-b9e8-4903-8dee-7e0b4019a1c0",
+      "label": "reageren op inbraakalarmsystemen",
+      "uri": "http://data.europa.eu/esco/skill/beaf0ed4-a51d-4856-97ec-c5701a6b44a2",
       "categorie": "optioneel"
     },
     {
@@ -255,8 +210,33 @@
       "categorie": "optioneel"
     },
     {
-      "label": "reageren op inbraakalarmsystemen",
-      "uri": "http://data.europa.eu/esco/skill/beaf0ed4-a51d-4856-97ec-c5701a6b44a2",
+      "label": "energieprestaties van gebouwen",
+      "uri": "http://data.europa.eu/esco/skill/4e09e2d2-e317-47d2-bf5e-1d6c66be3efc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contractenrecht",
+      "uri": "http://data.europa.eu/esco/skill/5c606d18-6404-4047-b235-350f18e11827",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "inkoopactiviteiten beheren",
+      "uri": "http://data.europa.eu/esco/skill/9e9a4209-c7cf-4f6e-973e-dc2ffadccc74",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "arbeidswet",
+      "uri": "http://data.europa.eu/esco/skill/97b713f0-b9e8-4903-8dee-7e0b4019a1c0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "energiemarkt",
+      "uri": "http://data.europa.eu/esco/skill/071c7f1d-f659-4b96-a222-b21012297f3b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contacten leggen met veiligheidsautoriteiten",
+      "uri": "http://data.europa.eu/esco/skill/ea9c2308-cdd0-409f-b512-384a4fd83677",
       "categorie": "optioneel"
     },
     {
@@ -267,6 +247,26 @@
     {
       "label": "beheer van de leveringsketen",
       "uri": "http://data.europa.eu/esco/skill/f929c89e-c363-4132-a918-e021d57b307c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "personeel aanwerven",
+      "uri": "http://data.europa.eu/esco/skill/496932f1-0b6b-4f73-9432-d95c7ddcd43b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "noodevacuatieplannen beheren",
+      "uri": "http://data.europa.eu/esco/skill/c1b0bfc2-4932-4e03-9077-92bc56042511",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "omgaan met grote incidenten",
+      "uri": "http://data.europa.eu/esco/skill/8071881c-d652-46e7-9cf4-e06a7f1e57c7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "automatisering in gebouwen",
+      "uri": "http://data.europa.eu/esco/skill/6709e92c-7546-46a4-aa57-5e951bd4cb0f",
       "categorie": "optioneel"
     }
   ]

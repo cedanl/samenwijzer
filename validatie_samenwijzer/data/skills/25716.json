@@ -1,428 +1,94 @@
 {
   "crebo": "25716",
   "opleiding": "25716_BOL_2025__25716BOL2025Examenplan",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "productieleider",
-    "uri": "http://data.europa.eu/esco/occupation/40517ed4-2769-4283-a15b-4b0d939bd2d3",
-    "definitie": "Productieleiders coördineren, plannen en sturen fabricage- en productieprocessen. Zij zijn verantwoordelijk voor de controle van productieschema's of bestellingen en voor het personeel in deze productiegebieden."
+    "label": "Allround medewerker AV-productie",
+    "uri": "",
+    "definitie": "De Allround medewerker AV-productie krijgt het AV-concept aangereikt. Op basis hiervan vormt hij/zij zich een beeld van doelgroep, doel en strategie en hij/zij bepaalt hoe hij/zij de realisatie van de AV-productie aan moet gaan pakken. Vervolgens bereidt hij/zij de opnamen voor, hij/zij maakt de opnamen, doet de bewerking en levert de productie op conform vereisten.\nTijdens de totstandkoming van de productie werkt hij/zij optimaal in het team samen.\nTevens weet hij/zij zich op de arbeidsmarkt te positioneren en te profileren."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "productieleider",
-    "productieleider lederwaren",
-    "productietechnicus",
-    "productie-ingenieur",
-    "hoofd productie elektrische uitrusting",
-    "technisch operator pulpproductie",
-    "productieleider schoenen",
-    "productiemanager lederindustrie"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "deadlines halen",
-      "uri": "http://data.europa.eu/esco/skill/91abe492-18be-4cce-93c7-0dca07072363",
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
       "categorie": "essentieel"
     },
     {
-      "label": "productieprocessen analyseren voor verbetering",
-      "uri": "http://data.europa.eu/esco/skill/f1b5800e-b763-4740-9586-3fef30568e81",
+      "label": "Digitale content ontwikkelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3679757482",
       "categorie": "essentieel"
     },
     {
-      "label": "diensten van werknemers plannen",
-      "uri": "http://data.europa.eu/esco/skill/85aa1871-db96-42f7-801f-c39f924de2d7",
+      "label": "Netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3DECCF2E7C",
       "categorie": "essentieel"
     },
     {
-      "label": "toezicht houden op kwaliteitscontroles",
-      "uri": "http://data.europa.eu/esco/skill/5d34adde-0b78-42b4-9d3d-69e9388d8398",
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
       "categorie": "essentieel"
     },
     {
-      "label": "productieworkflow verbeteren",
-      "uri": "http://data.europa.eu/esco/skill/8add048c-4d51-41c5-8aa2-f57412c4a637",
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
       "categorie": "essentieel"
     },
     {
-      "label": "waarborgen dat het eindproduct aan de vereisten voldoet",
-      "uri": "http://data.europa.eu/esco/skill/68269b0a-35c5-4867-bc17-a0b0230fe60c",
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
       "categorie": "essentieel"
     },
     {
-      "label": "afdelingsschema aan medewerkers geven",
-      "uri": "http://data.europa.eu/esco/skill/2fe15c51-bd67-4e35-b7df-ed4bccf0186e",
+      "label": "Promoten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E06265451B",
       "categorie": "essentieel"
     },
     {
-      "label": "budgetten beheren",
-      "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
+      "label": "Persoonlijke ontplooiing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/1A87720C54",
       "categorie": "essentieel"
     },
     {
-      "label": "beleidslijnen van de organisatie naleven",
-      "uri": "http://data.europa.eu/esco/skill/aa238394-8126-4ada-be2f-9dfe065cf314",
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
       "categorie": "essentieel"
     },
     {
-      "label": "omgaan met managers",
-      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
+      "label": "Av-productie, podiumtechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29B4A9A43C",
       "categorie": "essentieel"
     },
     {
-      "label": "productie optimaliseren",
-      "uri": "http://data.europa.eu/esco/skill/798d427e-51b3-4cd4-8b24-1357015e9ae7",
+      "label": "Fotografie, film, video",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/64914742BC",
       "categorie": "essentieel"
     },
     {
-      "label": "werkstroomprocessen beheren",
-      "uri": "http://data.europa.eu/esco/skill/7add3681-17b6-4027-8a9d-ee92d2b96a42",
+      "label": "Samenwerking en netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/95C3218741",
       "categorie": "essentieel"
     },
     {
-      "label": "productiviteitsdoelstellingen halen",
-      "uri": "http://data.europa.eu/esco/skill/db9463b7-5c24-46d2-8419-002e03bae1dc",
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
       "categorie": "essentieel"
     },
     {
-      "label": "communicatie binnen een team coördineren",
-      "uri": "http://data.europa.eu/esco/skill/cd85312f-0e0b-460b-addd-57d6df800595",
+      "label": "Veiligheidskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C34CD6448D",
       "categorie": "essentieel"
     },
     {
-      "label": "personeelscapaciteit analyseren",
-      "uri": "http://data.europa.eu/esco/skill/d58a48d1-5b7f-4028-ae11-b051d13ee1a8",
+      "label": "Marketing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E6A75FB995",
       "categorie": "essentieel"
     },
     {
-      "label": "bedrijfsnormen volgen",
-      "uri": "http://data.europa.eu/esco/skill/f5f5b244-6cea-4fbc-8a50-8f712791bc09",
+      "label": "Social media",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F1211E19F7",
       "categorie": "essentieel"
-    },
-    {
-      "label": "strategische planning implementeren",
-      "uri": "http://data.europa.eu/esco/skill/f7b5d916-52f0-4865-b6a6-e1a3b711cb5e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "productieprocessen",
-      "uri": "http://data.europa.eu/esco/skill/12c7b323-d870-4f5b-9d7d-d9f525206d77",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "productie inplannen",
-      "uri": "http://data.europa.eu/esco/skill/2a778aeb-f246-4f03-9a96-c60183001037",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "productieplannen communiceren",
-      "uri": "http://data.europa.eu/esco/skill/e8db787b-d1a2-4000-b74a-e3db5436fef6",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "voorraadniveaus bewaken",
-      "uri": "http://data.europa.eu/esco/skill/44f6a65f-6be7-4818-9a66-73908797283f",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "productieontwikkelingen controleren",
-      "uri": "http://data.europa.eu/esco/skill/9148c1e4-beae-433c-bd72-e4a009440744",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "over productieresultaten rapporteren",
-      "uri": "http://data.europa.eu/esco/skill/d73cb129-b385-4776-8303-f3f926b2e481",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "fabricageprocessen",
-      "uri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "toezicht houden op personeel",
-      "uri": "http://data.europa.eu/esco/skill/9601b2a8-68e4-4906-9306-a23679b8f0b0",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "werk van werknemers beoordelen",
-      "uri": "http://data.europa.eu/esco/skill/8a98707e-b2ee-48fe-9f36-e47e3555ecf7",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "productie controleren",
-      "uri": "http://data.europa.eu/esco/skill/feceacee-d425-4e73-821a-02dfb85084db",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "productieschema’s volgen",
-      "uri": "http://data.europa.eu/esco/skill/c8f14c32-7f24-41bb-9e8f-b24d6fd3ca86",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "correcte etikettering van goederen waarborgen",
-      "uri": "http://data.europa.eu/esco/skill/6fcf2fc7-7b74-42e5-845f-f5854fd44f37",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "transportband controleren",
-      "uri": "http://data.europa.eu/esco/skill/62d34066-f07a-4437-914b-0548ba8bbe59",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "resourceplanning uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/f5dd06b8-5d17-4932-9d03-957d0c4f5051",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "zorgen voor de beschikbaarheid van materiaal",
-      "uri": "http://data.europa.eu/esco/skill/69f23426-9279-4fe6-a283-24c2aa4c855d",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "productieschema aanpassen",
-      "uri": "http://data.europa.eu/esco/skill/0f7b4bf5-8d37-4205-bd61-fe0878e9d9e2",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "leiding geven aan personeel",
-      "uri": "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "normen voor productiefaciliteiten vaststellen",
-      "uri": "http://data.europa.eu/esco/skill/d154e48f-95b4-4ce6-907e-4a44d50129fe",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gezondheids- en veiligheidsprocedures plannen",
-      "uri": "http://data.europa.eu/esco/skill/bb663409-5c88-4e3a-bc16-01aa1c8ce171",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "veiligheid in het productiegebied waarborgen",
-      "uri": "http://data.europa.eu/esco/skill/ab239c75-dfcc-4f6c-9d11-75bb78049afc",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "planningen meedelen aan betrokken personen",
-      "uri": "http://data.europa.eu/esco/skill/da56feea-941c-4ff6-b573-bb16ccbde670",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "streven naar bedrijfsgroei",
-      "uri": "http://data.europa.eu/esco/skill/2a2fa8e8-aaf3-4abf-a60b-af6415f1c6d4",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "personeelszaken beheren",
-      "uri": "http://data.europa.eu/esco/skill/279a4b1d-21df-4d78-9f4d-324c73fd7536",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "productkennis",
-      "uri": "http://data.europa.eu/esco/skill/d6d3fee7-47e2-47f4-a0ec-6c75f28c6abd",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "opleidingsbehoeften identificeren",
-      "uri": "http://data.europa.eu/esco/skill/4dafe480-f2ae-46b5-bd5e-8d4e538f50c7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "zorgen voor naleving van de milieuwetgeving",
-      "uri": "http://data.europa.eu/esco/skill/089ee650-297e-4716-87d1-440743b70a0d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "inspectierapporten schrijven",
-      "uri": "http://data.europa.eu/esco/skill/cdd2b6cc-b4a9-42a0-824b-766f52176fd3",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "kwaliteitsnormen voor productie controleren",
-      "uri": "http://data.europa.eu/esco/skill/3edfcb2b-2d0e-4673-87ce-f55c37eb5fca",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "noodprocedures beheren",
-      "uri": "http://data.europa.eu/esco/skill/445b65c5-5b16-4f66-94ce-f2a7f49f9ee7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "werknemers opleiden",
-      "uri": "http://data.europa.eu/esco/skill/e54ff029-1ce9-447d-a5b2-eb7283a23e6e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "productiegegevens registreren voor kwaliteitscontrole",
-      "uri": "http://data.europa.eu/esco/skill/2879a6f9-868b-40a1-a424-d50007ca8354",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "automatische machines controleren",
-      "uri": "http://data.europa.eu/esco/skill/7aa52bdc-9c56-4341-be65-e8e30f64403f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "tandheelkundige instrumenten produceren",
-      "uri": "http://data.europa.eu/esco/skill/49e750a6-e752-4947-9bda-3b3947d670c2",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "afspraken met leveranciers onderhandelen",
-      "uri": "http://data.europa.eu/esco/skill/c842be42-81b3-40f2-904c-ea8790ac88bd",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "processen voor het maken van juwelen",
-      "uri": "http://data.europa.eu/esco/skill/a815de2c-cefb-461f-9c55-05f21ae7da8f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "machines vervangen",
-      "uri": "http://data.europa.eu/esco/skill/ca8c5849-2655-44b3-b2fa-c4c0e2a04aeb",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "statistische methoden bij procescontrole toepassen",
-      "uri": "http://data.europa.eu/esco/skill/ee8fee1a-75c1-43fb-b08d-779929f99249",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "vernieuwingsprocessen",
-      "uri": "http://data.europa.eu/esco/skill/2fb8480e-de3c-462b-b169-e8bbb344da68",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "beheersing van uitgaven",
-      "uri": "http://data.europa.eu/esco/skill/e1f5c539-7c93-49ee-917d-a24e0d887686",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "documentatie leveren",
-      "uri": "http://data.europa.eu/esco/skill/2636b3d3-843e-46a9-8b4c-a9d6ca3f5a2d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "klantenoordelen analyseren",
-      "uri": "http://data.europa.eu/esco/skill/89ba58e8-a67e-4d2b-ad42-6acab25c241b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "afgekeurde producten beheren",
-      "uri": "http://data.europa.eu/esco/skill/cc1d0498-bcce-4b0f-aa2c-372246f8da6b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "reparatiegegevens opschrijven",
-      "uri": "http://data.europa.eu/esco/skill/f8cfab53-c7f7-465d-9eca-d2a28e4dc708",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "aan contractspecificaties voldoen",
-      "uri": "http://data.europa.eu/esco/skill/576b305e-8c25-4546-8a69-87f975783114",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziekinstrumenten",
-      "uri": "http://data.europa.eu/esco/skill/29d4aaba-99f9-4733-bd74-ad558f2ae3a7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "communiceren met klanten",
-      "uri": "http://data.europa.eu/esco/skill/0da516ee-e70e-4384-be13-f5ff80be8127",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "uitvoertransportactiviteiten coördineren",
-      "uri": "http://data.europa.eu/esco/skill/8899ee6c-7df4-41dd-9dc5-36be940864ee",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "wettelijke vereisten voor ict-producten",
-      "uri": "http://data.europa.eu/esco/skill/a846cb9e-c152-41e7-bd34-45e7ff941e3b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "goederen bestellen",
-      "uri": "http://data.europa.eu/esco/skill/210827e3-3129-45a2-8683-70399f3f561f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "eigenschappen van sportuitrusting",
-      "uri": "http://data.europa.eu/esco/skill/e31ff919-3923-481d-82b5-2008a695710a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "advies geven aan technici",
-      "uri": "http://data.europa.eu/esco/skill/8c474534-707f-46f3-b356-810bbfe8b693",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "medische apparaten",
-      "uri": "http://data.europa.eu/esco/skill/df958b10-9e1c-4a80-9170-5572a5366e84",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "proefdraaien",
-      "uri": "http://data.europa.eu/esco/skill/465ff64a-1271-4064-8ed1-e969cb68d8b4",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "meubelindustrie",
-      "uri": "http://data.europa.eu/esco/skill/c6482540-4e20-42ab-9154-16deb6db7536",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "zorgen dat producten voldoen aan de reglementaire bepalingen",
-      "uri": "http://data.europa.eu/esco/skill/f453b1a6-c7db-4d9d-9ba3-47c45159bfe3",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "technische middelen raadplegen",
-      "uri": "http://data.europa.eu/esco/skill/9f34107c-8db0-4b00-84d8-3f64e400c80c",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "productie van sportuitrusting",
-      "uri": "http://data.europa.eu/esco/skill/fdd2806d-be01-4d3c-ba55-b1d5eb9ab4ff",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "personeel aanwerven",
-      "uri": "http://data.europa.eu/esco/skill/496932f1-0b6b-4f73-9432-d95c7ddcd43b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "samenwerken met de verantwoordelijke voor kwaliteitscontrole",
-      "uri": "http://data.europa.eu/esco/skill/99ca6ed2-b6b8-4eb0-8180-92e750e546be",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "procesoptimalisering leiden",
-      "uri": "http://data.europa.eu/esco/skill/10026df1-670d-4c75-b3d5-ee0037f9d59b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "speelgoed- en spelsector",
-      "uri": "http://data.europa.eu/esco/skill/2284d858-5836-48c6-8c70-86bf2b62e462",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "risico’s op de werkplek identificeren",
-      "uri": "http://data.europa.eu/esco/skill/5f97fac8-2001-4b81-ae8b-22f9062d921a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "grond- en hulpstoffen beheren",
-      "uri": "http://data.europa.eu/esco/skill/020b3c27-bae1-4b85-9d6f-eccee0f5ed99",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "kwaliteit van producten controleren",
-      "uri": "http://data.europa.eu/esco/skill/1a3660c2-011c-4e96-9b1d-529afc305428",
-      "categorie": "optioneel"
     }
   ]
 }

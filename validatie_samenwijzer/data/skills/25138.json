@@ -28,18 +28,8 @@
   ],
   "skills": [
     {
-      "label": "administratieve systemen beheren",
-      "uri": "http://data.europa.eu/esco/skill/77e7cb08-2c6f-42ab-881b-b34b2318acbe",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gegevens van financiële transacties bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/648782e0-b5e5-4e59-bed0-627aa8ac29f0",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "elektronische communicatie",
-      "uri": "http://data.europa.eu/esco/skill/debef2fc-7af4-4bff-ac92-4d0317915a84",
+      "label": "financiële markten",
+      "uri": "http://data.europa.eu/esco/skill/905b6acd-377b-46b9-9d80-e47e9ca789ca",
       "categorie": "essentieel"
     },
     {
@@ -53,19 +43,74 @@
       "categorie": "essentieel"
     },
     {
-      "label": "klantendiensten",
-      "uri": "http://data.europa.eu/esco/skill/15a33d76-4640-438d-ae64-fdc0c1d3eebc",
-      "categorie": "essentieel"
-    },
-    {
       "label": "bankactiviteiten",
       "uri": "http://data.europa.eu/esco/skill/3c209873-c757-47bb-91b5-9b6dc05df116",
       "categorie": "essentieel"
     },
     {
-      "label": "financiële markten",
-      "uri": "http://data.europa.eu/esco/skill/905b6acd-377b-46b9-9d80-e47e9ca789ca",
+      "label": "gegevens van financiële transacties bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/648782e0-b5e5-4e59-bed0-627aa8ac29f0",
       "categorie": "essentieel"
+    },
+    {
+      "label": "elektronische communicatie",
+      "uri": "http://data.europa.eu/esco/skill/debef2fc-7af4-4bff-ac92-4d0317915a84",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klantendiensten",
+      "uri": "http://data.europa.eu/esco/skill/15a33d76-4640-438d-ae64-fdc0c1d3eebc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "administratieve systemen beheren",
+      "uri": "http://data.europa.eu/esco/skill/77e7cb08-2c6f-42ab-881b-b34b2318acbe",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beurs",
+      "uri": "http://data.europa.eu/esco/skill/b895bd42-0009-4815-a150-eb9eb5caec21",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "effecten",
+      "uri": "http://data.europa.eu/esco/skill/749ce4c2-4dfd-461a-a8f3-0f6914814d3e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "commercieel recht",
+      "uri": "http://data.europa.eu/esco/skill/d63c2bad-817d-4116-b4d8-b927cb01212d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "internationale commerciële transactiebepalingen",
+      "uri": "http://data.europa.eu/esco/skill/6f45a77d-9208-40f2-a116-ac99c77ef580",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "statistiek",
+      "uri": "http://data.europa.eu/esco/skill/7ee4c2ea-b349-4bd2-81a3-ec31475d4833",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "communiceren met bankiers",
+      "uri": "http://data.europa.eu/esco/skill/66baba7d-178e-4c51-935f-03a9049ff2f6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "buitenlandse munteenheden",
+      "uri": "http://data.europa.eu/esco/skill/2a38d8fa-92ad-46d3-9bcd-9e5c7f90ad2e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "informatie geven over financiële producten",
+      "uri": "http://data.europa.eu/esco/skill/e92f4673-1dec-41ec-b6ec-36fef226359c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "financiële transacties traceren",
+      "uri": "http://data.europa.eu/esco/skill/0295b2a4-fb86-495f-9547-d479532fc4c2",
+      "categorie": "optioneel"
     },
     {
       "label": "vreemde valuta verhandelen",
@@ -73,8 +118,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "beurs",
-      "uri": "http://data.europa.eu/esco/skill/b895bd42-0009-4815-a150-eb9eb5caec21",
+      "label": "financiële wettelijke bepalingen",
+      "uri": "http://data.europa.eu/esco/skill/e4c205f6-55ba-4bed-9c5d-2032058300c0",
       "categorie": "optioneel"
     },
     {
@@ -88,53 +133,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "commercieel recht",
-      "uri": "http://data.europa.eu/esco/skill/d63c2bad-817d-4116-b4d8-b927cb01212d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "communiceren met bankiers",
-      "uri": "http://data.europa.eu/esco/skill/66baba7d-178e-4c51-935f-03a9049ff2f6",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "informatie geven over financiële producten",
-      "uri": "http://data.europa.eu/esco/skill/e92f4673-1dec-41ec-b6ec-36fef226359c",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "financiële wettelijke bepalingen",
-      "uri": "http://data.europa.eu/esco/skill/e4c205f6-55ba-4bed-9c5d-2032058300c0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "statistiek",
-      "uri": "http://data.europa.eu/esco/skill/7ee4c2ea-b349-4bd2-81a3-ec31475d4833",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "effecten",
-      "uri": "http://data.europa.eu/esco/skill/749ce4c2-4dfd-461a-a8f3-0f6914814d3e",
-      "categorie": "optioneel"
-    },
-    {
       "label": "boekhouding",
       "uri": "http://data.europa.eu/esco/skill/ecc18804-a466-40d9-98b4-fba5cd67dd4b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "financiële transacties traceren",
-      "uri": "http://data.europa.eu/esco/skill/0295b2a4-fb86-495f-9547-d479532fc4c2",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "buitenlandse munteenheden",
-      "uri": "http://data.europa.eu/esco/skill/2a38d8fa-92ad-46d3-9bcd-9e5c7f90ad2e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "internationale commerciële transactiebepalingen",
-      "uri": "http://data.europa.eu/esco/skill/6f45a77d-9208-40f2-a116-ac99c77ef580",
       "categorie": "optioneel"
     }
   ]

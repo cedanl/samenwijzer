@@ -3,9 +3,9 @@
   "opleiding": "2021 - 25104 VG MBI OER Middenkaderfunctionaris Bouw BOL 4",
   "bron": "ESCO",
   "beroep": {
-    "label": "projectleider bouw",
-    "uri": "http://data.europa.eu/esco/occupation/faed05c0-c1d1-4e34-b575-0dea96459e56",
-    "definitie": "Projectleiders in de bouw zijn verantwoordelijk voor de planning en de coördinatie van de bouwprojecten. Zij bieden deskundigheid in de ontwerpfase van bouwprojecten door een betere raming van de kosten en de functionele implicaties te vergemakkelijken. Zij nemen deel aan aanbestedingsprocedures voor bouwprojecten en huren onderaannemers in om de verschillende fasen van het bouwproces van begin tot eind op te leveren. Zij streven ernaar de waarde van de projecten te verhogen, door zowel het verbeteren van de efficiëntie als het creëren van waarde voor de klanten."
+    "label": "bouwopzichter",
+    "uri": "http://data.europa.eu/esco/occupation/0dd7e6cd-2e5a-4fae-9ce0-6a3622d4019f",
+    "definitie": "Bouwopzichters volgen de werkzaamheden in alle fasen van het bouwproces. Zij coördineren de verschillende teams, wijzen taken toe en lossen problemen op."
   },
   "match_methode": "llm-keuze",
   "kandidaten": [
@@ -28,88 +28,28 @@
   ],
   "skills": [
     {
-      "label": "contracten beheren",
-      "uri": "http://data.europa.eu/esco/skill/92721092-fe7c-4689-96bd-4f02385bc0e7",
+      "label": "veiligheidsuitrusting gebruiken tijdens bouwwerkzaamheden",
+      "uri": "http://data.europa.eu/esco/skill/c643e59b-d74c-4f44-b76e-6e1d96c05ec4",
       "categorie": "essentieel"
     },
     {
-      "label": "toezicht houden op bouwprojecten",
-      "uri": "http://data.europa.eu/esco/skill/1de548e0-9535-4d2e-9d20-d4474c1ea813",
+      "label": "bouwplaats controleren",
+      "uri": "http://data.europa.eu/esco/skill/fc1a75bb-70e3-4005-881f-7709bf7b0ed4",
       "categorie": "essentieel"
     },
     {
-      "label": "advies geven over bouwmaterialen",
-      "uri": "http://data.europa.eu/esco/skill/01c03003-516d-43c6-8477-45c472413521",
+      "label": "haalbaarheidsonderzoek uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/d74df140-eb69-43e2-bac9-1cafc824d702",
       "categorie": "essentieel"
     },
     {
-      "label": "naleving van bouwvoorschriften controleren",
-      "uri": "http://data.europa.eu/esco/skill/1b71f0d0-8e57-44dc-aaa0-3ee6fbb59991",
+      "label": "binnenkomende bouwmaterialen verwerken",
+      "uri": "http://data.europa.eu/esco/skill/a3e0224a-c952-4b4e-b664-d7186f62715b",
       "categorie": "essentieel"
     },
     {
-      "label": "regelgeving inzake bouwproducten",
-      "uri": "http://data.europa.eu/esco/skill/5518db9d-4a2f-4b53-9068-4d0d61465bf4",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "bouw van huizen plannen",
-      "uri": "http://data.europa.eu/esco/skill/d7a67428-3afb-4bbd-932b-f6718ca489c5",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "bouwuitrusting met betrekking tot bouwmaterialen",
-      "uri": "http://data.europa.eu/esco/skill/b091d04a-bb5d-4998-afc9-d71e6c96fb80",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "bouwmaterialensector",
-      "uri": "http://data.europa.eu/esco/skill/e26e07ca-4a35-42e3-940d-e5868fd38fba",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "civiele techniek",
-      "uri": "http://data.europa.eu/esco/skill/82887396-e5bf-4306-af51-3fe8d82790b2",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "werken in een bouwteam",
-      "uri": "http://data.europa.eu/esco/skill/4fa2d6ba-4fff-4f21-bddd-4a54ae840955",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "benodigde bouwmaterialen berekenen",
-      "uri": "http://data.europa.eu/esco/skill/5d9dd44a-81f8-4710-bd4d-af27ec5c2139",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "technische voorschriften interpreteren",
-      "uri": "http://data.europa.eu/esco/skill/be48353d-25c7-4f86-bea9-7b9e248fbc6e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "bouwmaterialen identificeren op basis van blauwdrukken",
-      "uri": "http://data.europa.eu/esco/skill/82e8931a-ba6c-4c14-9611-e56fca33a2b9",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "kostenbeheer",
-      "uri": "http://data.europa.eu/esco/skill/7d35602d-bc94-4975-aa7c-f4e8e05ce8e0",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "bouwsector",
-      "uri": "http://data.europa.eu/esco/skill/fe77f9ca-7bd2-4a68-98f4-8463a4fb8301",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "begrotingsbeginselen",
-      "uri": "http://data.europa.eu/esco/skill/74688c5d-2af1-4f7a-9d1c-00e808eaa1e6",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "naleving met wettelijke vereisten garanderen",
-      "uri": "http://data.europa.eu/esco/skill/1dae8445-12e5-423a-bb26-824010e299b9",
+      "label": "gezondheids- en veiligheidsprocedures in de bouw in acht nemen",
+      "uri": "http://data.europa.eu/esco/skill/86df7af2-f9f3-4c06-a500-7f1fba9e78fe",
       "categorie": "essentieel"
     },
     {
@@ -118,78 +58,78 @@
       "categorie": "essentieel"
     },
     {
-      "label": "kwaliteitsstandaarden",
-      "uri": "http://data.europa.eu/esco/skill/8d4271ca-c9fd-40b3-875f-15f78332a49e",
+      "label": "compatibiliteit van materialen controleren",
+      "uri": "http://data.europa.eu/esco/skill/3892f2ff-714e-4201-823d-5d6fc5bab621",
       "categorie": "essentieel"
     },
     {
-      "label": "bouwprojecten toetsen",
-      "uri": "http://data.europa.eu/esco/skill/ea9fc9d9-c602-4430-a7fc-edac7429a6a8",
+      "label": "op gebeurtenissen in tijdkritieke omgevingen reageren",
+      "uri": "http://data.europa.eu/esco/skill/be7c80ee-0b7a-455c-8928-055cfa65076c",
       "categorie": "essentieel"
     },
     {
-      "label": "behoeften van klanten identificeren",
-      "uri": "http://data.europa.eu/esco/skill/68698869-c13c-4563-adc7-118b7644f45d",
+      "label": "bouwmaterialensector",
+      "uri": "http://data.europa.eu/esco/skill/e26e07ca-4a35-42e3-940d-e5868fd38fba",
       "categorie": "essentieel"
     },
     {
-      "label": "veiligheidsbeheer toepassen",
-      "uri": "http://data.europa.eu/esco/skill/989dc903-5838-4d84-8e04-e5b7a2ba97c5",
+      "label": "omgaan met managers",
+      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
       "categorie": "essentieel"
     },
     {
-      "label": "projectbeheer",
-      "uri": "http://data.europa.eu/esco/skill/7111b95d-0ce3-441a-9d92-4c75d05c4388",
+      "label": "bouwactiviteiten coördineren",
+      "uri": "http://data.europa.eu/esco/skill/fff5bc45-b506-4466-8977-4869079c1cb2",
       "categorie": "essentieel"
     },
     {
-      "label": "bouwdocumenten voorbereiden",
-      "uri": "http://data.europa.eu/esco/skill/80274731-15ce-490a-8d5b-f55a36b976b0",
+      "label": "werk van werknemers beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/8a98707e-b2ee-48fe-9f36-e47e3555ecf7",
       "categorie": "essentieel"
     },
     {
-      "label": "bouwmethoden",
-      "uri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
+      "label": "werken in een bouwteam",
+      "uri": "http://data.europa.eu/esco/skill/4fa2d6ba-4fff-4f21-bddd-4a54ae840955",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ervoor zorgen dat de deadline van het bouwproject wordt nagekomen",
+      "uri": "http://data.europa.eu/esco/skill/6181f475-110c-497c-a46d-ed2e14e7bc90",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gegevens over de voortgang van het werk bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/ccfbdaad-b91d-4bfe-bd0e-d30b33587f19",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "naleving van gezondheids- veiligheids- en hygiënenormen waarborgen",
+      "uri": "http://data.europa.eu/esco/skill/44e2c4c4-9fd2-42d4-a133-d81360ded4bc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "diensten van werknemers plannen",
+      "uri": "http://data.europa.eu/esco/skill/85aa1871-db96-42f7-801f-c39f924de2d7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toezicht houden op personeel",
+      "uri": "http://data.europa.eu/esco/skill/9601b2a8-68e4-4906-9306-a23679b8f0b0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bouwmaterialen inspecteren",
+      "uri": "http://data.europa.eu/esco/skill/50f2d23c-b3fb-48a5-967b-14fd0a6dd205",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ruimtelijke indeling van buitengebieden maken",
+      "uri": "http://data.europa.eu/esco/skill/16d61c6a-30e8-49e2-abbb-d20879eb8afd",
       "categorie": "optioneel"
     },
     {
-      "label": "bouwmaterialen bestellen",
-      "uri": "http://data.europa.eu/esco/skill/9f1bd2a4-91af-4b60-aeb3-0fe1f4434966",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bescherming tegen straling",
-      "uri": "http://data.europa.eu/esco/skill/eb65ce8e-61bf-49d1-99bb-cb699ba1005b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "maatschappelijk verantwoord ondernemen",
-      "uri": "http://data.europa.eu/esco/skill/66db424f-2abe-420d-8e5b-186607266b61",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "vergunningen voor bouwplannen beoordelen",
-      "uri": "http://data.europa.eu/esco/skill/ebbf3488-7d1e-4603-b7d4-938d23bc1af1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "aanbestedingsprocedures uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/2c4b6914-4b97-4e35-85cb-e6602a8bb04a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "principes voor bouwconstructie",
-      "uri": "http://data.europa.eu/esco/skill/6c190890-d5ab-46ab-915b-04e995dc0d76",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "aannemers controleren",
-      "uri": "http://data.europa.eu/esco/skill/0520d8ba-3c24-4f75-a8b0-f883ddeed82d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "nadenken over beperkingen bij bouwontwerpen",
-      "uri": "http://data.europa.eu/esco/skill/a4c4c0b7-3dc4-4a6b-b1c8-6502cde56a14",
+      "label": "vastgoedmarkt",
+      "uri": "http://data.europa.eu/esco/skill/6f6163dc-a801-416c-86e9-ce857d71c24d",
       "categorie": "optioneel"
     },
     {
@@ -198,13 +138,28 @@
       "categorie": "optioneel"
     },
     {
-      "label": "energiecentrales ontwerpen",
-      "uri": "http://data.europa.eu/esco/skill/78ebd783-feaa-466a-85ac-9cc44779c202",
+      "label": "personeel aanwerven",
+      "uri": "http://data.europa.eu/esco/skill/496932f1-0b6b-4f73-9432-d95c7ddcd43b",
       "categorie": "optioneel"
     },
     {
-      "label": "prestaties van aannemers controleren",
-      "uri": "http://data.europa.eu/esco/skill/d89f5cee-649a-44bd-9aa9-8e74bbdbd50d",
+      "label": "naleving van richtlijnen voor bescherming tegen straling verzekeren",
+      "uri": "http://data.europa.eu/esco/skill/dc07021c-7528-4351-809a-1525904466ba",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bescherming tegen straling",
+      "uri": "http://data.europa.eu/esco/skill/eb65ce8e-61bf-49d1-99bb-cb699ba1005b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werknemers opleiden",
+      "uri": "http://data.europa.eu/esco/skill/e54ff029-1ce9-447d-a5b2-eb7283a23e6e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kostenbeheer",
+      "uri": "http://data.europa.eu/esco/skill/7d35602d-bc94-4975-aa7c-f4e8e05ce8e0",
       "categorie": "optioneel"
     },
     {
@@ -213,63 +168,23 @@
       "categorie": "optioneel"
     },
     {
-      "label": "ingebruikstelling van een project",
-      "uri": "http://data.europa.eu/esco/skill/4ca91852-c534-4b98-ab1c-59a126534c88",
+      "label": "energieneutraal ontwerp van gebouwen",
+      "uri": "http://data.europa.eu/esco/skill/46454506-fb7c-4ad7-84e0-d4a6a5589ea1",
       "categorie": "optioneel"
     },
     {
-      "label": "technische beginselen in een bouwkundig ontwerp integreren",
-      "uri": "http://data.europa.eu/esco/skill/ee239d14-bfc8-4939-91ff-824b5814ff67",
+      "label": "regelgeving inzake bouwproducten",
+      "uri": "http://data.europa.eu/esco/skill/5518db9d-4a2f-4b53-9068-4d0d61465bf4",
       "categorie": "optioneel"
     },
     {
-      "label": "zorgen voor naleving van de milieuwetgeving",
-      "uri": "http://data.europa.eu/esco/skill/089ee650-297e-4716-87d1-440743b70a0d",
+      "label": "advies geven over bouwmaterialen",
+      "uri": "http://data.europa.eu/esco/skill/01c03003-516d-43c6-8477-45c472413521",
       "categorie": "optioneel"
     },
     {
-      "label": "ervoor zorgen dat de deadline van het bouwproject wordt nagekomen",
-      "uri": "http://data.europa.eu/esco/skill/6181f475-110c-497c-a46d-ed2e14e7bc90",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "deelnemen aan overheidsaanbestedingen",
-      "uri": "http://data.europa.eu/esco/skill/0afb2715-a6ee-4ad9-ac8a-fb904dd99b61",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "volledige kwaliteitscontrole",
-      "uri": "http://data.europa.eu/esco/skill/8af372fa-7b85-4bab-ab20-3f2eb980c400",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "communiceren met klanten",
-      "uri": "http://data.europa.eu/esco/skill/0da516ee-e70e-4384-be13-f5ff80be8127",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "energie-efficiëntie",
-      "uri": "http://data.europa.eu/esco/skill/83fc0b2b-6cd2-46af-b1ff-d3fc83604c26",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "gevolgen voor het milieu beheersen",
-      "uri": "http://data.europa.eu/esco/skill/d3a8ef9c-8572-438c-91dc-010537070be3",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "naleving van parameters in bouwprojecten volgen",
-      "uri": "http://data.europa.eu/esco/skill/3dd3dfa7-51c0-40ef-af46-e2df300489f6",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "milieuwetgeving",
-      "uri": "http://data.europa.eu/esco/skill/6f5850ea-5785-4e2c-b062-743066fd5bdb",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bouwvereisten van klanten in een bouwkundig ontwerp integreren",
-      "uri": "http://data.europa.eu/esco/skill/bd2102ea-c8d9-40f6-8327-211450120e96",
+      "label": "energieprestaties van gebouwen",
+      "uri": "http://data.europa.eu/esco/skill/4e09e2d2-e317-47d2-bf5e-1d6c66be3efc",
       "categorie": "optioneel"
     },
     {
@@ -278,8 +193,43 @@
       "categorie": "optioneel"
     },
     {
-      "label": "bouwarchieven beheren",
-      "uri": "http://data.europa.eu/esco/skill/cc5c0498-ddbb-4f21-9cdc-1eb06efce075",
+      "label": "contacten leggen met financiers",
+      "uri": "http://data.europa.eu/esco/skill/401d8d12-b56d-4c71-ac58-f791e8c085b4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "eerste hulp bieden",
+      "uri": "http://data.europa.eu/esco/skill/1d21f6ad-340f-45da-a0a3-4e83867f47a6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voorraadniveaus bewaken",
+      "uri": "http://data.europa.eu/esco/skill/44f6a65f-6be7-4818-9a66-73908797283f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toewijzing van plaats plannen",
+      "uri": "http://data.europa.eu/esco/skill/65ce30a8-8190-4ed9-9903-68f1c6eb1b0a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contracten beheren",
+      "uri": "http://data.europa.eu/esco/skill/92721092-fe7c-4689-96bd-4f02385bc0e7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "afspraken met leveranciers onderhandelen",
+      "uri": "http://data.europa.eu/esco/skill/c842be42-81b3-40f2-904c-ea8790ac88bd",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contacten onderhouden met lokale overheden",
+      "uri": "http://data.europa.eu/esco/skill/2839f191-cd94-49a9-ac16-46018066b8b2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contacten onderhouden met aandeelhouders",
+      "uri": "http://data.europa.eu/esco/skill/8f9e8842-94f3-48d5-8d09-c43829bcabc5",
       "categorie": "optioneel"
     }
   ]

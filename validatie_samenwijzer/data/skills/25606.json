@@ -23,78 +23,13 @@
   ],
   "skills": [
     {
+      "label": "softwarespecificaties analyseren",
+      "uri": "http://data.europa.eu/esco/skill/f28617ad-afdd-4041-814c-216153a38998",
+      "categorie": "essentieel"
+    },
+    {
       "label": "softwarebibliotheken gebruiken",
       "uri": "http://data.europa.eu/esco/skill/8b94aa1e-89c9-459d-b3b4-1dfab8dec2df",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "technische documentatie aanleveren",
-      "uri": "http://data.europa.eu/esco/skill/04dfd9fb-e0cf-40f6-96c6-9d2280c4347e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "ICT-systeemproblemen oplossen",
-      "uri": "http://data.europa.eu/esco/skill/9e06bac6-6b91-48ca-8b7d-c1f48cdecd7c",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "ICT-systeemintegratie",
-      "uri": "http://data.europa.eu/esco/skill/6fa1c2c0-a012-4ca0-9642-e01569ba322c",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "softwareontwerppatronen gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/2b7a79e5-84d8-4880-be66-3d9bb05bea17",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "ICT-foutopsporing",
-      "uri": "http://data.europa.eu/esco/skill/6014921e-1d25-4039-adc2-04852d61880e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "software voor geïntegreerde ontwikkelomgevingen",
-      "uri": "http://data.europa.eu/esco/skill/925463a7-d51f-4d5b-9f79-4d28cf30acde",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "stroomschema creëren",
-      "uri": "http://data.europa.eu/esco/skill/901105f8-3a08-453e-b1dc-23619e317fd3",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "bestaande gegevens migreren",
-      "uri": "http://data.europa.eu/esco/skill/020918ef-4b55-47c1-8430-ab7b8f6a7377",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "ICT-systeemprogrammering",
-      "uri": "http://data.europa.eu/esco/skill/b105ec9b-0857-41d6-8d07-a83e58b73d90",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "op de hoogte blijven van de nieuwste oplossingen voor informatiesystemen",
-      "uri": "http://data.europa.eu/esco/skill/20c920d4-7ff7-4676-ba61-3f04490d9416",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "softwareprototype ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "computerprogrammering",
-      "uri": "http://data.europa.eu/esco/skill/21d2f96d-35f7-4e3f-9745-c533d2dd6e97",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "hulpmiddelen voor het beheer van softwareconfiguratie",
-      "uri": "http://data.europa.eu/esco/skill/9d2e926f-53d9-41f5-98f3-19dfaa687f3f",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "klantenfeedback over toepassingen verzamelen",
-      "uri": "http://data.europa.eu/esco/skill/71746a0b-e58d-4dc4-ad03-bd84082eae21",
       "categorie": "essentieel"
     },
     {
@@ -103,8 +38,8 @@
       "categorie": "essentieel"
     },
     {
-      "label": "softwarespecificaties analyseren",
-      "uri": "http://data.europa.eu/esco/skill/f28617ad-afdd-4041-814c-216153a38998",
+      "label": "technische documentatie aanleveren",
+      "uri": "http://data.europa.eu/esco/skill/04dfd9fb-e0cf-40f6-96c6-9d2280c4347e",
       "categorie": "essentieel"
     },
     {
@@ -113,18 +48,203 @@
       "categorie": "essentieel"
     },
     {
+      "label": "klantenfeedback over toepassingen verzamelen",
+      "uri": "http://data.europa.eu/esco/skill/71746a0b-e58d-4dc4-ad03-bd84082eae21",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bestaande gegevens migreren",
+      "uri": "http://data.europa.eu/esco/skill/020918ef-4b55-47c1-8430-ab7b8f6a7377",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "stroomschema creëren",
+      "uri": "http://data.europa.eu/esco/skill/901105f8-3a08-453e-b1dc-23619e317fd3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "softwareontwerppatronen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/2b7a79e5-84d8-4880-be66-3d9bb05bea17",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "op de hoogte blijven van de nieuwste oplossingen voor informatiesystemen",
+      "uri": "http://data.europa.eu/esco/skill/20c920d4-7ff7-4676-ba61-3f04490d9416",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "software voor geïntegreerde ontwikkelomgevingen",
+      "uri": "http://data.europa.eu/esco/skill/925463a7-d51f-4d5b-9f79-4d28cf30acde",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ICT-systeemproblemen oplossen",
+      "uri": "http://data.europa.eu/esco/skill/9e06bac6-6b91-48ca-8b7d-c1f48cdecd7c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "computerprogrammering",
+      "uri": "http://data.europa.eu/esco/skill/21d2f96d-35f7-4e3f-9745-c533d2dd6e97",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ICT-systeemprogrammering",
+      "uri": "http://data.europa.eu/esco/skill/b105ec9b-0857-41d6-8d07-a83e58b73d90",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "softwareprototype ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4",
+      "categorie": "essentieel"
+    },
+    {
       "label": "geautomatiseerde migratiemethoden ontwikkelen",
       "uri": "http://data.europa.eu/esco/skill/0b0335f3-0aa1-491e-895e-81fc8774a300",
       "categorie": "essentieel"
     },
     {
-      "label": "objectgeoriënteerd programmeren gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/5b9cde20-f1b9-4adc-bfb3-dbf70b14138d",
+      "label": "ICT-foutopsporing",
+      "uri": "http://data.europa.eu/esco/skill/6014921e-1d25-4039-adc2-04852d61880e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "hulpmiddelen voor het beheer van softwareconfiguratie",
+      "uri": "http://data.europa.eu/esco/skill/9d2e926f-53d9-41f5-98f3-19dfaa687f3f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ICT-systeemintegratie",
+      "uri": "http://data.europa.eu/esco/skill/6fa1c2c0-a012-4ca0-9642-e01569ba322c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "KDevelop",
+      "uri": "http://data.europa.eu/esco/skill/013441c1-1f13-47e9-80c4-9a53e8e1bc05",
       "categorie": "optioneel"
     },
     {
-      "label": "Perl",
-      "uri": "http://data.europa.eu/esco/skill/401eb8d8-6daa-4f8b-90ad-60afc71eb4f8",
+      "label": "Salt (hulpmiddelen voor het beheer van softwareconfiguratie)",
+      "uri": "http://data.europa.eu/esco/skill/c7451027-8249-405a-bb1b-342ff0f3fb3b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "JavaScript",
+      "uri": "http://data.europa.eu/esco/skill/3cd569a2-4f88-4c1e-9995-8dce8c5e51a7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ASP.NET",
+      "uri": "http://data.europa.eu/esco/skill/56a7f561-1d55-43c9-9cd7-36a0a9bc6c50",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "functioneel programmeren gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/d31fab87-2a7d-485c-b699-2901ca294b15",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Pascal (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/e8b89eb6-51e8-4c3a-babb-88b2e110376b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "objectgeoriënteerd modelleren",
+      "uri": "http://data.europa.eu/esco/skill/5be3d306-6cf1-4b49-aa1d-01651dd4ba4c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Ansible",
+      "uri": "http://data.europa.eu/esco/skill/6f8a40d6-f9ce-43ec-a72f-d4213a53f3ed",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Objective-C",
+      "uri": "http://data.europa.eu/esco/skill/9973a5a2-7822-4161-99e9-95c781eb63f8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "AJAX",
+      "uri": "http://data.europa.eu/esco/skill/b4dc6e4f-dc7d-445f-8ce2-d7b9d225e282",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "VBScript",
+      "uri": "http://data.europa.eu/esco/skill/dcdd5ddf-82a6-4ac3-8edc-d4b23cae9a88",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "computergestuurde hulpmiddelen voor software-engineering gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/172020d1-e151-445b-8173-e2a5fb16fe51",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gebruikersinterface ontwerpen",
+      "uri": "http://data.europa.eu/esco/skill/fd33c66c-70c4-40e6-b87c-5495bd3bf26e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Java (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Apache Maven",
+      "uri": "http://data.europa.eu/esco/skill/0d168770-4d9c-4096-b048-a6577818d306",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "COBOL",
+      "uri": "http://data.europa.eu/esco/skill/def007fa-5fed-4a5f-91a2-b0d7e3db1be1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "STAF",
+      "uri": "http://data.europa.eu/esco/skill/69f0167e-75d9-46cf-847f-72a592880ebb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "creatieve ideeën ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/8c4c49d4-9708-433f-8ca7-bf2c5211ee49",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Puppet (hulpmiddelen voor het beheer van softwareconfiguratie)",
+      "uri": "http://data.europa.eu/esco/skill/6417a4cc-6f61-4459-a114-761a7fa0279d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "OpenEdge Advanced Business Language",
+      "uri": "http://data.europa.eu/esco/skill/300d432b-f457-4cd3-9cb1-1858c7d14954",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Groovy",
+      "uri": "http://data.europa.eu/esco/skill/52cf3037-ab53-4806-85ed-7fd21ea7f6a1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "MATLAB",
+      "uri": "http://data.europa.eu/esco/skill/c3a03c5a-c260-4c26-9b9a-873abb396f4d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Visual Basic",
+      "uri": "http://data.europa.eu/esco/skill/13bdd41a-2a18-441f-96db-41252c519413",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ICT-systeemtheorie toepassen",
+      "uri": "http://data.europa.eu/esco/skill/cbe2c304-1e7d-489a-97d9-a7d3e37a9db6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Python (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/ccd0a1d9-afda-43d9-b901-96344886e14d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "objectgeoriënteerd programmeren gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/5b9cde20-f1b9-4adc-bfb3-dbf70b14138d",
       "categorie": "optioneel"
     },
     {
@@ -138,83 +258,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "parallelle programmering gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/25b291b5-8245-4d9d-b391-86a8a31d7109",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "C++",
-      "uri": "http://data.europa.eu/esco/skill/b633eb55-8f1f-4ae6-ab4c-2022ffe2cb7f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Salt (hulpmiddelen voor het beheer van softwareconfiguratie)",
-      "uri": "http://data.europa.eu/esco/skill/c7451027-8249-405a-bb1b-342ff0f3fb3b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "TypeScript",
-      "uri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Microsoft Visual C++",
-      "uri": "http://data.europa.eu/esco/skill/8369ede5-4200-4a44-be2e-bc60ef959259",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "PHP",
-      "uri": "http://data.europa.eu/esco/skill/4350c38d-0fe9-4ca7-bab9-40ed7f72b04f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Objective-C",
-      "uri": "http://data.europa.eu/esco/skill/9973a5a2-7822-4161-99e9-95c781eb63f8",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "JavaScript",
-      "uri": "http://data.europa.eu/esco/skill/3cd569a2-4f88-4c1e-9995-8dce8c5e51a7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Jenkins (hulpmiddelen voor het beheer van softwareconfiguratie)",
-      "uri": "http://data.europa.eu/esco/skill/f47a1998-0beb-43be-9f46-380aa4d183da",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Common Lisp",
-      "uri": "http://data.europa.eu/esco/skill/0cd6dcf1-5778-42a5-b685-4d01ae4a4871",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "SAP R3",
-      "uri": "http://data.europa.eu/esco/skill/bb99af26-71ff-4dca-bde7-1eb1f6194426",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Ruby (computerprogrammering)",
-      "uri": "http://data.europa.eu/esco/skill/0ccdfe98-f845-4598-84a1-3dca66e9d9a3",
-      "categorie": "optioneel"
-    },
-    {
       "label": "Assembly (computerprogrammering)",
       "uri": "http://data.europa.eu/esco/skill/47b9bbcf-356c-4782-83a4-7f5a1b2b51a3",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Xcode",
-      "uri": "http://data.europa.eu/esco/skill/449d119b-2d66-43a9-9230-7d27f16afbb6",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Puppet (hulpmiddelen voor het beheer van softwareconfiguratie)",
-      "uri": "http://data.europa.eu/esco/skill/6417a4cc-6f61-4459-a114-761a7fa0279d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Apache Maven",
-      "uri": "http://data.europa.eu/esco/skill/0d168770-4d9c-4096-b048-a6577818d306",
       "categorie": "optioneel"
     },
     {
@@ -223,8 +268,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "Visual Basic",
-      "uri": "http://data.europa.eu/esco/skill/13bdd41a-2a18-441f-96db-41252c519413",
+      "label": "Ruby (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/0ccdfe98-f845-4598-84a1-3dca66e9d9a3",
       "categorie": "optioneel"
     },
     {
@@ -238,48 +283,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "ICT-systeemtheorie toepassen",
-      "uri": "http://data.europa.eu/esco/skill/cbe2c304-1e7d-489a-97d9-a7d3e37a9db6",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "aanpassen aan wijzigingen in technologische ontwikkelingsplannen",
-      "uri": "http://data.europa.eu/esco/skill/f5308e60-d763-4ead-be95-88c96fb3e02b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "softwareafwijkingen",
-      "uri": "http://data.europa.eu/esco/skill/438ff259-d086-4004-acda-1ec3e1631bc6",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "OpenEdge Advanced Business Language",
-      "uri": "http://data.europa.eu/esco/skill/300d432b-f457-4cd3-9cb1-1858c7d14954",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "automatisch programmeren gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/7d10fcb2-b368-48ab-996b-7c9fafcf68ed",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Pascal (computerprogrammering)",
-      "uri": "http://data.europa.eu/esco/skill/e8b89eb6-51e8-4c3a-babb-88b2e110376b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "KDevelop",
-      "uri": "http://data.europa.eu/esco/skill/013441c1-1f13-47e9-80c4-9a53e8e1bc05",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "APL",
-      "uri": "http://data.europa.eu/esco/skill/58d7a289-dafd-4363-833f-d1dc4140885e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "objectgeoriënteerd modelleren",
-      "uri": "http://data.europa.eu/esco/skill/5be3d306-6cf1-4b49-aa1d-01651dd4ba4c",
+      "label": "SAP R3",
+      "uri": "http://data.europa.eu/esco/skill/bb99af26-71ff-4dca-bde7-1eb1f6194426",
       "categorie": "optioneel"
     },
     {
@@ -288,23 +293,18 @@
       "categorie": "optioneel"
     },
     {
-      "label": "ASP.NET",
-      "uri": "http://data.europa.eu/esco/skill/56a7f561-1d55-43c9-9cd7-36a0a9bc6c50",
+      "label": "Jenkins (hulpmiddelen voor het beheer van softwareconfiguratie)",
+      "uri": "http://data.europa.eu/esco/skill/f47a1998-0beb-43be-9f46-380aa4d183da",
       "categorie": "optioneel"
     },
     {
-      "label": "SAS taal",
-      "uri": "http://data.europa.eu/esco/skill/04f1b938-d4d4-4cb1-a863-982af76b9d93",
+      "label": "systeemtheorie",
+      "uri": "http://data.europa.eu/esco/skill/cdd8b6b2-2fd9-453c-8d62-8a1dc6efcd49",
       "categorie": "optioneel"
     },
     {
-      "label": "systeemcomponenten integreren",
-      "uri": "http://data.europa.eu/esco/skill/ed8de897-adbe-4f0e-b4d2-534953e64c72",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Ansible",
-      "uri": "http://data.europa.eu/esco/skill/6f8a40d6-f9ce-43ec-a72f-d4213a53f3ed",
+      "label": "Scala",
+      "uri": "http://data.europa.eu/esco/skill/ffddfc7c-a9dd-449f-9e96-882dc447c8b6",
       "categorie": "optioneel"
     },
     {
@@ -318,43 +318,13 @@
       "categorie": "optioneel"
     },
     {
-      "label": "Python (computerprogrammering)",
-      "uri": "http://data.europa.eu/esco/skill/ccd0a1d9-afda-43d9-b901-96344886e14d",
+      "label": "automatisch programmeren gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/7d10fcb2-b368-48ab-996b-7c9fafcf68ed",
       "categorie": "optioneel"
     },
     {
-      "label": "standaarden van het World Wide Web Consortium",
-      "uri": "http://data.europa.eu/esco/skill/8696aff0-18c0-4ba6-a4d0-9a21861b3e5e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Groovy",
-      "uri": "http://data.europa.eu/esco/skill/52cf3037-ab53-4806-85ed-7fd21ea7f6a1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "gebruikersinterface ontwerpen",
-      "uri": "http://data.europa.eu/esco/skill/fd33c66c-70c4-40e6-b87c-5495bd3bf26e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "functioneel programmeren gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/d31fab87-2a7d-485c-b699-2901ca294b15",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "systeemprestaties bewaken",
-      "uri": "http://data.europa.eu/esco/skill/9190d87f-9792-42e0-bb7f-64294a656bcd",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "STAF",
-      "uri": "http://data.europa.eu/esco/skill/69f0167e-75d9-46cf-847f-72a592880ebb",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "VBScript",
-      "uri": "http://data.europa.eu/esco/skill/dcdd5ddf-82a6-4ac3-8edc-d4b23cae9a88",
+      "label": "systeemcomponenten integreren",
+      "uri": "http://data.europa.eu/esco/skill/ed8de897-adbe-4f0e-b4d2-534953e64c72",
       "categorie": "optioneel"
     },
     {
@@ -363,28 +333,18 @@
       "categorie": "optioneel"
     },
     {
-      "label": "systeemtheorie",
-      "uri": "http://data.europa.eu/esco/skill/cdd8b6b2-2fd9-453c-8d62-8a1dc6efcd49",
+      "label": "softwareafwijkingen",
+      "uri": "http://data.europa.eu/esco/skill/438ff259-d086-4004-acda-1ec3e1631bc6",
       "categorie": "optioneel"
     },
     {
-      "label": "Scratch (computerprogrammering)",
-      "uri": "http://data.europa.eu/esco/skill/d56fc2b5-4b0a-4e7e-9bde-a33736f6ff18",
+      "label": "Xcode",
+      "uri": "http://data.europa.eu/esco/skill/449d119b-2d66-43a9-9230-7d27f16afbb6",
       "categorie": "optioneel"
     },
     {
-      "label": "creatieve ideeën ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/8c4c49d4-9708-433f-8ca7-bf2c5211ee49",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Scala",
-      "uri": "http://data.europa.eu/esco/skill/ffddfc7c-a9dd-449f-9e96-882dc447c8b6",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "computergestuurde hulpmiddelen voor software-engineering gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/172020d1-e151-445b-8173-e2a5fb16fe51",
+      "label": "APL",
+      "uri": "http://data.europa.eu/esco/skill/58d7a289-dafd-4363-833f-d1dc4140885e",
       "categorie": "optioneel"
     },
     {
@@ -393,13 +353,48 @@
       "categorie": "optioneel"
     },
     {
-      "label": "COBOL",
-      "uri": "http://data.europa.eu/esco/skill/def007fa-5fed-4a5f-91a2-b0d7e3db1be1",
+      "label": "Perl",
+      "uri": "http://data.europa.eu/esco/skill/401eb8d8-6daa-4f8b-90ad-60afc71eb4f8",
       "categorie": "optioneel"
     },
     {
-      "label": "AJAX",
-      "uri": "http://data.europa.eu/esco/skill/b4dc6e4f-dc7d-445f-8ce2-d7b9d225e282",
+      "label": "Common Lisp",
+      "uri": "http://data.europa.eu/esco/skill/0cd6dcf1-5778-42a5-b685-4d01ae4a4871",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Scratch (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/d56fc2b5-4b0a-4e7e-9bde-a33736f6ff18",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "SAS taal",
+      "uri": "http://data.europa.eu/esco/skill/04f1b938-d4d4-4cb1-a863-982af76b9d93",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Microsoft Visual C++",
+      "uri": "http://data.europa.eu/esco/skill/8369ede5-4200-4a44-be2e-bc60ef959259",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "TypeScript",
+      "uri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "standaarden van het World Wide Web Consortium",
+      "uri": "http://data.europa.eu/esco/skill/8696aff0-18c0-4ba6-a4d0-9a21861b3e5e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "parallelle programmering gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/25b291b5-8245-4d9d-b391-86a8a31d7109",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "aanpassen aan wijzigingen in technologische ontwikkelingsplannen",
+      "uri": "http://data.europa.eu/esco/skill/f5308e60-d763-4ead-be95-88c96fb3e02b",
       "categorie": "optioneel"
     },
     {
@@ -408,13 +403,18 @@
       "categorie": "optioneel"
     },
     {
-      "label": "MATLAB",
-      "uri": "http://data.europa.eu/esco/skill/c3a03c5a-c260-4c26-9b9a-873abb396f4d",
+      "label": "PHP",
+      "uri": "http://data.europa.eu/esco/skill/4350c38d-0fe9-4ca7-bab9-40ed7f72b04f",
       "categorie": "optioneel"
     },
     {
-      "label": "Java (computerprogrammering)",
-      "uri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
+      "label": "C++",
+      "uri": "http://data.europa.eu/esco/skill/b633eb55-8f1f-4ae6-ab4c-2022ffe2cb7f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "systeemprestaties bewaken",
+      "uri": "http://data.europa.eu/esco/skill/9190d87f-9792-42e0-bb7f-64294a656bcd",
       "categorie": "optioneel"
     }
   ]

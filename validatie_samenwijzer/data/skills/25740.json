@@ -1,204 +1,109 @@
 {
   "crebo": "25740",
   "opleiding": "25740_BOL_2025__25740BOL2025MJP-Assistent-bouwen-wonen-en-onderhoud",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "winkelmedewerker",
-    "uri": "http://data.europa.eu/esco/occupation/0b15375e-dfdd-4047-9efb-096e0aaee7d2",
-    "definitie": "Winkelmedewerkers werken in winkels waar zij ondersteunende taken vervullen. Winkelmedewerkers bestellen waren, vullen goederen en voorraden aan, verstrekken algemeen advies aan klanten, verkopen producten en onderhouden de winkel."
+    "label": "Assistent bouwen, wonen en onderhoud",
+    "uri": "",
+    "definitie": "De Assistent bouwen, wonen en onderhoud assisteert bij werkzaamheden in bijvoorbeeld de bouw, hout- en meubelbranche en schildersbranche. Hij zorgt dat de werkplek klaar is voor gebruik, verzamelt materiaal en kan technische werktekeningen lezen en gebruiken. Ook bedient hij machines en andere apparatuur. Hij is flexibel ingesteld; hij werkt op verschillende plekken, in verschillende weersomstandigheden en soms op hoogte. Hij heeft technische basiskennis en kan met gereedschappen omgaan. De assistent bouwen, wonen en onderhoud krijgt instructies van zijn leidinggevende, en voert zijn taken dan zo zelfstandig mogelijk uit. Hij werkt wel onder toezicht en schakelt zijn leidinggevende in bij problemen."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "technisch ingenieur optomechanica",
-    "doktersassistent",
-    "assistent-animator outdooractiviteiten",
-    "assistent-werktuigkundige vissersschepen",
-    "assistent-automonteur",
-    "woonbegeleider volwassenen met een lichamelijke beperking",
-    "administratief medewerker",
-    "winkelmedewerker",
-    "laserlasser"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "ondernemingsbeleid toepassen",
-      "uri": "http://data.europa.eu/esco/skill/0a43729f-2a79-4dae-9faa-95520daae79f",
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
       "categorie": "essentieel"
     },
     {
-      "label": "relaties met leveranciers onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/3cd35f5d-ce6d-4f14-9a09-53d7a28d834c",
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
       "categorie": "essentieel"
     },
     {
-      "label": "relaties met klanten onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/2239694b-771a-4586-8b54-2794e361a9ae",
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
       "categorie": "essentieel"
     },
     {
-      "label": "productkennis",
-      "uri": "http://data.europa.eu/esco/skill/d6d3fee7-47e2-47f4-a0ec-6c75f28c6abd",
+      "label": "Verplichtingen nakomen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6EDDE6185F",
       "categorie": "essentieel"
     },
     {
-      "label": "rekken vullen",
-      "uri": "http://data.europa.eu/esco/skill/7e9daad3-8604-4839-af9b-dc6f8db3ef68",
+      "label": "Verplaatsen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D16A30C42A",
       "categorie": "essentieel"
     },
     {
-      "label": "aankopen in draagtassen doen",
-      "uri": "http://data.europa.eu/esco/skill/bd2f7603-5e58-4d71-8f13-44c632782b02",
+      "label": "Zelfstandig werken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5DED5A92E",
       "categorie": "essentieel"
     },
     {
-      "label": "klanten begeleiden bij de keuze van producten",
-      "uri": "http://data.europa.eu/esco/skill/2b69525c-731c-4813-99a7-673fa5679d32",
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
       "categorie": "essentieel"
     },
     {
-      "label": "winkels schoonhouden",
-      "uri": "http://data.europa.eu/esco/skill/57c1debf-3867-4e64-baf8-ce70d84f88c9",
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
       "categorie": "essentieel"
     },
     {
-      "label": "koopwaar onderzoeken",
-      "uri": "http://data.europa.eu/esco/skill/25fce4fb-35b6-49b6-a4fa-c7aa168fd770",
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
       "categorie": "essentieel"
     },
     {
-      "label": "productdisplay organiseren",
-      "uri": "http://data.europa.eu/esco/skill/77a11321-754a-41de-b9e4-80d747f528db",
+      "label": "Transport en logistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2F8C9BA908",
       "categorie": "essentieel"
     },
     {
-      "label": "prijskaartjes ophangen",
-      "uri": "http://data.europa.eu/esco/skill/6ffdcb09-16bc-4480-9ac8-40fdbf915712",
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
       "categorie": "essentieel"
     },
     {
-      "label": "producten voor klanten ordenen",
-      "uri": "http://data.europa.eu/esco/skill/c609c7cf-ec3f-42df-9147-3ea012e31b66",
+      "label": "Bouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3FC6552A85",
       "categorie": "essentieel"
     },
     {
-      "label": "klanten inlichten over speciale aanbiedingen",
-      "uri": "http://data.europa.eu/esco/skill/e37a6dcf-68c8-4afd-a2ca-503bbaa4a140",
+      "label": "Afbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/545738E767",
       "categorie": "essentieel"
     },
     {
-      "label": "gegeven instructies volgen",
-      "uri": "http://data.europa.eu/esco/skill/ab9f550c-fa8f-4fe8-9f9f-e02d45bff570",
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
       "categorie": "essentieel"
     },
     {
-      "label": "kassa's bedienen",
-      "uri": "http://data.europa.eu/esco/skill/0cb013af-6dd9-4fb2-b34e-63dda1a5cf82",
+      "label": "Reparatie en onderhoud van werktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/988374F8BD",
       "categorie": "essentieel"
     },
     {
-      "label": "terugbetalingen verwerken",
-      "uri": "http://data.europa.eu/esco/skill/a6d697d1-80ba-4175-82d4-43440ed04270",
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
       "categorie": "essentieel"
     },
     {
-      "label": "goederen inpakken als geschenk",
-      "uri": "http://data.europa.eu/esco/skill/9e406af9-6561-43ef-9138-e5befeefd856",
+      "label": "Personeelswerk",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AA15132AFE",
       "categorie": "essentieel"
     },
     {
-      "label": "ondernemingsbeleid",
-      "uri": "http://data.europa.eu/esco/skill/f75b740c-b36c-495e-bc67-efe347bbc6b5",
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
       "categorie": "essentieel"
     },
     {
-      "label": "geplaatste bestellingen verwerken",
-      "uri": "http://data.europa.eu/esco/skill/a89c463d-e6f0-417d-9216-b59b92249226",
+      "label": "Maten en getallen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/CB6BD3297B",
       "categorie": "essentieel"
-    },
-    {
-      "label": "nazorgdiensten aan klanten bieden",
-      "uri": "http://data.europa.eu/esco/skill/debb8d81-ed7f-447d-853a-5d107fda6fcf",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "klanten naar koopwaar leiden",
-      "uri": "http://data.europa.eu/esco/skill/e8bd4f15-c928-463c-8454-5a7d99dd9926",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "toezicht houden op de uitstalling van koopwaar",
-      "uri": "http://data.europa.eu/esco/skill/e4aea84e-6f33-41f9-a61c-53cf5125ea26",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "geldautomaat beheren",
-      "uri": "http://data.europa.eu/esco/skill/279101c1-e325-4349-bf58-401b6c8ff208",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voorraadniveaus bewaken",
-      "uri": "http://data.europa.eu/esco/skill/44f6a65f-6be7-4818-9a66-73908797283f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "gegevens over de levering van goederen bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/bef39770-1abe-4b86-830a-7c168f69c459",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "producteigenschappen demonstreren",
-      "uri": "http://data.europa.eu/esco/skill/de7b8c6c-9ed4-4776-924c-4265dd1d9cde",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "verkoopbevorderingstechnieken",
-      "uri": "http://data.europa.eu/esco/skill/756ae350-9e1f-4cb9-9c27-6bd99806dadc",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "betalingen verwerken",
-      "uri": "http://data.europa.eu/esco/skill/bdcac0c8-b77a-4640-9eaf-c0cf3efd1e23",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "verkoopdoelstellingen behalen",
-      "uri": "http://data.europa.eu/esco/skill/c09bf6d4-f8a7-40f3-aead-ef01643f2352",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "principes van teamwerk",
-      "uri": "http://data.europa.eu/esco/skill/a5b0cd5c-e13a-4ab3-8d93-4d242adcfb01",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "klantenservice verlenen",
-      "uri": "http://data.europa.eu/esco/skill/75dfe1ee-5935-42ce-b820-697f827825c3",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "leveringen bij ontvangst controleren",
-      "uri": "http://data.europa.eu/esco/skill/f7f56b20-8f05-4731-a1bf-79fdcffc72ce",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "actief verkopen",
-      "uri": "http://data.europa.eu/esco/skill/c81c9ea3-4689-4146-9076-24dd175c69bc",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "verschillende communicatiekanalen gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/415abd43-e8e5-4643-b5da-5f11307af57a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bestellingen van onlinewinkels verwerken",
-      "uri": "http://data.europa.eu/esco/skill/d5fa1ed6-6cd8-41b9-8e78-2ba168ff3457",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "behoeften van klanten identificeren",
-      "uri": "http://data.europa.eu/esco/skill/68698869-c13c-4563-adc7-118b7644f45d",
-      "categorie": "optioneel"
     }
   ]
 }

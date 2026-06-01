@@ -1,102 +1,123 @@
 {
   "crebo": "25909",
   "opleiding": "Buurtsportcoach",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "sport- en bewegingsleider",
-    "uri": "http://data.europa.eu/esco/occupation/394bdd9b-3ee8-43a9-b943-442ce146bb21",
-    "definitie": "Sport- en bewegingsleiders programmeren en kijken toe op revalidatie-oefeningen voor personen en groepen. Zij werken samen met personen met chronische gezondheidsproblemen of die een groot risico lopen om ze te ontwikkelen. Zij communiceren met artsen en gezondheidswerkers over de omstandigheden van de deelnemers met behulp van een correcte medische terminologie en met een goed begrip van de standaardbehandelingsmogelijkheden voor de aandoening van een persoon. Sport- en bewegingsleiders hanteren een holistische benadering voor het welzijn van hun klanten, onder meer door advies te geven over levensstijl, voeding of tijdmanagement. Zij hebben geen medische achtergrond en hebben geen medische kwalificaties nodig."
+    "label": "Buurtsportcoach",
+    "uri": "",
+    "definitie": "De buurtsportcoach werkt vanuit een organisatie in het brede werkveld sport, welzijn, kinderopvang en onderwijs. Hij/zij is werkzaam bij bijvoorbeeld een welzijnscentrum, kinderopvangorganisatie, sportvereniging, een onderwijsinstelling of een gemeentelijke instelling. De buurtsportcoach heeft veelal een rol als verbinder. De werkzaamheden van de buurtsportcoach zijn erop gericht om partijen samen te brengen voor het opzetten en uitvoeren van programma's en projecten met een maatschappelijk doel. De buurtsportcoach werkt aan het opstellen, uitvoeren en coördineren van sport- en beweegprogramma's en projecten om maatschappelijke doelen te realiseren. De buurtsportcoach is flexibel en beschikt over beïnvloedings- en doorzettingsvermogen om draagvlak te creëren en te behouden."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "sportinstructeur",
-    "bedrijfsleider verkoop sport- en kampeerartikelen",
-    "sportcoördinator",
-    "verhuurmedewerker sport- en recreatieartikelen",
-    "verkoopspecialist sport- en kampeerartikelen",
-    "beleidsmedewerker sport en recreatie",
-    "sportmanager",
-    "sport- en bewegingsleider"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "veiligheid van de oefenomgeving garanderen",
-      "uri": "http://data.europa.eu/esco/skill/50406b39-45ee-4c03-83fe-0ad1a9442695",
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
       "categorie": "essentieel"
     },
     {
-      "label": "fitnessoefeningen aanpassen",
-      "uri": "http://data.europa.eu/esco/skill/5d589320-2a07-4994-837d-334b57f283d5",
+      "label": "Instrueren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6AE2F3F890",
       "categorie": "essentieel"
     },
     {
-      "label": "gezondheidsdoelstellingen identificeren",
-      "uri": "http://data.europa.eu/esco/skill/cf1e936b-9689-487e-96e2-1bbb254ac12e",
+      "label": "Motiveren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/9744544CFB",
       "categorie": "essentieel"
     },
     {
-      "label": "trainingsprincipes integreren",
-      "uri": "http://data.europa.eu/esco/skill/a37557b6-5151-4ce6-bfcd-b0890444a391",
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
       "categorie": "essentieel"
     },
     {
-      "label": "professionele houding tegenover klanten demonstreren",
-      "uri": "http://data.europa.eu/esco/skill/4adb861b-3ad8-4f0d-9343-decf59748d56",
+      "label": "Monitoren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B03F4F484C",
       "categorie": "essentieel"
     },
     {
-      "label": "professionele verantwoordelijkheid tonen",
-      "uri": "http://data.europa.eu/esco/skill/59ad10b1-6f71-4dd4-ad1f-a1fdf68bc2fb",
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
       "categorie": "essentieel"
     },
     {
-      "label": "fitnessklanten in gecontroleerde gezondheidscondities bijstaan",
-      "uri": "http://data.europa.eu/esco/skill/3592e08e-2602-4700-a14f-084bd8ebf845",
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
       "categorie": "essentieel"
     },
     {
-      "label": "informatie over de geschiktheid van klanten verzamelen",
-      "uri": "http://data.europa.eu/esco/skill/ef07f206-1ea8-4dc6-a4b0-1b312a9db47c",
+      "label": "Psychologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/17998456DE",
       "categorie": "essentieel"
     },
     {
-      "label": "fitnesscommunicatie beheren",
-      "uri": "http://data.europa.eu/esco/skill/2a588c0d-95a6-48d2-803f-536bc5958e58",
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
       "categorie": "essentieel"
     },
     {
-      "label": "oefeningen voorschrijven voor personen met gezondheidsaandoeningen die onder controle zijn",
-      "uri": "http://data.europa.eu/esco/skill/25619418-10ff-4fd1-af06-149a555447ed",
+      "label": "Sociale veiligheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3C86F6FEAB",
       "categorie": "essentieel"
     },
     {
-      "label": "trainingssessies voorbereiden",
-      "uri": "http://data.europa.eu/esco/skill/108ac398-6a84-454a-b56c-8bb0dee1bbf2",
+      "label": "Didactiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4D223374A5",
       "categorie": "essentieel"
     },
     {
-      "label": "klanten inlichten over voordelen van een gezonde levensstijl",
-      "uri": "http://data.europa.eu/esco/skill/45692043-db59-4e26-a965-8f2f6189a52b",
+      "label": "Biologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/54690E3D68",
       "categorie": "essentieel"
     },
     {
-      "label": "risicobeoordeling van conditie uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/951cf2b2-cff4-4079-8bd3-3e14aa839cef",
+      "label": "Sport en bewegen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/67945BB58E",
       "categorie": "essentieel"
     },
     {
-      "label": "fitnessklanten motiveren",
-      "uri": "http://data.europa.eu/esco/skill/da624cb9-3d9d-40c8-a2e9-e8fc26085416",
+      "label": "Sociaal-cultureel werk, activiteitenbegeleiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6AA1C14325",
       "categorie": "essentieel"
     },
     {
-      "label": "sportwetenschappen in het ontwerp van het programma opnemen",
-      "uri": "http://data.europa.eu/esco/skill/957598c7-0f63-4fba-9d5a-4babb39fd586",
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
       "categorie": "essentieel"
     },
     {
-      "label": "oefeningen voorschrijven",
-      "uri": "http://data.europa.eu/esco/skill/91695ae9-5236-4d68-af03-419dfec43b00",
+      "label": "Informatietechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7459B5FEB9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Pedagogisch werk, jeugdwelzijnswerk en kinderverzorging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F7666383B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Preventieve gezondheidszorg en - geneeskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BFE1C817CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voeding en gezondheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C3247434CD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Fysiotherapie, bewegingswetenschappen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/CD5F625891",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Projectmanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F248B939CD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
       "categorie": "essentieel"
     }
   ]

@@ -1,9 +1,69 @@
 {
   "crebo": "25881",
   "opleiding": "25881_BOL_2025__OER (OUD) - 25881O - Mediamanager",
-  "bron": "ESCO",
-  "beroep": null,
-  "match_methode": "geen-kandidaten",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Mediamanager",
+    "uri": "",
+    "definitie": "De mediamanager verkoopt, plant en coördineert verschillende mediaproducties. Die onderhoudt een groot netwerk en in ontmoetingen met eventuele klanten zorgt die voor een goede representatie van diens bedrijf. De mediamanager werkt onder andere voor reclamebureaus, evenementenorganisaties en televisieproductiebedrijven. Binnen een project is die de schakel tussen de opdrachtgever, vormgevers en technici en zorgt ervoor dat het alles goed verloopt. Daarnaast houdt die zich bezig met budgetbeheer, waarbij die ervoor zorgt dat projecten binnen het vastgestelde budget blijven. Goede communicatievaardigheden zijn essentieel om effectief te kunnen samenwerken met collega's en belanghebbenden.\n\nDe mediamanager is vakbewaam en creatief. In het contact met de klant neemt die een adviserende rol aan en gebruikt diens overtuigingskracht om het product te verkopen. De mediamanager werkt zelfstandig en is verantwoordelijk voor diens eigen werk."
+  },
+  "match_methode": "crebo-direct",
   "kandidaten": [],
-  "skills": []
+  "skills": [
+    {
+      "label": "Netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3DECCF2E7C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Informatietechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7459B5FEB9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Multimediadesign",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8D18873311",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Informatiemanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9212BF2426",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsinformatica",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D313E86D1B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Projectmanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F248B939CD",
+      "categorie": "essentieel"
+    }
+  ]
 }

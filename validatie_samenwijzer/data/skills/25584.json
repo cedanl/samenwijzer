@@ -1,238 +1,129 @@
 {
   "crebo": "25584",
   "opleiding": "25584_BBL_2025__25584BBL2025MJP-MachineOperatorHouttechniekN2",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "houtsnijder",
-    "uri": "http://data.europa.eu/esco/occupation/b9d03330-c71c-4827-8797-3e96249d54db",
-    "definitie": "Houtsnijders brengen handmatig hout in de gewenste vorm met behulp van gereedschap als messen, beitels en koubeitels. Houtsnijders produceren houten producten voor decoratie, om te worden geïntegreerd in een samengesteld product, zoals gereedschap of speelgoed."
+    "label": "Machineoperator houttechniek",
+    "uri": "",
+    "definitie": "De machineoperator houttechniek is werkzaam bij een bedrijf dat gericht is op het industrieel produceren van houten elementen. Dat betreft voornamelijk ramen, deuren, kozijnen of houtskeletbouwelementen. Hij verricht zijn werkzaamheden in een productieruimte, ofwel de timmerwerkplaats of timmerfabriek. Afhankelijk van het soort werk doet hij dit in teamverband of werkt hij alleen, maar altijd onder begeleiding. \n\nDe machineoperator houttechniek werkt met stationaire houtbewerkingsmachines en CNC-bewerkingscentra."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "houttechnoloog",
-    "lakspuiter",
-    "houtsnijder",
-    "industrieel ontwerper",
-    "afbramer",
-    "kernmaker gieterij",
-    "monteur elektrische installaties utiliteitsbouw",
-    "houthandelaar"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "houtsnijden",
-      "uri": "http://data.europa.eu/esco/skill/bb933bf6-e9a6-4dd8-8c88-0d8bacae30a5",
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
       "categorie": "essentieel"
     },
     {
-      "label": "materialen snijden",
-      "uri": "http://data.europa.eu/esco/skill/5e0ead74-5711-45ef-ba64-a88b0572aafe",
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
       "categorie": "essentieel"
     },
     {
-      "label": "hout schuren",
-      "uri": "http://data.europa.eu/esco/skill/88ea614f-7e96-48fd-bf0b-96bf00bdb098",
+      "label": "Begrijpend lezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/2E80D9179C",
       "categorie": "essentieel"
     },
     {
-      "label": "houtafwerkingen aanbrengen",
-      "uri": "http://data.europa.eu/esco/skill/e040fb97-ac17-4cd0-bf74-7e96c83811b6",
+      "label": "Problemen signaleren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4D400FE127",
       "categorie": "essentieel"
     },
     {
-      "label": "houtverwerkingsprocessen",
-      "uri": "http://data.europa.eu/esco/skill/0f9098d1-9bcd-453c-a9ec-e8b635705976",
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
       "categorie": "essentieel"
     },
     {
-      "label": "hout bewerken",
-      "uri": "http://data.europa.eu/esco/skill/44e2906f-48f2-48ee-88f8-351ecdb53f18",
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
       "categorie": "essentieel"
     },
     {
-      "label": "tekenen van houtrot herkennen",
-      "uri": "http://data.europa.eu/esco/skill/ea062dd7-92fc-4172-adce-a56694fd8214",
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
       "categorie": "essentieel"
     },
     {
-      "label": "scherp handgereedschap onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/2818cc47-5a9e-424c-9416-8078526097d5",
+      "label": "Beslissingen nemen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/9DD6D3E301",
       "categorie": "essentieel"
     },
     {
-      "label": "draaibanken bedienen",
-      "uri": "http://data.europa.eu/esco/skill/e4a9ec84-4eb3-494b-8a70-0fcf0d687f03",
+      "label": "Machines bedienen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D0866C5206",
       "categorie": "essentieel"
     },
     {
-      "label": "houtbewerkingsgereedschappen",
-      "uri": "http://data.europa.eu/esco/skill/4c06a716-6363-4308-b548-88f7a3e70097",
+      "label": "Verplaatsen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D16A30C42A",
       "categorie": "essentieel"
     },
     {
-      "label": "hout draaien",
-      "uri": "http://data.europa.eu/esco/skill/2937cef9-e822-4f1f-b569-4ec0362fa5f6",
+      "label": "Installeren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5AD4F0905",
       "categorie": "essentieel"
     },
     {
-      "label": "kwaliteit van grondstoffen controleren",
-      "uri": "http://data.europa.eu/esco/skill/a93011ca-e6ab-4182-8a05-4d4b282cff27",
+      "label": "Productietechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/04541FC2D1",
       "categorie": "essentieel"
     },
     {
-      "label": "soorten hout",
-      "uri": "http://data.europa.eu/esco/skill/cf2005ee-c788-4283-81d9-b443dfdf2c2e",
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
       "categorie": "essentieel"
     },
     {
-      "label": "messen voor houtsnijwerk gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/4c08e39a-1a4b-4ab9-98f8-97d975850fb1",
+      "label": "Industrieel houtbewerken, meubelmaken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/28A98D3215",
       "categorie": "essentieel"
     },
     {
-      "label": "houtoppervlak reinigen",
-      "uri": "http://data.europa.eu/esco/skill/adf661fe-9429-4094-8671-ca69fb72ad02",
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
       "categorie": "essentieel"
     },
     {
-      "label": "houtzaagmachines bedienen",
-      "uri": "http://data.europa.eu/esco/skill/f2f9934c-b462-43e1-9172-432cf1904c8c",
+      "label": "Materiaalkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/519323C152",
       "categorie": "essentieel"
     },
     {
-      "label": "houtelementen samenvoegen",
-      "uri": "http://data.europa.eu/esco/skill/2e8e2acf-5d58-4d99-807d-2ed77a6c8b17",
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
       "categorie": "essentieel"
     },
     {
-      "label": "gegraveerde zones reinigen",
-      "uri": "http://data.europa.eu/esco/skill/c1617786-decf-40cc-b44d-b90fabe92203",
-      "categorie": "optioneel"
+      "label": "Applicatiebouw en programmeren",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/92920D678A",
+      "categorie": "essentieel"
     },
     {
-      "label": "handschaven hanteren",
-      "uri": "http://data.europa.eu/esco/skill/3563cd80-cea7-4410-b049-7dd6ad7b7074",
-      "categorie": "optioneel"
+      "label": "Voorraad- en magazijnbeheer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/99D6345CD2",
+      "categorie": "essentieel"
     },
     {
-      "label": "hout verven",
-      "uri": "http://data.europa.eu/esco/skill/9372cc5b-8f47-4805-8a37-fd0e85a948f4",
-      "categorie": "optioneel"
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
     },
     {
-      "label": "graveerapparatuur bedienen",
-      "uri": "http://data.europa.eu/esco/skill/76d7fa6c-b410-475b-b62a-c7a55b5bede4",
-      "categorie": "optioneel"
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
     },
     {
-      "label": "klanten over houtproducten adviseren",
-      "uri": "http://data.europa.eu/esco/skill/3b5d16de-6894-4712-aa52-86f1e2c48f0d",
-      "categorie": "optioneel"
+      "label": "Ladingbehandeling en intern transport",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D27283387C",
+      "categorie": "essentieel"
     },
     {
-      "label": "persoonlijke administratie bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/9df34bc3-25d4-4452-a896-4d19b94ef896",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "prijsaanvragen beantwoorden",
-      "uri": "http://data.europa.eu/esco/skill/2206af0c-3deb-48c5-a544-b9983d347da3",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "producten opslaan",
-      "uri": "http://data.europa.eu/esco/skill/f675d28f-9e1f-4938-ae49-c1d07f902fed",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "materiaal onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/5033c2fb-ec55-4b8e-b0a4-9379593f1e1c",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "hout behandelen",
-      "uri": "http://data.europa.eu/esco/skill/815d1585-1706-4d01-b178-535df35bf403",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "meubilair verkopen",
-      "uri": "http://data.europa.eu/esco/skill/d48b4816-8e60-4d65-8542-29eb327551d1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "restauratietechnieken toepassen",
-      "uri": "http://data.europa.eu/esco/skill/20b9852f-a445-4097-8273-4a18fa6bfff0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "werkstukken klaarmaken voor etsen",
-      "uri": "http://data.europa.eu/esco/skill/a1eac260-229c-4e22-a338-354a3eb375e2",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "hout drogen",
-      "uri": "http://data.europa.eu/esco/skill/9c6f038b-7b3e-480b-bc21-aa54288086fa",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "meubilair decoreren",
-      "uri": "http://data.europa.eu/esco/skill/ec410bec-db3c-4950-9f42-d4b3221868a7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "technische tekeningen",
-      "uri": "http://data.europa.eu/esco/skill/59ea80e1-463a-4dba-82c6-d0b6d577d532",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "reparatiekosten schatten",
-      "uri": "http://data.europa.eu/esco/skill/827ebc71-b406-483e-9617-33c63dd487a0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "verfgereedschap gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/b45cda99-dbbc-4fde-8844-3e3821f523ee",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "werkstukken klaarmaken voor gravering",
-      "uri": "http://data.europa.eu/esco/skill/ab580ada-4513-473b-bd49-6dfbc1f4990d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voorwerpen om te vervaardigen ontwerpen",
-      "uri": "http://data.europa.eu/esco/skill/ca273412-56a5-487e-a58b-2539abc0d730",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "patronen graveren",
-      "uri": "http://data.europa.eu/esco/skill/16be151c-c501-43cf-82b1-59df7e32974b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "afspraken met leveranciers onderhandelen",
-      "uri": "http://data.europa.eu/esco/skill/c842be42-81b3-40f2-904c-ea8790ac88bd",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "hout beitsen",
-      "uri": "http://data.europa.eu/esco/skill/571267c5-98e7-4dd2-b6bc-cde5aeec3eaa",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "grond- en hulpstoffen beheren",
-      "uri": "http://data.europa.eu/esco/skill/020b3c27-bae1-4b85-9d6f-eccee0f5ed99",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "restauratieprocedures evalueren",
-      "uri": "http://data.europa.eu/esco/skill/350e0620-569f-48d7-a6fd-56622936923c",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "huishoudelijke artikelen verkopen",
-      "uri": "http://data.europa.eu/esco/skill/9783ee06-7ad3-48f3-8297-74cde9476894",
-      "categorie": "optioneel"
+      "label": "Constructiewerken, machinebankwerken, lassen, smeden, gieten",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/EF31BD21E3",
+      "categorie": "essentieel"
     }
   ]
 }
