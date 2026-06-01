@@ -203,14 +203,14 @@ def _kerntaken_uit_kd(tekst: str) -> list[dict]:
 
     Hergebruikt de OER-extractor maar schoont KD-specifieke dotted leaders uit de
     namen en dedupt per (type, code) — de inhoudsopgave noemt elke code één keer
-    schoon, de body herhaalt hem soms gewrapt. De langste opgeschoonde naam wint.
+    schoon, de body herhaalt hem soms gewrapt of met trailing prose. Het eerste
+    voorkomen wint: de inhoudsopgave staat vóór de body, dus dat is de schone vorm.
     """
     beste: dict[tuple[str, str], dict] = {}
     for kt in extraheer_kerntaken(tekst):
-        naam = _schoon_kd_naam(kt["naam"])
         sleutel = (kt["type"], kt["code"])
-        if sleutel not in beste or len(naam) > len(beste[sleutel]["naam"]):
-            beste[sleutel] = {**kt, "naam": naam}
+        if sleutel not in beste:
+            beste[sleutel] = {**kt, "naam": _schoon_kd_naam(kt["naam"])}
 
     resultaat = sorted(beste.values(), key=lambda k: k["volgorde"])
     for i, kt in enumerate(resultaat):
@@ -459,7 +459,11 @@ def _verwerk_bestand(
     if not kerntaken:
         kd_pad = _pad_kwalificatiedossier(meta["crebo"])
         if kd_pad is not None:
-            kd_tekst = kd_pad.read_text(encoding="utf-8", errors="replace")
+            try:
+                kd_tekst = kd_pad.read_text(encoding="utf-8", errors="replace")
+            except OSError as e:
+                log.warning("Kan KD niet lezen voor '%s': %s", pad.name, e)
+                kd_tekst = ""
             kerntaken = _kerntaken_uit_kd(kd_tekst)
             if kerntaken:
                 log.info(

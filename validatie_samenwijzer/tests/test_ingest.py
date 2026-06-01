@@ -137,6 +137,19 @@ def test_kerntaken_uit_kd_schoont_en_dedupt_per_code():
     assert sorted(k["volgorde"] for k in kt) == [0, 1]
 
 
+def test_kerntaken_uit_kd_inhoudsopgave_wint_van_langere_body_regel():
+    # Een body-regel voor dezelfde code is LANGER dan de inhoudsopgave; de schone
+    # inhoudsopgave (eerste voorkomen) moet toch winnen — niet de langste naam.
+    kd_tekst = """
+    B1-K1:  Voert preventieve werkzaamheden uit  ......  6
+
+    verderop in het document, met trailing prose op dezelfde regel:
+    B1-K1: Voert preventieve werkzaamheden uit met allerlei aanvullende uitleg en context
+    """
+    per_code = {k["code"]: k for k in _kerntaken_uit_kd(kd_tekst)}
+    assert per_code["B1-K1"]["naam"] == "Voert preventieve werkzaamheden uit"
+
+
 def test_schoon_kd_naam_verwijdert_dotted_leaders():
     ruw = "Uitvoeren metingen leefomgeving en rapporteren resultaten  ...........  6"
     assert _schoon_kd_naam(ruw) == "Uitvoeren metingen leefomgeving en rapporteren resultaten"
