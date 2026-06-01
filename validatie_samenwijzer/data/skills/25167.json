@@ -1,0 +1,181 @@
+{
+  "crebo": "25167",
+  "opleiding": "2021 - 25167 Verkoper niveau 2 versie 1.1",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "huis-aan-huisverkoper",
+    "uri": "http://data.europa.eu/esco/occupation/ae73f0dc-05a7-4e23-a234-9bb7e6d86975",
+    "definitie": "Huis-aan-huisverkopers verkopen goederen en diensten huis aan huis."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "verkoopspecialist optiek",
+    "verkoopspecialist motorvoertuigen",
+    "huis-aan-huisverkoper",
+    "technisch verkoper",
+    "verkoopspecialist delicatessen",
+    "verkoopspecialist games, multimedia en software",
+    "advertentie- en reclameacquisiteur",
+    "verkoopspecialist huishoudapparaten",
+    "bedrijfsleider kringloopwinkel",
+    "manager kledingwinkel",
+    "manager antiekwinkel",
+    "manager delicatessenwinkel",
+    "verkoopmanager bouwmaterialen",
+    "bedrijfsleider verkoop schoenen en lederwaren",
+    "manager verkoop motorvoertuigen",
+    "manager witgoedwinkel"
+  ],
+  "skills": [
+    {
+      "label": "klanttevredenheid garanderen",
+      "uri": "http://data.europa.eu/esco/skill/00e53a0a-c0ba-4c9f-a2ed-4706d5832a00",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klanten helpen",
+      "uri": "http://data.europa.eu/esco/skill/61970f8b-099c-4e7e-82e0-9ccdced0baf3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "letten op persoonlijke uitstraling",
+      "uri": "http://data.europa.eu/esco/skill/4a901e05-5bc4-45d1-8f52-dbf48c555bdd",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klantgericht zijn",
+      "uri": "http://data.europa.eu/esco/skill/13e93abd-618c-46df-abbe-1af38ecd1aa2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "over prijzen onderhandelen",
+      "uri": "http://data.europa.eu/esco/skill/7ee9fb56-91b1-4363-b51f-ea54ae1b5761",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verkoopdoelstellingen behalen",
+      "uri": "http://data.europa.eu/esco/skill/c09bf6d4-f8a7-40f3-aead-ef01643f2352",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "presentatiemateriaal voorbereiden",
+      "uri": "http://data.europa.eu/esco/skill/1ba59ce0-7fec-434b-8d5c-9b275250a26c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verkoopstrategieën",
+      "uri": "http://data.europa.eu/esco/skill/e7219848-a27a-4bf4-8775-d367707be7c9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "aanpassen aan verschillende weersomstandigheden",
+      "uri": "http://data.europa.eu/esco/skill/3577e49b-951d-4d46-a1f4-417087a8fb6d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verkoopbezoeken bij klanten plannen",
+      "uri": "http://data.europa.eu/esco/skill/c910ef90-db9b-48ef-bf18-a94b265a4b05",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verkoopargumenten",
+      "uri": "http://data.europa.eu/esco/skill/0c0488b3-fca5-4deb-865b-8dc605c3d909",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "behoeften van klanten identificeren",
+      "uri": "http://data.europa.eu/esco/skill/68698869-c13c-4563-adc7-118b7644f45d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "opvolging van klanten implementeren",
+      "uri": "http://data.europa.eu/esco/skill/50181a4b-1cfd-4fbd-ac9a-c1a494b9c5d0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheids- en veiligheidsnormen toepassen",
+      "uri": "http://data.europa.eu/esco/skill/dcc96a49-0bac-4a9c-8f8e-a32b4e47e6eb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klanten werven",
+      "uri": "http://data.europa.eu/esco/skill/6d97bf55-6fb6-4795-8282-3ef915ae0bb8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verschillende communicatiekanalen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/415abd43-e8e5-4643-b5da-5f11307af57a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "producteigenschappen demonstreren",
+      "uri": "http://data.europa.eu/esco/skill/de7b8c6c-9ed4-4776-924c-4265dd1d9cde",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zelfstandig werken in de verkoop",
+      "uri": "http://data.europa.eu/esco/skill/a812b11d-6e0a-4c5a-87ae-02bcc5ccfc9c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "productkennis",
+      "uri": "http://data.europa.eu/esco/skill/d6d3fee7-47e2-47f4-a0ec-6c75f28c6abd",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "actief verkopen",
+      "uri": "http://data.europa.eu/esco/skill/c81c9ea3-4689-4146-9076-24dd175c69bc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "diefstal voorkomen",
+      "uri": "http://data.europa.eu/esco/skill/6852293b-4388-4538-9f37-328de93ff3d1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "betalingen verwerken",
+      "uri": "http://data.europa.eu/esco/skill/bdcac0c8-b77a-4640-9eaf-c0cf3efd1e23",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gegevens over de verkoop bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/f4d3a8ff-2db1-4015-aa28-d4564afef3fd",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "koppelverkoop toepassen",
+      "uri": "http://data.europa.eu/esco/skill/d9fe85a8-d69f-40bc-9a1f-57c23ec273cf",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "dialect spreken",
+      "uri": "http://data.europa.eu/esco/skill/5b8cac19-0767-43a2-b36c-8091a2cee923",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "creditcardbetalingen",
+      "uri": "http://data.europa.eu/esco/skill/499031e7-9821-4728-adb8-2925663c6ef2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "relaties met klanten onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/2239694b-771a-4586-8b54-2794e361a9ae",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vertrouwensband met klanten tot stand brengen",
+      "uri": "http://data.europa.eu/esco/skill/cd990eab-c6a9-4c11-b17d-b12a98f6573b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "producten voorbereiden",
+      "uri": "http://data.europa.eu/esco/skill/0675eb6d-7918-4248-917b-dbce45b06901",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "consumentenbescherming",
+      "uri": "http://data.europa.eu/esco/skill/7ae62140-fe02-4ee3-a0c5-fb5668a2870d",
+      "categorie": "optioneel"
+    }
+  ]
+}

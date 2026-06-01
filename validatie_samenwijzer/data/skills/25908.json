@@ -1,0 +1,103 @@
+{
+  "crebo": "25908",
+  "opleiding": "25908_BOL_2025__25908 Sport- en bewegingsleider 36 maanden",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "sport- en bewegingsleider",
+    "uri": "http://data.europa.eu/esco/occupation/394bdd9b-3ee8-43a9-b943-442ce146bb21",
+    "definitie": "Sport- en bewegingsleiders programmeren en kijken toe op revalidatie-oefeningen voor personen en groepen. Zij werken samen met personen met chronische gezondheidsproblemen of die een groot risico lopen om ze te ontwikkelen. Zij communiceren met artsen en gezondheidswerkers over de omstandigheden van de deelnemers met behulp van een correcte medische terminologie en met een goed begrip van de standaardbehandelingsmogelijkheden voor de aandoening van een persoon. Sport- en bewegingsleiders hanteren een holistische benadering voor het welzijn van hun klanten, onder meer door advies te geven over levensstijl, voeding of tijdmanagement. Zij hebben geen medische achtergrond en hebben geen medische kwalificaties nodig."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "sport- en bewegingsleider",
+    "sportinstructeur",
+    "bedrijfsleider verkoop sport- en kampeerartikelen",
+    "sportcoördinator",
+    "verhuurmedewerker sport- en recreatieartikelen",
+    "verkoopspecialist sport- en kampeerartikelen",
+    "beleidsmedewerker sport en recreatie",
+    "sportmanager"
+  ],
+  "skills": [
+    {
+      "label": "fitnessklanten in gecontroleerde gezondheidscondities bijstaan",
+      "uri": "http://data.europa.eu/esco/skill/3592e08e-2602-4700-a14f-084bd8ebf845",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "risicobeoordeling van conditie uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/951cf2b2-cff4-4079-8bd3-3e14aa839cef",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "professionele houding tegenover klanten demonstreren",
+      "uri": "http://data.europa.eu/esco/skill/4adb861b-3ad8-4f0d-9343-decf59748d56",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "professionele verantwoordelijkheid tonen",
+      "uri": "http://data.europa.eu/esco/skill/59ad10b1-6f71-4dd4-ad1f-a1fdf68bc2fb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "fitnessklanten motiveren",
+      "uri": "http://data.europa.eu/esco/skill/da624cb9-3d9d-40c8-a2e9-e8fc26085416",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "fitnessoefeningen aanpassen",
+      "uri": "http://data.europa.eu/esco/skill/5d589320-2a07-4994-837d-334b57f283d5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheidsdoelstellingen identificeren",
+      "uri": "http://data.europa.eu/esco/skill/cf1e936b-9689-487e-96e2-1bbb254ac12e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "trainingsprincipes integreren",
+      "uri": "http://data.europa.eu/esco/skill/a37557b6-5151-4ce6-bfcd-b0890444a391",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "fitnesscommunicatie beheren",
+      "uri": "http://data.europa.eu/esco/skill/2a588c0d-95a6-48d2-803f-536bc5958e58",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "informatie over de geschiktheid van klanten verzamelen",
+      "uri": "http://data.europa.eu/esco/skill/ef07f206-1ea8-4dc6-a4b0-1b312a9db47c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veiligheid van de oefenomgeving garanderen",
+      "uri": "http://data.europa.eu/esco/skill/50406b39-45ee-4c03-83fe-0ad1a9442695",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "oefeningen voorschrijven voor personen met gezondheidsaandoeningen die onder controle zijn",
+      "uri": "http://data.europa.eu/esco/skill/25619418-10ff-4fd1-af06-149a555447ed",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klanten inlichten over voordelen van een gezonde levensstijl",
+      "uri": "http://data.europa.eu/esco/skill/45692043-db59-4e26-a965-8f2f6189a52b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "oefeningen voorschrijven",
+      "uri": "http://data.europa.eu/esco/skill/91695ae9-5236-4d68-af03-419dfec43b00",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "trainingssessies voorbereiden",
+      "uri": "http://data.europa.eu/esco/skill/108ac398-6a84-454a-b56c-8bb0dee1bbf2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sportwetenschappen in het ontwerp van het programma opnemen",
+      "uri": "http://data.europa.eu/esco/skill/957598c7-0f63-4fba-9d5a-4babb39fd586",
+      "categorie": "essentieel"
+    }
+  ]
+}

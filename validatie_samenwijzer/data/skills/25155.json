@@ -1,0 +1,1731 @@
+{
+  "crebo": "25155",
+  "opleiding": "2021 - 25155 Verkoopspecialist niveau 3 2021 versie 1.1",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "verkoopspecialist",
+    "uri": "http://data.europa.eu/esco/occupation/547b304b-9a72-4717-9b24-b7046df5f64e",
+    "definitie": "Verkoopspecialisten verkopen goederen in gespecialiseerde winkels."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "humanitair adviseur",
+    "hotelbutler",
+    "senator",
+    "operator gasverwerkingsinstallatie",
+    "roerganger",
+    "verkoopspecialist",
+    "technicus stralingsbescherming",
+    "monteur scheepsmotoren",
+    "consulent zonne-energie",
+    "verkoopspecialist boeken, tijdschriften en kantoorartikelen",
+    "verkoopspecialist zorgartikelen en -hulpmiddelen",
+    "verkoopmedewerker",
+    "winkelmedewerker",
+    "manager verkoop motorvoertuigen",
+    "reisconsulent",
+    "bedrijfsleider verkoop sport- en kampeerartikelen"
+  ],
+  "skills": [
+    {
+      "label": "voorraadniveaus bewaken",
+      "uri": "http://data.europa.eu/esco/skill/44f6a65f-6be7-4818-9a66-73908797283f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "producten voorbereiden",
+      "uri": "http://data.europa.eu/esco/skill/0675eb6d-7918-4248-917b-dbce45b06901",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "behoeften van klanten identificeren",
+      "uri": "http://data.europa.eu/esco/skill/68698869-c13c-4563-adc7-118b7644f45d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronische handelssystemen",
+      "uri": "http://data.europa.eu/esco/skill/b1272de4-1f5f-408b-8b26-061f2550fc72",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "eigenschappen van producten",
+      "uri": "http://data.europa.eu/esco/skill/1585fc98-bfe4-461f-97fc-734055a2c3ce",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "koopwaar onderzoeken",
+      "uri": "http://data.europa.eu/esco/skill/25fce4fb-35b6-49b6-a4fa-c7aa168fd770",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verkoopargumenten",
+      "uri": "http://data.europa.eu/esco/skill/0c0488b3-fca5-4deb-865b-8dc605c3d909",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klanten begeleiden bij de keuze van producten",
+      "uri": "http://data.europa.eu/esco/skill/2b69525c-731c-4813-99a7-673fa5679d32",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "winkels schoonhouden",
+      "uri": "http://data.europa.eu/esco/skill/57c1debf-3867-4e64-baf8-ce70d84f88c9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "rekenvaardigheden gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/5dd01a1e-7ba0-4b7f-a76c-ed811c12bfde",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klanttevredenheid garanderen",
+      "uri": "http://data.europa.eu/esco/skill/00e53a0a-c0ba-4c9f-a2ed-4706d5832a00",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verkoopfacturen opstellen",
+      "uri": "http://data.europa.eu/esco/skill/e3e42d54-78bd-4337-aa87-bb31a7670c9a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "terugbetalingen verwerken",
+      "uri": "http://data.europa.eu/esco/skill/a6d697d1-80ba-4175-82d4-43440ed04270",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "aftersales afspraken plannen",
+      "uri": "http://data.europa.eu/esco/skill/efc1d46f-39ab-4c73-ade6-0a99a90dbeba",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "naleving met wettelijke vereisten garanderen",
+      "uri": "http://data.europa.eu/esco/skill/1dae8445-12e5-423a-bb26-824010e299b9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "producteigenschappen demonstreren",
+      "uri": "http://data.europa.eu/esco/skill/de7b8c6c-9ed4-4776-924c-4265dd1d9cde",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "rekken vullen",
+      "uri": "http://data.europa.eu/esco/skill/7e9daad3-8604-4839-af9b-dc6f8db3ef68",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "geplaatste bestellingen verwerken",
+      "uri": "http://data.europa.eu/esco/skill/a89c463d-e6f0-417d-9216-b59b92249226",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verschillende communicatiekanalen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/415abd43-e8e5-4643-b5da-5f11307af57a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kassa's bedienen",
+      "uri": "http://data.europa.eu/esco/skill/0cb013af-6dd9-4fb2-b34e-63dda1a5cf82",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "actief verkopen",
+      "uri": "http://data.europa.eu/esco/skill/c81c9ea3-4689-4146-9076-24dd175c69bc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "nazorgdiensten aan klanten bieden",
+      "uri": "http://data.europa.eu/esco/skill/debb8d81-ed7f-447d-853a-5d107fda6fcf",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kenmerken van diensten",
+      "uri": "http://data.europa.eu/esco/skill/fb3bc9b5-2297-4bba-85b1-60f696a92db8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "productkennis",
+      "uri": "http://data.europa.eu/esco/skill/d6d3fee7-47e2-47f4-a0ec-6c75f28c6abd",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "winkeldiefstal voorkomen",
+      "uri": "http://data.europa.eu/esco/skill/f10cf304-f32c-40ee-97a7-ec8d84d72955",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "opslagfaciliteiten organiseren",
+      "uri": "http://data.europa.eu/esco/skill/435efc22-0dcb-487c-b9c4-d4860b6d4c52",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voertuigen bestellen",
+      "uri": "http://data.europa.eu/esco/skill/42712170-a746-477c-a102-f153d737f340",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "tendensen in sportmateriaal volgen",
+      "uri": "http://data.europa.eu/esco/skill/afbe80ff-6e56-4ef9-a0a3-82cf8e76ee13",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voedingsstoffen in zoetwaren",
+      "uri": "http://data.europa.eu/esco/skill/d5fd84ba-8200-4b29-8802-857017575b18",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productdisplay organiseren",
+      "uri": "http://data.europa.eu/esco/skill/77a11321-754a-41de-b9e4-80d747f528db",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over de selectie boeken",
+      "uri": "http://data.europa.eu/esco/skill/dfd2a243-a937-46a8-a919-20265943fc83",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "wapens verkopen",
+      "uri": "http://data.europa.eu/esco/skill/8a01a2c0-1262-4c95-af54-33410f4215a7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "fruit en groenten wegen",
+      "uri": "http://data.europa.eu/esco/skill/52dcd5c5-b9d4-4055-a282-60c232965670",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "selectie van dierenvoer aanbevelen",
+      "uri": "http://data.europa.eu/esco/skill/35383697-4d9d-4aee-a178-773986e598bc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "reparaties van voertuigen uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/65155435-1c5b-41ee-8812-e0b9b03ae480",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "advies geven over fournituren",
+      "uri": "http://data.europa.eu/esco/skill/ed85ec0e-0887-4056-95ee-c460b9397851",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "producten bijverkopen",
+      "uri": "http://data.europa.eu/esco/skill/306a1555-9fa2-47af-b996-a0a8833cbe81",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vloer- en muurbekleding verkopen",
+      "uri": "http://data.europa.eu/esco/skill/36543682-5f95-4cac-9eb8-8d9990b00820",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "levende huisdieren in de winkel verzorgen",
+      "uri": "http://data.europa.eu/esco/skill/744ac49f-9964-41ec-a798-b49329c6437a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "patiënten informatie over geneesmiddelen geven",
+      "uri": "http://data.europa.eu/esco/skill/4d8a78b7-b647-4d33-8bcf-1e472d3d5ba3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "multimediasystemen",
+      "uri": "http://data.europa.eu/esco/skill/a59708e3-e654-4e37-8b8a-741c3b756eee",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten speelgoedmateriaal",
+      "uri": "http://data.europa.eu/esco/skill/bc87f316-b87f-456f-b8bb-0e6efa965999",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "telecommunicatie-apparatuur aanbevelen aan klanten",
+      "uri": "http://data.europa.eu/esco/skill/af7fcc0f-bdd9-40b4-9649-f22f939ca699",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vlees nabewerken",
+      "uri": "http://data.europa.eu/esco/skill/db7d4f63-5288-4876-be2a-48cbf1fc01fc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten helpen bij de keuze van muziek- en video-opnames",
+      "uri": "http://data.europa.eu/esco/skill/94bc9278-dc2b-41e5-b337-5bda2c020818",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over het gebruik van medische producten",
+      "uri": "http://data.europa.eu/esco/skill/163f98f3-a8a7-4008-be49-87f4c7d27738",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "plantenverzorgingsproducten",
+      "uri": "http://data.europa.eu/esco/skill/68a8fc55-1755-40c0-ad3c-ef6371254159",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "audiovisuele uitrusting aanbevelen aan klanten",
+      "uri": "http://data.europa.eu/esco/skill/3864b236-ff84-4aaf-a032-7c6f14453976",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over motorvoertuigen",
+      "uri": "http://data.europa.eu/esco/skill/fa01d9a8-34ee-497f-a8ac-27726695a14d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "cosmetische ingrediënten",
+      "uri": "http://data.europa.eu/esco/skill/0196d283-9b1a-43a5-b219-43580c7cf560",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "orthopedisch materiaal aan klanten aanbevelen afhankelijk van hun toestand",
+      "uri": "http://data.europa.eu/esco/skill/8f342cc3-8541-42b2-b553-7a60c9a93244",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gepersonaliseerde optische producten aanbevelen aan klanten",
+      "uri": "http://data.europa.eu/esco/skill/de715b72-7c17-4dd6-be5b-db7be1f18c51",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "optische producten verkopen",
+      "uri": "http://data.europa.eu/esco/skill/1532fc46-f911-4b74-93f6-c0334966fd6b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "eigenschappen van sportuitrusting",
+      "uri": "http://data.europa.eu/esco/skill/e31ff919-3923-481d-82b5-2008a695710a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "producten bestellen voor audiologische diensten",
+      "uri": "http://data.europa.eu/esco/skill/60713654-adc6-4a46-a1b4-2965e641d27c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "helpen bij literaire evenementen",
+      "uri": "http://data.europa.eu/esco/skill/46aa40cf-6b18-4567-8ad7-bb0f18684333",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "tabakmerken",
+      "uri": "http://data.europa.eu/esco/skill/e27e091f-7f91-4cf9-b391-18ddf51e41f3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "garennummer meten",
+      "uri": "http://data.europa.eu/esco/skill/434e926b-89bb-4720-a5c6-65ddb8e733b5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over naaipatronen",
+      "uri": "http://data.europa.eu/esco/skill/c7420d1c-f47d-43ae-a2ed-4d43d19d71f4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "juwelen aanpassen",
+      "uri": "http://data.europa.eu/esco/skill/35138055-63cd-410a-91a7-29e9857bebbd",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "koelsmeermiddelen voor voertuigen verkopen",
+      "uri": "http://data.europa.eu/esco/skill/6c4ac9e9-e9d6-4527-a8df-b51b9197850f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "koelketen",
+      "uri": "http://data.europa.eu/esco/skill/3c20b802-06c0-42e8-8a39-a1ab0ba1832b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "instructies van de producent inzake elektrische huishoudelijke apparaten",
+      "uri": "http://data.europa.eu/esco/skill/39b00008-3c6b-4395-b5dd-9d325283a885",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "boeken aanbevelen aan klanten",
+      "uri": "http://data.europa.eu/esco/skill/15ea2820-4ad7-4716-aa84-df6e28fb7488",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderhoudscontracten voor software verkopen",
+      "uri": "http://data.europa.eu/esco/skill/757109c4-c04b-40b6-ada8-9bdc4153387e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "levering van meubilair afhandelen",
+      "uri": "http://data.europa.eu/esco/skill/28123a65-be06-4466-b117-e2ff289899f8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "schoenen en lederwaren verkopen",
+      "uri": "http://data.europa.eu/esco/skill/b6a1aa07-ca83-42ed-a71c-dc6af6645c3e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over soorten sportmateriaal voor specifieke doeleinden",
+      "uri": "http://data.europa.eu/esco/skill/ae697c12-e99e-4ad7-9b36-040afef5861b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "proactief denken om verkoop te realiseren",
+      "uri": "http://data.europa.eu/esco/skill/4934c105-5e90-4874-9957-78eceef1a13c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over het gebruik van verzorgingsproducten voor huisdieren",
+      "uri": "http://data.europa.eu/esco/skill/02ae2a55-4b7c-41d2-86ec-9a2a38b73fe6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "modetrends op schoeisel en lederwaren toepassen",
+      "uri": "http://data.europa.eu/esco/skill/ec3e024f-87e8-4e92-a3e9-177cb9638a3e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "eigenschappen van gezichten",
+      "uri": "http://data.europa.eu/esco/skill/3dcf0635-4060-4ad9-9864-6ae4241a3609",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderdelen van schoeisel",
+      "uri": "http://data.europa.eu/esco/skill/ec7fd241-e68f-4593-a42a-a12a9bd80cbc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kenmerken van randapparatuur van computers uitleggen",
+      "uri": "http://data.europa.eu/esco/skill/f2741507-c5f7-45b6-8bcd-8d0d27650d68",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten een make-over geven",
+      "uri": "http://data.europa.eu/esco/skill/0d3a68b7-0f9c-427e-b5ca-d03ff5808eae",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "geïmproviseerde reparaties aan voertuigen uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/edeade22-1c8d-40d2-818b-e5ef0473c481",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "schoenenindustrie",
+      "uri": "http://data.europa.eu/esco/skill/3ff55b65-42c7-4ac9-815d-7576b749ca15",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bouwmaterialen identificeren op basis van blauwdrukken",
+      "uri": "http://data.europa.eu/esco/skill/82e8931a-ba6c-4c14-9611-e56fca33a2b9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "annuleringsvoorwaarden van dienstverleners",
+      "uri": "http://data.europa.eu/esco/skill/e307e333-426d-4e7e-81f0-16cff013a20f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verwerkingsmachines voor fruit en groenten bedienen",
+      "uri": "http://data.europa.eu/esco/skill/b5e84da7-6faa-4804-8b8b-c952f6cd6d30",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "audiovisuele producten ordenen",
+      "uri": "http://data.europa.eu/esco/skill/a1df7062-3353-4888-9be0-edbbb7fcbbec",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vis nabewerken",
+      "uri": "http://data.europa.eu/esco/skill/0c9ecb19-b8d6-4f2d-9d8e-1702ec30b5dc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "meststof aanbevelen voor bloemen",
+      "uri": "http://data.europa.eu/esco/skill/41577315-0b55-41d1-9fa6-c4ad021d5783",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "buitenterrein van een tankstation beheren",
+      "uri": "http://data.europa.eu/esco/skill/042e1e68-b190-47c0-8f0d-ff312fc25b71",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "nieuwe voertuigen op de markt",
+      "uri": "http://data.europa.eu/esco/skill/1acc3692-efa7-47d0-9deb-062e60b2208f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over de installatie van elektrische huishoudelijke apparaten",
+      "uri": "http://data.europa.eu/esco/skill/30907443-4253-4477-a758-5e2c0d6feb72",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "controleprocedures voor het verwerken van gevaarlijke stoffen opvolgen",
+      "uri": "http://data.europa.eu/esco/skill/02e235f4-a30a-412a-a06e-1c471ad28678",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "textielstoffen verkopen",
+      "uri": "http://data.europa.eu/esco/skill/b4adabc5-d351-43f0-9282-ded8fed0e2e1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "betalingen verwerken",
+      "uri": "http://data.europa.eu/esco/skill/bdcac0c8-b77a-4640-9eaf-c0cf3efd1e23",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "persoonlijke opleidingen voor software verkopen",
+      "uri": "http://data.europa.eu/esco/skill/9710209e-d80f-4459-aaa4-28aafadb008d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over bouwmaterialen",
+      "uri": "http://data.europa.eu/esco/skill/1b73b2a7-aefc-49ef-8b30-b90ca7429984",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderhandelen over de prijs voor antiekwaren",
+      "uri": "http://data.europa.eu/esco/skill/97534f07-67fe-49ed-b2c2-66bc0a6586e5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "veiligheidsaanbevelingen voor speelgoed en spellen",
+      "uri": "http://data.europa.eu/esco/skill/a178d2cb-ac5b-4e4a-9a11-3df9440e9d15",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gevoelige persoonlijke gegevens verwerken",
+      "uri": "http://data.europa.eu/esco/skill/5d5ba629-0b4c-424f-8803-000c3736f3f7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "boeken ordenen",
+      "uri": "http://data.europa.eu/esco/skill/72f9d741-7696-43d2-bccb-d46f9463eecb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "op de hoogte blijven van recent verschenen boeken",
+      "uri": "http://data.europa.eu/esco/skill/364b3628-c750-436a-8f5c-1a75dd5c6648",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "levensmiddelen aantrekkelijk presenteren",
+      "uri": "http://data.europa.eu/esco/skill/efd806d5-8390-4591-9c52-14d8f74bfa43",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "allergische reacties op cosmetica",
+      "uri": "http://data.europa.eu/esco/skill/27fddfc8-71fb-4bc2-9597-70bf59f117d4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kleurstoffen voor voedingswaren",
+      "uri": "http://data.europa.eu/esco/skill/62beef03-436f-4131-b3c0-6abb22f14310",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "materialen voor binnenhuisarchitectuur",
+      "uri": "http://data.europa.eu/esco/skill/db845223-034b-4b59-b76f-290ba48167e1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten helpen",
+      "uri": "http://data.europa.eu/esco/skill/61970f8b-099c-4e7e-82e0-9ccdced0baf3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vervaldatum van geneesmiddelen controleren",
+      "uri": "http://data.europa.eu/esco/skill/f024dd81-76a9-4d84-950e-7c6d1383a403",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kunstgeschiedenis",
+      "uri": "http://data.europa.eu/esco/skill/6c6f0d6e-1f31-4413-b2ee-dabe135b29a7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bouwsector",
+      "uri": "http://data.europa.eu/esco/skill/fe77f9ca-7bd2-4a68-98f4-8463a4fb8301",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over het bewaren van vleesproducten",
+      "uri": "http://data.europa.eu/esco/skill/e4019788-314f-460d-8a58-84297e2718c8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kledij aan klanten verkopen",
+      "uri": "http://data.europa.eu/esco/skill/99010eb3-c40d-4e30-bd64-fa62518b28f0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "recreatieve activiteiten promoten",
+      "uri": "http://data.europa.eu/esco/skill/e517f098-dce4-4ecd-9371-499936c0f947",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "informatie geven over inruilmogelijkheden",
+      "uri": "http://data.europa.eu/esco/skill/bafb5f43-4ae7-471b-a20d-d98012313f6c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over de bereiding van fruit en groenten",
+      "uri": "http://data.europa.eu/esco/skill/8ec1be12-81a7-49e6-9726-973ecf2e7f1d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "spelsoftware verkopen",
+      "uri": "http://data.europa.eu/esco/skill/4f992952-f3ea-473b-9562-183194966704",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "broodproducten bereiden",
+      "uri": "http://data.europa.eu/esco/skill/606f8d77-443a-48c0-bd9c-1762e459b8e7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "wettelijke vereisten om te opereren in de autohandel",
+      "uri": "http://data.europa.eu/esco/skill/35df8d0d-3cc7-4c7e-a260-094ab1b1604b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "principes van elektronische apparatuur",
+      "uri": "http://data.europa.eu/esco/skill/557d1221-0235-4a48-ada5-8fca73443627",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "boekingen verwerken",
+      "uri": "http://data.europa.eu/esco/skill/345486f3-f265-4fc8-8ed0-5e96e768e333",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "antwoord geven op vragen van klanten",
+      "uri": "http://data.europa.eu/esco/skill/cace7a77-38b7-4cdf-8171-e17692bef5f6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "woningdecoratietechnieken",
+      "uri": "http://data.europa.eu/esco/skill/f42e294a-0bba-4e90-989a-9b1467170e6f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ICT-softwarespecificaties",
+      "uri": "http://data.europa.eu/esco/skill/9ce670ec-318c-4a91-9179-03437db728dc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "sportevenementen",
+      "uri": "http://data.europa.eu/esco/skill/bd0e1723-ecd4-418a-9e76-b2539b75e660",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bloementeelt",
+      "uri": "http://data.europa.eu/esco/skill/f4b5e3fb-ea82-4307-887a-d1901c7d3a4d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productcategorieën van juwelen",
+      "uri": "http://data.europa.eu/esco/skill/d302c801-e67f-4411-bfa0-275093e89b3a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "optische middelen bestellen",
+      "uri": "http://data.europa.eu/esco/skill/dad8a5eb-e004-4a4f-8d07-fcc31663946d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over het gebruik van cosmetica",
+      "uri": "http://data.europa.eu/esco/skill/78ecad49-4579-4e6d-932e-edeaada0fdfe",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vlees voor verkoop voorbereiden",
+      "uri": "http://data.europa.eu/esco/skill/ae5b462a-c1eb-4209-979b-3da8b1ad01de",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over het gebruik van banketbakkersproducten",
+      "uri": "http://data.europa.eu/esco/skill/32a8f461-2878-4387-81a7-c3b2db272a37",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "orthopedisch materiaal verkopen",
+      "uri": "http://data.europa.eu/esco/skill/aaed82e5-b4cb-490c-85f9-509c75e6cbf0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "recreatieactiviteiten",
+      "uri": "http://data.europa.eu/esco/skill/7ba2ce03-ac36-4cf5-9383-e665ed0d86c3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten stoffen",
+      "uri": "http://data.europa.eu/esco/skill/73b4cc3b-3827-4c54-ac54-d912e5cdae21",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over accessoires die passen bij kleding",
+      "uri": "http://data.europa.eu/esco/skill/1d2c317c-9921-4df1-85be-1eed1189d85e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "beschikken over computervaardigheden",
+      "uri": "http://data.europa.eu/esco/skill/d15ce60f-ddab-41ce-ba56-398451b77b60",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over de bereiding van dranken",
+      "uri": "http://data.europa.eu/esco/skill/3378744b-d0ee-4c8d-90ec-19d1260ca01f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "marktonderzoek uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/fe39d4db-4cb5-4299-bb9f-896c8fd6ab13",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "prijsinformatie geven",
+      "uri": "http://data.europa.eu/esco/skill/32b02bd1-6bf2-497a-bb16-94aeeafaf44f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "textiel snijden",
+      "uri": "http://data.europa.eu/esco/skill/cc63230c-356b-4c5b-950a-7e3b1ffe2dea",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "rapporten opstellen over brandstoffen die in benzinestations werden verkocht",
+      "uri": "http://data.europa.eu/esco/skill/8e761884-6b17-4fd2-b9ca-20c66d187ca5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bouwuitrusting met betrekking tot bouwmaterialen",
+      "uri": "http://data.europa.eu/esco/skill/b091d04a-bb5d-4998-afc9-d71e6c96fb80",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "videospeltrends",
+      "uri": "http://data.europa.eu/esco/skill/44a117a9-4443-43a4-b037-23c716af671e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gegevens van voorschriften van klanten bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/ab1ad155-db0b-4fa0-8bac-856853c47175",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "commercieel recht",
+      "uri": "http://data.europa.eu/esco/skill/d63c2bad-817d-4116-b4d8-b927cb01212d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contacten onderhouden met uitgevers van boeken",
+      "uri": "http://data.europa.eu/esco/skill/3882c29a-a3b4-48be-8349-00958cdfdc58",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zoetwaren verkopen",
+      "uri": "http://data.europa.eu/esco/skill/9f152792-2589-4256-bbd9-9e87bf524631",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "meubeltrends",
+      "uri": "http://data.europa.eu/esco/skill/2c71ffc8-dae9-4584-ae7f-5b3a78c8cc69",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bestellingen van verschillende leveranciers coördineren",
+      "uri": "http://data.europa.eu/esco/skill/c8fac70a-68a1-483b-a6d5-701aee4220fb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klein onderhoud controleren",
+      "uri": "http://data.europa.eu/esco/skill/381306c1-bb5a-4696-8b1b-d7a6679400bf",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "academische boeken verkopen",
+      "uri": "http://data.europa.eu/esco/skill/80130e9c-3ce8-4997-8467-c89f36967b83",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "advies geven over kledingstijl",
+      "uri": "http://data.europa.eu/esco/skill/cd76316c-23e5-449a-a0c4-598bf7ee1a5a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "audiovisuele uitrusting verkopen",
+      "uri": "http://data.europa.eu/esco/skill/b3230869-6f39-42f7-bb05-8ad3e5eeee9e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "textielsector",
+      "uri": "http://data.europa.eu/esco/skill/4e373bb6-b9e1-4400-ba59-0313e88e8f94",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "schoeisel aanbevelen aan klanten",
+      "uri": "http://data.europa.eu/esco/skill/fa9faa56-0f03-4ab1-89c1-1a9657bb516c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "boekrecensies",
+      "uri": "http://data.europa.eu/esco/skill/5bcd5d36-cfe7-4494-9b58-713884fa1042",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ziekten van huisdieren",
+      "uri": "http://data.europa.eu/esco/skill/ef52e108-b20e-415c-ae1b-8dcc50a47a6b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "industrie van orthopedische producten",
+      "uri": "http://data.europa.eu/esco/skill/30ba7d0f-f410-4ec8-8f0d-89619f774539",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "optische meetapparatuur gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/5e127fef-cc93-4e34-a924-680a18035fc5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "speelgoed en spellen verkopen",
+      "uri": "http://data.europa.eu/esco/skill/d70b751d-8197-4a7d-9219-548cd66b57af",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "producten bestellen",
+      "uri": "http://data.europa.eu/esco/skill/39b2f4dc-86b7-4bf9-94df-01771a56e042",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "principes van teamwerk",
+      "uri": "http://data.europa.eu/esco/skill/a5b0cd5c-e13a-4ab3-8d93-4d242adcfb01",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ruimtelijke informatie evalueren",
+      "uri": "http://data.europa.eu/esco/skill/c1f4e64a-9bc7-4c75-b2eb-d982d7148cef",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over sieraden en horloges",
+      "uri": "http://data.europa.eu/esco/skill/1dcfa7d1-cfa9-4d40-9c82-e045d9b27232",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kosten berekenen van bekleding",
+      "uri": "http://data.europa.eu/esco/skill/8ec9ec6a-d8f2-41e8-a965-09e9d6170308",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "computeronderdelen toevoegen",
+      "uri": "http://data.europa.eu/esco/skill/487fd260-be20-4980-a8e4-b819f0b549f1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kosten van onderhoud van sieraden en horloges inschatten",
+      "uri": "http://data.europa.eu/esco/skill/c9a4b4c0-22a4-4104-9a24-22999d4cecaa",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bloemschiktechnieken",
+      "uri": "http://data.europa.eu/esco/skill/dd25bf40-00c8-4c07-8f77-fbb4ca31d4b8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "accessoires voor huisdieren verkopen",
+      "uri": "http://data.europa.eu/esco/skill/48bb7429-f9a2-4bac-8982-3729b5c7f43d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "promotiemiddelen ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/66fda9e5-f9f7-4342-b4f1-23355bcdd0b9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over de keuze van vis en zeevruchten",
+      "uri": "http://data.europa.eu/esco/skill/ba74f3e5-4494-405c-8d98-7032f2a883ba",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bibliografisch werk uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/4fea6307-bdc0-423d-ad63-c61755c14522",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bloem- en plantproducten",
+      "uri": "http://data.europa.eu/esco/skill/f2704539-8b55-4164-8911-e550a1f9c47f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "reclameacties voor voertuigen uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/09f07c6a-866b-4587-a771-45b0cd613540",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "waarde van gebruikte sieraden en horloges schatten",
+      "uri": "http://data.europa.eu/esco/skill/d915420b-3083-4740-b196-32749111069e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gevoelige producten hanteren",
+      "uri": "http://data.europa.eu/esco/skill/fd85fb40-02d8-4f10-a287-6277126e16f5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vlechttechniek",
+      "uri": "http://data.europa.eu/esco/skill/bc93e930-3279-4cf0-8a0b-1faeac1c8c51",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "staat van tweedehandsgoederen verbeteren",
+      "uri": "http://data.europa.eu/esco/skill/6ee3c966-a880-44c8-b559-6c7b861e6271",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over het bewaren van fruit en groenten",
+      "uri": "http://data.europa.eu/esco/skill/de00a85b-3654-4e7a-b967-afe857e8dc2e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verschillende talen spreken",
+      "uri": "http://data.europa.eu/esco/skill/2de4572a-4724-4f76-afc2-72a568a264ac",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "cosmeticasector",
+      "uri": "http://data.europa.eu/esco/skill/ceda9207-797c-4d4a-b65a-5eb59084f011",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "sportmateriaal aanpassen",
+      "uri": "http://data.europa.eu/esco/skill/cab28271-5965-4fcf-9d64-0acb43d51cb6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "evenementen op culturele ontmoetingsplaatsen promoten",
+      "uri": "http://data.europa.eu/esco/skill/68f6ecc0-51c8-4b08-ad90-a312c0cb07f8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kwaliteit van bekleding uitleggen",
+      "uri": "http://data.europa.eu/esco/skill/b04df597-33f8-4a37-931c-177664794101",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "materialen voor schoeisel",
+      "uri": "http://data.europa.eu/esco/skill/a4cfad38-109a-4a61-8d01-98fd8cf001ce",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kleding aanbevelen volgens de maten van de klant",
+      "uri": "http://data.europa.eu/esco/skill/25b746af-fb4e-41fc-9975-a74d73627cfe",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "telecommunicatiesector",
+      "uri": "http://data.europa.eu/esco/skill/60b44dab-03f1-46de-be08-0e5ba8662b3d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "tweedehands goederen verkopen",
+      "uri": "http://data.europa.eu/esco/skill/d38f2c46-d887-4ba5-a69b-92b613f75b22",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "juwelen repareren",
+      "uri": "http://data.europa.eu/esco/skill/19ef02d8-0297-4ec2-afbf-a58165c7c6a2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "antieke stukken verwerven",
+      "uri": "http://data.europa.eu/esco/skill/29b22cea-531c-4a6c-a28e-33e87ec4aa67",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voorschriften inzake de verkoop van alcoholische dranken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/4fd95cb5-947b-434b-aa4b-23308af2f82c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "huishoudelijke artikelen verkopen",
+      "uri": "http://data.europa.eu/esco/skill/9783ee06-7ad3-48f3-8297-74cde9476894",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "reclametechnieken",
+      "uri": "http://data.europa.eu/esco/skill/aba1f05b-f312-47d8-be71-7c574134de8f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kranten aanbevelen aan klanten",
+      "uri": "http://data.europa.eu/esco/skill/c940dc95-476d-48e8-bb34-8778d04f40d2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "culturele projecten",
+      "uri": "http://data.europa.eu/esco/skill/24554d47-70d2-4153-bb27-84e338e76792",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over de installatie van audiovisuele uitrusting",
+      "uri": "http://data.europa.eu/esco/skill/b3444d1c-a325-4b5c-a997-2f467b15641a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "orthopedisch materiaal repareren",
+      "uri": "http://data.europa.eu/esco/skill/f3e7f152-27f1-4f29-a0d6-40619927df88",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over het bewaren van broodproducten",
+      "uri": "http://data.europa.eu/esco/skill/bd446d86-01e5-4e3b-a133-287433c98055",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten munitie",
+      "uri": "http://data.europa.eu/esco/skill/68316932-0577-4b0b-973f-0bf28941d650",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderhandelen over verkoopcontracten",
+      "uri": "http://data.europa.eu/esco/skill/71152876-b629-4a99-b9ea-0f25a0d07e4e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bestellingen voor speciale uitgaven opnemen",
+      "uri": "http://data.europa.eu/esco/skill/32d852ce-feaf-4373-aba5-2ab0cedc661f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten met bijzondere behoeften assisteren",
+      "uri": "http://data.europa.eu/esco/skill/b6b2e665-1085-4f4d-9973-e979721815d7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "informatie geven over karaatbeoordeling",
+      "uri": "http://data.europa.eu/esco/skill/e7837b7e-420f-46e6-8191-94fa610b3f56",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "eigenschappen van planten",
+      "uri": "http://data.europa.eu/esco/skill/a3f1d933-728d-494a-a260-293132b8fdd4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verkooptechnieken",
+      "uri": "http://data.europa.eu/esco/skill/51317990-9672-4635-bd76-7882718af136",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ICT-hardwarespecificaties",
+      "uri": "http://data.europa.eu/esco/skill/3497ebe1-d417-4105-a68f-f7bbcac7ee5f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "huisdieren registreren",
+      "uri": "http://data.europa.eu/esco/skill/f5b34ff5-99d7-4e22-9cfb-d1fdaa487b12",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "modetrends",
+      "uri": "http://data.europa.eu/esco/skill/1b10c3de-1284-4c89-a9f9-762ad51a6ad7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over het delicatessenaanbod",
+      "uri": "http://data.europa.eu/esco/skill/2f0f58f9-7dbf-4bd2-af1a-2c3678f4d851",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voorzien in aangepaste bouwmaterialen",
+      "uri": "http://data.europa.eu/esco/skill/4f7b36b8-7677-4840-8dc0-bec8eb591544",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vinylplaten",
+      "uri": "http://data.europa.eu/esco/skill/efa0a7d9-9dfd-4bff-bc18-c7e25b241e97",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over onderhoud van leren schoeisel",
+      "uri": "http://data.europa.eu/esco/skill/b6a947f2-91d2-4b7c-9f1e-9f58686e5ff9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "potentieel van tweedehandsgoederen controleren",
+      "uri": "http://data.europa.eu/esco/skill/329609d7-2254-44c6-87f7-0e837ee89b61",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "waarmerken lezen",
+      "uri": "http://data.europa.eu/esco/skill/84c52ee9-3eed-4f6c-983c-456e818c65f3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "audiovisuele uitrusting onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/6e4f264a-e2e1-42fb-9866-e64069f8b441",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "sportlocatie promoten",
+      "uri": "http://data.europa.eu/esco/skill/aed5deff-a7bb-47ce-b31f-4b16851ad434",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "brandstofverkoop via pompen berekenen",
+      "uri": "http://data.europa.eu/esco/skill/e8f25c61-547e-44c0-abbc-f273fcc449b0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "advies geven over de combinatie van etenswaren en wijn",
+      "uri": "http://data.europa.eu/esco/skill/2c361834-286f-4345-89e4-c0bfefc78819",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "evenementen promoten",
+      "uri": "http://data.europa.eu/esco/skill/28c5e844-72a3-49d7-af0e-810b645e947a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "optische voorschriften opvolgen",
+      "uri": "http://data.europa.eu/esco/skill/87d1cb89-8de1-4e15-8255-492323203237",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "textielmeting",
+      "uri": "http://data.europa.eu/esco/skill/b1d83178-01ba-4802-bcdd-48c2715030cf",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "identificatie en classificatie van vissen",
+      "uri": "http://data.europa.eu/esco/skill/32bbd1de-4995-4e47-84ab-fb3a2b0cfdf1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "sieraden en horloges onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/d247e43b-824c-45d7-a59c-87ce1e6cf9fc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "batterijen van horloges vervangen",
+      "uri": "http://data.europa.eu/esco/skill/25d168e5-ad10-42a8-9f00-9e1417c8ae36",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kaarten verkopen",
+      "uri": "http://data.europa.eu/esco/skill/2d823e3d-7b19-46d9-88a8-31bacac76a5d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gekaakte vis wassen",
+      "uri": "http://data.europa.eu/esco/skill/e81bd620-65a7-4794-b907-b37801019533",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten horloges",
+      "uri": "http://data.europa.eu/esco/skill/e6c993f2-89b9-4da7-8c5c-5a165f654bff",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten informeren over wijzigingen en annuleringen van activiteiten",
+      "uri": "http://data.europa.eu/esco/skill/64c813d6-f73a-4f55-8154-8fef4ef54ec7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "samenstelling van bakproducten",
+      "uri": "http://data.europa.eu/esco/skill/1a369b5d-cf7a-4dc6-8d65-18b4e16949a2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderhoud van leren producten",
+      "uri": "http://data.europa.eu/esco/skill/f1862304-f1e7-444c-be2b-08e1fc9a988a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over audiologische producten",
+      "uri": "http://data.europa.eu/esco/skill/49321bf1-b20e-4aa1-a721-67b0ddfcea73",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "instructies van de producent inzake audiovisuele apparatuur",
+      "uri": "http://data.europa.eu/esco/skill/a4bead49-86a0-4849-8b6a-77cdcc157808",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "waarde van edelstenen berekenen",
+      "uri": "http://data.europa.eu/esco/skill/c9971e8c-2d32-4a35-9688-aa66f691550c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "wetgeving op het gebied van dierenwelzijn",
+      "uri": "http://data.europa.eu/esco/skill/49212efd-acf0-4257-a011-e07c9e369ecf",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "munitie verkopen",
+      "uri": "http://data.europa.eu/esco/skill/da83fd9d-b30d-444f-baa5-1539d29b54bf",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "cosmetica aanbevelen aan klanten",
+      "uri": "http://data.europa.eu/esco/skill/9bc5849d-4337-4163-aefc-89a097b9b1b1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "cosmetisch schoonheidsadvies bieden",
+      "uri": "http://data.europa.eu/esco/skill/3f43eed7-2424-4322-a065-d84d94685048",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bouwmaterialen verkopen",
+      "uri": "http://data.europa.eu/esco/skill/b4393e7c-3fe3-4766-8b57-6eb0c8082f36",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten geschreven pers",
+      "uri": "http://data.europa.eu/esco/skill/e8099ae4-3443-4395-9f9a-002a65905abf",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over de bereiding van vleesproducten",
+      "uri": "http://data.europa.eu/esco/skill/08be1642-5cbe-485e-a1e5-3921ecaea755",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bloemstukken creëren",
+      "uri": "http://data.europa.eu/esco/skill/24a776a7-73f2-48a0-9b3e-93b8c78997e4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kantoorsoftware",
+      "uri": "http://data.europa.eu/esco/skill/cf310cff-0d28-4dbc-9dbb-cc500a3196c2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten helpen sportmateriaal uit te proberen",
+      "uri": "http://data.europa.eu/esco/skill/7427e10e-ee07-4cc9-b6ee-7925b457df13",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over elektronische sigaretten",
+      "uri": "http://data.europa.eu/esco/skill/8ae33ff1-cc03-496d-8864-a8dc23cd4d0f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "telecommunicatieproducten verkopen",
+      "uri": "http://data.europa.eu/esco/skill/a46c1df8-9885-4036-98d8-b225a8d13c19",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "opslag van voedingsmiddelen",
+      "uri": "http://data.europa.eu/esco/skill/b4b3b539-81ae-43aa-a540-0e2ea2c7e802",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "processen voor het maken van juwelen",
+      "uri": "http://data.europa.eu/esco/skill/a815de2c-cefb-461f-9c55-05f21ae7da8f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over mogelijkheden voor de financiering van voertuigen",
+      "uri": "http://data.europa.eu/esco/skill/ed6915ee-ef99-4630-ac32-3dfbb6ff64df",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "nabewerking van levensmiddelen",
+      "uri": "http://data.europa.eu/esco/skill/561a6713-1a87-4a60-8de8-9818eb16f453",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kleren aanpassen",
+      "uri": "http://data.europa.eu/esco/skill/3eed7aa9-5b82-4553-b46f-16c3dcdc0742",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gebruik van sportmateriaal",
+      "uri": "http://data.europa.eu/esco/skill/61a9724c-ffab-4a69-a609-e593caf6f87b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "op de hoogte blijven van lokale evenementen",
+      "uri": "http://data.europa.eu/esco/skill/7f42541b-d3ce-44e0-acd3-443947a13bed",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektrotechniek",
+      "uri": "http://data.europa.eu/esco/skill/3e40c7d0-0e36-4b33-bc33-0aa87eda0561",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zorgen voor gespecialiseerde verpakkingen voor klanten",
+      "uri": "http://data.europa.eu/esco/skill/1cf8cd2a-0b84-47f9-be63-4d36d3bff528",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "speelgoed en spellen inspecteren op schade",
+      "uri": "http://data.europa.eu/esco/skill/f3be7a2c-c91d-4ae9-86f5-778dd3497309",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "muur- en vloerbedekkingssector",
+      "uri": "http://data.europa.eu/esco/skill/7d1d6486-5ba3-4d05-a00a-52fe60a3ff58",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over soorten computermateriaal",
+      "uri": "http://data.europa.eu/esco/skill/b3fc5018-ff7b-46fd-be18-dd4148e9b241",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "te koop aangeboden voertuigen controleren",
+      "uri": "http://data.europa.eu/esco/skill/c43457a0-3958-4ef9-8b33-2f56a06a63ba",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gebruik van hardware demonstreren",
+      "uri": "http://data.europa.eu/esco/skill/113d2de3-2150-4949-b91d-abd3d39b370b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "functies van speelgoed en spellen demonstreren",
+      "uri": "http://data.europa.eu/esco/skill/88ad11b2-9524-4b5f-8024-e4d3ca38ac8c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toezicht houden op de levering van brandstof",
+      "uri": "http://data.europa.eu/esco/skill/bff25957-631c-46e2-9539-5fe882e316e1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kosten van de installatie van telecommunicatieapparatuur inschatten",
+      "uri": "http://data.europa.eu/esco/skill/9ce7c497-a019-435b-90ca-27b6889c2cb9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over de combinatie van alcoholische dranken met voedsel",
+      "uri": "http://data.europa.eu/esco/skill/7b8d575c-7496-413f-9747-788afe0debb6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "testritten beheren",
+      "uri": "http://data.europa.eu/esco/skill/6662481a-7978-45c3-9cc8-78605db77e79",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "leveringsdocumentatie van voertuigen bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/9938def0-0398-49d6-ae1e-fee16d9ff8b7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "waardevolle voorwerpen opmerken",
+      "uri": "http://data.europa.eu/esco/skill/c54a5cf6-464c-4176-a060-8704ed53e2db",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over het onderhoud van optische producten",
+      "uri": "http://data.europa.eu/esco/skill/a4e9d55c-90e5-46fb-b275-fcb0d0a7fa8d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "wettelijke vereisten met betrekking tot munitie",
+      "uri": "http://data.europa.eu/esco/skill/634f0847-9318-4dd8-ba00-7f40af85939b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "messen gebruiken voor vleesverwerking",
+      "uri": "http://data.europa.eu/esco/skill/d8a0bd55-b701-4284-b075-43c098ff1d77",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klantenservice verlenen",
+      "uri": "http://data.europa.eu/esco/skill/75dfe1ee-5935-42ce-b820-697f827825c3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "medische verzekeringsclaims verwerken",
+      "uri": "http://data.europa.eu/esco/skill/7361c086-443c-43c2-8215-31ef8e8895e5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bloemen verkopen",
+      "uri": "http://data.europa.eu/esco/skill/e2b0d44f-df0f-47a7-882a-f8d7ffd40e60",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bloemdecoraties ontwerpen",
+      "uri": "http://data.europa.eu/esco/skill/5d5f8823-cb27-4641-b1cd-2e908788099e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voorraad vleesproducten bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/49f90f22-80b4-438a-a673-7abbbe7c5447",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten audiologische apparatuur",
+      "uri": "http://data.europa.eu/esco/skill/f88d8667-d476-43bb-980f-2dbd01ae00cf",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ticketverkoop volgen",
+      "uri": "http://data.europa.eu/esco/skill/a169e144-1fe2-4b07-bd20-1d28a6f7b74b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kledingindustrie",
+      "uri": "http://data.europa.eu/esco/skill/a15e06f6-9562-465f-b6bd-549becd67633",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gratis stalen van cosmetica aanbieden",
+      "uri": "http://data.europa.eu/esco/skill/2a456cc5-683f-4eeb-ba20-5a523ac56112",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over vermogensvereisten van producten",
+      "uri": "http://data.europa.eu/esco/skill/8c963be4-1f3a-41df-9a57-fcfd32dcfb84",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten vissen",
+      "uri": "http://data.europa.eu/esco/skill/f1e33e6b-890d-4a4d-96bc-590540e7f5dd",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "marktprijzen voor antieke producten onderzoeken",
+      "uri": "http://data.europa.eu/esco/skill/c0f24f8d-e5bf-4ebc-b37a-46925458b58d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "monsters van muur- en vloerbekleding tonen",
+      "uri": "http://data.europa.eu/esco/skill/dbf634cf-f17c-4c86-92ae-83ecfd53a13d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kwaliteit van groenten en fruit controleren",
+      "uri": "http://data.europa.eu/esco/skill/30fb877c-a6d9-4877-bd5d-a87f759ea781",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "informatie over sportcompetitie",
+      "uri": "http://data.europa.eu/esco/skill/7f6f3d05-7b6f-4622-9082-6c355edfcb7e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over aanvullende diensten voor voertuigen",
+      "uri": "http://data.europa.eu/esco/skill/4ed6d13e-a39e-4033-b1ae-d6f2c616d834",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "hardware verkopen",
+      "uri": "http://data.europa.eu/esco/skill/5a1b8a2b-53de-4827-be41-f0caffc40928",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "seizoensgebonden verkopen beheren",
+      "uri": "http://data.europa.eu/esco/skill/27834b48-7cd7-4a4b-87fd-2033d57b4a74",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "advies geven over de africhting van huisdieren",
+      "uri": "http://data.europa.eu/esco/skill/4f9bbbb7-a5f8-4c39-ac6f-4c4a6da28262",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "advies geven over eigenschappen van voertuigen",
+      "uri": "http://data.europa.eu/esco/skill/9f94d5f4-ac34-406d-940f-c723976dc8f4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "uitgaven van geschreven pers vinden",
+      "uri": "http://data.europa.eu/esco/skill/d4ee5954-d60b-4d3b-8ea1-c8eaa0dcb606",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vis en schaaldieren verkopen",
+      "uri": "http://data.europa.eu/esco/skill/256203c5-80f6-4467-81fc-431058741fcf",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "garantiedocumenten voor audiologische apparatuur opstellen",
+      "uri": "http://data.europa.eu/esco/skill/4f3b03f2-1108-4b1b-954e-992f84cd38ba",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "op de hoogte blijven van computertrends",
+      "uri": "http://data.europa.eu/esco/skill/7dfbe0f3-076f-4a19-9eaa-db4d6db704b6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten instructies geven over het gebruik van munitie",
+      "uri": "http://data.europa.eu/esco/skill/28a1ea06-b8c0-46ed-b3f8-0bd0d8196b8d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "eigenschappen van elektrische huishoudtoestellen uitleggen",
+      "uri": "http://data.europa.eu/esco/skill/dd0f9720-4f22-4cf0-b4ce-650a6855e2c1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "veilingen van voertuigen bijwonen",
+      "uri": "http://data.europa.eu/esco/skill/ed3d1616-58bf-4ef2-8c00-d902168780e5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "informatie geven over antieke voorwerpen",
+      "uri": "http://data.europa.eu/esco/skill/758afc3d-4ffb-43a3-ba12-7320ef67ceec",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bouwmaterialen beheren",
+      "uri": "http://data.europa.eu/esco/skill/50877777-d3c3-41ac-9556-4b27e642d588",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "externe financiering afhandelen",
+      "uri": "http://data.europa.eu/esco/skill/2b14e630-8940-44f2-b52e-824520c2d596",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "videospelfunctionaliteiten",
+      "uri": "http://data.europa.eu/esco/skill/a18b1d91-f0bd-495d-ba8e-d9532f117b89",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderhoudscontracten voor elektrische huishoudapparaten verkopen",
+      "uri": "http://data.europa.eu/esco/skill/cc430acf-c3fb-4f1e-bec0-22c72d7ab444",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "functies van videospellen demonstreren",
+      "uri": "http://data.europa.eu/esco/skill/b6843068-2dd3-43ea-9625-3aaffe9f0112",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ingrediënten produceren",
+      "uri": "http://data.europa.eu/esco/skill/009673d9-e2fd-46ef-a64b-6027ac7fd613",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over de aankoop van meubilair",
+      "uri": "http://data.europa.eu/esco/skill/d77adf23-16f2-4e9b-ba51-7cc5da54940c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voorschriften inzake verkoop van alcoholische dranken aan minderjarigen handhaven",
+      "uri": "http://data.europa.eu/esco/skill/92231a03-010b-45cc-83a0-aa6491a3c6f3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over het gebruik van voertuigen",
+      "uri": "http://data.europa.eu/esco/skill/d8624d9f-6acb-49cc-9401-2f1abf96f5de",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten voertuigen",
+      "uri": "http://data.europa.eu/esco/skill/4394a7e8-ffec-4062-b679-a2570260a84f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gereedschapssector",
+      "uri": "http://data.europa.eu/esco/skill/bac209e9-d337-4312-9041-17c2e75fa4df",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over soorten bloemen",
+      "uri": "http://data.europa.eu/esco/skill/9ebefa04-1a5d-4e85-b98b-5d50f52d8052",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "aangepaste orthopedische producten voor klanten bestellen",
+      "uri": "http://data.europa.eu/esco/skill/a4e818ff-7ae7-4774-b8e9-58b8cc656128",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "sportvoeding",
+      "uri": "http://data.europa.eu/esco/skill/57437c77-18a4-45f2-aedd-5e146fc56681",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "meubilair verkopen",
+      "uri": "http://data.europa.eu/esco/skill/d48b4816-8e60-4d65-8542-29eb327551d1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over juiste dierenverzorging",
+      "uri": "http://data.europa.eu/esco/skill/0f829ca3-7352-4a54-a991-b2fb3412c94c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gebruik van uitrusting voor huisdieren uitleggen",
+      "uri": "http://data.europa.eu/esco/skill/6f96888f-6b91-4dc5-8844-455359c2177b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "helpen met vullen van de brandstoftank van voertuigen",
+      "uri": "http://data.europa.eu/esco/skill/2d76d6aa-71a9-44ac-9f5e-367193e1c835",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "akoestiek",
+      "uri": "http://data.europa.eu/esco/skill/26879b10-1df9-4071-a4c5-cb8e32eddb99",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten informatie geven over tabaksproducten",
+      "uri": "http://data.europa.eu/esco/skill/193173b0-975a-4b6d-9af5-fa4c0baeb448",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "softwareproducten verkopen",
+      "uri": "http://data.europa.eu/esco/skill/511eaf45-f585-4198-9c8d-9dbedb22b1b2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gezondheids- en veiligheidsnormen toepassen",
+      "uri": "http://data.europa.eu/esco/skill/dcc96a49-0bac-4a9c-8f8e-a32b4e47e6eb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verzekeringsclaims inzake sieraden en horloges afhandelen",
+      "uri": "http://data.europa.eu/esco/skill/29b9e589-301a-4c5e-95c6-cf85c7b49072",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "diervoeding",
+      "uri": "http://data.europa.eu/esco/skill/37fd96cf-404a-4fa3-a443-2b5d6858c010",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zorgen voor temperatuurbeheersing voor groenten en fruit",
+      "uri": "http://data.europa.eu/esco/skill/d336c13f-d0d9-4d15-b248-3956e6f8e695",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "autobediening",
+      "uri": "http://data.europa.eu/esco/skill/1b1c2d44-c487-4121-a2ed-dcda651f4d59",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "op de hoogte blijven van nieuw uitgebrachte muziek en video’s",
+      "uri": "http://data.europa.eu/esco/skill/f9cc9cc2-462b-45c2-b897-77dae4336ba0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "muziekgenres",
+      "uri": "http://data.europa.eu/esco/skill/52eb7ab6-269f-4f44-a21d-b0c705eaf857",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "juiste bewaaromstandigheden voor geneesmiddelen handhaven",
+      "uri": "http://data.europa.eu/esco/skill/540a1886-ab91-4324-9f63-568533fad853",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kledingmaten",
+      "uri": "http://data.europa.eu/esco/skill/400d23d4-f256-44e7-85d5-5c1a53236fb2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voorschriften inzake verkoop van tabak aan minderjarigen handhaven",
+      "uri": "http://data.europa.eu/esco/skill/f376fe48-dd47-4cfb-a14d-e73dfa9ae702",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "speelgoed- en spelcategorieën",
+      "uri": "http://data.europa.eu/esco/skill/3d95f056-879d-4012-84fd-19666211ef3a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "reclame maken voor de publicatie van nieuwe boeken",
+      "uri": "http://data.europa.eu/esco/skill/519955e7-065f-45e1-8808-30fe8238dd8c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "eigenschappen van edelmetalen",
+      "uri": "http://data.europa.eu/esco/skill/69683c43-af05-4691-bb6c-9d71bf363bd7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten orthopedische middelen",
+      "uri": "http://data.europa.eu/esco/skill/bf79d407-559a-4ef3-a771-fde99da5beec",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "speelgoed- en speltrends",
+      "uri": "http://data.europa.eu/esco/skill/e09d599b-83ab-4e8f-a8b7-29dcf3be1043",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "anatomie van de mens",
+      "uri": "http://data.europa.eu/esco/skill/9ec4252d-cbe8-4134-88fa-549dee1883f3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "eigenschappen van diamanten",
+      "uri": "http://data.europa.eu/esco/skill/ce0e0f82-a4f8-44e2-92c7-ceed2156fca2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "activiteiten na verkoop uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/846f6e5c-1a74-491d-b756-753c01d785dd",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "hoeveelheid verf inschatten",
+      "uri": "http://data.europa.eu/esco/skill/9dcce3f2-4b8f-49c8-9718-5f67e1bde887",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kosten van bouwmaterialen inschatten",
+      "uri": "http://data.europa.eu/esco/skill/cd4c3908-c626-4331-8e94-60e6ec4ea2c3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "garantiedocumenten voor elektrische huishoudelijke apparatuur opstellen",
+      "uri": "http://data.europa.eu/esco/skill/d37e8c7f-6c2e-4cd5-ab14-d22db7aa581f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "meerdere taken tegelijkertijd uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/0b144726-21c2-46ed-8d13-c03d27f61604",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "functies van softwareproducten demonstreren",
+      "uri": "http://data.europa.eu/esco/skill/5c8aa481-9e7c-4f32-8197-a8b0fd7ca186",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gelijktijdig meerdere orders uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/e5d1039d-f206-4031-abdd-cd4d222d9f87",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "boeken verkopen",
+      "uri": "http://data.europa.eu/esco/skill/b0aafa45-59a8-468a-9f9d-7c55770a65c3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klantgegevens vastleggen",
+      "uri": "http://data.europa.eu/esco/skill/c753a3b5-d5cc-406d-adfe-3372bb267f4b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "communiceren met klanten",
+      "uri": "http://data.europa.eu/esco/skill/0da516ee-e70e-4384-be13-f5ff80be8127",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "regels inzake voorraadbeheer",
+      "uri": "http://data.europa.eu/esco/skill/5aaf2780-04d7-4bbf-8b06-af36eafe8eba",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "textieltrends",
+      "uri": "http://data.europa.eu/esco/skill/c5c92f10-74d8-4178-a051-cce194fdc72b",
+      "categorie": "optioneel"
+    }
+  ]
+}

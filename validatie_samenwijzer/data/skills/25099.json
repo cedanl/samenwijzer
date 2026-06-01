@@ -1,0 +1,203 @@
+{
+  "crebo": "25099",
+  "opleiding": "25099_BBL_2025__25099BBL2025MJP-MachinistGrondverzetN3",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "machinist wegenbouwmachine",
+    "uri": "http://data.europa.eu/esco/occupation/5f68c4c3-9d25-48e2-8efc-5471a80fb155",
+    "definitie": "Machinisten wegenbouwmachines verrichten wegenbouwwerkzaamheden op het gebied van grondwerken, funderingen en het verharde weggedeelte van de weg. Zij bedekken de verdichte grond met een of meer lagen. Machinisten wegenbouwmachine leggen gewoonlijk, voordat ze een weg asfalteren of betonplaten leggen, een gestabiliseerd zand- of kleibed."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "machinist op een wijngaard",
+    "machinist wegenbouwmachine",
+    "machinist mobiele kraan",
+    "machinist scraper",
+    "machinist grader",
+    "machinist bulldozer",
+    "machinist wals",
+    "torenkraanmachinist"
+  ],
+  "skills": [
+    {
+      "label": "veilig met chemicaliën werken",
+      "uri": "http://data.europa.eu/esco/skill/89d2bb53-67fc-4b9e-80c7-07b6c587bc0d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "oppervlaktehelling berekenen",
+      "uri": "http://data.europa.eu/esco/skill/562a111f-40fc-424a-b1ca-784ff2e0488e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bouwmaterialen inspecteren",
+      "uri": "http://data.europa.eu/esco/skill/50f2d23c-b3fb-48a5-967b-14fd0a6dd205",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bouwmaterialen vervoeren",
+      "uri": "http://data.europa.eu/esco/skill/4af56376-7b2f-4ced-ac58-0c3967bd1e83",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheids- en veiligheidsprocedures in de bouw in acht nemen",
+      "uri": "http://data.europa.eu/esco/skill/86df7af2-f9f3-4c06-a500-7f1fba9e78fe",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veiligheidsuitrusting gebruiken tijdens bouwwerkzaamheden",
+      "uri": "http://data.europa.eu/esco/skill/c643e59b-d74c-4f44-b76e-6e1d96c05ec4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bodemoppervlak vlak maken",
+      "uri": "http://data.europa.eu/esco/skill/f4aeba43-dab5-47fa-89ba-f957ecc86657",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "asfaltlagen plaveien",
+      "uri": "http://data.europa.eu/esco/skill/e7e19a59-a780-457b-a027-e901a5cf1ea3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "funderingslagen leggen",
+      "uri": "http://data.europa.eu/esco/skill/0a0c89e8-6ddc-48db-89c4-774335309a22",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "materiaal voor vorstbescherming installeren",
+      "uri": "http://data.europa.eu/esco/skill/ca3a023b-e604-4133-a620-3a587183d2c5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veilig werken met hete materialen",
+      "uri": "http://data.europa.eu/esco/skill/23b8dced-62a9-41f4-8b41-692e2d8e6d52",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ergonomisch werken",
+      "uri": "http://data.europa.eu/esco/skill/156f8c5b-894a-4ccc-a70e-37a2726f3f00",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ondergrond voor wegbedekking voorbereiden",
+      "uri": "http://data.europa.eu/esco/skill/c4973029-8a67-42c3-a7a0-09bff8920ce5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "draineerwerkzaamheden uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/5b58e283-a359-4b55-b10d-b0047b2fb7db",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "schade aan infrastructuur van nutsvoorzieningen voorkomen",
+      "uri": "http://data.europa.eu/esco/skill/63395522-32f0-46c4-851d-69c2d3800a8a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "graafmachines bedienen",
+      "uri": "http://data.europa.eu/esco/skill/978a76ca-0d14-43b5-a69d-1996dfeb22de",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gegevens over de voortgang van het werk bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/ccfbdaad-b91d-4bfe-bd0e-d30b33587f19",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "binnenkomende bouwmaterialen verwerken",
+      "uri": "http://data.europa.eu/esco/skill/a3e0224a-c952-4b4e-b664-d7186f62715b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "afdichtingsmembranen aanbrengen",
+      "uri": "http://data.europa.eu/esco/skill/16801a68-549b-4eaf-9531-f2d516a9380c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bulldozers bedienen",
+      "uri": "http://data.europa.eu/esco/skill/597d6a3a-0283-4945-8001-4719d210433d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werken in een bouwteam",
+      "uri": "http://data.europa.eu/esco/skill/4fa2d6ba-4fff-4f21-bddd-4a54ae840955",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "tijdelijke wegsignalisatie plaatsen",
+      "uri": "http://data.europa.eu/esco/skill/62e109fe-b619-460a-9f77-4396a6118fcf",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gebruik van zware constructiewerktuigen aansturen",
+      "uri": "http://data.europa.eu/esco/skill/d8903406-abc4-48be-9b2e-5d8ddf103bd9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "betonnen platen leggen",
+      "uri": "http://data.europa.eu/esco/skill/c55eecdc-ccb0-468e-9029-ce9955375c8a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "persoonlijke administratie bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/9df34bc3-25d4-4452-a896-4d19b94ef896",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zware constructiewerktuigen verrijden",
+      "uri": "http://data.europa.eu/esco/skill/b8c1e014-1f54-480a-bf0f-2ef3d2d275e8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "stoepranden aanleggen",
+      "uri": "http://data.europa.eu/esco/skill/bdc46a39-9da4-48bd-b1c1-172af29f045b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "asfalt inspecteren",
+      "uri": "http://data.europa.eu/esco/skill/aba33944-7bc3-42ea-9b37-03d7482231c7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten asfaltdeklagen",
+      "uri": "http://data.europa.eu/esco/skill/3ba70459-7849-423f-a51e-e2290724b75b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zware vrachtwagens manoeuvreren",
+      "uri": "http://data.europa.eu/esco/skill/8215bbba-2f6d-4530-bf41-904d871eaf72",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zware machines controleren",
+      "uri": "http://data.europa.eu/esco/skill/4853efe8-0cdd-42d1-bc5a-6ba5fa9a8b2c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "wegwalsen bedienen",
+      "uri": "http://data.europa.eu/esco/skill/5239e378-23c6-424d-9a9b-775653f22d04",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "mobiele kranen bedienen",
+      "uri": "http://data.europa.eu/esco/skill/9fe699e9-3490-4f3d-a50d-9f9d31c98698",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "tijdelijke infrastructuur op bouwlocatie opzetten",
+      "uri": "http://data.europa.eu/esco/skill/ef2adfe8-d7a5-465d-bbe6-8f9e913ae7ed",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "wegdek verwijderen",
+      "uri": "http://data.europa.eu/esco/skill/059a7a6e-e65e-4127-a421-76817554f97c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "mechanische werktuigen",
+      "uri": "http://data.europa.eu/esco/skill/44297bbb-306a-46fa-ab1b-fa3fb327ebda",
+      "categorie": "optioneel"
+    }
+  ]
+}

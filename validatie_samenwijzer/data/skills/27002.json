@@ -1,0 +1,318 @@
+{
+  "crebo": "27002",
+  "opleiding": "27002_BOL_2024__Dataregister-studenten_ICT",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "leerkracht informatica voortgezet onderwijs",
+    "uri": "http://data.europa.eu/esco/occupation/0d595b87-a1fc-410c-abbe-88b92cb0d334",
+    "definitie": "ICT-docenten in het middelbaar onderwijs bieden studenten, gewoonlijk kinderen en jonge volwassenen, onderwijs aan in een middelbare school. Ze zijn meestal onderworpen aan leraren, gespecialiseerd en instrueren in hun eigen vakgebied, ICT. Zij bereiden lesplannen en -materialen voor, houden toezicht op de vooruitgang van de studenten, staan individueel bij wanneer dat nodig is, en evalueren de kennis en prestaties op het gebied van ICT op het gebied van ICT door middel van opdrachten, tests en onderzoeken."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "leerkracht informatica voortgezet onderwijs",
+    "ict trainer",
+    "leerkracht geschiedenis voortgezet onderwijs",
+    "leerkracht wiskunde voortgezet onderwijs",
+    "leerkracht kunst voortgezet onderwijs",
+    "leerkracht moderne talen voortgezet onderwijs",
+    "coördinator internationale studentenuitwisseling",
+    "studentenondersteuner"
+  ],
+  "skills": [
+    {
+      "label": "huiswerk geven",
+      "uri": "http://data.europa.eu/esco/skill/128f0b4c-8da7-467b-9196-7c691e067a1e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "digitale onderwijsmaterialen ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/b6d14ab8-3441-4cbe-8a0e-5b4f7f994730",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "computertechnologie",
+      "uri": "http://data.europa.eu/esco/skill/ddc3119d-1d6e-4324-9125-a3380d299ac5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "informatica onderwijzen",
+      "uri": "http://data.europa.eu/esco/skill/b820c9de-4d00-4e79-9af9-33f26044ff42",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "lesmateriaal opstellen",
+      "uri": "http://data.europa.eu/esco/skill/2f0a426f-3b95-455b-a872-ef6dee168114",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "samenwerken met onderwijsdeskundigen",
+      "uri": "http://data.europa.eu/esco/skill/078098e1-01f7-4654-9ddd-016f4063b54d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klassenmanagement uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/cedd0710-62ae-4ff4-89ae-ac52375f86ec",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "procedures in het hoger onderwijs",
+      "uri": "http://data.europa.eu/esco/skill/9cdec88a-fe17-4f9a-9247-1f1802ab7408",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "digitale geletterdheid onderwijzen",
+      "uri": "http://data.europa.eu/esco/skill/c8fa4313-80b0-4f37-8b1b-1739707bc362",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ontwikkelingen op expertisegebied opvolgen",
+      "uri": "http://data.europa.eu/esco/skill/23ac233d-84ad-4517-b0f5-8ca19ba2614e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "procedures in het middelbaar onderwijs",
+      "uri": "http://data.europa.eu/esco/skill/d04e4bde-05fa-499c-9237-1fe5e4560525",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ICT-softwarespecificaties",
+      "uri": "http://data.europa.eu/esco/skill/9ce670ec-318c-4a91-9179-03437db728dc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "computerhardware onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/c77db25e-bb51-4a10-b2ad-99b48b1b4a37",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veiligheid van studenten garanderen",
+      "uri": "http://data.europa.eu/esco/skill/11f536f5-b0e2-46a6-95c1-bd765946604c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "constructieve kritiek geven",
+      "uri": "http://data.europa.eu/esco/skill/b9bb1f03-15e2-4079-943e-7e483b21725b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "interculturele onderwijsstrategieën toepassen",
+      "uri": "http://data.europa.eu/esco/skill/e3ef4981-2cba-4b34-b273-728c3a33d04f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "curriculumdoelstellingen",
+      "uri": "http://data.europa.eu/esco/skill/edff6d20-660d-4d33-b412-9a5b664a14be",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "computerwetenschappen",
+      "uri": "http://data.europa.eu/esco/skill/7b5cce4d-c7fe-4119-b48f-70aa05391787",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voorbeelden geven bij het leren",
+      "uri": "http://data.europa.eu/esco/skill/b32e593b-cc7f-4f38-bf50-e69431ec7ada",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "cursusoverzicht ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/f0699875-51da-48d2-bc92-54b0749baef1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kantoorsoftware",
+      "uri": "http://data.europa.eu/esco/skill/cf310cff-0d28-4dbc-9dbb-cc500a3196c2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ICT-hardwarespecificaties",
+      "uri": "http://data.europa.eu/esco/skill/3497ebe1-d417-4105-a68f-f7bbcac7ee5f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "contacten onderhouden met pedagogische medewerkers",
+      "uri": "http://data.europa.eu/esco/skill/36fe44b2-af36-4467-9be8-601e64b3dbc7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderwijsstrategieën toepassen",
+      "uri": "http://data.europa.eu/esco/skill/59eb177a-2f30-4943-8b30-5f87dd51a80d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "e-learning",
+      "uri": "http://data.europa.eu/esco/skill/5f5e9350-1d13-4391-b9e1-07f6b2047fc5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "contacten onderhouden met educatieve medewerkers",
+      "uri": "http://data.europa.eu/esco/skill/ed57378a-2b27-4d80-8701-124e559cf17d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vooruitgang van leerlingen volgen",
+      "uri": "http://data.europa.eu/esco/skill/3377f3b2-4ba2-457f-b29d-8df59e8cfba8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "studenten bijstaan bij het leren",
+      "uri": "http://data.europa.eu/esco/skill/d5e1e30e-44ab-4aba-abab-b8263e801b7a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderwijs aanpassen aan de capaciteiten van de student",
+      "uri": "http://data.europa.eu/esco/skill/573d3f91-c81c-407e-a56d-0f3a63272b43",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "leerproblemen",
+      "uri": "http://data.europa.eu/esco/skill/731101d9-94bc-4805-bff4-9578d1bf03b5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werken met elektronische leeromgevingen",
+      "uri": "http://data.europa.eu/esco/skill/b78f324d-e16c-43f8-97d2-50d3a7cd1fb3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "studentenrelaties beheren",
+      "uri": "http://data.europa.eu/esco/skill/44da96fe-26a3-4a32-9a0f-c49614bb7298",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "studentendiscipline handhaven",
+      "uri": "http://data.europa.eu/esco/skill/5a42eaf5-93bb-4bca-8ebd-4d78e96e4929",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gedrag van studenten volgen",
+      "uri": "http://data.europa.eu/esco/skill/1b8872bd-d869-4b08-b9b2-296d2b1c644c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "lesinhoud voorbereiden",
+      "uri": "http://data.europa.eu/esco/skill/20f57a7f-b90e-4403-8c77-5ddd89b5835b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "IT-instrumenten gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/f632251a-4078-4546-b19f-7ef528d08325",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "studenten beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/6fe019dd-027f-45f3-b19c-d27f7ae00980",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "middelen voor educatieve doeleinden beheren",
+      "uri": "http://data.europa.eu/esco/skill/860e85ee-5992-445a-b3d3-9bab524f7600",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "computergeschiedenis",
+      "uri": "http://data.europa.eu/esco/skill/2ef6bebc-2133-47df-b26a-f38f51b0f867",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ondersteuningsnetwerk van de student raadplegen",
+      "uri": "http://data.europa.eu/esco/skill/14dc991f-1b21-413d-86a3-499e6676abb9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "aanwezigheidslijsten bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/a8fe6eae-cfc1-4580-ad12-f325e8c2b21b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "indicatoren van een begaafde leerling herkennen",
+      "uri": "http://data.europa.eu/esco/skill/2b98fed2-58b5-4b05-a9ec-bc3d101933a4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ouderavond organiseren",
+      "uri": "http://data.europa.eu/esco/skill/4b34864d-78a4-457e-8d91-0ab9296db890",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toezicht houden op buitenschoolse activiteiten",
+      "uri": "http://data.europa.eu/esco/skill/e9160feb-109a-41eb-9604-9f898c710d0f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "pedagogie",
+      "uri": "http://data.europa.eu/esco/skill/a117f32c-662b-4dd9-b739-1230dd04cb60",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "helpen bij de organisatie van schoolevenementen",
+      "uri": "http://data.europa.eu/esco/skill/09f159aa-2745-4ab0-a050-96722a2269b9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ICT-communicatieprotocollen",
+      "uri": "http://data.europa.eu/esco/skill/6e4f75b4-c60f-4623-a9ba-760c8245753b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "leerstoornissen identificeren",
+      "uri": "http://data.europa.eu/esco/skill/0f2cd213-1f80-4c02-96c9-bf183834f7d6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "teamwork tussen studenten aanmoedigen",
+      "uri": "http://data.europa.eu/esco/skill/229b10cf-6f3a-490c-9706-01c107df0562",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten handicaps",
+      "uri": "http://data.europa.eu/esco/skill/6b28bb69-a6ef-42d4-84df-46e498f09297",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toezicht houden op onderwijsontwikkelingen",
+      "uri": "http://data.europa.eu/esco/skill/5de0599a-8fca-4cdd-a72d-f5d21af8eeb3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ICT-problemen oplossen",
+      "uri": "http://data.europa.eu/esco/skill/744442ac-c157-4350-8be0-ce454df4f5c5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "studenten helpen met materiaal",
+      "uri": "http://data.europa.eu/esco/skill/7530bc44-f09d-4dd2-8911-92b98333e442",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "mens-computerinteractie",
+      "uri": "http://data.europa.eu/esco/skill/9136cbf1-7916-4f1c-bc9a-0318ee1d6016",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vakoverschrijdende links met andere vakgebieden identificeren",
+      "uri": "http://data.europa.eu/esco/skill/b89f088d-82a9-4cf0-afe5-aade2f056b3f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "leerlingen begeleiden op schoolreis",
+      "uri": "http://data.europa.eu/esco/skill/3399cde5-6d0d-48a5-a7ac-53706648f283",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "in lesmateriaal voorzien",
+      "uri": "http://data.europa.eu/esco/skill/d39a5880-7d0a-4573-9f70-a75ff875bf83",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "socialisatie bij adolescenten",
+      "uri": "http://data.europa.eu/esco/skill/4455aa7d-78ed-43e4-ab7e-afb48b35cc09",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "jongeren voorbereiden op de volwassenheid",
+      "uri": "http://data.europa.eu/esco/skill/64b0515c-98b0-4cfd-8791-2f0a74e0ca37",
+      "categorie": "optioneel"
+    }
+  ]
+}

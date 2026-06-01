@@ -1,0 +1,195 @@
+{
+  "crebo": "25876",
+  "opleiding": "25876_BOL_2025__OER_2025-26_E-Commercespecialist_25876 (1)",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "online marketeer",
+    "uri": "http://data.europa.eu/esco/occupation/356227b9-2263-4dbd-81e9-7dfc6d3f3af7",
+    "definitie": "Online marketeers maken gebruik van e-mail, het internet en sociale media om goederen te verkopen en merken in de markt te zetten."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "online marketeer",
+    "e-learningarchitect",
+    "e-learning developer",
+    "manager online marketing",
+    "administratief medewerker openbaar bestuur",
+    "medewerker klantencontactcentrum",
+    "commercieel directeur",
+    "administratief medewerker secretariaat",
+    "commercieel vertegenwoordiger",
+    "commercieel vertegenwoordiger elektriciteit",
+    "commercieel medewerker spoorwegen",
+    "commercieel piloot",
+    "commercieel vertegenwoordiger duurzame energie",
+    "medewerker verhuur van vastgoed",
+    "salesmanager"
+  ],
+  "skills": [
+    {
+      "label": "socialemediamarketing toepassen",
+      "uri": "http://data.europa.eu/esco/skill/64e09849-a7db-4d6b-a932-66264420eb97",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verschillende communicatiekanalen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/415abd43-e8e5-4643-b5da-5f11307af57a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "nieuwe concepten bedenken",
+      "uri": "http://data.europa.eu/esco/skill/f08e2bd6-0366-4948-a670-1f03f130126f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "video's bewerken",
+      "uri": "http://data.europa.eu/esco/skill/5ce80f97-b385-4a41-9339-a6593d0709c1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "software voor contentmanagementsystemen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/56a10e3e-c9e7-4d39-b6f1-6013398fcb3a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "strategisch denken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/6c870993-9341-438b-91c0-c7fe4f96d8f5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ondernemingsbeleid",
+      "uri": "http://data.europa.eu/esco/skill/f75b740c-b36c-495e-bc67-efe347bbc6b5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "projectbeheer uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/cd5efa8c-e44d-4cbc-91c6-796018dbed68",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "budgetten beheren",
+      "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onlinegegevensanalyses uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/062320e5-79d1-45e8-8b7e-5deeb53279a2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beeldbewerking uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/91ba97f5-7518-4638-b2d2-308996db3cf8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "strategieën voor klantenbetrokkenheid toepassen",
+      "uri": "http://data.europa.eu/esco/skill/f37d9f67-2e79-4958-8307-1ce9d6dcc8bd",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "copywriting",
+      "uri": "http://data.europa.eu/esco/skill/ce592b28-4467-4908-b2e6-64bbe18da631",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronische handelssystemen",
+      "uri": "http://data.europa.eu/esco/skill/b1272de4-1f5f-408b-8b26-061f2550fc72",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "digitale marketingstrategieën plannen",
+      "uri": "http://data.europa.eu/esco/skill/736ef286-fbd3-4e5c-a4b4-d1e2008c9898",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "e-mailmarketing uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/36931cb7-ca3f-4be1-8428-f38eefc8e1ed",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verkoopstrategieën ten uitvoer brengen",
+      "uri": "http://data.europa.eu/esco/skill/b99aa3b8-0066-46b2-a027-30afae444ad8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "marketingstrategieën implementeren",
+      "uri": "http://data.europa.eu/esco/skill/13e2378e-0d10-450d-843a-b3592575826e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "strategie voor contentmarketing",
+      "uri": "http://data.europa.eu/esco/skill/b0560439-14eb-41d1-aa53-1938efc24123",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "mobiele marketing uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/ed392b45-1087-44a7-89a9-d514224639ff",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "marktonderzoek uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/fe39d4db-4cb5-4299-bb9f-896c8fd6ab13",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gegevens inspecteren",
+      "uri": "http://data.europa.eu/esco/skill/a571ae14-3e16-4fd3-a615-5646e0b0b696",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "conversietesten uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/a9dc215e-4e26-4ac0-b1e8-a721a88af813",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "intellectueeleigendomsrecht",
+      "uri": "http://data.europa.eu/esco/skill/2ad081e6-0a3f-4612-ac15-7ace75d39e26",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toezicht houden op merkbeheer",
+      "uri": "http://data.europa.eu/esco/skill/ab5c3fac-238f-4006-a122-1114082a2f46",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zoekmachine-optimalisatie uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/a0bf9b9d-e53f-418c-a839-5d99eff718fe",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ICT-communicatieprotocollen",
+      "uri": "http://data.europa.eu/esco/skill/6e4f75b4-c60f-4623-a9ba-760c8245753b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "omgaan met druk door onverwachte omstandigheden",
+      "uri": "http://data.europa.eu/esco/skill/7a66b8a3-502f-408e-ac69-46e72dec6ede",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "mededingingswetgeving",
+      "uri": "http://data.europa.eu/esco/skill/ce5598ec-5ca4-4f3e-92a2-c55c90ce6038",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "drukwerkprocessen",
+      "uri": "http://data.europa.eu/esco/skill/a507f45d-0894-4803-b1cd-9ca7f15c9299",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "aanpassen aan veranderingen in de marketing",
+      "uri": "http://data.europa.eu/esco/skill/2daa2d63-07ef-4c16-b0f3-697bbb6fc205",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "beleid voor informatiebeveiliging toepassen",
+      "uri": "http://data.europa.eu/esco/skill/86d2e2ea-1ba2-4aa6-b465-8a1f9abc81b8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vertrouwelijkheid van informatie",
+      "uri": "http://data.europa.eu/esco/skill/a56dec32-05ef-45de-a256-ee6741f356db",
+      "categorie": "optioneel"
+    }
+  ]
+}

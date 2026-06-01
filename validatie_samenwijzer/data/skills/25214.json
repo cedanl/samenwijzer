@@ -1,0 +1,173 @@
+{
+  "crebo": "25214",
+  "opleiding": "2021 - 25214 VG OER 25214 Sign BOL2 3",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "signmaker",
+    "uri": "http://data.europa.eu/esco/occupation/a1b4eb5e-45d4-441b-a7e8-795ac5cf6fbf",
+    "definitie": "Signmakers ontwerpen en ontwikkelen tekens voor diverse vormen van gebruik, zoals flyers, verkeersborden, reclameborden en zakelijke tekens. Zij gebruiken verschillende materialen en technieken en installeren zo nodig het teken ter plaatse. Bovendien voeren zij ook onderhoud en reparaties uit."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "signmaker",
+    "voertuigontwerper",
+    "user interface designer",
+    "user interface developer",
+    "marshaller",
+    "juwelenontwerper",
+    "ict intelligent systems designer",
+    "ontwerpingenieur"
+  ],
+  "skills": [
+    {
+      "label": "verpakkingen ontwerpen",
+      "uri": "http://data.europa.eu/esco/skill/0b16ebec-1fd8-41c8-a1b9-bbe91a1cc1b8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "grafisch ontwerp",
+      "uri": "http://data.europa.eu/esco/skill/7fb699d9-182a-430e-b7a0-6d8ed05c284b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ontwerpplannen ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/e665d919-f28d-4ac4-adf0-8903ac66540e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderzoek over ontwerptrends voeren",
+      "uri": "http://data.europa.eu/esco/skill/a8ea1f32-be7e-48ff-8ef5-7e2847beadb1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gedetailleerde ontwerpvoorstellen indienen",
+      "uri": "http://data.europa.eu/esco/skill/b87f6102-5bab-4e99-a5d8-11b6be1b99c2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "numerieke berekeningen maken",
+      "uri": "http://data.europa.eu/esco/skill/f0f93b8b-0ee4-4452-945e-4a2272c0d8dd",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ontwerpschetsen tekenen",
+      "uri": "http://data.europa.eu/esco/skill/fc4fcb4b-993f-4f2c-b158-c2171ec18ed8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "samenwerken met ontwerpers",
+      "uri": "http://data.europa.eu/esco/skill/d52382fe-f236-421f-95fe-34fe69d48dbd",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteitscontrole van een ontwerp uitvoeren tijdens een voorstellingenreeks",
+      "uri": "http://data.europa.eu/esco/skill/3a1c546d-914a-46e4-a7c1-47d43646fedd",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "creatieve ideeën ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/8c4c49d4-9708-433f-8ca7-bf2c5211ee49",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ontwikkelingen in technologie die gebruikt wordt in het ontwerp opvolgen",
+      "uri": "http://data.europa.eu/esco/skill/0d90f823-6f6a-44df-8ab0-1771300d9660",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "nieuwe verpakkingsontwerpen plannen",
+      "uri": "http://data.europa.eu/esco/skill/e10d57dd-6717-4b24-961a-8a87c7e80b5d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ontwerpconcepten ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/dade132a-487b-40fb-9d8e-f20ce5e6c076",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "in samenwerking ontwerpideeën ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/fcc0a1c8-d36e-4f8e-b928-00d5bca10a47",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vereisten van concepten vertalen naar visueel ontwerp",
+      "uri": "http://data.europa.eu/esco/skill/2d6d4784-0992-48e7-b100-22d7229b3f0a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "artistieke concepten omzetten in technische ontwerpen",
+      "uri": "http://data.europa.eu/esco/skill/88de5ff4-310a-4f4f-9b47-349eb5589902",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "scheepsdekken schilderen",
+      "uri": "http://data.europa.eu/esco/skill/83a9bcba-f2bc-40d6-a5d0-fc870e7b4f0e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "glas snijden",
+      "uri": "http://data.europa.eu/esco/skill/6375c84d-0624-49bb-81f3-a03e20dc5ac4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten verf",
+      "uri": "http://data.europa.eu/esco/skill/6db1bd36-fc47-4103-8401-81d4d99360b3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kunstvezels verwerken",
+      "uri": "http://data.europa.eu/esco/skill/972c02fd-7e74-4351-8156-c258c4a79383",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "glas bewerken",
+      "uri": "http://data.europa.eu/esco/skill/652b3110-1659-4b7d-bae9-ddb0e5e1f139",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "samenwerken bij de ontwikkeling van marketingstrategieën",
+      "uri": "http://data.europa.eu/esco/skill/b679ef35-eebf-4da8-8e45-fee6841c3214",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderhoud van printers",
+      "uri": "http://data.europa.eu/esco/skill/dcce4783-eab6-4f77-880d-eac877364aae",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "druktechnieken",
+      "uri": "http://data.europa.eu/esco/skill/41c13016-6e94-45bb-81b7-3ff25ac2aa25",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "apparaten voor het printen van monogrammen bedienen",
+      "uri": "http://data.europa.eu/esco/skill/113de748-7d31-4cc7-b7c8-e34cad08a225",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten vormkarton",
+      "uri": "http://data.europa.eu/esco/skill/9203fdfa-f657-44e4-84b5-caa201dd365b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "veiligheidsprocedures volgen bij werken op hoogte",
+      "uri": "http://data.europa.eu/esco/skill/fafbb75f-ec35-4cc2-996a-20c85ef6c266",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "apparatuur voor textieldruk voorbereiden",
+      "uri": "http://data.europa.eu/esco/skill/280bfb86-e53a-45c7-80a5-f58f4a78ba25",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "afdrukmedia",
+      "uri": "http://data.europa.eu/esco/skill/99981dbd-6f0f-495d-a67f-20ad0f9ef6f3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toezicht houden op werkzaamheden in de ontwerpfase",
+      "uri": "http://data.europa.eu/esco/skill/03227978-f839-4cc8-88a6-0a3c44d2c776",
+      "categorie": "optioneel"
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "crebo": "25304",
+  "opleiding": "25304_BBL_2025__25304BBL2025Examenplan",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "procesoperator stoomcentrale",
+    "uri": "http://data.europa.eu/esco/occupation/737c1795-844b-43ad-95b2-1bf0e8c14ddf",
+    "definitie": "Procesoperators stoomcentrale bedienen en onderhouden mechanische apparatuur, zoals stationaire motoren en ketels die voorzieningen leveren voor huishoudelijk of industrieel gebruik. Zij houden toezicht op procedures die de naleving van de veiligheidsvoorschriften waarborgen en voeren tests uit om de kwaliteit te garanderen."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "operator stoomketel",
+    "procesoperator stoomcentrale",
+    "technisch medewerker klantenservice",
+    "auto-elektricien",
+    "ICT-helpdeskmanager",
+    "medewerker datacentrum",
+    "officer Luchtvaartinformatiedienst",
+    "tennisleraar"
+  ],
+  "skills": [
+    {
+      "label": "onderhoud van geïnstalleerde apparatuur uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/79aa4ec0-399d-432e-aae8-7a390ce89bcc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "soorten stoommotoren",
+      "uri": "http://data.europa.eu/esco/skill/ad90e34e-9079-40d5-bbda-7fc291f86a20",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "mechanica",
+      "uri": "http://data.europa.eu/esco/skill/efa141df-f382-418f-9121-bd88fd735669",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "thermodynamica",
+      "uri": "http://data.europa.eu/esco/skill/857e8624-4db0-4725-a758-5914bd8cc350",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "testapparatuur gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/74374d09-7a54-4a05-ae78-d5940423de7c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kleppen controleren",
+      "uri": "http://data.europa.eu/esco/skill/f4349677-549e-419a-8f8e-eb10bfe10720",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "storingen aan apparatuur oplossen",
+      "uri": "http://data.europa.eu/esco/skill/1de6b87b-2c7d-49aa-bcc0-3b2ef75f064f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "uitrusting voor nutsvoorzieningen controleren",
+      "uri": "http://data.europa.eu/esco/skill/0b4c6885-eecd-48b5-b9da-c5c20a5f9550",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "automatische machines controleren",
+      "uri": "http://data.europa.eu/esco/skill/7aa52bdc-9c56-4341-be65-e8e30f64403f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "hydraulica",
+      "uri": "http://data.europa.eu/esco/skill/68e66ed6-a171-4350-8ec1-2cfc4cae50e4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "cilinderkleppen afstellen",
+      "uri": "http://data.europa.eu/esco/skill/910a77a6-a513-43dc-bdef-727a9c79b45f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "routinecontroles van machines uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/65a3a184-7d11-4db9-9b85-281961d1514b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektriciteit",
+      "uri": "http://data.europa.eu/esco/skill/c8ac1986-38fa-43b2-89dc-50a4beeb420e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kleine reparaties aan apparatuur uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/c0fc7d2d-d013-40d7-bc58-75cf3771153f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "stationaire stoommachines bedienen",
+      "uri": "http://data.europa.eu/esco/skill/d94ae3a1-dbfc-459c-a71d-79594f4f1317",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "besturingselementen van hydraulische machines bedienen",
+      "uri": "http://data.europa.eu/esco/skill/bb75528c-a953-459e-bd48-f90a8a7a0cf3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "automatiseringstechnologie",
+      "uri": "http://data.europa.eu/esco/skill/f4a6e9f7-5cff-46c0-894c-59c20bb78694",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "persoonlijke beschermingsmiddelen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/51754b8a-3e2c-4cc1-86e6-cf510d9c6fe4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gegevens van onderhoudsinterventies bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/182915aa-3470-433a-9b12-347511befcde",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verwarmingsapparatuur repareren",
+      "uri": "http://data.europa.eu/esco/skill/0d45c1ef-f56b-4a6c-9517-2d30205d693b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "stoomturbines bedienen",
+      "uri": "http://data.europa.eu/esco/skill/7594068e-1a9d-4d39-b6f8-aa10f9792d2d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "waterkwaliteit controleren",
+      "uri": "http://data.europa.eu/esco/skill/d589970b-933d-4656-bcb6-a43b3cc67888",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productie van stoomgeneratoren",
+      "uri": "http://data.europa.eu/esco/skill/fde9f003-eedf-40d4-984d-d8beb2e0a855",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zorgen voor herstellingen aan apparatuur",
+      "uri": "http://data.europa.eu/esco/skill/587f6825-0ef1-4fb0-8425-71a50d786a37",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderdelen voor verwarming, ventilatie, klimaatregeling en koeling",
+      "uri": "http://data.europa.eu/esco/skill/aba2e61d-ef78-45bd-a9bc-392a718d4877",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "automatische procesbesturing toepassen",
+      "uri": "http://data.europa.eu/esco/skill/0a0532c2-ee60-4410-8e07-70e4d69370ec",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "boilers bedienen",
+      "uri": "http://data.europa.eu/esco/skill/68bb49f4-59b7-489e-8903-4aea01fb5fc3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "samenwerken met ingenieurs",
+      "uri": "http://data.europa.eu/esco/skill/94b2c46e-6338-4a1d-950a-d44eef018c53",
+      "categorie": "optioneel"
+    }
+  ]
+}

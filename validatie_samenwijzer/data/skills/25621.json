@@ -1,0 +1,285 @@
+{
+  "crebo": "25621",
+  "opleiding": "25621_BOL_2024__Examenplannen Tuin Landschap en Recreatie 2425",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "medewerker groenvoorziening/medewerkster groenvoorziening",
+    "uri": "http://data.europa.eu/esco/occupation/a48b9a5a-5ded-482d-8cda-7fd097a32c16",
+    "definitie": "Medewerkers/medewerksters groenvoorziening bieden park-, tuin- en gazondiensten aan en onderhouden gronden van particuliere huishoudens, commerciële en openbare instellingen, scholen, hotels, botanische tuinen, golfterreinen, parken en sportvelden."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "tuinarchitect",
+    "landschapsontwerper",
+    "manager recreatie-accommodatie",
+    "botanisch curator",
+    "landschapsinspecteur",
+    "tuinier",
+    "botanicus",
+    "sportcoördinator",
+    "medewerker groenvoorziening/medewerkster groenvoorziening",
+    "hovenier",
+    "binnentuinarchitect",
+    "coördinator ongebrande koffiebonen",
+    "inkoper van ongebrande koffie",
+    "interieurontwerper",
+    "green ict consultant"
+  ],
+  "skills": [
+    {
+      "label": "tuingereedschap gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/8a1942a8-bebd-4cc5-bdff-fe215aaa3de5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "irrigatiesystemen onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/cb073ba6-30bd-4fd5-871a-15b0fb1fa930",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ongediertebestrijding uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/08881cb7-5331-4b11-9442-4d7c9fce749e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "materiële middelen in het werkgebied vervoeren",
+      "uri": "http://data.europa.eu/esco/skill/142415cb-503f-4721-b4d8-cac47de18cc6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "landschap onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/d6f40152-c00d-44fa-a48f-55e39f08c14e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onkruidverdelgingswerkzaamheden uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/94a1b3c5-2a95-4703-8559-973bc6d14747",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sportterreinen plannen",
+      "uri": "http://data.europa.eu/esco/skill/d71d6846-c39b-409f-bed7-e2f1a7d01da9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bestrijding van plantenziekten",
+      "uri": "http://data.europa.eu/esco/skill/f8460277-3c9a-4be4-b203-600a2a295f47",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "golfbanen aanleggen",
+      "uri": "http://data.europa.eu/esco/skill/ec18652e-c6c9-496b-9360-aabbbcaa0fa0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bodemstructuur",
+      "uri": "http://data.europa.eu/esco/skill/6c1143b7-1a4c-49ba-849a-ae328673e566",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "plantensoorten",
+      "uri": "http://data.europa.eu/esco/skill/73997f48-cd9d-4724-872d-86ecbb2ed9a2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "waterverbruik inschatten",
+      "uri": "http://data.europa.eu/esco/skill/e844bde0-9563-4c07-a7e6-4150d5f06a4b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "waterkwaliteit controleren",
+      "uri": "http://data.europa.eu/esco/skill/d589970b-933d-4656-bcb6-a43b3cc67888",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "land bewerken voor gazonaanleg",
+      "uri": "http://data.europa.eu/esco/skill/b0145726-4a26-4cc6-b87b-882b9afb7bd4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "locatie gereedmaken voor grasbeplanting",
+      "uri": "http://data.europa.eu/esco/skill/2f7800d9-e200-4395-b606-00db52841660",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "tuinbouwbeginselen",
+      "uri": "http://data.europa.eu/esco/skill/dcb01a4f-720a-480f-b61a-11a1286d56f3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "pesticiden sproeien",
+      "uri": "http://data.europa.eu/esco/skill/9c2f2331-960f-41ee-a2c9-d26e258a156e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "grond voorbereiden voor bouwwerkzaamheden",
+      "uri": "http://data.europa.eu/esco/skill/094479ed-3581-4953-813a-17e6a324981f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "areaal gereedmaken",
+      "uri": "http://data.europa.eu/esco/skill/6495182b-d548-425d-8596-bdf527c98cd7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verzorgingsmateriaal voor grasvelden gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/f4b4accf-11b2-45bc-b47d-95f7cf9c569c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ecologie",
+      "uri": "http://data.europa.eu/esco/skill/a8429098-ddac-481b-91e7-688d021c092e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "grasvelden en gras onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/351122a2-44f7-41db-ba8b-425136d5fb87",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beheermateriaal voor grasvelden onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/962cac82-4172-4676-b9e1-5955d0e46a8f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beginselen van tuinaanleg",
+      "uri": "http://data.europa.eu/esco/skill/fd61cec0-cfab-4a4a-9157-e8f21e612116",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "grond voorbereiden",
+      "uri": "http://data.europa.eu/esco/skill/17fa5b53-fd59-49eb-8763-29255a185d26",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "chemische producten voor bodem en planten beheren",
+      "uri": "http://data.europa.eu/esco/skill/87da57a8-ae40-41e3-998e-f517daa95c9a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bestrijdingsactiviteiten uitvoeren met betrekking tot ziekten en plagen",
+      "uri": "http://data.europa.eu/esco/skill/e85cff6b-ee0e-4106-98f0-b57b39a2ea3f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "analyse van waterchemie",
+      "uri": "http://data.europa.eu/esco/skill/1697d506-a82b-45aa-9a2f-2b71d71e1789",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beheer van grasvelden",
+      "uri": "http://data.europa.eu/esco/skill/2a093fd2-bfed-4506-ab58-257e29e238f0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ongediertebestrijding bij planten",
+      "uri": "http://data.europa.eu/esco/skill/9d75efb9-0c77-4f86-b5e7-99100808564a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beginselen van bewatering",
+      "uri": "http://data.europa.eu/esco/skill/94812554-043f-4ffd-838e-583eccf3e297",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "milieuwetgeving inzake landbouw en bosbouw",
+      "uri": "http://data.europa.eu/esco/skill/3419fac9-575d-4492-a018-edff6f4dae26",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "milieu-incidenten melden",
+      "uri": "http://data.europa.eu/esco/skill/de131ede-cbfe-4e34-aff4-96f16831c3c4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "planten verzorgen",
+      "uri": "http://data.europa.eu/esco/skill/7b3717e4-e963-44e0-b94f-1088a7242da0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "beginselen van gewasproductie",
+      "uri": "http://data.europa.eu/esco/skill/4ca83b9d-afa0-49f8-b7af-e4e6a42ad299",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "snoeitechnieken",
+      "uri": "http://data.europa.eu/esco/skill/a8f1c3cf-bd8b-4c85-80d3-c69955f6bd00",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "tijd beheren bij tuinaanleg",
+      "uri": "http://data.europa.eu/esco/skill/00fc7575-0cee-4b12-ade5-795cb2a4479a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "technische documentatie gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/cffc3e97-e942-4b13-a2f3-0bf4910c06d3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "planten snoeien",
+      "uri": "http://data.europa.eu/esco/skill/af9b6098-7d2f-4990-b4eb-d7dd73fdb933",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "planten telen",
+      "uri": "http://data.europa.eu/esco/skill/844e9480-7aef-49f6-9260-d88c27249241",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bomen verzorgen",
+      "uri": "http://data.europa.eu/esco/skill/eadf0f36-cba0-4e68-8458-c91bc60b494d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "planten kweken",
+      "uri": "http://data.europa.eu/esco/skill/c5f255ef-02d3-4ab0-a652-2bf055d1d493",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "groene planten planten",
+      "uri": "http://data.europa.eu/esco/skill/8ce4a4af-969b-4d1c-8bfe-891cff82f913",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "beheer van regenwater",
+      "uri": "http://data.europa.eu/esco/skill/f7626ae8-eecf-41f4-bc4f-de9e57ed30a6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "een computer gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/1007aa13-9f18-4bcf-96f3-e108c40baf69",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "snoeiwijzen",
+      "uri": "http://data.europa.eu/esco/skill/fe82195e-af26-4156-b554-c724b28fb2fb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "regenwater beheren",
+      "uri": "http://data.europa.eu/esco/skill/765f2d06-775e-45bf-93a7-c83b8fad5a1a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "communiceren met klanten",
+      "uri": "http://data.europa.eu/esco/skill/0da516ee-e70e-4384-be13-f5ff80be8127",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "plannen voor het beheer van sportvelden implementeren",
+      "uri": "http://data.europa.eu/esco/skill/837051a5-3ee9-4e32-b627-e3ba4f1b42bc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "areaal gereedmaken voor beplanting",
+      "uri": "http://data.europa.eu/esco/skill/8f3cb711-2fdf-4a50-813a-77198d2f00e3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "hagen en bomen snoeien",
+      "uri": "http://data.europa.eu/esco/skill/51097602-8e4e-4830-8f35-d77afc713fc0",
+      "categorie": "optioneel"
+    }
+  ]
+}

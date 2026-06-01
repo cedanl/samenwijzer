@@ -1,0 +1,249 @@
+{
+  "crebo": "25160",
+  "opleiding": "2021 - 25160 OER Leidinggevende team afdeling project (V2) (1)",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "projectmanager",
+    "uri": "http://data.europa.eu/esco/occupation/bea99fea-0383-4c63-b944-70d4799de2c5",
+    "definitie": "Projectmanagers zorgen ervoor dat een project tijdig wordt afgerond, binnen de begroting, en dat de doelstellingen ervan worden verwezenlijkt. Zij houden toezicht op het project, beheren het team, zorgen ervoor dat de meest efficiënte middelen worden gebruikt en zorgen ervoor dat alle betrokken partijen tevreden zijn."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "productieleider textielindustrie",
+    "projectmanager",
+    "leidinggevende precisiemechanica",
+    "manager bedrijfseenheid",
+    "productieleider",
+    "leidinggevende waterterugwinning",
+    "teamleider dierenverzorgers",
+    "specialist biomedische wetenschappen",
+    "risicokapitaalinvesteerder",
+    "survivalinstructeur",
+    "distilleerderij-opzichter",
+    "magazijnchef",
+    "leidinggevende gasverwerkingsinstallatie",
+    "productieleider houtindustrie"
+  ],
+  "skills": [
+    {
+      "label": "juridische vereisten identificeren",
+      "uri": "http://data.europa.eu/esco/skill/b9bf9e17-ae47-417b-bbb1-e8b7c263ccac",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zakenrelaties aangaan",
+      "uri": "http://data.europa.eu/esco/skill/dc72ad0a-c5dc-4abd-bc0d-ca43e82162e1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "streven naar bedrijfsgroei",
+      "uri": "http://data.europa.eu/esco/skill/2a2fa8e8-aaf3-4abf-a60b-af6415f1c6d4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderhoud van apparatuur garanderen",
+      "uri": "http://data.europa.eu/esco/skill/c927ec6e-9082-4b22-afd3-0c4e219eaf73",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "tijdschatting maken voor werkzaamheden",
+      "uri": "http://data.europa.eu/esco/skill/e207163b-7963-4c3e-9494-7a4bb000211b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "budgetten beheren",
+      "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "risicoanalyses uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/1dd23dba-dd00-45ab-abf4-642902538317",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "conflictbeheersing toepassen",
+      "uri": "http://data.europa.eu/esco/skill/0ee94af1-b445-4973-9c3f-459fab250342",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "naleving met wettelijke vereisten garanderen",
+      "uri": "http://data.europa.eu/esco/skill/1dae8445-12e5-423a-bb26-824010e299b9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "maatschappelijk verantwoord ondernemen",
+      "uri": "http://data.europa.eu/esco/skill/66db424f-2abe-420d-8e5b-186607266b61",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "intern risicobeheerbeleid",
+      "uri": "http://data.europa.eu/esco/skill/0daaf096-1639-461c-bf1a-bbeea77e6b67",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "logistiek beheren",
+      "uri": "http://data.europa.eu/esco/skill/953c0b65-537a-42fe-a90b-26cd36c64361",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kosten-batenanalyserapporten verstrekken",
+      "uri": "http://data.europa.eu/esco/skill/48b68726-0fd6-4e03-a5eb-82236516ee7a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteitsstandaarden",
+      "uri": "http://data.europa.eu/esco/skill/8d4271ca-c9fd-40b3-875f-15f78332a49e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "dagelijkse prioriteiten stellen",
+      "uri": "http://data.europa.eu/esco/skill/65ca5e3c-940c-46b2-b277-aff394cfdd4c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "projectspecificaties creëren",
+      "uri": "http://data.europa.eu/esco/skill/21fecc8a-392e-49ce-ac26-fb0696ccfead",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "grond- en hulpstoffen beheren",
+      "uri": "http://data.europa.eu/esco/skill/020b3c27-bae1-4b85-9d6f-eccee0f5ed99",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "projectbeheer uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/cd5efa8c-e44d-4cbc-91c6-796018dbed68",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werknemers opleiden",
+      "uri": "http://data.europa.eu/esco/skill/e54ff029-1ce9-447d-a5b2-eb7283a23e6e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheids- en veiligheidsprocedures plannen",
+      "uri": "http://data.europa.eu/esco/skill/bb663409-5c88-4e3a-bc16-01aa1c8ce171",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "projectinformatie beheren",
+      "uri": "http://data.europa.eu/esco/skill/22902bf9-cc3f-495b-811a-c441e28e23f6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "omgaan met managers",
+      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "leiding geven aan personeel",
+      "uri": "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "businessplannen opstellen",
+      "uri": "http://data.europa.eu/esco/skill/ead58f22-0af5-467c-ac1e-b750e4e1ac6a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor de beschikbaarheid van materiaal",
+      "uri": "http://data.europa.eu/esco/skill/69f23426-9279-4fe6-a283-24c2aa4c855d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "resourceplanning uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/f5dd06b8-5d17-4932-9d03-957d0c4f5051",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "dagelijkse informatieactiviteiten leiden",
+      "uri": "http://data.europa.eu/esco/skill/9013b46e-5a9b-4929-8918-fcadfdfd37ce",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bedrijfsnormen volgen",
+      "uri": "http://data.europa.eu/esco/skill/f5f5b244-6cea-4fbc-8a50-8f712791bc09",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "financieel verslag opstellen",
+      "uri": "http://data.europa.eu/esco/skill/dd7c9dfd-6e2c-46fd-aefc-369402d0200c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "met belanghebbenden onderhandelen",
+      "uri": "http://data.europa.eu/esco/skill/87de6e49-ca1c-42a4-8751-5ff0b991966b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "volledige kwaliteitscontrole",
+      "uri": "http://data.europa.eu/esco/skill/8af372fa-7b85-4bab-ab20-3f2eb980c400",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bescherming tegen straling",
+      "uri": "http://data.europa.eu/esco/skill/eb65ce8e-61bf-49d1-99bb-cb699ba1005b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "crowdsourcing-strategie",
+      "uri": "http://data.europa.eu/esco/skill/694dc996-52f3-4afa-a802-672e19f061b7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "relaties met leveranciers onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/3cd35f5d-ce6d-4f14-9a09-53d7a28d834c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "metrische gegevens van een project beheren",
+      "uri": "http://data.europa.eu/esco/skill/c5a135be-218d-48e6-a422-5225a576dcd8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "insourcestrategie",
+      "uri": "http://data.europa.eu/esco/skill/eff1bb34-b454-4482-8c29-65f820619f3c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "personeel aanwerven",
+      "uri": "http://data.europa.eu/esco/skill/496932f1-0b6b-4f73-9432-d95c7ddcd43b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "uitbestedingsstrategie",
+      "uri": "http://data.europa.eu/esco/skill/6f8baa62-bc2b-4cc1-942b-f540c837cfa2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "methoden voor kwaliteitsgarantie",
+      "uri": "http://data.europa.eu/esco/skill/c7cc6dc5-d56b-4323-8e5c-47c4022f615f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werkgerelateerde verslagen schrijven",
+      "uri": "http://data.europa.eu/esco/skill/918f5211-b99f-4b29-9a34-6e475583ef55",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "beheersing van uitgaven",
+      "uri": "http://data.europa.eu/esco/skill/e1f5c539-7c93-49ee-917d-a24e0d887686",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "standaardsystemen voor enterprise resource planning beheren",
+      "uri": "http://data.europa.eu/esco/skill/f0393af3-bcd9-41af-a36e-0cfb83b60081",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "veranderingsmanagement toepassen",
+      "uri": "http://data.europa.eu/esco/skill/3c03ee71-4a23-448f-b79e-81fd75d27dca",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "relaties met belanghebbenden onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/999286f1-22d9-4950-9422-89bd45265a5f",
+      "categorie": "optioneel"
+    }
+  ]
+}

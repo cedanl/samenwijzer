@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import logging
 import os
 import re
@@ -14,6 +15,7 @@ logger = logging.getLogger(__name__)
 
 _MAX_OER_TEKST_TEKENS = 500_000  # ruim voldoende voor elke OER binnen Sonnet 4.6 (1M context)
 _MAX_DOSSIER_TEKST_TEKENS = 300_000
+_MAX_SKILLS_TEKST_TEKENS = 50_000  # skills-blok is klein; cap als veiligheid
 
 LAGE_RELEVANTIE_BERICHT = (
     "Ik kon geen OER-tekst laden voor deze student. "
@@ -32,8 +34,13 @@ alléén als de OER het onderwerp niet of onvoldoende behandelt. Geef niet
 onnodig een tweede antwoord uit het KD als de OER de vraag al beantwoordt —
 de OER is leidend.
 
+AANVULLENDE BRON — de skills-taxonomie (ESCO): de skills, vaardigheden en
+competenties die horen bij het beroep waarvoor deze opleiding opleidt. Raadpleeg
+deze alléén bij vragen over welke skills of vaardigheden het beroep vereist
+(bijv. "welke skills heb ik nodig voor dit beroep?").
+
 CITATIEPLICHT (de OER is een juridisch document).
-Bij ELKE claim die je doet, MOET je:
+Bij ELKE claim uit de OER of het KD, MOET je:
 1. de bron noemen ("Volgens de OER" of "Volgens het kwalificatiedossier"),
 2. de exacte vindplaats noemen — sectie-nummer, kopje, artikel of paginanummer,
 3. de relevante passage WOORDELIJK citeren tussen dubbele aanhalingstekens.
@@ -44,15 +51,20 @@ ontvangt uiterlijk in juli van het eerste studiejaar een bindend studieadvies."
 Voorbeeld KD: De OER beschrijft dit niet. Volgens het kwalificatiedossier,
 kerntaak B1-K1 "Bieden van zorg en ondersteuning": "...".
 
-Een claim zonder bron + vindplaats + woordelijk citaat is niet toegestaan.
-Parafraseren mag alleen ter inleiding van een citaat, niet ter vervanging ervan.
-Als een passage te lang is, citeer dan een representatief fragment en geef de
-vindplaats van de rest. Beantwoord vragen uitsluitend op basis van deze bronnen
-— nooit vanuit eigen kennis. Als de informatie in geen van beide bronnen staat,
-zeg dat dan expliciet. Antwoord in het Nederlands.
+Voor de skills-taxonomie geldt een AANGEPASTE citatie (een taxonomie heeft geen
+secties of pagina's): noem de bron, het beroep en de categorie, en citeer de
+exacte skill-naam tussen dubbele aanhalingstekens. Voorbeeld: Volgens de
+ESCO-skillstaxonomie hoort bij het beroep "kok" de essentiële skill
+"kooktechnieken gebruiken". Verzin nooit een sectie- of paginanummer bij skills.
+
+Een claim zonder correcte bronvermelding is niet toegestaan. Parafraseren mag
+alleen ter inleiding van een citaat, niet ter vervanging ervan. Beantwoord vragen
+uitsluitend op basis van deze bronnen — nooit vanuit eigen kennis. Als de
+informatie in geen van de bronnen staat, zeg dat dan expliciet. Antwoord in het
+Nederlands.
 
 === ONDERWIJS- EN EXAMENREGELING (OER) ===
-{oer_tekst}{dossier_blok}"""
+{oer_tekst}{dossier_blok}{skills_blok}"""
 
 _DOSSIER_BLOK_TEMPLATE = "\n\n=== KWALIFICATIEDOSSIER (Crebo {crebo}) ===\n{dossier_tekst}"
 
@@ -129,9 +141,7 @@ def pad_kwalificatiedossier(crebo: str) -> Path:
         directory = Path(base).resolve()
     else:
         # chat.py → parents[3] = repo-root → kwalificatiedossiers/pdfs
-        directory = (
-            Path(__file__).resolve().parents[3] / "kwalificatiedossiers" / "pdfs"
-        )
+        directory = Path(__file__).resolve().parents[3] / "kwalificatiedossiers" / "pdfs"
     return directory / f"{crebo}.md"
 
 
@@ -145,14 +155,70 @@ def laad_kwalificatiedossier_tekst(crebo: str | None) -> str:
     return md_pad.read_text(encoding="utf-8", errors="replace")[:_MAX_DOSSIER_TEKST_TEKENS]
 
 
+def pad_skills(crebo: str) -> Path:
+    """Pad naar het skills-taxonomie-artefact voor een crebo.
+
+    Default: ``<subproject-root>/data/skills/<crebo>.json`` (gebouwd door
+    ``scripts/build_skills_taxonomie.py``). Override via env-var ``SKILLS_PAD``.
+    """
+    base = os.environ.get("SKILLS_PAD")
+    if base:
+        directory = Path(base).resolve()
+    else:
+        # chat.py → parents[2] = subproject-root → data/skills
+        directory = Path(__file__).resolve().parents[2] / "data" / "skills"
+    return directory / f"{crebo}.json"
+
+
+def laad_skills_tekst(crebo: str | None) -> str:
+    """Bouw het skills-tekstblok voor een crebo, of lege string als er geen artefact is.
+
+    Leest het bron-agnostische JSON-artefact en formatteert het tot een leesbaar
+    blok voor de systeemprompt. Lege string als het bestand ontbreekt of geen
+    beroep gematcht is — de chat werkt dan zonder skills.
+    """
+    if not crebo:
+        return ""
+    json_pad = pad_skills(str(crebo))
+    if not json_pad.exists():
+        return ""
+    try:
+        data = json.loads(json_pad.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as e:
+        logger.warning("Skills-artefact onleesbaar voor crebo %s: %s", crebo, e)
+        return ""
+
+    beroep = data.get("beroep")
+    if not beroep:
+        return ""
+
+    regels = [f'Beroep "{beroep["label"]}"']
+    if beroep.get("definitie"):
+        regels.append(beroep["definitie"])
+    for categorie, kop in (("essentieel", "Essentiële skills"), ("optioneel", "Optionele skills")):
+        labels = [s["label"] for s in data.get("skills", []) if s["categorie"] == categorie]
+        if labels:
+            regels.append(f"\n{kop}:")
+            regels.extend(f"- {label}" for label in labels)
+
+    bron = data.get("bron", "ESCO")
+    tekst = "\n".join(regels)[:_MAX_SKILLS_TEKST_TEKENS]
+    return (
+        f"\n\n=== SKILLS-TAXONOMIE ({bron}) — beroep: {beroep['label']} ===\n"
+        "De skills die horen bij het beroep waarvoor deze opleiding opleidt.\n"
+        f"{tekst}"
+    )
+
+
 def bouw_systeem(
     oer_tekst: str,
     opleiding: str,
     instelling: str,
     dossier_tekst: str = "",
     crebo: str | None = None,
+    skills_tekst: str = "",
 ) -> str:
-    """Stel de systeemprompt samen met OER en optioneel kwalificatiedossier als context."""
+    """Stel de systeemprompt samen met OER, optioneel KD en optionele skills-taxonomie."""
     dossier_blok = ""
     if dossier_tekst:
         dossier_blok = _DOSSIER_BLOK_TEMPLATE.format(
@@ -164,6 +230,7 @@ def bouw_systeem(
         instelling=instelling,
         oer_tekst=oer_tekst,
         dossier_blok=dossier_blok,
+        skills_blok=skills_tekst,
     )
 
 
@@ -215,9 +282,12 @@ AANVULLENDE BRON — de KDs (landelijke eisen, kerntaken, werkprocessen).
 Raadpleeg een KD alléén als de bijbehorende OER het onderwerp niet of
 onvoldoende behandelt. Geef niet onnodig een tweede antwoord uit het KD als
 de OER de vraag al beantwoordt — de OER is leidend.
+AANVULLENDE BRON — de skills-taxonomie (ESCO) waar beschikbaar: de skills en
+vaardigheden die horen bij het beroep van een opleiding. Raadpleeg deze alléén
+bij vragen over welke skills of vaardigheden het beroep vereist.
 
 CITATIEPLICHT (de OER is een juridisch document).
-Bij ELKE claim MOET je:
+Bij ELKE claim uit een OER of KD MOET je:
 1. de bron noemen ("OER N" of "Kwalificatiedossier N", zie de koppen hieronder),
 2. de exacte vindplaats noemen — sectie-nummer, kopje, artikel of paginanummer,
 3. de relevante passage WOORDELIJK citeren tussen dubbele aanhalingstekens.
@@ -226,7 +296,12 @@ Voorbeeld: OER 1, sectie 3.2 "Bindend studieadvies": "De student ontvangt
 uiterlijk in juli...". Voor het KD: De OER beschrijft dit niet. Volgens
 Kwalificatiedossier 1, kerntaak B1-K1: "...".
 
-Een claim zonder bron + vindplaats + woordelijk citaat is niet toegestaan.
+Voor de skills-taxonomie geldt een AANGEPASTE citatie (geen secties of pagina's):
+noem de bron, het beroep en de categorie, en citeer de exacte skill-naam, bijv.
+Volgens de ESCO-skillstaxonomie hoort bij het beroep "kok" de essentiële skill
+"kooktechnieken gebruiken". Verzin nooit een sectie- of paginanummer bij skills.
+
+Een claim zonder correcte bronvermelding is niet toegestaan.
 Parafraseren mag alleen ter inleiding van een citaat, niet ter vervanging ervan.
 Beantwoord uitsluitend op basis van deze bronnen — nooit vanuit eigen kennis.
 Als de informatie in geen van de bronnen staat, zeg dat dan expliciet.
@@ -242,7 +317,8 @@ def bouw_gecombineerd_systeem(oer_items: list[dict]) -> str:
         oer_items: lijst van dict met sleutels 'tekst', 'opleiding',
                    'display_naam', 'leerweg', 'cohort'. Optioneel:
                    'dossier_tekst' en 'crebo' om het landelijke
-                   kwalificatiedossier mee in te bedden.
+                   kwalificatiedossier mee in te bedden, en 'skills_tekst'
+                   voor de skills-taxonomie van het beroep.
     """
     if len(oer_items) == 1:
         item = oer_items[0]
@@ -252,6 +328,7 @@ def bouw_gecombineerd_systeem(oer_items: list[dict]) -> str:
             item["display_naam"],
             dossier_tekst=item.get("dossier_tekst", ""),
             crebo=item.get("crebo"),
+            skills_tekst=item.get("skills_tekst", ""),
         )
 
     blokken = []
@@ -264,6 +341,7 @@ def bouw_gecombineerd_systeem(oer_items: list[dict]) -> str:
             oer_blok += (
                 f"\n\n=== KWALIFICATIEDOSSIER {i} (Crebo {crebo_label}) ===\n\n{dossier_tekst}"
             )
+        oer_blok += item.get("skills_tekst", "")
         blokken.append(oer_blok)
     return _MULTI_SYSTEEM_TEMPLATE.format(
         n=len(oer_items),

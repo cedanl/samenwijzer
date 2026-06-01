@@ -1,0 +1,156 @@
+{
+  "crebo": "25669",
+  "opleiding": "2021 - 25669 VG VTT OER Allround Technicus Autotechniek BBL3",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "assistent-automonteur",
+    "uri": "http://data.europa.eu/esco/occupation/3b4eb248-6b40-42fe-9d10-cba8ccfe6613",
+    "definitie": "Assistent-automonteurs voeren basistaken uit zoals het verversen van olie, het verwisselen van de filters en het vervangen van bougies in een onderhoudstation voor voertuigen."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "eerste automonteur",
+    "manager kledingwinkel",
+    "assistent-automonteur",
+    "signmaker",
+    "operator rubberproductie",
+    "technicus waterkracht",
+    "autotechnisch ingenieur",
+    "technicus textieldruk",
+    "machinist mobiele kraan",
+    "onderhoudsmonteur telecommunicatieapparatuur",
+    "ontwikkelaar software voor mobiele toestellen voor industrieel gebruik",
+    "monteur mobiele telefoons",
+    "ingenieur werktuigkunde",
+    "assemblagetechnicus voertuigen",
+    "reparateur mobiele telefoons",
+    "monteur kranen"
+  ],
+  "skills": [
+    {
+      "label": "handmatige werkzaamheden zelfstandig uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/e97733e8-5bf1-4c21-93c4-8bebbdabc394",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "controleprocedures voor het verwerken van gevaarlijke stoffen opvolgen",
+      "uri": "http://data.europa.eu/esco/skill/02e235f4-a30a-412a-a06e-1c471ad28678",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gegeven instructies volgen",
+      "uri": "http://data.europa.eu/esco/skill/ab9f550c-fa8f-4fe8-9f9f-e02d45bff570",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "autobediening",
+      "uri": "http://data.europa.eu/esco/skill/1b1c2d44-c487-4121-a2ed-dcda651f4d59",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "technische taken met veel zorg uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/5b394ba8-5d40-40d9-b771-5df6ea9ac436",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klantgericht zijn",
+      "uri": "http://data.europa.eu/esco/skill/13e93abd-618c-46df-abbe-1af38ecd1aa2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "met chemische reinigingsmiddelen werken",
+      "uri": "http://data.europa.eu/esco/skill/51a26193-9abe-4bce-9108-f50835be1c35",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voertuigonderhoud uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/0ea0b260-617b-4d04-bf00-988dd0b122e5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "soorten voertuigen",
+      "uri": "http://data.europa.eu/esco/skill/4394a7e8-ffec-4062-b679-a2570260a84f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheids- en veiligheidsnormen toepassen",
+      "uri": "http://data.europa.eu/esco/skill/dcc96a49-0bac-4a9c-8f8e-a32b4e47e6eb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "geïmproviseerde reparaties aan voertuigen uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/edeade22-1c8d-40d2-818b-e5ef0473c481",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voertuigen positioneren voor onderhoud en reparatie",
+      "uri": "http://data.europa.eu/esco/skill/215762df-b2b4-40fa-a5e6-3004001cb315",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "hygiëne van de werkruimte onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/5598739b-6718-4cff-8402-91d7f65b1505",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "mechanica",
+      "uri": "http://data.europa.eu/esco/skill/efa141df-f382-418f-9121-bd88fd735669",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "mechanische werktuigen",
+      "uri": "http://data.europa.eu/esco/skill/44297bbb-306a-46fa-ab1b-fa3fb327ebda",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verslag uitbrengen van professionele activiteiten",
+      "uri": "http://data.europa.eu/esco/skill/bf9879fa-f1fc-4f17-8dcb-ece29ea61682",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gegevens van voertuigen bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/183eb46f-24f6-4e15-8017-93f10039c0a6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "betalingen verwerken",
+      "uri": "http://data.europa.eu/esco/skill/bdcac0c8-b77a-4640-9eaf-c0cf3efd1e23",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voertuigen besturen",
+      "uri": "http://data.europa.eu/esco/skill/2a82241a-216e-44d8-bb50-6b9a0ef82084",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verkoopfacturen opstellen",
+      "uri": "http://data.europa.eu/esco/skill/e3e42d54-78bd-4337-aa87-bb31a7670c9a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kleine krassen op voertuigen repareren",
+      "uri": "http://data.europa.eu/esco/skill/1b5801fa-1153-40a5-aa45-861c28a7f662",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "principes van teamwerk",
+      "uri": "http://data.europa.eu/esco/skill/a5b0cd5c-e13a-4ab3-8d93-4d242adcfb01",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kleine reparaties aan voertuigen uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/9142eba6-0abe-4d6f-9b8b-5a88f4ff6a8d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "inventaris van schoonmaakmateriaal voor voertuigen bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/1910b022-fc63-4f3d-b742-f9d62d4382b6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "producten bestellen voor onderhoud en reparatie van voertuigen",
+      "uri": "http://data.europa.eu/esco/skill/74744dfc-c201-489b-a080-08539882ada2",
+      "categorie": "optioneel"
+    }
+  ]
+}

@@ -1,0 +1,345 @@
+{
+  "crebo": "25651",
+  "opleiding": "25651_BOL_2024__content_oer-2024-2025-ci-25651-acteur (1)",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "acteur/actrice",
+    "uri": "http://data.europa.eu/esco/occupation/26171f39-e85a-448f-bd28-a73a5a99927f",
+    "definitie": "Acteurs/actrices spelen rollen in theatervoorstellingen, televisieproducties, radioproducties, videoproducties, filmproducties of andere settings voor entertainment of voorlichting. Zij gebruiken lichaamstaal (gebaren en dans) en stem (spraak en zang) om een personage of verhaal te brengen volgens het script en volgens de richtlijnen van een regisseur."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "web content manager",
+    "stand-in",
+    "acteur/actrice",
+    "bibliothecaris big-data-archief",
+    "haarstylist",
+    "stuntman",
+    "rekwisiteur",
+    "choreograaf",
+    "repetitor",
+    "specialist special effects",
+    "presentator",
+    "digitaal kunstenaar",
+    "variétéartiest",
+    "dansrepetitor",
+    "agent"
+  ],
+  "skills": [
+    {
+      "label": "samen met medespelers repeteren",
+      "uri": "http://data.europa.eu/esco/skill/8bafe48c-f414-4fbf-8b12-8d5875b5c061",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "optreden voor een publiek",
+      "uri": "http://data.europa.eu/esco/skill/b983e86d-61d5-4ebf-8810-2650c91da096",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "omgaan met publiek",
+      "uri": "http://data.europa.eu/esco/skill/abe138ec-e084-47c7-abe3-e7f371f05eae",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "rollen van scripts instuderen",
+      "uri": "http://data.europa.eu/esco/skill/2747a004-2b3c-4879-92ec-d2665bfee36a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zichzelf promoten",
+      "uri": "http://data.europa.eu/esco/skill/a04c2655-5996-4744-bca2-4f4c8b3e4667",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "live optreden",
+      "uri": "http://data.europa.eu/esco/skill/04e6474d-f6fd-4e60-9191-24faae8ba0bb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "met een artistiek team werken",
+      "uri": "http://data.europa.eu/esco/skill/e9ea388a-5e61-451b-aac9-f9080def9374",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voordragen",
+      "uri": "http://data.europa.eu/esco/skill/c3c2d9c4-bed3-4312-9cf8-f9bb719f42d2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "in contact staan met het eigen lichaam",
+      "uri": "http://data.europa.eu/esco/skill/df0aa404-3f87-4f35-b6e9-969b05068704",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "feedback op artistieke prestaties aanvaarden",
+      "uri": "http://data.europa.eu/esco/skill/125258b2-23c1-472c-90c6-4ec2e90ed893",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "het publiek emotioneel betrekken",
+      "uri": "http://data.europa.eu/esco/skill/9c72fa23-60c5-4b90-81a8-44a871beb4e5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "eigen prestaties analyseren",
+      "uri": "http://data.europa.eu/esco/skill/a7e78a0b-aec1-45fb-8f86-d1b4ab1f9c69",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toneelteksten analyseren",
+      "uri": "http://data.europa.eu/esco/skill/22cbb90f-0bf1-4c30-98c0-7c9749b4e08d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "tekst onthouden",
+      "uri": "http://data.europa.eu/esco/skill/add5de06-4fcc-4d9a-9b27-4db9722c9be7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "omgaan met medespelers",
+      "uri": "http://data.europa.eu/esco/skill/9f0b8355-7529-42bb-b876-087e3eea732f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "rollen inoefenen",
+      "uri": "http://data.europa.eu/esco/skill/0c33d03f-9696-44ff-9c1a-7f4296ee3335",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "instructies van de regisseur volgen",
+      "uri": "http://data.europa.eu/esco/skill/b31ccede-907f-49de-8047-4d851bd4add3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "repetities bijwonen",
+      "uri": "http://data.europa.eu/esco/skill/4b973dcf-3ffc-4c70-b84a-8360e63db7cd",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "oplossingen voor problemen creëren",
+      "uri": "http://data.europa.eu/esco/skill/03b9b491-fc9b-4868-914a-bf7cd47b5041",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "relaties tussen personages bestuderen",
+      "uri": "http://data.europa.eu/esco/skill/a599d221-3c0f-479b-a032-2d744435df67",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "aanpassen aan verschillende rollen",
+      "uri": "http://data.europa.eu/esco/skill/f34ee429-b36d-49f9-a927-80b67a467cc8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werken met aandacht voor de eigen veiligheid",
+      "uri": "http://data.europa.eu/esco/skill/b73035a9-bf06-412c-9796-db579f85995c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voorstellingsconcepten in het creatieve proces interpreteren",
+      "uri": "http://data.europa.eu/esco/skill/62af17c1-cc70-44ce-a563-bf406443bf57",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "poppenvoorstellingen maken",
+      "uri": "http://data.europa.eu/esco/skill/b3f7446b-01b6-4fd4-b7dd-b89e6110288d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zangtechnieken",
+      "uri": "http://data.europa.eu/esco/skill/7d4a4dc4-9324-4975-905d-ff1140f95acc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "communiceren tijdens de voorstelling",
+      "uri": "http://data.europa.eu/esco/skill/4039158b-2e58-484a-8771-ad215e065c12",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "acteermethoden",
+      "uri": "http://data.europa.eu/esco/skill/74be20a7-fcfe-4715-bb62-8937a547a982",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "muziek studeren",
+      "uri": "http://data.europa.eu/esco/skill/2fa41ec9-5a43-4976-b34d-8639596f67ba",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "professionele verantwoordelijkheid tonen",
+      "uri": "http://data.europa.eu/esco/skill/59ad10b1-6f71-4dd4-ad1f-a1fdf68bc2fb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "improviseren",
+      "uri": "http://data.europa.eu/esco/skill/4327690a-e639-4b58-98b5-d078d6b90b07",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "choreografische improvisatie plannen",
+      "uri": "http://data.europa.eu/esco/skill/fba972bf-7c08-4deb-a2dc-b157886097fe",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "scènes meerdere keren uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/f6a2f139-d935-4fcd-b966-738f08f74bea",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "concepten voor goochelshows ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/fcea64d4-654a-42f9-b50d-0caa82e9faec",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zelfvertrouwen tonen",
+      "uri": "http://data.europa.eu/esco/skill/669b75d8-671c-4a1c-8e0b-6466c513c27d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "mediabronnen bestuderen",
+      "uri": "http://data.europa.eu/esco/skill/c8ab7e5b-b786-412f-a519-dfd93517b698",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "repetities organiseren",
+      "uri": "http://data.europa.eu/esco/skill/05bc7677-5a64-4e0c-ade3-0140348d4125",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "scenariolezing bijwonen",
+      "uri": "http://data.europa.eu/esco/skill/44aa3a70-2022-4a5e-8b79-e0485737d29a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "achtergrondonderzoek uitvoeren voor toneelstukken",
+      "uri": "http://data.europa.eu/esco/skill/e50e10e0-33df-4045-9cc1-8f09e09ec81a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "artistiek team leiden",
+      "uri": "http://data.europa.eu/esco/skill/a1ded3c7-f3e2-45c9-aa01-e4e84d5f69c8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ademhalingstechnieken",
+      "uri": "http://data.europa.eu/esco/skill/6246dda7-e075-448f-b11a-8274923042d5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "muziekliteratuur",
+      "uri": "http://data.europa.eu/esco/skill/bf21bcb8-6660-4f37-b16a-d276cca01474",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "in een internationale omgeving werken",
+      "uri": "http://data.europa.eu/esco/skill/07ba491f-2fd4-4bab-bf52-32934c6f0b9f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verschillende talen spreken",
+      "uri": "http://data.europa.eu/esco/skill/2de4572a-4724-4f76-afc2-72a568a264ac",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "stunts uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/1c0dd8ea-c74a-4ef7-ab9a-a42aa39925fa",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "omgaan met publiek",
+      "uri": "http://data.europa.eu/esco/skill/704fda1b-cd0a-40fe-99fc-0a24250a2010",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "uitgeschreven dialogen vertolken",
+      "uri": "http://data.europa.eu/esco/skill/dfbb53b2-5022-4788-884f-4776a480c96c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "intercultureel bewustzijn tonen",
+      "uri": "http://data.europa.eu/esco/skill/7d23c508-c007-4221-bb84-0c9a479b8ea6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "acteren met uitrusting voor motion capture",
+      "uri": "http://data.europa.eu/esco/skill/4d762360-58b4-4218-9b86-b9322143ece7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "solo muziek spelen",
+      "uri": "http://data.europa.eu/esco/skill/d7cac6b2-fab5-432a-af1c-23154ea56522",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "tentoonstellingen organiseren",
+      "uri": "http://data.europa.eu/esco/skill/a2adddad-2889-460c-a111-e3a2001ae785",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "optreden voor een jong publiek",
+      "uri": "http://data.europa.eu/esco/skill/8cbfee2d-11fd-4166-9153-03a722dc66a7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zang beoefenen",
+      "uri": "http://data.europa.eu/esco/skill/e78ac0fc-7a1d-4462-960a-a560c2e152ce",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "deelnemen aan toeristische evenementen",
+      "uri": "http://data.europa.eu/esco/skill/899286f4-327f-4e16-aa02-5256a9c7f678",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "culturele evenementen organiseren",
+      "uri": "http://data.europa.eu/esco/skill/f3b841c9-17d1-4cc3-9e6b-36c17b0d15d3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zingen",
+      "uri": "http://data.europa.eu/esco/skill/e50a68c5-2a5d-4815-8bd1-e4334aed7683",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "dansbewegingen inoefenen",
+      "uri": "http://data.europa.eu/esco/skill/39beb3af-9314-4b17-aa57-449cc70d3d9c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "literatuurtheorie",
+      "uri": "http://data.europa.eu/esco/skill/3659c733-e366-4a2f-86c6-304ab01481cc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vooruitgang van het artistieke team beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/718b75f6-f5a9-4b00-9324-3851502d1a05",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werken met een stemcoach",
+      "uri": "http://data.europa.eu/esco/skill/fb21ee7e-6d25-481a-b1bc-928f86afe497",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "optreden in een openbare ruimte",
+      "uri": "http://data.europa.eu/esco/skill/b1daf957-3424-40e6-870c-d00d4317a45e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "fotografie",
+      "uri": "http://data.europa.eu/esco/skill/38509fa4-7c06-4a4b-9622-f521f03c37b8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "uitspraaktechnieken",
+      "uri": "http://data.europa.eu/esco/skill/8e16511d-3540-47e1-8620-8f111b7ae280",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "acteurs en crew leiden",
+      "uri": "http://data.europa.eu/esco/skill/82d8cd8c-9609-4d2d-84cf-dcd9cc8c45a9",
+      "categorie": "optioneel"
+    }
+  ]
+}

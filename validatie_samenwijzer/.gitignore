@@ -1,5 +1,8 @@
 .env
-data/
+data/*
+# skills-taxonomie-artefact is klein + ESCO-afgeleid (CC BY) → wel tracken, zodat
+# de gecureerde matches in de repo zitten en op elke machine werken (geen rebuild nodig).
+!data/skills/
 __pycache__/
 *.pyc
 .venv/

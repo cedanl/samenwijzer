@@ -1,3 +1,5 @@
+import json
+
 from validatie_samenwijzer.chat import (
     LAGE_RELEVANTIE_BERICHT,
     bouw_berichten,
@@ -5,7 +7,9 @@ from validatie_samenwijzer.chat import (
     bouw_systeem,
     identificeer_oer_kandidaten,
     laad_kwalificatiedossier_tekst,
+    laad_skills_tekst,
     pad_kwalificatiedossier,
+    pad_skills,
 )
 
 
@@ -178,6 +182,88 @@ def test_bouw_gecombineerd_systeem_includeert_dossier_per_oer():
     assert "25180" in systeem
     # tweede OER heeft geen dossier — geen KD 2 blok
     assert "KWALIFICATIEDOSSIER 2" not in systeem
+
+
+# ── skills-taxonomie ──────────────────────────────────────────────────────────
+
+
+def _schrijf_skills(tmp_path, crebo, beroep="kok", skills=None):
+    data = {
+        "crebo": crebo,
+        "opleiding": "OER Kok",
+        "bron": "ESCO",
+        "beroep": None if beroep is None else {"label": beroep, "uri": "u", "definitie": "Koks..."},
+        "match_methode": "llm-keuze",
+        "kandidaten": [],
+        "skills": skills
+        if skills is not None
+        else [{"label": "kooktechnieken gebruiken", "uri": "u1", "categorie": "essentieel"}],
+    }
+    (tmp_path / f"{crebo}.json").write_text(json.dumps(data), encoding="utf-8")
+
+
+def test_pad_skills_respecteert_env(tmp_path, monkeypatch):
+    monkeypatch.setenv("SKILLS_PAD", str(tmp_path))
+    assert pad_skills("25180") == tmp_path / "25180.json"
+
+
+def test_laad_skills_leeg_zonder_crebo():
+    assert laad_skills_tekst(None) == ""
+    assert laad_skills_tekst("") == ""
+
+
+def test_laad_skills_formatteert_blok(tmp_path, monkeypatch):
+    monkeypatch.setenv("SKILLS_PAD", str(tmp_path))
+    _schrijf_skills(tmp_path, "25180")
+    blok = laad_skills_tekst("25180")
+    assert "SKILLS-TAXONOMIE (ESCO)" in blok
+    assert "kok" in blok
+    assert "kooktechnieken gebruiken" in blok
+    assert "Essentiële skills" in blok
+
+
+def test_laad_skills_leeg_bij_geen_beroep(tmp_path, monkeypatch):
+    monkeypatch.setenv("SKILLS_PAD", str(tmp_path))
+    _schrijf_skills(tmp_path, "25250", beroep=None)
+    assert laad_skills_tekst("25250") == ""
+
+
+def test_laad_skills_leeg_bij_ontbrekend_bestand(tmp_path, monkeypatch):
+    monkeypatch.setenv("SKILLS_PAD", str(tmp_path))
+    assert laad_skills_tekst("00000") == ""
+
+
+def test_bouw_systeem_includeert_skills_blok():
+    systeem = bouw_systeem(
+        "OER-tekst",
+        "Kok",
+        "Da Vinci",
+        skills_tekst="\n\n=== SKILLS-TAXONOMIE (ESCO) — beroep: kok ===\nskills hier",
+    )
+    assert "SKILLS-TAXONOMIE (ESCO)" in systeem
+    assert "skills hier" in systeem
+
+
+def test_bouw_systeem_zonder_skills_geen_blok():
+    systeem = bouw_systeem("OER-tekst", "Kok", "Da Vinci")
+    assert "SKILLS-TAXONOMIE (ESCO) — beroep" not in systeem
+
+
+def test_bouw_gecombineerd_systeem_includeert_skills_per_oer():
+    items = [
+        {
+            "tekst": "OER A",
+            "opleiding": "Kok",
+            "display_naam": "Da Vinci",
+            "leerweg": "BOL",
+            "cohort": "2025",
+            "crebo": "25180",
+            "skills_tekst": "\n\n=== SKILLS-TAXONOMIE (ESCO) — beroep: kok ===\nkooktechnieken",
+        },
+    ]
+    systeem = bouw_gecombineerd_systeem(items)
+    assert "SKILLS-TAXONOMIE (ESCO)" in systeem
+    assert "kooktechnieken" in systeem
 
 
 def test_identificeer_opleiding_woorden_max_2():

@@ -1,0 +1,214 @@
+{
+  "crebo": "25742",
+  "opleiding": "25742_BOL_2025__OER (OUD) - 25742 - Assistent Horeca, Voeding of Voedingsindustrie",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "assistent-diëtist",
+    "uri": "http://data.europa.eu/esco/occupation/68bc2af1-96ea-4ec2-8b2f-5cde76472135",
+    "definitie": "Assistent-diëtisten helpen diëtisten bij het plannen van voedingsprogramma's en het plannen van menu's voor patiënten als onderdeel van een algemeen behandelplan onder toezicht van een diëtist. Onder toezicht van een diëtist helpen assistent-diëtisten bij de evaluatie van patiënten, de planning van enterale voeding bij ontslag en klinische controles, waaronder voedingsscreening."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "assistent-diëtist",
+    "obductieassistent",
+    "docent voedingskunde",
+    "assistent-acceptant verzekeringen",
+    "barista",
+    "doktersassistent",
+    "assistent-chiropractor",
+    "kraamverzorgende",
+    "laserlasser"
+  ],
+  "skills": [
+    {
+      "label": "anatomie van de mens",
+      "uri": "http://data.europa.eu/esco/skill/9ec4252d-cbe8-4134-88fa-549dee1883f3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "hygiëne in de gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/0450eaee-1a00-4622-8f4e-5356fce816d2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "patiëntenmenu’s opstellen",
+      "uri": "http://data.europa.eu/esco/skill/a47c1dc1-1a03-4803-8ede-f1492a0cfce5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "begeleidingsmethodes",
+      "uri": "http://data.europa.eu/esco/skill/0ffed47f-d320-48cf-988d-40449825085c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "normen voor voedselveiligheid",
+      "uri": "http://data.europa.eu/esco/skill/fa46ff13-5ad7-4a11-85d6-4b0614e411de",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voeding voor zuigelingen klaarmaken",
+      "uri": "http://data.europa.eu/esco/skill/ddc36f84-968f-4ac5-b687-bb2ea787f2f0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "wetgeving in verband met gezondheidszorg naleven",
+      "uri": "http://data.europa.eu/esco/skill/9fcf9918-fdef-49c3-aedc-518eb1e7e1f5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "wetgeving inzake gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/1709f408-9965-489b-9805-8e1e5d9e483b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "communiceren met gebruikers van gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/c65aa043-98da-4136-9877-494e72d9e4cf",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werken in een multiculturele omgeving in de gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/b55f61a4-5f9e-4741-ba95-9ac04b64119b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voedingskenmerken van voedingsmiddelen beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/01267c89-b27f-4de0-b555-3683c5a5d66e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voeding van gezonde personen",
+      "uri": "http://data.europa.eu/esco/skill/63e6742e-5ee7-4008-a17d-0b2079e7fae0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voorraadniveaus bewaken",
+      "uri": "http://data.europa.eu/esco/skill/44f6a65f-6be7-4818-9a66-73908797283f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "medische informatica",
+      "uri": "http://data.europa.eu/esco/skill/b21e2984-c6b2-4352-bbe8-8f3b03bd50f6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteitsnormen in verband met de uitoefening van gezondheidszorg naleven",
+      "uri": "http://data.europa.eu/esco/skill/98eb1f3b-3480-416b-bd4b-811946f7e347",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beleidslijnen van de organisatie naleven",
+      "uri": "http://data.europa.eu/esco/skill/aa238394-8126-4ada-be2f-9dfe065cf314",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werken in multidisciplinaire gezondheidsteams",
+      "uri": "http://data.europa.eu/esco/skill/eba85523-6ad2-4cd9-9b27-a0b6a39b8cfa",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "meeleven met gebruikers van gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/2475cd27-8d6c-4318-a364-21395b23acba",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronische en mobiele gezondheidstechnologieën gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/16636767-c215-4cf0-b126-e144fea20926",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "diëtetiek",
+      "uri": "http://data.europa.eu/esco/skill/f190355a-cea5-4cd0-b6cd-a5c3d9a14985",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "samenstelling van diëten",
+      "uri": "http://data.europa.eu/esco/skill/6b69101a-0e51-45c6-a7e5-5a60a1c85da0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "regels inzake levensmiddelenhygiëne",
+      "uri": "http://data.europa.eu/esco/skill/791fa659-3382-49f8-a8dd-505226d0da48",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "effectief communiceren in de gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/7110bf9f-b245-4adc-9159-5081013fd64d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klinische richtlijnen volgen",
+      "uri": "http://data.europa.eu/esco/skill/76395873-7fe2-4f9a-b4b6-9932f8cbd0b4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "professionele documentatie in de gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/9a7cc3c2-b529-44a4-ab8e-f04fc91362e2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voedselbereidingstechnieken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/4b15a965-9bb4-42f1-8e44-1024aeb0b08c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bewaren van voedsel",
+      "uri": "http://data.europa.eu/esco/skill/e4a46d74-71a8-469a-85ad-e40278a23ba1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gebruikers van gezondheidszorg voorlichten over voeding",
+      "uri": "http://data.europa.eu/esco/skill/9a5a5a61-15ee-4ffd-9fe9-b5e9fab9b261",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "berekening van calorische energie",
+      "uri": "http://data.europa.eu/esco/skill/27db7f61-085f-481c-8e74-1c97b7649d90",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "pedagogie",
+      "uri": "http://data.europa.eu/esco/skill/a117f32c-662b-4dd9-b739-1230dd04cb60",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klinische geriatrie",
+      "uri": "http://data.europa.eu/esco/skill/52c19dc8-651f-4095-98fe-dcb2799d702e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gegevens van gebruikers van gezondheidszorg beheren",
+      "uri": "http://data.europa.eu/esco/skill/4d614c92-0c48-4a11-a5ed-416b34fd50d2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onbewerkt voedsel opslaan",
+      "uri": "http://data.europa.eu/esco/skill/29b326ea-a9c8-4963-b35a-8541d0cdff77",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Europees beleid inzake voedselveiligheid",
+      "uri": "http://data.europa.eu/esco/skill/b1c7c4c6-f3cb-4fb2-958c-236385b2782a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zwaarlijvigheid",
+      "uri": "http://data.europa.eu/esco/skill/6bed3a09-888b-4b85-b9f6-32b966154cf4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "omgaan met noodzorgsituaties",
+      "uri": "http://data.europa.eu/esco/skill/51e79cb4-fab3-404c-88f3-cd4a1bd5879e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vreemde talen gebruiken bij zorg",
+      "uri": "http://data.europa.eu/esco/skill/e724205b-6b9a-45b4-b629-cd32a6c80b4f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "medische terminologie",
+      "uri": "http://data.europa.eu/esco/skill/2806260f-6399-4add-8f11-070141423f9d",
+      "categorie": "optioneel"
+    }
+  ]
+}

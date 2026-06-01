@@ -1,0 +1,163 @@
+{
+  "crebo": "25607",
+  "opleiding": "25607_BOL_2023__2023_OER_Medewerker-ICT-Support",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "medewerker helpdesk",
+    "uri": "http://data.europa.eu/esco/occupation/aaeec9a7-dc57-4485-890c-86b3eef735f9",
+    "definitie": "Helpdeskmedewerkers verzorgen de technische ondersteuning van computergebruikers, beantwoorden vragen of kunnen computerproblemen voor klanten via de telefoon of langs elektronische weg oplossen. Zij verlenen assistentie bij het gebruik van computerapparatuur en -software."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "sales support medewerker",
+    "ICT-helpdeskmanager",
+    "ict network administrator",
+    "medewerker helpdesk",
+    "medewerker vetzuivering",
+    "tuinbouwmedewerker",
+    "medewerker fastfood",
+    "applicatiebeheerder PACS",
+    "ict capaciteitsplanner",
+    "ICT-omgevingsmanager",
+    "ICT-beveiligingstechnicus",
+    "ICT-technicus",
+    "green ict consultant"
+  ],
+  "skills": [
+    {
+      "label": "ICT-systeemgebruikers ondersteunen",
+      "uri": "http://data.europa.eu/esco/skill/db36f7f1-5900-45bd-9ffb-f2b19c4362ac",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gebruikersvereisten voor ict-systemen",
+      "uri": "http://data.europa.eu/esco/skill/ca73ac82-867a-4afa-9732-834aebe896ff",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kenmerken van diensten",
+      "uri": "http://data.europa.eu/esco/skill/fb3bc9b5-2297-4bba-85b1-60f696a92db8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "communiceren met klanten",
+      "uri": "http://data.europa.eu/esco/skill/0da516ee-e70e-4384-be13-f5ff80be8127",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "nazorgdiensten aan klanten bieden",
+      "uri": "http://data.europa.eu/esco/skill/debb8d81-ed7f-447d-853a-5d107fda6fcf",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "eigenschappen van producten",
+      "uri": "http://data.europa.eu/esco/skill/1585fc98-bfe4-461f-97fc-734055a2c3ce",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "oplossingen voor problemen creëren",
+      "uri": "http://data.europa.eu/esco/skill/03b9b491-fc9b-4868-914a-bf7cd47b5041",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "productkennis bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/01e7dee7-3ff1-4807-acad-058dbed91aba",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "prioriteit geven aan verzoeken",
+      "uri": "http://data.europa.eu/esco/skill/f642d7ed-e8d7-4355-a747-b85094d4e2e3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ICT-ondersteuning bieden",
+      "uri": "http://data.europa.eu/esco/skill/c2296e2e-5fef-4f24-a24f-e5b3792268be",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ICT-systeemproblemen oplossen",
+      "uri": "http://data.europa.eu/esco/skill/9e06bac6-6b91-48ca-8b7d-c1f48cdecd7c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klanten helpen",
+      "uri": "http://data.europa.eu/esco/skill/61970f8b-099c-4e7e-82e0-9ccdced0baf3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "taakgegevens bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/43b13058-68d0-40c6-8031-caf5a7b7d20c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ICT-ticketsysteem gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/6430eb0d-c6de-46b7-a7fc-3dd2e8e62a69",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "productkennis",
+      "uri": "http://data.europa.eu/esco/skill/d6d3fee7-47e2-47f4-a0ec-6c75f28c6abd",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "behoeften van klanten identificeren",
+      "uri": "http://data.europa.eu/esco/skill/68698869-c13c-4563-adc7-118b7644f45d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "taakplanning beheren",
+      "uri": "http://data.europa.eu/esco/skill/0e1fe34b-f4e7-4642-8c8b-5a05ac3438e5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klanttevredenheid garanderen",
+      "uri": "http://data.europa.eu/esco/skill/00e53a0a-c0ba-4c9f-a2ed-4706d5832a00",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "software voor het beheer van klantrelaties gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/9889b795-d755-41b2-8afd-2e3c87a65a38",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "inkomende oproepen beantwoorden",
+      "uri": "http://data.europa.eu/esco/skill/5a0bffcf-4ff6-49cf-a7db-4142e63f5f04",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "helpdeskproblemen afhandelen",
+      "uri": "http://data.europa.eu/esco/skill/118efbcd-8fc5-4668-81d1-c383a0d16070",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ICT-helpplatformen",
+      "uri": "http://data.europa.eu/esco/skill/778ca7ad-6c5d-4868-9b96-a7777dca799c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gegevensanalyses uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/2b92a5b2-6758-4ee3-9fb4-b6387a55cc8f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderrichten over vertrouwelijkheid van gegevens",
+      "uri": "http://data.europa.eu/esco/skill/6aef2baa-5fa7-4c16-bd28-3e070ec4e4df",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vertrouwelijkheid van informatie",
+      "uri": "http://data.europa.eu/esco/skill/a56dec32-05ef-45de-a256-ee6741f356db",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "escalatieprocedures uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/946c1229-1171-40d4-82cc-fe3f483ca100",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ICT-infrastructuur",
+      "uri": "http://data.europa.eu/esco/skill/d0c6d77e-cb25-4770-bf77-2073fc5f7523",
+      "categorie": "optioneel"
+    }
+  ]
+}

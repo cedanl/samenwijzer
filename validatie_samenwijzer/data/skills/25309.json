@@ -1,0 +1,258 @@
+{
+  "crebo": "25309",
+  "opleiding": "2020 - 25309 VG ELE OER Technicus Service en Onderhoud BBL4",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "elektromechanicus",
+    "uri": "http://data.europa.eu/esco/occupation/5d009d45-3bb9-4e33-8760-294f59adec8c",
+    "definitie": "Elektromechanici installeren, herstellen en onderhouden mechanische en elektrische onderdelen van machines, werktuigen en uitrusting. Zij testen elektrische onderdelen om de efficiëntie te waarborgen en verbeteringen aan te brengen."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "operator stoomketel",
+    "auto-elektricien",
+    "servicemonteur communicatie-infrastructuur",
+    "monteur kantoormachines",
+    "elektromechanicus",
+    "technisch medewerker klantenservice",
+    "monteur bouwmachines",
+    "technicus waterkracht",
+    "procesoperator stoomcentrale",
+    "ICT-helpdeskmanager",
+    "medewerker datacentrum",
+    "officer Luchtvaartinformatiedienst",
+    "tennisleraar"
+  ],
+  "skills": [
+    {
+      "label": "veiligheidsbeheer toepassen",
+      "uri": "http://data.europa.eu/esco/skill/989dc903-5838-4d84-8e04-e5b7a2ba97c5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektrische en elektronische apparatuur installeren",
+      "uri": "http://data.europa.eu/esco/skill/52797dce-911c-4e6d-b0cb-491f6469014f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektromechanica",
+      "uri": "http://data.europa.eu/esco/skill/2bbdea06-a265-42b5-bb4f-7241b661f069",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektrische materialen inspecteren",
+      "uri": "http://data.europa.eu/esco/skill/2179e0fd-7431-41a3-bbf4-76451c615ce2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "machinale uitrusting installeren",
+      "uri": "http://data.europa.eu/esco/skill/3aec9466-bb91-478d-aa07-63af2e74b2bd",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "meetinstrumenten gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/b92758d4-4591-4df1-9ceb-f907aa71ebd9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veiligheidsnormen voor elektrische apparatuur",
+      "uri": "http://data.europa.eu/esco/skill/76526bf6-bada-4ca1-8e79-6b9d4228b607",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektromechanische systemen testen",
+      "uri": "http://data.europa.eu/esco/skill/4babe92a-68a1-4718-b1ab-640735c2cd53",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "storingen aan apparatuur oplossen",
+      "uri": "http://data.europa.eu/esco/skill/1de6b87b-2c7d-49aa-bcc0-3b2ef75f064f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ergonomisch werken",
+      "uri": "http://data.europa.eu/esco/skill/156f8c5b-894a-4ccc-a70e-37a2726f3f00",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "passende beschermende uitrusting dragen",
+      "uri": "http://data.europa.eu/esco/skill/6122d586-5978-431f-8e7a-96e61fc1f3fc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektriciteit",
+      "uri": "http://data.europa.eu/esco/skill/c8ac1986-38fa-43b2-89dc-50a4beeb420e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "mechanica",
+      "uri": "http://data.europa.eu/esco/skill/efa141df-f382-418f-9121-bd88fd735669",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronica",
+      "uri": "http://data.europa.eu/esco/skill/95c35c3a-035f-47c2-90cf-7e934d20fc08",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektromechanische apparatuur onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/e0ded9a1-372d-46c8-80b5-ad994d606ef2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kabel splitsen",
+      "uri": "http://data.europa.eu/esco/skill/4a30802f-827c-4706-9099-de85beee6cb5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektromechanische systemen ijken",
+      "uri": "http://data.europa.eu/esco/skill/95cdf47d-293f-4837-824d-6bc567fb0e7b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektromechanische systemen assembleren",
+      "uri": "http://data.europa.eu/esco/skill/78aeeab7-f22f-4fcd-8543-d11340e3ee3c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "precisie-instrumenten gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/a99c6783-50c0-4f7a-99df-bf93429ef6dc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektrische apparatuur onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/386774ac-fe5b-431a-b485-9aec0bf5c09e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronische eenheden testen",
+      "uri": "http://data.europa.eu/esco/skill/baf501a8-f0fe-4ad7-9b69-8e920fa1a87b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektrische veiligheidsnormen naleven",
+      "uri": "http://data.europa.eu/esco/skill/970af2f2-9a19-41a0-b42b-b1f36b083d28",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektrische apparatuur van coating voorzien",
+      "uri": "http://data.europa.eu/esco/skill/27f461a7-3bf9-47e5-9e46-a2aa13cf4064",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soldeertechnieken",
+      "uri": "http://data.europa.eu/esco/skill/0bb4b474-da3a-45ce-9de3-0c964d84e73f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bedrading repareren",
+      "uri": "http://data.europa.eu/esco/skill/af1c7b89-679b-4fae-b67c-ed05c669719c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "defecte onderdelen vervangen",
+      "uri": "http://data.europa.eu/esco/skill/87af00b5-30fa-41c8-bfa5-357f22c8d589",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektrische schakelaars installeren",
+      "uri": "http://data.europa.eu/esco/skill/c3d1ada5-1d97-4a23-be2a-9ff39296775b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "automatiseringstechnologie",
+      "uri": "http://data.europa.eu/esco/skill/f4a6e9f7-5cff-46c0-894c-59c20bb78694",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "batterijcomponenten repareren",
+      "uri": "http://data.europa.eu/esco/skill/78fc4e90-a522-480a-a2f0-21ff3dfe6ba7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "stroomonderbrekers installeren",
+      "uri": "http://data.europa.eu/esco/skill/76b9e515-715d-4a53-a702-019adad1059b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektrische aansluitschema’s",
+      "uri": "http://data.europa.eu/esco/skill/d15e92c4-c8dc-48cd-a1f6-94fe13347f87",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektrische berekeningen maken",
+      "uri": "http://data.europa.eu/esco/skill/61368732-eb1c-47e0-8e33-20c8c8f5e70a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektrische motoren onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/2876970d-90af-45bd-9cfd-c0af757947ea",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "mechatronische eenheden assembleren",
+      "uri": "http://data.europa.eu/esco/skill/db4a5d3a-47f5-4ff2-bc79-e458ee58c3fe",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektrische uitrusting in auto's installeren",
+      "uri": "http://data.europa.eu/esco/skill/7bb2bd48-0da4-427a-a94f-1eddf5565eba",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "prijsaanvragen beantwoorden",
+      "uri": "http://data.europa.eu/esco/skill/2206af0c-3deb-48c5-a544-b9983d347da3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektrische testmethoden",
+      "uri": "http://data.europa.eu/esco/skill/c8bd9f9f-0ec6-447a-ab78-ad6eeeed9aa8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "problemen oplossen",
+      "uri": "http://data.europa.eu/esco/skill/334e3e49-fb02-4051-809a-f06adfdc1c40",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektrische generatoren",
+      "uri": "http://data.europa.eu/esco/skill/c8c18b8d-a813-49f8-a702-689564dcf8b2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "batterijcomponenten",
+      "uri": "http://data.europa.eu/esco/skill/8cf03262-b6b0-4fe8-9d66-91063bb32db3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektrische onderdelen bestellen",
+      "uri": "http://data.europa.eu/esco/skill/855af3c1-01a8-4d46-90d3-e31cedfdd8f0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "inspectierapporten schrijven",
+      "uri": "http://data.europa.eu/esco/skill/cdd2b6cc-b4a9-42a0-824b-766f52176fd3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "accessoires voor elektrische bedrading",
+      "uri": "http://data.europa.eu/esco/skill/4940d889-a185-4176-a920-46b88cbe0d8c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "solderen",
+      "uri": "http://data.europa.eu/esco/skill/f30a7ea4-77dd-452c-8a2d-b06c12606a7f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektrische stopcontacten installeren",
+      "uri": "http://data.europa.eu/esco/skill/52d6eb67-56c0-4ad7-b5c2-71e7c2362ece",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektronische eenheden monteren",
+      "uri": "http://data.europa.eu/esco/skill/4ed385bf-3e87-476a-9f06-08c2e801133a",
+      "categorie": "optioneel"
+    }
+  ]
+}

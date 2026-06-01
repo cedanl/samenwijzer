@@ -1,0 +1,359 @@
+{
+  "crebo": "25644",
+  "opleiding": "25644_BOL_2023__EU_OER_2023_Salonmanager_dame_25644_en_heer_25645_BOL_BBL",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "manager schoonheidssalon",
+    "uri": "http://data.europa.eu/esco/occupation/33e3a746-f209-4a1a-96df-301505531cb2",
+    "definitie": "Managers van schoonheidssalons houden toezicht op de dagelijkse werkzaamheden en het personeelsmanagement in een schoonheidssalon. Zij zorgen voor tevredenheid van de klanten, begrotingscontrole en voorraadbeheer. Managers van schoonheidssalons stellen de regels van de salon en richtsnoeren voor netheid op en handhaven deze. Zij zijn ook belast met het promoten van de salon om nieuwe klanten aan te trekken."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "manager schoonheidssalon",
+    "manager kledingwinkel",
+    "dames- en kinderkleermaker",
+    "verkoopspecialist kleding",
+    "toiletmedewerker",
+    "gezelschapspersoon",
+    "escort",
+    "herenkleermaker",
+    "kappershulp"
+  ],
+  "skills": [
+    {
+      "label": "klantendienst beheren",
+      "uri": "http://data.europa.eu/esco/skill/c09c5786-a479-46de-b0aa-d5d2d8ccc123",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "oplossingen voor problemen creëren",
+      "uri": "http://data.europa.eu/esco/skill/03b9b491-fc9b-4868-914a-bf7cd47b5041",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voorraadniveaus bewaken",
+      "uri": "http://data.europa.eu/esco/skill/44f6a65f-6be7-4818-9a66-73908797283f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "logistiek beheren",
+      "uri": "http://data.europa.eu/esco/skill/953c0b65-537a-42fe-a90b-26cd36c64361",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beheer van klantrelaties",
+      "uri": "http://data.europa.eu/esco/skill/dc9a236c-c640-43c3-812f-269403591edb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteitsstandaarden",
+      "uri": "http://data.europa.eu/esco/skill/8d4271ca-c9fd-40b3-875f-15f78332a49e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "budgetten beheren",
+      "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klantendiensten",
+      "uri": "http://data.europa.eu/esco/skill/15a33d76-4640-438d-ae64-fdc0c1d3eebc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "naleving van gezondheids- veiligheids- en hygiënenormen waarborgen",
+      "uri": "http://data.europa.eu/esco/skill/44e2c4c4-9fd2-42d4-a133-d81360ded4bc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "grond- en hulpstoffen beheren",
+      "uri": "http://data.europa.eu/esco/skill/020b3c27-bae1-4b85-9d6f-eccee0f5ed99",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "de organisatie vertegenwoordigen",
+      "uri": "http://data.europa.eu/esco/skill/1a4fdd0e-2cbe-4b77-aa6e-e46efc181b76",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "omgaan met managers",
+      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "activiteiten delegeren",
+      "uri": "http://data.europa.eu/esco/skill/b00e948c-19be-4951-8cff-60f88f1046e9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "recreatieaccommodatie beheren",
+      "uri": "http://data.europa.eu/esco/skill/da037304-d958-4580-89ad-edc914dc0b21",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "dagelijkse informatieactiviteiten leiden",
+      "uri": "http://data.europa.eu/esco/skill/9013b46e-5a9b-4929-8918-fcadfdfd37ce",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheids- en veiligheidsprocedures plannen",
+      "uri": "http://data.europa.eu/esco/skill/bb663409-5c88-4e3a-bc16-01aa1c8ce171",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gebruik van recreatiefaciliteiten inplannen",
+      "uri": "http://data.europa.eu/esco/skill/42e49c37-38bf-491c-a36c-6eec0800f44f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "contacten onderhouden met lokale overheden",
+      "uri": "http://data.europa.eu/esco/skill/2839f191-cd94-49a9-ac16-46018066b8b2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toezicht houden op werkzaamheden",
+      "uri": "http://data.europa.eu/esco/skill/b1fd9eda-3d2e-48ef-9c1d-0ba318e3c7e6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "taakplanning beheren",
+      "uri": "http://data.europa.eu/esco/skill/0e1fe34b-f4e7-4642-8c8b-5a05ac3438e5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "maatschappelijk verantwoord ondernemen",
+      "uri": "http://data.europa.eu/esco/skill/66db424f-2abe-420d-8e5b-186607266b61",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "organisatorische beleidslijnen vaststellen",
+      "uri": "http://data.europa.eu/esco/skill/8bad61b8-75f7-4bdc-b994-f7158f4b90f0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bedrijfsnormen volgen",
+      "uri": "http://data.europa.eu/esco/skill/f5f5b244-6cea-4fbc-8a50-8f712791bc09",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "cosmetica",
+      "uri": "http://data.europa.eu/esco/skill/7d9d73a8-08df-4624-a5df-95cb220c0736",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "salonbeheer",
+      "uri": "http://data.europa.eu/esco/skill/59b4f49d-a82a-4206-ba93-3e423640de22",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "operationele begroting beheren",
+      "uri": "http://data.europa.eu/esco/skill/51b53bb3-7a67-4ce8-b959-c7f6c4af3456",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "communicatieprincipes",
+      "uri": "http://data.europa.eu/esco/skill/fe30a4b0-1a99-4fc7-afff-b162b8c834ba",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "goederen bestellen",
+      "uri": "http://data.europa.eu/esco/skill/210827e3-3129-45a2-8683-70399f3f561f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "organisatorische beleidslijnen opstellen",
+      "uri": "http://data.europa.eu/esco/skill/3254275d-a1b5-4640-9481-02f38780ac35",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "recreatieactiviteiten",
+      "uri": "http://data.europa.eu/esco/skill/7ba2ce03-ac36-4cf5-9383-e665ed0d86c3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "strategieën om inkomsten te genereren ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/ad28c970-6bc7-4fff-9c01-0f4d67769de3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "recreatieve activiteiten promoten",
+      "uri": "http://data.europa.eu/esco/skill/e517f098-dce4-4ecd-9371-499936c0f947",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "productkennis",
+      "uri": "http://data.europa.eu/esco/skill/d6d3fee7-47e2-47f4-a0ec-6c75f28c6abd",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klanttevredenheid garanderen",
+      "uri": "http://data.europa.eu/esco/skill/00e53a0a-c0ba-4c9f-a2ed-4706d5832a00",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klein tot middelgroot bedrijf beheren",
+      "uri": "http://data.europa.eu/esco/skill/31032902-0909-44ac-a8e7-b6b1d5f52149",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "dagelijkse prioriteiten stellen",
+      "uri": "http://data.europa.eu/esco/skill/65ca5e3c-940c-46b2-b277-aff394cfdd4c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toezicht houden op het beheer van een zaak",
+      "uri": "http://data.europa.eu/esco/skill/435f167a-bb04-4bed-9167-94712ce01020",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "leiding geven aan personeel",
+      "uri": "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "naleving van bedrijfsregels waarborgen",
+      "uri": "http://data.europa.eu/esco/skill/4cb51222-3e2e-417c-9a5c-e9ccf262721d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "een professioneel netwerk ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/bf5d77ad-e18c-48d8-83f0-bc79c011c74a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "recreatieprogramma’s ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/c5111560-0140-48bc-8475-0638a8cc852f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "behoeften van klanten identificeren",
+      "uri": "http://data.europa.eu/esco/skill/68698869-c13c-4563-adc7-118b7644f45d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "doelstellingen voor de middellange en lange termijn plannen",
+      "uri": "http://data.europa.eu/esco/skill/cc3b901c-4d66-48f8-90b9-41883be1e1ed",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "hygiënenormen opstellen",
+      "uri": "http://data.europa.eu/esco/skill/202c0a90-e45f-4b9a-8bd2-694adc0f90e4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werknemers opleiden",
+      "uri": "http://data.europa.eu/esco/skill/e54ff029-1ce9-447d-a5b2-eb7283a23e6e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "noodevacuatieplannen beheren",
+      "uri": "http://data.europa.eu/esco/skill/c1b0bfc2-4932-4e03-9077-92bc56042511",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klachten van klanten afhandelen",
+      "uri": "http://data.europa.eu/esco/skill/28d715e3-3e5b-4fb6-8dd2-4be4919c8587",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gasten begroeten",
+      "uri": "http://data.europa.eu/esco/skill/26a6e6d2-1c9a-4d7e-8c04-5ba16d1f53da",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "relaties met leveranciers onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/3cd35f5d-ce6d-4f14-9a09-53d7a28d834c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werkprocedures ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/c64c4f42-253b-4d53-8637-fd00d86100c7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verkoopopbrengsten maximaliseren",
+      "uri": "http://data.europa.eu/esco/skill/9f10e94b-a43d-4772-9f60-24e9bbbdedb7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "salarissen beheren",
+      "uri": "http://data.europa.eu/esco/skill/9d916d7c-89b3-4084-a6d9-e2b0b3091404",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over het gebruik van cosmetica",
+      "uri": "http://data.europa.eu/esco/skill/78ecad49-4579-4e6d-932e-edeaada0fdfe",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "cosmetica aanbevelen aan klanten",
+      "uri": "http://data.europa.eu/esco/skill/9bc5849d-4337-4163-aefc-89a097b9b1b1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "relaties met klanten onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/2239694b-771a-4586-8b54-2794e361a9ae",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "boekhoudregelgeving",
+      "uri": "http://data.europa.eu/esco/skill/2ff405ec-f59c-4a7b-84b6-9776a49582c4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "professionele administratie bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/8ebb2c0a-0baa-43bf-95cf-094047c57427",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "communiceren met klanten",
+      "uri": "http://data.europa.eu/esco/skill/0da516ee-e70e-4384-be13-f5ff80be8127",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "personeel aanwerven",
+      "uri": "http://data.europa.eu/esco/skill/496932f1-0b6b-4f73-9432-d95c7ddcd43b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verslag uitbrengen over het algemene beheer van een bedrijf",
+      "uri": "http://data.europa.eu/esco/skill/307ffd2d-8fb3-43ff-8ad8-4052382f8f83",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "cosmetica verkopen",
+      "uri": "http://data.europa.eu/esco/skill/7b56814d-5617-4e9a-af69-f30e63358759",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gratis stalen van cosmetica aanbieden",
+      "uri": "http://data.europa.eu/esco/skill/2a456cc5-683f-4eeb-ba20-5a523ac56112",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kosten-batenanalyserapporten verstrekken",
+      "uri": "http://data.europa.eu/esco/skill/48b68726-0fd6-4e03-a5eb-82236516ee7a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verkoopfacturen opstellen",
+      "uri": "http://data.europa.eu/esco/skill/e3e42d54-78bd-4337-aa87-bb31a7670c9a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "marketingstrategieën implementeren",
+      "uri": "http://data.europa.eu/esco/skill/13e2378e-0d10-450d-843a-b3592575826e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gegevens over voorraden bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/f60416d5-2d98-4401-ba0d-b92b53e01d86",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "schoonmaakwerkzaamheden beheren",
+      "uri": "http://data.europa.eu/esco/skill/a97353c8-f2a3-47be-86e1-f7c301fca630",
+      "categorie": "optioneel"
+    }
+  ]
+}

@@ -128,6 +128,11 @@ uv run --with openpyxl python scripts/download_kwalificatiedossiers.py  # s-bb �
 uv run python scripts/convert_kwalificatiedossiers_md.py                 # PDF → <crebo>.md (markitdown, parallel)
 ./scripts/sync_kwalificatiedossiers.sh                                   # Box → lokaal
 ./scripts/sync_kwalificatiedossiers.sh --upload                          # lokaal → Box
+
+# Skills-taxonomie (aanvullende AI-bron, OER → beroep → skills via ESCO)
+uv run python scripts/build_skills_taxonomie.py            # alle ontbrekende crebo's
+uv run python scripts/build_skills_taxonomie.py --reset    # alles opnieuw matchen
+uv run python scripts/build_skills_taxonomie.py --crebo 25180   # één crebo
 ```
 
 Overige scripts in `scripts/` (`seed_rebuild_students.py`, `convert_oers_markdown.py`,
@@ -284,6 +289,12 @@ pdfplumber over PDF. Hard cap: `_MAX_OER_TEKST_TEKENS = 500_000` tekens.
 default `<repo>/kwalificatiedossiers/pdfs`, override via env-var `KWALDOSSIERS_PAD`. Lege
 string als de crebo geen KD heeft — de chat werkt dan OER-only.
 
+`laad_skills_tekst(crebo)` leest het skills-artefact `data/skills/<crebo>.json` (hard cap
+`_MAX_SKILLS_TEKST_TEKENS = 50_000`) en formatteert beroep + essentiële/optionele skills tot een
+tekstblok. Pad-resolutie via `pad_skills(crebo)`: default `<subproject>/data/skills`, override via
+env-var `SKILLS_PAD`. Lege string als de crebo geen artefact of geen gematcht beroep heeft — de
+chat werkt dan zonder skills. Zie de Skills-taxonomie-sectie verderop.
+
 Toon `LAGE_RELEVANTIE_BERICHT` wanneer `laad_oer_tekst()` een lege string teruggeeft
 (bestand ontbreekt of niet leesbaar).
 
@@ -293,9 +304,12 @@ claim drie elementen: **bron** ("Volgens de OER" of "Volgens het kwalificatiedos
 tussen dubbele aanhalingstekens**. Reden: een OER is een juridisch document — antwoorden
 moeten verifieerbaar zijn. De OER is leidend; het KD wordt alleen geraadpleegd als de OER het
 onderwerp niet of onvoldoende behandelt, met de inleider "De OER beschrijft dit niet; volgens
-het kwalificatiedossier…". Markdown-blockquotes uit het AI-antwoord renderen via CSS als
-pull-quote citaten. Spec: `docs/specs/2026-05-06-publieke-oer-citaten-en-pdf-design.md`
-(vanuit repo-root).
+het kwalificatiedossier…". Voor de **skills-taxonomie** geldt een **aangepaste citatie** (een
+taxonomie heeft geen secties of pagina's): bron + beroep + categorie + exacte skill-naam, bijv.
+*Volgens de ESCO-skillstaxonomie hoort bij het beroep "kok" de essentiële skill "kooktechnieken
+gebruiken"*. Het template verbiedt expliciet verzonnen paginanummers bij skills.
+Markdown-blockquotes uit het AI-antwoord renderen via CSS als pull-quote citaten. Spec:
+`docs/specs/2026-05-06-publieke-oer-citaten-en-pdf-design.md` (vanuit repo-root).
 
 **PDF-bekijken op publieke pagina** (`0_oer_vraag.py`): `pub_oer_paden: list[Path]` in session
 state parallel aan `pub_oer_labels`. Per geladen OER een `📄 Bekijk OER N` knop boven de chat;
@@ -353,6 +367,43 @@ Eerste vraag in een sessie: ~$0.09 (OER-only) → ~$0.14 (OER+KD); vervolgvragen
 prompt-cache en kosten ~$0.013 → ~$0.018. Totaal per sessie ≈ +47% (~$0.05). De
 `_MAX_DOSSIER_TEKST_TEKENS = 300_000`-cap snijdt 7 van de 240 KDs af (3%); er is geen
 aanleiding deze cap nu te verlagen. Herhaal de meting met `scripts/meet_token_kosten.py`.
+
+### Skills-taxonomie (aanvullende bron)
+
+Een OER leidt op voor een beroep; van dat beroep willen we de benodigde **skills** kunnen tonen
+("welke skills heb ik nodig voor het beroep Kok?"). Anders dan bij OER↔KD is er **geen directe
+crebo-sleutel** naar een skills-bron — de koppeling loopt **OER → beroep → skills** via
+tekstmatching.
+
+**Bron: ESCO** (European Skills, Competences, Qualifications and Occupations) — de keyless
+REST-API `https://ec.europa.eu/esco/api` met Nederlandstalige labels. ESCO mapt elk beroep op
+essentiële + optionele skills. Onderzocht alternatief is **CompetentNL** (de bron áchter het
+UWV-skills-dashboard, zelf op ESCO gebaseerd): rijkere NL-data, crebo-gekoppeld via
+`EducationalNorm.ksmo:opleidingscode`, maar het SPARQL-endpoint `https://sparql.competentnl.nl/v1`
+vereist een API-key (DevPortal-registratie + ~2 dagen goedkeuring). Het artefact-formaat is
+**bron-agnostisch** zodat CompetentNL later onder ESCO kan schuiven zonder schemawijziging.
+
+**Pipeline** (`skills_bron.py`):
+```
+opleidingsnaam → schoon_opleidingsnaam()  → beroep-zoekterm (strip crebo/jaar/leerweg/OER-ruis)
+zoekterm+KD-domein → zoek_esco_beroepen() → kandidaat-beroepen (ESCO occupation-search, nl)
+kandidaten     → _kies_met_llm()          → beste beroep, of "GEEN" (Haiku; brede opl. → GEEN)
+beroep-uri     → haal_esco_beroep_details()→ definitie + essentiële/optionele skills
+```
+De **LLM-keuze** is essentieel: ESCO's top-1 is onbetrouwbaar (`chauffeur wegvervoer` →
+"chauffeur gevaarlijke stoffen" i.p.v. "vrachtwagenchauffeur"). Claude kiest uit de kandidaten
+met de opleidingsnaam **én het KD-domein** als context; brede instroomopleidingen (zoals
+"Entree") krijgen bewust "GEEN" i.p.v. een willekeurig beroep.
+
+**Artefact**: `scripts/build_skills_taxonomie.py` schrijft per crebo een uniform
+`data/skills/<crebo>.json` plus een reviewbare `data/skills/_match_overzicht.csv`. Anders dan de
+rest van `data/` (gitignored) is **`data/skills/` wél getrackt** (via `.gitignore`-negatie): de
+artefacten zijn klein + ESCO-afgeleid (CC BY), dus de gecureerde matches zitten in de repo en
+werken op elke machine zonder rebuild. **Idempotent**: bestaande bestanden worden overgeslagen
+(de LLM-match is niet-deterministisch en wordt zo gepind); `--reset` forceert herbouw. Coverage (2026-05, 247 crebo's): **215 gematcht (87%)**, 32 bewust ongematcht (geen
+passend beroep). De review-CSV is bedoeld voor **handmatige eyeballing** — een match-score is
+geen correctheidscheck, en verkeerde-maar-plausibele matches (taxonomiegaten, bv. "mediamaker")
+passeren stil. Lees de CSV bij twijfel.
 
 ## Bekende valkuilen
 

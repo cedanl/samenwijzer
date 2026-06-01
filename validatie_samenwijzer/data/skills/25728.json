@@ -1,0 +1,211 @@
+{
+  "crebo": "25728",
+  "opleiding": "25728_BOL_2025__OER (OUD) - 25728O - Office & Management Support Specialist",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "office manager",
+    "uri": "http://data.europa.eu/esco/occupation/6e6839b6-099c-4802-906e-7f2c8203ee69",
+    "definitie": "Office managers houden toezicht op het administratieve werk dat administratief medewerkers in opdracht van verschillende soorten organisaties of verenigingen verrichten. Zij voeren micromanagement uit en houden een goed overzicht over administratieve processen zoals het controleren van correspondentie, het ontwerpen van archiveringssystemen, het beoordelen en goedkeuren van leveringsaanvragen en het toewijzen en monitoren van administratieve functies. Zij rapporteren aan managers binnen dezelfde afdeling of aan algemeen managers in bedrijven, afhankelijk van de bedrijfsgrootte."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "sales support medewerker",
+    "ict network administrator",
+    "kwaliteitscontroleur farmaceutische industrie",
+    "ict security administrator",
+    "hoofd ict-beveiliging",
+    "office manager",
+    "ict security manager",
+    "midofficemedewerker",
+    "ict business analyst",
+    "ict business analysis manager",
+    "businessanalist",
+    "businessconsultant",
+    "business intelligence manager",
+    "ict business development manager",
+    "businessdevelopmentmanager",
+    "eBusiness-manager"
+  ],
+  "skills": [
+    {
+      "label": "activiteiten delegeren",
+      "uri": "http://data.europa.eu/esco/skill/b00e948c-19be-4951-8cff-60f88f1046e9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "corporate governance ten uitvoer brengen",
+      "uri": "http://data.europa.eu/esco/skill/f2c63b7a-ed6c-4890-9f8c-7685d172624c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "administratieve systemen beheren",
+      "uri": "http://data.europa.eu/esco/skill/77e7cb08-2c6f-42ab-881b-b34b2318acbe",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "leiding geven aan personeel",
+      "uri": "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kostenbeheer",
+      "uri": "http://data.europa.eu/esco/skill/7d35602d-bc94-4975-aa7c-f4e8e05ce8e0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kantoorsystemen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/71dde84c-0058-4c52-a556-523369333db8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kantoorfaciliteitensystemen beheren",
+      "uri": "http://data.europa.eu/esco/skill/6ae8306a-4f9d-4410-ac82-6406f3cbd16a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verschillende communicatiekanalen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/415abd43-e8e5-4643-b5da-5f11307af57a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "personeelscapaciteit analyseren",
+      "uri": "http://data.europa.eu/esco/skill/d58a48d1-5b7f-4028-ae11-b051d13ee1a8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "behoefte aan kantoorartikelen beheren",
+      "uri": "http://data.europa.eu/esco/skill/25f46432-5ee9-4cb7-a18b-d2ee41761823",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "behoefte aan kantoorapparatuur beheren",
+      "uri": "http://data.europa.eu/esco/skill/cb108a0a-88e6-4579-885d-b1e794ada512",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werkgerelateerde verslagen schrijven",
+      "uri": "http://data.europa.eu/esco/skill/918f5211-b99f-4b29-9a34-6e475583ef55",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kantoorsoftware",
+      "uri": "http://data.europa.eu/esco/skill/cf310cff-0d28-4dbc-9dbb-cc500a3196c2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "instructies aan medewerkers geven",
+      "uri": "http://data.europa.eu/esco/skill/1dea2f3a-857c-4fc3-b1f8-d5f2015c46a9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verbeteringen aanbrengen aan werkactiviteiten",
+      "uri": "http://data.europa.eu/esco/skill/b184750e-9f9e-4ef2-a882-845e6058b605",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werksfeer van continue verbetering creëren",
+      "uri": "http://data.europa.eu/esco/skill/9d59f4e5-20a5-428e-b8b3-645043500457",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "administratieve taken uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/ab986bc4-df92-4351-9ac1-aa75af943cf7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "budgetten beheren",
+      "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "classificatiesystemen ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/49812c2d-3a36-4be8-bd41-8c0be3db7c6d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "software voor het beheer van klantrelaties gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/9889b795-d755-41b2-8afd-2e3c87a65a38",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vakbondsregelgeving",
+      "uri": "http://data.europa.eu/esco/skill/3dfa5c1e-a2cc-4c09-9e60-d21b28072c37",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "boekhoudkundige technieken",
+      "uri": "http://data.europa.eu/esco/skill/880c54f9-866e-4f37-b5fa-25ef8a7d49b6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "jaarrekeningen opstellen",
+      "uri": "http://data.europa.eu/esco/skill/60f51172-37c0-4933-a27a-cbf55dcd7580",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werknemers opleiden",
+      "uri": "http://data.europa.eu/esco/skill/e54ff029-1ce9-447d-a5b2-eb7283a23e6e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "belastingwetgeving",
+      "uri": "http://data.europa.eu/esco/skill/d669af41-756c-48d9-a286-1443253f54b1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "projectbeheer",
+      "uri": "http://data.europa.eu/esco/skill/7111b95d-0ce3-441a-9d92-4c75d05c4388",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "door managers opgestelde concepten nakijken",
+      "uri": "http://data.europa.eu/esco/skill/f241fbf8-08a2-4c05-b9c1-3438d3e648dd",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "arbeidswetgeving",
+      "uri": "http://data.europa.eu/esco/skill/08fe5910-8c4c-4679-a988-eb2ded3c4909",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contractadministratie bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/a703b581-ad64-4791-8bb3-624aea569fa5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "communiceren met klanten",
+      "uri": "http://data.europa.eu/esco/skill/0da516ee-e70e-4384-be13-f5ff80be8127",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "rekeningen beheren",
+      "uri": "http://data.europa.eu/esco/skill/e2e15494-65b9-4af5-8b86-53fb51e7e022",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contractenrecht",
+      "uri": "http://data.europa.eu/esco/skill/5c606d18-6404-4047-b235-350f18e11827",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "diensten van werknemers plannen",
+      "uri": "http://data.europa.eu/esco/skill/85aa1871-db96-42f7-801f-c39f924de2d7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "financiële draagkracht",
+      "uri": "http://data.europa.eu/esco/skill/811bdb9d-5bf7-4b5a-a3f5-4fc2002f6d57",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "capaciteitenniveau's van medewerkers beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/426c1016-5a78-4357-9734-9cf5127d4fb7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "personeel aanwerven",
+      "uri": "http://data.europa.eu/esco/skill/496932f1-0b6b-4f73-9432-d95c7ddcd43b",
+      "categorie": "optioneel"
+    }
+  ]
+}

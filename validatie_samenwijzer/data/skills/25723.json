@@ -1,0 +1,205 @@
+{
+  "crebo": "25723",
+  "opleiding": "25723_BOL_2025__25723BOL2025Examenplan-Allround-Assistant-Business-Services-cohort-2025",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "executive assistant",
+    "uri": "http://data.europa.eu/esco/occupation/2a04a1df-a3b9-403e-a245-e7f93fdddd44",
+    "definitie": "Executive assistants zijn gevorderde administratief medewerkers die werken voor topmanagers of in internationale vestigingen in diverse sectoren. Zij organiseren vergaderingen, maken dossiers aan en houden ze bij, regelen reizen, leiden werknemers op, communiceren in andere talen en beheren de dagelijkse activiteiten van het kantoor."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "ict business analyst",
+    "manager kledingwinkel",
+    "executive assistant",
+    "ict business analysis manager",
+    "businessanalist",
+    "businessconsultant",
+    "business intelligence manager",
+    "ict business development manager",
+    "businessdevelopmentmanager",
+    "eBusiness-manager"
+  ],
+  "skills": [
+    {
+      "label": "administratieve taken uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/ab986bc4-df92-4351-9ac1-aa75af943cf7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zakenrelaties aangaan",
+      "uri": "http://data.europa.eu/esco/skill/dc72ad0a-c5dc-4abd-bc0d-ca43e82162e1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vertrouwelijkheid in acht nemen",
+      "uri": "http://data.europa.eu/esco/skill/8d202e22-85e9-47b1-a1e0-3296d17244cd",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kantoorsystemen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/71dde84c-0058-4c52-a556-523369333db8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "planningen meedelen aan betrokken personen",
+      "uri": "http://data.europa.eu/esco/skill/da56feea-941c-4ff6-b573-bb16ccbde670",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bedrijfsonderzoek voeren",
+      "uri": "http://data.europa.eu/esco/skill/0839eea4-c57b-4c14-b19b-923fbedb5d88",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "berichten aan mensen doorgeven",
+      "uri": "http://data.europa.eu/esco/skill/81dc035c-921b-4fea-a453-94538e86097c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kernwoorden omzetten in volledige teksten",
+      "uri": "http://data.europa.eu/esco/skill/06e347f2-2504-4ee8-b7f7-8d9542f56207",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verschillende communicatiekanalen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/415abd43-e8e5-4643-b5da-5f11307af57a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "personeelsagenda beheren",
+      "uri": "http://data.europa.eu/esco/skill/7ec3c77b-1955-4397-9bd3-7b7b9d0b8531",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "omgaan met managers",
+      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ondernemingsbeleid",
+      "uri": "http://data.europa.eu/esco/skill/f75b740c-b36c-495e-bc67-efe347bbc6b5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "instructies voor opdrachten verwerken",
+      "uri": "http://data.europa.eu/esco/skill/48391ec6-42ba-4093-acf4-c7673b0c07f4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vergaderingen regelen",
+      "uri": "http://data.europa.eu/esco/skill/906c9e66-bdee-4f8e-93d7-88d9fcf39a0a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "register van aandeelhouders bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/e345cf05-bc6b-43a6-aca3-2f9c1ec0e772",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "reisarrangementen voor personeel organiseren",
+      "uri": "http://data.europa.eu/esco/skill/382ed835-8958-4d86-8471-cff55c6df3e7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beleid voor informatiebeveiliging toepassen",
+      "uri": "http://data.europa.eu/esco/skill/86d2e2ea-1ba2-4aa6-b465-8a1f9abc81b8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kantoorfaciliteitensystemen beheren",
+      "uri": "http://data.europa.eu/esco/skill/6ae8306a-4f9d-4410-ac82-6406f3cbd16a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "evenementen organiseren",
+      "uri": "http://data.europa.eu/esco/skill/2111dff8-f830-46ad-80ce-7885893b3134",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zakelijke e-mails opstellen",
+      "uri": "http://data.europa.eu/esco/skill/ec0bbf39-0edd-4015-a2c3-82ad563ce3a8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "communiceren met klanten",
+      "uri": "http://data.europa.eu/esco/skill/0da516ee-e70e-4384-be13-f5ff80be8127",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "in een internationale omgeving werken",
+      "uri": "http://data.europa.eu/esco/skill/07ba491f-2fd4-4bab-bf52-32934c6f0b9f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "door managers opgestelde concepten nakijken",
+      "uri": "http://data.europa.eu/esco/skill/f241fbf8-08a2-4c05-b9c1-3438d3e648dd",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "internationale in- en uitvoerbepalingen",
+      "uri": "http://data.europa.eu/esco/skill/c4118654-695f-44bc-b9d3-1b26f3a955f8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verschillende talen spreken",
+      "uri": "http://data.europa.eu/esco/skill/2de4572a-4724-4f76-afc2-72a568a264ac",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "internationale betrekkingen opbouwen",
+      "uri": "http://data.europa.eu/esco/skill/e1e94871-b7d2-4492-a205-75ea078f9951",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "belastingaangifteformulieren voorbereiden",
+      "uri": "http://data.europa.eu/esco/skill/22a173f5-868c-4d82-87e6-beed500ce070",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "begrippen in een taal vertalen",
+      "uri": "http://data.europa.eu/esco/skill/fd8c0029-9dc7-4b54-845b-ed30c61ba0f8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contacten leggen met bestuursleden",
+      "uri": "http://data.europa.eu/esco/skill/c0949c80-94c5-4bf1-8e05-ebed75807c01",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "intercultureel bewustzijn tonen",
+      "uri": "http://data.europa.eu/esco/skill/7d23c508-c007-4221-bb84-0c9a479b8ea6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "commerciële invoer-/uitvoerdocumentatie maken",
+      "uri": "http://data.europa.eu/esco/skill/0959a14b-9743-4d71-93ba-a1fefa56e5ae",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ontwikkeling van de jaarlijkse begroting ondersteunen",
+      "uri": "http://data.europa.eu/esco/skill/147170ba-0141-4337-89af-b4513d745afe",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "loonrapporten beheren",
+      "uri": "http://data.europa.eu/esco/skill/3ee090a1-9d1c-44ed-bd93-f6b7c9b68a97",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "jaarrekeningen opstellen",
+      "uri": "http://data.europa.eu/esco/skill/60f51172-37c0-4933-a27a-cbf55dcd7580",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "internationale tarieven",
+      "uri": "http://data.europa.eu/esco/skill/21a3967a-dca2-4efa-9e5f-943f15527a47",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "presentatiemateriaal voorbereiden",
+      "uri": "http://data.europa.eu/esco/skill/1ba59ce0-7fec-434b-8d5c-9b275250a26c",
+      "categorie": "optioneel"
+    }
+  ]
+}

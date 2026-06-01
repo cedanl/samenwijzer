@@ -1,0 +1,288 @@
+{
+  "crebo": "25829",
+  "opleiding": "25829_BOL_2025__25829BOLBBL2025MJP-TimmermanN2",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "timmerman",
+    "uri": "http://data.europa.eu/esco/occupation/2a22ff9e-de3b-408d-b312-5034896cc4f4",
+    "definitie": "Timmermannen zagen, vormen en monteren houten elementen voor de bouw van gebouwen en andere bouwwerken. Zij gebruiken ook materialen als kunststof en metaal. Timmermannen creëren de houten frames ter ondersteuning van de gebouwen van hout."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "timmerman",
+    "opzichter timmerwerk",
+    "vakdocent industriële vormgeving beroepsonderwijs"
+  ],
+  "skills": [
+    {
+      "label": "bouwprofielen installeren",
+      "uri": "http://data.europa.eu/esco/skill/8ed53702-3e4e-4637-a4c3-9dc8f4281019",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zaagapparatuur in goede conditie houden",
+      "uri": "http://data.europa.eu/esco/skill/8fc9753d-810d-414a-ba0e-139c99f0b201",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheids- en veiligheidsprocedures in de bouw in acht nemen",
+      "uri": "http://data.europa.eu/esco/skill/86df7af2-f9f3-4c06-a500-7f1fba9e78fe",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bouwmaterialen vervoeren",
+      "uri": "http://data.europa.eu/esco/skill/4af56376-7b2f-4ced-ac58-0c3967bd1e83",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "afval sorteren",
+      "uri": "http://data.europa.eu/esco/skill/110d7aa3-e44e-4cce-a927-8d4de615f3d9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "houten elementen in constructies installeren",
+      "uri": "http://data.europa.eu/esco/skill/11c0bfec-6bc8-4ec0-a535-91bd65be92c5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "houten elementen bevestigen",
+      "uri": "http://data.europa.eu/esco/skill/a47cfa4f-30f5-4306-b23d-11fbacd7f189",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "soorten hout",
+      "uri": "http://data.europa.eu/esco/skill/cf2005ee-c788-4283-81d9-b443dfdf2c2e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ergonomisch werken",
+      "uri": "http://data.europa.eu/esco/skill/156f8c5b-894a-4ccc-a70e-37a2726f3f00",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "houtafwerkingen aanbrengen",
+      "uri": "http://data.europa.eu/esco/skill/e040fb97-ac17-4cd0-bf74-7e96c83811b6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veiligheidsuitrusting gebruiken tijdens bouwwerkzaamheden",
+      "uri": "http://data.europa.eu/esco/skill/c643e59b-d74c-4f44-b76e-6e1d96c05ec4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "houtsnijden",
+      "uri": "http://data.europa.eu/esco/skill/bb933bf6-e9a6-4dd8-8c88-0d8bacae30a5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "smetten",
+      "uri": "http://data.europa.eu/esco/skill/2da864d4-339f-40ab-91c0-9f8d229a2c0b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "houtbewerkingsgereedschappen",
+      "uri": "http://data.europa.eu/esco/skill/4c06a716-6363-4308-b548-88f7a3e70097",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "houten elementen bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/80e257a9-5725-4faf-ba94-d1675ccc878d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "houtelementen samenvoegen",
+      "uri": "http://data.europa.eu/esco/skill/2e8e2acf-5d58-4d99-807d-2ed77a6c8b17",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "houtvervorming herkennen",
+      "uri": "http://data.europa.eu/esco/skill/65b32af2-3665-49a4-8eec-d3b2138ec09b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bouwmaterialen inspecteren",
+      "uri": "http://data.europa.eu/esco/skill/50f2d23c-b3fb-48a5-967b-14fd0a6dd205",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "2D-schema's interpreteren",
+      "uri": "http://data.europa.eu/esco/skill/dfce2aba-783e-4e17-9c17-e74aca505ec2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "meetinstrumenten gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/b92758d4-4591-4df1-9ceb-f907aa71ebd9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "houtverbindingen maken",
+      "uri": "http://data.europa.eu/esco/skill/c3c3b550-f95e-4f1c-bdf3-ad1465e7b2ab",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "3D-schema's interpreteren",
+      "uri": "http://data.europa.eu/esco/skill/aafbb139-02c6-4f35-bc62-ff73faf97d6d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "houtoppervlak reinigen",
+      "uri": "http://data.europa.eu/esco/skill/adf661fe-9429-4094-8671-ca69fb72ad02",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "glad houtoppervlak maken",
+      "uri": "http://data.europa.eu/esco/skill/5df6be8c-c4ff-4bef-b744-3d502e5e5330",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "binnenkomende bouwmaterialen verwerken",
+      "uri": "http://data.europa.eu/esco/skill/a3e0224a-c952-4b4e-b664-d7186f62715b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voorraadniveaus bewaken",
+      "uri": "http://data.europa.eu/esco/skill/44f6a65f-6be7-4818-9a66-73908797283f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "houten daken bouwen",
+      "uri": "http://data.europa.eu/esco/skill/d03444d5-e127-4087-9295-29f0666c84d0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bouwmaterialen bestellen",
+      "uri": "http://data.europa.eu/esco/skill/9f1bd2a4-91af-4b60-aeb3-0fe1f4434966",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "energieprestaties van gebouwen",
+      "uri": "http://data.europa.eu/esco/skill/4e09e2d2-e317-47d2-bf5e-1d6c66be3efc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "hygiëne van de werkruimte onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/5598739b-6718-4cff-8402-91d7f65b1505",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "een CNC-controller programmeren",
+      "uri": "http://data.europa.eu/esco/skill/bf942c60-8539-4951-83ee-63f770da1cb8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bovenfrezen voor hout bedienen",
+      "uri": "http://data.europa.eu/esco/skill/96e78f7e-a14f-4ec3-80bf-e3098f50fdba",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "veiligheidsprocedures volgen bij werken op hoogte",
+      "uri": "http://data.europa.eu/esco/skill/fafbb75f-ec35-4cc2-996a-20c85ef6c266",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "reparatiekosten schatten",
+      "uri": "http://data.europa.eu/esco/skill/827ebc71-b406-483e-9617-33c63dd487a0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "benodigde bouwmaterialen berekenen",
+      "uri": "http://data.europa.eu/esco/skill/5d9dd44a-81f8-4710-bd4d-af27ec5c2139",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "pendelzagen bedienen",
+      "uri": "http://data.europa.eu/esco/skill/05f05855-acac-4366-a6ee-42f0bebe3780",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "uitschuifbare stang om diagonalen te meten gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/2a2cf590-67fd-473b-8ae0-f1f7d46bcbe7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werken in een bouwteam",
+      "uri": "http://data.europa.eu/esco/skill/4fa2d6ba-4fff-4f21-bddd-4a54ae840955",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "persoonlijke administratie bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/9df34bc3-25d4-4452-a896-4d19b94ef896",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "snijplan tekenen",
+      "uri": "http://data.europa.eu/esco/skill/8e1dd4a6-0d0e-4c0a-828d-da98a8248f44",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gegevens over de voortgang van het werk bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/ccfbdaad-b91d-4bfe-bd0e-d30b33587f19",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "regelgeving inzake asbestverwijdering",
+      "uri": "http://data.europa.eu/esco/skill/d13f1685-9848-4c9e-a40a-686ddb407858",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "tafelzagen bedienen",
+      "uri": "http://data.europa.eu/esco/skill/c8665888-bf94-4ca8-accb-0b8ab1e82e09",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "isolatiemateriaal installeren",
+      "uri": "http://data.europa.eu/esco/skill/7eea6974-d606-4175-b95e-f66554816783",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bandzagen bedienen",
+      "uri": "http://data.europa.eu/esco/skill/2a8834b9-33a6-4abf-b0a4-219925a331bd",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "schuurmachine gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/2aa6039e-c747-4f74-a61e-e96a195f3260",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "steiger bouwen",
+      "uri": "http://data.europa.eu/esco/skill/91991706-cd8e-4795-9784-715fc0250c8d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "prijsaanvragen beantwoorden",
+      "uri": "http://data.europa.eu/esco/skill/2206af0c-3deb-48c5-a544-b9983d347da3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "restauratietechnieken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/20b9852f-a445-4097-8273-4a18fa6bfff0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "tijdelijke infrastructuur op bouwlocatie opzetten",
+      "uri": "http://data.europa.eu/esco/skill/ef2adfe8-d7a5-465d-bbe6-8f9e913ae7ed",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werkgebied beveiligen",
+      "uri": "http://data.europa.eu/esco/skill/6ed2fb8d-3580-497f-8a21-30a0ada5caae",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "materiaal onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/5033c2fb-ec55-4b8e-b0a4-9379593f1e1c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "conservatiebehoeften beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/1e25d043-0307-4e50-8a19-9e7cce22caea",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ladingvoorschriften voor het vervoer van goederen",
+      "uri": "http://data.europa.eu/esco/skill/db8b59b2-5e51-4944-bd2e-2c5f4b1ebabd",
+      "categorie": "optioneel"
+    }
+  ]
+}

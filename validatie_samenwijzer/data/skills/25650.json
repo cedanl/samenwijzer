@@ -1,0 +1,290 @@
+{
+  "crebo": "25650",
+  "opleiding": "2021 - 25650 OER AA 3e leerweg Vastgesteld",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "apothekersassistent",
+    "uri": "http://data.europa.eu/esco/occupation/c1a86d6d-7785-43e1-994b-958eba58fff7",
+    "definitie": "Apothekersassistenten vervullen algemene taken zoals voorraadbeheer, kassawerk en administratieve taken. Zij houden de inventaris bij binnen de apotheek onder toezicht van een apotheker."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "assistent-boekhouder",
+    "accountant",
+    "officier zeedienst",
+    "specialist taxatie bedrijfsovername",
+    "procesoperator zetmeelextractie",
+    "kraandrijver haven",
+    "graafmachinist",
+    "investeringsadviseur",
+    "verkoopspecialist zorgartikelen en -hulpmiddelen",
+    "apothekersassistent"
+  ],
+  "skills": [
+    {
+      "label": "farmaceutische inventaris opmaken",
+      "uri": "http://data.europa.eu/esco/skill/2832382f-fa74-439f-a85e-6ff2d03c9cd0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "actief luisteren",
+      "uri": "http://data.europa.eu/esco/skill/a17286c5-238d-4f0b-bc24-29e9121345de",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "hygiëne in de gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/0450eaee-1a00-4622-8f4e-5356fce816d2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kleine betalingen afhandelen",
+      "uri": "http://data.europa.eu/esco/skill/63321ecf-4fc6-44d9-88f1-5373a4f3038a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "communiceren met klanten",
+      "uri": "http://data.europa.eu/esco/skill/0da516ee-e70e-4384-be13-f5ff80be8127",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "communiceren met gebruikers van gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/c65aa043-98da-4136-9877-494e72d9e4cf",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "omgaan met noodzorgsituaties",
+      "uri": "http://data.europa.eu/esco/skill/51e79cb4-fab3-404c-88f3-cd4a1bd5879e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klinische richtlijnen volgen",
+      "uri": "http://data.europa.eu/esco/skill/76395873-7fe2-4f9a-b4b6-9932f8cbd0b4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "eigen verantwoordelijkheid aanvaarden",
+      "uri": "http://data.europa.eu/esco/skill/f90d4810-8bac-4e5e-b870-3e35a4138ff7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "effectief communiceren in de gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/7110bf9f-b245-4adc-9159-5081013fd64d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beleidsmakers over gezondheidsuitdagingen informeren",
+      "uri": "http://data.europa.eu/esco/skill/0b5aaee4-c948-4853-bf8d-b9cd6c4917ee",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werken in een multiculturele omgeving in de gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/b55f61a4-5f9e-4741-ba95-9ac04b64119b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronische en mobiele gezondheidstechnologieën gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/16636767-c215-4cf0-b126-e144fea20926",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor voldoende voorraad in de apotheek",
+      "uri": "http://data.europa.eu/esco/skill/509fedda-d520-46b5-a801-b3d36221a645",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "farmaceutische gegevens bewaren",
+      "uri": "http://data.europa.eu/esco/skill/16d076f8-5ae7-4e93-91df-4cdc13329f99",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "geldautomaat beheren",
+      "uri": "http://data.europa.eu/esco/skill/279101c1-e325-4349-bf58-401b6c8ff208",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "integratie bevorderen",
+      "uri": "http://data.europa.eu/esco/skill/bcd2ce08-ba12-4d66-865f-f4ba36419707",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bijdragen aan de continuïteit van de gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/13724e7d-b946-4773-915e-9621340237bc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beleidslijnen van de organisatie naleven",
+      "uri": "http://data.europa.eu/esco/skill/aa238394-8126-4ada-be2f-9dfe065cf314",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "geneesmiddelen voor zelfmedicatie",
+      "uri": "http://data.europa.eu/esco/skill/e7468bc3-9f25-4c78-9077-4fd118afa4a4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "wetgeving in verband met gezondheidszorg naleven",
+      "uri": "http://data.europa.eu/esco/skill/9fcf9918-fdef-49c3-aedc-518eb1e7e1f5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "geneesmiddelen",
+      "uri": "http://data.europa.eu/esco/skill/1236128d-9bb4-4d94-bc1e-40fd14824280",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "controleprocedures voor het verwerken van gevaarlijke stoffen opvolgen",
+      "uri": "http://data.europa.eu/esco/skill/02e235f4-a30a-412a-a06e-1c471ad28678",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor de veiligheid van gebruikers van de gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/ce0d6a42-59c1-433e-ab62-adfc969c46bb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "medische verzekeringsclaims verwerken",
+      "uri": "http://data.europa.eu/esco/skill/7361c086-443c-43c2-8215-31ef8e8895e5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheidsvoorlichting bieden",
+      "uri": "http://data.europa.eu/esco/skill/60b2dd49-c677-4f47-816e-aff3b577e113",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteitsnormen in verband met de uitoefening van gezondheidszorg naleven",
+      "uri": "http://data.europa.eu/esco/skill/98eb1f3b-3480-416b-bd4b-811946f7e347",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werken in multidisciplinaire gezondheidsteams",
+      "uri": "http://data.europa.eu/esco/skill/eba85523-6ad2-4cd9-9b27-a0b6a39b8cfa",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "informatie over de medische status van gebruikers van gezondheidszorg verkrijgen",
+      "uri": "http://data.europa.eu/esco/skill/2a8c1070-b7a6-4e4b-998a-21e885b6fb13",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "juiste bewaaromstandigheden voor geneesmiddelen handhaven",
+      "uri": "http://data.europa.eu/esco/skill/540a1886-ab91-4324-9f63-568533fad853",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "advies geven in verband met geïnformeerde toestemming van zorgontvangers",
+      "uri": "http://data.europa.eu/esco/skill/8232979d-6aa4-40c9-a12b-5152a52a76b8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "meeleven met gebruikers van gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/2475cd27-8d6c-4318-a364-21395b23acba",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "geneesmiddelen overbrengen",
+      "uri": "http://data.europa.eu/esco/skill/2755816d-b765-435e-a29e-dddfddee1786",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "organisatorische technieken gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/d3eccb86-f02d-4950-bfbd-20b9510774a1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "informatie op voorschriften van artsen controleren",
+      "uri": "http://data.europa.eu/esco/skill/030de41b-bb8b-4e4b-859c-9afd4c17605b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor kwaliteitscontrole van farmaceutische producten",
+      "uri": "http://data.europa.eu/esco/skill/7b34af45-c010-4f1e-a2f3-b3d690addb45",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gegevens van gebruikers van gezondheidszorg beheren",
+      "uri": "http://data.europa.eu/esco/skill/4d614c92-0c48-4a11-a5ed-416b34fd50d2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "logistiek van geneesmiddelen beheren",
+      "uri": "http://data.europa.eu/esco/skill/0d85dc6f-ea26-49a9-85b9-532441b000e2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "etiketten met voorschriften klaarmaken",
+      "uri": "http://data.europa.eu/esco/skill/4dfebc9d-bb40-4629-9224-07b995fccf69",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "telefonisch communiceren",
+      "uri": "http://data.europa.eu/esco/skill/de2f0ce8-f8d6-48c5-a213-4d065251cecf",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "reageren op veranderende omstandigheden in de gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/049c8caf-dd12-45fc-9bfa-b64051f32a19",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vervaldatum van geneesmiddelen controleren",
+      "uri": "http://data.europa.eu/esco/skill/f024dd81-76a9-4d84-950e-7c6d1383a403",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "collaboratieve therapeutische relaties ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/d93f9e29-9740-4231-8486-13d377b99f05",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "farmacokinetiek",
+      "uri": "http://data.europa.eu/esco/skill/b7cd09b7-58d8-4f2e-87de-613ae629f270",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voorlichten over preventie van ziekte",
+      "uri": "http://data.europa.eu/esco/skill/097098fc-6d89-44e9-9305-98ac5c0a78ac",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contextspecifieke klinische vaardigheden toepassen",
+      "uri": "http://data.europa.eu/esco/skill/e18a6a3c-4f26-4141-8c72-4b4f01d77914",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "farmaceutische chemie",
+      "uri": "http://data.europa.eu/esco/skill/acbb31e0-7cfb-4987-a9a7-4df119e0b83b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "fytotherapie",
+      "uri": "http://data.europa.eu/esco/skill/493fb8bf-d880-4499-b374-b1ecb0df4b50",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kassa's bedienen",
+      "uri": "http://data.europa.eu/esco/skill/0cb013af-6dd9-4fb2-b34e-63dda1a5cf82",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "farmaceutisch advies geven",
+      "uri": "http://data.europa.eu/esco/skill/705ec490-d4e8-4792-a230-82182f53d14a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "in vreemde talen communiceren met zorgverleners",
+      "uri": "http://data.europa.eu/esco/skill/c6c0ceda-a2b6-4f8f-8d31-e259933300dc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gezondheidswetenschappen toepassen",
+      "uri": "http://data.europa.eu/esco/skill/a49fdda1-abd1-40e0-a824-3c545d98f32e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "homeopathie",
+      "uri": "http://data.europa.eu/esco/skill/daf3da9c-0b23-418f-befd-3d05337a2002",
+      "categorie": "optioneel"
+    }
+  ]
+}

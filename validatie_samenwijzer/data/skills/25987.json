@@ -1,0 +1,393 @@
+{
+  "crebo": "25987",
+  "opleiding": "25987_BOL_2025__Examenplannen Biologisch Dynamische landbouw  25-26",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "landbouwkundig adviseur",
+    "uri": "http://data.europa.eu/esco/occupation/c40ef517-d4ab-4932-b184-9c2ea5b24fe2",
+    "definitie": "Landbouwkundig adviseurs verstrekken advies aan bedrijven, landbouwcoöperaties en kwekers van land- en tuinbouwgewassen op het gebied van de teelt van voedingsgewassen. Zij bestuderen de wetenschap, technologie en handel in verband met het kweken van planten. Zij onderzoeken gewassen en verrichten experimenten om de oogstopbrengsten en de productie van landbouwbedrijven te verbeteren. Landbouwkundig adviseurs onderzoeken ook de meest doeltreffende manieren om planten te oogsten en te telen."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "landbouwtechnisch ingenieur",
+    "landbouwkundig adviseur",
+    "sofroloog",
+    "landbouwmachinist",
+    "productmanager in de landbouw",
+    "vakdocent landbouw, bosbouw en visserij beroepsonderwijs",
+    "technicus landbouwmachines",
+    "landbouwmachinemonteur"
+  ],
+  "skills": [
+    {
+      "label": "biologie",
+      "uri": "http://data.europa.eu/esco/skill/9433da85-70fa-4a25-8f96-71fa59dd1989",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "irrigatiesystemen",
+      "uri": "http://data.europa.eu/esco/skill/700ea222-8139-4c48-95cf-014855565530",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "tuinbouwnormen en -praktijken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/63d22ad4-b8f9-4910-862f-febfdc2e7f5b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toezien op hygiënische procedures in agrarische omgevingen",
+      "uri": "http://data.europa.eu/esco/skill/5a8d4d8c-ff64-4f82-945e-ec6f56e05cbe",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "laboratoriumapparatuur onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/3529d640-5d49-45fe-8ede-491e9c8e0447",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "raadplegingsmethoden",
+      "uri": "http://data.europa.eu/esco/skill/38788a64-6271-40ff-9e0b-5644c38322ff",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beginselen van gewasproductie",
+      "uri": "http://data.europa.eu/esco/skill/4ca83b9d-afa0-49f8-b7af-e4e6a42ad299",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ongediertebestrijding bij planten",
+      "uri": "http://data.europa.eu/esco/skill/9d75efb9-0c77-4f86-b5e7-99100808564a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "milieuwetgeving inzake landbouw en bosbouw",
+      "uri": "http://data.europa.eu/esco/skill/3419fac9-575d-4492-a018-edff6f4dae26",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verbetering van gewasopbrengst onderzoeken",
+      "uri": "http://data.europa.eu/esco/skill/b47da85a-bfde-4012-a3b2-60be9f7ddcdc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "analytische wiskundige berekeningen uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/31c69100-b612-4a61-8db5-fd314318854c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vermeerdering van planten",
+      "uri": "http://data.europa.eu/esco/skill/f36dff27-a70e-4c23-b2de-e2dffe84adbf",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "agronomie",
+      "uri": "http://data.europa.eu/esco/skill/afdcb380-ef9f-4785-b877-cc551f035034",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vee beheren",
+      "uri": "http://data.europa.eu/esco/skill/d3d99bf2-cdad-4bdf-acd3-c94d599c4808",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "laboratoriumproeven uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/0b917c3e-e49f-40d9-8f95-3bc8e9c06fd2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "agrarische informatiesystemen en databanken gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/fdc388ba-c8f4-4455-a55f-ffdf29b05f5f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veiligheidsprocedures in laboratoria toepassen",
+      "uri": "http://data.europa.eu/esco/skill/6f571969-3640-4774-a9bc-fd2ef583fdec",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voedingsstoffen beheren",
+      "uri": "http://data.europa.eu/esco/skill/2ea26d96-22bc-4425-97d4-3fab5384f614",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "tuinbouwbeginselen",
+      "uri": "http://data.europa.eu/esco/skill/dcb01a4f-720a-480f-b61a-11a1286d56f3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bestrijding van plantenziekten",
+      "uri": "http://data.europa.eu/esco/skill/f8460277-3c9a-4be4-b203-600a2a295f47",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "experimentele gegevens verzamelen",
+      "uri": "http://data.europa.eu/esco/skill/89db623e-e1fc-4ec2-9a0f-7b72b4c35303",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werkgerelateerde verslagen schrijven",
+      "uri": "http://data.europa.eu/esco/skill/918f5211-b99f-4b29-9a34-6e475583ef55",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "oogstmethoden voor planten",
+      "uri": "http://data.europa.eu/esco/skill/b8931778-5f34-41a3-8200-b52357f70e74",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "overleggen met businessklanten",
+      "uri": "http://data.europa.eu/esco/skill/9531fe02-1e1f-4a36-95f7-a76a77cd4b8d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "soorten vee",
+      "uri": "http://data.europa.eu/esco/skill/c5f3e735-917b-4024-b2cf-19f4f75b2469",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "wiskunde",
+      "uri": "http://data.europa.eu/esco/skill/4339176e-3acd-4f7f-a5d9-445bee3d23f2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "milieuwetgeving",
+      "uri": "http://data.europa.eu/esco/skill/6f5850ea-5785-4e2c-b062-743066fd5bdb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Europese wetgeving inzake pesticiden",
+      "uri": "http://data.europa.eu/esco/skill/60c4cdfa-1aa3-452d-a989-10fd61706911",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "begrotingsbeginselen",
+      "uri": "http://data.europa.eu/esco/skill/74688c5d-2af1-4f7a-9d1c-00e808eaa1e6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "pesticiden",
+      "uri": "http://data.europa.eu/esco/skill/5b6abc4b-0cfe-4178-845d-479da3d2d699",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "laboratoriumtechnieken",
+      "uri": "http://data.europa.eu/esco/skill/8259c2c0-2749-41e2-a4a8-4a64a76eab37",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "eigen verantwoordelijkheid aanvaarden",
+      "uri": "http://data.europa.eu/esco/skill/f90d4810-8bac-4e5e-b870-3e35a4138ff7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voldoen aan het agrarisch praktijkreglement",
+      "uri": "http://data.europa.eu/esco/skill/a5a146a4-a2e5-4d47-a982-192c42f5d449",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "technische rapporten schrijven",
+      "uri": "http://data.europa.eu/esco/skill/941364b9-1375-4add-9889-d67bae99bc8c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contacten onderhouden met gewastelers",
+      "uri": "http://data.europa.eu/esco/skill/488d5779-aaed-4a94-b56c-bacc4becd6cb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voeden van vee",
+      "uri": "http://data.europa.eu/esco/skill/a7309d64-6209-49d7-878e-2b0e403908a4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "moleculaire biologie",
+      "uri": "http://data.europa.eu/esco/skill/8f2a4d74-b16f-4023-8fc1-b8dc8b21ffb9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "advies geven over oorzaken van gewasafwijkingen",
+      "uri": "http://data.europa.eu/esco/skill/f40be391-915a-4f80-bc3d-b727cfd172b6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "wetenschappelijke verhandelingen schrijven",
+      "uri": "http://data.europa.eu/esco/skill/c3c2420c-ce9a-4371-8eed-1db479c3a562",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "schade aan gewassen beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/908e8fa9-7ce7-4328-816f-381748504aa4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ecologie",
+      "uri": "http://data.europa.eu/esco/skill/a8429098-ddac-481b-91e7-688d021c092e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "advies geven over meststoffen en herbiciden",
+      "uri": "http://data.europa.eu/esco/skill/33e5a0ea-6e6f-4b22-9865-71864de92985",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "preventie van verontreiniging",
+      "uri": "http://data.europa.eu/esco/skill/75f312e1-622b-4751-8d93-815b32feaf8d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "biologische landbouw",
+      "uri": "http://data.europa.eu/esco/skill/186da517-9a3e-41cd-9158-4001e3694459",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "communicatietechnieken gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/7ff2c668-0e86-418a-a962-4958262ee337",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "persoonlijke vaardigheden ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/1835a7c1-600e-4b16-a0af-fb4f7d8d77b9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "beschermingsplannen voor oogst maken",
+      "uri": "http://data.europa.eu/esco/skill/a7573f65-d00c-417f-b952-441ebaeed675",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten opslagfaciliteiten",
+      "uri": "http://data.europa.eu/esco/skill/81f53835-1dfe-4819-8bc1-01d9b647add8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gewasziekten voorkomen",
+      "uri": "http://data.europa.eu/esco/skill/4fbfdcdb-85a2-420e-98ae-17092d4acc49",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bemestingsbeginselen",
+      "uri": "http://data.europa.eu/esco/skill/b4db1a85-2488-4dc9-bd53-3dcb3f9deac7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "communiceren met klanten",
+      "uri": "http://data.europa.eu/esco/skill/0da516ee-e70e-4384-be13-f5ff80be8127",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gewassen controleren",
+      "uri": "http://data.europa.eu/esco/skill/0612b3e9-5515-4233-af5e-07191b03c4ba",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "protocollen voor wetenschappelijk onderzoek ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/9b9662e0-100a-4314-9bdc-8146a7105c3d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "beslissingen nemen inzake teelt van planten",
+      "uri": "http://data.europa.eu/esco/skill/4938b245-1312-4e8f-adc9-a3ae031e4d70",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "genetische manipulatie",
+      "uri": "http://data.europa.eu/esco/skill/e3423f86-0e6b-4bec-a354-1d21fe8597b6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klinische chemie",
+      "uri": "http://data.europa.eu/esco/skill/1d4b74b0-1a48-48ec-a3cd-26cca0c212a3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "wetenschappelijke theorieën ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/810134a4-3c40-4140-b8ca-6d6e8d0dc0f1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "boerderijmiddelen beheren",
+      "uri": "http://data.europa.eu/esco/skill/ca0f9294-09f6-4528-bb3d-604955f8acfd",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "taakgegevens bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/43b13058-68d0-40c6-8031-caf5a7b7d20c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kwaliteitseisen voor opslagfaciliteiten",
+      "uri": "http://data.europa.eu/esco/skill/14026826-61f5-4476-a217-4e4d62e86b4f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "oplossingen voor problemen creëren",
+      "uri": "http://data.europa.eu/esco/skill/03b9b491-fc9b-4868-914a-bf7cd47b5041",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "een computer gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/1007aa13-9f18-4bcf-96f3-e108c40baf69",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "wetenschappelijke documentatie archiveren",
+      "uri": "http://data.europa.eu/esco/skill/b30b6e13-6688-4035-b99b-fb3a1def0833",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toezicht houden op laboratoriumactiviteiten",
+      "uri": "http://data.europa.eu/esco/skill/93261e82-8ffe-4a8b-b8b0-02265edbf562",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "medische microbiologie",
+      "uri": "http://data.europa.eu/esco/skill/0bc42cda-a6f0-4cac-9b34-7911faba0bd4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bodemstructuur",
+      "uri": "http://data.europa.eu/esco/skill/6c1143b7-1a4c-49ba-849a-ae328673e566",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "irrigatiestrategieën ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/189777b9-6e95-4f76-b8db-f8e0f0477bc6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "advies geven over bodem- en waterbescherming",
+      "uri": "http://data.europa.eu/esco/skill/3e25fd3e-2bcd-4320-9587-0aadf7fb93b1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toezien op gewasproductie",
+      "uri": "http://data.europa.eu/esco/skill/461ff70c-d675-4cae-aa10-24efbbc3a1ce",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "leiding geven aan agrarisch personeel",
+      "uri": "http://data.europa.eu/esco/skill/263782c1-c65d-458a-ae67-8526ccf214f5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "monsters voor analyse verzamelen",
+      "uri": "http://data.europa.eu/esco/skill/4bbb309f-9162-49b9-93da-fb2c371e5c5f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "groei van planten onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/0ae3af47-dc33-4cb0-a2a3-01c6a5bcd968",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderzoeksvoorstellen schrijven",
+      "uri": "http://data.europa.eu/esco/skill/0ee7b0d6-db98-4785-9948-f2ef415d155a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "landbouwmateriaal",
+      "uri": "http://data.europa.eu/esco/skill/5f95f9c9-30ee-4735-ab63-8045ec8f78f8",
+      "categorie": "optioneel"
+    }
+  ]
+}

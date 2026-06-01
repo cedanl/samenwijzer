@@ -1,0 +1,226 @@
+{
+  "crebo": "25124",
+  "opleiding": "2021 - 25124 VG OER 2020 werkvoorbereiders installatietechniek",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "installatie-ingenieur",
+    "uri": "http://data.europa.eu/esco/occupation/58c30193-d29f-4d22-8bf0-fd87346b91dd",
+    "definitie": "Installatie-ingenieurs houden toezicht op en beheren de installatie van structuren, die vaak jaren in beslag nemen om te ontwerpen en te bouwen. Zij zorgen ervoor dat de veiligheid wordt gewaarborgd, risico’s worden vermeden en zij streven naar optimalisatie van de kosten. Installatie-ingenieurs maken ook constructieve ontwerpen van systemen en voeren tests uit op installatiesystemen. Zij bepalen het materiaal dat nodig is voor de bouw van deze systemen en de kosten, en gebruiken CAD-software om deze systemen te ontwerpen.    "
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "ingenieur koel-, lucht- en verwarmingstechniek",
+    "installatie-ingenieur",
+    "coördinator onderhoud van openbaar vervoer",
+    "uitvoerend kunstenaar",
+    "uitvoerend producent",
+    "uitvoerend medewerker bosbouw",
+    "steigerbouwer",
+    "wegwerker",
+    "fietsenmaker",
+    "kwaliteitscontroleur",
+    "schoorsteenveger"
+  ],
+  "skills": [
+    {
+      "label": "bouwsector",
+      "uri": "http://data.europa.eu/esco/skill/fe77f9ca-7bd2-4a68-98f4-8463a4fb8301",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "regelgeving inzake bouwproducten",
+      "uri": "http://data.europa.eu/esco/skill/5518db9d-4a2f-4b53-9068-4d0d61465bf4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beginselen van projectbeheer",
+      "uri": "http://data.europa.eu/esco/skill/237db40b-4600-47c0-837f-4a2c4f3014ab",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteitsstandaarden",
+      "uri": "http://data.europa.eu/esco/skill/8d4271ca-c9fd-40b3-875f-15f78332a49e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bouwmethoden",
+      "uri": "http://data.europa.eu/esco/skill/cc173f61-3386-44c5-a048-3889e1ec9114",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "projectbeheer",
+      "uri": "http://data.europa.eu/esco/skill/7111b95d-0ce3-441a-9d92-4c75d05c4388",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ervoor zorgen dat de deadline van het bouwproject wordt nagekomen",
+      "uri": "http://data.europa.eu/esco/skill/6181f475-110c-497c-a46d-ed2e14e7bc90",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "projectbeheer uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/cd5efa8c-e44d-4cbc-91c6-796018dbed68",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toezicht houden op bouwprojecten",
+      "uri": "http://data.europa.eu/esco/skill/1de548e0-9535-4d2e-9d20-d4474c1ea813",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheids- en veiligheidsprocedures in de bouw in acht nemen",
+      "uri": "http://data.europa.eu/esco/skill/86df7af2-f9f3-4c06-a500-7f1fba9e78fe",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "testgegevens vastleggen",
+      "uri": "http://data.europa.eu/esco/skill/328733a7-6d84-420d-a65c-2a8014fadc60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "risicoanalyses uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/1dd23dba-dd00-45ab-abf4-642902538317",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "engineeringprocessen",
+      "uri": "http://data.europa.eu/esco/skill/72a74f69-5cf1-43c5-99b9-62a444578919",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "technische beginselen",
+      "uri": "http://data.europa.eu/esco/skill/209a5498-3449-4689-8ed9-bd08cab4fd78",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kostenbeheer",
+      "uri": "http://data.europa.eu/esco/skill/7d35602d-bc94-4975-aa7c-f4e8e05ce8e0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werken in een bouwteam",
+      "uri": "http://data.europa.eu/esco/skill/4fa2d6ba-4fff-4f21-bddd-4a54ae840955",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "problemen oplossen",
+      "uri": "http://data.europa.eu/esco/skill/334e3e49-fb02-4051-809a-f06adfdc1c40",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "wetenschappelijk onderzoek uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/4fabca9a-7435-4f33-b1da-3cdb00340fdc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "budgetten beheren",
+      "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "op gebeurtenissen in tijdkritieke omgevingen reageren",
+      "uri": "http://data.europa.eu/esco/skill/be7c80ee-0b7a-455c-8928-055cfa65076c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "CAD-software",
+      "uri": "http://data.europa.eu/esco/skill/a2b5dcf3-5b6a-453d-876c-cff540c0faf1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "processen ontwerpen",
+      "uri": "http://data.europa.eu/esco/skill/2c28fc20-8a60-4311-8899-5ef8729c05b3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "industriële verwarmingssystemen",
+      "uri": "http://data.europa.eu/esco/skill/c49eb4a4-7b5f-44e6-b346-7153879ac86b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "veiligheidsuitrusting gebruiken tijdens bouwwerkzaamheden",
+      "uri": "http://data.europa.eu/esco/skill/c643e59b-d74c-4f44-b76e-6e1d96c05ec4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "naleving van gezondheids- veiligheids- en hygiënenormen waarborgen",
+      "uri": "http://data.europa.eu/esco/skill/44e2c4c4-9fd2-42d4-a133-d81360ded4bc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verslag doen van testresultaten",
+      "uri": "http://data.europa.eu/esco/skill/561c2525-5bd8-4d86-8f45-820f4be7db93",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ventilatiesystemen",
+      "uri": "http://data.europa.eu/esco/skill/539edd73-5c9b-4498-96f2-68a9cd2e6073",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderdelen voor verwarming, ventilatie, klimaatregeling en koeling",
+      "uri": "http://data.europa.eu/esco/skill/aba2e61d-ef78-45bd-a9bc-392a718d4877",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "prestatietests uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/bbd57056-80e0-45bb-a2c1-658ed99a1251",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toezicht houden op personeel",
+      "uri": "http://data.europa.eu/esco/skill/9601b2a8-68e4-4906-9306-a23679b8f0b0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "huishoudelijke verwarmingssystemen",
+      "uri": "http://data.europa.eu/esco/skill/95013213-ee67-493b-86d0-e383e0f72482",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "technische tekeningen",
+      "uri": "http://data.europa.eu/esco/skill/59ea80e1-463a-4dba-82c6-d0b6d577d532",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "CAD-software gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/b34e2ba1-9080-48c9-9b42-ee9192a4d3f1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "filosofieën over voortdurende verbetering",
+      "uri": "http://data.europa.eu/esco/skill/0550431f-9c8b-4204-9c45-59bc5feacf06",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "een computer gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/1007aa13-9f18-4bcf-96f3-e108c40baf69",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verbeteringsstrategieën aanbieden",
+      "uri": "http://data.europa.eu/esco/skill/d4cc5022-7801-4885-bcff-166552788d35",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderdelen van airconditioningsystemen",
+      "uri": "http://data.europa.eu/esco/skill/b112ead8-6245-49bb-879f-07b1388a1c9b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "software voor technisch tekenen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/541561bc-510c-4a99-881c-2d8bf5a85462",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "communicatie",
+      "uri": "http://data.europa.eu/esco/skill/15d76317-c71a-4fa2-aadc-2ecc34e627b7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "projectbehoeften beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/b2235ce8-d0f0-4954-9b60-e2c1aeeadab5",
+      "categorie": "optioneel"
+    }
+  ]
+}

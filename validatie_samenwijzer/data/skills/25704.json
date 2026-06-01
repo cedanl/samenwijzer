@@ -1,0 +1,290 @@
+{
+  "crebo": "25704",
+  "opleiding": "25704_BOL_2024__Examenplannen Bloem Groen en Styling 2425",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "hovenier",
+    "uri": "http://data.europa.eu/esco/occupation/e7970c7a-7769-4002-87d3-0a8ea94fdd6f",
+    "definitie": "Hoveniers plannen, bouwen, renoveren en onderhouden parken, tuinen en openbare groene ruimten."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "manager bloemendetailhandel",
+    "veilingmeester",
+    "distributiemanager bloemen en planten",
+    "verkoopspecialist tuinartikelen",
+    "specialist import en export van bloemen en planten",
+    "import-exportmanager bloemen en planten",
+    "groothandelaar in bloemen en planten",
+    "verkoopspecialist groenten en fruit",
+    "coördinator ongebrande koffiebonen",
+    "hovenier"
+  ],
+  "skills": [
+    {
+      "label": "materiaal voor tuinaanleg gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/69c865d1-39d6-48ae-b33f-75a7e9cc1811",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "milieuwetgeving inzake landbouw en bosbouw",
+      "uri": "http://data.europa.eu/esco/skill/3419fac9-575d-4492-a018-edff6f4dae26",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "tuinbouwbeginselen",
+      "uri": "http://data.europa.eu/esco/skill/dcb01a4f-720a-480f-b61a-11a1286d56f3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "areaal gereedmaken voor beplanting",
+      "uri": "http://data.europa.eu/esco/skill/8f3cb711-2fdf-4a50-813a-77198d2f00e3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "in de buitenlucht werken",
+      "uri": "http://data.europa.eu/esco/skill/0e355580-bd4a-465a-8058-92984623070e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "snoeitechnieken",
+      "uri": "http://data.europa.eu/esco/skill/a8f1c3cf-bd8b-4c85-80d3-c69955f6bd00",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "snoeiwijzen",
+      "uri": "http://data.europa.eu/esco/skill/fe82195e-af26-4156-b554-c724b28fb2fb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beginselen van tuinaanleg",
+      "uri": "http://data.europa.eu/esco/skill/fd61cec0-cfab-4a4a-9157-e8f21e612116",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onkruidverdelgingswerkzaamheden uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/94a1b3c5-2a95-4703-8559-973bc6d14747",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ecologie",
+      "uri": "http://data.europa.eu/esco/skill/a8429098-ddac-481b-91e7-688d021c092e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "groenonderhoud uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/5125b132-d1a9-41a4-95c3-91b0984e86b5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "planten verzorgen",
+      "uri": "http://data.europa.eu/esco/skill/7b3717e4-e963-44e0-b94f-1088a7242da0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "hagen en bomen snoeien",
+      "uri": "http://data.europa.eu/esco/skill/51097602-8e4e-4830-8f35-d77afc713fc0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "chemische producten voor bodem en planten beheren",
+      "uri": "http://data.europa.eu/esco/skill/87da57a8-ae40-41e3-998e-f517daa95c9a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "planten snoeien",
+      "uri": "http://data.europa.eu/esco/skill/af9b6098-7d2f-4990-b4eb-d7dd73fdb933",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "landschap onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/d6f40152-c00d-44fa-a48f-55e39f08c14e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "areaal gereedmaken",
+      "uri": "http://data.europa.eu/esco/skill/6495182b-d548-425d-8596-bdf527c98cd7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ontwerpbeginselen",
+      "uri": "http://data.europa.eu/esco/skill/4c58528e-bdaa-43ad-8f5a-8ad0b8cd4bbb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "groene planten planten",
+      "uri": "http://data.europa.eu/esco/skill/8ce4a4af-969b-4d1c-8bfe-891cff82f913",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "hekken bouwen",
+      "uri": "http://data.europa.eu/esco/skill/8bb1142a-06ca-41fa-a434-444d95d8b8c9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bestrijdingsactiviteiten uitvoeren met betrekking tot ziekten en plagen",
+      "uri": "http://data.europa.eu/esco/skill/e85cff6b-ee0e-4106-98f0-b57b39a2ea3f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ongediertebestrijding bij planten",
+      "uri": "http://data.europa.eu/esco/skill/9d75efb9-0c77-4f86-b5e7-99100808564a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bestrijding van plantenziekten",
+      "uri": "http://data.europa.eu/esco/skill/f8460277-3c9a-4be4-b203-600a2a295f47",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "planten kweken",
+      "uri": "http://data.europa.eu/esco/skill/c5f255ef-02d3-4ab0-a652-2bf055d1d493",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ongediertebestrijding uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/08881cb7-5331-4b11-9442-4d7c9fce749e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "grond voorbereiden",
+      "uri": "http://data.europa.eu/esco/skill/17fa5b53-fd59-49eb-8763-29255a185d26",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "materiële middelen in het werkgebied vervoeren",
+      "uri": "http://data.europa.eu/esco/skill/142415cb-503f-4721-b4d8-cac47de18cc6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "borden plaatsen",
+      "uri": "http://data.europa.eu/esco/skill/98815e0a-0bcc-41fc-ba9a-6ec1c4e8a8a0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "planten telen",
+      "uri": "http://data.europa.eu/esco/skill/844e9480-7aef-49f6-9260-d88c27249241",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "plantensoorten",
+      "uri": "http://data.europa.eu/esco/skill/73997f48-cd9d-4724-872d-86ecbb2ed9a2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bomen verzorgen",
+      "uri": "http://data.europa.eu/esco/skill/eadf0f36-cba0-4e68-8458-c91bc60b494d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "tuingereedschap gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/8a1942a8-bebd-4cc5-bdff-fe215aaa3de5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "materialen voor tuininrichting",
+      "uri": "http://data.europa.eu/esco/skill/bf056c12-eaba-4f00-b5a9-c4add7f841f3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "tuingedeelten aanleggen op begraafplaatsen",
+      "uri": "http://data.europa.eu/esco/skill/cad6cbf5-fd1c-40af-8c56-605964d044b5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "regenwater beheren",
+      "uri": "http://data.europa.eu/esco/skill/765f2d06-775e-45bf-93a7-c83b8fad5a1a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bloemstukken maken",
+      "uri": "http://data.europa.eu/esco/skill/274ba318-ab30-4d16-87fd-58af75cd6a22",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onkruidsproeiers",
+      "uri": "http://data.europa.eu/esco/skill/7ca80382-13c4-4ccf-ab89-4b1bdb2d6a13",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "groendaken bouwen",
+      "uri": "http://data.europa.eu/esco/skill/9a354775-1a03-4258-a357-be4ab0a07465",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toezien op projecten voor landschapsinrichting",
+      "uri": "http://data.europa.eu/esco/skill/b401183d-cda3-4137-9feb-eb1054e2771e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "agronomie",
+      "uri": "http://data.europa.eu/esco/skill/afdcb380-ef9f-4785-b877-cc551f035034",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "tijd beheren bij tuinaanleg",
+      "uri": "http://data.europa.eu/esco/skill/00fc7575-0cee-4b12-ade5-795cb2a4479a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "in een team voor landschapsarchitectuur werken",
+      "uri": "http://data.europa.eu/esco/skill/137cabc6-ec29-461e-ae56-3ff2f77ee4c9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "helpen bij projecten met binnenplanten",
+      "uri": "http://data.europa.eu/esco/skill/4f1559a5-c0e6-4950-a66c-c57e12380602",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "biologische landbouw",
+      "uri": "http://data.europa.eu/esco/skill/186da517-9a3e-41cd-9158-4001e3694459",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Locatie gereedmaken.",
+      "uri": "http://data.europa.eu/esco/skill/088dd17a-9d92-4b93-9e4a-49587e015e06",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "beginselen van gewasproductie",
+      "uri": "http://data.europa.eu/esco/skill/4ca83b9d-afa0-49f8-b7af-e4e6a42ad299",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "beheer van regenwater",
+      "uri": "http://data.europa.eu/esco/skill/f7626ae8-eecf-41f4-bc4f-de9e57ed30a6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "tuinmetselwerk uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/27ef6576-abf1-4825-8d9e-10f1c33dfe4f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verticale tuinen maken",
+      "uri": "http://data.europa.eu/esco/skill/70a32601-6327-47cc-bcb8-d1175f63b104",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "beslissingen nemen inzake groenvoorzieningen",
+      "uri": "http://data.europa.eu/esco/skill/85834248-bb25-418d-9e34-bb6c5af88418",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "architecturale plannen ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/921f52c7-d977-4e84-8b62-adf64fed999f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "leiding geven aan agrarisch personeel",
+      "uri": "http://data.europa.eu/esco/skill/263782c1-c65d-458a-ae67-8526ccf214f5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "projecten voor landschapsontwerp beheren",
+      "uri": "http://data.europa.eu/esco/skill/d96e25fe-18f2-47bc-9939-bad113934204",
+      "categorie": "optioneel"
+    }
+  ]
+}

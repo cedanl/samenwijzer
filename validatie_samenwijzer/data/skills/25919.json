@@ -1,0 +1,295 @@
+{
+  "crebo": "25919",
+  "opleiding": "25919_BOL_2025__25919BOL2025MJP-Technicus-Engineering-Elektrotechniek",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "elektronica-ingenieur",
+    "uri": "http://data.europa.eu/esco/occupation/4d34a9ee-2653-4da0-bef7-f59294577224",
+    "definitie": "Elektronica-ingenieurs onderzoeken, ontwerpen en ontwikkelen elektronische systemen zoals circuits, halfgeleiderelementen en apparatuur, die elektriciteit gebruiken als energiebron. Zij werken met condensatoren, transistors, diodes of weerstanden om elektronische circuits en gebruikstoepassingen te creëren op gebieden zoals telecommunicatie, akoestiek, instrumenten en controle."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "elektromechanicus",
+    "mastering engineer",
+    "technicus computerhardware",
+    "panelenbouwer",
+    "elektronica-ingenieur",
+    "technicus microsystemen",
+    "technisch ingenieur optomechanica",
+    "chemisch tester",
+    "autotechnisch ingenieur",
+    "docent ingenieurswetenschappen hoger onderwijs",
+    "ict intelligent systems designer",
+    "onderzoeker productontwikkeling textiel, leder en schoeisel",
+    "mijnmeter",
+    "pre-sales engineer",
+    "integration engineer"
+  ],
+  "skills": [
+    {
+      "label": "wiskunde",
+      "uri": "http://data.europa.eu/esco/skill/4339176e-3acd-4f7f-a5d9-445bee3d23f2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronische systemen ontwerpen",
+      "uri": "http://data.europa.eu/esco/skill/feb717ff-fba6-4a91-aa10-ee11cf2da6b4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "technische rapporten schrijven",
+      "uri": "http://data.europa.eu/esco/skill/941364b9-1375-4add-9889-d67bae99bc8c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "soorten elektronica",
+      "uri": "http://data.europa.eu/esco/skill/52838a25-11f5-4cb1-b4ab-c5c7d59041e8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "tekeningen ontwerpen",
+      "uri": "http://data.europa.eu/esco/skill/3c333552-8d89-43f5-90bd-856e15bec433",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bedreigingen voor het milieu",
+      "uri": "http://data.europa.eu/esco/skill/81af8698-9873-4b3d-b6d2-8eb275bf170b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "milieuwetgeving",
+      "uri": "http://data.europa.eu/esco/skill/6f5850ea-5785-4e2c-b062-743066fd5bdb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronische testprocedures ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/0de6bca4-f3aa-452a-8e10-d355b2c1bfc4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "haalbaarheidsonderzoek uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/d74df140-eb69-43e2-bac9-1cafc824d702",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "technische tekeningen maken",
+      "uri": "http://data.europa.eu/esco/skill/5c98825f-146d-4d35-97cf-207b2afd9ae2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "software voor technisch tekenen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/541561bc-510c-4a99-881c-2d8bf5a85462",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "mechanica",
+      "uri": "http://data.europa.eu/esco/skill/efa141df-f382-418f-9121-bd88fd735669",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "behoeften van klanten identificeren",
+      "uri": "http://data.europa.eu/esco/skill/68698869-c13c-4563-adc7-118b7644f45d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beginselen van elektriciteit",
+      "uri": "http://data.europa.eu/esco/skill/1fea0bc2-a6fa-4fe8-b36f-7a3194f8ed1c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "wetenschappelijk onderzoek uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/4fabca9a-7435-4f33-b1da-3cdb00340fdc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektrische systemen ontwerpen",
+      "uri": "http://data.europa.eu/esco/skill/05010f6c-0b40-4525-ac4a-057d46a2b6f4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "technische ontwerpen aanpassen",
+      "uri": "http://data.europa.eu/esco/skill/42b23922-1c40-4dbe-9e0c-7a568dfdf06b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektrische testmethoden",
+      "uri": "http://data.europa.eu/esco/skill/c8bd9f9f-0ec6-447a-ab78-ad6eeeed9aa8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "testprocedures voor elektronica",
+      "uri": "http://data.europa.eu/esco/skill/0e9e3a56-3b26-4fa5-91df-6d9bfbea4259",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "budgetten beheren",
+      "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektriciteit",
+      "uri": "http://data.europa.eu/esco/skill/c8ac1986-38fa-43b2-89dc-50a4beeb420e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "technische beginselen",
+      "uri": "http://data.europa.eu/esco/skill/209a5498-3449-4689-8ed9-bd08cab4fd78",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronica",
+      "uri": "http://data.europa.eu/esco/skill/95c35c3a-035f-47c2-90cf-7e934d20fc08",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "technische ontwerpen goedkeuren",
+      "uri": "http://data.europa.eu/esco/skill/f54c10e4-630d-4e50-95e9-4e9e268e8f12",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "natuurkunde",
+      "uri": "http://data.europa.eu/esco/skill/692ace70-7f97-4214-92bd-88f7637d8a44",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "prototypes ontwerpen",
+      "uri": "http://data.europa.eu/esco/skill/bacbfc27-4b5d-47de-8bfd-af5fa27562a2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gegevensbeheer van producten",
+      "uri": "http://data.europa.eu/esco/skill/e2d0daae-2aa1-40cc-99e2-b340b02f97d3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "leveranciersrisico’s beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/96ec2d53-4f41-4172-8ef2-70742c4bb540",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektromagnetisme",
+      "uri": "http://data.europa.eu/esco/skill/3edd4853-a8d2-4791-a5f0-af3a92f18245",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "robotica",
+      "uri": "http://data.europa.eu/esco/skill/e87ec79a-c9ff-46f5-84fa-7a0f394cdf40",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "micro-elektronica ontwerpen",
+      "uri": "http://data.europa.eu/esco/skill/8712b176-c063-462f-9d0f-2e3c54d9a2eb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "waarborgen dat materiaal aan de eisen voldoet",
+      "uri": "http://data.europa.eu/esco/skill/df08a4ae-4024-4460-8c92-eab78da1c94b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "componenten van robotsystemen",
+      "uri": "http://data.europa.eu/esco/skill/7a950986-27fe-4b6c-adf3-88f211e77019",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ontwerpbeginselen",
+      "uri": "http://data.europa.eu/esco/skill/4c58528e-bdaa-43ad-8f5a-8ad0b8cd4bbb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "schakelborden ontwerpen",
+      "uri": "http://data.europa.eu/esco/skill/77bf865e-6360-424f-9d77-ce03918c7dcf",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "programmeerbare logische besturingseenheid",
+      "uri": "http://data.europa.eu/esco/skill/6468e5fb-f3be-4025-87be-4b6556755c61",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "CAD-software gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/b34e2ba1-9080-48c9-9b42-ee9192a4d3f1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "softwaredesign creëren",
+      "uri": "http://data.europa.eu/esco/skill/3bddfd7c-ab6d-40c2-883d-5e97fb7640ba",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "CAD-software",
+      "uri": "http://data.europa.eu/esco/skill/a2b5dcf3-5b6a-453d-876c-cff540c0faf1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "consumentenelektronica",
+      "uri": "http://data.europa.eu/esco/skill/6c153605-d62c-4970-81a9-49646ab32032",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "proefdraaien",
+      "uri": "http://data.europa.eu/esco/skill/465ff64a-1271-4064-8ed1-e969cb68d8b4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "fabricageprocessen",
+      "uri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verzoeken van klanten verwerken op basis van REACH-verordening nr. 1907/2006",
+      "uri": "http://data.europa.eu/esco/skill/0d6c9508-1cd6-4cea-98d2-d5fe2f5c6a73",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "projectbeheer uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/cd5efa8c-e44d-4cbc-91c6-796018dbed68",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voorschriften met betrekking tot verboden materialen naleven",
+      "uri": "http://data.europa.eu/esco/skill/c0ccbd15-36f3-4515-ae0b-b4062d225ee2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "financiële haalbaarheid beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/e95058a6-e139-42e7-a470-72038a606649",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "projectbeheer",
+      "uri": "http://data.europa.eu/esco/skill/7111b95d-0ce3-441a-9d92-4c75d05c4388",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "geïntegreerde schakelingen ontwerpen",
+      "uri": "http://data.europa.eu/esco/skill/6d12ac9b-5ec0-49b9-bd70-5a19352585cb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektromagneten",
+      "uri": "http://data.europa.eu/esco/skill/c3cad273-2cd4-4e4c-9d0a-4d7ed638fc36",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "risicobeheer",
+      "uri": "http://data.europa.eu/esco/skill/6eff134b-e34f-4d6e-a6e8-5e47cf2228d0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voorschriften inzake stoffen",
+      "uri": "http://data.europa.eu/esco/skill/d1ec6846-dd8a-4810-8115-474cdf271540",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "micro-elektromechanische systemen ontwerpen",
+      "uri": "http://data.europa.eu/esco/skill/c022ff1b-7783-4e64-89ef-0422c81ff51f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gebruikersinterface ontwerpen",
+      "uri": "http://data.europa.eu/esco/skill/fd33c66c-70c4-40e6-b87c-5495bd3bf26e",
+      "categorie": "optioneel"
+    }
+  ]
+}

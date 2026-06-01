@@ -1,0 +1,121 @@
+{
+  "crebo": "25689",
+  "opleiding": "25689_BOL_2024__content_oer-2024-2025-ci-25689-basismedewerker-fashion",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "montageoperator kleding en textielproducten",
+    "uri": "http://data.europa.eu/esco/occupation/f444e8ec-5eed-4777-866e-7127aa06ce4f",
+    "definitie": "Montageoperators kleding en textielproducten bedienen meerdere procesbesturingsapparaten aan de lopende band."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "web content manager",
+    "model",
+    "bibliothecaris big-data-archief",
+    "technical communicator",
+    "pijpleidingoperator",
+    "draaier",
+    "drukvormvervaardiger",
+    "chief information officer",
+    "kostuumontwerper theater, film, televisie",
+    "coördinator theateratelier",
+    "productieleider textielindustrie",
+    "strijker",
+    "productietechnicus schoeisel",
+    "fabrikant van textielartikelen",
+    "montageoperator kleding en textielproducten",
+    "kledingingenieur"
+  ],
+  "skills": [
+    {
+      "label": "productie van textielconfectieartikelen",
+      "uri": "http://data.europa.eu/esco/skill/58136283-9617-45b1-8f53-bf58efd9c5cc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "instructies voor kledingproductie beheren",
+      "uri": "http://data.europa.eu/esco/skill/2cc2d65f-1081-413d-909d-b95eafb3c1d6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "machines voor de productie van kledingstukken bedienen",
+      "uri": "http://data.europa.eu/esco/skill/a3b7134f-81c8-43da-b207-a00d8b09e61b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "geautomatiseerde regelsystemen bedienen",
+      "uri": "http://data.europa.eu/esco/skill/b916d60e-38e9-4241-914a-4e2144bda711",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "accessoires onderscheiden",
+      "uri": "http://data.europa.eu/esco/skill/09853c3b-6784-456f-abe9-c9f44bf872bc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "goederen verpakken",
+      "uri": "http://data.europa.eu/esco/skill/667cbbaf-f377-46d8-8f2d-1f6d8a55d74a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "technische tekeningen van modestukken maken",
+      "uri": "http://data.europa.eu/esco/skill/881cd4ec-5b52-46c6-abc4-60551d58b355",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "productie van kleding",
+      "uri": "http://data.europa.eu/esco/skill/39a25537-5057-4c0b-8141-32851e1cd886",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "technologie in de kledingindustrie",
+      "uri": "http://data.europa.eu/esco/skill/af8170c1-23f9-401c-b24b-e57399d6c722",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "procescontrole in de kledingindustrie uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/58c080f9-71d5-429d-9476-bc9e742d460c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "strategieën voor toeleveringsketens analyseren",
+      "uri": "http://data.europa.eu/esco/skill/96d549bb-3e62-4c45-92a7-f114df089581",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "stoffen onderscheiden",
+      "uri": "http://data.europa.eu/esco/skill/6d9f05ed-9ada-4604-9670-2df3bb439050",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kledingpatronen maken",
+      "uri": "http://data.europa.eu/esco/skill/2ac79be0-1f66-48da-84a6-2d294179927f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kledingstukken inspecteren",
+      "uri": "http://data.europa.eu/esco/skill/5174d7e4-bb67-403c-930e-9afc5e2f8f6e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "van textiel gemaakte persoonlijke beschermingsmiddelen produceren",
+      "uri": "http://data.europa.eu/esco/skill/1542d628-9449-455a-bf35-5119b5e6fdf1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "CAD voor de confectie-industrie",
+      "uri": "http://data.europa.eu/esco/skill/d8ee0b01-3d33-4a32-a07c-6a107400cac0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "lappen stof naaien",
+      "uri": "http://data.europa.eu/esco/skill/a3ef84f9-c436-437a-bc6f-4956ae13e1eb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "stoffen versnijden",
+      "uri": "http://data.europa.eu/esco/skill/a3b7b8ec-794b-4821-8c6b-465fe2c7a691",
+      "categorie": "optioneel"
+    }
+  ]
+}

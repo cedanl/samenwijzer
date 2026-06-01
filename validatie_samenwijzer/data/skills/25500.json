@@ -1,0 +1,111 @@
+{
+  "crebo": "25500",
+  "opleiding": "25500_BOL_2024__OER (OUD) - 25500 - Medewerker Sport en recreatie",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "medewerker recreatieactiviteiten",
+    "uri": "http://data.europa.eu/esco/occupation/e31c83ac-cb74-4936-88f1-90ed0997b29b",
+    "definitie": "Medewerkers recreatieactiviteiten voeren een verscheidenheid aan taken uit in amusements- of recreatievoorzieningen. Zij kunnen het gebruik van recreatievoorzieningen inplannen, uitrusting onderhouden en verstrekken aan deelnemers van sportevenementen of recreatieve bezigheden, concessies in amusementsparken exploiteren of ritten in pretparken verzorgen."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "verhuurmedewerker sport- en recreatieartikelen",
+    "beleidsmedewerker sport en recreatie",
+    "sportcoördinator",
+    "medewerker recreatieactiviteiten",
+    "kaartjesverkoper",
+    "manager recreatie-accommodatie",
+    "recreatiebegeleider",
+    "medewerker fitness",
+    "kwaliteitsmanager dienstverlening",
+    "manager dienstverlening",
+    "teamleider in fastfoodrestaurants en snackbars",
+    "onderhandelaar toeristische contracten",
+    "manager zakelijke dienstverlening",
+    "manager juridische dienstverlening",
+    "beleidsmedewerker sociale voorzieningen",
+    "productmanager toerisme"
+  ],
+  "skills": [
+    {
+      "label": "informatie over het pretpark verstrekken",
+      "uri": "http://data.europa.eu/esco/skill/b31816f3-0591-46d1-8364-d273bd404c04",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bezoekers aan een pretpark bijstaan",
+      "uri": "http://data.europa.eu/esco/skill/38efd8de-d313-4aa5-abc0-cefa5ec64002",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "attracties in een pretpark aankondigen",
+      "uri": "http://data.europa.eu/esco/skill/0f8b7a8d-371b-4ee9-8f4e-3317442bd047",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "pretparkattracties bedienen",
+      "uri": "http://data.europa.eu/esco/skill/8e31a149-460d-4bd5-ae64-daf04b7c36ed",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "aanwijzingen geven aan bezoekers in pretparken",
+      "uri": "http://data.europa.eu/esco/skill/3b031e83-b561-4a67-ae70-70c3c8808674",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "noodprocedures in pretparken",
+      "uri": "http://data.europa.eu/esco/skill/c585a661-1720-4138-8cc7-0029452a8534",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "faciliteiten in een pretpark reinigen",
+      "uri": "http://data.europa.eu/esco/skill/b9a9459c-befa-4b30-95b8-25b5dc83d8f1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toezicht houden op de veiligheid in een pretpark",
+      "uri": "http://data.europa.eu/esco/skill/7df446fb-7e76-4a7e-9954-88706be77c27",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "stands in pretpark bemannen",
+      "uri": "http://data.europa.eu/esco/skill/198ac61d-6820-484e-a0ad-2ca78c9b0ed0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veiligheidsmechanismen vastmaken",
+      "uri": "http://data.europa.eu/esco/skill/758e2524-6896-47f6-9a8d-e81cf1f721b9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "dranken serveren",
+      "uri": "http://data.europa.eu/esco/skill/beeaddc7-fe69-4b97-a286-0bd595432eb9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "pretparkkaartjes valideren",
+      "uri": "http://data.europa.eu/esco/skill/a79f8c60-2cf6-4819-81cd-34119953d4ba",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gebruik van recreatiefaciliteiten inplannen",
+      "uri": "http://data.europa.eu/esco/skill/42e49c37-38bf-491c-a36c-6eec0800f44f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "sportuitrusting verstrekken",
+      "uri": "http://data.europa.eu/esco/skill/2da5099a-48a8-406e-bff5-d703fde60724",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "uitrusting van pretparken onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/1008da30-7690-42c8-94c7-3f3bd8885c00",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toegangskaartjes voor pretparken verkopen",
+      "uri": "http://data.europa.eu/esco/skill/ef0dbace-4aac-4a3e-bafa-27460cc6b23a",
+      "categorie": "optioneel"
+    }
+  ]
+}

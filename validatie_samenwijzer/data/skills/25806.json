@@ -1,0 +1,174 @@
+{
+  "crebo": "25806",
+  "opleiding": "25806_BOL_2025__25806 Handhaver toezicht en veiligheid",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "handhaver toezicht en veiligheid",
+    "uri": "http://data.europa.eu/esco/occupation/4cbe5a17-056c-489a-9f10-f9d816905000",
+    "definitie": "Handhavers toezicht en veiligheid (straatwachten) patrouilleren in de aangewezen zones om een gevoel van veiligheid bij het publiek te waarborgen en algemene ondersteuning te bieden. Zij houden toezicht op verdacht gedrag en werken samen met de politie en andere lokale instellingen om de veiligheid en het welzijn van de gemeenschap en de wet te handhaven en sancties op te leggen wanneer dat nodig is."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "handhaver toezicht en veiligheid",
+    "manager veiligheid niet-publieke deel luchthaven",
+    "veiligheidskundige",
+    "veiligheidsinspecteur mijnbouw",
+    "drilling engineer",
+    "exploitatietechnicus stoomturbine",
+    "teamleider in een mijn",
+    "servicemedewerker bioscoop, theater",
+    "medewerker veiligheid luchtvaart",
+    "verkeersbrigadier",
+    "veiligheidsinspecteur bouw",
+    "registrator tentoonstellingen",
+    "straatartiest",
+    "arbo-ingenieur"
+  ],
+  "skills": [
+    {
+      "label": "verschillende communicatiekanalen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/415abd43-e8e5-4643-b5da-5f11307af57a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "in gebieden patrouilleren",
+      "uri": "http://data.europa.eu/esco/skill/e95dc989-ae49-49c6-bfc4-9aef35e92f35",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "conflicten hanteren",
+      "uri": "http://data.europa.eu/esco/skill/96de2e86-e287-41f2-88ab-15a2343afc6f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "hulpdiensten bijstaan",
+      "uri": "http://data.europa.eu/esco/skill/2adc2a4a-bb29-4a7f-aab7-d1a21bf08b9e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vragen beantwoorden",
+      "uri": "http://data.europa.eu/esco/skill/87cadd76-4e3a-47e5-b66d-559fbc1e8993",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voldoen aan wettelijke bepalingen",
+      "uri": "http://data.europa.eu/esco/skill/3d3ee5c3-4286-457f-9f76-1704011f7e11",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor de openbare orde en veiligheid",
+      "uri": "http://data.europa.eu/esco/skill/499c05a2-6f36-4407-83c1-dc3448d35818",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "publiek instrueren",
+      "uri": "http://data.europa.eu/esco/skill/ceb13e3a-835e-47e3-a1c9-34dfa21de0fd",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werkgerelateerde verslagen schrijven",
+      "uri": "http://data.europa.eu/esco/skill/918f5211-b99f-4b29-9a34-6e475583ef55",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "overtreders aanhouden",
+      "uri": "http://data.europa.eu/esco/skill/d43dc4ac-e316-44cb-939d-ecf200895e0f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "officiële documenten controleren",
+      "uri": "http://data.europa.eu/esco/skill/a1efea8f-62a8-4f9e-bd07-7d0c193f725e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gevaren voor de veiligheid vaststellen",
+      "uri": "http://data.europa.eu/esco/skill/a4fd17bf-6309-47c5-b7fa-ae5560673acf",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "risicoanalyses uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/1dd23dba-dd00-45ab-abf4-642902538317",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ordehandhaving",
+      "uri": "http://data.europa.eu/esco/skill/415f816c-07ae-4ac1-9ddb-ecaa9957a249",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verkeer regelen",
+      "uri": "http://data.europa.eu/esco/skill/87454307-a3ad-40ce-8024-1aeb7c94f1e3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "tests op drugsmisbruik uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/7ad85aef-f74d-4c57-8dde-adc1d3e8269a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zorgen voor de toepassing van wetten",
+      "uri": "http://data.europa.eu/esco/skill/f0153530-9ff3-4fe6-8f9e-012d06ac5b89",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ooggetuigenverslagen aanhoren",
+      "uri": "http://data.europa.eu/esco/skill/a1f79d57-2e4d-4876-a7ac-4ab19e0861dc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "wettelijk gebruik van geweld",
+      "uri": "http://data.europa.eu/esco/skill/42645b84-0699-4072-b9cf-335512434b67",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kalm reageren in stressvolle situaties",
+      "uri": "http://data.europa.eu/esco/skill/49e1eb78-e6b1-4116-8e9f-f23316ee503e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kennis van menselijk gedrag gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/a0e23745-6ba4-45e2-9510-df6e71ed1230",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "waakzaam zijn",
+      "uri": "http://data.europa.eu/esco/skill/f83c245f-4aa9-484f-8fd2-4ad65dd82ae5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verkeerswetgeving",
+      "uri": "http://data.europa.eu/esco/skill/48f480aa-c9a8-4552-b1c5-e94330912257",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gegeven instructies volgen",
+      "uri": "http://data.europa.eu/esco/skill/ab9f550c-fa8f-4fe8-9f9f-e02d45bff570",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "reageren op noodsituaties",
+      "uri": "http://data.europa.eu/esco/skill/0dcea846-04b4-4ffc-8c75-a35c991454b1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "orde handhaven op de plaats van ongevallen",
+      "uri": "http://data.europa.eu/esco/skill/51c9eb38-e148-4094-b23a-6b8e31c3bfa8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "beginselen van zelfverdediging nakomen",
+      "uri": "http://data.europa.eu/esco/skill/574a76ad-b283-4138-8386-fa079e52fcee",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "eerste hulp",
+      "uri": "http://data.europa.eu/esco/skill/eaa4cdc0-43e0-4388-9b8a-e2779218d10e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "boetes opleggen",
+      "uri": "http://data.europa.eu/esco/skill/eb31bbe9-f6ab-446d-ac6c-fdec0494f2f9",
+      "categorie": "optioneel"
+    }
+  ]
+}
