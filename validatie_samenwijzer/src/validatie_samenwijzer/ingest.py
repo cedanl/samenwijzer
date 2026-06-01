@@ -198,6 +198,26 @@ def _schoon_kd_naam(naam: str) -> str:
     return _KD_LEADER_PATROON.sub("", naam).strip()
 
 
+def _kerntaken_uit_kd(tekst: str) -> list[dict]:
+    """Kerntaken/werkprocessen uit een kwalificatiedossier-markdown.
+
+    Hergebruikt de OER-extractor maar schoont KD-specifieke dotted leaders uit de
+    namen en dedupt per (type, code) — de inhoudsopgave noemt elke code één keer
+    schoon, de body herhaalt hem soms gewrapt. De langste opgeschoonde naam wint.
+    """
+    beste: dict[tuple[str, str], dict] = {}
+    for kt in extraheer_kerntaken(tekst):
+        naam = _schoon_kd_naam(kt["naam"])
+        sleutel = (kt["type"], kt["code"])
+        if sleutel not in beste or len(naam) > len(beste[sleutel]["naam"]):
+            beste[sleutel] = {**kt, "naam": naam}
+
+    resultaat = sorted(beste.values(), key=lambda k: k["volgorde"])
+    for i, kt in enumerate(resultaat):
+        kt["volgorde"] = i
+    return resultaat
+
+
 # ── Tekstextractie per bestandstype ──────────────────────────────────────────
 
 _OCR_DREMPEL = 100  # minimaal aantal tekens voor acceptabele tekst
