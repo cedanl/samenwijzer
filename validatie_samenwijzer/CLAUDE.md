@@ -93,9 +93,10 @@ uv sync --extra dev && uv run python -m pytest
 # Eén test
 uv run python -m pytest tests/test_ingest.py::test_parseer_bestandsnaam_davinci -v
 
-# Lint
+# Lint + format (line-length 100; selectie E,F,I,N,W,UP; E501 vrijgesteld voor app/ + styles.py)
 uv run ruff check src/ app/ scripts/
 uv run ruff check --fix src/ app/
+uv run ruff format src/ app/ scripts/    # CI elders eist ook `ruff format --check`
 
 # Ingestie-pipeline
 uv run python -m validatie_samenwijzer.ingest --alles          # nieuw indexeren
@@ -146,7 +147,14 @@ gebruik.
 ## Tests
 
 Tests in `tests/`; pytest discovery via `[tool.pytest.ini_options]` in `pyproject.toml`.
-Coverage en fixtures worden niet centraal beheerd — bekijk individuele testbestanden.
+Coverage en fixtures worden niet centraal beheerd — bekijk individuele testbestanden. De
+autouse-fixture in `conftest.py` reset de gecachete `_ai`-client tussen tests zodat een gemockte
+client niet lekt.
+
+> **Geen CI-gate voor dit subproject**: de root-workflow `.github/workflows/ci.yml` draait
+> `ruff check` / `ruff format --check` / `pytest` vanuit de **monorepo-root** met `uv sync --dev`
+> en raakt dit subproject (eigen `pyproject.toml` + `.venv`) niet aan. Lint, format en tests hier
+> worden door niets afgedwongen op PR — draai ze lokaal vóór je commit.
 
 ## Omgeving
 
@@ -232,6 +240,11 @@ fallback: pdfplumber over de PDF).
 
 Bestanden zonder crebo in naam (Aeres, Utrecht) worden hernoemd via `scripts/rename_oers.py`
 dat de titelpagina uitleest.
+
+> **Sync met de parent-monorepo**: de parse-helpers in `ingest.py` (`parseer_bestandsnaam`,
+> `extraheer_kerntaken`, opleidingsnaam/niveau-regex) zijn de **bron** die bewust gespiegeld wordt
+> naar `src/samenwijzer/oer_parsing.py` in de parent. Wijzig je ze hier, werk dan de parent-kopie
+> mee bij (en omgekeerd) — ze moeten functioneel gelijk blijven.
 
 ### Sessiemodel
 
