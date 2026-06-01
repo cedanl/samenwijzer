@@ -218,6 +218,25 @@ def _kerntaken_uit_kd(tekst: str) -> list[dict]:
     return resultaat
 
 
+def _pad_kwalificatiedossier(crebo: str | None) -> Path | None:
+    """Pad naar <crebo>.md van het kwalificatiedossier, of None als de crebo leeg is
+    of het bestand ontbreekt.
+
+    Spiegelt ``chat.pad_kwalificatiedossier`` bewust zonder import: chat.py trekt
+    ``anthropic`` binnen en hoort niet in de ingest-pijplijn. Default-pad
+    ``<repo-root>/kwalificatiedossiers/pdfs``; override via ``KWALDOSSIERS_PAD``.
+    """
+    if not crebo:
+        return None
+    base = os.environ.get("KWALDOSSIERS_PAD")
+    if base:
+        directory = Path(base).resolve()
+    else:
+        directory = Path(__file__).resolve().parents[3] / "kwalificatiedossiers" / "pdfs"
+    pad = directory / f"{crebo}.md"
+    return pad if pad.exists() else None
+
+
 # ── Tekstextractie per bestandstype ──────────────────────────────────────────
 
 _OCR_DREMPEL = 100  # minimaal aantal tekens voor acceptabele tekst

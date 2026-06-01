@@ -1,5 +1,6 @@
 from validatie_samenwijzer.ingest import (
     _kerntaken_uit_kd,
+    _pad_kwalificatiedossier,
     _schoon_kd_naam,
     extraheer_kerntaken,
     parseer_bestandsnaam,
@@ -119,3 +120,20 @@ def test_schoon_kd_naam_verwijdert_dotted_leaders():
 
 def test_schoon_kd_naam_zonder_leaders_blijft_gelijk():
     assert _schoon_kd_naam("Voert toegangscontroles uit") == "Voert toegangscontroles uit"
+
+
+def test_pad_kwalificatiedossier_via_env(tmp_path, monkeypatch):
+    (tmp_path / "25690.md").write_text("x", encoding="utf-8")
+    monkeypatch.setenv("KWALDOSSIERS_PAD", str(tmp_path))
+    pad = _pad_kwalificatiedossier("25690")
+    assert pad is not None and pad.name == "25690.md"
+
+
+def test_pad_kwalificatiedossier_ontbrekend_bestand(tmp_path, monkeypatch):
+    monkeypatch.setenv("KWALDOSSIERS_PAD", str(tmp_path))
+    assert _pad_kwalificatiedossier("99999") is None
+
+
+def test_pad_kwalificatiedossier_lege_crebo(tmp_path, monkeypatch):
+    monkeypatch.setenv("KWALDOSSIERS_PAD", str(tmp_path))
+    assert _pad_kwalificatiedossier(None) is None
