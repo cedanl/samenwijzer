@@ -1,4 +1,19 @@
-"""OER-bestandswatcher: herindexeer automatisch als OER-bestanden wijzigen."""
+"""OER-bestandswatcher: herindexeer + reconcilieer afgeleide bronnen bij wijzigingen.
+
+Bij een wijziging in de OER-map wordt het bestand opnieuw geïngest en daarna worden de
+afgeleide bronnen (kwalificatiedossier + skills) voor de betrokken crebo bijgewerkt via
+``sync_afgeleid``. Dit is een latency-optimalisatie op een always-on machine; de
+bootstrap/periodieke ``--alles`` blijft de bron van waarheid (zie het auto-sync-plan).
+
+Twee bewuste grenzen:
+- De reconciliatie draait **inline** in de event-loop; tijdens een grote reconcile wachten
+  nieuwe events in de debounce-wachtrij (niet lossy, wél serieel). Bij een bulk-drop van veel
+  verschillende crebo's kan dat minuten serieel werk zijn — gebruik dan liever ``bootstrap
+  --alles`` (de echte bulk-route).
+- Alleen bestanden met een crebo in de **naam** worden gereconcilieerd. Een hernoeming
+  (``rename_oers.py``) is een move-event met de nieuwe naam, dus die wordt gedekt; een rauwe
+  pre-rename Aeres/Utrecht-drop wordt wél geïngest maar krijgt zijn KD/skills pas via ``--alles``.
+"""
 
 from __future__ import annotations
 
@@ -12,6 +27,9 @@ from pathlib import Path
 from dotenv import load_dotenv
 from watchdog.events import FileSystemEvent, FileSystemEventHandler
 from watchdog.observers import Observer
+
+from . import ingest
+from .sync_afgeleid import werk_afgeleide_bronnen_bij
 
 load_dotenv()
 
@@ -54,16 +72,42 @@ class _OerHandler(FileSystemEventHandler):
         return klaar
 
 
-def _ingesteer(pad: Path) -> None:
-    """Roep de ingest CLI aan voor één bestand met --reset (vervangt bestaande chunks)."""
+def _ingesteer(pad: Path) -> bool:
+    """Roep de ingest CLI aan voor één bestand met --reset; geeft True bij succes."""
     log.info("Herindexeren: '%s'...", pad.name)
     result = subprocess.run(
         [sys.executable, "-m", "validatie_samenwijzer.ingest", "--bestand", str(pad), "--reset"],
     )
     if result.returncode == 0:
         log.info("Herindexering geslaagd: '%s'", pad.name)
-    else:
-        log.error("Herindexering mislukt voor '%s' (exit %d)", pad.name, result.returncode)
+        return True
+    log.error("Herindexering mislukt voor '%s' (exit %d)", pad.name, result.returncode)
+    return False
+
+
+def _crebos_uit_paden(paden: list[Path]) -> set[str]:
+    """Bepaal de unieke crebo's voor een batch OER-bestanden (uit de bestandsnaam).
+
+    Gededupt zodat een bulk-drop van veel bestanden van dezelfde opleiding maar één
+    reconciliatie per crebo triggert. Bestanden zonder crebo in de naam worden
+    overgeslagen — die vangt de periodieke/bootstrap ``--alles`` op.
+    """
+    crebos: set[str] = set()
+    for pad in paden:
+        info = ingest.parseer_bestandsnaam(pad.name)
+        if info and info.get("crebo"):
+            crebos.add(info["crebo"])
+    return crebos
+
+
+def _reconcilieer_afgeleide_bronnen(crebos: set[str]) -> None:
+    """Werk KD + skills bij voor de gewijzigde crebo's (latency-optimalisatie)."""
+    for crebo in sorted(crebos):
+        log.info("Afgeleide bronnen (KD + skills) bijwerken voor crebo %s...", crebo)
+        try:
+            werk_afgeleide_bronnen_bij(crebo=crebo)
+        except Exception as e:  # noqa: BLE001 — de watcher moet blijven draaien
+            log.error("Reconciliatie mislukt voor crebo %s: %s", crebo, e)
 
 
 def main() -> None:
@@ -97,8 +141,9 @@ def main() -> None:
     try:
         while True:
             time.sleep(1)
-            for pad in handler.verwerk_wachtrij():
-                _ingesteer(pad)
+            geslaagd = [pad for pad in handler.verwerk_wachtrij() if _ingesteer(pad)]
+            if geslaagd:
+                _reconcilieer_afgeleide_bronnen(_crebos_uit_paden(geslaagd))
     except KeyboardInterrupt:
         log.info("Watcher gestopt.")
     finally:

@@ -5,6 +5,7 @@
 #   3. Sync kwalificatiedossiers/ vanuit Box (rclone)
 #   4. ingest --alles (bouw oeren.db op)
 #   5. seed_bulk.py (~1000 studenten over alle geïndexeerde OERs)
+#   6. sync_afgeleid --alles (reconcilieer KD + skills voor alle crebo's)
 #
 # --skip-sync slaat zowel oeren als kwalificatiedossiers over; voor afzonderlijke
 # overslagen gebruik --skip-oeren-sync of --skip-kd-sync.
@@ -15,6 +16,7 @@
 #   ./scripts/bootstrap.sh --skip-kd-sync # alleen oeren-sync
 #   ./scripts/bootstrap.sh --skip-seed    # geen testdata aanmaken
 #   ./scripts/bootstrap.sh --seed-minimal # i.p.v. bulk: alleen seed.py (dev-demo)
+#   ./scripts/bootstrap.sh --skip-derived # geen KD/skills-reconciliatie
 
 set -euo pipefail
 
@@ -22,6 +24,7 @@ SKIP_OEREN_SYNC=false
 SKIP_KD_SYNC=false
 SKIP_SEED=false
 SEED_MINIMAL=false
+SKIP_DERIVED=false
 
 for arg in "$@"; do
     case "$arg" in
@@ -30,6 +33,7 @@ for arg in "$@"; do
         --skip-kd-sync) SKIP_KD_SYNC=true ;;
         --skip-seed) SKIP_SEED=true ;;
         --seed-minimal) SEED_MINIMAL=true ;;
+        --skip-derived) SKIP_DERIVED=true ;;
         *) echo "Onbekende optie: $arg"; exit 1 ;;
     esac
 done
@@ -73,6 +77,18 @@ else
     echo ""
     echo "=== 5. Bulk-seed (~1000 studenten over alle geïndexeerde OERs) ==="
     uv run python scripts/seed_bulk.py
+fi
+
+if $SKIP_DERIVED; then
+    echo ""
+    echo "=== 6. Afgeleide bronnen (KD + skills)  (overgeslagen via --skip-derived) ==="
+else
+    echo ""
+    echo "=== 6. Afgeleide bronnen reconciliëren (KD + skills) ==="
+    # Idempotent: bouwt alleen ontbrekende artefacten. Non-fatal — ontbrekende
+    # API-keys of s-bb-bundle mogen de bootstrap niet laten falen.
+    uv run python -m validatie_samenwijzer.sync_afgeleid --alles \
+        || echo "Waarschuwing: reconciliatie afgeleide bronnen niet (volledig) gelukt."
 fi
 
 echo ""
