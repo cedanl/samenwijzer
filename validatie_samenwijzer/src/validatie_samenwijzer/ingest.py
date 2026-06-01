@@ -435,7 +435,7 @@ def _verwerk_bestand(
     result = _resolveer_oer(pad, instelling_naam, conn, reset=reset)
     if result is None:
         return
-    oer_id, _meta = result
+    oer_id, meta = result
 
     log.info("Verwerk '%s' (oer_id=%d)...", pad.name, oer_id)
 
@@ -456,6 +456,18 @@ def _verwerk_bestand(
         return
 
     kerntaken = extraheer_kerntaken(tekst)
+    if not kerntaken:
+        kd_pad = _pad_kwalificatiedossier(meta["crebo"])
+        if kd_pad is not None:
+            kd_tekst = kd_pad.read_text(encoding="utf-8", errors="replace")
+            kerntaken = _kerntaken_uit_kd(kd_tekst)
+            if kerntaken:
+                log.info(
+                    "Geen kerntaken in OER '%s'; %d kerntaken uit KD %s gehaald.",
+                    pad.name,
+                    len(kerntaken),
+                    meta["crebo"],
+                )
     for kt in kerntaken:
         voeg_kerntaak_toe(
             conn,
