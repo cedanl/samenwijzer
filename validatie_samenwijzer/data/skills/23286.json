@@ -20,18 +20,8 @@
   ],
   "skills": [
     {
-      "label": "verslag uitbrengen over incidenten inzake brandstofdistributie",
-      "uri": "http://data.europa.eu/esco/skill/3310562c-ed9e-43c2-a4d0-bafeed7057a4",
-      "categorie": "essentieel"
-    },
-    {
       "label": "brandstofdiensten in de luchtvaart uitvoeren",
       "uri": "http://data.europa.eu/esco/skill/bc07c4cf-0449-4bc3-ac51-eadac814383e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "veiligheidsrisico’s op luchthavens identificeren",
-      "uri": "http://data.europa.eu/esco/skill/94c24e4a-cc9a-4a49-b623-bc00bb5aa1a3",
       "categorie": "essentieel"
     },
     {
@@ -40,13 +30,18 @@
       "categorie": "essentieel"
     },
     {
-      "label": "omgaan met brandstoffen",
-      "uri": "http://data.europa.eu/esco/skill/2035c565-f0df-4efa-99fc-09a42f18c158",
+      "label": "brandstofinventarismethoden",
+      "uri": "http://data.europa.eu/esco/skill/365c74da-c38d-42d7-ac9c-747e2e401dca",
       "categorie": "essentieel"
     },
     {
-      "label": "verantwoordelijkheid tonen",
-      "uri": "http://data.europa.eu/esco/skill/199f7919-5114-41b6-b6a5-41e0e4896ec1",
+      "label": "verslag uitbrengen over incidenten inzake brandstofdistributie",
+      "uri": "http://data.europa.eu/esco/skill/3310562c-ed9e-43c2-a4d0-bafeed7057a4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veiligheidsrisico’s op luchthavens identificeren",
+      "uri": "http://data.europa.eu/esco/skill/94c24e4a-cc9a-4a49-b623-bc00bb5aa1a3",
       "categorie": "essentieel"
     },
     {
@@ -55,18 +50,23 @@
       "categorie": "essentieel"
     },
     {
+      "label": "omgaan met brandstoffen",
+      "uri": "http://data.europa.eu/esco/skill/2035c565-f0df-4efa-99fc-09a42f18c158",
+      "categorie": "essentieel"
+    },
+    {
       "label": "kwaliteitscontroles op brandstofoperaties uitvoeren",
       "uri": "http://data.europa.eu/esco/skill/0b198656-2440-4ab6-91c1-05f2ba6e12fe",
       "categorie": "essentieel"
     },
     {
-      "label": "brandstofinventarismethoden",
-      "uri": "http://data.europa.eu/esco/skill/365c74da-c38d-42d7-ac9c-747e2e401dca",
+      "label": "schriftelijke instructies volgen",
+      "uri": "http://data.europa.eu/esco/skill/54d68400-9da3-4077-a7ee-52e68b390ef6",
       "categorie": "essentieel"
     },
     {
-      "label": "schriftelijke instructies volgen",
-      "uri": "http://data.europa.eu/esco/skill/54d68400-9da3-4077-a7ee-52e68b390ef6",
+      "label": "verantwoordelijkheid tonen",
+      "uri": "http://data.europa.eu/esco/skill/199f7919-5114-41b6-b6a5-41e0e4896ec1",
       "categorie": "essentieel"
     },
     {

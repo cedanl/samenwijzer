@@ -15,13 +15,33 @@
   ],
   "skills": [
     {
+      "label": "CAM-software gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/7a757fa5-9a6f-43ab-9e66-f8f4dba1ffcb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "automatisch programmeren gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/7d10fcb2-b368-48ab-996b-7c9fafcf68ed",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "machine leveren",
+      "uri": "http://data.europa.eu/esco/skill/9ea652f6-accf-45bb-b9a8-590f06f7bd51",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteitsstandaarden",
+      "uri": "http://data.europa.eu/esco/skill/8d4271ca-c9fd-40b3-875f-15f78332a49e",
+      "categorie": "essentieel"
+    },
+    {
       "label": "problemen oplossen",
       "uri": "http://data.europa.eu/esco/skill/334e3e49-fb02-4051-809a-f06adfdc1c40",
       "categorie": "essentieel"
     },
     {
-      "label": "verwerkt werkstuk verwijderen",
-      "uri": "http://data.europa.eu/esco/skill/357e1729-e2a8-49f4-8b42-dc8b278320fa",
+      "label": "statistische procesbeheersing",
+      "uri": "http://data.europa.eu/esco/skill/0c77bcd5-b94a-475d-98e9-5a4327e4d726",
       "categorie": "essentieel"
     },
     {
@@ -30,18 +50,8 @@
       "categorie": "essentieel"
     },
     {
-      "label": "fabricageprocessen",
-      "uri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "een CNC-controller programmeren",
-      "uri": "http://data.europa.eu/esco/skill/bf942c60-8539-4951-83ee-63f770da1cb8",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "ontoereikende werkstukken verwijderen",
-      "uri": "http://data.europa.eu/esco/skill/31f01be9-7bbf-4afb-a647-bcd4931cfc8b",
+      "label": "machine met passende hulpmiddelen leveren",
+      "uri": "http://data.europa.eu/esco/skill/1f5148bb-1eb0-473d-a312-50e4ed24159f",
       "categorie": "essentieel"
     },
     {
@@ -50,13 +60,18 @@
       "categorie": "essentieel"
     },
     {
-      "label": "machine met passende hulpmiddelen leveren",
-      "uri": "http://data.europa.eu/esco/skill/1f5148bb-1eb0-473d-a312-50e4ed24159f",
+      "label": "de bediening van een machine installeren",
+      "uri": "http://data.europa.eu/esco/skill/d9818afc-1dec-4944-8c9c-e3ae8fad176d",
       "categorie": "essentieel"
     },
     {
-      "label": "automatisch programmeren gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/7d10fcb2-b368-48ab-996b-7c9fafcf68ed",
+      "label": "planlezen",
+      "uri": "http://data.europa.eu/esco/skill/68b6ef08-d823-489d-a95c-752ae6f6e6a7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verwerkt werkstuk verwijderen",
+      "uri": "http://data.europa.eu/esco/skill/357e1729-e2a8-49f4-8b42-dc8b278320fa",
       "categorie": "essentieel"
     },
     {
@@ -70,13 +85,23 @@
       "categorie": "essentieel"
     },
     {
-      "label": "zorgen voor de beschikbaarheid van materiaal",
-      "uri": "http://data.europa.eu/esco/skill/69f23426-9279-4fe6-a283-24c2aa4c855d",
+      "label": "ontoereikende werkstukken verwijderen",
+      "uri": "http://data.europa.eu/esco/skill/31f01be9-7bbf-4afb-a647-bcd4931cfc8b",
       "categorie": "essentieel"
     },
     {
-      "label": "planlezen",
-      "uri": "http://data.europa.eu/esco/skill/68b6ef08-d823-489d-a95c-752ae6f6e6a7",
+      "label": "fabricageprocessen",
+      "uri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "een CNC-controller programmeren",
+      "uri": "http://data.europa.eu/esco/skill/bf942c60-8539-4951-83ee-63f770da1cb8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor de beschikbaarheid van materiaal",
+      "uri": "http://data.europa.eu/esco/skill/69f23426-9279-4fe6-a283-24c2aa4c855d",
       "categorie": "essentieel"
     },
     {
@@ -85,318 +110,8 @@
       "categorie": "essentieel"
     },
     {
-      "label": "statistische procesbeheersing",
-      "uri": "http://data.europa.eu/esco/skill/0c77bcd5-b94a-475d-98e9-5a4327e4d726",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "machine leveren",
-      "uri": "http://data.europa.eu/esco/skill/9ea652f6-accf-45bb-b9a8-590f06f7bd51",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "CAM-software gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/7a757fa5-9a6f-43ab-9e66-f8f4dba1ffcb",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "de bediening van een machine installeren",
-      "uri": "http://data.europa.eu/esco/skill/d9818afc-1dec-4944-8c9c-e3ae8fad176d",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "kwaliteitsstandaarden",
-      "uri": "http://data.europa.eu/esco/skill/8d4271ca-c9fd-40b3-875f-15f78332a49e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "kwaliteit van producten controleren",
-      "uri": "http://data.europa.eu/esco/skill/1a3660c2-011c-4e96-9b1d-529afc305428",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "verbindingstechnologieën voor metaal",
-      "uri": "http://data.europa.eu/esco/skill/306ca6bc-bacd-434e-91d9-249a518ec71e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "mechanica",
-      "uri": "http://data.europa.eu/esco/skill/efa141df-f382-418f-9121-bd88fd735669",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "afvlaktechnologieën voor metaal",
-      "uri": "http://data.europa.eu/esco/skill/ebd90bfe-ab0f-4155-a77c-3de9267b27a1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "CNC-lasersnijmachines bedienen",
-      "uri": "http://data.europa.eu/esco/skill/b11fe9a5-4e80-4cb8-a902-7d53a6b28b47",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "optimalisatie van kwaliteit en cyclustijd",
-      "uri": "http://data.europa.eu/esco/skill/3b3b7373-220a-4287-87cf-e24a208b63c6",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Python (computerprogrammering)",
-      "uri": "http://data.europa.eu/esco/skill/ccd0a1d9-afda-43d9-b901-96344886e14d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "C#",
-      "uri": "http://data.europa.eu/esco/skill/4c016b68-4116-468c-9dc6-42710c239e4a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Objective-C",
-      "uri": "http://data.europa.eu/esco/skill/9973a5a2-7822-4161-99e9-95c781eb63f8",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "MATLAB",
-      "uri": "http://data.europa.eu/esco/skill/c3a03c5a-c260-4c26-9b9a-873abb396f4d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "statistische methoden bij procescontrole toepassen",
-      "uri": "http://data.europa.eu/esco/skill/ee8fee1a-75c1-43fb-b08d-779929f99249",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "C++",
-      "uri": "http://data.europa.eu/esco/skill/b633eb55-8f1f-4ae6-ab4c-2022ffe2cb7f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "soorten graveernaalden",
-      "uri": "http://data.europa.eu/esco/skill/ec3d6423-8c36-4451-893e-95b4a6a026fb",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "zaagblad op machine vervangen",
-      "uri": "http://data.europa.eu/esco/skill/5f55caf6-a0d6-49db-aa47-dfc74c8b25a1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Common Lisp",
-      "uri": "http://data.europa.eu/esco/skill/0cd6dcf1-5778-42a5-b685-4d01ae4a4871",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "productie van juwelen",
-      "uri": "http://data.europa.eu/esco/skill/d874115e-2668-4619-a0a8-6022feb47aec",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "CoffeeScript",
-      "uri": "http://data.europa.eu/esco/skill/993b1e23-f2de-4bd8-b33f-f86dde1c8e9d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "ergonomisch werken",
-      "uri": "http://data.europa.eu/esco/skill/156f8c5b-894a-4ccc-a70e-37a2726f3f00",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "waterdruk",
-      "uri": "http://data.europa.eu/esco/skill/20e16be3-80b0-46bd-8b5e-ad9aa1ddf608",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "lassen",
-      "uri": "http://data.europa.eu/esco/skill/2ee57de4-bffd-4194-b009-0060edec77cc",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Prolog (computerprogrammering)",
-      "uri": "http://data.europa.eu/esco/skill/2bde42ae-e776-41c1-9ded-b07b30bfe985",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "computerprogrammering",
-      "uri": "http://data.europa.eu/esco/skill/21d2f96d-35f7-4e3f-9745-c533d2dd6e97",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "CNC-freesmachines bedienen",
-      "uri": "http://data.europa.eu/esco/skill/4cb58ef4-67a9-4bea-a743-2c83ebd60e79",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "producttests uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/371d57e6-cc5f-4fc0-9c0c-58feb595cc5b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "graveertechnologieën",
-      "uri": "http://data.europa.eu/esco/skill/69c0689f-09dc-45a8-bc8e-4952b19f7df2",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "geometrische afmetingen en toleranties interpreteren",
-      "uri": "http://data.europa.eu/esco/skill/e3688cae-7a28-4405-88b5-6b87179e0d76",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "AJAX",
-      "uri": "http://data.europa.eu/esco/skill/b4dc6e4f-dc7d-445f-8ce2-d7b9d225e282",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Perl",
-      "uri": "http://data.europa.eu/esco/skill/401eb8d8-6daa-4f8b-90ad-60afc71eb4f8",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "CNC-draaibanken bedienen",
-      "uri": "http://data.europa.eu/esco/skill/c4949dcf-bbcc-40f2-8584-6c6299beb7fb",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "gritstraalprocessen",
-      "uri": "http://data.europa.eu/esco/skill/27247d7e-d327-4ba2-87fe-215143be6453",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "schudtoestellen voor metaalbladen bedienen",
-      "uri": "http://data.europa.eu/esco/skill/6b324e60-ccc3-44c2-adc7-c12cc84c9fa7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "productie van metalen structuren",
-      "uri": "http://data.europa.eu/esco/skill/2d63745d-3c4c-4da1-ad77-985f68768be9",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "transportband controleren",
-      "uri": "http://data.europa.eu/esco/skill/62d34066-f07a-4437-914b-0548ba8bbe59",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "productie van gereedschappen",
-      "uri": "http://data.europa.eu/esco/skill/f266380e-9830-44db-8f93-60a6e8b9a1b6",
-      "categorie": "optioneel"
-    },
-    {
       "label": "advies geven aan technici",
       "uri": "http://data.europa.eu/esco/skill/8c474534-707f-46f3-b356-810bbfe8b693",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "laserbundellasapparaten bedienen",
-      "uri": "http://data.europa.eu/esco/skill/c14f7ca4-fb62-420b-925b-8ac8d98c9dd1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Java (computerprogrammering)",
-      "uri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "elektriciteit",
-      "uri": "http://data.europa.eu/esco/skill/c8ac1986-38fa-43b2-89dc-50a4beeb420e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "CAD-software gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/b34e2ba1-9080-48c9-9b42-ee9192a4d3f1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Lisp",
-      "uri": "http://data.europa.eu/esco/skill/0de61385-de6d-4146-ba32-1cc1bc102220",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "vacuümkamers onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/1274596d-f537-4ec9-90b3-e0c7a73ee55b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Pascal (computerprogrammering)",
-      "uri": "http://data.europa.eu/esco/skill/e8b89eb6-51e8-4c3a-babb-88b2e110376b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "CNC-slijpmachines bedienen",
-      "uri": "http://data.europa.eu/esco/skill/6f728d63-5c45-40b3-8bfd-e17c5dba28ad",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Scala",
-      "uri": "http://data.europa.eu/esco/skill/ffddfc7c-a9dd-449f-9e96-882dc447c8b6",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Swift (computerprogrammering)",
-      "uri": "http://data.europa.eu/esco/skill/be80acfc-b6f2-4411-9b8d-b19d9cd2556a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "elektronenbundellasprocessen",
-      "uri": "http://data.europa.eu/esco/skill/5d9d5582-2a36-4887-98fc-cff1ba767983",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "productie van wapens en munitie",
-      "uri": "http://data.europa.eu/esco/skill/e6c20084-4b2a-4583-a983-9988fa084bba",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "SAS taal",
-      "uri": "http://data.europa.eu/esco/skill/04f1b938-d4d4-4cb1-a863-982af76b9d93",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "elektrische ontlading",
-      "uri": "http://data.europa.eu/esco/skill/56a13f47-ad7c-451f-81cf-e550107abc03",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "maalapparaten",
-      "uri": "http://data.europa.eu/esco/skill/7b969ac9-f085-4afb-a480-c5210fb4da7d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Smalltalk (computerprogrammering)",
-      "uri": "http://data.europa.eu/esco/skill/42ed3bfb-1a01-4c8b-9758-fc6438865734",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "temperatuurmeters afstellen",
-      "uri": "http://data.europa.eu/esco/skill/f31ca02e-5ad1-41dc-aed2-5a9a6db96bd2",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "passende beschermende uitrusting dragen",
-      "uri": "http://data.europa.eu/esco/skill/6122d586-5978-431f-8e7a-96e61fc1f3fc",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "mechanische machines inkopen",
-      "uri": "http://data.europa.eu/esco/skill/825999ab-104e-46d5-87ac-385cdd0b3ea2",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "verwerking van edelmetalen",
-      "uri": "http://data.europa.eu/esco/skill/ffc2465f-d2b5-4b2d-bf6e-56eefbe02da1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "elektrotechniek",
-      "uri": "http://data.europa.eu/esco/skill/3e40c7d0-0e36-4b33-bc33-0aa87eda0561",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Groovy",
-      "uri": "http://data.europa.eu/esco/skill/52cf3037-ab53-4806-85ed-7fd21ea7f6a1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "isopropylalcohol veilig aanbrengen",
-      "uri": "http://data.europa.eu/esco/skill/43a02264-9393-43ed-b517-00dd99369710",
       "categorie": "optioneel"
     },
     {
@@ -405,123 +120,43 @@
       "categorie": "optioneel"
     },
     {
-      "label": "elektrische stroom",
-      "uri": "http://data.europa.eu/esco/skill/57869946-cec2-4121-981c-84c9846c58d0",
+      "label": "schudtoestellen voor metaalbladen bedienen",
+      "uri": "http://data.europa.eu/esco/skill/6b324e60-ccc3-44c2-adc7-c12cc84c9fa7",
       "categorie": "optioneel"
     },
     {
-      "label": "productie van verwarmingsapparatuur",
-      "uri": "http://data.europa.eu/esco/skill/beba7567-b897-4832-84b5-67d3ae38fd99",
+      "label": "CNC-draaibanken bedienen",
+      "uri": "http://data.europa.eu/esco/skill/c4949dcf-bbcc-40f2-8584-6c6299beb7fb",
       "categorie": "optioneel"
     },
     {
-      "label": "oppervlakken met bramen glad maken",
-      "uri": "http://data.europa.eu/esco/skill/b713a540-54d8-4648-809f-6304450579f5",
+      "label": "Lisp",
+      "uri": "http://data.europa.eu/esco/skill/0de61385-de6d-4146-ba32-1cc1bc102220",
       "categorie": "optioneel"
     },
     {
-      "label": "ponsmachines bedienen",
-      "uri": "http://data.europa.eu/esco/skill/83bf74c8-6d77-4aac-9a36-f3118a066e51",
+      "label": "Haskell",
+      "uri": "http://data.europa.eu/esco/skill/000f1d3d-220f-4789-9c0a-cc742521fb02",
       "categorie": "optioneel"
     },
     {
-      "label": "CNC-graveermachines bedienen",
-      "uri": "http://data.europa.eu/esco/skill/f5f9b6fe-0ff2-4c0b-887a-12702d8612ba",
+      "label": "COBOL",
+      "uri": "http://data.europa.eu/esco/skill/def007fa-5fed-4a5f-91a2-b0d7e3db1be1",
       "categorie": "optioneel"
     },
     {
-      "label": "soorten plastic",
-      "uri": "http://data.europa.eu/esco/skill/9c66b182-96ec-43b3-8821-2aeb7df66f12",
+      "label": "Python (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/ccd0a1d9-afda-43d9-b901-96344886e14d",
       "categorie": "optioneel"
     },
     {
-      "label": "imperfecties in metaal ontdekken",
-      "uri": "http://data.europa.eu/esco/skill/34250f4b-b39e-42bd-a2d7-783e90051b08",
+      "label": "ML (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/a4d336a6-9ffd-402a-91cc-f359716ba4e0",
       "categorie": "optioneel"
     },
     {
-      "label": "soorten lasers",
-      "uri": "http://data.europa.eu/esco/skill/aa9eb826-390c-4923-b379-ba56444e680e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "onderdelen voorbereiden om samen te voegen",
-      "uri": "http://data.europa.eu/esco/skill/16da7f95-bd00-4a5c-b837-bf1c2a5a9f15",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "soorten metaal",
-      "uri": "http://data.europa.eu/esco/skill/7f107a85-d6ac-410f-a995-d635c5aa418b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "soorten metaalproductieprocessen",
-      "uri": "http://data.europa.eu/esco/skill/c01b4549-3bc2-4640-8ecb-ef335fc4445c",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "elektronenbundellasapparaten bedienen",
-      "uri": "http://data.europa.eu/esco/skill/03305638-bd08-410a-a960-f963ad89cce6",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "productie van deuren van metaal",
-      "uri": "http://data.europa.eu/esco/skill/d2a921a0-894d-4a4e-aeb4-602914c33a5e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "productie van stoomgeneratoren",
-      "uri": "http://data.europa.eu/esco/skill/fde9f003-eedf-40d4-984d-d8beb2e0a855",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "verwerking van non-ferrometalen",
-      "uri": "http://data.europa.eu/esco/skill/0b472dad-1a3f-456e-99ba-de5ffe8665c2",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "afvaltrilvullers bedienen",
-      "uri": "http://data.europa.eu/esco/skill/f9032d23-4b04-4cbb-8152-2cafc2d394d2",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "APL",
-      "uri": "http://data.europa.eu/esco/skill/58d7a289-dafd-4363-833f-d1dc4140885e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "lasermarkeringsprocessen",
-      "uri": "http://data.europa.eu/esco/skill/2eb2fd88-0fde-49cd-9d9f-8ae823f52b3d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "JavaScript",
-      "uri": "http://data.europa.eu/esco/skill/3cd569a2-4f88-4c1e-9995-8dce8c5e51a7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "onderdelen van elektronenbundellasapparaten",
-      "uri": "http://data.europa.eu/esco/skill/07b83472-11f3-45f8-8855-987aa600581f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Assembly (computerprogrammering)",
-      "uri": "http://data.europa.eu/esco/skill/47b9bbcf-356c-4782-83a4-7f5a1b2b51a3",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voor juiste metaaltemperatuur zorgen",
-      "uri": "http://data.europa.eu/esco/skill/bd620a17-3f2b-411f-9613-8c6e8b3faafd",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "productie van metalen montageproducten",
-      "uri": "http://data.europa.eu/esco/skill/8296eb2d-c9bf-41fc-be72-781383c51298",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "snijafval verwijderen",
-      "uri": "http://data.europa.eu/esco/skill/4f4ca760-970a-4839-9ce2-ab85ed66772e",
+      "label": "graveertechnologieën",
+      "uri": "http://data.europa.eu/esco/skill/69c0689f-09dc-45a8-bc8e-4952b19f7df2",
       "categorie": "optioneel"
     },
     {
@@ -530,48 +165,13 @@
       "categorie": "optioneel"
     },
     {
-      "label": "PHP",
-      "uri": "http://data.europa.eu/esco/skill/4350c38d-0fe9-4ca7-bab9-40ed7f72b04f",
+      "label": "C#",
+      "uri": "http://data.europa.eu/esco/skill/4c016b68-4116-468c-9dc6-42710c239e4a",
       "categorie": "optioneel"
     },
     {
-      "label": "voorraadniveaus bewaken",
-      "uri": "http://data.europa.eu/esco/skill/44f6a65f-6be7-4818-9a66-73908797283f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "VBScript",
-      "uri": "http://data.europa.eu/esco/skill/dcdd5ddf-82a6-4ac3-8edc-d4b23cae9a88",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Erlang",
-      "uri": "http://data.europa.eu/esco/skill/034c29fa-c3ba-45ea-b8f3-bf8e3705e386",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Visual Basic",
-      "uri": "http://data.europa.eu/esco/skill/13bdd41a-2a18-441f-96db-41252c519413",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "productie van bestek",
-      "uri": "http://data.europa.eu/esco/skill/2e3ae45d-04b5-4922-98a0-de914a8e018c",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "verwerking van ferrometalen",
-      "uri": "http://data.europa.eu/esco/skill/46786464-6c5b-4970-9a63-2f2fb29b4c12",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Scratch (computerprogrammering)",
-      "uri": "http://data.europa.eu/esco/skill/d56fc2b5-4b0a-4e7e-9bde-a33736f6ff18",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "meter controleren",
-      "uri": "http://data.europa.eu/esco/skill/285cac9e-dad3-4b7b-848f-9bd2860ae345",
+      "label": "computerprogrammering",
+      "uri": "http://data.europa.eu/esco/skill/21d2f96d-35f7-4e3f-9745-c533d2dd6e97",
       "categorie": "optioneel"
     },
     {
@@ -585,8 +185,28 @@
       "categorie": "optioneel"
     },
     {
-      "label": "productie van lichte metalen verpakkingen",
-      "uri": "http://data.europa.eu/esco/skill/c9327d3a-4245-47a9-bbbd-e39720cabb63",
+      "label": "maalapparaten",
+      "uri": "http://data.europa.eu/esco/skill/7b969ac9-f085-4afb-a480-c5210fb4da7d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ergonomisch werken",
+      "uri": "http://data.europa.eu/esco/skill/156f8c5b-894a-4ccc-a70e-37a2726f3f00",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "optimalisatie van kwaliteit en cyclustijd",
+      "uri": "http://data.europa.eu/esco/skill/3b3b7373-220a-4287-87cf-e24a208b63c6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Perl",
+      "uri": "http://data.europa.eu/esco/skill/401eb8d8-6daa-4f8b-90ad-60afc71eb4f8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektrische ontlading",
+      "uri": "http://data.europa.eu/esco/skill/56a13f47-ad7c-451f-81cf-e550107abc03",
       "categorie": "optioneel"
     },
     {
@@ -595,53 +215,88 @@
       "categorie": "optioneel"
     },
     {
-      "label": "productiegegevens registreren voor kwaliteitscontrole",
-      "uri": "http://data.europa.eu/esco/skill/2879a6f9-868b-40a1-a424-d50007ca8354",
+      "label": "PHP",
+      "uri": "http://data.europa.eu/esco/skill/4350c38d-0fe9-4ca7-bab9-40ed7f72b04f",
       "categorie": "optioneel"
     },
     {
-      "label": "Microsoft Visual C++",
-      "uri": "http://data.europa.eu/esco/skill/8369ede5-4200-4a44-be2e-bc60ef959259",
+      "label": "vacuümkamers onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/1274596d-f537-4ec9-90b3-e0c7a73ee55b",
       "categorie": "optioneel"
     },
     {
-      "label": "lastechnieken",
-      "uri": "http://data.europa.eu/esco/skill/530cb489-d900-46ab-9350-4d50ccd49eea",
+      "label": "Pascal (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/e8b89eb6-51e8-4c3a-babb-88b2e110376b",
       "categorie": "optioneel"
     },
     {
-      "label": "ABAP",
-      "uri": "http://data.europa.eu/esco/skill/eb0e5615-1575-4a86-a1a2-7d39595033c5",
+      "label": "lasergraveermethoden",
+      "uri": "http://data.europa.eu/esco/skill/19115dcc-8b12-4155-8c46-20ce4e9ec74f",
       "categorie": "optioneel"
     },
     {
-      "label": "productie van metalen huishoudelijke artikelen",
-      "uri": "http://data.europa.eu/esco/skill/5393128b-d743-4b3f-b9d0-15ec8f6643a6",
+      "label": "soorten plastic",
+      "uri": "http://data.europa.eu/esco/skill/9c66b182-96ec-43b3-8821-2aeb7df66f12",
       "categorie": "optioneel"
     },
     {
-      "label": "productie van stalen vaten en soortgelijke containers",
-      "uri": "http://data.europa.eu/esco/skill/92e05418-6986-4374-b3e9-00becdf54b57",
+      "label": "snijafval verwijderen",
+      "uri": "http://data.europa.eu/esco/skill/4f4ca760-970a-4839-9ce2-ab85ed66772e",
       "categorie": "optioneel"
     },
     {
-      "label": "productie van metalen containers",
-      "uri": "http://data.europa.eu/esco/skill/7a273f33-016a-47cc-b4b7-5ebeea768816",
+      "label": "soorten graveernaalden",
+      "uri": "http://data.europa.eu/esco/skill/ec3d6423-8c36-4451-893e-95b4a6a026fb",
       "categorie": "optioneel"
     },
     {
-      "label": "Ruby (computerprogrammering)",
-      "uri": "http://data.europa.eu/esco/skill/0ccdfe98-f845-4598-84a1-3dca66e9d9a3",
+      "label": "voor juiste metaaltemperatuur zorgen",
+      "uri": "http://data.europa.eu/esco/skill/bd620a17-3f2b-411f-9613-8c6e8b3faafd",
       "categorie": "optioneel"
     },
     {
-      "label": "gegevens over de voortgang van het werk bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/ccfbdaad-b91d-4bfe-bd0e-d30b33587f19",
+      "label": "soorten metaal",
+      "uri": "http://data.europa.eu/esco/skill/7f107a85-d6ac-410f-a995-d635c5aa418b",
       "categorie": "optioneel"
     },
     {
-      "label": "OpenEdge Advanced Business Language",
-      "uri": "http://data.europa.eu/esco/skill/300d432b-f457-4cd3-9cb1-1858c7d14954",
+      "label": "C++",
+      "uri": "http://data.europa.eu/esco/skill/b633eb55-8f1f-4ae6-ab4c-2022ffe2cb7f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "VBScript",
+      "uri": "http://data.europa.eu/esco/skill/dcdd5ddf-82a6-4ac3-8edc-d4b23cae9a88",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "passende beschermende uitrusting dragen",
+      "uri": "http://data.europa.eu/esco/skill/6122d586-5978-431f-8e7a-96e61fc1f3fc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productie van bestek",
+      "uri": "http://data.europa.eu/esco/skill/2e3ae45d-04b5-4922-98a0-de914a8e018c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "statistische methoden bij procescontrole toepassen",
+      "uri": "http://data.europa.eu/esco/skill/ee8fee1a-75c1-43fb-b08d-779929f99249",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderdelen voorbereiden om samen te voegen",
+      "uri": "http://data.europa.eu/esco/skill/16da7f95-bd00-4a5c-b837-bf1c2a5a9f15",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektriciteit",
+      "uri": "http://data.europa.eu/esco/skill/c8ac1986-38fa-43b2-89dc-50a4beeb420e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Prolog (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/2bde42ae-e776-41c1-9ded-b07b30bfe985",
       "categorie": "optioneel"
     },
     {
@@ -650,78 +305,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "ML (computerprogrammering)",
-      "uri": "http://data.europa.eu/esco/skill/a4d336a6-9ffd-402a-91cc-f359716ba4e0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "productie van deurbeslag van metaal",
-      "uri": "http://data.europa.eu/esco/skill/c27e11b7-2f1e-4e20-8c47-fee6cd22c148",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Haskell",
-      "uri": "http://data.europa.eu/esco/skill/000f1d3d-220f-4789-9c0a-cc742521fb02",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "machines vervangen",
-      "uri": "http://data.europa.eu/esco/skill/ca8c5849-2655-44b3-b2fa-c4c0e2a04aeb",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "verwerkt werkstuk markeren",
-      "uri": "http://data.europa.eu/esco/skill/8ee056cf-c4f7-46bb-a9fb-1ff7b1ab9534",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "fijnmetaalbewerkingstechnieken toepassen",
-      "uri": "http://data.europa.eu/esco/skill/98d0c976-2966-4f72-831b-ffd1f531a2c6",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "waterstraalsnijmachines bedienen",
-      "uri": "http://data.europa.eu/esco/skill/16504009-552d-46b8-bfc3-b8dcaf556c9d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "kruisverwijzingssystemen toepassen voor productidentificatie",
-      "uri": "http://data.europa.eu/esco/skill/6da25bcb-e854-4a19-83de-5d4957e5f7a4",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "mechanisch materiaal onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/8efb6150-2c43-4109-b3cd-41c3451698ea",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "TypeScript",
-      "uri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "metaalzagen bedienen",
-      "uri": "http://data.europa.eu/esco/skill/f53ec337-786f-4904-951d-adf3655e1c60",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voor juiste gasdruk zorgen",
-      "uri": "http://data.europa.eu/esco/skill/8fea133a-8e3d-4ae6-89b6-94961445ee85",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "COBOL",
-      "uri": "http://data.europa.eu/esco/skill/def007fa-5fed-4a5f-91a2-b0d7e3db1be1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "omgaan met managers",
-      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "ASP.NET",
-      "uri": "http://data.europa.eu/esco/skill/56a7f561-1d55-43c9-9cd7-36a0a9bc6c50",
+      "label": "lasermarkeringsprocessen",
+      "uri": "http://data.europa.eu/esco/skill/2eb2fd88-0fde-49cd-9d9f-8ae823f52b3d",
       "categorie": "optioneel"
     },
     {
@@ -730,8 +315,183 @@
       "categorie": "optioneel"
     },
     {
-      "label": "soorten zaagbladen",
-      "uri": "http://data.europa.eu/esco/skill/bc038a0a-27af-4d9b-a6b5-93b9d9314d21",
+      "label": "Java (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verwerking van ferrometalen",
+      "uri": "http://data.europa.eu/esco/skill/46786464-6c5b-4970-9a63-2f2fb29b4c12",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verwerking van edelmetalen",
+      "uri": "http://data.europa.eu/esco/skill/ffc2465f-d2b5-4b2d-bf6e-56eefbe02da1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gritstraalprocessen",
+      "uri": "http://data.europa.eu/esco/skill/27247d7e-d327-4ba2-87fe-215143be6453",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gegevens over de voortgang van het werk bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/ccfbdaad-b91d-4bfe-bd0e-d30b33587f19",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderdelen van elektronenbundellasapparaten",
+      "uri": "http://data.europa.eu/esco/skill/07b83472-11f3-45f8-8855-987aa600581f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productie van metalen structuren",
+      "uri": "http://data.europa.eu/esco/skill/2d63745d-3c4c-4da1-ad77-985f68768be9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productie van gereedschappen",
+      "uri": "http://data.europa.eu/esco/skill/f266380e-9830-44db-8f93-60a6e8b9a1b6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productie van wapens en munitie",
+      "uri": "http://data.europa.eu/esco/skill/e6c20084-4b2a-4583-a983-9988fa084bba",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "laserbundellasapparaten bedienen",
+      "uri": "http://data.europa.eu/esco/skill/c14f7ca4-fb62-420b-925b-8ac8d98c9dd1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Groovy",
+      "uri": "http://data.europa.eu/esco/skill/52cf3037-ab53-4806-85ed-7fd21ea7f6a1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "geometrische afmetingen en toleranties interpreteren",
+      "uri": "http://data.europa.eu/esco/skill/e3688cae-7a28-4405-88b5-6b87179e0d76",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "CoffeeScript",
+      "uri": "http://data.europa.eu/esco/skill/993b1e23-f2de-4bd8-b33f-f86dde1c8e9d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "mechanisch materiaal onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/8efb6150-2c43-4109-b3cd-41c3451698ea",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Visual Basic",
+      "uri": "http://data.europa.eu/esco/skill/13bdd41a-2a18-441f-96db-41252c519413",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "afvaltrilvullers bedienen",
+      "uri": "http://data.europa.eu/esco/skill/f9032d23-4b04-4cbb-8152-2cafc2d394d2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productie van metalen huishoudelijke artikelen",
+      "uri": "http://data.europa.eu/esco/skill/5393128b-d743-4b3f-b9d0-15ec8f6643a6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "CNC-graveermachines bedienen",
+      "uri": "http://data.europa.eu/esco/skill/f5f9b6fe-0ff2-4c0b-887a-12702d8612ba",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voorraadniveaus bewaken",
+      "uri": "http://data.europa.eu/esco/skill/44f6a65f-6be7-4818-9a66-73908797283f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "producttests uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/371d57e6-cc5f-4fc0-9c0c-58feb595cc5b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productie van deuren van metaal",
+      "uri": "http://data.europa.eu/esco/skill/d2a921a0-894d-4a4e-aeb4-602914c33a5e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Scala",
+      "uri": "http://data.europa.eu/esco/skill/ffddfc7c-a9dd-449f-9e96-882dc447c8b6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "JavaScript",
+      "uri": "http://data.europa.eu/esco/skill/3cd569a2-4f88-4c1e-9995-8dce8c5e51a7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Erlang",
+      "uri": "http://data.europa.eu/esco/skill/034c29fa-c3ba-45ea-b8f3-bf8e3705e386",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productie van metalen montageproducten",
+      "uri": "http://data.europa.eu/esco/skill/8296eb2d-c9bf-41fc-be72-781383c51298",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten lasers",
+      "uri": "http://data.europa.eu/esco/skill/aa9eb826-390c-4923-b379-ba56444e680e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Assembly (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/47b9bbcf-356c-4782-83a4-7f5a1b2b51a3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Common Lisp",
+      "uri": "http://data.europa.eu/esco/skill/0cd6dcf1-5778-42a5-b685-4d01ae4a4871",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ponsmachines bedienen",
+      "uri": "http://data.europa.eu/esco/skill/83bf74c8-6d77-4aac-9a36-f3118a066e51",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektrotechniek",
+      "uri": "http://data.europa.eu/esco/skill/3e40c7d0-0e36-4b33-bc33-0aa87eda0561",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productie van deurbeslag van metaal",
+      "uri": "http://data.europa.eu/esco/skill/c27e11b7-2f1e-4e20-8c47-fee6cd22c148",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productie van stoomgeneratoren",
+      "uri": "http://data.europa.eu/esco/skill/fde9f003-eedf-40d4-984d-d8beb2e0a855",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "omgaan met managers",
+      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Microsoft Visual C++",
+      "uri": "http://data.europa.eu/esco/skill/8369ede5-4200-4a44-be2e-bc60ef959259",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "MATLAB",
+      "uri": "http://data.europa.eu/esco/skill/c3a03c5a-c260-4c26-9b9a-873abb396f4d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "lastechnieken",
+      "uri": "http://data.europa.eu/esco/skill/530cb489-d900-46ab-9350-4d50ccd49eea",
       "categorie": "optioneel"
     },
     {
@@ -740,8 +500,73 @@
       "categorie": "optioneel"
     },
     {
-      "label": "trigonometrie",
-      "uri": "http://data.europa.eu/esco/skill/8a16add0-6faa-4387-896c-ee641568d89f",
+      "label": "Smalltalk (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/42ed3bfb-1a01-4c8b-9758-fc6438865734",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "mechanica",
+      "uri": "http://data.europa.eu/esco/skill/efa141df-f382-418f-9121-bd88fd735669",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "SAS taal",
+      "uri": "http://data.europa.eu/esco/skill/04f1b938-d4d4-4cb1-a863-982af76b9d93",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productie van stalen vaten en soortgelijke containers",
+      "uri": "http://data.europa.eu/esco/skill/92e05418-6986-4374-b3e9-00becdf54b57",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "temperatuurmeters afstellen",
+      "uri": "http://data.europa.eu/esco/skill/f31ca02e-5ad1-41dc-aed2-5a9a6db96bd2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "mechanische machines inkopen",
+      "uri": "http://data.europa.eu/esco/skill/825999ab-104e-46d5-87ac-385cdd0b3ea2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektrische stroom",
+      "uri": "http://data.europa.eu/esco/skill/57869946-cec2-4121-981c-84c9846c58d0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productie van lichte metalen verpakkingen",
+      "uri": "http://data.europa.eu/esco/skill/c9327d3a-4245-47a9-bbbd-e39720cabb63",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productie van metalen containers",
+      "uri": "http://data.europa.eu/esco/skill/7a273f33-016a-47cc-b4b7-5ebeea768816",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "TypeScript",
+      "uri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "APL",
+      "uri": "http://data.europa.eu/esco/skill/58d7a289-dafd-4363-833f-d1dc4140885e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verbindingstechnologieën voor metaal",
+      "uri": "http://data.europa.eu/esco/skill/306ca6bc-bacd-434e-91d9-249a518ec71e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "lassen",
+      "uri": "http://data.europa.eu/esco/skill/2ee57de4-bffd-4194-b009-0060edec77cc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "meter controleren",
+      "uri": "http://data.europa.eu/esco/skill/285cac9e-dad3-4b7b-848f-9bd2860ae345",
       "categorie": "optioneel"
     },
     {
@@ -750,8 +575,183 @@
       "categorie": "optioneel"
     },
     {
-      "label": "lasergraveermethoden",
-      "uri": "http://data.europa.eu/esco/skill/19115dcc-8b12-4155-8c46-20ce4e9ec74f",
+      "label": "voor juiste gasdruk zorgen",
+      "uri": "http://data.europa.eu/esco/skill/8fea133a-8e3d-4ae6-89b6-94961445ee85",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektronenbundellasprocessen",
+      "uri": "http://data.europa.eu/esco/skill/5d9d5582-2a36-4887-98fc-cff1ba767983",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "machines vervangen",
+      "uri": "http://data.europa.eu/esco/skill/ca8c5849-2655-44b3-b2fa-c4c0e2a04aeb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ASP.NET",
+      "uri": "http://data.europa.eu/esco/skill/56a7f561-1d55-43c9-9cd7-36a0a9bc6c50",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "OpenEdge Advanced Business Language",
+      "uri": "http://data.europa.eu/esco/skill/300d432b-f457-4cd3-9cb1-1858c7d14954",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zaagblad op machine vervangen",
+      "uri": "http://data.europa.eu/esco/skill/5f55caf6-a0d6-49db-aa47-dfc74c8b25a1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "CNC-freesmachines bedienen",
+      "uri": "http://data.europa.eu/esco/skill/4cb58ef4-67a9-4bea-a743-2c83ebd60e79",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "transportband controleren",
+      "uri": "http://data.europa.eu/esco/skill/62d34066-f07a-4437-914b-0548ba8bbe59",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektronenbundellasapparaten bedienen",
+      "uri": "http://data.europa.eu/esco/skill/03305638-bd08-410a-a960-f963ad89cce6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kwaliteit van producten controleren",
+      "uri": "http://data.europa.eu/esco/skill/1a3660c2-011c-4e96-9b1d-529afc305428",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "CNC-slijpmachines bedienen",
+      "uri": "http://data.europa.eu/esco/skill/6f728d63-5c45-40b3-8bfd-e17c5dba28ad",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "oppervlakken met bramen glad maken",
+      "uri": "http://data.europa.eu/esco/skill/b713a540-54d8-4648-809f-6304450579f5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productie van verwarmingsapparatuur",
+      "uri": "http://data.europa.eu/esco/skill/beba7567-b897-4832-84b5-67d3ae38fd99",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verwerking van non-ferrometalen",
+      "uri": "http://data.europa.eu/esco/skill/0b472dad-1a3f-456e-99ba-de5ffe8665c2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verwerkt werkstuk markeren",
+      "uri": "http://data.europa.eu/esco/skill/8ee056cf-c4f7-46bb-a9fb-1ff7b1ab9534",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "waterstraalsnijmachines bedienen",
+      "uri": "http://data.europa.eu/esco/skill/16504009-552d-46b8-bfc3-b8dcaf556c9d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Scratch (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/d56fc2b5-4b0a-4e7e-9bde-a33736f6ff18",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "metaalzagen bedienen",
+      "uri": "http://data.europa.eu/esco/skill/f53ec337-786f-4904-951d-adf3655e1c60",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "imperfecties in metaal ontdekken",
+      "uri": "http://data.europa.eu/esco/skill/34250f4b-b39e-42bd-a2d7-783e90051b08",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "trigonometrie",
+      "uri": "http://data.europa.eu/esco/skill/8a16add0-6faa-4387-896c-ee641568d89f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "isopropylalcohol veilig aanbrengen",
+      "uri": "http://data.europa.eu/esco/skill/43a02264-9393-43ed-b517-00dd99369710",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productiegegevens registreren voor kwaliteitscontrole",
+      "uri": "http://data.europa.eu/esco/skill/2879a6f9-868b-40a1-a424-d50007ca8354",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "CNC-lasersnijmachines bedienen",
+      "uri": "http://data.europa.eu/esco/skill/b11fe9a5-4e80-4cb8-a902-7d53a6b28b47",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "afvlaktechnologieën voor metaal",
+      "uri": "http://data.europa.eu/esco/skill/ebd90bfe-ab0f-4155-a77c-3de9267b27a1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "CAD-software gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/b34e2ba1-9080-48c9-9b42-ee9192a4d3f1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ABAP",
+      "uri": "http://data.europa.eu/esco/skill/eb0e5615-1575-4a86-a1a2-7d39595033c5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productie van juwelen",
+      "uri": "http://data.europa.eu/esco/skill/d874115e-2668-4619-a0a8-6022feb47aec",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "waterdruk",
+      "uri": "http://data.europa.eu/esco/skill/20e16be3-80b0-46bd-8b5e-ad9aa1ddf608",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Swift (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/be80acfc-b6f2-4411-9b8d-b19d9cd2556a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "AJAX",
+      "uri": "http://data.europa.eu/esco/skill/b4dc6e4f-dc7d-445f-8ce2-d7b9d225e282",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten metaalproductieprocessen",
+      "uri": "http://data.europa.eu/esco/skill/c01b4549-3bc2-4640-8ecb-ef335fc4445c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Objective-C",
+      "uri": "http://data.europa.eu/esco/skill/9973a5a2-7822-4161-99e9-95c781eb63f8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten zaagbladen",
+      "uri": "http://data.europa.eu/esco/skill/bc038a0a-27af-4d9b-a6b5-93b9d9314d21",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Ruby (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/0ccdfe98-f845-4598-84a1-3dca66e9d9a3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kruisverwijzingssystemen toepassen voor productidentificatie",
+      "uri": "http://data.europa.eu/esco/skill/6da25bcb-e854-4a19-83de-5d4957e5f7a4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "fijnmetaalbewerkingstechnieken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/98d0c976-2966-4f72-831b-ffd1f531a2c6",
       "categorie": "optioneel"
     }
   ]

@@ -1,18 +1,94 @@
 {
   "crebo": "25575",
   "opleiding": "2021 - 25575 OER Instructeur mbo BBL Vastgesteld",
-  "bron": "ESCO",
-  "beroep": null,
-  "match_methode": "geen-match",
-  "kandidaten": [
-    "eerstehulpinstructeur",
-    "instructeur beroepschauffeurs",
-    "instructeur paardensport",
-    "geleidehondeninstructeur",
-    "instructeur bestuurders van spoorwegvoertuigen",
-    "instructeur lifeguardopleiding",
-    "instructeur cabinepersoneel",
-    "fitnessinstructeur"
-  ],
-  "skills": []
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Instructeur mbo",
+    "uri": "",
+    "definitie": "De instructeur mbo werkt met studenten. De instructeur speelt met zijn kwaliteiten en persoonlijkheid een belangrijke rol bij het bereiken van de gewenste leerresultaten en het realiseren van een veilige leeromgeving. Voor een verantwoorde beroepsuitoefening moet de instructeur mbo betrokken, empathisch, assertief, representatief en integer zijn. Hij heeft een functie als rolmodel en weet inhoud te geven aan zijn voorbeeldfunctie. Hij zorgt voor een fysiek en sociaal veilige leeromgeving, gaat respectvol om met studenten en collega's, kan diversiteit hanteren en toont een open houding waardoor hij vraagstukken bespreekbaar maakt. Hij speelt creatief en flexibel in op de gegeven situatie en de wensen en leer- en ontwikkelingsmogelijkheden van de studenten. Hij treedt creatief (vindingrijk) én handelend op in onverwachte, mogelijk escalerende situaties. Hij straalt rust en stabiliteit uit. De instructeur mbo is zich ervan bewust dat hij te maken heeft met vertrouwelijke gegevens en privacy- en organisatiegevoelige informatie. Hij werkt mens- en resultaatgericht, sociaal-communicatief, efficiënt, methodisch, hygiënisch, veilig, kostenbewust, milieubewust en ergonomisch verantwoord. Hij is initiatiefrijk, leergierig en zelfstandig. Hij reflecteert regelmatig op zijn beroepsmatig handelen, zodat hij blijft leren van zijn werkzaamheden en zijn handelingsrepertoire optimaliseert. Hij is flexibel om te kunnen schakelen in situaties, leerstijlen en gesprekspartners. De instructeur mbo is onderdeel van de onderwijsorganisatie waarvan het onderwijsteam deel uitmaakt. Dit betekent dat hij werkt volgens beleid, visie en procedures van de onderwijsinstelling. Hij beschikt over vakinhoudelijke, vakdidactische en pedagogische bekwaamheid, weet wat hij belangrijk vindt in zijn beroep en van welke waarden, normen en onderwijskundige opvattingen hij uitgaat. Hij voert zijn werkzaamheden op een professioneel doelmatige en verantwoorde wijze uit."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Lesgeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1A5EF0A63E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsprocessen verbeteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7C37C4FF38",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reflecteren op jezelf",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C21A058358",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leergierig zijn",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CB768EFA19",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Psychologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/17998456DE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Didactiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4D223374A5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Sociale wetenschappen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7029C9FD21",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Pedagogiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/92FDA6257E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderwijskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A7D41FC829",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
+    }
+  ]
 }

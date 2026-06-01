@@ -1,258 +1,144 @@
 {
   "crebo": "25751",
   "opleiding": "25751_BBL_2025__25751BBL2025MJP-AllroundWaterbouwerN3",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "vakman waterbouw",
-    "uri": "http://data.europa.eu/esco/occupation/21fe7141-68fa-4db7-9ee2-53097cef541a",
-    "definitie": "Vaklieden waterbouw onderhouden kanalen, dammen en andere waterwegstructuren, zoals aan de kust of in het binnenland gelegen waterfabrieken. Zij zijn verantwoordelijk voor de bouw van golfbrekers, kanalen, dijken en ophogingen, alsmede voor andere werken in en om water."
+    "label": "Allround waterbouwer",
+    "uri": "",
+    "definitie": "De allround waterbouwer werkt langs of op waterwegen. Hij houdt zich voornamelijk bezig met het maken, onderhouden en verwijderen van waterbouwkundige constructies. Daarnaast voert hij baggerwerkzaamheden uit. Hij heeft een flexibele werkhouding; zijn werkzaamheden zijn afhankelijk van weersomstandigheden en hij heeft vaak te maken met omwonenden, voorbijgangers en verkeer. In zijn werk heeft hij contact met collega’s, zijn leidinggevende, vergunningverleners, leveranciers en klanten. De allround waterbouwer werkt naar aanleiding van instructies en werktekeningen. Hij werkt zelfstandig en stuurt andere collega’s aan."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "vakman grond-, weg- en waterbouw",
-    "machinist wegenbouwmachine",
-    "machinist wals",
-    "monteur bouwmachines",
-    "technicus civiele bouwkunde",
-    "verhuurmedewerker bouwmaterialen en civieltechnisch materiaal",
-    "vakman waterbouw",
-    "technicus grondwatercontrole"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "werken in een bouwteam",
-      "uri": "http://data.europa.eu/esco/skill/4fa2d6ba-4fff-4f21-bddd-4a54ae840955",
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
       "categorie": "essentieel"
     },
     {
-      "label": "nationale waterwegen",
-      "uri": "http://data.europa.eu/esco/skill/d84ff2a1-aa27-44a8-8af0-317db8d3001b",
+      "label": "Meten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/0EBFAD3C80",
       "categorie": "essentieel"
     },
     {
-      "label": "kanaalsluizen bouwen",
-      "uri": "http://data.europa.eu/esco/skill/bb0c06f6-2272-4cae-907c-d68f10c4f80f",
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
       "categorie": "essentieel"
     },
     {
-      "label": "bouwsites inspecteren",
-      "uri": "http://data.europa.eu/esco/skill/4f9f0410-5db0-4b3b-8de3-1ded1600c719",
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
       "categorie": "essentieel"
     },
     {
-      "label": "dammen bouwen",
-      "uri": "http://data.europa.eu/esco/skill/685086a2-4166-47da-bed7-90423be8c99d",
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
       "categorie": "essentieel"
     },
     {
-      "label": "waterdiepte meten",
-      "uri": "http://data.europa.eu/esco/skill/c7708533-9467-4bea-afb9-f9b40a76c84a",
+      "label": "Procedures volgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/752EEDBE89",
       "categorie": "essentieel"
     },
     {
-      "label": "waterdruk",
-      "uri": "http://data.europa.eu/esco/skill/20e16be3-80b0-46bd-8b5e-ad9aa1ddf608",
+      "label": "Delegeren ",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C8730D1BAB",
       "categorie": "essentieel"
     },
     {
-      "label": "zinkputten beheren",
-      "uri": "http://data.europa.eu/esco/skill/72cac57c-ec91-4b1e-95fe-bc005f21a24b",
+      "label": "Verplaatsen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D16A30C42A",
       "categorie": "essentieel"
     },
     {
-      "label": "takelapparatuur gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/5bb81494-2560-4018-9e4a-5544133e6af7",
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
       "categorie": "essentieel"
     },
     {
-      "label": "tunneldelen installeren",
-      "uri": "http://data.europa.eu/esco/skill/bc125238-252c-48bc-9c1e-c1d202352fa1",
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
       "categorie": "essentieel"
     },
     {
-      "label": "betonnen constructies inspecteren",
-      "uri": "http://data.europa.eu/esco/skill/75791d32-ec99-49c3-92dc-728fe73a9de7",
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
       "categorie": "essentieel"
     },
     {
-      "label": "baggermaterieel onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/b442a5d2-ed09-4b36-897f-c89215b3d124",
+      "label": "Architectuur en bouwkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2E82050080",
       "categorie": "essentieel"
     },
     {
-      "label": "baggerconsoles",
-      "uri": "http://data.europa.eu/esco/skill/6c2dab43-b56a-4879-ae5f-75ae50e193c3",
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
       "categorie": "essentieel"
     },
     {
-      "label": "gebreken in beton identificeren",
-      "uri": "http://data.europa.eu/esco/skill/9214bb50-f24e-4b82-8dd2-f299ccba2258",
+      "label": "Tele- en datacommunicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/65FB1DC868",
       "categorie": "essentieel"
     },
     {
-      "label": "pompputten bedienen",
-      "uri": "http://data.europa.eu/esco/skill/fdc905ed-7b6e-4b38-934c-379ef03153a1",
+      "label": "Metaalkunde, metaalbewerking",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/800D4C8975",
       "categorie": "essentieel"
     },
     {
-      "label": "machinaal grond uitgraven",
-      "uri": "http://data.europa.eu/esco/skill/425ddacc-bbf0-4a98-b925-40012d1b6060",
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
       "categorie": "essentieel"
     },
     {
-      "label": "draineerwerkzaamheden uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/5b58e283-a359-4b55-b10d-b0047b2fb7db",
+      "label": "Installatietechniek (infra)",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A767523AD9",
       "categorie": "essentieel"
     },
     {
-      "label": "oppervlaktehelling berekenen",
-      "uri": "http://data.europa.eu/esco/skill/562a111f-40fc-424a-b1ca-784ff2e0488e",
+      "label": "Verkeerskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/B209F3222C",
       "categorie": "essentieel"
     },
     {
-      "label": "graaftechnieken",
-      "uri": "http://data.europa.eu/esco/skill/d2b3891d-d710-4f53-9a68-ff7b1158fef5",
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
       "categorie": "essentieel"
     },
     {
-      "label": "gezondheids- en veiligheidsprocedures in de bouw in acht nemen",
-      "uri": "http://data.europa.eu/esco/skill/86df7af2-f9f3-4c06-a500-7f1fba9e78fe",
+      "label": "Veiligheidskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C34CD6448D",
       "categorie": "essentieel"
     },
     {
-      "label": "waterregelgeving",
-      "uri": "http://data.europa.eu/esco/skill/4ee4ed1d-dc38-48e0-a9e6-a6b64f316ea6",
+      "label": "Grondwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/CF0369B840",
       "categorie": "essentieel"
     },
     {
-      "label": "soorten waterwegen",
-      "uri": "http://data.europa.eu/esco/skill/9f48588c-a0da-4598-aeae-35006117a3cf",
+      "label": "Bouwmanagement, aanneming, werkvoorbereiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DF68BB9CD4",
       "categorie": "essentieel"
     },
     {
-      "label": "pompen bedienen",
-      "uri": "http://data.europa.eu/esco/skill/1864d4a3-eb9c-44f2-84f3-77137db21aeb",
+      "label": "Landmeetkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E135D50DE8",
       "categorie": "essentieel"
     },
     {
-      "label": "erosiebestrijding uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/89a94a26-29d4-4cd7-9e9d-faebc300c1b1",
-      "categorie": "optioneel"
+      "label": "Tuin-, groenvoorziening",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E67F25D9CF",
+      "categorie": "essentieel"
     },
     {
-      "label": "slooptechnieken",
-      "uri": "http://data.europa.eu/esco/skill/2d7b7e10-b33b-489b-9c2e-350c3be162e7",
-      "categorie": "optioneel"
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
     },
     {
-      "label": "controle van bruggen onder water uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/3ad4a1d0-34e8-474b-92ce-59c8d01a6e55",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "planlezen",
-      "uri": "http://data.europa.eu/esco/skill/68b6ef08-d823-489d-a95c-752ae6f6e6a7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "onder water beton gieten",
-      "uri": "http://data.europa.eu/esco/skill/8b80cd83-9b9e-4b7e-9618-803936046a96",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "springladingen in boorgaten plaatsen",
-      "uri": "http://data.europa.eu/esco/skill/1be014ca-6909-497a-95fc-426ef9945583",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "dammen ontwerpen",
-      "uri": "http://data.europa.eu/esco/skill/d1a47422-bcf0-4f81-864c-984d08f7cf64",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "tijdelijke infrastructuur op bouwlocatie opzetten",
-      "uri": "http://data.europa.eu/esco/skill/ef2adfe8-d7a5-465d-bbe6-8f9e913ae7ed",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "afvoerpijpen controleren",
-      "uri": "http://data.europa.eu/esco/skill/54bba279-9302-4e91-a078-9c29f71bf728",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "internationale waterwegen",
-      "uri": "http://data.europa.eu/esco/skill/16f22744-64f4-4798-8666-aea6d7d201fc",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "strategieën voor preventie van en herstel na overstromingen ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/6b5d032a-b85a-44ea-9dad-5201048d2dd2",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "hergebruik van water",
-      "uri": "http://data.europa.eu/esco/skill/b970e437-2f8b-42e3-ae49-6718a0cca44f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voegmiddelen mengen",
-      "uri": "http://data.europa.eu/esco/skill/bfd96453-f2fd-43ea-afc1-fb2dc0d7367d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "kranen bedienen",
-      "uri": "http://data.europa.eu/esco/skill/c96ab6ac-cf85-4c91-86b5-7ac5bb14eb28",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "materiaal voor schadeherstel bij overstromingen",
-      "uri": "http://data.europa.eu/esco/skill/9c5dbb72-563f-449d-ab89-56b8dfc271b6",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "sedimentatiebestrijding uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/0e628dde-8d1b-4a1d-b973-a349fe1725c8",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "risico op overstromingen vaststellen",
-      "uri": "http://data.europa.eu/esco/skill/b7729524-6d0e-45b6-87c8-79af1e955a5b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "Europese classificatie van binnenwateren",
-      "uri": "http://data.europa.eu/esco/skill/9328d71d-e46c-47ff-b48a-af0da294d4f4",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "baggeraar positioneren",
-      "uri": "http://data.europa.eu/esco/skill/8ebb766c-045a-42be-8e32-0661d26592b1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "vacuüm ontwateringssystemen bedienen",
-      "uri": "http://data.europa.eu/esco/skill/56cdae5e-4c1a-4045-b45d-9627a4da411e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "pijpleidingen inspecteren",
-      "uri": "http://data.europa.eu/esco/skill/10ac5282-3288-4383-8f69-9864d8564ea9",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "boorapparatuur bedienen",
-      "uri": "http://data.europa.eu/esco/skill/db99d662-4230-49b3-a9e9-b0043a70c3c3",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "diepte boorgat controleren",
-      "uri": "http://data.europa.eu/esco/skill/58443f9e-87c2-42a0-b243-2e5aff2e1f11",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "procedures voor kwaliteitscontrole",
-      "uri": "http://data.europa.eu/esco/skill/1177c6f5-09c5-4c35-873c-afd22d170ad3",
-      "categorie": "optioneel"
+      "label": "Weg- en waterbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FA50514C2A",
+      "categorie": "essentieel"
     }
   ]
 }

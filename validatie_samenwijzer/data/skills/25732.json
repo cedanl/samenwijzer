@@ -1,267 +1,99 @@
 {
   "crebo": "25732",
   "opleiding": "25732_BBL_2024__Addendum OER vanaf cohort 2024-2025",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "medewerker dierverzorging",
-    "uri": "http://data.europa.eu/esco/occupation/0b14d5d7-1bbe-4403-b9e6-7b0f37fc44fc",
-    "definitie": "Dierverzorgers verstrekken routinezorg voor dieren die niet voor productie dienen. Ze voederen, geven water, maken schoon, verzorgen, grooming, trainen en bewaken de gezondheid en het welzijn van de dieren, overeenkomstig de nationale wetgeving."
+    "label": "Medewerker dierverzorging",
+    "uri": "",
+    "definitie": "De beginnend beroepsbeoefenaar voert en verzorgt recreatiedieren en gezelschapsdieren, soms productiedieren. Hij/zij werkt in de detailhandel (bijvoorbeeld een dierenspeciaalzaak of een tuincentrum) of bij een dienstverlenend bedrijf (bijvoorbeeld een dierentuin, een asiel, een pension), soms in de veehouderij. De beginnend beroepsbeoefenaar is scherp op diergezondheid en dierenwelzijn. Zo zorgt hij/zij voor schone, veilige en verzorgde dierenverblijven en checkt het gedrag en de conditie van dieren. Afwijkingen meldt hij/zij bij zijn/haar leidinggevende. Daarnaast ontvangt hij/zij klanten of gasten, informeert hen vriendelijk en speelt in op emoties. Hij/zij houdt toezicht op de veiligheid van mens en dier, herkent risicovolle situaties en schakelt zo nodig hulp in."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "wijnmaker",
-    "registrator tentoonstellingen",
-    "bouwkostenadviseur",
-    "advocatenklerk",
-    "bakker",
-    "regulatory affairs officer",
-    "medewerker dierverzorging"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "adviseren over dierenwelzijn",
-      "uri": "http://data.europa.eu/esco/skill/f2711363-fced-40af-837e-5cea0c7f0604",
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
       "categorie": "essentieel"
     },
     {
-      "label": "helpen bij het vervoer van dieren",
-      "uri": "http://data.europa.eu/esco/skill/51f30679-bc69-4fc8-b456-d3e6a560fe0b",
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
       "categorie": "essentieel"
     },
     {
-      "label": "anatomie van dieren",
-      "uri": "http://data.europa.eu/esco/skill/e286eddc-75e5-4ae3-966b-ec89c1c046ba",
+      "label": "Verzorgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DB59A57C01",
       "categorie": "essentieel"
     },
     {
-      "label": "dierenwelzijn beheren",
-      "uri": "http://data.europa.eu/esco/skill/66dbdb89-74ca-45b7-b8af-2479fc0e22c0",
+      "label": "Dienstbaarheid tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/F755E32480",
       "categorie": "essentieel"
     },
     {
-      "label": "dierenverblijven onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/89d25455-184b-4c20-9cbc-9f5f89df500f",
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
       "categorie": "essentieel"
     },
     {
-      "label": "diertraining geven",
-      "uri": "http://data.europa.eu/esco/skill/d92d88cf-dd72-4c3b-a98a-2c2a12600df3",
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
       "categorie": "essentieel"
     },
     {
-      "label": "veilige werkmethoden in veterinaire omgeving",
-      "uri": "http://data.europa.eu/esco/skill/b5a8e3fe-63b3-4a67-a4c4-dee8f4ff5d1a",
+      "label": "Gastvrijheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3F97DB848A",
       "categorie": "essentieel"
     },
     {
-      "label": "verrijkende omgeving bieden voor dieren",
-      "uri": "http://data.europa.eu/esco/skill/41730268-d97a-42dd-b6e0-b117d9432eb5",
+      "label": "Mediawijsheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4BA9106C1B",
       "categorie": "essentieel"
     },
     {
-      "label": "bioveiligheid van dieren beheren",
-      "uri": "http://data.europa.eu/esco/skill/1fc580ca-9adc-46af-8a88-61e871273b49",
+      "label": "Biologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/54690E3D68",
       "categorie": "essentieel"
     },
     {
-      "label": "eerste hulp bieden aan dieren",
-      "uri": "http://data.europa.eu/esco/skill/546aaf54-8f69-4573-837c-b60e00327edc",
+      "label": "Detailhandel",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/700FEDE0A1",
       "categorie": "essentieel"
     },
     {
-      "label": "dierenhygiëne beheren",
-      "uri": "http://data.europa.eu/esco/skill/912f7556-6b75-4d73-9658-4e710050199d",
+      "label": "Commerciële economie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8E7697EE1A",
       "categorie": "essentieel"
     },
     {
-      "label": "dierenwelzijn",
-      "uri": "http://data.europa.eu/esco/skill/4e6cfb60-9579-4822-8a5e-424bc0c8835c",
+      "label": "Samenwerking en netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/95C3218741",
       "categorie": "essentieel"
     },
     {
-      "label": "diervoeding",
-      "uri": "http://data.europa.eu/esco/skill/37fd96cf-404a-4fa3-a443-2b5d6858c010",
+      "label": "Epidemiologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A148860D20",
       "categorie": "essentieel"
     },
     {
-      "label": "beweging van dieren controleren",
-      "uri": "http://data.europa.eu/esco/skill/0e9fbf47-0cec-4d82-97f9-12a3334819fe",
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
       "categorie": "essentieel"
     },
     {
-      "label": "welzijn van dieren controleren",
-      "uri": "http://data.europa.eu/esco/skill/d10030a4-f49c-4125-8646-6b091efe5089",
+      "label": "Diergeneeskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C31FB4F8F2",
       "categorie": "essentieel"
     },
     {
-      "label": "bewegingsactiviteiten voor dieren implementeren",
-      "uri": "http://data.europa.eu/esco/skill/ac223703-4984-4c98-a579-33dacd0e14c0",
+      "label": "Verzorging recreatie-, gezelschap- en hobbydieren",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E973124820",
       "categorie": "essentieel"
     },
     {
-      "label": "wetgeving op het gebied van dierenwelzijn",
-      "uri": "http://data.europa.eu/esco/skill/49212efd-acf0-4257-a011-e07c9e369ecf",
+      "label": "Dierverzorging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F46F3F7E96",
       "categorie": "essentieel"
-    },
-    {
-      "label": "omgaan met veterinaire noodgevallen",
-      "uri": "http://data.europa.eu/esco/skill/cde1ed83-8527-4ad1-9d26-7d8ccb2e8b03",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gedrag van dieren beoordelen",
-      "uri": "http://data.europa.eu/esco/skill/d33b9bd2-6dcb-4abc-b3c2-96b8983d5c97",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "tekenen van ziekte bij dieren",
-      "uri": "http://data.europa.eu/esco/skill/32d011d6-7875-4cc3-9755-28b366ef927b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "omgevingsverrijking voor dieren",
-      "uri": "http://data.europa.eu/esco/skill/661f929f-3874-4841-903a-e9d3d3f7f5e2",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "bioveiligheid met betrekking tot dieren",
-      "uri": "http://data.europa.eu/esco/skill/0302f93a-0d38-4c00-bc37-eda17b6316ea",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "dieren verzorgen",
-      "uri": "http://data.europa.eu/esco/skill/f37dd722-72b4-4550-bca1-d19176208deb",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gedrag van dieren",
-      "uri": "http://data.europa.eu/esco/skill/f022949a-39bf-4f54-978e-3d5fa8dd19d9",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "voeding geven aan dieren",
-      "uri": "http://data.europa.eu/esco/skill/3ab0d7fc-a266-4609-bdab-85d09d5de10e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "veilige werkmethoden toepassen in een veterinaire omgeving",
-      "uri": "http://data.europa.eu/esco/skill/80cf2345-7fd8-4535-8e8d-0279771a03cf",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "fysiologie van dieren",
-      "uri": "http://data.europa.eu/esco/skill/60e0ed61-6340-4372-984a-416d1fe0010c",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "verschillende communicatiekanalen gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/415abd43-e8e5-4643-b5da-5f11307af57a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "diersoorten",
-      "uri": "http://data.europa.eu/esco/skill/ec841d52-755c-4534-b362-811ca07b6cd8",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "zorg van veterinaire patiënten in een verblijf beheren",
-      "uri": "http://data.europa.eu/esco/skill/e855e93f-654b-495b-aaa9-aaa7998938a1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "zorgen voor jonge dieren",
-      "uri": "http://data.europa.eu/esco/skill/92dfcb21-863c-4fa8-9458-3760e53e966a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "tarieven per uur berekenen",
-      "uri": "http://data.europa.eu/esco/skill/3a01bfd1-6c8f-4705-b485-2501e1ed0657",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "scanners voor microchips",
-      "uri": "http://data.europa.eu/esco/skill/ff6904ef-36e7-4890-8fb1-8353b299f047",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "gebruik maken van leermogelijkheden in de diergeneeskunde",
-      "uri": "http://data.europa.eu/esco/skill/04e762ae-18a9-457f-9b2e-280cdddae1f0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "dier scannen om microchip te vinden",
-      "uri": "http://data.europa.eu/esco/skill/749ae61c-fe7b-461b-8bc3-349f46617ee7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "dierentraining",
-      "uri": "http://data.europa.eu/esco/skill/63c58fd8-e920-4f37-a6ab-32f86a4aef7a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "omgaan met uitdagende mensen",
-      "uri": "http://data.europa.eu/esco/skill/f8e5f1fd-82ee-45c0-b179-399d8e9a22aa",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "aquaria installeren",
-      "uri": "http://data.europa.eu/esco/skill/21ff9798-5ab7-4997-8a29-a5065d739780",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "rekenvaardigheden gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/5dd01a1e-7ba0-4b7f-a76c-ed811c12bfde",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "veeteeltwetenschappen",
-      "uri": "http://data.europa.eu/esco/skill/4bd422bb-6ea3-4161-a908-53c0f5a1bb00",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "dieren ethisch behandelen",
-      "uri": "http://data.europa.eu/esco/skill/0539bd09-531a-4857-b739-cfd0316e4c65",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "oplossingen voor problemen creëren",
-      "uri": "http://data.europa.eu/esco/skill/03b9b491-fc9b-4868-914a-bf7cd47b5041",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "omgaan met moeilijke omstandigheden in de veterinaire sector",
-      "uri": "http://data.europa.eu/esco/skill/12da3e83-57a6-4011-8a4a-c72b47434f52",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "toestand van dieren beoordelen",
-      "uri": "http://data.europa.eu/esco/skill/5cfd2965-ea80-4d1d-a6d6-9ac5c6af6073",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "beschikken over computervaardigheden",
-      "uri": "http://data.europa.eu/esco/skill/d15ce60f-ddab-41ce-ba56-398451b77b60",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "beslissingen nemen over het welzijn van het dier",
-      "uri": "http://data.europa.eu/esco/skill/6cdcabee-5927-4f16-9b46-0bb384782915",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "eigenaars van dieren ondervragen over de toestand van dieren",
-      "uri": "http://data.europa.eu/esco/skill/a07def4c-3b7f-4df0-8052-05968d9c936b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "situatie van dieren begrijpen",
-      "uri": "http://data.europa.eu/esco/skill/068271d5-c50f-4d5c-bf33-db3727bf69e2",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "samenwerken met dierdeskundigen",
-      "uri": "http://data.europa.eu/esco/skill/08d0ca45-c99c-4384-8401-b2926a006a88",
-      "categorie": "optioneel"
     }
   ]
 }

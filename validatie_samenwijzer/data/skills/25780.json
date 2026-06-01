@@ -1,344 +1,143 @@
 {
   "crebo": "25780",
   "opleiding": "25780_BOL_2025__OER (OUD) - 25780O - Begeleider maatschappelijke zorg",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "woonbegeleider",
-    "uri": "http://data.europa.eu/esco/occupation/4edbde9f-218e-49c7-812f-c45262fb4128",
-    "definitie": "Woonbegeleiders bieden steun en bijstand aan ouderen, mensen met een lichamelijke of verstandelijke handicap, daklozen, ex-drugsverslaafden, ex-alcoholverslaafden en ex-delinquenten."
+    "label": "Begeleider maatschappelijke zorg",
+    "uri": "",
+    "definitie": "De begeleider maatschappelijke zorg biedt ondersteunende, activerende begeleiding en zorg. De ondersteuning is maatwerk, sluit aan bij de behoeften, mogelijkheden, kracht en leefomstandigheden van de cliënt. De begeleider maatschappelijke zorg werkt ambulant en/of intramuraal en/of semimuraal in instellingen voor wonen, dagbesteding en vrije tijd in onder andere de gehandicaptenzorg, geestelijke gezondheidszorg, verzorgings- en verpleeghuizen, thuiszorg en maatschappelijke opvang. Daarnaast kan hij/zij werkzaam zijn in welzijnsinstellingen, justitiële instellingen, asielzoekerscentra en ziekenhuizen. De doelgroep waarmee de begeleider maatschappelijke zorg werkt is zeer divers. De doelgroep bestaat onder andere uit cliënten van allerlei leeftijden met een verstandelijke, lichamelijke of zintuigelijke beperking en cliënten van alle leeftijden met een of meerdere (chronische) ziekten en/of problemen. De begeleider maatschappelijke zorg is in staat hulp te bieden bij zelfzorg, wonen en huishouden en participatie. De begeleider maatschappelijke zorg verzorgt cliënten zowel individueel als in groepsverband. Hij/zij ondersteunt cliënten bij het voeren van eigen regie."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "begeleider geestelijke gezondheidszorg",
-    "begeleider residentiële ouderen met een beperking",
-    "begeleider residentiële volwassenen met een beperking of verslaving",
-    "begeleider terminale zorg",
-    "begeleider residentiële kinderen met een beperking",
-    "sociaalpedagogisch hulpverlener",
-    "pleegzorgbegeleider",
-    "woonbegeleider",
-    "consulent maatschappelijk werk",
-    "teamleider instelling maatschappelijk werk",
-    "maatschappelijk werker",
-    "manager sociale dienstverlening",
-    "medewerker sociale zekerheid",
-    "maatschappelijk werker, specialisatie geestelijke gezondheidszorg",
-    "thuiszorgmedewerker"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "conflicten hanteren",
-      "uri": "http://data.europa.eu/esco/skill/96de2e86-e287-41f2-88ab-15a2343afc6f",
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
       "categorie": "essentieel"
     },
     {
-      "label": "hulprelaties opbouwen met gebruikers van sociale diensten",
-      "uri": "http://data.europa.eu/esco/skill/fdb44237-c0b0-4924-9439-911332e0d884",
+      "label": "Reageren op risicovolle omstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/29B470A4FC",
       "categorie": "essentieel"
     },
     {
-      "label": "vertrouwen van gebruikers van diensten behouden",
-      "uri": "http://data.europa.eu/esco/skill/edf5a26c-8a71-4683-99b1-a8f567a603e2",
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
       "categorie": "essentieel"
     },
     {
-      "label": "pleiten voor gebruikers van sociale diensten",
-      "uri": "http://data.europa.eu/esco/skill/6b85a3ef-4518-42e1-84ff-55ff13c2641f",
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
       "categorie": "essentieel"
     },
     {
-      "label": "advies geven over huisvesting",
-      "uri": "http://data.europa.eu/esco/skill/d2ae1ea1-d899-4f9e-87f5-481987e2e5e8",
+      "label": "Bedrijfsprocessen verbeteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7C37C4FF38",
       "categorie": "essentieel"
     },
     {
-      "label": "organisatorische technieken gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/d3eccb86-f02d-4950-bfbd-20b9510774a1",
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
       "categorie": "essentieel"
     },
     {
-      "label": "gebruikers van sociale diensten ondersteunen bij het beheer van vaardigheden",
-      "uri": "http://data.europa.eu/esco/skill/2d407c34-5699-42dc-ab58-373652d69aef",
+      "label": "Leergierig zijn",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CB768EFA19",
       "categorie": "essentieel"
     },
     {
-      "label": "professioneel communiceren met collega’s in andere vakgebieden",
-      "uri": "http://data.europa.eu/esco/skill/574bf430-50a1-4734-9719-a823e7d80b10",
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
       "categorie": "essentieel"
     },
     {
-      "label": "sociale wetenschappen",
-      "uri": "http://data.europa.eu/esco/skill/4e097377-7950-4993-9e22-a61b067b5c00",
+      "label": "Psychosociaal begeleiden",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D989743D35",
       "categorie": "essentieel"
     },
     {
-      "label": "wetgeving inzake sociale diensten naleven",
-      "uri": "http://data.europa.eu/esco/skill/fd8a70fb-1174-4263-b701-ea442fbbc324",
+      "label": "Verzorgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DB59A57C01",
       "categorie": "essentieel"
     },
     {
-      "label": "bijdragen aan het waarborgen van veiligheid van individuen",
-      "uri": "http://data.europa.eu/esco/skill/3dbf27e5-bb92-4b31-b242-d6b02d933184",
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
       "categorie": "essentieel"
     },
     {
-      "label": "situatie van gebruikers van sociale diensten beoordelen",
-      "uri": "http://data.europa.eu/esco/skill/8d927aab-9202-4c02-9f39-5d478458f25c",
+      "label": "Sociaal-maatschappelijke dienstverlening",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13D9D83B4B",
       "categorie": "essentieel"
     },
     {
-      "label": "werken met gemeenschappen",
-      "uri": "http://data.europa.eu/esco/skill/28ca2f0b-9fb2-487a-9f10-9688e5191ec4",
+      "label": "Psychologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/17998456DE",
       "categorie": "essentieel"
     },
     {
-      "label": "sociale begeleiding bieden",
-      "uri": "http://data.europa.eu/esco/skill/09d6ed43-95a1-4492-8bd7-d01039285afa",
+      "label": "Gezondheidszorg en welzijn",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/234390843C",
       "categorie": "essentieel"
     },
     {
-      "label": "sociaal dienstverleningsplan evalueren",
-      "uri": "http://data.europa.eu/esco/skill/a95e0f9f-726e-4b0a-97c5-fa7a9d40ae8f",
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
       "categorie": "essentieel"
     },
     {
-      "label": "positieve instelling van gebruikers van sociale diensten ondersteunen",
-      "uri": "http://data.europa.eu/esco/skill/72ead619-88da-4557-8c98-607fd7e2cd47",
+      "label": "Gezondheidszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36530C542F",
       "categorie": "essentieel"
     },
     {
-      "label": "kwetsbare gebruikers van sociale diensten beschermen",
-      "uri": "http://data.europa.eu/esco/skill/3aa7e88e-bebd-48b1-94ba-6efddeecf08f",
+      "label": "Geneeskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/512B5B0194",
       "categorie": "essentieel"
     },
     {
-      "label": "sociaal rechtvaardige werkbeginselen toepassen",
-      "uri": "http://data.europa.eu/esco/skill/bc401d18-9bea-4300-90fd-22bfa286bd77",
+      "label": "Biologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/54690E3D68",
       "categorie": "essentieel"
     },
     {
-      "label": "integratie bevorderen",
-      "uri": "http://data.europa.eu/esco/skill/bcd2ce08-ba12-4d66-865f-f4ba36419707",
+      "label": "Sociologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/59637E5D42",
       "categorie": "essentieel"
     },
     {
-      "label": "interviews afnemen bij sociale diensten",
-      "uri": "http://data.europa.eu/esco/skill/4f4afd0b-07e5-48fd-a7d4-0e8746c608df",
+      "label": "Verpleegkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/5DADB2E370",
       "categorie": "essentieel"
     },
     {
-      "label": "leiderschap tonen bij sociale dienstverlening",
-      "uri": "http://data.europa.eu/esco/skill/524c4331-5090-4565-a0bc-0a9ae874938d",
+      "label": "Sociale wetenschappen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7029C9FD21",
       "categorie": "essentieel"
     },
     {
-      "label": "problemen oplossen bij sociale dienstverlening",
-      "uri": "http://data.europa.eu/esco/skill/30d49832-84bd-4d97-9441-aef97a76a8d0",
+      "label": "Sociaal-agogisch werk",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/73492DD4F1",
       "categorie": "essentieel"
     },
     {
-      "label": "wettelijke vereisten in de sociale sector",
-      "uri": "http://data.europa.eu/esco/skill/39dd50ae-814c-4a15-99e9-39afcc36bf9f",
+      "label": "Pedagogiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/92FDA6257E",
       "categorie": "essentieel"
     },
     {
-      "label": "gebruikers van diensten en verzorgers betrekken bij de planning van zorg",
-      "uri": "http://data.europa.eu/esco/skill/2806b5cb-964b-4148-84aa-7efdbeffe9e3",
+      "label": "Creatieve therapie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9B9234B82A",
       "categorie": "essentieel"
     },
     {
-      "label": "actief luisteren",
-      "uri": "http://data.europa.eu/esco/skill/a17286c5-238d-4f0b-bc24-29e9121345de",
+      "label": "Preventieve gezondheidszorg en - geneeskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BFE1C817CA",
       "categorie": "essentieel"
     },
     {
-      "label": "persoonsgerichte zorg toepassen",
-      "uri": "http://data.europa.eu/esco/skill/7a63f944-6948-4ae4-9c1f-d08e492535c9",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "verslagen van werk met gebruikers van diensten bewaren",
-      "uri": "http://data.europa.eu/esco/skill/bd17a64e-a9bd-439d-9b87-01c6bb1b7e09",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "sociale rechtvaardigheid",
-      "uri": "http://data.europa.eu/esco/skill/e97c0d89-2f81-4840-8602-e668a949482f",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gezondheid van gebruikers van een dienst controleren",
-      "uri": "http://data.europa.eu/esco/skill/453b6898-de72-4ff9-b217-4a3cd377e155",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "eigen verantwoordelijkheid aanvaarden",
-      "uri": "http://data.europa.eu/esco/skill/f90d4810-8bac-4e5e-b870-3e35a4138ff7",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gebruikers van diensten ondersteunen bij het gebruik van technologische hulpmiddelen",
-      "uri": "http://data.europa.eu/esco/skill/9a9272df-398b-4787-bd51-53d5e8d999eb",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "stress in organisaties beheersen",
-      "uri": "http://data.europa.eu/esco/skill/fbdfc3bf-56a0-4454-a17d-2f513fe57b53",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "sociale diensten verlenen in cultureel diverse gemeenschappen",
-      "uri": "http://data.europa.eu/esco/skill/4b5d4fe3-4280-47c0-b1d2-ab08ace85557",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "beslissingen nemen binnen sociaal werk",
-      "uri": "http://data.europa.eu/esco/skill/a9661351-4d11-477e-9f8c-e22dab6596d6",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gebruikers van sociale diensten stimuleren hun onafhankelijkheid te bewaren in dagelijkse activiteiten",
-      "uri": "http://data.europa.eu/esco/skill/7e57eb3c-092b-4307-ad1c-c65f55adbc4e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "verslag doen van sociale ontwikkelingen",
-      "uri": "http://data.europa.eu/esco/skill/c65795f8-69cc-47e0-9ba0-427671c965e6",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gebruikers van sociale dienstverlening met lichamelijke handicaps helpen",
-      "uri": "http://data.europa.eu/esco/skill/8ef1b45e-8499-4b1b-91f7-f8278bbb7767",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "rechten van gebruikers van diensten promoten",
-      "uri": "http://data.europa.eu/esco/skill/7838b15f-1beb-4da3-b4f2-22d8ae6e9079",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "continue professionele ontwikkeling ondernemen op het gebied van sociaal werk",
-      "uri": "http://data.europa.eu/esco/skill/cd195aad-29dd-43f5-a5be-e6994d83215b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "sociale verandering promoten",
-      "uri": "http://data.europa.eu/esco/skill/644209ac-8452-4e81-959a-2b10050023cc",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "holistische benadering toepassen binnen sociale diensten",
-      "uri": "http://data.europa.eu/esco/skill/afa3b020-a48c-45a8-a2ff-77d0b9df5381",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "activiteiten delegeren",
-      "uri": "http://data.europa.eu/esco/skill/b00e948c-19be-4951-8cff-60f88f1046e9",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "kwaliteitsnormen toepassen bij sociale diensten",
-      "uri": "http://data.europa.eu/esco/skill/2f8a2712-d20c-4e5f-b34a-738f55486aa0",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "empathisch zijn",
-      "uri": "http://data.europa.eu/esco/skill/996243ee-543f-4c36-a31a-e0f2403c0c5d",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gebruikers van sociale diensten ondersteunen om thuis te wonen",
-      "uri": "http://data.europa.eu/esco/skill/941438bd-cc03-4326-91bf-677157dca170",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gebruikers van diensten ondersteunen bij het ontwikkelen van vaardigheden",
-      "uri": "http://data.europa.eu/esco/skill/74beca00-bd58-4c27-812d-0d5933c76d6f",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "werken in een multiculturele omgeving in de gezondheidszorg",
-      "uri": "http://data.europa.eu/esco/skill/b55f61a4-5f9e-4741-ba95-9ac04b64119b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "communiceren met gebruikers van sociale diensten",
-      "uri": "http://data.europa.eu/esco/skill/e8828961-9e8e-471f-bd24-0673a7e844ef",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "sociale problemen voorkomen",
-      "uri": "http://data.europa.eu/esco/skill/6d80a4cb-cad2-435c-b899-e0e91fda07d6",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "benadeelde of misbruikte gebruikers van sociale diensten ondersteunen",
-      "uri": "http://data.europa.eu/esco/skill/04e84553-2795-4098-b0ad-e7921628b32c",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gebruikers van diensten verwijzen naar gemeenschapsmiddelen",
-      "uri": "http://data.europa.eu/esco/skill/d22ed03b-5385-4c53-b399-17bfec2b61f5",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gebruikers van sociale diensten helpen bij het formuleren van klachten",
-      "uri": "http://data.europa.eu/esco/skill/eb2d56cf-4689-43d9-88c6-775c7bf6596d",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "voorzorgsmaatregelen voor gezondheid en veiligheid volgen bij socialezorgpraktijken",
-      "uri": "http://data.europa.eu/esco/skill/5e5d8826-92c4-4274-a6f9-3db6fca9eadc",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gebruikers van sociale diensten met specifieke communicatiebehoeften ondersteunen",
-      "uri": "http://data.europa.eu/esco/skill/e94773c9-c4be-4a01-a81f-d033dfeb21d4",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "personen met een handicap helpen om deel te nemen aan gemeenschapsactiviteiten",
-      "uri": "http://data.europa.eu/esco/skill/0f298334-ae4a-4ab7-96c2-0d90d2883768",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "beleidslijnen van de organisatie naleven",
-      "uri": "http://data.europa.eu/esco/skill/aa238394-8126-4ada-be2f-9dfe065cf314",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "ondernemingsbeleid",
-      "uri": "http://data.europa.eu/esco/skill/f75b740c-b36c-495e-bc67-efe347bbc6b5",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "klantendiensten",
-      "uri": "http://data.europa.eu/esco/skill/15a33d76-4640-438d-ae64-fdc0c1d3eebc",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "risicobeoordeling uitvoeren van gebruikers van sociale diensten",
-      "uri": "http://data.europa.eu/esco/skill/497705d7-7a03-4a68-99f3-69d2de9366f4",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "privacy van gebruikers van diensten bewaren",
-      "uri": "http://data.europa.eu/esco/skill/73e7e2f4-7e5f-4e6c-86c2-3b5fbd191172",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "stressbestendig zijn",
-      "uri": "http://data.europa.eu/esco/skill/d15f8745-28f8-4abf-a7b6-6cb8a304efd2",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "sociale crisissen beheersen",
-      "uri": "http://data.europa.eu/esco/skill/a4d46d86-9de5-4734-881c-5b2059b9fccf",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "voldoen aan praktijknormen in sociale diensten",
-      "uri": "http://data.europa.eu/esco/skill/2b8386c1-eed6-42ff-bd99-349eca9ea46e",
+      "label": "Voeding en gezondheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C3247434CD",
       "categorie": "essentieel"
     }
   ]

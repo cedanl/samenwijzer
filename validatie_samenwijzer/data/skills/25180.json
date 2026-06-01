@@ -1,279 +1,84 @@
 {
   "crebo": "25180",
   "opleiding": "25180_BBL_2025__25180BBL2025MJP-Kok",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "kok",
-    "uri": "http://data.europa.eu/esco/occupation/90f75f67-495d-49fa-ab57-2f320e251d7e",
-    "definitie": "Koks zijn culinaire medewerkers die maaltijden bereiden en presenteren, gewoonlijk in huishoudelijke en institutionele omgevingen."
+    "label": "Kok",
+    "uri": "",
+    "definitie": "Een kok werkt in een restaurant, een hotel of een andere gelegenheid waar maaltijden worden bereid zoals een verzorgingstehuis. Hij bereidt de gerechten voor en maakt ze af als de gasten ze bestellen. Hij maakt de planning voor de dag en helpt mee met de ontwikkeling van de menukaart. Hij zorgt dat de werkomgeving netjes en schoon is, zodat bereidingen op hygiënische wijze verlopen. De kok controleert de ingrediënten die geleverd worden en voert voorraadbeheer uit. Hij gaat flexibel om met piekbelasting en blijft dan communiceren met collega’s. Bij de bereiding van gerechten gebruikt hij de juiste apparatuur, gereedschappen en bereidingstechnieken. Als de kok in een internationale omgeving werkt, is Engels noodzakelijk."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "vakdocent voeding beroepsonderwijs",
-    "chefkok",
-    "kok",
-    "industriële kok",
-    "hoofdbanketbakker",
-    "operator verpulping",
-    "vernismaker",
-    "banketbakker",
-    "medewerker keuken",
-    "keukenhulp",
-    "restaurantmanager",
-    "keukenmonteur",
-    "verkoopmanager keukens en badkamers",
-    "chef"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "gezondheids-, veiligheids- en hygiënewetgeving op het gebied van voedsel naleven",
-      "uri": "http://data.europa.eu/esco/skill/0ff99f51-40d9-42f1-a1ec-377b2bb5e15f",
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
       "categorie": "essentieel"
     },
     {
-      "label": "de werkomgeving veilig hygiënisch en beveiligd houden",
-      "uri": "http://data.europa.eu/esco/skill/c87c5366-c9a9-4205-8333-4938a9c384ad",
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
       "categorie": "essentieel"
     },
     {
-      "label": "voedselbereidingsplek overhandigen",
-      "uri": "http://data.europa.eu/esco/skill/9ccd8da7-733b-4aff-a49f-94c390aeb618",
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
       "categorie": "essentieel"
     },
     {
-      "label": "onbewerkt voedsel opslaan",
-      "uri": "http://data.europa.eu/esco/skill/29b326ea-a9c8-4963-b35a-8541d0cdff77",
+      "label": "Materiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/5C8ADA7777",
       "categorie": "essentieel"
     },
     {
-      "label": "zorgen dat de voedselbereidingsruimte schoon blijft",
-      "uri": "http://data.europa.eu/esco/skill/c747ab82-9c35-4bf6-ab90-b50b9a53d292",
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
       "categorie": "essentieel"
     },
     {
-      "label": "opwarmtechnieken gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/a02d7f88-a240-4644-911b-169af470be5a",
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
       "categorie": "essentieel"
     },
     {
-      "label": "goederen bestellen",
-      "uri": "http://data.europa.eu/esco/skill/210827e3-3129-45a2-8683-70399f3f561f",
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
       "categorie": "essentieel"
     },
     {
-      "label": "in een team werken in het hotel- en restaurantwezen",
-      "uri": "http://data.europa.eu/esco/skill/8c8da904-cdb3-47d9-bfbf-15ade747d9ec",
+      "label": "Verplaatsen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D16A30C42A",
       "categorie": "essentieel"
     },
     {
-      "label": "gereedschappen voor het snijden van voedsel gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/c42d2a2a-2f55-45ac-beb1-0a8a76412457",
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
       "categorie": "essentieel"
     },
     {
-      "label": "toezicht houden op de keukenbestellingen",
-      "uri": "http://data.europa.eu/esco/skill/341cf309-746c-4437-ad14-e0a0ee13eacc",
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
       "categorie": "essentieel"
     },
     {
-      "label": "afval verwijderen",
-      "uri": "http://data.europa.eu/esco/skill/5e433def-210d-4dfa-bf07-dbf6d04e0eaa",
+      "label": "Handvaardigheid",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E66E6D3B86",
       "categorie": "essentieel"
     },
     {
-      "label": "kooktechnieken gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+      "label": "Gastvrijheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3F97DB848A",
       "categorie": "essentieel"
     },
     {
-      "label": "beheersing van uitgaven",
-      "uri": "http://data.europa.eu/esco/skill/e1f5c539-7c93-49ee-917d-a24e0d887686",
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
       "categorie": "essentieel"
     },
     {
-      "label": "voedselbereidingstechnieken toepassen",
-      "uri": "http://data.europa.eu/esco/skill/4b15a965-9bb4-42f1-8e44-1024aeb0b08c",
+      "label": "Voeding en diëtetiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FF24F7C483",
       "categorie": "essentieel"
-    },
-    {
-      "label": "technieken voor culinaire afwerking toepassen",
-      "uri": "http://data.europa.eu/esco/skill/bb84d739-1b06-477b-9195-251650bb3c14",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "keukenapparatuur op de juiste temperatuur houden",
-      "uri": "http://data.europa.eu/esco/skill/e265e4e2-f031-4012-a7bf-54cac48fb846",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "keukenbenodigdheden bewaren",
-      "uri": "http://data.europa.eu/esco/skill/b1c87aa4-f4f8-4ca5-a844-c44516483b29",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "menu's plannen",
-      "uri": "http://data.europa.eu/esco/skill/5c6ca864-76d5-4217-b3e1-9a7ba7f8f47b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "geflambeerde gerechten bereiden",
-      "uri": "http://data.europa.eu/esco/skill/fd728a62-6be0-4874-9d68-5946b87f29da",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "broodjes bereiden",
-      "uri": "http://data.europa.eu/esco/skill/493a1805-6caa-4cda-8fd3-6495ec8ea451",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bakkerijproducten bereiden",
-      "uri": "http://data.europa.eu/esco/skill/50db2b5e-edda-496d-8a6e-aff91dc243d9",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "vis fileren",
-      "uri": "http://data.europa.eu/esco/skill/213873ff-2b1e-47ce-bd00-84fe82864449",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "groenten bereiden om in een gerecht te gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/73b97efd-49fe-49d7-89dd-444f870cd210",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "dressing voor salades bereiden",
-      "uri": "http://data.europa.eu/esco/skill/499ca9ec-801f-48b9-9f33-a4c16eabd835",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voeding",
-      "uri": "http://data.europa.eu/esco/skill/13d96098-2ff0-46b8-b326-b7c0e18cc1f1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "klanten advies geven over de keuze van vis en zeevruchten",
-      "uri": "http://data.europa.eu/esco/skill/ba74f3e5-4494-405c-8d98-7032f2a883ba",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "vlees bereiden om in een gerecht te gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/23b355ee-94db-4831-b16d-935adc5de1cd",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "kant-en-klaargerechten",
-      "uri": "http://data.europa.eu/esco/skill/c1bbc099-92c5-493c-9f65-8d7acfce5851",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "werknemers opleiden",
-      "uri": "http://data.europa.eu/esco/skill/e54ff029-1ce9-447d-a5b2-eb7283a23e6e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "verwerking van zeevruchten",
-      "uri": "http://data.europa.eu/esco/skill/6d8287f5-6c0e-421a-9e37-980d6c1a3886",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voedingswaarde van voedsel bepalen",
-      "uri": "http://data.europa.eu/esco/skill/2846ad39-6535-48cf-a4c4-64f0ae9066c1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "sauzen voor gerechten bereiden",
-      "uri": "http://data.europa.eu/esco/skill/39a8498f-87e3-4923-817c-3f5835a64bd2",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "leveringen bij ontvangst controleren",
-      "uri": "http://data.europa.eu/esco/skill/f7f56b20-8f05-4731-a1bf-79fdcffc72ce",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "eieren en zuivel bereiden om in een gerecht te gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/fad85f11-e21d-41f4-b221-2f8ab318d4ed",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "week-, schaal- en schelpdieren bereiden",
-      "uri": "http://data.europa.eu/esco/skill/4cca4ccf-b956-4561-af8e-151b66af9631",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "zuivelproducten bereiden",
-      "uri": "http://data.europa.eu/esco/skill/e603669a-dd2b-4309-9e20-57f61967ba03",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "desserts bereiden",
-      "uri": "http://data.europa.eu/esco/skill/a78b60d6-6cde-4da6-9c48-39bc7396ab16",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "kant-en-klaarmaaltijden bereiden",
-      "uri": "http://data.europa.eu/esco/skill/b72395ea-623b-4204-abef-a67592b0781a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "advies geven over de bereiding van dieetvoeding",
-      "uri": "http://data.europa.eu/esco/skill/f5584cdb-fded-4dfe-b246-ef06f442d3a7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voldoen aan standaard formaat porties",
-      "uri": "http://data.europa.eu/esco/skill/47d286a7-38b2-4970-a9f2-69c7faa77167",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "groenten bereiden",
-      "uri": "http://data.europa.eu/esco/skill/555d83ff-dbf9-481a-b726-2d502a11904e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "dieetplannen opstellen",
-      "uri": "http://data.europa.eu/esco/skill/cec82e1c-b9ba-411d-86d1-4fa8ec7089bc",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "samenstelling van diëten",
-      "uri": "http://data.europa.eu/esco/skill/6b69101a-0e51-45c6-a7e5-5a60a1c85da0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "levensmiddelen aantrekkelijk presenteren",
-      "uri": "http://data.europa.eu/esco/skill/efd806d5-8390-4591-9c52-14d8f74bfa43",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "anatomie van vissen",
-      "uri": "http://data.europa.eu/esco/skill/cacc8765-aee4-492e-a938-d556c912412b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "vleesgerechten bereiden",
-      "uri": "http://data.europa.eu/esco/skill/f19f0cda-73f4-417e-8ec9-c0cacf5e7149",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "koelprocessen voor voedingsmiddelen uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/728cd984-19ad-441c-8145-b8edc9c53445",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "zuivelproducten bereiden voor gebruik in een gerecht",
-      "uri": "http://data.europa.eu/esco/skill/1316577b-31f7-437f-97ce-27c408b87a55",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "met chemische reinigingsmiddelen werken",
-      "uri": "http://data.europa.eu/esco/skill/51a26193-9abe-4bce-9108-f50835be1c35",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "sauzen en soepen bereiden",
-      "uri": "http://data.europa.eu/esco/skill/614478b3-51a2-4a55-b3ef-a932105eaeaf",
-      "categorie": "optioneel"
     }
   ]
 }

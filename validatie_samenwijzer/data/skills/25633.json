@@ -1,9 +1,114 @@
 {
   "crebo": "25633",
   "opleiding": "25633_BOL_2025__25633BOL2025MJP_-Mediavormgever",
-  "bron": "ESCO",
-  "beroep": null,
-  "match_methode": "geen-kandidaten",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Mediavormgever",
+    "uri": "",
+    "definitie": "De mediavormgever realiseert de vormgeving van crossmediale oplossingen voor klantvragen. Hij werkt in een projectteam samen met andere specialismen. Het projectteam - waar de mediavormgever deel van uitmaakt - werkt cyclisch en flexibel naar oplossingen toe. De mediavormgever kan breed meedenken met de andere specialismen. Hij beschikt over een uitgebreid repertoire aan kennis en vaardigheden voor crossmediale vormgeving. Hij is werkzaam in of voor de reclame-, communicatie- en media branche."
+  },
+  "match_methode": "crebo-direct",
   "kandidaten": [],
-  "skills": []
+  "skills": [
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ideeën bedenken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/2492D7AE9B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Digitale content ontwikkelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3679757482",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3DECCF2E7C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verantwoordelijkheid nemen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/40A423F2B4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen signaleren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4D400FE127",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Presenteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/590AC2FC12",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kritisch nadenken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E1F935288C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Anticiperen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/EDB4E0C35A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Grafisch ontwerpen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2DC70C1A23",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Zelfkennis en zelfbewustzijn",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4E00BC89EC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Informatietechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7459B5FEB9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Multimediadesign",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8D18873311",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ontwerpen met de computer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8F02A2B716",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Marketing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E6A75FB995",
+      "categorie": "essentieel"
+    }
+  ]
 }

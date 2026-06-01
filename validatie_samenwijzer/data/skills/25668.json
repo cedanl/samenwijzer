@@ -1,156 +1,94 @@
 {
   "crebo": "25668",
   "opleiding": "2021 - 25668 VG VTT OER Basis Technicus Autotechniek BOLBBL2",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "assistent-automonteur",
-    "uri": "http://data.europa.eu/esco/occupation/3b4eb248-6b40-42fe-9d10-cba8ccfe6613",
-    "definitie": "Assistent-automonteurs voeren basistaken uit zoals het verversen van olie, het verwisselen van de filters en het vervangen van bougies in een onderhoudstation voor voertuigen."
+    "label": "Basis technicus voertuigen en mobiele werktuigen",
+    "uri": "",
+    "definitie": "De basistechnicus voertuigen en mobiele werktuigen is werkzaam  binnen één van de volgende beroepscontexten: \n•\tTweewielertechniek: scooters of motorfietsen.  \n•\tAutotechniek: personenwagens of bedrijfswagens.                                                                                                             \n•\tMobiele Werktuigen Techniek:  landbouwmechanisatie of tuin & park, grondverzet of intern transport, industrie en bouwmachines.\n\nDe basistechnicus voertuigen en mobiele werktuigen voert onder verantwoordelijkheid en toezicht van zijn leidinggevende onderhoud en eenvoudige reparaties uit aan componenten of systemen die werken op basis van mechanische ( hydraulisch/pneumatisch) , elektrische, elektronische of digitale principes.\n\nIs beginnend beroepsbeoefenaar en staat tevens zijn mannetje in de assemblage of het modificeren van voertuigen/ mobiele werktuigen waarvan de componenten of systemen werken op basis van deze principes. Binnen alle beroepscontexten komt hij/zij in aanraking met het werken aan traditionele maar zeker ook moderne geavanceerde technieken. Aflevering klaarmaken van voertuigen of mobiele werktuigen kan hier onderdeel van zijn.\n\nDe basistechnicus voertuigen en mobiele werktuigen werkt volgens de wettelijke regels voor veiligheid, milieu en gezondheid aan zijn/haar klus die meestal in de werkplaats plaatsvindt. Incidenteel kan hij of zij mee op klus ter assistentie. \n\nBij de uitvoering van werkzaamheden gebruikt hij/zij (meet en test) gereedschappen, stelt deze in en heeft oog voor werkprocedures en registratie van uren, werkzaamheden en verbruikte materialen."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "assistent-automonteur",
-    "eerste automonteur",
-    "specialist niet-destructief onderzoek",
-    "specialist plantaardige producten",
-    "podiumtechnicus",
-    "biochemisch laborant",
-    "hydrogeneermachinebediener",
-    "geneticus",
-    "machinist mobiele kraan",
-    "onderhoudsmonteur telecommunicatieapparatuur",
-    "ontwikkelaar software voor mobiele toestellen voor industrieel gebruik",
-    "monteur mobiele telefoons",
-    "ingenieur werktuigkunde",
-    "assemblagetechnicus voertuigen",
-    "reparateur mobiele telefoons",
-    "monteur kranen"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "controleprocedures voor het verwerken van gevaarlijke stoffen opvolgen",
-      "uri": "http://data.europa.eu/esco/skill/02e235f4-a30a-412a-a06e-1c471ad28678",
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
       "categorie": "essentieel"
     },
     {
-      "label": "handmatige werkzaamheden zelfstandig uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/e97733e8-5bf1-4c21-93c4-8bebbdabc394",
+      "label": "Repareren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1C1D574677",
       "categorie": "essentieel"
     },
     {
-      "label": "gegeven instructies volgen",
-      "uri": "http://data.europa.eu/esco/skill/ab9f550c-fa8f-4fe8-9f9f-e02d45bff570",
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
       "categorie": "essentieel"
     },
     {
-      "label": "voertuigen positioneren voor onderhoud en reparatie",
-      "uri": "http://data.europa.eu/esco/skill/215762df-b2b4-40fa-a5e6-3004001cb315",
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
       "categorie": "essentieel"
     },
     {
-      "label": "klantgericht zijn",
-      "uri": "http://data.europa.eu/esco/skill/13e93abd-618c-46df-abbe-1af38ecd1aa2",
+      "label": "Procedures volgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/752EEDBE89",
       "categorie": "essentieel"
     },
     {
-      "label": "gezondheids- en veiligheidsnormen toepassen",
-      "uri": "http://data.europa.eu/esco/skill/dcc96a49-0bac-4a9c-8f8e-a32b4e47e6eb",
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
       "categorie": "essentieel"
     },
     {
-      "label": "met chemische reinigingsmiddelen werken",
-      "uri": "http://data.europa.eu/esco/skill/51a26193-9abe-4bce-9108-f50835be1c35",
+      "label": "Machines bedienen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D0866C5206",
       "categorie": "essentieel"
     },
     {
-      "label": "soorten voertuigen",
-      "uri": "http://data.europa.eu/esco/skill/4394a7e8-ffec-4062-b679-a2570260a84f",
+      "label": "Installeren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5AD4F0905",
       "categorie": "essentieel"
     },
     {
-      "label": "technische taken met veel zorg uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/5b394ba8-5d40-40d9-b771-5df6ea9ac436",
+      "label": "Operationeel toezicht houden",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/FAB3EE0CD1",
       "categorie": "essentieel"
     },
     {
-      "label": "geïmproviseerde reparaties aan voertuigen uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/edeade22-1c8d-40d2-818b-e5ef0473c481",
+      "label": "Elektrotechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/1EC7181B0B",
       "categorie": "essentieel"
     },
     {
-      "label": "voertuigonderhoud uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/0ea0b260-617b-4d04-bf00-988dd0b122e5",
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
       "categorie": "essentieel"
     },
     {
-      "label": "autobediening",
-      "uri": "http://data.europa.eu/esco/skill/1b1c2d44-c487-4121-a2ed-dcda651f4d59",
+      "label": "Milieutechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/58823180FE",
       "categorie": "essentieel"
     },
     {
-      "label": "hygiëne van de werkruimte onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/5598739b-6718-4cff-8402-91d7f65b1505",
+      "label": "Tele- en datacommunicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/65FB1DC868",
       "categorie": "essentieel"
     },
     {
-      "label": "producten bestellen voor onderhoud en reparatie van voertuigen",
-      "uri": "http://data.europa.eu/esco/skill/74744dfc-c201-489b-a080-08539882ada2",
-      "categorie": "optioneel"
+      "label": "Bouw van voertuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AC637FF773",
+      "categorie": "essentieel"
     },
     {
-      "label": "voertuigen besturen",
-      "uri": "http://data.europa.eu/esco/skill/2a82241a-216e-44d8-bb50-6b9a0ef82084",
-      "categorie": "optioneel"
+      "label": "Werktuigbouwkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AF10B67F03",
+      "categorie": "essentieel"
     },
     {
-      "label": "mechanische werktuigen",
-      "uri": "http://data.europa.eu/esco/skill/44297bbb-306a-46fa-ab1b-fa3fb327ebda",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "kleine krassen op voertuigen repareren",
-      "uri": "http://data.europa.eu/esco/skill/1b5801fa-1153-40a5-aa45-861c28a7f662",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "kleine reparaties aan voertuigen uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/9142eba6-0abe-4d6f-9b8b-5a88f4ff6a8d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "betalingen verwerken",
-      "uri": "http://data.europa.eu/esco/skill/bdcac0c8-b77a-4640-9eaf-c0cf3efd1e23",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "mechanica",
-      "uri": "http://data.europa.eu/esco/skill/efa141df-f382-418f-9121-bd88fd735669",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "verslag uitbrengen van professionele activiteiten",
-      "uri": "http://data.europa.eu/esco/skill/bf9879fa-f1fc-4f17-8dcb-ece29ea61682",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "verkoopfacturen opstellen",
-      "uri": "http://data.europa.eu/esco/skill/e3e42d54-78bd-4337-aa87-bb31a7670c9a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "principes van teamwerk",
-      "uri": "http://data.europa.eu/esco/skill/a5b0cd5c-e13a-4ab3-8d93-4d242adcfb01",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "inventaris van schoonmaakmateriaal voor voertuigen bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/1910b022-fc63-4f3d-b742-f9d62d4382b6",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "gegevens van voertuigen bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/183eb46f-24f6-4e15-8017-93f10039c0a6",
-      "categorie": "optioneel"
+      "label": "Constructiewerken, machinebankwerken, lassen, smeden, gieten",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/EF31BD21E3",
+      "categorie": "essentieel"
     }
   ]
 }

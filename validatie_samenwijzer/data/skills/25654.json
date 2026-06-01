@@ -1,306 +1,99 @@
 {
   "crebo": "25654",
   "opleiding": "25654_BOL_2024__content_oer-2024-2025-ci-25654-muzikant",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "muzikant",
-    "uri": "http://data.europa.eu/esco/occupation/f6803a58-91d9-4251-9a07-09fc387cec16",
-    "definitie": "Muzikanten voeren een vocale of muzikale rol uit die kan worden opgenomen of gespeeld voor een publiek. Zij hebben technische kennis en ervaring met een of meer instrumenten of het gebruik van hun stem. De muzikant kan ook muziek schrijven en transcriberen."
+    "label": "Muzikant",
+    "uri": "",
+    "definitie": "De muzikant maakt muziek voor een muziekproductie. Hij heeft hierbij niet te maken met een standaard werkproces en hij maakt veel gebruik van zijn eigen creatieve inzicht. Hij is redelijk vrij in de invulling van de opdracht en ontwikkelt gaandeweg zijn eigen stijl. Daar staat tegenover dat hij, voor een professionele carrière in de muziek, naast zijn muziekproductie ook altijd op zoek moet blijven naar nieuwe opdrachten. Hiervoor heeft hij genoeg kennis van het ondernemerschap. De muzikant is verantwoordelijk voor het onderhouden van zijn eigen werkterrein, en neemt zelf beslissingen over de uitvoer van producties."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "muzikant",
-    "web content manager",
-    "roadie",
-    "muziekdirecteur",
-    "bibliothecaris big-data-archief",
-    "dirigent",
-    "technical communicator",
-    "zanger",
-    "repetitor",
-    "specialist special effects",
-    "choreograaf",
-    "presentator",
-    "digitaal kunstenaar",
-    "variétéartiest",
-    "dansrepetitor",
-    "agent"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "juridische omgeving in muziek",
-      "uri": "http://data.europa.eu/esco/skill/c14fb0f4-4672-4363-8a4c-a04a0e2552c9",
+      "label": "Lesgeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1A5EF0A63E",
       "categorie": "essentieel"
     },
     {
-      "label": "live optreden",
-      "uri": "http://data.europa.eu/esco/skill/04e6474d-f6fd-4e60-9191-24faae8ba0bb",
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
       "categorie": "essentieel"
     },
     {
-      "label": "omgaan met publiek",
-      "uri": "http://data.europa.eu/esco/skill/abe138ec-e084-47c7-abe3-e7f371f05eae",
+      "label": "Netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3DECCF2E7C",
       "categorie": "essentieel"
     },
     {
-      "label": "tekst onthouden",
-      "uri": "http://data.europa.eu/esco/skill/add5de06-4fcc-4d9a-9b27-4db9722c9be7",
+      "label": "Non-verbaal creatief uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/584412A2FB",
       "categorie": "essentieel"
     },
     {
-      "label": "omgaan met plankenkoorts",
-      "uri": "http://data.europa.eu/esco/skill/fbb2ad77-dba7-47eb-9da5-b50cffc598e8",
+      "label": "Presenteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/590AC2FC12",
       "categorie": "essentieel"
     },
     {
-      "label": "feedback op artistieke prestaties aanvaarden",
-      "uri": "http://data.europa.eu/esco/skill/125258b2-23c1-472c-90c6-4ec2e90ed893",
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
       "categorie": "essentieel"
     },
     {
-      "label": "met componisten werken",
-      "uri": "http://data.europa.eu/esco/skill/c6ce2d77-ba89-432f-87dd-f1d36557fc95",
+      "label": "Creatief denken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/9DC1DB64EA",
       "categorie": "essentieel"
     },
     {
-      "label": "zelfstandig als artiest werken",
-      "uri": "http://data.europa.eu/esco/skill/b4d58cb3-86d9-4c74-99ad-390a4386e84a",
+      "label": "Onderhandelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B48D956870",
       "categorie": "essentieel"
     },
     {
-      "label": "repertoire organiseren",
-      "uri": "http://data.europa.eu/esco/skill/3027f780-8456-4745-94a1-aedf2c3418e6",
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
       "categorie": "essentieel"
     },
     {
-      "label": "samenwerken met technisch personeel in artistieke producties",
-      "uri": "http://data.europa.eu/esco/skill/94d02529-72e1-4180-9d93-4008342ac481",
+      "label": "Leergierig zijn",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CB768EFA19",
       "categorie": "essentieel"
     },
     {
-      "label": "muziekpartituren lezen",
-      "uri": "http://data.europa.eu/esco/skill/d60f6482-39b0-4a8d-acdc-ac26fbe5fca7",
-      "categorie": "optioneel"
+      "label": "Promoten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E06265451B",
+      "categorie": "essentieel"
     },
     {
-      "label": "muziekpartituren bestuderen",
-      "uri": "http://data.europa.eu/esco/skill/3e2d3720-84e3-4b4f-84db-013fe1fea42f",
-      "categorie": "optioneel"
+      "label": "Bedrijfsadministratie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/10FFC5435D",
+      "categorie": "essentieel"
     },
     {
-      "label": "muzikale optredens plannen",
-      "uri": "http://data.europa.eu/esco/skill/4109c79f-0332-498d-a967-b6d22761c639",
-      "categorie": "optioneel"
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
     },
     {
-      "label": "opgenomen geluid bewerken",
-      "uri": "http://data.europa.eu/esco/skill/c2218533-3e2a-4f50-b4fd-afde71dcf442",
-      "categorie": "optioneel"
+      "label": "Commerciële economie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8E7697EE1A",
+      "categorie": "essentieel"
     },
     {
-      "label": "optreden voor een jong publiek",
-      "uri": "http://data.europa.eu/esco/skill/8cbfee2d-11fd-4166-9153-03a722dc66a7",
-      "categorie": "optioneel"
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
     },
     {
-      "label": "muziekpartituren herschrijven",
-      "uri": "http://data.europa.eu/esco/skill/4d86a331-4efc-4c2f-bd94-0ebeda54d013",
-      "categorie": "optioneel"
+      "label": "Muziek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DCF7059120",
+      "categorie": "essentieel"
     },
     {
-      "label": "muziek studeren",
-      "uri": "http://data.europa.eu/esco/skill/2fa41ec9-5a43-4976-b34d-8639596f67ba",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziekvormen creëren",
-      "uri": "http://data.europa.eu/esco/skill/473fb2b2-aa6e-4905-bd27-44be72e25a09",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziekartiesten selecteren",
-      "uri": "http://data.europa.eu/esco/skill/d205b276-7f2b-4831-b22b-01427cb53f36",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziekgenres",
-      "uri": "http://data.europa.eu/esco/skill/52eb7ab6-269f-4f44-a21d-b0c705eaf857",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziek transponeren",
-      "uri": "http://data.europa.eu/esco/skill/332da224-6261-4caf-a38a-0f81001fddcc",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "werken met gemeenschappen",
-      "uri": "http://data.europa.eu/esco/skill/28ca2f0b-9fb2-487a-9f10-9688e5191ec4",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voorstellen voor artistieke projecten opstellen",
-      "uri": "http://data.europa.eu/esco/skill/bd7d10c9-7ab8-4ed9-b6ca-a80a63db342a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "ideeën omzetten in muzieknotatie",
-      "uri": "http://data.europa.eu/esco/skill/ac49be50-5cfa-42d7-b6cb-751e5bda2ac1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziekshows ontwerpen",
-      "uri": "http://data.europa.eu/esco/skill/b1ed31c4-13c8-46a5-8d9a-aa9e992b9ae1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "artistieke projecten beheren",
-      "uri": "http://data.europa.eu/esco/skill/2c33fda8-389d-4871-948d-46fc1eb0c161",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziek componeren",
-      "uri": "http://data.europa.eu/esco/skill/c109d892-3665-4743-877b-2ba23834e9e0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziek voor een voorstelling selecteren",
-      "uri": "http://data.europa.eu/esco/skill/032a4ab8-1034-4541-8037-b2cdcc7fd19a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "zich specialiseren in een muziekgenre",
-      "uri": "http://data.europa.eu/esco/skill/a3165ce4-da28-4221-951b-efe1e64e468e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziek orkestreren",
-      "uri": "http://data.europa.eu/esco/skill/5e682b6e-1957-4146-9c05-2e2590760757",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "link tussen dans- en muziekstijl",
-      "uri": "http://data.europa.eu/esco/skill/69554db4-90aa-4b97-bd4d-3cba4b658bed",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "samenwerken met muziekbibliothecarissen",
-      "uri": "http://data.europa.eu/esco/skill/7e1fe870-945c-4532-bf59-e94caf54b6f8",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "definitieve partituren voltooien",
-      "uri": "http://data.europa.eu/esco/skill/ce97ff09-38df-4391-89b4-f3c4c42e2ce7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "raad geven over muziekpedagogie",
-      "uri": "http://data.europa.eu/esco/skill/8982fa08-51a2-4436-b23b-c35332577113",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziekinstrumenten",
-      "uri": "http://data.europa.eu/esco/skill/29d4aaba-99f9-4733-bd74-ad558f2ae3a7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "deelnemen aan muziekopnames in studio's",
-      "uri": "http://data.europa.eu/esco/skill/e3890b55-54a7-45a5-9aee-f764fcc54230",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziekpartituren schrijven",
-      "uri": "http://data.europa.eu/esco/skill/9a922e78-dcbb-4d95-908b-0ba34fc06449",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "piano spelen",
-      "uri": "http://data.europa.eu/esco/skill/2e059433-c3a0-409a-a139-4b4e087ed366",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziekgroepen leiden",
-      "uri": "http://data.europa.eu/esco/skill/339f165c-0002-47d2-91a6-ca4722ec682f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "solo muziek spelen",
-      "uri": "http://data.europa.eu/esco/skill/d7cac6b2-fab5-432a-af1c-23154ea56522",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziekcomposities transcriberen",
-      "uri": "http://data.europa.eu/esco/skill/8dfcd477-d109-4ad6-899b-d93280a0a578",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziekinstrumenten bespelen",
-      "uri": "http://data.europa.eu/esco/skill/8f8a8803-dc72-4488-9991-7c7d373e01fa",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziek opnemen",
-      "uri": "http://data.europa.eu/esco/skill/cc7b37ef-9a91-4d16-ba55-138208c20502",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziek spelen in een ensemble",
-      "uri": "http://data.europa.eu/esco/skill/79862c50-3b36-4c37-9ff6-669a54fce459",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muzikale ideeën ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/1e3e7f8b-6416-43ed-af07-a1fb71c5e292",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muzikale improvisaties tijdens de therapie uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/a1bf1d89-2b24-4f5e-91b4-6164a758d87e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziek promoten",
-      "uri": "http://data.europa.eu/esco/skill/6f44d0c9-40ea-452e-b3ea-302cc0e648db",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "deelnemen aan artistieke bemiddelingsactiviteiten",
-      "uri": "http://data.europa.eu/esco/skill/f264ce55-d1bf-4be5-9c25-08f9c14ed5e0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "zingen",
-      "uri": "http://data.europa.eu/esco/skill/e50a68c5-2a5d-4815-8bd1-e4334aed7683",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziekpersoneel managen",
-      "uri": "http://data.europa.eu/esco/skill/0005c151-5b5a-4a66-8aac-60e734beb1ab",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziek improviseren",
-      "uri": "http://data.europa.eu/esco/skill/29891a32-64aa-4f64-b6eb-1fa990659375",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "artistieke carrière beheren",
-      "uri": "http://data.europa.eu/esco/skill/dbdafb2b-c6ab-451e-abe3-81bd73994394",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muzikale ideeën evalueren",
-      "uri": "http://data.europa.eu/esco/skill/e3840f20-1928-4d07-944c-d2dd2ae5cbba",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziektheorie",
-      "uri": "http://data.europa.eu/esco/skill/d11e4683-d2fe-45fd-bb1a-e995f7877851",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziekliteratuur",
-      "uri": "http://data.europa.eu/esco/skill/bf21bcb8-6660-4f37-b16a-d276cca01474",
-      "categorie": "optioneel"
+      "label": "Theater- en podiumkunsten",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E018BE2438",
+      "categorie": "essentieel"
     }
   ]
 }

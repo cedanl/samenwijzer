@@ -222,6 +222,19 @@ def test_laad_skills_formatteert_blok(tmp_path, monkeypatch):
     assert "Essentiële skills" in blok
 
 
+def test_laad_skills_toont_belangrijk_categorie(tmp_path, monkeypatch):
+    """CompetentNL-bron levert een 'belangrijk'-categorie naast essentieel."""
+    monkeypatch.setenv("SKILLS_PAD", str(tmp_path))
+    skills = [
+        {"label": "Samenwerken", "uri": "u1", "categorie": "essentieel"},
+        {"label": "Engels spreken", "uri": "u2", "categorie": "belangrijk"},
+    ]
+    _schrijf_skills(tmp_path, "25180", beroep="Kok", skills=skills)
+    blok = laad_skills_tekst("25180")
+    assert "Essentiële skills" in blok and "Samenwerken" in blok
+    assert "Belangrijke skills" in blok and "Engels spreken" in blok
+
+
 def test_laad_skills_leeg_bij_geen_beroep(tmp_path, monkeypatch):
     monkeypatch.setenv("SKILLS_PAD", str(tmp_path))
     _schrijf_skills(tmp_path, "25250", beroep=None)

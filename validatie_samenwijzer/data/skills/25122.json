@@ -1,231 +1,104 @@
 {
   "crebo": "25122",
   "opleiding": "2020 - 25122 VG OER Werkvoorbereider fabricage onvolledig",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "uitvoerend producent",
-    "uri": "http://data.europa.eu/esco/occupation/03632d98-0ae3-4dd2-941c-3b48de9a0219",
-    "definitie": "Uitvoerend producenten zorgen voor een aantal praktische zaken in verband met de productie. Zij houden zich bezig met aangelegenheden variërend van de aanwerving van personeel en de aanschaf van materialen en diensten tot goederen, douanecoördinatie, telecommunicatie, arbeidsverhoudingen, logistiek, informatietechnologie, samenwerking van de regering, reservering van de locatie, planning, exploitatiebeheer, het herstellen van vertragingsproblemen en veiligheid op de werkplek."
+    "label": "Werkvoorbereider fabricage",
+    "uri": "",
+    "definitie": "De werkvoorbereider fabricage werkt bij een istallatiebedrijf dat elektrotechnische machines of producten installeert bij productiebedrijven. Zijn werkzaamheden zijn deels vanaf een vaste locatie, en deels op lverschillende locaties bij klanten. Hij heeft contact met de klant over het project en doet voorbereidende werkzaamheden, zoals berekeningen en offertes maken. Als het project loopt, begeleidt hij de uitvoering en ondersteunt hij de projectleider. Hij moet zijn technische kennis begrijpelijk kunnen overbrengen op klanten die niet over de kennis beschikken. De werkvoorbereider fabricage vervult voornamelijk een adviserende rol, en tijdens de uitvoering van het project organiseert hij de werkzaamheden van het team. Hij legt verantwoording af aan zijn leidinggevende."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "ingenieur fabricage",
-    "kwaliteitscontroleur samengesteld hout",
-    "werktuigbouwkundig ingenieur",
-    "ingenieur sensortechniek",
-    "assemblagemedewerker printplaten",
-    "telecommunicatietechnicus",
-    "kwaliteitsingenieur",
-    "ingenieur defensie",
-    "uitvoerend kunstenaar",
-    "uitvoerend producent",
-    "uitvoerend medewerker bosbouw",
-    "steigerbouwer",
-    "wegwerker",
-    "fietsenmaker",
-    "kwaliteitscontroleur",
-    "schoorsteenveger"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "artistieke producties beschrijven",
-      "uri": "http://data.europa.eu/esco/skill/02c7caf4-4e8b-4745-8917-dbbd3af17c28",
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
       "categorie": "essentieel"
     },
     {
-      "label": "met specialisten van culturele ontmoetingsplaatsen werken",
-      "uri": "http://data.europa.eu/esco/skill/286e910d-baed-44ea-bc40-cc990950d322",
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
       "categorie": "essentieel"
     },
     {
-      "label": "repetities organiseren",
-      "uri": "http://data.europa.eu/esco/skill/05bc7677-5a64-4e0c-ade3-0140348d4125",
+      "label": "Materiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/5C8ADA7777",
       "categorie": "essentieel"
     },
     {
-      "label": "artistieke productie coördineren",
-      "uri": "http://data.europa.eu/esco/skill/d3050294-0ab4-4377-a46f-80d894d72228",
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
       "categorie": "essentieel"
     },
     {
-      "label": "activiteiten delegeren",
-      "uri": "http://data.europa.eu/esco/skill/b00e948c-19be-4951-8cff-60f88f1046e9",
+      "label": "Bedrijfsprocessen verbeteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7C37C4FF38",
       "categorie": "essentieel"
     },
     {
-      "label": "culturele activiteiten ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/925ac396-118c-4a07-b4c2-31eb519e2268",
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
       "categorie": "essentieel"
     },
     {
-      "label": "repetities coördineren",
-      "uri": "http://data.europa.eu/esco/skill/5f6e56b0-7cf7-42b2-9a3f-524ba0774881",
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
       "categorie": "essentieel"
     },
     {
-      "label": "productieschema's opstellen",
-      "uri": "http://data.europa.eu/esco/skill/ac469a4f-77dd-4bd6-b3f5-ffcd2ef7dca2",
+      "label": "Rekenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5BBA931FB",
       "categorie": "essentieel"
     },
     {
-      "label": "gezondheids- en veiligheidsprocedures plannen",
-      "uri": "http://data.europa.eu/esco/skill/bb663409-5c88-4e3a-bc16-01aa1c8ce171",
+      "label": "Productietechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/04541FC2D1",
       "categorie": "essentieel"
     },
     {
-      "label": "evenementen op culturele ontmoetingsplaatsen promoten",
-      "uri": "http://data.europa.eu/esco/skill/68f6ecc0-51c8-4b08-ad90-a312c0cb07f8",
+      "label": "Transport en logistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2F8C9BA908",
       "categorie": "essentieel"
     },
     {
-      "label": "locaties voor optredens op orde houden",
-      "uri": "http://data.europa.eu/esco/skill/e5e48620-8476-42e9-bfa9-ffe0282a8ab0",
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
       "categorie": "essentieel"
     },
     {
-      "label": "de organisatie vertegenwoordigen",
-      "uri": "http://data.europa.eu/esco/skill/1a4fdd0e-2cbe-4b77-aa6e-e46efc181b76",
+      "label": "Bouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3FC6552A85",
       "categorie": "essentieel"
     },
     {
-      "label": "zich aanpassen aan creatieve eisen van artiesten",
-      "uri": "http://data.europa.eu/esco/skill/591dd514-735b-46e4-a28d-3a4c42f49b72",
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
       "categorie": "essentieel"
     },
     {
-      "label": "organisatorische beleidslijnen vaststellen",
-      "uri": "http://data.europa.eu/esco/skill/8bad61b8-75f7-4bdc-b994-f7158f4b90f0",
+      "label": "Samenwerking en netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/95C3218741",
       "categorie": "essentieel"
     },
     {
-      "label": "culturele projecten",
-      "uri": "http://data.europa.eu/esco/skill/24554d47-70d2-4153-bb27-84e338e76792",
+      "label": "Installatietechniek (infra)",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A767523AD9",
       "categorie": "essentieel"
     },
     {
-      "label": "behoeften van een artistieke productie inschatten",
-      "uri": "http://data.europa.eu/esco/skill/7036f99c-7a1d-4bf6-b3c1-9778b6c657f9",
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
       "categorie": "essentieel"
     },
     {
-      "label": "artistieke projectbudgetten opstellen",
-      "uri": "http://data.europa.eu/esco/skill/8157b8e0-433b-4fe6-b520-3fc7377c8d2e",
+      "label": "Bouwmanagement, aanneming, werkvoorbereiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DF68BB9CD4",
       "categorie": "essentieel"
     },
     {
-      "label": "culturele evenementen organiseren",
-      "uri": "http://data.europa.eu/esco/skill/f3b841c9-17d1-4cc3-9e6b-36c17b0d15d3",
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
       "categorie": "essentieel"
-    },
-    {
-      "label": "contacten onderhouden met lokale overheden",
-      "uri": "http://data.europa.eu/esco/skill/2839f191-cd94-49a9-ac16-46018066b8b2",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "leiding geven aan personeel",
-      "uri": "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "artistieke projecten beheren",
-      "uri": "http://data.europa.eu/esco/skill/2c33fda8-389d-4871-948d-46fc1eb0c161",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "contacten leggen met culturele partners",
-      "uri": "http://data.europa.eu/esco/skill/20e7c937-a5e5-4a27-bb87-ddda5826f777",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "coördineren met creatieve afdelingen",
-      "uri": "http://data.europa.eu/esco/skill/47ed1d37-971b-472c-86be-26f893991274",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "grond- en hulpstoffen beheren",
-      "uri": "http://data.europa.eu/esco/skill/020b3c27-bae1-4b85-9d6f-eccee0f5ed99",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "dagelijkse prioriteiten stellen",
-      "uri": "http://data.europa.eu/esco/skill/65ca5e3c-940c-46b2-b277-aff394cfdd4c",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "bedrijfsnormen volgen",
-      "uri": "http://data.europa.eu/esco/skill/f5f5b244-6cea-4fbc-8a50-8f712791bc09",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "budgetten beheren",
-      "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "operationele begroting beheren",
-      "uri": "http://data.europa.eu/esco/skill/51b53bb3-7a67-4ce8-b959-c7f6c4af3456",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "integratie bevorderen",
-      "uri": "http://data.europa.eu/esco/skill/bcd2ce08-ba12-4d66-865f-f4ba36419707",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "artistieke productieactiviteiten plannen",
-      "uri": "http://data.europa.eu/esco/skill/1fb4bebb-8487-4715-bf9a-0a5e4afe68a4",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "logistiek beheren",
-      "uri": "http://data.europa.eu/esco/skill/953c0b65-537a-42fe-a90b-26cd36c64361",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "dagelijkse informatieactiviteiten leiden",
-      "uri": "http://data.europa.eu/esco/skill/9013b46e-5a9b-4929-8918-fcadfdfd37ce",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "maatschappelijk verantwoord ondernemen",
-      "uri": "http://data.europa.eu/esco/skill/66db424f-2abe-420d-8e5b-186607266b61",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "streven naar bedrijfsgroei",
-      "uri": "http://data.europa.eu/esco/skill/2a2fa8e8-aaf3-4abf-a60b-af6415f1c6d4",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "veiligheidsmaatregelen documenteren",
-      "uri": "http://data.europa.eu/esco/skill/4707bc7a-e7e7-48e5-8dc5-49ec60fbae90",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "artistiek team samenstellen",
-      "uri": "http://data.europa.eu/esco/skill/5a42555c-ac51-4bc8-8b00-9ba2f251e919",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "kostenbeheer",
-      "uri": "http://data.europa.eu/esco/skill/7d35602d-bc94-4975-aa7c-f4e8e05ce8e0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "wetgeving inzake auteursrecht",
-      "uri": "http://data.europa.eu/esco/skill/e2103a1d-4a84-47a9-b4f7-774787573449",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "gezondheid en veiligheid van bezoekers garanderen",
-      "uri": "http://data.europa.eu/esco/skill/97843c38-17f0-4c9c-aa86-049e2870aa1a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "arbeidswetgeving",
-      "uri": "http://data.europa.eu/esco/skill/08fe5910-8c4c-4679-a988-eb2ded3c4909",
-      "categorie": "optioneel"
     }
   ]
 }

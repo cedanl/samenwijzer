@@ -1,211 +1,179 @@
 {
   "crebo": "27032",
   "opleiding": "27032_BBL_2025__27032 Allround Medewerker Optiek 36 maanden",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "vakkracht opticienbedrijf",
-    "uri": "http://data.europa.eu/esco/occupation/1084e2d6-b153-4090-8065-c9231f71d4f0",
-    "definitie": "Vakkrachten opticienbedrijf maken, repareren en ontwerpen verschillende onderdelen van een bril, zoals glazen, monturen en patronen. Zij snijden, inspecteren, monteren en polijsten alle onderdelen met behulp van verschillende machines en handgereedschappen. Vakkrachten opticienbedrijf vormen, slijpen en coaten brilglazen voor brillen op sterkte. Zij passen afgewerkte glazen in het brilmontuur. Vakkrachten opticienbedrijf zorgen ervoor dat brillenglazen overeenkomen met de voorschriften van de opticien, oogarts of optometrist. Zij kunnen ook werken met andere optische instrumenten en deze onderhouden."
+    "label": "Allround medewerker optiek",
+    "uri": "",
+    "definitie": "De Allround medewerker optiek werkt in de verkoopruimte en in de werkplaats van een optiekbedrijf, meestal als lid van een team. In de verkoopruimte observeert die de klanten en bepaalt het moment van benaderen. In het contact met de klant is de Allround medewerker optiek in staat om te informeren en adviseren over het assortiment, zoals (zonne)brillenglazen en (zonne)brilmonturen. Belangrijk hierbij is dat de klantvriendelijke en klantgerichte Allround medewerker optiek bij elk klantcontact kan beoordelen welk advies te geven. Wanneer een klant tot de koop van een optisch product overgaat, dan handelt de Allround medewerker optiek dit af. In de werkplaats bewerkt, assembleert en repareert de Allround medewerker optiek optische producten. Een Allround medewerker optiek kan onder andere brillenglazen slijpen, facetteren, monteren, onderdelen vervangen en wanneer nodig aanpassingen doen."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "signmaker",
-    "bedrijfsleider optiekwinkel",
-    "manager kledingwinkel",
-    "verkoopspecialist optiek",
-    "operator rubberproductie",
-    "medewerker vetzuivering",
-    "tuinbouwmedewerker",
-    "medewerker fastfood",
-    "vakkracht opticienbedrijf",
-    "opticien",
-    "operator lasersnijmachine"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "glasranden glad maken",
-      "uri": "http://data.europa.eu/esco/skill/434ce114-3997-46cf-8e9e-60837d17c90a",
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
       "categorie": "essentieel"
     },
     {
-      "label": "glazen oppervlak gladmaken",
-      "uri": "http://data.europa.eu/esco/skill/c0642b96-e342-4599-bf80-c79e546d1f39",
+      "label": "Repareren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1C1D574677",
       "categorie": "essentieel"
     },
     {
-      "label": "onderhoud van brillen uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/a817eec9-2ed1-4256-8a1e-f66ab32ee55a",
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
       "categorie": "essentieel"
     },
     {
-      "label": "gegevens van voorschriften van klanten bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/ab1ad155-db0b-4fa0-8bac-856853c47175",
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
       "categorie": "essentieel"
     },
     {
-      "label": "optische voorschriften opvolgen",
-      "uri": "http://data.europa.eu/esco/skill/87d1cb89-8de1-4e15-8255-492323203237",
+      "label": "Materiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/5C8ADA7777",
       "categorie": "essentieel"
     },
     {
-      "label": "reparaties aan raamwerken uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/79fff3ee-a40f-4487-881c-4735938de75e",
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
       "categorie": "essentieel"
     },
     {
-      "label": "beschermende laag aanbrengen",
-      "uri": "http://data.europa.eu/esco/skill/87ebb1d4-3aab-4257-b2bd-7b7f2008eea2",
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
       "categorie": "essentieel"
     },
     {
-      "label": "eigenschappen van optisch glas",
-      "uri": "http://data.europa.eu/esco/skill/18edb12e-4f41-4ae0-8085-7513236580c8",
+      "label": "Instrueren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6AE2F3F890",
       "categorie": "essentieel"
     },
     {
-      "label": "contactlenzen hanteren",
-      "uri": "http://data.europa.eu/esco/skill/16a8cf8a-69fe-4316-b784-38bfaf27639f",
+      "label": "Verplichtingen nakomen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6EDDE6185F",
       "categorie": "essentieel"
     },
     {
-      "label": "glazen oppervlakken reinigen",
-      "uri": "http://data.europa.eu/esco/skill/d05ae693-dc7d-4073-8806-2782f117c24a",
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
       "categorie": "essentieel"
     },
     {
-      "label": "relaties met leveranciers onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/3cd35f5d-ce6d-4f14-9a09-53d7a28d834c",
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
       "categorie": "essentieel"
     },
     {
-      "label": "eigenschappen van producten",
-      "uri": "http://data.europa.eu/esco/skill/1585fc98-bfe4-461f-97fc-734055a2c3ce",
+      "label": "Leergierig zijn",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CB768EFA19",
       "categorie": "essentieel"
     },
     {
-      "label": "optische middelen bestellen",
-      "uri": "http://data.europa.eu/esco/skill/dad8a5eb-e004-4a4f-8d07-fcc31663946d",
+      "label": "Adviseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CECB22E3FA",
       "categorie": "essentieel"
     },
     {
-      "label": "productkennis",
-      "uri": "http://data.europa.eu/esco/skill/d6d3fee7-47e2-47f4-a0ec-6c75f28c6abd",
+      "label": "Promoten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E06265451B",
       "categorie": "essentieel"
     },
     {
-      "label": "optische producten verkopen",
-      "uri": "http://data.europa.eu/esco/skill/1532fc46-f911-4b74-93f6-c0334966fd6b",
+      "label": "Handvaardigheid",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E66E6D3B86",
       "categorie": "essentieel"
     },
     {
-      "label": "glas bewerken",
-      "uri": "http://data.europa.eu/esco/skill/652b3110-1659-4b7d-bae9-ddb0e5e1f139",
+      "label": "Dienstbaarheid tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/F755E32480",
       "categorie": "essentieel"
     },
     {
-      "label": "soorten optische instrumenten",
-      "uri": "http://data.europa.eu/esco/skill/3ab7c355-94f2-4b07-ab1b-4dcb29745b0e",
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
       "categorie": "essentieel"
     },
     {
-      "label": "productieprocessen",
-      "uri": "http://data.europa.eu/esco/skill/12c7b323-d870-4f5b-9d7d-d9f525206d77",
+      "label": "Natuurkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/28020D50DE",
       "categorie": "essentieel"
     },
     {
-      "label": "adviesprijs van de producent",
-      "uri": "http://data.europa.eu/esco/skill/8c2674cc-685e-4e86-94ee-c23dd84a0783",
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
       "categorie": "essentieel"
     },
     {
-      "label": "optische meetapparatuur gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/5e127fef-cc93-4e34-a924-680a18035fc5",
+      "label": "Transport en logistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2F8C9BA908",
       "categorie": "essentieel"
     },
     {
-      "label": "kenmerken van diensten",
-      "uri": "http://data.europa.eu/esco/skill/fb3bc9b5-2297-4bba-85b1-60f696a92db8",
+      "label": "Materiaalkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/519323C152",
       "categorie": "essentieel"
     },
     {
-      "label": "lenzen voor brillen slijpen",
-      "uri": "http://data.europa.eu/esco/skill/8acf5d5e-2ba1-4880-adf5-61746253ec44",
+      "label": "Biologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/54690E3D68",
       "categorie": "essentieel"
     },
     {
-      "label": "optische apparatuur gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/6b49d940-6440-4dd7-a960-3d7c5ef51e83",
+      "label": "Milieutechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/58823180FE",
       "categorie": "essentieel"
     },
     {
-      "label": "technische taken met veel zorg uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/5b394ba8-5d40-40d9-b771-5df6ea9ac436",
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
       "categorie": "essentieel"
     },
     {
-      "label": "precisiemeetinstrumenten hanteren",
-      "uri": "http://data.europa.eu/esco/skill/42c25baf-ccb3-47d9-a872-bb2ceb615538",
+      "label": "Detailhandel",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/700FEDE0A1",
       "categorie": "essentieel"
     },
     {
-      "label": "werkopdrachten voor het optisch laboratorium maken",
-      "uri": "http://data.europa.eu/esco/skill/50ffa48e-f25c-4dc3-913a-fa0aadb3ffca",
+      "label": "Optiek, oogmeetkunde, contactlenzen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/75F4021809",
       "categorie": "essentieel"
     },
     {
-      "label": "CAD-software gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/b34e2ba1-9080-48c9-9b42-ee9192a4d3f1",
-      "categorie": "optioneel"
+      "label": "Samenwerking en netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/95C3218741",
+      "categorie": "essentieel"
     },
     {
-      "label": "wetgeving in verband met gezondheidszorg naleven",
-      "uri": "http://data.europa.eu/esco/skill/9fcf9918-fdef-49c3-aedc-518eb1e7e1f5",
-      "categorie": "optioneel"
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
     },
     {
-      "label": "overeenstemming van lenzen verifiëren",
-      "uri": "http://data.europa.eu/esco/skill/86836c4d-5ed7-4dea-83d1-64d3927f3547",
-      "categorie": "optioneel"
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
     },
     {
-      "label": "voorschriften voor oogbescherming",
-      "uri": "http://data.europa.eu/esco/skill/8fd5cc16-8d8a-4ae4-b557-9847207e9483",
-      "categorie": "optioneel"
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
+      "categorie": "essentieel"
     },
     {
-      "label": "eigenschappen van gezichten",
-      "uri": "http://data.europa.eu/esco/skill/3dcf0635-4060-4ad9-9864-6ae4241a3609",
-      "categorie": "optioneel"
+      "label": "Werken met digitale apparaten en toepassingen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DA95C063A4",
+      "categorie": "essentieel"
     },
     {
-      "label": "corrigerende lenzen verstrekken",
-      "uri": "http://data.europa.eu/esco/skill/6c3031c8-fac1-449a-849f-c24c5009db33",
-      "categorie": "optioneel"
+      "label": "Marketing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E6A75FB995",
+      "categorie": "essentieel"
     },
     {
-      "label": "processen voor elektronische aankoop",
-      "uri": "http://data.europa.eu/esco/skill/378caeec-10a0-4162-b75c-ab374a42e93d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "beginselen van de leveringsketen",
-      "uri": "http://data.europa.eu/esco/skill/cf579543-272b-43c8-b942-555836ae4241",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "optiek",
-      "uri": "http://data.europa.eu/esco/skill/38dbdfc4-427e-4fc8-b394-b00ec29dbe3a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "optische instrumenten",
-      "uri": "http://data.europa.eu/esco/skill/f8bd915e-8424-469f-bab8-e64fc2e4c2dd",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "fabricageprocessen",
-      "uri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
-      "categorie": "optioneel"
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
     }
   ]
 }

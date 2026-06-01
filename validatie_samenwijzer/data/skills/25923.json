@@ -1,9 +1,114 @@
 {
   "crebo": "25923",
   "opleiding": "25923_BBL_2025__25923BBL2025Examenplan",
-  "bron": "ESCO",
-  "beroep": null,
-  "match_methode": "geen-kandidaten",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Machineoperator houtverwerkende industrie",
+    "uri": "",
+    "definitie": "De machineoperator houtverwerkende industrie is werkzaam in een productiehal bij houtverwerkende bedrijven die verschillende soorten hout en plaatmaterialen machinaal bewerken. De machine operator houtverwerkende industrie controleert voor het werk materialen, stelt snijgereedschappen en de houtbewerkingsmachines in en maakt proefbewerkingen. Vervolgens bedient die de machines (zoals zaagmachines, schaafmachines, frezen en boormachines) en maakt op die manier handmatig of geautomatiseerd het gewenste product. Daarna voert die controles uit. Ook voert die klein onderhoud aan de machines uit en lost eenvoudige storingen zelf op. De machineoperator houtverwerkende industrie werkt zelfstandig of in teamverband en onder supervisie. Naast  materiaal- en machinekennis is voor het werk nauwkeurigheid, flexibiliteit en duurzaamheids-, veiligheids- en kwaliteitsbewustzijn van belang."
+  },
+  "match_methode": "crebo-direct",
   "kandidaten": [],
-  "skills": []
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Controleren van machines en systemen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/0A4C7D6130",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Informatie ordenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/299CE88E49",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Machines bedienen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D0866C5206",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplaatsen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D16A30C42A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Productietechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/04541FC2D1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Industrieel houtbewerken, meubelmaken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/28A98D3215",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ambachtelijk houtbewerken, meubelmaken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8221AA799A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reparatie en onderhoud van werktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/988374F8BD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voorraad- en magazijnbeheer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/99D6345CD2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ladingbehandeling en intern transport",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D27283387C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beheer en verwerking van afval",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E360B68955",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
+    }
+  ]
 }

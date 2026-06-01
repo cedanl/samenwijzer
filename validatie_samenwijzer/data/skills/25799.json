@@ -1,395 +1,99 @@
 {
   "crebo": "25799",
   "opleiding": "25799_BOL_2025__oer-2025-2026-ci-25799-medewerker-podium-en-evenemententechniek",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "podiumtechnicus",
-    "uri": "http://data.europa.eu/esco/occupation/acb6b99a-6c13-482a-81b1-8b5614e0153e",
-    "definitie": "Podiumtechnici controleren verschillende aspecten van een performance op basis van het artistieke of creatieve concept, in interactie met de performers. Zij doen de voorbereiding en de uitvoering van de opstelling, programmeren de apparatuur en bedienen verschillende systemen. De podiumtechnici zorgen voor verlichting, geluid, video, sets en/of vliegsystemen. Hun werk is gebaseerd op plannen, instructies en berekeningen. Zij kunnen werken op kleine plaatsen, in bioscopen en voor andere kleine artistieke producties."
+    "label": "Medewerker podium- en evenemententechniek",
+    "uri": "",
+    "definitie": "De beginnend beroepsbeoefenaar bereidt podiumproducties technisch voor. Dit doet hij/zij door PET-apparatuur en -materialen te verzamelen, deze klaar te maken voor transport en ze te laden en lossen. Ter plekke plaatst en hangt hij/zij de apparatuur en materialen in, sluit PET apparatuur aan en levert PET-installaties werkend op.\nVoor toegang tot de arbeidsmarkt is het van belang om over een persoonlijk portfolio te beschikken en te kunnen netwerken."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "podiumbouwer",
-    "podiumassistent",
-    "podiummachinist",
-    "podiumtechnicus",
-    "stage manager",
-    "souffleur",
-    "procesoperator ciderfermentatie",
-    "medewerker grondstoffenontvangst",
-    "audiobeschrijver",
-    "theatertechnicus"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "technische problemen bij decorelementen voorkomen",
-      "uri": "http://data.europa.eu/esco/skill/aaebfccf-664c-4888-9d72-1cf75128bfab",
+      "label": "Netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3DECCF2E7C",
       "categorie": "essentieel"
     },
     {
-      "label": "controlesignalen verdelen",
-      "uri": "http://data.europa.eu/esco/skill/40c815cd-30a2-42e5-a549-bf9017cb6df3",
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
       "categorie": "essentieel"
     },
     {
-      "label": "energiebehoeften beoordelen",
-      "uri": "http://data.europa.eu/esco/skill/36fccad9-1d20-4104-bcc2-a8ea9d1ce5ea",
+      "label": "Verplaatsen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D16A30C42A",
       "categorie": "essentieel"
     },
     {
-      "label": "elektronische apparatuur afbouwen",
-      "uri": "http://data.europa.eu/esco/skill/60d97332-5284-47f9-a5ff-5e73c10806a0",
+      "label": "Installeren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5AD4F0905",
       "categorie": "essentieel"
     },
     {
-      "label": "op de hoogte blijven van trends",
-      "uri": "http://data.europa.eu/esco/skill/efda73b4-5212-40a7-b2f8-d2f754ffdf2b",
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
       "categorie": "essentieel"
     },
     {
-      "label": "ergonomisch werken",
-      "uri": "http://data.europa.eu/esco/skill/156f8c5b-894a-4ccc-a70e-37a2726f3f00",
+      "label": "Promoten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E06265451B",
       "categorie": "essentieel"
     },
     {
-      "label": "elektronische uitrusting verpakken",
-      "uri": "http://data.europa.eu/esco/skill/57d4d1f4-28b2-4a38-b7a9-a80626e99afc",
+      "label": "Operationeel toezicht houden",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/FAB3EE0CD1",
       "categorie": "essentieel"
     },
     {
-      "label": "controlesystemen voor verplaatsingen op het podium bedienen",
-      "uri": "http://data.europa.eu/esco/skill/50deacaa-7789-407d-afc0-b217a39fc7a8",
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
       "categorie": "essentieel"
     },
     {
-      "label": "brandpreventie uitvoeren bij optredens",
-      "uri": "http://data.europa.eu/esco/skill/5f08605b-aa03-45ed-bc49-395477783a38",
+      "label": "Av-productie, podiumtechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29B4A9A43C",
       "categorie": "essentieel"
     },
     {
-      "label": "visuele kwaliteit van het decor verzekeren",
-      "uri": "http://data.europa.eu/esco/skill/f3ff2fee-879c-4112-9002-d2df984fcbb0",
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
       "categorie": "essentieel"
     },
     {
-      "label": "decorelementen vervangen tijdens een voorstelling",
-      "uri": "http://data.europa.eu/esco/skill/c863e6a4-ddab-4314-bc9a-2f6b0aee143d",
+      "label": "Zelfkennis en zelfbewustzijn",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4E00BC89EC",
       "categorie": "essentieel"
     },
     {
-      "label": "geluidssysteem technisch ontwerpen",
-      "uri": "http://data.europa.eu/esco/skill/6cad4013-3055-47ba-8316-0720e1a55256",
+      "label": "Mediatechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/993511364B",
       "categorie": "essentieel"
     },
     {
-      "label": "persoonlijke beschermingsmiddelen gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/51754b8a-3e2c-4cc1-86e6-cf510d9c6fe4",
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
       "categorie": "essentieel"
     },
     {
-      "label": "veilig met mobiele elektrische systemen werken onder toezicht",
-      "uri": "http://data.europa.eu/esco/skill/b69cb255-e939-4928-b3fd-9557087dce52",
+      "label": "Veiligheidskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C34CD6448D",
       "categorie": "essentieel"
     },
     {
-      "label": "decorelementen hanteren tijdens repetities",
-      "uri": "http://data.europa.eu/esco/skill/bc6c7ce1-d99b-420e-9677-7bcf6e5a1e2d",
+      "label": "Elektrische energietechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C3DA1C1A44",
       "categorie": "essentieel"
     },
     {
-      "label": "kettingtakels ophangen",
-      "uri": "http://data.europa.eu/esco/skill/348e4a08-d01b-4cd5-8370-d114a9e31df1",
+      "label": "Ladingbehandeling en intern transport",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D27283387C",
       "categorie": "essentieel"
     },
     {
-      "label": "voorstelling verlichten",
-      "uri": "http://data.europa.eu/esco/skill/d748114d-bd74-4725-98c6-beec65e52d7e",
+      "label": "Evenementenorganisatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DC7FC7F6A7",
       "categorie": "essentieel"
-    },
-    {
-      "label": "materiaal installeren",
-      "uri": "http://data.europa.eu/esco/skill/f32eb5de-3fc7-4bba-853a-c6f2f043c33e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "geluidsmengtafel bedienen",
-      "uri": "http://data.europa.eu/esco/skill/72812eb6-5a0f-48e8-815d-3d2a16b8e963",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "belichting installeren",
-      "uri": "http://data.europa.eu/esco/skill/6f8d750e-aba4-459c-b4d7-220bddff9f58",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "persoonlijke professionele ontwikkeling beheren",
-      "uri": "http://data.europa.eu/esco/skill/a8d24a95-47b3-4f88-92e7-06600bcd3612",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "veiligheidsprocedures volgen bij werken op hoogte",
-      "uri": "http://data.europa.eu/esco/skill/fafbb75f-ec35-4cc2-996a-20c85ef6c266",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "belichtingsplan opstellen",
-      "uri": "http://data.europa.eu/esco/skill/349167f7-faa9-423a-b054-9e4fa0978fd7",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "informatie van grondplannen op podium aanduiden",
-      "uri": "http://data.europa.eu/esco/skill/c8563d5d-9204-4337-870d-687b0d102972",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "projectie bedienen",
-      "uri": "http://data.europa.eu/esco/skill/1c685542-aa09-4704-ba87-2b1ffd802e1f",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "artistieke concepten begrijpen",
-      "uri": "http://data.europa.eu/esco/skill/1633770e-5606-4422-b293-6c8c551fe663",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "persoonlijke werkomgeving voorbereiden",
-      "uri": "http://data.europa.eu/esco/skill/66509193-f1ce-44a6-8c4e-db24dcd19cdd",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "veilig met machines werken",
-      "uri": "http://data.europa.eu/esco/skill/4c831013-9027-4ec6-83de-c5c19e68d083",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "lichtstanden programmeren",
-      "uri": "http://data.europa.eu/esco/skill/1ae7c07e-7594-4f43-846c-db47698b3164",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "voorzien in energiedistributie",
-      "uri": "http://data.europa.eu/esco/skill/f8b05146-5ffc-44a9-846b-63e3ad1fe187",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "decorelementen op het podium monteren",
-      "uri": "http://data.europa.eu/esco/skill/b3afe118-6631-4640-942b-5acf7a0e7ada",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "zich aanpassen aan creatieve eisen van artiesten",
-      "uri": "http://data.europa.eu/esco/skill/591dd514-735b-46e4-a28d-3a4c42f49b72",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "lichttafels opzetten",
-      "uri": "http://data.europa.eu/esco/skill/8108e0ae-98f0-494c-9199-ec3bee50446a",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "geluidsapparatuur op het podium installeren",
-      "uri": "http://data.europa.eu/esco/skill/4bd3cd7d-b061-4cc2-ba8d-3262065ebbf0",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "repetitiedecor monteren",
-      "uri": "http://data.europa.eu/esco/skill/8e9ba0f2-a152-4cde-93ff-db56eaa0c204",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "projector bijstellen",
-      "uri": "http://data.europa.eu/esco/skill/a6d2edbd-5f87-40e0-a227-b7ae8c08db03",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "repetitiedecors demonteren",
-      "uri": "http://data.europa.eu/esco/skill/b868a1b3-2056-423e-b60c-48e0a1892e8b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "spanten monteren",
-      "uri": "http://data.europa.eu/esco/skill/e73c5d59-5e54-4238-bd2a-9aded8083107",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "podiumindelingen tekenen",
-      "uri": "http://data.europa.eu/esco/skill/17363757-35c3-4b1e-84be-4aa53fb5b8d3",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "technische problemen bij belichtingsapparatuur voorkomen",
-      "uri": "http://data.europa.eu/esco/skill/54ed4a0d-6bbe-4480-b594-80481f0d880b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "belichtingsapparatuur afstellen",
-      "uri": "http://data.europa.eu/esco/skill/fdc83a3b-0ea5-4c2e-af42-8cc0ffce5670",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "werken met aandacht voor de eigen veiligheid",
-      "uri": "http://data.europa.eu/esco/skill/b73035a9-bf06-412c-9796-db579f85995c",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "dimmers bedienen",
-      "uri": "http://data.europa.eu/esco/skill/9318894b-206c-45fb-91f4-36bce8715481",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "geluidsapparatuur onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/d7734eca-1359-4169-87ea-0b8512ae9425",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "artistieke concepten omzetten in technische ontwerpen",
-      "uri": "http://data.europa.eu/esco/skill/88de5ff4-310a-4f4f-9b47-349eb5589902",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "technische soundcheck uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/41ce355e-1cbe-46e4-a36b-e7eb6e108bee",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "geluidssystemen live bedienen",
-      "uri": "http://data.europa.eu/esco/skill/e8bae3fe-6d8d-457e-a20b-6f8eea4d5402",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "veiligheid van mobiele elektrische systemen garanderen",
-      "uri": "http://data.europa.eu/esco/skill/39f55791-434d-4169-9a46-c000a2859a66",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bedieningspanelen voor belichting bedienen",
-      "uri": "http://data.europa.eu/esco/skill/13afe9ee-803d-4de1-a8e0-bb529c959f9d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "persoonlijke administratie bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/9df34bc3-25d4-4452-a896-4d19b94ef896",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voorraad van technische middelen beheren",
-      "uri": "http://data.europa.eu/esco/skill/130f6043-6bb4-4f14-81b3-b34cdaf6ea1f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "belichtingsmateriaal onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/9f436e91-bc51-4d18-a3c7-17c1271e2ed0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "volgspots bedienen",
-      "uri": "http://data.europa.eu/esco/skill/081c58df-0ce8-4fc0-a031-14481c80f32a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "artistieke producties beschrijven",
-      "uri": "http://data.europa.eu/esco/skill/02c7caf4-4e8b-4745-8917-dbbd3af17c28",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "zichzelf promoten",
-      "uri": "http://data.europa.eu/esco/skill/a04c2655-5996-4744-bca2-4f4c8b3e4667",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "overdracht van een geïnstalleerd systeem regelen",
-      "uri": "http://data.europa.eu/esco/skill/b8be06aa-a29f-4b7d-86fc-d3949f842e5e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "artistieke kwaliteit van een voorstelling beschermen",
-      "uri": "http://data.europa.eu/esco/skill/1e8751e3-9b7a-4230-a6e5-83bf57fb70b6",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "systeemindeling voor een productie onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/dd009c14-f702-4d16-a919-8d2098205cf4",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "risicoanalyses voor podiumproducties opstellen",
-      "uri": "http://data.europa.eu/esco/skill/271a36a0-bc7a-43a9-ad29-0a3f3cac4e57",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "podiumindelingen digitaal uittekenen",
-      "uri": "http://data.europa.eu/esco/skill/6b9c6280-cd0b-4462-885e-da63fe5918ea",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "een professioneel netwerk ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/bf5d77ad-e18c-48d8-83f0-bc79c011c74a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "veilig met pyrotechnische materialen werken in een voorstellingsomgeving",
-      "uri": "http://data.europa.eu/esco/skill/7679b863-4d53-4a44-ab2f-be5618783e00",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "overleggen met betrokkenen over de implementatie van een productie",
-      "uri": "http://data.europa.eu/esco/skill/c3e88160-eebc-4cb9-aacb-c11792bcdc7a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "veilig met namaakwapens werken",
-      "uri": "http://data.europa.eu/esco/skill/f5dce36f-8ffc-4eaf-841b-cfd9ab72ccfe",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "technische problemen bij podiumuitrusting voorkomen",
-      "uri": "http://data.europa.eu/esco/skill/4d99d401-79fb-41b3-9980-387eaa3958e0",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voorraad verbruiksgoederen beheren",
-      "uri": "http://data.europa.eu/esco/skill/0c8f1351-d1fe-4542-89fe-b70729679c52",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "opgenomen geluid bewerken",
-      "uri": "http://data.europa.eu/esco/skill/c2218533-3e2a-4f50-b4fd-afde71dcf442",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "klant raad geven over technische mogelijkheden",
-      "uri": "http://data.europa.eu/esco/skill/7b3abd38-61ae-42a4-88bb-0884784f9ee1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "eerste interventie uitvoeren bij brand",
-      "uri": "http://data.europa.eu/esco/skill/30d3a303-158b-483c-b74d-de2bf7269c6e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "elektrische apparatuur onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/386774ac-fe5b-431a-b485-9aec0bf5c09e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "dimmers onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/cbb6c71e-7c4a-4f1d-8d6f-de9cc4f55abc",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "eigen werkwijze documenteren",
-      "uri": "http://data.europa.eu/esco/skill/cdf83a12-56d4-4e3c-ad0b-af1c1f21c62a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "artistiek plan aanpassen aan locatie",
-      "uri": "http://data.europa.eu/esco/skill/409b165c-ddae-4366-aeac-fa95c79e57a9",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "volgspots installeren",
-      "uri": "http://data.europa.eu/esco/skill/dcaaa791-ee3a-4bb8-836f-68051a30039f",
-      "categorie": "optioneel"
     }
   ]
 }

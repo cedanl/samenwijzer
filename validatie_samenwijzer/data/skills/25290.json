@@ -13,23 +13,13 @@
   ],
   "skills": [
     {
-      "label": "snijafval verwijderen",
-      "uri": "http://data.europa.eu/esco/skill/4f4ca760-970a-4839-9ce2-ab85ed66772e",
+      "label": "verwerkt werkstuk verwijderen",
+      "uri": "http://data.europa.eu/esco/skill/357e1729-e2a8-49f4-8b42-dc8b278320fa",
       "categorie": "essentieel"
     },
     {
-      "label": "proefdraaien",
-      "uri": "http://data.europa.eu/esco/skill/465ff64a-1271-4064-8ed1-e969cb68d8b4",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "zorgen voor de beschikbaarheid van materiaal",
-      "uri": "http://data.europa.eu/esco/skill/69f23426-9279-4fe6-a283-24c2aa4c855d",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "precisiemeetinstrumenten hanteren",
-      "uri": "http://data.europa.eu/esco/skill/42c25baf-ccb3-47d9-a872-bb2ceb615538",
+      "label": "optimalisatie van kwaliteit en cyclustijd",
+      "uri": "http://data.europa.eu/esco/skill/3b3b7373-220a-4287-87cf-e24a208b63c6",
       "categorie": "essentieel"
     },
     {
@@ -38,8 +28,68 @@
       "categorie": "essentieel"
     },
     {
-      "label": "onderdelen van draaibanken",
-      "uri": "http://data.europa.eu/esco/skill/77980af4-bd9a-44c1-ae3b-9bcb98848ba5",
+      "label": "bewegend werkstuk in een machine controleren",
+      "uri": "http://data.europa.eu/esco/skill/45c19aa0-2c28-42ab-936b-a367face2268",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "soorten metaal",
+      "uri": "http://data.europa.eu/esco/skill/7f107a85-d6ac-410f-a995-d635c5aa418b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor de beschikbaarheid van materiaal",
+      "uri": "http://data.europa.eu/esco/skill/69f23426-9279-4fe6-a283-24c2aa4c855d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "groep draaibanken installeren",
+      "uri": "http://data.europa.eu/esco/skill/b93c1489-dafc-40d7-b7fa-d4610fed87b2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "meter controleren",
+      "uri": "http://data.europa.eu/esco/skill/285cac9e-dad3-4b7b-848f-9bd2860ae345",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "soorten draaibeitels",
+      "uri": "http://data.europa.eu/esco/skill/49618378-8e17-4418-b63e-6247e97660bf",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "dwarsslede van een draaibank plaatsen",
+      "uri": "http://data.europa.eu/esco/skill/3ac73c5e-2b4a-46c4-8096-2b5d2af00591",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "producttests uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/371d57e6-cc5f-4fc0-9c0c-58feb595cc5b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "proefdraaien",
+      "uri": "http://data.europa.eu/esco/skill/465ff64a-1271-4064-8ed1-e969cb68d8b4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "precisiemeetinstrumenten hanteren",
+      "uri": "http://data.europa.eu/esco/skill/42c25baf-ccb3-47d9-a872-bb2ceb615538",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "draaibanken bedienen",
+      "uri": "http://data.europa.eu/esco/skill/e4a9ec84-4eb3-494b-8a70-0fcf0d687f03",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "snijafval verwijderen",
+      "uri": "http://data.europa.eu/esco/skill/4f4ca760-970a-4839-9ce2-ab85ed66772e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "automatische machines controleren",
+      "uri": "http://data.europa.eu/esco/skill/7aa52bdc-9c56-4341-be65-e8e30f64403f",
       "categorie": "essentieel"
     },
     {
@@ -53,93 +103,13 @@
       "categorie": "essentieel"
     },
     {
-      "label": "meter controleren",
-      "uri": "http://data.europa.eu/esco/skill/285cac9e-dad3-4b7b-848f-9bd2860ae345",
+      "label": "onderdelen van draaibanken",
+      "uri": "http://data.europa.eu/esco/skill/77980af4-bd9a-44c1-ae3b-9bcb98848ba5",
       "categorie": "essentieel"
     },
     {
-      "label": "bewegend werkstuk in een machine controleren",
-      "uri": "http://data.europa.eu/esco/skill/45c19aa0-2c28-42ab-936b-a367face2268",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "groep draaibanken installeren",
-      "uri": "http://data.europa.eu/esco/skill/b93c1489-dafc-40d7-b7fa-d4610fed87b2",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "producttests uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/371d57e6-cc5f-4fc0-9c0c-58feb595cc5b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "dwarsslede van een draaibank plaatsen",
-      "uri": "http://data.europa.eu/esco/skill/3ac73c5e-2b4a-46c4-8096-2b5d2af00591",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "verwerkt werkstuk verwijderen",
-      "uri": "http://data.europa.eu/esco/skill/357e1729-e2a8-49f4-8b42-dc8b278320fa",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "soorten metaal",
-      "uri": "http://data.europa.eu/esco/skill/7f107a85-d6ac-410f-a995-d635c5aa418b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "soorten draaibeitels",
-      "uri": "http://data.europa.eu/esco/skill/49618378-8e17-4418-b63e-6247e97660bf",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "automatische machines controleren",
-      "uri": "http://data.europa.eu/esco/skill/7aa52bdc-9c56-4341-be65-e8e30f64403f",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "draaibanken bedienen",
-      "uri": "http://data.europa.eu/esco/skill/e4a9ec84-4eb3-494b-8a70-0fcf0d687f03",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "optimalisatie van kwaliteit en cyclustijd",
-      "uri": "http://data.europa.eu/esco/skill/3b3b7373-220a-4287-87cf-e24a208b63c6",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "machineonderhoud uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/8a4e99e0-f259-4931-888f-604cfdc15b31",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "machines vervangen",
-      "uri": "http://data.europa.eu/esco/skill/ca8c5849-2655-44b3-b2fa-c4c0e2a04aeb",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "mechanica",
-      "uri": "http://data.europa.eu/esco/skill/efa141df-f382-418f-9121-bd88fd735669",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "advies geven aan technici",
-      "uri": "http://data.europa.eu/esco/skill/8c474534-707f-46f3-b356-810bbfe8b693",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "verwerkt werkstuk markeren",
-      "uri": "http://data.europa.eu/esco/skill/8ee056cf-c4f7-46bb-a9fb-1ff7b1ab9534",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "kruisverwijzingssystemen toepassen voor productidentificatie",
-      "uri": "http://data.europa.eu/esco/skill/6da25bcb-e854-4a19-83de-5d4957e5f7a4",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "oppervlakken met bramen glad maken",
-      "uri": "http://data.europa.eu/esco/skill/b713a540-54d8-4648-809f-6304450579f5",
+      "label": "kwaliteit van producten controleren",
+      "uri": "http://data.europa.eu/esco/skill/1a3660c2-011c-4e96-9b1d-529afc305428",
       "categorie": "optioneel"
     },
     {
@@ -148,73 +118,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "passende beschermende uitrusting dragen",
-      "uri": "http://data.europa.eu/esco/skill/6122d586-5978-431f-8e7a-96e61fc1f3fc",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "fijnmetaalbewerkingstechnieken toepassen",
-      "uri": "http://data.europa.eu/esco/skill/98d0c976-2966-4f72-831b-ffd1f531a2c6",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "ergonomisch werken",
-      "uri": "http://data.europa.eu/esco/skill/156f8c5b-894a-4ccc-a70e-37a2726f3f00",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "productie van metalen structuren",
-      "uri": "http://data.europa.eu/esco/skill/2d63745d-3c4c-4da1-ad77-985f68768be9",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "hefapparatuur bedienen",
-      "uri": "http://data.europa.eu/esco/skill/c3d61bcf-e698-4d39-8db1-388284dbfc74",
-      "categorie": "optioneel"
-    },
-    {
       "label": "productie van wapens en munitie",
       "uri": "http://data.europa.eu/esco/skill/e6c20084-4b2a-4583-a983-9988fa084bba",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "de bediening van een machine installeren",
-      "uri": "http://data.europa.eu/esco/skill/d9818afc-1dec-4944-8c9c-e3ae8fad176d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "kwaliteit van producten controleren",
-      "uri": "http://data.europa.eu/esco/skill/1a3660c2-011c-4e96-9b1d-529afc305428",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "snijtechnieken",
-      "uri": "http://data.europa.eu/esco/skill/2973b3bc-5893-4b3d-8953-22ef677a162f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "productie van stalen vaten en soortgelijke containers",
-      "uri": "http://data.europa.eu/esco/skill/92e05418-6986-4374-b3e9-00becdf54b57",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "productie van verwarmingsapparatuur",
-      "uri": "http://data.europa.eu/esco/skill/beba7567-b897-4832-84b5-67d3ae38fd99",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "productiegegevens registreren voor kwaliteitscontrole",
-      "uri": "http://data.europa.eu/esco/skill/2879a6f9-868b-40a1-a424-d50007ca8354",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "soorten boorstiften",
-      "uri": "http://data.europa.eu/esco/skill/ffb0deef-e207-4b97-90ef-5a06c1add65f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "soorten metaalproductieprocessen",
-      "uri": "http://data.europa.eu/esco/skill/c01b4549-3bc2-4640-8ecb-ef335fc4445c",
       "categorie": "optioneel"
     },
     {
@@ -223,8 +128,103 @@
       "categorie": "optioneel"
     },
     {
-      "label": "verwerking van ferrometalen",
-      "uri": "http://data.europa.eu/esco/skill/46786464-6c5b-4970-9a63-2f2fb29b4c12",
+      "label": "productie van stalen vaten en soortgelijke containers",
+      "uri": "http://data.europa.eu/esco/skill/92e05418-6986-4374-b3e9-00becdf54b57",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "de bediening van een machine installeren",
+      "uri": "http://data.europa.eu/esco/skill/d9818afc-1dec-4944-8c9c-e3ae8fad176d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten metaalproductieprocessen",
+      "uri": "http://data.europa.eu/esco/skill/c01b4549-3bc2-4640-8ecb-ef335fc4445c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "fijnmetaalbewerkingstechnieken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/98d0c976-2966-4f72-831b-ffd1f531a2c6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "mechanica",
+      "uri": "http://data.europa.eu/esco/skill/efa141df-f382-418f-9121-bd88fd735669",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verwerkt werkstuk markeren",
+      "uri": "http://data.europa.eu/esco/skill/8ee056cf-c4f7-46bb-a9fb-1ff7b1ab9534",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ergonomisch werken",
+      "uri": "http://data.europa.eu/esco/skill/156f8c5b-894a-4ccc-a70e-37a2726f3f00",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "hefapparatuur bedienen",
+      "uri": "http://data.europa.eu/esco/skill/c3d61bcf-e698-4d39-8db1-388284dbfc74",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "advies geven aan technici",
+      "uri": "http://data.europa.eu/esco/skill/8c474534-707f-46f3-b356-810bbfe8b693",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "machineonderhoud uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/8a4e99e0-f259-4931-888f-604cfdc15b31",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productie van metalen structuren",
+      "uri": "http://data.europa.eu/esco/skill/2d63745d-3c4c-4da1-ad77-985f68768be9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "machines vervangen",
+      "uri": "http://data.europa.eu/esco/skill/ca8c5849-2655-44b3-b2fa-c4c0e2a04aeb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "oppervlakken met bramen glad maken",
+      "uri": "http://data.europa.eu/esco/skill/b713a540-54d8-4648-809f-6304450579f5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "technische middelen raadplegen",
+      "uri": "http://data.europa.eu/esco/skill/9f34107c-8db0-4b00-84d8-3f64e400c80c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kruisverwijzingssystemen toepassen voor productidentificatie",
+      "uri": "http://data.europa.eu/esco/skill/6da25bcb-e854-4a19-83de-5d4957e5f7a4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productie van verwarmingsapparatuur",
+      "uri": "http://data.europa.eu/esco/skill/beba7567-b897-4832-84b5-67d3ae38fd99",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "passende beschermende uitrusting dragen",
+      "uri": "http://data.europa.eu/esco/skill/6122d586-5978-431f-8e7a-96e61fc1f3fc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "snijtechnieken",
+      "uri": "http://data.europa.eu/esco/skill/2973b3bc-5893-4b3d-8953-22ef677a162f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten boorstiften",
+      "uri": "http://data.europa.eu/esco/skill/ffb0deef-e207-4b97-90ef-5a06c1add65f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productiegegevens registreren voor kwaliteitscontrole",
+      "uri": "http://data.europa.eu/esco/skill/2879a6f9-868b-40a1-a424-d50007ca8354",
       "categorie": "optioneel"
     },
     {
@@ -233,8 +233,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "technische middelen raadplegen",
-      "uri": "http://data.europa.eu/esco/skill/9f34107c-8db0-4b00-84d8-3f64e400c80c",
+      "label": "verwerking van ferrometalen",
+      "uri": "http://data.europa.eu/esco/skill/46786464-6c5b-4970-9a63-2f2fb29b4c12",
       "categorie": "optioneel"
     }
   ]

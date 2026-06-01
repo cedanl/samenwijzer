@@ -1,9 +1,184 @@
 {
   "crebo": "27018",
   "opleiding": "27018_BOL_2025__Examenplannen Zorgboederij 25-26",
-  "bron": "ESCO",
-  "beroep": null,
-  "match_methode": "geen-kandidaten",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Persoonlijk werkbegeleider zorgboerderij ",
+    "uri": "",
+    "definitie": "De persoonlijk werkbegeleider zorgboerderij heeft een coördinerende rol in organisaties waar de groene omgeving en werkzaamheden uit het groene domein worden ingezet bij de begeleiding van deelnemers in het kader van dagbesteding, sociale activering of begeleiding (terug) naar werk of onderwijs. De persoonlijk begeleider vervult een brugfunctie tussen zorgverlening en werkzaamheden in het groene domein (dierverzorging en/of werkzaamheden in de groene ruimtes). De persoonlijk werkbegeleider zorgboerderij creëert een (sociaal) veilige omgeving, stelt werkbegeleidingsplannen op, begeleidt deelnemers bij de werkzaamheden en activiteiten, ziet toe op de uitvoering van werkbegeleidingsplannen en onderhoudt het contact met naastbetrokkenen en externe (zorg)begeleiders."
+  },
+  "match_methode": "crebo-direct",
   "kandidaten": [],
-  "skills": []
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Instrueren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6AE2F3F890",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leergierig zijn",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CB768EFA19",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Psychosociaal begeleiden",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D989743D35",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verzorgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DB59A57C01",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Innoveren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/FCCEE4730B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Gehandicaptenzorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/045A57B261",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Sociaal-maatschappelijke dienstverlening",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13D9D83B4B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Land- en tuinbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/15C8D6A390",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Psychologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/17998456DE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Praktijkbegeleiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/21F4F846BF",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Sociale veiligheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3C86F6FEAB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Geneeskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/512B5B0194",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Biologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/54690E3D68",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Sociologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/59637E5D42",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Sociaal-agogisch werk",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/73492DD4F1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerking en netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/95C3218741",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Agrarische kennis",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/98A899BB98",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Uitgifte en toediening van medicijnen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/B3BD0D402E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Diergeneeskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C31FB4F8F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verzorging recreatie-, gezelschap- en hobbydieren",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E973124820",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Dierverzorging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F46F3F7E96",
+      "categorie": "essentieel"
+    }
+  ]
 }

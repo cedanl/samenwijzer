@@ -3,9 +3,9 @@
   "opleiding": "25898_BOL_2023__2023_OER_BOL_Technicus-Engineering",
   "bron": "ESCO",
   "beroep": {
-    "label": "technisch ingenieur optomechanica",
-    "uri": "http://data.europa.eu/esco/occupation/d2af4f6b-c990-4d8e-bb17-befca23a307a",
-    "definitie": "Technisch ingenieurs optomechanica werken samen met ingenieurs bij de ontwikkeling van optomechanische apparaten, zoals optische tafels, vervormbare spiegels en optische bevestigingen. Zij bouwen, installeren, testen en onderhouden prototypes van optomechanische apparatuur. Zij bepalen de materiaal- en assemblage-eisen."
+    "label": "technicus automatisering",
+    "uri": "http://data.europa.eu/esco/occupation/5791a961-4717-4230-a245-a4082a675f04",
+    "definitie": "Technici automatisering werken samen met automatiseringsingenieurs bij de ontwikkeling van toepassingen en systemen voor de automatisering van het productieproces. Zij bouwen, testen, monitoren en onderhouden computergestuurde systemen die in geautomatiseerde productiesystemen worden gebruikt."
   },
   "match_methode": "llm-keuze",
   "kandidaten": [
@@ -20,63 +20,8 @@
   ],
   "skills": [
     {
-      "label": "analyse van kwaliteitscontrole uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/41a3240f-58ba-44e2-a688-edeb21ea5c16",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "optische onderdelen schoonmaken",
-      "uri": "http://data.europa.eu/esco/skill/be64a688-37ae-4124-8eee-1aec483cce33",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "componenten uitlijnen",
-      "uri": "http://data.europa.eu/esco/skill/5133ed7b-0785-4c28-825d-1dcf518c4b5b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "optische componenten",
-      "uri": "http://data.europa.eu/esco/skill/a670abe2-c4a2-49a6-996c-760562aeb43d",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "wetenschappelijke meetapparatuur bedienen",
-      "uri": "http://data.europa.eu/esco/skill/cb1a2fbf-242d-4a4e-a466-588378f124c1",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "componenten vastmaken",
-      "uri": "http://data.europa.eu/esco/skill/cafc2723-c308-4058-9921-61306b5de924",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "optisch productieproces",
-      "uri": "http://data.europa.eu/esco/skill/ac42ad10-4399-4730-a097-04dfb605aace",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "optomechanische componenten",
-      "uri": "http://data.europa.eu/esco/skill/3912401a-cccf-4995-9f5b-76302b26fff4",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "tekeningen ontwerpen",
-      "uri": "http://data.europa.eu/esco/skill/3c333552-8d89-43f5-90bd-856e15bec433",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "technische tekeningen lezen",
-      "uri": "http://data.europa.eu/esco/skill/b07daddc-8625-4360-946e-ad2b0e56ebf6",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "optomechanische apparaten",
-      "uri": "http://data.europa.eu/esco/skill/27fabb9a-3294-4ddb-9844-9214b77d9084",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "normen voor optische apparaten",
-      "uri": "http://data.europa.eu/esco/skill/08deb446-76f3-4fa2-bd01-dd368c66880d",
+      "label": "regelsystemen voor machines opzetten",
+      "uri": "http://data.europa.eu/esco/skill/a1a032e1-4b7a-4603-8516-43d83707ffac",
       "categorie": "essentieel"
     },
     {
@@ -85,28 +30,48 @@
       "categorie": "essentieel"
     },
     {
-      "label": "optomechanische techniek",
-      "uri": "http://data.europa.eu/esco/skill/8485ef31-f707-4452-a6ec-9dbf3837611f",
+      "label": "technische ontwerpen aanpassen",
+      "uri": "http://data.europa.eu/esco/skill/42b23922-1c40-4dbe-9e0c-7a568dfdf06b",
       "categorie": "essentieel"
     },
     {
-      "label": "eigenschappen van optisch glas",
-      "uri": "http://data.europa.eu/esco/skill/18edb12e-4f41-4ae0-8085-7513236580c8",
+      "label": "automatiseringstechnologie",
+      "uri": "http://data.europa.eu/esco/skill/f4a6e9f7-5cff-46c0-894c-59c20bb78694",
       "categorie": "essentieel"
     },
     {
-      "label": "optomechanische apparatuur assembleren",
-      "uri": "http://data.europa.eu/esco/skill/25453ab7-fcc2-47e1-b452-a5dea1dae0c4",
+      "label": "proefdraaien",
+      "uri": "http://data.europa.eu/esco/skill/465ff64a-1271-4064-8ed1-e969cb68d8b4",
       "categorie": "essentieel"
     },
     {
-      "label": "optische componenten testen",
-      "uri": "http://data.europa.eu/esco/skill/2e5c3901-cac5-46a0-ad5d-b98a34680513",
+      "label": "prototypen voor productie maken",
+      "uri": "http://data.europa.eu/esco/skill/e921279a-1a7e-4900-9720-bde93ae3e70e",
       "categorie": "essentieel"
     },
     {
-      "label": "optische techniek",
-      "uri": "http://data.europa.eu/esco/skill/a2f40faa-f101-414c-9258-1b91fb564f10",
+      "label": "kwaliteitsstandaarden",
+      "uri": "http://data.europa.eu/esco/skill/8d4271ca-c9fd-40b3-875f-15f78332a49e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "computertechniek",
+      "uri": "http://data.europa.eu/esco/skill/89f6560b-2194-45c9-9ece-d33049a73eef",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "microprocessors",
+      "uri": "http://data.europa.eu/esco/skill/8a211052-4bec-49c2-9b4e-7914c37d21b4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "automatiseringscomponenten installeren",
+      "uri": "http://data.europa.eu/esco/skill/818c2b89-1335-4443-ada7-e1046862e273",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "regeltechniek",
+      "uri": "http://data.europa.eu/esco/skill/bf1f763e-c505-46e7-8af3-e48f13ec5f44",
       "categorie": "essentieel"
     },
     {
@@ -115,8 +80,33 @@
       "categorie": "essentieel"
     },
     {
-      "label": "soorten optische instrumenten",
-      "uri": "http://data.europa.eu/esco/skill/3ab7c355-94f2-4b07-ab1b-4dcb29745b0e",
+      "label": "automatische machines controleren",
+      "uri": "http://data.europa.eu/esco/skill/7aa52bdc-9c56-4341-be65-e8e30f64403f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "technische tekeningen lezen",
+      "uri": "http://data.europa.eu/esco/skill/b07daddc-8625-4360-946e-ad2b0e56ebf6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "componenten vastmaken",
+      "uri": "http://data.europa.eu/esco/skill/cafc2723-c308-4058-9921-61306b5de924",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "mechatronica",
+      "uri": "http://data.europa.eu/esco/skill/d88cb3f1-8e02-4618-bf32-4b0488066934",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "componenten uitlijnen",
+      "uri": "http://data.europa.eu/esco/skill/5133ed7b-0785-4c28-825d-1dcf518c4b5b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "schakelschema’s",
+      "uri": "http://data.europa.eu/esco/skill/02c71cde-f513-43da-8952-0974763c7568",
       "categorie": "essentieel"
     },
     {
@@ -130,34 +120,49 @@
       "categorie": "essentieel"
     },
     {
+      "label": "tekeningen ontwerpen",
+      "uri": "http://data.europa.eu/esco/skill/3c333552-8d89-43f5-90bd-856e15bec433",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "machines monteren",
+      "uri": "http://data.europa.eu/esco/skill/87a0c0e6-c114-4ea1-b2d0-933bce1f3c5f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektrotechniek",
+      "uri": "http://data.europa.eu/esco/skill/3e40c7d0-0e36-4b33-bc33-0aa87eda0561",
+      "categorie": "essentieel"
+    },
+    {
       "label": "machinebouw",
       "uri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
       "categorie": "essentieel"
     },
     {
-      "label": "prototypen voor productie maken",
-      "uri": "http://data.europa.eu/esco/skill/e921279a-1a7e-4900-9720-bde93ae3e70e",
-      "categorie": "essentieel"
+      "label": "robotica",
+      "uri": "http://data.europa.eu/esco/skill/e87ec79a-c9ff-46f5-84fa-7a0f394cdf40",
+      "categorie": "optioneel"
     },
     {
-      "label": "refractiesterkte",
-      "uri": "http://data.europa.eu/esco/skill/67d81541-4dc2-44ee-af59-2c3ebb8a91e1",
-      "categorie": "essentieel"
+      "label": "CAD-software",
+      "uri": "http://data.europa.eu/esco/skill/a2b5dcf3-5b6a-453d-876c-cff540c0faf1",
+      "categorie": "optioneel"
     },
     {
-      "label": "van optische coating voorzien",
-      "uri": "http://data.europa.eu/esco/skill/71e097c8-fb00-4275-b73e-ee9761af68a0",
-      "categorie": "essentieel"
+      "label": "software installeren",
+      "uri": "http://data.europa.eu/esco/skill/c8de8023-ab8a-402b-a828-b2b57cd3b2f7",
+      "categorie": "optioneel"
     },
     {
-      "label": "technische ontwerpen aanpassen",
-      "uri": "http://data.europa.eu/esco/skill/42b23922-1c40-4dbe-9e0c-7a568dfdf06b",
-      "categorie": "essentieel"
+      "label": "een CNC-controller programmeren",
+      "uri": "http://data.europa.eu/esco/skill/bf942c60-8539-4951-83ee-63f770da1cb8",
+      "categorie": "optioneel"
     },
     {
-      "label": "optiek",
-      "uri": "http://data.europa.eu/esco/skill/38dbdfc4-427e-4fc8-b394-b00ec29dbe3a",
-      "categorie": "essentieel"
+      "label": "firmware",
+      "uri": "http://data.europa.eu/esco/skill/4f7fa632-15a6-4739-930b-abbac8055a80",
+      "categorie": "optioneel"
     },
     {
       "label": "storingen aan apparatuur oplossen",
@@ -165,38 +170,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "optomechanica in trilholtes",
-      "uri": "http://data.europa.eu/esco/skill/4d51a8b4-f051-4052-bf3a-f9eb2ccd1dd8",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "micro-optische apparatuur",
-      "uri": "http://data.europa.eu/esco/skill/acfaffa2-9607-44fd-b014-19b817362089",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "optische materialen inspecteren",
-      "uri": "http://data.europa.eu/esco/skill/a3144f20-137a-4575-8399-a6a841f10a3a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "werking van machines volgen",
-      "uri": "http://data.europa.eu/esco/skill/188048ff-18bf-43c4-a1a0-7adb6e68f421",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "elektromagnetisch spectrum",
-      "uri": "http://data.europa.eu/esco/skill/c500f5d0-42d4-4341-904e-cd4ef2ff3181",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "optische instrumenten ijken",
-      "uri": "http://data.europa.eu/esco/skill/46fbc5cb-e6df-4355-8483-a4ccb819f753",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "optische apparatuur repareren",
-      "uri": "http://data.europa.eu/esco/skill/d2cb44cf-d50a-44b4-a7e5-c6e7c974c5e4",
+      "label": "programmeerbare logische besturingseenheid",
+      "uri": "http://data.europa.eu/esco/skill/6468e5fb-f3be-4025-87be-4b6556755c61",
       "categorie": "optioneel"
     },
     {
@@ -205,8 +180,38 @@
       "categorie": "optioneel"
     },
     {
+      "label": "robotinstallaties afstellen",
+      "uri": "http://data.europa.eu/esco/skill/e975b791-b488-4935-be44-06f2f9a443bb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "software op maat maken voor besturingssystemen",
+      "uri": "http://data.europa.eu/esco/skill/4a2a63e6-5c62-43a0-a375-fdf4c2805270",
+      "categorie": "optioneel"
+    },
+    {
       "label": "CAE-software",
       "uri": "http://data.europa.eu/esco/skill/82313e12-9d39-47d1-b7c9-78bbd6bb50e2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "technische communicatievaardigheden toepassen",
+      "uri": "http://data.europa.eu/esco/skill/c32ad607-0c4d-4e34-b73f-668298f7bf13",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werkschema's volgen",
+      "uri": "http://data.europa.eu/esco/skill/194c05ed-253c-485a-8bf0-0c8de1aaafda",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "hardware installeren",
+      "uri": "http://data.europa.eu/esco/skill/3dc6fd8e-6ff7-432e-a262-04d487858efb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "machines vervangen",
+      "uri": "http://data.europa.eu/esco/skill/ca8c5849-2655-44b3-b2fa-c4c0e2a04aeb",
       "categorie": "optioneel"
     },
     {
@@ -220,43 +225,23 @@
       "categorie": "optioneel"
     },
     {
-      "label": "precisie-instrumenten gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/a99c6783-50c0-4f7a-99df-bf93429ef6dc",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "precisiemachines bedienen",
-      "uri": "http://data.europa.eu/esco/skill/d8045ecd-22f3-4711-bb51-58969d9f28c7",
-      "categorie": "optioneel"
-    },
-    {
       "label": "gegevens over de voortgang van het werk bijhouden",
       "uri": "http://data.europa.eu/esco/skill/ccfbdaad-b91d-4bfe-bd0e-d30b33587f19",
       "categorie": "optioneel"
     },
     {
-      "label": "CAD-software",
-      "uri": "http://data.europa.eu/esco/skill/a2b5dcf3-5b6a-453d-876c-cff540c0faf1",
+      "label": "firmware programmeren",
+      "uri": "http://data.europa.eu/esco/skill/cf200547-25b5-47c8-9eda-bca4aedc13fb",
       "categorie": "optioneel"
     },
     {
-      "label": "industriële apparatuur bedienen",
-      "uri": "http://data.europa.eu/esco/skill/7c632656-361e-4db1-8d69-b9f85d6be0d0",
+      "label": "controlesystemen voor automatische uitrusting onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/df12fd50-55dc-4cfd-a021-818880668789",
       "categorie": "optioneel"
     },
     {
-      "label": "optische assemblagemachines bedienen",
-      "uri": "http://data.europa.eu/esco/skill/e8fd5bfe-e4fe-417f-bceb-270a0e6657f4",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "optische apparatuur onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/72b90d26-b881-4984-a542-9c47bd42e549",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "technische communicatievaardigheden toepassen",
-      "uri": "http://data.europa.eu/esco/skill/c32ad607-0c4d-4e34-b73f-668298f7bf13",
+      "label": "veiligheidsnormen in industriële contexten volgen",
+      "uri": "http://data.europa.eu/esco/skill/86065a19-7537-4bd5-b41c-7e0638d67b58",
       "categorie": "optioneel"
     }
   ]

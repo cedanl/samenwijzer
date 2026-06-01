@@ -18,6 +18,7 @@ niet-deterministisch — LLM-keuze — dus we pinnen hem). Forceer herbouw met
 from __future__ import annotations
 
 import argparse
+import collections
 import csv
 import json
 import logging
@@ -25,7 +26,7 @@ import os
 import sys
 from pathlib import Path
 
-from validatie_samenwijzer import db, skills_bron
+from validatie_samenwijzer import competentnl_bron, db, skills_bron
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 logger = logging.getLogger("build_skills")
@@ -82,8 +83,8 @@ def main() -> int:
     if args.limit:
         crebos = crebos[: args.limit]
 
-    overzicht: list[dict] = []
-    gematcht = ongematcht = overgeslagen = 0
+    overgeslagen = 0
+    bronnen: collections.Counter[str] = collections.Counter()
 
     for i, crebo in enumerate(crebos, 1):
         bestand = _SKILLS_DIR / f"{crebo}.json"
@@ -92,41 +93,32 @@ def main() -> int:
             continue
 
         opleiding = opleidingen[crebo]
-        record = skills_bron.bouw_skills_record(crebo, opleiding, kd_domeinen.get(crebo, ""))
+        # CompetentNL eerst (crebo-direct, exacte UWV-data); ESCO als fallback.
+        record = competentnl_bron.haal_skills_record(crebo, opleiding)
+        if record is None or not record.skills:
+            record = skills_bron.bouw_skills_record(crebo, opleiding, kd_domeinen.get(crebo, ""))
         bestand.write_text(
             json.dumps(record.to_dict(), ensure_ascii=False, indent=2), encoding="utf-8"
         )
 
-        ess = sum(1 for s in record.skills if s.categorie == "essentieel")
-        opt = sum(1 for s in record.skills if s.categorie == "optioneel")
+        n_skills = len(record.skills)
         beroep = record.beroep.label if record.beroep else "—"
         if record.beroep:
-            gematcht += 1
+            bronnen[record.bron] += 1
         else:
-            ongematcht += 1
+            bronnen["geen-match"] += 1
             logger.warning("GEEN MATCH  %s  %r  (%s)", crebo, opleiding, record.match_methode)
-
-        overzicht.append(
-            {
-                "crebo": crebo,
-                "opleiding": opleiding,
-                "beroep": beroep,
-                "methode": record.match_methode,
-                "essentieel": ess,
-                "optioneel": opt,
-                "kandidaten": " | ".join(record.kandidaten),
-            }
+        logger.info(
+            "[%d/%d] %s → %r [%s] (%d skills)", i, len(crebos), crebo, beroep, record.bron, n_skills
         )
-        logger.info("[%d/%d] %s → %r (%dess/%dopt)", i, len(crebos), crebo, beroep, ess, opt)
 
     # Review-CSV (her)schrijven met alles wat nu op schijf staat, zodat de tabel
     # compleet is ook na incrementele runs.
     _schrijf_overzicht()
 
     logger.info(
-        "Klaar: %d gematcht, %d zonder match, %d overgeslagen. Artefacten in %s",
-        gematcht,
-        ongematcht,
+        "Klaar: %s, %d overgeslagen. Artefacten in %s",
+        ", ".join(f"{n}× {bron}" for bron, n in sorted(bronnen.items())) or "niets nieuw",
         overgeslagen,
         _SKILLS_DIR,
     )
@@ -144,8 +136,10 @@ def _schrijf_overzicht() -> None:
                 "crebo": d["crebo"],
                 "opleiding": d["opleiding"],
                 "beroep": (d["beroep"] or {}).get("label", "—") if d["beroep"] else "—",
+                "bron": d.get("bron", ""),
                 "methode": d.get("match_methode", ""),
                 "essentieel": sum(1 for s in skills if s["categorie"] == "essentieel"),
+                "belangrijk": sum(1 for s in skills if s["categorie"] == "belangrijk"),
                 "optioneel": sum(1 for s in skills if s["categorie"] == "optioneel"),
                 "kandidaten": " | ".join(d.get("kandidaten", [])),
             }
@@ -158,8 +152,10 @@ def _schrijf_overzicht() -> None:
                 "crebo",
                 "opleiding",
                 "beroep",
+                "bron",
                 "methode",
                 "essentieel",
+                "belangrijk",
                 "optioneel",
                 "kandidaten",
             ],

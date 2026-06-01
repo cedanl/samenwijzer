@@ -23,73 +23,8 @@
   ],
   "skills": [
     {
-      "label": "strategieën voor toeleveringsketens analyseren",
-      "uri": "http://data.europa.eu/esco/skill/96d549bb-3e62-4c45-92a7-f114df089581",
-      "categorie": "essentieel"
-    },
-    {
       "label": "relaties met leveranciers onderhouden",
       "uri": "http://data.europa.eu/esco/skill/3cd35f5d-ce6d-4f14-9a09-53d7a28d834c",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "bedrijfsnormen volgen",
-      "uri": "http://data.europa.eu/esco/skill/f5f5b244-6cea-4fbc-8a50-8f712791bc09",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "leveranciersrisico’s beoordelen",
-      "uri": "http://data.europa.eu/esco/skill/96ec2d53-4f41-4172-8ef2-70742c4bb540",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "beginselen van de leveringsketen",
-      "uri": "http://data.europa.eu/esco/skill/cf579543-272b-43c8-b942-555836ae4241",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "omgaan met managers",
-      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "ontwikkelingen in de leveringsketen analyseren",
-      "uri": "http://data.europa.eu/esco/skill/b7e57889-a84f-440c-9e60-459aa69979e9",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "grond- en hulpstoffen beheren",
-      "uri": "http://data.europa.eu/esco/skill/020b3c27-bae1-4b85-9d6f-eccee0f5ed99",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "inventaris beheren",
-      "uri": "http://data.europa.eu/esco/skill/ab6265f2-a9bf-49e8-a9a5-67cbab4de38b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "relaties met klanten onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/2239694b-771a-4586-8b54-2794e361a9ae",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "beheer van de leveringsketen",
-      "uri": "http://data.europa.eu/esco/skill/f929c89e-c363-4132-a918-e021d57b307c",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "streven naar bedrijfsgroei",
-      "uri": "http://data.europa.eu/esco/skill/2a2fa8e8-aaf3-4abf-a60b-af6415f1c6d4",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "logistieke veranderingen analyseren",
-      "uri": "http://data.europa.eu/esco/skill/5d26851b-270a-4fbe-abeb-2bfd6eba3e2d",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "leveranciersbeheer",
-      "uri": "http://data.europa.eu/esco/skill/fe1ec582-d63b-466c-9149-e7fc4fe93e22",
       "categorie": "essentieel"
     },
     {
@@ -98,8 +33,33 @@
       "categorie": "essentieel"
     },
     {
+      "label": "beheer van de leveringsketen",
+      "uri": "http://data.europa.eu/esco/skill/f929c89e-c363-4132-a918-e021d57b307c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bedrijfsnormen volgen",
+      "uri": "http://data.europa.eu/esco/skill/f5f5b244-6cea-4fbc-8a50-8f712791bc09",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "inventaris beheren",
+      "uri": "http://data.europa.eu/esco/skill/ab6265f2-a9bf-49e8-a9a5-67cbab4de38b",
+      "categorie": "essentieel"
+    },
+    {
       "label": "maatschappelijk verantwoord ondernemen",
       "uri": "http://data.europa.eu/esco/skill/66db424f-2abe-420d-8e5b-186607266b61",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "leveranciersbeheer",
+      "uri": "http://data.europa.eu/esco/skill/fe1ec582-d63b-466c-9149-e7fc4fe93e22",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ontwikkelingen in de leveringsketen analyseren",
+      "uri": "http://data.europa.eu/esco/skill/b7e57889-a84f-440c-9e60-459aa69979e9",
       "categorie": "essentieel"
     },
     {
@@ -108,188 +68,48 @@
       "categorie": "essentieel"
     },
     {
-      "label": "multimodale vervoerslogistiek",
-      "uri": "http://data.europa.eu/esco/skill/4d6a1837-93df-4a81-b424-74e1a8ed2f03",
-      "categorie": "optioneel"
+      "label": "beginselen van de leveringsketen",
+      "uri": "http://data.europa.eu/esco/skill/cf579543-272b-43c8-b942-555836ae4241",
+      "categorie": "essentieel"
     },
     {
-      "label": "logistieke behoeftes analyseren",
-      "uri": "http://data.europa.eu/esco/skill/8029637c-00eb-4764-ae88-387611176c4b",
-      "categorie": "optioneel"
+      "label": "logistieke veranderingen analyseren",
+      "uri": "http://data.europa.eu/esco/skill/5d26851b-270a-4fbe-abeb-2bfd6eba3e2d",
+      "categorie": "essentieel"
     },
     {
-      "label": "risicobeheer",
-      "uri": "http://data.europa.eu/esco/skill/6eff134b-e34f-4d6e-a6e8-5e47cf2228d0",
-      "categorie": "optioneel"
+      "label": "relaties met klanten onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/2239694b-771a-4586-8b54-2794e361a9ae",
+      "categorie": "essentieel"
     },
     {
-      "label": "verkoopfacturen opstellen",
-      "uri": "http://data.europa.eu/esco/skill/e3e42d54-78bd-4337-aa87-bb31a7670c9a",
-      "categorie": "optioneel"
+      "label": "streven naar bedrijfsgroei",
+      "uri": "http://data.europa.eu/esco/skill/2a2fa8e8-aaf3-4abf-a60b-af6415f1c6d4",
+      "categorie": "essentieel"
     },
     {
-      "label": "kooptrends van consumenten analyseren",
-      "uri": "http://data.europa.eu/esco/skill/750caee5-12a0-46ba-b8aa-1e56370deaf9",
-      "categorie": "optioneel"
+      "label": "leveranciersrisico’s beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/96ec2d53-4f41-4172-8ef2-70742c4bb540",
+      "categorie": "essentieel"
     },
     {
-      "label": "advies geven over risicobeheer",
-      "uri": "http://data.europa.eu/esco/skill/0efbe2dc-2770-47ec-b8f4-d1bdff6ac0a4",
-      "categorie": "optioneel"
+      "label": "grond- en hulpstoffen beheren",
+      "uri": "http://data.europa.eu/esco/skill/020b3c27-bae1-4b85-9d6f-eccee0f5ed99",
+      "categorie": "essentieel"
     },
     {
-      "label": "verkoop over bepaalde tijdspannes inschatten",
-      "uri": "http://data.europa.eu/esco/skill/146eccdc-c52a-4d61-9406-3af617caa7d6",
-      "categorie": "optioneel"
+      "label": "omgaan met managers",
+      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
+      "categorie": "essentieel"
     },
     {
-      "label": "bedrijfsdoelstellingen analyseren",
-      "uri": "http://data.europa.eu/esco/skill/408fcc8e-d4e6-43e7-ab27-b617a1dced98",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voorraadniveaus bewaken",
-      "uri": "http://data.europa.eu/esco/skill/44f6a65f-6be7-4818-9a66-73908797283f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "samenwerking tussen de verschillende afdelingen waarborgen",
-      "uri": "http://data.europa.eu/esco/skill/b216d9a2-7d4e-4312-8d05-e375f4ab44d8",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "kwaliteitsstandaarden",
-      "uri": "http://data.europa.eu/esco/skill/8d4271ca-c9fd-40b3-875f-15f78332a49e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "software voor verkoopprognoses gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/ae57a9c3-f761-4b03-be2b-99a781704c73",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "statistische voorspellingen doen",
-      "uri": "http://data.europa.eu/esco/skill/be727774-46d7-43d7-aee9-1a51b5cd8c71",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "werk plannen volgens binnenkomende bestellingen",
-      "uri": "http://data.europa.eu/esco/skill/53103efa-a525-4a5b-81e5-282c4331e72c",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "magazijnactiviteiten beheren",
-      "uri": "http://data.europa.eu/esco/skill/fa7be6bf-f906-4b8e-857d-48a9a7da901c",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "zorgen voor de beschikbaarheid van materiaal",
-      "uri": "http://data.europa.eu/esco/skill/69f23426-9279-4fe6-a283-24c2aa4c855d",
-      "categorie": "optioneel"
+      "label": "strategieën voor toeleveringsketens analyseren",
+      "uri": "http://data.europa.eu/esco/skill/96d549bb-3e62-4c45-92a7-f114df089581",
+      "categorie": "essentieel"
     },
     {
       "label": "marktprijs",
       "uri": "http://data.europa.eu/esco/skill/d5111703-c344-484d-bef1-9565a278166a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "personeelszaken beheren",
-      "uri": "http://data.europa.eu/esco/skill/279a4b1d-21df-4d78-9f4d-324c73fd7536",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "onderhandelen over verkoopcontracten",
-      "uri": "http://data.europa.eu/esco/skill/71152876-b629-4a99-b9ea-0f25a0d07e4e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "arbeidswetgeving",
-      "uri": "http://data.europa.eu/esco/skill/08fe5910-8c4c-4679-a988-eb2ded3c4909",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "economische tendensen analyseren",
-      "uri": "http://data.europa.eu/esco/skill/5f302d63-048e-451c-b150-97c124a5a26b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "financiële haalbaarheid beoordelen",
-      "uri": "http://data.europa.eu/esco/skill/e95058a6-e139-42e7-a470-72038a606649",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "financieringsmiddelen beheren",
-      "uri": "http://data.europa.eu/esco/skill/2d008d5a-b7bd-46f7-bbb1-5d70a0af9c84",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "economie",
-      "uri": "http://data.europa.eu/esco/skill/88af9294-b697-4687-ae19-aefbb6234dfa",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "afspraken met leveranciers onderhandelen",
-      "uri": "http://data.europa.eu/esco/skill/c842be42-81b3-40f2-904c-ea8790ac88bd",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "personeel aanwerven",
-      "uri": "http://data.europa.eu/esco/skill/496932f1-0b6b-4f73-9432-d95c7ddcd43b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "toekomstige capaciteitsvereisten plannen",
-      "uri": "http://data.europa.eu/esco/skill/2c5cbddf-3393-452f-abb0-8e734d1b61be",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "prijstendensen volgen",
-      "uri": "http://data.europa.eu/esco/skill/31eecea5-c1ef-4e5c-96a9-808ff4e43813",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "trends rond dividenden voorspellen",
-      "uri": "http://data.europa.eu/esco/skill/a448126c-69a1-45a2-bd76-a8eafd86f9c5",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "personeelsbeleid",
-      "uri": "http://data.europa.eu/esco/skill/e437eba1-3e22-41f2-8703-741e94785cba",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "standaardsystemen voor enterprise resource planning beheren",
-      "uri": "http://data.europa.eu/esco/skill/f0393af3-bcd9-41af-a36e-0cfb83b60081",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "contractadministratie bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/a703b581-ad64-4791-8bb3-624aea569fa5",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "werkuren nauwkeurig inschatten",
-      "uri": "http://data.europa.eu/esco/skill/bd556223-d9af-434b-a6bf-e70fa3ed3d12",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "leveranciers bezoeken",
-      "uri": "http://data.europa.eu/esco/skill/2c02fb07-de47-46d3-8a99-b916137951ef",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "opslagactiviteiten",
-      "uri": "http://data.europa.eu/esco/skill/089ddb19-1c7a-43ff-ba64-070f7ce4787a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "productiehoeveelheden inschatten",
-      "uri": "http://data.europa.eu/esco/skill/e5c108c3-d6b6-4018-a34f-763e7793e746",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "projectbeheer",
-      "uri": "http://data.europa.eu/esco/skill/7111b95d-0ce3-441a-9d92-4c75d05c4388",
       "categorie": "optioneel"
     },
     {
@@ -298,18 +118,43 @@
       "categorie": "optioneel"
     },
     {
-      "label": "financiële marktontwikkelingen analyseren",
-      "uri": "http://data.europa.eu/esco/skill/292549e6-08ec-456c-b008-eba7a0a68428",
+      "label": "conflicten hanteren",
+      "uri": "http://data.europa.eu/esco/skill/96de2e86-e287-41f2-88ab-15a2343afc6f",
       "categorie": "optioneel"
     },
     {
-      "label": "helpen bij het opstellen van een productieschema",
-      "uri": "http://data.europa.eu/esco/skill/d63f83f4-648e-4adb-8e4c-b7aa7b3d76c0",
+      "label": "werk plannen volgens binnenkomende bestellingen",
+      "uri": "http://data.europa.eu/esco/skill/53103efa-a525-4a5b-81e5-282c4331e72c",
       "categorie": "optioneel"
     },
     {
-      "label": "werknemers opleiden",
-      "uri": "http://data.europa.eu/esco/skill/e54ff029-1ce9-447d-a5b2-eb7283a23e6e",
+      "label": "onderhandelen over inkoopvoorwaarden",
+      "uri": "http://data.europa.eu/esco/skill/fde186df-c9c4-49f5-b2a5-d66adc7c43a5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bedrijfsdoelstellingen analyseren",
+      "uri": "http://data.europa.eu/esco/skill/408fcc8e-d4e6-43e7-ab27-b617a1dced98",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "opslag van ingrediënten volgen",
+      "uri": "http://data.europa.eu/esco/skill/1c8a92d4-18b9-4279-898c-ad89233bb511",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "winstgevendheid inschatten",
+      "uri": "http://data.europa.eu/esco/skill/56c59e98-f133-48ad-9d01-f357a8e2c218",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "economische tendensen analyseren",
+      "uri": "http://data.europa.eu/esco/skill/5f302d63-048e-451c-b150-97c124a5a26b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "duurzaam beheer promoten",
+      "uri": "http://data.europa.eu/esco/skill/6742977a-aa00-4c8c-9861-898b0373907e",
       "categorie": "optioneel"
     },
     {
@@ -323,128 +168,13 @@
       "categorie": "optioneel"
     },
     {
-      "label": "economische trends voorspellen",
-      "uri": "http://data.europa.eu/esco/skill/f2a34d6b-131a-4b8f-a110-898b9c91d18f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "vakbeurzen bijwonen",
-      "uri": "http://data.europa.eu/esco/skill/53cc0cc2-a9ce-4803-ae55-3cc0d7a5fc2c",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bedrijfsstrategieconcepten",
-      "uri": "http://data.europa.eu/esco/skill/bd698bbe-7003-4508-b422-46c2ff4d5e95",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "conflicten hanteren",
-      "uri": "http://data.europa.eu/esco/skill/96de2e86-e287-41f2-88ab-15a2343afc6f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "tijdschatting maken voor werkzaamheden",
-      "uri": "http://data.europa.eu/esco/skill/e207163b-7963-4c3e-9494-7a4bb000211b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "aanbestedingsprocedures uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/2c4b6914-4b97-4e35-85cb-e6602a8bb04a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "projectbeheer uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/cd5efa8c-e44d-4cbc-91c6-796018dbed68",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "werklast voorspellen",
-      "uri": "http://data.europa.eu/esco/skill/875eeec4-fc70-4e6a-80ef-4d18356976e3",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "leiding geven aan personeel",
-      "uri": "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "veranderingsmanagement toepassen",
-      "uri": "http://data.europa.eu/esco/skill/3c03ee71-4a23-448f-b79e-81fd75d27dca",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "logistiek beheren",
-      "uri": "http://data.europa.eu/esco/skill/953c0b65-537a-42fe-a90b-26cd36c64361",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "onderhandelen over inkoopvoorwaarden",
-      "uri": "http://data.europa.eu/esco/skill/fde186df-c9c4-49f5-b2a5-d66adc7c43a5",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "overheidsfinanciering aanvragen",
-      "uri": "http://data.europa.eu/esco/skill/c751974d-5d8a-4b16-806a-940bbdaf6a57",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "leveranciers identificeren",
-      "uri": "http://data.europa.eu/esco/skill/11747665-0e98-4f27-bd0d-536862cd5746",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "geografische routes",
-      "uri": "http://data.europa.eu/esco/skill/7bf0c60a-9303-414b-a43c-21c28a98d4ff",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "budgetten beheren",
-      "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "terugzending van gehuurde goederen beheren",
-      "uri": "http://data.europa.eu/esco/skill/aafb8d62-1592-4488-bd40-7bdfb751ff98",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "resourceplanning uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/f5dd06b8-5d17-4932-9d03-957d0c4f5051",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "duurzaam beheer promoten",
-      "uri": "http://data.europa.eu/esco/skill/6742977a-aa00-4c8c-9861-898b0373907e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "toekomstige bedrijfsniveaus voorspellen",
-      "uri": "http://data.europa.eu/esco/skill/ab167ae1-dfd8-4607-8dc4-d6d500622e1d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "verkoopcijfers van producten bestuderen",
-      "uri": "http://data.europa.eu/esco/skill/171eee55-19b9-46d6-aded-33193ba8ccf1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "afnamehoeveelheden van grondstoffen berekenen",
-      "uri": "http://data.europa.eu/esco/skill/47ae7b24-3fe0-47e0-b0ea-825ebc10e18c",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "winstgevendheid inschatten",
-      "uri": "http://data.europa.eu/esco/skill/56c59e98-f133-48ad-9d01-f357a8e2c218",
-      "categorie": "optioneel"
-    },
-    {
       "label": "commerciële handelsdocumentatie controleren",
       "uri": "http://data.europa.eu/esco/skill/39d92981-7b68-47de-bfc0-5374c067dba9",
       "categorie": "optioneel"
     },
     {
-      "label": "prijsstrategieën",
-      "uri": "http://data.europa.eu/esco/skill/1c460d2d-90c6-4fc9-ad49-febb6e15605a",
+      "label": "toekomstige capaciteitsvereisten plannen",
+      "uri": "http://data.europa.eu/esco/skill/2c5cbddf-3393-452f-abb0-8e734d1b61be",
       "categorie": "optioneel"
     },
     {
@@ -453,13 +183,48 @@
       "categorie": "optioneel"
     },
     {
-      "label": "contracten beheren",
-      "uri": "http://data.europa.eu/esco/skill/92721092-fe7c-4689-96bd-4f02385bc0e7",
+      "label": "afnamehoeveelheden van grondstoffen berekenen",
+      "uri": "http://data.europa.eu/esco/skill/47ae7b24-3fe0-47e0-b0ea-825ebc10e18c",
       "categorie": "optioneel"
     },
     {
-      "label": "financiële prognoses",
-      "uri": "http://data.europa.eu/esco/skill/4b2db903-cd8e-48ce-97fb-a92db4def54e",
+      "label": "standaardsystemen voor enterprise resource planning beheren",
+      "uri": "http://data.europa.eu/esco/skill/f0393af3-bcd9-41af-a36e-0cfb83b60081",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "personeel aanwerven",
+      "uri": "http://data.europa.eu/esco/skill/496932f1-0b6b-4f73-9432-d95c7ddcd43b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "multimodale vervoerslogistiek",
+      "uri": "http://data.europa.eu/esco/skill/4d6a1837-93df-4a81-b424-74e1a8ed2f03",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bedrijfsstrategieconcepten",
+      "uri": "http://data.europa.eu/esco/skill/bd698bbe-7003-4508-b422-46c2ff4d5e95",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kwaliteitsstandaarden",
+      "uri": "http://data.europa.eu/esco/skill/8d4271ca-c9fd-40b3-875f-15f78332a49e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "leveranciers identificeren",
+      "uri": "http://data.europa.eu/esco/skill/11747665-0e98-4f27-bd0d-536862cd5746",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "personeelszaken beheren",
+      "uri": "http://data.europa.eu/esco/skill/279a4b1d-21df-4d78-9f4d-324c73fd7536",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "risicobeheer",
+      "uri": "http://data.europa.eu/esco/skill/6eff134b-e34f-4d6e-a6e8-5e47cf2228d0",
       "categorie": "optioneel"
     },
     {
@@ -468,8 +233,203 @@
       "categorie": "optioneel"
     },
     {
-      "label": "opslag van ingrediënten volgen",
-      "uri": "http://data.europa.eu/esco/skill/1c8a92d4-18b9-4279-898c-ad89233bb511",
+      "label": "logistieke behoeftes analyseren",
+      "uri": "http://data.europa.eu/esco/skill/8029637c-00eb-4764-ae88-387611176c4b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "advies geven over risicobeheer",
+      "uri": "http://data.europa.eu/esco/skill/0efbe2dc-2770-47ec-b8f4-d1bdff6ac0a4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toekomstige bedrijfsniveaus voorspellen",
+      "uri": "http://data.europa.eu/esco/skill/ab167ae1-dfd8-4607-8dc4-d6d500622e1d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "prijstendensen volgen",
+      "uri": "http://data.europa.eu/esco/skill/31eecea5-c1ef-4e5c-96a9-808ff4e43813",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "prijsstrategieën",
+      "uri": "http://data.europa.eu/esco/skill/1c460d2d-90c6-4fc9-ad49-febb6e15605a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "statistische voorspellingen doen",
+      "uri": "http://data.europa.eu/esco/skill/be727774-46d7-43d7-aee9-1a51b5cd8c71",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderhandelen over verkoopcontracten",
+      "uri": "http://data.europa.eu/esco/skill/71152876-b629-4a99-b9ea-0f25a0d07e4e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voorraadniveaus bewaken",
+      "uri": "http://data.europa.eu/esco/skill/44f6a65f-6be7-4818-9a66-73908797283f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "budgetten beheren",
+      "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "personeelsbeleid",
+      "uri": "http://data.europa.eu/esco/skill/e437eba1-3e22-41f2-8703-741e94785cba",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "projectbeheer",
+      "uri": "http://data.europa.eu/esco/skill/7111b95d-0ce3-441a-9d92-4c75d05c4388",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "software voor verkoopprognoses gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/ae57a9c3-f761-4b03-be2b-99a781704c73",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zorgen voor de beschikbaarheid van materiaal",
+      "uri": "http://data.europa.eu/esco/skill/69f23426-9279-4fe6-a283-24c2aa4c855d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "tijdschatting maken voor werkzaamheden",
+      "uri": "http://data.europa.eu/esco/skill/e207163b-7963-4c3e-9494-7a4bb000211b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "statistiek",
+      "uri": "http://data.europa.eu/esco/skill/7ee4c2ea-b349-4bd2-81a3-ec31475d4833",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verkoopcijfers van producten bestuderen",
+      "uri": "http://data.europa.eu/esco/skill/171eee55-19b9-46d6-aded-33193ba8ccf1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "leiding geven aan personeel",
+      "uri": "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "arbeidswetgeving",
+      "uri": "http://data.europa.eu/esco/skill/08fe5910-8c4c-4679-a988-eb2ded3c4909",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "logistiek beheren",
+      "uri": "http://data.europa.eu/esco/skill/953c0b65-537a-42fe-a90b-26cd36c64361",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "leveranciers bezoeken",
+      "uri": "http://data.europa.eu/esco/skill/2c02fb07-de47-46d3-8a99-b916137951ef",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "projectbeheer uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/cd5efa8c-e44d-4cbc-91c6-796018dbed68",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "economie",
+      "uri": "http://data.europa.eu/esco/skill/88af9294-b697-4687-ae19-aefbb6234dfa",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "terugzending van gehuurde goederen beheren",
+      "uri": "http://data.europa.eu/esco/skill/aafb8d62-1592-4488-bd40-7bdfb751ff98",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "aanbestedingsprocedures uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/2c4b6914-4b97-4e35-85cb-e6602a8bb04a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verkoopfacturen opstellen",
+      "uri": "http://data.europa.eu/esco/skill/e3e42d54-78bd-4337-aa87-bb31a7670c9a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "magazijnactiviteiten beheren",
+      "uri": "http://data.europa.eu/esco/skill/fa7be6bf-f906-4b8e-857d-48a9a7da901c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vakbeurzen bijwonen",
+      "uri": "http://data.europa.eu/esco/skill/53cc0cc2-a9ce-4803-ae55-3cc0d7a5fc2c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productiehoeveelheden inschatten",
+      "uri": "http://data.europa.eu/esco/skill/e5c108c3-d6b6-4018-a34f-763e7793e746",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "overheidsfinanciering aanvragen",
+      "uri": "http://data.europa.eu/esco/skill/c751974d-5d8a-4b16-806a-940bbdaf6a57",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contractadministratie bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/a703b581-ad64-4791-8bb3-624aea569fa5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "veranderingsmanagement toepassen",
+      "uri": "http://data.europa.eu/esco/skill/3c03ee71-4a23-448f-b79e-81fd75d27dca",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "financiële haalbaarheid beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/e95058a6-e139-42e7-a470-72038a606649",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "helpen bij het opstellen van een productieschema",
+      "uri": "http://data.europa.eu/esco/skill/d63f83f4-648e-4adb-8e4c-b7aa7b3d76c0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "financiële marktontwikkelingen analyseren",
+      "uri": "http://data.europa.eu/esco/skill/292549e6-08ec-456c-b008-eba7a0a68428",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werkuren nauwkeurig inschatten",
+      "uri": "http://data.europa.eu/esco/skill/bd556223-d9af-434b-a6bf-e70fa3ed3d12",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verkoop over bepaalde tijdspannes inschatten",
+      "uri": "http://data.europa.eu/esco/skill/146eccdc-c52a-4d61-9406-3af617caa7d6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contracten beheren",
+      "uri": "http://data.europa.eu/esco/skill/92721092-fe7c-4689-96bd-4f02385bc0e7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "resourceplanning uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/f5dd06b8-5d17-4932-9d03-957d0c4f5051",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werklast voorspellen",
+      "uri": "http://data.europa.eu/esco/skill/875eeec4-fc70-4e6a-80ef-4d18356976e3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "trends rond dividenden voorspellen",
+      "uri": "http://data.europa.eu/esco/skill/a448126c-69a1-45a2-bd76-a8eafd86f9c5",
       "categorie": "optioneel"
     },
     {
@@ -478,8 +438,48 @@
       "categorie": "optioneel"
     },
     {
-      "label": "statistiek",
-      "uri": "http://data.europa.eu/esco/skill/7ee4c2ea-b349-4bd2-81a3-ec31475d4833",
+      "label": "afspraken met leveranciers onderhandelen",
+      "uri": "http://data.europa.eu/esco/skill/c842be42-81b3-40f2-904c-ea8790ac88bd",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kooptrends van consumenten analyseren",
+      "uri": "http://data.europa.eu/esco/skill/750caee5-12a0-46ba-b8aa-1e56370deaf9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werknemers opleiden",
+      "uri": "http://data.europa.eu/esco/skill/e54ff029-1ce9-447d-a5b2-eb7283a23e6e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "financieringsmiddelen beheren",
+      "uri": "http://data.europa.eu/esco/skill/2d008d5a-b7bd-46f7-bbb1-5d70a0af9c84",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "opslagactiviteiten",
+      "uri": "http://data.europa.eu/esco/skill/089ddb19-1c7a-43ff-ba64-070f7ce4787a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "economische trends voorspellen",
+      "uri": "http://data.europa.eu/esco/skill/f2a34d6b-131a-4b8f-a110-898b9c91d18f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "financiële prognoses",
+      "uri": "http://data.europa.eu/esco/skill/4b2db903-cd8e-48ce-97fb-a92db4def54e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "geografische routes",
+      "uri": "http://data.europa.eu/esco/skill/7bf0c60a-9303-414b-a43c-21c28a98d4ff",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "samenwerking tussen de verschillende afdelingen waarborgen",
+      "uri": "http://data.europa.eu/esco/skill/b216d9a2-7d4e-4312-8d05-e375f4ab44d8",
       "categorie": "optioneel"
     }
   ]

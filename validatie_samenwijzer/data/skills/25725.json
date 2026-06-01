@@ -1,230 +1,109 @@
 {
   "crebo": "25725",
   "opleiding": "Business Administration & Control Specialist",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "businessanalist",
-    "uri": "http://data.europa.eu/esco/occupation/60082a99-d8ef-4e84-9290-78902681b6ed",
-    "definitie": "Businessanalisten onderzoeken en hebben inzicht in de strategische positie van bedrijven ten opzichte van hun markten en stakeholders. Zij analyseren en presenteren hun visie op de wijze waarop de onderneming, vanuit vele perspectieven, haar strategische positie en interne bedrijfsstructuur kan verbeteren. Zij beoordelen de behoeften aan verandering, communicatiemethoden, technologie, IT-tools, nieuwe standaarden en certificeringen."
+    "label": "Business Administration & Control Specialist",
+    "uri": "",
+    "definitie": "De Business Administration & Control Specialist is werkzaam op de administratie van een bedrijf of instelling. Hij/zij werkt voornamelijk met interne klanten te maken. Communicatie gaat een steeds belangrijkere rol spelen in het werk. Waar voorheen de nadruk op het correct uitvoeren van de boekhouding lag, verschuift de nadruk naar het geven van gevraagd en ongevraagd advies en informatie over de cijfers binnen een bedrijf. \nHij/zij moet beschikken over een brede kennis van de bedrijfsprocessen, goede kennis en vaardigheid hebben in het werken met geautomatiseerde systemen en vaardigheden ontwikkelen om zichzelf daarin verder te kunnen ontwikkelen. Hij/zij moet overzicht hebben over de gehele administratie met haar subadministraties. De werkzaamheden zijn gericht op het controleren, beheren en bijwerken van de dagboeken, maar ook op de periodeafsluitingen en de aangifte omzetbelasting. Hij/zij kan relatief snel als vervanger optreden voor lager gekwalificeerde medewerkers op de subadministraties. Bij MKB-bedrijven verricht hij/zij ook werkzaamheden voor de invordering van facturen.\nDe Business Administration & Control Specialist is in staat om te beoordelen, waarbij het gaat om een afweging tussen klanttevredenheid en correcte toepassing van de regelgeving. Er wordt verwacht dat hij/zij zich in contacten met crediteuren en debiteuren klantgericht opstelt en zich in kan leven in de situatie en de wensen van de klant. Dit geldt ook voor contacten met interne klanten."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "business intelligence manager",
-    "ict business analyst",
-    "data scientist",
-    "ict business analysis manager",
-    "businessanalist",
-    "businessconsultant",
-    "kwaliteitscontroleur farmaceutische industrie",
-    "ict business development manager",
-    "businessdevelopmentmanager",
-    "eBusiness-manager"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "interne factoren van bedrijven analyseren",
-      "uri": "http://data.europa.eu/esco/skill/91816e1a-d026-4d21-9b1c-59ca5cf488de",
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
       "categorie": "essentieel"
     },
     {
-      "label": "bedrijfsanalyse",
-      "uri": "http://data.europa.eu/esco/skill/633a3637-2c6b-40ae-ac38-289eb2a62aa6",
+      "label": "Informatie ordenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/299CE88E49",
       "categorie": "essentieel"
     },
     {
-      "label": "risicobeheer",
-      "uri": "http://data.europa.eu/esco/skill/6eff134b-e34f-4d6e-a6e8-5e47cf2228d0",
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
       "categorie": "essentieel"
     },
     {
-      "label": "zakenrelaties aangaan",
-      "uri": "http://data.europa.eu/esco/skill/dc72ad0a-c5dc-4abd-bc0d-ca43e82162e1",
+      "label": "Procedures volgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/752EEDBE89",
       "categorie": "essentieel"
     },
     {
-      "label": "jaarrekeningen interpreteren",
-      "uri": "http://data.europa.eu/esco/skill/5f1d1319-7954-4a9b-90c7-57668e3a0d4b",
+      "label": "Bedrijfsprocessen verbeteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7C37C4FF38",
       "categorie": "essentieel"
     },
     {
-      "label": "kwantitatief onderzoek uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/8316979b-df5a-4dc7-98ef-61ec6a10df84",
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
       "categorie": "essentieel"
     },
     {
-      "label": "financiële prestaties van een bedrijf analyseren",
-      "uri": "http://data.europa.eu/esco/skill/8a43795b-bb38-4f29-91df-a6c92ad4643c",
+      "label": "Financiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/BC3AB34C1A",
       "categorie": "essentieel"
     },
     {
-      "label": "externe factoren van bedrijven analyseren",
-      "uri": "http://data.europa.eu/esco/skill/ce5b1446-b5e3-4f05-a5ac-83f2ee142a44",
+      "label": "Schrijven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/BC98BE9135",
       "categorie": "essentieel"
     },
     {
-      "label": "omgaan met managers",
-      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
+      "label": "(digitale) Informatie beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CD7B4C0F34",
       "categorie": "essentieel"
     },
     {
-      "label": "strategische bedrijfsbeslissingen nemen",
-      "uri": "http://data.europa.eu/esco/skill/f60c9e52-95fc-4ca1-a73c-18a491153b63",
+      "label": "Dienstbaarheid tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/F755E32480",
       "categorie": "essentieel"
     },
     {
-      "label": "onopgemerkte organisatorische behoeften identificeren",
-      "uri": "http://data.europa.eu/esco/skill/43d1d56b-ce62-4fe8-8f18-35d92ec73023",
+      "label": "Office management",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/0957F0487E",
       "categorie": "essentieel"
     },
     {
-      "label": "inspanningen coördineren voor bedrijfsontwikkeling",
-      "uri": "http://data.europa.eu/esco/skill/ee7f90cc-922e-4da7-a7ae-83c2688fed10",
+      "label": "Bedrijfsadministratie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/10FFC5435D",
       "categorie": "essentieel"
     },
     {
-      "label": "marktonderzoek",
-      "uri": "http://data.europa.eu/esco/skill/8770350e-746f-4adb-9556-18ca68104be6",
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
       "categorie": "essentieel"
     },
     {
-      "label": "businessplannen analyseren",
-      "uri": "http://data.europa.eu/esco/skill/5da3c765-10a3-49eb-934c-ec401ceb1a34",
+      "label": "Sociale veiligheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3C86F6FEAB",
       "categorie": "essentieel"
     },
     {
-      "label": "zakelijke analyses uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/27ed854c-15b8-4ba2-90e9-ae888a219703",
+      "label": "Bedrijfseconomie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/53B4B474D1",
       "categorie": "essentieel"
     },
     {
-      "label": "advies geven over efficiëntieverbeteringen",
-      "uri": "http://data.europa.eu/esco/skill/8bc75dce-beba-40f9-93fc-66c9708ed74b",
+      "label": "Administratie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/5488DA6138",
       "categorie": "essentieel"
     },
     {
-      "label": "kwalitatief onderzoek uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/fa465db3-56e8-4b5d-a781-e2a313a4ed2d",
+      "label": "Geld- en bankzaken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A2722A4695",
       "categorie": "essentieel"
     },
     {
-      "label": "wetenschappelijke onderzoeksmethodologie",
-      "uri": "http://data.europa.eu/esco/skill/ed3f3dba-3a35-4ed5-b113-67f4d10ef4c8",
+      "label": "Belastingen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C68D027C05",
       "categorie": "essentieel"
     },
     {
-      "label": "advies geven over communicatiestrategieën",
-      "uri": "http://data.europa.eu/esco/skill/69f36674-440a-4fa0-89f9-1b70172ebb9d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "klant raad geven over technische mogelijkheden",
-      "uri": "http://data.europa.eu/esco/skill/7b3abd38-61ae-42a4-88bb-0884784f9ee1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "ondernemingsrecht",
-      "uri": "http://data.europa.eu/esco/skill/d77d7685-04fb-43a4-a1ac-09a10811f646",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "vennootschapsrecht",
-      "uri": "http://data.europa.eu/esco/skill/341c4478-c976-4ff0-a102-cfd92174d873",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "advies geven over het organisatieklimaat",
-      "uri": "http://data.europa.eu/esco/skill/d2dc31f1-720c-4757-bc1b-9e563d264dcf",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "advies geven over risicobeheer",
-      "uri": "http://data.europa.eu/esco/skill/0efbe2dc-2770-47ec-b8f4-d1bdff6ac0a4",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bedrijfsstrategieconcepten",
-      "uri": "http://data.europa.eu/esco/skill/bd698bbe-7003-4508-b422-46c2ff4d5e95",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "organisatorische normen definiëren",
-      "uri": "http://data.europa.eu/esco/skill/d53b04fb-1bbb-4a25-92f8-8ceb308d276f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "implementatie van kwaliteitsbeheersystemen ondersteunen",
-      "uri": "http://data.europa.eu/esco/skill/ccbd0898-e225-4abc-8992-57a23b0e2eec",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "business intelligence",
-      "uri": "http://data.europa.eu/esco/skill/143769cb-b61e-47d8-a61e-eedfbec1016c",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "op de hoogte blijven van het politieke landschap",
-      "uri": "http://data.europa.eu/esco/skill/812590e4-7108-4016-baba-957dcf8213ae",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "personen interviewen",
-      "uri": "http://data.europa.eu/esco/skill/66d47084-9437-48b2-819b-c4c8214ed650",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "financiële jaarrekeningen",
-      "uri": "http://data.europa.eu/esco/skill/4a460161-eaea-4fe2-bd0e-164ccc635be1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "organisatorisch beleid",
-      "uri": "http://data.europa.eu/esco/skill/3a5231a0-8c30-48ee-b671-08e2debd4441",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "strategieën voor toetreding tot de markt",
-      "uri": "http://data.europa.eu/esco/skill/62bf2e21-2613-47f1-a624-fe0fc925e671",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "organisatorische teams vormen op basis van competenties",
-      "uri": "http://data.europa.eu/esco/skill/f1155d3f-fbca-4298-a31c-f6955653bacf",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "modellering van bedrijfsprocessen",
-      "uri": "http://data.europa.eu/esco/skill/98301d4a-2cc3-439d-8d7f-0b6ac76302bb",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "ict-oplossingen voorstellen voor zakelijke problemen",
-      "uri": "http://data.europa.eu/esco/skill/07e51c60-763a-4335-b4ec-70a15f66d328",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "huidige praktijken proberen te innoveren",
-      "uri": "http://data.europa.eu/esco/skill/f975091a-e5a5-4472-ac17-11680e53e98f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "advies geven over financiële zaken",
-      "uri": "http://data.europa.eu/esco/skill/79c36c91-28a5-44b7-ab9b-7093b2d4b21e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "advies geven over personeelsbeheer",
-      "uri": "http://data.europa.eu/esco/skill/1212ac42-2564-4fce-80e1-6ce4ea4d9bf5",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "analyseresultaten rapporteren",
-      "uri": "http://data.europa.eu/esco/skill/c544a9f3-5945-4b54-afed-de0697852817",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "kwaliteitsstandaarden",
-      "uri": "http://data.europa.eu/esco/skill/8d4271ca-c9fd-40b3-875f-15f78332a49e",
-      "categorie": "optioneel"
+      "label": "Projectmanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F248B939CD",
+      "categorie": "essentieel"
     }
   ]
 }

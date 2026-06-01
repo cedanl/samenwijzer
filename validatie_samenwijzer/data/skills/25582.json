@@ -1,246 +1,129 @@
 {
   "crebo": "25582",
   "opleiding": "25582_BOL_2025__Examenplannen Toegepaste Biologie en Science 25-26",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "biologisch laborant",
-    "uri": "http://data.europa.eu/esco/occupation/31cc4199-703c-4f8a-9b46-a2070a6d35df",
-    "definitie": "Biologisch laboranten bieden technische ondersteuning bij het onderzoeken en analyseren van de relatie tussen levende organismen en hun omgeving. Zij gebruiken laboratoriumapparatuur om organische stoffen zoals lichaamsvloeistoffen, geneesmiddelen, planten en voedsel te onderzoeken. Zij verzamelen en analyseren gegevens voor experimenten, stellen rapporten op en houden laboratoriumvoorraden bij."
+    "label": "Adviseur leefomgeving",
+    "uri": "",
+    "definitie": "De adviseur leefomgeving houdt toezicht, controleert en handhaaft volgens wettelijke bevoegdheden. Met aandacht voor veiligheid doet hij op nauwkeurige wijze metingen en waarnemingen. De gemene deler van elke adviseur leefomgeving is zijn standvastige houding, correcte manier van communiceren en zijn bereidheid tot meedenken. Daarbij heeft hij veel overlegmomenten met klanten, ook telefonisch. Hij beschikt dan ook over de mondelinge vaardigheid om de consequenties van overtredingen toe te lichten. Verder beseft hij dat iedere locatie en ieder bedrijf uniek is, zodat er geen sprake kan zijn van routinematig werk."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "leerkracht biologie voortgezet onderwijs",
-    "docent biologie hoger onderwijs",
-    "vakdocent ontwerp en toegepaste kunst beroepsonderwijs",
-    "biologisch laborant",
-    "geneticus",
-    "bioloog",
-    "ingenieur nanotechnologie",
-    "microbioloog",
-    "ILT-inspecteur scheepvaart",
-    "onderzoeksmanager",
-    "beleidsmedewerker milieu",
-    "bodemdeskundige",
-    "wetenschappelijk onderzoeker bedrijfseconomie",
-    "businessconsultant",
-    "optometrist",
-    "klimatoloog"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "laboratoriumproeven uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/0b917c3e-e49f-40d9-8f95-3bc8e9c06fd2",
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
       "categorie": "essentieel"
     },
     {
-      "label": "laboratoriumapparatuur onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/3529d640-5d49-45fe-8ede-491e9c8e0447",
+      "label": "Systeemanalyse",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4186375D3A",
       "categorie": "essentieel"
     },
     {
-      "label": "biologische gegevens verzamelen",
-      "uri": "http://data.europa.eu/esco/skill/e3fcd642-5f9c-48ee-be58-258dd895d281",
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
       "categorie": "essentieel"
     },
     {
-      "label": "veiligheidsprocedures in laboratoria toepassen",
-      "uri": "http://data.europa.eu/esco/skill/6f571969-3640-4774-a9bc-fd2ef583fdec",
+      "label": "Presenteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/590AC2FC12",
       "categorie": "essentieel"
     },
     {
-      "label": "technische rapporten schrijven",
-      "uri": "http://data.europa.eu/esco/skill/941364b9-1375-4add-9889-d67bae99bc8c",
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
       "categorie": "essentieel"
     },
     {
-      "label": "laboratoriumuitrusting",
-      "uri": "http://data.europa.eu/esco/skill/35f1dcdc-577f-46c6-96d9-6c7a64501de9",
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
       "categorie": "essentieel"
     },
     {
-      "label": "laboratoriumapparatuur gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/70bc4cfe-16c8-4433-a873-15ea8620453e",
+      "label": "Procedures volgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/752EEDBE89",
       "categorie": "essentieel"
     },
     {
-      "label": "inventaris beheren",
-      "uri": "http://data.europa.eu/esco/skill/ab6265f2-a9bf-49e8-a9a5-67cbab4de38b",
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
       "categorie": "essentieel"
     },
     {
-      "label": "helpen bij het documenteren van laboratoriumwerkzaamheden",
-      "uri": "http://data.europa.eu/esco/skill/6b29b77f-7265-4dae-8309-78077f99ab60",
+      "label": "Monitoren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B03F4F484C",
       "categorie": "essentieel"
     },
     {
-      "label": "wetenschappelijke onderzoeksmethodologie",
-      "uri": "http://data.europa.eu/esco/skill/ed3f3dba-3a35-4ed5-b113-67f4d10ef4c8",
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
       "categorie": "essentieel"
     },
     {
-      "label": "monsters voor analyse verzamelen",
-      "uri": "http://data.europa.eu/esco/skill/4bbb309f-9162-49b9-93da-fb2c371e5c5f",
+      "label": "Schrijven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/BC98BE9135",
       "categorie": "essentieel"
     },
     {
-      "label": "laboratoriumtechnieken",
-      "uri": "http://data.europa.eu/esco/skill/8259c2c0-2749-41e2-a4a8-4a64a76eab37",
+      "label": "Adviseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CECB22E3FA",
       "categorie": "essentieel"
     },
     {
-      "label": "experimentele laboratoriumgegevens analyseren",
-      "uri": "http://data.europa.eu/esco/skill/aafbfaa4-5f93-457e-8cb8-d4ed855277f8",
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
       "categorie": "essentieel"
     },
     {
-      "label": "wetenschappelijke methoden toepassen",
-      "uri": "http://data.europa.eu/esco/skill/7a34b3d9-bd3b-4f4e-a0f6-f97439901cb7",
+      "label": "Kritisch nadenken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E1F935288C",
       "categorie": "essentieel"
     },
     {
-      "label": "biologie",
-      "uri": "http://data.europa.eu/esco/skill/9433da85-70fa-4a25-8f96-71fa59dd1989",
+      "label": "Planologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/1D3BFB5CD5",
       "categorie": "essentieel"
     },
     {
-      "label": "wetenschappelijk onderzoek uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/4fabca9a-7435-4f33-b1da-3cdb00340fdc",
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
       "categorie": "essentieel"
     },
     {
-      "label": "laboratoriumapparaten ijken",
-      "uri": "http://data.europa.eu/esco/skill/82fadde2-45cc-4734-bace-dadafdeaa41f",
+      "label": "Bestuursrecht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/431A7B3BDC",
       "categorie": "essentieel"
     },
     {
-      "label": "databases onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/0df2e216-68ae-4952-b9dc-3c2f2bc04fe3",
-      "categorie": "optioneel"
+      "label": "Milieutechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/58823180FE",
+      "categorie": "essentieel"
     },
     {
-      "label": "moleculaire biologie",
-      "uri": "http://data.europa.eu/esco/skill/8f2a4d74-b16f-4023-8fc1-b8dc8b21ffb9",
-      "categorie": "optioneel"
+      "label": "Natuurbeheer en -bescherming",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6F92D368B4",
+      "categorie": "essentieel"
     },
     {
-      "label": "chemie",
-      "uri": "http://data.europa.eu/esco/skill/cde9911c-f92e-4de1-811f-336e177ac4ce",
-      "categorie": "optioneel"
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
     },
     {
-      "label": "opslag van gevaarlijk afval",
-      "uri": "http://data.europa.eu/esco/skill/ed8dbdd1-5b40-4eaf-adaf-3b1f6d16a37b",
-      "categorie": "optioneel"
+      "label": "Veiligheidskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C34CD6448D",
+      "categorie": "essentieel"
     },
     {
-      "label": "taakgegevens bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/43b13058-68d0-40c6-8031-caf5a7b7d20c",
-      "categorie": "optioneel"
+      "label": "Milieumanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DD938609F7",
+      "categorie": "essentieel"
     },
     {
-      "label": "veldonderzoek uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/b10c9a92-d6ff-40bc-ac64-4705949a2ac7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "ecologie",
-      "uri": "http://data.europa.eu/esco/skill/a8429098-ddac-481b-91e7-688d021c092e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "onderzoeksvoorstellen schrijven",
-      "uri": "http://data.europa.eu/esco/skill/0ee7b0d6-db98-4785-9948-f2ef415d155a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "oceanografie",
-      "uri": "http://data.europa.eu/esco/skill/6e19c179-3b5f-4c43-b6f5-16ce05b5e548",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "farmacologie",
-      "uri": "http://data.europa.eu/esco/skill/60c544c9-0815-479c-bcec-93c7891815ea",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "visuele gegevens voorbereiden",
-      "uri": "http://data.europa.eu/esco/skill/c0326e27-5fa8-4dca-aecb-ed89ab491513",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "plantkunde",
-      "uri": "http://data.europa.eu/esco/skill/2a58e994-74b9-4211-85ac-cfb409a9b667",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "milieuwetgeving",
-      "uri": "http://data.europa.eu/esco/skill/6f5850ea-5785-4e2c-b062-743066fd5bdb",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "wetgeving op het gebied van dierenwelzijn",
-      "uri": "http://data.europa.eu/esco/skill/49212efd-acf0-4257-a011-e07c9e369ecf",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "medische microbiologie",
-      "uri": "http://data.europa.eu/esco/skill/0bc42cda-a6f0-4cac-9b34-7911faba0bd4",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "preventie van verontreiniging",
-      "uri": "http://data.europa.eu/esco/skill/75f312e1-622b-4751-8d93-815b32feaf8d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bloedmonsters analyseren",
-      "uri": "http://data.europa.eu/esco/skill/67d37d22-a013-4d79-9185-2f97820917d6",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "monsters bewaren",
-      "uri": "http://data.europa.eu/esco/skill/ff9ed77c-f19c-41d8-8b11-a382c6819e8d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "monsters etiketteren",
-      "uri": "http://data.europa.eu/esco/skill/fabc4abb-d255-403e-bfbb-6557afb4db58",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "virologie",
-      "uri": "http://data.europa.eu/esco/skill/641bc86f-42ca-44e9-af8b-4f9e1f284e41",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "celkweken analyseren",
-      "uri": "http://data.europa.eu/esco/skill/355c4510-8b6c-4d39-9e4d-5b91ddda2fb4",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "welzijn van dieren controleren",
-      "uri": "http://data.europa.eu/esco/skill/d10030a4-f49c-4125-8646-6b091efe5089",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "pathologie",
-      "uri": "http://data.europa.eu/esco/skill/db8a9ba7-96ad-4c53-b552-d4f1570dfefb",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "toegepaste zoölogie",
-      "uri": "http://data.europa.eu/esco/skill/a07a5d41-add0-4d0f-ad01-718d39554be8",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "evolutiebiologie",
-      "uri": "http://data.europa.eu/esco/skill/74b89bd4-3490-401b-8be0-f1324f062793",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bioveiligheid",
-      "uri": "http://data.europa.eu/esco/skill/f49df8e2-f451-49aa-9aa9-b21b2afdbb87",
-      "categorie": "optioneel"
+      "label": "Onderzoeksmethoden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E4B9A547C8",
+      "categorie": "essentieel"
     }
   ]
 }

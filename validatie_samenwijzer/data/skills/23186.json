@@ -2,12 +2,8 @@
   "crebo": "23186",
   "opleiding": "2020 - 23186 ZWS OER TA BOL",
   "bron": "ESCO",
-  "beroep": {
-    "label": "tolk gebarentaal",
-    "uri": "http://data.europa.eu/esco/occupation/9a2147aa-a72f-4f83-8653-c3f50d4e1e73",
-    "definitie": "Tolken gebarentaal begrijpen gebarentaal en zetten gebarentaal om naar gesproken taal en omgekeerd. Zij behouden de nuances en klemtonen van de boodschap in de taal waarnaar wordt getolkt."
-  },
-  "match_methode": "llm-keuze",
+  "beroep": null,
+  "match_methode": "geen-match",
   "kandidaten": [
     "tolk gebarentaal",
     "specialist taxatie bedrijfsovername",
@@ -18,131 +14,5 @@
     "fondsenwerver",
     "wasbleker"
   ],
-  "skills": [
-    {
-      "label": "gebarentaal",
-      "uri": "http://data.europa.eu/esco/skill/e2088cd0-b174-468a-adc0-921efdadb337",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "verschillende talen spreken",
-      "uri": "http://data.europa.eu/esco/skill/2de4572a-4724-4f76-afc2-72a568a264ac",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "grammatica",
-      "uri": "http://data.europa.eu/esco/skill/d4ae9564-0b61-4aa0-9df0-d4fdc969fd6f",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "semantiek",
-      "uri": "http://data.europa.eu/esco/skill/e6ee5bb8-12b9-4e60-8baf-102d0c4f1da5",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "teksten vertalen",
-      "uri": "http://data.europa.eu/esco/skill/449f0945-4943-49f9-bd98-edfdfd7c00ba",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "communicatie bij auditieve beperkingen",
-      "uri": "http://data.europa.eu/esco/skill/27de0574-cb9b-412b-a14b-be856efb0a95",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "oorspronkelijke tekst handhaven",
-      "uri": "http://data.europa.eu/esco/skill/b8b174e7-5e19-4c26-9adb-4087cd1b28bb",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "intercultureel bewustzijn tonen",
-      "uri": "http://data.europa.eu/esco/skill/7d23c508-c007-4221-bb84-0c9a479b8ea6",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "auditieve beperking",
-      "uri": "http://data.europa.eu/esco/skill/5d7a2896-fa02-4262-93a5-ecb4fbd95602",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "linguïstiek",
-      "uri": "http://data.europa.eu/esco/skill/810df100-e85a-4c13-b619-34030a75ecc2",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "begrippen in een taal vertalen",
-      "uri": "http://data.europa.eu/esco/skill/fd8c0029-9dc7-4b54-845b-ed30c61ba0f8",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "dactylologie",
-      "uri": "http://data.europa.eu/esco/skill/4429232e-5f4f-4b41-b5ea-f179f50a2478",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "onderzoeksvoorstellen schrijven",
-      "uri": "http://data.europa.eu/esco/skill/0ee7b0d6-db98-4785-9948-f2ef415d155a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "gesproken taal simultaan vertalen",
-      "uri": "http://data.europa.eu/esco/skill/92d04a10-eff2-4190-b5da-85e419f8ebbd",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "wetenschappelijk onderzoek uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/485cdafb-3c7f-4104-ab1c-773e6131a39a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "tolken tussen twee partijen",
-      "uri": "http://data.europa.eu/esco/skill/8b5962d7-b195-4459-addb-d15a48cc4b64",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "mensen met een gehoorstoornis ondersteunen",
-      "uri": "http://data.europa.eu/esco/skill/2b3f7869-49db-418f-b32f-a7d8102a0b4a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "wetenschappelijke verhandelingen schrijven",
-      "uri": "http://data.europa.eu/esco/skill/c3c2420c-ce9a-4371-8eed-1db479c3a562",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "gesproken taal consecutief vertalen",
-      "uri": "http://data.europa.eu/esco/skill/321f7ade-ba43-4923-a432-54df75ec80a5",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "gerechtstolken",
-      "uri": "http://data.europa.eu/esco/skill/5f5c4314-deae-4e5d-a378-32f55682735e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "lipspreken",
-      "uri": "http://data.europa.eu/esco/skill/6c823865-96d5-4631-a30e-51a2f2a45435",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "informatiebronnen raadplegen",
-      "uri": "http://data.europa.eu/esco/skill/7287dff1-7420-4d24-939a-5f4eb15b752b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "tekst voorafgaand aan vertaling analyseren",
-      "uri": "http://data.europa.eu/esco/skill/eb3f26ec-0c3c-462d-a8b7-3bfc8b44c256",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "wetenschappelijke onderzoeksmethodologie",
-      "uri": "http://data.europa.eu/esco/skill/ed3f3dba-3a35-4ed5-b113-67f4d10ef4c8",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "gebarentolken",
-      "uri": "http://data.europa.eu/esco/skill/8c050ec1-49a1-42cf-94e6-737968c0a940",
-      "categorie": "optioneel"
-    }
-  ]
+  "skills": []
 }

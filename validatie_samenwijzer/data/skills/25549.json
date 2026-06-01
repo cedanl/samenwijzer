@@ -26,28 +26,8 @@
   ],
   "skills": [
     {
-      "label": "effectieve perceptie van de vervoersomgeving",
-      "uri": "http://data.europa.eu/esco/skill/a1be36ca-a753-4143-98c3-09ede5e60057",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "toezicht houden op het uitladen van vracht",
-      "uri": "http://data.europa.eu/esco/skill/349f6b99-9b8c-4463-9665-9842d95af241",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "soorten vracht",
-      "uri": "http://data.europa.eu/esco/skill/059b2748-e1df-43d2-8a08-0331fb8d0ddf",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "GPS-systemen gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/97fb21db-a4e5-4b03-af21-03b9d510d872",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "mechanische componenten van voertuigen",
-      "uri": "http://data.europa.eu/esco/skill/575f79e8-8500-4ddf-91ec-5e6de73d35a3",
+      "label": "capaciteit van de vrachtruimte van voertuigen",
+      "uri": "http://data.europa.eu/esco/skill/60493b7f-8613-431e-91ea-6a2c0410c6d4",
       "categorie": "essentieel"
     },
     {
@@ -56,13 +36,58 @@
       "categorie": "essentieel"
     },
     {
-      "label": "prestaties van voertuigen controleren",
-      "uri": "http://data.europa.eu/esco/skill/144318ce-d147-49fb-ae0b-3c5a9a677c14",
+      "label": "mechanische componenten van voertuigen",
+      "uri": "http://data.europa.eu/esco/skill/575f79e8-8500-4ddf-91ec-5e6de73d35a3",
       "categorie": "essentieel"
     },
     {
-      "label": "capaciteit van de vrachtruimte van voertuigen",
-      "uri": "http://data.europa.eu/esco/skill/60493b7f-8613-431e-91ea-6a2c0410c6d4",
+      "label": "noodstoppen oefenen",
+      "uri": "http://data.europa.eu/esco/skill/6d9edaad-7404-413e-856e-dacde984052a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verschillende communicatiekanalen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/415abd43-e8e5-4643-b5da-5f11307af57a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "alert blijven",
+      "uri": "http://data.europa.eu/esco/skill/74aa45cf-175f-47ef-9978-d9de437d92ba",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gedurende lange tijd geconcentreerd blijven",
+      "uri": "http://data.europa.eu/esco/skill/9cfd2219-553c-4d67-81e5-951e87c65135",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "GPS-systemen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/97fb21db-a4e5-4b03-af21-03b9d510d872",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verkeerswetgeving",
+      "uri": "http://data.europa.eu/esco/skill/48f480aa-c9a8-4552-b1c5-e94330912257",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kaarten lezen",
+      "uri": "http://data.europa.eu/esco/skill/3172f001-a4dd-4e7e-9f74-9707b2e7c6e1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verkeerssignalen interpreteren",
+      "uri": "http://data.europa.eu/esco/skill/be0afbfa-2d39-47d0-8d5c-81df2a27d250",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "soorten vracht",
+      "uri": "http://data.europa.eu/esco/skill/059b2748-e1df-43d2-8a08-0331fb8d0ddf",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "communicatiemiddelen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/79c366d4-0316-4838-b72e-c3be4f90fbd3",
       "categorie": "essentieel"
     },
     {
@@ -76,48 +101,23 @@
       "categorie": "essentieel"
     },
     {
+      "label": "prestaties van voertuigen controleren",
+      "uri": "http://data.europa.eu/esco/skill/144318ce-d147-49fb-ae0b-3c5a9a677c14",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toezicht houden op het uitladen van vracht",
+      "uri": "http://data.europa.eu/esco/skill/349f6b99-9b8c-4463-9665-9842d95af241",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "effectieve perceptie van de vervoersomgeving",
+      "uri": "http://data.europa.eu/esco/skill/a1be36ca-a753-4143-98c3-09ede5e60057",
+      "categorie": "essentieel"
+    },
+    {
       "label": "anticiperen op te verwachten problemen op de weg",
       "uri": "http://data.europa.eu/esco/skill/36404bb8-ecce-4afc-88bc-78ebd45c4b90",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "kaarten lezen",
-      "uri": "http://data.europa.eu/esco/skill/3172f001-a4dd-4e7e-9f74-9707b2e7c6e1",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "verkeerswetgeving",
-      "uri": "http://data.europa.eu/esco/skill/48f480aa-c9a8-4552-b1c5-e94330912257",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "communicatiemiddelen gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/79c366d4-0316-4838-b72e-c3be4f90fbd3",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "verschillende communicatiekanalen gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/415abd43-e8e5-4643-b5da-5f11307af57a",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "gedurende lange tijd geconcentreerd blijven",
-      "uri": "http://data.europa.eu/esco/skill/9cfd2219-553c-4d67-81e5-951e87c65135",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "verkeerssignalen interpreteren",
-      "uri": "http://data.europa.eu/esco/skill/be0afbfa-2d39-47d0-8d5c-81df2a27d250",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "alert blijven",
-      "uri": "http://data.europa.eu/esco/skill/74aa45cf-175f-47ef-9978-d9de437d92ba",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "noodstoppen oefenen",
-      "uri": "http://data.europa.eu/esco/skill/6d9edaad-7404-413e-856e-dacde984052a",
       "categorie": "essentieel"
     },
     {

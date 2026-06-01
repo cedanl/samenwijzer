@@ -1,284 +1,129 @@
 {
   "crebo": "25690",
   "opleiding": "25690_BBL_2025__25690BBL2025MJP-Beveiliger-2-augustus-dinsdag",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "beveiliger",
-    "uri": "http://data.europa.eu/esco/occupation/31808988-fc0a-4bc3-9e47-27216d6759f5",
-    "definitie": "Beveiligers observeren, constateren onregelmatigheden en beschermen mensen, gebouwen en bezittingen. Zij handhaven te allen tijde de veiligheid door te patrouilleren, de toegang tot de ingangen te controleren, alarm- en videoregistratiesystemen te bewaken, verdachte personen te vragen om identificatie en overtredingen en inbreuken op de wet te melden."
+    "label": "Beveiliger 2",
+    "uri": "",
+    "definitie": "Primair houdt de Beveiliger 2 zich bezig met het vroegtijdig signaleren van dreigingen en risico's. Hij onderkent afwijkende gedragingen, situaties of subjecten. Hij reageert adequaat op orde en/of normverstorend gedrag, incidenten of calamiteiten. De Beveiliger 2 draagt bij aan het gevoel van (sociale en maatschappelijke) veiligheid. Hij doet dit door het uitvoeren van zowel preventieve werkzaamheden, zoals controles uitvoeren, als repressieve werkzaamheden, zoals aanhouden en optreden bij ongewenst gedrag. Dit doet de Beveiliger 2 naast service bieden en faciliterende werkzaamheden aan bijvoorbeeld een ontvangstbalie. \n\nVeel Beveiligers 2 werken gedetacheerd bij een opdrachtgever, anderen voeren beveiligingswerkzaamheden en faciliterende taken uit ten behoeve van het bedrijf waar ze in dienst zijn. De Beveiligers 2 bewaken de veiligheid binnen de kaders van een beveiligingsopdracht meestal in een private omgeving."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "beveiliger luchthaven",
-    "bodyguard",
-    "beveiliger",
-    "beveiliger geld- en waardetransport",
-    "bedrijfsbewaker",
-    "evenementenbeveiliger",
-    "securityfunctionaris",
-    "coördinator beveiliging",
-    "beveiligingsadviseur",
-    "ICT-beveiligingstechnicus",
-    "hoofd ict-beveiliging",
-    "interieurverzorger",
-    "ict security consultant",
-    "technicus alarmsystemen"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "zorgen voor de openbare orde en veiligheid",
-      "uri": "http://data.europa.eu/esco/skill/499c05a2-6f36-4407-83c1-dc3448d35818",
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
       "categorie": "essentieel"
     },
     {
-      "label": "inspectieroutes volgen",
-      "uri": "http://data.europa.eu/esco/skill/f13bcfba-84b9-44a0-974f-a3d5b470ea9a",
+      "label": "Reageren op risicovolle omstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/29B470A4FC",
       "categorie": "essentieel"
     },
     {
-      "label": "personen in bedwang houden",
-      "uri": "http://data.europa.eu/esco/skill/0893faa7-0666-466d-bf32-65005da1c933",
+      "label": "Problemen signaleren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4D400FE127",
       "categorie": "essentieel"
     },
     {
-      "label": "beveiligingscontroles uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/ae699de1-0746-4fe2-86f0-17770db7790d",
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
       "categorie": "essentieel"
     },
     {
-      "label": "fouilleren",
-      "uri": "http://data.europa.eu/esco/skill/2da41c6a-3ce4-4583-b77c-d0d692fa9569",
+      "label": "Procedures volgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/752EEDBE89",
       "categorie": "essentieel"
     },
     {
-      "label": "overtreders aanhouden",
-      "uri": "http://data.europa.eu/esco/skill/d43dc4ac-e316-44cb-939d-ecf200895e0f",
+      "label": "Assertiviteit tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AA253D1EBA",
       "categorie": "essentieel"
     },
     {
-      "label": "officiële documenten controleren",
-      "uri": "http://data.europa.eu/esco/skill/a1efea8f-62a8-4f9e-bd07-7d0c193f725e",
+      "label": "Dienstbaarheid tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/F755E32480",
       "categorie": "essentieel"
     },
     {
-      "label": "alert blijven",
-      "uri": "http://data.europa.eu/esco/skill/74aa45cf-175f-47ef-9978-d9de437d92ba",
+      "label": "Psychologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/17998456DE",
       "categorie": "essentieel"
     },
     {
-      "label": "terroristische dreigingen vaststellen",
-      "uri": "http://data.europa.eu/esco/skill/84295dbe-16b0-47e8-af9e-67ee1801673d",
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
       "categorie": "essentieel"
     },
     {
-      "label": "zorgen voor de toepassing van wetten",
-      "uri": "http://data.europa.eu/esco/skill/f0153530-9ff3-4fe6-8f9e-012d06ac5b89",
+      "label": "Openbare orde en veiligheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/330F4A4BFD",
       "categorie": "essentieel"
     },
     {
-      "label": "veiligheidssystemen van faciliteiten onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/5bee9f92-221e-44e8-81b8-20edcd741077",
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
       "categorie": "essentieel"
     },
     {
-      "label": "in gebieden patrouilleren",
-      "uri": "http://data.europa.eu/esco/skill/e95dc989-ae49-49c6-bfc4-9aef35e92f35",
+      "label": "Filosofie en ethiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/38D92CCA7E",
       "categorie": "essentieel"
     },
     {
-      "label": "contacten leggen met veiligheidsautoriteiten",
-      "uri": "http://data.europa.eu/esco/skill/ea9c2308-cdd0-409f-b512-384a4fd83677",
+      "label": "Telefoonbediening",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4BD7221811",
       "categorie": "essentieel"
     },
     {
-      "label": "veiligheidsrisico’s",
-      "uri": "http://data.europa.eu/esco/skill/5acf6408-e084-4202-9442-ffcf0119811c",
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
       "categorie": "essentieel"
     },
     {
-      "label": "surveillancemateriaal controleren",
-      "uri": "http://data.europa.eu/esco/skill/65c4ee04-319d-417c-8f45-8594408d0d24",
+      "label": "Samenwerking en netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/95C3218741",
       "categorie": "essentieel"
     },
     {
-      "label": "beginselen van zelfverdediging nakomen",
-      "uri": "http://data.europa.eu/esco/skill/574a76ad-b283-4138-8386-fa079e52fcee",
+      "label": "Voorraad- en magazijnbeheer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/99D6345CD2",
       "categorie": "essentieel"
     },
     {
-      "label": "gevaren voor de veiligheid vaststellen",
-      "uri": "http://data.europa.eu/esco/skill/a4fd17bf-6309-47c5-b7fa-ae5560673acf",
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
       "categorie": "essentieel"
     },
     {
-      "label": "waakzaam zijn",
-      "uri": "http://data.europa.eu/esco/skill/f83c245f-4aa9-484f-8fd2-4ad65dd82ae5",
+      "label": "Bedrijfscorrespondentie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BCD3A479AA",
       "categorie": "essentieel"
     },
     {
-      "label": "omgaan met agressief gedrag",
-      "uri": "http://data.europa.eu/esco/skill/f6c12779-bd4c-4908-a766-dd0db556c63b",
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
       "categorie": "essentieel"
     },
     {
-      "label": "parkeerplaatsen controleren om de veiligheid te handhaven",
-      "uri": "http://data.europa.eu/esco/skill/27d19c6f-701f-4202-89fa-c4de10f52080",
-      "categorie": "optioneel"
+      "label": "Veiligheidskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C34CD6448D",
+      "categorie": "essentieel"
     },
     {
-      "label": "omgaan met grote incidenten",
-      "uri": "http://data.europa.eu/esco/skill/8071881c-d652-46e7-9cf4-e06a7f1e57c7",
-      "categorie": "optioneel"
+      "label": "Werken met digitale apparaten en toepassingen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DA95C063A4",
+      "categorie": "essentieel"
     },
     {
-      "label": "lading inspecteren",
-      "uri": "http://data.europa.eu/esco/skill/2592d0a3-a6ab-44f7-ac29-c145b4ad81c8",
-      "categorie": "optioneel"
+      "label": "Redding, noodopruiming, brandweer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F8A6F0DADD",
+      "categorie": "essentieel"
     },
     {
-      "label": "veiligheid op schepen waarborgen",
-      "uri": "http://data.europa.eu/esco/skill/385f27ee-5ea4-4128-bfda-63287a67b179",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "zorgen voor de naleving van regelgeving inzake soorten wapens",
-      "uri": "http://data.europa.eu/esco/skill/734fc996-03ed-40c2-b502-b1ba44e3b867",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "winkelveiligheid garanderen",
-      "uri": "http://data.europa.eu/esco/skill/f2aeb587-32fc-4a2c-af4c-07fbb82f7287",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "beveiliging in commerciële gebouwen",
-      "uri": "http://data.europa.eu/esco/skill/b1dfada9-183f-4f54-a0d4-a365adfc8412",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "zorg dragen voor nauwkeurige screening van bagage op luchthavens",
-      "uri": "http://data.europa.eu/esco/skill/8353579b-20e3-440a-874d-178ccc574cdc",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "wettelijke vereisten met betrekking tot munitie",
-      "uri": "http://data.europa.eu/esco/skill/634f0847-9318-4dd8-ba00-7f40af85939b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "explosieven",
-      "uri": "http://data.europa.eu/esco/skill/1e3e0736-6d4a-4a65-8787-1fa16bff5660",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "illegale stoffen",
-      "uri": "http://data.europa.eu/esco/skill/99b04058-e4c1-4808-923b-32cc49aa5e13",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voor veiligheid aan de deur zorgen",
-      "uri": "http://data.europa.eu/esco/skill/412d1d99-5624-478e-8bc7-dddebed44bab",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "gevonden voorwerpen beheren",
-      "uri": "http://data.europa.eu/esco/skill/810b7858-fb19-4c61-b05a-7cd04bb61336",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "methoden controleren",
-      "uri": "http://data.europa.eu/esco/skill/1ff53c92-370d-414b-b758-b0a1b8026853",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "beveiliging in industriële gebouwen",
-      "uri": "http://data.europa.eu/esco/skill/5a7cc454-3a22-4144-8d7a-686d542f7327",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "alarmsystemen",
-      "uri": "http://data.europa.eu/esco/skill/14029d35-3831-4176-be75-da64e6024e6f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "verkeer regelen",
-      "uri": "http://data.europa.eu/esco/skill/87454307-a3ad-40ce-8024-1aeb7c94f1e3",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "strafrecht",
-      "uri": "http://data.europa.eu/esco/skill/8836a5a5-e2ff-4baf-aae3-bfb78a4cca7f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "veiligheid van een hotel waarborgen",
-      "uri": "http://data.europa.eu/esco/skill/a91e2a50-7822-4a83-b306-d06c1a2d4b65",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "veiligheids- en bewakingsapparatuur bedienen",
-      "uri": "http://data.europa.eu/esco/skill/8d13e6ed-49e8-4c0d-876c-4629d798b2c8",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "personen ondervragen",
-      "uri": "http://data.europa.eu/esco/skill/94c47c75-815b-403f-990c-1210e950e0b9",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "veiligheid garanderen in detentiecentra",
-      "uri": "http://data.europa.eu/esco/skill/c0e82b9f-39d5-4be8-968b-655b7d330113",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "bewakingsactiviteiten uitvoeren in ziekenhuizen",
-      "uri": "http://data.europa.eu/esco/skill/1d746c11-107f-4994-8ac5-1143bbc5cd14",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "veiligheidsonderzoeken op luchthavens uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/c2a97099-53e9-4fba-b289-35bc025fb348",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "veiligheidsincidenten in de winkel documenteren",
-      "uri": "http://data.europa.eu/esco/skill/c82efd52-7d49-4692-bde7-3dc39311cc31",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "surveillancemethoden",
-      "uri": "http://data.europa.eu/esco/skill/ff8bd17c-77e9-4d4e-929a-a0cf86f3ed34",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "beveiligingswerkzaamheden met honden uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/f1302b71-c672-4c9a-9491-1b39a20b2c75",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "mensenmassa’s beheersen",
-      "uri": "http://data.europa.eu/esco/skill/753f2b67-ba47-49c2-a3fd-c40c4cfb4421",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "regelgeving inzake brandveiligheid",
-      "uri": "http://data.europa.eu/esco/skill/61268e22-9367-4c3b-91d9-b651e4c142e2",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "wettelijk gebruik van geweld",
-      "uri": "http://data.europa.eu/esco/skill/42645b84-0699-4072-b9cf-335512434b67",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "radioapparatuur gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/0256f6b0-f4a9-4c5e-9cfd-96d58a2a70fe",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "eerste hulp bieden",
-      "uri": "http://data.europa.eu/esco/skill/1d21f6ad-340f-45da-a0a3-4e83867f47a6",
-      "categorie": "optioneel"
+      "label": "Beveiliging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FC6CB30FAD",
+      "categorie": "essentieel"
     }
   ]
 }

@@ -1,196 +1,89 @@
 {
   "crebo": "25652",
   "opleiding": "25652_BOL_2024__content_oer-2024-2025-ci-25652-danser",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "danser",
-    "uri": "http://data.europa.eu/esco/occupation/07b91f36-8272-493a-8e1c-5625e77efe68",
-    "definitie": "Dansers vertolken ideeën, gevoelens, verhalen of personages voor een publiek door middel van bewegingen en lichaamstaal, gewoonlijk onder begeleiding van muziek.  Meestal gaat het hierbij om de vertolking van het werk van een choreograaf of een traditioneel repertoire, maar soms is improvisatie nodig."
+    "label": "Danser",
+    "uri": "",
+    "definitie": "De danser treedt op in een professionele dansproductie. Hij leert een choreografie aan en zorgt er zelf voor dat hij die optimaal beheerst. Hij ontwikkelt zijn danstechniek en houdt deze op pijl. Vaak voert de danser bestaande choreografieën uit, maar hij kan ook zelf choreografieën ontwikkelen. Het kan voorkomen dat de danser educatieve activiteiten uitvoert en bijvoorbeeld dansworkshops verzorgt. De danser is ambitieus en gemotiveerd, en wil elke uitvoering het beste in zichzelf naar boven halen en een artistieke performance neerzetten op professioneel niveau. Hij danst vaak in een groep en is dan samen met zijn collega’s verantwoordelijk voor het neerzetten van een goede dansproductie."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "web content manager",
-    "danser",
-    "bibliothecaris big-data-archief",
-    "technical communicator",
-    "circusartiest",
-    "pijpleidingoperator",
-    "draaier",
-    "drukvormvervaardiger",
-    "repetitor",
-    "specialist special effects",
-    "choreograaf",
-    "presentator",
-    "digitaal kunstenaar",
-    "variétéartiest",
-    "dansrepetitor",
-    "agent"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "intellectueeleigendomsrecht",
-      "uri": "http://data.europa.eu/esco/skill/2ad081e6-0a3f-4612-ac15-7ace75d39e26",
+      "label": "Lesgeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1A5EF0A63E",
       "categorie": "essentieel"
     },
     {
-      "label": "artistieke aanpak voor de eigen interpretatie ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/6b4bff9e-11e7-45b9-9b21-2d205c2fe771",
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
       "categorie": "essentieel"
     },
     {
-      "label": "acteermethoden",
-      "uri": "http://data.europa.eu/esco/skill/74be20a7-fcfe-4715-bb62-8937a547a982",
+      "label": "Netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3DECCF2E7C",
       "categorie": "essentieel"
     },
     {
-      "label": "in contact staan met het eigen lichaam",
-      "uri": "http://data.europa.eu/esco/skill/df0aa404-3f87-4f35-b6e9-969b05068704",
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
       "categorie": "essentieel"
     },
     {
-      "label": "werken met aandacht voor de eigen veiligheid",
-      "uri": "http://data.europa.eu/esco/skill/b73035a9-bf06-412c-9796-db579f85995c",
+      "label": "Creatief denken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/9DC1DB64EA",
       "categorie": "essentieel"
     },
     {
-      "label": "arbeidswetgeving",
-      "uri": "http://data.europa.eu/esco/skill/08fe5910-8c4c-4679-a988-eb2ded3c4909",
+      "label": "Onderhandelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B48D956870",
       "categorie": "essentieel"
     },
     {
-      "label": "productieschema's controleren",
-      "uri": "http://data.europa.eu/esco/skill/153517bb-84ef-45f1-a185-1d427792026d",
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
       "categorie": "essentieel"
     },
     {
-      "label": "dansen",
-      "uri": "http://data.europa.eu/esco/skill/2aeadb90-7ddc-4329-9268-8d5a6bf76b99",
+      "label": "Leergierig zijn",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CB768EFA19",
       "categorie": "essentieel"
     },
     {
-      "label": "snel van kostuum wisselen",
-      "uri": "http://data.europa.eu/esco/skill/c9c14ff6-df79-4d37-934c-39502467fff0",
+      "label": "Promoten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E06265451B",
       "categorie": "essentieel"
     },
     {
-      "label": "feedback op artistieke prestaties aanvaarden",
-      "uri": "http://data.europa.eu/esco/skill/125258b2-23c1-472c-90c6-4ec2e90ed893",
+      "label": "Bedrijfsadministratie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/10FFC5435D",
       "categorie": "essentieel"
     },
     {
-      "label": "artistieke carrière beheren",
-      "uri": "http://data.europa.eu/esco/skill/dbdafb2b-c6ab-451e-abe3-81bd73994394",
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
       "categorie": "essentieel"
     },
     {
-      "label": "zichzelf promoten",
-      "uri": "http://data.europa.eu/esco/skill/a04c2655-5996-4744-bca2-4f4c8b3e4667",
+      "label": "Commerciële economie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8E7697EE1A",
       "categorie": "essentieel"
     },
     {
-      "label": "met een dansteam werken",
-      "uri": "http://data.europa.eu/esco/skill/57419880-882b-4eea-af6f-9e45a76d6afd",
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
       "categorie": "essentieel"
     },
     {
-      "label": "danstraining blijven volgen",
-      "uri": "http://data.europa.eu/esco/skill/7abc9d2b-5792-4283-baaf-b5c74d24e758",
+      "label": "Preventieve gezondheidszorg en - geneeskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BFE1C817CA",
       "categorie": "essentieel"
     },
     {
-      "label": "persoonlijke professionele ontwikkeling beheren",
-      "uri": "http://data.europa.eu/esco/skill/a8d24a95-47b3-4f88-92e7-06600bcd3612",
+      "label": "Theater- en podiumkunsten",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E018BE2438",
       "categorie": "essentieel"
-    },
-    {
-      "label": "veilige werkomstandigheden in de podiumkunsten behouden",
-      "uri": "http://data.europa.eu/esco/skill/9afc0c8e-bbd4-4929-81f9-a17eb8af3879",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "met verscheidene persoonlijkheden werken",
-      "uri": "http://data.europa.eu/esco/skill/c08c428e-858e-4e99-bcbd-3597ff31778a",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "theatertechnieken",
-      "uri": "http://data.europa.eu/esco/skill/fed5b267-73fa-461d-9f69-827c78beb39d",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "omgaan met publiek",
-      "uri": "http://data.europa.eu/esco/skill/abe138ec-e084-47c7-abe3-e7f371f05eae",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "live optreden",
-      "uri": "http://data.europa.eu/esco/skill/04e6474d-f6fd-4e60-9191-24faae8ba0bb",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "enthousiasme voor dans aanmoedigen",
-      "uri": "http://data.europa.eu/esco/skill/21fe231d-7063-4227-8cda-765d8ce1cf87",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "activiteiten op het gebied van gemeenschapskunst aansturen",
-      "uri": "http://data.europa.eu/esco/skill/545f6585-58bc-4ca7-b1b4-1d33fb3664db",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "danspartituren lezen",
-      "uri": "http://data.europa.eu/esco/skill/56823171-3d04-41a6-8f34-b6cd394abaef",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "intercultureel bewustzijn tonen",
-      "uri": "http://data.europa.eu/esco/skill/7d23c508-c007-4221-bb84-0c9a479b8ea6",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "in een internationale omgeving werken",
-      "uri": "http://data.europa.eu/esco/skill/07ba491f-2fd4-4bab-bf52-32934c6f0b9f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "dansen aanleren",
-      "uri": "http://data.europa.eu/esco/skill/c6f88b89-ce2c-4b8c-a133-7ee95bc48efa",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "muziekgenres",
-      "uri": "http://data.europa.eu/esco/skill/52eb7ab6-269f-4f44-a21d-b0c705eaf857",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "specialisatie in een danstraditie demonstreren",
-      "uri": "http://data.europa.eu/esco/skill/a9b26f23-26c5-4a45-b0ca-e98e07a06eee",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "partituren analyseren",
-      "uri": "http://data.europa.eu/esco/skill/282a379e-249d-4cae-81ec-ce901a571801",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "artistieke projecten beheren",
-      "uri": "http://data.europa.eu/esco/skill/2c33fda8-389d-4871-948d-46fc1eb0c161",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voordragen",
-      "uri": "http://data.europa.eu/esco/skill/c3c2d9c4-bed3-4312-9cf8-f9bb719f42d2",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "acteren met uitrusting voor motion capture",
-      "uri": "http://data.europa.eu/esco/skill/4d762360-58b4-4218-9b86-b9322143ece7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "zingen",
-      "uri": "http://data.europa.eu/esco/skill/e50a68c5-2a5d-4815-8bd1-e4334aed7683",
-      "categorie": "optioneel"
     }
   ]
 }

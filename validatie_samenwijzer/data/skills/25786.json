@@ -1,9 +1,59 @@
 {
   "crebo": "25786",
   "opleiding": "25786_BBL_2025__25786BBL2025MJP-MetselaarN2",
-  "bron": "ESCO",
-  "beroep": null,
-  "match_methode": "geen-kandidaten",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Metselaar",
+    "uri": "",
+    "definitie": "De metselaar voert zelfstandig of onder leiding van een voorman of uitvoerder de meeste gangbare metselwerken uit. Hij heeft ruimtelijke inzicht en kan tekeninglezen. De metselaar voert schoon en vuil metselwerk uit, lijmt lichte scheidingswanden, elementen en blokken en voert voegwerkzaamheden uit. Hij werkt vooral buiten en heeft daardoor te maken met verschillende weersomstandigheden. Dit mag geen effect hebben op de kwaliteit en nauwkeurigheid van zijn werk en producten."
+  },
+  "match_methode": "crebo-direct",
   "kandidaten": [],
-  "skills": []
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3FC6552A85",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaalkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/519323C152",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieutechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/58823180FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouwmanagement, aanneming, werkvoorbereiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DF68BB9CD4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beheer en verwerking van afval",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E360B68955",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
+    }
+  ]
 }

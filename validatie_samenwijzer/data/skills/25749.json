@@ -1,209 +1,209 @@
 {
   "crebo": "25749",
   "opleiding": "25749_BOL_2025__oer-2025-2026-ci-25749-medewerker-evenementenorganisatie",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "medewerker evenementenorganisatie",
-    "uri": "http://data.europa.eu/esco/occupation/84931290-ad27-45ad-b611-9556c5facbdb",
-    "definitie": "Medewerkers evenementenorganisatie implementeren en volgen plannen die door eventmanagers en -planners zijn uitgewerkt. Zij zijn gespecialiseerd in een deel van de planning, hetzij de coördinatie van de catering en het vervoer, hetzij de faciliteiten."
+    "label": "Medewerker evenementenorganisatie",
+    "uri": "",
+    "definitie": "De medewerker evenementenorganisatie draagt bij aan de organisatie van allerlei evenementen. Dat betekent dat die werkt in een hectische omgeving. In die omstandigheden moet voortdurend worden geschakeld tussen opdrachtgever, leidinggevende en verschillende andere partijen. De medewerker evenementenorganisatie kan draaiboeken opstellen, instructies geven, afspraken maken, goed communiceren en presenteren (ook in het Engels). Bovendien beschikt die over creativiteit, het praktisch inzicht en de discipline om een evenement te helpen organiseren. De medewerker is proactief, kan goed met verschillende soorten mensen omgaan, ziet werk en heeft een open, dienstverlenende houding. Over een aantal praktische zaken kan die zelfstandig beslissingen nemen, maar de leidinggevende of opdrachtgever moet besluiten over bijvoorbeeld financiële zaken."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "medewerker evenementenorganisatie",
-    "procesoperator ciderfermentatie",
-    "medewerker vetzuivering",
-    "tuinbouwmedewerker",
-    "medewerker fastfood",
-    "medewerker diervoeding",
-    "medewerker linnenkamer",
-    "medewerker suikerfabriek",
-    "eventmanager"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "speciale evenementen organiseren",
-      "uri": "http://data.europa.eu/esco/skill/aea9e7b9-53a3-4f03-9d9c-4ef6c383403a",
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
       "categorie": "essentieel"
     },
     {
-      "label": "dienstverleners voor evenementen selecteren",
-      "uri": "http://data.europa.eu/esco/skill/2cf1b872-ada1-4275-b1d3-3cc2d14b458c",
+      "label": "Informatie ordenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/299CE88E49",
       "categorie": "essentieel"
     },
     {
-      "label": "toezicht houden op de activiteiten van een evenement",
-      "uri": "http://data.europa.eu/esco/skill/a571791c-50aa-40d1-ba82-b3f1f4185426",
+      "label": "Problemen signaleren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4D400FE127",
       "categorie": "essentieel"
     },
     {
-      "label": "het installeren van evenementinfrastructuur beheren",
-      "uri": "http://data.europa.eu/esco/skill/0e503b48-5491-4529-879e-b112251f8d50",
+      "label": "Problemen oplossen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/53E033E58A",
       "categorie": "essentieel"
     },
     {
-      "label": "inschrijvingen van deelnemers voor evenementen organiseren",
-      "uri": "http://data.europa.eu/esco/skill/63963d06-b53d-402e-b462-88a3ff7a1778",
+      "label": "Presenteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/590AC2FC12",
       "categorie": "essentieel"
     },
     {
-      "label": "zorgen voor publiciteit voor evenementen",
-      "uri": "http://data.europa.eu/esco/skill/8bd21f21-ca28-4e08-ba0e-8a109711ad6b",
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
       "categorie": "essentieel"
     },
     {
-      "label": "instructies voor opdrachten verwerken",
-      "uri": "http://data.europa.eu/esco/skill/48391ec6-42ba-4093-acf4-c7673b0c07f4",
+      "label": "Instrueren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6AE2F3F890",
       "categorie": "essentieel"
     },
     {
-      "label": "gegevens van evenementen bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/c0156cdb-8587-4278-89e0-075d83e3140b",
+      "label": "Zorgvuldig werken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/73CE64DACE",
       "categorie": "essentieel"
     },
     {
-      "label": "evenementen promoten",
-      "uri": "http://data.europa.eu/esco/skill/28c5e844-72a3-49d7-af0e-810b645e947a",
+      "label": "Bedrijfsprocessen verbeteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7C37C4FF38",
       "categorie": "essentieel"
     },
     {
-      "label": "deadlines halen",
-      "uri": "http://data.europa.eu/esco/skill/91abe492-18be-4cce-93c7-0dca07072363",
+      "label": "Systeemevaluatie",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/A43394A208",
       "categorie": "essentieel"
     },
     {
-      "label": "onderhandelen over contracten met dienstverleners voor evenementen",
-      "uri": "http://data.europa.eu/esco/skill/1e05596a-dc89-442f-8591-bf9198492f81",
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
       "categorie": "essentieel"
     },
     {
-      "label": "vergunningen voor evenementen verkrijgen",
-      "uri": "http://data.europa.eu/esco/skill/3bba59fa-14eb-477f-8bba-c8cbdc2e6d7d",
+      "label": "Monitoren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B03F4F484C",
       "categorie": "essentieel"
     },
     {
-      "label": "rekeningen van evenementen controleren",
-      "uri": "http://data.europa.eu/esco/skill/5079319b-b12d-46ae-8ba7-78a3aa242e6e",
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
       "categorie": "essentieel"
     },
     {
-      "label": "catering coördineren",
-      "uri": "http://data.europa.eu/esco/skill/80e7418e-7434-456c-85e1-e8aef626a8c0",
+      "label": "Financiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/BC3AB34C1A",
       "categorie": "essentieel"
     },
     {
-      "label": "overleggen met personeel van een evenement",
-      "uri": "http://data.europa.eu/esco/skill/43858b92-51d2-4e9d-9d92-a694924add4d",
+      "label": "(digitale) Informatie beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CD7B4C0F34",
       "categorie": "essentieel"
     },
     {
-      "label": "zorgen voor voorzieningen ter plaatse",
-      "uri": "http://data.europa.eu/esco/skill/67117c88-c855-4fab-98c5-e322e838969f",
+      "label": "Adviseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CECB22E3FA",
       "categorie": "essentieel"
     },
     {
-      "label": "onderhandelen over inkoopvoorwaarden",
-      "uri": "http://data.europa.eu/esco/skill/fde186df-c9c4-49f5-b2a5-d66adc7c43a5",
-      "categorie": "optioneel"
+      "label": "Rekenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5BBA931FB",
+      "categorie": "essentieel"
     },
     {
-      "label": "leveranciers identificeren",
-      "uri": "http://data.europa.eu/esco/skill/11747665-0e98-4f27-bd0d-536862cd5746",
-      "categorie": "optioneel"
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
     },
     {
-      "label": "omgaan met managers",
-      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
-      "categorie": "optioneel"
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
     },
     {
-      "label": "communiceren met hotels, busbedrijven en restaurants",
-      "uri": "http://data.europa.eu/esco/skill/9a98c30f-fac7-401d-b2a0-852c2f00aae3",
-      "categorie": "optioneel"
+      "label": "Deductief logisch redeneren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E033DC4809",
+      "categorie": "essentieel"
     },
     {
-      "label": "contacten onderhouden met lokale overheden",
-      "uri": "http://data.europa.eu/esco/skill/2839f191-cd94-49a9-ac16-46018066b8b2",
-      "categorie": "optioneel"
+      "label": "Promoten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E06265451B",
+      "categorie": "essentieel"
     },
     {
-      "label": "evenementspecifieke menu's samenstellen",
-      "uri": "http://data.europa.eu/esco/skill/9868bfd7-69eb-43ba-9fdb-d55809d4d9e0",
-      "categorie": "optioneel"
+      "label": "Kritisch nadenken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E1F935288C",
+      "categorie": "essentieel"
     },
     {
-      "label": "leveranciers bezoeken",
-      "uri": "http://data.europa.eu/esco/skill/2c02fb07-de47-46d3-8a99-b916137951ef",
-      "categorie": "optioneel"
+      "label": "Dienstbaarheid tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/F755E32480",
+      "categorie": "essentieel"
     },
     {
-      "label": "accommodatie vervoer en activiteiten regelen",
-      "uri": "http://data.europa.eu/esco/skill/7c32a84c-2733-4bc7-8909-3b3413c9cc88",
-      "categorie": "optioneel"
+      "label": "Operationeel toezicht houden",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/FAB3EE0CD1",
+      "categorie": "essentieel"
     },
     {
-      "label": "reisarrangementen voor personeel organiseren",
-      "uri": "http://data.europa.eu/esco/skill/382ed835-8958-4d86-8471-cff55c6df3e7",
-      "categorie": "optioneel"
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
+      "categorie": "essentieel"
     },
     {
-      "label": "locaties voor evenementen inspecteren",
-      "uri": "http://data.europa.eu/esco/skill/51b27007-ddb2-45a8-8103-0ec8c95e6313",
-      "categorie": "optioneel"
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
     },
     {
-      "label": "boekingen verwerken",
-      "uri": "http://data.europa.eu/esco/skill/345486f3-f265-4fc8-8ed0-5e96e768e333",
-      "categorie": "optioneel"
+      "label": "Transport en logistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2F8C9BA908",
+      "categorie": "essentieel"
     },
     {
-      "label": "klantwensen identificeren",
-      "uri": "http://data.europa.eu/esco/skill/0e0c9c11-b39e-43cf-ba95-2fe646f5de64",
-      "categorie": "optioneel"
+      "label": "Vrijetijdsbesteding, recreatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4232B7F325",
+      "categorie": "essentieel"
     },
     {
-      "label": "contacten leggen met sponsors van evenementen",
-      "uri": "http://data.europa.eu/esco/skill/20a41697-108d-4231-b230-ea7a16a659a6",
-      "categorie": "optioneel"
+      "label": "Groothandel",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/5806D757F0",
+      "categorie": "essentieel"
     },
     {
-      "label": "projectbeheer",
-      "uri": "http://data.europa.eu/esco/skill/7111b95d-0ce3-441a-9d92-4c75d05c4388",
-      "categorie": "optioneel"
+      "label": "Informatiemanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9212BF2426",
+      "categorie": "essentieel"
     },
     {
-      "label": "contacten onderhouden met reclamebureaus",
-      "uri": "http://data.europa.eu/esco/skill/7893605c-18cc-4c68-8c22-4f969df1a673",
-      "categorie": "optioneel"
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
     },
     {
-      "label": "prijsinformatie geven",
-      "uri": "http://data.europa.eu/esco/skill/32b02bd1-6bf2-497a-bb16-94aeeafaf44f",
-      "categorie": "optioneel"
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
     },
     {
-      "label": "catering inschatten",
-      "uri": "http://data.europa.eu/esco/skill/213e73d8-5d8b-4728-aec4-93f67459e9da",
-      "categorie": "optioneel"
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
+      "categorie": "essentieel"
     },
     {
-      "label": "contact opnemen met sprekers voor evenementen",
-      "uri": "http://data.europa.eu/esco/skill/a6a81cf0-eda5-447b-8af6-845ba7010d99",
-      "categorie": "optioneel"
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
     },
     {
-      "label": "contacten onderhouden met vervoersbedrijven",
-      "uri": "http://data.europa.eu/esco/skill/1f618933-1c1b-4b49-91f7-d567d25406bf",
-      "categorie": "optioneel"
+      "label": "Veiligheidskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C34CD6448D",
+      "categorie": "essentieel"
     },
     {
-      "label": "budgetten beheren",
-      "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
-      "categorie": "optioneel"
+      "label": "Arbeidsbemiddeling",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DB02391C00",
+      "categorie": "essentieel"
     },
     {
-      "label": "faciliteiten voor kantoorpersoneel organiseren",
-      "uri": "http://data.europa.eu/esco/skill/c58050e1-0774-4097-93d2-07dd7ba6a27a",
-      "categorie": "optioneel"
+      "label": "Evenementenorganisatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DC7FC7F6A7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderzoeksmethoden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E4B9A547C8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Marketing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E6A75FB995",
+      "categorie": "essentieel"
     }
   ]
 }

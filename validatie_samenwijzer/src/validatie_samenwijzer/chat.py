@@ -52,10 +52,11 @@ Voorbeeld KD: De OER beschrijft dit niet. Volgens het kwalificatiedossier,
 kerntaak B1-K1 "Bieden van zorg en ondersteuning": "...".
 
 Voor de skills-taxonomie geldt een AANGEPASTE citatie (een taxonomie heeft geen
-secties of pagina's): noem de bron, het beroep en de categorie, en citeer de
-exacte skill-naam tussen dubbele aanhalingstekens. Voorbeeld: Volgens de
-ESCO-skillstaxonomie hoort bij het beroep "kok" de essentiële skill
-"kooktechnieken gebruiken". Verzin nooit een sectie- of paginanummer bij skills.
+secties of pagina's): noem de bron PRECIES zoals die in de kop van het
+skills-blok staat (ESCO óf CompetentNL — verzin er geen), plus het beroep en de
+categorie, en citeer de exacte skill-naam tussen dubbele aanhalingstekens.
+Voorbeeld: Volgens CompetentNL hoort bij het beroep "kok" de essentiële skill
+"samenwerken". Verzin nooit een sectie- of paginanummer bij skills.
 
 Een claim zonder correcte bronvermelding is niet toegestaan. Parafraseren mag
 alleen ter inleiding van een citaat, niet ter vervanging ervan. Beantwoord vragen
@@ -195,7 +196,11 @@ def laad_skills_tekst(crebo: str | None) -> str:
     regels = [f'Beroep "{beroep["label"]}"']
     if beroep.get("definitie"):
         regels.append(beroep["definitie"])
-    for categorie, kop in (("essentieel", "Essentiële skills"), ("optioneel", "Optionele skills")):
+    for categorie, kop in (
+        ("essentieel", "Essentiële skills"),
+        ("belangrijk", "Belangrijke skills"),
+        ("optioneel", "Optionele skills"),
+    ):
         labels = [s["label"] for s in data.get("skills", []) if s["categorie"] == categorie]
         if labels:
             regels.append(f"\n{kop}:")
@@ -205,7 +210,8 @@ def laad_skills_tekst(crebo: str | None) -> str:
     tekst = "\n".join(regels)[:_MAX_SKILLS_TEKST_TEKENS]
     return (
         f"\n\n=== SKILLS-TAXONOMIE ({bron}) — beroep: {beroep['label']} ===\n"
-        "De skills die horen bij het beroep waarvoor deze opleiding opleidt.\n"
+        f"De skills die horen bij het beroep waarvoor deze opleiding opleidt. "
+        f"Citeer deze skills uitsluitend als afkomstig van: {bron}.\n"
         f"{tekst}"
     )
 
@@ -297,9 +303,10 @@ uiterlijk in juli...". Voor het KD: De OER beschrijft dit niet. Volgens
 Kwalificatiedossier 1, kerntaak B1-K1: "...".
 
 Voor de skills-taxonomie geldt een AANGEPASTE citatie (geen secties of pagina's):
-noem de bron, het beroep en de categorie, en citeer de exacte skill-naam, bijv.
-Volgens de ESCO-skillstaxonomie hoort bij het beroep "kok" de essentiële skill
-"kooktechnieken gebruiken". Verzin nooit een sectie- of paginanummer bij skills.
+noem de bron PRECIES zoals in de kop van het skills-blok (ESCO óf CompetentNL),
+plus het beroep en de categorie, en citeer de exacte skill-naam, bijv. Volgens
+CompetentNL hoort bij het beroep "kok" de essentiële skill "samenwerken".
+Verzin nooit een sectie- of paginanummer bij skills.
 
 Een claim zonder correcte bronvermelding is niet toegestaan.
 Parafraseren mag alleen ter inleiding van een citaat, niet ter vervanging ervan.

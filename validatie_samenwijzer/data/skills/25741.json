@@ -1,19 +1,84 @@
 {
   "crebo": "25741",
   "opleiding": "25741_BOL_2025__25741BOL2025MJP-Assistent-dienstverlening",
-  "bron": "ESCO",
-  "beroep": null,
-  "match_methode": "geen-match",
-  "kandidaten": [
-    "thuiszorgmedewerker",
-    "obductieassistent",
-    "assistent-acceptant verzekeringen",
-    "kwaliteitsmanager dienstverlening",
-    "assistent-chiropractor",
-    "assistent-diëtist",
-    "doktersassistent",
-    "assistent-animator outdooractiviteiten",
-    "laserlasser"
-  ],
-  "skills": []
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Assistent dienstverlening",
+    "uri": "",
+    "definitie": "De Assistent dienstverlening kan assisterende werkzaamheden uitvoeren in diverse werkomgevingen. Hij is werkzaam in bedrijven en organisaties die diensten verlenen aan individuele klanten of aan groep klanten, dit kunnen zowel interne als externe klanten zijn. Te denken is aan facilitaire aanbieders, zakelijke dienstverleners, productieomgevingen, recreatiebedrijven, zwembaden, sportverenigingen, scholen, gemeentes, zorginstellingen, buurthuizen, kinderopvang, groepsaccommodaties. Hij maakt (werk)ruimtes klaar voor gebruik, voert dienstverlenende taken en staat derden te woord en kan ze als het nodig is doorverwijzen. Hij is klantvriendelijk en servicegericht en zorgt ervoor dat klanten zich veilig voelen. De Assistent dienstverlening werkt onder toezicht, begeleiding en eindverantwoordelijkheid van zijn leidinggevende en/of ervaren collega's."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplichtingen nakomen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6EDDE6185F",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Adviseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CECB22E3FA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Zelfstandig werken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5DED5A92E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Dienstbaarheid tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/F755E32480",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Facilitaire dienstverlening",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A623098860",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Personeelswerk",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AA15132AFE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voeding en gezondheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C3247434CD",
+      "categorie": "essentieel"
+    }
+  ]
 }

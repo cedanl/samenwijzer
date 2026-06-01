@@ -1,179 +1,69 @@
 {
   "crebo": "25643",
   "opleiding": "2020 - 25643 Haarstylist Heer niveau 3 2020 versie 1.1",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "haarstylist",
-    "uri": "http://data.europa.eu/esco/occupation/82dea303-26e1-4bbc-a07c-cff3cac6b50e",
-    "definitie": "Haarstylisten wassen, drogen, knippen en stijlen het haar van zangers en presentatoren en verschillende soorten acteurs, waaronder podium-, film-, tv- en muziekvideo-acteurs. Zij werken samen met de artistiek directeur om de look van elke persoon te ontwerpen. Haarstylisten plaatsen ook pruiken en haarstukjes. Zij staan paraat tijdens deze artistieke activiteiten om het haar of pruiken van de acteurs bij te werken."
+    "label": "Haarstylist heer",
+    "uri": "",
+    "definitie": "De haarstylist heer werkt bij een kapperszaak of bij een bedrijf dat zich bezig houdt met haarverzorging. Hij is in staat haarbehandelingen bij heren uit te voeren, zoals knippen en snijden van een gedekt model, knippen en stylen van een kort model, föhnen van een gedekt model en knippen/trimmen van baard en snor. De haarstylist heer doet zijn werk op hygiënische wijze, waarbij hij rekening houdt met het milieu en de arbeidsomstandigheden. Tijdens het werk combineert hij standaardhandelingen met het uitvoeren van specialistische haarbehandelingen. Hij werkt zelfstandig en wordt vaak bijgestaan door collega’s. Voor een optimale beroepsuitoefening gebruikt hij zijn creativiteit."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "haarstylist",
-    "chief data officer",
-    "decaan",
-    "planningsingenieur lederproductie",
-    "humanitair adviseur",
-    "beheerder magazijn voor afgewerkt leder",
-    "hotelbutler",
-    "senator",
-    "kappershulp"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "projecten binnen het budget afwerken",
-      "uri": "http://data.europa.eu/esco/skill/7d092d81-d1e2-4c34-b3cb-c1c9f2e68b7d",
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
       "categorie": "essentieel"
     },
     {
-      "label": "haarknippen",
-      "uri": "http://data.europa.eu/esco/skill/d2c5d356-43d9-4118-827c-6801e32a452a",
+      "label": "Adviseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CECB22E3FA",
       "categorie": "essentieel"
     },
     {
-      "label": "artistieke concepten omzetten in technische ontwerpen",
-      "uri": "http://data.europa.eu/esco/skill/88de5ff4-310a-4f4f-9b47-349eb5589902",
+      "label": "Rekenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5BBA931FB",
       "categorie": "essentieel"
     },
     {
-      "label": "persoonlijke regiestijlen",
-      "uri": "http://data.europa.eu/esco/skill/42f977aa-a6eb-4994-b368-d5f26c0fd1fa",
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
       "categorie": "essentieel"
     },
     {
-      "label": "haar stijlen",
-      "uri": "http://data.europa.eu/esco/skill/0b6c4174-a862-480d-8d55-44f7cf7ac365",
+      "label": "Handvaardigheid",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E66E6D3B86",
       "categorie": "essentieel"
     },
     {
-      "label": "continuïteit in de stijl van de artiesten garanderen",
-      "uri": "http://data.europa.eu/esco/skill/58b934cc-b243-4267-b2b8-5c7babe95728",
+      "label": "Dienstbaarheid tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/F755E32480",
       "categorie": "essentieel"
     },
     {
-      "label": "haar verven",
-      "uri": "http://data.europa.eu/esco/skill/dbc20527-0852-4dde-a2e9-d25d8356115f",
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
       "categorie": "essentieel"
     },
     {
-      "label": "behoefte aan technische middelen analyseren",
-      "uri": "http://data.europa.eu/esco/skill/8c8d0196-4acd-4217-89cb-abaf96845b14",
+      "label": "Haarverzorging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/269B33BF53",
       "categorie": "essentieel"
     },
     {
-      "label": "veilig met chemicaliën werken",
-      "uri": "http://data.europa.eu/esco/skill/89d2bb53-67fc-4b9e-80c7-07b6c587bc0d",
+      "label": "Geneeskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/512B5B0194",
       "categorie": "essentieel"
     },
     {
-      "label": "haarkniptechnieken toepassen",
-      "uri": "http://data.europa.eu/esco/skill/96d1e352-6cfe-4400-bd4d-1e11c03aa20b",
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
       "categorie": "essentieel"
     },
     {
-      "label": "snel van kapsel veranderen",
-      "uri": "http://data.europa.eu/esco/skill/808d259b-acce-4ca5-8169-97bb1790f346",
+      "label": "Schoonheids-, lichaamsverzorging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C37A10D447",
       "categorie": "essentieel"
-    },
-    {
-      "label": "op de hoogte blijven van trends",
-      "uri": "http://data.europa.eu/esco/skill/efda73b4-5212-40a7-b2f8-d2f754ffdf2b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "instructies van de regisseur volgen",
-      "uri": "http://data.europa.eu/esco/skill/b31ccede-907f-49de-8047-4d851bd4add3",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "werkschema's volgen",
-      "uri": "http://data.europa.eu/esco/skill/194c05ed-253c-485a-8bf0-0c8de1aaafda",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "overleggen met de regisseur van een productie",
-      "uri": "http://data.europa.eu/esco/skill/24229e89-9e1d-4c1a-ae23-c64777b152ce",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "scenario analyseren",
-      "uri": "http://data.europa.eu/esco/skill/97db841c-31bf-4aa0-85b9-0ddd0a77b7a5",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "haarstijlen ontwerpen",
-      "uri": "http://data.europa.eu/esco/skill/dea0250b-edf7-473e-bc12-b7869c19bdd5",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "goederen bestellen",
-      "uri": "http://data.europa.eu/esco/skill/210827e3-3129-45a2-8683-70399f3f561f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "fotografie",
-      "uri": "http://data.europa.eu/esco/skill/38509fa4-7c06-4a4b-9622-f521f03c37b8",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "repetities bijwonen",
-      "uri": "http://data.europa.eu/esco/skill/4b973dcf-3ffc-4c70-b84a-8360e63db7cd",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "stylingschema's opstellen",
-      "uri": "http://data.europa.eu/esco/skill/df9b0002-7d83-47ef-962e-46b9f5228c85",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "geschiedenis van kapsels",
-      "uri": "http://data.europa.eu/esco/skill/57cf23b0-b644-41b9-985c-9af4d06dd34e",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voorraad verbruiksgoederen beheren",
-      "uri": "http://data.europa.eu/esco/skill/0c8f1351-d1fe-4542-89fe-b70729679c52",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "pruiken herstellen",
-      "uri": "http://data.europa.eu/esco/skill/216f5c68-d45c-404a-9e1e-4374687d7471",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "proces van pruiken maken bepalen",
-      "uri": "http://data.europa.eu/esco/skill/a5b58e14-a6f0-49bc-99e2-4879f3d13a55",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "pruiken onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/49b82151-5a11-40e3-88ab-5d97c6b287a2",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "pruiken maken",
-      "uri": "http://data.europa.eu/esco/skill/955e770e-9d0d-4968-9856-0fe55992985f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "werken met de cinematograaf",
-      "uri": "http://data.europa.eu/esco/skill/65030093-f22d-486e-a978-ae7825829af1",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "verlichtingstechniek",
-      "uri": "http://data.europa.eu/esco/skill/c39b8441-359e-4cf9-8a52-c5f6dd918813",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "pruiken verven",
-      "uri": "http://data.europa.eu/esco/skill/44e3aac3-d9c4-4d3f-a765-7266fefee47a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "voorraad van technische middelen beheren",
-      "uri": "http://data.europa.eu/esco/skill/130f6043-6bb4-4f14-81b3-b34cdaf6ea1f",
-      "categorie": "optioneel"
     }
   ]
 }

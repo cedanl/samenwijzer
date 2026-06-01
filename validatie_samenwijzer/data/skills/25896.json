@@ -1,9 +1,169 @@
 {
   "crebo": "25896",
   "opleiding": "25896_BOL_2025__25896BOLBBL2025Examenplan",
-  "bron": "ESCO",
-  "beroep": null,
-  "match_methode": "geen-kandidaten",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Productietechnicus",
+    "uri": "",
+    "definitie": "De Productietechnicus is een vaktechnisch specialist die binnen het bedrijf werkzaam is in de productie op een specifieke afdeling. Als vakspecialist denkt hij/zij mee over onder andere de maakbaarheid van de producten, het continu optimaliseren van het productieproces en is hij/zij breed en flexibel inzetbaar. Zijn/haar werkzaamheden hebben een multidisciplinair karakter. Hij/zij werkt zelfstandig, geconcentreerd en systematisch en is creatief en inventief. De werkzaamheden omvatten het opstellen van een productieplan, het plannen en begeleiden van het productieproces en het schrijven van programma's voor geautomatiseerde productie."
+  },
+  "match_methode": "crebo-direct",
   "kandidaten": [],
-  "skills": []
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Meten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/0EBFAD3C80",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsprocessen verbeteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7C37C4FF38",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ontwerpen van systemen en producten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B4866702BB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CD7B4C0F34",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Machines bedienen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D0866C5206",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Actiegericht leren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DB6B8EEBD1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Programmeren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/F2D610E19F",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Productietechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/04541FC2D1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Elektrotechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/1EC7181B0B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kunststof en rubber verwerking",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4DC91EC659",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Metaalkunde, metaalbewerking",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/800D4C8975",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ontwerpen met de computer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8F02A2B716",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Informatiemanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9212BF2426",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Applicatiebouw en programmeren",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/92920D678A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderwijskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A7D41FC829",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsinformatica",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D313E86D1B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Industriële procesautomatisering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D9B1D9D2D5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Werken met digitale apparaten en toepassingen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DA95C063A4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beheer en verwerking van afval",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E360B68955",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Constructiewerken, machinebankwerken, lassen, smeden, gieten",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/EF31BD21E3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reiniging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FB169E4860",
+      "categorie": "essentieel"
+    }
+  ]
 }

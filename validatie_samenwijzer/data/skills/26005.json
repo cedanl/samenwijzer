@@ -20,83 +20,8 @@
   ],
   "skills": [
     {
-      "label": "energiebehoeften vaststellen",
-      "uri": "http://data.europa.eu/esco/skill/96d901a6-c931-4e8d-b685-a47e1deaaa1b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "kwaliteitscriteria voor productie definiëren",
-      "uri": "http://data.europa.eu/esco/skill/46e1b714-94f4-462d-88e6-31f442708812",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "fabricageprocessen",
-      "uri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "grond- en hulpstoffen beheren",
-      "uri": "http://data.europa.eu/esco/skill/020b3c27-bae1-4b85-9d6f-eccee0f5ed99",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "energieaudit uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/0ad6d5e8-593f-4191-843c-439b23a468ca",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "deadlines halen",
-      "uri": "http://data.europa.eu/esco/skill/91abe492-18be-4cce-93c7-0dca07072363",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "personeel helpen groeien",
-      "uri": "http://data.europa.eu/esco/skill/714eebcb-569a-4f1b-b592-28f70b59a9ba",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "businesscases uitwerken",
-      "uri": "http://data.europa.eu/esco/skill/a4bbd0d9-a6be-4472-b05d-291e60cf6b4b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "leiding geven aan personeel",
-      "uri": "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "energiebeleid ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/c4e9f0d0-bbdd-42d7-83a5-2c131f6d67c2",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "bedrijfsnormen volgen",
-      "uri": "http://data.europa.eu/esco/skill/f5f5b244-6cea-4fbc-8a50-8f712791bc09",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "duurzaam beheer promoten",
-      "uri": "http://data.europa.eu/esco/skill/6742977a-aa00-4c8c-9861-898b0373907e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "energiebeheer van installaties uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/885808f7-f42b-406e-95f2-28efcd45ddda",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "energie-efficiëntie",
-      "uri": "http://data.europa.eu/esco/skill/83fc0b2b-6cd2-46af-b1ff-d3fc83604c26",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "dagelijkse informatieactiviteiten leiden",
-      "uri": "http://data.europa.eu/esco/skill/9013b46e-5a9b-4929-8918-fcadfdfd37ce",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "budgetten beheren",
-      "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
+      "label": "maatschappelijk verantwoord ondernemen",
+      "uri": "http://data.europa.eu/esco/skill/66db424f-2abe-420d-8e5b-186607266b61",
       "categorie": "essentieel"
     },
     {
@@ -105,38 +30,23 @@
       "categorie": "essentieel"
     },
     {
-      "label": "omgaan met managers",
-      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
+      "label": "energiebeheer van installaties uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/885808f7-f42b-406e-95f2-28efcd45ddda",
       "categorie": "essentieel"
     },
     {
-      "label": "innovatief infrastructuurontwerp promoten",
-      "uri": "http://data.europa.eu/esco/skill/b251544f-7b92-46d5-8e14-97f59ce1c7dc",
+      "label": "grond- en hulpstoffen beheren",
+      "uri": "http://data.europa.eu/esco/skill/020b3c27-bae1-4b85-9d6f-eccee0f5ed99",
       "categorie": "essentieel"
     },
     {
-      "label": "productiebeleid ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/764db027-9063-4468-acb3-c73ecfc76f35",
+      "label": "logistiek beheren",
+      "uri": "http://data.europa.eu/esco/skill/953c0b65-537a-42fe-a90b-26cd36c64361",
       "categorie": "essentieel"
     },
     {
-      "label": "maatschappelijk verantwoord ondernemen",
-      "uri": "http://data.europa.eu/esco/skill/66db424f-2abe-420d-8e5b-186607266b61",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "veiligheidsvoorschriften voor elektriciteit",
-      "uri": "http://data.europa.eu/esco/skill/6360d655-3494-45f6-bfc6-d5f63afc355b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "beleidslijnen van de organisatie naleven",
-      "uri": "http://data.europa.eu/esco/skill/aa238394-8126-4ada-be2f-9dfe065cf314",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "energieprestaties van gebouwen",
-      "uri": "http://data.europa.eu/esco/skill/4e09e2d2-e317-47d2-bf5e-1d6c66be3efc",
+      "label": "duurzaam beheer promoten",
+      "uri": "http://data.europa.eu/esco/skill/6742977a-aa00-4c8c-9861-898b0373907e",
       "categorie": "essentieel"
     },
     {
@@ -150,23 +60,43 @@
       "categorie": "essentieel"
     },
     {
-      "label": "energieverbruik analyseren",
-      "uri": "http://data.europa.eu/esco/skill/29bfe2cd-f011-4f94-a3aa-f77768e60460",
+      "label": "advies geven over energie-efficiëntie van verwarmingssystemen",
+      "uri": "http://data.europa.eu/esco/skill/8614b988-b907-473e-a701-47b525959dc8",
       "categorie": "essentieel"
     },
     {
-      "label": "dagelijkse prioriteiten stellen",
-      "uri": "http://data.europa.eu/esco/skill/65ca5e3c-940c-46b2-b277-aff394cfdd4c",
+      "label": "fabricageprocessen",
+      "uri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
       "categorie": "essentieel"
     },
     {
-      "label": "logistiek beheren",
-      "uri": "http://data.europa.eu/esco/skill/953c0b65-537a-42fe-a90b-26cd36c64361",
+      "label": "productiebeleid ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/764db027-9063-4468-acb3-c73ecfc76f35",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "energiebeleid ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/c4e9f0d0-bbdd-42d7-83a5-2c131f6d67c2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "leiding geven aan personeel",
+      "uri": "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
       "categorie": "essentieel"
     },
     {
       "label": "duurzame energie promoten",
       "uri": "http://data.europa.eu/esco/skill/1a6c7e0d-fc13-41d7-a5c0-8ca00606de89",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "energieaudit uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/0ad6d5e8-593f-4191-843c-439b23a468ca",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteitscriteria voor productie definiëren",
+      "uri": "http://data.europa.eu/esco/skill/46e1b714-94f4-462d-88e6-31f442708812",
       "categorie": "essentieel"
     },
     {
@@ -180,8 +110,58 @@
       "categorie": "essentieel"
     },
     {
-      "label": "advies geven over energie-efficiëntie van verwarmingssystemen",
-      "uri": "http://data.europa.eu/esco/skill/8614b988-b907-473e-a701-47b525959dc8",
+      "label": "deadlines halen",
+      "uri": "http://data.europa.eu/esco/skill/91abe492-18be-4cce-93c7-0dca07072363",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "budgetten beheren",
+      "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "dagelijkse prioriteiten stellen",
+      "uri": "http://data.europa.eu/esco/skill/65ca5e3c-940c-46b2-b277-aff394cfdd4c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bedrijfsnormen volgen",
+      "uri": "http://data.europa.eu/esco/skill/f5f5b244-6cea-4fbc-8a50-8f712791bc09",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "energieprestaties van gebouwen",
+      "uri": "http://data.europa.eu/esco/skill/4e09e2d2-e317-47d2-bf5e-1d6c66be3efc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "omgaan met managers",
+      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veiligheidsvoorschriften voor elektriciteit",
+      "uri": "http://data.europa.eu/esco/skill/6360d655-3494-45f6-bfc6-d5f63afc355b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beleidslijnen van de organisatie naleven",
+      "uri": "http://data.europa.eu/esco/skill/aa238394-8126-4ada-be2f-9dfe065cf314",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "energieverbruik analyseren",
+      "uri": "http://data.europa.eu/esco/skill/29bfe2cd-f011-4f94-a3aa-f77768e60460",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "dagelijkse informatieactiviteiten leiden",
+      "uri": "http://data.europa.eu/esco/skill/9013b46e-5a9b-4929-8918-fcadfdfd37ce",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "businesscases uitwerken",
+      "uri": "http://data.europa.eu/esco/skill/a4bbd0d9-a6be-4472-b05d-291e60cf6b4b",
       "categorie": "essentieel"
     },
     {
@@ -190,84 +170,24 @@
       "categorie": "essentieel"
     },
     {
-      "label": "gasverbruik",
-      "uri": "http://data.europa.eu/esco/skill/3b73a161-be59-4079-815e-b4879f9b20b5",
-      "categorie": "optioneel"
+      "label": "innovatief infrastructuurontwerp promoten",
+      "uri": "http://data.europa.eu/esco/skill/b251544f-7b92-46d5-8e14-97f59ce1c7dc",
+      "categorie": "essentieel"
     },
     {
-      "label": "wetenschappelijke verhandelingen schrijven",
-      "uri": "http://data.europa.eu/esco/skill/c3c2420c-ce9a-4371-8eed-1db479c3a562",
-      "categorie": "optioneel"
+      "label": "personeel helpen groeien",
+      "uri": "http://data.europa.eu/esco/skill/714eebcb-569a-4f1b-b592-28f70b59a9ba",
+      "categorie": "essentieel"
     },
     {
-      "label": "zorgen voor de beschikbaarheid van materiaal",
-      "uri": "http://data.europa.eu/esco/skill/69f23426-9279-4fe6-a283-24c2aa4c855d",
-      "categorie": "optioneel"
+      "label": "energiebehoeften vaststellen",
+      "uri": "http://data.europa.eu/esco/skill/96d901a6-c931-4e8d-b685-a47e1deaaa1b",
+      "categorie": "essentieel"
     },
     {
-      "label": "gezondheids- en veiligheidsprocedures plannen",
-      "uri": "http://data.europa.eu/esco/skill/bb663409-5c88-4e3a-bc16-01aa1c8ce171",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "betalingen voor nutsvoorzieningen berekenen",
-      "uri": "http://data.europa.eu/esco/skill/644fce93-9abb-498d-9fbe-19dafc66dfbc",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "industriële verwarmingssystemen",
-      "uri": "http://data.europa.eu/esco/skill/c49eb4a4-7b5f-44e6-b346-7153879ac86b",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "defecten aan meters van nutsvoorzieningen vaststellen",
-      "uri": "http://data.europa.eu/esco/skill/48a83424-6758-4ad5-b5fa-ca3a32034431",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "contractenrecht",
-      "uri": "http://data.europa.eu/esco/skill/5c606d18-6404-4047-b235-350f18e11827",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "samenwerken aan internationale energieprojecten",
-      "uri": "http://data.europa.eu/esco/skill/c565e722-0e14-4f57-99ff-267dd9ea2510",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "gasmarkt",
-      "uri": "http://data.europa.eu/esco/skill/1557a239-5ed4-48e6-9536-d1ac6eaefcf3",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "industriële uitrusting inspecteren",
-      "uri": "http://data.europa.eu/esco/skill/94747ff4-603d-47d4-9780-bf53be41e190",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "onderzoeksvoorstellen schrijven",
-      "uri": "http://data.europa.eu/esco/skill/0ee7b0d6-db98-4785-9948-f2ef415d155a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "onderhoud van apparatuur garanderen",
-      "uri": "http://data.europa.eu/esco/skill/c927ec6e-9082-4b22-afd3-0c4e219eaf73",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "technologieën voor hernieuwbare energie",
-      "uri": "http://data.europa.eu/esco/skill/f8413360-6114-40de-a276-c59b764b9913",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "concepten voor energiebesparing ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/0037c821-2898-4919-b96e-7ed1cd89554c",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "advies geven over mogelijke veiligheidsrisico’s betreffende verwarmingssystemen",
-      "uri": "http://data.europa.eu/esco/skill/649cab01-fa5e-4721-bf63-76dccc34f3f6",
-      "categorie": "optioneel"
+      "label": "energie-efficiëntie",
+      "uri": "http://data.europa.eu/esco/skill/83fc0b2b-6cd2-46af-b1ff-d3fc83604c26",
+      "categorie": "essentieel"
     },
     {
       "label": "met leveranciers over voorwaarden onderhandelen",
@@ -280,8 +200,33 @@
       "categorie": "optioneel"
     },
     {
-      "label": "energiemarkt",
-      "uri": "http://data.europa.eu/esco/skill/071c7f1d-f659-4b96-a222-b21012297f3b",
+      "label": "contractenrecht",
+      "uri": "http://data.europa.eu/esco/skill/5c606d18-6404-4047-b235-350f18e11827",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "betalingen voor nutsvoorzieningen berekenen",
+      "uri": "http://data.europa.eu/esco/skill/644fce93-9abb-498d-9fbe-19dafc66dfbc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gasverbruik",
+      "uri": "http://data.europa.eu/esco/skill/3b73a161-be59-4079-815e-b4879f9b20b5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "industriële uitrusting inspecteren",
+      "uri": "http://data.europa.eu/esco/skill/94747ff4-603d-47d4-9780-bf53be41e190",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "technologieën voor hernieuwbare energie",
+      "uri": "http://data.europa.eu/esco/skill/f8413360-6114-40de-a276-c59b764b9913",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gezondheids- en veiligheidsprocedures plannen",
+      "uri": "http://data.europa.eu/esco/skill/bb663409-5c88-4e3a-bc16-01aa1c8ce171",
       "categorie": "optioneel"
     },
     {
@@ -290,13 +235,68 @@
       "categorie": "optioneel"
     },
     {
+      "label": "gasmarkt",
+      "uri": "http://data.europa.eu/esco/skill/1557a239-5ed4-48e6-9536-d1ac6eaefcf3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderzoeksvoorstellen schrijven",
+      "uri": "http://data.europa.eu/esco/skill/0ee7b0d6-db98-4785-9948-f2ef415d155a",
+      "categorie": "optioneel"
+    },
+    {
       "label": "trends op de energiemarkt analyseren",
       "uri": "http://data.europa.eu/esco/skill/28878fd9-9a17-452a-b3b8-5db5c63d7905",
       "categorie": "optioneel"
     },
     {
+      "label": "zorgen voor de beschikbaarheid van materiaal",
+      "uri": "http://data.europa.eu/esco/skill/69f23426-9279-4fe6-a283-24c2aa4c855d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderhoud van apparatuur garanderen",
+      "uri": "http://data.europa.eu/esco/skill/c927ec6e-9082-4b22-afd3-0c4e219eaf73",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "advies geven over mogelijke veiligheidsrisico’s betreffende verwarmingssystemen",
+      "uri": "http://data.europa.eu/esco/skill/649cab01-fa5e-4721-bf63-76dccc34f3f6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "concepten voor energiebesparing ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/0037c821-2898-4919-b96e-7ed1cd89554c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "samenwerken aan internationale energieprojecten",
+      "uri": "http://data.europa.eu/esco/skill/c565e722-0e14-4f57-99ff-267dd9ea2510",
+      "categorie": "optioneel"
+    },
+    {
       "label": "uitrusting voor nutsvoorzieningen controleren",
       "uri": "http://data.europa.eu/esco/skill/0b4c6885-eecd-48b5-b9da-c5c20a5f9550",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "defecten aan meters van nutsvoorzieningen vaststellen",
+      "uri": "http://data.europa.eu/esco/skill/48a83424-6758-4ad5-b5fa-ca3a32034431",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "energiemarkt",
+      "uri": "http://data.europa.eu/esco/skill/071c7f1d-f659-4b96-a222-b21012297f3b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "wetenschappelijke verhandelingen schrijven",
+      "uri": "http://data.europa.eu/esco/skill/c3c2420c-ce9a-4371-8eed-1db479c3a562",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "industriële verwarmingssystemen",
+      "uri": "http://data.europa.eu/esco/skill/c49eb4a4-7b5f-44e6-b346-7153879ac86b",
       "categorie": "optioneel"
     }
   ]

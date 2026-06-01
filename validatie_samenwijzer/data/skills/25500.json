@@ -28,13 +28,8 @@
   ],
   "skills": [
     {
-      "label": "informatie over het pretpark verstrekken",
-      "uri": "http://data.europa.eu/esco/skill/b31816f3-0591-46d1-8364-d273bd404c04",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "bezoekers aan een pretpark bijstaan",
-      "uri": "http://data.europa.eu/esco/skill/38efd8de-d313-4aa5-abc0-cefa5ec64002",
+      "label": "toezicht houden op de veiligheid in een pretpark",
+      "uri": "http://data.europa.eu/esco/skill/7df446fb-7e76-4a7e-9954-88706be77c27",
       "categorie": "essentieel"
     },
     {
@@ -43,8 +38,13 @@
       "categorie": "essentieel"
     },
     {
-      "label": "pretparkattracties bedienen",
-      "uri": "http://data.europa.eu/esco/skill/8e31a149-460d-4bd5-ae64-daf04b7c36ed",
+      "label": "faciliteiten in een pretpark reinigen",
+      "uri": "http://data.europa.eu/esco/skill/b9a9459c-befa-4b30-95b8-25b5dc83d8f1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "stands in pretpark bemannen",
+      "uri": "http://data.europa.eu/esco/skill/198ac61d-6820-484e-a0ad-2ca78c9b0ed0",
       "categorie": "essentieel"
     },
     {
@@ -53,23 +53,23 @@
       "categorie": "essentieel"
     },
     {
+      "label": "pretparkattracties bedienen",
+      "uri": "http://data.europa.eu/esco/skill/8e31a149-460d-4bd5-ae64-daf04b7c36ed",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "informatie over het pretpark verstrekken",
+      "uri": "http://data.europa.eu/esco/skill/b31816f3-0591-46d1-8364-d273bd404c04",
+      "categorie": "essentieel"
+    },
+    {
       "label": "noodprocedures in pretparken",
       "uri": "http://data.europa.eu/esco/skill/c585a661-1720-4138-8cc7-0029452a8534",
       "categorie": "essentieel"
     },
     {
-      "label": "faciliteiten in een pretpark reinigen",
-      "uri": "http://data.europa.eu/esco/skill/b9a9459c-befa-4b30-95b8-25b5dc83d8f1",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "toezicht houden op de veiligheid in een pretpark",
-      "uri": "http://data.europa.eu/esco/skill/7df446fb-7e76-4a7e-9954-88706be77c27",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "stands in pretpark bemannen",
-      "uri": "http://data.europa.eu/esco/skill/198ac61d-6820-484e-a0ad-2ca78c9b0ed0",
+      "label": "bezoekers aan een pretpark bijstaan",
+      "uri": "http://data.europa.eu/esco/skill/38efd8de-d313-4aa5-abc0-cefa5ec64002",
       "categorie": "essentieel"
     },
     {
@@ -93,13 +93,13 @@
       "categorie": "optioneel"
     },
     {
-      "label": "sportuitrusting verstrekken",
-      "uri": "http://data.europa.eu/esco/skill/2da5099a-48a8-406e-bff5-d703fde60724",
+      "label": "uitrusting van pretparken onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/1008da30-7690-42c8-94c7-3f3bd8885c00",
       "categorie": "optioneel"
     },
     {
-      "label": "uitrusting van pretparken onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/1008da30-7690-42c8-94c7-3f3bd8885c00",
+      "label": "sportuitrusting verstrekken",
+      "uri": "http://data.europa.eu/esco/skill/2da5099a-48a8-406e-bff5-d703fde60724",
       "categorie": "optioneel"
     },
     {

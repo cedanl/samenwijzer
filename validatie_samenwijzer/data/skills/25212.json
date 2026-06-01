@@ -20,48 +20,8 @@
   ],
   "skills": [
     {
-      "label": "werken met elektronische leeromgevingen",
-      "uri": "http://data.europa.eu/esco/skill/b78f324d-e16c-43f8-97d2-50d3a7cd1fb3",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "constructieve kritiek geven",
-      "uri": "http://data.europa.eu/esco/skill/b9bb1f03-15e2-4079-943e-7e483b21725b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "beoordelingsprocessen",
-      "uri": "http://data.europa.eu/esco/skill/31b67516-af16-4b97-8430-a8a8e0f84190",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "lesinhoud voorbereiden",
-      "uri": "http://data.europa.eu/esco/skill/20f57a7f-b90e-4403-8c77-5ddd89b5835b",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "cursusoverzicht ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/f0699875-51da-48d2-bc92-54b0749baef1",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "leerproblemen",
-      "uri": "http://data.europa.eu/esco/skill/731101d9-94bc-4805-bff4-9578d1bf03b5",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "ontwerpbeginselen",
-      "uri": "http://data.europa.eu/esco/skill/4c58528e-bdaa-43ad-8f5a-8ad0b8cd4bbb",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "klassenmanagement uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/cedd0710-62ae-4ff4-89ae-ac52375f86ec",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "vooruitgang van leerlingen volgen",
-      "uri": "http://data.europa.eu/esco/skill/3377f3b2-4ba2-457f-b29d-8df59e8cfba8",
+      "label": "principes van ontwerp en toegepaste kunst onderwijzen",
+      "uri": "http://data.europa.eu/esco/skill/7fa93d7f-8ff9-4878-9ad0-1968d75476aa",
       "categorie": "essentieel"
     },
     {
@@ -70,33 +30,8 @@
       "categorie": "essentieel"
     },
     {
-      "label": "veiligheid van studenten garanderen",
-      "uri": "http://data.europa.eu/esco/skill/11f536f5-b0e2-46a6-95c1-bd765946604c",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "in het beroepsonderwijs werken",
-      "uri": "http://data.europa.eu/esco/skill/ec74893f-e11b-471f-85e0-f7339da98d53",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "curriculumdoelstellingen",
-      "uri": "http://data.europa.eu/esco/skill/edff6d20-660d-4d33-b412-9a5b664a14be",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "onderwijs aanpassen aan de arbeidsmarkt",
-      "uri": "http://data.europa.eu/esco/skill/b4832996-b36c-40b2-b54e-780325b2546e",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "studentenrelaties beheren",
-      "uri": "http://data.europa.eu/esco/skill/44da96fe-26a3-4a32-9a0f-c49614bb7298",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "interculturele onderwijsstrategieën toepassen",
-      "uri": "http://data.europa.eu/esco/skill/e3ef4981-2cba-4b34-b273-728c3a33d04f",
+      "label": "studenten beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/6fe019dd-027f-45f3-b19c-d27f7ae00980",
       "categorie": "essentieel"
     },
     {
@@ -105,48 +40,13 @@
       "categorie": "essentieel"
     },
     {
-      "label": "onderwijsstrategieën toepassen",
-      "uri": "http://data.europa.eu/esco/skill/59eb177a-2f30-4943-8b30-5f87dd51a80d",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "onderwijs aanpassen aan de capaciteiten van de student",
-      "uri": "http://data.europa.eu/esco/skill/573d3f91-c81c-407e-a56d-0f3a63272b43",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "studenten bijstaan bij het leren",
-      "uri": "http://data.europa.eu/esco/skill/d5e1e30e-44ab-4aba-abab-b8263e801b7a",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "principes van ontwerp en toegepaste kunst onderwijzen",
-      "uri": "http://data.europa.eu/esco/skill/7fa93d7f-8ff9-4878-9ad0-1968d75476aa",
-      "categorie": "essentieel"
-    },
-    {
       "label": "studenten helpen met materiaal",
       "uri": "http://data.europa.eu/esco/skill/7530bc44-f09d-4dd2-8911-92b98333e442",
       "categorie": "essentieel"
     },
     {
-      "label": "studenten beoordelen",
-      "uri": "http://data.europa.eu/esco/skill/6fe019dd-027f-45f3-b19c-d27f7ae00980",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "teamwork tussen studenten aanmoedigen",
-      "uri": "http://data.europa.eu/esco/skill/229b10cf-6f3a-490c-9706-01c107df0562",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "principes van teamwerk",
-      "uri": "http://data.europa.eu/esco/skill/a5b0cd5c-e13a-4ab3-8d93-4d242adcfb01",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "in lesmateriaal voorzien",
-      "uri": "http://data.europa.eu/esco/skill/d39a5880-7d0a-4573-9f70-a75ff875bf83",
+      "label": "leerproblemen",
+      "uri": "http://data.europa.eu/esco/skill/731101d9-94bc-4805-bff4-9578d1bf03b5",
       "categorie": "essentieel"
     },
     {
@@ -155,8 +55,118 @@
       "categorie": "essentieel"
     },
     {
-      "label": "fotografie-apparatuur gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/c7b1e520-8921-46dd-b444-e0637323bb7f",
+      "label": "constructieve kritiek geven",
+      "uri": "http://data.europa.eu/esco/skill/b9bb1f03-15e2-4079-943e-7e483b21725b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "curriculumdoelstellingen",
+      "uri": "http://data.europa.eu/esco/skill/edff6d20-660d-4d33-b412-9a5b664a14be",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "principes van teamwerk",
+      "uri": "http://data.europa.eu/esco/skill/a5b0cd5c-e13a-4ab3-8d93-4d242adcfb01",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "lesinhoud voorbereiden",
+      "uri": "http://data.europa.eu/esco/skill/20f57a7f-b90e-4403-8c77-5ddd89b5835b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "studenten bijstaan bij het leren",
+      "uri": "http://data.europa.eu/esco/skill/d5e1e30e-44ab-4aba-abab-b8263e801b7a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "in het beroepsonderwijs werken",
+      "uri": "http://data.europa.eu/esco/skill/ec74893f-e11b-471f-85e0-f7339da98d53",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "studentenrelaties beheren",
+      "uri": "http://data.europa.eu/esco/skill/44da96fe-26a3-4a32-9a0f-c49614bb7298",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderwijs aanpassen aan de arbeidsmarkt",
+      "uri": "http://data.europa.eu/esco/skill/b4832996-b36c-40b2-b54e-780325b2546e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "interculturele onderwijsstrategieën toepassen",
+      "uri": "http://data.europa.eu/esco/skill/e3ef4981-2cba-4b34-b273-728c3a33d04f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderwijs aanpassen aan de capaciteiten van de student",
+      "uri": "http://data.europa.eu/esco/skill/573d3f91-c81c-407e-a56d-0f3a63272b43",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klassenmanagement uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/cedd0710-62ae-4ff4-89ae-ac52375f86ec",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "cursusoverzicht ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/f0699875-51da-48d2-bc92-54b0749baef1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderwijsstrategieën toepassen",
+      "uri": "http://data.europa.eu/esco/skill/59eb177a-2f30-4943-8b30-5f87dd51a80d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ontwerpbeginselen",
+      "uri": "http://data.europa.eu/esco/skill/4c58528e-bdaa-43ad-8f5a-8ad0b8cd4bbb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "teamwork tussen studenten aanmoedigen",
+      "uri": "http://data.europa.eu/esco/skill/229b10cf-6f3a-490c-9706-01c107df0562",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "in lesmateriaal voorzien",
+      "uri": "http://data.europa.eu/esco/skill/d39a5880-7d0a-4573-9f70-a75ff875bf83",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beoordelingsprocessen",
+      "uri": "http://data.europa.eu/esco/skill/31b67516-af16-4b97-8430-a8a8e0f84190",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vooruitgang van leerlingen volgen",
+      "uri": "http://data.europa.eu/esco/skill/3377f3b2-4ba2-457f-b29d-8df59e8cfba8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werken met elektronische leeromgevingen",
+      "uri": "http://data.europa.eu/esco/skill/b78f324d-e16c-43f8-97d2-50d3a7cd1fb3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veiligheid van studenten garanderen",
+      "uri": "http://data.europa.eu/esco/skill/11f536f5-b0e2-46a6-95c1-bd765946604c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "nabewerking van foto’s",
+      "uri": "http://data.europa.eu/esco/skill/d90bad2f-7fcc-4e85-a02f-ba4837732892",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "woningdecoratietechnieken",
+      "uri": "http://data.europa.eu/esco/skill/f42e294a-0bba-4e90-989a-9b1467170e6f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten handicaps",
+      "uri": "http://data.europa.eu/esco/skill/6b28bb69-a6ef-42d4-84df-46e498f09297",
       "categorie": "optioneel"
     },
     {
@@ -165,8 +175,38 @@
       "categorie": "optioneel"
     },
     {
+      "label": "3D-modellering",
+      "uri": "http://data.europa.eu/esco/skill/97965983-0da4-4902-9daf-d5cd2693ef73",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "specifiek interieurontwerp ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/ac51e567-2261-48c7-b0cb-97c07fc60b6c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klantenservicetechnieken aanleren",
+      "uri": "http://data.europa.eu/esco/skill/8d10ae08-3b0d-4bbb-86c5-25dd2c6858cd",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "middelen voor educatieve doeleinden beheren",
+      "uri": "http://data.europa.eu/esco/skill/860e85ee-5992-445a-b3d3-9bab524f7600",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "visuele geletterdheid bezitten",
+      "uri": "http://data.europa.eu/esco/skill/1f403e44-7a79-4b91-b86a-e406208be161",
+      "categorie": "optioneel"
+    },
+    {
       "label": "tuinontwerp",
       "uri": "http://data.europa.eu/esco/skill/6055a4be-3f41-47e3-acd1-0535fa17e04c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "grafisch ontwerp",
+      "uri": "http://data.europa.eu/esco/skill/7fb699d9-182a-430e-b7a0-6d8ed05c284b",
       "categorie": "optioneel"
     },
     {
@@ -180,78 +220,8 @@
       "categorie": "optioneel"
     },
     {
-      "label": "klantenservicetechnieken aanleren",
-      "uri": "http://data.europa.eu/esco/skill/8d10ae08-3b0d-4bbb-86c5-25dd2c6858cd",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "technische tekeningen",
-      "uri": "http://data.europa.eu/esco/skill/59ea80e1-463a-4dba-82c6-d0b6d577d532",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "specifiek interieurontwerp ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/ac51e567-2261-48c7-b0cb-97c07fc60b6c",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "visuele geletterdheid bezitten",
-      "uri": "http://data.europa.eu/esco/skill/1f403e44-7a79-4b91-b86a-e406208be161",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "3D-modellering",
-      "uri": "http://data.europa.eu/esco/skill/97965983-0da4-4902-9daf-d5cd2693ef73",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "samenwerken met ontwerpers",
-      "uri": "http://data.europa.eu/esco/skill/d52382fe-f236-421f-95fe-34fe69d48dbd",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "woningdecoratietechnieken",
-      "uri": "http://data.europa.eu/esco/skill/f42e294a-0bba-4e90-989a-9b1467170e6f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "motion graphics",
-      "uri": "http://data.europa.eu/esco/skill/8afe68ff-b261-4fa8-ab25-bb30b0e5c292",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "middelen voor educatieve doeleinden beheren",
-      "uri": "http://data.europa.eu/esco/skill/860e85ee-5992-445a-b3d3-9bab524f7600",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "fotografie",
-      "uri": "http://data.europa.eu/esco/skill/38509fa4-7c06-4a4b-9622-f521f03c37b8",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "3D-belichting",
-      "uri": "http://data.europa.eu/esco/skill/6e53fd99-b646-4327-9580-ac062ab21188",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "soorten handicaps",
-      "uri": "http://data.europa.eu/esco/skill/6b28bb69-a6ef-42d4-84df-46e498f09297",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "klantendiensten",
-      "uri": "http://data.europa.eu/esco/skill/15a33d76-4640-438d-ae64-fdc0c1d3eebc",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "grafische 3D-computersoftware bedienen",
-      "uri": "http://data.europa.eu/esco/skill/f5b33464-4df9-4cf3-b468-b0a2d6b3ee85",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "materialen voor binnenhuisarchitectuur",
-      "uri": "http://data.europa.eu/esco/skill/db845223-034b-4b59-b76f-290ba48167e1",
+      "label": "ontwerpschetsen tekenen",
+      "uri": "http://data.europa.eu/esco/skill/fc4fcb4b-993f-4f2c-b158-c2171ec18ed8",
       "categorie": "optioneel"
     },
     {
@@ -260,18 +230,48 @@
       "categorie": "optioneel"
     },
     {
-      "label": "grafisch ontwerp",
-      "uri": "http://data.europa.eu/esco/skill/7fb699d9-182a-430e-b7a0-6d8ed05c284b",
+      "label": "grafische 3D-computersoftware bedienen",
+      "uri": "http://data.europa.eu/esco/skill/f5b33464-4df9-4cf3-b468-b0a2d6b3ee85",
       "categorie": "optioneel"
     },
     {
-      "label": "nabewerking van foto’s",
-      "uri": "http://data.europa.eu/esco/skill/d90bad2f-7fcc-4e85-a02f-ba4837732892",
+      "label": "klantendiensten",
+      "uri": "http://data.europa.eu/esco/skill/15a33d76-4640-438d-ae64-fdc0c1d3eebc",
       "categorie": "optioneel"
     },
     {
-      "label": "ontwerpschetsen tekenen",
-      "uri": "http://data.europa.eu/esco/skill/fc4fcb4b-993f-4f2c-b158-c2171ec18ed8",
+      "label": "technische tekeningen",
+      "uri": "http://data.europa.eu/esco/skill/59ea80e1-463a-4dba-82c6-d0b6d577d532",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "motion graphics",
+      "uri": "http://data.europa.eu/esco/skill/8afe68ff-b261-4fa8-ab25-bb30b0e5c292",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "materialen voor binnenhuisarchitectuur",
+      "uri": "http://data.europa.eu/esco/skill/db845223-034b-4b59-b76f-290ba48167e1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "3D-belichting",
+      "uri": "http://data.europa.eu/esco/skill/6e53fd99-b646-4327-9580-ac062ab21188",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "fotografie-apparatuur gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/c7b1e520-8921-46dd-b444-e0637323bb7f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "fotografie",
+      "uri": "http://data.europa.eu/esco/skill/38509fa4-7c06-4a4b-9622-f521f03c37b8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "samenwerken met ontwerpers",
+      "uri": "http://data.europa.eu/esco/skill/d52382fe-f236-421f-95fe-34fe69d48dbd",
       "categorie": "optioneel"
     }
   ]

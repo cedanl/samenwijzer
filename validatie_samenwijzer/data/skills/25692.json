@@ -1,253 +1,134 @@
 {
   "crebo": "25692",
   "opleiding": "25692_BOL_2025__oer-2025-2026-ci-25692-allround-make-up-hair-artist",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "ontwerper kapsels en grime",
-    "uri": "http://data.europa.eu/esco/occupation/5dd01019-3999-4d90-bc8a-7a04b0b208b0",
-    "definitie": "Deze ontwerpers ontwikkelen een concept voor de make-up en het haar van performers en houden toezicht op de uitvoering ervan. Hun werk is gebaseerd op onderzoek en artistieke visie. Hun ontwerp wordt beïnvloed door en is van invloed op andere ontwerpen en moet daarmee in overeenstemming zijn en met de algemene artistieke visie. Daarom werken de ontwerpers nauw samen met artistiek directeuren, operatoren en het artistiek team. Make-up- en haardesigners maken schetsen, ontwerptekeningen of andere documentatie ter ondersteuning van de workshop en het performanceteam. Make-up-designers werken soms ook als zelfstandige artiesten, creëren make-upkunst buiten het kader van een performance. \n "
+    "label": "Allround make-up and hair artist",
+    "uri": "",
+    "definitie": "De Allround make-up and hair artist is voornamelijk actief in de podiumkunsten en de mediabranche. Vaak op locatie, van het theater en de filmset tot in de televisie- of fotostudio. Daar werkt hij/zij met onder andere regisseurs, kostuumontwerpers, producenten, lichtontwerpers, modellen en collega-grimeurs. Hij/zij geeft artiesten de gewenste uitstraling door middel van make-up, kapsels, haarwerken en prosthetics. Een deel van het voorbereidende werk voert hij/zij uit in een atelier, bijvoorbeeld om haarwerken en prosthetics te maken. De Allround make-up and hair artist is creatief, kan improviseren en weet in korte tijd creatieve oplossingen te bedenken. Hij/zij heeft een zakelijke instelling en heeft het doorzettingsvermogen om zich te kunnen blijven profileren in deze hevig concurrerende markt."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "grimeur",
-    "haarstylist",
-    "signmaker",
-    "ontwerper kapsels en grime",
-    "geluidskunstenaar",
-    "manager kledingwinkel",
-    "inspiciënt",
-    "slotenmaker",
-    "orthopedist",
-    "sterilisatieassistent",
-    "medisch dictafonist",
-    "ambulancechauffeur",
-    "body artist"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "verbeteringen voorstellen voor artistieke producties",
-      "uri": "http://data.europa.eu/esco/skill/9fd126c7-ae3d-470f-ba64-c27a85e5bb27",
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
       "categorie": "essentieel"
     },
     {
-      "label": "partituren analyseren",
-      "uri": "http://data.europa.eu/esco/skill/282a379e-249d-4cae-81ec-ce901a571801",
+      "label": "Ontwerpen van systemen en producten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B4866702BB",
       "categorie": "essentieel"
     },
     {
-      "label": "make-upontwerpen schetsen",
-      "uri": "http://data.europa.eu/esco/skill/9f8ace7a-46e0-4c00-a51c-a0ba9babe9de",
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
       "categorie": "essentieel"
     },
     {
-      "label": "beslissen over het make-upproces",
-      "uri": "http://data.europa.eu/esco/skill/0f36a58f-56ba-47dc-8bae-d3df3e5398fe",
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
       "categorie": "essentieel"
     },
     {
-      "label": "communiceren tijdens de voorstelling",
-      "uri": "http://data.europa.eu/esco/skill/4039158b-2e58-484a-8771-ad215e065c12",
+      "label": "Verzorgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DB59A57C01",
       "categorie": "essentieel"
     },
     {
-      "label": "communicatieapparatuur gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/7373abdb-ee5a-4949-b4ae-dee60ab37914",
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
       "categorie": "essentieel"
     },
     {
-      "label": "artistiek concept analyseren gebaseerd op acties op het podium",
-      "uri": "http://data.europa.eu/esco/skill/0207f83d-a1e4-4b47-b80c-84d41257791f",
+      "label": "Promoten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E06265451B",
       "categorie": "essentieel"
     },
     {
-      "label": "proces van pruiken maken bepalen",
-      "uri": "http://data.europa.eu/esco/skill/a5b58e14-a6f0-49bc-99e2-4879f3d13a55",
+      "label": "Kritisch nadenken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E1F935288C",
       "categorie": "essentieel"
     },
     {
-      "label": "nieuwe ideeën onderzoeken",
-      "uri": "http://data.europa.eu/esco/skill/4fc1d2b4-9645-4fda-be99-abdf8e66c88d",
+      "label": "Handvaardigheid",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E66E6D3B86",
       "categorie": "essentieel"
     },
     {
-      "label": "ontwerpconcepten ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/dade132a-487b-40fb-9d8e-f20ce5e6c076",
+      "label": "Bedrijfsadministratie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/10FFC5435D",
       "categorie": "essentieel"
     },
     {
-      "label": "sociologische tendensen observeren",
-      "uri": "http://data.europa.eu/esco/skill/2cc30e4e-2139-411a-9fa9-f0d616b64c57",
+      "label": "Kunstgeschiedenis",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/12ECAC0B4C",
       "categorie": "essentieel"
     },
     {
-      "label": "scenografie analyseren",
-      "uri": "http://data.europa.eu/esco/skill/390bd026-943b-44a5-b871-def0248e26b8",
+      "label": "Haarverzorging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/269B33BF53",
       "categorie": "essentieel"
     },
     {
-      "label": "haalbaarheid controleren",
-      "uri": "http://data.europa.eu/esco/skill/5cede168-97f8-47a4-89fd-8f7188c55c5d",
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
       "categorie": "essentieel"
     },
     {
-      "label": "scenario analyseren",
-      "uri": "http://data.europa.eu/esco/skill/97db841c-31bf-4aa0-85b9-0ddd0a77b7a5",
+      "label": "Gezondheidszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36530C542F",
       "categorie": "essentieel"
     },
     {
-      "label": "gedetailleerde ontwerpvoorstellen indienen",
-      "uri": "http://data.europa.eu/esco/skill/b87f6102-5bab-4e99-a5d8-11b6be1b99c2",
+      "label": "Biologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/54690E3D68",
       "categorie": "essentieel"
     },
     {
-      "label": "ontwerpresultaten tijdens repetities bijwerken",
-      "uri": "http://data.europa.eu/esco/skill/43f0bfbb-8cda-4e31-8dcc-9ea479aae08c",
+      "label": "Muziek en theater",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/643535A0FB",
       "categorie": "essentieel"
     },
     {
-      "label": "veilig met chemicaliën werken",
-      "uri": "http://data.europa.eu/esco/skill/89d2bb53-67fc-4b9e-80c7-07b6c587bc0d",
+      "label": "Fotografie, film, video",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/64914742BC",
       "categorie": "essentieel"
     },
     {
-      "label": "make-upeffecten ontwerpen",
-      "uri": "http://data.europa.eu/esco/skill/f5eed756-2883-46fe-8990-729100cc3e4b",
+      "label": "Kleurenleer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/814C4DE179",
       "categorie": "essentieel"
     },
     {
-      "label": "personeel coachen om een voorstelling te leiden",
-      "uri": "http://data.europa.eu/esco/skill/91a58da7-2111-4a03-9874-37311e105d06",
+      "label": "Commerciële economie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8E7697EE1A",
       "categorie": "essentieel"
     },
     {
-      "label": "kwaliteitscontrole van een ontwerp uitvoeren tijdens een voorstellingenreeks",
-      "uri": "http://data.europa.eu/esco/skill/3a1c546d-914a-46e4-a7c1-47d43646fedd",
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
       "categorie": "essentieel"
     },
     {
-      "label": "zich aanpassen aan creatieve eisen van artiesten",
-      "uri": "http://data.europa.eu/esco/skill/591dd514-735b-46e4-a28d-3a4c42f49b72",
+      "label": "Personeelswerk",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AA15132AFE",
       "categorie": "essentieel"
     },
     {
-      "label": "ontwikkelingen in technologie die gebruikt wordt in het ontwerp opvolgen",
-      "uri": "http://data.europa.eu/esco/skill/0d90f823-6f6a-44df-8ab0-1771300d9660",
+      "label": "Schoonheids-, lichaamsverzorging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C37A10D447",
       "categorie": "essentieel"
     },
     {
-      "label": "artistieke concepten omzetten in technische ontwerpen",
-      "uri": "http://data.europa.eu/esco/skill/88de5ff4-310a-4f4f-9b47-349eb5589902",
+      "label": "Marketing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E6A75FB995",
       "categorie": "essentieel"
     },
     {
-      "label": "deadlines halen",
-      "uri": "http://data.europa.eu/esco/skill/91abe492-18be-4cce-93c7-0dca07072363",
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
       "categorie": "essentieel"
-    },
-    {
-      "label": "artistieke concepten begrijpen",
-      "uri": "http://data.europa.eu/esco/skill/1633770e-5606-4422-b293-6c8c551fe663",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "artistieke kwaliteit van een voorstelling beschermen",
-      "uri": "http://data.europa.eu/esco/skill/1e8751e3-9b7a-4230-a6e5-83bf57fb70b6",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "in samenwerking ontwerpideeën ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/fcc0a1c8-d36e-4f8e-b928-00d5bca10a47",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "bestaande ontwerpen aanpassen aan gewijzigde omstandigheden",
-      "uri": "http://data.europa.eu/esco/skill/c0733631-0c5e-4b5c-a291-aad52ca493ce",
-      "categorie": "essentieel"
-    },
-    {
-      "label": "eigen werkwijze documenteren",
-      "uri": "http://data.europa.eu/esco/skill/cdf83a12-56d4-4e3c-ad0b-af1c1f21c62a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "pruiken verven",
-      "uri": "http://data.europa.eu/esco/skill/44e3aac3-d9c4-4d3f-a765-7266fefee47a",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "middelen voor artistieke producties organiseren",
-      "uri": "http://data.europa.eu/esco/skill/9b6a88df-d64d-4c06-ad01-dc23dc92632d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "pruiken maken",
-      "uri": "http://data.europa.eu/esco/skill/955e770e-9d0d-4968-9856-0fe55992985f",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "levensechte afgietsels creëren",
-      "uri": "http://data.europa.eu/esco/skill/b07593d9-fa33-4554-ab08-b38ef5837ca7",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "budget bijwerken",
-      "uri": "http://data.europa.eu/esco/skill/4ce09e3d-ca6b-424a-a328-7f551db75e59",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "brandpreventie uitvoeren bij optredens",
-      "uri": "http://data.europa.eu/esco/skill/5f08605b-aa03-45ed-bc49-395477783a38",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "werken met aandacht voor de eigen veiligheid",
-      "uri": "http://data.europa.eu/esco/skill/b73035a9-bf06-412c-9796-db579f85995c",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "team leiden",
-      "uri": "http://data.europa.eu/esco/skill/1f1d2ff8-c4c1-45cc-9812-6a7ee84a73cb",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "artistieke producties beschrijven",
-      "uri": "http://data.europa.eu/esco/skill/02c7caf4-4e8b-4745-8917-dbbd3af17c28",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "wetgeving inzake auteursrecht",
-      "uri": "http://data.europa.eu/esco/skill/e2103a1d-4a84-47a9-b4f7-774787573449",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "documentatie leveren",
-      "uri": "http://data.europa.eu/esco/skill/2636b3d3-843e-46a9-8b4c-a9d6ca3f5a2d",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "behoefte aan technische middelen analyseren",
-      "uri": "http://data.europa.eu/esco/skill/8c8d0196-4acd-4217-89cb-abaf96845b14",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "make-up testen",
-      "uri": "http://data.europa.eu/esco/skill/2c6439c2-77a5-436a-b222-5e12d435c3eb",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "persoonlijke administratie bijhouden",
-      "uri": "http://data.europa.eu/esco/skill/9df34bc3-25d4-4452-a896-4d19b94ef896",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "persoonlijke beschermingsmiddelen gebruiken",
-      "uri": "http://data.europa.eu/esco/skill/51754b8a-3e2c-4cc1-86e6-cf510d9c6fe4",
-      "categorie": "optioneel"
-    },
-    {
-      "label": "arbeidswetgeving",
-      "uri": "http://data.europa.eu/esco/skill/08fe5910-8c4c-4679-a988-eb2ded3c4909",
-      "categorie": "optioneel"
     }
   ]
 }

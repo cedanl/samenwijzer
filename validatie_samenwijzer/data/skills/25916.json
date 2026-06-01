@@ -1,163 +1,204 @@
 {
   "crebo": "25916",
   "opleiding": "25916_BOL_2025__Examenplannen Hippisch 25-26",
-  "bron": "ESCO",
+  "bron": "CompetentNL",
   "beroep": {
-    "label": "instructeur paardensport",
-    "uri": "http://data.europa.eu/esco/occupation/0c3672ed-450b-4fcd-a3d0-579a10004486",
-    "definitie": "Instructeurs paardensport adviseren en begeleiden personen en groepen op het gebied van paardrijden. Ze geven lessen en tonen de technieken van paardrijden, met inbegrip van het stoppen, draaien, show-riding en springen. Zij motiveren hun cliënten en helpen hun prestaties te verbeteren."
+    "label": "Bedrijfsleider paardensport en -houderij",
+    "uri": "",
+    "definitie": "De bedrijfsleider paardensport en -houderij beschikt over specialistisch kennis van de gezondheid en het gedrag van paarden. Deze leidt het bedrijf/de onderneming en is verantwoordelijk voor de bedrijfsvoering. Als bedrijfsleider heeft hij/zij een ondernemende, commerciële en proactieve houding. Deze ziet maatschappelijke ontwikkelingen en trends als kansen voor de onderneming. Hierbij heeft deze voortdurende aandacht voor de wensen en (on)mogelijkheden van zijn/haar klanten, maar ook inbreng van diens collega’s. Deze kan omgaan met een grote diversiteit aan klantgroepen, met verschillende belangen."
   },
-  "match_methode": "llm-keuze",
-  "kandidaten": [
-    "instructeur paardensport",
-    "boerderijmanager",
-    "collectiebeheerder dierentuin",
-    "specialist taxatie bedrijfsovername",
-    "enveloppenmaker",
-    "pijpleidingoperator",
-    "procesoperator zetmeelextractie",
-    "beeldhouwer"
-  ],
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
   "skills": [
     {
-      "label": "voorbeelden geven bij het leren",
-      "uri": "http://data.europa.eu/esco/skill/b32e593b-cc7f-4f38-bf50-e69431ec7ada",
+      "label": "Informatie ordenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/299CE88E49",
       "categorie": "essentieel"
     },
     {
-      "label": "paarden berijden",
-      "uri": "http://data.europa.eu/esco/skill/f31bc8df-aa92-4371-a2b4-18215fcb9700",
+      "label": "Organisatiesensitiviteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3D18A18F12",
       "categorie": "essentieel"
     },
     {
-      "label": "paardrijuitrusting",
-      "uri": "http://data.europa.eu/esco/skill/0faefe0b-17d1-4fa7-87ee-3c21096765c0",
+      "label": "Netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3DECCF2E7C",
       "categorie": "essentieel"
     },
     {
-      "label": "sportprogramma’s ontwikkelen",
-      "uri": "http://data.europa.eu/esco/skill/5e22c646-8932-4622-a6bc-87d46b8fdf02",
+      "label": "Systeemanalyse",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4186375D3A",
       "categorie": "essentieel"
     },
     {
-      "label": "professionele houding tegenover klanten demonstreren",
-      "uri": "http://data.europa.eu/esco/skill/4adb861b-3ad8-4f0d-9343-decf59748d56",
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
       "categorie": "essentieel"
     },
     {
-      "label": "klantenservice verlenen",
-      "uri": "http://data.europa.eu/esco/skill/75dfe1ee-5935-42ce-b820-697f827825c3",
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
       "categorie": "essentieel"
     },
     {
-      "label": "zorgen voor risicobeheer in sport",
-      "uri": "http://data.europa.eu/esco/skill/ada1d7d1-c887-4a28-b399-0d589b938786",
+      "label": "Materiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/5C8ADA7777",
       "categorie": "essentieel"
     },
     {
-      "label": "sportlessen geven",
-      "uri": "http://data.europa.eu/esco/skill/dbadb531-2fb9-4361-b80b-9be8c3c54229",
+      "label": "Instrueren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6AE2F3F890",
       "categorie": "essentieel"
     },
     {
-      "label": "constructieve kritiek geven",
-      "uri": "http://data.europa.eu/esco/skill/b9bb1f03-15e2-4079-943e-7e483b21725b",
+      "label": "Bedrijfsprocessen verbeteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7C37C4FF38",
       "categorie": "essentieel"
     },
     {
-      "label": "paardrijden",
-      "uri": "http://data.europa.eu/esco/skill/1c70f577-4c90-4fa9-9fc8-ac594c19dd52",
+      "label": "Financiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/BC3AB34C1A",
       "categorie": "essentieel"
     },
     {
-      "label": "lesprogramma's voor sport plannen",
-      "uri": "http://data.europa.eu/esco/skill/65baf502-04a6-41c9-962f-9629de5c5a0a",
+      "label": "Delegeren ",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C8730D1BAB",
       "categorie": "essentieel"
     },
     {
-      "label": "sportieve omgeving organiseren",
-      "uri": "http://data.europa.eu/esco/skill/e4edb520-b083-4685-92cd-00f6964cb372",
+      "label": "Leergierig zijn",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CB768EFA19",
       "categorie": "essentieel"
     },
     {
-      "label": "onderwijs aanpassen aan de doelgroep",
-      "uri": "http://data.europa.eu/esco/skill/b2a9587a-49a4-4384-b134-0d394be806e3",
+      "label": "Adviseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CECB22E3FA",
       "categorie": "essentieel"
     },
     {
-      "label": "anatomie van paarden",
-      "uri": "http://data.europa.eu/esco/skill/8011182a-6c09-4688-92ee-563c435d381e",
-      "categorie": "optioneel"
+      "label": "Verplaatsen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D16A30C42A",
+      "categorie": "essentieel"
     },
     {
-      "label": "paarden trainen",
-      "uri": "http://data.europa.eu/esco/skill/0d69dcea-0d40-4e66-988d-b8e64d81ec76",
-      "categorie": "optioneel"
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
     },
     {
-      "label": "zelfbeoordelingen uitvoeren",
-      "uri": "http://data.europa.eu/esco/skill/409a0245-0e6c-4aac-ba16-0920ecb76a8d",
-      "categorie": "optioneel"
+      "label": "Timemanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D98DE01097",
+      "categorie": "essentieel"
     },
     {
-      "label": "paarden verzorgen",
-      "uri": "http://data.europa.eu/esco/skill/540e80b9-0e1e-4842-a9d8-e46804e567f0",
-      "categorie": "optioneel"
+      "label": "Verzorgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DB59A57C01",
+      "categorie": "essentieel"
     },
     {
-      "label": "onderwijsstrategieën toepassen",
-      "uri": "http://data.europa.eu/esco/skill/59eb177a-2f30-4943-8b30-5f87dd51a80d",
-      "categorie": "optioneel"
+      "label": "Nieuwsgierigheid tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DB64E761DE",
+      "categorie": "essentieel"
     },
     {
-      "label": "eerste hulp bieden aan dieren",
-      "uri": "http://data.europa.eu/esco/skill/546aaf54-8f69-4573-837c-b60e00327edc",
-      "categorie": "optioneel"
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
     },
     {
-      "label": "eerste hulp bieden",
-      "uri": "http://data.europa.eu/esco/skill/1d21f6ad-340f-45da-a0a3-4e83867f47a6",
-      "categorie": "optioneel"
+      "label": "Bedrijfsadministratie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/10FFC5435D",
+      "categorie": "essentieel"
     },
     {
-      "label": "balans tussen rust en activiteit bevorderen",
-      "uri": "http://data.europa.eu/esco/skill/9efc639c-712f-4857-acf9-ad311b7d69f3",
-      "categorie": "optioneel"
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
+      "categorie": "essentieel"
     },
     {
-      "label": "paarden vervoeren",
-      "uri": "http://data.europa.eu/esco/skill/c4a8f38e-6ce0-4175-8c0d-1239b6f2b932",
-      "categorie": "optioneel"
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
     },
     {
-      "label": "principes van teamwerk",
-      "uri": "http://data.europa.eu/esco/skill/a5b0cd5c-e13a-4ab3-8d93-4d242adcfb01",
-      "categorie": "optioneel"
+      "label": "Paardenverzorging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/32559922CA",
+      "categorie": "essentieel"
     },
     {
-      "label": "klanten met bijzondere behoeften assisteren",
-      "uri": "http://data.europa.eu/esco/skill/b6b2e665-1085-4f4d-9973-e979721815d7",
-      "categorie": "optioneel"
+      "label": "Veeteelt",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3C7D38D367",
+      "categorie": "essentieel"
     },
     {
-      "label": "zorgen voor paarden",
-      "uri": "http://data.europa.eu/esco/skill/b669ef64-b137-4b0d-ad20-662934a6c1f9",
-      "categorie": "optioneel"
+      "label": "Didactiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4D223374A5",
+      "categorie": "essentieel"
     },
     {
-      "label": "werkrelaties onderhouden",
-      "uri": "http://data.europa.eu/esco/skill/18119ac9-9e43-4da3-8b79-45dd75fe6510",
-      "categorie": "optioneel"
+      "label": "Biologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/54690E3D68",
+      "categorie": "essentieel"
     },
     {
-      "label": "motiveren tijdens het sporten",
-      "uri": "http://data.europa.eu/esco/skill/ece81686-331c-4381-bf3f-5ea610d47a7f",
-      "categorie": "optioneel"
+      "label": "Sport en bewegen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/67945BB58E",
+      "categorie": "essentieel"
     },
     {
-      "label": "met verschillende doelgroepen werken",
-      "uri": "http://data.europa.eu/esco/skill/56ec6990-3e5b-475f-88e4-2c209f5625b3",
-      "categorie": "optioneel"
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Sportinstructie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9144FBEBE8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voorraad- en magazijnbeheer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/99D6345CD2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Facilitaire dienstverlening",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A623098860",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Personeelswerk",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AA15132AFE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Diergeneeskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C31FB4F8F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Public relations",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DDB33F7221",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reiniging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FB169E4860",
+      "categorie": "essentieel"
     }
   ]
 }
