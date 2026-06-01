@@ -188,6 +188,55 @@ def extraheer_kerntaken(tekst: str) -> list[dict]:
     return resultaten
 
 
+# Inhoudsopgaveregels in een KD dragen trailing dotted leaders + paginanummer,
+# bv. "Voert preventieve werkzaamheden uit  ...........  6".
+_KD_LEADER_PATROON = re.compile(r"\s*\.{2,}\s*\d*\s*$")
+
+
+def _schoon_kd_naam(naam: str) -> str:
+    """Verwijder trailing dotted leaders en paginanummer uit een KD-inhoudsopgaveregel."""
+    return _KD_LEADER_PATROON.sub("", naam).strip()
+
+
+def _kerntaken_uit_kd(tekst: str) -> list[dict]:
+    """Kerntaken/werkprocessen uit een kwalificatiedossier-markdown.
+
+    Hergebruikt de OER-extractor maar schoont KD-specifieke dotted leaders uit de
+    namen en dedupt per (type, code) — de inhoudsopgave noemt elke code één keer
+    schoon, de body herhaalt hem soms gewrapt of met trailing prose. Het eerste
+    voorkomen wint: de inhoudsopgave staat vóór de body, dus dat is de schone vorm.
+    """
+    beste: dict[tuple[str, str], dict] = {}
+    for kt in extraheer_kerntaken(tekst):
+        sleutel = (kt["type"], kt["code"])
+        if sleutel not in beste:
+            beste[sleutel] = {**kt, "naam": _schoon_kd_naam(kt["naam"])}
+
+    resultaat = sorted(beste.values(), key=lambda k: k["volgorde"])
+    for i, kt in enumerate(resultaat):
+        kt["volgorde"] = i
+    return resultaat
+
+
+def _pad_kwalificatiedossier(crebo: str | None) -> Path | None:
+    """Pad naar <crebo>.md van het kwalificatiedossier, of None als de crebo leeg is
+    of het bestand ontbreekt.
+
+    Spiegelt ``chat.pad_kwalificatiedossier`` bewust zonder import: chat.py trekt
+    ``anthropic`` binnen en hoort niet in de ingest-pijplijn. Default-pad
+    ``<repo-root>/kwalificatiedossiers/pdfs``; override via ``KWALDOSSIERS_PAD``.
+    """
+    if not crebo:
+        return None
+    base = os.environ.get("KWALDOSSIERS_PAD")
+    if base:
+        directory = Path(base).resolve()
+    else:
+        directory = Path(__file__).resolve().parents[3] / "kwalificatiedossiers" / "pdfs"
+    pad = directory / f"{crebo}.md"
+    return pad if pad.exists() else None
+
+
 # ── Tekstextractie per bestandstype ──────────────────────────────────────────
 
 _OCR_DREMPEL = 100  # minimaal aantal tekens voor acceptabele tekst
@@ -386,7 +435,7 @@ def _verwerk_bestand(
     result = _resolveer_oer(pad, instelling_naam, conn, reset=reset)
     if result is None:
         return
-    oer_id, _meta = result
+    oer_id, meta = result
 
     log.info("Verwerk '%s' (oer_id=%d)...", pad.name, oer_id)
 
@@ -407,6 +456,22 @@ def _verwerk_bestand(
         return
 
     kerntaken = extraheer_kerntaken(tekst)
+    if not kerntaken:
+        kd_pad = _pad_kwalificatiedossier(meta["crebo"])
+        if kd_pad is not None:
+            try:
+                kd_tekst = kd_pad.read_text(encoding="utf-8", errors="replace")
+            except OSError as e:
+                log.warning("Kan KD niet lezen voor '%s': %s", pad.name, e)
+                kd_tekst = ""
+            kerntaken = _kerntaken_uit_kd(kd_tekst)
+            if kerntaken:
+                log.info(
+                    "Geen kerntaken in OER '%s'; %d kerntaken uit KD %s gehaald.",
+                    pad.name,
+                    len(kerntaken),
+                    meta["crebo"],
+                )
     for kt in kerntaken:
         voeg_kerntaak_toe(
             conn,

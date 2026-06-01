@@ -1,7 +1,33 @@
+import sqlite3
+
+import pytest
+
+from validatie_samenwijzer.db import (
+    get_kerntaken_by_oer_id,
+    init_db,
+    voeg_instelling_toe,
+)
 from validatie_samenwijzer.ingest import (
+    _kerntaken_uit_kd,
+    _pad_kwalificatiedossier,
+    _schoon_kd_naam,
+    _verwerk_bestand,
     extraheer_kerntaken,
     parseer_bestandsnaam,
 )
+
+
+@pytest.fixture
+def conn():
+    c = sqlite3.connect(":memory:")
+    c.row_factory = sqlite3.Row
+    init_db(c)
+    yield c
+    c.close()
+
+
+def _oer_id(conn) -> int:
+    return conn.execute("SELECT id FROM oer_documenten").fetchone()[0]
 
 
 def test_parseer_bestandsnaam_davinci():
@@ -90,3 +116,101 @@ def test_extraheer_kerntaken_dedupt_binnen_document():
     kt = extraheer_kerntaken(tekst)
     namen = [k["naam"] for k in kt]
     assert namen.count("Bieden van zorg en ondersteuning in het verpleegkundig proces") == 1
+
+
+def test_kerntaken_uit_kd_schoont_en_dedupt_per_code():
+    # TOC-regel (schoon, lang) + body-herhaling (gewrapt, korter, geen dubbelepunt).
+    kd_tekst = """
+    B1-K1:  Brengt de modewereld in beeld en ontwikkelt een modeconcept  ......  9
+    B1-K1-W1:  Verzamelt en verwerkt informatie over ontwikkelingen in de mode  ..  10
+
+    later in het document:
+    B1-K1 Brengt de modewereld in beeld en
+    """
+    kt = _kerntaken_uit_kd(kd_tekst)
+    per_code = {k["code"]: k for k in kt}
+    assert sorted(per_code) == ["B1-K1", "B1-K1-W1"]
+    verwachte_naam = "Brengt de modewereld in beeld en ontwikkelt een modeconcept"
+    assert per_code["B1-K1"]["naam"] == verwachte_naam
+    assert per_code["B1-K1"]["type"] == "kerntaak"
+    assert per_code["B1-K1-W1"]["type"] == "werkproces"
+    assert sorted(k["volgorde"] for k in kt) == [0, 1]
+
+
+def test_kerntaken_uit_kd_inhoudsopgave_wint_van_langere_body_regel():
+    # Een body-regel voor dezelfde code is LANGER dan de inhoudsopgave; de schone
+    # inhoudsopgave (eerste voorkomen) moet toch winnen — niet de langste naam.
+    kd_tekst = """
+    B1-K1:  Voert preventieve werkzaamheden uit  ......  6
+
+    verderop in het document, met trailing prose op dezelfde regel:
+    B1-K1: Voert preventieve werkzaamheden uit met allerlei aanvullende uitleg en context
+    """
+    per_code = {k["code"]: k for k in _kerntaken_uit_kd(kd_tekst)}
+    assert per_code["B1-K1"]["naam"] == "Voert preventieve werkzaamheden uit"
+
+
+def test_schoon_kd_naam_verwijdert_dotted_leaders():
+    ruw = "Uitvoeren metingen leefomgeving en rapporteren resultaten  ...........  6"
+    assert _schoon_kd_naam(ruw) == "Uitvoeren metingen leefomgeving en rapporteren resultaten"
+
+
+def test_schoon_kd_naam_zonder_leaders_blijft_gelijk():
+    assert _schoon_kd_naam("Voert toegangscontroles uit") == "Voert toegangscontroles uit"
+
+
+def test_pad_kwalificatiedossier_via_env(tmp_path, monkeypatch):
+    (tmp_path / "25690.md").write_text("x", encoding="utf-8")
+    monkeypatch.setenv("KWALDOSSIERS_PAD", str(tmp_path))
+    pad = _pad_kwalificatiedossier("25690")
+    assert pad is not None and pad.name == "25690.md"
+
+
+def test_pad_kwalificatiedossier_ontbrekend_bestand(tmp_path, monkeypatch):
+    monkeypatch.setenv("KWALDOSSIERS_PAD", str(tmp_path))
+    assert _pad_kwalificatiedossier("99999") is None
+
+
+def test_pad_kwalificatiedossier_lege_crebo(tmp_path, monkeypatch):
+    monkeypatch.setenv("KWALDOSSIERS_PAD", str(tmp_path))
+    assert _pad_kwalificatiedossier(None) is None
+
+
+def test_verwerk_bestand_valt_terug_op_kd_bij_nul_oer_kerntaken(tmp_path, monkeypatch, conn):
+    voeg_instelling_toe(conn, "talland", "Talland")
+    oer = tmp_path / "25690_BOL_2025__Beveiliger.md"
+    oer.write_text("Algemene inleiding zonder enige kerntaakcode.\n", encoding="utf-8")
+    kd_dir = tmp_path / "kd"
+    kd_dir.mkdir()
+    (kd_dir / "25690.md").write_text(
+        "B1-K1:  Voert preventieve werkzaamheden uit ten behoeve van veiligheid  ....  6\n"
+        "B1-K1-W1:  Voert toegangs- en uitgangscontroles uit  ..........  7\n",
+        encoding="utf-8",
+    )
+    monkeypatch.setenv("KWALDOSSIERS_PAD", str(kd_dir))
+
+    _verwerk_bestand(oer, "talland", conn)
+
+    kt = get_kerntaken_by_oer_id(conn, _oer_id(conn))
+    codes = {r["code"] for r in kt}
+    assert {"B1-K1", "B1-K1-W1"} <= codes
+    namen = {r["naam"] for r in kt}
+    assert "Voert preventieve werkzaamheden uit ten behoeve van veiligheid" in namen
+
+
+def test_verwerk_bestand_negeert_kd_als_oer_kerntaken_heeft(tmp_path, monkeypatch, conn):
+    voeg_instelling_toe(conn, "talland", "Talland")
+    oer = tmp_path / "25690_BOL_2025__Beveiliger.md"
+    oer.write_text("B1-K1: Voert preventieve werkzaamheden uit ten behoeve\n", encoding="utf-8")
+    kd_dir = tmp_path / "kd"
+    kd_dir.mkdir()
+    (kd_dir / "25690.md").write_text(
+        "B9-K9: Heel ander kerntaakprofiel uit het KD\n", encoding="utf-8"
+    )
+    monkeypatch.setenv("KWALDOSSIERS_PAD", str(kd_dir))
+
+    _verwerk_bestand(oer, "talland", conn)
+
+    codes = {r["code"] for r in get_kerntaken_by_oer_id(conn, _oer_id(conn))}
+    assert "B1-K1" in codes
+    assert "B9-K9" not in codes
