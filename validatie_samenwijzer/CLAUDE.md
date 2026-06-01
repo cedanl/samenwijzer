@@ -234,6 +234,12 @@ Geen chunking, geen embeddings, geen vector store. De volledige OER-tekst wordt 
 chat-tijd geladen door `chat.laad_oer_tekst()` (voorkeur: `<stem>.md` van markitdown,
 fallback: pdfplumber over de PDF).
 
+**KD-fallback (issue #53)**: levert de OER nul kerntaken op (bv. Aeres/Rijn IJssel-examenplannen
+die de kwalificatiestructuur niet uitschrijven), dan draait `_verwerk_bestand` dezelfde extractor
+over het kwalificatiedossier van die crebo (`_kerntaken_uit_kd` over `<crebo>.md`, pad via
+`_pad_kwalificatiedossier`). **Fire-at-zero + supplement-never-replace**: vuurt uitsluitend bij
+nul OER-kerntaken, dus instellingen die hun kerntaken wél in de OER hebben blijven OER-bron.
+
 `parseer_bestandsnaam()` kent twee patronen:
 1. Da Vinci-stijl: `25168BOL2025Examenplan.pdf` — crebo+leerweg+jaar aaneengesloten
 2. Fallback: 5-cijferig getal als crebo, BOL/BBL en jaar los — dekt Rijn IJssel en Talland
