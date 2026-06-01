@@ -1,0 +1,206 @@
+{
+  "crebo": "25762",
+  "opleiding": "25762_BBL_2025__25762BBL2025MJP_Procesoperator-B",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "procesoperator zetmeel",
+    "uri": "http://data.europa.eu/esco/occupation/375a4d32-0950-45db-9d85-3fc2a86f1d85",
+    "definitie": "Procesoperators zetmeel bedienen converters om zetmeel om te zetten in glucose of maïssiroop. Na verwerking testen zij de producten om de zuiverheid ervan te verifiëren."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "procesoperator ciderfermentatie",
+    "procesoperator neutralisatie van nitroglycerine",
+    "procesoperator diepvriesmaaltijden",
+    "procesoperator zetmeel",
+    "operator vormkarton",
+    "procesoperator zeeppoederproductie",
+    "procesoperator moutoven",
+    "operator glazuuroven",
+    "kwaliteitsmanager in de industrie",
+    "engineer industriële automatisering",
+    "instrumentatie-ingenieur",
+    "assemblagemonteur industriële installaties",
+    "vertegenwoordiger machines en industriële apparatuur",
+    "import-exportmanager machines, industriële apparatuur, schepen en luchtvaartuigen",
+    "bediener van gerobotiseerde installaties",
+    "distributiemanager machines, industriële apparatuur, schepen en luchtvaartuigen"
+  ],
+  "skills": [
+    {
+      "label": "op het gemak zijn in onveilige omgevingen",
+      "uri": "http://data.europa.eu/esco/skill/6dce7757-c416-4cec-bd2e-9f2319438c48",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "temperatuur in het productieproces van levensmiddelen en dranken volgen",
+      "uri": "http://data.europa.eu/esco/skill/cfcc2266-a578-4300-93ce-ce7860c7398c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "machines voor maiszetmeelextractie bedienen",
+      "uri": "http://data.europa.eu/esco/skill/2753213c-fcc5-45cc-adda-d66dd63c1aa1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zetmeelsoorten",
+      "uri": "http://data.europa.eu/esco/skill/71581d4b-65e2-4d60-af92-50f07ae39e9c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "productieprocessen van zetmeel",
+      "uri": "http://data.europa.eu/esco/skill/8bbb4eda-7964-4d30-8cbf-2742efbec484",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "taakgegevens bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/43b13058-68d0-40c6-8031-caf5a7b7d20c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beleidslijnen van de organisatie naleven",
+      "uri": "http://data.europa.eu/esco/skill/aa238394-8126-4ada-be2f-9dfe065cf314",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "goede productiepraktijken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/bf7a45c4-0d72-4e6e-9da7-127b2b6656b7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "extractieprocedé van maïszetmeel",
+      "uri": "http://data.europa.eu/esco/skill/831b7626-0d0b-46b0-a3cd-c613b286f99f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "monsters voor analyse verzamelen",
+      "uri": "http://data.europa.eu/esco/skill/4bbb309f-9162-49b9-93da-fb2c371e5c5f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "productievoorschriften voor voedingsmiddelen en dranken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/bc250150-3372-42c9-834a-a1b65f89ca0b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "filters gebruiken om zetmeel te ontwateren",
+      "uri": "http://data.europa.eu/esco/skill/246500df-dab3-43b5-bb92-31a0c89ba8e8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "pH-waarde meten",
+      "uri": "http://data.europa.eu/esco/skill/5c0e81b5-9d3d-4933-82f1-9af41ca43407",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "controles van fabrieksinstallaties uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/c2241f73-9151-4817-96b2-b9a6aae4c9e9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "goederen volgens werkorders vastmaken",
+      "uri": "http://data.europa.eu/esco/skill/b1e4b6b3-c32e-426f-91a1-41b8adac086c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "enzymatische verwerking",
+      "uri": "http://data.europa.eu/esco/skill/46d64d3c-22d6-4186-b2a7-9765e6585eae",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "hygiënische procedures volgen tijdens de voedselverwerking",
+      "uri": "http://data.europa.eu/esco/skill/a34f4fd4-1aff-4941-82d5-542ac94f81c3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "productieschema’s volgen",
+      "uri": "http://data.europa.eu/esco/skill/c8f14c32-7f24-41bb-9e8f-b24d6fd3ca86",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "schriftelijke instructies volgen",
+      "uri": "http://data.europa.eu/esco/skill/54d68400-9da3-4077-a7ee-52e68b390ef6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "pH-waarde van zetmeel stabiliseren",
+      "uri": "http://data.europa.eu/esco/skill/aa05bfb1-6f84-438e-bd10-6da1a617686f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "mondelinge instructies volgen",
+      "uri": "http://data.europa.eu/esco/skill/fc511e12-fe90-40a0-bec8-227abb5e4255",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "chemicaliën voor zetmeelproductie toevoegen",
+      "uri": "http://data.europa.eu/esco/skill/a5c062e6-adbd-436c-b26c-9ff558c5a2da",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gevarenanalyse van kritische controlepunten toepassen",
+      "uri": "http://data.europa.eu/esco/skill/5ba1d5b9-3f8d-46ca-bf9f-2e9ca65d1350",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zetmeelresidu verwerken",
+      "uri": "http://data.europa.eu/esco/skill/e4365b3e-cbc2-4d8f-9921-d4661b77f2d2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beginselen van voedselveiligheid",
+      "uri": "http://data.europa.eu/esco/skill/3f4e4eab-a8e0-4aed-b8bb-79afe7c890e3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "wetgeving inzake gezondheid, veiligheid en hygiëne",
+      "uri": "http://data.europa.eu/esco/skill/2dbdd054-896a-4167-8f11-e9b9ebcf199d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "chemie",
+      "uri": "http://data.europa.eu/esco/skill/cde9911c-f92e-4de1-811f-336e177ac4ce",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "monsters etiketteren",
+      "uri": "http://data.europa.eu/esco/skill/fabc4abb-d255-403e-bfbb-6557afb4db58",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "processen voor de dehydatie van voedsel",
+      "uri": "http://data.europa.eu/esco/skill/e6083318-dcb5-4a48-9479-512a6851c06c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "beschikken over computervaardigheden",
+      "uri": "http://data.europa.eu/esco/skill/d15ce60f-ddab-41ce-ba56-398451b77b60",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zetmeelmonsters testen",
+      "uri": "http://data.europa.eu/esco/skill/6eb21f16-c6b6-40d6-bd9f-87c739330e49",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zorgen voor naleving van de milieuwetgeving bij voedselproductie",
+      "uri": "http://data.europa.eu/esco/skill/f66b2fc3-2952-41e5-89bf-a9157ea29420",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "omgaan met managers",
+      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "omgaan met collega’s",
+      "uri": "http://data.europa.eu/esco/skill/9d5521f9-44d7-4db4-b7ac-0ba7d389f44d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "temperatuurschalen",
+      "uri": "http://data.europa.eu/esco/skill/79329ded-7ee7-45c5-a89c-85386473efef",
+      "categorie": "optioneel"
+    }
+  ]
+}

@@ -1,0 +1,291 @@
+{
+  "crebo": "25726",
+  "opleiding": "25726_BOL_2025__25726BOL2025Examenplan-Legal-Insurance-HR-Services-Specialist-cohort-2025",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "acceptant verzekeringen",
+    "uri": "http://data.europa.eu/esco/occupation/e937449a-d9e0-4ab7-9ea5-4d3ac673be6d",
+    "definitie": "Acceptanten verzekeringen beoordelen bedrijfsrisico's en aansprakelijkheidspolissen en nemen beslissingen over commercieel vastgoed. Zij inspecteren de toestand van onroerend goed van bedrijven, analyseren het inspectiebeleid, helpen bij vastgoed- en huurproblemen, stellen leencontracten op en behandelen commerciële risico's om ze in lijn te brengen met bedrijfspraktijken. Acceptanten verzekeringen analyseren diverse informatie van potentiële klanten om te beoordelen hoe waarschijnlijk het is dat zij een claim zullen indienen. Zij streven ernaar het risico voor de verzekeringsmaatschappij tot een minimum te beperken en ervoor te zorgen dat de verzekeringspremie in overeenstemming is met de gedekte risico's. Zij kunnen specialisten zijn op het gebied van levensverzekeringen, ziektekostenverzekeringen, herverzekeringen, commerciële verzekeringen en/of hypotheekverzekeringen."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "productmanager verzekeringen",
+    "acceptant verzekeringen",
+    "ontharingsspecialist",
+    "specialist import en export van farmaceutische producten",
+    "specialist import en export van werktuigmachines",
+    "specialist import en export van kantoormeubilair",
+    "specialist import en export van tabaksproducten",
+    "specialist import en export van dranken",
+    "ict business analyst",
+    "ict business analysis manager",
+    "businessanalist",
+    "businessconsultant",
+    "business intelligence manager",
+    "ict business development manager",
+    "businessdevelopmentmanager",
+    "eBusiness-manager"
+  ],
+  "skills": [
+    {
+      "label": "verzekeringspolissen opstellen",
+      "uri": "http://data.europa.eu/esco/skill/c5f8613b-5546-4295-8b26-7bf977d401f0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "regelingen voor samenwerking opstellen",
+      "uri": "http://data.europa.eu/esco/skill/6f9ac146-8bbd-4b9d-9514-d85586caf17a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "moderne portefeuilletheorie",
+      "uri": "http://data.europa.eu/esco/skill/bcadc519-00f4-43bc-9373-054f4ac717cb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "financiële haalbaarheid beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/e95058a6-e139-42e7-a470-72038a606649",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beslissen over verzekeringsaanvragen",
+      "uri": "http://data.europa.eu/esco/skill/5dc193da-e018-457a-b7b2-c8b315660e16",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "financiële risico’s beheren",
+      "uri": "http://data.europa.eu/esco/skill/7f7756fc-d89d-41d5-93ef-85991603f4ad",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verzekeringsrecht",
+      "uri": "http://data.europa.eu/esco/skill/15d6d4e9-9b4b-4a93-aea5-a29a67b6d9e7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "financiële informatie verzamelen",
+      "uri": "http://data.europa.eu/esco/skill/71ae4f64-6505-4b6f-91b9-5acfa5721798",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "financiële informatie over eigendommen verzamelen",
+      "uri": "http://data.europa.eu/esco/skill/02820870-3b92-480b-8475-8a521563ea3c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "financieel risico analyseren",
+      "uri": "http://data.europa.eu/esco/skill/eb8babfb-ab91-4937-a032-6a79f82e9b7f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bedrijfsleningen",
+      "uri": "http://data.europa.eu/esco/skill/be252635-341e-4b1c-b94f-aef362b645ed",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "eigendomsrecht",
+      "uri": "http://data.europa.eu/esco/skill/b3a4924a-f793-485c-8dc1-54e12198d95d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Schadevorderingsprocedures",
+      "uri": "http://data.europa.eu/esco/skill/e1dc3eab-4d66-4ae5-a089-b9d884fd4e5a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ondersteuning geven bij financiële berekeningen",
+      "uri": "http://data.europa.eu/esco/skill/6bf6b5bd-6658-4338-b0ee-dc143e68e6d3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "underwriting van vastgoed",
+      "uri": "http://data.europa.eu/esco/skill/ccbdd86c-852c-4e82-998f-4f31e5735845",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "actuariële wetenschappen",
+      "uri": "http://data.europa.eu/esco/skill/c9f4efcd-e16a-4515-a0cb-60c6c479853d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "soorten verzekeringen",
+      "uri": "http://data.europa.eu/esco/skill/fce3268c-c944-4a5f-8b9c-034a72d5df13",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verzekeringsbeginselen",
+      "uri": "http://data.europa.eu/esco/skill/ab927ee8-acd9-41c2-aef0-2020364a1003",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verzekeringsprocedures evalueren",
+      "uri": "http://data.europa.eu/esco/skill/510dc744-330b-42f0-ad67-ef865df9e772",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "financieel plan opstellen",
+      "uri": "http://data.europa.eu/esco/skill/56ff27ef-2565-45bf-a70c-f06d78d2a480",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "financiële geschillen behandelen",
+      "uri": "http://data.europa.eu/esco/skill/f70b5f39-b8b6-407b-8c08-64fd65db79e9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "financiële formaliteiten uitleggen aan klanten",
+      "uri": "http://data.europa.eu/esco/skill/0f5bd097-ed76-47f7-8f44-93be67967b5f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "financiële controlerapporten opstellen",
+      "uri": "http://data.europa.eu/esco/skill/3e9b580d-811b-48df-a5d1-a7bdd26f901f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "financiële jaarrekeningen",
+      "uri": "http://data.europa.eu/esco/skill/4a460161-eaea-4fe2-bd0e-164ccc635be1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verzekeringstarieven berekenen",
+      "uri": "http://data.europa.eu/esco/skill/0a53f6b2-9205-4505-93fb-480e163cdc2f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kredietwaardigheid beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/68babd52-64d1-4904-a476-173828217fd2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vastgoedmarkt onderzoeken",
+      "uri": "http://data.europa.eu/esco/skill/e77cbe19-1830-4c24-b43e-38767929e75a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "beleggingsportefeuilles ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/452c4c68-50d7-42ed-8c4e-b437446637d0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contracten beheren",
+      "uri": "http://data.europa.eu/esco/skill/92721092-fe7c-4689-96bd-4f02385bc0e7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "jaarrekeningen interpreteren",
+      "uri": "http://data.europa.eu/esco/skill/5f1d1319-7954-4a9b-90c7-57668e3a0d4b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "financiële informatie samenvatten",
+      "uri": "http://data.europa.eu/esco/skill/5c99d21a-9d02-4638-9b52-a6ba840dcb0a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verzekeringsmarkt",
+      "uri": "http://data.europa.eu/esco/skill/fcd02121-ae3e-4d20-92ee-e2e368658a45",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "schadebeoordeling organiseren",
+      "uri": "http://data.europa.eu/esco/skill/fd265b91-d214-4298-bb94-21dcf2966ec2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zorgen dat documenten juist worden beheerd",
+      "uri": "http://data.europa.eu/esco/skill/c241f5a5-e23f-47bf-ad24-d83ea0010166",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vastgoedwaarden vergelijken",
+      "uri": "http://data.europa.eu/esco/skill/bab46a75-0a6c-44cc-b7e7-28c7c55d801f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "communiceren met klanten",
+      "uri": "http://data.europa.eu/esco/skill/0da516ee-e70e-4384-be13-f5ff80be8127",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "helpen bij kredietaanvragen",
+      "uri": "http://data.europa.eu/esco/skill/539d758d-8625-4b82-bad1-71cddead2a48",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "leningovereenkomsten regelen",
+      "uri": "http://data.europa.eu/esco/skill/c8aae1f6-eab3-41a9-9e2f-f5bc0f8ef0bd",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "beleggingsportefeuilles controleren",
+      "uri": "http://data.europa.eu/esco/skill/56426cfa-6e92-4ed9-a632-f08849864588",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "richtlijnen voor underwriting opstellen",
+      "uri": "http://data.europa.eu/esco/skill/c32c9c44-6a83-42e8-9dba-09b3582335b1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verzekeringsbehoeften analyseren",
+      "uri": "http://data.europa.eu/esco/skill/3dde5918-f4c6-4d46-9d6f-c7b2865f594f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "betrouwbaarheid van klanten beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/bceb723f-a74b-40e5-8187-f2e0904b6261",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "schade inschatten",
+      "uri": "http://data.europa.eu/esco/skill/c6543651-d743-4e12-be72-c81d1eaf4541",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verzekeringsrisico’s analyseren",
+      "uri": "http://data.europa.eu/esco/skill/e4a57b51-16d7-4dfc-bb47-6aa401e39b2e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "informatie geven over huurovereenkomsten",
+      "uri": "http://data.europa.eu/esco/skill/6c3f7679-af52-4806-ab0d-2a692640703b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contractuele geschillen beheren",
+      "uri": "http://data.europa.eu/esco/skill/f79e4715-5776-485c-ab7d-631c9b8d70ad",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "marktanalyse",
+      "uri": "http://data.europa.eu/esco/skill/b011c8b4-76e1-4bbc-8bb9-1d205e7b618a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "technische communicatievaardigheden toepassen",
+      "uri": "http://data.europa.eu/esco/skill/c32ad607-0c4d-4e34-b73f-668298f7bf13",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "processen voor kredietcontrole",
+      "uri": "http://data.europa.eu/esco/skill/e126f782-b4e6-4f7d-8dca-8d2e6778559b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "financiële audits uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/89ff28d6-342c-435d-83aa-83e71dbbbc96",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vastgoedmarkt",
+      "uri": "http://data.europa.eu/esco/skill/6f6163dc-a801-416c-86e9-ce857d71c24d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "behoeften van cliënten identificeren",
+      "uri": "http://data.europa.eu/esco/skill/f43ee9cc-7284-406f-b23f-3eedb0581141",
+      "categorie": "optioneel"
+    }
+  ]
+}

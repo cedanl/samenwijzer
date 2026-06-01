@@ -1,0 +1,506 @@
+{
+  "crebo": "25655",
+  "opleiding": "2021 - 25655 OER 2021 MBOV BBL zij instroom maatwerk 3 jarig start sept Vastgesteld",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "algemeen verpleegkundige",
+    "uri": "http://data.europa.eu/esco/occupation/8d3e8aaa-791b-4c75-a465-f3f827028f50",
+    "definitie": "Verantwoordelijk algemeen ziekenverplegers zijn verantwoordelijk voor het bevorderen en herstellen van de gezondheid van patiënten door fysieke en psychologische steun te bieden aan patiënten, vrienden en families. Zij houden ook toezicht op de aangewezen teamleden."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "onderhoudsmedewerker septische tanks",
+    "bouwkostenadviseur",
+    "marshaller",
+    "operator randafwerkingsmachine",
+    "rubberperser",
+    "exploitatietechnicus kerncentrale",
+    "risicokapitaalinvesteerder",
+    "vluchtinformatieverstrekker",
+    "algemeen verpleegkundige",
+    "gespecialiseerd verpleegkundige",
+    "dierenverpleegkundige",
+    "beademingstechnicus",
+    "leidinggevend verpleegkundige",
+    "anesthesiemedewerker",
+    "verpleeghulp",
+    "ziekenhuisapotheker"
+  ],
+  "skills": [
+    {
+      "label": "problemen kritisch behandelen",
+      "uri": "http://data.europa.eu/esco/skill/b9f16465-56a9-426b-a047-0f9f1f95ec92",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "problemen in de gezondheidszorg oplossen",
+      "uri": "http://data.europa.eu/esco/skill/a32e7fb1-af9e-4c09-8ea7-72b7442e9cda",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "positief beeld van verpleging promoten",
+      "uri": "http://data.europa.eu/esco/skill/1b3370df-c280-470c-ac35-951f42ca8b19",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronische gezondheidsgegevens gebruiken bij verpleging",
+      "uri": "http://data.europa.eu/esco/skill/a46743b7-ff8c-49b6-99f7-7fa5bc241771",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kindergeneeskunde",
+      "uri": "http://data.europa.eu/esco/skill/8671290a-ab17-42c2-9114-adcb741e7257",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klinische richtlijnen volgen",
+      "uri": "http://data.europa.eu/esco/skill/76395873-7fe2-4f9a-b4b6-9932f8cbd0b4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "deelnemen aan de opleiding van gezondheidspersoneel",
+      "uri": "http://data.europa.eu/esco/skill/4be3c34e-47ba-4881-ac74-8bd244e0b04c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "actief luisteren",
+      "uri": "http://data.europa.eu/esco/skill/a17286c5-238d-4f0b-bc24-29e9121345de",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verpleegkundige zorg vaststellen",
+      "uri": "http://data.europa.eu/esco/skill/46003629-a579-4d0a-b3ea-80ef890699d6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "individuen, families en groepen sterker maken",
+      "uri": "http://data.europa.eu/esco/skill/441707bb-9ad3-406c-9975-a6bec96f537b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "palliatieve zorg",
+      "uri": "http://data.europa.eu/esco/skill/c5a80bb0-31e6-4de0-868c-00a0f9b88b47",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "contextspecifieke klinische vaardigheden toepassen",
+      "uri": "http://data.europa.eu/esco/skill/e18a6a3c-4f26-4141-8c72-4b4f01d77914",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "anatomie van de mens",
+      "uri": "http://data.europa.eu/esco/skill/9ec4252d-cbe8-4134-88fa-549dee1883f3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "advies geven over gezonde levensstijlen",
+      "uri": "http://data.europa.eu/esco/skill/78de3e5f-e3ea-4da2-aa09-3704d03ba622",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteitsnormen in verband met de uitoefening van gezondheidszorg naleven",
+      "uri": "http://data.europa.eu/esco/skill/98eb1f3b-3480-416b-bd4b-811946f7e347",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "mensgerichte zorg",
+      "uri": "http://data.europa.eu/esco/skill/8168333b-8257-48f6-82c5-6b5128c21ecc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "EHBO",
+      "uri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "professionele zorg bieden bij verpleging",
+      "uri": "http://data.europa.eu/esco/skill/1023ac61-250f-4eef-b7a9-238cf071685f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "volksgezondheid",
+      "uri": "http://data.europa.eu/esco/skill/9570e84e-6699-4c9f-9a12-7bc82d53a231",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verplegingswetenschap",
+      "uri": "http://data.europa.eu/esco/skill/d429b19a-132f-44d3-971b-bb0ccd94f979",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klinische chemie",
+      "uri": "http://data.europa.eu/esco/skill/1d4b74b0-1a48-48ec-a3cd-26cca0c212a3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "empirisch onderbouwde aanpak in de verpleging",
+      "uri": "http://data.europa.eu/esco/skill/b729d6bc-326b-46cd-aa63-ea280024b116",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werken in een multiculturele omgeving in de gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/b55f61a4-5f9e-4741-ba95-9ac04b64119b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voorlichten over preventie van ziekte",
+      "uri": "http://data.europa.eu/esco/skill/097098fc-6d89-44e9-9305-98ac5c0a78ac",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verzorgingsbeginselen",
+      "uri": "http://data.europa.eu/esco/skill/8b3aefd2-5021-418f-b069-828fb7abc598",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "leiderschap bij verpleging",
+      "uri": "http://data.europa.eu/esco/skill/cf6ca1fc-f2be-4deb-bb35-1fffe4099023",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "hygiëne in de gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/0450eaee-1a00-4622-8f4e-5356fce816d2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "eigen verantwoordelijkheid aanvaarden",
+      "uri": "http://data.europa.eu/esco/skill/f90d4810-8bac-4e5e-b870-3e35a4138ff7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociologie",
+      "uri": "http://data.europa.eu/esco/skill/8881a9c2-bd07-4954-bf27-c1f8acca9af0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "farmacologie",
+      "uri": "http://data.europa.eu/esco/skill/60c544c9-0815-479c-bcec-93c7891815ea",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "omgaan met noodzorgsituaties",
+      "uri": "http://data.europa.eu/esco/skill/51e79cb4-fab3-404c-88f3-cd4a1bd5879e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "integratie bevorderen",
+      "uri": "http://data.europa.eu/esco/skill/bcd2ce08-ba12-4d66-865f-f4ba36419707",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "informatie in de gezondheidszorg beheren",
+      "uri": "http://data.europa.eu/esco/skill/6c3e28d6-e3cc-4b25-a5da-a0dce043cf17",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheidsvoorlichting bieden",
+      "uri": "http://data.europa.eu/esco/skill/60b2dd49-c677-4f47-816e-aff3b577e113",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgkwaliteit analyseren",
+      "uri": "http://data.europa.eu/esco/skill/ae965e49-06f1-442f-87bf-e48fc1e1d8b6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "levensreddende maatregelen opstarten",
+      "uri": "http://data.europa.eu/esco/skill/5cc97a45-69fc-4f37-a973-402d5ac561ac",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorg voor personen met een handicap",
+      "uri": "http://data.europa.eu/esco/skill/54411e8e-d62f-46d8-b87b-fce23f8e3bc8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "psychologie",
+      "uri": "http://data.europa.eu/esco/skill/bfe4f330-d595-48c7-ab3c-f309471d6953",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verplegingsadvies over gezondheidszorg geven",
+      "uri": "http://data.europa.eu/esco/skill/6063652e-22c4-472e-bb96-6e5ec1e7c5de",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "advies geven in verband met geïnformeerde toestemming van zorgontvangers",
+      "uri": "http://data.europa.eu/esco/skill/8232979d-6aa4-40c9-a12b-5152a52a76b8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "psychiatrie",
+      "uri": "http://data.europa.eu/esco/skill/f9f258e3-4728-4107-9e08-293d5d2ef65e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beschikken over computervaardigheden",
+      "uri": "http://data.europa.eu/esco/skill/d15ce60f-ddab-41ce-ba56-398451b77b60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "acute zorg",
+      "uri": "http://data.europa.eu/esco/skill/9b9244b4-6f62-4834-839b-19e9eba0a407",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "menselijke fysiologie",
+      "uri": "http://data.europa.eu/esco/skill/51e53aff-6f8a-42ca-9cb9-47335130f4d7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "pedagogie",
+      "uri": "http://data.europa.eu/esco/skill/a117f32c-662b-4dd9-b739-1230dd04cb60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "activiteiten delegeren",
+      "uri": "http://data.europa.eu/esco/skill/b00e948c-19be-4951-8cff-60f88f1046e9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "wetenschappelijk besluitvormingsproces in de gezondheidszorg implementeren",
+      "uri": "http://data.europa.eu/esco/skill/8e0bfbba-6e9d-48e0-b152-2cc949e5022a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beheersing van infecties",
+      "uri": "http://data.europa.eu/esco/skill/6d13053b-ee35-492c-8976-8178420df398",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "pathologie",
+      "uri": "http://data.europa.eu/esco/skill/db8a9ba7-96ad-4c53-b552-d4f1570dfefb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor de veiligheid van gebruikers van de gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/ce0d6a42-59c1-433e-ab62-adfc969c46bb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "invloed van de sociale context op de gezondheid",
+      "uri": "http://data.europa.eu/esco/skill/27a638bc-6362-45f8-afce-5596a606269b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorg coördineren",
+      "uri": "http://data.europa.eu/esco/skill/71480db1-a706-47f9-952f-bdc5036e3df3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "diëtetiek",
+      "uri": "http://data.europa.eu/esco/skill/f190355a-cea5-4cd0-b6cd-a5c3d9a14985",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronische en mobiele gezondheidstechnologieën gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/16636767-c215-4cf0-b126-e144fea20926",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veilig beheer van geneesmiddelen",
+      "uri": "http://data.europa.eu/esco/skill/2d6904db-9e16-42a5-bc12-c5acb8bfab18",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "grondbeginselen van verpleging implementeren",
+      "uri": "http://data.europa.eu/esco/skill/516e324b-03fc-4d3b-9986-e46e9834cd43",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "primaire zorg",
+      "uri": "http://data.europa.eu/esco/skill/9c1e94ad-6c81-4fce-bc16-f7cf2e730cf0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "innovaties in de verpleging",
+      "uri": "http://data.europa.eu/esco/skill/bc7a6b88-a279-4b6e-ac5e-21666bc51dae",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verzorging van pasgeborenen",
+      "uri": "http://data.europa.eu/esco/skill/5ff6f551-f2a4-4cef-a72d-e81116155a43",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "chirurgie",
+      "uri": "http://data.europa.eu/esco/skill/508f3b4c-799a-4742-b3ae-75f2ff11153d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "effectief communiceren in de gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/7110bf9f-b245-4adc-9159-5081013fd64d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klinische geriatrie",
+      "uri": "http://data.europa.eu/esco/skill/52c19dc8-651f-4095-98fe-dcb2799d702e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "organisatorische technieken gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/d3eccb86-f02d-4950-bfbd-20b9510774a1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beleidsmakers over gezondheidsuitdagingen informeren",
+      "uri": "http://data.europa.eu/esco/skill/0b5aaee4-c948-4853-bf8d-b9cd6c4917ee",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "autonomie van de patiënt",
+      "uri": "http://data.europa.eu/esco/skill/2b1ce548-4e16-45fb-bfb2-f3141c8efe8d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "collaboratieve therapeutische relaties ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/d93f9e29-9740-4231-8486-13d377b99f05",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "duurzaamheidsbeginselen in de gezondheidszorg toepassen",
+      "uri": "http://data.europa.eu/esco/skill/e6bf6e73-230a-434c-97b2-a0c042a8b7ac",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "behandelingsstrategieën voor uitdagingen inzake menselijke gezondheid bieden",
+      "uri": "http://data.europa.eu/esco/skill/c82f9319-cf46-4257-a8ce-542d0a7fed8f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "mensenrechten promoten",
+      "uri": "http://data.europa.eu/esco/skill/646d871b-4503-4dc8-a076-06d7085e4cde",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "leiderschapsstijlen aanpassen in de gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/79c012c7-4b09-497e-8152-e73e5d1d3384",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "communiceren met gebruikers van gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/c65aa043-98da-4136-9877-494e72d9e4cf",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verplegende zorg implementeren",
+      "uri": "http://data.europa.eu/esco/skill/f98e06f5-a09a-4356-b6a8-d55a7d3c5356",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "interne geneeskunde",
+      "uri": "http://data.europa.eu/esco/skill/4f7b14d8-f09c-49f7-abae-231e8c210e07",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "betrokkenheid van burgers bij gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/572c3e87-61ed-4271-9c95-148837deae5e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bijdragen aan de continuïteit van de gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/13724e7d-b946-4773-915e-9621340237bc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verpleegkundige zorg evalueren",
+      "uri": "http://data.europa.eu/esco/skill/e98a5096-de98-46d2-88c8-951f4029c038",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "wetgeving in verband met gezondheidszorg naleven",
+      "uri": "http://data.europa.eu/esco/skill/9fcf9918-fdef-49c3-aedc-518eb1e7e1f5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "meeleven met gebruikers van gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/2475cd27-8d6c-4318-a364-21395b23acba",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "reageren op veranderende omstandigheden in de gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/049c8caf-dd12-45fc-9bfa-b64051f32a19",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheidswetenschappen toepassen",
+      "uri": "http://data.europa.eu/esco/skill/a49fdda1-abd1-40e0-a824-3c545d98f32e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "wetgeving inzake gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/1709f408-9965-489b-9805-8e1e5d9e483b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "adolescentengeneeskunde",
+      "uri": "http://data.europa.eu/esco/skill/52047630-b880-4939-bb19-6700187af031",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "wetenschappelijke onderzoeksmethodologie",
+      "uri": "http://data.europa.eu/esco/skill/ed3f3dba-3a35-4ed5-b113-67f4d10ef4c8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werken in multidisciplinaire gezondheidsteams",
+      "uri": "http://data.europa.eu/esco/skill/eba85523-6ad2-4cd9-9b27-a0b6a39b8cfa",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "persoonsgerichte zorg toepassen",
+      "uri": "http://data.europa.eu/esco/skill/7a63f944-6948-4ae4-9c1f-d08e492535c9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beleidslijnen van de organisatie naleven",
+      "uri": "http://data.europa.eu/esco/skill/aa238394-8126-4ada-be2f-9dfe065cf314",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "persoonlijke professionele ontwikkeling beheren",
+      "uri": "http://data.europa.eu/esco/skill/a8d24a95-47b3-4f88-92e7-06600bcd3612",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verpleegkundige verzorging toepassen bij langdurige zorg",
+      "uri": "http://data.europa.eu/esco/skill/a28e8141-89ee-4b24-a3bb-1aebcc56c72d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "reanimatie",
+      "uri": "http://data.europa.eu/esco/skill/8bd49d04-ab2f-4333-b5d9-12d716e4e2f6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verpleegkundige zorg plannen",
+      "uri": "http://data.europa.eu/esco/skill/6acf652c-33b2-4e28-8f79-1e553f255229",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vreemde talen gebruiken bij zorg",
+      "uri": "http://data.europa.eu/esco/skill/e724205b-6b9a-45b4-b629-cd32a6c80b4f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "geneesmiddelen voorschrijven",
+      "uri": "http://data.europa.eu/esco/skill/8eab4e4f-03f8-4a66-a830-ec4e5db43253",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "patiëntenontslag door verpleegkundigen uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/ef1e6c93-2a90-4abf-951b-a8ae283d368d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ondernemingszin tonen",
+      "uri": "http://data.europa.eu/esco/skill/bdcf429c-5ccf-4c3d-bb61-4c987573a35e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vreemde talen gebruiken voor gezondheidsgerelateerd onderzoek",
+      "uri": "http://data.europa.eu/esco/skill/cc69175e-c35d-4494-8844-e71385ccce4a",
+      "categorie": "optioneel"
+    }
+  ]
+}

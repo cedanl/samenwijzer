@@ -1,0 +1,139 @@
+{
+  "crebo": "25727",
+  "opleiding": "25727_BOL_2025__OER_2025_International_Business__Marketing__-_Marketing__Communication_Special_QWNYc",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "manager online marketing",
+    "uri": "http://data.europa.eu/esco/occupation/1dd7c3cb-2d58-4dad-ae15-c9081174ab7e",
+    "definitie": "Managers op het gebied van online marketing definiëren het verkoopprogramma voor elektronische handel, zoals via e-mail, internet en sociale media verkochte goederen. Zij helpen ook bij het plannen van de onlineverkoopstrategie en het in kaart brengen van de marketingmogelijkheden. Managers op het gebied van online marketing analyseren ook de sites van concurrenten, evalueren de prestaties en de analytische gegevens van de site."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "marketingmanager",
+    "hoofd marketing",
+    "eBusiness-manager",
+    "businessdevelopmentmanager",
+    "vakdocent verkoop en marketing beroepsonderwijs",
+    "manager retailpromoties",
+    "manager online marketing",
+    "salesmanager",
+    "ict business analyst",
+    "ict business analysis manager",
+    "businessanalist",
+    "businessconsultant",
+    "business intelligence manager",
+    "ict business development manager"
+  ],
+  "skills": [
+    {
+      "label": "strategisch denken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/6c870993-9341-438b-91c0-c7fe4f96d8f5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kanaalmarketing",
+      "uri": "http://data.europa.eu/esco/skill/9af252ce-bf4d-411b-8daa-beb91df4257d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "met leveranciers over voorwaarden onderhandelen",
+      "uri": "http://data.europa.eu/esco/skill/5f2efbdf-08a2-49cd-9c06-bd284e4f0fbf",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "online-concurrenten volgen",
+      "uri": "http://data.europa.eu/esco/skill/a572fd00-6735-428b-9fb1-fd2bf6262b21",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "marktonderzoek uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/fe39d4db-4cb5-4299-bb9f-896c8fd6ab13",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "socialemediamarketing toepassen",
+      "uri": "http://data.europa.eu/esco/skill/64e09849-a7db-4d6b-a932-66264420eb97",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "digitale marketingstrategieën plannen",
+      "uri": "http://data.europa.eu/esco/skill/736ef286-fbd3-4e5c-a4b4-d1e2008c9898",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "behoeften van klanten identificeren",
+      "uri": "http://data.europa.eu/esco/skill/68698869-c13c-4563-adc7-118b7644f45d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "diplomatisch zijn",
+      "uri": "http://data.europa.eu/esco/skill/ece25f2f-e91a-4186-a221-caa715195fd7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bedrijfsplannen voor onlineverkoop ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/eb2ae1c7-ba57-4695-8f29-9dd41c26e01e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderhandelen over inkoopvoorwaarden",
+      "uri": "http://data.europa.eu/esco/skill/fde186df-c9c4-49f5-b2a5-d66adc7c43a5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "arbeidswet",
+      "uri": "http://data.europa.eu/esco/skill/97b713f0-b9e8-4903-8dee-7e0b4019a1c0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "processen voor elektronische aankoop",
+      "uri": "http://data.europa.eu/esco/skill/378caeec-10a0-4162-b75c-ab374a42e93d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werkgerelateerde verslagen schrijven",
+      "uri": "http://data.europa.eu/esco/skill/918f5211-b99f-4b29-9a34-6e475583ef55",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zakenrelaties aangaan",
+      "uri": "http://data.europa.eu/esco/skill/dc72ad0a-c5dc-4abd-bc0d-ca43e82162e1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "leiding geven aan personeel",
+      "uri": "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "risicoanalyses uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/1dd23dba-dd00-45ab-abf4-642902538317",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektronische handelssystemen",
+      "uri": "http://data.europa.eu/esco/skill/b1272de4-1f5f-408b-8b26-061f2550fc72",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "processen beheren",
+      "uri": "http://data.europa.eu/esco/skill/940a70fa-7c58-423b-8d03-34920b59f0f7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "strategisch onderzoek uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/0aa02c52-077d-45f8-8c2d-7132c11ac16e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "projectbeheer uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/cd5efa8c-e44d-4cbc-91c6-796018dbed68",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "software voor het beheer van klantrelaties gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/9889b795-d755-41b2-8afd-2e3c87a65a38",
+      "categorie": "optioneel"
+    }
+  ]
+}

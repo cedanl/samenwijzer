@@ -1,0 +1,153 @@
+{
+  "crebo": "25771",
+  "opleiding": "25771_BOL_2024__content_oer-2024-2025-ci-25771-interieur-adviseur",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "interieuradviseur",
+    "uri": "http://data.europa.eu/esco/occupation/773e5ea3-235b-4e72-afc5-290dd841eed8",
+    "definitie": "Interieuradviseurs helpen klanten bij het plannen van hun interieurs voor commercieel en privégebruik."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "interieuradviseur",
+    "web content manager",
+    "voertuigbekleder",
+    "scheepsstoffeerder",
+    "wijnbouwkundig adviseur",
+    "meubelontwerper",
+    "interieurarchitect",
+    "schoonmaker treinen"
+  ],
+  "skills": [
+    {
+      "label": "budget voor plannen voor binneninrichting inschatten",
+      "uri": "http://data.europa.eu/esco/skill/b90c0e12-a83d-4ebd-b1e5-710201ab6a41",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klanttevredenheid garanderen",
+      "uri": "http://data.europa.eu/esco/skill/00e53a0a-c0ba-4c9f-a2ed-4706d5832a00",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "haalbaarheidsonderzoek uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/d74df140-eb69-43e2-bac9-1cafc824d702",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "deadlines halen",
+      "uri": "http://data.europa.eu/esco/skill/91abe492-18be-4cce-93c7-0dca07072363",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klantgericht zijn",
+      "uri": "http://data.europa.eu/esco/skill/13e93abd-618c-46df-abbe-1af38ecd1aa2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderzoek over ontwerptrends voeren",
+      "uri": "http://data.europa.eu/esco/skill/a8ea1f32-be7e-48ff-8ef5-7e2847beadb1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "materialen voor binnenhuisarchitectuur",
+      "uri": "http://data.europa.eu/esco/skill/db845223-034b-4b59-b76f-290ba48167e1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ruimtelijke informatie evalueren",
+      "uri": "http://data.europa.eu/esco/skill/c1f4e64a-9bc7-4c75-b2eb-d982d7148cef",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "taakplanning beheren",
+      "uri": "http://data.europa.eu/esco/skill/0e1fe34b-f4e7-4642-8c8b-5a05ac3438e5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ontwerpplannen ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/e665d919-f28d-4ac4-adf0-8903ac66540e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ruimtelijke esthetiek",
+      "uri": "http://data.europa.eu/esco/skill/7fafdbcc-01e5-41df-b269-37dffc49c678",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "binnenruimte meten",
+      "uri": "http://data.europa.eu/esco/skill/98256736-57a9-4773-98ff-0627ac790546",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voldoen aan bouwvoorschriften",
+      "uri": "http://data.europa.eu/esco/skill/4ccf7d02-764c-4129-a1df-fa1dd2e12647",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "nieuwe concepten bedenken",
+      "uri": "http://data.europa.eu/esco/skill/f08e2bd6-0366-4948-a670-1f03f130126f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "principes van teamwerk",
+      "uri": "http://data.europa.eu/esco/skill/a5b0cd5c-e13a-4ab3-8d93-4d242adcfb01",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "aanpassen aan veranderende situaties",
+      "uri": "http://data.europa.eu/esco/skill/5592ab32-4e7a-4cda-8e64-ca36d5de8a10",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "inkoopactiviteiten beheren",
+      "uri": "http://data.europa.eu/esco/skill/9e9a4209-c7cf-4f6e-973e-dc2ffadccc74",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "anderen begeleiden",
+      "uri": "http://data.europa.eu/esco/skill/a602a97f-dd21-4c24-894c-cee1d37f5407",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "oplossingen voor problemen creëren",
+      "uri": "http://data.europa.eu/esco/skill/03b9b491-fc9b-4868-914a-bf7cd47b5041",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "beginselen van projectbeheer",
+      "uri": "http://data.europa.eu/esco/skill/237db40b-4600-47c0-837f-4a2c4f3014ab",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "duurzame binnenhuisinrichting promoten",
+      "uri": "http://data.europa.eu/esco/skill/9263f0d8-7266-4782-b0ee-38f62656e97e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toezicht houden op werkzaamheden in de ontwerpfase",
+      "uri": "http://data.europa.eu/esco/skill/03227978-f839-4cc8-88a6-0a3c44d2c776",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "relaties met leveranciers onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/3cd35f5d-ce6d-4f14-9a09-53d7a28d834c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "op de hoogte blijven van ontwikkelingen in de ontwerpsector",
+      "uri": "http://data.europa.eu/esco/skill/ac802765-4098-4466-ac1e-4791f192c667",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten advies geven over opties voor binnenhuisinrichting",
+      "uri": "http://data.europa.eu/esco/skill/c2372772-70c1-4e06-b9b2-e81402d3a7c7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "CAD-software gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/b34e2ba1-9080-48c9-9b42-ee9192a4d3f1",
+      "categorie": "optioneel"
+    }
+  ]
+}

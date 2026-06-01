@@ -1,0 +1,205 @@
+{
+  "crebo": "25698",
+  "opleiding": "25698_BBL_2025__25698BBL2025MJP-Onderwijsassistent-KOP",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "onderwijsassistent",
+    "uri": "http://data.europa.eu/esco/occupation/4d27152a-a8ee-4f5a-9f93-a2fb4fb2b2e3",
+    "definitie": "Onderwijsassistenten ondersteunen de onderwijzer van kleuter- of lager onderwijs. Zij helpen bij het geven van lessen in de klas, in klassikaal toezicht bij afwezigheid van de onderwijzer, en bij het organiseren, ontwikkelen en in praktijk brengen van de dagelijkse planning. Onderwijsassistenten volgen en helpen leerlingen in de groep en individueel, en richten zich vaak op kinderen die extra aandacht nodig hebben en die de onderwijzer niet kan geven."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "onderwijsassistent voortgezet onderwijs",
+    "onderwijsassistent basisonderwijs",
+    "universitair onderwijsassistent",
+    "onderwijsassistent",
+    "onderwijsassistent speciaal onderwijs",
+    "futures trader",
+    "aandelenmakelaar",
+    "kostuumkoper",
+    "docent pedagogische wetenschappen hoger onderwijs",
+    "sociaalpedagogisch hulpverlener",
+    "medewerker kinderdagverblijf",
+    "manager jongerencentrum",
+    "praktijklector sociaal werk",
+    "consulent maatschappelijk werk",
+    "grondrigger"
+  ],
+  "skills": [
+    {
+      "label": "lichamelijke ontwikkeling van kinderen",
+      "uri": "http://data.europa.eu/esco/skill/3ff9d956-3e26-40d1-ae0e-f5f247943042",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "studentendiscipline handhaven",
+      "uri": "http://data.europa.eu/esco/skill/5a42eaf5-93bb-4bca-8ebd-4d78e96e4929",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "studenten helpen met materiaal",
+      "uri": "http://data.europa.eu/esco/skill/7530bc44-f09d-4dd2-8911-92b98333e442",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgprogramma’s voor kinderen implementeren",
+      "uri": "http://data.europa.eu/esco/skill/6b58a6d2-89cf-4ab5-bb62-eb29ae968934",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "constructieve kritiek geven",
+      "uri": "http://data.europa.eu/esco/skill/b9bb1f03-15e2-4079-943e-7e483b21725b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "in lesmateriaal voorzien",
+      "uri": "http://data.europa.eu/esco/skill/d39a5880-7d0a-4573-9f70-a75ff875bf83",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toezicht houden op de speelplaats",
+      "uri": "http://data.europa.eu/esco/skill/b1d75e36-64d3-4000-bd9c-14899bea87e2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vooruitgang van leerlingen volgen",
+      "uri": "http://data.europa.eu/esco/skill/3377f3b2-4ba2-457f-b29d-8df59e8cfba8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "studenten bijstaan bij het leren",
+      "uri": "http://data.europa.eu/esco/skill/d5e1e30e-44ab-4aba-abab-b8263e801b7a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "reiniging van de werkplek",
+      "uri": "http://data.europa.eu/esco/skill/06bd47bc-d9f3-4517-8e34-c55c2e81f8c2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "omgaan met problemen van kinderen",
+      "uri": "http://data.europa.eu/esco/skill/07090471-265a-48ec-b744-72b357e801ed",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "positieve instelling van jongeren ondersteunen",
+      "uri": "http://data.europa.eu/esco/skill/4a874516-eb34-4dc1-833d-864c5a448db2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kleuterschoolprocedures",
+      "uri": "http://data.europa.eu/esco/skill/eeb3e7ea-56f4-422f-8a85-0438b25ff0ce",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veiligheid van studenten garanderen",
+      "uri": "http://data.europa.eu/esco/skill/11f536f5-b0e2-46a6-95c1-bd765946604c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "welzijn van kinderen ondersteunen",
+      "uri": "http://data.europa.eu/esco/skill/a65fb963-6faf-47b2-a3d9-c4e5e4d833c5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voldoen aan de fundamentele fysieke behoeften van kinderen",
+      "uri": "http://data.europa.eu/esco/skill/beb952e4-8a9c-47af-8a60-c6eb5c5f25bc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ontwikkeling van de jeugd beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/28ca596e-5e2f-4149-a28d-42d2c4c20227",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kinderen bijstaan bij de ontwikkeling van fundamentele persoonlijke vaardigheden",
+      "uri": "http://data.europa.eu/esco/skill/8e09fe66-2649-4179-81ef-91fefa3ceee8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "studenten aanmoedigen hun prestaties te erkennen",
+      "uri": "http://data.europa.eu/esco/skill/f5dc20ae-8b2f-4c9b-b4fa-e9e8c81dbcf4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ondersteuning aan leerkrachten bieden",
+      "uri": "http://data.europa.eu/esco/skill/a13566a2-4461-4dcc-82b2-8280fb5bb993",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "leerproblemen",
+      "uri": "http://data.europa.eu/esco/skill/731101d9-94bc-4805-bff4-9578d1bf03b5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contacten onderhouden met pedagogische medewerkers",
+      "uri": "http://data.europa.eu/esco/skill/36fe44b2-af36-4467-9be8-601e64b3dbc7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bescherming van jonge personen promoten",
+      "uri": "http://data.europa.eu/esco/skill/98a0c718-40b1-4a4f-a366-b8155f238d9b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "curriculumdoelstellingen",
+      "uri": "http://data.europa.eu/esco/skill/edff6d20-660d-4d33-b412-9a5b664a14be",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kleuterklasleerstof aanleren",
+      "uri": "http://data.europa.eu/esco/skill/a8c5e58f-1f0f-40bc-8860-aaab0f64f105",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "leerlingen begeleiden op schoolreis",
+      "uri": "http://data.europa.eu/esco/skill/3399cde5-6d0d-48a5-a7ac-53706648f283",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "veelvoorkomende kinderziekten",
+      "uri": "http://data.europa.eu/esco/skill/7b34134b-eb4c-40da-98a0-98b6190aa93b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "teamwork tussen studenten aanmoedigen",
+      "uri": "http://data.europa.eu/esco/skill/229b10cf-6f3a-490c-9706-01c107df0562",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "naschoolse opvang bieden",
+      "uri": "http://data.europa.eu/esco/skill/77eda69d-ddf6-40ca-b66f-870ea996734d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contacten onderhouden met ouders van kinderen",
+      "uri": "http://data.europa.eu/esco/skill/efe801a5-8704-4def-8a96-c32f7a6cb9fb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "creatieve voorstellingen organiseren",
+      "uri": "http://data.europa.eu/esco/skill/e927ab40-a135-4a7a-9dfc-b57132741281",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klassenmanagement uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/cedd0710-62ae-4ff4-89ae-ac52375f86ec",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "EHBO",
+      "uri": "http://data.europa.eu/esco/skill/f7464f30-662b-4177-85a0-3df9693e9e58",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "principes van teamwerk",
+      "uri": "http://data.europa.eu/esco/skill/a5b0cd5c-e13a-4ab3-8d93-4d242adcfb01",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "lesinhoud voorbereiden",
+      "uri": "http://data.europa.eu/esco/skill/20f57a7f-b90e-4403-8c77-5ddd89b5835b",
+      "categorie": "optioneel"
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "crebo": "27004",
+  "opleiding": "27004_BOL_2025__oer-2025-2026-ci-27004-signspecialist",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "drukvormvervaardiger",
+    "uri": "http://data.europa.eu/esco/occupation/802a0e5d-5625-4166-a1f0-d13e2586df55",
+    "definitie": "Drukvormvervaardigers graveren of etsen in metaal, hout, rubber of andere materialen om afbeeldingen te maken die gewoonlijk met behulp van een drukpers op oppervlakken worden gedrukt. Drukvormvervaardigers gebruiken vaak werktuigen zoals etser-circuitprocessors, pantograafgraveurs en zeefdruketsers."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "pijpleidingoperator",
+    "draaier",
+    "drukvormvervaardiger",
+    "chief information officer",
+    "operator draadwikkelmachine",
+    "monteur elektrische installaties",
+    "procesoperator ciderfermentatie",
+    "operator oliepompsysteem"
+  ],
+  "skills": [
+    {
+      "label": "ontwerpen overzetten op een werkstuk",
+      "uri": "http://data.europa.eu/esco/skill/68342f12-6f70-4940-95fd-2851597fad47",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "chemicaliën voor etsen hanteren",
+      "uri": "http://data.europa.eu/esco/skill/8a93bd86-7eb1-4d61-9f32-4e5711b9ef17",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "patronen graveren",
+      "uri": "http://data.europa.eu/esco/skill/16be151c-c501-43cf-82b1-59df7e32974b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ontwerpen omzetten naar gravures",
+      "uri": "http://data.europa.eu/esco/skill/9d724463-7fa9-4dcb-b55e-33cb9a58206d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "afmetingen van gravures berekenen",
+      "uri": "http://data.europa.eu/esco/skill/fcf890ba-3b77-4c16-851a-82895e8bac9f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sjablonen voor gravures selecteren",
+      "uri": "http://data.europa.eu/esco/skill/50e81b2d-6cd6-4cd6-96e9-aaf9e5442fc6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werkstukken klaarmaken voor etsen",
+      "uri": "http://data.europa.eu/esco/skill/a1eac260-229c-4e22-a338-354a3eb375e2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "graveerapparatuur positioneren",
+      "uri": "http://data.europa.eu/esco/skill/1304af9b-5f08-4c99-9804-f580459377d7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteit van gravures bepalen",
+      "uri": "http://data.europa.eu/esco/skill/e6ac75a5-1945-4023-b1d7-f11b7d0a3d2f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "graveerapparatuur onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/6c3527eb-71d6-4e9f-b481-8856dce1d6f1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "chemicaliën voor etsen voorbereiden",
+      "uri": "http://data.europa.eu/esco/skill/7cb00dc0-dcff-4df8-aacd-b32fd94d3656",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor nauwkeurige gravures",
+      "uri": "http://data.europa.eu/esco/skill/46a0e499-b4b2-4d27-8211-fa3a32bfd2f6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "eigenschappen van snede bijstellen",
+      "uri": "http://data.europa.eu/esco/skill/8182e1fc-3933-4c4a-83bf-f77478a29949",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "graveerapparatuur bedienen",
+      "uri": "http://data.europa.eu/esco/skill/76d7fa6c-b410-475b-b62a-c7a55b5bede4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werkstukken klaarmaken voor gravering",
+      "uri": "http://data.europa.eu/esco/skill/ab580ada-4513-473b-bd49-6dfbc1f4990d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "geëtst werk inspecteren",
+      "uri": "http://data.europa.eu/esco/skill/c8d83eb9-ed4e-415e-a640-f5e6849d0634",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ontwerpen op werkstukken schetsen",
+      "uri": "http://data.europa.eu/esco/skill/6d8177c5-e78a-4177-bafb-abef26791d30",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gegraveerde zones reinigen",
+      "uri": "http://data.europa.eu/esco/skill/c1617786-decf-40cc-b44d-b90fabe92203",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "etsen herschalen",
+      "uri": "http://data.europa.eu/esco/skill/6da47d77-3c16-445d-99d7-c31cf1608a75",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werkstukken steriliseren",
+      "uri": "http://data.europa.eu/esco/skill/9ccb5848-9f76-4fa8-9c56-c9e13457f3d3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "nauwkeurigheid van gravures controleren",
+      "uri": "http://data.europa.eu/esco/skill/c489fc69-a931-4543-8a37-d0eda174366e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "etsen opvullen",
+      "uri": "http://data.europa.eu/esco/skill/e0581b8e-c30f-45a1-abd8-6f9d3a89c369",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "samenwerken met technisch personeel in artistieke producties",
+      "uri": "http://data.europa.eu/esco/skill/94d02529-72e1-4180-9d93-4008342ac481",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "conservatiebehoeften beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/1e25d043-0307-4e50-8a19-9e7cce22caea",
+      "categorie": "optioneel"
+    }
+  ]
+}

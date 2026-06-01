@@ -22,6 +22,7 @@ from validatie_samenwijzer.chat import (  # noqa: E402
     genereer_antwoord,
     laad_kwalificatiedossier_tekst,
     laad_oer_tekst,
+    laad_skills_tekst,
     resolve_oer_pad,
 )
 from validatie_samenwijzer.styles import (  # noqa: E402
@@ -52,6 +53,7 @@ if "oer_systeem" not in st.session_state:
     # Laad OER + kwalificatiedossier eenmalig per sessie
     oer_tekst = laad_oer_tekst(resolve_oer_pad(bestandspad)) if bestandspad else ""
     dossier_tekst = laad_kwalificatiedossier_tekst(crebo)
+    skills_tekst = laad_skills_tekst(crebo)
     st.session_state.oer_systeem = (
         bouw_systeem(
             oer_tekst,
@@ -59,6 +61,7 @@ if "oer_systeem" not in st.session_state:
             instelling,
             dossier_tekst=dossier_tekst,
             crebo=crebo,
+            skills_tekst=skills_tekst,
         )
         if oer_tekst
         else ""

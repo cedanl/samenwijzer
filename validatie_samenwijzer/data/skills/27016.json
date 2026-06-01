@@ -1,0 +1,444 @@
+{
+  "crebo": "27016",
+  "opleiding": "27016_BOL_2025__OER (OUD) - 27016O - ICT system engineer",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "ict network administrator",
+    "uri": "http://data.europa.eu/esco/occupation/81480b40-a318-47f3-9b2c-56b69ed67d95",
+    "definitie": "ICT network administrators zorgen ervoor dat een datacommunicatienetwerk – inclusief LAN's, WAN's, intranetten en het internet – betrouwbaar, veilig en efficiënt blijft werken. Zij wijzen netwerkadressen toe, beheren en implementeren routeringsprotocollen zoals ISIS, OSPF en BGP, configureren routeringstabellen en voeren bepaalde authenticaties uit. Zij onderhouden en beheren servers (bestandsservers, VPN-gateways, inbraakdetectiesystemen), desktopcomputers, printers, routers, switches, firewalls, telefoons, IP-communicatie, persoonlijke digitale assistenten (PDA's), smartphones, software-implementaties, beveiligingsupdates en patches, alsook een breed scala aan aanvullende technologieën, waaronder zowel hardware als software."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "integration engineer",
+    "ict system integration consultant",
+    "ict intelligent systems designer",
+    "ict system tester",
+    "testingenieur",
+    "embedded systems designer",
+    "embedded systems software developer",
+    "ingenieur inbedrijfstelling",
+    "ICT-helpdeskmanager",
+    "ICT-operationsmanager",
+    "sales support medewerker",
+    "ict network administrator",
+    "applicatiebeheerder PACS",
+    "green ict consultant"
+  ],
+  "skills": [
+    {
+      "label": "computerprogrammering",
+      "uri": "http://data.europa.eu/esco/skill/21d2f96d-35f7-4e3f-9745-c533d2dd6e97",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ICT-netwerkroutering",
+      "uri": "http://data.europa.eu/esco/skill/0da6cab1-0ee9-4391-a299-f71fbf21db56",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "internetprotocolconfiguratie onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/b9aad733-959a-4178-984f-53e4bd05b420",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "inkoop van ICT-netwerkapparatuur",
+      "uri": "http://data.europa.eu/esco/skill/32428b21-514b-42c2-81b5-244a7804ea74",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "systeemcomponenten integreren",
+      "uri": "http://data.europa.eu/esco/skill/ed8de897-adbe-4f0e-b4d2-534953e64c72",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toekomstige behoeften aan ICT-netwerken voorspellen",
+      "uri": "http://data.europa.eu/esco/skill/8fa840f7-e66a-4370-8e6d-7d554260c31c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronische communicatieapparatuur installeren",
+      "uri": "http://data.europa.eu/esco/skill/861cc783-6d4c-442e-9081-3a6e389be454",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "technische documentatie aanleveren",
+      "uri": "http://data.europa.eu/esco/skill/04dfd9fb-e0cf-40f6-96c6-9d2280c4347e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ICT-systeemprogrammering",
+      "uri": "http://data.europa.eu/esco/skill/b105ec9b-0857-41d6-8d07-a83e58b73d90",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "wetgeving op het gebied van ICT-beveiliging",
+      "uri": "http://data.europa.eu/esco/skill/7814e88f-c133-4c3b-b27f-857afa145d42",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vereisten voor netwerkbandbreedte analyseren",
+      "uri": "http://data.europa.eu/esco/skill/da042121-959d-451b-b4d0-3bbf07c1bc67",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "methoden voor kwaliteitsgarantie",
+      "uri": "http://data.europa.eu/esco/skill/c7cc6dc5-d56b-4323-8e5c-47c4022f615f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "hulpmiddelen voor ICT-netwerkdiagnose implementeren",
+      "uri": "http://data.europa.eu/esco/skill/bf7ea00f-db77-4a95-9b9f-2d12b6d9fcb4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "cloudtechnologieën",
+      "uri": "http://data.europa.eu/esco/skill/bd14968e-e409-45af-b362-3495ed7b10e0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "hulpmiddelen voor systeemnetwerkbeheer",
+      "uri": "http://data.europa.eu/esco/skill/0ab03c6c-281b-48f4-83e0-10eeb27a1bae",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "internetbeheer",
+      "uri": "http://data.europa.eu/esco/skill/5063a99f-975b-4a7c-85e3-69ecb375b4d3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "oplossingsimplementatie",
+      "uri": "http://data.europa.eu/esco/skill/1d86f05e-e9cc-40ce-99d8-2b21cc71b16b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "capaciteit van ICT-systemen aanpassen",
+      "uri": "http://data.europa.eu/esco/skill/b1604a2d-c26a-427d-bda9-b8073a319fe9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "analysemethoden voor ICT-prestaties",
+      "uri": "http://data.europa.eu/esco/skill/ed39edd3-44d0-4a16-9796-bfb99f92baf3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ICT-virtualisatiemachines beheren",
+      "uri": "http://data.europa.eu/esco/skill/ae4f0cc6-e0b9-47f5-bdca-2fc2e6316dce",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "firewallregels definiëren",
+      "uri": "http://data.europa.eu/esco/skill/054f26ab-cfdc-4077-883c-1c4c9e9b310a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beveiligingsrisico’s voor ICT-netwerken",
+      "uri": "http://data.europa.eu/esco/skill/2ddb1226-1117-4eb4-ae65-3a2f5a5a3c80",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "computernetwerk ontwerpen",
+      "uri": "http://data.europa.eu/esco/skill/2164e860-7f20-48bc-b98c-5d9f8a561550",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beleidsregels voor ICT-systeemgebruik toepassen",
+      "uri": "http://data.europa.eu/esco/skill/9707091a-323b-4240-877a-5999a19286f0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "back-ups maken",
+      "uri": "http://data.europa.eu/esco/skill/cf3e976d-2c3e-495c-a874-f9e8a66d3b48",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "e-mailhostingservice beheren",
+      "uri": "http://data.europa.eu/esco/skill/f8f1f725-0105-41fa-9887-4df9e7a7af1e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "technische teksten interpreteren",
+      "uri": "http://data.europa.eu/esco/skill/85c11255-469f-41bd-a6d1-382bc4a87783",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "systeemonderdelen kopen",
+      "uri": "http://data.europa.eu/esco/skill/90be83d9-56f1-46a4-a6bc-96c51f6c9025",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "OpenEdge Advanced Business Language",
+      "uri": "http://data.europa.eu/esco/skill/300d432b-f457-4cd3-9cb1-1858c7d14954",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Pascal (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/e8b89eb6-51e8-4c3a-babb-88b2e110376b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "PHP",
+      "uri": "http://data.europa.eu/esco/skill/4350c38d-0fe9-4ca7-bab9-40ed7f72b04f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Assembly (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/47b9bbcf-356c-4782-83a4-7f5a1b2b51a3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "keuze van ICT-oplossing optimaliseren",
+      "uri": "http://data.europa.eu/esco/skill/3cfa46e9-b7da-44ac-b09e-9596dffe0425",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Ruby (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/0ccdfe98-f845-4598-84a1-3dca66e9d9a3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "MATLAB",
+      "uri": "http://data.europa.eu/esco/skill/c3a03c5a-c260-4c26-9b9a-873abb396f4d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Microsoft Visual C++",
+      "uri": "http://data.europa.eu/esco/skill/8369ede5-4200-4a44-be2e-bc60ef959259",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "TypeScript",
+      "uri": "http://data.europa.eu/esco/skill/867137fb-ff1b-4ca3-99f3-cb6969aa2c68",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Smalltalk (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/42ed3bfb-1a01-4c8b-9758-fc6438865734",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "technische opleidingen geven",
+      "uri": "http://data.europa.eu/esco/skill/d54a1355-05c8-45eb-9c42-267d2cfcdf44",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Python (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/ccd0a1d9-afda-43d9-b901-96344886e14d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Haskell",
+      "uri": "http://data.europa.eu/esco/skill/000f1d3d-220f-4789-9c0a-cc742521fb02",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "organisatorisch beleid",
+      "uri": "http://data.europa.eu/esco/skill/3a5231a0-8c30-48ee-b671-08e2debd4441",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ICT-audits uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/7e1f9657-ab4e-407c-842f-b846197060e3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ABAP",
+      "uri": "http://data.europa.eu/esco/skill/eb0e5615-1575-4a86-a1a2-7d39595033c5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Groovy",
+      "uri": "http://data.europa.eu/esco/skill/52cf3037-ab53-4806-85ed-7fd21ea7f6a1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Common Lisp",
+      "uri": "http://data.europa.eu/esco/skill/0cd6dcf1-5778-42a5-b685-4d01ae4a4871",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Android (mobiele besturingssystemen)",
+      "uri": "http://data.europa.eu/esco/skill/d8829a1d-dbde-435b-b921-29d6462f35c9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "training voor ict-systemen aanbieden",
+      "uri": "http://data.europa.eu/esco/skill/418a56a2-7cfc-4b6d-8cf5-5c2add99a849",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "licentieovereenkomsten voorbereiden",
+      "uri": "http://data.europa.eu/esco/skill/0d4471ae-3820-4c23-8566-f44a7bd159b2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Windows Phone",
+      "uri": "http://data.europa.eu/esco/skill/968ea96d-42d0-44fe-94b0-f11d84a8234d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gebruikersvereisten voor ict-systemen",
+      "uri": "http://data.europa.eu/esco/skill/ca73ac82-867a-4afa-9732-834aebe896ff",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Scala",
+      "uri": "http://data.europa.eu/esco/skill/ffddfc7c-a9dd-449f-9e96-882dc447c8b6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "AJAX",
+      "uri": "http://data.europa.eu/esco/skill/b4dc6e4f-dc7d-445f-8ce2-d7b9d225e282",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "proxyservers",
+      "uri": "http://data.europa.eu/esco/skill/553e1d2d-abf1-4b37-8ac4-c5c78a8edbc0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "R",
+      "uri": "http://data.europa.eu/esco/skill/51586df8-1c46-4b47-8583-773cb63bf00b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Objective-C",
+      "uri": "http://data.europa.eu/esco/skill/9973a5a2-7822-4161-99e9-95c781eb63f8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "SAS taal",
+      "uri": "http://data.europa.eu/esco/skill/04f1b938-d4d4-4cb1-a863-982af76b9d93",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "SAP R3",
+      "uri": "http://data.europa.eu/esco/skill/bb99af26-71ff-4dca-bde7-1eb1f6194426",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "C#",
+      "uri": "http://data.europa.eu/esco/skill/4c016b68-4116-468c-9dc6-42710c239e4a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Cisco",
+      "uri": "http://data.europa.eu/esco/skill/709ef32a-7435-48e2-8fa2-16e389ecab8a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "computergestuurde hulpmiddelen voor software-engineering gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/172020d1-e151-445b-8173-e2a5fb16fe51",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "systeemorganisatiebeleid toepassen",
+      "uri": "http://data.europa.eu/esco/skill/07e47d58-dd0e-4302-9e68-70a188e89065",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Prolog (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/2bde42ae-e776-41c1-9ded-b07b30bfe985",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "mobiele besturingssystemen",
+      "uri": "http://data.europa.eu/esco/skill/976455eb-5bbe-4493-ae64-ed16c3b009ea",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Scratch (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/d56fc2b5-4b0a-4e7e-9bde-a33736f6ff18",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Erlang",
+      "uri": "http://data.europa.eu/esco/skill/034c29fa-c3ba-45ea-b8f3-bf8e3705e386",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "C++",
+      "uri": "http://data.europa.eu/esco/skill/b633eb55-8f1f-4ae6-ab4c-2022ffe2cb7f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "COBOL",
+      "uri": "http://data.europa.eu/esco/skill/def007fa-5fed-4a5f-91a2-b0d7e3db1be1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "APL",
+      "uri": "http://data.europa.eu/esco/skill/58d7a289-dafd-4363-833f-d1dc4140885e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "VBScript",
+      "uri": "http://data.europa.eu/esco/skill/dcdd5ddf-82a6-4ac3-8edc-d4b23cae9a88",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Visual Basic",
+      "uri": "http://data.europa.eu/esco/skill/13bdd41a-2a18-441f-96db-41252c519413",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Java (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "BlackBerry",
+      "uri": "http://data.europa.eu/esco/skill/ba04b19b-0b18-4d5c-b799-4db31a98e58d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Swift (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/be80acfc-b6f2-4411-9b8d-b19d9cd2556a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "CoffeeScript",
+      "uri": "http://data.europa.eu/esco/skill/993b1e23-f2de-4bd8-b33f-f86dde1c8e9d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ML (computerprogrammering)",
+      "uri": "http://data.europa.eu/esco/skill/a4d336a6-9ffd-402a-91cc-f359716ba4e0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "JavaScript",
+      "uri": "http://data.europa.eu/esco/skill/3cd569a2-4f88-4c1e-9995-8dce8c5e51a7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Perl",
+      "uri": "http://data.europa.eu/esco/skill/401eb8d8-6daa-4f8b-90ad-60afc71eb4f8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "Lisp",
+      "uri": "http://data.europa.eu/esco/skill/0de61385-de6d-4146-ba32-1cc1bc102220",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ICT-server onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/f5ac9226-0ace-4d34-a1c3-7b3845834a98",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "iOS",
+      "uri": "http://data.europa.eu/esco/skill/ce26e71f-2d47-474e-89b6-7920931ac4fc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ASP.NET",
+      "uri": "http://data.europa.eu/esco/skill/56a7f561-1d55-43c9-9cd7-36a0a9bc6c50",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "signaalversterkers installeren",
+      "uri": "http://data.europa.eu/esco/skill/f0ff6f10-cbb4-44c0-acd5-ed17046b1396",
+      "categorie": "optioneel"
+    }
+  ]
+}

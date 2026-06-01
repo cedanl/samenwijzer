@@ -1,0 +1,161 @@
+{
+  "crebo": "25653",
+  "opleiding": "25653_BOL_2024__content_oer-2024-2025-ci-25653-musicalperformer",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "variétéartiest",
+    "uri": "http://data.europa.eu/esco/occupation/76deb33d-f9bc-4ca2-a5cc-49c8f5a17f38",
+    "definitie": "Variétéartiesten zijn multidisciplinaire artiesten die minstens twee van de volgende disciplines beheersen: komedie, dans, zang, circuskunsten, objectmanipulatie of illusionisme. Zij treden solo of samen op in muzikale variétéshows, cabaretvoorstellingen, musicals en andere entertainmentevenementen. Hun artistieke prestaties worden gekenmerkt door de vermenging van kunsten, stijlen en disciplines.  "
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "web content manager",
+    "bibliothecaris big-data-archief",
+    "technical communicator",
+    "pijpleidingoperator",
+    "draaier",
+    "drukvormvervaardiger",
+    "chief information officer",
+    "operator draadwikkelmachine",
+    "repetitor",
+    "specialist special effects",
+    "choreograaf",
+    "presentator",
+    "digitaal kunstenaar",
+    "variétéartiest",
+    "dansrepetitor",
+    "agent"
+  ],
+  "skills": [
+    {
+      "label": "rollen van scripts instuderen",
+      "uri": "http://data.europa.eu/esco/skill/2747a004-2b3c-4879-92ec-d2665bfee36a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "optreden samenstellen",
+      "uri": "http://data.europa.eu/esco/skill/5d8b0aff-0599-470a-8eef-9e8cb3ad1626",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "live optreden",
+      "uri": "http://data.europa.eu/esco/skill/04e6474d-f6fd-4e60-9191-24faae8ba0bb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zelfstandig als artiest werken",
+      "uri": "http://data.europa.eu/esco/skill/b4d58cb3-86d9-4c74-99ad-390a4386e84a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "feedback op artistieke prestaties aanvaarden",
+      "uri": "http://data.europa.eu/esco/skill/125258b2-23c1-472c-90c6-4ec2e90ed893",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "muziek voor een voorstelling selecteren",
+      "uri": "http://data.europa.eu/esco/skill/032a4ab8-1034-4541-8037-b2cdcc7fd19a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "omgaan met plankenkoorts",
+      "uri": "http://data.europa.eu/esco/skill/fbb2ad77-dba7-47eb-9da5-b50cffc598e8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "tekst onthouden",
+      "uri": "http://data.europa.eu/esco/skill/add5de06-4fcc-4d9a-9b27-4db9722c9be7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "omgaan met publiek",
+      "uri": "http://data.europa.eu/esco/skill/abe138ec-e084-47c7-abe3-e7f371f05eae",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "lichtkwaliteit van optredens beheren",
+      "uri": "http://data.europa.eu/esco/skill/9cbf9dff-3e4f-4e25-8217-4338e821f123",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "dansen",
+      "uri": "http://data.europa.eu/esco/skill/2aeadb90-7ddc-4329-9268-8d5a6bf76b99",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "locaties zoeken voor artiesten",
+      "uri": "http://data.europa.eu/esco/skill/0aebeb1a-acca-4d06-9852-4c937b46d6a6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zingen",
+      "uri": "http://data.europa.eu/esco/skill/e50a68c5-2a5d-4815-8bd1-e4334aed7683",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "optreden voor een jong publiek",
+      "uri": "http://data.europa.eu/esco/skill/8cbfee2d-11fd-4166-9153-03a722dc66a7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "muziekgenres",
+      "uri": "http://data.europa.eu/esco/skill/52eb7ab6-269f-4f44-a21d-b0c705eaf857",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderwijsmiddelen ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/3a5b7435-c262-4a9d-893d-ee6c19bd9d92",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "stunts uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/1c0dd8ea-c74a-4ef7-ab9a-a42aa39925fa",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voorwerpen manipuleren om illusies te creëren",
+      "uri": "http://data.europa.eu/esco/skill/f245f8af-4412-4be0-8b51-78f355a86288",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "muziekinstrumenten bespelen",
+      "uri": "http://data.europa.eu/esco/skill/8f8a8803-dc72-4488-9991-7c7d373e01fa",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "timingsignalen opvolgen",
+      "uri": "http://data.europa.eu/esco/skill/0cd8732f-e69c-4644-be07-e8bf5edc01af",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "concepten voor goochelshows ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/fcea64d4-654a-42f9-b50d-0caa82e9faec",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "dieren trainen",
+      "uri": "http://data.europa.eu/esco/skill/a5e4890e-85c4-470b-84be-66095378b624",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "deadlines halen",
+      "uri": "http://data.europa.eu/esco/skill/91abe492-18be-4cce-93c7-0dca07072363",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "solo muziek spelen",
+      "uri": "http://data.europa.eu/esco/skill/d7cac6b2-fab5-432a-af1c-23154ea56522",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "het publiek emotioneel betrekken",
+      "uri": "http://data.europa.eu/esco/skill/9c72fa23-60c5-4b90-81a8-44a871beb4e5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "optreden voor een publiek",
+      "uri": "http://data.europa.eu/esco/skill/b983e86d-61d5-4ebf-8810-2650c91da096",
+      "categorie": "optioneel"
+    }
+  ]
+}

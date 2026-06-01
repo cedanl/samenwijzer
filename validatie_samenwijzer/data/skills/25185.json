@@ -1,0 +1,214 @@
+{
+  "crebo": "25185",
+  "opleiding": "25185_BOL_2025__OER (OUD) - 25185 - Meewerkend horeca ondernemer",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "bedrijfsleider bakkerswinkel",
+    "uri": "http://data.europa.eu/esco/occupation/2afdf635-3cdb-4914-ab61-5dd7d7d46792",
+    "definitie": "Bedrijfsleiders van bakkerswinkels zijn verantwoordelijk voor de activiteiten en het personeel in gespecialiseerde winkels."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "barista",
+    "voorman wasserij",
+    "nachtportier",
+    "bedrijfsleider bakkerswinkel",
+    "entertainmentmanager",
+    "operator boekbindmachine",
+    "voorman stukadoor",
+    "markt- en straathandelaar",
+    "verkoopspecialist brood en banket",
+    "manager antiekwinkel",
+    "netwerkmarketeer",
+    "bedrijfsleider tankstation",
+    "bedrijfsleider kringloopwinkel",
+    "manager delicatessenwinkel"
+  ],
+  "skills": [
+    {
+      "label": "beleidslijnen van de organisatie naleven",
+      "uri": "http://data.europa.eu/esco/skill/aa238394-8126-4ada-be2f-9dfe065cf314",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "relaties met leveranciers onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/3cd35f5d-ce6d-4f14-9a09-53d7a28d834c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderhandelen over inkoopvoorwaarden",
+      "uri": "http://data.europa.eu/esco/skill/fde186df-c9c4-49f5-b2a5-d66adc7c43a5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "inkoopactiviteiten beheren",
+      "uri": "http://data.europa.eu/esco/skill/9e9a4209-c7cf-4f6e-973e-dc2ffadccc74",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "leiding geven aan personeel",
+      "uri": "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "arbeidswet",
+      "uri": "http://data.europa.eu/esco/skill/97b713f0-b9e8-4903-8dee-7e0b4019a1c0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderhandelen over verkoopcontracten",
+      "uri": "http://data.europa.eu/esco/skill/71152876-b629-4a99-b9ea-0f25a0d07e4e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "correcte etikettering van goederen waarborgen",
+      "uri": "http://data.europa.eu/esco/skill/6fcf2fc7-7b74-42e5-845f-f5854fd44f37",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheids- en veiligheidsnormen toepassen",
+      "uri": "http://data.europa.eu/esco/skill/dcc96a49-0bac-4a9c-8f8e-a32b4e47e6eb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheids- en veiligheidsbepalingen inzake broodproducten handhaven",
+      "uri": "http://data.europa.eu/esco/skill/f404dcb3-4ed1-404e-9ab8-992918d836ac",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteitscontroles bij voedselverwerking uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/f2536b0a-068b-48ed-910f-231bfa0ec032",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verkoopdoelen stellen",
+      "uri": "http://data.europa.eu/esco/skill/cbdce1f8-affe-4013-a519-283fa8ec1f6e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "prijsstrategieën toepassen",
+      "uri": "http://data.europa.eu/esco/skill/183134a2-3f8e-4a38-9e81-35c2bec0272b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "relaties met klanten onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/2239694b-771a-4586-8b54-2794e361a9ae",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor de naleving van aankoop- en contractregelgeving",
+      "uri": "http://data.europa.eu/esco/skill/a6ae7a34-5a5c-48dd-9b82-8beccca63e3c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klantenoordelen analyseren",
+      "uri": "http://data.europa.eu/esco/skill/89ba58e8-a67e-4d2b-ad42-6acab25c241b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verkoopcijfers van producten bestuderen",
+      "uri": "http://data.europa.eu/esco/skill/171eee55-19b9-46d6-aded-33193ba8ccf1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "budgetten beheren",
+      "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "personeel aanwerven",
+      "uri": "http://data.europa.eu/esco/skill/496932f1-0b6b-4f73-9432-d95c7ddcd43b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "diefstalpreventie beheren",
+      "uri": "http://data.europa.eu/esco/skill/efe5d94c-2249-4a50-8c44-6e77331c698d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "goederen bestellen",
+      "uri": "http://data.europa.eu/esco/skill/210827e3-3129-45a2-8683-70399f3f561f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toezicht houden op de uitstalling van koopwaar",
+      "uri": "http://data.europa.eu/esco/skill/e4aea84e-6f33-41f9-a61c-53cf5125ea26",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verkoopopbrengsten maximaliseren",
+      "uri": "http://data.europa.eu/esco/skill/9f10e94b-a43d-4772-9f60-24e9bbbdedb7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verschillende communicatiekanalen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/415abd43-e8e5-4643-b5da-5f11307af57a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gevoelige producten hanteren",
+      "uri": "http://data.europa.eu/esco/skill/fd85fb40-02d8-4f10-a287-6277126e16f5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klantgericht zijn",
+      "uri": "http://data.europa.eu/esco/skill/13e93abd-618c-46df-abbe-1af38ecd1aa2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "dienstverlening controleren",
+      "uri": "http://data.europa.eu/esco/skill/ee1d5734-89b8-4519-81f1-733a6b4f8df8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bakkerijproducten",
+      "uri": "http://data.europa.eu/esco/skill/c13f66f5-26ab-465f-80d8-c5484d941cc6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verkoopactiviteiten",
+      "uri": "http://data.europa.eu/esco/skill/450de541-797a-4da0-9fe4-a81471c8047d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "relevante licenties verkrijgen",
+      "uri": "http://data.europa.eu/esco/skill/4a112f96-72c1-47f3-aa61-4b34ea415701",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "samenstelling van bakproducten",
+      "uri": "http://data.europa.eu/esco/skill/1a369b5d-cf7a-4dc6-8d65-18b4e16949a2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toezicht houden op promotionele verkoopprijzen",
+      "uri": "http://data.europa.eu/esco/skill/687010cd-3f09-45c1-b6f8-0b860c129699",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "deelname aan internationale evenementen organiseren",
+      "uri": "http://data.europa.eu/esco/skill/083b677b-e52e-48a4-9c97-5c177af23e84",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "deelname aan lokale of internationale evenementen organiseren",
+      "uri": "http://data.europa.eu/esco/skill/54e60889-c5cc-435f-8d6d-7aefb67e993a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "leiding geven bij voedselbereiding",
+      "uri": "http://data.europa.eu/esco/skill/8bb1e784-f54f-48dd-aedd-23723e171898",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bestellingen voor bakkerij-ingrediënten plaatsen",
+      "uri": "http://data.europa.eu/esco/skill/6bf4f085-82d2-4b21-9aa5-9c1f955becab",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "nieuwe bakkerijproducten ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/4170dc71-def4-41be-9001-43fcb3ea1c29",
+      "categorie": "optioneel"
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "crebo": "25647",
+  "opleiding": "25647_BOL_2024__2024_OER_BOL_Leidinggevende-Travel-en-Hospitality",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "manager luchtvaart",
+    "uri": "http://data.europa.eu/esco/occupation/0d442b70-5413-4820-bebf-36dd5ce437ac",
+    "definitie": "Luchtvaartmanagers coördineren de planning van de vluchtleiding, het onderhoud van de vliegtuigen en de behandeling van de klanten. Zij streven naar een zo efficiënt mogelijk gebruik van middelen voor de aansturing van het vliegtuig. Zij beheren veiligheid, kwaliteit en risico’s in het dagelijkse werk. Zij plannen en vergelijken ook de prestaties met andere verleners van luchtvaartnavigatiediensten."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "assistent-animator outdooractiviteiten",
+    "leidinggevende waterterugwinning",
+    "leidinggevende gasverwerkingsinstallatie",
+    "productieleider textielindustrie",
+    "distilleerderij-opzichter",
+    "chef machinebediening",
+    "verantwoordelijke papierfabriek",
+    "manager luchtvaart"
+  ],
+  "skills": [
+    {
+      "label": "Aviation System Block Upgrades",
+      "uri": "http://data.europa.eu/esco/skill/90f9dc0c-f9c0-45a7-9fb4-20a7e4ca4632",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veiligheidsprocedures van luchthavens volgen",
+      "uri": "http://data.europa.eu/esco/skill/5612d47c-2256-4259-977d-ae8ab67fd7f1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "risicoanalyses uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/1dd23dba-dd00-45ab-abf4-642902538317",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veelvoorkomende veiligheidsvoorschriften in de luchtvaart",
+      "uri": "http://data.europa.eu/esco/skill/d5b63f98-28ce-4cbb-b075-6ac539a685b0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor de kwaliteit van diensten voor het beheer van luchtvaartgegevens",
+      "uri": "http://data.europa.eu/esco/skill/2579f843-87e8-4a9f-83ce-1284b2218b56",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "marktonderzoek uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/fe39d4db-4cb5-4299-bb9f-896c8fd6ab13",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "medewerkers opleiden over navigatievereisten",
+      "uri": "http://data.europa.eu/esco/skill/a79bd9e9-aec7-41d5-b885-16349995bfab",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "luchtvaartnavigatiediensten beheren",
+      "uri": "http://data.europa.eu/esco/skill/f6f66b89-248b-438c-a3ce-196edcb3397c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gegevensanalyses uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/2b92a5b2-6758-4ee3-9fb4-b6387a55cc8f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beheer van luchtverkeer",
+      "uri": "http://data.europa.eu/esco/skill/34330a42-eeb0-44c3-a41e-670e9b20c7c7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor veiligheid bij internationaal luchtverkeer",
+      "uri": "http://data.europa.eu/esco/skill/f7582089-04a6-4de8-92e1-b11d79769ab7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "geografische gebieden",
+      "uri": "http://data.europa.eu/esco/skill/0db1a833-e4b7-4cae-9c6f-ddcdd4326e85",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "moderne elektronische navigatiehulpmiddelen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/0b449eb1-d082-4e62-95d7-5cf59bdf2097",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "astronavigatie",
+      "uri": "http://data.europa.eu/esco/skill/b4478c05-1587-45c5-a56f-386cf23916ad",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "hulp bieden aan diverse luchthavengebruikers",
+      "uri": "http://data.europa.eu/esco/skill/34783459-e867-4f50-90dd-fb020b543f43",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "luchtvaartmeteorologie in het oog houden",
+      "uri": "http://data.europa.eu/esco/skill/bb39a4c6-164f-40dd-ab6e-7ad018eefd4c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "geografische informatiesystemen",
+      "uri": "http://data.europa.eu/esco/skill/377861af-f966-4c87-a2db-7e99904312b9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "in een luchtvaartteam werken",
+      "uri": "http://data.europa.eu/esco/skill/524106a8-b343-45f6-b4ce-58e8d3cf1093",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "geografische informatiesystemen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/440f64e5-e66c-45ee-bc29-53c14a2ad720",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vluchtschema’s coördineren",
+      "uri": "http://data.europa.eu/esco/skill/04bcb522-62a9-4fc1-8ea9-b7ccff10147e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "besturingssystemen van vliegtuigen",
+      "uri": "http://data.europa.eu/esco/skill/2672f6a9-1e70-43c5-859d-e6a0fc9ea0f1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "luchthavennormen en -voorschriften toepassen",
+      "uri": "http://data.europa.eu/esco/skill/a7fbcdfa-23af-49ba-a7b1-3d5d69078f3e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderhoudsactiviteiten plannen",
+      "uri": "http://data.europa.eu/esco/skill/649b00ec-a70d-4b3a-ae2e-5662964b0fb8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "statistiek",
+      "uri": "http://data.europa.eu/esco/skill/7ee4c2ea-b349-4bd2-81a3-ec31475d4833",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "prestaties van grondsystemen testen",
+      "uri": "http://data.europa.eu/esco/skill/40802f0d-d400-404c-bc26-f9ba4eb6195a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "documentatie van vliegtuigen controleren",
+      "uri": "http://data.europa.eu/esco/skill/2167bb42-8f4c-452b-a091-50cf64e46b99",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "milieuvoorschriften op luchthavens",
+      "uri": "http://data.europa.eu/esco/skill/23dc8bb2-1091-461e-9095-a048b7ffa009",
+      "categorie": "optioneel"
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "crebo": "25306",
+  "opleiding": "25306_BBL_2025__25306BBL2025Examenplan",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "operator stoomketel",
+    "uri": "http://data.europa.eu/esco/occupation/2cad9c6f-0289-4b26-b247-e65c0089f8f4",
+    "definitie": "Operators stoomketel onderhouden verwarmingssystemen zoals lagedrukketels, hogedrukketels en krachtketels. Zij werken meestal in grote gebouwen, zoals elektriciteitscentrales of stookruimten, en zorgen voor een veilige en milieuvriendelijke werking van de ketelinstallaties."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "operator stoomketel",
+    "procesoperator stoomcentrale",
+    "technisch medewerker klantenservice",
+    "auto-elektricien",
+    "ICT-helpdeskmanager",
+    "medewerker datacentrum",
+    "officer Luchtvaartinformatiedienst",
+    "tennisleraar"
+  ],
+  "skills": [
+    {
+      "label": "stoomdruk reguleren",
+      "uri": "http://data.europa.eu/esco/skill/d8ea5f5c-423c-4c3a-87a6-82a25ad3dc01",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "meter controleren",
+      "uri": "http://data.europa.eu/esco/skill/285cac9e-dad3-4b7b-848f-9bd2860ae345",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "boilers bedienen",
+      "uri": "http://data.europa.eu/esco/skill/68bb49f4-59b7-489e-8903-4aea01fb5fc3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderdelen voor verwarming, ventilatie, klimaatregeling en koeling",
+      "uri": "http://data.europa.eu/esco/skill/aba2e61d-ef78-45bd-a9bc-392a718d4877",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "waterverwarmingsapparatuur gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/988f696e-01c9-4aa5-b024-4aa96505ee0c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "risicoanalyses uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/1dd23dba-dd00-45ab-abf4-642902538317",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "stoomstromen controleren",
+      "uri": "http://data.europa.eu/esco/skill/8065d59b-82da-48a8-8071-a07471bf6635",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "tegen hoge temperaturen bestand zijn",
+      "uri": "http://data.europa.eu/esco/skill/feaefe50-fcbe-4c5f-acbd-580724bf6ba2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "watermeter aflezen",
+      "uri": "http://data.europa.eu/esco/skill/698ff0a8-5811-4035-8064-1a96240fa190",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "waterdruk",
+      "uri": "http://data.europa.eu/esco/skill/20e16be3-80b0-46bd-8b5e-ad9aa1ddf608",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kleppen controleren",
+      "uri": "http://data.europa.eu/esco/skill/f4349677-549e-419a-8f8e-eb10bfe10720",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "warmtemeter aflezen",
+      "uri": "http://data.europa.eu/esco/skill/d646a68c-b0f7-4b1d-87eb-3d1f5d224554",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "pompen bedienen",
+      "uri": "http://data.europa.eu/esco/skill/1864d4a3-eb9c-44f2-84f3-77137db21aeb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderhoud van apparatuur garanderen",
+      "uri": "http://data.europa.eu/esco/skill/c927ec6e-9082-4b22-afd3-0c4e219eaf73",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten hout",
+      "uri": "http://data.europa.eu/esco/skill/cf2005ee-c788-4283-81d9-b443dfdf2c2e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "communicatie",
+      "uri": "http://data.europa.eu/esco/skill/15d76317-c71a-4fa2-aadc-2ecc34e627b7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "olieveldmachines onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/37cda11c-63a3-4941-9a66-32e8d999e708",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verwarmingsketels installeren",
+      "uri": "http://data.europa.eu/esco/skill/592188c6-7212-47bb-ba58-f9361026addc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "rapporten presenteren",
+      "uri": "http://data.europa.eu/esco/skill/d0f2f8a7-d935-4a6d-8e54-dcc3e5e2cbeb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "aardgas",
+      "uri": "http://data.europa.eu/esco/skill/608eb32b-276c-42a6-9be9-2d7bc33e9b3b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "hygiëne waarborgen",
+      "uri": "http://data.europa.eu/esco/skill/0c944316-12f6-4949-a156-a03dbaae790f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektrisch gereedschap gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/5bf7f85a-b080-4b27-8ddc-9f62af4643f5",
+      "categorie": "optioneel"
+    }
+  ]
+}

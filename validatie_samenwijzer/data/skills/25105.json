@@ -1,0 +1,278 @@
+{
+  "crebo": "25105",
+  "opleiding": "2021 - 25105 VG MBI OER Middenkaderfunctionaris Infra BOL4",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "voorman spoorlegger",
+    "uri": "http://data.europa.eu/esco/occupation/2a226be5-6157-49e9-bd4b-e3b46d55c082",
+    "definitie": "Voormannen spoorlegger monitoren de aanleg en het onderhoud van spoorweginfrastructuur. Zij wijzen taken toe, ter plaatse of vanuit een controlekamer, en nemen snelle beslissingen om problemen op te lossen."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "voorman spoorlegger",
+    "projectingenieur spoorwegen",
+    "servicemonteur communicatie-infrastructuur",
+    "bouwkundig ingenieur",
+    "manager pijpleidingbeheer",
+    "manager recreatie-accommodatie",
+    "ICT-operationsmanager",
+    "e-learningarchitect",
+    "ingenieur civiele bouwkunde",
+    "architect",
+    "irrigatiemonteur",
+    "seismoloog",
+    "monteur elektrische installaties woningbouw"
+  ],
+  "skills": [
+    {
+      "label": "omgaan met managers",
+      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werkgebied beveiligen",
+      "uri": "http://data.europa.eu/esco/skill/6ed2fb8d-3580-497f-8a21-30a0ada5caae",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "mechanische systemen",
+      "uri": "http://data.europa.eu/esco/skill/69bece91-c806-42ad-bde4-db28c7f8fc4b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheids- en veiligheidsprocedures in de bouw in acht nemen",
+      "uri": "http://data.europa.eu/esco/skill/86df7af2-f9f3-4c06-a500-7f1fba9e78fe",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toewijzing van middelen plannen",
+      "uri": "http://data.europa.eu/esco/skill/7c05199f-7b03-4a4a-afee-7c9dfcf9066a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "diensten van werknemers plannen",
+      "uri": "http://data.europa.eu/esco/skill/85aa1871-db96-42f7-801f-c39f924de2d7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "op gebeurtenissen in tijdkritieke omgevingen reageren",
+      "uri": "http://data.europa.eu/esco/skill/be7c80ee-0b7a-455c-8928-055cfa65076c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bouwactiviteiten coördineren",
+      "uri": "http://data.europa.eu/esco/skill/fff5bc45-b506-4466-8977-4869079c1cb2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voorraadniveaus bewaken",
+      "uri": "http://data.europa.eu/esco/skill/44f6a65f-6be7-4818-9a66-73908797283f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veiligheidsuitrusting gebruiken tijdens bouwwerkzaamheden",
+      "uri": "http://data.europa.eu/esco/skill/c643e59b-d74c-4f44-b76e-6e1d96c05ec4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bouwmaterialen inspecteren",
+      "uri": "http://data.europa.eu/esco/skill/50f2d23c-b3fb-48a5-967b-14fd0a6dd205",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "analyse van kwaliteitscontrole uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/41a3240f-58ba-44e2-a688-edeb21ea5c16",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gegevens over de voortgang van het werk bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/ccfbdaad-b91d-4bfe-bd0e-d30b33587f19",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toezicht houden op personeel",
+      "uri": "http://data.europa.eu/esco/skill/9601b2a8-68e4-4906-9306-a23679b8f0b0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "mechanische werktuigen",
+      "uri": "http://data.europa.eu/esco/skill/44297bbb-306a-46fa-ab1b-fa3fb327ebda",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor de beschikbaarheid van materiaal",
+      "uri": "http://data.europa.eu/esco/skill/69f23426-9279-4fe6-a283-24c2aa4c855d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werk van werknemers beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/8a98707e-b2ee-48fe-9f36-e47e3555ecf7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "naleving van gezondheids- veiligheids- en hygiënenormen waarborgen",
+      "uri": "http://data.europa.eu/esco/skill/44e2c4c4-9fd2-42d4-a133-d81360ded4bc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "binnenkomende bouwmaterialen verwerken",
+      "uri": "http://data.europa.eu/esco/skill/a3e0224a-c952-4b4e-b664-d7186f62715b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werktreinen",
+      "uri": "http://data.europa.eu/esco/skill/19931934-3d3f-4c9f-81a2-e962e02cfe01",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ervoor zorgen dat de deadline van het bouwproject wordt nagekomen",
+      "uri": "http://data.europa.eu/esco/skill/6181f475-110c-497c-a46d-ed2e14e7bc90",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werken in een bouwteam",
+      "uri": "http://data.europa.eu/esco/skill/4fa2d6ba-4fff-4f21-bddd-4a54ae840955",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vlambooglastechnieken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/27d26fd6-5795-4f0a-884e-112df7c68314",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "spoor vanuit meettreinen inspecteren",
+      "uri": "http://data.europa.eu/esco/skill/ef31d34e-039b-4cbb-a175-fdf6ffcae59c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "personeel aanwerven",
+      "uri": "http://data.europa.eu/esco/skill/496932f1-0b6b-4f73-9432-d95c7ddcd43b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "machines om bevestigingsklemmen op spoorbielzen aan te brengen bedienen",
+      "uri": "http://data.europa.eu/esco/skill/10815682-50d3-47df-a775-47ab6732ea4f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "laadvermogen van machines",
+      "uri": "http://data.europa.eu/esco/skill/7b2ebf06-c789-434e-b274-7f159a1a4ea3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "benodigde bouwmaterialen berekenen",
+      "uri": "http://data.europa.eu/esco/skill/5d9dd44a-81f8-4710-bd4d-af27ec5c2139",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "sporen visueel inspecteren",
+      "uri": "http://data.europa.eu/esco/skill/cb3bbb14-9d5e-4f66-9bb3-cdc76a971f29",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bouwmaterialen bestellen",
+      "uri": "http://data.europa.eu/esco/skill/9f1bd2a4-91af-4b60-aeb3-0fe1f4434966",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ergonomisch werken",
+      "uri": "http://data.europa.eu/esco/skill/156f8c5b-894a-4ccc-a70e-37a2726f3f00",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "thermietlastechnieken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/3d83ffe1-acbd-4494-9275-412559f64940",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "adviseren over herstellingen aan spoorweginfrastructuur",
+      "uri": "http://data.europa.eu/esco/skill/d619761b-cf3b-471b-8113-87792b256939",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "eerste hulp bieden",
+      "uri": "http://data.europa.eu/esco/skill/1d21f6ad-340f-45da-a0a3-4e83867f47a6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "spoordetectoren installeren",
+      "uri": "http://data.europa.eu/esco/skill/cf6d564c-6d88-44f6-bdaa-8e134f9c7b9f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "spoorinfrastructuur onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/55868080-db49-4d8a-8c48-d88009ab886a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kostenbeheer",
+      "uri": "http://data.europa.eu/esco/skill/7d35602d-bc94-4975-aa7c-f4e8e05ce8e0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "machine om sporen op te rapen controleren",
+      "uri": "http://data.europa.eu/esco/skill/122dbd0c-0c69-40b1-9d45-69a9e837d0c3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "slijpmachines voor sporen bedienen",
+      "uri": "http://data.europa.eu/esco/skill/2234710a-2358-49a2-aa33-b0230a76d39d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "technische expertise leveren",
+      "uri": "http://data.europa.eu/esco/skill/c69587b4-05d3-45bb-b79b-9b85e6603fc2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "grijpers bedienen",
+      "uri": "http://data.europa.eu/esco/skill/44711112-14b3-4625-bed3-8f07c3e85348",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "machine om sporen te leggen controleren",
+      "uri": "http://data.europa.eu/esco/skill/70e66191-b619-40e5-9f49-8f36ac7fabc0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "puntlastechnieken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/38a32307-bb1e-4593-8fa2-e31384417649",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "meetinstrumenten gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/b92758d4-4591-4df1-9ceb-f907aa71ebd9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "lading vastmaken",
+      "uri": "http://data.europa.eu/esco/skill/43ea53b0-65a8-4c23-a0ef-b95389e7548e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werknemers opleiden",
+      "uri": "http://data.europa.eu/esco/skill/e54ff029-1ce9-447d-a5b2-eb7283a23e6e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ballastregulator controleren",
+      "uri": "http://data.europa.eu/esco/skill/6d1dad98-12d2-45b6-a1dd-6916734b1fed",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bouwmaterialen vervoeren",
+      "uri": "http://data.europa.eu/esco/skill/4af56376-7b2f-4ced-ac58-0c3967bd1e83",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "stopmachine controleren",
+      "uri": "http://data.europa.eu/esco/skill/db580394-90d2-4917-995e-c5daad1cff3f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "regelgeving inzake bouwproducten",
+      "uri": "http://data.europa.eu/esco/skill/5518db9d-4a2f-4b53-9068-4d0d61465bf4",
+      "categorie": "optioneel"
+    }
+  ]
+}

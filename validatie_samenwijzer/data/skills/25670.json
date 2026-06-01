@@ -1,0 +1,186 @@
+{
+  "crebo": "25670",
+  "opleiding": "2021 - 25670 VG VTT OER Technisch Specialist Bedrijfsautotechniek BBL4",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "machinist mobiele kraan",
+    "uri": "http://data.europa.eu/esco/occupation/1f2b8092-1787-4ef4-9282-cf81ce4b4d76",
+    "definitie": "Machinisten mobiele kraan werken met uiteenlopende kraantypes die gemakkelijk kunnen worden verplaatst over de weg, het spoor en het water. Mobiele kranen worden vaak op vrachtwagens gemonteerd."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "specialist geografische informatiesystemen",
+    "specialist vliegtuigmotoren",
+    "valutamakelaar",
+    "biomedisch technoloog",
+    "valutatrader",
+    "analist ict-noodherstel",
+    "CAD-tekenaar",
+    "natuurkundige",
+    "mobile app developer",
+    "specialist niet-destructief onderzoek",
+    "medisch specialist",
+    "machinist mobiele kraan",
+    "ontharingsspecialist",
+    "onderhoudsmonteur telecommunicatieapparatuur",
+    "tandartsspecialist",
+    "specialist import en export van farmaceutische producten"
+  ],
+  "skills": [
+    {
+      "label": "lading vastmaken",
+      "uri": "http://data.europa.eu/esco/skill/43ea53b0-65a8-4c23-a0ef-b95389e7548e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zware bouwuitrusting in goede staat houden",
+      "uri": "http://data.europa.eu/esco/skill/0c04d0af-af50-4463-8ce3-e9968e229237",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "mechanica",
+      "uri": "http://data.europa.eu/esco/skill/efa141df-f382-418f-9121-bd88fd735669",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bouwsites inspecteren",
+      "uri": "http://data.europa.eu/esco/skill/4f9f0410-5db0-4b3b-8de3-1ded1600c719",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "op gebeurtenissen in tijdkritieke omgevingen reageren",
+      "uri": "http://data.europa.eu/esco/skill/be7c80ee-0b7a-455c-8928-055cfa65076c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "GPS-systemen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/97fb21db-a4e5-4b03-af21-03b9d510d872",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "2D-schema's interpreteren",
+      "uri": "http://data.europa.eu/esco/skill/dfce2aba-783e-4e17-9c17-e74aca505ec2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veiligheidsuitrusting gebruiken tijdens bouwwerkzaamheden",
+      "uri": "http://data.europa.eu/esco/skill/c643e59b-d74c-4f44-b76e-6e1d96c05ec4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zware constructiewerktuigen bevestigen",
+      "uri": "http://data.europa.eu/esco/skill/db7c49f2-dc93-461d-845d-a6bdf780a9f7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheids- en veiligheidsprocedures in de bouw in acht nemen",
+      "uri": "http://data.europa.eu/esco/skill/86df7af2-f9f3-4c06-a500-7f1fba9e78fe",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "mechanische systemen",
+      "uri": "http://data.europa.eu/esco/skill/69bece91-c806-42ad-bde4-db28c7f8fc4b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "hijstabellen",
+      "uri": "http://data.europa.eu/esco/skill/7f2c62b0-928a-4da2-a578-674940a14063",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "mobiele kranen bedienen",
+      "uri": "http://data.europa.eu/esco/skill/9fe699e9-3490-4f3d-a50d-9f9d31c98698",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "3D-schema's interpreteren",
+      "uri": "http://data.europa.eu/esco/skill/aafbb139-02c6-4f35-bc62-ff73faf97d6d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kranen opstellen",
+      "uri": "http://data.europa.eu/esco/skill/774ee0e0-5d24-48d8-8df0-4b7fea48a578",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ergonomisch werken",
+      "uri": "http://data.europa.eu/esco/skill/156f8c5b-894a-4ccc-a70e-37a2726f3f00",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zware constructiewerktuigen verrijden",
+      "uri": "http://data.europa.eu/esco/skill/b8c1e014-1f54-480a-bf0f-2ef3d2d275e8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gebruik van zware constructiewerktuigen aansturen",
+      "uri": "http://data.europa.eu/esco/skill/d8903406-abc4-48be-9b2e-5d8ddf103bd9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "op afstand bediende uitrusting gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/58c3ed60-c06b-47c0-b213-4e3608608644",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bouwmaterialen vervoeren",
+      "uri": "http://data.europa.eu/esco/skill/4af56376-7b2f-4ced-ac58-0c3967bd1e83",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "veiligheidsprocedures volgen bij werken op hoogte",
+      "uri": "http://data.europa.eu/esco/skill/fafbb75f-ec35-4cc2-996a-20c85ef6c266",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "binnenkomende bouwmaterialen verwerken",
+      "uri": "http://data.europa.eu/esco/skill/a3e0224a-c952-4b4e-b664-d7186f62715b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektriciteit",
+      "uri": "http://data.europa.eu/esco/skill/c8ac1986-38fa-43b2-89dc-50a4beeb420e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zware constructiemachines bedienen zonder toezicht",
+      "uri": "http://data.europa.eu/esco/skill/408332c7-1892-420e-b835-357d3a18351a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "tijdelijke infrastructuur op bouwlocatie opzetten",
+      "uri": "http://data.europa.eu/esco/skill/ef2adfe8-d7a5-465d-bbe6-8f9e913ae7ed",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "draagvermogen bodem testen",
+      "uri": "http://data.europa.eu/esco/skill/ffe8bbf9-0fec-44df-901d-1eb6b913e379",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kleine reparaties aan apparatuur uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/c0fc7d2d-d013-40d7-bc58-75cf3771153f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gegevens over de voortgang van het werk bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/ccfbdaad-b91d-4bfe-bd0e-d30b33587f19",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "torenkraan opbouwen",
+      "uri": "http://data.europa.eu/esco/skill/0ea5d4a5-3a7c-4fd0-a62f-992074c85a6c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "persoonlijke administratie bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/9df34bc3-25d4-4452-a896-4d19b94ef896",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werken in een bouwteam",
+      "uri": "http://data.europa.eu/esco/skill/4fa2d6ba-4fff-4f21-bddd-4a54ae840955",
+      "categorie": "optioneel"
+    }
+  ]
+}

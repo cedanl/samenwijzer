@@ -1,0 +1,133 @@
+{
+  "crebo": "25686",
+  "opleiding": "25686_BOL_2024__content_oer-2024-2025-ci-25686-fashion-tailor",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "model",
+    "uri": "http://data.europa.eu/esco/occupation/9af5fd79-d76e-4343-bc13-ff2d172aec62",
+    "definitie": "Modellen dragen bij aan de promotie van producten zoals kleding, cosmetica en apparaten, door voor journalisten, fotografen en publiek op catwalks te poseren. Zij moeten ervoor zorgen dat hun uiterlijk altijd in orde is. De modellen moeten er voor een camera goed uitzien en de juiste houding aannemen."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "web content manager",
+    "model",
+    "bibliothecaris big-data-archief",
+    "technical communicator",
+    "pijpleidingoperator",
+    "draaier",
+    "drukvormvervaardiger",
+    "chief information officer"
+  ],
+  "skills": [
+    {
+      "label": "make-uptechnieken",
+      "uri": "http://data.europa.eu/esco/skill/8599fe11-e263-4e6c-a4a2-d6e8d2498b5a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "deelnemen aan audities",
+      "uri": "http://data.europa.eu/esco/skill/3ca9b968-03ae-47c8-b428-f0e22861191b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "lichaamsbewegingen harmoniseren",
+      "uri": "http://data.europa.eu/esco/skill/2ff6daae-8319-4e56-bc4d-bb574754aec4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zichzelf promoten",
+      "uri": "http://data.europa.eu/esco/skill/a04c2655-5996-4744-bca2-4f4c8b3e4667",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "samenwerking tussen productie, kostuumafdeling en make-upafdeling garanderen",
+      "uri": "http://data.europa.eu/esco/skill/c7d328f4-87a7-4091-8eb5-122f471bd954",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "normen voor persoonlijke hygiëne handhaven",
+      "uri": "http://data.europa.eu/esco/skill/0e21e183-e787-4f23-a240-93b416c088c2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "een professioneel netwerk ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/bf5d77ad-e18c-48d8-83f0-bc79c011c74a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voor de camera poseren",
+      "uri": "http://data.europa.eu/esco/skill/243a6931-24ce-45fa-831b-c11d4cd9f165",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "intercultureel bewustzijn tonen",
+      "uri": "http://data.europa.eu/esco/skill/7d23c508-c007-4221-bb84-0c9a479b8ea6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "fotografie",
+      "uri": "http://data.europa.eu/esco/skill/38509fa4-7c06-4a4b-9622-f521f03c37b8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "artistieke portfolio's bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/473c68ee-1ab3-4bcf-b286-f7a8df0acec6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "instructies van de regisseur volgen",
+      "uri": "http://data.europa.eu/esco/skill/b31ccede-907f-49de-8047-4d851bd4add3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contact opnemen met talentagenten",
+      "uri": "http://data.europa.eu/esco/skill/a05bcb7d-a037-490d-ac80-5ec664e00c2b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "producten in advertenties promoten",
+      "uri": "http://data.europa.eu/esco/skill/4c2e5f21-e3c3-4119-8efc-fc777c6f7fc8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "aan contractspecificaties voldoen",
+      "uri": "http://data.europa.eu/esco/skill/576b305e-8c25-4546-8a69-87f975783114",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "behoeften van klanten identificeren",
+      "uri": "http://data.europa.eu/esco/skill/68698869-c13c-4563-adc7-118b7644f45d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vergaderingen regelen",
+      "uri": "http://data.europa.eu/esco/skill/906c9e66-bdee-4f8e-93d7-88d9fcf39a0a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "deelnemen aan modeshows",
+      "uri": "http://data.europa.eu/esco/skill/2bd1b194-6700-4e60-b769-83d439475c55",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "commerciële fotografie",
+      "uri": "http://data.europa.eu/esco/skill/eac1e014-17aa-4694-a96d-540bfc06bca3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "pasmomenten bijwonen",
+      "uri": "http://data.europa.eu/esco/skill/97cb7550-3d9c-4218-97ec-daae42f12c7a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "modetrends",
+      "uri": "http://data.europa.eu/esco/skill/1b10c3de-1284-4c89-a9f9-762ad51a6ad7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderzoek over ontwerptrends voeren",
+      "uri": "http://data.europa.eu/esco/skill/a8ea1f32-be7e-48ff-8ef5-7e2847beadb1",
+      "categorie": "optioneel"
+    }
+  ]
+}

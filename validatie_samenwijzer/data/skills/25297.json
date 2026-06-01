@@ -1,0 +1,335 @@
+{
+  "crebo": "25297",
+  "opleiding": "2021 - 25297 VG ENG OER Technicus EngineeringBOL4",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "technicus elektronica",
+    "uri": "http://data.europa.eu/esco/occupation/27811419-407f-4868-a388-2f7df7aafd91",
+    "definitie": "Technici elektronica werken nauw samen met elektronica-ingenieurs bij de ontwikkeling van elektronische uitrusting en apparatuur. Technici elektronica zijn verantwoordelijk voor het bouwen, testen en onderhouden van elektronische apparaten."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "technicus computerhardware",
+    "technicus waterkracht",
+    "technicus microsystemen",
+    "technisch ingenieur optomechanica",
+    "mastering engineer",
+    "technicus textieldruk",
+    "nucleair technicus",
+    "technicus elektronica",
+    "collectiebeheerder dierentuin",
+    "autotechnisch ingenieur",
+    "docent ingenieurswetenschappen hoger onderwijs",
+    "ict intelligent systems designer",
+    "ict usability tester",
+    "onderzoeker productontwikkeling textiel, leder en schoeisel",
+    "technisch tekenaar koel-, lucht- en verwarmingstechniek"
+  ],
+  "skills": [
+    {
+      "label": "elektronische ontwerpspecificaties interpreteren",
+      "uri": "http://data.europa.eu/esco/skill/e76dd90d-91c4-49c0-bfd0-dfa2c4c90c81",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "technische ontwerpen aanpassen",
+      "uri": "http://data.europa.eu/esco/skill/42b23922-1c40-4dbe-9e0c-7a568dfdf06b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "printplaten",
+      "uri": "http://data.europa.eu/esco/skill/6a2bc03b-e30d-429b-9549-5784cb92ae2f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronica solderen",
+      "uri": "http://data.europa.eu/esco/skill/26ed52cf-30ca-451e-9699-a6c04a30649f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteit van producten controleren",
+      "uri": "http://data.europa.eu/esco/skill/1a3660c2-011c-4e96-9b1d-529afc305428",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "soorten elektronica",
+      "uri": "http://data.europa.eu/esco/skill/52838a25-11f5-4cb1-b4ab-c5c7d59041e8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "tekeningen ontwerpen",
+      "uri": "http://data.europa.eu/esco/skill/3c333552-8d89-43f5-90bd-856e15bec433",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronische apparatuur configureren",
+      "uri": "http://data.europa.eu/esco/skill/03459358-3f0f-4b13-a143-890e2da798d3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "normen voor elektronische apparaten",
+      "uri": "http://data.europa.eu/esco/skill/19ec88aa-c0b1-4515-ba10-56b6cf27369e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "prototypen voor productie maken",
+      "uri": "http://data.europa.eu/esco/skill/e921279a-1a7e-4900-9720-bde93ae3e70e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "componenten vastmaken",
+      "uri": "http://data.europa.eu/esco/skill/cafc2723-c308-4058-9921-61306b5de924",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronische eenheden monteren",
+      "uri": "http://data.europa.eu/esco/skill/4ed385bf-3e87-476a-9f06-08c2e801133a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronische componenten",
+      "uri": "http://data.europa.eu/esco/skill/8a2f841c-fe35-46c0-90bd-51858a88a83b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "schakelschema’s",
+      "uri": "http://data.europa.eu/esco/skill/02c71cde-f513-43da-8952-0974763c7568",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "testgegevens vastleggen",
+      "uri": "http://data.europa.eu/esco/skill/328733a7-6d84-420d-a65c-2a8014fadc60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronica",
+      "uri": "http://data.europa.eu/esco/skill/95c35c3a-035f-47c2-90cf-7e934d20fc08",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronische eenheden testen",
+      "uri": "http://data.europa.eu/esco/skill/baf501a8-f0fe-4ad7-9b69-8e920fa1a87b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "soldeertechnieken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/136596a4-00b5-4ed3-bb6e-717198c1ccbe",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "testapparatuur gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/74374d09-7a54-4a05-ae78-d5940423de7c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "assisteren bij wetenschappelijk onderzoek",
+      "uri": "http://data.europa.eu/esco/skill/d6179c4b-ff5a-4bbb-a3c8-e0acf0de1f56",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "assemblagetekeningen lezen",
+      "uri": "http://data.europa.eu/esco/skill/2feeef46-05cf-445c-9ca1-c96a30e10106",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "overleggen met ingenieurs",
+      "uri": "http://data.europa.eu/esco/skill/c5c51528-ccfc-4c53-b409-c200aaa44222",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "prestatietests uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/bbd57056-80e0-45bb-a2c1-658ed99a1251",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "geïntegreerde schakelingen",
+      "uri": "http://data.europa.eu/esco/skill/2b9f4584-da2e-44e2-a2fb-4dd4fc64c1a2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "deadlines halen",
+      "uri": "http://data.europa.eu/esco/skill/91abe492-18be-4cce-93c7-0dca07072363",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "waarborgen dat het eindproduct aan de vereisten voldoet",
+      "uri": "http://data.europa.eu/esco/skill/68269b0a-35c5-4867-bc17-a0b0230fe60c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "technische tekeningen lezen",
+      "uri": "http://data.europa.eu/esco/skill/b07daddc-8625-4360-946e-ad2b0e56ebf6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "componenten uitlijnen",
+      "uri": "http://data.europa.eu/esco/skill/5133ed7b-0785-4c28-825d-1dcf518c4b5b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "testprocedures voor elektronica",
+      "uri": "http://data.europa.eu/esco/skill/0e9e3a56-3b26-4fa5-91df-6d9bfbea4259",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronische instrumenten kalibreren",
+      "uri": "http://data.europa.eu/esco/skill/8867088a-e54d-41bc-81e8-a21ff98e81d3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "precisie-instrumenten gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/a99c6783-50c0-4f7a-99df-bf93429ef6dc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werking van machines volgen",
+      "uri": "http://data.europa.eu/esco/skill/188048ff-18bf-43c4-a1a0-7adb6e68f421",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "CAM-software gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/7a757fa5-9a6f-43ab-9e66-f8f4dba1ffcb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "proefdraaien",
+      "uri": "http://data.europa.eu/esco/skill/465ff64a-1271-4064-8ed1-e969cb68d8b4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "precisiemachines bedienen",
+      "uri": "http://data.europa.eu/esco/skill/d8045ecd-22f3-4711-bb51-58969d9f28c7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "CAE-software",
+      "uri": "http://data.europa.eu/esco/skill/82313e12-9d39-47d1-b7c9-78bbd6bb50e2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderdelen op een elektronisch bord solderen",
+      "uri": "http://data.europa.eu/esco/skill/190b7060-79fa-4450-9a3d-c4ce63b0fa4d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "firmware programmeren",
+      "uri": "http://data.europa.eu/esco/skill/cf200547-25b5-47c8-9eda-bca4aedc13fb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektronische componenten repareren",
+      "uri": "http://data.europa.eu/esco/skill/e487f6f8-854d-4210-9658-4196f07cc209",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "transmissietechnologie",
+      "uri": "http://data.europa.eu/esco/skill/71f81e1a-e2ca-48d6-b7b8-7a34c56c51f8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "micro-elektronica",
+      "uri": "http://data.europa.eu/esco/skill/4b164a27-849f-4be2-ae79-d26a4969b677",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "nieuwe producten in de productie integreren",
+      "uri": "http://data.europa.eu/esco/skill/8a753714-9a19-4418-9b37-77e79d72c705",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektronische systemen onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/89bb44dc-9f4c-400b-86cd-dcd0bd599a58",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "regeltechniek",
+      "uri": "http://data.europa.eu/esco/skill/bf1f763e-c505-46e7-8af3-e48f13ec5f44",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vermogenselektronica",
+      "uri": "http://data.europa.eu/esco/skill/86ff9a65-66eb-4c8f-93d8-22e0a467fc08",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "consumentenelektronica",
+      "uri": "http://data.europa.eu/esco/skill/6c153605-d62c-4970-81a9-49646ab32032",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "storingen aan apparatuur oplossen",
+      "uri": "http://data.europa.eu/esco/skill/1de6b87b-2c7d-49aa-bcc0-3b2ef75f064f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektrotechniek",
+      "uri": "http://data.europa.eu/esco/skill/3e40c7d0-0e36-4b33-bc33-0aa87eda0561",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "machinebouw",
+      "uri": "http://data.europa.eu/esco/skill/9c071f1d-eac3-449d-b004-c14775b5a3b9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "CAD-software",
+      "uri": "http://data.europa.eu/esco/skill/a2b5dcf3-5b6a-453d-876c-cff540c0faf1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektrische en elektronische apparatuur installeren",
+      "uri": "http://data.europa.eu/esco/skill/52797dce-911c-4e6d-b0cb-491f6469014f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "medische apparaten",
+      "uri": "http://data.europa.eu/esco/skill/df958b10-9e1c-4a80-9170-5572a5366e84",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "sensoren",
+      "uri": "http://data.europa.eu/esco/skill/70a7b3b3-31ef-4b29-a30f-bb7299dff39b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "firmware",
+      "uri": "http://data.europa.eu/esco/skill/4f7fa632-15a6-4739-930b-abbac8055a80",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektronische uitrusting verpakken",
+      "uri": "http://data.europa.eu/esco/skill/57d4d1f4-28b2-4a38-b7a9-a80626e99afc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "steriele kleding dragen",
+      "uri": "http://data.europa.eu/esco/skill/07e1799a-82c2-4877-9b43-1499812c5619",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "defecte apparatuur terugsturen naar assemblagelijn",
+      "uri": "http://data.europa.eu/esco/skill/c7194910-5738-45e9-9932-22dbe2293a0c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "technische rapporten schrijven",
+      "uri": "http://data.europa.eu/esco/skill/941364b9-1375-4add-9889-d67bae99bc8c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gegevens over de voortgang van het werk bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/ccfbdaad-b91d-4bfe-bd0e-d30b33587f19",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektronische materialen inspecteren",
+      "uri": "http://data.europa.eu/esco/skill/59a317ae-8b75-4ee3-9942-cceb10b39d4a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "technische communicatievaardigheden toepassen",
+      "uri": "http://data.europa.eu/esco/skill/c32ad607-0c4d-4e34-b73f-668298f7bf13",
+      "categorie": "optioneel"
+    }
+  ]
+}

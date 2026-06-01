@@ -1,0 +1,280 @@
+{
+  "crebo": "25656",
+  "opleiding": "25656_BOL_2025__25656BOLBBL2025_Examenplan_VerzorgendeIG2-2",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "thuiszorgmedewerker",
+    "uri": "http://data.europa.eu/esco/occupation/1391bdf9-bd61-4fb5-91ca-c29036ab2b60",
+    "definitie": "Thuiszorgmedewerkers verlenen persoonlijke assistentie en bevorderen dagelijks de autonomie van personen die niet voor zichzelf kunnen zorgen als gevolg van ziekte, ouderdom of handicap. Zij helpen bij hun persoonlijke hygiëne, eten, communicatie of medicatie volgens de instructies van de gezondheidswerker."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "vulmachinist cokesoven",
+    "CAD-patroontekenaar",
+    "CAD-patroontekenaar lederwaren",
+    "officier zeedienst",
+    "voertuigontwerper",
+    "lay-outtekenaar animatiefilms",
+    "animatiefilmmaker",
+    "thuiszorgmedewerker",
+    "kraamverzorgende",
+    "zorghulp",
+    "verpleeghulp",
+    "woonbegeleider",
+    "thuishulp",
+    "paardenverzorger",
+    "schapenfokker"
+  ],
+  "skills": [
+    {
+      "label": "boodschappen doen",
+      "uri": "http://data.europa.eu/esco/skill/71deea7b-d8a0-42de-9d85-2d6a506dade4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bedden opmaken",
+      "uri": "http://data.europa.eu/esco/skill/e0c6fdd1-336a-4e2f-91d1-ab4a2f9c385d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "stoffen strijken",
+      "uri": "http://data.europa.eu/esco/skill/562b1180-83e7-4041-8468-2f28d03b7893",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "broodjes bereiden",
+      "uri": "http://data.europa.eu/esco/skill/493a1805-6caa-4cda-8fd3-6495ec8ea451",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gebruikers van sociale diensten ondersteunen om thuis te wonen",
+      "uri": "http://data.europa.eu/esco/skill/941438bd-cc03-4326-91bf-677157dca170",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "personen helpen zich aan te passen aan een lichamelijke beperking",
+      "uri": "http://data.europa.eu/esco/skill/eacac7e2-4e88-4bd3-9797-1dd1922cd10a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "soorten handicaps",
+      "uri": "http://data.europa.eu/esco/skill/6b28bb69-a6ef-42d4-84df-46e498f09297",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheidstoestand van patiënten controleren",
+      "uri": "http://data.europa.eu/esco/skill/e99ddf41-6085-4b91-9de8-8bf251af9ced",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "thuiszorg bieden voor personen met een handicap",
+      "uri": "http://data.europa.eu/esco/skill/1e0ed685-0696-405d-bfa3-dd6ab3751baf",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vermogen van oudere volwassenen om voor zichzelf te zorgen beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/b4910ea9-578d-4767-bd68-00a315a64e09",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "was doen",
+      "uri": "http://data.europa.eu/esco/skill/04838ae5-a737-48a0-a782-3d1b6b6cb75b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "reizigers met een handicap helpen",
+      "uri": "http://data.europa.eu/esco/skill/f3a96be9-639d-43e0-aed5-c596980798d6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klanten met bijzondere behoeften assisteren",
+      "uri": "http://data.europa.eu/esco/skill/b6b2e665-1085-4f4d-9973-e979721815d7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "afwassen",
+      "uri": "http://data.europa.eu/esco/skill/c662be22-f17a-4ba0-894f-d720b20c44cf",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "behoeften van oudere volwassenen",
+      "uri": "http://data.europa.eu/esco/skill/634865e0-2ec2-4b7f-bb7f-c196637f0f7b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor ouderen",
+      "uri": "http://data.europa.eu/esco/skill/261e740b-d32d-4356-94a8-3ea29128b70b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "reageren op noodsituaties",
+      "uri": "http://data.europa.eu/esco/skill/0dcea846-04b4-4ffc-8c75-a35c991454b1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezelschap houden",
+      "uri": "http://data.europa.eu/esco/skill/ff939984-b1a6-4d57-88bd-e453262433c4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "eerste hulp",
+      "uri": "http://data.europa.eu/esco/skill/eaa4cdc0-43e0-4388-9b8a-e2779218d10e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kant-en-klaarmaaltijden bereiden",
+      "uri": "http://data.europa.eu/esco/skill/b72395ea-623b-4204-abef-a67592b0781a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorg voor personen met een handicap",
+      "uri": "http://data.europa.eu/esco/skill/54411e8e-d62f-46d8-b87b-fce23f8e3bc8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gebruikers van sociale dienstverlening met lichamelijke handicaps helpen",
+      "uri": "http://data.europa.eu/esco/skill/8ef1b45e-8499-4b1b-91f7-f8278bbb7767",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "mensen vergezellen",
+      "uri": "http://data.europa.eu/esco/skill/ab89ad86-1098-44bb-9465-05af5624557c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "mobiele beperking",
+      "uri": "http://data.europa.eu/esco/skill/842d7168-c18e-46c4-b297-0e41ad04f4eb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "eerste hulp bieden",
+      "uri": "http://data.europa.eu/esco/skill/1d21f6ad-340f-45da-a0a3-4e83867f47a6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "huisdieren eten geven",
+      "uri": "http://data.europa.eu/esco/skill/256d1577-2a4f-4959-8aea-eb24ac0f8288",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "personen met een handicap helpen om deel te nemen aan gemeenschapsactiviteiten",
+      "uri": "http://data.europa.eu/esco/skill/0f298334-ae4a-4ab7-96c2-0d90d2883768",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "huishoudlinnen wassen",
+      "uri": "http://data.europa.eu/esco/skill/288cca5e-5a5d-491a-b074-bcb31ee9fb7d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ongevallen thuis voorkomen",
+      "uri": "http://data.europa.eu/esco/skill/09afa68b-1fdf-4a42-bf4e-979331fded48",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "dieetmaaltijden bereiden",
+      "uri": "http://data.europa.eu/esco/skill/6b6babbe-2243-4772-9f8b-daa4c43c92a0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "linnengoed beheren",
+      "uri": "http://data.europa.eu/esco/skill/627d72bd-8e1e-4382-8ec1-224044687d22",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zware gewichten tillen",
+      "uri": "http://data.europa.eu/esco/skill/ab2bb44a-3956-4028-8715-8b70b1960b99",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "oppervlakken stofzuigen",
+      "uri": "http://data.europa.eu/esco/skill/644617c8-fbe6-4755-b7f2-c3a623641e5b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "afstoffen",
+      "uri": "http://data.europa.eu/esco/skill/329d7233-7231-4082-8ca4-0b5e295785aa",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "preventie van sociaal isolement promoten",
+      "uri": "http://data.europa.eu/esco/skill/f771d20c-815b-43e1-9355-b7f3f63a0b23",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voedselallergieën",
+      "uri": "http://data.europa.eu/esco/skill/c1e6e283-bc66-4e78-b4ec-501ff082d9f1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gezonde levensstijl promoten",
+      "uri": "http://data.europa.eu/esco/skill/988c06ea-7ab9-4ee4-a64b-9e93f2527c6d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "risico’s voor ouderen beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/d1ac8870-b1f5-4ea5-9fa6-0a1c606940fd",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kamers schoonmaken",
+      "uri": "http://data.europa.eu/esco/skill/7bb01a18-4637-4535-ba18-258f48f705b8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "patiënten advies geven over gezondheids- en levensstijlproblemen",
+      "uri": "http://data.europa.eu/esco/skill/58ee1bf5-3409-40d1-a8d6-21c1208a46f6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "visuele beperking",
+      "uri": "http://data.europa.eu/esco/skill/54a0974e-a8d1-4b2d-9dfa-e1da028a58e3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voedselbereidingstechnieken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/4b15a965-9bb4-42f1-8e44-1024aeb0b08c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "actief luisteren",
+      "uri": "http://data.europa.eu/esco/skill/a17286c5-238d-4f0b-bc24-29e9121345de",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kooktechnieken gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/f3934441-4bff-4076-9945-e6c51a01c467",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "afspraken beheren",
+      "uri": "http://data.europa.eu/esco/skill/933e7ccf-5d56-46ba-aca4-857f826a6b3a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "sociale competenties tonen",
+      "uri": "http://data.europa.eu/esco/skill/a9dc530e-0e1f-4eef-a739-47bdfe11930e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ergonomisch werken",
+      "uri": "http://data.europa.eu/esco/skill/156f8c5b-894a-4ccc-a70e-37a2726f3f00",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "hondenuitlaatdiensten bieden",
+      "uri": "http://data.europa.eu/esco/skill/75f797a1-fa35-44ac-bf72-6f229c3b1561",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "oppervlakken schoonmaken",
+      "uri": "http://data.europa.eu/esco/skill/6ff01827-907d-43d8-b6e4-7162c1cf0aca",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "auditieve beperking",
+      "uri": "http://data.europa.eu/esco/skill/5d7a2896-fa02-4262-93a5-ecb4fbd95602",
+      "categorie": "optioneel"
+    }
+  ]
+}

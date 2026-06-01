@@ -1,0 +1,22 @@
+{
+  "crebo": "25586",
+  "opleiding": "25586_BBL_2025__25586BBL2025MJP-AllroundMachineOperatorHouttechniekN3",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "houttechnoloog",
+    "uri": "http://data.europa.eu/esco/occupation/35cf772d-bbc9-4eb4-9ca6-5f982649d436",
+    "definitie": ""
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "houttechnoloog",
+    "lakspuiter",
+    "houtsnijder",
+    "industrieel ontwerper",
+    "afbramer",
+    "kernmaker gieterij",
+    "monteur elektrische installaties utiliteitsbouw",
+    "houthandelaar"
+  ],
+  "skills": []
+}

@@ -1,0 +1,209 @@
+{
+  "crebo": "25749",
+  "opleiding": "25749_BOL_2025__oer-2025-2026-ci-25749-medewerker-evenementenorganisatie",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "medewerker evenementenorganisatie",
+    "uri": "http://data.europa.eu/esco/occupation/84931290-ad27-45ad-b611-9556c5facbdb",
+    "definitie": "Medewerkers evenementenorganisatie implementeren en volgen plannen die door eventmanagers en -planners zijn uitgewerkt. Zij zijn gespecialiseerd in een deel van de planning, hetzij de coördinatie van de catering en het vervoer, hetzij de faciliteiten."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "medewerker evenementenorganisatie",
+    "procesoperator ciderfermentatie",
+    "medewerker vetzuivering",
+    "tuinbouwmedewerker",
+    "medewerker fastfood",
+    "medewerker diervoeding",
+    "medewerker linnenkamer",
+    "medewerker suikerfabriek",
+    "eventmanager"
+  ],
+  "skills": [
+    {
+      "label": "speciale evenementen organiseren",
+      "uri": "http://data.europa.eu/esco/skill/aea9e7b9-53a3-4f03-9d9c-4ef6c383403a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "dienstverleners voor evenementen selecteren",
+      "uri": "http://data.europa.eu/esco/skill/2cf1b872-ada1-4275-b1d3-3cc2d14b458c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toezicht houden op de activiteiten van een evenement",
+      "uri": "http://data.europa.eu/esco/skill/a571791c-50aa-40d1-ba82-b3f1f4185426",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "het installeren van evenementinfrastructuur beheren",
+      "uri": "http://data.europa.eu/esco/skill/0e503b48-5491-4529-879e-b112251f8d50",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "inschrijvingen van deelnemers voor evenementen organiseren",
+      "uri": "http://data.europa.eu/esco/skill/63963d06-b53d-402e-b462-88a3ff7a1778",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor publiciteit voor evenementen",
+      "uri": "http://data.europa.eu/esco/skill/8bd21f21-ca28-4e08-ba0e-8a109711ad6b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "instructies voor opdrachten verwerken",
+      "uri": "http://data.europa.eu/esco/skill/48391ec6-42ba-4093-acf4-c7673b0c07f4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gegevens van evenementen bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/c0156cdb-8587-4278-89e0-075d83e3140b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "evenementen promoten",
+      "uri": "http://data.europa.eu/esco/skill/28c5e844-72a3-49d7-af0e-810b645e947a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "deadlines halen",
+      "uri": "http://data.europa.eu/esco/skill/91abe492-18be-4cce-93c7-0dca07072363",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderhandelen over contracten met dienstverleners voor evenementen",
+      "uri": "http://data.europa.eu/esco/skill/1e05596a-dc89-442f-8591-bf9198492f81",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vergunningen voor evenementen verkrijgen",
+      "uri": "http://data.europa.eu/esco/skill/3bba59fa-14eb-477f-8bba-c8cbdc2e6d7d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "rekeningen van evenementen controleren",
+      "uri": "http://data.europa.eu/esco/skill/5079319b-b12d-46ae-8ba7-78a3aa242e6e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "catering coördineren",
+      "uri": "http://data.europa.eu/esco/skill/80e7418e-7434-456c-85e1-e8aef626a8c0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "overleggen met personeel van een evenement",
+      "uri": "http://data.europa.eu/esco/skill/43858b92-51d2-4e9d-9d92-a694924add4d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor voorzieningen ter plaatse",
+      "uri": "http://data.europa.eu/esco/skill/67117c88-c855-4fab-98c5-e322e838969f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderhandelen over inkoopvoorwaarden",
+      "uri": "http://data.europa.eu/esco/skill/fde186df-c9c4-49f5-b2a5-d66adc7c43a5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "leveranciers identificeren",
+      "uri": "http://data.europa.eu/esco/skill/11747665-0e98-4f27-bd0d-536862cd5746",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "omgaan met managers",
+      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "communiceren met hotels, busbedrijven en restaurants",
+      "uri": "http://data.europa.eu/esco/skill/9a98c30f-fac7-401d-b2a0-852c2f00aae3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contacten onderhouden met lokale overheden",
+      "uri": "http://data.europa.eu/esco/skill/2839f191-cd94-49a9-ac16-46018066b8b2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "evenementspecifieke menu's samenstellen",
+      "uri": "http://data.europa.eu/esco/skill/9868bfd7-69eb-43ba-9fdb-d55809d4d9e0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "leveranciers bezoeken",
+      "uri": "http://data.europa.eu/esco/skill/2c02fb07-de47-46d3-8a99-b916137951ef",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "accommodatie vervoer en activiteiten regelen",
+      "uri": "http://data.europa.eu/esco/skill/7c32a84c-2733-4bc7-8909-3b3413c9cc88",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "reisarrangementen voor personeel organiseren",
+      "uri": "http://data.europa.eu/esco/skill/382ed835-8958-4d86-8471-cff55c6df3e7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "locaties voor evenementen inspecteren",
+      "uri": "http://data.europa.eu/esco/skill/51b27007-ddb2-45a8-8103-0ec8c95e6313",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "boekingen verwerken",
+      "uri": "http://data.europa.eu/esco/skill/345486f3-f265-4fc8-8ed0-5e96e768e333",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klantwensen identificeren",
+      "uri": "http://data.europa.eu/esco/skill/0e0c9c11-b39e-43cf-ba95-2fe646f5de64",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contacten leggen met sponsors van evenementen",
+      "uri": "http://data.europa.eu/esco/skill/20a41697-108d-4231-b230-ea7a16a659a6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "projectbeheer",
+      "uri": "http://data.europa.eu/esco/skill/7111b95d-0ce3-441a-9d92-4c75d05c4388",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contacten onderhouden met reclamebureaus",
+      "uri": "http://data.europa.eu/esco/skill/7893605c-18cc-4c68-8c22-4f969df1a673",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "prijsinformatie geven",
+      "uri": "http://data.europa.eu/esco/skill/32b02bd1-6bf2-497a-bb16-94aeeafaf44f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "catering inschatten",
+      "uri": "http://data.europa.eu/esco/skill/213e73d8-5d8b-4728-aec4-93f67459e9da",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contact opnemen met sprekers voor evenementen",
+      "uri": "http://data.europa.eu/esco/skill/a6a81cf0-eda5-447b-8af6-845ba7010d99",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contacten onderhouden met vervoersbedrijven",
+      "uri": "http://data.europa.eu/esco/skill/1f618933-1c1b-4b49-91f7-d567d25406bf",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "budgetten beheren",
+      "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "faciliteiten voor kantoorpersoneel organiseren",
+      "uri": "http://data.europa.eu/esco/skill/c58050e1-0774-4097-93d2-07dd7ba6a27a",
+      "categorie": "optioneel"
+    }
+  ]
+}

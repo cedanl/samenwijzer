@@ -1,0 +1,218 @@
+{
+  "crebo": "23265",
+  "opleiding": "2020 - 23265 ZWS OER AA BOL",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "assistent-boekhouder",
+    "uri": "http://data.europa.eu/esco/occupation/bfe142b9-a049-4d41-89c4-fd2f34ac56b6",
+    "definitie": "Assistent-boekhouders registreren en rapporteren boekhoudkundige tickets aan de accountant met wie ze werken, controleren stortingen, stellen dagelijkse rapporten op en verwerken dagelijkse inkomsten. Zij regelen geautoriseerde terugbetalingen, onderhouden de geweigerde chequebedragen en communiceren met ticketingmanagers over eventuele problemen met ticketsystemen."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "assistent-boekhouder",
+    "accountant",
+    "specialist taxatie bedrijfsovername",
+    "procesoperator zetmeelextractie",
+    "kraandrijver haven",
+    "graafmachinist",
+    "investeringsadviseur",
+    "sociaal raadsman"
+  ],
+  "skills": [
+    {
+      "label": "rekeningen opstellen",
+      "uri": "http://data.europa.eu/esco/skill/28a2ff4b-5f99-448e-8bd7-fb836166e95f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vorderingen opvolgen",
+      "uri": "http://data.europa.eu/esco/skill/68b51538-b056-4cb3-bb15-ab8c3e576cc9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "boekingen",
+      "uri": "http://data.europa.eu/esco/skill/99b163e8-7815-43e2-83f3-a47f3076354c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "financiële verslagen bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/faf8943c-72ff-4736-a587-25508695d6f0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "boekhoudcertificaten koppelen aan boekhoudkundige transacties",
+      "uri": "http://data.europa.eu/esco/skill/e9030465-13c5-46d2-bdae-c2c1a9dbec86",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voldoen aan wettelijke verplichtingen",
+      "uri": "http://data.europa.eu/esco/skill/83e97138-899a-4af8-9187-47823e875841",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bedrijfsonderzoek voeren",
+      "uri": "http://data.europa.eu/esco/skill/0839eea4-c57b-4c14-b19b-923fbedb5d88",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "afschrijving",
+      "uri": "http://data.europa.eu/esco/skill/64be6a06-52e8-4f5c-b64d-caa516cfa291",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voorlopige balansen opstellen",
+      "uri": "http://data.europa.eu/esco/skill/eaa9727c-df1e-407a-85d3-48cc71508bc2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bedrijfsrekeningen beheren",
+      "uri": "http://data.europa.eu/esco/skill/658a38bd-6954-4a2a-945c-42330c5d13b9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "boekhoudkundige fouten identificeren",
+      "uri": "http://data.europa.eu/esco/skill/8a326ee1-169c-4c44-b38b-8f1bb20ec79b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "boekhouding controleren",
+      "uri": "http://data.europa.eu/esco/skill/5f1ebff6-98ec-411f-a1d4-0bf04bd03bdf",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "rekeningen toewijzen",
+      "uri": "http://data.europa.eu/esco/skill/e717b036-2c0c-4c11-99e9-0cb4ce084fed",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "processen van de boekhoudafdeling",
+      "uri": "http://data.europa.eu/esco/skill/08371fe9-c658-4f6a-966f-71dbb0ab683d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kantoorsystemen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/71dde84c-0058-4c52-a556-523369333db8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "boekhoudsystemen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/a0d79341-8398-4019-ad1b-27888ec35aaa",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "boekhoudkundige technieken",
+      "uri": "http://data.europa.eu/esco/skill/880c54f9-866e-4f37-b5fa-25ef8a7d49b6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "boekhoudregelgeving",
+      "uri": "http://data.europa.eu/esco/skill/2ff405ec-f59c-4a7b-84b6-9776a49582c4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verkoopfacturen opstellen",
+      "uri": "http://data.europa.eu/esco/skill/e3e42d54-78bd-4337-aa87-bb31a7670c9a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "belastingwetgeving",
+      "uri": "http://data.europa.eu/esco/skill/d669af41-756c-48d9-a286-1443253f54b1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "financiële transacties verwerken",
+      "uri": "http://data.europa.eu/esco/skill/f7e7ccb6-fadc-4c35-935d-e1040be40dfe",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "loonrapporten beheren",
+      "uri": "http://data.europa.eu/esco/skill/3ee090a1-9d1c-44ed-bd93-f6b7c9b68a97",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "arbeidswetgeving",
+      "uri": "http://data.europa.eu/esco/skill/08fe5910-8c4c-4679-a988-eb2ded3c4909",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "belastingen berekenen",
+      "uri": "http://data.europa.eu/esco/skill/2ecf90f1-c511-464b-b26f-598d69182c70",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bankactiviteiten",
+      "uri": "http://data.europa.eu/esco/skill/3c209873-c757-47bb-91b5-9b6dc05df116",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "financiële jaarrekeningen",
+      "uri": "http://data.europa.eu/esco/skill/4a460161-eaea-4fe2-bd0e-164ccc635be1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "jaarrekeningen opstellen",
+      "uri": "http://data.europa.eu/esco/skill/60f51172-37c0-4933-a27a-cbf55dcd7580",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ondernemingsbeleid",
+      "uri": "http://data.europa.eu/esco/skill/f75b740c-b36c-495e-bc67-efe347bbc6b5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "statutaire rekeningen bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/047fcf0a-2936-49fb-b4eb-97cdd8d09d0b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "belastingaangifteformulieren voorbereiden",
+      "uri": "http://data.europa.eu/esco/skill/22a173f5-868c-4d82-87e6-beed500ce070",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "rekeningen beheren",
+      "uri": "http://data.europa.eu/esco/skill/e2e15494-65b9-4af5-8b86-53fb51e7e022",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "register van aandeelhouders bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/e345cf05-bc6b-43a6-aca3-2f9c1ec0e772",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "informatie over belastingwetgeving verstrekken",
+      "uri": "http://data.europa.eu/esco/skill/b8656b5c-e3f0-4418-82ff-87b5f677f9e8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "statistiek",
+      "uri": "http://data.europa.eu/esco/skill/7ee4c2ea-b349-4bd2-81a3-ec31475d4833",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "aanmaningsactiviteiten uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/7e305865-5b6d-4225-a4f7-ee5c10aaa134",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "grootboek beheren",
+      "uri": "http://data.europa.eu/esco/skill/dc417e19-edb4-4401-883a-2375f67a162f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "jaarrekeningen interpreteren",
+      "uri": "http://data.europa.eu/esco/skill/5f1d1319-7954-4a9b-90c7-57668e3a0d4b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kostenberekeningen uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/c5b90c0c-3af0-4c8c-a06c-cc3ced02242c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kassa beheren",
+      "uri": "http://data.europa.eu/esco/skill/3982571a-e9ce-442a-a4a0-fdfc97727091",
+      "categorie": "optioneel"
+    }
+  ]
+}

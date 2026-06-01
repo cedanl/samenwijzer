@@ -1,0 +1,391 @@
+{
+  "crebo": "25874",
+  "opleiding": "25874_BOL_2025__OER_2025_Commercieel_Medewerker_25874",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "commercieel vertegenwoordiger",
+    "uri": "http://data.europa.eu/esco/occupation/14031d4a-6e99-442f-b4fe-18262b6432b2",
+    "definitie": "Commercieel vertegenwoordigers vertegenwoordigen een bedrijf bij het verkopen en verstrekken van informatie over goederen en diensten aan bedrijven en organisaties."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "commercieel medewerker spoorwegen",
+    "medewerker verhuur van vastgoed",
+    "promotiemedewerker",
+    "cliëntadviseur bankbedrijf",
+    "raadgevend actuaris",
+    "commercieel vertegenwoordiger",
+    "commercieel vertegenwoordiger elektriciteit",
+    "commercieel piloot",
+    "commercieel vertegenwoordiger duurzame energie",
+    "commercieel directeur",
+    "salesmanager"
+  ],
+  "skills": [
+    {
+      "label": "beheer van klantrelaties",
+      "uri": "http://data.europa.eu/esco/skill/dc9a236c-c640-43c3-812f-269403591edb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "software voor het beheer van klantrelaties gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/9889b795-d755-41b2-8afd-2e3c87a65a38",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "eigenschappen van producten",
+      "uri": "http://data.europa.eu/esco/skill/1585fc98-bfe4-461f-97fc-734055a2c3ce",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "contact opnemen met klanten",
+      "uri": "http://data.europa.eu/esco/skill/81513fdf-5ea9-4375-9bc4-67ad959ac5de",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "producteigenschappen demonstreren",
+      "uri": "http://data.europa.eu/esco/skill/de7b8c6c-9ed4-4776-924c-4265dd1d9cde",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "relaties met leveranciers onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/3cd35f5d-ce6d-4f14-9a09-53d7a28d834c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verkoopstrategieën",
+      "uri": "http://data.europa.eu/esco/skill/e7219848-a27a-4bf4-8775-d367707be7c9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor de naleving van aankoop- en contractregelgeving",
+      "uri": "http://data.europa.eu/esco/skill/a6ae7a34-5a5c-48dd-9b82-8beccca63e3c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gegevens over de verkoop bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/f4d3a8ff-2db1-4015-aa28-d4564afef3fd",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "naleving met wettelijke vereisten garanderen",
+      "uri": "http://data.europa.eu/esco/skill/1dae8445-12e5-423a-bb26-824010e299b9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beschikken over computervaardigheden",
+      "uri": "http://data.europa.eu/esco/skill/d15ce60f-ddab-41ce-ba56-398451b77b60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "antwoord geven op vragen van klanten",
+      "uri": "http://data.europa.eu/esco/skill/cace7a77-38b7-4cdf-8171-e17692bef5f6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verkoopanalyses uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/2dd6ecdf-8a08-438b-8b4b-e0374f7b523b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klantgericht zijn",
+      "uri": "http://data.europa.eu/esco/skill/13e93abd-618c-46df-abbe-1af38ecd1aa2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gegevens over interacties met klanten bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/8b7409b0-e18e-4dfc-9ad9-8ddbcce38849",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kenmerken van diensten",
+      "uri": "http://data.europa.eu/esco/skill/fb3bc9b5-2297-4bba-85b1-60f696a92db8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "productkennis",
+      "uri": "http://data.europa.eu/esco/skill/d6d3fee7-47e2-47f4-a0ec-6c75f28c6abd",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verkoopverslagen opstellen",
+      "uri": "http://data.europa.eu/esco/skill/b0565bd9-29c8-42f6-b174-702970fc2f4f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "nieuwe regionale contracten afsluiten",
+      "uri": "http://data.europa.eu/esco/skill/f41f860f-91ab-4ca7-a906-483fa9d13c16",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "motivatie voor verkoop tonen",
+      "uri": "http://data.europa.eu/esco/skill/97b246e3-4f45-4708-9734-cd3158d868cf",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "persoonlijke gegevens van klanten registreren",
+      "uri": "http://data.europa.eu/esco/skill/7f783956-f734-4d56-85de-10f0c1706f8a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "technische communicatievaardigheden toepassen",
+      "uri": "http://data.europa.eu/esco/skill/c32ad607-0c4d-4e34-b73f-668298f7bf13",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verkoopbevorderingstechnieken",
+      "uri": "http://data.europa.eu/esco/skill/756ae350-9e1f-4cb9-9c27-6bd99806dadc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verkoopstrategieën ten uitvoer brengen",
+      "uri": "http://data.europa.eu/esco/skill/b99aa3b8-0066-46b2-a027-30afae444ad8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "advies geven over de eigenschappen van koopwaar",
+      "uri": "http://data.europa.eu/esco/skill/d2de37c7-7233-481b-8b1a-f4dfde11ca91",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "prijsaanvragen beantwoorden",
+      "uri": "http://data.europa.eu/esco/skill/2206af0c-3deb-48c5-a544-b9983d347da3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "opvolging van klanten implementeren",
+      "uri": "http://data.europa.eu/esco/skill/50181a4b-1cfd-4fbd-ac9a-c1a494b9c5d0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klanten werven",
+      "uri": "http://data.europa.eu/esco/skill/6d97bf55-6fb6-4795-8282-3ef915ae0bb8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klanttevredenheid garanderen",
+      "uri": "http://data.europa.eu/esco/skill/00e53a0a-c0ba-4c9f-a2ed-4706d5832a00",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "communiceren met klanten",
+      "uri": "http://data.europa.eu/esco/skill/0da516ee-e70e-4384-be13-f5ff80be8127",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "diplomatisch zijn",
+      "uri": "http://data.europa.eu/esco/skill/ece25f2f-e91a-4186-a221-caa715195fd7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderzoekcijfers van de mediasector volgen",
+      "uri": "http://data.europa.eu/esco/skill/5d53b4b5-f509-4dfd-9910-dd4a833af228",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "huishoudelijke producten",
+      "uri": "http://data.europa.eu/esco/skill/e38215f6-be98-420c-8724-ba2e77881895",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten media",
+      "uri": "http://data.europa.eu/esco/skill/89c1d71c-f443-4e60-a7c3-f824ecb10597",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "chemische producten",
+      "uri": "http://data.europa.eu/esco/skill/2aff15fb-1c24-42b5-89ca-17696df25370",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "processen voor elektronische aankoop",
+      "uri": "http://data.europa.eu/esco/skill/378caeec-10a0-4162-b75c-ab374a42e93d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektronische handelssystemen",
+      "uri": "http://data.europa.eu/esco/skill/b1272de4-1f5f-408b-8b26-061f2550fc72",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "socialemediamarketing toepassen",
+      "uri": "http://data.europa.eu/esco/skill/64e09849-a7db-4d6b-a932-66264420eb97",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderzoek naar mediakanalen uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/8c855071-e09d-4f08-9af9-bdc9de6d909e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zuivel- en eetbare olieproducten",
+      "uri": "http://data.europa.eu/esco/skill/676fdcdf-c4ae-4bdd-af92-444392b06a31",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektronische apparatuur en telecommunicatieapparatuur",
+      "uri": "http://data.europa.eu/esco/skill/49fed129-e32b-4f67-b80a-609d79e45b20",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "marktprijs",
+      "uri": "http://data.europa.eu/esco/skill/d5111703-c344-484d-bef1-9565a278166a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "internationale commerciële transactiebepalingen",
+      "uri": "http://data.europa.eu/esco/skill/6f45a77d-9208-40f2-a116-ac99c77ef580",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektronische communicatie",
+      "uri": "http://data.europa.eu/esco/skill/debef2fc-7af4-4bff-ac92-4d0317915a84",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "drankproducten",
+      "uri": "http://data.europa.eu/esco/skill/922032c3-9dfa-45dd-9bcd-f14dedf4709e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verkoopgesprekken houden",
+      "uri": "http://data.europa.eu/esco/skill/2f573ad6-1fa6-46c5-a48d-912368fe55aa",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productieprocessen",
+      "uri": "http://data.europa.eu/esco/skill/12c7b323-d870-4f5b-9d7d-d9f525206d77",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "promotiemiddelen ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/66fda9e5-f9f7-4342-b4f1-23355bcdd0b9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "mediaformaten",
+      "uri": "http://data.europa.eu/esco/skill/a1670c61-bc6a-4c40-9d98-88fb272f945a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "betalingen verwerken",
+      "uri": "http://data.europa.eu/esco/skill/bdcac0c8-b77a-4640-9eaf-c0cf3efd1e23",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "glaswerkproducten",
+      "uri": "http://data.europa.eu/esco/skill/f8aa753b-25d3-403f-9634-17c603ab1de0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "reclamemonsters aanbieden",
+      "uri": "http://data.europa.eu/esco/skill/c15e9da0-6177-4afd-93f4-65655374ad8a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "parfum en cosmetische producten",
+      "uri": "http://data.europa.eu/esco/skill/c93527bc-6668-4c34-b1a1-47bcaf97c5ed",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kantoormaterialen",
+      "uri": "http://data.europa.eu/esco/skill/5a234b3b-63b4-482f-b481-a1ff9d95bbf8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten zeeschepen",
+      "uri": "http://data.europa.eu/esco/skill/629c9139-8a87-447b-8f61-bfe678cf3e7c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "op de hoogte blijven van sociale media",
+      "uri": "http://data.europa.eu/esco/skill/67dbfc2a-3dd4-41a1-90bd-97035e7add60",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kooptrends van consumenten analyseren",
+      "uri": "http://data.europa.eu/esco/skill/750caee5-12a0-46ba-b8aa-1e56370deaf9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "reclametechnieken",
+      "uri": "http://data.europa.eu/esco/skill/aba1f05b-f312-47d8-be71-7c574134de8f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werken met reclameprofessionals",
+      "uri": "http://data.europa.eu/esco/skill/63e85fe0-f941-4f54-b4de-af6f8d43c176",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "mediaplanning",
+      "uri": "http://data.europa.eu/esco/skill/e8f602f8-b98b-4071-b088-c65e016cdf98",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "marketingstrategieën implementeren",
+      "uri": "http://data.europa.eu/esco/skill/13e2378e-0d10-450d-843a-b3592575826e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gereedschapssector",
+      "uri": "http://data.europa.eu/esco/skill/bac209e9-d337-4312-9041-17c2e75fa4df",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten vliegtuigen",
+      "uri": "http://data.europa.eu/esco/skill/55e286cf-b8a0-40bd-9e87-276cbc0284b9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kleding en schoenen",
+      "uri": "http://data.europa.eu/esco/skill/49f6c9f1-49a6-4737-8bb0-0f6ab3558211",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "mediastrategie ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/c2d48b3a-1f91-4442-8f18-6c43a589737b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ICT-softwarespecificaties",
+      "uri": "http://data.europa.eu/esco/skill/9ce670ec-318c-4a91-9179-03437db728dc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verkoopfacturen opstellen",
+      "uri": "http://data.europa.eu/esco/skill/e3e42d54-78bd-4337-aa87-bb31a7670c9a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verschillende talen spreken",
+      "uri": "http://data.europa.eu/esco/skill/2de4572a-4724-4f76-afc2-72a568a264ac",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gegevens na verkoop opvolgen",
+      "uri": "http://data.europa.eu/esco/skill/d52487b0-cb03-4f41-a269-40c718018c2c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "buitenreclame",
+      "uri": "http://data.europa.eu/esco/skill/a1bbc0e9-58d1-4bbc-bf68-de5679bef07f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "consumentenbescherming",
+      "uri": "http://data.europa.eu/esco/skill/7ae62140-fe02-4ee3-a0c5-fb5668a2870d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "creditcardbetalingen",
+      "uri": "http://data.europa.eu/esco/skill/499031e7-9821-4728-adb8-2925663c6ef2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "financiële transacties verwerken",
+      "uri": "http://data.europa.eu/esco/skill/f7e7ccb6-fadc-4c35-935d-e1040be40dfe",
+      "categorie": "optioneel"
+    }
+  ]
+}

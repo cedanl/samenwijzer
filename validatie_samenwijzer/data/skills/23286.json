@@ -1,0 +1,83 @@
+{
+  "crebo": "23286",
+  "opleiding": "2021 - 23286 OER TA BOL Vastgesteld",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "vliegtuigtanker",
+    "uri": "http://data.europa.eu/esco/occupation/1e9e18cb-80b6-4598-acdb-ae3b51047720",
+    "definitie": "Vliegtuigtankers onderhouden brandstofdistributiesystemen en zorgen ervoor dat vliegtuigen worden bijgetankt. "
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "tolk gebarentaal",
+    "specialist taxatie bedrijfsovername",
+    "medewerker recreatieactiviteiten",
+    "vliegtuigtanker",
+    "procesoperator zetmeelextractie",
+    "graafmachinist",
+    "fondsenwerver",
+    "wasbleker"
+  ],
+  "skills": [
+    {
+      "label": "verslag uitbrengen over incidenten inzake brandstofdistributie",
+      "uri": "http://data.europa.eu/esco/skill/3310562c-ed9e-43c2-a4d0-bafeed7057a4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "brandstofdiensten in de luchtvaart uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/bc07c4cf-0449-4bc3-ac51-eadac814383e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veiligheidsrisico’s op luchthavens identificeren",
+      "uri": "http://data.europa.eu/esco/skill/94c24e4a-cc9a-4a49-b623-bc00bb5aa1a3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor het onderhoud van installaties voor brandstofdistributie",
+      "uri": "http://data.europa.eu/esco/skill/3a92bdc4-19b4-4d7e-811f-47a44e7129c7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "omgaan met brandstoffen",
+      "uri": "http://data.europa.eu/esco/skill/2035c565-f0df-4efa-99fc-09a42f18c158",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verantwoordelijkheid tonen",
+      "uri": "http://data.europa.eu/esco/skill/199f7919-5114-41b6-b6a5-41e0e4896ec1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "brandstofdistributiesystemen",
+      "uri": "http://data.europa.eu/esco/skill/6c4b5031-2eaf-449e-af88-8304a66e4eb5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteitscontroles op brandstofoperaties uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/0b198656-2440-4ab6-91c1-05f2ba6e12fe",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "brandstofinventarismethoden",
+      "uri": "http://data.europa.eu/esco/skill/365c74da-c38d-42d7-ac9c-747e2e401dca",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "schriftelijke instructies volgen",
+      "uri": "http://data.europa.eu/esco/skill/54d68400-9da3-4077-a7ee-52e68b390ef6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "numerieke berekeningen maken",
+      "uri": "http://data.europa.eu/esco/skill/f0f93b8b-0ee4-4452-945e-4a2272c0d8dd",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "handmatige werkzaamheden zelfstandig uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/e97733e8-5bf1-4c21-93c4-8bebbdabc394",
+      "categorie": "optioneel"
+    }
+  ]
+}

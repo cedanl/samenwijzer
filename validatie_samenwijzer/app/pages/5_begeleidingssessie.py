@@ -26,6 +26,7 @@ from validatie_samenwijzer.chat import (  # noqa: E402
     genereer_antwoord,
     laad_kwalificatiedossier_tekst,
     laad_oer_tekst,
+    laad_skills_tekst,
     resolve_oer_pad,
 )
 from validatie_samenwijzer.db import get_kerntaak_scores_by_student_id  # noqa: E402
@@ -151,6 +152,7 @@ with col_chat:
             if oer:
                 oer_tekst = laad_oer_tekst(resolve_oer_pad(oer["bestandspad"]))
             dossier_tekst = laad_kwalificatiedossier_tekst(crebo)
+            skills_tekst = laad_skills_tekst(crebo)
             st.session_state.oer_systeem = (
                 bouw_systeem(
                     oer_tekst,
@@ -158,6 +160,7 @@ with col_chat:
                     instelling,
                     dossier_tekst=dossier_tekst,
                     crebo=crebo,
+                    skills_tekst=skills_tekst,
                 )
                 if oer_tekst
                 else ""

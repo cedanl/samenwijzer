@@ -1,0 +1,437 @@
+{
+  "crebo": "25173",
+  "opleiding": "2021 - 25173 OER Uitvoerend Bakker (V1)",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "bakker",
+    "uri": "http://data.europa.eu/esco/occupation/1aadb308-432a-4d01-b54b-b4f7f76dd419",
+    "definitie": "Bakkers maken een grote verscheidenheid aan brood, gebak en andere bakproducten. Zij volgen alle processen vanaf de ontvangst en opslag van grondstoffen, de bereiding van grondstoffen voor het maken van brood, het meten en mengen van ingrediënten in deeg. Zij gebruiken de ovens voor het bakken van producten aan een geschikte temperatuur en tijd."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "bakker",
+    "bedrijfsleider bakkerswinkel",
+    "verkoopspecialist brood en banket",
+    "bakkerijmedewerker",
+    "banketbakker",
+    "uitvoerend kunstenaar",
+    "uitvoerend producent",
+    "uitvoerend medewerker bosbouw",
+    "banketbakker",
+    "manager evenementlocaties",
+    "hoofdbanketbakker",
+    "gebakmaker"
+  ],
+  "skills": [
+    {
+      "label": "beginselen van voedselveiligheid",
+      "uri": "http://data.europa.eu/esco/skill/3f4e4eab-a8e0-4aed-b8bb-79afe7c890e3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "regelgeving inzake brandbare producten toepassen",
+      "uri": "http://data.europa.eu/esco/skill/46661213-71c3-4039-86e7-4ee9c908425a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteit van producten op een productielijn controleren",
+      "uri": "http://data.europa.eu/esco/skill/5d05068e-7ae7-4ff6-8fa3-e35ea03b48b1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ingrediënten voor voedselproductie toevoegen",
+      "uri": "http://data.europa.eu/esco/skill/680f271f-4a7e-410a-aaaf-4f42c8f48251",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bakkerij-ovens bedienen",
+      "uri": "http://data.europa.eu/esco/skill/77250067-81bd-4e18-865e-2be6ca26c8a8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "hygiëne waarborgen",
+      "uri": "http://data.europa.eu/esco/skill/0c944316-12f6-4949-a156-a03dbaae790f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "hygiënische procedures volgen tijdens de voedselverwerking",
+      "uri": "http://data.europa.eu/esco/skill/a34f4fd4-1aff-4941-82d5-542ac94f81c3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kneden van voedingsmiddelen uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/d87653a0-87b0-4c03-a44a-bf0a217431a2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bakkerswaren bakken",
+      "uri": "http://data.europa.eu/esco/skill/5626b3b1-5415-47f6-acf1-b573d457d180",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "geschikte ingrediënten selecteren",
+      "uri": "http://data.europa.eu/esco/skill/b5e1a909-9d21-4c29-9438-9df9fd7da3a1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "goede productiepraktijken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/bf7a45c4-0d72-4e6e-9da7-127b2b6656b7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor esthetiek van voedingsmiddelen",
+      "uri": "http://data.europa.eu/esco/skill/0eece926-f1a3-4b65-9b99-a35e4c0eb835",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "handvaardigheid",
+      "uri": "http://data.europa.eu/esco/skill/3782a625-52c2-46c7-b585-35ba4ddc4a1d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "financiële draagkracht",
+      "uri": "http://data.europa.eu/esco/skill/811bdb9d-5bf7-4b5a-a3f5-4fc2002f6d57",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gevarenanalyse van kritische controlepunten toepassen",
+      "uri": "http://data.europa.eu/esco/skill/5ba1d5b9-3f8d-46ca-bf9f-2e9ca65d1350",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bakkerijproducten bereiden",
+      "uri": "http://data.europa.eu/esco/skill/50db2b5e-edda-496d-8a6e-aff91dc243d9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "mengen van voedselproducten uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/e52d79c7-c1be-47d9-84ed-81af18d67931",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onbewerkt voedsel opslaan",
+      "uri": "http://data.europa.eu/esco/skill/29b326ea-a9c8-4963-b35a-8541d0cdff77",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "correct gebruik van bakkersuitrusting waarborgen",
+      "uri": "http://data.europa.eu/esco/skill/ce37e233-64c4-4b48-a09a-04ec08fb9740",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "melkzuurbacteriën aan voedselproducten toevoegen",
+      "uri": "http://data.europa.eu/esco/skill/adcde86b-023a-4865-afec-45e1c343388e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "productievoorschriften voor voedingsmiddelen en dranken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/bc250150-3372-42c9-834a-a1b65f89ca0b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werking van machines volgen",
+      "uri": "http://data.europa.eu/esco/skill/188048ff-18bf-43c4-a1a0-7adb6e68f421",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "deeg in vormen gieten",
+      "uri": "http://data.europa.eu/esco/skill/8f96b592-24c4-40c3-bb88-189ae3a1e405",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "volgens recept werken",
+      "uri": "http://data.europa.eu/esco/skill/a0d96ce8-aeeb-4ffb-bd78-21c0598179ff",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "productiemethoden bakkerij",
+      "uri": "http://data.europa.eu/esco/skill/e33ad426-d088-4136-b9f4-8e9c70522932",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "machines voor voedingsmiddelen en dranken schoonmaken",
+      "uri": "http://data.europa.eu/esco/skill/5521fcf8-80fa-489b-af18-a69823b85702",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "weegapparatuur gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/d18408c1-c2ba-4835-9ee0-352705d807d0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bakkerij-ingrediënten",
+      "uri": "http://data.europa.eu/esco/skill/3fa0a100-66ea-4bb3-a33e-2044d4a43df3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voedselverwerkende handelingen nauwkeurig meten",
+      "uri": "http://data.europa.eu/esco/skill/cf7ec3cc-75a9-4cbb-9db2-7f0c8b58d8af",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "snijapparatuur onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/06cf28f4-608d-4fb9-94c5-c0698d70ea71",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "regelsystemen voor machines opzetten",
+      "uri": "http://data.europa.eu/esco/skill/a1a032e1-4b7a-4603-8516-43d83707ffac",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kleurverschillen aangeven",
+      "uri": "http://data.europa.eu/esco/skill/2f4f78ac-0246-4c59-907d-9fcb46f8fb77",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "losapparatuur voor bloem controleren",
+      "uri": "http://data.europa.eu/esco/skill/047ceb23-1eb3-4889-a07f-84a1e4b85bff",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "temperatuur bij de verwerking van meelproducten volgen",
+      "uri": "http://data.europa.eu/esco/skill/c44c5e78-6647-406c-84f0-b6e626877fc2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voedsel- en drankenindustrie",
+      "uri": "http://data.europa.eu/esco/skill/dc57f705-75b6-4232-b531-1f020afa0364",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "creatief voedsel maken",
+      "uri": "http://data.europa.eu/esco/skill/79c96922-6032-40d6-b391-0f4a0d85e620",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "omgaan met managers",
+      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "maalhandelingen",
+      "uri": "http://data.europa.eu/esco/skill/bf5b4ec8-330c-4d51-bbbb-fc7ac6b4b2a5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "improviseren bij situaties die zich voordoen bij voedselverwerking",
+      "uri": "http://data.europa.eu/esco/skill/96c74a96-77dd-4285-a7f0-33966ec0df5e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productieprocessen voor drank en voedingsmiddelen",
+      "uri": "http://data.europa.eu/esco/skill/f3c3e51d-f4dc-49a8-8725-2a2d3160446e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "levering van grondstoffen beheren",
+      "uri": "http://data.europa.eu/esco/skill/360e1c45-d335-4a19-b717-e1932927a72b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "over prijzen onderhandelen",
+      "uri": "http://data.europa.eu/esco/skill/7ee9fb56-91b1-4363-b51f-ea54ae1b5761",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "betrouwbaar handelen",
+      "uri": "http://data.europa.eu/esco/skill/25e16679-a7d0-464d-916c-63210001bbab",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "in een voedselverwerkend team werken",
+      "uri": "http://data.europa.eu/esco/skill/ed883d6b-cd2a-4d87-8bef-13f66f80fcb6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "factoren identificeren die veranderingen tijdens de opslag van voedingsmiddelen veroorzaken",
+      "uri": "http://data.europa.eu/esco/skill/ee5e17b9-be48-48c8-a72f-a489988eaf74",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gebak maken",
+      "uri": "http://data.europa.eu/esco/skill/587530c9-149c-4078-9f64-b58097aea0ae",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "niches in de markt identificeren",
+      "uri": "http://data.europa.eu/esco/skill/bf40aa7c-1e99-40bb-a718-1e1492aaf00f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "beheersing van uitgaven",
+      "uri": "http://data.europa.eu/esco/skill/e1f5c539-7c93-49ee-917d-a24e0d887686",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zorgen voor naleving van de milieuwetgeving bij voedselproductie",
+      "uri": "http://data.europa.eu/esco/skill/f66b2fc3-2952-41e5-89bf-a9157ea29420",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toezicht houden op branden",
+      "uri": "http://data.europa.eu/esco/skill/b65691e8-1b0f-4593-8d18-9ebb66e10383",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "nieuw personeel in dienst nemen",
+      "uri": "http://data.europa.eu/esco/skill/92f983d4-f7fc-412a-be4f-4b76ceb18505",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productieomschakelingen realiseren",
+      "uri": "http://data.europa.eu/esco/skill/fd6aa2f5-b061-4ba2-a047-23d35d77f9cf",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "schriftelijke instructies volgen",
+      "uri": "http://data.europa.eu/esco/skill/54d68400-9da3-4077-a7ee-52e68b390ef6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "warmtebehandeling toepassen",
+      "uri": "http://data.europa.eu/esco/skill/14f6c275-5a3c-4016-8be0-53c40b4bfbc5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "mondelinge instructies volgen",
+      "uri": "http://data.europa.eu/esco/skill/fc511e12-fe90-40a0-bec8-227abb5e4255",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "koelprocessen voor voedingsmiddelen uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/728cd984-19ad-441c-8145-b8edc9c53445",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "op een georganiseerde manier werken",
+      "uri": "http://data.europa.eu/esco/skill/1258cc12-37bb-4a12-b219-9c3d6b294533",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zware gewichten tillen",
+      "uri": "http://data.europa.eu/esco/skill/ab2bb44a-3956-4028-8715-8b70b1960b99",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kwaliteitscontroles bij voedselverwerking uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/f2536b0a-068b-48ed-910f-231bfa0ec032",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voorraad van goederen in productie bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/35718973-913e-447b-a968-83e66e6c8872",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "diensten op een flexibele manier uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/ebfe7b18-1fad-463f-9509-8ef1a5736045",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "tegen hoge temperaturen bestand zijn",
+      "uri": "http://data.europa.eu/esco/skill/feaefe50-fcbe-4c5f-acbd-580724bf6ba2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gistingsproces van voedingswaren",
+      "uri": "http://data.europa.eu/esco/skill/7976294b-215b-4310-a53f-5b0b5ee23d16",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "maalapparaten",
+      "uri": "http://data.europa.eu/esco/skill/7b969ac9-f085-4afb-a480-c5210fb4da7d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gebak produceren",
+      "uri": "http://data.europa.eu/esco/skill/497bd065-ac31-4be3-a35f-0e9ebe2a3920",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gezondheids- en veiligheidsbepalingen inzake broodproducten handhaven",
+      "uri": "http://data.europa.eu/esco/skill/f404dcb3-4ed1-404e-9ab8-992918d836ac",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "monsters etiketteren",
+      "uri": "http://data.europa.eu/esco/skill/fabc4abb-d255-403e-bfbb-6557afb4db58",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "assisteren bij de ontwikkeling van standaardprocedures in de voedselketen",
+      "uri": "http://data.europa.eu/esco/skill/82e1876d-03be-4e15-b32a-b0967a20df71",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "omgaan met moeilijke arbeidsomstandigheden bij voedselverwerking",
+      "uri": "http://data.europa.eu/esco/skill/202d6f30-e630-4b27-a437-ce4e2b8a5d75",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "nieuwe recepten creëren",
+      "uri": "http://data.europa.eu/esco/skill/c19c5b7d-ce2f-451f-9ae3-59cf823aa490",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "apparatuur demonteren",
+      "uri": "http://data.europa.eu/esco/skill/2562fa92-6ecf-4ba9-831e-0ce94acb8991",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werking van reinigingsmachines controleren",
+      "uri": "http://data.europa.eu/esco/skill/9a8bb4aa-44d7-42bc-a772-27da12c61a27",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productieschema’s volgen",
+      "uri": "http://data.europa.eu/esco/skill/c8f14c32-7f24-41bb-9e8f-b24d6fd3ca86",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productiemonsters onderzoeken",
+      "uri": "http://data.europa.eu/esco/skill/f4751ef2-75fb-4c3b-9827-143895ee6218",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verpakkingsmachines bedienen",
+      "uri": "http://data.europa.eu/esco/skill/01fec851-b5f4-419b-940a-3b4c835adfa8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "omgaan met collega’s",
+      "uri": "http://data.europa.eu/esco/skill/9d5521f9-44d7-4db4-b7ac-0ba7d389f44d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voedselverwerkende praktijken efficiënt aanpassen",
+      "uri": "http://data.europa.eu/esco/skill/ce541a71-0eaa-40e7-999d-793d1f16fa4c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "geschikte verpakkingen voor voedingsproducten selecteren",
+      "uri": "http://data.europa.eu/esco/skill/e65117b6-97e0-4f45-bd61-e581dcd6ec2a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "opleiding geven over de uitvoering van algemeen kwaliteitsbeheer",
+      "uri": "http://data.europa.eu/esco/skill/09e7cd13-ea36-4694-afe5-f34373759392",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "biotechnologie",
+      "uri": "http://data.europa.eu/esco/skill/61bef658-d7f9-4759-b1b0-0f9cb3bc581a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "eigenschappen van voedselproducten bij ontvangst analyseren",
+      "uri": "http://data.europa.eu/esco/skill/ef4a3050-2232-4562-9ecd-bd1d5f22f064",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "levensmiddelenafval afvoeren",
+      "uri": "http://data.europa.eu/esco/skill/dacaebb5-5d85-4f3e-9adb-7c82b4f53189",
+      "categorie": "optioneel"
+    }
+  ]
+}

@@ -26,6 +26,7 @@ from validatie_samenwijzer.chat import (  # noqa: E402
     identificeer_oer_kandidaten,
     laad_kwalificatiedossier_tekst,
     laad_oer_tekst,
+    laad_skills_tekst,
     resolve_oer_pad,
 )
 from validatie_samenwijzer.db import get_alle_oers_met_instelling  # noqa: E402
@@ -211,6 +212,7 @@ if st.session_state.pub_kandidaten:
                         "cohort": k["cohort"],
                         "crebo": k.get("crebo", ""),
                         "dossier_tekst": laad_kwalificatiedossier_tekst(k.get("crebo")),
+                        "skills_tekst": laad_skills_tekst(k.get("crebo")),
                     }
                 )
                 labels.append(_label(k))
@@ -296,6 +298,7 @@ if kandidaten:
                         "cohort": k["cohort"],
                         "crebo": k.get("crebo", ""),
                         "dossier_tekst": laad_kwalificatiedossier_tekst(k.get("crebo")),
+                        "skills_tekst": laad_skills_tekst(k.get("crebo")),
                     }
                 ]
             )
