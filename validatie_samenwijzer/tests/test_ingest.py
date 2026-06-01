@@ -1,4 +1,5 @@
 from validatie_samenwijzer.ingest import (
+    _schoon_kd_naam,
     extraheer_kerntaken,
     parseer_bestandsnaam,
 )
@@ -90,3 +91,12 @@ def test_extraheer_kerntaken_dedupt_binnen_document():
     kt = extraheer_kerntaken(tekst)
     namen = [k["naam"] for k in kt]
     assert namen.count("Bieden van zorg en ondersteuning in het verpleegkundig proces") == 1
+
+
+def test_schoon_kd_naam_verwijdert_dotted_leaders():
+    ruw = "Uitvoeren metingen leefomgeving en rapporteren resultaten  ...........  6"
+    assert _schoon_kd_naam(ruw) == "Uitvoeren metingen leefomgeving en rapporteren resultaten"
+
+
+def test_schoon_kd_naam_zonder_leaders_blijft_gelijk():
+    assert _schoon_kd_naam("Voert toegangscontroles uit") == "Voert toegangscontroles uit"

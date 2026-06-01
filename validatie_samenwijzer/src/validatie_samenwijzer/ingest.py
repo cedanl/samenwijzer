@@ -188,6 +188,16 @@ def extraheer_kerntaken(tekst: str) -> list[dict]:
     return resultaten
 
 
+# Inhoudsopgaveregels in een KD dragen trailing dotted leaders + paginanummer,
+# bv. "Voert preventieve werkzaamheden uit  ...........  6".
+_KD_LEADER_PATROON = re.compile(r"\s*\.{2,}\s*\d*\s*$")
+
+
+def _schoon_kd_naam(naam: str) -> str:
+    """Verwijder trailing dotted leaders en paginanummer uit een KD-inhoudsopgaveregel."""
+    return _KD_LEADER_PATROON.sub("", naam).strip()
+
+
 # ── Tekstextractie per bestandstype ──────────────────────────────────────────
 
 _OCR_DREMPEL = 100  # minimaal aantal tekens voor acceptabele tekst
