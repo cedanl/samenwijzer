@@ -162,9 +162,7 @@ def extract_geldig_vanaf(pdf_bytes: bytes, tmp: Path) -> str:
     return f"{jaar}-{maand}-{dag}"
 
 
-def kies_meest_recente(
-    kandidaten: list[tuple[Path, str]], tmp: Path
-) -> tuple[Path, str, str]:
+def kies_meest_recente(kandidaten: list[tuple[Path, str]], tmp: Path) -> tuple[Path, str, str]:
     """Geef (zip, filename, geldig_vanaf) voor meest recente PDF."""
 
     if len(kandidaten) == 1:
@@ -183,7 +181,54 @@ def kies_meest_recente(
     return beste
 
 
+def download_crebo(
+    crebo: str,
+    mapping: dict[str, str] | None = None,
+    zip_index: dict[str, list[tuple[Path, str]]] | None = None,
+) -> Path | None:
+    """Download de KD-PDF voor één crebo uit de lokale s-bb-bundle.
+
+    Geeft het pad naar ``<crebo>.pdf``, of ``None`` als de crebo geen dossier in de
+    mapping heeft of geen PDF in de zips zit (een 'gat' dat een bundle-refresh vereist).
+    ``mapping``/``zip_index`` zijn optioneel injecteerbaar zodat ze bij herhaald gebruik
+    niet telkens opnieuw geladen worden.
+    """
+    PDF_DIR.mkdir(parents=True, exist_ok=True)
+    mapping = mapping if mapping is not None else laad_crebo_mapping()
+    dossier = mapping.get(crebo)
+    if not dossier:
+        return None
+    zip_index = zip_index if zip_index is not None else bouw_zip_index()
+    kandidaten = vind_pdfs_voor_dossier(dossier, zip_index)
+    if not kandidaten:
+        return None
+    tmp_pdf = KWAL_DIR / "_tmp.pdf"
+    zp, fn, _ = kies_meest_recente(kandidaten, tmp_pdf)
+    if tmp_pdf.exists():
+        tmp_pdf.unlink()
+    doel = PDF_DIR / f"{crebo}.pdf"
+    with zipfile.ZipFile(zp) as zf:
+        doel.write_bytes(zf.read(fn))
+    return doel
+
+
 def main() -> int:
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Download KD-PDFs uit de s-bb-bundle.")
+    parser.add_argument("--crebo", help="Download alleen deze crebo (i.p.v. de hele batch)")
+    args = parser.parse_args()
+
+    if args.crebo:
+        pad = download_crebo(args.crebo)
+        if pad is None:
+            # Geen dossier in de bundle = een verwacht 'gat', geen fout: exit 0 zodat
+            # aanroepers een echte crash (non-zero) kunnen onderscheiden van een gat.
+            print(f"Geen KD-PDF voor crebo {args.crebo} (niet in mapping of niet in zips).")
+            return 0
+        print(f"KD-PDF opgeslagen: {pad}")
+        return 0
+
     PDF_DIR.mkdir(parents=True, exist_ok=True)
 
     onze_crebos = laad_crebos_uit_db()
