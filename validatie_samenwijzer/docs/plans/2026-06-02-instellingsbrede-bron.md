@@ -106,44 +106,58 @@ juiste bron citeert — geen verwarring met "de OER".
 
 ### 3.5 Caps & prompt-caching
 
-Deze documenten zijn groot (Examenreglement ≈ 1,2 MB PDF, Beleidsnotitie ≈ 2,3 MB). Na
-markdown-conversie naar schatting 100K–300K tekens. Nodig:
-- `_MAX_INSTELLING_TEKST_TEKENS` — **definitieve waarde volgt uit de meting** (zie §4, besluit 3).
-  Start de implementatie met een ruime placeholder (300_000, gelijk aan KD) en stel hem bij op
-  basis van `meet_token_kosten.py` vóór brede uitrol.
+De PDF's ogen groot (Examenreglement ≈ 1,2 MB, Beleidsnotitie ≈ 2,3 MB), maar na
+markdown-conversie blijkt de tekst klein (gemeten: ~37K tekens / ~12,5K tokens — zie §4). Nodig:
+- `_MAX_INSTELLING_TEKST_TEKENS = 300_000` — **vastgesteld** na meting (§4); ruime veiligheidsrem
+  die in de praktijk niet bindt.
 - Het blok is **instelling-stabiel** (verandert niet per student/vraag) → ideaal voor prompt-caching;
   plaats het op een cache-vriendelijke, stabiele positie in de prompt.
 
-## 4. Kostenimpact
+## 4. Kostenimpact — gemeten (2026-06-02)
 
-Sonnet 4.6, full-document context. Het examenreglement voegt bij elke eerste vraag in een sessie
-~100K–250K extra prompt-tekens toe — fors meer dan het KD (~40K). Grove schatting per sessie:
-eerste vraag +$0.05–$0.12; vervolgvragen halen cache → marginaal. Met de aanbeveling uit beslissing
-2 (begeleidingsbeleid alleen mentor) blijft de student-impact bij één extra groot document.
+> **Gate: GEHAALD. Kosten acceptabel → door naar stap 5; cap blijft 300_000 tekens.**
 
-> **Besluit: meet eerst, dan cap kiezen.** Draai `scripts/meet_token_kosten.py` op het Rijn
-> IJssel-reglement (fase 0, vóór de chat-integratie breed live gaat) en stel `_MAX_INSTELLING_
-> TEKST_TEKENS` op echte cijfers in i.p.v. de schatting. Valt de eerste-vraag-kost te hoog uit,
-> dan verlaag de cap of schakel het reglement naar on-demand laden (trefwoord/intent). Geen brede
-> uitrol vóór deze meting.
+Gemeten op het **Da Vinci-examenreglement 2026-2027** (representatief mbo-examenreglement; de Rijn
+IJssel-PDF's waren niet meer beschikbaar — zie §5). Sonnet 4.6, `count_tokens`-API, Da Vinci-OER
+als basis:
+
+| Metriek | Waarde |
+|---|---|
+| Reglement na markdown-conversie | 36.911 tekens (PDF was 3,4 MB — PDF-grootte voorspelt md-grootte slecht) |
+| Reglement-blok in tokens | **12.451 tokens** (~OER+KD-orde, niet de gevreesde 100K+) |
+| Eerste vraag, vers input (+$3/M) | **+$0,037** |
+| Eerste vraag, cache-write (+$3,75/M) | +$0,047 |
+| Vervolgvraag, cache-read (+$0,30/M) | **+$0,004** |
+
+De eerdere schatting (100K–300K tekens / +$0,05–0,12) was pessimistisch: een echt examenreglement
+is tekstueel klein (~37K tekens, vergelijkbaar met een KD). Met begeleidingsbeleid mentor-only
+(beslissing 2) en prompt-caching is de student-meerkost ~$0,04 bij de eerste vraag en
+verwaarloosbaar daarna.
+
+`_MAX_INSTELLING_TEKST_TEKENS` **blijft 300_000**: de cap bindt in de praktijk niet (ruim 20×
+boven de gemeten omvang) en dient alleen als veiligheidsrem (~100K tokens worst-case). Geen
+on-demand laden nodig.
+
+> **Restrisico:** de Rijn IJssel-Beleidsnotitie (2,3 MB PDF) is niet gemeten; herhaal `count_tokens`
+> bij de eerste echte instelling-bron-ingest om te bevestigen dat ook die binnen de orde blijft.
+> De meting is reproduceerbaar via een `count_tokens`-vergelijking OER vs OER+bron.
 
 ## 5. Implementatieplan
 
 Volgorde met verifieerbaar criterium per stap. De kostenmeting (fase 4) is een **gate**: geen brede
 uitrol vóór het resultaat bekend is.
 
-1. **Schema + db-laag** — tabel `instelling_documenten` + CRUD-functies in `db.py`
-   (`voeg_instelling_document_toe`, `haal_instelling_document_op(instelling_id, soort)`).
-   → *verify:* `init_db()` maakt de tabel; unit-test schrijft/leest een record.
-2. **Ingestie** — uitbreiding `ingest.py`: lees instellingsbrede bestanden per instelling, converteer
-   naar markdown, registreer met `soort`. Conventie voor map/bestandsnaam → `soort` vastleggen.
-   → *verify:* Rijn IJssel-reglement + beleid staan in `instelling_documenten` met `geindexeerd=1`
-   en `.md` naast de bron. Test: `test_ingest`-uitbreiding.
-3. **Laad-helper** — `laad_instelling_bron_tekst(instelling_id_of_key, soort) -> str`, met
-   `_MAX_INSTELLING_TEKST_TEKENS` (placeholder 300_000).
-   → *verify:* geeft tekst voor Rijn IJssel; onbekende instelling/soort → lege string. Unit-test.
-4. **Kostenmeting (GATE)** — `scripts/meet_token_kosten.py` op het reglement; stel de definitieve
-   cap in. → *verify:* gemeten eerste-vraag-meerkost gedocumenteerd; cap-waarde vastgesteld.
+1. ✅ **Schema + db-laag** — tabel `instelling_documenten` + CRUD in `db.py`
+   (`voeg_instelling_document_toe` upsert, `haal_instelling_document_op`,
+   `markeer_instelling_document_geindexeerd`). *Geverifieerd: unit-tests groen.* (PR #117)
+2. ✅ **Ingestie** — `ingest.py` `_verwerk_instelling_documenten`: leest `<map>/_instelling/<soort>.<ext>`,
+   converteert naar markdown, registreert; ingehaakt in `main`. *Geverifieerd: test + echte
+   Da Vinci-examenreglement-ingest.* (PR #117)
+3. ✅ **Laad-helper** — `laad_instelling_bron_tekst(bestandspad)` (hergebruikt `laad_oer_tekst`,
+   eigen cap). DB→pad-resolutie blijft de taak van de pagina (stap 5), consistent met `laad_oer_tekst`.
+   *Geverifieerd: unit-tests groen.* (PR #117)
+4. ✅ **Kostenmeting (GATE) — GEHAALD** — Da Vinci-examenreglement: 12.451 tokens, +$0,037 eerste
+   vraag / +$0,004 cached. Cap vastgesteld op 300_000. Zie §4.
 5. **Chat-integratie + citatie** — vierde blok in `_SYSTEEM_TEMPLATE` + `_MULTI_SYSTEEM_TEMPLATE`;
    `bouw_systeem` voegt het reglement-blok toe (alle rollen) en, alléén voor de mentor-aanroep, het
    beleidsblok; citatie-instructie voor instellingsbronnen.

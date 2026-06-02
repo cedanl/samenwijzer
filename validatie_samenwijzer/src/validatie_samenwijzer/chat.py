@@ -16,8 +16,9 @@ logger = logging.getLogger(__name__)
 _MAX_OER_TEKST_TEKENS = 500_000  # ruim voldoende voor elke OER binnen Sonnet 4.6 (1M context)
 _MAX_DOSSIER_TEKST_TEKENS = 300_000
 _MAX_SKILLS_TEKST_TEKENS = 50_000  # skills-blok is klein; cap als veiligheid
-# Placeholder-cap voor instellingsbrede documenten (examenreglement/begeleidingsbeleid);
-# definitieve waarde volgt uit de kostenmeting (zie docs/plans/2026-06-02-instellingsbrede-bron.md).
+# Cap voor instellingsbrede documenten (examenreglement/begeleidingsbeleid). Ruime veiligheidsrem:
+# een echt examenreglement meet ~37K tekens (~12,5K tokens), dus de cap bindt in de praktijk niet.
+# Onderbouwing: docs/plans/2026-06-02-instellingsbrede-bron.md §4 (kostenmeting 2026-06-02).
 _MAX_INSTELLING_TEKST_TEKENS = 300_000
 
 LAGE_RELEVANTIE_BERICHT = (
