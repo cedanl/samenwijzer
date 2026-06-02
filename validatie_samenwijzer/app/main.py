@@ -10,11 +10,21 @@ st.set_page_config(page_title="OER-assistent · Login", page_icon="📚", layout
 from validatie_samenwijzer._db import get_conn  # noqa: E402
 from validatie_samenwijzer.auth import login_mentor, login_student  # noqa: E402
 from validatie_samenwijzer.db import (  # noqa: E402
+    INSTELLING_SOORTEN,
     get_oer_ids_by_mentor_id,
     haal_instelling_document_op,
 )
-from validatie_samenwijzer.ingest import INSTELLING_SOORTEN  # noqa: E402
 from validatie_samenwijzer.styles import CSS, render_footer  # noqa: E402
+
+# Welke instellingsbrede regelingen elke rol meekrijgt in de chat. Begeleidingsbeleid
+# is mentor-only (privacy/begeleiding); de rest is student-relevant.
+_STUDENT_SOORTEN = ["examenreglement", "studentenstatuut", "algemene_informatie"]
+_MENTOR_SOORTEN = [
+    "examenreglement",
+    "begeleidingsbeleid",
+    "studentenstatuut",
+    "algemene_informatie",
+]
 
 
 def _instelling_bron_paden(instelling_id: int | None, soorten: list[str]) -> list[tuple[str, str]]:
@@ -59,7 +69,7 @@ def _sla_student_op(student) -> None:
             "leerweg": oer["leerweg"] if oer else "",
             "bestandspad": oer["bestandspad"] if oer else "",
             "instelling_bron_paden": _instelling_bron_paden(
-                oer["instelling_id"] if oer else None, ["examenreglement"]
+                oer["instelling_id"] if oer else None, _STUDENT_SOORTEN
             ),
             "chat_history": [],
         }
@@ -85,7 +95,7 @@ def _sla_mentor_op(mentor) -> None:
             "instelling": instelling["display_naam"] if instelling else "",
             "opleiding": "Mentor",
             "instelling_bron_paden": _instelling_bron_paden(
-                mentor["instelling_id"], ["examenreglement", "begeleidingsbeleid"]
+                mentor["instelling_id"], _MENTOR_SOORTEN
             ),
             "actieve_student": None,
             "chat_history": [],

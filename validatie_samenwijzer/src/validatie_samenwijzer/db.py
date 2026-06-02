@@ -3,9 +3,31 @@
 import sqlite3
 from pathlib import Path
 
+# Instellingsbrede document-soorten → blok-kop/citeer-label. Eén bron van waarheid
+# voor opslag, ingestie, de chat-blokkop en de beheer-status. Een nieuwe soort
+# toevoegen = hier één regel; geen schema-migratie nodig (soort-validatie staat in
+# voeg_instelling_document_toe, niet in een DB-CHECK).
+INSTELLING_SOORTEN = {
+    "examenreglement": "Examenreglement",
+    "begeleidingsbeleid": "Begeleidings- en welzijnsbeleid",
+    "studentenstatuut": "Studentenstatuut",
+    "algemene_informatie": "Algemene informatie",
+}
+
 
 def init_db(conn: sqlite3.Connection) -> None:
     """Maak alle tabellen aan als ze nog niet bestaan en activeer foreign keys."""
+    # Migratie: instelling_documenten had eerst een CHECK-constraint op `soort`
+    # (examenreglement/begeleidingsbeleid). Soort-validatie is naar de code verplaatst
+    # zodat nieuwe soorten geen schema-migratie vergen. Recreate de tabel als de oude
+    # CHECK er nog in staat — de rijen zijn regenereerbaar via ingest van de _instelling/-bestanden.
+    rij = conn.execute(
+        "SELECT sql FROM sqlite_master WHERE type='table' AND name='instelling_documenten'"
+    ).fetchone()
+    if rij and "CHECK" in (rij[0] or ""):
+        conn.execute("DROP TABLE instelling_documenten")
+        conn.commit()
+
     conn.executescript("""
         PRAGMA foreign_keys = ON;
 
@@ -89,7 +111,7 @@ def init_db(conn: sqlite3.Connection) -> None:
         CREATE TABLE IF NOT EXISTS instelling_documenten (
             id            INTEGER PRIMARY KEY AUTOINCREMENT,
             instelling_id INTEGER NOT NULL REFERENCES instellingen(id),
-            soort         TEXT NOT NULL CHECK (soort IN ('examenreglement', 'begeleidingsbeleid')),
+            soort         TEXT NOT NULL,
             titel         TEXT NOT NULL,
             bestandspad   TEXT NOT NULL,
             geindexeerd   INTEGER NOT NULL DEFAULT 0,
@@ -197,7 +219,15 @@ def voeg_instelling_document_toe(
     Eén document per (instelling, soort). Een gewijzigd bestandspad (bijv. een jaarlijkse
     herziening) zet `geindexeerd` terug naar 0 zodat het opnieuw wordt geïndexeerd; een
     identiek pad laat de bestaande indexeerstatus ongemoeid. Geeft het id terug.
+
+    Raises:
+        ValueError: als `soort` geen bekende instellingsbrede soort is.
     """
+    if soort not in INSTELLING_SOORTEN:
+        raise ValueError(
+            f"Onbekende instellingsbrede soort: {soort!r}. "
+            f"Bekend: {', '.join(sorted(INSTELLING_SOORTEN))}."
+        )
     conn.execute(
         """INSERT INTO instelling_documenten (instelling_id, soort, titel, bestandspad)
            VALUES (?, ?, ?, ?)

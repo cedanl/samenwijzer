@@ -507,13 +507,9 @@ def _verwerk_instelling(
 
 
 # Instellingsbrede documenten (niet crebo-gebonden): één submap per instelling,
-# bestandsnaam-stem == soort. Bewust een aparte submap zodat de platte iterdir in
-# _verwerk_instelling deze bestanden niet als OER oppikt.
+# bestandsnaam-stem == soort (zie db.INSTELLING_SOORTEN). Bewust een aparte submap zodat
+# de platte iterdir in _verwerk_instelling deze bestanden niet als OER oppikt.
 _INSTELLING_SUBMAP = "_instelling"
-INSTELLING_SOORTEN = {
-    "examenreglement": "Examenreglement",
-    "begeleidingsbeleid": "Begeleidings- en welzijnsbeleid",
-}
 
 
 def _verwerk_instelling_documenten(
@@ -523,13 +519,15 @@ def _verwerk_instelling_documenten(
     *,
     reset: bool = False,
 ) -> None:
-    """Indexeer instellingsbrede documenten (examenreglement, begeleidingsbeleid).
+    """Indexeer instellingsbrede documenten (examenreglement, beleid, statuut, …).
 
-    Verwacht ze in `<map>/_instelling/<soort>.<ext>` met de bestandsnaam-stem als soort.
-    Crebo-loos: alleen markdown-conversie + registratie in `instelling_documenten`,
-    geen kerntaken-extractie. Onbekende stems worden overgeslagen.
+    Verwacht ze in `<map>/_instelling/<soort>.<ext>` met de bestandsnaam-stem als soort
+    (geldige soorten: db.INSTELLING_SOORTEN). Crebo-loos: alleen markdown-conversie +
+    registratie in `instelling_documenten`, geen kerntaken-extractie. Onbekende stems
+    worden overgeslagen.
     """
     from validatie_samenwijzer.db import (
+        INSTELLING_SOORTEN,
         get_instelling_by_naam,
         markeer_instelling_document_geindexeerd,
         voeg_instelling_document_toe,

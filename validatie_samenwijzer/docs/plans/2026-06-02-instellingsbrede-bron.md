@@ -197,3 +197,26 @@ uitrol vóór het resultaat bekend is.
 
 Ontwerp vastgesteld. Volgende stap: implementatie volgens §5, of eerst een aparte issue/PR-opzet
 als je dat wilt.
+
+## 8. Uitbreiding: extra soorten (2026-06-02)
+
+Twee soorten toegevoegd op basis van beschikbare Da Vinci-documenten: **`studentenstatuut`** en
+**`algemene_informatie`**. Daarbij is de soort-set **uitbreidbaar** gemaakt:
+
+- De canonieke soort→label-map staat nu in **`db.INSTELLING_SOORTEN`** (één bron; voorheen privé in
+  `ingest.py`). Een nieuwe soort = één regel hier.
+- De DB-`CHECK`-constraint op `soort` is **vervangen door code-validatie** in
+  `voeg_instelling_document_toe` (raise `ValueError`), zodat een nieuwe soort geen schema-migratie
+  vergt. Bestaande tabellen met de oude `CHECK` worden self-healing herbouwd door `init_db` (rijen
+  regenereren via ingest van `_instelling/`).
+- **Rol-mapping**: student + mentor krijgen examenreglement + studentenstatuut + algemene_informatie;
+  mentor daarnaast begeleidingsbeleid. De **publieke multi-OER-pagina blijft examenreglement-only**
+  (tot 3 OERs × alle soorten zou de prompt te zwaar maken).
+
+**Kosten** (Da Vinci, gemeten): studentenstatuut ~15,7K tokens (+$0,047 vers / +$0,005 cached),
+algemene_informatie ~9,7K (+$0,029 / +$0,003). Student-totaal instellingsbreed ≈ 38K tokens
+(~+$0,11 eerste vraag, ~+$0,012 cached). `algemene_informatie` is het minst OER-relevant; kandidaat
+om te schrappen uit de student-set als de eerste-vraag-kost te hoog blijkt.
+
+Beschikbaarheid: alleen **Da Vinci** levert deze twee documenten aan; andere instellingen hebben ze
+(nog) niet in de drop.

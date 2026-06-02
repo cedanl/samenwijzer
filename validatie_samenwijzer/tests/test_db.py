@@ -132,11 +132,42 @@ def test_instelling_document_upsert_per_instelling_en_soort(conn):
     assert n == 1
 
 
-def test_instelling_document_soort_check(conn):
+def test_instelling_document_onbekende_soort_raises(conn):
     voeg_instelling_toe(conn, "rijn_ijssel", "Rijn IJssel")
     inst = get_instelling_by_naam(conn, "rijn_ijssel")
-    with pytest.raises(sqlite3.IntegrityError):
+    with pytest.raises(ValueError, match="Onbekende instellingsbrede soort"):
         voeg_instelling_document_toe(conn, inst["id"], "willekeurig", "x", "y.pdf")
+
+
+def test_instelling_document_nieuwe_soort_studentenstatuut(conn):
+    """De uitbreidbare soort-set accepteert studentenstatuut + algemene_informatie."""
+    voeg_instelling_toe(conn, "davinci", "Da Vinci College")
+    inst = get_instelling_by_naam(conn, "davinci")
+    for soort in ("studentenstatuut", "algemene_informatie"):
+        doc_id = voeg_instelling_document_toe(conn, inst["id"], soort, "t", f"{soort}.pdf")
+        assert haal_instelling_document_op(conn, inst["id"], soort)["id"] == doc_id
+
+
+def test_init_db_migreert_oude_check_tabel(conn):
+    """Een instelling_documenten-tabel met de oude CHECK wordt herbouwd zonder CHECK."""
+    conn.execute("DROP TABLE instelling_documenten")
+    conn.execute(
+        """CREATE TABLE instelling_documenten (
+               id INTEGER PRIMARY KEY AUTOINCREMENT,
+               instelling_id INTEGER NOT NULL REFERENCES instellingen(id),
+               soort TEXT NOT NULL CHECK (soort IN ('examenreglement', 'begeleidingsbeleid')),
+               titel TEXT NOT NULL, bestandspad TEXT NOT NULL,
+               geindexeerd INTEGER NOT NULL DEFAULT 0,
+               toegevoegd_op TEXT NOT NULL DEFAULT (datetime('now')),
+               UNIQUE (instelling_id, soort))"""
+    )
+    conn.commit()
+    init_db(conn)  # moet de oude-CHECK-tabel detecteren en herbouwen
+    voeg_instelling_toe(conn, "davinci", "Da Vinci College")
+    inst = get_instelling_by_naam(conn, "davinci")
+    # Een soort die de oude CHECK zou weigeren, moet nu werken.
+    voeg_instelling_document_toe(conn, inst["id"], "studentenstatuut", "t", "s.pdf")
+    assert haal_instelling_document_op(conn, inst["id"], "studentenstatuut") is not None
 
 
 def test_oer_document_gescheiden_per_instelling(conn):
