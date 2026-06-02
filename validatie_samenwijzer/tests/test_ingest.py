@@ -4,6 +4,7 @@ import pytest
 
 from validatie_samenwijzer.db import (
     get_kerntaken_by_oer_id,
+    haal_instelling_document_op,
     init_db,
     voeg_instelling_toe,
 )
@@ -12,6 +13,7 @@ from validatie_samenwijzer.ingest import (
     _pad_kwalificatiedossier,
     _schoon_kd_naam,
     _verwerk_bestand,
+    _verwerk_instelling_documenten,
     extraheer_kerntaken,
     parseer_bestandsnaam,
 )
@@ -214,3 +216,35 @@ def test_verwerk_bestand_negeert_kd_als_oer_kerntaken_heeft(tmp_path, monkeypatc
     codes = {r["code"] for r in get_kerntaken_by_oer_id(conn, _oer_id(conn))}
     assert "B1-K1" in codes
     assert "B9-K9" not in codes
+
+
+def test_verwerk_instelling_documenten_indexeert_bekende_soorten(tmp_path, conn):
+    voeg_instelling_toe(conn, "rijn_ijssel", "Rijn IJssel")
+    inst_map = tmp_path / "rijn_ijssel_oer" / "_instelling"
+    inst_map.mkdir(parents=True)
+    (inst_map / "examenreglement.md").write_text("Artikel 6.3 Herkansingen\n", encoding="utf-8")
+    (inst_map / "begeleidingsbeleid.md").write_text("Beleid studiebegeleiding\n", encoding="utf-8")
+    # Onbekende stem → moet genegeerd worden.
+    (inst_map / "README.md").write_text("niet relevant\n", encoding="utf-8")
+
+    _verwerk_instelling_documenten("rijn_ijssel", tmp_path, conn)
+
+    inst_id = conn.execute("SELECT id FROM instellingen WHERE naam = 'rijn_ijssel'").fetchone()[0]
+    reglement = haal_instelling_document_op(conn, inst_id, "examenreglement")
+    assert reglement is not None
+    assert reglement["geindexeerd"] == 1
+    assert reglement["titel"] == "Examenreglement Rijn IJssel"
+    assert reglement["bestandspad"].endswith("_instelling/examenreglement.md")
+    assert haal_instelling_document_op(conn, inst_id, "begeleidingsbeleid") is not None
+    # Geen rij voor de onbekende stem.
+    n = conn.execute("SELECT COUNT(*) FROM instelling_documenten").fetchone()[0]
+    assert n == 2
+
+
+def test_verwerk_instelling_documenten_zonder_submap_doet_niets(tmp_path, conn):
+    voeg_instelling_toe(conn, "rijn_ijssel", "Rijn IJssel")
+    (tmp_path / "rijn_ijssel_oer").mkdir(parents=True)  # geen _instelling-submap
+
+    _verwerk_instelling_documenten("rijn_ijssel", tmp_path, conn)
+
+    assert conn.execute("SELECT COUNT(*) FROM instelling_documenten").fetchone()[0] == 0

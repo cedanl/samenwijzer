@@ -12,9 +12,12 @@ from validatie_samenwijzer.db import (
     get_oer_ids_by_mentor_id,
     get_student_by_studentnummer,
     get_studenten_by_mentor_id,
+    haal_instelling_document_op,
     init_db,
     markeer_geindexeerd,
+    markeer_instelling_document_geindexeerd,
     update_oer_bestandspad,
+    voeg_instelling_document_toe,
     voeg_instelling_toe,
     voeg_kerntaak_toe,
     voeg_mentor_toe,
@@ -44,6 +47,7 @@ def test_init_db_maakt_tabellen_aan(conn):
         "mentor_oer",
         "studenten",
         "student_kerntaak_scores",
+        "instelling_documenten",
     } <= tabellen
 
 
@@ -73,6 +77,66 @@ def test_oer_document_crud(conn):
     markeer_geindexeerd(conn, oer_id)
     oer2 = get_oer_document(conn, inst["id"], "25655", "2025", "BOL")
     assert oer2["geindexeerd"] == 1
+
+
+def test_instelling_document_crud(conn):
+    voeg_instelling_toe(conn, "rijn_ijssel", "Rijn IJssel")
+    inst = get_instelling_by_naam(conn, "rijn_ijssel")
+    doc_id = voeg_instelling_document_toe(
+        conn,
+        instelling_id=inst["id"],
+        soort="examenreglement",
+        titel="Examenreglement mbo Rijn IJssel 2025",
+        bestandspad="oeren/rijn_ijssel_oer/_instelling/examenreglement.pdf",
+    )
+    doc = haal_instelling_document_op(conn, inst["id"], "examenreglement")
+    assert doc["id"] == doc_id
+    assert doc["titel"] == "Examenreglement mbo Rijn IJssel 2025"
+    assert doc["geindexeerd"] == 0
+    markeer_instelling_document_geindexeerd(conn, doc_id)
+    assert haal_instelling_document_op(conn, inst["id"], "examenreglement")["geindexeerd"] == 1
+    # onbekende combinatie → None
+    assert haal_instelling_document_op(conn, inst["id"], "begeleidingsbeleid") is None
+
+
+def test_instelling_document_upsert_per_instelling_en_soort(conn):
+    """Eén document per (instelling, soort); een nieuw pad reset geindexeerd, gelijk pad niet."""
+    voeg_instelling_toe(conn, "rijn_ijssel", "Rijn IJssel")
+    inst = get_instelling_by_naam(conn, "rijn_ijssel")
+    eerste = voeg_instelling_document_toe(
+        conn, inst["id"], "examenreglement", "v2025", "oeren/ri/_instelling/reglement_2025.pdf"
+    )
+    markeer_instelling_document_geindexeerd(conn, eerste)
+
+    # Zelfde pad opnieuw toevoegen → zelfde rij, geindexeerd blijft behouden.
+    zelfde = voeg_instelling_document_toe(
+        conn, inst["id"], "examenreglement", "v2025", "oeren/ri/_instelling/reglement_2025.pdf"
+    )
+    assert zelfde == eerste
+    assert haal_instelling_document_op(conn, inst["id"], "examenreglement")["geindexeerd"] == 1
+
+    # Nieuw pad (jaarlijkse herziening) → zelfde rij, maar geindexeerd terug naar 0.
+    vernieuwd = voeg_instelling_document_toe(
+        conn, inst["id"], "examenreglement", "v2026", "oeren/ri/_instelling/reglement_2026.pdf"
+    )
+    assert vernieuwd == eerste
+    doc = haal_instelling_document_op(conn, inst["id"], "examenreglement")
+    assert doc["titel"] == "v2026"
+    assert doc["bestandspad"] == "oeren/ri/_instelling/reglement_2026.pdf"
+    assert doc["geindexeerd"] == 0
+    # Nog steeds precies één rij voor deze (instelling, soort).
+    n = conn.execute(
+        "SELECT COUNT(*) FROM instelling_documenten WHERE instelling_id = ? AND soort = ?",
+        (inst["id"], "examenreglement"),
+    ).fetchone()[0]
+    assert n == 1
+
+
+def test_instelling_document_soort_check(conn):
+    voeg_instelling_toe(conn, "rijn_ijssel", "Rijn IJssel")
+    inst = get_instelling_by_naam(conn, "rijn_ijssel")
+    with pytest.raises(sqlite3.IntegrityError):
+        voeg_instelling_document_toe(conn, inst["id"], "willekeurig", "x", "y.pdf")
 
 
 def test_oer_document_gescheiden_per_instelling(conn):

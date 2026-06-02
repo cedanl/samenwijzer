@@ -24,6 +24,7 @@ from validatie_samenwijzer.chat import (  # noqa: E402
     bouw_berichten,
     bouw_systeem,
     genereer_antwoord,
+    laad_instelling_bron_tekst,
     laad_kwalificatiedossier_tekst,
     laad_oer_tekst,
     laad_skills_tekst,
@@ -153,6 +154,10 @@ with col_chat:
                 oer_tekst = laad_oer_tekst(resolve_oer_pad(oer["bestandspad"]))
             dossier_tekst = laad_kwalificatiedossier_tekst(crebo)
             skills_tekst = laad_skills_tekst(crebo)
+            instelling_bronnen = [
+                (label, laad_instelling_bron_tekst(resolve_oer_pad(pad)))
+                for label, pad in st.session_state.get("instelling_bron_paden", [])
+            ]
             st.session_state.oer_systeem = (
                 bouw_systeem(
                     oer_tekst,
@@ -161,6 +166,7 @@ with col_chat:
                     dossier_tekst=dossier_tekst,
                     crebo=crebo,
                     skills_tekst=skills_tekst,
+                    instelling_bronnen=instelling_bronnen,
                 )
                 if oer_tekst
                 else ""
