@@ -24,13 +24,17 @@ from validatie_samenwijzer.chat import (  # noqa: E402
     genereer_antwoord,
     genereer_intake_antwoord,
     identificeer_oer_kandidaten,
+    laad_instelling_bron_tekst,
     laad_kwalificatiedossier_tekst,
     laad_oer_tekst,
     laad_skills_tekst,
     resolve_oer_pad,
 )
-from validatie_samenwijzer.db import get_alle_oers_met_instelling  # noqa: E402
-from validatie_samenwijzer.ingest import extraheer_tekst_html  # noqa: E402
+from validatie_samenwijzer.db import (  # noqa: E402
+    get_alle_oers_met_instelling,
+    haal_instelling_document_op,
+)
+from validatie_samenwijzer.ingest import INSTELLING_SOORTEN, extraheer_tekst_html  # noqa: E402
 from validatie_samenwijzer.styles import CSS, render_footer  # noqa: E402
 
 st.markdown(CSS, unsafe_allow_html=True)
@@ -51,6 +55,19 @@ _DEFAULTS: dict = {
 for _sleutel, _waarde in _DEFAULTS.items():
     if _sleutel not in st.session_state:
         st.session_state[_sleutel] = _waarde
+
+
+def _examenreglement_bron(instelling_id: int) -> list[tuple[str, str]]:
+    """[(label, tekst)] voor het examenreglement van een instelling, of [] als afwezig.
+
+    Publieke chat = student-context, dus alleen het examenreglement (geen mentor-beleid).
+    """
+    doc = haal_instelling_document_op(get_conn(), instelling_id, "examenreglement")
+    if doc and doc["geindexeerd"]:
+        tekst = laad_instelling_bron_tekst(resolve_oer_pad(doc["bestandspad"]))
+        if tekst:
+            return [(INSTELLING_SOORTEN["examenreglement"], tekst)]
+    return []
 
 
 def _reset() -> None:
@@ -213,6 +230,7 @@ if st.session_state.pub_kandidaten:
                         "crebo": k.get("crebo", ""),
                         "dossier_tekst": laad_kwalificatiedossier_tekst(k.get("crebo")),
                         "skills_tekst": laad_skills_tekst(k.get("crebo")),
+                        "instelling_bronnen": _examenreglement_bron(k["instelling_id"]),
                     }
                 )
                 labels.append(_label(k))
@@ -299,6 +317,7 @@ if kandidaten:
                         "crebo": k.get("crebo", ""),
                         "dossier_tekst": laad_kwalificatiedossier_tekst(k.get("crebo")),
                         "skills_tekst": laad_skills_tekst(k.get("crebo")),
+                        "instelling_bronnen": _examenreglement_bron(k["instelling_id"]),
                     }
                 ]
             )

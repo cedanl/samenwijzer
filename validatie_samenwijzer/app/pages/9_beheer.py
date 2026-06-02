@@ -189,9 +189,7 @@ with tab_status:
         ontbreekt = db_crebos - kd_mds
         n_db = len(db_crebos)
         pct = (len(gedekt) / n_db * 100) if n_db else 0.0
-        st.write(
-            f"📁 `{kd_pad}` — {len(kd_pdfs)} PDFs, {len(kd_mds)} markdown-bestanden"
-        )
+        st.write(f"📁 `{kd_pad}` — {len(kd_pdfs)} PDFs, {len(kd_mds)} markdown-bestanden")
         st.write(
             f"🎯 **Coverage**: {len(gedekt)}/{n_db} crebo's in DB hebben een "
             f"KD-markdown ({pct:.0f}%)"
@@ -201,9 +199,37 @@ with tab_status:
                 st.code(", ".join(sorted(ontbreekt)))
     else:
         st.warning(
-            f"Map `{kd_pad}` niet gevonden — draai sync of download in de "
-            "Kwalificatiedossiers-tab."
+            f"Map `{kd_pad}` niet gevonden — draai sync of download in de Kwalificatiedossiers-tab."
         )
+
+    st.subheader("Instellingsbrede regelingen (aanvullende AI-bron)")
+    st.caption(
+        "Examenreglement (student + mentor) en begeleidingsbeleid (mentor) per instelling. "
+        "Plaats PDFs in `oeren/<instelling>_oeren/_instelling/<soort>.pdf` en re-ingest."
+    )
+    regeling_rijen = conn.execute(
+        """SELECT i.display_naam,
+                  MAX(CASE WHEN d.soort='examenreglement' AND d.geindexeerd=1
+                           THEN 1 ELSE 0 END) AS reglement,
+                  MAX(CASE WHEN d.soort='begeleidingsbeleid' AND d.geindexeerd=1
+                           THEN 1 ELSE 0 END) AS beleid
+             FROM instellingen i
+             LEFT JOIN instelling_documenten d ON d.instelling_id = i.id
+            GROUP BY i.id, i.display_naam
+            ORDER BY i.display_naam"""
+    ).fetchall()
+    st.dataframe(
+        [
+            {
+                "Instelling": r["display_naam"],
+                "Examenreglement": "✅" if r["reglement"] else "—",
+                "Begeleidingsbeleid": "✅" if r["beleid"] else "—",
+            }
+            for r in regeling_rijen
+        ],
+        hide_index=True,
+        use_container_width=True,
+    )
 
 # ── Tab: Bootstrap ─────────────────────────────────────────────────────────────
 with tab_bootstrap:
@@ -356,9 +382,7 @@ with tab_kd:
         "Skipt de bron-zips automatisch."
     )
     if st.button("Upload naar Box", key="kd_upload"):
-        _run_in_placeholder(
-            ["bash", "scripts/sync_kwalificatiedossiers.sh", "--upload"]
-        )
+        _run_in_placeholder(["bash", "scripts/sync_kwalificatiedossiers.sh", "--upload"])
 
 
 # ── Tab: Seed ──────────────────────────────────────────────────────────────────

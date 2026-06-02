@@ -1,7 +1,7 @@
 # Spec: instellingsbrede bron (examenreglement, begeleidingsbeleid)
 
-**Status:** geïmplementeerd (stappen 1-5, 2026-06-02) — live voor student + mentor; publieke
-multi-OER-pagina (stap 5b) + beheer-status (stap 6) staan nog open.
+**Status:** geïmplementeerd (stappen 1-6 + 5b, 2026-06-02) — live voor student, mentor én de
+publieke multi-OER-pagina; beheerpagina toont dekking per instelling.
 **Datum:** 2026-06-02
 **Aanleiding:** OER-drop Rijn IJssel (juni 2026) bevatte twee documenten die géén OER zijn maar
 wél waardevolle context: `25-0070 Examenreglement mbo Rijn IJssel` en `25-0212 Beleidsnotitie
@@ -167,12 +167,15 @@ uitrol vóór het resultaat bekend is.
    → *Geverifieerd:* templatetests (blok aanwezig/afwezig, lege tekst → geen blok, citatie
    onderscheidt van OER, multi per-OER); **live smoke-test** RI-student (examenreglement, citaten
    artikel 5.4.1-5.4.4) + RI-mentor (reglement+beleid geladen, gegrond antwoord, geen errors).
-   **Bewust uitgesteld:** `0_oer_vraag.py` (publieke multi-OER) — `bouw_gecombineerd_systeem`
-   ondersteunt `instelling_bronnen` per item, maar de per-OER-per-instelling resolutie in de pagina
-   is nog niet gewired (hardste + laagste waarde). Aparte follow-up.
-6. **Beheerpagina-status** (optioneel) — dekking per instelling tonen. *(open)*
-7. **UI-smoke-test** — ✅ gedaan als onderdeel van stap 5 (zie hierboven). Resteert: publieke
-   multi-OER-pagina zodra die gewired is.
+5b. ✅ **Publieke multi-OER-pagina** (`0_oer_vraag.py`) — per-OER examenreglement (student-context,
+   geen mentor-beleid) via helper `_examenreglement_bron(instelling_id)`, in **beide** padden:
+   "Bevestig keuze" én de auto-select-single-winner. → *Geverifieerd live:* RI-OER auto-geselecteerd,
+   vraag over 2e herkansing citeert *"Volgens het Examenreglement, artikel 5.4.3"*. **Smoke-test ving
+   de eerste poging** (alleen Bevestig-keuze gewired, auto-select gemist) → gefixt.
+6. ✅ **Beheerpagina-status** — Status-tab toont per instelling een ✅/— tabel voor examenreglement
+   + begeleidingsbeleid. → *Geverifieerd live:* RI ✅✅, Da Vinci ✅—, overige —.
+7. ✅ **UI-smoke-test** — student (examenreglement), mentor (reglement+beleid), publiek (auto-select
+   reglement), beheer-status. Allemaal live bevestigd.
 
 ## 6. Risico's
 
