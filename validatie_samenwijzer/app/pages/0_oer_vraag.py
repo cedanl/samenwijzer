@@ -31,10 +31,11 @@ from validatie_samenwijzer.chat import (  # noqa: E402
     resolve_oer_pad,
 )
 from validatie_samenwijzer.db import (  # noqa: E402
+    INSTELLING_SOORTEN,
     get_alle_oers_met_instelling,
     haal_instelling_document_op,
 )
-from validatie_samenwijzer.ingest import INSTELLING_SOORTEN, extraheer_tekst_html  # noqa: E402
+from validatie_samenwijzer.ingest import extraheer_tekst_html  # noqa: E402
 from validatie_samenwijzer.styles import CSS, render_footer  # noqa: E402
 
 st.markdown(CSS, unsafe_allow_html=True)
