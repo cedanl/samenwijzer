@@ -9,11 +9,15 @@ Instelling                 OERs  Mentoren  Studenten
 -----------------------------------------------------
 Aeres MBO                     2        10        200
 Da Vinci College              2        10        200
+Koning Willem I College       1         5        100
 ROC Utrecht                   2        10        200
 Rijn IJssel                   2        10        200
 Talland                       2        10        200
 
-Studentnummers: 100001 t/m 101000
+Overgeslagen instellingen:
+  - Koning Willem I College: slechts 1/2 OERs gebruikt
+
+Studentnummers: 100001 t/m 101100
 
 
 STUDENTEN (login op studentnummer) — eerste 3 per OER
@@ -38,6 +42,11 @@ Da Vinci College · 25306_BBL_2025__25306BBL2025Examenplan (crebo 25306, BBL 202
   100201  Jesse de Vries
   100202  Hanna Ozturk
   100203  Lina Ferreira
+
+Koning Willem I College · 25122_BBL_2025__20260519_1206_Examenplan_25122Werkvoorbereiderfabricage (crebo 25122, BBL 2025)
+  101001  Amy Hendriks
+  101002  Sophie Kaur
+  101003  Iris Al-Hassan
 
 ROC Utrecht · Ondernemer handel (crebo 25880, BOL 2025)
   100901  Sofie van den Berg
@@ -101,6 +110,13 @@ Da Vinci College · 25306_BBL_2025__25306BBL2025Examenplan (crebo 25306, BBL 202
   Niels de Boer (25306)
   Lars Lammers (25306)
   Sophie Hendriks (25306)
+
+Koning Willem I College · 25122_BBL_2025__20260519_1206_Examenplan_25122Werkvoorbereiderfabricage (crebo 25122, BBL 2025)
+  Joris van Dijk (25122)
+  Nathalie Nguyen (25122)
+  Sara Singh (25122)
+  Aisha van Leeuwen (25122)
+  Fenna Vos (25122)
 
 ROC Utrecht · Ondernemer handel (crebo 25880, BOL 2025)
   Mark Nguyen (25880)
