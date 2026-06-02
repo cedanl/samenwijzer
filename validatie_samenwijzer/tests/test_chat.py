@@ -142,6 +142,74 @@ def test_bouw_systeem_zonder_dossier_heeft_geen_kd_blok():
     assert "KWALIFICATIEDOSSIER" not in systeem
 
 
+def test_bouw_systeem_met_instelling_bron_bevat_blok():
+    systeem = bouw_systeem(
+        "OER-tekst",
+        "ICT",
+        "Rijn IJssel",
+        instelling_bronnen=[("Examenreglement", "Artikel 6.3: één herkansing.")],
+    )
+    assert "=== EXAMENREGLEMENT (Rijn IJssel) ===" in systeem
+    assert "Artikel 6.3: één herkansing." in systeem
+
+
+def test_bouw_systeem_instelling_citatie_onderscheidt_van_oer():
+    """De citatie-instructie moet de regeling als aparte bron behandelen, niet als de OER."""
+    systeem = bouw_systeem("OER-tekst", "ICT", "Rijn IJssel")
+    assert "Volgens het Examenreglement" in systeem
+    assert 'citeer een regeling NOOIT als "de OER"' in systeem
+
+
+def test_bouw_systeem_zonder_instelling_bron_geen_blok():
+    systeem = bouw_systeem("OER-tekst", "Kok", "Da Vinci")
+    assert "=== EXAMENREGLEMENT" not in systeem
+    assert "=== BEGELEIDINGS" not in systeem
+
+
+def test_bouw_systeem_lege_instelling_bron_tekst_geen_blok():
+    systeem = bouw_systeem("OER-tekst", "Kok", "Da Vinci", instelling_bronnen=[("Examenreglement", "")])
+    assert "=== EXAMENREGLEMENT" not in systeem
+
+
+def test_bouw_systeem_meerdere_instelling_bronnen():
+    systeem = bouw_systeem(
+        "OER-tekst",
+        "ICT",
+        "Rijn IJssel",
+        instelling_bronnen=[
+            ("Examenreglement", "reglement-tekst"),
+            ("Begeleidings- en welzijnsbeleid", "beleid-tekst"),
+        ],
+    )
+    assert "=== EXAMENREGLEMENT (Rijn IJssel) ===" in systeem
+    assert "=== BEGELEIDINGS- EN WELZIJNSBELEID (Rijn IJssel) ===" in systeem
+    assert "reglement-tekst" in systeem
+    assert "beleid-tekst" in systeem
+
+
+def test_bouw_gecombineerd_systeem_includeert_instelling_bron_per_oer():
+    items = [
+        {
+            "tekst": "OER A",
+            "opleiding": "ICT",
+            "display_naam": "Rijn IJssel",
+            "leerweg": "BOL",
+            "cohort": "2025",
+            "instelling_bronnen": [("Examenreglement", "reglement A")],
+        },
+        {
+            "tekst": "OER B",
+            "opleiding": "Kok",
+            "display_naam": "Da Vinci",
+            "leerweg": "BBL",
+            "cohort": "2025",
+        },
+    ]
+    systeem = bouw_gecombineerd_systeem(items)
+    assert "EXAMENREGLEMENT 1 (Rijn IJssel)" in systeem
+    assert "reglement A" in systeem
+
+
 def test_laad_instelling_bron_leeg_zonder_pad():
     assert laad_instelling_bron_tekst(None) == ""
     assert laad_instelling_bron_tekst("") == ""

@@ -6,7 +6,7 @@ import json
 import logging
 import os
 import re
-from collections.abc import Generator
+from collections.abc import Generator, Sequence
 from pathlib import Path
 
 import anthropic
@@ -33,6 +33,12 @@ PRIMAIRE BRON — de Onderwijs- en Examenregeling (OER) van deze opleiding.
 Dit is het leidende, schoolspecifieke document. Beantwoord vragen primair op
 basis van de OER.
 
+AANVULLENDE BRON — instellingsbrede regelingen van de school (zie de koppen
+hieronder, zoals het examenreglement en het begeleidings-/welzijnsbeleid). Dit
+zijn APARTE documenten, NIET de OER. Ze gelden voor de hele instelling.
+Raadpleeg ze voor vragen over examinering, herkansingen, fraude, bezwaar of
+begeleiding; bij school-specifieke regels gaan ze vóór het landelijke KD.
+
 AANVULLENDE BRON — het landelijke kwalificatiedossier (KD). Raadpleeg het KD
 alléén als de OER het onderwerp niet of onvoldoende behandelt. Geef niet
 onnodig een tweede antwoord uit het KD als de OER de vraag al beantwoordt —
@@ -44,13 +50,18 @@ deze alléén bij vragen over welke skills of vaardigheden het beroep vereist
 (bijv. "welke skills heb ik nodig voor dit beroep?").
 
 CITATIEPLICHT (de OER is een juridisch document).
-Bij ELKE claim uit de OER of het KD, MOET je:
-1. de bron noemen ("Volgens de OER" of "Volgens het kwalificatiedossier"),
+Bij ELKE claim uit de OER, een instellingsbrede regeling of het KD, MOET je:
+1. de bron noemen ("Volgens de OER", "Volgens het Examenreglement" of "Volgens
+   het kwalificatiedossier"),
 2. de exacte vindplaats noemen — sectie-nummer, kopje, artikel of paginanummer,
 3. de relevante passage WOORDELIJK citeren tussen dubbele aanhalingstekens.
 
 Voorbeeld OER: Volgens de OER, sectie 3.2 "Bindend studieadvies": "De student
 ontvangt uiterlijk in juli van het eerste studiejaar een bindend studieadvies."
+
+Voorbeeld regeling: Volgens het Examenreglement, artikel 6.3 "Herkansingen":
+"...". Noem de regeling exact zoals in de kop hierboven (bv. "het Examenreglement"
+of "het Begeleidingsbeleid") — citeer een regeling NOOIT als "de OER".
 
 Voorbeeld KD: De OER beschrijft dit niet. Volgens het kwalificatiedossier,
 kerntaak B1-K1 "Bieden van zorg en ondersteuning": "...".
@@ -69,9 +80,10 @@ informatie in geen van de bronnen staat, zeg dat dan expliciet. Antwoord in het
 Nederlands.
 
 === ONDERWIJS- EN EXAMENREGELING (OER) ===
-{oer_tekst}{dossier_blok}{skills_blok}"""
+{oer_tekst}{instelling_blok}{dossier_blok}{skills_blok}"""
 
 _DOSSIER_BLOK_TEMPLATE = "\n\n=== KWALIFICATIEDOSSIER (Crebo {crebo}) ===\n{dossier_tekst}"
+_INSTELLING_BLOK_TEMPLATE = "\n\n=== {kop} ({instelling}) ===\n{tekst}"
 
 
 def resolve_oer_pad(bestandspad: str) -> Path:
@@ -236,6 +248,19 @@ def laad_skills_tekst(crebo: str | None) -> str:
     )
 
 
+def _instelling_blok(instelling: str, instelling_bronnen: Sequence[tuple[str, str]]) -> str:
+    """Render de instellingsbrede regelingen (label, tekst) als prompt-blokken.
+
+    Lege of ontbrekende bronnen leveren geen blok op (geen lege koppen).
+    """
+    delen = [
+        _INSTELLING_BLOK_TEMPLATE.format(kop=kop.upper(), instelling=instelling, tekst=tekst)
+        for kop, tekst in instelling_bronnen
+        if tekst
+    ]
+    return "".join(delen)
+
+
 def bouw_systeem(
     oer_tekst: str,
     opleiding: str,
@@ -243,8 +268,15 @@ def bouw_systeem(
     dossier_tekst: str = "",
     crebo: str | None = None,
     skills_tekst: str = "",
+    instelling_bronnen: Sequence[tuple[str, str]] = (),
 ) -> str:
-    """Stel de systeemprompt samen met OER, optioneel KD en optionele skills-taxonomie."""
+    """Stel de systeemprompt samen met OER, optionele instellingsbrede regelingen, KD en skills.
+
+    Args:
+        instelling_bronnen: (label, tekst)-paren voor instellingsbrede regelingen
+            (bv. ("Examenreglement", ...)). Het label wordt de blok-kop en de te
+            citeren bronnaam. Volgorde bepaalt de blok-volgorde; lege tekst → geen blok.
+    """
     dossier_blok = ""
     if dossier_tekst:
         dossier_blok = _DOSSIER_BLOK_TEMPLATE.format(
@@ -255,6 +287,7 @@ def bouw_systeem(
         opleiding=opleiding,
         instelling=instelling,
         oer_tekst=oer_tekst,
+        instelling_blok=_instelling_blok(instelling, instelling_bronnen),
         dossier_blok=dossier_blok,
         skills_blok=skills_tekst,
     )
@@ -304,6 +337,10 @@ Hieronder staan {n} Onderwijs- en Examenregelingen (OERs), elk waar beschikbaar
 gevolgd door het bijbehorende kwalificatiedossier (KD).
 
 PRIMAIRE BRON — de OERs (schoolspecifieke afspraken). Dit is leidend.
+AANVULLENDE BRON — instellingsbrede regelingen (zoals een examenreglement of
+begeleidingsbeleid) waar bij een OER getoond. Dit zijn APARTE documenten, NIET
+de OER; ze gelden voor de hele instelling en gaan bij school-specifieke regels
+vóór het KD.
 AANVULLENDE BRON — de KDs (landelijke eisen, kerntaken, werkprocessen).
 Raadpleeg een KD alléén als de bijbehorende OER het onderwerp niet of
 onvoldoende behandelt. Geef niet onnodig een tweede antwoord uit het KD als
@@ -320,7 +357,9 @@ Bij ELKE claim uit een OER of KD MOET je:
 
 Voorbeeld: OER 1, sectie 3.2 "Bindend studieadvies": "De student ontvangt
 uiterlijk in juli...". Voor het KD: De OER beschrijft dit niet. Volgens
-Kwalificatiedossier 1, kerntaak B1-K1: "...".
+Kwalificatiedossier 1, kerntaak B1-K1: "...". Voor een instellingsbrede regeling:
+noem de regeling exact zoals in de kop (bv. "het Examenreglement"), met
+artikel/vindplaats en woordelijk citaat — nooit als "de OER".
 
 Voor de skills-taxonomie geldt een AANGEPASTE citatie (geen secties of pagina's):
 noem de bron PRECIES zoals in de kop van het skills-blok (ESCO óf CompetentNL),
@@ -356,12 +395,16 @@ def bouw_gecombineerd_systeem(oer_items: list[dict]) -> str:
             dossier_tekst=item.get("dossier_tekst", ""),
             crebo=item.get("crebo"),
             skills_tekst=item.get("skills_tekst", ""),
+            instelling_bronnen=item.get("instelling_bronnen", ()),
         )
 
     blokken = []
     for i, item in enumerate(oer_items, 1):
         label = f"{item['display_naam']} · {item['opleiding']} · {item['leerweg']} {item['cohort']}"
         oer_blok = f"=== OER {i}: {label} ===\n\n{item['tekst']}"
+        for kop, tekst in item.get("instelling_bronnen", ()):
+            if tekst:
+                oer_blok += f"\n\n=== {kop.upper()} {i} ({item['display_naam']}) ===\n\n{tekst}"
         dossier_tekst = item.get("dossier_tekst", "")
         if dossier_tekst:
             crebo_label = item.get("crebo", "onbekend")

@@ -510,7 +510,7 @@ def _verwerk_instelling(
 # bestandsnaam-stem == soort. Bewust een aparte submap zodat de platte iterdir in
 # _verwerk_instelling deze bestanden niet als OER oppikt.
 _INSTELLING_SUBMAP = "_instelling"
-_INSTELLING_SOORTEN = {
+INSTELLING_SOORTEN = {
     "examenreglement": "Examenreglement",
     "begeleidingsbeleid": "Begeleidings- en welzijnsbeleid",
 }
@@ -546,14 +546,14 @@ def _verwerk_instelling_documenten(
     for bestand in sorted(pad.iterdir()):
         soort = bestand.stem.lower()
         ondersteund = bestand.suffix.lower() in _ONDERSTEUNDE_EXTENSIES
-        if soort not in _INSTELLING_SOORTEN or not ondersteund:
+        if soort not in INSTELLING_SOORTEN or not ondersteund:
             continue
         if reset and bestand.suffix.lower() == ".pdf":
             md_pad = bestand.with_suffix(".md")
             if md_pad.exists():
                 md_pad.unlink()
         converteer_naar_markdown(bestand)
-        titel = f"{_INSTELLING_SOORTEN[soort]} {inst['display_naam']}"
+        titel = f"{INSTELLING_SOORTEN[soort]} {inst['display_naam']}"
         doc_id = voeg_instelling_document_toe(
             conn,
             instelling_id=inst["id"],

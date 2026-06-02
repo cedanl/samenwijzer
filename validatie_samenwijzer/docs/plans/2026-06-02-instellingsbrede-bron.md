@@ -1,6 +1,7 @@
 # Spec: instellingsbrede bron (examenreglement, begeleidingsbeleid)
 
-**Status:** vastgesteld — drie ontwerpbeslissingen genomen (2026-06-02), klaar voor implementatie
+**Status:** geïmplementeerd (stappen 1-5, 2026-06-02) — live voor student + mentor; publieke
+multi-OER-pagina (stap 5b) + beheer-status (stap 6) staan nog open.
 **Datum:** 2026-06-02
 **Aanleiding:** OER-drop Rijn IJssel (juni 2026) bevatte twee documenten die géén OER zijn maar
 wél waardevolle context: `25-0070 Examenreglement mbo Rijn IJssel` en `25-0212 Beleidsnotitie
@@ -158,15 +159,20 @@ uitrol vóór het resultaat bekend is.
    *Geverifieerd: unit-tests groen.* (PR #117)
 4. ✅ **Kostenmeting (GATE) — GEHAALD** — Da Vinci-examenreglement: 12.451 tokens, +$0,037 eerste
    vraag / +$0,004 cached. Cap vastgesteld op 300_000. Zie §4.
-5. **Chat-integratie + citatie** — vierde blok in `_SYSTEEM_TEMPLATE` + `_MULTI_SYSTEEM_TEMPLATE`;
-   `bouw_systeem` voegt het reglement-blok toe (alle rollen) en, alléén voor de mentor-aanroep, het
-   beleidsblok; citatie-instructie voor instellingsbronnen.
-   → *verify:* templatetest dat blok + citatie-instructie aanwezig zijn en de blok-kop de juiste
-   bronnaam draagt; instelling zónder bron levert lege blokken (geen errors).
-6. **Beheerpagina-status** (optioneel) — dekking per instelling tonen.
-7. **UI-smoke-test** — Rijn IJssel-student vraagt naar herkansingen → gegrond antwoord met
-   reglement-citaat (bron + artikel + woordelijk citaat); mentor ziet daarnaast beleid; instelling
-   zónder reglement = ongewijzigde ervaring.
+5. ✅ **Chat-integratie + citatie** — `bouw_systeem` krijgt `instelling_bronnen`
+   (`Sequence[(label, tekst)]`), rendert blokken tussen OER en KD; `_SYSTEEM_TEMPLATE` +
+   `_MULTI_SYSTEEM_TEMPLATE` beschrijven de bron + citatieplicht (regeling als APARTE bron, "citeer
+   NOOIT als de OER"). Login (`main.py`) resolvet de bron-paden per rol: student → examenreglement;
+   mentor → examenreglement + begeleidingsbeleid. Label-bron van waarheid: `INSTELLING_SOORTEN`.
+   → *Geverifieerd:* templatetests (blok aanwezig/afwezig, lege tekst → geen blok, citatie
+   onderscheidt van OER, multi per-OER); **live smoke-test** RI-student (examenreglement, citaten
+   artikel 5.4.1-5.4.4) + RI-mentor (reglement+beleid geladen, gegrond antwoord, geen errors).
+   **Bewust uitgesteld:** `0_oer_vraag.py` (publieke multi-OER) — `bouw_gecombineerd_systeem`
+   ondersteunt `instelling_bronnen` per item, maar de per-OER-per-instelling resolutie in de pagina
+   is nog niet gewired (hardste + laagste waarde). Aparte follow-up.
+6. **Beheerpagina-status** (optioneel) — dekking per instelling tonen. *(open)*
+7. **UI-smoke-test** — ✅ gedaan als onderdeel van stap 5 (zie hierboven). Resteert: publieke
+   multi-OER-pagina zodra die gewired is.
 
 ## 6. Risico's
 

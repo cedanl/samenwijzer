@@ -9,8 +9,28 @@ st.set_page_config(page_title="OER-assistent · Login", page_icon="📚", layout
 
 from validatie_samenwijzer._db import get_conn  # noqa: E402
 from validatie_samenwijzer.auth import login_mentor, login_student  # noqa: E402
-from validatie_samenwijzer.db import get_oer_ids_by_mentor_id  # noqa: E402
+from validatie_samenwijzer.db import (  # noqa: E402
+    get_oer_ids_by_mentor_id,
+    haal_instelling_document_op,
+)
+from validatie_samenwijzer.ingest import INSTELLING_SOORTEN  # noqa: E402
 from validatie_samenwijzer.styles import CSS, render_footer  # noqa: E402
+
+
+def _instelling_bron_paden(instelling_id: int | None, soorten: list[str]) -> list[tuple[str, str]]:
+    """[(label, bestandspad)] voor de geïndexeerde instellingsbrede regelingen van een instelling.
+
+    Label komt uit INSTELLING_SOORTEN (één bron van waarheid voor opslag, blok-kop en citatie).
+    """
+    if not instelling_id:
+        return []
+    paden = []
+    for soort in soorten:
+        doc = haal_instelling_document_op(get_conn(), instelling_id, soort)
+        if doc and doc["geindexeerd"]:
+            paden.append((INSTELLING_SOORTEN[soort], doc["bestandspad"]))
+    return paden
+
 
 st.markdown(CSS, unsafe_allow_html=True)
 
@@ -38,6 +58,9 @@ def _sla_student_op(student) -> None:
             "crebo": oer["crebo"] if oer else "",
             "leerweg": oer["leerweg"] if oer else "",
             "bestandspad": oer["bestandspad"] if oer else "",
+            "instelling_bron_paden": _instelling_bron_paden(
+                oer["instelling_id"] if oer else None, ["examenreglement"]
+            ),
             "chat_history": [],
         }
     )
@@ -61,6 +84,9 @@ def _sla_mentor_op(mentor) -> None:
             "oer_ids": oer_ids,
             "instelling": instelling["display_naam"] if instelling else "",
             "opleiding": "Mentor",
+            "instelling_bron_paden": _instelling_bron_paden(
+                mentor["instelling_id"], ["examenreglement", "begeleidingsbeleid"]
+            ),
             "actieve_student": None,
             "chat_history": [],
         }
