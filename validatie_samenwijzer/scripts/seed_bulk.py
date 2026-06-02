@@ -47,6 +47,7 @@ INSTELLINGEN: list[dict] = [
     {"naam": "rijn_ijssel", "display_naam": "Rijn IJssel", "klas_prefix": "RI"},
     {"naam": "aeres", "display_naam": "Aeres MBO", "klas_prefix": "AE"},
     {"naam": "utrecht", "display_naam": "ROC Utrecht", "klas_prefix": "UT"},
+    {"naam": "kwic", "display_naam": "Koning Willem I College", "klas_prefix": "KW"},
 ]
 
 VOORNAMEN_V = [

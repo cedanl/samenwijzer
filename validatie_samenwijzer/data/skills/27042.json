@@ -1,0 +1,109 @@
+{
+  "crebo": "27042",
+  "opleiding": "27042_BBL_2025__27042BBL2025Examenplan-Chauffeur-wegvervoer-cohort-2025",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Chauffeur wegvervoer",
+    "uri": "",
+    "definitie": "De chauffeur wegvervoer werkt bij een transportonderneming, als eigen vervoerder of bij andere bedrijven die een transportafdeling hebben. De werkplek is de vrachtwagen. De chauffeur wegvervoer werkt vaak alleen en volgens een onregelmatig werkpatroon. De chauffeur wegvervoer vervoert lading van de ene naar de andere plek in binnen- en/of buitenland. Hierbij laadt en lost die de lading op een professionele wijze. Hier hoort ook het controleren van de lading en de bijbehorende documenten bij. De chauffeur wegvervoer levert de lading volgens afspraak en op tijd af en kiest daarvoor de juiste route. Hierbij is die verantwoordelijk voor de vrachtwagen, de lading, de veiligheid van de medeweggebruikers en zichzelf. Tijdens de uitvoering van het werk leeft die de wettelijke richtlijnen na. Bij incidenten neemt de chauffeur wegvervoer zelfstandig beslissingen."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Reageren op risicovolle omstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/29B470A4FC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Stressbestendig",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4DDDBC0121",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen oplossen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/53E033E58A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Vervoeren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/57F37BF52D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/5C8ADA7777",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Procedures volgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/752EEDBE89",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ruimtelijk inzicht",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B260384107",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Aandacht en begrip tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B620732163",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplaatsen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D16A30C42A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Handvaardigheid",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E66E6D3B86",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Transport en logistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2F8C9BA908",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouw van voertuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AC637FF773",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Wegvervoer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C228748C72",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ladingbehandeling en intern transport",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D27283387C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Social media",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F1211E19F7",
+      "categorie": "essentieel"
+    }
+  ]
+}

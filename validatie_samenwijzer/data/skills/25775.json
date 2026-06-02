@@ -1,0 +1,199 @@
+{
+  "crebo": "25775",
+  "opleiding": "25775_BBL_2025__25775BBL2025Examenplan-Logistiek-teamleider-cohort-2025",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Logistiek teamleider",
+    "uri": "",
+    "definitie": "De logistiek teamleider leidt een team van logistiek medewerkers in verschillende soorten bedrijven. Hij coördineert en houdt toezicht op de werkzaamheden. Daarnaast draagt hij/zij bij aan de verbetering van het logistieke proces. Hij/zij heeft een signalerende rol waarbij hij/zij deze signalen vertaald naar verbeteringen om het logistieke proces te optimaliseren. \nDe logistiek teamleider stuurt een team aan vanuit zijn eigen expertise en is verantwoordelijk voor het daadwerkelijk realiseren van de doelstellingen van de afdeling. Hij/zij zorgt voor goede werkomstandigheden en op de werkvloer heeft hij een voorbeeldfunctie. Hij/zij werkt samen met logistiek medewerkers, collega teamleiders en leidinggevenden."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen oplossen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/53E033E58A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Presenteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/590AC2FC12",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/5C8ADA7777",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplichtingen nakomen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6EDDE6185F",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Zorgvuldig werken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/73CE64DACE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsprocessen verbeteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7C37C4FF38",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Monitoren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B03F4F484C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Schrijven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/BC98BE9135",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CD7B4C0F34",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplaatsen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D16A30C42A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kritisch nadenken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E1F935288C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Handvaardigheid",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E66E6D3B86",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Transport en logistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2F8C9BA908",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Cultuurwetenschappen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/47A44B019D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfseconomie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/53B4B474D1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reparatie en onderhoud van voertuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7C9F08EE0A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voorraad- en magazijnbeheer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/99D6345CD2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Personeelswerk",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AA15132AFE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beheer en verwerking van afval",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E360B68955",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderzoeksmethoden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E4B9A547C8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Projectmanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F248B939CD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
+    }
+  ]
+}
