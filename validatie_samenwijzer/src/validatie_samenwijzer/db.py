@@ -85,6 +85,17 @@ def init_db(conn: sqlite3.Connection) -> None:
             n_kerntaken   INTEGER NOT NULL DEFAULT 0,
             duur_seconden REAL
         );
+
+        CREATE TABLE IF NOT EXISTS instelling_documenten (
+            id            INTEGER PRIMARY KEY AUTOINCREMENT,
+            instelling_id INTEGER NOT NULL REFERENCES instellingen(id),
+            soort         TEXT NOT NULL CHECK (soort IN ('examenreglement', 'begeleidingsbeleid')),
+            titel         TEXT NOT NULL,
+            bestandspad   TEXT NOT NULL,
+            geindexeerd   INTEGER NOT NULL DEFAULT 0,
+            toegevoegd_op TEXT NOT NULL DEFAULT (datetime('now')),
+            UNIQUE (instelling_id, soort)
+        );
     """)
     conn.commit()
 
@@ -171,6 +182,56 @@ def get_alle_oers_met_instelling(conn: sqlite3.Connection) -> list[sqlite3.Row]:
 def update_oer_bestandspad(conn: sqlite3.Connection, oer_id: int, bestandspad: str) -> None:
     """Overschrijf het bestandspad van een OER-document (bijv. upgrade van TXT naar PDF)."""
     conn.execute("UPDATE oer_documenten SET bestandspad = ? WHERE id = ?", (bestandspad, oer_id))
+    conn.commit()
+
+
+def voeg_instelling_document_toe(
+    conn: sqlite3.Connection,
+    instelling_id: int,
+    soort: str,
+    titel: str,
+    bestandspad: str,
+) -> int:
+    """Voeg een instellingsbreed document toe of werk het bij (upsert op instelling + soort).
+
+    Eén document per (instelling, soort). Een gewijzigd bestandspad (bijv. een jaarlijkse
+    herziening) zet `geindexeerd` terug naar 0 zodat het opnieuw wordt geïndexeerd; een
+    identiek pad laat de bestaande indexeerstatus ongemoeid. Geeft het id terug.
+    """
+    conn.execute(
+        """INSERT INTO instelling_documenten (instelling_id, soort, titel, bestandspad)
+           VALUES (?, ?, ?, ?)
+           ON CONFLICT (instelling_id, soort) DO UPDATE SET
+               titel = excluded.titel,
+               bestandspad = excluded.bestandspad,
+               geindexeerd = CASE
+                   WHEN instelling_documenten.bestandspad <> excluded.bestandspad THEN 0
+                   ELSE instelling_documenten.geindexeerd
+               END,
+               toegevoegd_op = datetime('now')""",
+        (instelling_id, soort, titel, bestandspad),
+    )
+    conn.commit()
+    # Niet op lastrowid vertrouwen bij ON CONFLICT; resolve via de UNIQUE-sleutel.
+    return conn.execute(
+        "SELECT id FROM instelling_documenten WHERE instelling_id = ? AND soort = ?",
+        (instelling_id, soort),
+    ).fetchone()["id"]
+
+
+def haal_instelling_document_op(
+    conn: sqlite3.Connection, instelling_id: int, soort: str
+) -> sqlite3.Row | None:
+    """Zoek een instellingsbreed document op instelling + soort. Geeft None als niet gevonden."""
+    return conn.execute(
+        "SELECT * FROM instelling_documenten WHERE instelling_id = ? AND soort = ?",
+        (instelling_id, soort),
+    ).fetchone()
+
+
+def markeer_instelling_document_geindexeerd(conn: sqlite3.Connection, doc_id: int) -> None:
+    """Zet geindexeerd=1 voor het instellingsbrede document met het gegeven id."""
+    conn.execute("UPDATE instelling_documenten SET geindexeerd = 1 WHERE id = ?", (doc_id,))
     conn.commit()
 
 

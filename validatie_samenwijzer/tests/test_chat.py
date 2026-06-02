@@ -6,6 +6,7 @@ from validatie_samenwijzer.chat import (
     bouw_gecombineerd_systeem,
     bouw_systeem,
     identificeer_oer_kandidaten,
+    laad_instelling_bron_tekst,
     laad_kwalificatiedossier_tekst,
     laad_skills_tekst,
     pad_kwalificatiedossier,
@@ -139,6 +140,31 @@ def test_bouw_systeem_met_dossier_bevat_beide_bronnen():
 def test_bouw_systeem_zonder_dossier_heeft_geen_kd_blok():
     systeem = bouw_systeem("OER-tekst", "Kok", "Da Vinci")
     assert "KWALIFICATIEDOSSIER" not in systeem
+
+
+def test_laad_instelling_bron_leeg_zonder_pad():
+    assert laad_instelling_bron_tekst(None) == ""
+    assert laad_instelling_bron_tekst("") == ""
+
+
+def test_laad_instelling_bron_leest_bestaande_md(tmp_path):
+    md = tmp_path / "examenreglement.md"
+    md.write_text("Artikel 6.3 Herkansingen: ten hoogste één herkansing.", encoding="utf-8")
+    assert "Herkansingen" in laad_instelling_bron_tekst(md)
+    assert "Herkansingen" in laad_instelling_bron_tekst(str(md))
+
+
+def test_laad_instelling_bron_leeg_bij_ontbrekend_bestand(tmp_path):
+    assert laad_instelling_bron_tekst(tmp_path / "bestaat_niet.pdf") == ""
+
+
+def test_laad_instelling_bron_cap(tmp_path, monkeypatch):
+    import validatie_samenwijzer.chat as chat_mod
+
+    monkeypatch.setattr(chat_mod, "_MAX_INSTELLING_TEKST_TEKENS", 10)
+    md = tmp_path / "begeleidingsbeleid.md"
+    md.write_text("x" * 100, encoding="utf-8")
+    assert len(laad_instelling_bron_tekst(md)) == 10
 
 
 def test_laad_kwalificatiedossier_leeg_zonder_crebo():

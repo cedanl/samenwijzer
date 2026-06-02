@@ -506,6 +506,65 @@ def _verwerk_instelling(
             _verwerk_bestand(bestand, naam, conn, reset=reset)
 
 
+# Instellingsbrede documenten (niet crebo-gebonden): één submap per instelling,
+# bestandsnaam-stem == soort. Bewust een aparte submap zodat de platte iterdir in
+# _verwerk_instelling deze bestanden niet als OER oppikt.
+_INSTELLING_SUBMAP = "_instelling"
+_INSTELLING_SOORTEN = {
+    "examenreglement": "Examenreglement",
+    "begeleidingsbeleid": "Begeleidings- en welzijnsbeleid",
+}
+
+
+def _verwerk_instelling_documenten(
+    naam: str,
+    oeren_pad: Path,
+    conn: sqlite3.Connection,
+    *,
+    reset: bool = False,
+) -> None:
+    """Indexeer instellingsbrede documenten (examenreglement, begeleidingsbeleid).
+
+    Verwacht ze in `<map>/_instelling/<soort>.<ext>` met de bestandsnaam-stem als soort.
+    Crebo-loos: alleen markdown-conversie + registratie in `instelling_documenten`,
+    geen kerntaken-extractie. Onbekende stems worden overgeslagen.
+    """
+    from validatie_samenwijzer.db import (
+        get_instelling_by_naam,
+        markeer_instelling_document_geindexeerd,
+        voeg_instelling_document_toe,
+    )
+
+    map_naam = _MAP_NAAM.get(naam, naam)
+    pad = oeren_pad / map_naam / _INSTELLING_SUBMAP
+    if not pad.exists():
+        return
+    inst = get_instelling_by_naam(conn, naam)
+    if inst is None:
+        log.error("Instelling '%s' niet gevonden in database.", naam)
+        return
+    for bestand in sorted(pad.iterdir()):
+        soort = bestand.stem.lower()
+        ondersteund = bestand.suffix.lower() in _ONDERSTEUNDE_EXTENSIES
+        if soort not in _INSTELLING_SOORTEN or not ondersteund:
+            continue
+        if reset and bestand.suffix.lower() == ".pdf":
+            md_pad = bestand.with_suffix(".md")
+            if md_pad.exists():
+                md_pad.unlink()
+        converteer_naar_markdown(bestand)
+        titel = f"{_INSTELLING_SOORTEN[soort]} {inst['display_naam']}"
+        doc_id = voeg_instelling_document_toe(
+            conn,
+            instelling_id=inst["id"],
+            soort=soort,
+            titel=titel,
+            bestandspad=_pad_relatief_aan_oeren_root(bestand),
+        )
+        markeer_instelling_document_geindexeerd(conn, doc_id)
+        log.info("Instellingsbron '%s' geïndexeerd voor %s.", soort, inst["display_naam"])
+
+
 def main() -> None:
     """CLI-entrypoint voor de OER-ingestie pipeline (--instelling, --bestand, --alles)."""
     import argparse
@@ -551,10 +610,12 @@ def main() -> None:
         scope = f"bestand:{pad.name}"
     elif args.instelling:
         _verwerk_instelling(args.instelling, oeren_pad, conn, reset=args.reset)
+        _verwerk_instelling_documenten(args.instelling, oeren_pad, conn, reset=args.reset)
         scope = f"instelling:{args.instelling}"
     elif args.alles:
         for naam in _INSTELLINGEN:
             _verwerk_instelling(naam, oeren_pad, conn, reset=args.reset)
+            _verwerk_instelling_documenten(naam, oeren_pad, conn, reset=args.reset)
         scope = "alles"
     else:
         parser.print_help()

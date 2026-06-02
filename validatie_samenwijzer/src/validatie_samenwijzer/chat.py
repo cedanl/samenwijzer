@@ -16,6 +16,9 @@ logger = logging.getLogger(__name__)
 _MAX_OER_TEKST_TEKENS = 500_000  # ruim voldoende voor elke OER binnen Sonnet 4.6 (1M context)
 _MAX_DOSSIER_TEKST_TEKENS = 300_000
 _MAX_SKILLS_TEKST_TEKENS = 50_000  # skills-blok is klein; cap als veiligheid
+# Placeholder-cap voor instellingsbrede documenten (examenreglement/begeleidingsbeleid);
+# definitieve waarde volgt uit de kostenmeting (zie docs/plans/2026-06-02-instellingsbrede-bron.md).
+_MAX_INSTELLING_TEKST_TEKENS = 300_000
 
 LAGE_RELEVANTIE_BERICHT = (
     "Ik kon geen OER-tekst laden voor deze student. "
@@ -128,6 +131,22 @@ def laad_oer_tekst(bestandspad: Path) -> str:
             return ""
 
     return ""
+
+
+def laad_instelling_bron_tekst(bestandspad: Path | str | None) -> str:
+    """Laad de tekst van een instellingsbreed document (examenreglement/begeleidingsbeleid).
+
+    Zelfde laadlogica als de OER (md-voorkeur → PDF-fallback), met een eigen cap. Geeft
+    een lege string bij een ontbrekend pad of onleesbaar bestand, zodat de chat zonder de
+    bron blijft werken.
+
+    Args:
+        bestandspad: DB-`bestandspad` van het document (al naar absoluut pad geresolved),
+            of None als de instelling deze soort niet heeft.
+    """
+    if not bestandspad:
+        return ""
+    return laad_oer_tekst(Path(bestandspad))[:_MAX_INSTELLING_TEKST_TEKENS]
 
 
 def pad_kwalificatiedossier(crebo: str) -> Path:
