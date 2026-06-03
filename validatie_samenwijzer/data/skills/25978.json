@@ -1,0 +1,129 @@
+{
+  "crebo": "25978",
+  "opleiding": "25978_BOL_2026__examenplan-25978-vakbekwaam-medewerker-voeding-technologie-en-techniek",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Vakbekwaam medewerker voeding, technologie en techniek",
+    "uri": "",
+    "definitie": "Een vakbekwaam medewerker voeding, technologie en techniek is werkzaam in de voedingsmiddelenindustrie en gespecialiseerd in de technische aspecten van voedselproductie en -verwerking. Deze is verantwoordelijk voor het bedienen, onderhouden en controleren van machines en apparatuur die worden gebruikt bij de productie, verwerking en verpakking van voedingsmiddelen. Deze beheert proceslijnen en machines, bewaakt het proces en voert klein onderhoud uit. De vakbekwaam medewerker voeding, technologie en techniekze is bekend met voedselveiligheidsnormen en -procedures en zorgt ervoor dat alle productieprocessen voldoen aan de geldende regelgeving en kwaliteitsnormen. Deze werkt vaak in teamverband en communiceren effectief met andere teamleden, leidinggevenden en kwaliteitscontroleurs om een efficiënte en veilige werkomgeving te garanderen. Binnen diens team heeft die een instruerende en controlerende rol en is op vakinhoudelijk gebied verantwoordelijk voor het eigen werk en voor de uitvoering van het werk door het team."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen oplossen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/53E033E58A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Zorgvuldig werken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/73CE64DACE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Machines bedienen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D0866C5206",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Operationeel toezicht houden",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/FAB3EE0CD1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Productietechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/04541FC2D1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Levensmiddelentechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4B57E632B0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Procestechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8F2CE82E99",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ambachtelijke voedselbereiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/931B9AE84C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voeding en gezondheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C3247434CD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Scheikunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/EE4D07D17E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Statistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F86A9B4290",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reiniging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FB169E4860",
+      "categorie": "essentieel"
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "crebo": "25994",
+  "opleiding": "25994_BOL_2026__examenplan-25994-vakexpert-groen-grond-en-groene-infra-vastgesteld_",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Vakexpert groen, grond en groene infra",
+    "uri": "",
+    "definitie": "De vakexpert groen, grond en groene infra geeft enerzijds leiding aan projecten voor dienstverlenende bedrijven in de sector groen, grond en infrastructuur en voert anderzijds met machines en werktuigen werkzaamheden uit. In de primaire agrarische sector is de vakexpert betrokken bij bodembewerking, bemesting, gewasverzorging, oogsten, transport van oogstproducten/veevoer en/of meststoffendistributie. In de openbare ruimte is de vakexpert betrokken bij grondverzet, aanleg en onderhoud openbaar groen, gladheidsbestrijding en/of infrawerkzaamheden. De vakexpert begeleidt collega’s op vaktechnisch gebied, signaleert ontwikkelingen en innovaties en werkt mee aan verbeteracties van de kwaliteitszorg van het groen, grond en infrabedrijf. De vakexpert onderhoudt een netwerk van relevante relaties."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Begrijpend lezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/2E80D9179C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3DECCF2E7C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen signaleren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4D400FE127",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Vervoeren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/57F37BF52D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplichtingen nakomen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6EDDE6185F",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsprocessen verbeteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7C37C4FF38",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Machines bedienen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D0866C5206",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Land- en tuinbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/15C8D6A390",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Transport en logistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2F8C9BA908",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Landbouw- en teeltmechanisatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4719C3D0C1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administratie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/5488DA6138",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Hernieuwbare energiebronnen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/5D861F936D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beheer afwatering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/63DB9FDAB5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Cultuurtechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6E3C9F1669",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Natuurbeheer en -bescherming",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6F92D368B4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Agrarische kennis",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/98A899BB98",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Werktuigbouwkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AF10B67F03",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Wegvervoer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C228748C72",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Veiligheidskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C34CD6448D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Landschapsarchitectuur",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/CF5C09F483",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Landmeetkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E135D50DE8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beheer en verwerking van afval",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E360B68955",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Tuin-, groenvoorziening",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E67F25D9CF",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Projectmanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F248B939CD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Weg- en waterbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FA50514C2A",
+      "categorie": "essentieel"
+    }
+  ]
+}

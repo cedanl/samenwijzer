@@ -1,0 +1,278 @@
+{
+  "crebo": "27082",
+  "opleiding": "27082_BOL_2026__examenplan-27082-medewerker-natuur-water-en-natuurrecreatie--vastgeste",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "medewerker milieubescherming",
+    "uri": "http://data.europa.eu/esco/occupation/80d880ec-3bae-45a2-a2d3-41345ee0b319",
+    "definitie": "Natuurbeschermingsfunctionarissen beheren en verbeteren de plaatselijke omgeving in alle sectoren van een lokale gemeenschap. Zij bevorderen het bewustzijn van en het inzicht in de natuurlijke omgeving. Deze werkzaamheden kunnen zeer gevarieerd zijn en projecten omvatten die verband houden met soorten, habitats en gemeenschappen. Zij onderwijzen mensen en vergroten het algemene bewustzijn van milieuvraagstukken."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "exploitatietechnicus systemen voor waterbehandeling",
+    "technicus waterleidingbedrijf",
+    "consultant natuurlijke rijkdommen",
+    "medewerker cacaopers",
+    "brandweerman te water",
+    "medewerker veeteelt",
+    "medewerker milieubescherming",
+    "milieu-ingenieur"
+  ],
+  "skills": [
+    {
+      "label": "procedures inzake brandpreventie",
+      "uri": "http://data.europa.eu/esco/skill/861009ea-4d15-4e80-a8dc-7db41ecaf49b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "milieugegevens analyseren",
+      "uri": "http://data.europa.eu/esco/skill/77f109c4-3107-4d2a-a512-5160ac103933",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "duurzaam beheer promoten",
+      "uri": "http://data.europa.eu/esco/skill/6742977a-aa00-4c8c-9861-898b0373907e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "leiding geven aan personeel",
+      "uri": "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "milieuwetgeving",
+      "uri": "http://data.europa.eu/esco/skill/6f5850ea-5785-4e2c-b062-743066fd5bdb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderzoek naar flora uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/0058526a-11e9-40a1-ab33-7c5ffdf5da05",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderzoek naar fauna uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/eecbbdd5-5c07-41a4-9486-c0373de7fbab",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toezicht houden op natuurbehoud",
+      "uri": "http://data.europa.eu/esco/skill/23845010-4c1e-41d3-94a3-940bcab65bce",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "milieuproblemen melden",
+      "uri": "http://data.europa.eu/esco/skill/f3cc52e3-a96c-4549-b841-6e41a846fa99",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gevolgen voor het milieu beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/e541c69c-ea80-4b17-87cb-4001d0b9d303",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor naleving van de milieuwetgeving",
+      "uri": "http://data.europa.eu/esco/skill/089ee650-297e-4716-87d1-440743b70a0d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "raad geven over natuurbehoud",
+      "uri": "http://data.europa.eu/esco/skill/b34f8562-9fcc-4e58-bd1c-8088ebadd315",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "mensen voorlichten over de natuur",
+      "uri": "http://data.europa.eu/esco/skill/76f552ef-bb2d-4f66-83a8-ad205086967e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ecologie",
+      "uri": "http://data.europa.eu/esco/skill/a8429098-ddac-481b-91e7-688d021c092e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "actieplannen voor biodiversiteit implementeren",
+      "uri": "http://data.europa.eu/esco/skill/d168d98c-b7bb-4b9a-b1dc-eac008af4df3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "wildernisgebieden beschermen",
+      "uri": "http://data.europa.eu/esco/skill/5be72e00-e506-45ca-a251-b59500d7fca7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "biologie",
+      "uri": "http://data.europa.eu/esco/skill/9433da85-70fa-4a25-8f96-71fa59dd1989",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "duurzaamheid promoten",
+      "uri": "http://data.europa.eu/esco/skill/469e19ed-a0bd-445a-ae2d-4ba9430e296b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vragen beantwoorden",
+      "uri": "http://data.europa.eu/esco/skill/87cadd76-4e3a-47e5-b66d-559fbc1e8993",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "taakgegevens bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/43b13058-68d0-40c6-8031-caf5a7b7d20c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderwijsprogramma's coördineren",
+      "uri": "http://data.europa.eu/esco/skill/9525dcdf-5085-4143-bbae-544263acd63a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "wetgeving op het gebied van dierenwelzijn",
+      "uri": "http://data.europa.eu/esco/skill/49212efd-acf0-4257-a011-e07c9e369ecf",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werkgerelateerde verslagen schrijven",
+      "uri": "http://data.europa.eu/esco/skill/918f5211-b99f-4b29-9a34-6e475583ef55",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bosecologie",
+      "uri": "http://data.europa.eu/esco/skill/e5727f3b-0dc9-4daf-84e0-d5789b33a6d9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ecologische beginselen",
+      "uri": "http://data.europa.eu/esco/skill/62685d7a-a8be-4070-89e9-8699ad1201b6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vrijwilligers ondersteunen",
+      "uri": "http://data.europa.eu/esco/skill/ee93e363-0c2b-40ed-bbf1-aa5aaf9683fe",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vervuiling onderzoeken",
+      "uri": "http://data.europa.eu/esco/skill/2c8199c8-4e40-49b3-b878-caee6e1c1bc0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "plantkunde",
+      "uri": "http://data.europa.eu/esco/skill/2a58e994-74b9-4211-85ac-cfb409a9b667",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "moleculaire biologie",
+      "uri": "http://data.europa.eu/esco/skill/8f2a4d74-b16f-4023-8fc1-b8dc8b21ffb9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "principes voor bedrijfsbeheer",
+      "uri": "http://data.europa.eu/esco/skill/0a48d064-dd04-47fb-a00d-85e9b4874033",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "fauna observeren",
+      "uri": "http://data.europa.eu/esco/skill/62d227f1-3765-42f9-ab47-aaf8f7b423e8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "wilde planten en dieren",
+      "uri": "http://data.europa.eu/esco/skill/77390acd-7cf6-4cb2-895a-16bc6b6d2058",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contracten beheren",
+      "uri": "http://data.europa.eu/esco/skill/92721092-fe7c-4689-96bd-4f02385bc0e7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "dierlijke biologie",
+      "uri": "http://data.europa.eu/esco/skill/c345ad5f-6b37-4861-98b2-769d819309a0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "advies geven over bodem- en waterbescherming",
+      "uri": "http://data.europa.eu/esco/skill/3e25fd3e-2bcd-4320-9587-0aadf7fb93b1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zorgen voor de veiligheid van bedreigde soorten en beschermde gebieden",
+      "uri": "http://data.europa.eu/esco/skill/e2bb641f-f647-4229-a48e-9a5ef3526c23",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toegepaste zoölogie",
+      "uri": "http://data.europa.eu/esco/skill/a07a5d41-add0-4d0f-ad01-718d39554be8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werken met gemeenschappen",
+      "uri": "http://data.europa.eu/esco/skill/28ca2f0b-9fb2-487a-9f10-9688e5191ec4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "biologie van vissen",
+      "uri": "http://data.europa.eu/esco/skill/7376894b-6c71-495c-bbe4-8b373f2ec5a6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "milieu-inspecties uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/96835f47-da71-415b-8cbf-d37386dc98d4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "mensen onderrichten over brandveiligheid",
+      "uri": "http://data.europa.eu/esco/skill/e2649956-6e7c-4ac6-92ee-fab9c61badf2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "projecten over wilde planten en dieren",
+      "uri": "http://data.europa.eu/esco/skill/bed97655-cb0c-4f05-bfd7-9a79d058619d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "tijdschatting maken voor werkzaamheden",
+      "uri": "http://data.europa.eu/esco/skill/e207163b-7963-4c3e-9494-7a4bb000211b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "in de buitenlucht werken",
+      "uri": "http://data.europa.eu/esco/skill/0e355580-bd4a-465a-8058-92984623070e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "natuurlijke rijkdommen behouden",
+      "uri": "http://data.europa.eu/esco/skill/b25c3eb8-fd63-4d77-8308-7061dbd271c1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vrijwilligers leiden",
+      "uri": "http://data.europa.eu/esco/skill/232f854a-f5b9-4d8a-8499-23f59852273c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vrijwilligers informeren",
+      "uri": "http://data.europa.eu/esco/skill/b5c027e0-1774-4cd1-973d-452dc03a8d23",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ecologische gegevens analyseren",
+      "uri": "http://data.europa.eu/esco/skill/5354a726-ee64-4f34-90f8-8436f9f374b8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "aquatische ecologie",
+      "uri": "http://data.europa.eu/esco/skill/450aeb6d-5f23-4e08-b088-3bbefbfb9f2d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderhoud van natuurgebieden",
+      "uri": "http://data.europa.eu/esco/skill/6825a7dd-c2da-40fa-b745-508ff20ee293",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderwijsactiviteiten organiseren",
+      "uri": "http://data.europa.eu/esco/skill/8af15e52-c743-43da-94aa-c4ea52d4f3e8",
+      "categorie": "optioneel"
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "crebo": "23030",
+  "opleiding": "23030_BOL_2025__TIK-2025-OER-Laboratoriumtechniek",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "vakdocent medische laboratoriumtechnologie beroepsonderwijs",
+    "uri": "http://data.europa.eu/esco/occupation/734bb387-ea3a-4c62-abc1-05f894d51921",
+    "definitie": "De technologie van het medisch onderzoek in het kader van de beroepsopleiding op het gebied van medische laboratoriumtechnologie geeft studenten de instructie op hun gespecialiseerde studiegebied, medische laboratoriumtechnologie, die overwegend praktisch van aard is. Zij geven een theoretische opleiding in dienst van de praktische vaardigheden en technieken die de studenten vervolgens moeten volgen voor een beroep van medische laboratoriumtechnologie. Professionele laboratoriumtechnieken voor medisch personeel houden toezicht op de voortgang van de studenten, staan zo nodig bij, en evalueren hun kennis en prestaties met betrekking tot medische laboratoriumtechnologie door middel van opdrachten, tests en onderzoeken."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "vakdocent medische laboratoriumtechnologie beroepsonderwijs"
+  ],
+  "skills": [
+    {
+      "label": "interculturele onderwijsstrategieën toepassen",
+      "uri": "http://data.europa.eu/esco/skill/e3ef4981-2cba-4b34-b273-728c3a33d04f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "constructieve kritiek geven",
+      "uri": "http://data.europa.eu/esco/skill/b9bb1f03-15e2-4079-943e-7e483b21725b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderwijs aanpassen aan de capaciteiten van de student",
+      "uri": "http://data.europa.eu/esco/skill/573d3f91-c81c-407e-a56d-0f3a63272b43",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veiligheid van studenten garanderen",
+      "uri": "http://data.europa.eu/esco/skill/11f536f5-b0e2-46a6-95c1-bd765946604c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderwijsstrategieën toepassen",
+      "uri": "http://data.europa.eu/esco/skill/59eb177a-2f30-4943-8b30-5f87dd51a80d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "huiswerk geven",
+      "uri": "http://data.europa.eu/esco/skill/128f0b4c-8da7-467b-9196-7c691e067a1e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "principes van medische laboratoriumtechnologie aanleren",
+      "uri": "http://data.europa.eu/esco/skill/80220259-7c78-46e1-abb6-1ddb4af68e7a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bioveiligheid in biomedische laboratoria",
+      "uri": "http://data.europa.eu/esco/skill/585593ef-d0a3-47a2-82da-14f26d75d83e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "cursusoverzicht ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/f0699875-51da-48d2-bc92-54b0749baef1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vooruitgang van leerlingen volgen",
+      "uri": "http://data.europa.eu/esco/skill/3377f3b2-4ba2-457f-b29d-8df59e8cfba8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "principes van teamwerk",
+      "uri": "http://data.europa.eu/esco/skill/a5b0cd5c-e13a-4ab3-8d93-4d242adcfb01",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "curriculumdoelstellingen",
+      "uri": "http://data.europa.eu/esco/skill/edff6d20-660d-4d33-b412-9a5b664a14be",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "in het beroepsonderwijs werken",
+      "uri": "http://data.europa.eu/esco/skill/ec74893f-e11b-471f-85e0-f7339da98d53",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "studenten bijstaan bij het leren",
+      "uri": "http://data.europa.eu/esco/skill/d5e1e30e-44ab-4aba-abab-b8263e801b7a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "lesinhoud voorbereiden",
+      "uri": "http://data.europa.eu/esco/skill/20f57a7f-b90e-4403-8c77-5ddd89b5835b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "studenten helpen met materiaal",
+      "uri": "http://data.europa.eu/esco/skill/7530bc44-f09d-4dd2-8911-92b98333e442",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "studenten beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/6fe019dd-027f-45f3-b19c-d27f7ae00980",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderwijs aanpassen aan de arbeidsmarkt",
+      "uri": "http://data.europa.eu/esco/skill/b4832996-b36c-40b2-b54e-780325b2546e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klassenmanagement uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/cedd0710-62ae-4ff4-89ae-ac52375f86ec",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "studentendiscipline handhaven",
+      "uri": "http://data.europa.eu/esco/skill/5a42eaf5-93bb-4bca-8ebd-4d78e96e4929",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beoordelingsprocessen",
+      "uri": "http://data.europa.eu/esco/skill/31b67516-af16-4b97-8430-a8a8e0f84190",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "teamwork tussen studenten aanmoedigen",
+      "uri": "http://data.europa.eu/esco/skill/229b10cf-6f3a-490c-9706-01c107df0562",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "studentenrelaties beheren",
+      "uri": "http://data.europa.eu/esco/skill/44da96fe-26a3-4a32-9a0f-c49614bb7298",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "leerproblemen",
+      "uri": "http://data.europa.eu/esco/skill/731101d9-94bc-4805-bff4-9578d1bf03b5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "instructies geven over veiligheidsmaatregelen",
+      "uri": "http://data.europa.eu/esco/skill/e111620f-090e-4427-a996-21a6e5a2d14f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ontwikkelingen op expertisegebied opvolgen",
+      "uri": "http://data.europa.eu/esco/skill/23ac233d-84ad-4517-b0f5-8ca19ba2614e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "geautomatiseerde analysatoren in het medische laboratorium",
+      "uri": "http://data.europa.eu/esco/skill/4a477e55-fdb6-4fe5-8dec-fcebfa3579d6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "in lesmateriaal voorzien",
+      "uri": "http://data.europa.eu/esco/skill/d39a5880-7d0a-4573-9f70-a75ff875bf83",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten handicaps",
+      "uri": "http://data.europa.eu/esco/skill/6b28bb69-a6ef-42d4-84df-46e498f09297",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "laboratoriumonderzoeken uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/9e8863fc-e8de-4df1-9bc6-3d5dd85b8070",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "middelen voor educatieve doeleinden beheren",
+      "uri": "http://data.europa.eu/esco/skill/860e85ee-5992-445a-b3d3-9bab524f7600",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "laboratoriumhandleidingen volgen",
+      "uri": "http://data.europa.eu/esco/skill/9359cabf-2521-4f8c-9abc-107f2aa70329",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "microscopische technieken",
+      "uri": "http://data.europa.eu/esco/skill/deed7f6d-328d-4f67-b74e-9b83180c1c5c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "medische resultaten interpreteren",
+      "uri": "http://data.europa.eu/esco/skill/d59d023b-8f28-4e67-9a41-aa36320e6c69",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "biologische hematologie",
+      "uri": "http://data.europa.eu/esco/skill/11335fcc-23af-4afe-bfaf-c0c25abcb5b0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werken met elektronische leeromgevingen",
+      "uri": "http://data.europa.eu/esco/skill/b78f324d-e16c-43f8-97d2-50d3a7cd1fb3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "laboratoriumapparatuur onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/3529d640-5d49-45fe-8ede-491e9c8e0447",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "technieken voor bloedafnames",
+      "uri": "http://data.europa.eu/esco/skill/0449bf39-a288-4ecc-823a-3d194be5e932",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "laboratoriummethoden in biomedische wetenschappen",
+      "uri": "http://data.europa.eu/esco/skill/604671e1-89a6-42a0-a3a2-075e52899131",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klinische microbiologie",
+      "uri": "http://data.europa.eu/esco/skill/d5a344f0-cf71-4fcc-9c00-99588b4de3c0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "diagnostische methoden in medisch laboratorium",
+      "uri": "http://data.europa.eu/esco/skill/46a5e3ea-e276-4d84-a289-bd1187ac8cb1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "analyse van lichaamsvocht",
+      "uri": "http://data.europa.eu/esco/skill/79a847c3-8312-4930-964a-282734c2789d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kruisproeftechnieken voor bloedtransfusies",
+      "uri": "http://data.europa.eu/esco/skill/5056e290-959e-4e7c-a34f-69ea02417c7d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "laboratoriumproeven uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/0b917c3e-e49f-40d9-8f95-3bc8e9c06fd2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "medische microbiologie",
+      "uri": "http://data.europa.eu/esco/skill/0bc42cda-a6f0-4cac-9b34-7911faba0bd4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "medisch laboratoriummateriaal onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/8557f2f8-7ff3-47d8-bdb4-b9608dee906e",
+      "categorie": "optioneel"
+    }
+  ]
+}

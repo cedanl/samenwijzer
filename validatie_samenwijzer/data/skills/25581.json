@@ -1,0 +1,129 @@
+{
+  "crebo": "25581",
+  "opleiding": "25581_oer_00_2025_vg_bol_onderzoeker-leefomgeving",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Onderzoeker leefomgeving",
+    "uri": "",
+    "definitie": "De onderzoeker leefomgeving voert onderzoek uit naar verontreiniging van (water)bodems, water en lucht in verband met een vergunningsaanvraag met als doel om advies te kunnen geven over (eenvoudige) kwaliteitsverbeteringen of omgevingsvergunning.  Bijvoorbeeld voor de uitvoering van water- en bodemsanering. Hij bereidt onderzoek voor en voert dit zelf uit op basis van procedures en beoordelingsrichtlijnen (BRL). Hij interpreteert de onderzoeksgegevens en rapporteert hierover aan zijn leidinggevende. Noodzakelijke eisen voor het werk van de onderzoeker leefomgeving zijn nauwkeurigheid en aandacht voor veiligheid. Hij kan omgaan met opdrachtgevers en publiek en de weerstand die hij in sommige situaties ervaart."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Snel waarneming inzichtelijk maken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/234586C77C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Systeemanalyse",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4186375D3A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Presenteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/590AC2FC12",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Procedures volgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/752EEDBE89",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Schrijven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/BC98BE9135",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Adviseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CECB22E3FA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kritisch nadenken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E1F935288C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Planologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/1D3BFB5CD5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieutechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/58823180FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Natuurbeheer en -bescherming",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6F92D368B4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Procestechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8F2CE82E99",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Veiligheidskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C34CD6448D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieumanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DD938609F7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderzoeksmethoden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E4B9A547C8",
+      "categorie": "essentieel"
+    }
+  ]
+}

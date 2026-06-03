@@ -1,4 +1,5 @@
 crebo,opleiding,beroep,bron,methode,essentieel,belangrijk,optioneel,kandidaten
+23030,23030_BOL_2025__TIK-2025-OER-Laboratoriumtechniek,vakdocent medische laboratoriumtechnologie beroepsonderwijs,ESCO,llm-keuze,26,0,20,vakdocent medische laboratoriumtechnologie beroepsonderwijs
 23110,2020 - 23110 VG Entree OER Entree BOLBBL1,—,ESCO,geen-match,0,0,0,laserlasser
 23119,2021 - 23119 OER Commerciele technicus 2021 versie 1.0,technicus elektronica,ESCO,llm-keuze,29,0,32,technicus waterkracht | technicus computerhardware | technicus textieldruk | nucleair technicus | technicus elektronica | technicus spinnerij | technicus ontziltingsinstallaties | technicus chromatografie
 23122,2021 - 23122 VG IN OER Eerste monteur service en onderhoud installaties en systemen BBL3,elektromechanicus,ESCO,llm-keuze,22,0,24,procesoperator stoomcentrale | operator stoomketel | monteur elektrische installaties utiliteitsbouw | monteur elektrische installaties | monteur van installaties om vliegtuigen ijsvrij te maken | elektromechanicus | monteur pneumatische systemen | monteur elektriciteitsmeters
@@ -52,6 +53,7 @@ crebo,opleiding,beroep,bron,methode,essentieel,belangrijk,optioneel,kandidaten
 25212,2021 - 25212 VG OER Ruimtelijke Vormgeving BOL4,vakdocent ontwerp en toegepaste kunst beroepsonderwijs,ESCO,llm-keuze,27,0,24,vakdocent industriële vormgeving beroepsonderwijs | vakdocent ontwerp en toegepaste kunst beroepsonderwijs | overheidsfunctionaris vergunningen | metaalbewerker-siersmid | prepresstechnicus | manager volkshuisvesting | bediener vormpers | machinaal houtbewerker: draaier
 25213,2020 - 25213 VG VG OER 25214 Sign BOL2 3,signmaker,ESCO,llm-keuze,14,0,16,signmaker | voertuigontwerper | user interface designer | user interface developer | marshaller | juwelenontwerper | ict intelligent systems designer | ontwerpingenieur
 25214,2021 - 25214 VG OER 25214 Sign BOL2 3,signmaker,ESCO,llm-keuze,14,0,16,signmaker | voertuigontwerper | user interface designer | user interface developer | marshaller | juwelenontwerper | ict intelligent systems designer | ontwerpingenieur
+25230,25230_BOL_2025__TIK-2025-OER-Fietstechniek,—,ESCO,geen-kandidaten,0,0,0,
 25231,2021 - 25231 VG VTT OER Fietstechniek,—,ESCO,geen-kandidaten,0,0,0,
 25235,2020 - 25235 VG VTT OER scooter,fietsenmaker,ESCO,llm-keuze,13,0,19,fietsenmaker | matroos-motordrijver
 25242,2020 - 25242 VG VTT OER BOLBBL2,assemblagetechnicus voertuigen,ESCO,llm-keuze,26,0,30,machinist mobiele kraan | onderhoudsmonteur telecommunicatieapparatuur | ontwikkelaar software voor mobiele toestellen voor industrieel gebruik | monteur mobiele telefoons | ingenieur werktuigkunde | assemblagetechnicus voertuigen | reparateur mobiele telefoons | monteur kranen
@@ -108,6 +110,7 @@ crebo,opleiding,beroep,bron,methode,essentieel,belangrijk,optioneel,kandidaten
 25500,25500_BOL_2024__OER (OUD) - 25500 - Medewerker Sport en recreatie,medewerker recreatieactiviteiten,ESCO,llm-keuze,9,0,7,verhuurmedewerker sport- en recreatieartikelen | beleidsmedewerker sport en recreatie | sportcoördinator | medewerker recreatieactiviteiten | kaartjesverkoper | manager recreatie-accommodatie | recreatiebegeleider | medewerker fitness | kwaliteitsmanager dienstverlening | manager dienstverlening | teamleider in fastfoodrestaurants en snackbars | onderhandelaar toeristische contracten | manager zakelijke dienstverlening | manager juridische dienstverlening | beleidsmedewerker sociale voorzieningen | productmanager toerisme
 25549,2020 - 25549 OER Chauffeur wegvervoer (V2),vrachtwagenchauffeur,ESCO,llm-keuze,19,0,1,chauffeur gevaarlijke stoffen | chauffeur vuilniswagen | chauffeur uitvaartverzorging | chauffeur/verhuizer | trolleybuschauffeur | vrachtwagenchauffeur | chauffeur betonmixer | privéchauffeur | logistiek coördinator goederenvervoer per spoor | dispatcher goederenvervoer | manager wegtransport | manager divisie wegtransport | algemeen directeur vrachtvervoer binnenvaart | algemeen directeur zeetransport
 25575,2021 - 25575 OER Instructeur mbo BBL Vastgesteld,Instructeur mbo,CompetentNL,crebo-direct,16,0,0,
+25581,25581_oer_00_2025_vg_bol_onderzoeker-leefomgeving,Onderzoeker leefomgeving,CompetentNL,crebo-direct,23,0,0,
 25582,25582_BOL_2025__Examenplannen Toegepaste Biologie en Science 25-26,Adviseur leefomgeving,CompetentNL,crebo-direct,23,0,0,
 25584,25584_BBL_2025__25584BBL2025MJP-MachineOperatorHouttechniekN2,Machineoperator houttechniek,CompetentNL,crebo-direct,23,0,0,
 25585,25585_BBL_2025__25585BBL2025MJP-AllroundMontageMedewerkerHouttechniekN3,Allround montagemedewerker houttechniek,CompetentNL,crebo-direct,26,0,0,
@@ -123,12 +126,15 @@ crebo,opleiding,beroep,bron,methode,essentieel,belangrijk,optioneel,kandidaten
 25608,2021 - 25608 OER Facilitair leidinggevende (V1),Facilitair leidinggevende,CompetentNL,crebo-direct,35,0,0,
 25609,2020 - 25609 OER Allround medewerker facilitaire dienstverlening (V2),Allround medewerker facilitaire dienstverlening,CompetentNL,crebo-direct,27,0,0,
 25614,2021 - 25614 OER Boulanger (V1),Boulanger,CompetentNL,crebo-direct,19,0,0,
+25615,25615_BOL_2025__stOER-sociaal-werker-cohort-2025-bol,sociaal werker,ESCO,llm-keuze,64,0,194,"maatschappelijk werker | sociaal werker | sociaal-cultureel werker, specialisatie samenlevingsopbouw | pastoraal werker | maatschappelijk werker, specialisatie geestelijke gezondheidszorg | sociaalpedagogisch hulpverlener | maatschappelijk werker opbouwwerk | sociaal werker reclassering"
 25621,25621_BOL_2024__Examenplannen Tuin Landschap en Recreatie 2425,Medewerker hovenier,CompetentNL,crebo-direct,17,0,0,
 25633,25633_BOL_2025__25633BOL2025MJP_-Mediavormgever,Mediavormgever,CompetentNL,crebo-direct,20,0,0,
+25636,25636_BOL_2025__vw-oer-motl-toerisme-2025,bestemmingsmanager,ESCO,llm-keuze,27,0,12,beleidsdirecteur recreatie en toerisme | onderhandelaar toeristische contracten | vakdocent reizen en toerisme beroepsonderwijs | productmanager toerisme | bestemmingsmanager
 25641,25641_BOL_2025__25641BOL2025MJP-kapper,Kapper,CompetentNL,crebo-direct,11,0,0,
 25642,25642_BBL_2025__25642BBL2025Examenplan-hairstylist-dame-cohort-2025,Haarstylist dame,CompetentNL,crebo-direct,11,0,0,
 25643,2020 - 25643 Haarstylist Heer niveau 3 2020 versie 1.1,Haarstylist heer,CompetentNL,crebo-direct,11,0,0,
 25644,25644_BOL_2023__EU_OER_2023_Salonmanager_dame_25644_en_heer_25645_BOL_BBL,Salonmanager dame,CompetentNL,crebo-direct,25,0,0,
+25645,25645_BOL_2023__EU_OER_2023_Salonmanager_dame_25644_en_heer_25645_BOL_BBL,Salonmanager heer,CompetentNL,crebo-direct,26,0,0,
 25646,25646_BOL_2025__oer-2025-2026-ci-25646-leidinggevende-leisure-hospitality,Leidinggevende leisure & hospitality,CompetentNL,crebo-direct,43,0,0,
 25647,25647_BOL_2024__2024_OER_BOL_Leidinggevende-Travel-en-Hospitality,Leidinggevende travel & hospitality,CompetentNL,crebo-direct,35,0,0,
 25649,25649_BOL_2023__2023_OER_BOL_Meewerken-horeca-ondernemer,Zelfstandig medewerker travel & hospitality,CompetentNL,crebo-direct,28,0,0,
@@ -153,9 +159,12 @@ crebo,opleiding,beroep,bron,methode,essentieel,belangrijk,optioneel,kandidaten
 25698,25698_BBL_2025__25698BBL2025MJP-Onderwijsassistent-KOP,Onderwijsassistent,CompetentNL,crebo-direct,24,0,0,
 25699,25699_BOL_2025__25699BOL2025MJP-Tandartsassistent1,Tandartsassistent,CompetentNL,crebo-direct,24,0,0,
 25704,25704_BOL_2024__Examenplannen Bloem Groen en Styling 2425,"Bedrijfsleider/ondernemer bloem, groen en styling",CompetentNL,crebo-direct,35,0,0,
+25705,25705_BOL_2026__examenplan-25705-vakexpert-bloem-groen-en-styling-vastgesteld_,"Vakexpert bloem, groen en styling",CompetentNL,crebo-direct,34,0,0,
+25706,25706_BOL_2026__examenplan-25706-vakbekwaam-medewerker-bloem-groen-en-styling-vastgest,"Vakbekwaam medewerker bloem, groen en styling",CompetentNL,crebo-direct,18,0,0,
 25707,25707_BOL_2025__Examenplannen Bloem Groen en Styling 2526,"Medewerker bloem, groen en styling",CompetentNL,crebo-direct,18,0,0,
 25716,25716_BOL_2025__25716BOL2025Examenplan,Allround medewerker AV-productie,CompetentNL,crebo-direct,16,0,0,
 25717,25717_BOL_2025__av_specialist_25717,AV-specialist,CompetentNL,crebo-direct,14,0,0,
+25720,25720_BOL_2025__vw-oer-bbk-bakkerij2025-bolbbl,Leidinggevende bakkerij,CompetentNL,crebo-direct,37,0,0,
 25721,25721_BBL_2025__25721 Uitvoerend bakker 24 maanden BBL,Uitvoerend bakker,CompetentNL,crebo-direct,17,0,0,
 25723,25723_BOL_2025__25723BOL2025Examenplan-Allround-Assistant-Business-Services-cohort-2025,Allround Assistant Business Services,CompetentNL,crebo-direct,22,0,0,
 25724,25724_BOL_2025__OER (OUD) - 25724OX - Assistant Business Services,Assistant Business Services,CompetentNL,crebo-direct,16,0,0,
@@ -164,13 +173,17 @@ crebo,opleiding,beroep,bron,methode,essentieel,belangrijk,optioneel,kandidaten
 25727,25727_BOL_2025__OER_2025_International_Business__Marketing__-_Marketing__Communication_Special_QWNYc,Marketing & Communication Specialist,CompetentNL,crebo-direct,24,0,0,
 25728,25728_BOL_2025__OER (OUD) - 25728O - Office & Management Support Specialist,Office & Management Support Specialist,CompetentNL,crebo-direct,25,0,0,
 25730,25730_BOL_2025__Examenplannen Dierverzorging 25-26,Bedrijfsleider dierverzorging,CompetentNL,crebo-direct,36,0,0,
+25731,25731_BOL_2026__examenplan-25731-dierenartsassistent-paraveterinair-vastgesteld_,Dierenartsassistent paraveterinair,CompetentNL,crebo-direct,25,0,0,
 25732,25732_BBL_2024__Addendum OER vanaf cohort 2024-2025,Medewerker dierverzorging,CompetentNL,crebo-direct,17,0,0,
+25734,25734_BOL_2026__examenplan-25734-zelfstandig-medewerker-dierverzorging-vastgesteld_,Zelfstandig medewerker dierverzorging,CompetentNL,crebo-direct,26,0,0,
 25736,25736_BOL_2025__25736BOL2025MJP-Eerste-Monteur-Elektrotechnische-Installaties-in-de-Gebouwde-Omgevin,Eerste monteur elektrotechnische installaties in de gebouwde omgeving,CompetentNL,crebo-direct,24,0,0,
 25737,25737_BOL_2025__25737_Monteur_elektrotechnische_installaties,Monteur elektrotechnische installaties,CompetentNL,crebo-direct,17,0,0,
 25739,25739_BBL_2025__25739BBL2025MJP-Technicus-Elektrotechnische-Installaties-in-de-Gebouwde-Omgeving-d1,Technicus elektrotechnische  installaties in de gebouwde omgeving,CompetentNL,crebo-direct,25,0,0,
 25740,25740_BOL_2025__25740BOL2025MJP-Assistent-bouwen-wonen-en-onderhoud,"Assistent bouwen, wonen en onderhoud",CompetentNL,crebo-direct,19,0,0,
 25741,25741_BOL_2025__25741BOL2025MJP-Assistent-dienstverlening,Assistent dienstverlening,CompetentNL,crebo-direct,14,0,0,
 25742,"25742_BOL_2025__OER (OUD) - 25742 - Assistent Horeca, Voeding of Voedingsindustrie","Assistent horeca, voeding of voedingsindustrie",CompetentNL,crebo-direct,13,0,0,
+25743,25743_BOL_2026__examenplan-25743-assistent-logistiek-vastgesteld_,Assistent logistiek,CompetentNL,crebo-direct,13,0,0,
+25746,25746_BOL_2026__examenplan-25746-assistent-plant-dier-of-groene-omgeving-vastgesteld_,"Assistent plant, dier of groene omgeving",CompetentNL,crebo-direct,11,0,0,
 25748,25748_BOL_2024__2024_OER_Entree-verkoop-retail,Assistent verkoop/retail,CompetentNL,crebo-direct,17,0,0,
 25749,25749_BOL_2025__oer-2025-2026-ci-25749-medewerker-evenementenorganisatie,Medewerker evenementenorganisatie,CompetentNL,crebo-direct,39,0,0,
 25750,25750_BBL_2025__25750BBL2025MJP-AllroundVakmanGWWN3,Allround vakman gww,CompetentNL,crebo-direct,30,0,0,
@@ -208,6 +221,7 @@ crebo,opleiding,beroep,bron,methode,essentieel,belangrijk,optioneel,kandidaten
 25880,25880_BOL_2025__OER_2025_-_Ondernemer_Handel,Ondernemer handel,CompetentNL,crebo-direct,29,0,0,
 25881,25881_BOL_2025__OER (OUD) - 25881O - Mediamanager,Mediamanager,CompetentNL,crebo-direct,11,0,0,
 25882,25882_BOL_2025__25882BOL2025Examenplan,Mediaredactiemedewerker,CompetentNL,crebo-direct,25,0,0,
+25883,25883_oer_00_2025_tt_bbl_autoschadehersteller,Autoschadehersteller,CompetentNL,crebo-direct,13,0,0,
 25891,25891_BBL_2023__t-i-2023-oer-monteur-mechatronica-bbl-n2-25891,Monteur mechatronica,CompetentNL,crebo-direct,15,0,0,
 25892,25892_BOL_2025__25892BOL2025MJP-Eerste-monteur-Mechatronica,Eerste monteur mechatronica,CompetentNL,crebo-direct,22,0,0,
 25893,25893_BOL_2025__25893BOL2025MJP-Technicus-Mechatronica-1,Technicus mechatronica,CompetentNL,crebo-direct,26,0,0,
@@ -219,6 +233,8 @@ crebo,opleiding,beroep,bron,methode,essentieel,belangrijk,optioneel,kandidaten
 25909,Buurtsportcoach,Buurtsportcoach,CompetentNL,crebo-direct,22,0,0,
 25910,Leefstijlcoach,Leefstijlcoach,CompetentNL,crebo-direct,25,0,0,
 25912,Trainer-coach/Instructeur,Trainer-coach/Instructeur ,CompetentNL,crebo-direct,22,0,0,
+25913,25913_BOL_2026__examenplan-25913-hoefsmid-vastgesteld_,Hoefsmid,CompetentNL,crebo-direct,29,0,0,
+25915,25915_BOL_2026__examenplan-25915-vakbekwaam-medewerker-paardensport-en--houderij-vastg,Vakbekwaam medewerker paardensport en -houderij,CompetentNL,crebo-direct,21,0,0,
 25916,25916_BOL_2025__Examenplannen Hippisch 25-26,Bedrijfsleider paardensport en -houderij,CompetentNL,crebo-direct,38,0,0,
 25919,25919_BOL_2025__25919BOL2025MJP-Technicus-Engineering-Elektrotechniek,Technicus engineering,CompetentNL,crebo-direct,23,0,0,
 25923,25923_BBL_2025__25923BBL2025Examenplan,Machineoperator houtverwerkende industrie,CompetentNL,crebo-direct,20,0,0,
@@ -229,10 +245,23 @@ crebo,opleiding,beroep,bron,methode,essentieel,belangrijk,optioneel,kandidaten
 25960,25960_BOL_2025__25960BOL2025MJP_Dienstverlening_HZW_2-JARIG,Helpende Zorg en Welzijn,CompetentNL,crebo-direct,28,0,0,
 25961,Medewerker sport en recreatie,Medewerker sport en recreatie,CompetentNL,crebo-direct,22,0,0,
 25977,25977_BOL_2024__Examenplannen Voeding 24-25,"Medewerker voeding, technologie en techniek",CompetentNL,crebo-direct,18,0,0,
+25978,25978_BOL_2026__examenplan-25978-vakbekwaam-medewerker-voeding-technologie-en-techniek,"Vakbekwaam medewerker voeding, technologie en techniek",CompetentNL,crebo-direct,23,0,0,
+25979,25979_BOL_2026__examenplan-25979-vakexpert-voeding-technologie-en-techniek-vastgesteld,"Vakexpert voeding, technologie en techniek",CompetentNL,crebo-direct,24,0,0,
+25980,25980_BOL_2026__examenplan-25980-vakexpert-voeding-kwaliteit-en-productontwikkeling-va,"Vakexpert voeding, kwaliteit en productontwikkeling",CompetentNL,crebo-direct,18,0,0,
 25981,25981_BOL_2025__Examenplannen Teelt en Loonwerk 25-26,Medewerker teelt,CompetentNL,crebo-direct,20,0,0,
+25982,25982_BOL_2026__examenplan-25982-medewerker-agrohandel-en-logistiek-vastgesteld_,Medewerker agrohandel en logistiek,CompetentNL,crebo-direct,24,0,0,
 25983,25983_BOL_2024__Examenplannen Veehouderij  24-25,Medewerker veehouderij,CompetentNL,crebo-direct,23,0,0,
+25984,25984_BOL_2026__examenplan-25984-vakbekwaam-medewerker-teelt-vastgesteld_,Vakbekwaam medewerker teelt,CompetentNL,crebo-direct,28,0,0,
+25986,25986_BOL_2026__examenplan-25986-vakbekwaam-medewerker-veehouderij-vastgesteld_,Vakbekwaam medewerker veehouderij,CompetentNL,crebo-direct,31,0,0,
 25987,25987_BOL_2025__Examenplannen Biologisch Dynamische landbouw  25-26,Vakbekwaam medewerker biologisch-dynamische landbouw,CompetentNL,crebo-direct,28,0,0,
+25988,25988_BOL_2026__examenplan-25988-vakexpert-teelt-en-groene-technologie-vastgesteld_,Vakexpert teelt en groene technologie,CompetentNL,crebo-direct,39,0,0,
+25990,25990_BOL_2026__examenplan-25990-vakexpert-veehouderij-def_,Vakexpert veehouderij,CompetentNL,crebo-direct,43,0,0,
+25991,25991_BOL_2026__examenplan-25991-vakexpert-biologisch-dynamische-landbouw-def_,Vakexpert biologisch-dynamische landbouw,CompetentNL,crebo-direct,43,0,0,
 25992,25992_BOL_2025__Examenplannen Groen Grond en Groene Infra  2526,"Medewerker groen, grond en groene infra",CompetentNL,crebo-direct,23,0,0,
+25993,25993_BOL_2026__examenplan-25993-vakbekwaam-medewerker-gggi-vastgesteld_,"Vakbekwaam medewerker groen, grond en groene infra",CompetentNL,crebo-direct,27,0,0,
+25994,25994_BOL_2026__examenplan-25994-vakexpert-groen-grond-en-groene-infra-vastgesteld_,"Vakexpert groen, grond en groene infra",CompetentNL,crebo-direct,36,0,0,
+25995,25995_BOL_2026__examenplan-25995-voeding--en-leefstijladviseur-vastgesteld_,Voeding- en leefstijladviseur,CompetentNL,crebo-direct,21,0,0,
+25996,25996_BOL_2026__examenplan-25996-cordinator-duurzaamheid-vastgesteld_,Coördinator duurzaamheid,CompetentNL,crebo-direct,32,0,0,
 25997,25997_BOL_2025__OER_2025_-_Vakspecialist_Ondernemer,Vakspecialist ondernemer,CompetentNL,crebo-direct,24,0,0,
 25998,25998_BOL_2025__TIK_2025_OER_25998-software-developer,Software developer,CompetentNL,crebo-direct,13,0,0,
 25999,25999_BOL_2024__2024_OER_Medewerker-ICT-Support,Medewerker ICT,CompetentNL,crebo-direct,13,0,0,
@@ -242,10 +271,18 @@ crebo,opleiding,beroep,bron,methode,essentieel,belangrijk,optioneel,kandidaten
 27004,27004_BOL_2025__oer-2025-2026-ci-27004-signspecialist,Signspecialist,CompetentNL,crebo-direct,37,0,0,
 27015,27015_BOL_2025__TIK-2025-OER-ICT-Support-and-Systems-27015-en-27016,ICT support technician,CompetentNL,crebo-direct,16,0,0,
 27016,27016_BOL_2025__OER (OUD) - 27016O - ICT system engineer,ICT system engineer,CompetentNL,crebo-direct,18,0,0,
+27017,27017_BOL_2026__examenplan-27017-werkbegeleider-zorgboerderij-vastgesteld_,Werkbegeleider zorgboerderij,CompetentNL,crebo-direct,30,0,0,
 27018,27018_BOL_2025__Examenplannen Zorgboederij 25-26,Persoonlijk werkbegeleider zorgboerderij ,CompetentNL,crebo-direct,34,0,0,
 27032,27032_BBL_2025__27032 Allround Medewerker Optiek 36 maanden,Allround medewerker optiek,CompetentNL,crebo-direct,33,0,0,
 27042,27042_BBL_2025__27042BBL2025Examenplan-Chauffeur-wegvervoer-cohort-2025,Chauffeur wegvervoer,CompetentNL,crebo-direct,19,0,0,
 27047,27047_BOL_2025__OER_2025_-_Leidinggevende_teamafdelingproject,Leidinggevende van een team/afdeling/project,CompetentNL,crebo-direct,21,0,0,
+27081,27081_BOL_2026__examenplan-27081-medewerker-hovenier-en-groenvoorziening-vastgesteld_,hovenier,ESCO,llm-keuze,33,0,20,medewerker groenvoorziening/medewerkster groenvoorziening | hovenier | botanicus | medewerker grondstoffenontvangst | medewerker gasdistributie | medewerker vetzuivering | tuinbouwmedewerker | medewerker fastfood
+27082,27082_BOL_2026__examenplan-27082-medewerker-natuur-water-en-natuurrecreatie--vastgeste,medewerker milieubescherming,ESCO,llm-keuze,20,0,31,exploitatietechnicus systemen voor waterbehandeling | technicus waterleidingbedrijf | consultant natuurlijke rijkdommen | medewerker cacaopers | brandweerman te water | medewerker veeteelt | medewerker milieubescherming | milieu-ingenieur
+27083,27083_BOL_2026__examenplan-27083-vakbekwaam-hovenier-en-groenvoorziening-vastgesteld_,hovenier,ESCO,llm-keuze,33,0,20,medewerker groenvoorziening/medewerkster groenvoorziening | hovenier | botanicus | specialist taxatie bedrijfsovername | enveloppenmaker | pijpleidingoperator | procesoperator zetmeelextractie | beeldhouwer
+27084,27084_BOL_2026__examenplan-27084-vakbekwaam-medewerker-natuur-water-en-natuurrecreatie,medewerker milieubescherming,ESCO,llm-keuze,20,0,31,exploitatietechnicus systemen voor waterbehandeling | technicus waterleidingbedrijf | consultant natuurlijke rijkdommen | medewerker cacaopers | brandweerman te water | medewerker veeteelt | medewerker milieubescherming | milieu-ingenieur
+27085,27085_BOL_2026__examenplan-27085-opzichter--uitvoerder-groene-ruimte-vastgesteld_,medewerker groenvoorziening/medewerkster groenvoorziening,ESCO,llm-keuze,32,0,19,hovenier | binnentuinarchitect | verkeersbrigadier | medewerker groenvoorziening/medewerkster groenvoorziening | opzichter van een wijngaard | bouwopzichter | opzichter vuilnisbelt | opzichter timmerwerk
+27121,27121_BOL_2025__OER_2025_-_Ondernemer_Handel,bedrijfsleider kringloopwinkel,ESCO,llm-keuze,30,0,0,markt- en straathandelaar | marktverkoper | manager bloemendetailhandel | verkoopmanager bouwmaterialen | bedrijfsleider kringloopwinkel | manager delicatessenwinkel | manager tabakswinkel | bedrijfsleider fietsenwinkel
+27145,27145_BOL_2025__content_oer-cohort-2025-verpleegkunde-bol,verpleeghulp,ESCO,llm-keuze,37,0,21,web content manager | docent verpleegkunde hoger onderwijs | bibliothecaris big-data-archief | gespecialiseerd verpleegkundige | verpleeghulp | technical communicator | vakdocent hulpverpleging en verloskunde beroepsonderwijs | leidinggevend verpleegkundige
 39665,39665_BOL_2026__OER Studiegids,—,ESCO,geen-kandidaten,0,0,0,
 79140,79140_BOL_2025__79140 Go! Oriëntatietraject 12 maanden BOL,—,ESCO,geen-match,0,0,0,pijpleidingoperator | huis-aan-huisverkoper | redacteur uitgeverij | chauffeur gevaarlijke stoffen | accumonteur | medewerker internationale betrekkingen | wetenschappelijk onderzoeker godsdienstwetenschappen | medewerker groenvoorziening/medewerkster groenvoorziening
 82020,2021 - 82020 VG Entree OER 2020 V0 ,—,ESCO,geen-match,0,0,0,laserlasser

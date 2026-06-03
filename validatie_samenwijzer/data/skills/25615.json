@@ -1,0 +1,1313 @@
+{
+  "crebo": "25615",
+  "opleiding": "25615_BOL_2025__stOER-sociaal-werker-cohort-2025-bol",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "sociaal werker",
+    "uri": "http://data.europa.eu/esco/occupation/4b05bef2-ded4-4b09-ab94-f4c6a555a775",
+    "definitie": "Sociaal werkers zijn praktijkgerichte professionals die sociale verandering en ontwikkeling, sociale cohesie en de emancipatie en bevrijding van mensen bevorderen. Zij werken samen met individuen, gezinnen, groepen, organisaties en gemeenschappen om verschillende vormen van therapie en begeleiding, groepswerk en gemeenschapswerk aan te bieden. Sociaal werkers begeleiden mensen bij het gebruik van diensten om een uitkering aan te vragen, het krijgen van toegang tot gemeenschapsmiddelen, het vinden van een baan en opleiding, het inwinnen van juridisch advies of het omgaan met andere lokale overheidsdiensten."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "maatschappelijk werker",
+    "sociaal werker",
+    "sociaal-cultureel werker, specialisatie samenlevingsopbouw",
+    "pastoraal werker",
+    "maatschappelijk werker, specialisatie geestelijke gezondheidszorg",
+    "sociaalpedagogisch hulpverlener",
+    "maatschappelijk werker opbouwwerk",
+    "sociaal werker reclassering"
+  ],
+  "skills": [
+    {
+      "label": "beleidslijnen van de organisatie naleven",
+      "uri": "http://data.europa.eu/esco/skill/aa238394-8126-4ada-be2f-9dfe065cf314",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "leiderschap tonen bij sociale dienstverlening",
+      "uri": "http://data.europa.eu/esco/skill/524c4331-5090-4565-a0bc-0a9ae874938d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werken in partnerschap met gebruikers van sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/486df8bc-3498-43ad-83b6-dc8a4a3b16c6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "professionele identiteit ontwikkelen in sociaal werk",
+      "uri": "http://data.europa.eu/esco/skill/4211283b-617e-4ded-8636-4eed896c33b0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale rechtvaardigheid",
+      "uri": "http://data.europa.eu/esco/skill/e97c0d89-2f81-4840-8602-e668a949482f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "interviews afnemen bij sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/4f4afd0b-07e5-48fd-a7d4-0e8746c608df",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gebruikers van sociale diensten sterker maken",
+      "uri": "http://data.europa.eu/esco/skill/2e62b29d-3aa8-4e58-8aca-f3b48c8deefd",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale verandering promoten",
+      "uri": "http://data.europa.eu/esco/skill/644209ac-8452-4e81-959a-2b10050023cc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale begeleiding bieden",
+      "uri": "http://data.europa.eu/esco/skill/09d6ed43-95a1-4492-8bd7-d01039285afa",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "socialedienstverleningsprocedures plannen",
+      "uri": "http://data.europa.eu/esco/skill/5f343989-4871-419a-9dca-52fc653dc54e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale diensten verlenen in cultureel diverse gemeenschappen",
+      "uri": "http://data.europa.eu/esco/skill/4b5d4fe3-4280-47c0-b1d2-ab08ace85557",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "hulprelaties opbouwen met gebruikers van sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/fdb44237-c0b0-4924-9439-911332e0d884",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "situatie van gebruikers van sociale diensten beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/8d927aab-9202-4c02-9f39-5d478458f25c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "eigen verantwoordelijkheid aanvaarden",
+      "uri": "http://data.europa.eu/esco/skill/f90d4810-8bac-4e5e-b870-3e35a4138ff7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "crisisinterventie toepassen",
+      "uri": "http://data.europa.eu/esco/skill/3757c242-0042-4940-aedb-2af63e080dba",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "casemanagement toepassen",
+      "uri": "http://data.europa.eu/esco/skill/2ffc7a73-7e1d-434a-b498-2b0c056ced1d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "continue professionele ontwikkeling ondernemen op het gebied van sociaal werk",
+      "uri": "http://data.europa.eu/esco/skill/cd195aad-29dd-43f5-a5be-e6994d83215b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "professioneel communiceren met collega’s in andere vakgebieden",
+      "uri": "http://data.europa.eu/esco/skill/574bf430-50a1-4734-9719-a823e7d80b10",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociaal dienstverleningsplan evalueren",
+      "uri": "http://data.europa.eu/esco/skill/a95e0f9f-726e-4b0a-97c5-fa7a9d40ae8f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "samenwerken op interprofessioneel niveau",
+      "uri": "http://data.europa.eu/esco/skill/f2f2cd3b-6afd-482e-80af-5823250ef0b8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderhandelen met belanghebbenden van sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/c3da8380-7049-4159-af65-3eff63ed9caf",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "actief luisteren",
+      "uri": "http://data.europa.eu/esco/skill/a17286c5-238d-4f0b-bc24-29e9121345de",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voldoen aan praktijknormen in sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/2b8386c1-eed6-42ff-bd99-349eca9ea46e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bijdragen aan het waarborgen van veiligheid van individuen",
+      "uri": "http://data.europa.eu/esco/skill/3dbf27e5-bb92-4b31-b242-d6b02d933184",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "antionderdrukkingspraktijken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/000709ed-2be5-4193-b056-45a97698d828",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "conflicten hanteren",
+      "uri": "http://data.europa.eu/esco/skill/96de2e86-e287-41f2-88ab-15a2343afc6f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ondernemingsbeleid",
+      "uri": "http://data.europa.eu/esco/skill/f75b740c-b36c-495e-bc67-efe347bbc6b5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "communiceren met gebruikers van sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/e8828961-9e8e-471f-bd24-0673a7e844ef",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteitsnormen toepassen bij sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/2f8a2712-d20c-4e5f-b34a-738f55486aa0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "pleiten voor gebruikers van sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/6b85a3ef-4518-42e1-84ff-55ff13c2641f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gebruikers van diensten en verzorgers betrekken bij de planning van zorg",
+      "uri": "http://data.europa.eu/esco/skill/2806b5cb-964b-4148-84aa-7efdbeffe9e3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "persoonsgerichte zorg toepassen",
+      "uri": "http://data.europa.eu/esco/skill/7a63f944-6948-4ae4-9c1f-d08e492535c9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderhandelen met gebruikers van sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/758a4e08-3133-4dd5-893e-b4067a67344f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "rekening houden met de sociale invloed van acties op gebruikers van diensten",
+      "uri": "http://data.europa.eu/esco/skill/ee4a78d4-af84-42df-8ca0-039c0999e87c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "activiteiten delegeren",
+      "uri": "http://data.europa.eu/esco/skill/b00e948c-19be-4951-8cff-60f88f1046e9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verslag doen van sociale ontwikkelingen",
+      "uri": "http://data.europa.eu/esco/skill/c65795f8-69cc-47e0-9ba0-427671c965e6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "rechten van gebruikers van diensten promoten",
+      "uri": "http://data.europa.eu/esco/skill/7838b15f-1beb-4da3-b4f2-22d8ae6e9079",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "empathisch zijn",
+      "uri": "http://data.europa.eu/esco/skill/996243ee-543f-4c36-a31a-e0f2403c0c5d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale problemen voorkomen",
+      "uri": "http://data.europa.eu/esco/skill/6d80a4cb-cad2-435c-b899-e0e91fda07d6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale wetenschappen",
+      "uri": "http://data.europa.eu/esco/skill/4e097377-7950-4993-9e22-a61b067b5c00",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwetsbare gebruikers van sociale diensten beschermen",
+      "uri": "http://data.europa.eu/esco/skill/3aa7e88e-bebd-48b1-94ba-6efddeecf08f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werken in een multiculturele omgeving in de gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/b55f61a4-5f9e-4741-ba95-9ac04b64119b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale werktheorie",
+      "uri": "http://data.europa.eu/esco/skill/0d9c959a-cdd4-41f7-aa82-5e2e25b27e3f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beschikken over computervaardigheden",
+      "uri": "http://data.europa.eu/esco/skill/d15ce60f-ddab-41ce-ba56-398451b77b60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "wetgeving transparant maken voor gebruikers van sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/72cde4b2-b2ee-41b2-a72f-ab3a970c0b8f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beslissingen nemen binnen sociaal werk",
+      "uri": "http://data.europa.eu/esco/skill/a9661351-4d11-477e-9f8c-e22dab6596d6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "organisatorische technieken gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/d3eccb86-f02d-4950-bfbd-20b9510774a1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "een professioneel netwerk ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/bf5d77ad-e18c-48d8-83f0-bc79c011c74a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "stress in organisaties beheersen",
+      "uri": "http://data.europa.eu/esco/skill/fbdfc3bf-56a0-4454-a17d-2f513fe57b53",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale werkpakketten regelen",
+      "uri": "http://data.europa.eu/esco/skill/e55e230e-c308-426d-a536-06176db2a651",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "stressbestendig zijn",
+      "uri": "http://data.europa.eu/esco/skill/d15f8745-28f8-4abf-a7b6-6cb8a304efd2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verslagen van werk met gebruikers van diensten bewaren",
+      "uri": "http://data.europa.eu/esco/skill/bd17a64e-a9bd-439d-9b87-01c6bb1b7e09",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "omgaan met ethische dilemma's in de maatschappelijke dienstverlening",
+      "uri": "http://data.europa.eu/esco/skill/a762f4cd-b6bb-419b-834a-71f3ed367e5c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "problemen oplossen bij sociale dienstverlening",
+      "uri": "http://data.europa.eu/esco/skill/30d49832-84bd-4d97-9441-aef97a76a8d0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "holistische benadering toepassen binnen sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/afa3b020-a48c-45a8-a2ff-77d0b9df5381",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "wettelijke vereisten in de sociale sector",
+      "uri": "http://data.europa.eu/esco/skill/39dd50ae-814c-4a15-99e9-39afcc36bf9f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voorzorgsmaatregelen voor gezondheid en veiligheid volgen bij socialezorgpraktijken",
+      "uri": "http://data.europa.eu/esco/skill/5e5d8826-92c4-4274-a6f9-3db6fca9eadc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werken met gemeenschappen",
+      "uri": "http://data.europa.eu/esco/skill/28ca2f0b-9fb2-487a-9f10-9688e5191ec4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociaal rechtvaardige werkbeginselen toepassen",
+      "uri": "http://data.europa.eu/esco/skill/bc401d18-9bea-4300-90fd-22bfa286bd77",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale crisissen beheersen",
+      "uri": "http://data.europa.eu/esco/skill/a4d46d86-9de5-4734-881c-5b2059b9fccf",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "nadenken over praktijken",
+      "uri": "http://data.europa.eu/esco/skill/c152e2a2-db0d-4d8f-b25c-ef474c83a9c0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "problemen kritisch behandelen",
+      "uri": "http://data.europa.eu/esco/skill/b9f16465-56a9-426b-a047-0f9f1f95ec92",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gebruikers van sociale diensten doorverwijzen",
+      "uri": "http://data.europa.eu/esco/skill/e23c32a2-eff1-4d77-b2b0-724a3a600a95",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "integratie bevorderen",
+      "uri": "http://data.europa.eu/esco/skill/bcd2ce08-ba12-4d66-865f-f4ba36419707",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "studenten bijstaan bij het leren",
+      "uri": "http://data.europa.eu/esco/skill/d5e1e30e-44ab-4aba-abab-b8263e801b7a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ontwikkelingen op expertisegebied opvolgen",
+      "uri": "http://data.europa.eu/esco/skill/23ac233d-84ad-4517-b0f5-8ca19ba2614e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "informatie over schooldiensten geven",
+      "uri": "http://data.europa.eu/esco/skill/13e5ed0f-9698-4b32-b44c-fb6a6a9fdd7f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "drugs- en alcoholverslavingen van cliënten beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/60fbed03-0ce8-4bb0-9f01-af6467e954ec",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "cliënten helpen omgaan met verdriet",
+      "uri": "http://data.europa.eu/esco/skill/5401bf12-9cb2-4c24-8293-37de2a834031",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "wetgeving inzake sociale huisvesting",
+      "uri": "http://data.europa.eu/esco/skill/f5f72523-3e48-47ae-825b-fa49a33cd94b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "deelnemen aan wetenschappelijke colloquia",
+      "uri": "http://data.europa.eu/esco/skill/6c7e5e01-a372-4674-aa7c-589eb9e9448a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "volksgezondheidsproblemen aanpakken",
+      "uri": "http://data.europa.eu/esco/skill/1cebfd4f-2ab3-480a-a3c8-8065a303717d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werken met elektronische leeromgevingen",
+      "uri": "http://data.europa.eu/esco/skill/b78f324d-e16c-43f8-97d2-50d3a7cd1fb3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "leiding geven aan een eenheid voor sociaal werk",
+      "uri": "http://data.europa.eu/esco/skill/1c977f2b-7fca-4e4f-ae5f-f4d69b474a4f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "veldwerk uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/bc54eee1-a858-4f80-afdc-0442a617ef50",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toezicht op personen",
+      "uri": "http://data.europa.eu/esco/skill/47ac9325-b072-4e37-8e40-e6ffed03e851",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "begeleidingsmethodes",
+      "uri": "http://data.europa.eu/esco/skill/0ffed47f-d320-48cf-988d-40449825085c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ontwikkelingspsychologie",
+      "uri": "http://data.europa.eu/esco/skill/868fc91a-f988-48e2-81e5-33e1b3de0ac2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "slachtoffers van mensenrechtenschendingen ondersteunen",
+      "uri": "http://data.europa.eu/esco/skill/16ac1a06-ce37-405d-8c9f-d8b218039917",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contacten onderhouden met pedagogische medewerkers",
+      "uri": "http://data.europa.eu/esco/skill/36fe44b2-af36-4467-9be8-601e64b3dbc7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "lesinhoud voorbereiden",
+      "uri": "http://data.europa.eu/esco/skill/20f57a7f-b90e-4403-8c77-5ddd89b5835b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "lesplannen ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/7ee872de-db39-4ae3-8e19-75d1a2cdf697",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "programma’s inzake sociale zekerheid ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/d7cae736-7937-4b25-a015-0dbb3a8cf61e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toezicht houden op de speelplaats",
+      "uri": "http://data.europa.eu/esco/skill/b1d75e36-64d3-4000-bd9c-14899bea87e2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "behoeften van oudere volwassenen",
+      "uri": "http://data.europa.eu/esco/skill/634865e0-2ec2-4b7f-bb7f-c196637f0f7b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "immigratiewetgeving",
+      "uri": "http://data.europa.eu/esco/skill/7da0b396-34d7-4714-ada4-78d222e515a0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderwijs binnen de eigen gemeenschap",
+      "uri": "http://data.europa.eu/esco/skill/4a752bd2-9fe9-4539-ab5a-8edc0dec6ef0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kwalitatief onderzoek uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/fa465db3-56e8-4b5d-a781-e2a313a4ed2d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "informeren over de risico’s van drugs- en alcoholmisbruik",
+      "uri": "http://data.europa.eu/esco/skill/e4c5a9f8-72f8-4282-aefa-0fa924cb3db6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "strategieën voor het omgaan met gevallen van seksueel geweld",
+      "uri": "http://data.europa.eu/esco/skill/f143bbc9-cc9d-4629-87d5-4d747838ddb3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "programma's voor humanitaire hulp beheren",
+      "uri": "http://data.europa.eu/esco/skill/6bae0078-d7e1-46c5-b4ce-0d70cbf9016b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "telefonisch communiceren",
+      "uri": "http://data.europa.eu/esco/skill/de2f0ce8-f8d6-48c5-a213-4d065251cecf",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toezicht houden op personeel",
+      "uri": "http://data.europa.eu/esco/skill/9601b2a8-68e4-4906-9306-a23679b8f0b0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "cursusoverzicht ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/f0699875-51da-48d2-bc92-54b0749baef1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toezicht houden op buitenschoolse activiteiten",
+      "uri": "http://data.europa.eu/esco/skill/e9160feb-109a-41eb-9604-9f898c710d0f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "wettelijke vergoeding voor slachtoffers van misdaden",
+      "uri": "http://data.europa.eu/esco/skill/81111f18-b0a1-40c8-9934-ad5ed44d5427",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "technische expertise leveren",
+      "uri": "http://data.europa.eu/esco/skill/c69587b4-05d3-45bb-b79b-9b85e6603fc2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "problemen aanpakken die de academische vooruitgang belemmeren",
+      "uri": "http://data.europa.eu/esco/skill/fddc5d4f-0dfe-42fb-a1c0-3ad827db2216",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "advies geven over trainingen",
+      "uri": "http://data.europa.eu/esco/skill/90267570-aad1-4c54-9c9c-5a1a5847a819",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "telefonisch sociale begeleiding bieden",
+      "uri": "http://data.europa.eu/esco/skill/efc6ffdd-529a-4045-992f-a8dffcce0d9c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bescherming van jonge personen promoten",
+      "uri": "http://data.europa.eu/esco/skill/98a0c718-40b1-4a4f-a366-b8155f238d9b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten handicaps",
+      "uri": "http://data.europa.eu/esco/skill/6b28bb69-a6ef-42d4-84df-46e498f09297",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "procedures in het middelbaar onderwijs",
+      "uri": "http://data.europa.eu/esco/skill/d04e4bde-05fa-499c-9237-1fe5e4560525",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "op de gemeenschap gebaseerde ontwikkelingsdiensten bieden",
+      "uri": "http://data.europa.eu/esco/skill/fd05efb9-5449-4134-af11-84b532a46d61",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "psychologische effecten van oorlog",
+      "uri": "http://data.europa.eu/esco/skill/27451cd6-67eb-4ed4-b27f-08c8d1ba60a5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "samenwerken met het sociale netwerk van gebruikers van gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/d94cdb45-ce0c-4e1e-8149-1998127f627c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ondersteuningsnetwerk van de student raadplegen",
+      "uri": "http://data.europa.eu/esco/skill/14dc991f-1b21-413d-86a3-499e6676abb9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toezien op onderwijzend personeel",
+      "uri": "http://data.europa.eu/esco/skill/17cb7368-2d27-4caf-8a34-e7ce96af89fe",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ontwikkeling van de jeugd beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/28ca596e-5e2f-4149-a28d-42d2c4c20227",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "adviseren over socialezekerheidsvoorzieningen",
+      "uri": "http://data.europa.eu/esco/skill/f28c3e9b-8666-48d4-a5e4-542ac193879b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gezinnen helpen in crisissituaties",
+      "uri": "http://data.europa.eu/esco/skill/763635b2-a9f0-4192-9656-0412a9d57488",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "middelen voor educatieve doeleinden beheren",
+      "uri": "http://data.europa.eu/esco/skill/860e85ee-5992-445a-b3d3-9bab524f7600",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "helpen bij de organisatie van begrafenissen",
+      "uri": "http://data.europa.eu/esco/skill/7fb43ee2-e630-4b9e-a431-9275ab30cac4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "telefoniesystemen onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/b478d218-21df-447f-9eba-6fb11f94b071",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "aanwezigheidslijsten bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/a8fe6eae-cfc1-4580-ad12-f325e8c2b21b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "prestatietendensen van oproepen analyseren",
+      "uri": "http://data.europa.eu/esco/skill/3a585818-03f1-434c-b41b-9d3c4ceedfaa",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vacatures op de arbeidsmarkt",
+      "uri": "http://data.europa.eu/esco/skill/38a5c459-c591-4f76-a358-37de342bb11d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werken met patronen van psychologisch gedrag",
+      "uri": "http://data.europa.eu/esco/skill/604fa3e6-bc8d-423e-b7e8-c0ba2416eaa4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "strategieën voor het omgaan met gevallen van ouderenmishandeling",
+      "uri": "http://data.europa.eu/esco/skill/f6d5f009-b188-45ef-98e0-18d700744892",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werkgerelateerde verslagen schrijven",
+      "uri": "http://data.europa.eu/esco/skill/918f5211-b99f-4b29-9a34-6e475583ef55",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "in een academisch comité zetelen",
+      "uri": "http://data.europa.eu/esco/skill/1c2b578b-829e-4ef7-b709-c77dd51d457c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "beoordelingsprocessen",
+      "uri": "http://data.europa.eu/esco/skill/31b67516-af16-4b97-8430-a8a8e0f84190",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "thuiszorg bieden",
+      "uri": "http://data.europa.eu/esco/skill/0e2c082a-056c-413c-94d1-581a0133e614",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "wetenschappelijk onderzoek uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/485cdafb-3c7f-4104-ab1c-773e6131a39a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "welzijn van kinderen ondersteunen",
+      "uri": "http://data.europa.eu/esco/skill/a65fb963-6faf-47b2-a3d9-c4e5e4d833c5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "arbeidswet",
+      "uri": "http://data.europa.eu/esco/skill/97b713f0-b9e8-4903-8dee-7e0b4019a1c0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderwijs aanpassen aan de doelgroep",
+      "uri": "http://data.europa.eu/esco/skill/b2a9587a-49a4-4384-b134-0d394be806e3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "analyse van leerbehoeften",
+      "uri": "http://data.europa.eu/esco/skill/135192cb-84e4-4b70-8946-fbe5041b26cd",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "afhankelijkheid van drugs",
+      "uri": "http://data.europa.eu/esco/skill/ffc7b5ae-1bae-42eb-b9dd-c9044fea7105",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "cliëntgerichte begeleiding",
+      "uri": "http://data.europa.eu/esco/skill/3fe84b03-b2a5-450e-9210-10c124af738c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "wetenschappelijke methoden toepassen",
+      "uri": "http://data.europa.eu/esco/skill/7a34b3d9-bd3b-4f4e-a0f6-f97439901cb7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "fondsen werven",
+      "uri": "http://data.europa.eu/esco/skill/526a0eaa-2bee-4e80-989f-cb36f9fbee47",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "illegale stoffen",
+      "uri": "http://data.europa.eu/esco/skill/99b04058-e4c1-4808-923b-32cc49aa5e13",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "wetenschappelijke onderzoeksmethodologie",
+      "uri": "http://data.europa.eu/esco/skill/ed3f3dba-3a35-4ed5-b113-67f4d10ef4c8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gedrag van studenten volgen",
+      "uri": "http://data.europa.eu/esco/skill/1b8872bd-d869-4b08-b9b2-296d2b1c644c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "samenwerkingsrelaties aangaan",
+      "uri": "http://data.europa.eu/esco/skill/326809fc-238d-40c2-881e-40042f7f2f0d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "behoeften van slachtoffers van misdaden",
+      "uri": "http://data.europa.eu/esco/skill/daabdf95-b0ce-4947-889b-429b3be7bd02",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "positieve instelling van jongeren ondersteunen",
+      "uri": "http://data.europa.eu/esco/skill/4a874516-eb34-4dc1-833d-864c5a448db2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klinische beoordelingstechnieken gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/0f551181-e1af-47e2-b2d8-ff9f4e011ecd",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "revalidatie",
+      "uri": "http://data.europa.eu/esco/skill/87669743-a291-4ea0-9a50-cac60d45649c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "palliatieve zorg",
+      "uri": "http://data.europa.eu/esco/skill/c5a80bb0-31e6-4de0-868c-00a0f9b88b47",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gegevens van telefonische oproepen bewaren",
+      "uri": "http://data.europa.eu/esco/skill/8096627b-c5a5-4235-b1ee-eca8be976eb2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "actoren in humanitaire hulpverlening",
+      "uri": "http://data.europa.eu/esco/skill/7cb40da8-acfa-48ba-a553-0a1d90528411",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "rapporten presenteren",
+      "uri": "http://data.europa.eu/esco/skill/d0f2f8a7-d935-4a6d-8e54-dcc3e5e2cbeb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "jonge slachtoffers ondersteunen",
+      "uri": "http://data.europa.eu/esco/skill/867ad40d-bd25-46d1-88b5-27381f673ad5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderwijswet",
+      "uri": "http://data.europa.eu/esco/skill/57beaad1-7c5e-4b17-a35f-31f49e1d7378",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "mentale gezondheid bevorderen",
+      "uri": "http://data.europa.eu/esco/skill/c634630b-210b-4da5-b0f3-894cc292d6e3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "psychologische ontwikkeling van jongeren",
+      "uri": "http://data.europa.eu/esco/skill/9ccecb58-e720-4465-b309-46e362ca6f75",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "procedures in het lager onderwijs",
+      "uri": "http://data.europa.eu/esco/skill/74bb0643-a15f-48ea-b12c-d98bf49cb317",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "in lesmateriaal voorzien",
+      "uri": "http://data.europa.eu/esco/skill/d39a5880-7d0a-4573-9f70-a75ff875bf83",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kwantitatief onderzoek uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/8316979b-df5a-4dc7-98ef-61ec6a10df84",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "omgaan met daders",
+      "uri": "http://data.europa.eu/esco/skill/8c1e6867-3404-4676-ab79-8ad6fa55d9a4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "wetenschappelijk besluitvormingsproces in de gezondheidszorg implementeren",
+      "uri": "http://data.europa.eu/esco/skill/8e0bfbba-6e9d-48e0-b152-2cc949e5022a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "teamwork tussen studenten aanmoedigen",
+      "uri": "http://data.europa.eu/esco/skill/229b10cf-6f3a-490c-9706-01c107df0562",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "collaboratieve therapeutische relaties ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/d93f9e29-9740-4231-8486-13d377b99f05",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werken aan de gevolgen van mishandeling",
+      "uri": "http://data.europa.eu/esco/skill/905e8db4-0429-4abf-a11d-8df2547f4cff",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "schoolpsychologie",
+      "uri": "http://data.europa.eu/esco/skill/621391ab-1187-4705-a0cb-a7b1a6d2b664",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "communicatie",
+      "uri": "http://data.europa.eu/esco/skill/15d76317-c71a-4fa2-aadc-2ecc34e627b7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klassenmanagement uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/cedd0710-62ae-4ff4-89ae-ac52375f86ec",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/9b63d92b-5a3a-46b0-b2ba-c98b39ea5aaf",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "advies geven over sociale ondernemingen",
+      "uri": "http://data.europa.eu/esco/skill/83259f23-b896-46c6-a972-4d63f2128559",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "jongeren voorbereiden op de volwassenheid",
+      "uri": "http://data.europa.eu/esco/skill/64b0515c-98b0-4cfd-8791-2f0a74e0ca37",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "behoeften van gebruikers van gezondheidszorg verdedigen",
+      "uri": "http://data.europa.eu/esco/skill/ee062700-f7ef-4c2f-b6e0-c3438cc40299",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vaardigheidstekorten identificeren",
+      "uri": "http://data.europa.eu/esco/skill/c434afc6-7465-4772-84d1-0e4d556e5416",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werken in multidisciplinaire gezondheidsteams",
+      "uri": "http://data.europa.eu/esco/skill/eba85523-6ad2-4cd9-9b27-a0b6a39b8cfa",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "aandacht tonen voor de situatie van studenten",
+      "uri": "http://data.europa.eu/esco/skill/3cd304db-9df0-4f22-9759-9ed86155876c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "theorieën inzake persoonlijke ontwikkeling",
+      "uri": "http://data.europa.eu/esco/skill/67cacb56-17df-4e4e-8039-55f659ac59a7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gebruikers van sociale diensten ondersteunen om thuis te wonen",
+      "uri": "http://data.europa.eu/esco/skill/941438bd-cc03-4326-91bf-677157dca170",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "risicogedrag van daders inschatten",
+      "uri": "http://data.europa.eu/esco/skill/9f0e78ef-bbe4-4d25-a5a9-f0e98ee99da2",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "leerproblemen",
+      "uri": "http://data.europa.eu/esco/skill/731101d9-94bc-4805-bff4-9578d1bf03b5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "studenten helpen met materiaal",
+      "uri": "http://data.europa.eu/esco/skill/7530bc44-f09d-4dd2-8911-92b98333e442",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderzoeksvoorstellen bespreken",
+      "uri": "http://data.europa.eu/esco/skill/54e4e941-76cd-4bb7-bf25-019d50b737de",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "voorbeelden geven bij het leren",
+      "uri": "http://data.europa.eu/esco/skill/b32e593b-cc7f-4f38-bf50-e69431ec7ada",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "overheidsprogramma’s inzake sociale zekerheid",
+      "uri": "http://data.europa.eu/esco/skill/4a92d8ce-ffd6-4da5-a50e-ef1bff5cc219",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "veiligheid van studenten garanderen",
+      "uri": "http://data.europa.eu/esco/skill/11f536f5-b0e2-46a6-95c1-bd765946604c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vrijwilligers leiden",
+      "uri": "http://data.europa.eu/esco/skill/232f854a-f5b9-4d8a-8499-23f59852273c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "constructieve kritiek geven",
+      "uri": "http://data.europa.eu/esco/skill/b9bb1f03-15e2-4079-943e-7e483b21725b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "mensen bewustmaken over kwesties die belangrijk zijn voor de lokale gemeenschap",
+      "uri": "http://data.europa.eu/esco/skill/7e13a05c-e40d-4970-b285-3d58ecfa627f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "studenten binnen sociaal werk beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/81b7bab6-4662-4002-96ae-605ae26b8cb4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kinderen ondersteunen die een trauma hebben ervaren",
+      "uri": "http://data.europa.eu/esco/skill/6caaeece-8a4a-44b3-bc78-d9687676c015",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "curriculumdoelstellingen",
+      "uri": "http://data.europa.eu/esco/skill/edff6d20-660d-4d33-b412-9a5b664a14be",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderwijsstrategieën toepassen",
+      "uri": "http://data.europa.eu/esco/skill/59eb177a-2f30-4943-8b30-5f87dd51a80d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "persoonlijke ontwikkeling",
+      "uri": "http://data.europa.eu/esco/skill/519e801b-3cc4-44d4-bcf1-32fdb9a77e51",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "crisisinterventie",
+      "uri": "http://data.europa.eu/esco/skill/8e261d1c-12c0-498e-bfc2-ec0c16496c68",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vreemde talen toepassen bij sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/77734d97-4376-4336-85a0-43f63c0eb399",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "diagnose van geestelijke gezondheidsproblemen",
+      "uri": "http://data.europa.eu/esco/skill/2e49f58a-a8d3-400e-b7bd-d8f8bc703a3e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "socialezekerheidsrecht",
+      "uri": "http://data.europa.eu/esco/skill/ba9260ba-1c8d-495e-94f1-f7cab7e73cea",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "computer-telefonie-integratie gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/2b285a57-4add-453e-af5d-3d986a65c8fe",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "interventies op straat uitvoeren bij sociaal werk",
+      "uri": "http://data.europa.eu/esco/skill/004017c9-0337-4f5a-8077-798de9ef12e3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "communiceren met behulp van een tolk in de sociale dienstverlening",
+      "uri": "http://data.europa.eu/esco/skill/c84b98b2-36bd-4742-84b6-9e5c30ce1407",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gebruikers van sociale diensten ondersteunen aan het einde van hun leven",
+      "uri": "http://data.europa.eu/esco/skill/0a06b0a8-d931-44ba-b85a-3e0e617261c3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "steun bieden aan slachtoffers",
+      "uri": "http://data.europa.eu/esco/skill/44fb294c-440e-4c21-af34-9dec75cdf94b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "sociale onderneming",
+      "uri": "http://data.europa.eu/esco/skill/2f4cdc7e-d98d-4e6c-9811-3dc28255c7ff",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "mensenrechten promoten",
+      "uri": "http://data.europa.eu/esco/skill/646d871b-4503-4dc8-a076-06d7085e4cde",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "strafrecht",
+      "uri": "http://data.europa.eu/esco/skill/8836a5a5-e2ff-4baf-aae3-bfb78a4cca7f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderwijs voor leerlingen met bijzondere behoeften",
+      "uri": "http://data.europa.eu/esco/skill/ef1e63c9-f8c1-46ad-8c74-3cea311c9377",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "leercurriculum plannen",
+      "uri": "http://data.europa.eu/esco/skill/8193f6c6-80d5-4542-a316-2b783e3d8ad9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vrijwilligers ondersteunen",
+      "uri": "http://data.europa.eu/esco/skill/ee93e363-0c2b-40ed-bbf1-aa5aaf9683fe",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "communiceren met jongeren",
+      "uri": "http://data.europa.eu/esco/skill/b5af495b-61f1-4330-9891-dca56d97d714",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "getuigen tijdens een hoorzitting",
+      "uri": "http://data.europa.eu/esco/skill/478da040-fb0a-4fa8-9112-285ff5c4aefa",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "advies geven over conflictbeheersing",
+      "uri": "http://data.europa.eu/esco/skill/9091c8e5-9357-4c29-bceb-ddb1792c22e8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vermogen van oudere volwassenen om voor zichzelf te zorgen beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/b4910ea9-578d-4767-bd68-00a315a64e09",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "rechten van slachtoffers van misdaden",
+      "uri": "http://data.europa.eu/esco/skill/181621db-002a-4d8d-b9e8-21451e76115f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kennis van menselijk gedrag gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/a0e23745-6ba4-45e2-9510-df6e71ed1230",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderzoek inzake sociaal werk uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/ceeb2e10-f354-4e6a-8c6a-3e46b80798e5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "advies geven over palliatieve zorg",
+      "uri": "http://data.europa.eu/esco/skill/eaa7af7e-0a6f-4383-9d19-05dec9abed36",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "principes van teamwerk",
+      "uri": "http://data.europa.eu/esco/skill/a5b0cd5c-e13a-4ab3-8d93-4d242adcfb01",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "principes van sociaal werk aanleren",
+      "uri": "http://data.europa.eu/esco/skill/c6fa2539-c33c-45ce-89cf-d577c50019c1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "geestelijke gezondheidsproblemen identificeren",
+      "uri": "http://data.europa.eu/esco/skill/7d8ca06a-f737-4927-96f2-de4f2cd15895",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gemeenschapsrelaties opbouwen",
+      "uri": "http://data.europa.eu/esco/skill/28f98c7e-b89c-4b4d-ae0a-0c5a6328992e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klinische geriatrie",
+      "uri": "http://data.europa.eu/esco/skill/52c19dc8-651f-4095-98fe-dcb2799d702e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gedragsstoornissen",
+      "uri": "http://data.europa.eu/esco/skill/8e839bce-38f0-472d-8792-9b7c12b197ef",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "samenwerken met onderwijsdeskundigen",
+      "uri": "http://data.europa.eu/esco/skill/078098e1-01f7-4654-9ddd-016f4063b54d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "universiteitsprocedures",
+      "uri": "http://data.europa.eu/esco/skill/d4e9055e-597f-42ca-98ac-a5e3d8e881e1",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "sociale bemiddeling",
+      "uri": "http://data.europa.eu/esco/skill/2b3ac8b9-a5bd-4ec1-bb9a-f499fb3aa8d3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "daklozen helpen",
+      "uri": "http://data.europa.eu/esco/skill/bbeff2f6-4a3c-44af-8589-ac158f652d0d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "individuen, families en groepen sterker maken",
+      "uri": "http://data.europa.eu/esco/skill/441707bb-9ad3-406c-9975-a6bec96f537b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zorg voor personen met een handicap",
+      "uri": "http://data.europa.eu/esco/skill/54411e8e-d62f-46d8-b87b-fce23f8e3bc8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "familierecht",
+      "uri": "http://data.europa.eu/esco/skill/3cb348a4-e49e-4fe2-a403-d558dce1b38d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "immigratieadvies geven",
+      "uri": "http://data.europa.eu/esco/skill/5db1c72b-7c38-460f-8f4a-ddda37739953",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "educatieve testen afnemen",
+      "uri": "http://data.europa.eu/esco/skill/604e5cd2-559a-4d49-a1a2-e43b2b472fee",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "socialezekerheidsprogramma’s promoten",
+      "uri": "http://data.europa.eu/esco/skill/144aba2f-dddd-41bc-b519-0ea6d51bcd6b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "interculturele onderwijsstrategieën toepassen",
+      "uri": "http://data.europa.eu/esco/skill/e3ef4981-2cba-4b34-b273-728c3a33d04f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "wetgeving in verband met gezondheidszorg naleven",
+      "uri": "http://data.europa.eu/esco/skill/9fcf9918-fdef-49c3-aedc-518eb1e7e1f5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "migratie",
+      "uri": "http://data.europa.eu/esco/skill/b483124c-180c-4d3a-8b7c-72e4e7a5b49b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "consultatie",
+      "uri": "http://data.europa.eu/esco/skill/4b3c8605-819d-4b38-83fc-f23663e78dc9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kinderbescherming",
+      "uri": "http://data.europa.eu/esco/skill/f2d63656-169c-4110-99fe-33914f902466",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "loopbaanbegeleiding bieden",
+      "uri": "http://data.europa.eu/esco/skill/fd88851f-4d1d-4de8-aee1-4464c3012969",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "helpen bij de organisatie van schoolevenementen",
+      "uri": "http://data.europa.eu/esco/skill/09f159aa-2745-4ab0-a050-96722a2269b9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "studenten begeleiden",
+      "uri": "http://data.europa.eu/esco/skill/f7940b22-764a-43f0-9642-f60f5897109b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toezicht houden op onderwijsontwikkelingen",
+      "uri": "http://data.europa.eu/esco/skill/5de0599a-8fca-4cdd-a72d-f5d21af8eeb3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "personen helpen zich aan te passen aan een lichamelijke beperking",
+      "uri": "http://data.europa.eu/esco/skill/eacac7e2-4e88-4bd3-9797-1dd1922cd10a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "migranten helpen zich te integreren in het gastland",
+      "uri": "http://data.europa.eu/esco/skill/f524f72e-d3d0-4691-9c57-d19756d8b847",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "therapie in de gezondheidszorg",
+      "uri": "http://data.europa.eu/esco/skill/8f5d6a1b-32fa-4c3f-b3d6-5f070d2e0f74",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "met gebruikers van sociale diensten in een groep werken",
+      "uri": "http://data.europa.eu/esco/skill/f2da762e-868c-4dff-a936-50a7cb56e44d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "studenten helpen bij hun proefschrift",
+      "uri": "http://data.europa.eu/esco/skill/94c42df0-5d8f-42c7-842f-21be2d0e0588",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kinderen met bijzondere behoeften helpen in onderwijsomgevingen",
+      "uri": "http://data.europa.eu/esco/skill/bcb02777-45be-4166-9448-74a15b6f8136",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zich discreet gedragen",
+      "uri": "http://data.europa.eu/esco/skill/88f2ee42-01c8-4390-a108-e733cecaaa77",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "financieringsmethoden",
+      "uri": "http://data.europa.eu/esco/skill/3556c075-eee0-4549-b730-48ae70cb5af9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "academisch onderzoek publiceren",
+      "uri": "http://data.europa.eu/esco/skill/979cf728-896f-4f2c-8fa8-2698ca0d4930",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gebruikers van sociale diensten ondersteunen om hun eigen financiële zaken te beheren",
+      "uri": "http://data.europa.eu/esco/skill/65556efb-13d5-48bc-8e53-96f7a3379749",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "privacy van gebruikers van diensten bewaren",
+      "uri": "http://data.europa.eu/esco/skill/73e7e2f4-7e5f-4e6c-86c2-3b5fbd191172",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "studenten sociaal werk begeleiden",
+      "uri": "http://data.europa.eu/esco/skill/ac6d3eaf-7a85-495a-b12a-a0f66de8712a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "communiceren over het welzijn van jongeren",
+      "uri": "http://data.europa.eu/esco/skill/334cd662-0415-44ac-bc8a-e24b320b4284",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "sociale pedagogiek",
+      "uri": "http://data.europa.eu/esco/skill/58bae6b3-baf1-4ce2-9daf-197ede8c510a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "promovendi begeleiden",
+      "uri": "http://data.europa.eu/esco/skill/e996a468-2097-42ed-98da-d8161e60a8e4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "lesmateriaal opstellen",
+      "uri": "http://data.europa.eu/esco/skill/2f0a426f-3b95-455b-a872-ef6dee168114",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "herstelrecht",
+      "uri": "http://data.europa.eu/esco/skill/27d54d7c-68cd-4c04-9e05-538b01c6a80b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "stadia van rouw",
+      "uri": "http://data.europa.eu/esco/skill/d5879a17-de0d-4766-9da0-810455119b01",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "jeugdwerk in de lokale gemeenschap promoten",
+      "uri": "http://data.europa.eu/esco/skill/4381b317-c2c9-48a4-be25-f89b6291b0bf",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "psychologische begeleidingsmethoden",
+      "uri": "http://data.europa.eu/esco/skill/50b631f8-1ed7-46f5-9b47-96169d06c726",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "volwassenenonderwijs",
+      "uri": "http://data.europa.eu/esco/skill/60856bbb-e5db-4398-babb-300a24a7fe97",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contacten onderhouden met educatieve medewerkers",
+      "uri": "http://data.europa.eu/esco/skill/ed57378a-2b27-4d80-8701-124e559cf17d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "studenten beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/6fe019dd-027f-45f3-b19c-d27f7ae00980",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "advies geven over geestelijke gezondheid",
+      "uri": "http://data.europa.eu/esco/skill/90ccd1bc-af3f-4c04-b2dd-bef2ba62905d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gerechtelijke procedures",
+      "uri": "http://data.europa.eu/esco/skill/db10b60e-efd2-4ba9-a873-d1e2ec37620f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "pedagogie",
+      "uri": "http://data.europa.eu/esco/skill/a117f32c-662b-4dd9-b739-1230dd04cb60",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "thuiszorg regelen voor patiënten",
+      "uri": "http://data.europa.eu/esco/skill/c5b56e63-9cd6-470d-97aa-6e3148752312",
+      "categorie": "optioneel"
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "crebo": "25913",
+  "opleiding": "25913_BOL_2026__examenplan-25913-hoefsmid-vastgesteld_",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Hoefsmid",
+    "uri": "",
+    "definitie": "De hoefsmid maakt hoefijzers klaar en bekapt en beslaat paarden of pony’s. Als zelfstandig ondernemer wordt hij ingeschakeld door een paardenhouderij, paardensportbedrijf, dierenartsenpraktijk of dierenkliniek. Zijn fysiek zware werk aan de hoeven van paarden en pony’s doet hij bijna altijd op het terrein van de klant. Van groot belang is dat hij elk dier eerst op zijn eigen specifieke kenmerken beoordeelt, in relatie tot het gebruiksdoel. Hij houdt daarbij rekening met de veiligheid en welzijn van het paard. Dit vereist een grote mate van inzicht in de conditie, het exterieur en de gang en stand van paarden. Hij werkt dan ook zorgvuldig, gestructureerd en gedisciplineerd, met aandacht voor het paard en het gebruiksdoel."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Informatie ordenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/299CE88E49",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen signaleren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4D400FE127",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ondernemerszin tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/518455478C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leerstrategieën toepassen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7555D32771",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsprocessen verbeteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7C37C4FF38",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Adviseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CECB22E3FA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Promoten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E06265451B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Dienstbaarheid tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/F755E32480",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Paardenverzorging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/32559922CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Veeteelt",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3C7D38D367",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfseconomie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/53B4B474D1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Biologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/54690E3D68",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerking en netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/95C3218741",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Diergeneeskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C31FB4F8F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Economie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D140CD77AB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Marketing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E6A75FB995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Constructiewerken, machinebankwerken, lassen, smeden, gieten",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/EF31BD21E3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Social media",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F1211E19F7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Dierverzorging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F46F3F7E96",
+      "categorie": "essentieel"
+    }
+  ]
+}

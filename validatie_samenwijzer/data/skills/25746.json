@@ -1,0 +1,69 @@
+{
+  "crebo": "25746",
+  "opleiding": "25746_BOL_2026__examenplan-25746-assistent-plant-dier-of-groene-omgeving-vastgesteld_",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Assistent plant, dier of groene omgeving",
+    "uri": "",
+    "definitie": "De Assistent plant, dier of groene omgeving verzorgt, kweekt en/of onderhoudt gewassen, plantmateriaal, dieren of dierlijke producten. Hij werkt bijvoorbeeld bij een hoveniersbedrijf, in de groenvoorziening, in bos- en natuurbeheer, veehouderijen of boerderijen. Op basis van instructies van zijn leidinggevende, voert hij werkzaamheden uit die meestal routinematig en eenvoudig zijn. Hij heeft basiskennis op het gebied van agrarische, hoveniers- en groenwerkzaamheden, verzorging van dieren en/of omgang met dierlijke producten. De Assistent plant, dier of groene omgeving werkt nauwkeurig en is collegiaal. Hij voert de werkzaamheden uit onder begeleiding en is verantwoordelijk voor het eigen werk."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Vervoeren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/57F37BF52D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplichtingen nakomen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6EDDE6185F",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Zelfstandig werken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5DED5A92E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verzorgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DB59A57C01",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Agrarische kennis",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/98A899BB98",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Personeelswerk",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AA15132AFE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    }
+  ]
+}

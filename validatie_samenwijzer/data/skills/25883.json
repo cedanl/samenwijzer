@@ -1,0 +1,79 @@
+{
+  "crebo": "25883",
+  "opleiding": "25883_oer_00_2025_tt_bbl_autoschadehersteller",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Autoschadehersteller",
+    "uri": "",
+    "definitie": "De autoschadehersteller voert demontage, vervangings- en herstelwerkzaamheden uit aan niet structurele delen van voertuigen en voertuigsystemen. Hij/zij heeft een uitvoerende rol en krijgt werkopdrachten van de leidinggevende. Hij/zij heeft technisch inzicht en voert de opdrachten volgens standaardroutine en vastgelegde procedures uit. De autoschadehersteller werkt zelfstandig, onder begeleiding van de direct leidinggevende en collega’s. Hij/zij is verantwoordelijk voor het goed uitvoeren van zijn werk, en schakelt collega’s in bij knelpunten. Hij/zij legt verantwoording af aan de leidinggevende over de voortgang van zijn/haar werkzaamheden."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Repareren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1C1D574677",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen signaleren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4D400FE127",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Procedures volgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/752EEDBE89",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installeren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5AD4F0905",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Elektrotechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/1EC7181B0B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Autoschade herstellen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/56394A5EF7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Carrosserie-, interieurbouw voertuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8C0921AB86",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouw van voertuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AC637FF773",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Elektronica",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D0532E336E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Klimaattechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E46D6D5DB8",
+      "categorie": "essentieel"
+    }
+  ]
+}
