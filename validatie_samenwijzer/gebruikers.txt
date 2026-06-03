@@ -24,163 +24,163 @@ Studentnummers: 100001 t/m 101300
 STUDENTEN (login op studentnummer) — eerste 3 per OER
 ------------------------------------------------------------
 
-Aeres MBO · 25916_BOL_2025__Examenplannen Hippisch 25-26 (crebo 25916, BOL 2025)
-  100601  Pieter Kuijpers
-  100602  Mark van Dijk
-  100603  Hamza Janssen
+Aeres MBO · 25915_BOL_2026__examenplan-25915-vakbekwaam-medewerker-paardensport-en--houderij-vastg (crebo 25915, BOL 2026)
+  100601  Fenna Janssen
+  100602  Sophie Smit
+  100603  Omar Kaur
 
-Aeres MBO · 25916_BOL_2024__Examenplannen Hippisch 24-25 (crebo 25916, BOL 2024)
-  100701  Fenna Dijkstra
-  100702  Sara Lammers
-  100703  Fleur de Boer
+Aeres MBO · 25996_BOL_2026__examenplan-25996-cordinator-duurzaamheid-vastgesteld_ (crebo 25996, BOL 2026)
+  100701  Lisa Vermeer
+  100702  Daan Mulder
+  100703  Lars Kaur
 
 Curio · 25581_oer_00_2025_vg_bol_onderzoeker-leefomgeving (crebo 25581, BOL 2025)
-  101201  Jesse Kaur
-  101202  Rick de Vries
-  101203  Justin Mulder
+  101201  Rick Singh
+  101202  Joren Kowalski
+  101203  Mark Nguyen
 
 Curio · 25650_oer_00_2025_zw_bol-bbl_apothekersassistent (crebo 25650, BOL 2025)
-  101101  Ryan Bouzid
-  101102  Anna Mulder
-  101103  Yasmin Hendriks
+  101101  Kevin de Vries
+  101102  Nora Bouzid
+  101103  Fatima Nguyen
 
 Da Vinci College · 25882_BOL_2025__25882BOL2025Examenplan (crebo 25882, BOL 2025)
-  100301  Joren Yilmaz
-  100302  Sem Kowalski
-  100303  Emma van Leeuwen
+  100301  Fleur Janssen
+  100302  Kevin Maas
+  100303  Julia Hendriks
 
 Da Vinci College · 25306_BBL_2025__25306BBL2025Examenplan (crebo 25306, BBL 2025)
-  100201  Jesse de Vries
-  100202  Hanna Ozturk
-  100203  Lina Ferreira
+  100201  Hamza Vermeer
+  100202  Bilal Smit
+  100203  Emma Meijer
 
 Koning Willem I College · 25122_BBL_2025__20260519_1206_Examenplan_25122Werkvoorbereiderfabricage (crebo 25122, BBL 2025)
-  101001  Amy Hendriks
-  101002  Sophie Kaur
-  101003  Iris Al-Hassan
+  101001  Tim Nguyen
+  101002  Laura Kuijpers
+  101003  Sem Janssen
 
 ROC Utrecht · Ondernemer handel (crebo 25880, BOL 2025)
-  100901  Sofie van den Berg
-  100902  Fleur Dijkstra
-  100903  Sem Dijkstra
+  100901  Sofie Bakker
+  100902  Sophie Nguyen
+  100903  Omar Al-Hassan
 
 ROC Utrecht · Medewerker evenementenorganisatie (crebo 25749, BOL 2025)
-  100801  Thijs Vermeer
-  100802  Isabel de Jong
-  100803  Stijn Vermeer
+  100801  Finn van Leeuwen
+  100802  Sanne de Groot
+  100803  Sander de Boer
 
 Rijn IJssel · 25880_BOL_2025__OER_2025_-_Ondernemer_Handel (crebo 25880, BOL 2025)
-  100501  Sofie van den Berg
-  100502  Rick de Jong
-  100503  Zoë van Dijk
+  100501  Tim van Dijk
+  100502  Daan Al-Hassan
+  100503  Daan van den Berg
 
 Rijn IJssel · 25749_BOL_2025__oer-2025-2026-ci-25749-medewerker-evenementenorganisatie (crebo 25749, BOL 2025)
-  100401  Milan Kowalski
-  100402  Joren Peeters
-  100403  Amy Nguyen
+  100401  Sofie Janssen
+  100402  Niels Peters
+  100403  Lina Willemsen
 
-Talland · 2021 - 25656 OER VIG BBL FLEX Vastgesteld (crebo 25656, BBL 2021)
-  100101  Lena Ferreira
-  100102  Anna Janssen
-  100103  Kevin Vermeer
-
-Talland · 2021 - 26027 OER MZG BOL Vastgesteld (crebo 26027, BOL 2021)
+Talland · 25749_BOL_2025__talland-Medewerker-Evenementenorganisatie (crebo 25749, BOL 2025)
   100001  Fleur Bouzid
-  100002  Hanna Nguyen
-  100003  Niels Vos
+  100002  Anouk Smit
+  100003  Fleur Lammers
+
+Talland · 25880_BOL_2025__talland-Ondernemer-handel (crebo 25880, BOL 2025)
+  100101  Bram Peters
+  100102  Aisha Vermeer
+  100103  Sara Kaur
 
 
 MENTOREN (login op volledige naam-string, bv. 'Manon Willemsen (25742)')
 ------------------------------------------------------------
 Per OER zijn er 5 mentoren — alle 50 hieronder, gegroepeerd per OER:
 
-Aeres MBO · 25916_BOL_2025__Examenplannen Hippisch 25-26 (crebo 25916, BOL 2025)
-  Mark Al-Hassan (25916)
-  Adam van der Berg (25916)
-  Fleur Willemsen (25916)
-  Thijs Al-Hassan (25916)
-  Anna Dekker (25916)
+Aeres MBO · 25915_BOL_2026__examenplan-25915-vakbekwaam-medewerker-paardensport-en--houderij-vastg (crebo 25915, BOL 2026)
+  Mohammed Ozturk (25915)
+  Laura Hendriks (25915)
+  Sophie Bouzid (25915)
+  Mariam Jacobs (25915)
+  Luca Mulder (25915)
 
-Aeres MBO · 25916_BOL_2024__Examenplannen Hippisch 24-25 (crebo 25916, BOL 2024)
-  Roos de Jong (25916)
-  Tim Ferreira (25916)
-  Joris Mulder (25916)
-  Emma Ferreira (25916)
-  Julia van Leeuwen (25916)
+Aeres MBO · 25996_BOL_2026__examenplan-25996-cordinator-duurzaamheid-vastgesteld_ (crebo 25996, BOL 2026)
+  Lena de Groot (25996)
+  Rayan Nguyen (25996)
+  Isabel Ferreira (25996)
+  Iris de Jong (25996)
+  Anna Hoekstra (25996)
 
 Curio · 25581_oer_00_2025_vg_bol_onderzoeker-leefomgeving (crebo 25581, BOL 2025)
-  Hanna Singh (25581)
-  Justin Mulder (25581)
-  Fleur Peeters (25581)
-  Justin Vermeer (25581)
-  Bram Singh (25581)
+  Mariam Bouzid (25581)
+  Daan Dekker (25581)
+  Yasmin Maas (25581)
+  Joris Hoekstra (25581)
+  Omar Peeters (25581)
 
 Curio · 25650_oer_00_2025_zw_bol-bbl_apothekersassistent (crebo 25650, BOL 2025)
-  Isabel Hendriks (25650)
-  Nathalie Al-Hassan (25650)
-  Lina Kuijpers (25650)
-  Adam Vos (25650)
-  Lars Willemsen (25650)
+  Thijs Dekker (25650)
+  Lena Janssen (25650)
+  Fleur van Dijk (25650)
+  Mark Bouzid (25650)
+  Finn Bouzid (25650)
 
 Da Vinci College · 25882_BOL_2025__25882BOL2025Examenplan (crebo 25882, BOL 2025)
-  Bram Vermeer (25882)
-  Niels de Groot (25882)
-  Sophie Meijer (25882)
-  Yasmin van den Berg (25882)
-  Sofie Kuijpers (25882)
+  Hamza Mulder (25882)
+  Mark van den Berg (25882)
+  Noah de Vries (25882)
+  Mariam Visser (25882)
+  Rayan Yilmaz (25882)
 
 Da Vinci College · 25306_BBL_2025__25306BBL2025Examenplan (crebo 25306, BBL 2025)
-  Adam van Leeuwen (25306)
-  Lena Mulder (25306)
-  Niels de Boer (25306)
-  Lars Lammers (25306)
-  Sophie Hendriks (25306)
+  Lena Bakker (25306)
+  Aisha van Dijk (25306)
+  Sander Ozturk (25306)
+  Rayan Postma (25306)
+  Nathalie Dekker (25306)
 
 Koning Willem I College · 25122_BBL_2025__20260519_1206_Examenplan_25122Werkvoorbereiderfabricage (crebo 25122, BBL 2025)
-  Joris van Dijk (25122)
-  Nathalie Nguyen (25122)
-  Sara Singh (25122)
-  Aisha van Leeuwen (25122)
-  Fenna Vos (25122)
+  Sem Meijer (25122)
+  Laura Smit (25122)
+  Bilal Lammers (25122)
+  Thomas Maas (25122)
+  Isabel Vos (25122)
 
 ROC Utrecht · Ondernemer handel (crebo 25880, BOL 2025)
-  Mark Nguyen (25880)
-  Omar van Dijk (25880)
-  Thomas Vos (25880)
-  Daan Lammers (25880)
-  Lars Visser (25880)
+  Amy Kuijpers (25880)
+  Lena El Amrani (25880)
+  Omar Bouzid (25880)
+  Sander Hendriks (25880)
+  Mark Vos (25880)
 
 ROC Utrecht · Medewerker evenementenorganisatie (crebo 25749, BOL 2025)
-  Aisha Jacobs (25749)
-  Nora Hoekstra (25749)
-  Tim Willemsen (25749)
-  Mariam Ferreira (25749)
-  Joris Hoekstra (25749)
+  Bram Bouzid (25749)
+  Lisa van den Broek (25749)
+  Milan Postma (25749)
+  Adam Ozturk (25749)
+  Ruben Ferreira (25749)
 
 Rijn IJssel · 25880_BOL_2025__OER_2025_-_Ondernemer_Handel (crebo 25880, BOL 2025)
-  Rick Ozturk (25880)
-  Laura Ferreira (25880)
-  Joris Meijer (25880)
-  Fenna Nguyen (25880)
-  Nora Visser (25880)
+  Omar Peters (25880)
+  Noah Ozturk (25880)
+  Tim de Jong (25880)
+  Lina El Amrani (25880)
+  Sofie Bouzid (25880)
 
 Rijn IJssel · 25749_BOL_2025__oer-2025-2026-ci-25749-medewerker-evenementenorganisatie (crebo 25749, BOL 2025)
-  Iris Singh (25749)
-  Ryan Kaur (25749)
-  Adam van Dijk (25749)
-  Mohammed Al-Hassan (25749)
-  Ryan Yilmaz (25749)
+  Zoë van Leeuwen (25749)
+  Milan Meijer (25749)
+  Bram Bakker (25749)
+  Pieter Nguyen (25749)
+  Thijs de Vries (25749)
 
-Talland · 2021 - 25656 OER VIG BBL FLEX Vastgesteld (crebo 25656, BBL 2021)
-  Sem Kaur (25656)
-  Rick Maas (25656)
-  Ryan Bakker (25656)
-  Jesse Smit (25656)
-  Mohammed Kaur (25656)
+Talland · 25749_BOL_2025__talland-Medewerker-Evenementenorganisatie (crebo 25749, BOL 2025)
+  Jesse Peeters (25749)
+  Julia Yilmaz (25749)
+  Aisha Visser (25749)
+  Sanne Vos (25749)
+  Anouk Singh (25749)
 
-Talland · 2021 - 26027 OER MZG BOL Vastgesteld (crebo 26027, BOL 2021)
-  Jesse Peeters (26027)
-  Julia Yilmaz (26027)
-  Aisha Visser (26027)
-  Sanne Vos (26027)
-  Anouk Singh (26027)
+Talland · 25880_BOL_2025__talland-Ondernemer-handel (crebo 25880, BOL 2025)
+  Pieter Bouzid (25880)
+  Jesse Dijkstra (25880)
+  Omar Vermeer (25880)
+  Finn Jacobs (25880)
+  Julia de Groot (25880)
