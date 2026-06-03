@@ -1,0 +1,104 @@
+{
+  "crebo": "25706",
+  "opleiding": "25706_BOL_2026__examenplan-25706-vakbekwaam-medewerker-bloem-groen-en-styling-vastgest",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Vakbekwaam medewerker bloem, groen en styling",
+    "uri": "",
+    "definitie": "De vakbekwaam medewerker bloem, groen en styling heeft een ondernemende en klantgerichte houding. Hij is communicatief en sociaal vaardig. Waar mogelijk stemt hij zijn communicatie af op de belevingswereld van de klant. Hij werkt professioneel en resultaatgericht en heeft aandacht voor de ontwikkeling van zijn beroepscompetenties. Hij volgt de relevante trends en ontwikkelingen in zijn vakgebied en implementeert deze waar mogelijk bij het maken en stylen van groene producten/arrangementen en/of (online) presentaties. Hij heeft commercieel inzicht en is kostenbewust. \n\nHij werkt samen in een team en geeft vaktechnische begeleiding aan collega’s. Hij staat voor de opgave om prioriteiten te stellen bij de uitvoering van al zijn werkzaamheden. Hij waarborgt optimale zorg voor de klant en de voortgang van de werkzaamheden. Ook waarborgt hij de hoge prioriteit voor de verzorging van het levende product ten opzichte van andere werkzaamheden."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/5C8ADA7777",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Creatief denken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/9DC1DB64EA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Adviseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CECB22E3FA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Rekenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5BBA931FB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Promoten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E06265451B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Gedrag en maatschappij",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4C0F7B99CE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Detailhandel",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/700FEDE0A1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Binnenhuisarchitectuur",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7798ED3562",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bloemschikken en aanverwante kunstnijverheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7C142D1FDD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Commerciële economie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8E7697EE1A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Marketing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E6A75FB995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Social media",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F1211E19F7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bloementeelt",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F3A4264F57",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beveiliging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FC6CB30FAD",
+      "categorie": "essentieel"
+    }
+  ]
+}

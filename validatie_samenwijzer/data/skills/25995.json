@@ -1,0 +1,119 @@
+{
+  "crebo": "25995",
+  "opleiding": "25995_BOL_2026__examenplan-25995-voeding--en-leefstijladviseur-vastgesteld_",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Voeding- en leefstijladviseur",
+    "uri": "",
+    "definitie": "De voeding- en leefstijladviseur geeft advies en voorlichting op basis van een vraag en begeleidt individuen en groepen bij een verandering van voeding- en leefstijlpatroon. De voeding- en leefstijladviseur werkt (in dienst van of als zelfstandige) in organisaties waar voeding en leefstijl een belangrijke rol spelen. Dat kunnen afslankstudio's zijn of voedingsklinieken, fitness centra, (voedingscentra in) ziekenhuizen, voor gemeentes (sociale domein) en zorginstellingen. De voeding- en leefstijladviseur kan ook als zelfstandig voeding- en leefstijladviseur werkzaam zijn voor particuliere klanten, bedrijven zoals cateringbedrijven, scholen, en bedrijfsrestaurants of gemeenten.\n\nDiens taken omvatten het analyseren van de eetgewoonten en levensstijl van cliënten, het opstellen van individuele voedings- en bewegingsplannen, en het bieden van ondersteuning en begeleiding bij het bereiken van gezondheidsdoelen. Daarnaast verstrekt die informatie over voedingsstoffen, voedselbereiding, etikettering, en gedragsverandering om gezonde keuzes te bevorderen."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Begrijpend lezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/2E80D9179C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Creatief denken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/9DC1DB64EA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Systeemevaluatie",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/A43394A208",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ontwerpen van systemen en producten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B4866702BB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Adviseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CECB22E3FA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Psychosociaal begeleiden",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D989743D35",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kritisch nadenken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E1F935288C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Psychologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/17998456DE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Biomedische wetenschappen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/42BB16307B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Levensmiddelentechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4B57E632B0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Zelfkennis en zelfbewustzijn",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4E00BC89EC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Geneeskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/512B5B0194",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Biologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/54690E3D68",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Sport en bewegen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/67945BB58E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Preventieve gezondheidszorg en - geneeskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BFE1C817CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voeding en gezondheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C3247434CD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Maten en getallen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/CB6BD3297B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderzoeksmethoden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E4B9A547C8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voeding en diëtetiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FF24F7C483",
+      "categorie": "essentieel"
+    }
+  ]
+}

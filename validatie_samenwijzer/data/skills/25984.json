@@ -1,0 +1,154 @@
+{
+  "crebo": "25984",
+  "opleiding": "25984_BOL_2026__examenplan-25984-vakbekwaam-medewerker-teelt-vastgesteld_",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Vakbekwaam medewerker teelt",
+    "uri": "",
+    "definitie": "De vakbekwaam medewerker teelt werkt zowel op kantoor als in de buitenlucht met verschillende soorten teelt en kent de samenhang tussen de verschillende teeltonderdelen en heeft technische kennis. Naast de uitvoerende rol, begeleidt en motiveert die andere medewerkers in het team. De vakbekwaam medewerker teelt kan goed samenwerken en past de werkwijze snel aan als omstandigheden, zoals het weer, veranderen. De vakbekwaam medewerker teelt werkt zelfstandig en is verantwoordelijk voor het eigen werk en veiligheid. Als die een team aanstuurt, is die verantwoordelijk voor hun veiligheid en de voortgang van het werk."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Instrueren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6AE2F3F890",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Monitoren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B03F4F484C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reflecteren op jezelf",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C21A058358",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Operationeel toezicht houden",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/FAB3EE0CD1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Land- en tuinbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/15C8D6A390",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Transport en logistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2F8C9BA908",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Veeteelt",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3C7D38D367",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Meteorologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/51538F0F62",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Biologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/54690E3D68",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieutechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/58823180FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Cultuurtechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6E3C9F1669",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Natuurbeheer en -bescherming",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6F92D368B4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Agrarische kennis",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/98A899BB98",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Agrarische economie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A4DEBBF783",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Veiligheidskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C34CD6448D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ladingbehandeling en intern transport",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D27283387C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsinformatica",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D313E86D1B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beheer en verwerking van afval",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E360B68955",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Scheikunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/EE4D07D17E",
+      "categorie": "essentieel"
+    }
+  ]
+}

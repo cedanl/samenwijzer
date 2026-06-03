@@ -1,0 +1,104 @@
+{
+  "crebo": "25980",
+  "opleiding": "25980_BOL_2026__examenplan-25980-vakexpert-voeding-kwaliteit-en-productontwikkeling-va",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Vakexpert voeding, kwaliteit en productontwikkeling",
+    "uri": "",
+    "definitie": "De vakexpert voeding, kwaliteit en productontwikkeling is de verbindende schakel tussen kwaliteit en voeding en heeft continu aandacht voor de kwaliteit en het verbeteren of vernieuwen van de voeding. Deze is verantwoordelijk voor het waarborgen van de kwaliteit en veiligheid van voedingsproducten gedurende het hele productieproces, van grondstofselectie tot distributie. Daarnaast is die betrokken bij het ontwikkelen van nieuwe producten en het verbeteren van bestaande producten, waarbij ze rekening houden met voedingswaarde, smaak, textuur en verpakking. De vakexpert voeding, kwaliteit en productontwikkeling werkt nauw samen met verschillende afdelingen binnen een voedselproductiebedrijf om ervoor te zorgen dat producten voldoen aan de wettelijke voorschriften en de verwachtingen van klanten. De vakexpert voeding, kwaliteit en productontwikkeling is gericht op maatschappelijke ontwikkelingen, is continu alert op veranderende (inter)nationale kwaliteitsnormen en heeft voortdurend aandacht voor de herkomst daarvan. De vakexpert voeding, kwaliteit en productontwikkeling heeft een uitvoerende, coördinerende, aansturende en adviserende rol en heeft een gedeelde verantwoordelijkheid voor huidige en nieuwe producten op het gebied van kwaliteit, voedselveiligheid, milieu en duurzaamheid."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Zorgvuldig werken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/73CE64DACE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Innoveren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/FCCEE4730B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Productietechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/04541FC2D1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Levensmiddelentechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4B57E632B0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ambachtelijke voedselbereiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/931B9AE84C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voeding en gezondheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C3247434CD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderzoeksmethoden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E4B9A547C8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Scheikunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/EE4D07D17E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Statistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F86A9B4290",
+      "categorie": "essentieel"
+    }
+  ]
+}

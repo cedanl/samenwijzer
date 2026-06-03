@@ -1,0 +1,144 @@
+{
+  "crebo": "25734",
+  "opleiding": "25734_BOL_2026__examenplan-25734-zelfstandig-medewerker-dierverzorging-vastgesteld_",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Zelfstandig medewerker dierverzorging",
+    "uri": "",
+    "definitie": "De beginnend beroepsbeoefenaar voert en verzorgt recreatiedieren en gezelschapsdieren, soms productiedieren. Hij/zij werkt in de detailhandel (bijvoorbeeld een dierenspeciaalzaak of een tuincentrum) of bij een dienstverlenend bedrijf (bijvoorbeeld een dierentuin, een asiel, een pension), soms in de veehouderij. De beginnend beroepsbeoefenaar is scherp op diergezondheid en dierenwelzijn. Zo zorgt hij/zij voor schone, veilige en verzorgde dierenverblijven en checkt het gedrag en de conditie van dieren. Hij/zij onderneemt actie bij afwijkingen. Daarnaast ontvangt hij/zij klanten of gasten, informeert hen vriendelijk en speelt in op emoties. Hij/zij houdt toezicht op de veiligheid van mens en dier, herkent risicovolle situaties en schakelt zo nodig hulp in. Hij/zij levert diensten of verkoopt producten, adviseert, instrueert en behandelt klachten. Tenslotte begeleidt hij/zij nieuwe medewerkers, bewaakt de voortgang en lost problemen op de werkvloer op - al dan niet samen met zijn/haar leidinggevende."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Digitale content ontwikkelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3679757482",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen oplossen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/53E033E58A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Timemanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D98DE01097",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verzorgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DB59A57C01",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Promoten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E06265451B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Dienstbaarheid tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/F755E32480",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Praktijkbegeleiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/21F4F846BF",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Grafisch ontwerpen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2DC70C1A23",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Gastvrijheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3F97DB848A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mediawijsheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4BA9106C1B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Biologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/54690E3D68",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Detailhandel",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/700FEDE0A1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Commerciële economie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8E7697EE1A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerking en netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/95C3218741",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voorraad- en magazijnbeheer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/99D6345CD2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Epidemiologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A148860D20",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Personeelswerk",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AA15132AFE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Diergeneeskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C31FB4F8F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verzorging recreatie-, gezelschap- en hobbydieren",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E973124820",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Social media",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F1211E19F7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Dierverzorging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F46F3F7E96",
+      "categorie": "essentieel"
+    }
+  ]
+}

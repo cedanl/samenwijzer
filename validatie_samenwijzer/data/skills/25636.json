@@ -1,0 +1,215 @@
+{
+  "crebo": "25636",
+  "opleiding": "25636_BOL_2025__vw-oer-motl-toerisme-2025",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "bestemmingsmanager",
+    "uri": "http://data.europa.eu/esco/occupation/425ed170-bf90-42c9-b5bd-148282ed96ff",
+    "definitie": "Bestemmingsmanagers zijn verantwoordelijk voor het beheer en de uitvoering van de nationale/regionale/lokale toerismestrategieën (of het beleid) voor de ontwikkeling, het op de markt brengen en de promotie van bestemmingen."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "beleidsdirecteur recreatie en toerisme",
+    "onderhandelaar toeristische contracten",
+    "vakdocent reizen en toerisme beroepsonderwijs",
+    "productmanager toerisme",
+    "bestemmingsmanager"
+  ],
+  "skills": [
+    {
+      "label": "toeristische bestemmingen evalueren",
+      "uri": "http://data.europa.eu/esco/skill/d800d4d8-df1c-4b41-99fe-88dd0f982e9c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toezicht houden op bemanning",
+      "uri": "http://data.europa.eu/esco/skill/9581639c-e521-4d12-9b4e-25faca24d34b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "een strategisch marketingplan opzetten voor beheer van toeristische bestemmingen",
+      "uri": "http://data.europa.eu/esco/skill/f7373df6-e5c5-4390-aa67-a48bddc5c1e6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheids-, veiligheids- en hygiënewetgeving op het gebied van voedsel naleven",
+      "uri": "http://data.europa.eu/esco/skill/0ff99f51-40d9-42f1-a1ec-377b2bb5e15f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "digitale marketingstrategieën plannen",
+      "uri": "http://data.europa.eu/esco/skill/736ef286-fbd3-4e5c-a4b4-d1e2008c9898",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "marketingplannen uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/d5493cca-ee21-4e43-8bcd-ec38680746cc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "budgetten beheren",
+      "uri": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "inspanningen van belanghebbenden coördineren voor gerichte promoties",
+      "uri": "http://data.europa.eu/esco/skill/d507a6e9-99e5-4e4a-b431-66ec390db2db",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "publiek-private samenwerking in het toerisme coördineren",
+      "uri": "http://data.europa.eu/esco/skill/73b87890-d2ec-4842-b824-b4851ff12051",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verkoopstrategieën",
+      "uri": "http://data.europa.eu/esco/skill/e7219848-a27a-4bf4-8775-d367707be7c9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "marktonderzoek uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/fe39d4db-4cb5-4299-bb9f-896c8fd6ab13",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zakenrelaties aangaan",
+      "uri": "http://data.europa.eu/esco/skill/dc72ad0a-c5dc-4abd-bc0d-ca43e82162e1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "productie en distributie van bestemmingspromotiemateriaal beheren",
+      "uri": "http://data.europa.eu/esco/skill/f162173b-2c79-42d0-9933-f45f4cf87e5c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toezicht houden op het ontwerp en het drukken van toeristenbrochures",
+      "uri": "http://data.europa.eu/esco/skill/5f3025b4-d007-465b-a9a8-26635a5cbc78",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "leiding geven bij het afdrukken van toeristische uitgaven",
+      "uri": "http://data.europa.eu/esco/skill/70bdcb55-eb38-4cfc-b346-a2dd9f65b06f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "marktanalyse",
+      "uri": "http://data.europa.eu/esco/skill/b011c8b4-76e1-4bbc-8bb9-1d205e7b618a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "lokale regionale of toeristische sector",
+      "uri": "http://data.europa.eu/esco/skill/221a3714-9a9e-43a4-869e-184bbea5e32d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "geografische gebieden met toeristische relevantie",
+      "uri": "http://data.europa.eu/esco/skill/fa64c52c-08cf-4074-bc9b-a93075802166",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "personeel aanwerven",
+      "uri": "http://data.europa.eu/esco/skill/496932f1-0b6b-4f73-9432-d95c7ddcd43b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "leiding geven aan personeel",
+      "uri": "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "distributie van promotiemateriaal voor bestemmingen beheren",
+      "uri": "http://data.europa.eu/esco/skill/2274827b-eeb5-457d-a60f-a3c04aedbc19",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "strategisch planningsproces van een merk leiden",
+      "uri": "http://data.europa.eu/esco/skill/fb221711-05c3-4196-ba72-813ed5bd040e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "optimale distributiekanalen selecteren",
+      "uri": "http://data.europa.eu/esco/skill/978657cb-f84f-4ddd-a1c0-36bf7b3b8682",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "een netwerk met leveranciers in de toeristensector opbouwen",
+      "uri": "http://data.europa.eu/esco/skill/c97ba966-6d85-4f07-bb24-f1f08f962f6c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "prijsstrategieën toepassen",
+      "uri": "http://data.europa.eu/esco/skill/183134a2-3f8e-4a38-9e81-35c2bec0272b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toeristische middelen voor een bestemming die verder ontwikkeld kan worden",
+      "uri": "http://data.europa.eu/esco/skill/b3eb90eb-73d0-43b9-b000-47f3f0f34563",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "strategisch denken toepassen",
+      "uri": "http://data.europa.eu/esco/skill/6c870993-9341-438b-91c0-c7fe4f96d8f5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "werkprocedures ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/c64c4f42-253b-4d53-8637-fd00d86100c7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contracten beheren",
+      "uri": "http://data.europa.eu/esco/skill/92721092-fe7c-4689-96bd-4f02385bc0e7",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "presentaties over toerisme geven",
+      "uri": "http://data.europa.eu/esco/skill/f79b4e88-864f-4d59-ae1c-077af72a76dd",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klantenoordelen analyseren",
+      "uri": "http://data.europa.eu/esco/skill/89ba58e8-a67e-4d2b-ad42-6acab25c241b",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "een jaarlijkse marketingbegroting opstellen",
+      "uri": "http://data.europa.eu/esco/skill/660060e4-c418-4049-836b-beade5f8a4a8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "operationele activiteiten coördineren",
+      "uri": "http://data.europa.eu/esco/skill/afdb41dd-5dd5-4fbb-bf9e-e041422698b4",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "relaties met leveranciers onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/3cd35f5d-ce6d-4f14-9a09-53d7a28d834c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toegangsstrategieën ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/e8ef317f-c880-4c7a-929f-e08053f976bb",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werknemers opleiden",
+      "uri": "http://data.europa.eu/esco/skill/e54ff029-1ce9-447d-a5b2-eb7283a23e6e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "informatiebrochures voor toeristen ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/d1e572a1-3cd9-4329-bccd-ff1309f02a1c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "een persmap voor de media ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/f5f53b80-29b5-4a7e-b876-803d8a07f60a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verslag doen over toeristische feiten",
+      "uri": "http://data.europa.eu/esco/skill/c0f624dd-080d-4577-b300-2e7cfcfaa6bf",
+      "categorie": "optioneel"
+    }
+  ]
+}

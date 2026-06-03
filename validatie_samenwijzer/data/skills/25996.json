@@ -1,0 +1,174 @@
+{
+  "crebo": "25996",
+  "opleiding": "25996_BOL_2026__examenplan-25996-cordinator-duurzaamheid-vastgesteld_",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Coördinator duurzaamheid",
+    "uri": "",
+    "definitie": "De coördinator duurzaamheid heeft een passie voor natuur, mensen in een duurzame leefomgeving (groen DNA). Bij alle werkzaamheden wordt de impact op de gezondheid en het welbevinden van mensen bewust afgewogen. Alle aspecten van duurzaamheid en de uitgangspunten van een circulaire economie spelen hierbij een belangrijke rol.\n\nDe coördinator duurzaamheid is ondernemend, enthousiast, sociaal, communicatief, organisatorisch sterk en proactief. De coördinator duurzaamheid legt verbanden tussen omgeving, werkzaamheden van het team en resultaten. In de vertaalslag van de omgeving naar een project of activiteiten is die creatief en laat hij onderscheidend vermogen zien. De coördinator duurzaamheid kan goed plannen en organiseren, heeft probleemoplossend vermogen en handelt creatief en flexibel in het oplossen van problemen. Hierbij kan die groepen mensen enthousiasmeren en kan samenwerken in een team. De coördinator duurzaamheid heeft verantwoordelijkheidsgevoel en ziet actief toe op veiligheid van werkzaamheden, activiteiten en derden."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Ideeën bedenken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/2492D7AE9B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen oplossen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/53E033E58A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Monitoren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B03F4F484C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leergierig zijn",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CB768EFA19",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kritisch nadenken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E1F935288C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsadministratie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/10FFC5435D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Psychologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/17998456DE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Praktijkbegeleiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/21F4F846BF",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Filosofie en ethiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/38D92CCA7E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3FC6552A85",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Zelfkennis en zelfbewustzijn",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4E00BC89EC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieutechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/58823180FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Hernieuwbare energiebronnen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/5D861F936D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Innovatiemethoden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/807C2437A2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Commerciële economie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8E7697EE1A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voorraad- en magazijnbeheer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/99D6345CD2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Sociale geografie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AD48565EA8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Technische industriële vormgeving",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E0852B65C2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderzoeksmethoden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E4B9A547C8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Marketing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E6A75FB995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Projectmanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F248B939CD",
+      "categorie": "essentieel"
+    }
+  ]
+}

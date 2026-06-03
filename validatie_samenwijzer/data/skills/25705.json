@@ -1,0 +1,184 @@
+{
+  "crebo": "25705",
+  "opleiding": "25705_BOL_2026__examenplan-25705-vakexpert-bloem-groen-en-styling-vastgesteld_",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Vakexpert bloem, groen en styling",
+    "uri": "",
+    "definitie": "De vakexpert bloem, groen en styling werkt bij bedrijven die (online) groene producten/arrangementen verkopen en/of groene events ontwerpen, ontwikkelen en uitvoeren. Ook kan hij zich als creatieve rechterhand of als zzp-er bezighouden met (online) vormgeven, decoreren en stileren. Dit doet hij in de context van groene, uit de natuur verkregen/op de natuur geïnspireerde materialen. De beginnend beroepsbeoefenaar heeft specialistische product- en vakkennis en beheerst een breed scala aan vakvaardigheden. Hij kan innovatief en volgens zijn eigen style werken, waarmee hij bijdraagt aan de creatieve signatuur van het bedrijf. Hij kan creatief, kritisch en probleemoplossend denken. Hij blijft zich voortdurend ontwikkelen en heeft een brede blik op trends en ontwikkelingen in het vakgebied. \n\nHij heeft commercieel inzicht en werkt resultaatgericht en planmatig. Hij combineert zijn ambachtelijke professionaliteit met commercieel handelen. Hij heeft een scherp oog voor commerciële kansen en creëert nieuwe invalshoeken en inzichten. Hij anticipeert op ontwikkelingen en wisselende omstandigheden en op basis daarvan maakt hij keuzes om de diverse aspecten van de bedrijfsvoering op elkaar af te stemmen en te integreren. Hij heeft een adviserende en klantgerichte houding en gebruikt zijn communicatieve en sociale vaardigheden om de wensen van de klant/opdrachtgever te achterhalen. Hij is in staat om met zijn werk aan te sluiten bij de belevingswereld en de wensen/behoeften van de klant/opdrachtgever binnen het beschikbare budget. Daarbij werkt hij kwaliteitsbewust en nauwkeurig."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Systeemanalyse",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4186375D3A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ondernemerszin tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/518455478C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/5C8ADA7777",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsprocessen verbeteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7C37C4FF38",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Creatief denken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/9DC1DB64EA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Monitoren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B03F4F484C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ontwerpen van systemen en producten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B4866702BB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Financiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/BC3AB34C1A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Adviseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CECB22E3FA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Rekenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5BBA931FB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Promoten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E06265451B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Innoveren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/FCCEE4730B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ontwikkelingskunde (regio)",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/0BC5A5B899",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsadministratie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/10FFC5435D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Gedrag en maatschappij",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4C0F7B99CE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Detailhandel",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/700FEDE0A1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Artistieke productvormgeving",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/741C671070",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Binnenhuisarchitectuur",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7798ED3562",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bloemschikken en aanverwante kunstnijverheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7C142D1FDD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Commerciële economie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8E7697EE1A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerking en netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/95C3218741",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voorraad- en magazijnbeheer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/99D6345CD2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Public relations",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DDB33F7221",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Marketing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E6A75FB995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Social media",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F1211E19F7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Projectmanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F248B939CD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bloementeelt",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F3A4264F57",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beveiliging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FC6CB30FAD",
+      "categorie": "essentieel"
+    }
+  ]
+}

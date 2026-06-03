@@ -1,0 +1,199 @@
+{
+  "crebo": "25720",
+  "opleiding": "25720_BOL_2025__vw-oer-bbk-bakkerij2025-bolbbl",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Leidinggevende bakkerij",
+    "uri": "",
+    "definitie": "De Leidinggevende bakkerij is verantwoordelijk voor de dagelijkse aansturing van de werkzaamheden in de bakkerij. Met groot kwaliteitsbewustzijn en een kritische blik focust hij/zij zich op de grondstoffen, producten en processen in de bakkerij. Als leidinggevende bevordert hij/zij de kwaliteit, het aanbod en de aantrekkelijkheid van het assortiment. Daarbij is de beroepsbeoefenaar alert op afwijkende omstandigheden in de bestellingen en/of voorraadruimtes, zodat hij/zij kan voorkomen dat producten niet gemaakt kunnen worden of bedorven raken. De beroepsbeoefenaar heeft aandacht voor duurzaamheid. Het gaat hier bijvoorbeeld om materiaal- en/of grondstofkeuze, verwerking van afval, gebruik van machines en bewust omgaan met (drink)water en/of energie. Verder toont de beroepsbeoefenaar creativiteit en improvisatievermogen bij het bedenken van nieuwe producten en recepten en speelt in op de wensen en behoeften van de klant. De leidinggevende bakkerij is zakelijk en fungeert als de schakel tussen werkvloer en management. De beroepsbeoefenaar werkt systematisch en plant werkzaamheden ook voor de lange termijn."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Ideeën bedenken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/2492D7AE9B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Begrijpend lezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/2E80D9179C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/5C8ADA7777",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsprocessen verbeteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7C37C4FF38",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Financiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/BC3AB34C1A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Delegeren ",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C8730D1BAB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Adviseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CECB22E3FA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Efficiënt werken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D28377D00A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Rekenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5BBA931FB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Promoten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E06265451B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Handvaardigheid",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E66E6D3B86",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Innoveren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/FCCEE4730B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsadministratie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/10FFC5435D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfseconomie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/53B4B474D1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Brood, gebak",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/832D8D5E31",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ambachtelijke voedselbereiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/931B9AE84C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reparatie en onderhoud van werktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/988374F8BD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voorraad- en magazijnbeheer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/99D6345CD2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Personeelswerk",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AA15132AFE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Veiligheidskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C34CD6448D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Etaleren en decoreren",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/CF6F4EDADB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsbemiddeling",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DB02391C00",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Marketing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E6A75FB995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reiniging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FB169E4860",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voeding en diëtetiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FF24F7C483",
+      "categorie": "essentieel"
+    }
+  ]
+}
