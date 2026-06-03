@@ -8,6 +8,7 @@ Bij elke seed-run wordt dit bestand overschreven.
 Instelling                 OERs  Mentoren  Studenten
 -----------------------------------------------------
 Aeres MBO                     2        10        200
+Curio                         2        10        200
 Da Vinci College              2        10        200
 Koning Willem I College       1         5        100
 ROC Utrecht                   2        10        200
@@ -17,7 +18,7 @@ Talland                       2        10        200
 Overgeslagen instellingen:
   - Koning Willem I College: slechts 1/2 OERs gebruikt
 
-Studentnummers: 100001 t/m 101100
+Studentnummers: 100001 t/m 101300
 
 
 STUDENTEN (login op studentnummer) — eerste 3 per OER
@@ -32,6 +33,16 @@ Aeres MBO · 25916_BOL_2024__Examenplannen Hippisch 24-25 (crebo 25916, BOL 2024
   100701  Fenna Dijkstra
   100702  Sara Lammers
   100703  Fleur de Boer
+
+Curio · 25581_oer_00_2025_vg_bol_onderzoeker-leefomgeving (crebo 25581, BOL 2025)
+  101201  Jesse Kaur
+  101202  Rick de Vries
+  101203  Justin Mulder
+
+Curio · 25650_oer_00_2025_zw_bol-bbl_apothekersassistent (crebo 25650, BOL 2025)
+  101101  Ryan Bouzid
+  101102  Anna Mulder
+  101103  Yasmin Hendriks
 
 Da Vinci College · 25882_BOL_2025__25882BOL2025Examenplan (crebo 25882, BOL 2025)
   100301  Joren Yilmaz
@@ -96,6 +107,20 @@ Aeres MBO · 25916_BOL_2024__Examenplannen Hippisch 24-25 (crebo 25916, BOL 2024
   Joris Mulder (25916)
   Emma Ferreira (25916)
   Julia van Leeuwen (25916)
+
+Curio · 25581_oer_00_2025_vg_bol_onderzoeker-leefomgeving (crebo 25581, BOL 2025)
+  Hanna Singh (25581)
+  Justin Mulder (25581)
+  Fleur Peeters (25581)
+  Justin Vermeer (25581)
+  Bram Singh (25581)
+
+Curio · 25650_oer_00_2025_zw_bol-bbl_apothekersassistent (crebo 25650, BOL 2025)
+  Isabel Hendriks (25650)
+  Nathalie Al-Hassan (25650)
+  Lina Kuijpers (25650)
+  Adam Vos (25650)
+  Lars Willemsen (25650)
 
 Da Vinci College · 25882_BOL_2025__25882BOL2025Examenplan (crebo 25882, BOL 2025)
   Bram Vermeer (25882)
