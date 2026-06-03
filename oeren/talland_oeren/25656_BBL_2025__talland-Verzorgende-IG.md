@@ -1,0 +1,4125 @@
+25656 Verzorgende-IG 24 maanden BBL HRN_
+C2025-2026
+
+Inhoudsopgave
+
+1. OER-wijzigingen
+
+2. Welkom
+
+3. Vorm en inhoud van het onderwijs
+
+4. Hoe ga je leren
+
+5. Voortgang en studieadvies
+
+6. Onderwijsprogrammering
+
+7. Examinering en diplomering
+
+8. Klachten en suggesties
+
+9. Belangrijke namen en adressen
+
+10. Examinering
+
+MBO-OER -wijzigingen
+
+Datum:
+
+Versienummer
+
+Verwerkt
+
+:
+
+door:
+
+Paragraaf:
+
+Paginanumme
+
+Omschrijving
+
+r:
+
+wijziging:
+
+MBO-Welkom
+
+Beste student,
+
+We heten je van harte welkom bij het Talland College! In deze informatiegids inclusief de
+
+Onderwijs- en Examenregeling (OER) vind je informatie over de opleiding waar je je voor hebt
+
+ingeschreven. Over wat je kunt leren, hoe we jou begeleiden en hoe we je beoordelen tijdens de
+
+opleiding.
+
+Veel is in deze OER te vinden, maar het Talland College heeft nog een aantal documenten
+
+waarin je meer specifieke informatie vindt. Aanvullende documenten kun je vinden op
+
+ConnectMe of in het studentenstatuut van het Talland College.
+
+Lees deze OER goed door. Het bevat de wederzijdse rechten en plichten die wij met elkaar zijn
+
+aangegaan. Is er iets niet duidelijk dan kun je altijd terecht bij je studieloopbaanbegeleider.
+
+We wensen je heel veel succes met het volgen van deze opleiding!
+
+Namens het directieteam,
+
+Omar Ramadan
+
+Voorzitter College van bestuur Talland College
+
+Marilene Streefland
+
+Lid College van bestuur Talland College
+
+MBO-Vorm en inhoud van het onderwijs
+
+Opleidingsduur
+
+Je hebt je ingeschreven voor de opleiding ?Verzorgende IG BBL.? De opleiding duurt 2 jaar.
+
+Leerweg
+
+Als je ervoor hebt gekozen deze opleiding te volgen terwijl je dit beroep in de praktijk al
+
+uitoefent, volg je de Beroepsbegeleidende Leerweg (BBL). Je werkt in een bedrijf of instelling en
+
+daarnaast volg je in deeltijd onderwijs. Je hebt hierbij geen recht op studiefinanciering.
+
+Opleidingsonderdelen
+
+Wat je als beginnend beroepsbeoefenaar moet kennen en kunnen aan het einde van je
+
+opleiding staat beschreven in een kwalificatiedossier. Het volledige kwalificatiedossier van je
+
+opleiding is te vinden op: http://kwalificaties.s-bb.nl
+
+Jouw opleiding bestaat uit:
+
+1. Het basisdeel dat wordt gevormd door:
+
+a. De beroepsgerichte onderdelen. Dit zijn gemeenschappelijke kerntaken en
+
+werkprocessen voor het gehele kwalificatiedossier.
+
+b. De generieke onderdelen. Dit zijn Nederlands, rekenen, loopbaan en burgerschap en bij
+
+niveau 4 opleidingen ook Engels.
+
+2. Het profieldeel. Profielen bestaan ook uit kerntaken en werkprocessen en kun je zien als
+
+een uitstroomrichting.
+
+3. Eén of meer keuzedelen afhankelijk van de opleiding die je volgt.
+
+beroepsgerichte onderdelen
+
+B1-K1-W1 Onderkent de gezondheidstoestand op
+
+somatisch en psychosociaal gebied
+
+(Gezondheidsbevorderaar)
+
+B1-K1-W2 Adviseert en instrueert over preventie
+
+(Gezondheidsbevorderaar)
+
+B1-K1-W3 Draagt mede zorg voor het individuele
+
+plan van de zorgvrager (Zorgverlener)
+
+B1-K1-W4 Voert zorg-/begeleidingsactiviteiten uit
+
+B1-K1 Bieden van zorg en ondersteuning
+
+(Zorgverlener)
+
+B1-K1-W5 Voert verpleegtechnische handelingen
+
+uit (Zorgverlener)
+
+B1-K1-W6 Communiceert met de zorgvrager en
+
+het sociale netwerk (Communicator)
+
+B1-K1-W7 Stemt de zorgverlening af met de
+
+zorgvrager en betrokkenen (Organisator)
+
+B1-K1-W8 Reageert op onvoorziene en
+
+crisissituaties (Organisator)
+
+B1-K2 Werken aan organisatie- en
+
+B1-K2-W1 Zorgt voor professionele ontwikkeling
+
+professiegebonden taken
+
+(Reflectieve EBP Professional)
+
+B1-K2-W2 Werkt samen met andere
+
+beroepsgroepen in de keten
+
+(Samenwerkingspartner)
+
+B1-K2-W3 Draagt bij aan goede kwaliteit van zorg
+
+(Professional en kwaliteitsbevorderaar)
+
+2.2.3 Profieldeel beroepsgericht
+
+Nvt
+
+Generieke onderdelen
+
+Voor het behalen van je kwalificatie moet je laten zien dat je voor de generieke onderdelen het
+
+volgende beheerst:
+
+Nederlandse taal
+
+De vaardigheden Lezen, Luisteren, Spreken, Gesprekken voeren en Schrijven.
+
+Rekenen
+
+De domeinen Grootheden en eenheden, Oriëntatie in twee- en driedimensionale wereld,
+
+Verhoudingen herkennen en gebruiken, Procenten gebruiken, Omgaan met kwantitatieve
+
+informatie.
+
+Loopbaan
+
+Loopbaan bestaat uit loopbaanoriëntatie, ontwikkeling en begeleiding. Je krijgt meer zicht op je
+
+eigen kwaliteiten, waarden, mogelijkheden en motivatie. Dit helpt je bij het maken van keuzes
+
+voor je opleiding, voor doorstroom naar een vervolgopleiding en voor je toekomstige beroep.
+
+Bij loopbaan oriëntatiebegeleiding (LOB) werk je tijdens je opleiding aan vijf
+
+loopbaancompetenties:
+
+motievenreflectie,
+
+kwaliteitenreflectie,
+
+werkexploratie,
+
+loopbaansturing
+
+netwerken.
+
+LOB kan plaatsvinden bij alle onderwijs- en begeleidingssituaties en is vastgelegd in het
+
+onderwijsprogramma. Er geldt een inspanningsverplichting.
+
+Burgerschap
+
+Naast je werk neem je als burger deel aan de maatschappij. Om volwaardig deel te kunnen
+
+nemen, moet je bijvoorbeeld kennis hebben van de organisatie van het bestuur van ons land,
+
+bewust werken aan je loopbaan en een kritische denkhouding ontwikkelen.
+
+Het onderdeel burgerschap bereid je voor op volwaardige deelname aan de maatschappij en
+
+professioneel functioneren in je beroep. De landelijke eisen die aan burgerschap gesteld
+
+worden gaan over vier dimensies namelijk:
+
+de politiek-juridische dimensie,
+
+de economische dimensie,
+
+de sociaal-maatschappelijke dimensie
+
+en de dimensie vitaal burgerschap.
+
+Voor burgerschap geldt een inspanningsverplichting.
+
+Keuzedelen
+
+Bij deze opleiding horen 720 studiebelastingsuren aan keuzedelen. Het aanbod keuzedelen
+
+wordt tijdig aangeboden door jouw opleiding in de keuzendelengids. Daaruit maak je een keuze.
+
+Mocht je een ander keuzedeel willen volgen dan jouw opleiding aanbiedt, bespreek dit dan met
+
+je studieloopbaanbegeleider.
+
+Na je opleiding
+
+Het mbo kent vier niveaus waarop je examens kunt doen, van Entree tot en met mbo-niveau 4.
+
+Je kunt in het mbo doorstromen naar een hoger niveau. In dit geval zou een passend vervolg de
+
+opleiding mbo-verpleegkundige kunnen zijn. Met het niveau 4-diploma kun je doorstromen naar
+
+een hbo-opleiding. Je kunt natuurlijk ook het beroep uitoefenen waarvoor je bent opgeleid. Je
+
+diploma geeft je een goede start op de arbeidsmarkt.
+
+MBO-Hoe ga je leren
+
+Leeractiviteiten
+
+Tijdens je opleiding krijg je te maken met verschillende leeractiviteiten om kennis, vaardigheden
+
+en houding aan te leren.
+
+Theorie- en praktijklessen.
+
+Je schoolrooster bestaat uit theorielessen en praktijklessen voor de beroepsgerichte
+
+onderdelen. Daarnaast krijg je lessen Nederlands, rekenen, keuzedelen, loopbaanoriëntatie en
+
+begeleiding, burgerschap en bij sommige opleidingen moderne vreemde talen.
+
+Beroepspraktijkvorming (BPV)
+
+Een deel van je opleiding leer je in de praktijk tijdens de beroepspraktijkvorming (BPV). Je leert
+
+de beroepspraktijk goed kennen en je kunt je kennis en vaardigheden in praktijk brengen. Dit
+
+doe je door als een medewerker mee te werken en te leren in een bedrijf of instelling.
+
+Studieloopbaanbegeleiding, huiswerk en excellentie
+
+Zelfstandig werken
+
+Een deel van de tijd werk je zelfstandig of samen met andere studenten aan projecten of
+
+opdrachten.
+
+Soms doe je dat in een lesruimte, op andere momenten doe je dat op andere studieplekken in
+
+de school.
+
+Er zijn altijd docenten in de buurt om jou te helpen als dat nodig is.
+
+Studieloopbaanbegeleiding
+
+In het kader van studieloopbaanbegeleiding volg je lessen en heb je gesprekken met je
+
+studieloopbaanbegeleider.
+
+Huiswerk / zelfstudie
+
+Natuurlijk krijg je ook huiswerk. Meestal in de vorm van te bestuderen lesstof of opdrachten die
+
+je zelfstandig moet maken. Je kunt dit thuis, maar ook op studieplekken in de school doen.
+
+Excellentie
+
+Als je goed presteert tijdens je opleiding en je wel wat meer wilt leren dan wat er in je opleiding
+
+wordt aangeboden, dan zijn er mogelijkheden om mee te doen aan een excellentieprogramma.
+
+Voorbeelden van excellentieprogramma’s zijn Cambridge Engels, excellentieprogramma
+
+internationalisering, ondernemerschap, vakwedstrijden, Skills of extra vakspecifieke
+
+programma’s. Je studieloopbaanbegeleider kan je informeren over de mogelijkheden om een
+
+excellentieprogramma te volgen.
+
+Erkend leerbedrijf en praktijkovereenkomst
+
+Erkend leerbedrijf
+
+De BPV volg je bij een erkend leerbedrijf. SBB (Samenwerkingsorganisatie Beroepsonderwijs
+
+Bedrijfsleven) regelt deze erkenning. Als je een werkgever vindt die nog niet erkend is, meld je
+
+dit bij de school. Wij kunnen dan helpen bij het aanvragen van de erkenning. Het bedrijf kan ook
+
+zichzelf aanmelden bij SBB.
+
+Praktijkovereenkomst
+
+Aan het begin van je beroepspraktijkvorming onderteken je een praktijkovereenkomst (POK)
+
+met de school en de werkgever. Daarin staan de rechten en plichten van de school, de
+
+werkgever en van jou als student.
+
+Onderwijs in een internationale context
+
+Het college biedt ook onderwijs aan in een internationale context aan. In jouw opleiding merk je
+
+daar het volgende van: het deelnemen aan een buitenlandse stage kan, maximaal voor een
+
+periode van 10 weken. Je dient hiervoor aan je werkgever toestemming te vragen. Het is
+
+mogelijk dat jouw opleidingsduur dan met maximaal 10 weken wordt verlengd.
+
+Begeleiding en ondersteuning
+
+Studieloopbaanbegeleiding
+
+Tijdens je studie heb je recht op studieloopbaanbegeleiding. De studieloopbaanbegeleider is
+
+jouw eerste aanspreekpunt als student en is ook verbonden aan je lesgroep. Tijdens de
+
+gezamenlijke lessen en de individuele voortgangsgesprekken is er aandacht voor jou en hoe het
+
+met je opleiding gaat. Daarnaast worden je behaalde resultaten, je houding, je
+
+studievaardigheden en eventueel persoonlijke omstandigheden besproken.
+
+Heb je aanvullende begeleiding tijdens je studie nodig, dan kan dit georganiseerd worden. Ook
+
+hiervoor is jouw studieloopbaanbegeleider jouw eerste aanspreekpunt. De
+
+studieloopbaanbegeleider wordt hierbij ondersteund door de regisseur studentbegeleiding & lob
+
+en/of de begeleidingsadviseur vanuit team advies en begeleiding die gekoppeld is aan jouw
+
+opleiding.
+
+We geven informatie aan je ouders/verzorgers over studievoortgang en verzuim, totdat je 18
+
+jaar bent. Daarna alleen als je daar zelf toestemming voor geeft.
+
+Passend onderwijzen
+
+Sinds 2014 is er de wet op passend onderwijs. Elke opleiding is wettelijk verplicht en
+
+verantwoordelijk voor het bieden van passend onderwijs aan studenten. Met passend
+
+onderwijzen bedoelen we bij Talland ook passend onderwijzen en betekent een zo passend
+
+mogelijke plek en begeleiding voor elke student. Dit betekent dat wij het onderwijs en
+
+examinering zó inrichten dat er al bij de start van de opleiding zo veel mogelijk rekening wordt
+
+gehouden met eventuele aanvullende begeleiding van studenten. Hierbij is de
+
+ondersteuningsbehoefte van de student leidend en niet de diagnose/aandoening.
+
+Deze aanvulling op studentbegeleiding wordt gegeven binnen de grenzen die door de opleiding
+
+en het toekomstige beroep worden gesteld. Deze aanvulling kan voortkomen uit:
+
+multi-problematiek, warme overdracht toeleverende school, OPP en/of transfercoach of bij
+
+student die doorstroomt vanuit de sector Start met een VSO/PRO achtergrond of anderstalig
+
+zijn
+
+een handicap, chronische ziekte die fysiek, psychisch, verstandelijk, onomkeerbaar of
+
+langdurig van aard zijn.
+
+De begeleiding van de student is altijd een samenspel tussen de student, de ouders/verzorgers,
+
+de studieloopbaanbegeleider, de betrokken docenten en de begeleidingsadviseur.
+
+Met ingang van 1 augustus 2023 is de Wet educatie en beroepsonderwijs (WEB) aangevuld met
+
+de Wet verbetering rechtsbescherming mbo-studenten.?Vanuit deze wet worden
+
+ondersteuningsafspraken voor het inschrijfbesluit afgestemd met student voor akkoord en bij
+
+voorkeur met ouders/verzorgers. Deze afspraken worden minimaal een keer per studiejaar
+
+geëvalueerd. Ondersteuningsafspraken kunnen ook gedurende de opleiding gemaakt worden.
+
+Voor meer informatie of vragen over passend onderwijzen kun je contact opnemen met je
+
+studieloopbaanbegeleider.
+
+MBO-Voortgang en studieadvies
+
+Toetsplan
+
+Om aan de inspanningsverplichting voor BPV, LOB en Burgerschap te voldoen, moet aan
+
+onderstaande eisen zijn voldaan:
+
+Beroepspraktijkvorming (BPV) – Verantwoording BPV verklaring
+
+De BPV is voldaan wanneer een student:
+
+Voldaan heeft aan de BPV-uren norm van de WEB
+
+Bij de evaluatie op niveau van beginnend beroepsbeoefenaar alle criteria heeft aangetoond
+
+Wanneer aan bovenstaande eisen is voldaan, wordt er een BPV-verklaring getekend en in het
+
+examendossier opgenomen.
+
+Loopbaan competenties – Bewijs inspanningsverplichting loopbaandossier*
+
+Individuele beoordeling van loopbaan wat leidt tot een getekende loopbaanverklaring voor het diploma
+
+(zie examenplan)
+
+*Competenties
+
+Motievenreflectie
+
+Kwaliteitenreflectie
+
+Werkexploratie
+
+Loopbaansturing
+
+Netwerken
+
+Activiteiten
+
+Portfolio
+
+Portfolio
+
+Portfolio
+
+Portfolio
+
+Portfolio
+
+*Het volledige overzicht met loopbaanactiviteiten wordt middels een LOB-studiewijzer met
+
+studenten gedeeld.
+
+Burgerschap dimensies – Activiteiten inspanningsverplichting
+
+Individuele beoordeling van Burgerschap wat leidt tot een getekende burgerschapsverklaring voor het
+
+diploma (zie examenplan)
+
+Dimensies
+
+Activiteiten per dimensie
+
+Toetsvorm
+
+Norm
+
+Politiek-juridische dimensie
+
+Reflectie
+
+Economische dimensie
+
+Reflectie
+
+Sociaal-maatschappelijke
+
+dimensie
+
+Reflectie
+
+Vitaal burgerschap
+
+Reflectie
+
+Voldaan
+
+Voldaan
+
+Voldaan
+
+Voldaan
+
+Het toetsplan voor het beroepsgerichte deel van jouw opleiding ziet er als volgt uit:
+
+Onderwijsee
+
+nheid?
+
+<verplicht>?
+
+Periode??
+
+Vorm?
+
+<verplicht>?
+
+<verplicht>?
+
+?
+
+?
+
+Startmodule
+
+Flexibel
+
+Portfolio
+
+AFP
+
+Flexibel
+
+Portfolio
+
+Kennistoets
+
+Beoordeling
+
+??
+
+<verplicht>?
+
+Telt mee??
+
+voor BSA*?
+
+<verplicht>?
+
+Voorwaarde
+
+lijk voor
+
+examinering
+
+Herkansbaa
+
+r*?
+
+?
+
+Ja
+
+Ja
+
+Ja
+
+Ja
+
+*?
+
+Ja
+
+Ja
+
+?
+
+Voldaan
+
+ja/nee
+
+Voldaan
+
+ja/nee
+
+Voldaan
+
+ja/nee
+
+Portfolio
+
+Voldaan
+
+beginner
+
+ja/nee
+
+?flexibel
+
+Portfolio
+
+Voldaan
+
+Ja
+
+Ja
+
+Ja
+
+B1-K1-W1
+
+Onderkent
+
+de
+
+gezondheid
+
+stoestand
+
+op
+
+somatisch
+
+en
+
+psychosocia
+
+al gebied
+
+?B1-K1-W2
+
+Adviseert en
+
+instrueert
+
+?flexibel
+
+over
+
+preventie
+
+gevorderde
+
+ja/nee
+
+Portfolio
+
+beginnend
+
+Voldaan
+
+beroepsbeo
+
+ja/nee
+
+efenaar
+
+Kennistoets
+
+Voldaan
+
+ja/nee ?
+
+Portfolio
+
+Voldaan
+
+beginner
+
+ja/nee
+
+Portfolio
+
+Voldaan
+
+gevorderde
+
+ja/nee
+
+Ja
+
+Ja
+
+Ja
+
+Portfolio
+
+beginnend
+
+Voldaan
+
+beroepsbeo
+
+ja/nee
+
+efenaar
+
+?B1-K1-W3
+
+Draagt
+
+mede zorg
+
+voor het
+
+?flexibel
+
+individuele
+
+plan van de
+
+zorgvrager
+
+?B1-K1-W4
+
+Voert zorg-
+
+/begeleiding
+
+?flexibel
+
+sactiviteiten
+
+uit
+
+?B1-K1-W5
+
+Voert
+
+verpleegtec
+
+hnische
+
+handelingen
+
+uit
+
+Ja
+
+Ja
+
+Ja
+
+?Ja
+
+Ja
+
+Ja
+
+Kennistoets
+
+Voldaan
+
+ja/nee ?
+
+Portfolio
+
+Voldaan
+
+beginner
+
+ja/nee
+
+Portfolio
+
+Voldaan
+
+gevorderde
+
+ja/nee
+
+Portfolio
+
+beginnend
+
+Voldaan
+
+beroepsbeo
+
+ja/nee
+
+efenaar
+
+Kennistoets
+
+Portfolio
+
+beginner
+
+Voldaan
+
+ja/nee?
+
+Voldaan
+
+ja/nee?
+
+Portfolio
+
+Voldaan
+
+gevorderde
+
+ja/nee?
+
+Portfolio
+
+beginnend
+
+Voldaan
+
+beroepsbeo
+
+ja/nee?
+
+efenaar
+
+Kennistoets
+
+Voldaan
+
+ja/nee?
+
+Portfolio
+
+beginner
+
+Voldaan
+
+ja/nee?
+
+?flexibel
+
+Portfolio
+
+Voldaan
+
+?Ja
+
+Ja
+
+?Ja
+
+gevorderde
+
+ja/nee?
+
+Portfolio
+
+beginnend
+
+Voldaan
+
+beroepsbeo
+
+ja/nee?
+
+efenaar
+
+?B1-K1-W6
+
+Communice
+
+ert met de
+
+zorgvrager
+
+?flexibel
+
+en het
+
+sociale
+
+netwerk
+
+?Ja
+
+Ja
+
+Ja
+
+Kennistoets
+
+Portfolio
+
+beginner
+
+Voldaan
+
+ja/nee?
+
+Voldaan
+
+ja/nee?
+
+Portfolio
+
+Voldaan
+
+gevorderde
+
+ja/nee?
+
+Portfolio
+
+beginnend
+
+Voldaan
+
+beroepsbeo
+
+ja/nee?
+
+efenaar
+
+Kennistoets
+
+Voldaan
+
+ja/nee?
+
+Portfolio
+
+Voldaan
+
+beginner
+
+ja/nee
+
+?flexibel
+
+Portfolio
+
+Voldaan
+
+?Ja
+
+Ja
+
+Ja
+
+gevorderde
+
+ja/nee
+
+Portfolio
+
+beginnend
+
+Voldaan
+
+beroepsbeo
+
+ja/nee
+
+efenaar
+
+Kennistoets
+
+Voldaan
+
+ja/nee
+
+Portfolio
+
+Voldaan
+
+beginner
+
+ja/nee
+
+?flexibel
+
+Portfolio
+
+Voldaan
+
+gevorderde
+
+ja/nee
+
+?Ja
+
+Ja
+
+Ja
+
+Portfolio
+
+beginnend
+
+Voldaan
+
+beroepsbeo
+
+ja/nee
+
+efenaar
+
+?B1-K1-W7
+
+Stemt de
+
+zorgverlenin
+
+g af met de
+
+zorgvrager
+
+en
+
+betrokkenen
+
+?B1-K1-W8
+
+Reageert op
+
+onvoorziene
+
+en
+
+crisissituatie
+
+s
+
+Kennistoets
+
+Voldaan
+
+?
+
+ja/nee ?
+
+Portfolio
+
+Voldaan
+
+beginner
+
+ja/nee
+
+?flexibel
+
+Portfolio
+
+Voldaan
+
+gevorderde
+
+ja/nee
+
+?Ja
+
+Ja
+
+Ja
+
+B1-K2-W1
+
+Zorgt voor
+
+professionel
+
+e
+
+ontwikkeling
+
+Portfolio
+
+beginnend
+
+Voldaan
+
+beroepsbeo
+
+ja/nee
+
+efenaar
+
+Kennistoets
+
+Voldaan
+
+ja/nee
+
+Portfolio
+
+Voldaan
+
+beginner
+
+ja/nee
+
+Portfolio
+
+Voldaan
+
+gevorderde
+
+ja/nee
+
+Portfolio
+
+beginnend
+
+Voldaan
+
+beroepsbeo
+
+ja/nee
+
+efenaar
+
+Kennistoets
+
+Voldaan
+
+ja/nee
+
+Portfolio
+
+Voldaan
+
+beginner
+
+ja/nee
+
+Portfolio
+
+Voldaan
+
+gevorderde
+
+ja/nee
+
+Portfolio
+
+beginnend
+
+Voldaan
+
+beroepsbeo
+
+ja/nee
+
+efenaar
+
+?B1-K2-W2
+
+Werkt
+
+samen met
+
+andere
+
+?flexibel
+
+beroepsgro
+
+epen in de
+
+keten
+
+B1-K2-W3
+
+Draagt bij
+
+aan goede
+
+kwaliteit van
+
+zorg
+
+Uitgangspunten BSA
+
+Positief BSA:
+
+?Ja
+
+Ja
+
+Ja
+
+Ja
+
+Ja
+
+Ja
+
+Je krijgt een positief BSA als 75% van alle gemaakte producten/toetsen/beoordelingen voldaan
+
+zijn. Voor overgang van leerjaar 1 naar leerjaar 2 is de richtlijn dat in ieder geval de startmodule
+
+is afgerond. Daarnaast moeten er nog minimaal drie andere modules zijn afgerond. Dit kan ook
+
+een combinatie betreffen van beroepsgerichte modules en/of keuzedelen. Met afgerond wordt
+
+bedoeld dat de kennistoets en portfolio's op de drie niveau's zijn voldaan.
+
+Negatief BSA:
+
+Je krijgt een voorlopig negatief BSA na 20 weken wanneer de coach en leerregisseur inschatten
+
+dat de hierboven beschreven norm niet gehaald gaat worden.
+
+Een definitief BSA wordt, bij onvoldoende studievoortgang, vóór 1 juni afgegeven.
+
+Persoonlijke omstandigheden, houding, aanwezigheid én beroepshouding in de praktijk worden
+
+meegewogen bij de beslissing voor een positief dan wel negatief bindend studieadvies. De
+
+opleidingsmanager is hierin de eindverantwoordelijke.
+
+Voorlopig studieadvies & Bindend studieadvies
+
+Wat betekent het studieadvies?
+
+Je krijgt tussen 9 en 12 maanden na aanvang van de opleiding een bindend studieadvies
+
+(BSA). Het BSA is afhankelijk van je studievoortgang en er wordt gekeken naar persoonlijke
+
+omstandigheden. Bij een positief BSA mag je de opleiding vervolgen. Bij een negatief BSA
+
+moet je stoppen met de opleiding en begeleiden we je naar een andere passende opleiding.
+
+Voordat een negatief BSA gegeven wordt, krijg je eerst een officiële waarschuwing en dit
+
+noemen we een voorlopig studieadvies (VSA). Als je het niet eens bent met het bindend
+
+studieadvies, dan kun je binnen twee weken na het uitgebrachte advies in beroep gaan bij de
+
+Commissie van Beroep voor de examens (klacht@talland.nl). De inschrijving kan pas definitief
+
+eindigen nadat de Commissie van Beroep voor de examens het beroep niet ontvankelijk of
+
+ongegrond heeft verklaard.
+
+Wat is de BSA-normering?
+
+De normering voor een positief BSA is dat je in ieder geval naar verwachting 75% van
+
+de toetsen van het eerste leerjaar hebt behaald. Let op dat met het woord toetsen niet
+
+alleen kennistoetsen, maar ook werkstukken, (BPV) opdrachten, presentaties, projecten
+
+enzovoort kan worden bedoeld.
+
+Hoe komt het BSA tot stand?
+
+Gedurende het schooljaar wordt je studievoortgang bijgehouden. Je krijgt
+
+regelmatig voortgangsgesprekken. De studievoortgang is voor jou en je ouder(s)/voogd(en)
+
+inzichtelijk in EduArte.
+
+Eind periode 1 en/of eind periode 2
+
+• Bij onvoldoende studievoortgang worden de zorgen geuit over jouw voortgang door één
+
+of meerdere gesprek(ken) met jou en eventueel je ouder(s)/voogd(en). De uitkomst van
+
+de gesprek(ken) wordt vastgelegd in een afsprakenlijst.
+
+Uiterlijk begin periode 3
+
+• Bij onvoldoende uitzicht op het behalen van de minimale eisen ontvang je een
+
+officiële waarschuwing per brief /e-mail. Deze waarschuwing noemen we een
+
+voorlopig studieadvies (VSA). De brief wordt toegelicht in een gesprek met jou en eventueel
+
+je ouder(s)/voogd(en).
+
+Uiterlijk 1 juni
+
+• Bij onvoldoende studievoortgang/ studiepunten (onder de minimumnorm) en na afwegen van
+
+persoonlijke omstandigheden volgt een schriftelijk negatief bindend studieadvies voor deze
+
+opleiding. Je wordt doorverwezen naar het expertisecentrum begeleiding/servicecentrum voor
+
+studiekeuzeadvies of intake bij een nieuwe opleiding.
+
+Uiterlijk eind periode 4
+
+• Bij voldoende studievoortgang krijg je van de studieloopbaanbegeleider te horen dat je
+
+de opleiding kunt vervolgen. Je krijgt een brief of e-mail met een positief bindend studieadvies.
+
+MBO-Onderwijsprogrammering
+
+Als student heb je recht op een bepaald aantal uren onderwijs in je opleiding. Het Talland
+
+College biedt jou daarom per schooljaar een onderwijsprogramma aan. Dit programma bestaat
+
+uit begeleide onderwijstijd (bot). Daarnaast leer je op een leerbedrijf, dat zijn de uren van de
+
+beroepspraktijkvorming (BPV/stage). Daarnaast zijn er ook zelfstudie-uren.
+
+In de volgende paragrafen vind je een overzicht van het onderwijsprogramma. In het
+
+programma tref je verschillende soorten leeractiviteiten aan. Hierbij is steeds het aantal studie-
+
+uren (SBU’s) vermeld. Dit is het totale aantal klokuren van 60 minuten dat het jou naar
+
+verwachting kost om de leeractiviteit tot een goed eindresultaat te brengen. Dit is uiteraard een
+
+gemiddelde. We geven bij de planning ook aan welke uren door ons begeleid worden en welke
+
+uren onbegeleid zijn. De onbegeleide uren kun je op studieplekken in de school besteden, maar
+
+soms ook thuis.
+
+Programmering leerjaar 1
+
+5.1. Programmering leerjaar 1
+
+Leerjaar 1
+
+P1
+
+Uren
+
+Leeractiviteiten
+
+Beroepsgerichte
+
+theoretische
+
+onderdelen
+
+AFP en VTV
+
+8
+
+Intervisie,
+
+Loopbaanoriëntati
+
+e, begeleiding,
+
+20
+
+SLB
+
+Thematische
+
+bijeenkomsten
+
+Zelfstandig
+
+werken aan
+
+module
+
+opdrachten
+
+30
+
+8
+
+P2
+
+Uren
+
+P3
+
+Uren
+
+P4
+
+Uren
+
+8
+
+20
+
+30
+
+8
+
+8
+
+20
+
+30
+
+8
+
+8
+
+20
+
+30
+
+8
+
+Generieke
+
+Onderdelen
+
+Nederlands
+
+Rekenen (inclusief
+
+medisch rekenen)
+
+Keuzedelen
+
+Burgerschap
+
+Beroepspraktijkvo
+
+rming BPV
+
+Totaal begeleide
+
+activiteiten
+
+4.5
+
+4.5
+
+200
+
+275
+
+Programmering leerjaar 2
+
+5.2. Programma leerjaar 2
+
+Leerjaar 1
+
+P1
+
+Uren
+
+Leeractiviteiten
+
+Beroepsgerichte
+
+theoretische
+
+onderdelen
+
+AFP en VTV
+
+8
+
+Intervisie,
+
+Loopbaanoriëntati
+
+e, begeleiding,
+
+20
+
+SLB
+
+Thematische
+
+bijeenkomsten
+
+30
+
+4.5
+
+4.5
+
+200
+
+275
+
+4.5
+
+4.5
+
+200
+
+275
+
+4.5
+
+4.5
+
+200
+
+275
+
+P2
+
+Uren
+
+P3
+
+Uren
+
+P4
+
+Uren
+
+8
+
+20
+
+30
+
+8
+
+20
+
+30
+
+8
+
+20
+
+30
+
+8
+
+8
+
+8
+
+8
+
+Zelfstandig
+
+werken aan
+
+module
+
+opdrachten
+
+Generieke
+
+Onderdelen
+
+Nederlands
+
+Rekenen (inclusief
+
+medisch rekenen)
+
+Keuzedelen
+
+Burgerschap
+
+Beroepspraktijkvo
+
+rming BPV
+
+Totaal begeleide
+
+activiteiten
+
+4.5
+
+4.5
+
+200
+
+275
+
+4.5
+
+4.5
+
+200
+
+275
+
+4.5
+
+4.5
+
+200
+
+275
+
+4.5
+
+4.5
+
+200
+
+275
+
+Programmering leerjaar 3
+
+NVT
+
+MBO-Examinering en diplomering
+
+Examenreglement
+
+Bij het examineren volgen we de regels van Examenreglement MBO van het Talland College.
+
+Het reglement kun je vinden op het studentenportaal. In het examenreglement vind je onder
+
+andere
+
+informatie over:
+
+• Inschrijven voor en deelnemen aan examens
+
+• Vrijstellingen
+
+• Examineren op een hoger niveau voor de generieke vakken
+
+• Bekendmaking van de examenuitslag
+
+• Herkansingen
+
+• Aangepaste examinering en hulpmiddelen
+
+• Onregelmatigheden en fraude
+
+• Inzagerecht
+
+• Bezwaar en beroep
+
+Het Talland College heeft de opleidingen ingedeeld in sectoren. De examencommissie van
+
+sector is verantwoordelijk voor de kwaliteit van de examinering en diplomering van jouw
+
+opleiding. Heb je een vraag over examinering? Dan kun je contact opnemen met
+
+de examencommissie.
+
+Diploma, mbo-certificaat of mbo-verklaring
+
+Om het diploma te behalen moet je:
+
+• de kerntaken en werkprocessen uit het basisdeel en profieldeel uit kunnen voeren op het
+
+niveau van een beginnend beroepsbeoefenaar. Je moet alle kerntaken met een
+
+voldoende resultaat afgesloten hebben;
+
+• voldaan hebben aan de exameneisen van de keuzedelen;
+
+• voldaan hebben aan de taal- en rekeneisen;
+
+• voldaan hebben aan de inspanningsverplichting loopbaan & burgerschap;
+
+• de BPV met goed gevolg hebben afgesloten;
+
+De bewijstukken hiervan worden bewaard in jouw examen/diploma dossier.
+
+Algemene informatie examinering
+
+Aantal examenkansen
+
+Voor elk examenonderdeel heb je twee examenkansen. De eerste poging en een herkansing.
+
+Wanneer jij alle kansen hebt verbruikt kun je een herkansingsverzoek indienen bij de
+
+examencommissie van jouw sector. Dit staat beschreven in het examenreglement.
+
+Mbo-certificaat
+
+Je ontvangt een mbo-certificaat van de sectorale examencommissie als:
+
+Je de school verlaat zonder diploma te hebben behaald, en
+
+wanneer je wel een resultaat/ waardering hebt behaald voor een of meerdere
+
+onderdeel/onderdelen van de opleiding waarvoor een certificaat is vastgesteld door de
+
+minister van OCW. In de Wet Educatie en Beroepsonderwijs is vastgelegd voor welke delen
+
+van de opleidingen een mbo-certificaat is vastgesteld.
+
+Mbo-verklaring
+
+Je ontvangt een mbo-verklaring van de sectorale examencommissie als je jonger bent dan 23
+
+jaar en de school zonder een diploma of startkwalificatie verlaat. Als je 23 jaar of ouder bent,
+
+dan kun je een mbo-verklaring krijgen als je zelf een verzoek indient bij de opleiding. De
+
+verklaring kan bijdragen aan het vinden van werk en/of terugkeer naar het mbo.
+
+Toegang tot examens
+
+Aan de toegang tot bepaalde examenonderdelen of -eenheden kunnen voorwaarden gesteld. In
+
+overleg met je mentor/loopbaancoach en docenten wordt bepaald of en wanneer je klaar bent
+
+voor het examen. In het examenplan staat vermeld waar dit van toepassing is en wat de
+
+voorwaarde is.
+
+In deze paragraaf is aangegeven uit welke examenonderdelen en -eenheden het examen
+
+bestaat. Verdere informatie over de planning, inhoud, organisatie, vorm van de
+
+examenonderdelen, wijze van beoordeling en gebruik van hulpmiddelen worden in de
+
+examenprogrammering vermeld.
+
+Uiterlijk zes weken voor afname van het examenonderdeel wordt deze informatie bekend
+
+gemaakt.
+
+Gebruikte afkortingen:
+
+TE = Theorie examens
+
+PE = Praktijkexamens
+
+PVB = Proeve(n) van bekwaamheid
+
+OP = Beoordeling van werkstukken, opdrachten of prestaties
+
+BPV = Beoordeling van de BPV
+
+PF = Bewijzen verzameld in portfolio
+
+0
+
+360 = 360 graden feedback
+
+AG = Assessmentgesprek
+
+CE = Centraal (landelijk) examen
+
+IE = Instellings (school) examen
+
+CGI = Criteriumgericht interview
+
+PR = Presentatie
+
+Examinering basisdeel beroepsspecifiek
+
+6.7. Examenplan
+
+In deze paragraaf is aangegeven uit welke examenonderdelen en -eenheden het examen
+
+bestaat. Verdere informatie over de planning, inhoud, organisatie, vorm van de
+
+examenonderdelen, wijze van beoordeling en gebruik van hulpmiddelen worden in de
+
+examenprogrammering vermeld.
+
+Uiterlijk zes weken voor afname van het examenonderdeel wordt deze informatie bekend
+
+gemaakt.
+
+Gebruikte afkortingen:
+
+TE = Theorie-examens
+
+PE = Praktijkexamens
+
+PVB = Proeve(n) van bekwaamheid
+
+OP = Beoordeling van werkstukken, opdrachten of prestaties
+
+BPV = Beoordeling van de BPV
+
+PF = Bewijzen verzameld in portfolio
+
+360 = 360° feedback
+
+AG = Assessmentgesprek
+
+CE = Centraal (landelijk) examen
+
+IE = Instellings (school) examen
+
+CGI = Criteriumgericht interview
+
+PR = Presentatie
+
+Examenplan
+
+Kwalificatiedossiernummer: 23268
+
+Versie kwalificatiedossier: Geldig vanaf 01-08-
+
+2020
+
+Vastgesteld door sectorale examencommissie
+
+d.d.: 11-07-2024
+
+Opleidingsnummer: 25656
+
+Naam uitstroomkwalificatie/opleiding:
+
+Verzorgende-IG
+
+Cohort: 2024/2025
+
+Leerweg: BBL (locaties Alkmaar en Hoorn)
+
+Om in aanmerking te komen voor een diploma moet je aan de eisen voldoen die beschreven
+
+zijn in dit Examenplan. De eisen betreffen vijf verschillende gebieden:
+
+1. Deel A. Examinering Basisdeel Beroepsgericht
+
+Dit is het overzicht van examens die je moet doen voor het beroepsgerichte basisdeel van je
+
+opleiding;
+
+1. Deel B. Examinering Profieldeel Beroepsgericht
+
+Dit is het overzicht van examens die je moet doen voor het beroepsgerichte profieldeel van je
+
+opleiding;
+
+1. Deel C. Examinering Basisdeel Algemeen
+
+Hier staat welke examens je moet doen voor Nederlands en rekenen en waar je aan moet
+
+voldoen voor het onderdeel Loopbaan en Burgerschap.
+
+1. Deel D. Eisen beroepspraktijkvorming
+
+Hier staan de eisen met betrekking tot de keuzedelenverplichting in deze opleiding.
+
+1. Deel E. Keuzedelen
+
+Een deel van je opleiding vindt plaats in de praktijk. Met welk deel van je opleiding je wanneer
+
+bezig bent in de BPV, staat hier beschreven. Ook wat je daarvoor als bewijs inlevert op school.
+
+Deel A. Examinering Basisdeel Beroepsspecifiek
+
+Examenonderdeel B1-K1:?Bieden van zorg en ondersteuning
+
+exameneenheid
+
+inhoud
+
+exame
+
+nvorm
+
+Voorwa
+
+arden
+
+voor
+
+deelna
+
+me
+
+periode
+
+Plaats
+
+Resulta
+
+afname
+
+at
+
+weging
+
+schaal
+
+eindres
+
+ultaat
+
+1.
+
+23268
+
+B1-K1-
+
+1
+
+Werk in
+
+uitvoeri
+
+ng
+
+Onderd
+
+eel van
+
+mbo-
+
+certifica
+
+at
+
+C0053,
+
+C0054,
+
+C0055
+
+en
+
+C0109
+
+B1-K1-
+
+W1:
+
+Onderk
+
+ent de
+
+gezond
+
+heidsto
+
+estand
+
+op
+
+somatis
+
+ch en
+
+psycho
+
+sociaal
+
+gebied
+
+(Gezon
+
+dheidsb
+
+evorder
+
+aar)
+
+B1-K1-
+
+W4:
+
+Voert
+
+zorg-
+
+/begelei
+
+dingsac
+
+tiviteite
+
+n uit
+
+(Zorgve
+
+rlener)
+
+Praktijk
+
+exame
+
+n
+
+Zie go
+
+no-go
+
+handlei
+
+ding
+
+examin
+
+ering
+
+flexibel
+
+BPV
+
+O
+
+V
+
+G
+
+O = 4?
+
+V = 6?
+
+G = 8?
+
+?
+
+zie
+
+Confor
+
+toelichti
+
+m de
+
+ng
+
+bereke
+
+ning
+
+van de
+
+exame
+
+nlevera
+
+ncier
+
+B1-K1-
+
+W2:
+
+Advise
+
+ert en
+
+instrue
+
+ert over
+
+prevent
+
+ie
+
+(Gezon
+
+dheidsb
+
+evorder
+
+aar)
+
+B1-K1-
+
+W6:
+
+Commu
+
+niceert
+
+met de
+
+zorgvra
+
+ger en
+
+het
+
+sociale
+
+netwerk
+
+(Comm
+
+unicato
+
+r)
+
+B1-K1-
+
+W3:
+
+Draagt
+
+mede
+
+zorg
+
+voor
+
+het
+
+individu
+
+ele plan
+
+van de
+
+23268
+
+B1-K1-
+
+2
+
+Commu
+
+nicatie
+
+en
+
+prevent
+
+ie
+
+Onderd
+
+eel van
+
+mbo-
+
+certifica
+
+at
+
+C0052
+
+en
+
+C0055
+
+23268
+
+B1-K1-
+
+3
+
+Zorg op
+
+maat
+
+Onderd
+
+eel van
+
+mbo-
+
+certifica
+
+zorgvra
+
+at
+
+ger
+
+C0109
+
+(Zorgve
+
+rlener)
+
+2.
+
+3.
+
+Praktijk
+
+exame
+
+n
+
+Zie go
+
+no-go
+
+handlei
+
+ding
+
+examin
+
+ering
+
+flexibel
+
+BPV
+
+O
+
+V
+
+G
+
+zie
+
+toelichti
+
+ng
+
+Praktijk
+
+exame
+
+n
+
+Zie go
+
+no-go
+
+handlei
+
+ding
+
+examin
+
+ering
+
+flexibel
+
+BPV
+
+O
+
+V
+
+G
+
+zie
+
+toelichti
+
+ng
+
+4.
+
+23268
+
+B1-K1-
+
+4
+
+Afstem
+
+men en
+
+samen
+
+werken
+
+Onderd
+
+eel van
+
+mbo-
+
+certifica
+
+at
+
+C0053
+
+B1-K1-
+
+W7:
+
+Stemt
+
+de
+
+zorgver
+
+lening
+
+af met
+
+de
+
+zorgvra
+
+ger en
+
+betrokk
+
+enen
+
+(Organi
+
+sator)
+
+B1-K2-
+
+W2:
+
+Werkt
+
+samen
+
+met
+
+andere
+
+beroep
+
+sgroep
+
+en in
+
+de
+
+keten
+
+(Samen
+
+werking
+
+spartne
+
+r)
+
+Praktijk
+
+exame
+
+n
+
+Zie go
+
+no-go
+
+handlei
+
+ding
+
+examin
+
+ering
+
+flexibel
+
+BPV
+
+O
+
+V
+
+G
+
+zie
+
+toelichti
+
+ng
+
+5.
+
+6.
+
+23268
+
+B1-K1-
+
+5
+
+Verplee
+
+gtechni
+
+sch
+
+handel
+
+en
+
+Onderd
+
+eel van
+
+mbo-
+
+B1-K1-
+
+W5:
+
+Voert
+
+verplee
+
+gtechni
+
+sche
+
+handeli
+
+ngen
+
+uit
+
+(Zorgve
+
+certifica
+
+rlener)
+
+Zie go
+
+no-go
+
+Simulat
+
+handlei
+
+ie
+
+ding
+
+examin
+
+ering
+
+flexibel
+
+school
+
+O
+
+V
+
+G
+
+zie
+
+toelichti
+
+ng
+
+at
+
+C0106
+
+23268
+
+B1-K1-
+
+6
+
+Reager
+
+en in
+
+onvoor
+
+ziene
+
+situatie(
+
+s)
+
+Onderd
+
+eel van
+
+mbo-
+
+certifica
+
+at
+
+C0052
+
+B1-K1-
+
+W8:
+
+Reagee
+
+rt op
+
+onvoor
+
+ziene
+
+en
+
+crisissit
+
+uaties
+
+(Organi
+
+sator)
+
+CGI
+
+aan de
+
+Zie go
+
+hand
+
+van
+
+no-go
+
+handlei
+
+verzam
+
+ding
+
+elde
+
+examin
+
+bewijss
+
+ering
+
+tukken
+
+Na
+
+module
+
+school
+
+7
+
+O
+
+V
+
+G
+
+zie
+
+toelichti
+
+ng
+
+Toelichting
+
+Om voor kerntaak B1-K1 te slagen, moet je voor elk examen minimaal een
+
+voldoende (>6) hebben behaald.
+
+Een examen beoordeeld met een onvoldoende (O) = 0 pnt.
+
+Een examen beoordeeld met een voldoende (V) = 1 pnt.
+
+Een examen beoordeeld met een goed (G) = 2 pnt.
+
+? ??
+
+Het eindoordeel van een kerntaak wordt uitgedrukt in een cijfer welke wordt
+
+berekend op basis van bovenstaande punten:
+
+10 – 12 punten resultaat kerntaak B1-K1: goed (G) (cijfer 8)
+
+6 - 9 punten resultaat kerntaak B1-K1: voldoende (V) (cijfer 6)
+
+1 of meer examens beoordeeld met 0 punten resultaat kerntaak B1-K1:
+
+onvoldoende (O) (cijfer 4)
+
+?
+
+De berekening van het resultaat gaat volgens de richtlijnen die zijn vastgesteld in
+
+het geldende Examenreglement mbo van het Talland College.
+
+Deel A. Examinering Basisdeel Beroepsspecifiek
+
+Examenonderdeel B1-K2:?Werken aan organisatie- en professiegebonden taken
+
+exameneenheid
+
+inhoud
+
+exame
+
+nvorm
+
+Voorwa
+
+arden
+
+voor
+
+deelna
+
+me
+
+periode
+
+Plaats
+
+Resulta
+
+afname
+
+at
+
+weging
+
+schaal
+
+eindres
+
+ultaat
+
+1.
+
+B1-K2-
+
+W1:
+
+Zorgt
+
+voor
+
+professi
+
+onele
+
+ontwikk
+
+eling
+
+(Reflect
+
+ieve
+
+EBP
+
+professi
+
+onal)
+
+B1-K2-
+
+W3:
+
+Draagt
+
+bij aan
+
+goede
+
+kwalitei
+
+t van
+
+zorg
+
+(Profes
+
+sional
+
+23268
+
+B1-K2-
+
+1
+
+Profess
+
+ionele
+
+ontwikk
+
+eling en
+
+kwalitei
+
+t
+
+Onderd
+
+eel van
+
+mbo-
+
+certifica
+
+at
+
+C0052,
+
+C0053,
+
+C0055,
+
+C0106
+
+en
+
+C0109
+
+en
+
+kwalitei
+
+tsbevor
+
+deraar)
+
+CGI
+
+aan de
+
+Zie go
+
+hand
+
+van
+
+no-go
+
+handlei
+
+verzam
+
+ding
+
+elde
+
+examin
+
+bewijss
+
+ering
+
+tukken
+
+Na
+
+module
+
+school
+
+7
+
+O
+
+V
+
+G
+
+O = 4?
+
+V = 6?
+
+G = 8?
+
+?
+
+zie
+
+Confor
+
+toelichti
+
+m de
+
+ng
+
+bereke
+
+ning
+
+van de
+
+exame
+
+nlevera
+
+ncier
+
+2.
+
+23268
+
+B1-K2-
+
+2
+
+Afstem
+
+men en
+
+samen
+
+werken
+
+Onderd
+
+eel van
+
+mbo-
+
+certifica
+
+at
+
+C0052
+
+Zie kerntaak B1-K1 Afstemmen en samenwerken
+
+O
+
+V
+
+G
+
+zie
+
+toelichti
+
+ng
+
+Toelichting
+
+Om voor kerntaak B1-K2 te slagen, moet je voor elk examen minimaal een
+
+voldoende (>6) hebben behaald.
+
+Een examen beoordeeld met een onvoldoende (O) = 0 pnt.
+
+Een examen beoordeeld met een voldoende (V) = 1 pnt.
+
+Een examen beoordeeld met een goed (G) = 2 pnt.
+
+? ??
+
+Het eindoordeel van een kerntaak wordt uitgedrukt in een cijfer welke wordt
+
+berekend op basis van bovenstaande punten:
+
+3 – 4 punten resultaat kerntaak B1-K2: goed (G) (cijfer 8)
+
+2 punten resultaat kerntaak B1-K2: voldoende (V) (cijfer 6)
+
+1 of meer examens beoordeeld met 0 punten resultaat kerntaak B1-K2:
+
+onvoldoende (O) (cijfer 4)
+
+?
+
+De berekening van het resultaat gaat volgens de richtlijnen die zijn vastgesteld in
+
+het geldende Examenreglement mbo van het Talland College.
+
+Wettelijke beroepsvereisten
+
+Deel B. Wettelijke beroepsvereisten
+
+Examenonderdeel P1?Verzorgende-IG
+
+Toelichting
+
+Het beroep Verzorgende-IG is gereglementeerd
+
+conform artikel 34 van de Wet BIG. Wanneer je
+
+aan de diploma-eisen van de opleiding
+
+Verzorgende-IG voldoet, heb je recht op het
+
+voeren van de beschermde opleidingstitel
+
+Verzorgende-IG.
+
+Vermelding wettelijke beroepsvereisten op
+
+diploma en resultatenlijst?
+
+Indien de student voldoet aan de gestelde eisen
+
+wordt op het diploma de volgende tekst
+
+opgenomen:?
+
+De kandidaat heeft voldaan aan de wettelijke
+
+beroepsvereisten zoals vermeld in de wet BIG,
+
+artikel 34, Algemene Maatregel van Bestuur,
+
+besluit 463, waarin de opleidingseisen en het
+
+deskundigheidsgebied zijn omschreven.
+
+Examinering Basisdeel Algemeen Nederlands en Rekenen
+
+Deel C. Examinering Basisdeel Algemeen Nederlands en Rekenen
+
+Examenonderdeel: Nederlands
+
+Exameneenheid
+
+Niveau
+
+Vorm
+
+Periode
+
+Plaats
+
+Weging
+
+Nederlan
+
+ds
+
+Lezen en luisteren
+
+2F
+
+flexibel
+
+School
+
+50%
+
+Centraal
+
+examen
+
+Instelling
+
+Schrijven
+
+2F
+
+sexamen
+
+flexibel
+
+School
+
+Spreken
+
+2F
+
+sexamen
+
+flexibel
+
+School
+
+Instelling
+
+50%
+
+Eindresu
+
+ltaat
+
+Afgerond
+
+heel
+
+cijfer
+
+Gesprekken voeren
+
+2F
+
+sexamen
+
+flexibel
+
+School
+
+Instelling
+
+Totaal
+
+Toelichting
+
+100%
+
+Het eindcijfer voor Nederlands komt tot stand door het gemiddelde te berekenen
+
+van het resultaat van het centraal examen en het instellingsexamen.
+
+Het eindcijfer Nederlands komt als afgerond eindresultaat op de resultatenlijst
+
+bij het diploma.
+
+?
+
+Het resultaat van het Instellingsexamen komt tot stand door het gemiddelde van
+
+de resultaten voor de drie taalvaardigheden schrijven, spreken en gesprekken
+
+voeren te berekenen.
+
+De resultaten van het centraal examen en van het instellingsexamen worden
+
+weergegeven met één decimaal.
+
+?
+
+De berekening van de gemiddelden gaat volgens de richtlijnen die zijn
+
+vastgesteld in het geldende Examenreglement MBO van het Talland College.
+
+Verder wordt het resultaat bepaald door de geldende richtlijnen van de overheid
+
+(informatie: https://taalenrekenenmbo.nl/).
+
+Rekenen
+
+Rekenva
+
+ardighei
+
+Niveau
+
+Vorm
+
+Periode
+
+Plaats
+
+Weging
+
+d
+
+Eindresu
+
+ltaat
+
+Groothe
+
+den en
+
+eenhede
+
+n
+
+Oriëntati
+
+e in
+
+twee- en
+
+driedime
+
+nsionale
+
+wereld
+
+Verhoudi
+
+ngen
+
+herkenn
+
+en en
+
+gebruike
+
+n
+
+Procente
+
+n
+
+gebruike
+
+n
+
+Omgaan
+
+met
+
+kwantitat
+
+ieve
+
+informati
+
+e
+
+Totaal
+
+Mbo-rekenniveau 3
+
+sexamen
+
+flexibel
+
+School
+
+100%
+
+Instelling
+
+Afgerond
+
+heel
+
+cijfer
+
+100%
+
+Als onderdeel van de slaag-zakregeling voor niveau 3 geldt onderstaande:
+
+Cijfer voor Nederlands tenminste een 5 mits voor rekenen tenminste een 6 behaald is of
+
+andersom.
+
+Slaag/zakregeling Basisdeel Algemeen
+
+Als onderdeel van de slaag/zak regeling geldt onderstaande:
+
+Voor niveau 2 en niveau 3 geldt:
+
+Cijfer voor Nederlands tenminste een 5, mits voor rekenen tenminste een 6 behaald is of
+
+andersom.
+
+Examinering Loopbaan en Burgerschap
+
+Deel C. Examinering Basisdeel Algemeen Loopbaan en Burgerschap
+
+Loopbaan
+
+Diploma-eis
+
+Periode
+
+Eindresultaat
+
+De student heeft
+
+voldaan aan de
+
+eisen zoals die
+
+door de opleiding
+
+zijn beschreven,
+
+een verklaring
+
+hiervan is
+
+opgeslagen in het
+
+diplomadossier.
+
+Voldoet aan de
+
+generieke eisen
+
+Alle periodes
+
+Loopbaan
+
+Voldaan/Niet
+
+voldaan
+
+Burgerschap
+
+Diploma-eis
+
+Periode
+
+Eindresultaat
+
+De student heeft
+
+voldaan aan de
+
+eisen zoals die
+
+door de opleiding
+
+Voldoet aan de
+
+zijn beschreven,
+
+generieke eisen
+
+Alle periodes
+
+een verklaring
+
+Burgerschap
+
+Voldaan/Niet
+
+voldaan
+
+hiervan is
+
+opgeslagen in het
+
+diplomadossier.
+
+Loopbaan en
+
+Burgerschap
+
+BPV
+
+Deel D. BPV
+
+BPV
+
+BPV
+
+Diploma-eis
+
+Periode
+
+Eindresultaat
+
+Individuele
+
+eindbeoordeling
+
+van de BPV
+
+De student heeft
+
+voldaan aan de
+
+eisen zoals die
+
+door de opleiding
+
+zijn beschreven,
+
+een verklaring
+
+hiervan is
+
+opgeslagen in het
+
+diplomadossier.
+
+Voldoet aan de
+
+opgestelde eisen
+
+Alle periodes
+
+voor de BPV
+
+Voldaan/Niet
+
+voldaan
+
+Diploma-eisen Keuzedelen
+
+Deel E. Keuzedelen
+
+Toelichting keuzedelen:
+
+Welke keuzedelen je gaat volgen, bepaal je in overleg met de opleiding. Sommige keuzedelen
+
+kunnen verplicht zijn, deze worden dan door alle studenten van jouw opleiding gevolgd. Het kan
+
+gebeuren dat een bepaald keuzedeel niet doorgaat. Bijvoorbeeld als te weinig studenten het
+
+keuzedeel hebben gekozen. De keuzedelen die aan jouw opleiding zijn gekoppeld zijn
+
+opgenomen in de keuzedelengids.
+
+Om je diploma te behalen gelden de volgende eisen:
+
+1. Het aantal uren van de keuzedelen waaraan je moet voldoen zijn 720 uur.
+
+2. Het gemiddelde van de examenresultaten van de keuzedelen moet tenminste een 6 of
+
+tenminste ‘voldoende’ zijn. Voor het berekenen van dit gemiddelde worden de afgeronde
+
+cijfers gebruikt.?Het gaat daarbij om een geheel cijfer. Wanneer er sprake is van een o/v/g-
+
+schaal, dan wordt het resultaat voor deze berekening vertaald naar een geheel cijfer.
+
+3. Voor minimaal de helft van deze keuzedelen moet het resultaat tenminste een 6 of
+
+tenminste ‘voldoende’ zijn.
+
+4. Het eindresultaat van een keuzedeel is minimaal een 4 of een daarmee overeenkomende
+
+eindwaardering.
+
+De omvang (SBU) van het keuzedeel wordt niet meegenomen in de weging van het
+
+gemiddelde.
+
+Mbo-certificaten
+
+Certificeerbare eenheden
+
+Mbo-certificaat Creëren van een optimale woon- en leefomgeving voor de
+
+zorgvrager (C0052)
+
+exameneenheid
+
+inhoud
+
+weging
+
+eindresultaat
+
+C1-K1: Bieden
+
+van zorg en
+
+ondersteuning
+
+(deels)
+
+C1-K 1-W1:
+
+Adviseert en
+
+instrueert over
+
+preventie
+
+23268 C0052-1
+
+Communicatie en
+
+(Gezondheidsbev
+
+preventie
+
+orderaar)
+
+C1-K 1-W2:
+
+Communiceert
+
+met de zorgvrager
+
+en het sociale
+
+netwerk
+
+(Communicator)
+
+C1-K1: Bieden
+
+van zorg en
+
+ondersteuning
+
+(deels)
+
+C1-K 1-W3:
+
+Reageert op
+
+onvoorziene en
+
+crisissituaties
+
+(Organisator)
+
+C1-K2: Werken
+
+aan organisatie-
+
+en
+
+25 %
+
+professiegebonde
+
+n taken (deels)
+
+23268 C0052-2
+
+Reageren in
+
+onvoorziene
+
+situatie(s)
+
+23268 C0052-3
+
+Professionele
+
+ontwikkeling en
+
+kwaliteit
+
+25 %
+
+25 %
+
+Afgerond heel
+
+cijfer
+
+1.
+
+2.
+
+3.
+
+C1-K 2-W1: Zorgt
+
+voor professionele
+
+ontwikkeling
+
+(Reflectieve EBP
+
+professional)
+
+4.
+
+23268 C0052-4
+
+Afstemmen en
+
+samenwerken
+
+C1-K2: Werken
+
+aan organisatie-
+
+en
+
+professiegebonde
+
+n taken (deels)
+
+C1-K 2-W2: Werkt
+
+25 %
+
+samen met
+
+andere
+
+beroepsgroepen
+
+in de keten
+
+(Samenwerkingsp
+
+artner)
+
+Toelichting
+
+Je hebt recht op het mbo-certificaat ‘Creëren van een
+
+optimale woon- en leefomgeving voor de zorgvrager’ als je bij
+
+het voortijdig verlaten van de opleiding bovenstaande vier
+
+examens met tenminste een voldoende resultaat (>6) hebt
+
+afgerond. Compensatie is niet mogelijk. Je vindt de examens
+
+terug in Deel A van het examenplan.
+
+Het eindoordeel wordt bepaald op grond van bovenstaande
+
+weging. Het eindoordeel is een afgerond cijfer van 1 tot 10.
+
+Certificeerbare eenheden
+
+Mbo-certificaat Individuele zorg verlenen (C0053)
+
+exameneenheid
+
+inhoud
+
+weging
+
+eindresultaat
+
+C1-K1: Bieden
+
+van zorg en
+
+ondersteuning
+
+23268 C0053-1
+
+(deels)
+
+1.
+
+2.
+
+3.
+
+Werk in
+
+uitvoering
+
+23268 C0053-2
+
+Afstemmen en
+
+samenwerken
+
+23268 C0053-3
+
+Professionele
+
+ontwikkeling en
+
+kwaliteit
+
+C1-K 1-W1: Voert
+
+33,3 %
+
+zorg-
+
+/begeleidingsactivi
+
+teiten uit
+
+(Zorgverlener)
+
+C1-K2-W1: Werkt
+
+aan professionele
+
+ontwikkeling
+
+(Reflectieve EBP
+
+professional)
+
+C1-K 1-W2: Stemt
+
+zorgverlening af
+
+met alle
+
+betrokkenen
+
+(Organisator)
+
+C1-K2: Werken
+
+aan organisatie-
+
+en
+
+professiegebonde
+
+n taken (deels)
+
+C1-K 2-W1: Zorgt
+
+voor professionele
+
+ontwikkeling
+
+(Reflectieve EBP
+
+professional)
+
+C1-K2: Werken
+
+aan organisatie-
+
+Afgerond heel
+
+cijfer
+
+33,3 %
+
+en
+
+33,3 %
+
+professiegebonde
+
+n taken (deels)
+
+C1-K 2-W2:
+
+Draagt bij aan
+
+goede kwaliteit
+
+van zorg
+
+(Professional en
+
+kwaliteitsbevorder
+
+aar)
+
+Toelichting
+
+Je hebt recht op het mbo-certificaat ‘Individuele zorg
+
+verlenen’ als je bij het voortijdig verlaten van de opleiding
+
+bovenstaande drie examens met tenminste een voldoende
+
+resultaat (>6) hebt afgerond. Compensatie is niet mogelijk.
+
+Je vindt de examens terug in Deel A van het examenplan.
+
+Het eindoordeel wordt bepaald op grond van bovenstaande
+
+weging. Het eindoordeel is een afgerond cijfer van 1 tot 10.
+
+Certificeerbare eenheden
+
+Mbo-certificaat Basis voor deskundige zorg (C0054)
+
+exameneenheid
+
+inhoud
+
+weging
+
+eindresultaat
+
+1.
+
+23268 C0054-1
+
+Werk in
+
+uitvoering
+
+C1-K1: Bieden
+
+van zorg en
+
+ondersteuning
+
+C1-K 1-W1:
+
+Onderkent de
+
+gezondheidstoest
+
+and op somatisch
+
+en psychosociaal
+
+gebied
+
+100 %
+
+Afgerond heel
+
+cijfer
+
+C1-K 1-W2: Voert
+
+zorg-
+
+/begeleidingsactivi
+
+teiten uit
+
+(Zorgverlener)
+
+Toelichting
+
+Je hebt recht op het mbo-certificaat ‘Basis voor deskundige
+
+zorg’ als je bij het voortijdig verlaten van de opleiding
+
+bovenstaand examen met tenminste een voldoende resultaat
+
+(>6) hebt afgerond. Je vindt het examen terug in Deel A van
+
+het examenplan.
+
+Het eindoordeel wordt bepaald op grond van bovenstaande
+
+weging. Het eindoordeel is een afgerond cijfer van 1 tot 10.
+
+Certificeerbare eenheden
+
+Mbo-certificaat Regievoering en vakontwikkeling in de zorg (C0055)
+
+exameneenheid
+
+inhoud
+
+weging
+
+eindresultaat
+
+C1-K1: Bieden
+
+van zorg en
+
+ondersteuning
+
+C1-K 1-W1:
+
+Onderkent de
+
+gezondheidstoest
+
+23268 C0055-1
+
+and op somatisch
+
+1.
+
+Werk in
+
+uitvoering
+
+en psychosociaal
+
+gebied
+
+(Gezondheidsbev
+
+orderaar)
+
+C1-K 1-W3: Voert
+
+zorg-
+
+/begeleidingsactivi
+
+teiten uit
+
+(Zorgverlener)
+
+33,3 %
+
+Afgerond heel
+
+cijfer
+
+2.
+
+3.
+
+C1-K1: Bieden
+
+van zorg en
+
+ondersteuning
+
+C1-K 1-W2:
+
+Adviseert en
+
+instrueert over
+
+preventie
+
+(Gezondheidsbev
+
+33,3 %
+
+orderaar)
+
+C1-K 1-W4:
+
+Communiceert
+
+met de zorgvrager
+
+en het sociale
+
+netwerk
+
+(Communicator)
+
+C1-K2: Werken
+
+aan
+
+professiegebonde
+
+n taken
+
+C1-K2-W1: Zorgt
+
+voor professionele
+
+ontwikkeling
+
+(Reflectieve EBP
+
+professional)
+
+33,3 %
+
+23268 C0055-2
+
+Communicatie en
+
+preventie
+
+23268 C0055-3
+
+Professionele
+
+ontwikkeling en
+
+kwaliteit
+
+Toelichting
+
+Je hebt recht op het mbo-certificaat ‘Regievoering en
+
+vakontwikkeling in de zorg’ als je bij het voortijdig verlaten
+
+van de opleiding bovenstaande drie examens met tenminste
+
+een voldoende resultaat (>6) hebt afgerond. Compensatie is
+
+niet mogelijk. Je vindt de examens terug in Deel A van het
+
+examenplan.
+
+Het eindoordeel wordt bepaald op grond van bovenstaande
+
+weging. Het eindoordeel is een afgerond cijfer van 1 tot 10.
+
+Certificeerbare eenheden
+
+Mbo-certificaat Verpleegtechnisch handelen, niveau 3 (C0106)
+
+exameneenheid
+
+inhoud
+
+weging
+
+eindresultaat
+
+1.
+
+2.
+
+C1-K1: Bieden
+
+van zorg en
+
+ondersteuning
+
+(deels)
+
+C1-K 1-W1: Voert
+
+verpleegtechnisch
+
+e handelingen uit
+
+(Zorgverlener)
+
+C1-K2: Werken
+
+aan organisatie-
+
+en
+
+professiegebonde
+
+n taken (deels)
+
+C1-K2-W1: Zorgt
+
+voor professionele
+
+ontwikkeling
+
+(Reflectieve EBP
+
+professional)
+
+23268 C0106-1
+
+Verpleegtechnisch
+
+handelen
+
+23268 C0106-2
+
+Professionele
+
+ontwikkeling en
+
+kwaliteit
+
+Toelichting
+
+50 %
+
+50 %
+
+Afgerond heel
+
+cijfer
+
+Je hebt recht op het mbo-certificaat ‘Verpleegtechnisch
+
+handelen, niveau 3’ als je bij het voortijdig verlaten van de
+
+opleiding bovenstaande twee.0 examens met tenminste een
+
+voldoende resultaat (>6) hebt afgerond. Compensatie is niet
+
+mogelijk. Je vindt de examens terug in Deel A van het
+
+examenplan.
+
+Het eindoordeel wordt bepaald op grond van bovenstaande
+
+weging. Het eindoordeel is een afgerond cijfer van 1 tot 10.
+
+Certificeerbare eenheden
+
+Mbo-certificaat Zorgplan ontwikkelen (C0109)
+
+exameneenheid
+
+inhoud
+
+weging
+
+eindresultaat
+
+1.
+
+2.
+
+3.
+
+23268 C0109-1
+
+Werk in
+
+uitvoering
+
+33,3 %
+
+C1-K1: Bieden
+
+van zorg en
+
+ondersteuning
+
+C1-K 1-W1:
+
+Onderkent de
+
+gezondheidstoest
+
+and op somatisch
+
+en psychosociaal
+
+gebied
+
+(Gezondheidsbev
+
+orderaar)
+
+C1-K1: Bieden
+
+van zorg en
+
+ondersteuning
+
+33,3 %
+
+Afgerond heel
+
+cijfer
+
+33,3 %
+
+23268 C0109-2
+
+B1-K1-W3: Draagt
+
+Zorg op maat
+
+23268 C0109-3
+
+Afstemmen en
+
+samenwerken
+
+mede zorg voor
+
+het individuele
+
+plan van de
+
+zorgvrager
+
+(Zorgverlener)
+
+C1-K2: Werken
+
+aan organisatie-
+
+en
+
+professiegebonde
+
+n taken (deels)
+
+C1-K2-W1: Zorgt
+
+voor professionele
+
+ontwikkeling
+
+(Reflectieve EBP
+
+professional)
+
+Toelichting
+
+Je hebt recht op het mbo-certificaat ‘ Zorgplan ontwikkelen’
+
+als je bij het voortijdig verlaten van de opleiding
+
+bovenstaande drie examens met tenminste een voldoende
+
+resultaat (>6) hebt afgerond. Compensatie is niet mogelijk.
+
+Je vindt de examens terug in Deel A van het examenplan.
+
+Het eindoordeel wordt bepaald op grond van bovenstaande
+
+weging. Het eindoordeel is een afgerond cijfer van 1 tot 10.
+
+MBO-Klachten en suggesties
+
+Natuurlijk doen we onze uiterste best om je zo goed mogelijk op te leiden en te begeleiden. Vind
+
+je dat we daarin slagen of vind je dat het beter kan? Heb je een klacht? Bespreek dit dan met je
+
+studieloopbaanbegeleider, docent of praktijkbegeleider. Kom je er met hen niet uit? Ga dan naar
+
+de opleidingsmanager van jouw opleiding. Stel dat je niet tot een oplossing komt, dan kun je
+
+een klacht indienen door een mail te sturen naar klacht@talland.nl.
+
+Vertrouwenspersoon
+
+Heb je een klacht over ongewenst gedrag (discriminatie, seksuele intimidatie, pesten of
+
+agressie), ga dan naar de vertrouwenspersoon.
+
+We behandelen alle klachten vertrouwelijk en een klacht indienen heeft nooit gevolgen voor de
+
+manier waarop je in je studie wordt begeleid of beoordeeld.
+
+Informatie over de klachtenregeling en de vertrouwenspersoon vind je op ConnectMe en in het
+
+studentenstatuut.
+
+Rechten en plichten
+
+Bij studeren aan het Talland College horen rechten en plichten. Het Talland College heeft?een
+
+studentenstatuut, waarin de rechten en plichten van de?student en van de school zijn
+
+beschreven. Een klachtenreglement maakt onderdeel uit van het statuut. Iedereen die nieuw op
+
+school komt, krijgt het studentenstatuut uitgereikt.?Het studentenstatuut, andere reglementen
+
+en nuttige?informatie voor studenten vind je op de website van het Talland College.?
+
+Heb je klachten?
+
+Heb je een?klacht over de organisatie, over het gedrag van personeel of over genomen
+
+beslissingen, leg?de klacht dan altijd eerst voor aan de desbetreffende medewerker of de?
+
+desbetreffende dienst of afdeling van?de school. Kom je er niet uit? Dan heeft het Talland
+
+College een?ombudsfunctionaris?(voor onrechtmatige behandeling, stagediscriminatie,
+
+enzovoort) en een?vertrouwenspersoon?(bij vragen over grensoverschrijdend gedrag).
+
+Je vindt de Klachten- en geschillenregeling van het Talland College op ConnectMe.
+
+MBO-Belangrijke namen en adressen
+
+Examinering
+
