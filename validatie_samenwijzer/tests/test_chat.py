@@ -120,6 +120,57 @@ def test_identificeer_leerweg_case_insensitive():
     assert resultaat[0]["_score"] >= 2
 
 
+def test_identificeer_expliciete_instelling_wint_bij_gelijk_crebo():
+    """Een genoemde instelling overstemt de OER van een ándere instelling met
+    hetzelfde crebo maar een 'schonere' (los geschreven) opleidingsnaam (kwic-bug)."""
+    oers = [
+        # kwic: opleidingsnaam aaneengeplakt in de bestandsnaam → matcht geen losse woorden
+        _oer_row(
+            id=1,
+            naam="kwic",
+            display_naam="Koning Willem I College",
+            crebo="25122",
+            opleiding="25122_BBL_2025__Examenplan_25122Werkvoorbereiderfabricage",
+        ),
+        # talland: nette losse opleidingsnaam → scoort op opleidingswoorden
+        _oer_row(
+            id=2,
+            naam="talland",
+            display_naam="Talland",
+            crebo="25122",
+            opleiding="2021 - 25122 VG OER Werkvoorbereider fabricage",
+        ),
+    ]
+    for vraag in (
+        "Werkvoorbereider fabricage bij kwic",
+        "Werkvoorbereider fabricage Koning Willem",
+    ):
+        resultaat = identificeer_oer_kandidaten(oers, vraag, min_score=1)
+        assert resultaat[0]["id"] == 1, vraag
+
+
+def test_identificeer_instelling_alias_kw1c():
+    """De merknaam-afkorting 'KW1C' (niet af te leiden uit sleutel 'kwic') matcht via alias."""
+    oers = [
+        _oer_row(
+            id=1,
+            naam="kwic",
+            display_naam="Koning Willem I College",
+            crebo="25122",
+            opleiding="25122_BBL_2025__Examenplan_25122Werkvoorbereiderfabricage",
+        ),
+        _oer_row(
+            id=2,
+            naam="talland",
+            display_naam="Talland",
+            crebo="25122",
+            opleiding="2021 - 25122 VG OER Werkvoorbereider fabricage",
+        ),
+    ]
+    resultaat = identificeer_oer_kandidaten(oers, "KW1C werkvoorbereider fabricage", min_score=1)
+    assert resultaat[0]["id"] == 1
+
+
 # ── kwalificatiedossier ───────────────────────────────────────────────────────
 
 
@@ -167,7 +218,9 @@ def test_bouw_systeem_zonder_instelling_bron_geen_blok():
 
 
 def test_bouw_systeem_lege_instelling_bron_tekst_geen_blok():
-    systeem = bouw_systeem("OER-tekst", "Kok", "Da Vinci", instelling_bronnen=[("Examenreglement", "")])
+    systeem = bouw_systeem(
+        "OER-tekst", "Kok", "Da Vinci", instelling_bronnen=[("Examenreglement", "")]
+    )
     assert "=== EXAMENREGLEMENT" not in systeem
 
 

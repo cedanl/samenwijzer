@@ -436,7 +436,14 @@ def identificeer_oer_kandidaten(oers: list, tekst: str, min_score: int = 0) -> l
     """Geeft OER-kandidaten gesorteerd op match-score (hoogste eerst).
 
     Scoort op: crebo-nummer (+3), leerweg (+2), cohortjaar (+2),
-    opleidingswoorden (+1 elk, max 2), instellingsnaam (+1).
+    opleidingswoorden (+1 elk, max 2), instellingsnaam (+3).
+    De instellingsnaam weegt bewust even zwaar als het crebo: een expliciet genoemde
+    instelling moet de OER van een ándere instelling met dezelfde opleidingswoorden
+    overstemmen (anders wint de instelling met de "schoonste" opleidingsnaam, bv.
+    Talland boven kwic, waarvan de opleidingsnaam aaneengeplakt in de bestandsnaam zit).
+    Bewust niet zwaarder dan crebo (+3): zo blijft het crebo het sterkste enkele
+    signaal en degradeert een toevallige stad/naam-match ("Utrecht") tot een
+    gelijkspel-dropdown i.p.v. een stille verkeerde keuze.
     CamelCase-namen (Da Vinci-stijl) worden gesplitst vóór matching.
     Numerieke tokens worden uitgesloten zodat jaarcijfers niet dubbel tellen.
     """
@@ -444,6 +451,9 @@ def identificeer_oer_kandidaten(oers: list, tekst: str, min_score: int = 0) -> l
     tekst_woorden = set(re.findall(r"\w+", tekst_lower))
     kandidaten = []
     _generiek = {"college", "school", "mbo", "roc"}
+    # Officiële afkortingen die niet uit de display-naam of sleutel af te leiden zijn
+    # (kwic ≠ de merknaam "KW1C"). Per instelling-sleutel uitbreidbaar.
+    _aliassen = {"kwic": {"kw1c"}}
 
     for oer in oers:
         d = dict(oer)
@@ -470,10 +480,16 @@ def identificeer_oer_kandidaten(oers: list, tekst: str, min_score: int = 0) -> l
         }
         score += min(sum(1 for w in woorden if w in tekst_woorden), 2)
 
-        for deel in d["display_naam"].lower().split():
-            if len(deel) >= 4 and deel not in _generiek and deel in tekst_woorden:
-                score += 1
-                break
+        # Instellingsmatch op woorden uit de display-naam ("Koning", "Willem") én
+        # de korte sleutel ("kwic"). Eén match volstaat voor de volle bonus.
+        inst_woorden = {
+            w for w in d["display_naam"].lower().split() if len(w) >= 4 and w not in _generiek
+        }
+        if d.get("naam"):
+            inst_woorden.add(d["naam"].lower())
+            inst_woorden |= _aliassen.get(d["naam"].lower(), set())
+        if inst_woorden & tekst_woorden:
+            score += 3
 
         if score >= min_score:
             kandidaten.append({**d, "_score": score})
