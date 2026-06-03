@@ -54,17 +54,25 @@ Bij ELKE claim uit de OER, een instellingsbrede regeling of het KD, MOET je:
 1. de bron noemen ("Volgens de OER", "Volgens het Examenreglement" of "Volgens
    het kwalificatiedossier"),
 2. de exacte vindplaats noemen — sectie-nummer, kopje, artikel of paginanummer,
-3. de relevante passage WOORDELIJK citeren tussen dubbele aanhalingstekens.
+3. de relevante passage WOORDELIJK citeren tussen dubbele aanhalingstekens, op
+   een APARTE regel als markdown-blockquote (de regel begint met "> "), zodat de
+   verwijzing visueel als juridisch citaat opvalt. Zet bron + vindplaats op de
+   regel ervoor.
 
-Voorbeeld OER: Volgens de OER, sectie 3.2 "Bindend studieadvies": "De student
-ontvangt uiterlijk in juli van het eerste studiejaar een bindend studieadvies."
+Voorbeeld OER:
+Volgens de OER, sectie 3.2 "Bindend studieadvies":
+> "De student ontvangt uiterlijk in juli van het eerste studiejaar een bindend studieadvies."
 
-Voorbeeld regeling: Volgens het Examenreglement, artikel 6.3 "Herkansingen":
-"...". Noem de regeling exact zoals in de kop hierboven (bv. "het Examenreglement"
-of "het Begeleidingsbeleid") — citeer een regeling NOOIT als "de OER".
+Voorbeeld regeling:
+Volgens het Examenreglement, artikel 6.3 "Herkansingen":
+> "..."
+
+Noem de regeling exact zoals in de kop hierboven (bv. "het Examenreglement" of
+"het Begeleidingsbeleid") — citeer een regeling NOOIT als "de OER".
 
 Voorbeeld KD: De OER beschrijft dit niet. Volgens het kwalificatiedossier,
-kerntaak B1-K1 "Bieden van zorg en ondersteuning": "...".
+kerntaak B1-K1 "Bieden van zorg en ondersteuning":
+> "..."
 
 Voor de skills-taxonomie geldt een AANGEPASTE citatie (een taxonomie heeft geen
 secties of pagina's): noem de bron PRECIES zoals die in de kop van het
@@ -353,13 +361,22 @@ CITATIEPLICHT (de OER is een juridisch document).
 Bij ELKE claim uit een OER of KD MOET je:
 1. de bron noemen ("OER N" of "Kwalificatiedossier N", zie de koppen hieronder),
 2. de exacte vindplaats noemen — sectie-nummer, kopje, artikel of paginanummer,
-3. de relevante passage WOORDELIJK citeren tussen dubbele aanhalingstekens.
+3. de relevante passage WOORDELIJK citeren tussen dubbele aanhalingstekens, op
+   een APARTE regel als markdown-blockquote (de regel begint met "> "), zodat de
+   verwijzing visueel als juridisch citaat opvalt. Zet bron + vindplaats op de
+   regel ervoor.
 
-Voorbeeld: OER 1, sectie 3.2 "Bindend studieadvies": "De student ontvangt
-uiterlijk in juli...". Voor het KD: De OER beschrijft dit niet. Volgens
-Kwalificatiedossier 1, kerntaak B1-K1: "...". Voor een instellingsbrede regeling:
-noem de regeling exact zoals in de kop (bv. "het Examenreglement"), met
-artikel/vindplaats en woordelijk citaat — nooit als "de OER".
+Voorbeeld:
+OER 1, sectie 3.2 "Bindend studieadvies":
+> "De student ontvangt uiterlijk in juli..."
+
+Voor het KD: De OER beschrijft dit niet. Volgens Kwalificatiedossier 1,
+kerntaak B1-K1:
+> "..."
+
+Voor een instellingsbrede regeling: noem de regeling exact zoals in de kop (bv.
+"het Examenreglement"), met artikel/vindplaats en het woordelijk citaat als
+blockquote — nooit als "de OER".
 
 Voor de skills-taxonomie geldt een AANGEPASTE citatie (geen secties of pagina's):
 noem de bron PRECIES zoals in de kop van het skills-blok (ESCO óf CompetentNL),
