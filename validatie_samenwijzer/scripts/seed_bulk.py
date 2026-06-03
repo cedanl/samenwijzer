@@ -48,6 +48,9 @@ INSTELLINGEN: list[dict] = [
     {"naam": "aeres", "display_naam": "Aeres MBO", "klas_prefix": "AE"},
     {"naam": "utrecht", "display_naam": "ROC Utrecht", "klas_prefix": "UT"},
     {"naam": "kwic", "display_naam": "Koning Willem I College", "klas_prefix": "KW"},
+    # Curio als laatste toevoegen: de seed deelt één Random(2026) in lijst-volgorde,
+    # dus appenden houdt de studenten van bestaande instellingen identiek.
+    {"naam": "curio", "display_naam": "Curio", "klas_prefix": "CU"},
 ]
 
 VOORNAMEN_V = [

@@ -334,6 +334,7 @@ def extraheer_tekst(pad: Path) -> str:
 
 _INSTELLINGEN = {
     "aeres": "Aeres MBO",
+    "curio": "Curio",
     "davinci": "Da Vinci College",
     "kwic": "Koning Willem I College",
     "rijn_ijssel": "Rijn IJssel",
@@ -343,6 +344,7 @@ _INSTELLINGEN = {
 
 _MAP_NAAM = {
     "aeres": "aeres_oeren",
+    "curio": "curio_oeren",
     "davinci": "davinci_oeren",
     "kwic": "kwic_oeren",
     "rijn_ijssel": "rijn_ijssel_oer",

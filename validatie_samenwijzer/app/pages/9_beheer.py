@@ -41,7 +41,7 @@ if os.environ.get("BEHEER_ENABLED", "").lower() != "true":
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 _PROJECT_ROOT = Path(__file__).resolve().parents[2]
-_INSTELLING_KEYS = ["aeres", "davinci", "kwic", "rijn_ijssel", "talland", "utrecht"]
+_INSTELLING_KEYS = ["aeres", "curio", "davinci", "kwic", "rijn_ijssel", "talland", "utrecht"]
 
 
 _BUFFER_REGELS = 300
