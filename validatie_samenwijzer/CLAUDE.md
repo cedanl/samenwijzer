@@ -170,27 +170,48 @@ COMPETENTNL_API_KEY=...      # optioneel: skills-build gebruikt CompetentNL ipv 
 
 ## Multi-machine workflow
 
-De **root-`oeren/`-tree** (de app gebruikt `../oeren` via `OEREN_PAD`) is **getrackt in
-git** — er staan ~1900 OER-bestanden (PDF + markitdown-`.md`) in versiebeheer. Let op: dit
-wijkt af van eerdere documentatie; de `oeren/`-regel in `validatie_samenwijzer/.gitignore`
-dekt alléén een (niet-bestaande) `validatie_samenwijzer/oeren/`, niet de root-tree.
-`validatie.db` is **wél** gitignored en wordt per machine opgebouwd uit de oeren-tree.
-Box (`box:samenwijzer/oeren`) blijft de centrale grote-bestanden-store en back-up naast git;
-nieuwe OER-bestanden horen dus **zowel in git als op Box** (anders mist een fresh clone of
-een andere machine ze stil). Of de team-richting "PDF's alleen via Box" wordt, is een apart
-besluit (zou `git rm --cached` + history-opschoning vergen voor de reeds-getrackte bestanden).
+**Wat zit waar** (bron → distributiekanaal):
 
-**Eenmalige setup per machine** (vereist `rclone`):
+| Bron | In git? | Op Box? | Per machine opgebouwd? |
+|---|---|---|---|
+| `oeren/` (root-tree, PDF + markitdown-`.md`) | **ja** (~1900 bestanden) | ja (`box:samenwijzer/oeren`) | — |
+| `kwalificatiedossiers/` | nee (gitignored) | **ja — Box-only** | — |
+| `data/skills/` | **ja** (via `.gitignore`-negatie) | — | — |
+| `validatie.db` | nee (gitignored) | nee | **ja** (`ingest` uit de oeren-tree) |
+
+> De `oeren/`-regel in `validatie_samenwijzer/.gitignore` dekt alléén een (niet-bestaande)
+> `validatie_samenwijzer/oeren/`, niet de root-tree die de app via `OEREN_PAD=../oeren` gebruikt —
+> die staat dus **wél** in versiebeheer. Eerdere docs claimden ten onrechte dat `oeren/` gitignored
+> is. Box blijft de centrale grote-bestanden-store/back-up náást git. Een eventuele "PDF's alleen via
+> Box"-richting is een apart teambesluit (zou `git rm --cached` + history-opschoning vergen).
+
+**Eenmalige setup per machine.** Een fresh `git clone` bevat de **oeren-tree al** (uit git), maar
+**niet** de kwalificatiedossiers (Box-only). rclone + Box blijft dus nodig voor de KD's:
 
 ```bash
 # 1. Installeer rclone
 curl https://rclone.org/install.sh | sudo bash
 # 2. Configureer Box-remote (OAuth-flow in browser)
 rclone config       # type "n", naam "box", storage "box", default-flags
-# 3. Clone repo + run bootstrap
+# 3. Clone repo
 git clone git@github.com:cedanl/samenwijzer.git
 cd samenwijzer/validatie_samenwijzer
-./scripts/bootstrap.sh
+# 4. Bootstrap: sla de overbodige oeren-sync over (git leverde die al),
+#    haal wél de KD's van Box, en draai ingest + seed
+./scripts/bootstrap.sh --skip-oeren-sync
+```
+
+`bootstrap.sh` zónder vlag werkt ook — de oeren-sync is dan een idempotente `rclone copy` die
+identieke bestanden overslaat, bovenop wat git al leverde. Draai de volle sync alleen als je oeren
+níet via git hebt. (`--skip-sync` slaat óók de KD-sync over → gebruik dat alleen als beide trees al
+lokaal staan, niet na een verse clone.)
+
+**Nieuwe OER-bestanden toevoegen** gaat naar **beide** kanalen, anders mist git-cloners óf
+Box-syncers ze stil:
+
+```bash
+git add oeren/<instelling>_oeren/... && git commit   # in versiebeheer
+./scripts/push_oeren.sh                               # naar Box (rclone copy — verwijdert niets)
 ```
 
 Override de remote/pad via env-vars als je een andere Box-locatie of remote-naam hebt:
