@@ -170,9 +170,15 @@ COMPETENTNL_API_KEY=...      # optioneel: skills-build gebruikt CompetentNL ipv 
 
 ## Multi-machine workflow
 
-`oeren/` (PDFs) en `validatie.db` zijn beide **gitignored** — te groot voor git en
-copyright-gevoelig. Oeren staan centraal in een Box-folder; de DB wordt per machine
-opgebouwd uit de oeren-tree.
+De **root-`oeren/`-tree** (de app gebruikt `../oeren` via `OEREN_PAD`) is **getrackt in
+git** — er staan ~1900 OER-bestanden (PDF + markitdown-`.md`) in versiebeheer. Let op: dit
+wijkt af van eerdere documentatie; de `oeren/`-regel in `validatie_samenwijzer/.gitignore`
+dekt alléén een (niet-bestaande) `validatie_samenwijzer/oeren/`, niet de root-tree.
+`validatie.db` is **wél** gitignored en wordt per machine opgebouwd uit de oeren-tree.
+Box (`box:samenwijzer/oeren`) blijft de centrale grote-bestanden-store en back-up naast git;
+nieuwe OER-bestanden horen dus **zowel in git als op Box** (anders mist een fresh clone of
+een andere machine ze stil). Of de team-richting "PDF's alleen via Box" wordt, is een apart
+besluit (zou `git rm --cached` + history-opschoning vergen voor de reeds-getrackte bestanden).
 
 **Eenmalige setup per machine** (vereist `rclone`):
 
@@ -355,7 +361,8 @@ spiegelt de logica van `2_mijn_oer.py`.
 
 ### OER-bestanden
 
-`oeren/` is gitignored. Structuur: één submap per instelling (`davinci_oeren/`, `rijn_ijssel_oer/`,
+`oeren/` (root-tree, via `OEREN_PAD=../oeren`) is **getrackt in git** (niet gitignored — zie
+Multi-machine workflow). Structuur: één submap per instelling (`davinci_oeren/`, `rijn_ijssel_oer/`,
 `talland_oeren/`, `aeres_oeren/`, `utrecht_oeren/`, `kwic_oeren/` = Koning Willem I College).
 Daarnaast `oer_algemeen/` voor instelling-overstijgende documenten. De instelling-keys leven in
 **drie hardgecodeerde lijsten** die synchroon moeten blijven: `ingest._INSTELLINGEN`/`_MAP_NAAM`,
