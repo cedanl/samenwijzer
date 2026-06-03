@@ -160,6 +160,19 @@ def test_bouw_systeem_instelling_citatie_onderscheidt_van_oer():
     assert 'citeer een regeling NOOIT als "de OER"' in systeem
 
 
+def test_citatieplicht_eist_markdown_blockquote():
+    """Het woordelijk citaat moet als markdown-blockquote (eigen regel met '> ')
+    worden opgemaakt, zodat de .chat-antwoord blockquote-CSS het als pull-quote
+    rendert. Geldt voor zowel de single- als de multi-OER-systeemprompt."""
+    single = bouw_systeem("OER-tekst", "ICT", "Rijn IJssel")
+    multi = bouw_gecombineerd_systeem(
+        [_oer_item(tekst="A", display_naam="X"), _oer_item(tekst="B", display_naam="Y")]
+    )
+    for systeem in (single, multi):
+        assert "markdown-blockquote" in systeem
+        assert '> "' in systeem
+
+
 def test_bouw_systeem_zonder_instelling_bron_geen_blok():
     systeem = bouw_systeem("OER-tekst", "Kok", "Da Vinci")
     assert "=== EXAMENREGLEMENT" not in systeem
@@ -167,7 +180,9 @@ def test_bouw_systeem_zonder_instelling_bron_geen_blok():
 
 
 def test_bouw_systeem_lege_instelling_bron_tekst_geen_blok():
-    systeem = bouw_systeem("OER-tekst", "Kok", "Da Vinci", instelling_bronnen=[("Examenreglement", "")])
+    systeem = bouw_systeem(
+        "OER-tekst", "Kok", "Da Vinci", instelling_bronnen=[("Examenreglement", "")]
+    )
     assert "=== EXAMENREGLEMENT" not in systeem
 
 
