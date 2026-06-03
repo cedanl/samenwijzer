@@ -18,11 +18,19 @@ from validatie_samenwijzer.styles import CSS, render_footer  # noqa: E402
 
 # Welke instellingsbrede regelingen elke rol meekrijgt in de chat. Begeleidingsbeleid
 # is mentor-only (privacy/begeleiding); de rest is student-relevant.
-_STUDENT_SOORTEN = ["examenreglement", "studentenstatuut", "algemene_informatie"]
+_STUDENT_SOORTEN = [
+    "examenreglement",
+    "studentenstatuut",
+    "bindend_studieadvies",
+    "klachtenregeling",
+    "algemene_informatie",
+]
 _MENTOR_SOORTEN = [
     "examenreglement",
     "begeleidingsbeleid",
     "studentenstatuut",
+    "bindend_studieadvies",
+    "klachtenregeling",
     "algemene_informatie",
 ]
 
