@@ -11,6 +11,8 @@ INSTELLING_SOORTEN = {
     "examenreglement": "Examenreglement",
     "begeleidingsbeleid": "Begeleidings- en welzijnsbeleid",
     "studentenstatuut": "Studentenstatuut",
+    "bindend_studieadvies": "Regeling bindend studieadvies",
+    "klachtenregeling": "Klachtenregeling",
     "algemene_informatie": "Algemene informatie",
 }
 
