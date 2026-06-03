@@ -1,0 +1,413 @@
+Examenplan cohort 2026-2027
+
+Medewerker hovenier en groenvoorziening
+
+Opleiding:
+
+Leerweg
+
+Crebo:
+
+Niveau:
+
+Medewerker hovenier en groenvoorziening
+
+BOL/BBL
+
+27081
+
+2
+
+Startcohort:
+
+2026-2027
+
+Duur van de opleiding:
+
+Versie van het KD:
+
+2 jaar
+
+2026
+
+Vaststellingsdatum
+
+11-03-2026
+
+Inhoud
+Examenplan cohort 2026-2027 ...................................................................................................................................................... 1
+Opbouw van de opleiding ........................................................................................................................................................... 3
+Beroepsgerichte examenonderdelen ............................................................................................................................................ 5
+(Wettelijke) Beroeps- en of branchevereisten ............................................................................................................................... 6
+Examenonderdelen generieke eisen voor taal en rekenen .............................................................................................................. 7
+
+Pagina 2/8
+
+Opbouw van de opleiding
+
+Elke opleiding bestaat uit een aantal kerntaken, passend bij het beroep.
+Een kerntaak is opgebouwd uit een aantal werkprocessen.
+De kerntaken en werkprocessen die jij moet kunnen uitvoeren voor jouw diploma staan hieronder.
+
+Kerntaken
+
+  Code
+
+  Naam
+
+Werkprocessen
+
+  Code
+
+  Naam
+
+B1-K1:  Uitvoeren van werkzaamheden in de groene ruimte
+
+B1-K1-W1:  Draagt zorg voor flora, fauna, bodem en water
+B1-K1-W2:  Voert werkzaamheden uit met gereedschappen en/of (robot)machines
+B1-K1-W3:  Communiceert over het werk
+B1-K1-W4:  Voert voorbereidende en afrondende werkzaamheden in de groene ruimte
+uit
+
+P1-K1:  Uitvoeren aanleg en onderhoud tuinen en/of openbaar
+groen
+
+P1-K1-W1:  Legt tuinen en/of openbaar groen aan
+P1-K1-W2:  Voert onderhoud uit aan tuinen en/of openbaar groen
+
+Pagina 3/8
+
+Slaag/-zakbeslissing
+
+Om je diploma te halen, moet je voldoen aan de volgende eisen:
+
+1.
+
+2.
+
+Je hebt alle kerntaken met minimaal het cijfer 6 of met een Voldoende afgesloten.
+
+Je voldaan aan je keuzedeelverplichting:
+
+a.  Het gemiddelde van de resultaten is minimaal een 6
+
+b.  Voor minimaal de helft van de keuzedelen is het resultaat minimaal een 6
+
+c.  Je hebt geen cijfer lager gehaald dan een 4
+
+d.  Je hebt voor minimaal 480 aan studiebelastingsuren aan keuzedelen gedaan
+
+3.  Voor Nederlands en rekenen mag je maximaal één 5 halen, het eindoordeel van het andere vak moet tenminste een 6 zijn.
+
+4.  Je hebt voldaan aan je inspanningsverplichtingen voor loopbaan en burgerschap.
+
+5.  Je hebt je beroepspraktijkvorming voldoende afgesloten.
+
+6.  Voor jouw opleiding moet je mogelijk ook nog voldoen aan wettelijke beroepsvereisten (zie blz.4).
+7.  Voor elk examen heb je recht op een herkansing, voor rekenen heb je recht op twee herkansingen.
+
+Pagina 4/8
+
+Cum Laude
+
+Je komt in aanmerking voor de aantekening ‘cum laude’, als de examenonderdelen aan de volgende voorwaarden voldoen:
+a.
+
+het gemiddelde van de (afgeronde) eindwaarderingen in cijfers of woorden op de resultatenlijst bij het diploma is ten minste een 8,0 of hoger of
+het equivalent daarvan;
+de onderliggende waarderingen in cijfers of woorden op de resultatenlijst bij het diploma is ten minste gewaardeerd met een afgeronde 6 of de
+equivalent daarvan;
+de kerntaken, kennis- en vaardigheidsexamens zijn allemaal beoordeeld met een “goed” of met het cijfer 8 of hoger;
+de eindwaardering van het generieke examenonderdeel loopbaan en burgerschap is “voldaan” en de beoordeling van de beroepspraktijkvorming
+is “voldoende”.
+Er is maximaal 1 examen(onderdeel) herkanst om tot een definitieve eindwaardering te komen;
+Er zijn examenonderdelen die (vooralsnog) niet meetellen in de slaag-/zakbeslissing, maar wel op de resultatenlijst worden vermeld. Deze
+resultaten tellen wel mee voor de cum laude-regeling;
+De student is afgestudeerd binnen de nominale onderwijstijd van zijn opleiding;
+wanneer voor een examen(onderdeel) een vrijstelling is verleend en dit resultaat wordt meegewogen voor de eindwaardering, kan cum laude
+worden toegekend. In geval van vrijstellingen zonder eindwaardering wordt geen cum laude toegekend;
+
+bij het vaststellen van fraude of schorsing (ook in andere gevallen dan die examinering betreffen), komt de student niet in aanmerking voor cum
+
+b.
+
+c.
+d.
+
+e.
+f.
+
+g.
+h.
+
+i.
+
+laude
+
+Beroepsgerichte examenonderdelen
+
+Examen-
+code
+
+Examenvorm
+
+Kerntaken
+
+Werkprocessen
+
+Duur
+examen
+
+Plaats afname
+
+Weging
+
+Schaal
+
+Pagina 5/8
+
+(Wettelijke) Beroeps- en of branchevereisten
+
+Naam
+
+Certificaat basisveiligheid VCA
+
+Soort vereiste
+
+Bijzondere
+vereiste
+
+Diplomaeis
+ja/nee
+ja
+
+Examenvorm
+
+Plaats afname
+
+Examenonderdelen
+
+Examen
+
+extern
+
+Pagina 6/8
+
+Examenonderdelen generieke eisen voor taal en rekenen
+
+Nederlands
+
+Examen-
+onderdeel
+
+leverancier
+
+Examenvorm
+
+Niveau
+
+Lezen, luisteren
+
+CvTE
+
+Centraal examen (CE)
+
+  2F
+
+Schrijven
+
+Spreken
+
+Bureau ICE
+
+Instellingsexamen (IE)
+
+Bureau ICE
+
+Instellingsexamen (IE)
+
+Gesprekken voeren
+
+Bureau ICE
+
+Instellingsexamen (IE)
+
+Plaats
+afname
+
+school
+
+Duur
+examen
+
+90 minuten
+
+60 minuten
+
+Max. 30 minuten
+
+Max. 30 minuten
+
+Weging
+
+Schaal
+
+50%
+
+Cijfer 1 t/m 10
+
+Het gemiddelde
+cijfer voor
+schrijven, spreken
+en gesprekken
+voeren:
+50%
+
+Cijfer 1 t/m 10
+
+Cijfer 1 t/m 10
+
+Cijfer 1 t/m 10
+
+Rekenen
+
+Examen-
+
+onderdeel
+Rekenen
+
+leverancier
+
+Examenvorm
+
+Niveau
+
+Coöperatie
+Examens MBO
+
+Instellingsexamen (IE)
+
+  Niveau 2
+
+Duur
+
+examen
+ 120 minuten
+
+Plaats
+
+afname
+school
+
+Weging
+
+Schaal
+
+1
+
+Cijfer 1 t/m 10
+
+Pagina 7/8
+
+Burgerschap & LOB
+
+Examenonderdeel
+Vitaal burgerschap
+
+Sociaal maatschappelijke
+dimensie
+Politiek juridische dimensie
+
+Kritische denkvaardigheden
+
+Economische dimensie
+
+Loopbaan (LOB)
+
+leverancier
+
+Examenvorm
+
+Niveau
+
+Aeres
+
+Aeres
+
+Aeres
+
+Aeres
+
+Aeres
+
+Aeres
+
+Instellingsexamens (IE)
+
+Instellingsexamens (IE)
+
+Instellingsexamens (IE)
+
+Instellingsexamens (IE)
+
+Instellingsexamens (IE)
+
+Instellingsexamens (IE)
+
+2
+
+2
+
+2
+
+2
+
+2
+
+2
+
+Plaats afname
+School
+
+Weging
+
+1
+
+School
+
+School
+
+School
+
+School
+
+School
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+    Schaal
+
+Behaald/ niet behaald
+
+Behaald/ niet behaald
+
+Behaald/ niet behaald
+
+Behaald/ niet behaald
+
+Behaald/ niet behaald
+
+Behaald/ niet behaald
+
+Pagina 8/8
+
