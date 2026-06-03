@@ -213,7 +213,11 @@ Tabs:
 ### Data-laag
 
 **`db.py`** — SQLite schema en alle queries als losse functies, geen ORM. Schema: `instellingen`,
-`oer_documenten`, `kerntaken`, `mentoren`, `mentor_oer`, `studenten`, `student_kerntaak_scores`.
+`oer_documenten`, `kerntaken`, `mentoren`, `mentor_oer`, `studenten`, `student_kerntaak_scores`,
+`ingest_runs`, `instelling_documenten` (instellingsbrede regelingen — zie hieronder).
+`INSTELLING_SOORTEN` (module-constante) is de **enige bron van waarheid** voor de bekende
+instellingsbrede document-soorten → citeer-label; een nieuwe soort toevoegen = één regel daar,
+geen schema-migratie (soort-validatie staat in `voeg_instelling_document_toe`, niet in een DB-CHECK).
 Verbinding via `get_connection()` met WAL-modus en `check_same_thread=False`.
 
 **`_db.py`** — dunne Streamlit-wrapper: `get_conn()` is `@st.cache_resource` en roept
@@ -319,16 +323,25 @@ tekstblok. Pad-resolutie via `pad_skills(crebo)`: default `<subproject>/data/ski
 env-var `SKILLS_PAD`. Lege string als de crebo geen artefact of geen gematcht beroep heeft — de
 chat werkt dan zonder skills. Zie de Skills-taxonomie-sectie verderop.
 
+`laad_instelling_bron_tekst(bestandspad)` leest een instellingsbreed document (examenreglement,
+begeleidingsbeleid, studentenstatuut, algemene informatie; hard cap
+`_MAX_INSTELLING_TEKST_TEKENS = 300_000`). Pagina's halen de paden uit `instelling_documenten`
+(`db.haal_instelling_document_op`) en geven `(label, tekst)`-paren door als `instelling_bronnen`
+aan `bouw_systeem` / `bouw_gecombineerd_systeem`, die ze als blokken `=== LABEL (instelling) ===`
+in de system prompt zetten. Bedraad in `1_oer_assistent.py`, `5_begeleidingssessie.py` en
+`0_oer_vraag.py`. Zie de Instellingsbrede-bron-sectie verderop.
+
 Toon `LAGE_RELEVANTIE_BERICHT` wanneer `laad_oer_tekst()` een lege string teruggeeft
 (bestand ontbreekt of niet leesbaar).
 
 **Juridische citatieplicht**: zowel `_SYSTEEM_TEMPLATE` als `_MULTI_SYSTEEM_TEMPLATE` eisen per
-claim drie elementen: **bron** ("Volgens de OER" of "Volgens het kwalificatiedossier"),
-**vindplaats** (sectie-nummer, kopje, artikel of paginanummer) en een **woordelijk citaat
-tussen dubbele aanhalingstekens**. Reden: een OER is een juridisch document — antwoorden
-moeten verifieerbaar zijn. De OER is leidend; het KD wordt alleen geraadpleegd als de OER het
-onderwerp niet of onvoldoende behandelt, met de inleider "De OER beschrijft dit niet; volgens
-het kwalificatiedossier…". Voor de **skills-taxonomie** geldt een **aangepaste citatie** (een
+claim drie elementen: **bron** ("Volgens de OER", "Volgens het kwalificatiedossier" of "Volgens
+het [examenreglement/studentenstatuut/…]"), **vindplaats** (sectie-nummer, kopje, artikel of
+paginanummer) en een **woordelijk citaat tussen dubbele aanhalingstekens**. Reden: een OER is een
+juridisch document — antwoorden moeten verifieerbaar zijn. De OER is leidend; het KD wordt alleen
+geraadpleegd als de OER het onderwerp niet of onvoldoende behandelt, met de inleider "De OER
+beschrijft dit niet; volgens het kwalificatiedossier…". Instellingsbrede regelingen zijn een
+**eigen bron** in de citatie (een examenreglement is even juridisch bindend als de OER). Voor de **skills-taxonomie** geldt een **aangepaste citatie** (een
 taxonomie heeft geen secties of pagina's): bron + beroep + categorie + exacte skill-naam, bijv.
 *Volgens de ESCO-skillstaxonomie hoort bij het beroep "kok" de essentiële skill "kooktechnieken
 gebruiken"*. Het template verbiedt expliciet verzonnen paginanummers bij skills.
@@ -342,7 +355,30 @@ spiegelt de logica van `2_mijn_oer.py`.
 
 ### OER-bestanden
 
-`oeren/` is gitignored. Structuur: één submap per instelling (`davinci_oeren/`, `rijn_ijssel_oer/`, `talland_oeren/`, `aeres_oeren/`, `utrecht_oeren/`). Geïndexeerde OERs staan als `geindexeerd=1` in `oer_documenten`. Studenten met `oer_id` naar niet-geïndexeerde OERs krijgen geen chatantwoorden.
+`oeren/` is gitignored. Structuur: één submap per instelling (`davinci_oeren/`, `rijn_ijssel_oer/`,
+`talland_oeren/`, `aeres_oeren/`, `utrecht_oeren/`, `kwic_oeren/` = Koning Willem I College).
+Daarnaast `oer_algemeen/` voor instelling-overstijgende documenten. De instelling-keys leven in
+**drie hardgecodeerde lijsten** die synchroon moeten blijven: `ingest._INSTELLINGEN`/`_MAP_NAAM`,
+`scripts/seed_bulk.py:INSTELLINGEN` en `9_beheer.py:_INSTELLING_KEYS` — ontbreekt een nieuwe
+instelling in de seed-lijst, dan krijgt ze stil 0 studenten. Geïndexeerde OERs staan als
+`geindexeerd=1` in `oer_documenten`. Studenten met `oer_id` naar niet-geïndexeerde OERs krijgen
+geen chatantwoorden.
+
+Per instelling kan een `_instelling/`-submap (`oeren/<inst>_oeren/_instelling/<soort>.{pdf,md}`)
+de instellingsbrede regelingen bevatten; de bestandsnaam-stem is de `soort` (moet in
+`db.INSTELLING_SOORTEN` staan). `ingest._verwerk_instelling_documenten` indexeert die apart van de
+gewone OER-iteratie (`_INSTELLING_SUBMAP` wordt overgeslagen door de platte OER-loop).
+
+### Instellingsbrede bron (aanvullende bron)
+
+Naast de OER, het KD en skills is er een **vierde chat-bron**: instellingsbrede regelingen
+(examenreglement, begeleidings-/welzijnsbeleid, studentenstatuut, algemene informatie). Anders dan
+KD/skills (crebo-gekoppeld) hangt deze bron aan de **instelling**, dus elke student/mentor van die
+school krijgt ze automatisch mee. Soorten staan in `db.INSTELLING_SOORTEN` en zijn **uitbreidbaar
+met één regel** (geen schema-migratie). Documenten leven in `oeren/<inst>_oeren/_instelling/`,
+worden geïndexeerd in `instelling_documenten` en in de chat als eigen blok + eigen citatie-bron
+opgenomen (zie OER-chat-flow en de Juridische citatieplicht hierboven). Plan/onderbouwing:
+`docs/plans/2026-06-02-instellingsbrede-bron.md`.
 
 ### Kwalificatiedossiers (aanvullende bron)
 
