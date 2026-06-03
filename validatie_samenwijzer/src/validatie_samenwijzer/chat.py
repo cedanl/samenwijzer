@@ -436,11 +436,14 @@ def identificeer_oer_kandidaten(oers: list, tekst: str, min_score: int = 0) -> l
     """Geeft OER-kandidaten gesorteerd op match-score (hoogste eerst).
 
     Scoort op: crebo-nummer (+3), leerweg (+2), cohortjaar (+2),
-    opleidingswoorden (+1 elk, max 2), instellingsnaam (+4).
-    De instellingsnaam weegt bewust zwaar: een expliciet genoemde instelling moet
-    de OER van een ándere instelling met hetzelfde crebo/dezelfde opleidingswoorden
+    opleidingswoorden (+1 elk, max 2), instellingsnaam (+3).
+    De instellingsnaam weegt bewust even zwaar als het crebo: een expliciet genoemde
+    instelling moet de OER van een ándere instelling met dezelfde opleidingswoorden
     overstemmen (anders wint de instelling met de "schoonste" opleidingsnaam, bv.
     Talland boven kwic, waarvan de opleidingsnaam aaneengeplakt in de bestandsnaam zit).
+    Bewust niet zwaarder dan crebo (+3): zo blijft het crebo het sterkste enkele
+    signaal en degradeert een toevallige stad/naam-match ("Utrecht") tot een
+    gelijkspel-dropdown i.p.v. een stille verkeerde keuze.
     CamelCase-namen (Da Vinci-stijl) worden gesplitst vóór matching.
     Numerieke tokens worden uitgesloten zodat jaarcijfers niet dubbel tellen.
     """
@@ -486,7 +489,7 @@ def identificeer_oer_kandidaten(oers: list, tekst: str, min_score: int = 0) -> l
             inst_woorden.add(d["naam"].lower())
             inst_woorden |= _aliassen.get(d["naam"].lower(), set())
         if inst_woorden & tekst_woorden:
-            score += 4
+            score += 3
 
         if score >= min_score:
             kandidaten.append({**d, "_score": score})
