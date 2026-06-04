@@ -40,6 +40,13 @@ from validatie_samenwijzer.styles import CSS, render_footer  # noqa: E402
 
 st.markdown(CSS, unsafe_allow_html=True)
 
+# Achter login: alleen ingelogde gebruikers (student/mentor/algemeen account) mogen hier.
+# Blokkeert ook directe-URL-toegang, niet alleen de tab in main.py.
+if not st.session_state.get("rol"):
+    st.warning("🔒 Log in om de OER-assistent te gebruiken.")
+    st.page_link("main.py", label="Naar inloggen", icon="🏠")
+    st.stop()
+
 MAX_GESCHIEDENIS = 20
 MAX_OER_SELECTIE = 3  # max aantal OERs tegelijk
 MAX_KANDIDATEN = 40  # max aantal opties in de dropdown — daarboven afkappen op top-N

@@ -1,0 +1,26 @@
+# Houdt de Fly remote-builder upload klein. Sluit de zware niet-image-bestanden uit.
+# (De Dockerfile COPY't alleen validatie_samenwijzer/, oeren/ en kwalificatiedossiers/.)
+
+# KRITISCH — nooit secrets in het image bakken. Keys komen via Fly secrets.
+**/.env
+**/.env.*
+!**/.env.example
+**/*.key
+**/secrets.toml
+
+.git
+.venv
+validatie_samenwijzer/.venv
+**/__pycache__
+**/*.pyc
+**/*.pyo
+.worktrees
+**/node_modules
+
+# Vector-store cache (uitgefaseerd, regenereerbaar)
+validatie_samenwijzer/data/chroma
+
+# Kwalificatiedossiers: runtime leest alleen .md → pdf/zip/lijsten niet mee
+kwalificatiedossiers/pdfs/*.pdf
+kwalificatiedossiers/*.zip
+kwalificatiedossiers/lijsten
