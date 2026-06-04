@@ -1,5 +1,7 @@
 """Login + sessie-initialisatie voor validatie-samenwijzer."""
 
+import os
+
 import streamlit as st
 from dotenv import load_dotenv
 
@@ -119,12 +121,14 @@ elif st.session_state.get("rol") == "mentor":
 st.title("📚 OER-assistent")
 st.caption("Samenwijzer · CEDA 2026")
 
-if st.button(
-    "📚 Stel direct een OER-vraag zonder in te loggen →",
-    type="primary",
-    use_container_width=True,
-):
-    st.switch_page("pages/0_oer_vraag.py")
+# Publieke (login-loze) OER-vraag kan worden uitgezet in een login-only deploy.
+if os.environ.get("PUBLIEKE_OER_VRAAG_ENABLED", "true").lower() == "true":
+    if st.button(
+        "📚 Stel direct een OER-vraag zonder in te loggen →",
+        type="primary",
+        use_container_width=True,
+    ):
+        st.switch_page("pages/0_oer_vraag.py")
 
 st.divider()
 

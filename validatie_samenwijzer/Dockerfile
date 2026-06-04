@@ -27,7 +27,8 @@ ENV OEREN_PAD=/app/oeren \
     KWALDOSSIERS_PAD=/app/kwalificatiedossiers/pdfs \
     SKILLS_PAD=/app/validatie_samenwijzer/data/skills \
     DB_PATH=/app/validatie_samenwijzer/data/validatie.db \
-    BEHEER_ENABLED=false
+    BEHEER_ENABLED=false \
+    PUBLIEKE_OER_VRAAG_ENABLED=false
 
 EXPOSE 8080
 CMD ["uv", "run", "--no-dev", "streamlit", "run", "app/main.py", \
