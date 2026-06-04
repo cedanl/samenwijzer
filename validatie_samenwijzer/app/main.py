@@ -1,5 +1,6 @@
 """Login + sessie-initialisatie voor validatie-samenwijzer."""
 
+import hmac
 import os
 
 import streamlit as st
@@ -158,7 +159,12 @@ with tab_algemeen:
     with st.form("login_algemeen"):
         ww_algemeen = st.text_input("Wachtwoord", type="password")
         if st.form_submit_button("Inloggen voor OER-vraag", use_container_width=True):
-            if ww_algemeen == os.environ.get("ALGEMEEN_WACHTWOORD", "Welkom123"):
+            # Fail-closed: vereist ALGEMEEN_WACHTWOORD (geen hardcoded default; de
+            # repo is publiek). Constant-time vergelijking tegen timing-lekken.
+            algemeen_pw = os.environ.get("ALGEMEEN_WACHTWOORD")
+            if not algemeen_pw:
+                st.error("Het algemene account is niet geconfigureerd.")
+            elif ww_algemeen and hmac.compare_digest(ww_algemeen, algemeen_pw):
                 st.session_state["rol"] = "gast"
                 st.switch_page("pages/0_oer_vraag.py")
             else:
