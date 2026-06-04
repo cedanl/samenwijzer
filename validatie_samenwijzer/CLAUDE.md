@@ -174,19 +174,24 @@ COMPETENTNL_API_KEY=...      # optioneel: skills-build gebruikt CompetentNL ipv 
 
 | Bron | In git? | Op Box? | Per machine opgebouwd? |
 |---|---|---|---|
-| `oeren/` (root-tree, PDF + markitdown-`.md`) | **ja** (~1900 bestanden) | ja (`box:samenwijzer/oeren`) | — |
+| `oeren/` (publieke instellingen, PDF + markitdown-`.md`) | **ja** | ja (`box:samenwijzer/oeren`) | — |
+| `oeren/{davinci,kwic,graafschap,deltion}_oeren/` | **nee — gitignored** | **ja — Box-only** | — |
 | `kwalificatiedossiers/` | nee (gitignored) | **ja — Box-only** | — |
 | `data/skills/` | **ja** (via `.gitignore`-negatie) | — | — |
 | `validatie.db` | nee (gitignored) | nee | **ja** (`ingest` uit de oeren-tree) |
 
 > De `oeren/`-regel in `validatie_samenwijzer/.gitignore` dekt alléén een (niet-bestaande)
 > `validatie_samenwijzer/oeren/`, niet de root-tree die de app via `OEREN_PAD=../oeren` gebruikt —
-> die staat dus **wél** in versiebeheer. Eerdere docs claimden ten onrechte dat `oeren/` gitignored
-> is. Box blijft de centrale grote-bestanden-store/back-up náást git. Een eventuele "PDF's alleen via
-> Box"-richting is een apart teambesluit (zou `git rm --cached` + history-opschoning vergen).
+> die staat dus **wél** in versiebeheer. **Uitzondering (rechten, PR #143):** Da Vinci, KWIC,
+> Graafschap en Deltion publiceren hun OER's niet zelf; hun mappen zijn via de **root-`.gitignore`**
+> Box-only gemaakt (mogen niet publiek vindbaar zijn, alleen via de app). Box blijft de centrale
+> grote-bestanden-store/back-up náást git. De feitelijke verwijdering uit de git-**historie** (Fase 2)
+> is een geplande teamactie — zie `docs/plans/2026-06-04-fase2-history-purge-runbook.md` en het
+> beslisdocument `2026-06-04-opslagstrategie-data-en-deployment.md`.
 
-**Eenmalige setup per machine.** Een fresh `git clone` bevat de **oeren-tree al** (uit git), maar
-**niet** de kwalificatiedossiers (Box-only). rclone + Box blijft dus nodig voor de KD's:
+**Eenmalige setup per machine.** Een fresh `git clone` bevat de **oeren-tree** uit git (op de vier
+niet-publieke instellingen ná — die komen alleen van Box), maar **niet** de kwalificatiedossiers
+(Box-only). rclone + Box blijft dus nodig voor de KD's én die vier instellingen:
 
 ```bash
 # 1. Installeer rclone
@@ -382,8 +387,10 @@ spiegelt de logica van `2_mijn_oer.py`.
 
 ### OER-bestanden
 
-`oeren/` (root-tree, via `OEREN_PAD=../oeren`) is **getrackt in git** (niet gitignored — zie
-Multi-machine workflow). Structuur: één submap per instelling (`davinci_oeren/`, `rijn_ijssel_oer/`,
+`oeren/` (root-tree, via `OEREN_PAD=../oeren`) is grotendeels **getrackt in git** — behalve de vier
+niet-publieke instellingen (`davinci_oeren/`, `kwic_oeren/`, `graafschap_oeren/`, `deltion_oeren/`),
+die via de root-`.gitignore` **Box-only** zijn (rechten — zie Multi-machine workflow). Structuur: één
+submap per instelling (`davinci_oeren/`, `rijn_ijssel_oer/`,
 `talland_oeren/`, `aeres_oeren/`, `utrecht_oeren/`, `kwic_oeren/` = Koning Willem I College).
 Daarnaast `oer_algemeen/` voor instelling-overstijgende documenten. De instelling-keys leven in
 **drie hardgecodeerde lijsten** die synchroon moeten blijven: `ingest._INSTELLINGEN`/`_MAP_NAAM`,
