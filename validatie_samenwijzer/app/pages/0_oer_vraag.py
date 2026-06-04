@@ -3,7 +3,6 @@
 import base64
 import html
 import logging
-import os
 from pathlib import Path
 
 import streamlit as st
@@ -41,9 +40,9 @@ from validatie_samenwijzer.styles import CSS, render_footer  # noqa: E402
 
 st.markdown(CSS, unsafe_allow_html=True)
 
-# Login-only deploy: zet de publieke pagina uit via env-flag (default aan).
-# Blokkeert ook directe-URL-toegang, niet alleen de knop in main.py.
-if os.environ.get("PUBLIEKE_OER_VRAAG_ENABLED", "true").lower() != "true":
+# Achter login: alleen ingelogde gebruikers (student/mentor/algemeen account) mogen hier.
+# Blokkeert ook directe-URL-toegang, niet alleen de tab in main.py.
+if not st.session_state.get("rol"):
     st.warning("🔒 Log in om de OER-assistent te gebruiken.")
     st.page_link("main.py", label="Naar inloggen", icon="🏠")
     st.stop()

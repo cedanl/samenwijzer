@@ -117,22 +117,15 @@ if st.session_state.get("rol") == "student":
     st.switch_page("pages/1_oer_assistent.py")
 elif st.session_state.get("rol") == "mentor":
     st.switch_page("pages/4_mijn_studenten.py")
+elif st.session_state.get("rol") == "gast":
+    st.switch_page("pages/0_oer_vraag.py")
 
 st.title("📚 OER-assistent")
 st.caption("Samenwijzer · CEDA 2026")
 
-# Publieke (login-loze) OER-vraag kan worden uitgezet in een login-only deploy.
-if os.environ.get("PUBLIEKE_OER_VRAAG_ENABLED", "true").lower() == "true":
-    if st.button(
-        "📚 Stel direct een OER-vraag zonder in te loggen →",
-        type="primary",
-        use_container_width=True,
-    ):
-        st.switch_page("pages/0_oer_vraag.py")
-
 st.divider()
 
-tab_student, tab_mentor = st.tabs(["Student", "Mentor"])
+tab_student, tab_mentor, tab_algemeen = st.tabs(["Student", "Mentor", "Direct een OER-vraag"])
 
 with tab_student:
     with st.form("login_student"):
@@ -157,5 +150,18 @@ with tab_mentor:
                 st.switch_page("pages/4_mijn_studenten.py")
             else:
                 st.error("Onbekende naam of onjuist wachtwoord.")
+
+with tab_algemeen:
+    st.caption(
+        "Stel direct OER-vragen met een algemeen account — geen persoonlijke gegevens nodig."
+    )
+    with st.form("login_algemeen"):
+        ww_algemeen = st.text_input("Wachtwoord", type="password")
+        if st.form_submit_button("Inloggen voor OER-vraag", use_container_width=True):
+            if ww_algemeen == os.environ.get("ALGEMEEN_WACHTWOORD", "Welkom123"):
+                st.session_state["rol"] = "gast"
+                st.switch_page("pages/0_oer_vraag.py")
+            else:
+                st.error("Onjuist wachtwoord.")
 
 render_footer()
