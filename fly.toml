@@ -1,12 +1,13 @@
 # Fly-config voor de NIEUWE app "samenwijzer-fase-1".
 # Volledig los van de bestaande app ceda-regiobijeenkomst — eigen app, eigen machines.
-# Deploy vanuit de repo-root (build-context = root):
-#   flyctl deploy --config validatie_samenwijzer/fly.toml -a samenwijzer-fase-1 --remote-only
+# Staat op de repo-root omdat de data (oeren/, kwalificatiedossiers/) buiten het
+# subproject leeft → build-context = root. Deploy vanuit de repo-root:
+#   flyctl deploy -a samenwijzer-fase-1 --remote-only
 app = "samenwijzer-fase-1"
 primary_region = "ams"
 
 [build]
-  dockerfile = "validatie_samenwijzer/Dockerfile"
+  dockerfile = "Dockerfile"
 
 [http_service]
   internal_port = 8080
