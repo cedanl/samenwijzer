@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>De leer- en loopbaanreis — cyclisch ketenmodel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<style>
+  :root{
+    --oranje:#DD784B; --zwart:#000000; --roze:#F4D9DC; --blauw:#3D68EC;
+    --geel:#F4D74B; --groen:#00AF81; --wit:#FFFFFF;
+    --l-groen:#CCEEE6; --l-blauw:#D6E2FD; --l-roze:#FAEAEA; --l-oranje:#FFE4D8; --l-geel:#FCF5D4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#e9e9ef;font-family:'Plus Jakarta Sans',sans-serif;display:flex;justify-content:center;padding:24px;}
+  .canvas{
+    position:relative;width:1600px;height:1440px;background:var(--wit);
+    border-radius:36px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.18);
+  }
+  /* één-pagina PDF-export, exact canvasformaat, geen marges */
+  @page{size:1600px 1440px;margin:0;}
+  @media print{
+    body{background:#fff;padding:0;display:block;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .canvas{border-radius:0;box-shadow:none;}
+  }
+
+  /* ---------- decoratieve vormentaal ---------- */
+  .deco{position:absolute;pointer-events:none;}
+  .ring{border-radius:50%;}
+
+  /* ---------- header ---------- */
+  .header{position:absolute;top:56px;left:80px;right:80px;z-index:5;}
+  .eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--oranje);margin-bottom:14px;}
+  .header h1{font-size:50px;font-weight:700;line-height:1.04;color:var(--zwart);letter-spacing:-.02em;max-width:1060px;}
+  .header h1 .accent{color:var(--blauw);}
+  .header p{margin-top:16px;font-size:20px;line-height:1.4;color:#2a2a2a;max-width:560px;font-weight:400;}
+  .header p b{font-weight:600;}
+
+  /* ---------- cyclus ---------- */
+  svg.flow{position:absolute;top:0;left:0;width:1600px;height:1440px;z-index:1;}
+
+  .node{position:absolute;width:282px;z-index:3;transform:translate(-50%,-50%);}
+  .node .card{
+    background:var(--bg);border-radius:24px;padding:22px 22px 20px;
+    box-shadow:0 16px 34px rgba(0,0,0,.10);border:2px solid rgba(0,0,0,.04);
+  }
+  .node .icn{
+    width:64px;height:64px;border-radius:18px;display:flex;align-items:center;justify-content:center;
+    font-size:30px;color:var(--ic-fg);background:var(--ic);margin-bottom:14px;
+  }
+  .node .step{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;}
+  .node h3{font-size:21px;font-weight:700;color:var(--zwart);line-height:1.12;letter-spacing:-.01em;}
+  .node p{margin-top:7px;font-size:14px;line-height:1.35;color:#3a3a3a;font-weight:400;}
+
+  /* center */
+  .hub{
+    position:absolute;left:800px;top:600px;transform:translate(-50%,-50%);
+    width:300px;height:300px;border-radius:50%;z-index:2;
+    background:var(--l-roze);border:3px solid var(--oranje);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    box-shadow:0 18px 40px rgba(221,120,75,.18);
+  }
+  .hub .hub-ic{font-size:46px;color:var(--oranje);margin-bottom:10px;}
+  .hub .hub-lbl{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7a4a33;}
+  .hub h2{font-size:27px;font-weight:700;color:var(--zwart);line-height:1.05;margin-top:4px;letter-spacing:-.01em;padding:0 26px;}
+
+  /* ---------- bronnenband ---------- */
+  .bronnen{
+    position:absolute;left:80px;right:80px;top:1014px;height:128px;z-index:4;
+    background:var(--l-blauw);border-radius:26px;padding:22px 30px;display:flex;align-items:center;gap:28px;
+  }
+  .bron-intro{flex:0 0 230px;}
+  .bron-intro .bl{font-size:12px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--blauw);margin-bottom:8px;}
+  .bron-intro h3{font-size:22px;font-weight:700;color:var(--zwart);line-height:1.08;letter-spacing:-.01em;}
+  .chips{flex:1;display:flex;gap:14px;}
+  .chip{
+    flex:1;background:var(--wit);border-radius:16px;padding:14px 14px;display:flex;flex-direction:column;gap:9px;
+    box-shadow:0 8px 18px rgba(0,0,0,.06);
+  }
+  .chip .cic{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--c-fg);background:var(--c);}
+  .chip h4{font-size:15px;font-weight:700;color:var(--zwart);line-height:1.12;}
+  .chip span{font-size:12px;color:#5a5a5a;font-weight:500;}
+
+  /* ---------- fundament ---------- */
+  .fundament{
+    position:absolute;left:80px;right:80px;top:1172px;height:222px;z-index:4;
+    background:var(--zwart);border-radius:28px;padding:28px 44px;
+    display:flex;align-items:center;gap:34px;
+  }
+  .fund-intro{flex:0 0 248px;}
+  .fund-intro .fl{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--geel);margin-bottom:10px;}
+  .fund-intro h3{font-size:26px;font-weight:700;color:var(--wit);line-height:1.1;letter-spacing:-.01em;}
+  .pillars{flex:1;display:flex;gap:26px;}
+  .pillar{flex:1;display:flex;gap:16px;align-items:flex-start;}
+  .pillar .pic{
+    flex:0 0 54px;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;
+    font-size:25px;color:var(--pic-fg);background:var(--pic);
+  }
+  .pillar .ptxt h4{font-size:18px;font-weight:700;color:var(--wit);line-height:1.12;}
+  .pillar .ptxt p{margin-top:5px;font-size:13.5px;line-height:1.35;color:#cfcfcf;font-weight:400;}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <!-- decoratieve vormen -->
+  <div class="deco ring" style="top:-90px;right:-70px;width:300px;height:300px;background:var(--l-geel);"></div>
+  <div class="deco ring" style="top:-40px;right:30px;width:170px;height:170px;background:var(--geel);"></div>
+  <div class="deco ring" style="top:30px;right:120px;width:64px;height:64px;background:var(--oranje);"></div>
+  <div class="deco ring" style="top:560px;left:-120px;width:260px;height:260px;background:var(--l-roze);"></div>
+  <div class="deco ring" style="top:640px;left:-50px;width:120px;height:120px;background:var(--l-groen);"></div>
+
+  <!-- header -->
+  <div class="header">
+    <div class="eyebrow"><i class="fa-sharp fa-solid fa-arrows-spin"></i>&nbsp; Een cyclisch verbonden ketenmodel</div>
+    <h1>Geen losse systemen, maar één <span class="accent">leer- en loopbaanreis</span></h1>
+    <p>De toekomst van het onderwijs ligt in een <b>verbonden keten</b> die meebeweegt met de lerende én de arbeidsmarkt — een doorlopende kringloop, gevoed door betrouwbare data en gebouwd op een sterk digitaal fundament.</p>
+  </div>
+
+  <!-- stromen + pijlen -->
+  <svg class="flow" viewBox="0 0 1600 1440">
+    <defs>
+      <marker id="ah" markerWidth="11" markerHeight="11" refX="6" refY="5.5" orient="auto" markerUnits="userSpaceOnUse">
+        <path d="M1,1 L10,5.5 L1,10 Z" fill="#DD784B"/>
+      </marker>
+    </defs>
+    <!-- zachte volledige kringloop -->
+    <circle cx="800" cy="600" r="210" fill="none" stroke="#FFE4D8" stroke-width="22"/>
+    <!-- 4 bewegingsbogen, met de klok mee -->
+    <g fill="none" stroke="#DD784B" stroke-width="7" stroke-linecap="round" marker-end="url(#ah)">
+      <path d="M878.7,405.3 A210 210 0 0 1 994.7,521.3"/>
+      <path d="M994.7,678.7 A210 210 0 0 1 878.7,794.7"/>
+      <path d="M721.3,794.7 A210 210 0 0 1 605.3,678.7"/>
+      <path d="M605.3,521.3 A210 210 0 0 1 721.3,405.3"/>
+    </g>
+  </svg>
+
+  <!-- centrale hub -->
+  <div class="hub">
+    <div class="hub-ic"><i class="fa-sharp fa-solid fa-route"></i></div>
+    <div class="hub-lbl">In het hart</div>
+    <h2>De leer- en loopbaanreis</h2>
+  </div>
+
+  <!-- knooppunt 1: boven -->
+  <div class="node" style="left:800px;top:310px;--bg:var(--l-oranje);--ic:var(--oranje);--ic-fg:#fff;--accent:#b8552c;">
+    <div class="card">
+      <div class="icn"><i class="fa-sharp fa-solid fa-compass"></i></div>
+      <div class="step">Fase 01</div>
+      <h3>Arbeidsmarktwensen &amp; onderwijsleervraag</h3>
+      <p>Wat vraagt de arbeidsmarkt en wat wil de lerende? Hier begint de reis.</p>
+    </div>
+  </div>
+
+  <!-- knooppunt 2: rechts -->
+  <div class="node" style="left:1090px;top:600px;--bg:var(--l-blauw);--ic:var(--blauw);--ic-fg:#fff;--accent:#2a4bb5;">
+    <div class="card">
+      <div class="icn"><i class="fa-sharp fa-solid fa-sitemap"></i></div>
+      <div class="step">Fase 02</div>
+      <h3>Onderwijslogistiek</h3>
+      <p>De vraag vertaald naar planning, roostering en passende routes.</p>
+    </div>
+  </div>
+
+  <!-- knooppunt 3: onder -->
+  <div class="node" style="left:800px;top:890px;--bg:var(--l-groen);--ic:var(--groen);--ic-fg:#fff;--accent:#00795a;">
+    <div class="card">
+      <div class="icn"><i class="fa-sharp fa-solid fa-book-open"></i></div>
+      <div class="step">Fase 03</div>
+      <h3>Onderwijsaanbod</h3>
+      <p>Het concrete, flexibele aanbod dat op de vraag aansluit.</p>
+    </div>
+  </div>
+
+  <!-- knooppunt 4: links -->
+  <div class="node" style="left:510px;top:600px;--bg:var(--l-geel);--ic:var(--geel);--ic-fg:#000;--accent:#9a7a00;">
+    <div class="card">
+      <div class="icn"><i class="fa-sharp fa-solid fa-chalkboard-user"></i></div>
+      <div class="step">Fase 04</div>
+      <h3>Onderwijsuitvoering</h3>
+      <p>Leren in de praktijk — de uitkomsten voeden de volgende ronde.</p>
+    </div>
+  </div>
+
+  <!-- bronnenband: de data die de reis voedt -->
+  <div class="bronnen">
+    <div class="bron-intro">
+      <div class="bl"><i class="fa-sharp fa-solid fa-circle-nodes"></i>&nbsp; Wat de reis voedt</div>
+      <h3>Betrouwbare bronnen &amp; data</h3>
+    </div>
+    <div class="chips">
+      <div class="chip" style="--c:var(--oranje);--c-fg:#fff;">
+        <div class="cic"><i class="fa-sharp fa-solid fa-file-lines"></i></div>
+        <h4>OER</h4><span>Onderwijs- &amp; examenregeling — leidend</span>
+      </div>
+      <div class="chip" style="--c:var(--blauw);--c-fg:#fff;">
+        <div class="cic"><i class="fa-sharp fa-solid fa-folder-tree"></i></div>
+        <h4>Kwalificatiedossier</h4><span>Landelijk, per crebo</span>
+      </div>
+      <div class="chip" style="--c:var(--groen);--c-fg:#fff;">
+        <div class="cic"><i class="fa-sharp fa-solid fa-diagram-project"></i></div>
+        <h4>Skills-taxonomie</h4><span>CompetentNL &amp; ESCO</span>
+      </div>
+      <div class="chip" style="--c:var(--geel);--c-fg:#000;">
+        <div class="cic"><i class="fa-sharp fa-solid fa-scale-balanced"></i></div>
+        <h4>Instellingsregelingen</h4><span>Examenreglement, statuut</span>
+      </div>
+      <div class="chip" style="--c:var(--roze);--c-fg:#000;">
+        <div class="cic"><i class="fa-sharp fa-solid fa-chart-line"></i></div>
+        <h4>Studievoortgang</h4><span>Kerntaken &amp; werkproces-scores</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- fundament -->
+  <div class="fundament">
+    <div class="fund-intro">
+      <div class="fl"><i class="fa-sharp fa-solid fa-layer-group"></i>&nbsp; De basis</div>
+      <h3>Een sterk digitaal fundament</h3>
+    </div>
+    <div class="pillars">
+      <div class="pillar" style="--pic:var(--blauw);--pic-fg:#fff;">
+        <div class="pic"><i class="fa-sharp fa-solid fa-microchip"></i></div>
+        <div class="ptxt"><h4>Verantwoorde AI</h4><p>Transparant, uitlegbaar en mensgericht ingezet.</p></div>
+      </div>
+      <div class="pillar" style="--pic:var(--groen);--pic-fg:#fff;">
+        <div class="pic"><i class="fa-sharp fa-solid fa-database"></i></div>
+        <div class="ptxt"><h4>Betrouwbare data</h4><p>Actueel, veilig en van hoge kwaliteit.</p></div>
+      </div>
+      <div class="pillar" style="--pic:var(--geel);--pic-fg:#000;">
+        <div class="pic"><i class="fa-sharp fa-solid fa-cubes"></i></div>
+        <div class="ptxt"><h4>Open standaarden</h4><p>Verbinden zonder lock-in, klaar voor uitwisseling.</p></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
