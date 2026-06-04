@@ -1,0 +1,25 @@
+# Fly-config voor de NIEUWE app "samenwijzer-fase-1".
+# Volledig los van de bestaande app ceda-regiobijeenkomst — eigen app, eigen machines.
+# Deploy vanuit de repo-root (build-context = root):
+#   flyctl deploy --config validatie_samenwijzer/fly.toml -a samenwijzer-fase-1 --remote-only
+app = "samenwijzer-fase-1"
+primary_region = "ams"
+
+[build]
+  dockerfile = "validatie_samenwijzer/Dockerfile"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [http_service.concurrency]
+    type = "requests"
+    soft_limit = 40
+    hard_limit = 60
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "1gb"
