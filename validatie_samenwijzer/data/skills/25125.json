@@ -1,0 +1,59 @@
+{
+  "crebo": "25125",
+  "opleiding": "25125_BOL_2025__talland-Betontimmerman",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Betontimmerman",
+    "uri": "",
+    "definitie": "De betontimmerman werkt per project op een verschillende bouwlocatie, en werkt voornamelijk buiten. Hij maakt bekistingen, voert betonwerk uit en plaatst prefab elementen. Hij heeft kennis van verschillende relevante technieken, materialen en constructies, zoals bekistingconstructies en wapeningsconstructies. Hij werkt nauwkeurig, geconcentreerd en milieubewust en heeft ruimtelijk inzicht. Hij kan zijn werk zelfstandig uitvoeren, maar functioneert ook goed in een team. De betontimmerman is verantwoordelijk voor zijn eigen werkzaamheden, die hij opgedragen krijgt van zijn leidinggevende. Hij kiest zelf de beste werkaanpak."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Meten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/0EBFAD3C80",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Transport en logistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2F8C9BA908",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaalkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/519323C152",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Betonbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/86BCA358A9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Timmeren",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C608B1FD0D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouwtechnisch tekenen en construeren",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D5DD27C02E",
+      "categorie": "essentieel"
+    }
+  ]
+}

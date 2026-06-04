@@ -1,0 +1,99 @@
+{
+  "crebo": "25744",
+  "opleiding": "25744_BOL_2025__talland-Assistent-metaal--elektro--en",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Assistent metaal-, elektro- en installatietechniek",
+    "uri": "",
+    "definitie": "De Assistent metaal-, elektro- en installatietechniek assisteert bij de productie van onderdelen in bijvoorbeeld een elektrotechnisch bedrijf. Hij krijgt instructies van zijn leidinggevende en kan technische werktekeningen lezen en gebruiken voor zijn opdracht. Afhankelijk van de opdracht voert hij deze zelfstandig uit, of assisteert hij een collega. Hij neemt zelf geen initiatief in het toepassen van werkmethodes, maar volgt nauwkeurig de voorschriften. Hij heeft technisch inzicht, kan met gereedschappen en machines omgaan en heeft een goede lichamelijke conditie. De   Assistent metaal-, elektro- en installatietechniek werkt onder direct toezicht van zijn leidinggevende of een ervaren collega."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplichtingen nakomen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6EDDE6185F",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Procedures volgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/752EEDBE89",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplaatsen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D16A30C42A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Zelfstandig werken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5DED5A92E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Elektrotechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/1EC7181B0B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installatietechniek (elektro)",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3F26F4FE84",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installatietechniek (bouwkunde)",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/41B99A9CBB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installatietechniek (infra)",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A767523AD9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Personeelswerk",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AA15132AFE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Werktuigbouwkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AF10B67F03",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    }
+  ]
+}

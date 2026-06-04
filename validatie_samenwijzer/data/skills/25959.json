@@ -1,0 +1,139 @@
+{
+  "crebo": "25959",
+  "opleiding": "25959_BOL_2025__talland-Medewerker-facilitaire-dienstverlening",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Medewerker facilitaire dienstverlening",
+    "uri": "",
+    "definitie": "De medewerker facilitaire dienstverlening draagt bij aan het primaire proces binnen bedrijven en organisaties. Met een open houding en dienstverlenende instelling neemt die werk uit handen van interne en externe betrokkenen van een organisatie/bedrijf en draagt zo indirect bij aan het resultaat van de organisatie. De medewerker facilitaire dienstverlening is aanspreekpunt, assisteert bij het beheer van gebouwen, voert logistieke activiteiten uit, doet administratief werk en verricht cateringwerkzaamheden. De medewerker facilitaire dienstverlening is flexibel en kan snel schakelen tussen service, gebouw en omgeving."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen signaleren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4D400FE127",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/5C8ADA7777",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reflecteren op jezelf",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C21A058358",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Dienstbaarheid tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/F755E32480",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Transport en logistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2F8C9BA908",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Sociale veiligheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3C86F6FEAB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Gastvrijheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3F97DB848A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Cultuurwetenschappen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/47A44B019D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administratie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/5488DA6138",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Welzijn",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7615D2A440",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voorraad- en magazijnbeheer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/99D6345CD2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Facilitaire dienstverlening",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A623098860",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voeding en gezondheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C3247434CD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Redding, noodopruiming, brandweer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F8A6F0DADD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reiniging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FB169E4860",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voeding en diëtetiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FF24F7C483",
+      "categorie": "essentieel"
+    }
+  ]
+}

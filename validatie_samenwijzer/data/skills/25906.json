@@ -1,0 +1,124 @@
+{
+  "crebo": "25906",
+  "opleiding": "25906_BOL_2025__talland-Schoonheidsspecialist",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Schoonheidsspecialist",
+    "uri": "",
+    "definitie": "De schoonheidsspecialist biedt uiteenlopende schoonheidsbehandelingen aan. Hij/zij is vóór alles mensgericht en richt zich op de verzorging van de gezonde huid en nagels. De schoonheidsspecialist geeft cliënten een verzorgende, ontspannende, cosmetische gezichts-, lichaams- en hand-, nagel-, voetbehandeling. Hij/zij is ondernemend ingesteld en werkt doorgaans als zelfstandig ondernemer zonder personeel. Zijn/haar mogelijke werkomgevingen zijn: een schoonheidsbedrijf, wellness center, sauna, drogist of parfumerie. De schoonheidsspecialist is zich continu bewust van de noodzaak om hygiënisch, zorgvuldig en kwaliteitsbewust te werken. Zij kent de afbreukrisico’s bij het niet naleven van de eisen, waaronder die uit het Richtsnoer Hygiëne, Arbeidsomstandigheden en Milieu."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Problemen signaleren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4D400FE127",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ondernemerszin tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/518455478C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verzorgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DB59A57C01",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Promoten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E06265451B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Dienstbaarheid tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/F755E32480",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voetverzorging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/0621FF7B56",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Handverzorging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/412ED87095",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfseconomie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/53B4B474D1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Biologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/54690E3D68",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administratie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/5488DA6138",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Personeelswerk",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AA15132AFE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Preventieve gezondheidszorg en - geneeskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BFE1C817CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voeding en gezondheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C3247434CD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Schoonheids-, lichaamsverzorging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C37A10D447",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Belastingen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C68D027C05",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Marketing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E6A75FB995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Scheikunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/EE4D07D17E",
+      "categorie": "essentieel"
+    }
+  ]
+}

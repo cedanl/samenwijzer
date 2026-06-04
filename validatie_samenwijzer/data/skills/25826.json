@@ -1,0 +1,114 @@
+{
+  "crebo": "25826",
+  "opleiding": "25826_BOL_2025__talland-Allround-tegelzetter",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Allround tegelzetter",
+    "uri": "",
+    "definitie": "De allround tegelzetter houdt zich bezig met tegelwerk in woningen of utiliteitsgebouwen. Hij organiseert voornamelijk de werkzaamheden van zijn collega’s, en houdt het overzicht in een project. Hij verdeelt het werk, houdt de voortgang in de gaten en rapporteert vervolgens aan zijn leidinggevende. Hij schakelt veel tussen de inhoudelijke en leidinggevende werkzaamheden, en beschikt over kennis op beide gebieden. De allround tegelzetter werkt naar aanleiding van een opdracht die hij van zijn leidinggevende krijgt en kiest zelf een werkaanpak. Hij is verantwoordelijk voor een goede organisatie van de werkzaamheden."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Meten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/0EBFAD3C80",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Delegeren ",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C8730D1BAB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Promoten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E06265451B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Transport en logistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2F8C9BA908",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3FC6552A85",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Afbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/545738E767",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieutechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/58823180FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Schilderen en overige afwerktechnieken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6B614BA1A0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ontwerpen met de computer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8F02A2B716",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouwmanagement, aanneming, werkvoorbereiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DF68BB9CD4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
+    }
+  ]
+}

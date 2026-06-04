@@ -1,0 +1,174 @@
+{
+  "crebo": "25803",
+  "opleiding": "25803_BOL_2025__talland-Handhaver-toezicht-en-veiligheid",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Handhaver toezicht en veiligheid Generieke opsporing (domein VI)",
+    "uri": "",
+    "definitie": "Handhavers toezicht en veiligheid in domein VI zijn werkzaam bij of voor de Douane, de Politie of de Koninklijke Marechaussee. Het werk is afhankelijk van de werkplek en taakomschrijving. Belangrijk voor handhavers toezicht en veiligheid in domein VI is dat zij de context waarin zij werken goed kennen en dat zij zich strikt houden aan de geldende procedures en wettelijke bepalingen."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Integriteit tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/2F2D779459",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen signaleren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4D400FE127",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen oplossen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/53E033E58A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Conflicten oplossen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/5D8EA693BD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Procedures volgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/752EEDBE89",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leerstrategieën toepassen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7555D32771",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Actief luisteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/8500CACF46",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Assertiviteit tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AA253D1EBA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Schrijven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/BC98BE9135",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reflecteren op jezelf",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C21A058358",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leergierig zijn",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CB768EFA19",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Dienstbaarheid tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/F755E32480",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Psychologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/17998456DE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Openbare orde en veiligheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/330F4A4BFD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bestuursrecht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/431A7B3BDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Zelfkennis en zelfbewustzijn",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4E00BC89EC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Sport en bewegen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/67945BB58E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Politie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/960FFA24A2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Openbaar vervoer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AB21D4C344",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Sociale geografie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AD48565EA8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Veiligheidskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C34CD6448D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Werken met digitale apparaten en toepassingen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DA95C063A4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Justitie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DC8CD1F6A4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Buitengewone opsporing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/EAE50C517C",
+      "categorie": "essentieel"
+    }
+  ]
+}

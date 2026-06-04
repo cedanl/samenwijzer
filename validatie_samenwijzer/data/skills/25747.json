@@ -1,0 +1,89 @@
+{
+  "crebo": "25747",
+  "opleiding": "25747_BOL_2025__talland-Assistent-procestechniek-Entree",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Assistent procestechniek",
+    "uri": "",
+    "definitie": "De assistent procestechniek werkt in een productiebedrijf en bedient apparatuur, assisteert bij het procesverloop, de kwaliteitscontroles en onderhoudswerkzaamheden. Het bedrijf waar hij werkt produceert vaak chemische of mechanische stoffen, en veiligheid en milieu speelt hier een grote rol. De assistent procestechniek is zich hier bewust van. Hij werkt nauwkeurig en heeft technisch inzicht. Zijn werkzaamheden zijn routinematig en eenvoudig. Hij werkt vaak onder toezicht, maar is zelf wel alert op storingen. Als er een storing optreedt, schakelt hij hulp in van collega's of zijn leidinggevende."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplichtingen nakomen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6EDDE6185F",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Machines bedienen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D0866C5206",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Zelfstandig werken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5DED5A92E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Operationeel toezicht houden",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/FAB3EE0CD1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Procestechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8F2CE82E99",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Personeelswerk",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AA15132AFE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Werktuigbouwkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AF10B67F03",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderzoeksmethoden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E4B9A547C8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Scheikunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/EE4D07D17E",
+      "categorie": "essentieel"
+    }
+  ]
+}

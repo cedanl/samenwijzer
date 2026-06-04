@@ -1,0 +1,79 @@
+{
+  "crebo": "25745",
+  "opleiding": "25745_BBL_2025__talland-Assistent-mobiliteitsbranche-Entree",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Assistent mobiliteitsbranche",
+    "uri": "",
+    "definitie": "De Assistent mobiliteitsbranche assisteert bij technische werkzaamheden aan auto's en motoren. Dit kan in verschillende bedrijven zijn, zoals in een autoverhuurbedrijf, caravanbedrijf, autowasbedrijf of schadeherstelbedrijf. Hij richt de werkplek in, voert onder begeleiding eenvoudige inspectie en reparatiewerkzaamheden uit, en ruimt vervolgens de werkplek weer op. Hij is leergierig en wil zich graag ontwikkelen, is klant- en servicegericht en heeft verantwoordelijkheidsgevoel. De Assistent mobiliteitsbranche is verantwoordelijk voor zijn eigen werk. Hij controleert het zelf voor hij het aan zijn begeleider oplevert."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplichtingen nakomen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6EDDE6185F",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Zorgvuldig werken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/73CE64DACE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Zelfstandig werken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5DED5A92E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Transport en logistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2F8C9BA908",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Personeelswerk",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AA15132AFE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Veiligheidskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C34CD6448D",
+      "categorie": "essentieel"
+    }
+  ]
+}

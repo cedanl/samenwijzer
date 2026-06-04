@@ -1,0 +1,119 @@
+{
+  "crebo": "25920",
+  "opleiding": "25920_BOL_2025__talland-Commercieel-technicus-engineering",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Commercieel technicus engineering",
+    "uri": "",
+    "definitie": "De Commercieel technicus engineering werkt op de commerciële afdeling van een technisch bedrijf en beschikt zowel over technische als commerciële kennis en vaardigheden. Hij/zij adviseert klanten en informeert over de ontwikkelingen in het bedrijf en op de markt. Daarnaast beheert hij/zij de voorraad. De commercieel technicus engineering heeft commercieel inzicht en kan voorstellen doen voor de verbetering van het commercieel beleid. Hij/zij houdt een goede balans tussen de belangen van het bedrijf en belangen van de klant. Hij/zij werkt zelfstandig en is verantwoordelijk voor zijn/haar commerciële resultaat en is medeverantwoordelijk voor het resultaat van de collega’s."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3DECCF2E7C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/5C8ADA7777",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsprocessen verbeteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7C37C4FF38",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Monitoren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B03F4F484C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ontwerpen van systemen en producten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B4866702BB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Financiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/BC3AB34C1A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Informatiebeveiliging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/041D04F4F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Productietechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/04541FC2D1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieutechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/58823180FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Commerciële economie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8E7697EE1A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ontwerpen met de computer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8F02A2B716",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Informatiemanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9212BF2426",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Werktuigbouwkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AF10B67F03",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Industriële procesautomatisering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D9B1D9D2D5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Public relations",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DDB33F7221",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
+    }
+  ]
+}

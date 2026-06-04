@@ -1,0 +1,234 @@
+{
+  "crebo": "25927",
+  "opleiding": "25927_BOL_2025__talland-Werkvoorbereider",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Werkvoorbereider meubelindustrie/(scheeps)interieurbouw",
+    "uri": "",
+    "definitie": "De werkvoorbereider meubelindustrie/(scheeps)interieurbouw is werkzaam bij bedrijven in de hout- en meubelbranche die meubels en/of (scheeps)interieurs ontwerpen en produceren. Denk aan projecten als winkelinterieurs, een maatwerkkeuken of de inrichting van een luxe jacht maken. Deze projecten bestaan uit verplaatsbare of te monteren meubel- of interieurobjecten van hout, maar kunnen ook andere materialen bevatten. De werkvoorbereider meubelindustrie/(scheeps)interieurbouw heeft praktische kennis van de uitvoering van de productiewerkzaamheden en kan ook zelf materiaalbewerkingen uitvoeren en machine-instellingen optimaliseren om de productiemethode van (nieuwe) producten te bepalen. De werkvoorbereider meubelindustrie/(scheeps)interieurbouw gaat langs bij de klant om ruimten in te meten en verzamelt technische informatie omtrent een opdracht. Op basis daarvan maakt die technische ontwerpschetsen en stelt die productiegegevens (zoals werktekeningen, materiaalstaten en CNC programmatuur) op en maakt die productieplanningen voor de collega's in de productieafdeling. De werkvoorbereider meubelindustrie/(scheeps)interieurbouw vraagt voor de eigen inkoop offertes op en onderhandelt met leveranciers van materialen of diensten over zaken als prijs en leveringsvoorwaarden. Voor eigen leveringen calculeert die de kosten, stelt offertes op en maakt nacalculaties. Als voortgang, budget of kwaliteit van productieprocessen bedreigd wordt, overlegt die met de leidinggevende. Afhankelijk van het soort uit te voeren werk, werkt de de werkvoorbereider meubelindustrie/(scheeps)interieurbouw in teamverband of alleen."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Controleren van machines en systemen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/0A4C7D6130",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Meten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/0EBFAD3C80",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Informatie ordenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/299CE88E49",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/5C8ADA7777",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beslissingen nemen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/9DD6D3E301",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ontwerpen van systemen en producten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B4866702BB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Machines bedienen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D0866C5206",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplaatsen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D16A30C42A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installeren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5AD4F0905",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Rekenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5BBA931FB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kritisch nadenken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E1F935288C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Productietechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/04541FC2D1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Industrieel houtbewerken, meubelmaken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/28A98D3215",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installatietechniek (elektro)",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3F26F4FE84",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Afbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/545738E767",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administratie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/5488DA6138",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Binnenhuisarchitectuur",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7798ED3562",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ambachtelijk houtbewerken, meubelmaken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8221AA799A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Carrosserie-, interieurbouw voertuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8C0921AB86",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Commerciële economie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8E7697EE1A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ontwerpen met de computer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8F02A2B716",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Applicatiebouw en programmeren",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/92920D678A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reparatie en onderhoud van werktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/988374F8BD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voorraad- en magazijnbeheer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/99D6345CD2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ladingbehandeling en intern transport",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D27283387C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouwtechnisch tekenen en construeren",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D5DD27C02E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouwmanagement, aanneming, werkvoorbereiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DF68BB9CD4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beheer en verwerking van afval",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E360B68955",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Textiel- en leerverwerking",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FACA2718F1",
+      "categorie": "essentieel"
+    }
+  ]
+}

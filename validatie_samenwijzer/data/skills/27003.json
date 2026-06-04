@@ -1,0 +1,134 @@
+{
+  "crebo": "27003",
+  "opleiding": "27003_BOL_2025__talland-Allround-signmaker",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Allround signmaker",
+    "uri": "",
+    "definitie": "De allround signmaker zorgt voor een goed verloop van de ontwikkeling van verschillende signproducten, zoals reclameborden en lichtreclame. Die onderhoudt contact met alle betrokkenen binnen een signproject, soms in de rol van projectleider. De allround signmaker houdt de kwaliteit en productiviteit van het proces in de gaten en stelt dit, waar nodig, bij. Die heeft technisch inzicht en houdt rekening met de praktische uitvoerbaarheid van de ontwerpen. Daarnaast verricht die ook uitvoerende werkzaamheden. De allround signmaker is verantwoordelijk voor een goede uitvoering van diens eigen taken. Die werkt zelfstandig en lost problemen met betrekking tot de ontwerpen zelf op."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Monitoren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B03F4F484C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CD7B4C0F34",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installeren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5AD4F0905",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Productietechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/04541FC2D1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Grafisch ontwerpen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2DC70C1A23",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installatietechniek (elektro)",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3F26F4FE84",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Afbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/545738E767",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Metaalkunde, metaalbewerking",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/800D4C8975",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ontwerpen met de computer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8F02A2B716",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Techniek en technische dienstverlening",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/920C3F455D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Informatiemanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9212BF2426",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installatietechniek (infra)",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A767523AD9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Maten en getallen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/CB6BD3297B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ladingbehandeling en intern transport",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D27283387C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reclame",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D423138CBB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Projectmanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F248B939CD",
+      "categorie": "essentieel"
+    }
+  ]
+}

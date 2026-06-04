@@ -1,0 +1,224 @@
+{
+  "crebo": "25879",
+  "opleiding": "25879_BOL_2025__talland-Junior-manager-internationale-handel",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Junior manager internationale handel",
+    "uri": "",
+    "definitie": "Een junior manager internationale handel is (meestal) werkzaam in een kantooromgeving bij een (hybride) commerciële handelsonderneming (MKB), veelal frontoffice en gericht op de (internationale) buitendienst. Er wordt in internationaal verband in goederen gehandeld. Hierbij kan ook de verkoop van aanvullende diensten voorkomen, zoals het verzorgen van goederentransport en het monteren en installeren en eventueel ook onderhouden van een verkochte machine. Het bezoeken van (potentiële) klanten in het buitenland kan deel van het werk uitmaken. Deze commerciële functie komt, behalve bij veel groothandels, ook in allerlei andere sectoren, branches en ondernemingen voor.\n\nEen junior manager internationale handel verdiept zich goed in culturen, heeft talenkennis en houdt binnen de internationale context zorgvuldig rekening met de geldende wet- en regelgeving, zoals handelsakkoorden en internationale sancties. Een junior manager internationale handel is geïnteresseerd en speelt goed en creatief in op wensen, behoeften en lokale situaties van klanten. Hiervoor wordt vaak van geïnterpreteerde en/of geanalyseerde informatie/data gebruikgemaakt. Ter voorbereiding op het aangaan en onderhouden van zakelijke relaties maken het onderzoeken van import- en/of exportmogelijkheden, accountmanagement, exportgebieden in kaart brengen en adviseren over goederen hier onderdeel van uit. Voor het uitvoeren van de werkzaamheden zijn beheersing van de Engelse taal en een tweede moderne vreemde taal nodig."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Overtuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/26D3098394",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Informatie ordenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/299CE88E49",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3DECCF2E7C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen signaleren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4D400FE127",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ondernemerszin tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/518455478C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen oplossen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/53E033E58A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/5C8ADA7777",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsprocessen verbeteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7C37C4FF38",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Monitoren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B03F4F484C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CD7B4C0F34",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Promoten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E06265451B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kritisch nadenken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E1F935288C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Douaneprocessen en -formaliteiten",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/200A353FC8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Grafisch ontwerpen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2DC70C1A23",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Transport en logistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2F8C9BA908",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfseconomie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/53B4B474D1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Groothandel",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/5806D757F0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verzekeringen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7859C11150",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Innovatiemethoden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/807C2437A2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Commerciële economie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8E7697EE1A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Informatiemanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9212BF2426",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerking en netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/95C3218741",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Netwerk- en systeembeheer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/99C8D1BBD8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Internationaal recht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9B0AF5B160",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Geld- en bankzaken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A2722A4695",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsinformatica",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D313E86D1B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Werken met digitale apparaten en toepassingen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DA95C063A4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Public relations",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DDB33F7221",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Marketing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E6A75FB995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Projectmanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F248B939CD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "crebo": "25944",
+  "opleiding": "25944_BOL_2025__talland-Glaszetter",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Glaszetter",
+    "uri": "",
+    "definitie": "De glaszetter werkt voor verschillende opdrachtgevers, en zowel in woningen als in grotere panden zoals ziekenhuizen of kantoorgebouwen. Daar zet die verschillende soorten glas, zoals enkel-, dubbel-, isolatie- of veiligheidsglas, ook op hoogte, op moeilijk bereikbare plaatsen, buiten onder verschillende weersomstandigheden en bij glasbreuk zo nodig ook 's nachts of in het weekend. De glaszetter werkt nauwkeurig en resultaatgericht en heeft een flexibele houding. De glaszetter kan zich inleven in de klant en de vraag van de klant, en is verantwoordelijk voor een goede vertegenwoordiging van het bedrijf. De glaszetter kan zowel zelfstandig werken als samenwerken, en stemt de werkzaamheden af met een leidinggevende en collega's."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installeren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5AD4F0905",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Afbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/545738E767",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Keramiek en glas verwerking",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A5C4E88A84",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Timmeren",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C608B1FD0D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Klimaattechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E46D6D5DB8",
+      "categorie": "essentieel"
+    }
+  ]
+}

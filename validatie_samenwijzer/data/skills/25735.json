@@ -1,0 +1,119 @@
+{
+  "crebo": "25735",
+  "opleiding": "25735_BBL_2025__talland-Eerste-monteur-elektrotechnische",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Eerste monteur elektrotechnische industriële installaties en systemen",
+    "uri": "",
+    "definitie": "De Eerste monteur elektrotechnische industriële installaties en systemen werkt zelfstandig bij een bedrijf dat elektrotechnische industriële installaties en systemen aanlegt, monteert, repareert, renoveert en/of demonteert. Dit zijn installaties zoals: algemene besturings- en verdeelsystemen, licht- en krachtinstallaties, gebouwbeheerssystemen, data- en telecominstallaties en beveiligingsinstallaties. Hij/zij werkt zelfstandig of samen met collega's bij bedrijven op uiteenlopende locaties, bijvoorbeeld bij een fabriek. Vaak werkt hij/zij bij een technische dienst van een bedrijf. Hierbij heeft hij/zij de verantwoording over het gemaakte werk. Hij/zij geeft beperkt leiding aan collega-monteurs en stagiairs, stemt de opdracht af met alle betrokken partijen en bewaakt de voortgang van het werk."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Repareren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1C1D574677",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Begrijpend lezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/2E80D9179C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Procedures volgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/752EEDBE89",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Delegeren ",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C8730D1BAB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installeren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5AD4F0905",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Elektrotechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/1EC7181B0B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installatietechniek (elektro)",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3F26F4FE84",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieutechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/58823180FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Elektrische energietechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C3DA1C1A44",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Industriële procesautomatisering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D9B1D9D2D5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Werken met digitale apparaten en toepassingen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DA95C063A4",
+      "categorie": "essentieel"
+    }
+  ]
+}

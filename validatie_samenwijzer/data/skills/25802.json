@@ -1,0 +1,139 @@
+{
+  "crebo": "25802",
+  "opleiding": "25802_BBL_2025__talland-Operator-C-Vapro",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Operator C",
+    "uri": "",
+    "definitie": "De Operator C is werkzaam in zeer uiteenlopende sectoren binnen de procesindustrie. Dit betekent dat de context en de werksetting sterk kunnen variëren. Hij is een specialist die zelfstandig en op flexibele wijze productieprocessen beheerst en eventueel coördineert. Het gaat om zeer uiteenlopende controle- en bedieningsapparatuur. Daarnaast heeft hij projectmatige taken op het gebied van procesverbetering en productontwikkeling. Hij is alert op mogelijke product- en procesverbeteringen en komt met gefundeerde verbetervoorstellen. Hij overziet het totale productieproces. Hij is verantwoordelijk voor het economisch, (voedsel)veilig en milieuverantwoord verlopen van de werkzaamheden en de productie. Eventueel heeft hij coördinerende taken op het gebied van productie, kwaliteit en onderhoud. Hij begeleidt teamleden en/of derden, stuurt deze aan en fungeert als vraagbaak bij ontstane problemen."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Procedures volgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/752EEDBE89",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsprocessen verbeteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7C37C4FF38",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Deductief logisch redeneren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E033DC4809",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Dienstbaarheid tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/F755E32480",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Productietechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/04541FC2D1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Transport en logistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2F8C9BA908",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaalkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/519323C152",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Hydrauliek en pneumatiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/668638BDC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Wiskunde, natuurwetenschappen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/70C3DEBA6A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Procestechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8F2CE82E99",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsinformatica",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D313E86D1B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Industriële procesautomatisering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D9B1D9D2D5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieumanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DD938609F7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Openbare reiniging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/EF48920092",
+      "categorie": "essentieel"
+    }
+  ]
+}
