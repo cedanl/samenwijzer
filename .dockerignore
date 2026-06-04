@@ -1,5 +1,13 @@
 # Houdt de Fly remote-builder upload klein. Sluit de zware niet-image-bestanden uit.
 # (De Dockerfile COPY't alleen validatie_samenwijzer/, oeren/ en kwalificatiedossiers/.)
+
+# KRITISCH — nooit secrets in het image bakken. Keys komen via Fly secrets.
+**/.env
+**/.env.*
+!**/.env.example
+**/*.key
+**/secrets.toml
+
 .git
 .venv
 validatie_samenwijzer/.venv
