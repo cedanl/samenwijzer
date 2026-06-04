@@ -1,0 +1,139 @@
+{
+  "crebo": "25753",
+  "opleiding": "25753_BBL_2025__talland-Balkman",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Balkman",
+    "uri": "",
+    "definitie": "De balkman werkt voornamelijk buiten en maakt tijdens infrastructurele projecten onderdeel uit van de asfaltploeg. Samen met een machinist bedient hij de asfaltafwerkmachine. Hij kan werktekeningen goed interpreteren en zorgt dat de afwerking van de asfaltlaag volgens de tekening wordt uitgevoerd. Hij heeft een flexibele werkhouding; soms werkt hij ’s nachts. Naast de uitvoerende werkzaamheden, organiseert hij de werkzaamheden van zijn ploeg. De balkman werkt zelfstandig, onder begeleiding van de asfaltuitvoerder. Hij is samen met zijn ploeg verantwoordelijk voor het opgeleverde werk. Hij vervangt de asfaltuitvoerder bij diens afwezigheid."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Meten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/0EBFAD3C80",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Procedures volgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/752EEDBE89",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Delegeren ",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C8730D1BAB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplaatsen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D16A30C42A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Architectuur en bouwkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2E82050080",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Tele- en datacommunicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/65FB1DC868",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Metaalkunde, metaalbewerking",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/800D4C8975",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installatietechniek (infra)",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A767523AD9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verkeerskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/B209F3222C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Veiligheidskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C34CD6448D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Grondwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/CF0369B840",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouwmanagement, aanneming, werkvoorbereiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DF68BB9CD4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Landmeetkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E135D50DE8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Tuin-, groenvoorziening",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E67F25D9CF",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Weg- en waterbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FA50514C2A",
+      "categorie": "essentieel"
+    }
+  ]
+}

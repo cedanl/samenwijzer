@@ -1,0 +1,169 @@
+{
+  "crebo": "25907",
+  "opleiding": "25907_BOL_2025__talland-Allround-Schoonheidsspecialist",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Allround Schoonheidsspecialist",
+    "uri": "",
+    "definitie": "De allround schoonheidsspecialist biedt uiteenlopende schoonheidsbehandelingen aan. Hij/zij is vóór alles mensgericht en richt zich op de verzorging van de gezonde huid en nagels. Hij/zij verzorgt ook specialistische en complexe behandelingen, zoals tegen acne. Zijn/haar behandelingen gaan verder dan alleen de verzorging van de huid. Ze zijn gericht op de behandeling, dat wil zeggen actieve conditionering en verbetering van de huid met behulp van intensieve specialistische producten, technieken en apparaten. De allround schoonheidsspecialiste kan ook inspelen op onverwachte omstandigheden binnen de behandeling. Hij/zij maakt de juiste afwegingen en verwijst de cliënt zo nodig tijdig door naar een andere specialist. Hij/zij is dan ook in staat beroepsmatig te communiceren met bijvoorbeeld een huidtherapeut, arts en dermatoloog. De allround schoonheidsspecialist is zich continu bewust van de noodzaak om hygiënisch, zorgvuldig en kwaliteitsbewust te werken. Hij/zij kent de afbreukrisico’s bij het niet naleven van de eisen, waaronder die uit het Richtsnoer Hygiëne, Arbeidsomstandigheden en Milieu."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Problemen signaleren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4D400FE127",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ondernemerszin tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/518455478C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verzorgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DB59A57C01",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Promoten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E06265451B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Dienstbaarheid tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/F755E32480",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voetverzorging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/0621FF7B56",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Psychologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/17998456DE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Haarverzorging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/269B33BF53",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Farmacie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/356A7EF9F3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Gezondheidszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36530C542F",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Handverzorging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/412ED87095",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Biomedische wetenschappen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/42BB16307B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Geneeskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/512B5B0194",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfseconomie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/53B4B474D1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Biologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/54690E3D68",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administratie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/5488DA6138",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Sociale wetenschappen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7029C9FD21",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Personeelswerk",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AA15132AFE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Preventieve gezondheidszorg en - geneeskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BFE1C817CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voeding en gezondheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C3247434CD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Schoonheids-, lichaamsverzorging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C37A10D447",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Belastingen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C68D027C05",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Traditionele en alternatieve geneeskunde en therapie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DF66E1F99F",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Marketing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E6A75FB995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Scheikunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/EE4D07D17E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voeding en diëtetiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FF24F7C483",
+      "categorie": "essentieel"
+    }
+  ]
+}

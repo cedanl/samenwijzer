@@ -1,0 +1,104 @@
+{
+  "crebo": "25949",
+  "opleiding": "25949_BBL_2025__talland-Machinist-wegenbouw",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Machinist wegenbouw",
+    "uri": "",
+    "definitie": "De machinist wegenbouw bestuurt machines in de wegenbouw en is voornamelijk bezig met het aanbrengen van verhardingen en met walsen. Daarnaast repareert en onderhoudt die de machines en lost storingen op. De machinist wegenbouw is flexibel ingesteld; werkt op onregelmatige tijden en soms in het buitenland. De machinist wegenbouw is stressbestendig, werkt zorgvuldig en heeft een goede lichamelijke conditie. Bij onverwachte omstandigheden past die gemakkelijk diens werkwijze aan. De machinist wegenbouw draagt een grote verantwoordelijkheid voor de machines, de werkomgeving, de opdrachtgevers, diens collega’s en zichzelf. De machinist wegenbouw werkt volgens vastgestelde werkwijzen en krijgt begeleiding van diens leidinggevende."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Repareren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1C1D574677",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Vervoeren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/57F37BF52D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplaatsen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D16A30C42A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Deductief logisch redeneren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E033DC4809",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaalkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/519323C152",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Veiligheidskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C34CD6448D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Grondwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/CF0369B840",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouwmanagement, aanneming, werkvoorbereiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DF68BB9CD4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Weg- en waterbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FA50514C2A",
+      "categorie": "essentieel"
+    }
+  ]
+}

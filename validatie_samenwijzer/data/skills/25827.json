@@ -1,0 +1,64 @@
+{
+  "crebo": "25827",
+  "opleiding": "25827_BBL_2025__talland-Tegelzetter",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Tegelzetter",
+    "uri": "",
+    "definitie": "De tegelzetter voert standaard tegelwerkzaamheden uit in de nieuwbouw, renovatie en restauratie van woningen en gebouwen. Hij werkt zowel individueel als in een ploeg. De tegelzetter voert de werkzaamheden uit volgens instructie en tekeningen. Hij doet dit volgens standaard werkmethoden. Hij voert bij het zetten van wandtegels uitsluitend routinematige handelingen uit. Het bijzondere tegelwerk beperkt hij tot figuratief tegelwerk, waarbij het patroon niet wordt onderbroken. De tegelzetter heeft een uitvoerende rol. Bij problemen overlegt hij altijd met zijn direct leidinggevende. Hij werkt zelfstandig binnen gesloten opdrachten. Hij bereidt ondergronden voor, zet tegelwerk uit en maakt een vlakverdeling en kan zowel tegels lijmen als tegels leggen in de specie."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Meten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/0EBFAD3C80",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Transport en logistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2F8C9BA908",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3FC6552A85",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieutechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/58823180FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Schilderen en overige afwerktechnieken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6B614BA1A0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ontwerpen met de computer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8F02A2B716",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    }
+  ]
+}

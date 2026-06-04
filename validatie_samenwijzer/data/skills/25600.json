@@ -1,0 +1,219 @@
+{
+  "crebo": "25600",
+  "opleiding": "25600_BOL_2025__talland-Aankomend-onderofficier-grondoptreden",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Aankomend onderofficier grondoptreden",
+    "uri": "",
+    "definitie": "De aankomend onderofficier grondoptreden oriënteert zich op een mogelijke carrière als leidinggevende bij een onderdeel van de krijgsmacht. Hij wordt voorbereid op zijn toekomstige rol als  vakman, leider en instructeur op kazernes en in het militaire veld. Hij handhaaft zich in de militair \"veilige\" omgeving en coördineert de taken van zijn (kleine) eenheid. Zijn taken bevinden zich op de scheidslijn tussen bevelvoering en uitvoering, maar onder alle omstandigheden moet hij optreden als toekomstig leidinggevende van aankomende medewerkers grondoptreden. Hij wordt voorbereid op ingewikkelde en stressvolle militaire werkzaamheden en ontwikkelt hiervoor het tactisch en strategisch inzicht om in risicovolle, levensbedreigende  omstandigheden zichzelf en zijn teamleden veilig te laten werken. Hij is zich altijd bewust van zijn (militaire) voorbeeldfunctie en gedraagt zich daar ook naar. Hij leert bovendien te leven in primitieve omstandigheden in het veld."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Informatie ordenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/299CE88E49",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reageren op risicovolle omstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/29B470A4FC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Toewijding tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3906E425EA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen oplossen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/53E033E58A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Presenteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/590AC2FC12",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Instrueren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6AE2F3F890",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplichtingen nakomen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6EDDE6185F",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Zorgvuldig werken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/73CE64DACE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Procedures volgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/752EEDBE89",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Motiveren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/9744544CFB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Systeemevaluatie",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/A43394A208",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Assertiviteit tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AA253D1EBA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Monitoren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B03F4F484C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Schrijven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/BC98BE9135",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Operationeel toezicht houden",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/FAB3EE0CD1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Militair recht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2662EF1662",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Cultuurwetenschappen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/47A44B019D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Marine",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/558BCF0FB8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Sociologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/59637E5D42",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Defensie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6B7AE223C7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Sociale wetenschappen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7029C9FD21",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Sportinstructie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9144FBEBE8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerking en netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/95C3218741",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Internationaal recht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9B0AF5B160",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Landmacht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BABAC14EC0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Preventieve gezondheidszorg en - geneeskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BFE1C817CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voeding en gezondheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C3247434CD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Veiligheidskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C34CD6448D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Redding, noodopruiming, brandweer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F8A6F0DADD",
+      "categorie": "essentieel"
+    }
+  ]
+}

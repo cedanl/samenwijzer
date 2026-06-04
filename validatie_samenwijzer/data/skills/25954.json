@@ -1,0 +1,303 @@
+{
+  "crebo": "25954",
+  "opleiding": "25954_BOL_2025__talland-Technicus-hout-en-restauratie",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "kwaliteitscontroleur hout",
+    "uri": "http://data.europa.eu/esco/occupation/ad7bbc92-d5cb-4b64-a1a3-efc593afd437",
+    "definitie": "Kwaliteitscontroleurs hout inspecteren timmerhout, of hout dat in planken is gezaagd. Zij testen het zaaghout, zoeken naar onregelmatigheden en rangschikken het hout op basis van kwaliteit en de mate waarin het een gewild patroon betreft."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "operator lamineren van glasvezel",
+    "technicus computerhardware",
+    "houthandelaar",
+    "kwaliteitscontroleur hout",
+    "technicus waterkracht",
+    "assemblagemedewerker hout",
+    "distributiemanager hout en bouwmaterialen",
+    "import-exportmanager hout en bouwmaterialen"
+  ],
+  "skills": [
+    {
+      "label": "criteria voor gegevenskwaliteit definiëren",
+      "uri": "http://data.europa.eu/esco/skill/54c9c155-9293-4329-8ed2-2e76e8b519d4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "precisiemeetinstrumenten hanteren",
+      "uri": "http://data.europa.eu/esco/skill/42c25baf-ccb3-47d9-a872-bb2ceb615538",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "zorgen voor de openbare orde en veiligheid",
+      "uri": "http://data.europa.eu/esco/skill/499c05a2-6f36-4407-83c1-dc3448d35818",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "timmerhout onderzoeken",
+      "uri": "http://data.europa.eu/esco/skill/5c82b5c6-22a6-4f5b-8ae7-3a5694fa2197",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteitsklassen",
+      "uri": "http://data.europa.eu/esco/skill/48616ec6-5116-4e95-afd9-379fd7ab49f0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "houtproducten",
+      "uri": "http://data.europa.eu/esco/skill/c9026b8f-7c5c-44b4-9e59-ae1e72fb29c0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "prestatietests uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/bbd57056-80e0-45bb-a2c1-658ed99a1251",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "timmerhout tellen",
+      "uri": "http://data.europa.eu/esco/skill/a6a4c2aa-5118-4870-be76-401620e6fd1b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteitsnormen opstellen",
+      "uri": "http://data.europa.eu/esco/skill/5d9e766b-8f17-4e17-bfab-3bb0e0719791",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "testapparatuur onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/987a848a-01ec-4938-9f31-1af1c7bef651",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheids- en veiligheidsnormen toepassen",
+      "uri": "http://data.europa.eu/esco/skill/dcc96a49-0bac-4a9c-8f8e-a32b4e47e6eb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veiligheidsbeheer toepassen",
+      "uri": "http://data.europa.eu/esco/skill/989dc903-5838-4d84-8e04-e5b7a2ba97c5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "monstertests uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/b5a1fc87-c9f2-41f4-a1ae-28e023715592",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteitsnormen voor productie controleren",
+      "uri": "http://data.europa.eu/esco/skill/3edfcb2b-2d0e-4673-87ce-f55c37eb5fca",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "timmerhoutproducten",
+      "uri": "http://data.europa.eu/esco/skill/2336b108-a59b-4ff0-84c4-d838b4d297bd",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "timmerhout classificeren",
+      "uri": "http://data.europa.eu/esco/skill/99286f86-2416-419f-afd6-2378d1b509b8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "monsters voorbereiden voor tests",
+      "uri": "http://data.europa.eu/esco/skill/cd4b9e72-a18d-44bd-b227-14bbdd162dc1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "inspecties leiden",
+      "uri": "http://data.europa.eu/esco/skill/f9d70f2a-c3f0-475d-ac55-dc2e2ba856e8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "soorten hout",
+      "uri": "http://data.europa.eu/esco/skill/cf2005ee-c788-4283-81d9-b443dfdf2c2e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "categorieën timmerhout onderscheiden",
+      "uri": "http://data.europa.eu/esco/skill/787cc6d2-d3e1-4e9a-8664-787ac7f1d15b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "fabricageprocessen",
+      "uri": "http://data.europa.eu/esco/skill/3786b61f-f22e-48d1-af8d-ad4c354534db",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "houtkwaliteit onderscheiden",
+      "uri": "http://data.europa.eu/esco/skill/a36de838-7fd3-474a-8391-492354b47fc1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "technische rapporten opstellen",
+      "uri": "http://data.europa.eu/esco/skill/99fc129e-360c-4174-9553-5c666a64a395",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "timmerhout markeren",
+      "uri": "http://data.europa.eu/esco/skill/198f62a5-dadb-4653-80fe-0108e8af7cd3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "niet-destructieve testapparatuur gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/8d6a9e62-1e89-49df-8147-680081ce5315",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteit van producten controleren",
+      "uri": "http://data.europa.eu/esco/skill/1a3660c2-011c-4e96-9b1d-529afc305428",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteitsstandaarden",
+      "uri": "http://data.europa.eu/esco/skill/8d4271ca-c9fd-40b3-875f-15f78332a49e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toezicht houden op kwaliteitscontroles",
+      "uri": "http://data.europa.eu/esco/skill/5d34adde-0b78-42b4-9d3d-69e9388d8398",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "een computer gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/1007aa13-9f18-4bcf-96f3-e108c40baf69",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderzoeksmetingen registreren",
+      "uri": "http://data.europa.eu/esco/skill/120b9b87-3aad-4a42-b5e7-1b146a672038",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "testgegevens vastleggen",
+      "uri": "http://data.europa.eu/esco/skill/328733a7-6d84-420d-a65c-2a8014fadc60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "methoden voor kwaliteitsgarantie",
+      "uri": "http://data.europa.eu/esco/skill/c7cc6dc5-d56b-4323-8e5c-47c4022f615f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verslag doen van testresultaten",
+      "uri": "http://data.europa.eu/esco/skill/561c2525-5bd8-4d86-8f45-820f4be7db93",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bouwproducten",
+      "uri": "http://data.europa.eu/esco/skill/5ac07f1a-6436-4103-b891-c59a7ac505f0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "adviesprijs van de producent",
+      "uri": "http://data.europa.eu/esco/skill/8c2674cc-685e-4e86-94ee-c23dd84a0783",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "documentatie van kwaliteitscontrolesystemen herzien",
+      "uri": "http://data.europa.eu/esco/skill/6c315001-d329-4930-9294-9cf2c7afb672",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kwaliteit van grondstoffen controleren",
+      "uri": "http://data.europa.eu/esco/skill/a93011ca-e6ab-4182-8a05-4d4b282cff27",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productiegegevens registreren voor kwaliteitscontrole",
+      "uri": "http://data.europa.eu/esco/skill/2879a6f9-868b-40a1-a424-d50007ca8354",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "houtverwerkingsprocessen",
+      "uri": "http://data.europa.eu/esco/skill/0f9098d1-9bcd-453c-a9ec-e8b635705976",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "productverbeteringen aanbevelen",
+      "uri": "http://data.europa.eu/esco/skill/c0fce59c-e227-4745-945f-95eb2f0bc03e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "volume van gekapt hout beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/5cead3a5-92ad-41be-ab53-03d8d0b38d0e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "houtsnijden",
+      "uri": "http://data.europa.eu/esco/skill/bb933bf6-e9a6-4dd8-8c88-0d8bacae30a5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kwaliteitscriteria voor productie definiëren",
+      "uri": "http://data.europa.eu/esco/skill/46e1b714-94f4-462d-88e6-31f442708812",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "bomen inspecteren",
+      "uri": "http://data.europa.eu/esco/skill/83331548-2159-4b87-9177-c3cb29978540",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "aan contractspecificaties voldoen",
+      "uri": "http://data.europa.eu/esco/skill/576b305e-8c25-4546-8a69-87f975783114",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "veilig met machines werken",
+      "uri": "http://data.europa.eu/esco/skill/4c831013-9027-4ec6-83de-c5c19e68d083",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "over prijzen onderhandelen",
+      "uri": "http://data.europa.eu/esco/skill/7ee9fb56-91b1-4363-b51f-ea54ae1b5761",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "passende beschermende uitrusting dragen",
+      "uri": "http://data.europa.eu/esco/skill/6122d586-5978-431f-8e7a-96e61fc1f3fc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kwaliteit van gekapt hout beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/fa959bf8-31b2-449b-a2d3-ae6ee9f05f3d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "doelstellingen op het gebied van kwaliteitsborging vaststellen",
+      "uri": "http://data.europa.eu/esco/skill/22b8039c-c890-4610-9228-5527e3b98f12",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "testapparatuur gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/74374d09-7a54-4a05-ae78-d5940423de7c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "houtbewerkingsgereedschappen",
+      "uri": "http://data.europa.eu/esco/skill/4c06a716-6363-4308-b548-88f7a3e70097",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "producten op houtbasis beheren",
+      "uri": "http://data.europa.eu/esco/skill/96aa1a61-7c1e-4dba-a468-4bffa78f939d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "omgaan met managers",
+      "uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "hout beheren",
+      "uri": "http://data.europa.eu/esco/skill/c8186be4-15d4-4347-b34a-53bee7015f79",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "grond- en hulpstoffen beheren",
+      "uri": "http://data.europa.eu/esco/skill/020b3c27-bae1-4b85-9d6f-eccee0f5ed99",
+      "categorie": "optioneel"
+    }
+  ]
+}

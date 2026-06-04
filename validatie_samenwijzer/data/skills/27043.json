@@ -1,0 +1,139 @@
+{
+  "crebo": "27043",
+  "opleiding": "27043_BBL_2025__talland-Allround-Chauffeur-wegvervoer",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Allround chauffeur wegvervoer",
+    "uri": "",
+    "definitie": "De allround chauffeur wegvervoer werkt bij een transportonderneming, als eigen vervoerder of bij andere bedrijven die een transportafdeling hebben. De allround chauffeur wegvervoer is zowel werkzaam op de vrachtwagen maar ook op de transportafdeling van de organisatie. De allround chauffeur wegvervoer werkt voor het vervoeren van de lading vaak alleen en volgens een onregelmatig werkpatroon. Voor de overige werkzaamheden gericht op o.a. de organisatie, het mentoraat van chauffeurs en het zorgdragen voor het transportmateriaal en/of – materieel werkt die veelal samen met collega’s vanuit verschillende afdelingen. De allround chauffeur wegvervoer vervoert lading van de ene naar de andere plek in binnen- en/of buitenland en is hierbij verantwoordelijk voor het veilig vervoer en de juiste documentatie. Tijdens de uitvoering van het werk leeft die de wettelijke richtlijnen na. Bij incidenten neemt de chauffeur wegvervoer zelfstandig beslissingen. De allround chauffeur wegvervoer is de spil tussen de organisatie en de volledige groep van chauffeurs binnen de organisatie. Hierbij fungeert die als spreekbuis voor veelvoorkomende problemen richting de organisatie en onderneemt die hierop acties. De allround chauffeur wegvervoer begeleidt ook (aspirant) chauffeurs op de werkvloer en geeft feedback op de uitvoering van de werkzaamheden.  Ook ondersteunt die bij het wagenparkbeheer van de organisatie."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reageren op risicovolle omstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/29B470A4FC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen signaleren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4D400FE127",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen oplossen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/53E033E58A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Vervoeren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/57F37BF52D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/5C8ADA7777",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Procedures volgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/752EEDBE89",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ruimtelijk inzicht",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B260384107",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Aandacht en begrip tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B620732163",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplaatsen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D16A30C42A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Handvaardigheid",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E66E6D3B86",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Transport en logistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2F8C9BA908",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Cultuurwetenschappen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/47A44B019D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerking en netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/95C3218741",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouw van voertuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AC637FF773",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Wegvervoer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C228748C72",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ladingbehandeling en intern transport",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D27283387C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Social media",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F1211E19F7",
+      "categorie": "essentieel"
+    }
+  ]
+}

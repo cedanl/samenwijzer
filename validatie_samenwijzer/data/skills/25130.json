@@ -1,0 +1,79 @@
+{
+  "crebo": "25130",
+  "opleiding": "25130_BBL_2025__talland-Voeger",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Voeger",
+    "uri": "",
+    "definitie": "De voeger voegt gevels op verschillende locaties. Hij is in dienst bij een voegbedrijf, of een bedrijf dat gespecialiseerd is in gevelreinigen of gevelbehandelen. Hij werkt vrijwel altijd in de buitenlucht en heeft een zelfstandige werkhouding binnen zijn team. Hij richt zijn werkplek in met het nodige materiaal, verwijdert bestaand voegwerk, reinigt de gevels en voegt ze opnieuw. De voeger werkt efficiënt en milieubewust en heeft oog voor detail. Hij houdt een goede balans tussen de kwaliteit van het werk en de snelheid. Hij werkt naar aanleiding van instructies, maar is wel alert tijdens de uitvoering en signaleert problemen op tijd. Hij heeft technische basiskennis. Hij werkt zelfstandig en is verantwoordelijk voor zijn eigen werkzaamheden. Zijn leidinggevende is eindverantwoordelijk."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Repareren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1C1D574677",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kunstgeschiedenis",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/12ECAC0B4C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Elektrotechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/1EC7181B0B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3FC6552A85",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaalkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/519323C152",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Schilderen en overige afwerktechnieken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6B614BA1A0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Industriële lakverwerking",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/CFFEAAA1B7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Restauratie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F9F7C31079",
+      "categorie": "essentieel"
+    }
+  ]
+}
