@@ -1,4 +1,4 @@
-"""Publieke OER-vraag — conversationeel, zonder inlogvereiste."""
+"""Publieke vraag-pagina (De digitale gids) — conversationeel, zonder inlogvereiste."""
 
 import base64
 import html
@@ -12,7 +12,7 @@ load_dotenv()
 
 log = logging.getLogger(__name__)
 
-st.set_page_config(page_title="OER-vraag — Samenwijzer", page_icon="📚", layout="wide")
+st.set_page_config(page_title="Stel je vraag — De digitale gids", page_icon="📚", layout="wide")
 
 from validatie_samenwijzer._ai import APITimeoutError  # noqa: E402
 from validatie_samenwijzer._ai import _client as ai_client  # noqa: E402
@@ -36,14 +36,14 @@ from validatie_samenwijzer.db import (  # noqa: E402
     haal_instelling_document_op,
 )
 from validatie_samenwijzer.ingest import extraheer_tekst_html  # noqa: E402
-from validatie_samenwijzer.styles import CSS, render_footer  # noqa: E402
+from validatie_samenwijzer.styles import CSS, render_footer, schoon_opleiding_naam  # noqa: E402
 
 st.markdown(CSS, unsafe_allow_html=True)
 
 # Achter login: alleen ingelogde gebruikers (student/mentor/algemeen account) mogen hier.
 # Blokkeert ook directe-URL-toegang, niet alleen de tab in main.py.
 if not st.session_state.get("rol"):
-    st.warning("🔒 Log in om SamenWijzer te gebruiken.")
+    st.warning("🔒 Log in om De digitale gids te gebruiken.")
     st.page_link("main.py", label="Naar inloggen", icon="🏠")
     st.stop()
 
@@ -86,14 +86,14 @@ def _reset() -> None:
 def _render_oer_bestand(pad: Path) -> None:
     """Render een OER-bestand inline (PDF iframe + download, of tekst-fallback)."""
     if not pad.exists():
-        st.warning(f"OER-bestand niet gevonden op: {pad}")
+        st.warning(f"Bestand niet gevonden op: {pad}")
         return
 
     suffix = pad.suffix.lower()
     if suffix == ".pdf":
         pdf_bytes = pad.read_bytes()
         st.download_button(
-            label="⬇️ Download OER als PDF",
+            label="⬇️ Download studiegids als PDF",
             data=pdf_bytes,
             file_name=pad.name,
             mime="application/pdf",
@@ -105,7 +105,7 @@ def _render_oer_bestand(pad: Path) -> None:
             unsafe_allow_html=True,
         )
     elif suffix in {".html", ".htm"}:
-        st.text_area("OER-inhoud", extraheer_tekst_html(pad), height=800)
+        st.text_area("Inhoud studiegids", extraheer_tekst_html(pad), height=800)
     elif suffix == ".md":
         st.markdown(pad.read_text(encoding="utf-8"))
     else:
@@ -113,7 +113,7 @@ def _render_oer_bestand(pad: Path) -> None:
 
 
 _LAAD_INDICATOR = (
-    '<div class="chat-antwoord">⏳ <em>De OER wordt geraadpleegd, '
+    '<div class="chat-antwoord">⏳ <em>De studiegids wordt geraadpleegd, '
     "het antwoord wordt opgesteld…</em></div>"
 )
 
@@ -141,9 +141,9 @@ def _stream_antwoord(systeem: str, berichten: list[dict]) -> str:
 
 # ── Header ────────────────────────────────────────────────────────────────────
 st.markdown(
-    '<div class="oer-overtitel">Onderwijs- en examenregeling</div>'
-    '<h1 class="oer-hero">Stel je vraag. <span class="it">De OER</span> antwoordt.</h1>'
-    '<div class="oer-ondertitel">Met bron, vindplaats én woordelijk citaat — verifieerbaar.</div>',
+    '<div class="oer-overtitel">De digitale gids · MBO</div>'
+    '<h1 class="oer-hero">Stel je vraag. <span class="it">De gids</span> antwoordt.</h1>'
+    '<div class="oer-ondertitel">Alles over je opleiding — mét bron, vindplaats én citaat.</div>',
     unsafe_allow_html=True,
 )
 
@@ -163,8 +163,8 @@ if st.session_state.pub_oer_labels:
 else:
     st.markdown(
         '<div class="oer-intro" style="margin-bottom:1.2rem">'
-        "Stel je vraag. Vermeld instelling, opleiding, leerweg (BOL/BBL) en cohortjaar — "
-        "of laat de assistent ernaar vragen. Je kunt meerdere OERs tegelijk bevragen."
+        "Stel je vraag. Vermeld je instelling, opleiding, leerweg (BOL/BBL) en cohortjaar — "
+        "of laat de gids ernaar vragen. Je kunt meerdere studiegidsen tegelijk vergelijken."
         "</div>",
         unsafe_allow_html=True,
     )
@@ -174,7 +174,9 @@ if st.session_state.pub_oer_paden:
     knop_cols = st.columns(len(st.session_state.pub_oer_paden))
     for i, col in enumerate(knop_cols):
         with col:
-            if st.button(f"📄 Bekijk OER {i + 1}", key=f"toon_oer_{i}", use_container_width=True):
+            if st.button(
+                f"📄 Bekijk studiegids {i + 1}", key=f"toon_oer_{i}", use_container_width=True
+            ):
                 st.session_state[f"pub_toon_oer_{i}"] = not st.session_state.get(
                     f"pub_toon_oer_{i}", False
                 )
@@ -201,7 +203,7 @@ if st.session_state.pub_kandidaten:
     kandidaten = st.session_state.pub_kandidaten
 
     def _label(k: dict) -> str:
-        opl = k["opleiding"][:40]
+        opl = schoon_opleiding_naam(k["opleiding"], k.get("crebo", ""))
         return f"{k['display_naam']} · {opl} · {k['leerweg']} {k['cohort']}"
 
     opties = {_label(k): k for k in kandidaten}
@@ -214,8 +216,8 @@ if st.session_state.pub_kandidaten:
             st.rerun()
 
     geselecteerd = st.multiselect(
-        f"{n_opties} OERs gevonden — kies er één of meer (max {MAX_OER_SELECTIE}). "
-        "Tip: typ de instellingsnaam om te filteren.",
+        f"{n_opties} studiegidsen gevonden — kies er één of meer (max {MAX_OER_SELECTIE}). "
+        "Tip: typ de naam van je school om te filteren.",
         list(opties.keys()),
         max_selections=MAX_OER_SELECTIE,
     )
@@ -246,7 +248,7 @@ if st.session_state.pub_kandidaten:
                 paden.append(pad)
 
         if not oer_items:
-            st.error("Geen van de geselecteerde OER-bestanden kon worden geladen.")
+            st.error("Geen van de geselecteerde studiegidsen kon worden geladen.")
         else:
             st.session_state.pub_oer_systeem = bouw_gecombineerd_systeem(oer_items)
             st.session_state.pub_oer_labels = labels
@@ -264,7 +266,7 @@ if st.session_state.pub_kandidaten:
     st.stop()
 
 # ── Chat input ─────────────────────────────────────────────────────────────────
-vraag = st.chat_input("Stel een vraag over een OER…")
+vraag = st.chat_input("Stel een vraag over je opleiding…")
 
 if not vraag:
     render_footer()
@@ -330,8 +332,9 @@ if kandidaten:
                     }
                 ]
             )
+            schoon = schoon_opleiding_naam(k["opleiding"], k.get("crebo", ""))
             st.session_state.pub_oer_labels = [
-                f"{k['display_naam']} · {k['opleiding'][:40]} · {k['leerweg']} {k['cohort']}"
+                f"{k['display_naam']} · {schoon} · {k['leerweg']} {k['cohort']}"
             ]
             st.session_state.pub_oer_paden = [pad]
             berichten = bouw_berichten(st.session_state.pub_chat_history, vraag)

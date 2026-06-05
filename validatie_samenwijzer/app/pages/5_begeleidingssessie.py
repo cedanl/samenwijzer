@@ -1,4 +1,4 @@
-"""Mentor: studentprofiel + OER-chat naast elkaar."""
+"""Mentor: studentprofiel + vraag-en-antwoord (de OER) naast elkaar."""
 
 import base64
 import html
@@ -151,7 +151,7 @@ with col_profiel:
                 st.caption(punt)
 
 with col_chat:
-    tab_chat, tab_oer = st.tabs(["💬 OER-chat", "📄 Volledig OER"])
+    tab_chat, tab_oer = st.tabs(["💬 Stel een vraag", "📄 Volledige studiegids"])
 
     with tab_chat:
         if "chat_history" not in st.session_state:
@@ -194,7 +194,7 @@ with col_chat:
                     unsafe_allow_html=True,
                 )
 
-        vraag = st.chat_input(f"Stel een vraag over {student['naam']}'s OER…")
+        vraag = st.chat_input(f"Stel een vraag over {student['naam']}'s studiegids…")
         if vraag:
             st.markdown(
                 f'<div class="chat-vraag">💬 {html.escape(vraag)}</div>',
@@ -236,23 +236,23 @@ with col_chat:
 
     with tab_oer:
         if not oer:
-            st.warning("Geen OER gekoppeld aan deze student.")
+            st.warning("Geen studiegids gekoppeld aan deze student.")
         else:
             pad = resolve_oer_pad(oer["bestandspad"]).resolve()
             oeren_root = Path(os.environ.get("OEREN_PAD", "oeren")).resolve()
             if not pad.is_relative_to(oeren_root):
-                st.error("Ongeldig OER-bestandspad.")
+                st.error("Ongeldig bestandspad.")
                 st.stop()
 
             st.caption(f"Crebo {oer['crebo']} · {oer['leerweg']} · Cohort {oer['cohort']}")
 
             if not pad.exists():
-                st.warning(f"OER-bestand niet gevonden op: {pad}")
+                st.warning(f"Bestand niet gevonden op: {pad}")
             elif pad.suffix.lower() == ".pdf":
                 with open(pad, "rb") as f:
                     pdf_bytes = f.read()
                 st.download_button(
-                    label="⬇️ Download OER als PDF",
+                    label="⬇️ Download studiegids als PDF",
                     data=pdf_bytes,
                     file_name=pad.name,
                     mime="application/pdf",
@@ -264,7 +264,7 @@ with col_chat:
                     unsafe_allow_html=True,
                 )
             elif pad.suffix.lower() in {".html", ".htm"}:
-                st.text_area("OER-inhoud", extraheer_tekst_html(pad), height=600)
+                st.text_area("Inhoud studiegids", extraheer_tekst_html(pad), height=600)
             elif pad.suffix.lower() == ".md":
                 st.markdown(pad.read_text(encoding="utf-8"))
             else:

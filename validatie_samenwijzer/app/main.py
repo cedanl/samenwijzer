@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-st.set_page_config(page_title="SamenWijzer · Fase 1", page_icon="📚", layout="centered")
+st.set_page_config(page_title="De digitale gids", page_icon="📚", layout="centered")
 
 from validatie_samenwijzer._db import get_conn  # noqa: E402
 from validatie_samenwijzer.auth import login_mentor, login_student  # noqa: E402
@@ -123,9 +123,9 @@ elif st.session_state.get("rol") == "gast":
 
 st.markdown(
     '<div class="sw-hero">'
-    '<div class="sw-overline">Onderwijs- en examenregeling · MBO</div>'
-    '<h1 class="sw-title">SamenWijzer <span class="fase">Fase 1</span></h1>'
-    '<p class="sw-tagline">Je OER, leesbaar gemaakt. Stel je vraag in gewone taal — '
+    '<div class="sw-overline">De regels van je opleiding · MBO</div>'
+    '<h1 class="sw-title">De digitale <span class="fase">gids</span></h1>'
+    '<p class="sw-tagline">De regels van je opleiding, in gewone taal. Stel je vraag — '
     "en krijg antwoord <b>mét bron, vindplaats én woordelijk citaat</b>, "
     "zodat je het zelf kunt nazoeken.</p>"
     '<div class="sw-cite"><span class="src">Volgens de OER · art. 4.3</span>'
@@ -135,10 +135,10 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-tab_student, tab_mentor, tab_algemeen = st.tabs(["Student", "Mentor", "Direct een OER-vraag"])
+tab_student, tab_mentor, tab_algemeen = st.tabs(["Student", "Mentor", "Direct een vraag"])
 
 with tab_student:
-    st.caption("Log in met je studentnummer — je OER, voortgang en vragen op één plek.")
+    st.caption("Log in met je studentnummer — je studiegids, voortgang en vragen op één plek.")
     with st.form("login_student"):
         studentnummer = st.text_input("Studentnummer")
         ww = st.text_input("Wachtwoord", type="password")
@@ -165,11 +165,12 @@ with tab_mentor:
 
 with tab_algemeen:
     st.caption(
-        "Stel direct OER-vragen met een algemeen account — geen persoonlijke gegevens nodig."
+        "Stel direct vragen over je opleiding met een algemeen account — "
+        "geen persoonlijke gegevens nodig."
     )
     with st.form("login_algemeen"):
         ww_algemeen = st.text_input("Wachtwoord", type="password")
-        if st.form_submit_button("Inloggen voor OER-vraag", use_container_width=True):
+        if st.form_submit_button("Direct beginnen", use_container_width=True):
             # Fail-closed: vereist ALGEMEEN_WACHTWOORD (geen hardcoded default; de
             # repo is publiek). Constant-time vergelijking tegen timing-lekken.
             algemeen_pw = os.environ.get("ALGEMEEN_WACHTWOORD")

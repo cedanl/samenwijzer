@@ -22,8 +22,8 @@ _MAX_SKILLS_TEKST_TEKENS = 50_000  # skills-blok is klein; cap als veiligheid
 _MAX_INSTELLING_TEKST_TEKENS = 300_000
 
 LAGE_RELEVANTIE_BERICHT = (
-    "Ik kon geen OER-tekst laden voor deze student. "
-    "Controleer of het OER-bestand beschikbaar is, of raadpleeg het via 'Mijn OER'."
+    "Ik kon de studiegids voor deze opleiding niet laden. "
+    "Controleer of het bestand beschikbaar is, of bekijk 'm via 'Mijn studiegids'."
 )
 
 _SYSTEEM_TEMPLATE = """\

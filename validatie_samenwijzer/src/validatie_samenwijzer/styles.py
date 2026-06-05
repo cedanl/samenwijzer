@@ -239,6 +239,22 @@ header[data-testid="stHeader"] {{ display: none !important; }}
     background: {PAPER_DEEP} !important;
 }}
 
+/* ── Mobiel: de vaste nav wordt meeschuivend. De kolommen stapelen op smalle
+   schermen en zouden onder de 56px-balk de content overlappen; static + auto
+   hoogte laat ze netjes meeschuiven (sticky wordt opgeofferd op mobiel). ───── */
+@media (max-width: 640px) {{
+    .block-container > div > [data-testid="stHorizontalBlock"]:first-of-type {{
+        position: static !important;
+        height: auto !important;
+        backdrop-filter: none !important;
+        padding: 10px 16px !important;
+        row-gap: 2px !important;
+    }}
+    .block-container {{ padding-top: 1.2rem !important; }}
+    .sw-navbrand {{ font-size: 1.05rem; }}
+    .sw-pagetitle {{ font-size: 2rem; }}
+}}
+
 /* ── Voortgangsbalk ─────────────────────────────────────────────────────── */
 .progress-bar-bg {{
     background: {PAPER_DEEP};
@@ -695,8 +711,8 @@ h1.oer-hero {{
 """
 
 _NAV_STUDENT = [
-    ("💬 OER-chat", "pages/1_oer_assistent.py"),
-    ("📄 Mijn OER", "pages/2_mijn_oer.py"),
+    ("💬 Stel een vraag", "pages/1_oer_assistent.py"),
+    ("📄 Mijn studiegids", "pages/2_mijn_oer.py"),
     ("📊 Mijn voortgang", "pages/3_mijn_voortgang.py"),
 ]
 
@@ -853,7 +869,7 @@ def render_nav() -> None:
     cols = st.columns([3] + [2] * len(nav_items) + [1])
     with cols[0]:
         st.markdown(
-            '<span class="sw-navbrand">SamenWijzer <em>Fase 1</em></span>',
+            '<span class="sw-navbrand">De digitale <em>gids</em></span>',
             unsafe_allow_html=True,
         )
     for i, (label, page) in enumerate(nav_items):
@@ -868,6 +884,6 @@ def render_footer() -> None:
     import streamlit as st
 
     st.markdown(
-        '<div class="footer">SamenWijzer · Fase 1 · CEDA 2026 · Npuls</div>',
+        '<div class="footer">De digitale gids · CEDA 2026 · Npuls</div>',
         unsafe_allow_html=True,
     )
