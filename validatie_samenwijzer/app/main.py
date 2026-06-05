@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-st.set_page_config(page_title="OER-assistent · Login", page_icon="📚", layout="centered")
+st.set_page_config(page_title="SamenWijzer · Fase 1", page_icon="📚", layout="centered")
 
 from validatie_samenwijzer._db import get_conn  # noqa: E402
 from validatie_samenwijzer.auth import login_mentor, login_student  # noqa: E402
@@ -121,14 +121,24 @@ elif st.session_state.get("rol") == "mentor":
 elif st.session_state.get("rol") == "gast":
     st.switch_page("pages/0_oer_vraag.py")
 
-st.title("📚 OER-assistent")
-st.caption("Samenwijzer · CEDA 2026")
-
-st.divider()
+st.markdown(
+    '<div class="sw-hero">'
+    '<div class="sw-overline">Onderwijs- en examenregeling · MBO</div>'
+    '<h1 class="sw-title">SamenWijzer <span class="fase">Fase 1</span></h1>'
+    '<p class="sw-tagline">Je OER, leesbaar gemaakt. Stel je vraag in gewone taal — '
+    "en krijg antwoord <b>mét bron, vindplaats én woordelijk citaat</b>, "
+    "zodat je het zelf kunt nazoeken.</p>"
+    '<div class="sw-cite"><span class="src">Volgens de OER · art. 4.3</span>'
+    "<q>…een bindend studieadvies indien minder dan 40 studiepunten zijn behaald.</q>"
+    "</div>"
+    "</div>",
+    unsafe_allow_html=True,
+)
 
 tab_student, tab_mentor, tab_algemeen = st.tabs(["Student", "Mentor", "Direct een OER-vraag"])
 
 with tab_student:
+    st.caption("Log in met je studentnummer — je OER, voortgang en vragen op één plek.")
     with st.form("login_student"):
         studentnummer = st.text_input("Studentnummer")
         ww = st.text_input("Wachtwoord", type="password")
@@ -141,6 +151,7 @@ with tab_student:
                 st.error("Onbekend studentnummer of onjuist wachtwoord.")
 
 with tab_mentor:
+    st.caption("Log in met je naam — overzicht van je studenten en begeleidingssessies.")
     with st.form("login_mentor"):
         naam = st.text_input("Naam")
         ww2 = st.text_input("Wachtwoord", type="password")

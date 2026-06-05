@@ -393,6 +393,117 @@ h1.oer-hero {{
     font-weight: 500;
 }}
 
+/* ── Login-hero (startpagina) — CSS-only animaties (Streamlit stript JS) ──── */
+@keyframes sw-rise {{
+    from {{ opacity: 0; transform: translateY(22px); }}
+    to   {{ opacity: 1; transform: none; }}
+}}
+@keyframes sw-sweep {{
+    from {{ background-size: 0% 40%; }}
+    to   {{ background-size: 100% 40%; }}
+}}
+@keyframes sw-drift {{
+    from {{ transform: translate3d(0, 0, 0) rotate(0deg); }}
+    to   {{ transform: translate3d(4%, 3%, 0) rotate(8deg); }}
+}}
+
+.sw-hero {{
+    position: relative;
+    margin: 0.4rem 0 1.6rem;
+    padding: 2.7rem 2.3rem 2.5rem;
+    border-radius: 22px;
+    overflow: hidden;
+    background:
+        radial-gradient(130% 150% at 0% 0%, rgba(218, 58, 30, 0.10), transparent 55%),
+        radial-gradient(120% 160% at 100% 0%, rgba(255, 216, 77, 0.18), transparent 52%),
+        {PAPER_CARD};
+    border: 1px solid {LIJN};
+}}
+/* trage warme gloed die langzaam drift — geeft de hero leven zonder JS */
+.sw-hero::after {{
+    content: "";
+    position: absolute;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(38% 38% at 32% 30%, rgba(218, 58, 30, 0.07), transparent 70%);
+    animation: sw-drift 16s ease-in-out infinite alternate;
+    pointer-events: none;
+}}
+.sw-hero > * {{ position: relative; z-index: 1; }}
+
+.sw-overline {{
+    display: flex; align-items: center; gap: 0.6rem;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.66rem;
+    color: {VERMILJOEN};
+    margin-bottom: 1rem;
+    opacity: 0; animation: sw-rise 0.6s 0.05s ease forwards;
+}}
+.sw-overline::before {{
+    content: ""; width: 26px; height: 1px; background: {VERMILJOEN}; flex: 0 0 auto;
+}}
+
+.sw-title {{
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(2.9rem, 8vw, 4.6rem);
+    line-height: 0.94;
+    letter-spacing: -0.02em;
+    color: {INKT};
+    margin: 0;
+    opacity: 0; animation: sw-rise 0.7s 0.12s ease forwards;
+}}
+.sw-title .fase {{ font-style: italic; color: {VERMILJOEN}; }}
+
+.sw-tagline {{
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 1.12rem;
+    line-height: 1.5;
+    color: {INKT_ZACHT};
+    max-width: 34em;
+    margin: 1.1rem 0 0;
+    opacity: 0; animation: sw-rise 0.7s 0.2s ease forwards;
+}}
+.sw-tagline b {{ color: {INKT}; font-weight: 600; }}
+
+.sw-cite {{
+    display: inline-block;
+    margin-top: 1.6rem;
+    background: {PAPER};
+    border: 1px solid {LIJN};
+    border-left: 4px solid {MARKER};
+    border-radius: 0 10px 10px 0;
+    padding: 0.7rem 1.1rem;
+    opacity: 0; animation: sw-rise 0.7s 0.3s ease forwards;
+}}
+.sw-cite .src {{
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    font-size: 0.56rem; color: {VERMILJOEN}; margin-bottom: 0.35rem;
+}}
+.sw-cite q {{
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-style: italic; font-size: 1.14rem; color: {INKT};
+    padding: 0 0.1em;
+    background: linear-gradient({MARKER}, {MARKER}) no-repeat 0 86%;
+    background-size: 0% 40%;
+    animation: sw-sweep 0.9s 1s ease forwards;
+}}
+.sw-cite q::before {{ content: "\\201C"; }}
+.sw-cite q::after {{ content: "\\201D"; }}
+
+/* Respecteer prefers-reduced-motion: toon de eindstaat zonder animatie
+   (anders blijven de op opacity:0 startende elementen onzichtbaar). */
+@media (prefers-reduced-motion: reduce) {{
+    .sw-overline, .sw-title, .sw-tagline, .sw-cite {{
+        opacity: 1 !important; animation: none !important;
+    }}
+    .sw-cite q {{ background-size: 100% 40% !important; animation: none !important; }}
+    .sw-hero::after {{ animation: none !important; }}
+}}
+
 /* ── Containers (st.container border=True) ──────────────────────────────── */
 [data-testid="stVerticalBlockBorderWrapper"] {{
     background: {PAPER_CARD} !important;
@@ -623,6 +734,6 @@ def render_footer() -> None:
     import streamlit as st
 
     st.markdown(
-        '<div class="footer">Samenwijzer OER-assistent · CEDA 2026 · Npuls</div>',
+        '<div class="footer">SamenWijzer · Fase 1 · CEDA 2026 · Npuls</div>',
         unsafe_allow_html=True,
     )
