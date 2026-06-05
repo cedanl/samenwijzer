@@ -31,6 +31,62 @@ def test_bouw_berichten_behoudt_history():
     assert berichten[-1]["content"] == "Vraag 2"
 
 
+def test_bouw_berichten_filtert_lege_assistant_turn():
+    # Een mislukte AI-call kan een lege assistant-turn achterlaten; die mag de
+    # API niet bereiken (zou een 400 geven en de hele sessie blokkeren).
+    history = [
+        {"role": "user", "content": "Vraag 1"},
+        {"role": "assistant", "content": ""},
+    ]
+    berichten = bouw_berichten(history, "Vraag 2")
+    assert all(str(b["content"]).strip() for b in berichten)
+    assert berichten == [{"role": "user", "content": "Vraag 2"}]
+
+
+def test_bouw_berichten_vervangt_onbeantwoorde_user_turn():
+    history = [
+        {"role": "user", "content": "Vraag 1"},
+        {"role": "assistant", "content": "Antwoord 1"},
+        {"role": "user", "content": "Vraag 2"},  # onbeantwoord (stream faalde)
+    ]
+    berichten = bouw_berichten(history, "Vraag 3")
+    rollen = [b["role"] for b in berichten]
+    assert rollen == ["user", "assistant", "user"]
+    assert berichten[-1]["content"] == "Vraag 3"
+
+
+def test_bouw_berichten_cascade_blijft_geldig():
+    # Twee mislukte beurten op rij: resultaat moet alternerend zijn en met user
+    # beginnen, zonder lege content.
+    history = [
+        {"role": "user", "content": "Vraag 1"},
+        {"role": "assistant", "content": ""},
+        {"role": "user", "content": "Vraag 2"},
+        {"role": "assistant", "content": ""},
+    ]
+    berichten = bouw_berichten(history, "Vraag 3")
+    rollen = [b["role"] for b in berichten]
+    assert berichten[0]["role"] == "user"
+    assert all(rollen[i] != rollen[i + 1] for i in range(len(rollen) - 1))
+    assert all(str(b["content"]).strip() for b in berichten)
+    assert berichten[-1]["content"] == "Vraag 3"
+
+
+def test_messages_met_cache_zet_breakpoint_op_laatste():
+    from validatie_samenwijzer.chat import _messages_met_cache
+
+    berichten = [
+        {"role": "user", "content": "Vraag 1"},
+        {"role": "assistant", "content": "Antwoord 1"},
+        {"role": "user", "content": "Vraag 2"},
+    ]
+    resultaat = _messages_met_cache(berichten)
+    # Alleen de laatste beurt krijgt een cache-breakpoint, in blok-vorm.
+    assert resultaat[-1]["content"][0]["cache_control"] == {"type": "ephemeral", "ttl": "1h"}
+    # Eerdere beurten blijven ongemoeid (platte string-content).
+    assert resultaat[0]["content"] == "Vraag 1"
+
+
 def test_bouw_systeem_bevat_oer_tekst():
     systeem = bouw_systeem("Dit is de OER-tekst.", "Verzorgende IG", "Rijn IJssel")
     assert "Verzorgende IG" in systeem

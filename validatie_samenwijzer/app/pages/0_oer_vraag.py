@@ -126,10 +126,10 @@ def _stream_antwoord(systeem: str, berichten: list[dict]) -> str:
     except APITimeoutError:
         placeholder.empty()
         st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
-    except Exception as e:
+    except Exception:
         placeholder.empty()
         log.exception("OER-antwoord (publiek, stream) mislukt")
-        st.error(f"Er ging iets mis: {e}")
+        st.error("Er ging iets mis. Probeer het later opnieuw.")
     return antwoord
 
 
@@ -251,9 +251,17 @@ if st.session_state.pub_kandidaten:
 
             if st.session_state.pub_wachtende_vraag:
                 st.session_state.pub_wachtende_vraag = None
-                berichten = list(st.session_state.pub_chat_history)
+                # De wachtende vraag is de laatst toegevoegde user-beurt; haal die
+                # eraf en bouw via bouw_berichten zodat ook deze route de historie
+                # saneert (geen lege/niet-alternerende beurten naar de API).
+                hist = list(st.session_state.pub_chat_history)
+                wachtende = hist.pop() if hist and hist[-1]["role"] == "user" else {"content": ""}
+                berichten = bouw_berichten(hist, wachtende["content"])
                 antwoord = _stream_antwoord(st.session_state.pub_oer_systeem, berichten)
-                st.session_state.pub_chat_history.append({"role": "assistant", "content": antwoord})
+                if antwoord:
+                    st.session_state.pub_chat_history.append(
+                        {"role": "assistant", "content": antwoord}
+                    )
             st.rerun()
 
     render_footer()
@@ -277,14 +285,17 @@ st.markdown(
 if st.session_state.pub_oer_systeem:
     berichten = bouw_berichten(st.session_state.pub_chat_history, vraag)
     antwoord = _stream_antwoord(st.session_state.pub_oer_systeem, berichten)
-    st.session_state.pub_chat_history.extend(
-        [
-            {"role": "user", "content": vraag},
-            {"role": "assistant", "content": antwoord},
-        ]
-    )
-    if len(st.session_state.pub_chat_history) > MAX_GESCHIEDENIS:
-        st.session_state.pub_chat_history = st.session_state.pub_chat_history[-MAX_GESCHIEDENIS:]
+    if antwoord:
+        st.session_state.pub_chat_history.extend(
+            [
+                {"role": "user", "content": vraag},
+                {"role": "assistant", "content": antwoord},
+            ]
+        )
+        if len(st.session_state.pub_chat_history) > MAX_GESCHIEDENIS:
+            st.session_state.pub_chat_history = st.session_state.pub_chat_history[
+                -MAX_GESCHIEDENIS:
+            ]
     render_footer()
     st.stop()
 
@@ -335,16 +346,17 @@ if kandidaten:
             antwoord = _stream_antwoord(st.session_state.pub_oer_systeem, berichten)
             # Persist en rerun zodat de "geraadpleegd"-header en bekijk-knoppen
             # direct zichtbaar worden bij de eerste auto-loaded vraag.
-            st.session_state.pub_chat_history.extend(
-                [
-                    {"role": "user", "content": vraag},
-                    {"role": "assistant", "content": antwoord},
-                ]
-            )
-            if len(st.session_state.pub_chat_history) > MAX_GESCHIEDENIS:
-                st.session_state.pub_chat_history = st.session_state.pub_chat_history[
-                    -MAX_GESCHIEDENIS:
-                ]
+            if antwoord:
+                st.session_state.pub_chat_history.extend(
+                    [
+                        {"role": "user", "content": vraag},
+                        {"role": "assistant", "content": antwoord},
+                    ]
+                )
+                if len(st.session_state.pub_chat_history) > MAX_GESCHIEDENIS:
+                    st.session_state.pub_chat_history = st.session_state.pub_chat_history[
+                        -MAX_GESCHIEDENIS:
+                    ]
             st.rerun()
         else:
             antwoord = LAGE_RELEVANTIE_BERICHT
@@ -379,19 +391,20 @@ else:
         placeholder.empty()
         st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
         antwoord = ""
-    except Exception as e:
+    except Exception:
         placeholder.empty()
         log.exception("OER-intake-antwoord mislukt")
-        st.error(f"Er ging iets mis: {e}")
+        st.error("Er ging iets mis. Probeer het later opnieuw.")
         antwoord = ""
 
-st.session_state.pub_chat_history.extend(
-    [
-        {"role": "user", "content": vraag},
-        {"role": "assistant", "content": antwoord},
-    ]
-)
-if len(st.session_state.pub_chat_history) > MAX_GESCHIEDENIS:
-    st.session_state.pub_chat_history = st.session_state.pub_chat_history[-MAX_GESCHIEDENIS:]
+if antwoord:
+    st.session_state.pub_chat_history.extend(
+        [
+            {"role": "user", "content": vraag},
+            {"role": "assistant", "content": antwoord},
+        ]
+    )
+    if len(st.session_state.pub_chat_history) > MAX_GESCHIEDENIS:
+        st.session_state.pub_chat_history = st.session_state.pub_chat_history[-MAX_GESCHIEDENIS:]
 
 render_footer()
