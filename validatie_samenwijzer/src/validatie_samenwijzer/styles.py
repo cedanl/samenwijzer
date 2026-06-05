@@ -1,53 +1,100 @@
-"""Validatie Samenwijzer — moderne, student-vriendelijke stijl.
+"""Validatie Samenwijzer — editorial / archief-stijl.
 
-Wit + grijs + zacht oranje (terracotta) op basis van de CEDA-huisstijl,
-met witte achtergrond en lucht in plaats van de roze CEDA-achtergrond.
-General Sans typografie, geen serif, geen drop caps.
+Warm papier + inkt + vermiljoen-accent, met markeerstift-geel als citaat-device.
+Instrument Serif (display) + Hanken Grotesk (body) + JetBrains Mono (labels).
+Bewuste afwijking van de CEDA/Npuls-huisstijl: de OER wordt behandeld als een
+juridisch document dat leesbaar wordt gemaakt.
 """
 
 from typing import Literal
 
 # ── Palet ──────────────────────────────────────────────────────────────────
-WIT = "#ffffff"
-MIST = "#fafafa"  # cards, citatie-blokjes, hover-tints
-LIJN = "#e5e5e7"  # borders, scheidingslijnen
-GRIJS_TEKST = "#6b7280"  # secondary text, labels, meta
-INKT = "#1a1a1a"  # body, koppen
-TERRACOTTA = "#c8785a"  # primaire accent — links, knoppen, tab-highlight
-TERRACOTTA_LICHT = "#fae3d6"  # vraag-bubble, focus-glow
-TERRACOTTA_DONKER = "#a85f44"  # hover op primaire knop
+PAPER = "#f2ece0"  # paginabachtergrond — warm crème
+PAPER_CARD = "#f8f3e9"  # cards, bubbles, surfaces
+PAPER_DEEP = "#e7decc"  # progress-track, subtiele vullingen
+INKT = "#211910"  # body, koppen — warme bijna-zwart
+INKT_ZACHT = "#5e5343"  # secondary text
+INKT_VAAG = "#8c8170"  # meta, labels, placeholders
+VERMILJOEN = "#da3a1e"  # primair accent — links, knoppen, tab-highlight
+VERMILJOEN_DONKER = "#b22c12"  # hover op primaire knop
+MARKER = "#ffd84d"  # markeerstift — citaat-accent
+MARKER_WAS = "rgba(255, 216, 77, 0.16)"  # citaat-achtergrond
+LIJN = "rgba(33, 25, 16, 0.14)"  # borders, scheidingslijnen
+LIJN_ZACHT = "rgba(33, 25, 16, 0.08)"  # subtiele lijnen
 
-# Status-tinten — gebruikt in pagina's voor voortgang/risico-indicatoren
+# Status-tinten — gebruikt in pagina's voor voortgang/risico-indicatoren.
+# ORANJE is naar amber geschoven zodat de risico-status onderscheidbaar blijft
+# van het vermiljoen-merkaccent (zelfde tintfamilie).
 GROEN = "#27ae60"
-ORANJE = "#e67e22"
+ORANJE = "#c9881c"
 ROOD = "#c0392b"
+
+# SVG-ruis als data-uri — subtiele papier-grain over de hele app.
+_GRAIN = (
+    "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' "
+    "width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence "
+    "type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/"
+    "%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/"
+    '%3E%3C/svg%3E")'
+)
 
 CSS = f"""
 <style>
-@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 html, body, [class*="css"] {{
-    font-family: 'General Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 16px;
     line-height: 1.55;
-    background-color: {WIT};
+    background-color: {PAPER};
     color: {INKT};
 }}
 
-h1, h2, h3, h4,
+/* Streamlit's app-container heeft een eigen achtergrond die html/body overschrijft. */
+[data-testid="stApp"],
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"],
+.stApp {{
+    background-color: {PAPER} !important;
+}}
+
+/* ── Papier-grain over de hele app ──────────────────────────────────────── */
+[data-testid="stAppViewContainer"]::before {{
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.045;
+    mix-blend-mode: multiply;
+    background-image: {_GRAIN};
+}}
+
+::selection {{ background: {MARKER}; color: {INKT}; }}
+
+/* ── Koppen — Instrument Serif voor display (weight 400, géén synthetische
+   bold), Hanken Grotesk voor functionele subkoppen ─────────────────────── */
+h1, h2,
 [data-testid="stMarkdown"] h1,
 [data-testid="stMarkdown"] h2,
-[data-testid="stMarkdown"] h3,
-[data-testid="stMarkdown"] h4,
 [data-testid="stMarkdownContainer"] h1,
 [data-testid="stMarkdownContainer"] h2,
+[data-testid="stHeadingWithActionElements"] h1,
+[data-testid="stHeadingWithActionElements"] h2 {{
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-weight: 400 !important;
+    color: {INKT} !important;
+    letter-spacing: -0.015em !important;
+}}
+
+h3, h4,
+[data-testid="stMarkdown"] h3,
+[data-testid="stMarkdown"] h4,
 [data-testid="stMarkdownContainer"] h3,
 [data-testid="stMarkdownContainer"] h4,
-[data-testid="stHeadingWithActionElements"] h1,
-[data-testid="stHeadingWithActionElements"] h2,
 [data-testid="stHeadingWithActionElements"] h3 {{
-    font-family: 'General Sans', sans-serif !important;
-    font-weight: 600 !important;
+    font-family: 'Hanken Grotesk', sans-serif !important;
+    font-weight: 700 !important;
     color: {INKT} !important;
     letter-spacing: -0.01em !important;
 }}
@@ -56,32 +103,33 @@ h1, h2, h3, h4,
 [data-testid="stMarkdownContainer"] h1,
 [data-testid="stHeadingWithActionElements"] h1,
 h1 {{
-    font-size: 2.4rem !important;
-    line-height: 1.15 !important;
-    margin-bottom: 0.3em !important;
+    font-size: 2.9rem !important;
+    line-height: 1.02 !important;
+    margin-bottom: 0.25em !important;
 }}
 
 [data-testid="stMarkdown"] h2,
 [data-testid="stMarkdownContainer"] h2,
 h2 {{
-    font-size: 1.5rem !important;
-    margin-top: 1.4em !important;
-    margin-bottom: 0.4em !important;
+    font-size: 2rem !important;
+    line-height: 1.05 !important;
+    margin-top: 1.3em !important;
+    margin-bottom: 0.35em !important;
 }}
 
 [data-testid="stMarkdown"] h3,
 [data-testid="stMarkdownContainer"] h3,
-h3 {{ font-size: 1.15rem !important; }}
+h3 {{ font-size: 1.18rem !important; }}
 
 a {{
-    color: {TERRACOTTA};
+    color: {VERMILJOEN};
     text-decoration: none;
-    border-bottom: 1px solid {TERRACOTTA_LICHT};
+    border-bottom: 1px solid {MARKER};
     transition: border-color 0.15s;
 }}
 
 a:hover {{
-    border-bottom-color: {TERRACOTTA};
+    border-bottom-color: {VERMILJOEN};
 }}
 
 [data-testid="stSidebar"],
@@ -99,17 +147,18 @@ header[data-testid="stHeader"] {{ display: none !important; }}
     margin: 0 auto;
 }}
 
-/* ── Vaste navigatiebalk — wit met grijze onderlijn ─────────────────────── */
+/* ── Vaste navigatiebalk — papier met grijze onderlijn ──────────────────── */
 .block-container > div > [data-testid="stHorizontalBlock"]:first-of-type {{
     position: fixed !important;
     top: 0 !important; left: 0 !important; right: 0 !important;
     height: 56px !important;
-    background: {WIT} !important;
-    z-index: 9999 !important;
+    background: rgba(242, 236, 224, 0.85) !important;
+    backdrop-filter: blur(8px) !important;
+    z-index: 9998 !important;
     padding: 0 28px !important;
     margin: 0 !important;
     max-width: none !important;
-    border-bottom: 1px solid {LIJN} !important;
+    border-bottom: 1px solid {LIJN_ZACHT} !important;
     box-shadow: none !important;
     align-items: center !important;
     gap: 4px !important;
@@ -141,10 +190,10 @@ header[data-testid="stHeader"] {{ display: none !important; }}
     border: none !important;
     border-radius: 6px !important;
     padding: 8px 14px !important;
-    font-family: 'General Sans', sans-serif !important;
+    font-family: 'Hanken Grotesk', sans-serif !important;
     font-size: 14px !important;
     font-weight: 500 !important;
-    color: {GRIJS_TEKST} !important;
+    color: {INKT_ZACHT} !important;
     text-decoration: none !important;
     white-space: nowrap !important;
     box-shadow: none !important;
@@ -153,7 +202,7 @@ header[data-testid="stHeader"] {{ display: none !important; }}
 
 .block-container > div > [data-testid="stHorizontalBlock"]:first-of-type
     [data-testid="stPageLink"] a:hover {{
-    background: {MIST} !important;
+    background: {PAPER_DEEP} !important;
     color: {INKT} !important;
 }}
 
@@ -174,9 +223,10 @@ header[data-testid="stHeader"] {{ display: none !important; }}
 [data-testid="stPageLink"] a {{
     display: inline-block !important;
     background: transparent !important;
+    border: none !important;
     border-radius: 6px !important;
     padding: 6px 12px !important;
-    font-family: 'General Sans', sans-serif !important;
+    font-family: 'Hanken Grotesk', sans-serif !important;
     font-size: 14px !important;
     font-weight: 500 !important;
     color: {INKT} !important;
@@ -186,12 +236,12 @@ header[data-testid="stHeader"] {{ display: none !important; }}
 }}
 
 [data-testid="stPageLink"] a:hover {{
-    background: {MIST} !important;
+    background: {PAPER_DEEP} !important;
 }}
 
 /* ── Voortgangsbalk ─────────────────────────────────────────────────────── */
 .progress-bar-bg {{
-    background: {LIJN};
+    background: {PAPER_DEEP};
     border-radius: 4px;
     height: 8px;
     margin: 5px 0;
@@ -199,7 +249,7 @@ header[data-testid="stHeader"] {{ display: none !important; }}
 }}
 .progress-bar-fill {{
     height: 8px;
-    background: {TERRACOTTA};
+    background: {VERMILJOEN};
     border-radius: 4px;
     transition: width 0.4s ease;
 }}
@@ -207,7 +257,7 @@ header[data-testid="stHeader"] {{ display: none !important; }}
     padding-left: 1.5rem;
 }}
 .werkproces-label {{
-    color: {GRIJS_TEKST};
+    color: {INKT_ZACHT};
     font-size: 0.9rem;
 }}
 .werkproces-row .progress-bar-bg {{
@@ -216,11 +266,11 @@ header[data-testid="stHeader"] {{ display: none !important; }}
 
 /* ── Bron-kaartje ───────────────────────────────────────────────────────── */
 .bron-kaartje {{
-    background: {MIST};
-    border-left: 3px solid {TERRACOTTA};
+    background: {PAPER_CARD};
+    border-left: 3px solid {VERMILJOEN};
     border-radius: 4px;
     padding: 0.75rem 1.1rem;
-    font-family: 'General Sans', sans-serif;
+    font-family: 'Hanken Grotesk', sans-serif;
     font-size: 0.95rem;
     margin-bottom: 0.5rem;
     color: {INKT};
@@ -229,12 +279,13 @@ header[data-testid="stHeader"] {{ display: none !important; }}
 /* ── Chat-bubbles ───────────────────────────────────────────────────────── */
 .chat-vraag {{
     margin: 1rem 0 0.4rem auto;
-    padding: 10px 14px;
-    background: {TERRACOTTA_LICHT};
+    padding: 11px 16px;
+    background: {VERMILJOEN};
     border-radius: 16px 16px 4px 16px;
-    color: {INKT};
-    font-family: 'General Sans', sans-serif;
+    color: #fff;
+    font-family: 'Hanken Grotesk', sans-serif;
     font-size: 0.98rem;
+    font-weight: 500;
     line-height: 1.5;
     max-width: 75%;
     width: fit-content;
@@ -242,33 +293,42 @@ header[data-testid="stHeader"] {{ display: none !important; }}
 
 .chat-antwoord {{
     margin: 0.4rem auto 1.4rem 0;
-    padding: 12px 16px;
-    background: {WIT};
+    padding: 14px 18px;
+    background: {PAPER_CARD};
     border: 1px solid {LIJN};
     border-radius: 16px 16px 16px 4px;
     color: {INKT};
-    font-family: 'General Sans', sans-serif;
+    font-family: 'Hanken Grotesk', sans-serif;
     font-size: 1rem;
     line-height: 1.6;
     max-width: 90%;
 }}
 
-.chat-antwoord blockquote {{
-    background: {MIST};
-    border-left: 3px solid {TERRACOTTA};
-    border-radius: 4px;
-    margin: 0.8rem 0;
-    padding: 0.6rem 1rem;
-    font-family: 'General Sans', sans-serif;
+/* Citaat-pull-quote: markeerstift links-accent + lichte wash, serif cursief.
+   Statische CSS (Streamlit voert geen geïnjecteerde JS uit). */
+.chat-antwoord blockquote,
+.oer-citaat {{
+    background: {MARKER_WAS};
+    border-left: 4px solid {MARKER};
+    border-radius: 0 8px 8px 0;
+    margin: 0.9rem 0;
+    padding: 0.7rem 1.1rem;
     color: {INKT};
 }}
 
-.chat-antwoord blockquote p {{ margin: 0; }}
+.chat-antwoord blockquote p {{
+    margin: 0;
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-style: italic;
+    font-size: 1.16rem;
+    line-height: 1.4;
+    color: {INKT};
+}}
 
 .chat-antwoord code {{
-    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-    font-size: 0.85em;
-    background: {MIST};
+    font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+    font-size: 0.82em;
+    background: {PAPER_DEEP};
     padding: 1px 5px;
     border-radius: 4px;
     color: {INKT};
@@ -276,59 +336,66 @@ header[data-testid="stHeader"] {{ display: none !important; }}
 
 /* ── Landingspagina-helpers ─────────────────────────────────────────────── */
 .oer-overtitel {{
-    font-family: 'General Sans', sans-serif;
-    font-size: 0.85rem;
-    color: {GRIJS_TEKST};
-    margin-bottom: 0.3rem;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.7rem;
+    color: {VERMILJOEN};
+    margin-bottom: 0.6rem;
     font-weight: 500;
 }}
 
+h1.oer-hero {{
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-size: clamp(2.6rem, 5.5vw, 3.8rem) !important;
+    line-height: 1.0 !important;
+    letter-spacing: -0.02em !important;
+    margin: 0 0 0.5rem 0 !important;
+}}
+
+.oer-hero .it {{
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-style: italic;
+    color: {VERMILJOEN};
+}}
+
 .oer-ondertitel {{
-    font-family: 'General Sans', sans-serif;
-    color: {GRIJS_TEKST};
-    font-size: 1.05rem;
+    font-family: 'Hanken Grotesk', sans-serif;
+    color: {INKT_ZACHT};
+    font-size: 1.1rem;
     margin-top: 0.2rem;
 }}
 
 .oer-meta {{
-    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-    font-size: 0.78rem;
-    color: {GRIJS_TEKST};
-    letter-spacing: 0.02em;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    color: {INKT_VAAG};
+    letter-spacing: 0.04em;
     line-height: 1.5;
 }}
 
 .oer-intro {{
-    font-family: 'General Sans', sans-serif;
-    font-size: 1.05rem;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 1.08rem;
     line-height: 1.6;
-    color: {GRIJS_TEKST};
+    color: {INKT_ZACHT};
     max-width: 60ch;
-}}
-
-.oer-citaat {{
-    background: {MIST};
-    border-left: 3px solid {TERRACOTTA};
-    border-radius: 4px;
-    margin: 1.2rem 0;
-    padding: 0.9rem 1.2rem;
-    font-family: 'General Sans', sans-serif;
-    color: {INKT};
 }}
 
 .oer-citaat-bron {{
     display: block;
     margin-top: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
     text-transform: uppercase;
-    letter-spacing: 0.10em;
-    font-size: 0.72rem;
-    color: {GRIJS_TEKST};
-    font-weight: 600;
+    letter-spacing: 0.12em;
+    font-size: 0.66rem;
+    color: {VERMILJOEN};
+    font-weight: 500;
 }}
 
 /* ── Containers (st.container border=True) ──────────────────────────────── */
 [data-testid="stVerticalBlockBorderWrapper"] {{
-    background: {WIT} !important;
+    background: {PAPER_CARD} !important;
     border-radius: 12px !important;
     border: 1px solid {LIJN} !important;
     box-shadow: none !important;
@@ -336,67 +403,76 @@ header[data-testid="stHeader"] {{ display: none !important; }}
 }}
 
 /* ── Knoppen ─────────────────────────────────────────────────────────────── */
-[data-testid="stBaseButton-primary"],
-[data-testid="stBaseButton-primary"] p,
-[data-testid="stBaseButton-primary"] span {{
-    background-color: {TERRACOTTA} !important;
-    color: {WIT} !important;
+/* Box-eigenschappen (border/radius/bg/padding) alléén op de knop zelf — niet op
+   de p/span erbinnen, anders krijgen die hun eigen pill-border (concentrische
+   ringen, op papier zichtbaar). Tekststyling wél op knop + p + span. */
+[data-testid="stBaseButton-primary"] {{
+    background-color: {VERMILJOEN} !important;
     border-radius: 50px !important;
-    font-family: 'General Sans', sans-serif !important;
-    letter-spacing: 0.02em !important;
-    font-size: 0.95rem !important;
-    font-weight: 600 !important;
-    border: 1px solid {TERRACOTTA} !important;
+    border: 1px solid {VERMILJOEN} !important;
     padding: 0.55rem 1.4rem !important;
     box-shadow: none !important;
 }}
 
+[data-testid="stBaseButton-primary"],
+[data-testid="stBaseButton-primary"] p,
+[data-testid="stBaseButton-primary"] span {{
+    color: #fff !important;
+    font-family: 'Hanken Grotesk', sans-serif !important;
+    letter-spacing: 0.01em !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}}
+
 [data-testid="stBaseButton-primary"]:hover {{
-    background-color: {TERRACOTTA_DONKER} !important;
-    border-color: {TERRACOTTA_DONKER} !important;
+    background-color: {VERMILJOEN_DONKER} !important;
+    border-color: {VERMILJOEN_DONKER} !important;
+}}
+
+[data-testid="stBaseButton-secondary"] {{
+    background-color: {PAPER_CARD} !important;
+    border-radius: 50px !important;
+    border: 1px solid {LIJN} !important;
+    padding: 0.5rem 1.2rem !important;
 }}
 
 [data-testid="stBaseButton-secondary"],
 [data-testid="stBaseButton-secondary"] p,
 [data-testid="stBaseButton-secondary"] span {{
-    background-color: {WIT} !important;
     color: {INKT} !important;
-    border-radius: 50px !important;
-    border: 1px solid {LIJN} !important;
-    font-family: 'General Sans', sans-serif !important;
+    font-family: 'Hanken Grotesk', sans-serif !important;
     font-size: 0.92rem !important;
     font-weight: 500 !important;
-    padding: 0.5rem 1.2rem !important;
 }}
 
 [data-testid="stBaseButton-secondary"]:hover {{
-    background-color: {MIST} !important;
-    border-color: {GRIJS_TEKST} !important;
+    background-color: {PAPER_DEEP} !important;
+    border-color: {INKT} !important;
     color: {INKT} !important;
 }}
 
 /* ── Form elements ──────────────────────────────────────────────────────── */
 [data-testid="stTextInput"] input,
 [data-testid="stTextArea"] textarea {{
-    background: {WIT} !important;
+    background: {PAPER_CARD} !important;
     border: 1px solid {LIJN} !important;
     border-radius: 8px !important;
-    font-family: 'General Sans', sans-serif !important;
+    font-family: 'Hanken Grotesk', sans-serif !important;
     color: {INKT} !important;
 }}
 
 [data-testid="stTextInput"] input:focus,
 [data-testid="stTextArea"] textarea:focus {{
-    border-color: {TERRACOTTA} !important;
-    box-shadow: 0 0 0 3px {TERRACOTTA_LICHT} !important;
+    border-color: {VERMILJOEN} !important;
+    box-shadow: 0 0 0 3px {MARKER_WAS} !important;
 }}
 
 /* ── Tabs ───────────────────────────────────────────────────────────────── */
 [data-testid="stTabs"] [role="tab"] p {{
-    font-family: 'General Sans', sans-serif !important;
+    font-family: 'Hanken Grotesk', sans-serif !important;
     font-size: 0.95rem !important;
     font-weight: 500 !important;
-    color: {GRIJS_TEKST} !important;
+    color: {INKT_ZACHT} !important;
 }}
 
 [data-testid="stTabs"] [role="tab"][aria-selected="true"] p {{
@@ -405,35 +481,41 @@ header[data-testid="stHeader"] {{ display: none !important; }}
 }}
 
 [data-testid="stTabs"] [data-baseweb="tab-highlight"] {{
-    background: {TERRACOTTA} !important;
+    background: {VERMILJOEN} !important;
 }}
 
 /* ── Chat-input ─────────────────────────────────────────────────────────── */
 [data-testid="stBottom"],
 [data-testid="stBottomBlockContainer"] {{
-    background-color: {WIT} !important;
+    background-color: {PAPER} !important;
     border-top: 1px solid {LIJN} !important;
 }}
 
 [data-testid="stChatInput"],
 [data-testid="stChatInputTextArea"],
 [data-testid="stChatInput"] textarea {{
-    background: {WIT} !important;
+    background: {PAPER_CARD} !important;
     border: 1px solid {LIJN} !important;
     border-radius: 12px !important;
-    font-family: 'General Sans', sans-serif !important;
+    font-family: 'Hanken Grotesk', sans-serif !important;
     color: {INKT} !important;
+}}
+
+[data-testid="stChatInput"]:focus-within {{
+    border-color: {VERMILJOEN} !important;
 }}
 
 /* ── Footer ─────────────────────────────────────────────────────────────── */
 .footer {{
     position: fixed; bottom: 0; left: 0; right: 0;
-    background: {WIT};
+    background: {PAPER};
     border-top: 1px solid {LIJN};
     padding: 0.6rem 1.5rem;
-    font-family: 'General Sans', sans-serif;
-    font-size: 0.78rem;
-    color: {GRIJS_TEKST};
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: {INKT_VAAG};
     text-align: center;
     z-index: 999;
 }}
@@ -512,7 +594,7 @@ def render_student_info() -> None:
     onderdelen = [x for x in [naam, leerweg, opleiding_label, instelling] if x]
     st.markdown(
         f'<p style="color:{INKT};font-size:1.15rem;font-weight:500;'
-        f"font-family:'General Sans',sans-serif;margin:1rem 0 1.2rem 0\">"
+        f"font-family:'Hanken Grotesk',sans-serif;margin:1rem 0 1.2rem 0\">"
         f"{'&nbsp;&nbsp;·&nbsp;&nbsp;'.join(onderdelen)}</p>",
         unsafe_allow_html=True,
     )

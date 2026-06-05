@@ -141,8 +141,9 @@ def _stream_antwoord(systeem: str, berichten: list[dict]) -> str:
 
 # ── Header ────────────────────────────────────────────────────────────────────
 st.markdown(
-    '<h1 style="margin:0">OER-vraag</h1>'
-    '<div class="oer-ondertitel">Snel antwoord op je vragen over je opleiding</div>',
+    '<div class="oer-overtitel">Onderwijs- en examenregeling</div>'
+    '<h1 class="oer-hero">Stel je vraag. <span class="it">De OER</span> antwoordt.</h1>'
+    '<div class="oer-ondertitel">Met bron, vindplaats én woordelijk citaat — verifieerbaar.</div>',
     unsafe_allow_html=True,
 )
 
