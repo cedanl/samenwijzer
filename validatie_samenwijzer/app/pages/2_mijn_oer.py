@@ -27,16 +27,15 @@ render_student_info()
 
 
 oer_id = st.session_state.get("oer_id")
-opleiding = st.session_state.get("opleiding", "")
 
-st.subheader(f"📄 Mijn OER — {opleiding}")
+st.subheader("📄 Mijn OER")
 
 oer = get_conn().execute("SELECT * FROM oer_documenten WHERE id = ?", (oer_id,)).fetchone()
 
 if not oer:
     st.warning("Geen OER gekoppeld aan jouw profiel.")
 else:
-    st.caption(f"Crebo {oer['crebo']} · {oer['leerweg']} · Cohort {oer['cohort']}")
+    st.caption(f"Cohort {oer['cohort']}")
     pad = resolve_oer_pad(oer["bestandspad"])
 
     if not pad.exists():

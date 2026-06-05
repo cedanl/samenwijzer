@@ -10,7 +10,7 @@ load_dotenv()
 
 log = logging.getLogger(__name__)
 
-st.set_page_config(page_title="OER-assistent", page_icon="💬", layout="wide")
+st.set_page_config(page_title="OER-chat · SamenWijzer", page_icon="💬", layout="wide")
 
 from validatie_samenwijzer._ai import APITimeoutError  # noqa: E402
 from validatie_samenwijzer._ai import _client as ai_client  # noqa: E402
@@ -45,8 +45,8 @@ instelling = st.session_state.get("instelling", "")
 bestandspad = st.session_state.get("bestandspad", "")
 crebo = st.session_state.get("crebo", "")
 
-st.subheader(f"💬 OER-assistent — {opleiding}")
-st.caption(f"{instelling} · Jouw vragen, beantwoord vanuit jouw OER")
+st.subheader("💬 OER-chat")
+st.caption("Jouw vragen, beantwoord vanuit jouw OER — mét bron, vindplaats en citaat.")
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []

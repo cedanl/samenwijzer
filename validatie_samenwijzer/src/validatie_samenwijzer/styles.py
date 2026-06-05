@@ -393,6 +393,166 @@ h1.oer-hero {{
     font-weight: 500;
 }}
 
+/* ── Login-hero (startpagina) — CSS-only animaties (Streamlit stript JS) ──── */
+@keyframes sw-rise {{
+    from {{ opacity: 0; transform: translateY(22px); }}
+    to   {{ opacity: 1; transform: none; }}
+}}
+@keyframes sw-sweep {{
+    from {{ background-size: 0% 40%; }}
+    to   {{ background-size: 100% 40%; }}
+}}
+@keyframes sw-drift {{
+    from {{ transform: translate3d(0, 0, 0) rotate(0deg); }}
+    to   {{ transform: translate3d(4%, 3%, 0) rotate(8deg); }}
+}}
+
+.sw-hero {{
+    position: relative;
+    margin: 0.4rem 0 1.6rem;
+    padding: 2.7rem 2.3rem 2.5rem;
+    border-radius: 22px;
+    overflow: hidden;
+    background:
+        radial-gradient(130% 150% at 0% 0%, rgba(218, 58, 30, 0.10), transparent 55%),
+        radial-gradient(120% 160% at 100% 0%, rgba(255, 216, 77, 0.18), transparent 52%),
+        {PAPER_CARD};
+    border: 1px solid {LIJN};
+}}
+/* trage warme gloed die langzaam drift — geeft de hero leven zonder JS */
+.sw-hero::after {{
+    content: "";
+    position: absolute;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(38% 38% at 32% 30%, rgba(218, 58, 30, 0.07), transparent 70%);
+    animation: sw-drift 16s ease-in-out infinite alternate;
+    pointer-events: none;
+}}
+.sw-hero > * {{ position: relative; z-index: 1; }}
+
+.sw-overline {{
+    display: flex; align-items: center; gap: 0.6rem;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.66rem;
+    color: {VERMILJOEN};
+    margin-bottom: 1rem;
+    opacity: 0; animation: sw-rise 0.6s 0.05s ease forwards;
+}}
+.sw-overline::before {{
+    content: ""; width: 26px; height: 1px; background: {VERMILJOEN}; flex: 0 0 auto;
+}}
+
+.sw-title {{
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(2.9rem, 8vw, 4.6rem);
+    line-height: 0.94;
+    letter-spacing: -0.02em;
+    color: {INKT};
+    margin: 0;
+    opacity: 0; animation: sw-rise 0.7s 0.12s ease forwards;
+}}
+.sw-title .fase {{ font-style: italic; color: {VERMILJOEN}; }}
+
+.sw-tagline {{
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 1.12rem;
+    line-height: 1.5;
+    color: {INKT_ZACHT};
+    max-width: 34em;
+    margin: 1.1rem 0 0;
+    opacity: 0; animation: sw-rise 0.7s 0.2s ease forwards;
+}}
+.sw-tagline b {{ color: {INKT}; font-weight: 600; }}
+
+.sw-cite {{
+    display: inline-block;
+    margin-top: 1.6rem;
+    background: {PAPER};
+    border: 1px solid {LIJN};
+    border-left: 4px solid {MARKER};
+    border-radius: 0 10px 10px 0;
+    padding: 0.7rem 1.1rem;
+    opacity: 0; animation: sw-rise 0.7s 0.3s ease forwards;
+}}
+.sw-cite .src {{
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    font-size: 0.56rem; color: {VERMILJOEN}; margin-bottom: 0.35rem;
+}}
+.sw-cite q {{
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-style: italic; font-size: 1.14rem; color: {INKT};
+    padding: 0 0.1em;
+    background: linear-gradient({MARKER}, {MARKER}) no-repeat 0 86%;
+    background-size: 0% 40%;
+    animation: sw-sweep 0.9s 1s ease forwards;
+}}
+.sw-cite q::before {{ content: "\\201C"; }}
+.sw-cite q::after {{ content: "\\201D"; }}
+
+/* Respecteer prefers-reduced-motion: toon de eindstaat zonder animatie
+   (anders blijven de op opacity:0 startende elementen onzichtbaar). */
+@media (prefers-reduced-motion: reduce) {{
+    .sw-overline, .sw-title, .sw-tagline, .sw-cite {{
+        opacity: 1 !important; animation: none !important;
+    }}
+    .sw-cite q {{ background-size: 100% 40% !important; animation: none !important; }}
+    .sw-hero::after {{ animation: none !important; }}
+}}
+
+/* ── Pagina-hero (post-login) + metadata-chips ──────────────────────────── */
+.sw-pagehero {{
+    margin: 0.2rem 0 1.3rem;
+    padding: 0 0 1rem;
+    border-bottom: 1px solid {LIJN};
+}}
+.sw-kicker {{
+    display: flex; align-items: center; gap: 0.55rem;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    font-size: 0.66rem; color: {VERMILJOEN};
+    margin-bottom: 0.5rem;
+}}
+.sw-kicker::before {{
+    content: ""; width: 22px; height: 1px; background: {VERMILJOEN}; flex: 0 0 auto;
+}}
+.sw-pagetitle {{
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    line-height: 1.0; letter-spacing: -0.015em;
+    color: {INKT}; margin: 0;
+}}
+.sw-chips {{
+    display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.85rem;
+}}
+.sw-chip {{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.03em;
+    color: {INKT_ZACHT};
+    background: {PAPER_DEEP};
+    border-radius: 999px;
+    padding: 0.28rem 0.7rem;
+    white-space: nowrap;
+}}
+.sw-chip.accent {{
+    color: {VERMILJOEN};
+    background: transparent;
+    border: 1px solid {VERMILJOEN};
+}}
+
+/* ── Nav-brand (app-naam in elke pagina-header) ─────────────────────────── */
+.sw-navbrand {{
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: 1.18rem; line-height: 1; color: {INKT};
+    white-space: nowrap;
+}}
+.sw-navbrand em {{ font-style: italic; color: {VERMILJOEN}; }}
+
 /* ── Containers (st.container border=True) ──────────────────────────────── */
 [data-testid="stVerticalBlockBorderWrapper"] {{
     background: {PAPER_CARD} !important;
@@ -535,7 +695,7 @@ h1.oer-hero {{
 """
 
 _NAV_STUDENT = [
-    ("💬 OER-assistent", "pages/1_oer_assistent.py"),
+    ("💬 OER-chat", "pages/1_oer_assistent.py"),
     ("📄 Mijn OER", "pages/2_mijn_oer.py"),
     ("📊 Mijn voortgang", "pages/3_mijn_voortgang.py"),
 ]
@@ -546,21 +706,74 @@ _NAV_MENTOR = [
 ]
 
 
-def _opleiding_naam(opleiding: str, crebo: str) -> str:
-    """Extraheer leesbare naam uit het opleiding-veld en formatteer als 'Naam (crebo)'."""
+_OPLEIDING_DROP = {
+    "oer",
+    "mjp",
+    "examenplan",
+    "examenplannen",
+    "addendum",
+    "vanaf",
+    "cohort",
+    "vg",
+    "zw",
+    "tt",
+    "def",
+    "vastgesteld",
+    "concept",
+    "maanden",
+    "jaar",
+}
+_OPLEIDING_KLEIN = {"En", "In", "De", "Van", "Het", "Op", "Of", "Met", "Voor", "Naar", "Te"}
+
+
+def schoon_opleiding_naam(opleiding: str, crebo: str = "") -> str:
+    """Leesbare opleidingsnaam uit het ruwe opleiding-/bestandsnaam-veld.
+
+    De strings verschillen sterk per instelling (Aeres 'Examenplannen X 25-26',
+    Curio '25581_oer_00_2025_vg_bol_…', Da Vinci '25099BBL2025MJP-MachinistGrondverzet').
+    Token-gebaseerde opschoning: split camelCase + cijfergrenzen, gooi structurele
+    tokens weg (crebo, leerweg, jaar, cohort, 'examenplan', 'oer', 'mjp', 'vastgesteld',
+    niveau-/versie-codes) en houd de mensleesbare naam over. Valt terug op
+    'Opleiding {crebo}' als er geen naam overblijft (de crebo staat sowieso als chip).
+    """
     import re
 
-    naam = re.sub(r"^\d+[_\s][A-Z]+[_\s]\d+[_\s]+", "", opleiding)  # strip CREBO_BOL_2025__
-    naam = re.sub(rf"^{re.escape(crebo)}\s+", "", naam)  # strip leading crebo (met spatie)
-    naam = re.sub(r"\bOER\s*\([^)]+\)\s*[-–]\s*", "", naam)  # strip "OER (OUD) - "
-    naam = re.sub(rf"\b{re.escape(crebo)}\b\s*[-–]?\s*", "", naam)  # strip resterende crebo
-    naam = re.sub(r"\s+\d+\s+(maanden|jaar)$", "", naam)  # strip " 36 maanden"
-    naam = naam.strip()
-    if " " not in naam:
-        naam = re.sub(rf"^{re.escape(crebo)}[A-Z]{{3}}\d{{4}}(?:Examenplan|MJP)[-_]?", "", naam)
-        naam = re.sub(r"[-_]cohort[-_]\d{4}$", "", naam)
-        naam = naam.replace("-", " ").replace("_", " ").strip()
-    return f"{naam} ({crebo})" if naam else f"Opleiding {crebo}"
+    s = opleiding or ""
+    s = re.sub(r"(?<=[A-Z])(?=[A-Z][a-z])", " ", s)  # BOLExamenplan → BOL Examenplan
+    s = re.sub(r"(?<=[a-z])(?=[A-Z])", " ", s)  # camelCase → camel Case
+    s = re.sub(r"(?<=[A-Za-z])(?=\d)", " ", s)  # Woord2025 → Woord 2025
+    s = re.sub(r"(?<=\d)(?=[A-Za-z])", " ", s)  # 2025Examenplan → 2025 Examenplan
+    s = s.replace("_", " ").replace("-", " ")
+
+    tokens: list[str] = []
+    for t in s.split():
+        tl = t.lower()
+        if tl in _OPLEIDING_DROP or (crebo and t == crebo):
+            continue
+        if re.fullmatch(r"(?:bol|bbl)+", tl):  # leerweg (evt. samengevoegd, bv. BOLBBL)
+            continue
+        if re.fullmatch(r"\d+", t):  # alle pure-cijfer tokens (jaar/crebo/datum/cohort/niveau)
+            continue
+        if re.fullmatch(r"v\d+|n[1-4]|n", tl):  # versie / niveau (ook losse 'n' na cijfer-split)
+            continue
+        tokens.append(t)
+
+    naam = re.sub(r"\s+", " ", " ".join(tokens)).strip()
+    # ingesloten lowercase instellings-prefix vóór de TitleCase-naam (seed-data)
+    naam = re.sub(r"^(?:[a-z]{3,}\s+)+(?=[A-Z])", "", naam).strip()
+    if not naam:
+        return f"Opleiding {crebo}" if crebo else "Opleiding"
+    if naam == naam.lower():  # volledig lowercase → titel-case
+        naam = naam.title()
+    woorden = naam.split()  # Nederlandse voegwoorden/lidwoorden klein (behalve eerste)
+    return " ".join(
+        w if i == 0 or w not in _OPLEIDING_KLEIN else w.lower() for i, w in enumerate(woorden)
+    )
+
+
+def _opleiding_naam(opleiding: str, crebo: str) -> str:
+    """Leesbare naam geformatteerd als 'Naam (crebo)' — legacy-compat."""
+    return f"{schoon_opleiding_naam(opleiding, crebo)} ({crebo})"
 
 
 Schaal = Literal["0-1", "0-100"]
@@ -581,8 +794,37 @@ def render_progress_bar(score: float, kleur: str, schaal: Schaal = "0-100") -> s
     )
 
 
+def render_app_hero(
+    titel: str, *, kicker: str = "", chips: list | None = None, titel_is_html: bool = False
+) -> None:
+    """Compacte pagina-hero: mono-kicker + serif-titel + metadata-chips.
+
+    chips: lijst van strings of (tekst, accent_bool)-tuples. Tekst wordt ge-escaped;
+    geef titel_is_html=True door voor een bewust opgemaakte titel (bv. cursief accent).
+    """
+    import html as _html
+
+    import streamlit as st
+
+    kicker_html = f'<div class="sw-kicker">{_html.escape(kicker)}</div>' if kicker else ""
+    chip_html = ""
+    for c in chips or []:
+        tekst, accent = c if isinstance(c, tuple) else (c, False)
+        if not tekst:
+            continue
+        cls = "sw-chip accent" if accent else "sw-chip"
+        chip_html += f'<span class="{cls}">{_html.escape(str(tekst))}</span>'
+    chips_blok = f'<div class="sw-chips">{chip_html}</div>' if chip_html else ""
+    titel_html = titel if titel_is_html else _html.escape(titel)
+    st.markdown(
+        f'<div class="sw-pagehero">{kicker_html}'
+        f'<h1 class="sw-pagetitle">{titel_html}</h1>{chips_blok}</div>',
+        unsafe_allow_html=True,
+    )
+
+
 def render_student_info() -> None:
-    """Render de student-identiteitsbalk onder de navigatie."""
+    """Student-identiteit als hero: naam (kicker) + opleiding (titel) + metadata-chips."""
     import streamlit as st
 
     naam = st.session_state.get("gebruiker_naam", "")
@@ -590,18 +832,16 @@ def render_student_info() -> None:
     opleiding = st.session_state.get("opleiding", "")
     crebo = st.session_state.get("crebo", "")
     instelling = st.session_state.get("instelling", "")
-    opleiding_label = _opleiding_naam(opleiding, crebo) if opleiding and crebo else opleiding
-    onderdelen = [x for x in [naam, leerweg, opleiding_label, instelling] if x]
-    st.markdown(
-        f'<p style="color:{INKT};font-size:1.15rem;font-weight:500;'
-        f"font-family:'Hanken Grotesk',sans-serif;margin:1rem 0 1.2rem 0\">"
-        f"{'&nbsp;&nbsp;·&nbsp;&nbsp;'.join(onderdelen)}</p>",
-        unsafe_allow_html=True,
-    )
+    studentnummer = st.session_state.get("studentnummer", "")
+
+    titel = schoon_opleiding_naam(opleiding, crebo) if opleiding else "Mijn opleiding"
+    kicker = " · ".join(x for x in [naam, studentnummer] if x)
+    chips = [(f"Crebo {crebo}", True) if crebo else None, leerweg or None, instelling or None]
+    render_app_hero(titel, kicker=kicker, chips=[c for c in chips if c])
 
 
 def render_nav() -> None:
-    """Render de vaste navigatiebalk bovenin op basis van de sessierol."""
+    """Render de vaste navigatiebalk bovenin: app-naam-brand + rolgebaseerde links."""
     import streamlit as st
 
     rol = st.session_state.get("rol")
@@ -610,9 +850,14 @@ def render_nav() -> None:
 
     nav_items = _NAV_STUDENT if rol == "student" else _NAV_MENTOR
 
-    cols = st.columns([2] * len(nav_items) + [1])
+    cols = st.columns([3] + [2] * len(nav_items) + [1])
+    with cols[0]:
+        st.markdown(
+            '<span class="sw-navbrand">SamenWijzer <em>Fase 1</em></span>',
+            unsafe_allow_html=True,
+        )
     for i, (label, page) in enumerate(nav_items):
-        with cols[i]:
+        with cols[i + 1]:
             st.page_link(page, label=label)
     with cols[-1]:
         st.page_link("pages/uitloggen.py", label="🚪")
@@ -623,6 +868,6 @@ def render_footer() -> None:
     import streamlit as st
 
     st.markdown(
-        '<div class="footer">Samenwijzer OER-assistent · CEDA 2026 · Npuls</div>',
+        '<div class="footer">SamenWijzer · Fase 1 · CEDA 2026 · Npuls</div>',
         unsafe_allow_html=True,
     )

@@ -1,4 +1,4 @@
-"""Mentor: studentprofiel + OER-assistent naast elkaar."""
+"""Mentor: studentprofiel + OER-chat naast elkaar."""
 
 import base64
 import html
@@ -38,9 +38,11 @@ from validatie_samenwijzer.styles import (  # noqa: E402
     ORANJE,
     ROOD,
     bepaal_kleur,
+    render_app_hero,
     render_footer,
     render_nav,
     render_progress_bar,
+    schoon_opleiding_naam,
 )
 
 st.markdown(CSS, unsafe_allow_html=True)
@@ -69,8 +71,16 @@ oer = (
 opleiding = oer["opleiding"] if oer else ""
 instelling = oer["display_naam"] if oer else ""
 
-st.subheader(f"🎓 Begeleidingssessie — {student['naam']}")
-st.caption(f"{opleiding} · {instelling}")
+render_app_hero(
+    student["naam"],
+    kicker="🎓 Begeleidingssessie",
+    chips=[
+        schoon_opleiding_naam(opleiding, oer["crebo"]) if oer else None,
+        (f"Crebo {oer['crebo']}", True) if oer else None,
+        oer["leerweg"] if oer else None,
+        instelling or None,
+    ],
+)
 
 col_profiel, col_chat = st.columns([1.3, 2])
 
@@ -141,7 +151,7 @@ with col_profiel:
                 st.caption(punt)
 
 with col_chat:
-    tab_chat, tab_oer = st.tabs(["💬 OER-assistent", "📄 Volledig OER"])
+    tab_chat, tab_oer = st.tabs(["💬 OER-chat", "📄 Volledig OER"])
 
     with tab_chat:
         if "chat_history" not in st.session_state:
