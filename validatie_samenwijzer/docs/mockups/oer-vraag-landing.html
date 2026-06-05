@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OER-vraag — Samenwijzer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper:      #F2ECE0;
+    --paper-card: #F8F3E9;
+    --paper-deep: #E7DECC;
+    --ink:        #211910;
+    --ink-soft:   #5E5343;
+    --ink-faint:  #8C8170;
+    --vermilion:  #DA3A1E;
+    --vermilion-d:#B22C12;
+    --marker:     #FFD84D;
+    --green:      #2E4636;
+    --line:       rgba(33,25,16,.14);
+    --line-soft:  rgba(33,25,16,.08);
+    --shadow:     22px 30px 60px -28px rgba(33,25,16,.45);
+    --shadow-sm:  8px 12px 30px -16px rgba(33,25,16,.4);
+    --ease:       cubic-bezier(.22,.61,.36,1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Hanken Grotesk", sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* paper grain overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: .05;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  ::selection { background: var(--marker); color: var(--ink); }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px); }
+
+  .mono {
+    font-family: "JetBrains Mono", monospace;
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    font-size: .68rem;
+    font-weight: 500;
+  }
+
+  .serif { font-family: "Instrument Serif", serif; font-weight: 400; }
+  .it { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; }
+
+  /* ── marker highlight device ───────────────────────────── */
+  .mark {
+    background-image: linear-gradient(var(--marker), var(--marker));
+    background-repeat: no-repeat;
+    background-size: 0% 42%;
+    background-position: -2% 86%;
+    padding: 0 .08em;
+    transition: background-size .7s var(--ease);
+  }
+  .mark.lit { background-size: 104% 42%; }
+
+  /* ── nav ───────────────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    backdrop-filter: blur(8px);
+    background: rgba(242,236,224,.72);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  nav .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .brand { display: flex; align-items: center; gap: .6rem; font-weight: 700; letter-spacing: -.01em; }
+  .brand .glyph {
+    width: 30px; height: 30px; border-radius: 7px;
+    background: var(--ink); color: var(--paper);
+    display: grid; place-items: center;
+    font-family: "Instrument Serif", serif; font-size: 1.25rem; line-height: 1;
+    transform: rotate(-4deg);
+  }
+  .nav-right { display: flex; align-items: center; gap: 2rem; }
+  .nav-right a.mono { color: var(--ink-soft); transition: color .2s; }
+  .nav-right a.mono:hover { color: var(--ink); }
+  .nav-cta {
+    background: var(--ink); color: var(--paper);
+    padding: .55rem 1.1rem; border-radius: 999px;
+    font-weight: 600; font-size: .92rem;
+    transition: transform .25s var(--ease), background .25s;
+  }
+  .nav-cta:hover { transform: translateY(-2px); background: var(--vermilion); }
+  @media (max-width: 720px) { .nav-right a.mono { display: none; } }
+
+  /* ── reveal animation ──────────────────────────────────── */
+  .rise { opacity: 0; transform: translateY(26px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+  .rise.in { opacity: 1; transform: none; }
+
+  /* ── hero ──────────────────────────────────────────────── */
+  header.hero { padding: 150px 0 90px; position: relative; }
+  header.hero::after {
+    /* faint ruled margin line, left */
+    content: ""; position: absolute; top: 0; bottom: 0;
+    left: clamp(20px, 5vw, 64px); width: 1px;
+    background: var(--vermilion); opacity: .25;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(30px, 5vw, 80px);
+    align-items: center;
+  }
+  @media (max-width: 940px) { .hero-grid { grid-template-columns: 1fr; gap: 56px; } }
+
+  .overline { color: var(--vermilion); margin-bottom: 1.6rem; display: flex; align-items: center; gap: .7rem; }
+  .overline::before { content: ""; width: 26px; height: 1px; background: var(--vermilion); }
+
+  h1.lede {
+    font-family: "Instrument Serif", serif;
+    font-weight: 400;
+    font-size: clamp(3rem, 7vw, 5.7rem);
+    line-height: .97;
+    letter-spacing: -.015em;
+    margin-bottom: 1.7rem;
+  }
+  h1.lede .it { color: var(--vermilion); }
+  h1.lede .small { font-size: .56em; display: block; color: var(--ink-soft); margin-top: .25em; letter-spacing: -.01em; }
+
+  .sub { font-size: 1.18rem; color: var(--ink-soft); max-width: 30em; margin-bottom: 2.2rem; }
+  .sub b { color: var(--ink); font-weight: 600; }
+
+  /* ── ask box ───────────────────────────────────────────── */
+  .ask {
+    background: var(--paper-card);
+    border: 1.5px solid var(--ink);
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+    padding: 6px 6px 6px 20px;
+    display: flex; align-items: center; gap: 10px;
+    max-width: 34em;
+  }
+  .ask input {
+    flex: 1; border: 0; background: transparent;
+    font-family: inherit; font-size: 1.02rem; color: var(--ink);
+    padding: 14px 0;
+  }
+  .ask input::placeholder { color: var(--ink-faint); }
+  .ask input:focus { outline: none; }
+  .ask button {
+    flex-shrink: 0;
+    background: var(--vermilion); color: #fff;
+    border: 0; border-radius: 11px;
+    width: 48px; height: 48px;
+    font-size: 1.3rem; cursor: pointer;
+    display: grid; place-items: center;
+    transition: transform .2s var(--ease), background .2s;
+  }
+  .ask button:hover { background: var(--vermilion-d); transform: translate(2px,-2px); }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.1rem; max-width: 34em; }
+  .chip {
+    font-size: .82rem; color: var(--ink-soft);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: .34rem .85rem; cursor: pointer;
+    background: transparent; font-family: inherit;
+    transition: all .2s var(--ease);
+  }
+  .chip:hover { border-color: var(--ink); color: var(--ink); transform: translateY(-2px); }
+
+  /* ── hero document artifact ────────────────────────────── */
+  .artifact { position: relative; perspective: 1400px; }
+  .doc {
+    background: var(--paper-card);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    box-shadow: var(--shadow);
+    padding: 30px 30px 34px;
+    transform: rotate(2.4deg);
+    transition: transform .5s var(--ease);
+    position: relative;
+  }
+  .doc::before {
+    /* red filing edge */
+    content: ""; position: absolute; left: 0; top: 18px; bottom: 18px; width: 4px;
+    background: var(--vermilion); border-radius: 4px;
+  }
+  .artifact:hover .doc { transform: rotate(0deg) translateY(-6px); }
+  .doc .stamp {
+    position: absolute; top: -16px; right: -10px;
+    font-family: "JetBrains Mono", monospace; font-size: .6rem; letter-spacing: .14em;
+    color: var(--vermilion); border: 2px solid var(--vermilion);
+    padding: .35rem .6rem; border-radius: 5px; transform: rotate(7deg);
+    background: var(--paper-card); font-weight: 700;
+  }
+  .doc h4 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 1.5rem; letter-spacing: -.01em; margin-bottom: .15rem; }
+  .doc .docmeta { font-family: "JetBrains Mono", monospace; font-size: .62rem; letter-spacing: .12em; color: var(--ink-faint); text-transform: uppercase; margin-bottom: 1.2rem; }
+  .doc .l { height: 8px; border-radius: 4px; background: var(--paper-deep); margin: 11px 0; }
+  .doc .l.w1 { width: 100%; } .doc .l.w2 { width: 92%; } .doc .l.w3 { width: 78%; } .doc .l.w4 { width: 96%; }
+  .doc .clause {
+    font-size: .92rem; line-height: 1.55; color: var(--ink);
+    margin: 14px 0 6px; font-weight: 500;
+  }
+  .doc .arttag { font-family: "JetBrains Mono", monospace; font-size: .58rem; color: var(--vermilion); letter-spacing: .12em; }
+
+  .float-quote {
+    position: absolute; bottom: -28px; left: -36px;
+    background: var(--ink); color: var(--paper);
+    border-radius: 12px; padding: 14px 18px;
+    box-shadow: var(--shadow);
+    max-width: 16em; transform: rotate(-2.5deg);
+    font-size: .9rem; line-height: 1.4;
+  }
+  .float-quote .mono { color: var(--marker); display: block; margin-bottom: .4rem; font-size: .56rem; }
+  @media (max-width: 940px) { .float-quote { left: auto; right: 0; bottom: -36px; } }
+
+  /* ── section frame ─────────────────────────────────────── */
+  section { padding: clamp(70px, 9vw, 130px) 0; }
+  .seclabel { color: var(--vermilion); margin-bottom: 1rem; display: flex; align-items: center; gap: .7rem; }
+  .seclabel::before { content: ""; width: 26px; height: 1px; background: var(--vermilion); }
+  h2.sec {
+    font-family: "Instrument Serif", serif; font-weight: 400;
+    font-size: clamp(2.1rem, 4.6vw, 3.6rem); line-height: 1.02; letter-spacing: -.015em;
+    margin-bottom: 1.1rem; max-width: 16em;
+  }
+  h2.sec .it { color: var(--vermilion); }
+  .sec-intro { color: var(--ink-soft); font-size: 1.12rem; max-width: 34em; }
+
+  /* ── steps ─────────────────────────────────────────────── */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 4rem; border-top: 1px solid var(--line); }
+  @media (max-width: 820px) { .steps { grid-template-columns: 1fr; } }
+  .step { padding: 2.2rem 1.8rem 2.4rem; border-right: 1px solid var(--line); position: relative; }
+  .step:last-child { border-right: 0; }
+  @media (max-width: 820px) { .step { border-right: 0; border-bottom: 1px solid var(--line); } }
+  .step .num { font-family: "Instrument Serif", serif; font-size: 3.4rem; line-height: 1; color: var(--vermilion); display: block; margin-bottom: 1rem; }
+  .step h3 { font-size: 1.18rem; font-weight: 700; letter-spacing: -.01em; margin-bottom: .5rem; }
+  .step p { color: var(--ink-soft); font-size: 1rem; }
+  .step .tag { font-family: "JetBrains Mono", monospace; font-size: .6rem; letter-spacing: .12em; color: var(--ink-faint); text-transform: uppercase; margin-top: 1rem; display: inline-block; }
+
+  /* ── dark demo band ────────────────────────────────────── */
+  .demo-band { background: var(--ink); color: var(--paper); position: relative; }
+  .demo-band::before {
+    content: ""; position: absolute; inset: 0; opacity: .07; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .demo-band .seclabel, .demo-band h2.sec .it { color: var(--marker); }
+  .demo-band h2.sec { color: var(--paper); }
+  .demo-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(36px,5vw,72px); align-items: center; margin-top: 3rem; }
+  @media (max-width: 940px) { .demo-grid { grid-template-columns: 1fr; } }
+  .demo-copy p { color: rgba(242,236,224,.72); font-size: 1.1rem; margin-bottom: 1.4rem; }
+  .demo-copy .promise { border-left: 3px solid var(--marker); padding-left: 1.2rem; color: var(--paper); font-size: 1.05rem; }
+
+  .convo { display: flex; flex-direction: column; gap: 16px; }
+  .bubble-q {
+    align-self: flex-end; max-width: 80%;
+    background: var(--vermilion); color: #fff;
+    padding: 14px 18px; border-radius: 16px 16px 4px 16px;
+    font-size: 1rem; font-weight: 500;
+  }
+  .bubble-a {
+    align-self: flex-start; max-width: 94%;
+    background: rgba(248,243,233,.06);
+    border: 1px solid rgba(248,243,233,.16);
+    padding: 20px 22px; border-radius: 16px 16px 16px 4px;
+    font-size: 1rem; line-height: 1.6; color: var(--paper);
+  }
+  .bubble-a .src { font-family: "JetBrains Mono", monospace; font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--marker); display: block; margin-bottom: .7rem; }
+  .bubble-a .cite {
+    margin-top: 1rem; padding: 12px 16px;
+    background: rgba(255,216,77,.08);
+    border-left: 3px solid var(--marker); border-radius: 0 8px 8px 0;
+  }
+  .bubble-a .cite .find { font-family: "JetBrains Mono", monospace; font-size: .58rem; letter-spacing: .1em; color: var(--marker); text-transform: uppercase; display: block; margin-bottom: .35rem; }
+  .bubble-a .cite q { font-family: "Instrument Serif", serif; font-style: italic; font-size: 1.16rem; line-height: 1.4; color: #fff; }
+  .bubble-a .cite q::before, .bubble-a .cite q::after { content: '"'; }
+
+  /* ── sources ───────────────────────────────────────────── */
+  .src-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; margin-top: 3.5rem; }
+  @media (max-width: 980px) { .src-grid { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 560px) { .src-grid { grid-template-columns: 1fr; } }
+  .srccard {
+    background: var(--paper-card); border: 1px solid var(--line);
+    border-radius: 10px; padding: 1.6rem 1.5rem 1.8rem;
+    position: relative; transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+  }
+  .srccard:hover { transform: translateY(-6px); box-shadow: var(--shadow-sm); }
+  .srccard .idx { font-family: "JetBrains Mono", monospace; font-size: .62rem; color: var(--ink-faint); letter-spacing: .12em; }
+  .srccard h4 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 1.5rem; letter-spacing: -.01em; margin: .7rem 0 .5rem; }
+  .srccard p { font-size: .92rem; color: var(--ink-soft); }
+  .srccard .lead {
+    position: absolute; top: 1.4rem; right: 1.3rem;
+    font-family: "JetBrains Mono", monospace; font-size: .54rem; letter-spacing: .12em;
+    color: var(--vermilion); border: 1px solid var(--vermilion); border-radius: 4px;
+    padding: .2rem .45rem; text-transform: uppercase;
+  }
+  .srccard.primary { border-color: var(--ink); border-width: 1.5px; }
+
+  /* ── closing cta ───────────────────────────────────────── */
+  .closing { text-align: center; }
+  .closing h2.sec { margin: 0 auto 1.4rem; }
+  .closing .ask { margin: 2.4rem auto 0; }
+  .closing .chips { justify-content: center; margin-left: auto; margin-right: auto; }
+  .multi-note { margin-top: 1.6rem; font-family: "JetBrains Mono", monospace; font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); }
+
+  /* ── footer ────────────────────────────────────────────── */
+  footer { border-top: 1px solid var(--line); padding: 3rem 0 3.5rem; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  footer .mono { color: var(--ink-faint); }
+  footer .fbrand { font-family: "Instrument Serif", serif; font-size: 1.4rem; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="glyph">§</span>Samenwijzer</div>
+    <div class="nav-right">
+      <a href="#werkt" class="mono">Zo werkt het</a>
+      <a href="#bronnen" class="mono">Bronnen</a>
+      <a href="#start" class="nav-cta">Stel je vraag</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <div class="overline mono rise">Onderwijs- en examenregeling · de assistent</div>
+      <h1 class="lede rise" style="transition-delay:.08s">
+        Stel je vraag.<br>
+        <span class="it">De OER</span> antwoordt —
+        <span class="small">mét de regel erbij.</span>
+      </h1>
+      <p class="sub rise" style="transition-delay:.16s">
+        Een OER is een juridisch document van soms honderd pagina's. Vraag in gewone taal
+        naar je <b>BSA</b>, je <b>stage</b> of je <b>herkansing</b> — en krijg antwoord
+        mét bron, vindplaats én woordelijk citaat, zodat je het zelf kunt nazoeken.
+      </p>
+      <div class="rise" style="transition-delay:.24s" id="start">
+        <div class="ask">
+          <input id="ask1" type="text" placeholder="Bijv. Hoeveel punten haal ik nodig voor mijn BSA?" />
+          <button aria-label="Vraag stellen" data-target="ask1">→</button>
+        </div>
+        <div class="chips">
+          <button class="chip">Wanneer krijg ik een bindend studieadvies?</button>
+          <button class="chip">Hoe vaak mag ik herkansen?</button>
+          <button class="chip">Telt mijn stage mee voor mijn diploma?</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="artifact rise" style="transition-delay:.3s">
+      <div class="doc">
+        <span class="stamp">OER · COHORT '25</span>
+        <h4>Examenregeling</h4>
+        <div class="docmeta">Hoofdstuk 4 — Studievoortgang</div>
+        <div class="l w1"></div><div class="l w2"></div>
+        <div class="arttag">ARTIKEL 4.3 — BINDEND STUDIEADVIES</div>
+        <p class="clause">De student ontvangt aan het einde van het eerste jaar een
+          <span class="mark" id="m-doc">bindend studieadvies indien minder dan 40 studiepunten zijn behaald</span>.</p>
+        <div class="l w4"></div><div class="l w3"></div>
+      </div>
+      <div class="float-quote">
+        <span class="mono">Volgens de OER · art. 4.3</span>
+        "…indien minder dan 40 studiepunten zijn behaald."
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══ HOE HET WERKT ══ -->
+<section id="werkt">
+  <div class="wrap">
+    <div class="seclabel mono rise">Zo werkt het</div>
+    <h2 class="sec rise" style="transition-delay:.06s">Geen zoekfunctie. <span class="it">Een gesprek.</span></h2>
+    <p class="sec-intro rise" style="transition-delay:.12s">
+      Je hoeft niet te weten waar iets staat. Je hoeft niet eens te weten welke OER van jou is —
+      de assistent vraagt ernaar als dat nodig is.
+    </p>
+    <div class="steps">
+      <div class="step rise">
+        <span class="num">01</span>
+        <h3>Stel je vraag in gewone taal</h3>
+        <p>Type wat je wilt weten. Geen vaktermen of artikelnummers nodig.</p>
+        <span class="tag">Vrije tekst</span>
+      </div>
+      <div class="step rise" style="transition-delay:.1s">
+        <span class="num">02</span>
+        <h3>De assistent vindt jouw OER</h3>
+        <p>Op basis van instelling, opleiding, leerweg (BOL/BBL) en cohortjaar — of hij vraagt ernaar.</p>
+        <span class="tag">Intake · max 3 OER's</span>
+      </div>
+      <div class="step rise" style="transition-delay:.2s">
+        <span class="num">03</span>
+        <h3>Antwoord mét bewijs</h3>
+        <p>Elke claim krijgt een bron, een vindplaats en een woordelijk citaat — verifieerbaar.</p>
+        <span class="tag">Bron · vindplaats · citaat</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DEMO ══ -->
+<section class="demo-band">
+  <div class="wrap">
+    <div class="seclabel mono rise">Het verschil</div>
+    <h2 class="sec rise" style="transition-delay:.06s">Geen verzonnen antwoorden. <span class="it">Citaten.</span></h2>
+    <div class="demo-grid">
+      <div class="demo-copy rise" style="transition-delay:.1s">
+        <p>
+          De meeste chatbots klinken zeker — ook als ze het mis hebben. Bij een OER kan dat
+          niet: het is een juridisch bindend document.
+        </p>
+        <p>
+          Daarom mag deze assistent niets beweren zonder bewijs. Elk antwoord noemt de
+          <b style="color:var(--paper)">bron</b>, de <b style="color:var(--paper)">vindplaats</b>
+          en een <b style="color:var(--paper)">woordelijk citaat</b> tussen aanhalingstekens.
+        </p>
+        <p class="promise">Klopt het niet met de tekst? Dan zie je dat meteen — het citaat staat erbij.</p>
+      </div>
+      <div class="convo rise" style="transition-delay:.16s">
+        <div class="bubble-q">Krijg ik een bindend studieadvies als ik mijn punten niet haal?</div>
+        <div class="bubble-a">
+          <span class="src">Volgens de OER</span>
+          Ja. Aan het einde van je eerste studiejaar geeft je opleiding een bindend studieadvies.
+          Dat advies is negatief als je onder de norm van 40 studiepunten blijft.
+          <div class="cite">
+            <span class="find">Onderwijs- en examenregeling — artikel 4.3</span>
+            <q>De student ontvangt aan het einde van het eerste jaar een bindend studieadvies indien minder dan 40 studiepunten zijn behaald.</q>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BRONNEN ══ -->
+<section id="bronnen">
+  <div class="wrap">
+    <div class="seclabel mono rise">De bronnen</div>
+    <h2 class="sec rise" style="transition-delay:.06s">Vier bronnen, <span class="it">één antwoord.</span></h2>
+    <p class="sec-intro rise" style="transition-delay:.12s">
+      De OER is leidend. Behandelt die je vraag niet of onvoldoende, dan put de assistent uit
+      drie aanvullende, even goed benoemde bronnen.
+    </p>
+    <div class="src-grid">
+      <div class="srccard primary rise">
+        <span class="lead">Leidend</span>
+        <span class="idx">01</span>
+        <h4>De OER</h4>
+        <p>De volledige onderwijs- en examenregeling van jouw opleiding — als hele tekst, niet als fragment.</p>
+      </div>
+      <div class="srccard rise" style="transition-delay:.08s">
+        <span class="idx">02</span>
+        <h4>Kwalificatie&shy;dossier</h4>
+        <p>Het landelijke dossier achter je opleiding — geraadpleegd als de OER het onderwerp niet dekt.</p>
+      </div>
+      <div class="srccard rise" style="transition-delay:.16s">
+        <span class="idx">03</span>
+        <h4>Skills­taxonomie</h4>
+        <p>Welke vaardigheden horen bij je beroep — uit CompetentNL of ESCO, met de exacte skill-naam.</p>
+      </div>
+      <div class="srccard rise" style="transition-delay:.24s">
+        <span class="idx">04</span>
+        <h4>Examen&shy;reglement</h4>
+        <p>De instellingsbrede regeling van je school — even bindend als de OER, dus een eigen bron.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CLOSING ══ -->
+<section class="closing">
+  <div class="wrap">
+    <h2 class="sec rise">Wat wil je <span class="it">weten?</span></h2>
+    <div class="rise" style="transition-delay:.1s">
+      <div class="ask">
+        <input id="ask2" type="text" placeholder="Stel een vraag over jouw opleiding…" />
+        <button aria-label="Vraag stellen" data-target="ask2">→</button>
+      </div>
+      <div class="chips">
+        <button class="chip">Wat is mijn slaag-zakregeling?</button>
+        <button class="chip">Hoeveel uur stage moet ik lopen?</button>
+        <button class="chip">Mag ik een vak vrijstellen?</button>
+      </div>
+      <div class="multi-note">Tot 3 OER's tegelijk vergelijken · geen account nodig</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand">Samenwijzer<span style="color:var(--vermilion)">.</span></div>
+    <div class="mono">CEDA × Npuls · Studiesucces in het MBO</div>
+    <div class="mono">Antwoorden zijn indicatief — de OER blijft leidend</div>
+  </div>
+</footer>
+
+<script>
+  // staggered reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll(".rise").forEach((el) => io.observe(el));
+
+  // hero load reveal (no scroll needed)
+  window.addEventListener("load", () => {
+    document.querySelectorAll("header .rise").forEach((el) => el.classList.add("in"));
+  });
+
+  // marker sweep in hero doc when artifact enters view
+  const mDoc = document.getElementById("m-doc");
+  const mIo = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { setTimeout(() => mDoc.classList.add("lit"), 600); mIo.unobserve(e.target); } });
+  }, { threshold: 0.6 });
+  if (mDoc) mIo.observe(mDoc);
+
+  // sweep a marker underline beneath the demo citation (text stays light = readable on dark)
+  const cite = document.querySelector(".bubble-a .cite q");
+  const cIo = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        const q = e.target;
+        q.style.background = "linear-gradient(var(--marker),var(--marker)) no-repeat";
+        q.style.backgroundSize = "0% 0.16em";
+        q.style.backgroundPosition = "0 100%";
+        q.style.transition = "background-size .9s cubic-bezier(.22,.61,.36,1)";
+        requestAnimationFrame(() => requestAnimationFrame(() => { q.style.backgroundSize = "100% 0.16em"; }));
+        cIo.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.8 });
+  if (cite) cIo.observe(cite);
+
+  // chips fill the nearest input
+  document.querySelectorAll(".chip").forEach((c) => {
+    c.addEventListener("click", () => {
+      const sec = c.closest("section, header");
+      const input = sec.querySelector("input");
+      input.value = c.textContent;
+      input.focus();
+      input.classList.add("flash");
+    });
+  });
+
+  // submit feedback (mockup): brief marker flash on the input frame
+  document.querySelectorAll(".ask button").forEach((b) => {
+    b.addEventListener("click", () => {
+      const box = b.closest(".ask");
+      box.animate(
+        [{ boxShadow: "0 0 0 0 rgba(218,58,30,.4)" }, { boxShadow: "0 0 0 8px rgba(218,58,30,0)" }],
+        { duration: 600, easing: "ease-out" }
+      );
+    });
+  });
+  document.querySelectorAll(".ask input").forEach((inp) => {
+    inp.addEventListener("keydown", (ev) => { if (ev.key === "Enter") inp.closest(".ask").querySelector("button").click(); });
+  });
+</script>
+</body>
+</html>
