@@ -113,17 +113,19 @@ if vraag:
         except APITimeoutError:
             st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
             antwoord = ""
-        except Exception as e:
+        except Exception:
             log.exception("OER-antwoord (student) mislukt")
-            st.error(f"Er ging iets mis: {e}")
+            st.error("Er ging iets mis. Probeer het later opnieuw.")
+            antwoord = ""
 
-    st.session_state.chat_history.extend(
-        [
-            {"role": "user", "content": vraag},
-            {"role": "assistant", "content": antwoord},
-        ]
-    )
-    if len(st.session_state.chat_history) > MAX_GESCHIEDENIS:
-        st.session_state.chat_history = st.session_state.chat_history[-MAX_GESCHIEDENIS:]
+    if antwoord:
+        st.session_state.chat_history.extend(
+            [
+                {"role": "user", "content": vraag},
+                {"role": "assistant", "content": antwoord},
+            ]
+        )
+        if len(st.session_state.chat_history) > MAX_GESCHIEDENIS:
+            st.session_state.chat_history = st.session_state.chat_history[-MAX_GESCHIEDENIS:]
 
 render_footer()

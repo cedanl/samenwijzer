@@ -302,10 +302,45 @@ def bouw_systeem(
 
 
 def bouw_berichten(chat_history: list[dict], vraag: str) -> list[dict]:
-    """Voeg de nieuwe vraag toe aan de gesprekshistorie."""
-    berichten = list(chat_history)
+    """Voeg de nieuwe vraag toe aan de gesprekshistorie.
+
+    Saneert de historie zodat de API nooit een ongeldige berichtenlijst krijgt:
+    lege beurten (een mislukte AI-call die een lege assistant-turn achterliet)
+    worden overgeslagen, twee dezelfde rollen op rij ingeklapt, en een
+    onbeantwoorde laatste user-beurt wordt vervangen door de nieuwe vraag. Zo
+    kan één gefaalde beurt niet de hele sessie blokkeren (API 400 op lege/
+    niet-alternerende content).
+    """
+    berichten: list[dict] = []
+    for bericht in chat_history:
+        if not str(bericht.get("content", "")).strip():
+            continue  # lege/mislukte beurt overslaan
+        if berichten and berichten[-1]["role"] == bericht["role"]:
+            continue  # geen twee dezelfde rollen op rij
+        berichten.append({"role": bericht["role"], "content": bericht["content"]})
+    while berichten and berichten[0]["role"] != "user":
+        berichten.pop(0)  # API verwacht een user-beurt als eerste
+    if berichten and berichten[-1]["role"] == "user":
+        berichten.pop()  # onbeantwoorde vraag → vervangen door de nieuwe
     berichten.append({"role": "user", "content": vraag})
     return berichten
+
+
+def _messages_met_cache(berichten: list[dict]) -> list[dict]:
+    """Zet een cache-breakpoint op de laatste beurt (multi-turn prompt caching).
+
+    Hierdoor leest de API bij vervolgvragen de eerdere gesprekshistorie uit de
+    cache i.p.v. die elke beurt opnieuw vol te verwerken. Laat berichten met
+    al-gestructureerde (blok-)content ongemoeid.
+    """
+    if not berichten:
+        return berichten
+    *kop, laatste = berichten
+    inhoud = laatste["content"]
+    if not isinstance(inhoud, str):
+        return berichten
+    blok = {"type": "text", "text": inhoud, "cache_control": {"type": "ephemeral", "ttl": "1h"}}
+    return [*kop, {**laatste, "content": [blok]}]
 
 
 def genereer_antwoord(
@@ -329,10 +364,12 @@ def genereer_antwoord(
     """
     with client.messages.stream(
         model=model,
-        system=[{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}],
+        system=[
+            {"type": "text", "text": system, "cache_control": {"type": "ephemeral", "ttl": "1h"}}
+        ],
         max_tokens=max_tokens,
         output_config={"effort": "medium"},
-        messages=berichten,
+        messages=_messages_met_cache(berichten),
     ) as stream:
         yield from stream.text_stream
 
