@@ -232,8 +232,10 @@ with col_chat:
                         {"role": "assistant", "content": antwoord},
                     ]
                 )
-            if len(st.session_state.chat_history) > MAX_GESCHIEDENIS:
-                st.session_state.chat_history = st.session_state.chat_history[-MAX_GESCHIEDENIS:]
+                if len(st.session_state.chat_history) > MAX_GESCHIEDENIS:
+                    st.session_state.chat_history = st.session_state.chat_history[
+                        -MAX_GESCHIEDENIS:
+                    ]
 
     with tab_oer:
         if not oer:

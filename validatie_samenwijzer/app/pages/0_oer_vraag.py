@@ -251,7 +251,12 @@ if st.session_state.pub_kandidaten:
 
             if st.session_state.pub_wachtende_vraag:
                 st.session_state.pub_wachtende_vraag = None
-                berichten = list(st.session_state.pub_chat_history)
+                # De wachtende vraag is de laatst toegevoegde user-beurt; haal die
+                # eraf en bouw via bouw_berichten zodat ook deze route de historie
+                # saneert (geen lege/niet-alternerende beurten naar de API).
+                hist = list(st.session_state.pub_chat_history)
+                wachtende = hist.pop() if hist and hist[-1]["role"] == "user" else {"content": ""}
+                berichten = bouw_berichten(hist, wachtende["content"])
                 antwoord = _stream_antwoord(st.session_state.pub_oer_systeem, berichten)
                 if antwoord:
                     st.session_state.pub_chat_history.append(
