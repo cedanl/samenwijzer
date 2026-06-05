@@ -504,6 +504,55 @@ h1.oer-hero {{
     .sw-hero::after {{ animation: none !important; }}
 }}
 
+/* ── Pagina-hero (post-login) + metadata-chips ──────────────────────────── */
+.sw-pagehero {{
+    margin: 0.2rem 0 1.3rem;
+    padding: 0 0 1rem;
+    border-bottom: 1px solid {LIJN};
+}}
+.sw-kicker {{
+    display: flex; align-items: center; gap: 0.55rem;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    font-size: 0.66rem; color: {VERMILJOEN};
+    margin-bottom: 0.5rem;
+}}
+.sw-kicker::before {{
+    content: ""; width: 22px; height: 1px; background: {VERMILJOEN}; flex: 0 0 auto;
+}}
+.sw-pagetitle {{
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    line-height: 1.0; letter-spacing: -0.015em;
+    color: {INKT}; margin: 0;
+}}
+.sw-chips {{
+    display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.85rem;
+}}
+.sw-chip {{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.03em;
+    color: {INKT_ZACHT};
+    background: {PAPER_DEEP};
+    border-radius: 999px;
+    padding: 0.28rem 0.7rem;
+    white-space: nowrap;
+}}
+.sw-chip.accent {{
+    color: {VERMILJOEN};
+    background: transparent;
+    border: 1px solid {VERMILJOEN};
+}}
+
+/* ── Nav-brand (app-naam in elke pagina-header) ─────────────────────────── */
+.sw-navbrand {{
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: 1.18rem; line-height: 1; color: {INKT};
+    white-space: nowrap;
+}}
+.sw-navbrand em {{ font-style: italic; color: {VERMILJOEN}; }}
+
 /* ── Containers (st.container border=True) ──────────────────────────────── */
 [data-testid="stVerticalBlockBorderWrapper"] {{
     background: {PAPER_CARD} !important;
@@ -646,7 +695,7 @@ h1.oer-hero {{
 """
 
 _NAV_STUDENT = [
-    ("💬 OER-assistent", "pages/1_oer_assistent.py"),
+    ("💬 OER-chat", "pages/1_oer_assistent.py"),
     ("📄 Mijn OER", "pages/2_mijn_oer.py"),
     ("📊 Mijn voortgang", "pages/3_mijn_voortgang.py"),
 ]
@@ -657,21 +706,38 @@ _NAV_MENTOR = [
 ]
 
 
-def _opleiding_naam(opleiding: str, crebo: str) -> str:
-    """Extraheer leesbare naam uit het opleiding-veld en formatteer als 'Naam (crebo)'."""
+def schoon_opleiding_naam(opleiding: str, crebo: str = "") -> str:
+    """Leesbare opleidingsnaam uit het ruwe opleiding-veld (zonder crebo-suffix).
+
+    Strip de bestandsnaam-ruis (CREBO_BOL_2025__, 'OER (OUD) - ', losse crebo,
+    '36 maanden', cohort-suffix) zodat alleen de mensleesbare naam overblijft.
+    """
     import re
 
     naam = re.sub(r"^\d+[_\s][A-Z]+[_\s]\d+[_\s]+", "", opleiding)  # strip CREBO_BOL_2025__
-    naam = re.sub(rf"^{re.escape(crebo)}\s+", "", naam)  # strip leading crebo (met spatie)
+    if crebo:
+        naam = re.sub(rf"^{re.escape(crebo)}\s+", "", naam)  # strip leading crebo (met spatie)
     naam = re.sub(r"\bOER\s*\([^)]+\)\s*[-–]\s*", "", naam)  # strip "OER (OUD) - "
-    naam = re.sub(rf"\b{re.escape(crebo)}\b\s*[-–]?\s*", "", naam)  # strip resterende crebo
+    if crebo:
+        naam = re.sub(rf"\b{re.escape(crebo)}\b\s*[-–]?\s*", "", naam)  # strip resterende crebo
     naam = re.sub(r"\s+\d+\s+(maanden|jaar)$", "", naam)  # strip " 36 maanden"
     naam = naam.strip()
-    if " " not in naam:
+    if " " not in naam and crebo:
         naam = re.sub(rf"^{re.escape(crebo)}[A-Z]{{3}}\d{{4}}(?:Examenplan|MJP)[-_]?", "", naam)
         naam = re.sub(r"[-_]cohort[-_]\d{4}$", "", naam)
         naam = naam.replace("-", " ").replace("_", " ").strip()
-    return f"{naam} ({crebo})" if naam else f"Opleiding {crebo}"
+    # Strip 'Examenplan(nen)'-prefix, een ingesloten lowercase instellings-prefix
+    # (bv. 'talland Medewerker…' → 'Medewerker…') en een cohort-suffix (25-26 / 2526).
+    naam = re.sub(r"^Examenplan(?:nen)?\s+", "", naam, flags=re.IGNORECASE)
+    naam = re.sub(r"^(?:[a-z]{3,}\s+)+(?=[A-Z])", "", naam)
+    naam = re.sub(r"\s+\d{2}[-\s]?\d{2}$", "", naam)
+    naam = re.sub(r"\s{2,}", " ", naam).strip()
+    return naam or (f"Opleiding {crebo}" if crebo else "Opleiding")
+
+
+def _opleiding_naam(opleiding: str, crebo: str) -> str:
+    """Leesbare naam geformatteerd als 'Naam (crebo)' — legacy-compat."""
+    return f"{schoon_opleiding_naam(opleiding, crebo)} ({crebo})"
 
 
 Schaal = Literal["0-1", "0-100"]
@@ -692,8 +758,37 @@ def render_progress_bar(score: float, kleur: str, schaal: Schaal = "0-100") -> s
     )
 
 
+def render_app_hero(
+    titel: str, *, kicker: str = "", chips: list | None = None, titel_is_html: bool = False
+) -> None:
+    """Compacte pagina-hero: mono-kicker + serif-titel + metadata-chips.
+
+    chips: lijst van strings of (tekst, accent_bool)-tuples. Tekst wordt ge-escaped;
+    geef titel_is_html=True door voor een bewust opgemaakte titel (bv. cursief accent).
+    """
+    import html as _html
+
+    import streamlit as st
+
+    kicker_html = f'<div class="sw-kicker">{_html.escape(kicker)}</div>' if kicker else ""
+    chip_html = ""
+    for c in chips or []:
+        tekst, accent = c if isinstance(c, tuple) else (c, False)
+        if not tekst:
+            continue
+        cls = "sw-chip accent" if accent else "sw-chip"
+        chip_html += f'<span class="{cls}">{_html.escape(str(tekst))}</span>'
+    chips_blok = f'<div class="sw-chips">{chip_html}</div>' if chip_html else ""
+    titel_html = titel if titel_is_html else _html.escape(titel)
+    st.markdown(
+        f'<div class="sw-pagehero">{kicker_html}'
+        f'<h1 class="sw-pagetitle">{titel_html}</h1>{chips_blok}</div>',
+        unsafe_allow_html=True,
+    )
+
+
 def render_student_info() -> None:
-    """Render de student-identiteitsbalk onder de navigatie."""
+    """Student-identiteit als hero: naam (kicker) + opleiding (titel) + metadata-chips."""
     import streamlit as st
 
     naam = st.session_state.get("gebruiker_naam", "")
@@ -701,18 +796,16 @@ def render_student_info() -> None:
     opleiding = st.session_state.get("opleiding", "")
     crebo = st.session_state.get("crebo", "")
     instelling = st.session_state.get("instelling", "")
-    opleiding_label = _opleiding_naam(opleiding, crebo) if opleiding and crebo else opleiding
-    onderdelen = [x for x in [naam, leerweg, opleiding_label, instelling] if x]
-    st.markdown(
-        f'<p style="color:{INKT};font-size:1.15rem;font-weight:500;'
-        f"font-family:'Hanken Grotesk',sans-serif;margin:1rem 0 1.2rem 0\">"
-        f"{'&nbsp;&nbsp;·&nbsp;&nbsp;'.join(onderdelen)}</p>",
-        unsafe_allow_html=True,
-    )
+    studentnummer = st.session_state.get("studentnummer", "")
+
+    titel = schoon_opleiding_naam(opleiding, crebo) if opleiding else "Mijn opleiding"
+    kicker = " · ".join(x for x in [naam, studentnummer] if x)
+    chips = [(f"Crebo {crebo}", True) if crebo else None, leerweg or None, instelling or None]
+    render_app_hero(titel, kicker=kicker, chips=[c for c in chips if c])
 
 
 def render_nav() -> None:
-    """Render de vaste navigatiebalk bovenin op basis van de sessierol."""
+    """Render de vaste navigatiebalk bovenin: app-naam-brand + rolgebaseerde links."""
     import streamlit as st
 
     rol = st.session_state.get("rol")
@@ -721,9 +814,14 @@ def render_nav() -> None:
 
     nav_items = _NAV_STUDENT if rol == "student" else _NAV_MENTOR
 
-    cols = st.columns([2] * len(nav_items) + [1])
+    cols = st.columns([3] + [2] * len(nav_items) + [1])
+    with cols[0]:
+        st.markdown(
+            '<span class="sw-navbrand">SamenWijzer <em>Fase 1</em></span>',
+            unsafe_allow_html=True,
+        )
     for i, (label, page) in enumerate(nav_items):
-        with cols[i]:
+        with cols[i + 1]:
             st.page_link(page, label=label)
     with cols[-1]:
         st.page_link("pages/uitloggen.py", label="🚪")

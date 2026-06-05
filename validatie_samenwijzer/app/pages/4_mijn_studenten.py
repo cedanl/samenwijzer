@@ -18,6 +18,7 @@ from validatie_samenwijzer.styles import (  # noqa: E402
     bepaal_kleur,
     render_footer,
     render_nav,
+    schoon_opleiding_naam,
 )
 
 st.markdown(CSS, unsafe_allow_html=True)
@@ -41,7 +42,8 @@ oer_info: dict[int, dict] = {
     r["id"]: dict(r)
     for r in get_conn()
     .execute(
-        f"SELECT id, opleiding, leerweg, cohort FROM oer_documenten WHERE id IN ({placeholders})",
+        f"SELECT id, opleiding, crebo, leerweg, cohort "
+        f"FROM oer_documenten WHERE id IN ({placeholders})",
         oer_ids,
     )
     .fetchall()
@@ -66,7 +68,8 @@ for student in studenten:
             st.markdown(f"**{student['naam']}**")
             oer = oer_info.get(student["oer_id"])
             if oer:
-                st.caption(f"{oer['opleiding']} · {oer['leerweg']} · {oer['cohort']}")
+                schoon = schoon_opleiding_naam(oer["opleiding"], oer["crebo"])
+                st.caption(f"{schoon} · {oer['leerweg']} · Cohort {oer['cohort']}")
         with col2:
             st.markdown(
                 f"<span style='color:{kleur_vg}'>▸ Voortgang: **{vg * 100:.0f}%**</span>",

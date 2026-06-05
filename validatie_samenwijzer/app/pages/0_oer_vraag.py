@@ -43,7 +43,7 @@ st.markdown(CSS, unsafe_allow_html=True)
 # Achter login: alleen ingelogde gebruikers (student/mentor/algemeen account) mogen hier.
 # Blokkeert ook directe-URL-toegang, niet alleen de tab in main.py.
 if not st.session_state.get("rol"):
-    st.warning("🔒 Log in om de OER-assistent te gebruiken.")
+    st.warning("🔒 Log in om SamenWijzer te gebruiken.")
     st.page_link("main.py", label="Naar inloggen", icon="🏠")
     st.stop()
 
