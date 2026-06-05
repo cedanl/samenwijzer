@@ -1,7 +1,5 @@
 # Fly-config voor de app "digitale-gids" (publieksnaam: De digitale gids).
-# Hernoemd vanaf "samenwijzer-fase-1" (PR #151 renaming) → nieuwe URL
-# https://digitale-gids.fly.dev. Fly kan apps niet hernoemen, dus dit is een
-# nieuwe app; de oude "samenwijzer-fase-1" kan na de cutover worden verwijderd.
+# URL: https://digitale-gids.fly.dev.
 # Volledig los van ceda-regiobijeenkomst — eigen app, eigen machines.
 # Staat op de repo-root omdat de data (oeren/, kwalificatiedossiers/) buiten het
 # subproject leeft → build-context = root. Deploy vanuit de repo-root:
