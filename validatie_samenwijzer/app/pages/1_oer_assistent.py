@@ -1,4 +1,4 @@
-"""Student: OER-chat met volledige documentcontext."""
+"""Student: vraag-en-antwoord met volledige documentcontext (de OER)."""
 
 import html
 import logging
@@ -10,7 +10,7 @@ load_dotenv()
 
 log = logging.getLogger(__name__)
 
-st.set_page_config(page_title="OER-chat · SamenWijzer", page_icon="💬", layout="wide")
+st.set_page_config(page_title="Stel een vraag · De digitale gids", page_icon="💬", layout="wide")
 
 from validatie_samenwijzer._ai import APITimeoutError  # noqa: E402
 from validatie_samenwijzer._ai import _client as ai_client  # noqa: E402
@@ -45,8 +45,11 @@ instelling = st.session_state.get("instelling", "")
 bestandspad = st.session_state.get("bestandspad", "")
 crebo = st.session_state.get("crebo", "")
 
-st.subheader("💬 OER-chat")
-st.caption("Jouw vragen, beantwoord vanuit jouw OER — mét bron, vindplaats en citaat.")
+st.subheader("💬 Stel je vraag")
+st.caption(
+    "Antwoord uit je studiegids — mét bron, vindplaats en citaat "
+    "(officieel heet die de OER, de onderwijs- en examenregeling)."
+)
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
@@ -85,7 +88,7 @@ for bericht in st.session_state.chat_history:
             unsafe_allow_html=True,
         )
 
-vraag = st.chat_input("Stel een vraag over jouw OER…")
+vraag = st.chat_input("Stel een vraag over je opleiding…")
 if vraag:
     st.markdown(
         f'<div class="chat-vraag">💬 {html.escape(vraag)}</div>',
