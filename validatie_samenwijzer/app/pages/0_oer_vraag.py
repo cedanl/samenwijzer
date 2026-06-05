@@ -1,6 +1,5 @@
 """Publieke vraag-pagina (De digitale gids) — conversationeel, zonder inlogvereiste."""
 
-import base64
 import html
 import logging
 from pathlib import Path
@@ -84,7 +83,7 @@ def _reset() -> None:
 
 
 def _render_oer_bestand(pad: Path) -> None:
-    """Render een OER-bestand inline (PDF iframe + download, of tekst-fallback)."""
+    """Render een OER-bestand inline (PDF-viewer + download, of tekst-fallback)."""
     if not pad.exists():
         st.warning(f"Bestand niet gevonden op: {pad}")
         return
@@ -98,12 +97,7 @@ def _render_oer_bestand(pad: Path) -> None:
             file_name=pad.name,
             mime="application/pdf",
         )
-        b64 = base64.b64encode(pdf_bytes).decode()
-        st.markdown(
-            f'<iframe src="data:application/pdf;base64,{b64}" '
-            f'width="100%" height="800px"></iframe>',
-            unsafe_allow_html=True,
-        )
+        st.pdf(pdf_bytes, height=800)
     elif suffix in {".html", ".htm"}:
         st.text_area("Inhoud studiegids", extraheer_tekst_html(pad), height=800)
     elif suffix == ".md":

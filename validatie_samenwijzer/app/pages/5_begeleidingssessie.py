@@ -1,6 +1,5 @@
 """Mentor: studentprofiel + vraag-en-antwoord (de OER) naast elkaar."""
 
-import base64
 import html
 import logging
 import os
@@ -257,12 +256,7 @@ with col_chat:
                     file_name=pad.name,
                     mime="application/pdf",
                 )
-                b64 = base64.b64encode(pdf_bytes).decode()
-                st.markdown(
-                    f'<iframe src="data:application/pdf;base64,{b64}" '
-                    f'width="100%" height="800px"></iframe>',
-                    unsafe_allow_html=True,
-                )
+                st.pdf(pdf_bytes, height=800)
             elif pad.suffix.lower() in {".html", ".htm"}:
                 st.text_area("Inhoud studiegids", extraheer_tekst_html(pad), height=600)
             elif pad.suffix.lower() == ".md":
