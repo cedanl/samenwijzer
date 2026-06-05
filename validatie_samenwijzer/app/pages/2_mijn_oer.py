@@ -1,7 +1,5 @@
 """Student: volledig OER inzien of downloaden."""
 
-import base64
-
 import streamlit as st
 from dotenv import load_dotenv
 
@@ -52,12 +50,7 @@ else:
             mime="application/pdf",
         )
         st.markdown("---")
-        b64 = base64.b64encode(pdf_bytes).decode()
-        st.markdown(
-            f'<iframe src="data:application/pdf;base64,{b64}" '
-            f'width="100%" height="800px"></iframe>',
-            unsafe_allow_html=True,
-        )
+        st.pdf(pdf_bytes, height=800)
     elif pad.suffix.lower() in {".html", ".htm"}:
         tekst = extraheer_tekst_html(pad)
         st.text_area("Inhoud studiegids", tekst, height=600)
