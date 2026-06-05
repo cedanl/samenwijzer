@@ -1,8 +1,8 @@
-# Image voor de Fly-app "samenwijzer-fase-1".
+# Image voor de Fly-app "digitale-gids".
 # Build-context = repo-root (data leeft buiten het subproject in oeren/ en
 # kwalificatiedossiers/). Dockerfile + fly.toml staan daarom op de repo-root.
 # Deploy vanuit de repo-root met:
-#   flyctl deploy -a samenwijzer-fase-1 --remote-only
+#   flyctl deploy -a digitale-gids --remote-only
 #
 # Corpus wordt in het image gebakken (immutable, geen runtime-data-afhankelijkheid,
 # geen Box/rclone op runtime). De app is read-only tegen validatie.db, dus geen volume nodig.
