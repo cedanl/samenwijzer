@@ -9,6 +9,7 @@ from validatie_samenwijzer.db import (
     voeg_instelling_toe,
 )
 from validatie_samenwijzer.ingest import (
+    _OPLEIDING_LIJN_DAVINCI,
     _kerntaken_uit_kd,
     _pad_kwalificatiedossier,
     _schoon_kd_naam,
@@ -248,3 +249,41 @@ def test_verwerk_instelling_documenten_zonder_submap_doet_niets(tmp_path, conn):
     _verwerk_instelling_documenten("rijn_ijssel", tmp_path, conn)
 
     assert conn.execute("SELECT COUNT(*) FROM instelling_documenten").fetchone()[0] == 0
+
+
+# Echte Da Vinci-titelpagina's (eerste regel) — de drie formaten plus de afgekapte
+# variant. De bestandsnaam bevat hier alleen crebo/leerweg/jaar, dus de naam moet
+# van de titelpagina komen.
+@pytest.mark.parametrize(
+    "regel,verwacht",
+    [
+        (
+            "Examenplan Eerste monteur service en onderhoud werktuigbouw vanaf cohort 2021– crebo 25306",
+            "Eerste monteur service en onderhoud werktuigbouw",
+        ),
+        (
+            "Examenplan Mediaredactiemedewerker vanaf cohort 2023 – Crebo 25882",
+            "Mediaredactiemedewerker",
+        ),
+        ("Examenplan Productietechnicus – crebo 25896 vanaf cohort 2023", "Productietechnicus"),
+        (
+            "Examenplan beroepsgerichte examens 25928 Ondernemend meubelmaker vanaf cohort 2024",
+            "Ondernemend meubelmaker",
+        ),
+        (
+            "Examenplan beroepsgerichte examens 25308 Monteur service en onderhoud installaties en systemen",
+            "Monteur service en onderhoud installaties en systemen",
+        ),
+    ],
+)
+def test_opleiding_lijn_davinci_matcht_titelpagina(regel, verwacht):
+    m = _OPLEIDING_LIJN_DAVINCI.match(regel)
+    assert m is not None
+    assert m.group(1).strip() == verwacht
+
+
+@pytest.mark.parametrize("regel", ["EXAMENPLAN", "Opleidingsplanning", "Inhoudsopgave"])
+def test_opleiding_lijn_davinci_negeert_naamloze_kop(regel):
+    """Cover-pagina's zonder opleidingsnaam mogen geen valse match geven."""
+    m = _OPLEIDING_LIJN_DAVINCI.match(regel)
+    assert m is None or len(m.group(1).strip()) < 3

@@ -11,6 +11,8 @@ from pathlib import Path
 
 import anthropic
 
+from validatie_samenwijzer.opleiding import schoon_opleiding_naam
+
 logger = logging.getLogger(__name__)
 
 _MAX_OER_TEKST_TEKENS = 500_000  # ruim voldoende voor elke OER binnen Sonnet 4.6 (1M context)
@@ -285,6 +287,10 @@ def bouw_systeem(
             (bv. ("Examenreglement", ...)). Het label wordt de blok-kop en de te
             citeren bronnaam. Volgorde bepaalt de blok-volgorde; lege tekst → geen blok.
     """
+    # Schoon de opleidingsnaam op de read-boundary: in de DB staan ruwe bestandsnaam-
+    # stems (bv. Da Vinci '25642_BBL_2025__...Examenplan-hairstylist-dame-cohort-2025').
+    # De UI doet dit al; zo ziet het model ook een leesbare naam i.p.v. de codes.
+    opleiding = schoon_opleiding_naam(opleiding, str(crebo) if crebo else "")
     dossier_blok = ""
     if dossier_tekst:
         dossier_blok = _DOSSIER_BLOK_TEMPLATE.format(
@@ -454,7 +460,8 @@ def bouw_gecombineerd_systeem(oer_items: list[dict]) -> str:
 
     blokken = []
     for i, item in enumerate(oer_items, 1):
-        label = f"{item['display_naam']} · {item['opleiding']} · {item['leerweg']} {item['cohort']}"
+        schone_opl = schoon_opleiding_naam(item["opleiding"], str(item.get("crebo") or ""))
+        label = f"{item['display_naam']} · {schone_opl} · {item['leerweg']} {item['cohort']}"
         oer_blok = f"=== OER {i}: {label} ===\n\n{item['tekst']}"
         for kop, tekst in item.get("instelling_bronnen", ()):
             if tekst:
