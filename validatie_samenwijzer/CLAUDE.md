@@ -326,7 +326,10 @@ Login: studenten op studentnummer, mentoren op naam.
 ### AI-isolatie
 
 Alle Anthropic-calls lopen via `_ai._client()`. `chat.py` is de enige module met streaming-aanroepen.
-Nooit `anthropic.Anthropic()` direct instantiëren.
+Nooit `anthropic.Anthropic()` direct instantiëren. De client wordt gebouwd met
+`_CLIENT_OPTS = {timeout: httpx.Timeout(30.0, connect=10.0), max_retries: 2}` zodat het 30s-contract
+écht wordt afgedwongen (de SDK-default read is 600s); bij streaming is de read-timeout per
+inter-event, dus een lang antwoord wordt niet afgebroken — alleen een vastgelopen stream.
 
 ### OER-chat-flow
 
@@ -343,6 +346,19 @@ Nooit `anthropic.Anthropic()` direct instantiëren.
 
 `laad_oer_tekst()` voorkeursvolgorde: `<stem>.md` (markitdown-output) → bron-`.md` →
 pdfplumber over PDF. Hard cap: `_MAX_OER_TEKST_TEKENS = 500_000` tekens.
+
+**Gespreksgeschiedenis & caching**: `bouw_berichten()` saneert de historie (lege/mislukte beurten
+weg, alternerende rollen, onbeantwoorde laatste user-beurt vervangen) zodat één gefaalde AI-call de
+sessie niet kan blokkeren met een API 400. `genereer_antwoord()` zet `cache_control` met **1h-TTL**
+op het system-blok én een cache-breakpoint op de laatste beurt (`_messages_met_cache`), zodat de
+volledige OER-context én de gespreksgeschiedenis bij vervolgvragen uit de prompt-cache worden gelezen
+i.p.v. elke beurt vol betaald — overleeft leespauzes >5 min tussen vragen.
+
+**Antwoord-rendering**: AI-antwoorden renderen via native `st.markdown(antwoord)` binnen een keyed
+`st.container(key="chatantwoord_*")` — **niet** in een rauwe `<div>` met `unsafe_allow_html` (dat brak
+op een letterlijke `<` of code in het antwoord). De bubble- en citaat-pull-quote-CSS targeten daarom
+`.chat-antwoord` (statische loading-indicator) én `[class*="st-key-chatantwoord"]` (het antwoord).
+Vraag-bubbels blijven `html.escape` + `.chat-vraag`.
 
 `laad_kwalificatiedossier_tekst(crebo)` leest `kwalificatiedossiers/pdfs/<crebo>.md` (hard cap
 `_MAX_DOSSIER_TEKST_TEKENS = 300_000`). Pad-resolutie via `pad_kwalificatiedossier(crebo)`:
