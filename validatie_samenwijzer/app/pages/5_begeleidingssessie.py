@@ -181,17 +181,15 @@ with col_chat:
                 else ""
             )
 
-        for bericht in st.session_state.chat_history:
+        for i, bericht in enumerate(st.session_state.chat_history):
             if bericht["role"] == "user":
                 st.markdown(
                     f'<div class="chat-vraag">💬 {html.escape(bericht["content"])}</div>',
                     unsafe_allow_html=True,
                 )
             else:
-                st.markdown(
-                    f'<div class="chat-antwoord">\n\n{bericht["content"]}\n\n</div>',
-                    unsafe_allow_html=True,
-                )
+                with st.container(key=f"chatantwoord_{i}"):
+                    st.markdown(bericht["content"])
 
         vraag = st.chat_input(f"Stel een vraag over {student['naam']}'s studiegids…")
         if vraag:
@@ -207,16 +205,14 @@ with col_chat:
                 berichten = bouw_berichten(st.session_state.chat_history, vraag)
                 antwoord = LAGE_RELEVANTIE_BERICHT
                 try:
-                    placeholder = st.empty()
                     antwoord = ""
-                    for fragment in genereer_antwoord(
-                        ai_client(), st.session_state.oer_systeem, berichten
-                    ):
-                        antwoord += fragment
-                        placeholder.markdown(
-                            f'<div class="chat-antwoord">\n\n{antwoord}\n\n</div>',
-                            unsafe_allow_html=True,
-                        )
+                    with st.container(key="chatantwoord_stream"):
+                        placeholder = st.empty()
+                        for fragment in genereer_antwoord(
+                            ai_client(), st.session_state.oer_systeem, berichten
+                        ):
+                            antwoord += fragment
+                            placeholder.markdown(antwoord)
                 except APITimeoutError:
                     st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
                     antwoord = ""
