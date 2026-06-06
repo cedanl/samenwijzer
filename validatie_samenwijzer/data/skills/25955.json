@@ -1,0 +1,169 @@
+{
+  "crebo": "25955",
+  "opleiding": "25955_BBL_2025__Keukenmontage_Keukenmonteur",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Keukenmonteur",
+    "uri": "",
+    "definitie": "Een keukenmonteur installeert en monteert van keukens in verschillende soorten gebouwen, zoals woningen, kantoren en horecagelegenheden. Deze leest bouwtekeningen en specificaties om de indeling van de keuken te begrijpen en de juiste plaatsing van kasten, apparatuur en werkbladen te bepalen. De keukenmonteur voert diverse montagewerkzaamheden uit, zoals het monteren van kasten, het installeren van werkbladen, het aansluiten van apparatuur en het plaatsen van accessoires. Deze gebruikt verschillende gereedschappen en technieken om de keuken op een nauwkeurige en veilige manier te monteren, waarbij die rekening houdt met de ergonomie en functionaliteit. De keukenmonteur controleert de kwaliteit van diens werk en zorgt ervoor dat de keuken voldoet aan de verwachtingen van de klant en aan de geldende veiligheids- en kwaliteitsnormen. De keukenmonteur werkt zelfstandig en in teamverband. Deze is verantwoordelijk voor het opruimen van de werkplek en het achterlaten van de keuken in een nette en opgeruimde staat. De keukenmonteur heeft een praktische instelling, een oog voor detail en een goede fysieke conditie, omdat het werk soms fysiek zwaar kan zijn."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Meten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/0EBFAD3C80",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Begrijpend lezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/2E80D9179C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beslissingen nemen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/9DD6D3E301",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplaatsen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D16A30C42A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installeren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5AD4F0905",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Elektrotechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/1EC7181B0B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Consumentenelektronica",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2343BF4915",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Werktuigkundig tekenen en construeren",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2781D3BF69",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installatietechniek (elektro)",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3F26F4FE84",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installatietechniek (bouwkunde)",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/41B99A9CBB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Levensmiddelentechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/4B57E632B0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaalkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/519323C152",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Afbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/545738E767",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Schilderen en overige afwerktechnieken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6B614BA1A0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ambachtelijk houtbewerken, meubelmaken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8221AA799A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Werktuigbouwkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AF10B67F03",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Elektronica",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D0532E336E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouwtechnisch tekenen en construeren",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D5DD27C02E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reiniging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FB169E4860",
+      "categorie": "essentieel"
+    }
+  ]
+}

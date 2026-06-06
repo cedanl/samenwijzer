@@ -1,0 +1,69 @@
+{
+  "crebo": "25714",
+  "opleiding": "25714_BBL_2025__Autospuiter_Autospuiter",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Autospuiter",
+    "uri": "",
+    "definitie": "De autospuiter werkt in de carrosseriebranche op de afdelingen voorbewerken en spuiten. Hij bewerkt ondergronden voor, spuit aflakmaterialen en voert de werkzaamheden volgens vastgelegde procedures uit. Deze werkzaamheden voert hij uit in een werkplaats. Veilig en milieuverantwoord werken vindt hij belangrijk en hij denkt mee over verbeteringen in het werkproces. Hij heeft een proactieve houding. De autospuiter heeft een uitvoerende rol en is verantwoordelijk voor een goede en efficiënte uitvoering van de opdrachten die hij van zijn leidinggevende krijgt."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Prioriteiten stellen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7620BCA1C4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Timemanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D98DE01097",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Cultuurwetenschappen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/47A44B019D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Maten en getallen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/CB6BD3297B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Industriële lakverwerking",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/CFFEAAA1B7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beheer en verwerking van afval",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E360B68955",
+      "categorie": "essentieel"
+    }
+  ]
+}

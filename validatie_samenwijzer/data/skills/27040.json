@@ -1,0 +1,104 @@
+{
+  "crebo": "27040",
+  "opleiding": "27040_BOL_2025__Luchtvaartdienstverlener",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Luchtvaartdienstverlener",
+    "uri": "",
+    "definitie": "De luchtvaartdienstverlener, ook steward of stewardess genoemd, is het visitekaartje van de organisatie. De luchtvaartdienstverlener voert de werkzaamheden uit in een omgeving die zich kenmerkt door een dynamische en internationale omgeving waarbij die in aanraking komt met passagiers uit verschillende landen met verschillende culturele achtergronden en talen. De luchtvaartdienstverlener werkt vaak buiten kantooruren en meestal in een onregelmatig werkpatroon. De luchtvaartdienstverlener wordt vaak samen met collega's ingezet bij de volgende werkzaamheden: floorwalken, afhandelen van bagage, verzorgen van full service check-in, begeleiden van bijzondere passagiers, voorbereiden van de vlucht, controleren van uitrusting, begeleiden van het instap- en uitstapproces , informeren van passagiers tijdens de vlucht en het verlenen van service aan passagiers tijdens de vlucht. Naast het hebben van mensenkennis en sterke communicatieve vaardigheden is de luchtvaardienstverlener weerbaar en kan omgaan met onverwachte situaties en heeft probleemoplossend vermogen. De luchtvaartdienstverlener moet zich daarnaast zeer bewust zijn van de veiligheidsrisico’s en de veiligheidsprocedures aangezien dit een steeds belangrijker item is binnen dit beroep."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Zorgvuldig werken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/73CE64DACE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Procedures volgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/752EEDBE89",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Monitoren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B03F4F484C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reflecteren op jezelf",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C21A058358",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verzorgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DB59A57C01",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Dienstbaarheid tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/F755E32480",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Geologie, fysische geografie en aardwetenschappen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/0984D0F658",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Gezondheidszorg en welzijn",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/234390843C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Gastvrijheid",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3F97DB848A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Cultuurwetenschappen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/47A44B019D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verpleegkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/5DADB2E370",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Luchtvaart",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/69EE38DA4B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Veiligheidskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C34CD6448D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Werken met digitale apparaten en toepassingen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DA95C063A4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderzoeksmethoden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E4B9A547C8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Marketing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E6A75FB995",
+      "categorie": "essentieel"
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "crebo": "25715",
+  "opleiding": "25715_BBL_2025__Autospuiter_Eerste_Autospuiter",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Eerste Autospuiter",
+    "uri": "",
+    "definitie": "De eerste autospuiter werkt in de carrosseriebranche op de afdelingen voorbewerken en spuiten. Hij bewerkt ondergronden voor en spuit aflakmaterialen. Hij krijgt opdrachten van zijn leidinggevende, maar is zelf verantwoordelijk voor een goede werkwijze die leidt tot de meest kwalitatieve oplossing. De werkzaamheden voert hij uit in een werkplaats. Hij maakt zelf een tijdsinschatting, pakt knelpunten aan en stelt de juiste prioriteiten. Hij heeft een proactieve houding. De eerste autospuiter is verantwoordelijk voor een goede en efficiënte uitvoering van de opdrachten."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Prioriteiten stellen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7620BCA1C4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsprocessen verbeteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7C37C4FF38",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Monitoren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B03F4F484C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Timemanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D98DE01097",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Psychologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/17998456DE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Cultuurwetenschappen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/47A44B019D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfseconomie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/53B4B474D1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Personeelswerk",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AA15132AFE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Maten en getallen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/CB6BD3297B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Industriële lakverwerking",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/CFFEAAA1B7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beheer en verwerking van afval",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E360B68955",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Projectmanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F248B939CD",
+      "categorie": "essentieel"
+    }
+  ]
+}

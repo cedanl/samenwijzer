@@ -1,0 +1,89 @@
+{
+  "crebo": "27019",
+  "opleiding": "27019_BBL_2025__Betonreparatie_Betonreparateur",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Betonreparateur",
+    "uri": "",
+    "definitie": "De betonreparateur repareert handmatig betonschade en brengt spuitbeton aan. Eerst controleert die de conditie van de ondergrond en verwijdert losse en beschadigde delen. Afhankelijk van het type schade brengt die wapening, een anticorrosielagen en hechtbruggen aan. De betonreparateur zorgt er met reparatiemortel voor dat wapeningstaven niet meer bloot liggen, zodat ze niet kunnen roesten. Bij het machinaal verwerken van beton, mengt die mortel en maakt spuitapparatuur gereed. Nadat die spuitbeton heeft aangebracht werkt die het gespoten oppervlak netjes af. Ook repareert die scheuren en holle ruimten in betonconstructies door mortel te injecteren, of injecteert die vochtverdringend of afdichtend materiaal in beton. De betonreparateur is werkzaam in de huizen- en utiliteitsbouw en de weg- en waterbouw. De betonreparateur werkt meestal samen met één of twee collega's, maar gaat soms ook alleen naar een kleinere klus. De meeste betonreparateurs werken in loondienst, maar sommigen zijn zzp'er."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Controleren van machines en systemen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/0A4C7D6130",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Handvaardigheid",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E66E6D3B86",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaalkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/519323C152",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Schilderen en overige afwerktechnieken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6B614BA1A0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Betonbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/86BCA358A9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouwtechnisch tekenen en construeren",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D5DD27C02E",
+      "categorie": "essentieel"
+    }
+  ]
+}

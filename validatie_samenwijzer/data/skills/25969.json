@@ -1,0 +1,129 @@
+{
+  "crebo": "25969",
+  "opleiding": "25969_BBL_2025__Audicien",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Audicien",
+    "uri": "",
+    "definitie": "De audicien brengt de slechthorendheid van de cliënt in beeld en vindt een passende oplossing voor het gehoorprobleem. Deze inspecteert het oor, stelt het gehoorverlies vast en beoordeelt of aanvullend audiometrisch onderzoek nodig is. Verder voert de audicien hoor-revalidatie uit, zoals het afstellen van hoortoestellen. Daarbij komt het voor dat cliënten zelf geen juiste inschatting hebben van de werkelijke problematiek. Zo kan iemand menen dat een hoortoestel niet goed is, terwijl de werkelijkheid anders is. Ook zijn cliënten niet altijd gewend aan of bekend met technische hulpmiddelen. Naast secuur, veilig en hygiënisch onderzoek vereist het werk van de audicien dan ook goed inlevingsvermogen en geduldige communicatie. Zodoende is die in staat de verwachting van de cliënt te matchen met het maximaal haalbare resultaat."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Snel informatie begrijpen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/00F4349F9A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen signaleren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4D400FE127",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen oplossen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/53E033E58A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Instrueren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6AE2F3F890",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Schrijven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/BC98BE9135",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Adviseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CECB22E3FA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Psychosociaal begeleiden",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D989743D35",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Deductief logisch redeneren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E033DC4809",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Psychologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/17998456DE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Natuurkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/28020D50DE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Gezondheidszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36530C542F",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Biomedische wetenschappen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/42BB16307B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Biologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/54690E3D68",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Audicien, audiometrie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/671CC6A2D0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verzekeringen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7859C11150",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Preventieve gezondheidszorg en - geneeskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BFE1C817CA",
+      "categorie": "essentieel"
+    }
+  ]
+}

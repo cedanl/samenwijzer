@@ -1,0 +1,238 @@
+{
+  "crebo": "23310",
+  "opleiding": "23310_BOL_2025__Management_transport_en_logistiek",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "manager logistiek en distributie",
+    "uri": "http://data.europa.eu/esco/occupation/823db06f-25e1-4658-b063-d6ef956b41f5",
+    "definitie": "Logistieke en distributiemanagers nemen besluiten over logistieke diensten, operaties en voorzieningen. Zij houden rekening met interne en externe variabelen voor doeltreffende en succesvolle logistieke organisatiediensten. Zij verlenen van begin tot eind passende ondersteuning aan alle activiteiten van de toeleveringsketen. Deze professionals organiseren de opslag en distributie van goederen en zorgen ervoor dat de juiste producten op tijd en tegen een goede prijs worden afgeleverd op de juiste plaats."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "manager multimodale logistiek",
+    "logistiek analist",
+    "logistiek ingenieur",
+    "manager logistiek en distributie",
+    "logistiek coördinator goederenvervoer per spoor",
+    "logistiek medewerker",
+    "logistiek manager",
+    "logistiek coördinator luchtvracht"
+  ],
+  "skills": [
+    {
+      "label": "goederen die worden vervoerd vanuit opslagfaciliteiten",
+      "uri": "http://data.europa.eu/esco/skill/fb39389b-07d5-439f-948b-6c6e58c0384f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "contacten onderhouden met vervoersbedrijven",
+      "uri": "http://data.europa.eu/esco/skill/1f618933-1c1b-4b49-91f7-d567d25406bf",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "methoden voor goederenvervoer",
+      "uri": "http://data.europa.eu/esco/skill/a16e3fc6-c77d-46e3-aa18-c691fed47fd1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "strategieën voor toeleveringsketens analyseren",
+      "uri": "http://data.europa.eu/esco/skill/96d549bb-3e62-4c45-92a7-f114df089581",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "omgaan met stressvolle situaties",
+      "uri": "http://data.europa.eu/esco/skill/a8460be3-f4ba-44a0-a961-0389069a3614",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "wagenpark volgens geplande operaties beheren",
+      "uri": "http://data.europa.eu/esco/skill/efc49485-b24b-46d5-825c-d9d80864c8da",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "grootschalige rampoefeningen uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/a7b9e3cd-cd39-4ea1-b617-3f5b651fd535",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "omgaan met collega’s",
+      "uri": "http://data.europa.eu/esco/skill/9d5521f9-44d7-4db4-b7ac-0ba7d389f44d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bijbestelniveaus controleren",
+      "uri": "http://data.europa.eu/esco/skill/7e6509bd-9642-4af5-bad3-5b2cec29b6f9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voortdurende verbetering van teams aanmoedigen",
+      "uri": "http://data.europa.eu/esco/skill/3b5c7dc9-bd4f-4360-95c8-f66636dcb8a8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "economische criteria overwegen bij besluitvormingsprocessen",
+      "uri": "http://data.europa.eu/esco/skill/d41262ae-eca1-4ede-89a8-46d2d99a7a31",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "efficiëntieplannen voor logistieke operaties ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/f672b7a0-698e-45f1-a102-51adeaf89200",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "leiding geven aan personeel",
+      "uri": "http://data.europa.eu/esco/skill/339ac029-066a-4985-9f9d-b3d7c8fea0bb",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "in een logistiek team werken",
+      "uri": "http://data.europa.eu/esco/skill/fe29e658-7cad-4b70-a169-10a240ec0bef",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ontwikkelingen in de leveringsketen analyseren",
+      "uri": "http://data.europa.eu/esco/skill/b7e57889-a84f-440c-9e60-459aa69979e9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "soorten verpakkingen die worden gebruikt bij industrieel vervoer",
+      "uri": "http://data.europa.eu/esco/skill/af2e97dc-fa66-421e-a793-ba4e4afa2dad",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "checklists volgen",
+      "uri": "http://data.europa.eu/esco/skill/d66964f4-6f5b-443e-bf74-e61a56f5957f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "instructies aan medewerkers geven",
+      "uri": "http://data.europa.eu/esco/skill/1dea2f3a-857c-4fc3-b1f8-d5f2015c46a9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "anticiperen op de revisie van de vloot",
+      "uri": "http://data.europa.eu/esco/skill/ea0d953d-654f-4082-b74f-93048a7f5d60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "communiceren met expediteurs van leveringen",
+      "uri": "http://data.europa.eu/esco/skill/90a4035a-f72e-48d3-9d4e-1c6be84c9ae5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "beheer van de leveringsketen",
+      "uri": "http://data.europa.eu/esco/skill/f929c89e-c363-4132-a918-e021d57b307c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verbeteringen aan de toeleveringsketen met betrekking tot winsttoename begrijpen",
+      "uri": "http://data.europa.eu/esco/skill/473a8b64-a05c-4d49-962d-b9d9219950bc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verzendingssoftwaresystemen beheren",
+      "uri": "http://data.europa.eu/esco/skill/8ee39fb7-8b46-490e-ae21-6e8b32854dd6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "veiligheidsvoorschriften in opslagplaatsen",
+      "uri": "http://data.europa.eu/esco/skill/519b3949-b711-4a08-a395-a4bd068f9fa2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "elektronische handelssystemen",
+      "uri": "http://data.europa.eu/esco/skill/b1272de4-1f5f-408b-8b26-061f2550fc72",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "operationele transportproblemen oplossen",
+      "uri": "http://data.europa.eu/esco/skill/fd406035-5c82-4421-9692-08f991d91b3b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voortdurende voorbereiding op audits waarborgen",
+      "uri": "http://data.europa.eu/esco/skill/26baf34d-6721-4bac-b7eb-add0bc566a82",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "operationele efficiëntietraining geven aan werknemers",
+      "uri": "http://data.europa.eu/esco/skill/852d758c-f222-4edc-99ad-31c9e3bd8079",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "regelgeving inzake internationaal vervoer",
+      "uri": "http://data.europa.eu/esco/skill/42dced65-823e-4f29-ad93-cae933b0dd7c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kostenberekeningen uitvoeren",
+      "uri": "http://data.europa.eu/esco/skill/c5b90c0c-3af0-4c8c-a06c-cc3ced02242c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "dokwerkzaamheden coördineren",
+      "uri": "http://data.europa.eu/esco/skill/0d07fb7e-2815-454c-83e2-9c736c23435c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "opslagactiviteiten",
+      "uri": "http://data.europa.eu/esco/skill/089ddb19-1c7a-43ff-ba64-070f7ce4787a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "vervoerseenheden voor gevaarlijke goederen controleren",
+      "uri": "http://data.europa.eu/esco/skill/61484ab7-e5da-4fc1-82bd-72c3fa6ffab3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "invoertransportactiviteiten coördineren",
+      "uri": "http://data.europa.eu/esco/skill/f5794c88-ab8e-4208-a9e6-95d6cf9b5a6f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "uitvoertransportactiviteiten coördineren",
+      "uri": "http://data.europa.eu/esco/skill/8899ee6c-7df4-41dd-9dc5-36be940864ee",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vervoersmethoden",
+      "uri": "http://data.europa.eu/esco/skill/73de691d-d112-444b-a99f-606888fa9414",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "samenwerken met collega’s",
+      "uri": "http://data.europa.eu/esco/skill/082967d4-b94c-4305-aa13-35a6aa8c5c7c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "toezicht houden op waardetoevoegende activiteiten van magazijnen",
+      "uri": "http://data.europa.eu/esco/skill/0a30a7df-750a-4df3-9a70-f537c5d14277",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "contacten onderhouden met havengebruikers",
+      "uri": "http://data.europa.eu/esco/skill/d6d99ded-08d9-4e2b-b6bf-bc9fc4d266b6",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "levering van dienstverlening op het spoor verbeteren",
+      "uri": "http://data.europa.eu/esco/skill/f2ee4067-d66b-4c18-bb56-27e32a0c88dc",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zelfvertrouwen tonen",
+      "uri": "http://data.europa.eu/esco/skill/669b75d8-671c-4a1c-8e0b-6466c513c27d",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verschillende communicatiekanalen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/415abd43-e8e5-4643-b5da-5f11307af57a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "beschikken over computervaardigheden",
+      "uri": "http://data.europa.eu/esco/skill/d15ce60f-ddab-41ce-ba56-398451b77b60",
+      "categorie": "optioneel"
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "crebo": "25659",
+  "opleiding": "25659_BBL_2025__Interieurvakmanschap_Interieurvakman_woningstofferen",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Interieurvakman woningstofferen",
+    "uri": "",
+    "definitie": "De interieurvakman woningstofferen in de woonbranche gebruikt technisch en ruimtelijk inzicht voor het leggen van de vloer en het monteren van raamdecoratie in een eenvoudige woon- en/of werkruimte. Eenvoudige ruimtes voor vloeren zijn veelal vierkant of rechthoekig zonder rondingen, zonder obstakels en dichte en standaard trappen. Bij het monteren van raamdecoratie in een eenvoudige ruimte gaat het meestal om een recht en/of glad raam- en muuroppervlak zonder rondingen en zonder obstakels. Vloeren in het vakgebied van de interieurvakman woningstofferen is een verzamelterm voor elastische, zachte en harde vloerbedekking. Raamdecoratie is een verzamelterm voor onder andere raambekleding zoals (vouw- en plissé)gordijnen, binnenzonwering en horren.\n\nVoorafgaand aan het leggen van de vloer en ook voorafgaand aan het monteren van raamdecoratie treft de interieurvakman woningstofferen voorbereidingen. Behalve dat hij onder andere de benodigde hulpmiddelen en de materialen kiest en verzamelt maakt hij de desbetreffende ondergrond gereed. Bij vloeren maakt hij de werkvloer gereed en legt hij de op maat gemaakte ondervloer. Bij raamdecoratie maakt hij het raam- en/of muuroppervlak recht en/of glad. Na de voorbereidende werkzaamheden kan de interieurvakman woningstofferen de vloer leggen en afwerken, dichte en standaard trappen stofferen en raamdecoratie monteren. Hij werkt volgens de geldende richtlijnen van kwaliteit, veiligheid, arbo, milieu en bedrijfsprocedures. Na het leggen van de vloer en/of het monteren van raamdecoratie levert de interieurvakman woningstofferen de vloer en/of de raamdecoratie op en informeert de klant over het gebruik en onderhoud."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplichtingen nakomen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6EDDE6185F",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplaatsen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D16A30C42A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installeren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5AD4F0905",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3FC6552A85",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Schilderen en overige afwerktechnieken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6B614BA1A0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Binnenhuisarchitectuur",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7798ED3562",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerking en netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/95C3218741",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Maten en getallen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/CB6BD3297B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Werken met digitale apparaten en toepassingen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DA95C063A4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Klimaattechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E46D6D5DB8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reiniging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FB169E4860",
+      "categorie": "essentieel"
+    }
+  ]
+}

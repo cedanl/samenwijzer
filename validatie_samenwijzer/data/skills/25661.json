@@ -1,0 +1,179 @@
+{
+  "crebo": "25661",
+  "opleiding": "25661_BBL_2025__Interieurvakmanschap_Allround_interieurvakman_woningstofferen",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Allround interieurvakman woningstofferen",
+    "uri": "",
+    "definitie": "De allround interieurvakman woningstofferen in de woonbranche gebruikt technisch en ruimtelijk inzicht voor het leggen van de vloer en het monteren van raamdecoratie in alle voorkomende woon- en/of werkruimtes. Bij vloeren gaat het over een vierkante of rechthoekige ruimte zonder rondingen, zonder obstakels en dichte trappen en ook over een complexe ruimte met bijvoorbeeld niet-haakse hoeken, atypische vormen, nissen, leidingen, rondingen en obstakels. Bij het monteren van raamdecoratie gaat het over een recht en/of glad raam- en muuroppervlakte zonder rondingen en zonder obstakels en over een complexe ruimte met een afwijkend maat van ramen en afwijkende raam- en muurvormen, draai- en kiepramen en schuif- en draaideuren. Vloeren in het vakgebied van de allround interieurvakman woningstofferen is een verzamelterm voor elastische, zachte en harde vloerbedekking. Raamdecoratie is een verzamelterm voor onder andere raambekleding zoals (vouw- en plissé)gordijnen, binnenzonwering en horren. \n\nVoorafgaand aan de werkzaamheden verzamelt de allround interieurvakman woningstofferen onder andere de benodigde hulpmiddelen en de materialen. Bij vloeren maakt hij de werkvloer gereed en legt hij de ondervloer. Voor het monteren van raamdecoratie maakt hij de raam- en/of muuroppervlakte recht en/of glad. Na de voorbereidende werkzaamheden kan de allround interieurvakman woningstofferen de vloer leggen en afwerken, alle soorten trappen stofferen en raamdecoratie monteren. Na het leggen van de vloer en/of het monteren van raamdecoratie levert de allround interieurvakman woningstofferen zijn werk op en informeert en adviseert de klant over het gebruik en onderhoud. Bij alle werkzaamheden werkt de allround interieurvakman woningstofferen volgens de geldende richtlijnen van kwaliteit, veiligheid, arbo en milieu.\n\nIn voorkomende gevallen heeft de allround interieurvakman woningstofferen een begeleidende rol van collega's op de werkvloer met een operationele verantwoordelijkheid voor een (klein) team. Dit team voert op locatie legwerkzaamheden van vloeren en montagewerkzaamheden van raamdecoratie uit. Bij onvoorziene omstandigheden is hij in staat om oplossingen te bedenken, deze toe te passen en om hierover (tijdig) op een klant- en servicegerichte wijze contact te onderhouden met de klant."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Meten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/0EBFAD3C80",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplichtingen nakomen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6EDDE6185F",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Monitoren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B03F4F484C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Adviseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CECB22E3FA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Verplaatsen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D16A30C42A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installeren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5AD4F0905",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Rekenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5BBA931FB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsadministratie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/10FFC5435D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Praktijkbegeleiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/21F4F846BF",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bediening van bedrijfswerktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2268CFE4F6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3FC6552A85",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaalkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/519323C152",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfseconomie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/53B4B474D1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Schilderen en overige afwerktechnieken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6B614BA1A0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Binnenhuisarchitectuur",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7798ED3562",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerking en netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/95C3218741",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Personeelswerk",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AA15132AFE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Maten en getallen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/CB6BD3297B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Werken met digitale apparaten en toepassingen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DA95C063A4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Klimaattechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E46D6D5DB8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reiniging",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/FB169E4860",
+      "categorie": "essentieel"
+    }
+  ]
+}

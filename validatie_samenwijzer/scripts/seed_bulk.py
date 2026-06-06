@@ -51,6 +51,8 @@ INSTELLINGEN: list[dict] = [
     # Curio als laatste toevoegen: de seed deelt één Random(2026) in lijst-volgorde,
     # dus appenden houdt de studenten van bestaande instellingen identiek.
     {"naam": "curio", "display_naam": "Curio", "klas_prefix": "CU"},
+    # Deltion als laatste appenden (zelfde reden — RNG-volgorde behouden).
+    {"naam": "deltion", "display_naam": "Deltion College", "klas_prefix": "DE"},
 ]
 
 VOORNAMEN_V = [
