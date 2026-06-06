@@ -117,12 +117,12 @@ def _stream_antwoord(systeem: str, berichten: list[dict]) -> str:
     placeholder.markdown(_LAAD_INDICATOR, unsafe_allow_html=True)
     antwoord = ""
     try:
-        for fragment in genereer_antwoord(ai_client(), systeem, berichten):
-            antwoord += fragment
-            placeholder.markdown(
-                f'<div class="chat-antwoord">\n\n{antwoord}\n\n</div>',
-                unsafe_allow_html=True,
-            )
+        with st.container(key="chatantwoord_stream"):
+            inner = st.empty()
+            for fragment in genereer_antwoord(ai_client(), systeem, berichten):
+                antwoord += fragment
+                inner.markdown(antwoord)
+        placeholder.empty()
     except APITimeoutError:
         placeholder.empty()
         st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")
@@ -180,17 +180,15 @@ if st.session_state.pub_oer_paden:
                 _render_oer_bestand(pad)
 
 # ── Chatgeschiedenis ───────────────────────────────────────────────────────────
-for bericht in st.session_state.pub_chat_history:
+for i, bericht in enumerate(st.session_state.pub_chat_history):
     if bericht["role"] == "user":
         st.markdown(
             f'<div class="chat-vraag">💬 {html.escape(bericht["content"])}</div>',
             unsafe_allow_html=True,
         )
     else:
-        st.markdown(
-            f'<div class="chat-antwoord">\n\n{bericht["content"]}\n\n</div>',
-            unsafe_allow_html=True,
-        )
+        with st.container(key=f"chatantwoord_{i}"):
+            st.markdown(bericht["content"])
 
 # ── Keuzelijst bij meerdere kandidaten ────────────────────────────────────────
 if st.session_state.pub_kandidaten:
@@ -381,12 +379,12 @@ else:
     placeholder.markdown(_LAAD_INDICATOR, unsafe_allow_html=True)
     antwoord = ""
     try:
-        for fragment in genereer_intake_antwoord(ai_client(), berichten, instellingen):
-            antwoord += fragment
-            placeholder.markdown(
-                f'<div class="chat-antwoord">\n\n{antwoord}\n\n</div>',
-                unsafe_allow_html=True,
-            )
+        with st.container(key="chatantwoord_stream"):
+            inner = st.empty()
+            for fragment in genereer_intake_antwoord(ai_client(), berichten, instellingen):
+                antwoord += fragment
+                inner.markdown(antwoord)
+        placeholder.empty()
     except APITimeoutError:
         placeholder.empty()
         st.error("De AI-service reageert niet. Probeer het over een moment opnieuw.")

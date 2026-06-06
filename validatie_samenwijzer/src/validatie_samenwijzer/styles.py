@@ -307,7 +307,12 @@ header[data-testid="stHeader"] {{ display: none !important; }}
     width: fit-content;
 }}
 
-.chat-antwoord {{
+/* .chat-antwoord = statische loading-indicator; st-key-chatantwoord* = de
+   keyed st.container die het AI-antwoord nu via native st.markdown rendert
+   (geen rauwe HTML-wrapper meer, zodat een letterlijke '<' of code in het
+   antwoord veilig is en markdown-blockquotes/citaten betrouwbaar parsen). */
+.chat-antwoord,
+[class*="st-key-chatantwoord"] {{
     margin: 0.4rem auto 1.4rem 0;
     padding: 14px 18px;
     background: {PAPER_CARD};
@@ -323,6 +328,7 @@ header[data-testid="stHeader"] {{ display: none !important; }}
 /* Citaat-pull-quote: markeerstift links-accent + lichte wash, serif cursief.
    Statische CSS (Streamlit voert geen geïnjecteerde JS uit). */
 .chat-antwoord blockquote,
+[class*="st-key-chatantwoord"] blockquote,
 .oer-citaat {{
     background: {MARKER_WAS};
     border-left: 4px solid {MARKER};
@@ -332,7 +338,8 @@ header[data-testid="stHeader"] {{ display: none !important; }}
     color: {INKT};
 }}
 
-.chat-antwoord blockquote p {{
+.chat-antwoord blockquote p,
+[class*="st-key-chatantwoord"] blockquote p {{
     margin: 0;
     font-family: 'Instrument Serif', Georgia, serif;
     font-style: italic;
@@ -341,7 +348,8 @@ header[data-testid="stHeader"] {{ display: none !important; }}
     color: {INKT};
 }}
 
-.chat-antwoord code {{
+.chat-antwoord code,
+[class*="st-key-chatantwoord"] code {{
     font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
     font-size: 0.82em;
     background: {PAPER_DEEP};
