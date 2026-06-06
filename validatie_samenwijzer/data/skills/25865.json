@@ -1,0 +1,64 @@
+{
+  "crebo": "25865",
+  "opleiding": "25865_BBL_2025__Dakdekken_Dakdekker_riet",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Dakdekker riet",
+    "uri": "",
+    "definitie": "De dakdekker riet werkt aan uitwendige scheidingsconstructies die gedekt worden of zijn met riet. De werkzaamheden worden uitgevoerd in nieuwbouw, onderhoud en renovatie van de burgerlijke en utiliteitsbouw. De dakdekker riet werkt onder leiding van een leidinggevende."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Repareren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1C1D574677",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Afbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/545738E767",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieutechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/58823180FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouwfysica",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A28315DE3F",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouwmanagement, aanneming, werkvoorbereiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DF68BB9CD4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Klimaattechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E46D6D5DB8",
+      "categorie": "essentieel"
+    }
+  ]
+}

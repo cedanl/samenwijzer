@@ -1,0 +1,183 @@
+{
+  "crebo": "23415",
+  "opleiding": "23415_BBL_2025__Eerste_Fietstechnicus_BBL",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "fietsenmaker",
+    "uri": "http://data.europa.eu/esco/occupation/336cf331-8082-4a0c-bf5f-e7c54706211c",
+    "definitie": "Fietsenmakers onderhouden en herstellen een reeks van fietsmodellen en onderdelen. Zij kunnen specifieke wijzigingen uitvoeren, afhankelijk van de voorkeuren van hun cliënt."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "fietsenmaker",
+    "eerste automonteur",
+    "eerstehulpinstructeur",
+    "senator",
+    "sergeant",
+    "luitenant",
+    "ticketverkoper",
+    "korporaal"
+  ],
+  "skills": [
+    {
+      "label": "reparatiehandleidingen gebruiken",
+      "uri": "http://data.europa.eu/esco/skill/6561c8e7-3851-4878-bcf4-d2ffd63d835e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "hygiëne van de werkruimte onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/5598739b-6718-4cff-8402-91d7f65b1505",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "fietsen repareren",
+      "uri": "http://data.europa.eu/esco/skill/fab8e95a-448d-4784-aa50-9ef10e924829",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "remsystemen onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/534e2ade-f9dd-470c-a56f-97d2cc896468",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ondernemingsbeleid toepassen",
+      "uri": "http://data.europa.eu/esco/skill/0a43729f-2a79-4dae-9faa-95520daae79f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "fietsmechanica",
+      "uri": "http://data.europa.eu/esco/skill/53b1dcbc-7c51-43cd-9e3a-9ca78afd2895",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "fietsen afstellen",
+      "uri": "http://data.europa.eu/esco/skill/1f9cd253-7d74-45a2-acf6-0bd2354aed2f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klantenservice verlenen",
+      "uri": "http://data.europa.eu/esco/skill/75dfe1ee-5935-42ce-b820-697f827825c3",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "fietsen wassen",
+      "uri": "http://data.europa.eu/esco/skill/e67ca3fb-2d77-4741-a759-fc11110f869e",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "fietsen monteren",
+      "uri": "http://data.europa.eu/esco/skill/f89aac44-f964-4b3d-96ab-622a3c249fa9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "defecte onderdelen vervangen",
+      "uri": "http://data.europa.eu/esco/skill/87af00b5-30fa-41c8-bfa5-357f22c8d589",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voorraden inkopen",
+      "uri": "http://data.europa.eu/esco/skill/015b0162-6dd3-4d46-bbfd-325086155dd5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "materiaal onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/5033c2fb-ec55-4b8e-b0a4-9379593f1e1c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "klein tot middelgroot bedrijf beheren",
+      "uri": "http://data.europa.eu/esco/skill/31032902-0909-44ac-a8e7-b6b1d5f52149",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "professionele administratie bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/8ebb2c0a-0baa-43bf-95cf-094047c57427",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "een professioneel netwerk ontwikkelen",
+      "uri": "http://data.europa.eu/esco/skill/bf5d77ad-e18c-48d8-83f0-bc79c011c74a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "persoonlijke administratie bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/9df34bc3-25d4-4452-a896-4d19b94ef896",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektrische fietsen repareren",
+      "uri": "http://data.europa.eu/esco/skill/012795fe-5f85-4d12-a10e-9dabda4ea05f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gegevens over voorraden bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/f60416d5-2d98-4401-ba0d-b92b53e01d86",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "klanten helpen",
+      "uri": "http://data.europa.eu/esco/skill/61970f8b-099c-4e7e-82e0-9ccdced0baf3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "fietsen verkopen",
+      "uri": "http://data.europa.eu/esco/skill/f86cddfc-10bd-4ddc-a274-ed1bb7990a47",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "gegevens van onderhoudsinterventies bijhouden",
+      "uri": "http://data.europa.eu/esco/skill/182915aa-3470-433a-9b12-347511befcde",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "relaties met leveranciers onderhouden",
+      "uri": "http://data.europa.eu/esco/skill/3cd35f5d-ce6d-4f14-9a09-53d7a28d834c",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "technische communicatievaardigheden toepassen",
+      "uri": "http://data.europa.eu/esco/skill/c32ad607-0c4d-4e34-b73f-668298f7bf13",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektrische schijven",
+      "uri": "http://data.europa.eu/esco/skill/b979d9ae-37c2-4d1f-b8b8-7539f913cb19",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "elektrische fietsen",
+      "uri": "http://data.europa.eu/esco/skill/4123b65c-8a81-4055-8361-3f49bd33a1d9",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "afspraken beheren",
+      "uri": "http://data.europa.eu/esco/skill/933e7ccf-5d56-46ba-aca4-857f826a6b3a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "verkoopfacturen opstellen",
+      "uri": "http://data.europa.eu/esco/skill/e3e42d54-78bd-4337-aa87-bb31a7670c9a",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "werknemers opleiden",
+      "uri": "http://data.europa.eu/esco/skill/e54ff029-1ce9-447d-a5b2-eb7283a23e6e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "oplossingen voor problemen creëren",
+      "uri": "http://data.europa.eu/esco/skill/03b9b491-fc9b-4868-914a-bf7cd47b5041",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "taakplanning beheren",
+      "uri": "http://data.europa.eu/esco/skill/0e1fe34b-f4e7-4642-8c8b-5a05ac3438e5",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zorgen voor de naleving van garantieovereenkomsten",
+      "uri": "http://data.europa.eu/esco/skill/70aacc9d-30cc-4df1-a37f-a660b1331b25",
+      "categorie": "optioneel"
+    }
+  ]
+}

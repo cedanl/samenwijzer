@@ -1,0 +1,199 @@
+{
+  "crebo": "25875",
+  "opleiding": "25875_BOL_2025__Consulent_commerciele_arbeidsbemiddeling_Recruiter",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Consulent commerciële arbeidsbemiddeling",
+    "uri": "",
+    "definitie": "Een consulent commerciële arbeidsbemiddeling werkt (meestal) bij een (hybride) flexonderneming (MKB) en heeft als kernactiviteit het bemiddelen tussen vacatures en kandidaten. Dit gaat vooral om flexondernemingen die doen aan detachering, werving en selectie en aan zzp-bemiddeling. Tevens, in het kader van het vergroten en verduurzamen van inzetbaarheid, besteedt een toenemend aantal flexondernemingen aandacht aan het bij-, na- of omscholen van flexkrachten en aan loopbaancoaching. Het werken vindt in de driehoek ‘flexwerker – intermediair – opdrachtgever' plaats. Bij flexwerk en detachering is de intermediair de werkgever van de kandidaat. Het werk vindt plaats bij de opdrachtgever. Door het toenemende aantal buitenlandse flexwerkers is beheersing van het Engels nodig. Hiernaast zijn internationaal bewustzijn en culturele en interpersoonlijke sensitiviteit essentieel."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Categoriseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/22799303D1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Overtuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/26D3098394",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Informatie ordenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/299CE88E49",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ondernemerszin tonen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/518455478C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen oplossen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/53E033E58A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Instrueren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6AE2F3F890",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsprocessen verbeteren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/7C37C4FF38",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Financiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/BC3AB34C1A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Adviseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/CECB22E3FA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Promoten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E06265451B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kritisch nadenken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E1F935288C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Commercie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/13443AC542",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Grafisch ontwerpen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2DC70C1A23",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Transport en logistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2F8C9BA908",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfseconomie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/53B4B474D1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Innovatiemethoden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/807C2437A2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Informatiemanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9212BF2426",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerking en netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/95C3218741",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Netwerk- en systeembeheer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/99C8D1BBD8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Personeelswerk",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AA15132AFE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Sociale geografie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/AD48565EA8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Economie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D140CD77AB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfsinformatica",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D313E86D1B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Werken met digitale apparaten en toepassingen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DA95C063A4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsbemiddeling",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DB02391C00",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Public relations",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DDB33F7221",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Marketing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E6A75FB995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Projectmanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F248B939CD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
+    }
+  ]
+}

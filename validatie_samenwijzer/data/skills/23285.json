@@ -1,0 +1,298 @@
+{
+  "crebo": "23285",
+  "opleiding": "23285_BOL_2025__Pedagogisch_Werk",
+  "bron": "ESCO",
+  "beroep": {
+    "label": "sociaalpedagogisch hulpverlener",
+    "uri": "http://data.europa.eu/esco/occupation/fa4a3b52-990c-44eb-a912-490f5d689400",
+    "definitie": "Sociaalpedagogisch hulpverleners bieden zorg, ondersteuning en onderwijs aan kinderen en jongeren met andere achtergronden of capaciteiten. Via een multidisciplinaire aanpak die is afgestemd op de leerervaring, ontwikkelen zij onderwijsprocessen voor jongeren om hen te leren hoe ze hun eigen ervaringen kunnen sturen. Sociaalpedagogisch hulpverleners dragen bij tot het leren, het welzijn en de maatschappelijke inclusie van individuen en leggen de nadruk op de ontwikkeling van zelfredzaamheid."
+  },
+  "match_methode": "llm-keuze",
+  "kandidaten": [
+    "docent pedagogische wetenschappen hoger onderwijs",
+    "sociaalpedagogisch hulpverlener",
+    "medewerker kinderdagverblijf",
+    "onderwijsassistent basisonderwijs",
+    "manager jongerencentrum",
+    "praktijklector sociaal werk",
+    "consulent maatschappelijk werk",
+    "grondrigger"
+  ],
+  "skills": [
+    {
+      "label": "begeleidingsmethodes",
+      "uri": "http://data.europa.eu/esco/skill/0ffed47f-d320-48cf-988d-40449825085c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "individuen, families en groepen sterker maken",
+      "uri": "http://data.europa.eu/esco/skill/441707bb-9ad3-406c-9975-a6bec96f537b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale wetenschappen",
+      "uri": "http://data.europa.eu/esco/skill/4e097377-7950-4993-9e22-a61b067b5c00",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kwaliteitsnormen toepassen bij sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/2f8a2712-d20c-4e5f-b34a-738f55486aa0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "stress in organisaties beheersen",
+      "uri": "http://data.europa.eu/esco/skill/fbdfc3bf-56a0-4454-a17d-2f513fe57b53",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "samenwerken op interprofessioneel niveau",
+      "uri": "http://data.europa.eu/esco/skill/f2f2cd3b-6afd-482e-80af-5823250ef0b8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "eigen verantwoordelijkheid aanvaarden",
+      "uri": "http://data.europa.eu/esco/skill/f90d4810-8bac-4e5e-b870-3e35a4138ff7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "situatie van gebruikers van sociale diensten beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/8d927aab-9202-4c02-9f39-5d478458f25c",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "professioneel communiceren met collega’s in andere vakgebieden",
+      "uri": "http://data.europa.eu/esco/skill/574bf430-50a1-4734-9719-a823e7d80b10",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "ontwikkeling van de jeugd beoordelen",
+      "uri": "http://data.europa.eu/esco/skill/28ca596e-5e2f-4149-a28d-42d2c4c20227",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "persoonsgerichte zorg toepassen",
+      "uri": "http://data.europa.eu/esco/skill/7a63f944-6948-4ae4-9c1f-d08e492535c9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "voorzorgsmaatregelen voor gezondheid en veiligheid volgen bij socialezorgpraktijken",
+      "uri": "http://data.europa.eu/esco/skill/5e5d8826-92c4-4274-a6f9-3db6fca9eadc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "psychologie",
+      "uri": "http://data.europa.eu/esco/skill/bfe4f330-d595-48c7-ab3c-f309471d6953",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "toezicht op personen",
+      "uri": "http://data.europa.eu/esco/skill/47ac9325-b072-4e37-8e40-e6ffed03e851",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "communiceren met jongeren",
+      "uri": "http://data.europa.eu/esco/skill/b5af495b-61f1-4330-9891-dca56d97d714",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "empathisch zijn",
+      "uri": "http://data.europa.eu/esco/skill/996243ee-543f-4c36-a31a-e0f2403c0c5d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verslag doen van sociale ontwikkelingen",
+      "uri": "http://data.europa.eu/esco/skill/c65795f8-69cc-47e0-9ba0-427671c965e6",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "holistische benadering toepassen binnen sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/afa3b020-a48c-45a8-a2ff-77d0b9df5381",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "communiceren met gebruikers van sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/e8828961-9e8e-471f-bd24-0673a7e844ef",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "psychologische ontwikkeling van jongeren",
+      "uri": "http://data.europa.eu/esco/skill/9ccecb58-e720-4465-b309-46e362ca6f75",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gebruikers van sociale diensten ondersteunen om thuis te wonen",
+      "uri": "http://data.europa.eu/esco/skill/941438bd-cc03-4326-91bf-677157dca170",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "actief luisteren",
+      "uri": "http://data.europa.eu/esco/skill/a17286c5-238d-4f0b-bc24-29e9121345de",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "kinderen ondersteunen die een trauma hebben ervaren",
+      "uri": "http://data.europa.eu/esco/skill/6caaeece-8a4a-44b3-bc78-d9687676c015",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "jongeren voorbereiden op de volwassenheid",
+      "uri": "http://data.europa.eu/esco/skill/64b0515c-98b0-4cfd-8791-2f0a74e0ca37",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "welzijn van kinderen ondersteunen",
+      "uri": "http://data.europa.eu/esco/skill/a65fb963-6faf-47b2-a3d9-c4e5e4d833c5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale diensten verlenen in cultureel diverse gemeenschappen",
+      "uri": "http://data.europa.eu/esco/skill/4b5d4fe3-4280-47c0-b1d2-ab08ace85557",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociaal rechtvaardige werkbeginselen toepassen",
+      "uri": "http://data.europa.eu/esco/skill/bc401d18-9bea-4300-90fd-22bfa286bd77",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "verslagen van werk met gebruikers van diensten bewaren",
+      "uri": "http://data.europa.eu/esco/skill/bd17a64e-a9bd-439d-9b87-01c6bb1b7e09",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "gezondheidsvoorlichting",
+      "uri": "http://data.europa.eu/esco/skill/99c90174-eb03-4221-b1b6-1ad8b7035e15",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "positieve instelling van jongeren ondersteunen",
+      "uri": "http://data.europa.eu/esco/skill/4a874516-eb34-4dc1-833d-864c5a448db2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "psychologische theorieën",
+      "uri": "http://data.europa.eu/esco/skill/eda8a126-08bf-4fb1-8442-fa9febabb75f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "bescherming van jonge personen promoten",
+      "uri": "http://data.europa.eu/esco/skill/98a0c718-40b1-4a4f-a366-b8155f238d9b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "onderwijsactiviteiten organiseren",
+      "uri": "http://data.europa.eu/esco/skill/8af15e52-c743-43da-94aa-c4ea52d4f3e8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "continue professionele ontwikkeling ondernemen op het gebied van sociaal werk",
+      "uri": "http://data.europa.eu/esco/skill/cd195aad-29dd-43f5-a5be-e6994d83215b",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "pedagogie",
+      "uri": "http://data.europa.eu/esco/skill/a117f32c-662b-4dd9-b739-1230dd04cb60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale pedagogiek",
+      "uri": "http://data.europa.eu/esco/skill/58bae6b3-baf1-4ce2-9daf-197ede8c510a",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "wettelijke vereisten in de sociale sector",
+      "uri": "http://data.europa.eu/esco/skill/39dd50ae-814c-4a15-99e9-39afcc36bf9f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "pedagogische strategieën gebruiken om creatief engagement te bevorderen",
+      "uri": "http://data.europa.eu/esco/skill/1c7ac9a3-5385-4443-bd7f-64f86451c0c1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale verandering promoten",
+      "uri": "http://data.europa.eu/esco/skill/644209ac-8452-4e81-959a-2b10050023cc",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale crisissen beheersen",
+      "uri": "http://data.europa.eu/esco/skill/a4d46d86-9de5-4734-881c-5b2059b9fccf",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "leiderschap tonen bij sociale dienstverlening",
+      "uri": "http://data.europa.eu/esco/skill/524c4331-5090-4565-a0bc-0a9ae874938d",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "sociale rechtvaardigheid",
+      "uri": "http://data.europa.eu/esco/skill/e97c0d89-2f81-4840-8602-e668a949482f",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "conflicten hanteren",
+      "uri": "http://data.europa.eu/esco/skill/96de2e86-e287-41f2-88ab-15a2343afc6f",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "vreemde talen toepassen bij sociale diensten",
+      "uri": "http://data.europa.eu/esco/skill/77734d97-4376-4336-85a0-43f63c0eb399",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "ontwikkeling van sportactiviteiten in het onderwijs ondersteunen",
+      "uri": "http://data.europa.eu/esco/skill/d41993df-a3c2-4d90-81e9-77ce76a5ca17",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "communiceren over het welzijn van jongeren",
+      "uri": "http://data.europa.eu/esco/skill/334cd662-0415-44ac-bc8a-e24b320b4284",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "lichamelijke ontwikkeling van kinderen",
+      "uri": "http://data.europa.eu/esco/skill/3ff9d956-3e26-40d1-ae0e-f5f247943042",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "communiceren met behulp van een tolk in de sociale dienstverlening",
+      "uri": "http://data.europa.eu/esco/skill/c84b98b2-36bd-4742-84b6-9e5c30ce1407",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "sociale bemiddeling",
+      "uri": "http://data.europa.eu/esco/skill/2b3ac8b9-a5bd-4ec1-bb9a-f499fb3aa8d3",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "soorten handicaps",
+      "uri": "http://data.europa.eu/esco/skill/6b28bb69-a6ef-42d4-84df-46e498f09297",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "theaterpedagogie",
+      "uri": "http://data.europa.eu/esco/skill/3c1284d3-2602-4c68-9bd0-4f50ea4d092e",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "zorg voor personen met een handicap",
+      "uri": "http://data.europa.eu/esco/skill/54411e8e-d62f-46d8-b87b-fce23f8e3bc8",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderwijs voor leerlingen met bijzondere behoeften",
+      "uri": "http://data.europa.eu/esco/skill/ef1e63c9-f8c1-46ad-8c74-3cea311c9377",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "onderwijs binnen de eigen gemeenschap",
+      "uri": "http://data.europa.eu/esco/skill/4a752bd2-9fe9-4539-ab5a-8edc0dec6ef0",
+      "categorie": "optioneel"
+    },
+    {
+      "label": "kinderen met bijzondere behoeften helpen in onderwijsomgevingen",
+      "uri": "http://data.europa.eu/esco/skill/bcb02777-45be-4166-9448-74a15b6f8136",
+      "categorie": "optioneel"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "crebo": "25010",
+  "opleiding": "25010_BBL_2025__Industriele_lakverwerking_Industrieel_lakverwerker",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Industrieel lakverwerker",
+    "uri": "",
+    "definitie": "De industrieel lakverwerker werkt voor verschillende sectoren, zoals de meubelindustrie, vliegtuigindustrie, houtbouw of een bedrijf dat verschillende soorten jachten schildert en spuit. Zijn werklocatie is per sector afhankelijk, maar is meestal in een geconditioneerde ruimte. Hij spuit, poedercoat of schildert producten. Hij heeft technisch inzicht en kan overweg met verschillende soorten apparatuur en materiaal. Daarnaast is hij flexibel ingesteld, kan hij goed samenwerken en zich inleven in de klant en de vraag van de klant. De industrieel lakverwerker vertegenwoordigt in zijn werkzaamheden zijn hele bedrijf; hij is verantwoordelijk voor een goed imago. Hij volgt instructies op van zijn leidinggevende en werkt zelfstandig."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Begrijpend lezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/2E80D9179C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Machines bedienen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D0866C5206",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Transport en logistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2F8C9BA908",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Schilderen en overige afwerktechnieken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6B614BA1A0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Industriële lakverwerking",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/CFFEAAA1B7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Klimaattechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E46D6D5DB8",
+      "categorie": "essentieel"
+    }
+  ]
+}

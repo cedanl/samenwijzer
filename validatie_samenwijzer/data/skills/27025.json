@@ -1,0 +1,164 @@
+{
+  "crebo": "27025",
+  "opleiding": "27025_BBL_2025__Infratechniek_Technicus_elektrotechniek",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Elektrotechnicus Infra",
+    "uri": "",
+    "definitie": "De elektrotechnicus infra is verantwoordelijk voor het in bedrijf nemen en houden van transformator, schakel en verdeelstations en het elektriciteitsnet dat daaraan gekoppeld is. Hij/zij zorgt ervoor dat de (elektrotechnische) werkzaamheden op een veilige manier worden uitgevoerd. De elektrotechnicus infra houdt toezicht op de werkzaamheden, het gebruik van persoonlijke beschermings- en andere veiligheidsmiddelen, instrueert zijn/haar team van monteurs en stelt de mogelijke risico’s van het werk vast. De elektrotechnicus infra bepaalt de juiste werkwijze en daarbij te gebruiken hulpmiddelen. Hij/zij toetst de aangevraagde schakelvergunningen en is verantwoordelijk voor kwaliteitscontroles van het uitgevoerde werk. De elektrotechnicus infra werkt aan de civiele ontwerpen van elektratracés. Samen met collega’s en opdrachtgevers gaat hij/zij aan de slag met het ontwerp, de voorbereiding op de realisatie en de realisatie van de projecten. De elektrotechnicus infra beschikt over de juiste houding, vaardigheden en inzicht om uitgaande van een werktekening en/of werkopdracht, activiteiten te verrichten en ondernemen bij het beheren en onderhouden van het elektriciteitsdistributienet."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Informatie ordenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/299CE88E49",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen signaleren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4D400FE127",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Procedures volgen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/752EEDBE89",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Monitoren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B03F4F484C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ontwerpen van systemen en producten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B4866702BB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Financiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/BC3AB34C1A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installeren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5AD4F0905",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Rekenen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D5BBA931FB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Elektrotechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/1EC7181B0B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Natuurkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/28020D50DE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installatietechniek (elektro)",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3F26F4FE84",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Tele- en datacommunicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/65FB1DC868",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beheer drinkwatervoorziening",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/8C1B198A05",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Voorraad- en magazijnbeheer",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/99D6345CD2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installatietechniek (infra)",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A767523AD9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Elektrische energietechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C3DA1C1A44",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bestuurskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DD495E5E42",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Landmeetkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E135D50DE8",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Projectmanagement",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F248B939CD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Gasinstallatie, gastechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F55CFA4207",
+      "categorie": "essentieel"
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "crebo": "25942",
+  "opleiding": "25942_BOL_2025__Vliegtuigonderhoud_Technicus_avionica_luchtvaartuigen",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Technicus avionica luchtvaartuigen",
+    "uri": "",
+    "definitie": "De technicus avionica luchtvaartuigen werkt bij een aan luchtvaart gerelateerde organisatie plaats, gericht op het inspecteren en onderhouden van (veelal complexe) avionica en elektrische systemen en/of componenten van een luchtvaartuig. Hierbij gaat het, vanwege een samenvoeging van de termen aviatiek en elektronica, specifiek over toegepaste elektronica in de luchtvaart, zoals in communicatiemiddelen, navigatiemiddelen en het elektronische instrumentarium. Alle technische werkzaamheden staan in direct verband met Part 66/145 Aircraft Maintenance Licence. Hiervoor is technisch en ruimtelijk inzicht nodig en worden altijd de relevante brondocumenten geraadpleegd, zoals historische maintenance data, maintenance manuals, inspectiekaarten, checklists, service bulletins of andere fabrieksdocumenten. De technicus avionica luchtvaartuigen is gericht op het leveren van goede kwaliteit en is goed op de hoogte van instructies, procedures en werkwijzen. Hierbij komt het voor dat een technicus avionica luchtvaartuigen collega's op de werkvloer vakinhoudelijk begeleidt en hiervoor operationele verantwoordelijkheid draagt. De technicus avionica luchtvaartuigen werkt gedisciplineerd, wijkt niet af van veiligheidseisen, is zoveel mogelijk probleemoplossend en -voorkomend en heeft een groot verantwoordelijkheids- en kwaliteitsbesef. Over de werkzaamheden worden veel gegevens bijgehouden, onder andere om aan leidinggevende te rapporteren."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Meten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/0EBFAD3C80",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Repareren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1C1D574677",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Begrijpend lezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/2E80D9179C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen signaleren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4D400FE127",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Delegeren ",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C8730D1BAB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Deductief logisch redeneren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E033DC4809",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Elektrotechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/1EC7181B0B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Natuurkunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/28020D50DE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Lucht- en ruimtevaarttechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3A62328FEA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Luchtvaart",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/69EE38DA4B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfstechniek, (technische) bedrijfsvoering",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6CAB3D969E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Wiskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/7120893B35",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Metaalkunde, metaalbewerking",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/800D4C8975",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieukunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/9F20C5CEC5",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Elektronica",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/D0532E336E",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Werken met digitale apparaten en toepassingen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DA95C063A4",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Ergonomie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/EFB2737958",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Kwaliteitszorg",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F43DD42C80",
+      "categorie": "essentieel"
+    }
+  ]
+}

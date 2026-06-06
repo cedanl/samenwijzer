@@ -1,0 +1,134 @@
+{
+  "crebo": "25791",
+  "opleiding": "25791_BOL_2025__VeVa_Allround_vakkracht_onderhoud_en_klussenbedrijf",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Allround vakkracht onderhoud- en klussenbedrijf",
+    "uri": "",
+    "definitie": "De beginnend beroepsbeoefenaar organiseert de werkzaamheden in een klusproject en geeft leiding aan een klein team. Hij werkt op verschillende locaties en is in dienst van een vastgoedbedrijf of werkzaam als zelfstandige. Hij kent het team goed en weet precies wie hij waarvoor kan inzetten. Hij heeft overzicht over het hele project en plant vooraf de werkzaamheden. Hij heeft technisch inzicht, kan goed samenwerken, neemt initiatief en lost waar mogelijk problemen op. De beginnend beroepsbeoefenaar werkt zelfstandig aan zijn eigen taken en is verantwoordelijk voor een goede uitvoering. Hij draagt gedeelde verantwoordelijkheid voor het werk dat zijn team levert. Hij houdt op afstand contact met zijn leidinggevende."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Repareren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1C1D574677",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3DECCF2E7C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Problemen signaleren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4D400FE127",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiële middelen beheren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/5C8ADA7777",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Onderhouden van materiaal en gereedschap",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/6180B5A6EE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Elektrotechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/1EC7181B0B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Praktijkbegeleiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/21F4F846BF",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Persoonlijke veiligheid en bescherming op de werkplek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/36FCF992AB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installatietechniek (elektro)",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3F26F4FE84",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/3FC6552A85",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Installatietechniek (bouwkunde)",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/41B99A9CBB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Afbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/545738E767",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Milieutechnologie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/58823180FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Schilderen en overige afwerktechnieken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6B614BA1A0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Betonbouw",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/86BCA358A9",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Reparatie en onderhoud van werktuigen",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/988374F8BD",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Timmeren",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C608B1FD0D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bouwmanagement, aanneming, werkvoorbereiding",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/DF68BB9CD4",
+      "categorie": "essentieel"
+    }
+  ]
+}

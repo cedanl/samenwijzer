@@ -1,0 +1,104 @@
+{
+  "crebo": "25718",
+  "opleiding": "25718_BOL_2025__AV_productie_Beeldmaker_Fotograaf",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Fotograaf",
+    "uri": "",
+    "definitie": "De Fotograaf realiseert fotografieproducties van opdracht tot eindproduct. Hierin zijn de volgende fases te onderscheiden: bepalen van doelgroep/doel/strategie, conceptontwikkeling, opnames voorbereiden en maken, fotografiebestanden bewerken en de output opleveren.  Naast het maken van fotografieopnames van hoge kwaliteit is het nabewerken ervan minstens zo belangrijk. De beginnend beroepsbeoefenaar werkt vooral zelfstandig waarbij het hebben van connecties en een eigen benadering of specialisme belangrijke succesfactoren zijn."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Digitale content ontwikkelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3679757482",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/3DECCF2E7C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Materiaal en gereedschap uitkiezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4257E202F2",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Non-verbaal creatief uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/584412A2FB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Promoten",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/E06265451B",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Persoonlijke ontplooiing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/1A87720C54",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Nederlands recht, algemeen recht, rechterlijke macht",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29022BA6BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Av-productie, podiumtechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/29B4A9A43C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Fotografie, film, video",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/64914742BC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerking en netwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/95C3218741",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Communicatie",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BB83C1FDA1",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Veiligheidskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/C34CD6448D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Marketing",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E6A75FB995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Social media",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/F1211E19F7",
+      "categorie": "essentieel"
+    }
+  ]
+}

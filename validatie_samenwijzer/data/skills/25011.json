@@ -1,0 +1,104 @@
+{
+  "crebo": "25011",
+  "opleiding": "25011_BBL_2025__Industriele_lakverwerking_Vakkracht_industrieel_lakverwerker",
+  "bron": "CompetentNL",
+  "beroep": {
+    "label": "Vakkracht industrieel lakverwerker",
+    "uri": "",
+    "definitie": "De vakkracht industrieel lakverwerker werkt in verschillende branches, waaronder bijvoorbeeld de meubel- of vliegtuigindustrie. Zijn werkomgeving is zowel buiten als binnen en verschilt per opdracht. Hij maakt van tevoren een technisch werkplan en voert het plan vervolgens uit. Naast de uitvoerende werkzaamheden heeft hij tijdens het werkproces leidinggevende taken. Hij voert zijn werkzaamheden zelfstandig uit. Hij stelt zelf prioriteiten en kan zelf beslissen een andere werkwijze te gebruiken, als dat nodig is. Hij draagt samen met zijn leidinggevende de verantwoordelijkheid voor het werk van zijn team."
+  },
+  "match_methode": "crebo-direct",
+  "kandidaten": [],
+  "skills": [
+    {
+      "label": "Gereedschappen en apparaten gebruiken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/072570C444",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Samenwerken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/1D54A21B60",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Begrijpend lezen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/2E80D9179C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Leidinggeven",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/49790E767C",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Beoordelen van functioneren en kwaliteit",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/4F97986168",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Mondeling uitdrukken",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/66C527547D",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "(digitale) Informatie verzamelen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/AD5635E995",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Administreren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/B6D93142FE",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Delegeren ",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/C8730D1BAB",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Machines bedienen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D0866C5206",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Plannen",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/D8863A73CA",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Organiseren",
+      "uri": "https://linkeddata.competentnl.nl/id/humancapability/DEDBBC55E0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Transport en logistiek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/2F8C9BA908",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Schilderen en overige afwerktechnieken",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/6B614BA1A0",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Bedrijfskunde",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/A9CE7FF97A",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Arbeidsomstandigheden",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/BD87CBDBDC",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Industriële lakverwerking",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/CFFEAAA1B7",
+      "categorie": "essentieel"
+    },
+    {
+      "label": "Klimaattechniek",
+      "uri": "https://linkeddata.competentnl.nl/id/knowledgearea/E46D6D5DB8",
+      "categorie": "essentieel"
+    }
+  ]
+}
