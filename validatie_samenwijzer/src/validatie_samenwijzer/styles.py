@@ -239,16 +239,29 @@ header[data-testid="stHeader"] {{ display: none !important; }}
     background: {PAPER_DEEP} !important;
 }}
 
-/* ── Mobiel: de vaste nav wordt meeschuivend. De kolommen stapelen op smalle
-   schermen en zouden onder de 56px-balk de content overlappen; static + auto
-   hoogte laat ze netjes meeschuiven (sticky wordt opgeofferd op mobiel). ───── */
+/* ── Mobiel: de nav blijft één rij. Zonder flex-wrap:nowrap wrappen de kolommen
+   (brand + links) op smalle schermen naar meerdere rijen en duwen de content
+   omlaag; nowrap + overflow-x:auto houdt ze op één horizontaal-scrollbare rij.
+   De nav wordt geselecteerd via :has(stPageLink) i.p.v. een vast ouder-pad —
+   Streamlit's DOM-nesting (stLayoutWrapper e.d.) verandert per versie, de
+   inhoud (de paginalinks) niet. ──────────────────────────────────────────── */
 @media (max-width: 640px) {{
-    .block-container > div > [data-testid="stHorizontalBlock"]:first-of-type {{
-        position: static !important;
-        height: auto !important;
-        backdrop-filter: none !important;
-        padding: 10px 16px !important;
-        row-gap: 2px !important;
+    [data-testid="stHorizontalBlock"]:has([data-testid="stPageLink"]) {{
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        gap: 2px !important;
+        padding: 8px 12px !important;
+    }}
+    [data-testid="stHorizontalBlock"]:has([data-testid="stPageLink"]) [data-testid="stColumn"] {{
+        flex: 0 0 auto !important;
+        width: auto !important;
+        min-width: fit-content !important;
+    }}
+    [data-testid="stHorizontalBlock"]:has([data-testid="stPageLink"]) [data-testid="stPageLink"] a {{
+        min-height: 44px !important;
+        display: inline-flex !important;
+        align-items: center !important;
     }}
     .block-container {{ padding-top: 1.2rem !important; }}
     .sw-navbrand {{ font-size: 1.05rem; }}
@@ -876,7 +889,7 @@ def render_nav() -> None:
         with cols[i + 1]:
             st.page_link(page, label=label)
     with cols[-1]:
-        st.page_link("pages/uitloggen.py", label="🚪")
+        st.page_link("pages/uitloggen.py", label="🚪 Uitloggen")
 
 
 def render_footer() -> None:
