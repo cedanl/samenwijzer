@@ -41,6 +41,21 @@ uv run python scripts/generate_synthetisch_welzijn.py      # Regenereer welzijn-
 `validatie_samenwijzer/` is een **zelfstandig subproject** met eigen `pyproject.toml`, `.venv`,
 `CLAUDE.md` en poort 8503 — draai `uv`, `pytest` en `ruff` altijd vanuit de juiste projectroot.
 
+## Deployment
+
+De repo-root `Dockerfile` + `fly.toml` deployen **het validatie-subproject** (publieksnaam
+"De digitale gids") naar Fly als app `digitale-gids` (https://digitale-gids.fly.dev, regio `ams`).
+De container draait `validatie_samenwijzer/app/main.py` op poort 8080; de build-context is bewust
+de **repo-root** omdat de data (`oeren/`, `kwalificatiedossiers/`) buiten het subproject leeft.
+Deploy vanuit de repo-root:
+
+```bash
+flyctl deploy -a digitale-gids --remote-only
+```
+
+De hoofd-app (`app/main.py`) heeft geen eigen Fly-deploy. WhatsApp-check-in draait als cron via
+`.github/workflows/checkin.yml` (ma 08:00, `python -m samenwijzer.scheduler`).
+
 ## Environment
 
 `.env` in projectroot. `ANTHROPIC_API_KEY` is verplicht voor alle AI-functies. Optioneel:
