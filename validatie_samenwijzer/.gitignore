@@ -12,3 +12,6 @@ __pycache__/
 oeren/
 *:Zone.Identifier
 .uv_cache/
+
+# Claude Code lokale/runtime-bestanden (niet versiebeheren)
+.claude/
