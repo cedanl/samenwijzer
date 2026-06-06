@@ -10,6 +10,7 @@ Instelling                 OERs  Mentoren  Studenten
 Aeres MBO                     2        10        200
 Curio                         2        10        200
 Da Vinci College              2        10        200
+Deltion College               2        10        200
 Koning Willem I College       1         5        100
 ROC Utrecht                   2        10        200
 Rijn IJssel                   2        10        200
@@ -18,7 +19,7 @@ Talland                       2        10        200
 Overgeslagen instellingen:
   - Koning Willem I College: slechts 1/2 OERs gebruikt
 
-Studentnummers: 100001 t/m 101300
+Studentnummers: 100001 t/m 101500
 
 
 STUDENTEN (login op studentnummer) — eerste 3 per OER
@@ -53,6 +54,16 @@ Da Vinci College · 25306_BBL_2025__25306BBL2025Examenplan (crebo 25306, BBL 202
   100201  Hamza Vermeer
   100202  Bilal Smit
   100203  Emma Meijer
+
+Deltion College · 25880_BOL_2025__Ondernemer_handel (crebo 25880, BOL 2025)
+  101301  Kevin Kowalski
+  101302  Tim Hoekstra
+  101303  Ryan Al-Hassan
+
+Deltion College · 27030_BBL_2025__Medewerker_Steriele_Medische_Hulpmiddelen (crebo 27030, BBL 2025)
+  101401  Yasmin Maas
+  101402  Bilal Hoekstra
+  101403  Kevin Janssen
 
 Koning Willem I College · 25122_BBL_2025__20260519_1206_Examenplan_25122Werkvoorbereiderfabricage (crebo 25122, BBL 2025)
   101001  Tim Nguyen
@@ -135,6 +146,20 @@ Da Vinci College · 25306_BBL_2025__25306BBL2025Examenplan (crebo 25306, BBL 202
   Sander Ozturk (25306)
   Rayan Postma (25306)
   Nathalie Dekker (25306)
+
+Deltion College · 25880_BOL_2025__Ondernemer_handel (crebo 25880, BOL 2025)
+  Nora de Groot (25880)
+  Roos Janssen (25880)
+  Pieter Vermeer (25880)
+  Pieter de Boer (25880)
+  Lars de Boer (25880)
+
+Deltion College · 27030_BBL_2025__Medewerker_Steriele_Medische_Hulpmiddelen (crebo 27030, BBL 2025)
+  Sem Vermeer (27030)
+  Nora Hoekstra (27030)
+  Mariam Meijer (27030)
+  Anna van Leeuwen (27030)
+  Yasmin Dijkstra (27030)
 
 Koning Willem I College · 25122_BBL_2025__20260519_1206_Examenplan_25122Werkvoorbereiderfabricage (crebo 25122, BBL 2025)
   Sem Meijer (25122)
