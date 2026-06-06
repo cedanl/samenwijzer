@@ -100,6 +100,18 @@ def test_bouw_systeem_leeg_bij_geen_tekst():
     assert "Kok" in systeem
 
 
+def test_bouw_systeem_schoont_ruwe_opleidingsnaam():
+    """Een ruwe bestandsnaam-stem moet als leesbare naam in de prompt komen."""
+    systeem = bouw_systeem(
+        "OER-tekst",
+        "25642_BBL_2025__25642BBL2025Examenplan-hairstylist-dame-cohort-2025",
+        "Da Vinci",
+        crebo="25642",
+    )
+    assert "Hairstylist Dame" in systeem
+    assert "25642BBL2025Examenplan" not in systeem
+
+
 def test_lage_relevantie_bericht_is_string():
     assert isinstance(LAGE_RELEVANTIE_BERICHT, str)
     assert len(LAGE_RELEVANTIE_BERICHT) > 10

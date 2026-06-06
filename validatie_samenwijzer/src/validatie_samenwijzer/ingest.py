@@ -34,6 +34,18 @@ _OPLEIDING_LIJN = re.compile(
     r"^\s*Kwalificatie\s*\(profiel\)\s*[:\-]?\s*(.+?)\s*$",
     re.IGNORECASE | re.MULTILINE,
 )
+# Da Vinci-titelpagina, drie varianten op de eerste regel:
+#   "Examenplan <NAAM> vanaf cohort <jaar> – crebo <crebo>"
+#   "Examenplan <NAAM> – crebo <crebo> vanaf cohort <jaar>"
+#   "Examenplan beroepsgerichte examens <crebo> <NAAM> vanaf <jaar>"
+# De naam loopt tot het eerste van: 'vanaf cohort', 'vanaf <jaar>', '– crebo',
+# 'crebo', of het regeleinde (sommige titels zijn afgekapt zonder cohort-suffix).
+_OPLEIDING_LIJN_DAVINCI = re.compile(
+    r"^Examenplan\s+(?:beroepsgerichte\s+examens\s+\d{5}\s+)?"
+    r"(.+?)"
+    r"(?:\s+vanaf\s+cohort|\s+vanaf\s+\d{4}|\s*[–-]\s*crebo|\s+crebo\b|\s*$)",
+    re.IGNORECASE,
+)
 # Generieke woorden die niet als opleidingsnaam tellen — alleen op deze
 # overhouden geldt de stem als oninformatief.
 _GENERIEKE_OPLEIDINGSWOORDEN = {
@@ -60,9 +72,9 @@ def _stem_heeft_opleidingsnaam(stem: str) -> bool:
 def _extraheer_opleiding_uit_pdf(pad: Path) -> str | None:
     """Lees de eerste pagina en haal de profiel-kwalificatienaam op.
 
-    Werkt voor het ROC Utrecht 'Examenplan' formaat dat een vaste key/value-tabel
-    op de eerste pagina heeft. Geeft None als de PDF niet leesbaar is of het
-    patroon niet matcht.
+    Ondersteunt het ROC Utrecht 'Examenplan' key/value-formaat en het Da Vinci
+    titelpagina-formaat ('Examenplan <naam> vanaf cohort … – crebo …'). Geeft
+    None als de PDF niet leesbaar is of geen patroon matcht.
     """
     if pad.suffix.lower() != ".pdf":
         return None
@@ -77,6 +89,13 @@ def _extraheer_opleiding_uit_pdf(pad: Path) -> str | None:
     m = _OPLEIDING_LIJN.search(tekst)
     if m:
         return m.group(1).strip()[:100]
+    # Da Vinci: de naam staat op de eerste niet-lege regel.
+    eerste_regel = next((ln.strip() for ln in tekst.splitlines() if ln.strip()), "")
+    m = _OPLEIDING_LIJN_DAVINCI.match(eerste_regel)
+    if m:
+        naam = m.group(1).strip()[:100]
+        if len(naam) >= 3:
+            return naam
     return None
 
 
