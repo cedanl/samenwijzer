@@ -11,6 +11,7 @@ from validatie_samenwijzer.chat import (
     laad_skills_tekst,
     pad_kwalificatiedossier,
     pad_skills,
+    web_zoek_domeinen,
 )
 
 
@@ -115,6 +116,51 @@ def test_bouw_systeem_schoont_ruwe_opleidingsnaam():
 def test_lage_relevantie_bericht_is_string():
     assert isinstance(LAGE_RELEVANTIE_BERICHT, str)
     assert len(LAGE_RELEVANTIE_BERICHT) > 10
+
+
+# ── Webzoek-fallback (graceful degradation) ───────────────────────────────────
+
+
+def test_web_zoek_domeinen_mapt_dedupt_en_sorteert():
+    items = [{"naam": "utrecht"}, {"naam": "davinci"}, {"naam": "davinci"}]
+    assert web_zoek_domeinen(items) == ["davinci.nl", "mboutrecht.nl"]
+
+
+def test_web_zoek_domeinen_negeert_onbekende_instelling():
+    assert web_zoek_domeinen([{"naam": "onbekend"}, {}]) == []
+
+
+def test_bouw_systeem_web_zoeken_voegt_instructie_en_disclaimer_toe():
+    met = bouw_systeem("OER", "Kok", "Da Vinci", web_zoeken=True)
+    assert "WEBZOEKEN" in met
+    assert "officiële website van de instelling" in met
+    assert "dit staat niet in de officiële studiegids" in met
+
+
+def test_bouw_systeem_zonder_web_zoeken_heeft_geen_webblok():
+    zonder = bouw_systeem("OER", "Kok", "Da Vinci")
+    assert "WEBZOEKEN" not in zonder
+
+
+def test_bouw_gecombineerd_systeem_meervoudig_web_zoeken():
+    items = [
+        {
+            "tekst": "A",
+            "opleiding": "Kok",
+            "display_naam": "Da Vinci",
+            "leerweg": "BOL",
+            "cohort": "2025",
+        },
+        {
+            "tekst": "B",
+            "opleiding": "Kapper",
+            "display_naam": "Rijn IJssel",
+            "leerweg": "BBL",
+            "cohort": "2025",
+        },
+    ]
+    assert "WEBZOEKEN" in bouw_gecombineerd_systeem(items, web_zoeken=True)
+    assert "WEBZOEKEN" not in bouw_gecombineerd_systeem(items)
 
 
 # ── bouw_gecombineerd_systeem ─────────────────────────────────────────────────
