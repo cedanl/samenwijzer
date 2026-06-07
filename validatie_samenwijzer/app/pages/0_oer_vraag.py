@@ -28,6 +28,7 @@ from validatie_samenwijzer.chat import (  # noqa: E402
     laad_oer_tekst,
     laad_skills_tekst,
     resolve_oer_pad,
+    web_zoek_domeinen,
 )
 from validatie_samenwijzer.db import (  # noqa: E402
     INSTELLING_SOORTEN,
@@ -56,6 +57,7 @@ _DEFAULTS: dict = {
     "pub_oer_systeem": None,
     "pub_oer_labels": [],
     "pub_oer_paden": [],
+    "pub_oer_domeinen": [],
     "pub_kandidaten": [],
     "pub_wachtende_vraag": None,
 }
@@ -119,7 +121,12 @@ def _stream_antwoord(systeem: str, berichten: list[dict]) -> str:
     try:
         with st.container(key="chatantwoord_stream"):
             inner = st.empty()
-            for fragment in genereer_antwoord(ai_client(), systeem, berichten):
+            for fragment in genereer_antwoord(
+                ai_client(),
+                systeem,
+                berichten,
+                web_search_domeinen=st.session_state.get("pub_oer_domeinen") or None,
+            ):
                 antwoord += fragment
                 inner.markdown(antwoord)
         placeholder.empty()
@@ -228,6 +235,7 @@ if st.session_state.pub_kandidaten:
                         "tekst": tekst,
                         "opleiding": k["opleiding"],
                         "display_naam": k["display_naam"],
+                        "naam": k["naam"],
                         "leerweg": k["leerweg"],
                         "cohort": k["cohort"],
                         "crebo": k.get("crebo", ""),
@@ -242,9 +250,13 @@ if st.session_state.pub_kandidaten:
         if not oer_items:
             st.error("Geen van de geselecteerde studiegidsen kon worden geladen.")
         else:
-            st.session_state.pub_oer_systeem = bouw_gecombineerd_systeem(oer_items)
+            domeinen = web_zoek_domeinen(oer_items)
+            st.session_state.pub_oer_systeem = bouw_gecombineerd_systeem(
+                oer_items, web_zoeken=bool(domeinen)
+            )
             st.session_state.pub_oer_labels = labels
             st.session_state.pub_oer_paden = paden
+            st.session_state.pub_oer_domeinen = domeinen
             st.session_state.pub_kandidaten = []
 
             if st.session_state.pub_wachtende_vraag:
@@ -320,26 +332,30 @@ if kandidaten:
         pad = resolve_oer_pad(k["bestandspad"])
         tekst = laad_oer_tekst(pad)
         if tekst:
+            oer_items = [
+                {
+                    "tekst": tekst,
+                    "opleiding": k["opleiding"],
+                    "display_naam": k["display_naam"],
+                    "naam": k["naam"],
+                    "leerweg": k["leerweg"],
+                    "cohort": k["cohort"],
+                    "crebo": k.get("crebo", ""),
+                    "dossier_tekst": laad_kwalificatiedossier_tekst(k.get("crebo")),
+                    "skills_tekst": laad_skills_tekst(k.get("crebo")),
+                    "instelling_bronnen": _examenreglement_bron(k["instelling_id"]),
+                }
+            ]
+            domeinen = web_zoek_domeinen(oer_items)
             st.session_state.pub_oer_systeem = bouw_gecombineerd_systeem(
-                [
-                    {
-                        "tekst": tekst,
-                        "opleiding": k["opleiding"],
-                        "display_naam": k["display_naam"],
-                        "leerweg": k["leerweg"],
-                        "cohort": k["cohort"],
-                        "crebo": k.get("crebo", ""),
-                        "dossier_tekst": laad_kwalificatiedossier_tekst(k.get("crebo")),
-                        "skills_tekst": laad_skills_tekst(k.get("crebo")),
-                        "instelling_bronnen": _examenreglement_bron(k["instelling_id"]),
-                    }
-                ]
+                oer_items, web_zoeken=bool(domeinen)
             )
             schoon = schoon_opleiding_naam(k["opleiding"], k.get("crebo", ""))
             st.session_state.pub_oer_labels = [
                 f"{k['display_naam']} · {schoon} · {k['leerweg']} {k['cohort']}"
             ]
             st.session_state.pub_oer_paden = [pad]
+            st.session_state.pub_oer_domeinen = domeinen
             berichten = bouw_berichten(st.session_state.pub_chat_history, vraag)
             antwoord = _stream_antwoord(st.session_state.pub_oer_systeem, berichten)
             # Persist en rerun zodat de "geraadpleegd"-header en bekijk-knoppen

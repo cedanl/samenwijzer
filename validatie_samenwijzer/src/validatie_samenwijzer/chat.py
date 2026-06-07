@@ -28,6 +28,61 @@ LAGE_RELEVANTIE_BERICHT = (
     "Controleer of het bestand beschikbaar is, of bekijk 'm via 'Mijn studiegids'."
 )
 
+# ── Webzoek-fallback (graceful degradation, Fase 1) ──────────────────────────
+# Officiële instelling-websites (geverifieerd 2026-06-07; utrecht = MBO Utrecht, niet
+# ROC MN). De webzoek-tool wordt via `allowed_domains` tot deze domeinen gescoped, zodat
+# een fallback-antwoord van de eigen schoolsite komt en niet van een willekeurige bron.
+_INSTELLING_DOMEINEN: dict[str, str] = {
+    "aeres": "aeres.nl",
+    "curio": "curio.nl",
+    "davinci": "davinci.nl",
+    "deltion": "deltion.nl",
+    "kwic": "kw1c.nl",
+    "rijn_ijssel": "rijnijssel.nl",
+    "talland": "talland.nl",
+    "utrecht": "mboutrecht.nl",
+}
+
+
+def web_zoek_domeinen(oer_items: list[dict]) -> list[str]:
+    """Gesorteerde unie van instelling-domeinen voor de geladen OER's.
+
+    Leeg als geen van de instellingen een bekend domein heeft → de chat valt dan
+    terug op puur documentcontext (geen webzoeken). Gesorteerd voor cache-stabiliteit.
+    """
+    domeinen = {
+        _INSTELLING_DOMEINEN[item["naam"]]
+        for item in oer_items
+        if item.get("naam") in _INSTELLING_DOMEINEN
+    }
+    return sorted(domeinen)
+
+
+# Instructie + verplichte waarschuwing/citatie voor de webzoek-fallback. Alleen in de
+# system-prompt opgenomen als de webzoek-tool ook echt wordt meegestuurd (web_zoeken=True),
+# zodat het model niet naar een tool verwijst die er niet is.
+# Eén blockquote-regel (samengesteld zodat geen bronregel de regellengte overschrijdt).
+_WEB_DISCLAIMER = (
+    "> ⚠️ Let op: dit staat niet in de officiële studiegids (OER). Onderstaande "
+    "informatie komt van de website van de school en kan verouderd of minder bindend "
+    "zijn — controleer het bij twijfel bij je opleiding."
+)
+_WEB_ZOEK_BLOK = f"""
+
+WEBZOEKEN (uitzondering — alleen als de bronnen tekortschieten). Behandelt geen enkele
+bovenstaande bron het onderwerp, dan mag je de webzoek-functie gebruiken, uitsluitend op
+de officiële website van de instelling. Dit is geen "eigen kennis" maar geverifieerde
+informatie van de schoolwebsite; de OER en de andere bronnen blijven leidend, dus zoek
+alleen als het antwoord echt niet in de documenten staat. Begin een webantwoord ALTIJD met
+deze waarschuwing op een eigen regel als blockquote:
+{_WEB_DISCLAIMER}
+Geef webinformatie NOOIT de vorm van een OER-citaat (geen "Volgens de OER", geen sectie-,
+artikel- of paginanummer) en verzin nooit een vindplaats. Sluit een webantwoord ALTIJD af
+met een regel die begint met "Bron: " gevolgd door de volledige URL(’s) van de
+geraadpleegde pagina('s) op de schoolwebsite, zodat de gebruiker het zelf kan nazoeken.
+De OER blijft de juridisch bindende bron; webinformatie is aanvullend en indicatief."""
+
+
 _SYSTEEM_TEMPLATE = """\
 Je bent een onderwijs-assistent voor de opleiding {opleiding} bij {instelling}.
 
@@ -87,7 +142,7 @@ Een claim zonder correcte bronvermelding is niet toegestaan. Parafraseren mag
 alleen ter inleiding van een citaat, niet ter vervanging ervan. Beantwoord vragen
 uitsluitend op basis van deze bronnen — nooit vanuit eigen kennis. Als de
 informatie in geen van de bronnen staat, zeg dat dan expliciet. Antwoord in het
-Nederlands.
+Nederlands.{web_zoek_blok}
 
 === ONDERWIJS- EN EXAMENREGELING (OER) ===
 {oer_tekst}{instelling_blok}{dossier_blok}{skills_blok}"""
@@ -279,6 +334,7 @@ def bouw_systeem(
     crebo: str | None = None,
     skills_tekst: str = "",
     instelling_bronnen: Sequence[tuple[str, str]] = (),
+    web_zoeken: bool = False,
 ) -> str:
     """Stel de systeemprompt samen met OER, optionele instellingsbrede regelingen, KD en skills.
 
@@ -286,6 +342,8 @@ def bouw_systeem(
         instelling_bronnen: (label, tekst)-paren voor instellingsbrede regelingen
             (bv. ("Examenreglement", ...)). Het label wordt de blok-kop en de te
             citeren bronnaam. Volgorde bepaalt de blok-volgorde; lege tekst → geen blok.
+        web_zoeken: voeg de webzoek-instructie toe aan de prompt (graceful degradation).
+            Zet dit alleen True wanneer `genereer_antwoord` ook de webzoek-tool meekrijgt.
     """
     # Schoon de opleidingsnaam op de read-boundary: in de DB staan ruwe bestandsnaam-
     # stems (bv. Da Vinci '25642_BBL_2025__...Examenplan-hairstylist-dame-cohort-2025').
@@ -304,6 +362,7 @@ def bouw_systeem(
         instelling_blok=_instelling_blok(instelling, instelling_bronnen),
         dossier_blok=dossier_blok,
         skills_blok=skills_tekst,
+        web_zoek_blok=_WEB_ZOEK_BLOK if web_zoeken else "",
     )
 
 
@@ -355,6 +414,7 @@ def genereer_antwoord(
     berichten: list[dict],
     model: str = "claude-sonnet-4-6",
     max_tokens: int = 2048,
+    web_search_domeinen: list[str] | None = None,
 ) -> Generator[str]:
     """Stream Claude-antwoord als generator van tekst-fragmenten.
 
@@ -364,10 +424,26 @@ def genereer_antwoord(
         berichten: Gesprekshistorie als lijst van rol/content-dicts.
         model: Claude-model ID.
         max_tokens: Maximum aantal tokens in het antwoord.
+        web_search_domeinen: indien gezet, krijgt het model de webzoek-tool
+            (graceful degradation), gescoped tot deze domeinen. Stuur dan ook
+            `web_zoeken=True` mee aan `bouw_systeem`/`bouw_gecombineerd_systeem`.
 
     Yields:
         Tekst-fragmenten van het gestreamde antwoord.
     """
+    extra: dict = {}
+    if web_search_domeinen:
+        # web_search_20250305 (zonder dynamic filtering): geen code-execution-
+        # afhankelijkheid, wel allowed_domains + max_uses. max_uses bondig gehouden
+        # i.v.m. het 30s-streamcontract (elke zoekopdracht is een server-side pauze).
+        extra["tools"] = [
+            {
+                "type": "web_search_20250305",
+                "name": "web_search",
+                "max_uses": 3,
+                "allowed_domains": sorted(web_search_domeinen),
+            }
+        ]
     with client.messages.stream(
         model=model,
         system=[
@@ -376,6 +452,7 @@ def genereer_antwoord(
         max_tokens=max_tokens,
         output_config={"effort": "medium"},
         messages=_messages_met_cache(berichten),
+        **extra,
     ) as stream:
         yield from stream.text_stream
 
@@ -431,12 +508,12 @@ Een claim zonder correcte bronvermelding is niet toegestaan.
 Parafraseren mag alleen ter inleiding van een citaat, niet ter vervanging ervan.
 Beantwoord uitsluitend op basis van deze bronnen — nooit vanuit eigen kennis.
 Als de informatie in geen van de bronnen staat, zeg dat dan expliciet.
-Antwoord in het Nederlands.
+Antwoord in het Nederlands.{web_zoek_blok}
 
 {oer_blokken}"""
 
 
-def bouw_gecombineerd_systeem(oer_items: list[dict]) -> str:
+def bouw_gecombineerd_systeem(oer_items: list[dict], web_zoeken: bool = False) -> str:
     """Bouw een systeemprompt voor één of meerdere OERs.
 
     Args:
@@ -445,6 +522,7 @@ def bouw_gecombineerd_systeem(oer_items: list[dict]) -> str:
                    'dossier_tekst' en 'crebo' om het landelijke
                    kwalificatiedossier mee in te bedden, en 'skills_tekst'
                    voor de skills-taxonomie van het beroep.
+        web_zoeken: voeg de webzoek-instructie toe (zie bouw_systeem).
     """
     if len(oer_items) == 1:
         item = oer_items[0]
@@ -456,6 +534,7 @@ def bouw_gecombineerd_systeem(oer_items: list[dict]) -> str:
             crebo=item.get("crebo"),
             skills_tekst=item.get("skills_tekst", ""),
             instelling_bronnen=item.get("instelling_bronnen", ()),
+            web_zoeken=web_zoeken,
         )
 
     blokken = []
@@ -477,6 +556,7 @@ def bouw_gecombineerd_systeem(oer_items: list[dict]) -> str:
     return _MULTI_SYSTEEM_TEMPLATE.format(
         n=len(oer_items),
         oer_blokken="\n\n---\n\n".join(blokken),
+        web_zoek_blok=_WEB_ZOEK_BLOK if web_zoeken else "",
     )
 
 
