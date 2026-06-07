@@ -28,6 +28,7 @@ from validatie_samenwijzer.chat import (  # noqa: E402
     laad_oer_tekst,
     laad_skills_tekst,
     resolve_oer_pad,
+    web_zoek_domeinen,
 )
 from validatie_samenwijzer.db import get_kerntaak_scores_by_student_id  # noqa: E402
 from validatie_samenwijzer.ingest import extraheer_tekst_html  # noqa: E402
@@ -59,7 +60,7 @@ if not student:
 oer = (
     get_conn()
     .execute(
-        """SELECT oer_documenten.*, instellingen.display_naam
+        """SELECT oer_documenten.*, instellingen.display_naam, instellingen.naam
        FROM oer_documenten JOIN instellingen ON instellingen.id =
        oer_documenten.instelling_id WHERE oer_documenten.id = ?""",
         (student["oer_id"],),
@@ -167,6 +168,8 @@ with col_chat:
                 (label, laad_instelling_bron_tekst(resolve_oer_pad(pad)))
                 for label, pad in st.session_state.get("instelling_bron_paden", [])
             ]
+            domeinen = web_zoek_domeinen([{"naam": oer["naam"]}]) if oer else []
+            st.session_state.oer_domeinen = domeinen
             st.session_state.oer_systeem = (
                 bouw_systeem(
                     oer_tekst,
@@ -176,6 +179,7 @@ with col_chat:
                     crebo=crebo,
                     skills_tekst=skills_tekst,
                     instelling_bronnen=instelling_bronnen,
+                    web_zoeken=bool(domeinen),
                 )
                 if oer_tekst
                 else ""
@@ -209,7 +213,10 @@ with col_chat:
                     with st.container(key="chatantwoord_stream"):
                         placeholder = st.empty()
                         for fragment in genereer_antwoord(
-                            ai_client(), st.session_state.oer_systeem, berichten
+                            ai_client(),
+                            st.session_state.oer_systeem,
+                            berichten,
+                            web_search_domeinen=st.session_state.get("oer_domeinen") or None,
                         ):
                             antwoord += fragment
                             placeholder.markdown(antwoord)

@@ -60,7 +60,7 @@ def _sla_student_op(student) -> None:
     oer = (
         get_conn()
         .execute(
-            "SELECT oer_documenten.*, instellingen.display_naam "
+            "SELECT oer_documenten.*, instellingen.display_naam, instellingen.naam "
             "FROM oer_documenten JOIN instellingen ON instellingen.id = oer_documenten.instelling_id "
             "WHERE oer_documenten.id = ?",
             (student["oer_id"],),
@@ -76,6 +76,7 @@ def _sla_student_op(student) -> None:
             "oer_id": student["oer_id"],
             "opleiding": oer["opleiding"] if oer else "",
             "instelling": oer["display_naam"] if oer else "",
+            "instelling_naam": oer["naam"] if oer else "",
             "crebo": oer["crebo"] if oer else "",
             "leerweg": oer["leerweg"] if oer else "",
             "bestandspad": oer["bestandspad"] if oer else "",
@@ -92,7 +93,7 @@ def _sla_mentor_op(mentor) -> None:
     instelling = (
         get_conn()
         .execute(
-            "SELECT display_naam FROM instellingen WHERE id = ?",
+            "SELECT display_naam, naam FROM instellingen WHERE id = ?",
             (mentor["instelling_id"],),
         )
         .fetchone()
@@ -104,6 +105,7 @@ def _sla_mentor_op(mentor) -> None:
             "gebruiker_naam": mentor["naam"],
             "oer_ids": oer_ids,
             "instelling": instelling["display_naam"] if instelling else "",
+            "instelling_naam": instelling["naam"] if instelling else "",
             "opleiding": "Mentor",
             "instelling_bron_paden": _instelling_bron_paden(
                 mentor["instelling_id"], _MENTOR_SOORTEN
