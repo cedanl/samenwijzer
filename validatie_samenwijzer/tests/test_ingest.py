@@ -258,7 +258,8 @@ def test_verwerk_instelling_documenten_zonder_submap_doet_niets(tmp_path, conn):
     "regel,verwacht",
     [
         (
-            "Examenplan Eerste monteur service en onderhoud werktuigbouw vanaf cohort 2021– crebo 25306",
+            "Examenplan Eerste monteur service en onderhoud werktuigbouw "
+            "vanaf cohort 2021– crebo 25306",
             "Eerste monteur service en onderhoud werktuigbouw",
         ),
         (
@@ -271,7 +272,8 @@ def test_verwerk_instelling_documenten_zonder_submap_doet_niets(tmp_path, conn):
             "Ondernemend meubelmaker",
         ),
         (
-            "Examenplan beroepsgerichte examens 25308 Monteur service en onderhoud installaties en systemen",
+            "Examenplan beroepsgerichte examens 25308 Monteur service en "
+            "onderhoud installaties en systemen",
             "Monteur service en onderhoud installaties en systemen",
         ),
     ],

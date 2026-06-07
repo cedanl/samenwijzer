@@ -1,8 +1,21 @@
 # Plan: Graceful degradation via webzoeken op de instellings-website
 
 *Subproject: `validatie_samenwijzer` — "De digitale gids" / `digitale-gids.fly.dev`*
-*Status: voorstel (read-only onderzoek afgerond, nog niet geïmplementeerd)*
-*Datum: 2026-06-06*
+*Status: **Fase 1 geïmplementeerd + live op productie** (PR #164, 2026-06-07). Fase 2 & 3 open.*
+*Datum: 2026-06-06 (plan), 2026-06-07 (Fase 1)*
+
+> **Afwijkingen t.o.v. dit plan bij de Fase 1-implementatie:**
+> - **Tool-versie `web_search_20250305`** i.p.v. `web_search_20260209` (dynamic filtering):
+>   die laatste vereist de code-execution-tool, wat een tweede sandbox + de "verwart het
+>   model"-valkuil introduceert. De basisversie ondersteunt `allowed_domains` + `max_uses`
+>   volledig. Dynamic filtering is naar Fase 3 verschoven.
+> - **`max_uses=3`** (niet `1`): documentatie-aanbeveling voor latency-gevoelige lookups;
+>   bondig genoeg voor het 30s-streamcontract.
+> - **Domeinmap geverifieerd** (uit OER-content + webcheck): `utrecht = mboutrecht.nl`
+>   (MBO Utrecht, **niet** ROC MN/rocmn.nl) en `talland = talland.nl`.
+> - Beide paden live geverifieerd op `digitale-gids.fly.dev` (Da Vinci, crebo 25882):
+>   BSA-vraag → ⚠️-balk + `Bron:` met davinci.nl-URL's; kerntaken-vraag → normale
+>   OER-citatie zonder balk (geen regressie/outage).
 
 ## 1. Probleemstelling & doel
 
@@ -90,7 +103,7 @@ Zo blijft de bestaande blockquote-pull-quote-CSS gereserveerd voor de echte juri
 
 ## 8. Gefaseerde implementatie
 
-**Fase 1 — minimaal werkend op de publieke pagina (`0_oer_vraag.py`)**
+**Fase 1 — minimaal werkend op de publieke pagina (`0_oer_vraag.py`)** — ✅ GEDAAN (PR #164)
 - Domeinmap-constante in `chat.py`; helper die uit geladen OER-items de unie van domeinen afleidt.
 - `genereer_antwoord` (en `bouw_gecombineerd_systeem`/`bouw_systeem`-signatuur indien nodig) uitbreiden met de web search-tool + `allowed_domains` + `max_uses=1`.
 - Beide templates aanpassen (slotregel + zoek-eerst-instructie + web-citatieformat per §5).
