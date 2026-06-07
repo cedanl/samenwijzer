@@ -1,20 +1,29 @@
 # Plan: Graceful degradation via webzoeken op de instellings-website
 
 *Subproject: `validatie_samenwijzer` — "De digitale gids" / `digitale-gids.fly.dev`*
-*Status: **Fase 1 geïmplementeerd + live op productie** (PR #164, 2026-06-07). Fase 2 & 3 open.*
-*Datum: 2026-06-06 (plan), 2026-06-07 (Fase 1)*
+*Status: **Fase 1 + Fase 2 + web_fetch live op productie** (PR #164, #166, #167; 2026-06-07).
+Resterende Fase 3-punten open (zie §8).*
+*Datum: 2026-06-06 (plan), 2026-06-07 (implementatie)*
 
-> **Afwijkingen t.o.v. dit plan bij de Fase 1-implementatie:**
-> - **Tool-versie `web_search_20250305`** i.p.v. `web_search_20260209` (dynamic filtering):
->   die laatste vereist de code-execution-tool, wat een tweede sandbox + de "verwart het
->   model"-valkuil introduceert. De basisversie ondersteunt `allowed_domains` + `max_uses`
->   volledig. Dynamic filtering is naar Fase 3 verschoven.
-> - **`max_uses=3`** (niet `1`): documentatie-aanbeveling voor latency-gevoelige lookups;
->   bondig genoeg voor het 30s-streamcontract.
+> **Afwijkingen t.o.v. dit plan bij de implementatie:**
+> - **Tool-versies `web_search_20250305` + `web_fetch_20250910`** i.p.v. de `_20260209`-
+>   varianten met dynamic filtering: die laatste vereisen de code-execution-tool (tweede
+>   sandbox + "verwart het model"-valkuil). De basisversies ondersteunen `allowed_domains`
+>   + `max_uses` volledig. Dynamic filtering blijft een Fase 3-optie.
+> - **`web_fetch` toegevoegd naast `web_search`** (PR #167): `web_search` gaf alleen
+>   snippets, waardoor specifieke feiten (open-dag-data) inconsistent werden gevonden —
+>   student wél, mentor niet, zelfde pagina. `web_fetch` (max_uses=2, max_content_tokens=
+>   30000, citations aan, gescoped op de schooldomeinen) leest de **volledige pagina** →
+>   betrouwbaar voor alle rollen. Mag alleen URLs uit eerdere search-resultaten openen.
+> - **`max_uses=3`** (search) i.p.v. `1`: documentatie-aanbeveling voor latency-gevoelige
+>   lookups; bondig genoeg voor het 30s-streamcontract.
 > - **Domeinmap geverifieerd** (uit OER-content + webcheck): `utrecht = mboutrecht.nl`
 >   (MBO Utrecht, **niet** ROC MN/rocmn.nl) en `talland = talland.nl`.
-> - Beide paden live geverifieerd op `digitale-gids.fly.dev` (Da Vinci, crebo 25882):
->   BSA-vraag → ⚠️-balk + `Bron:` met davinci.nl-URL's; kerntaken-vraag → normale
+> - **⚠️-waarschuwing exact één keer** afgedwongen in het template (PR #167) — de
+>   eerder waargenomen dubbele balk is daarmee weg.
+> - Alle drie de rollen (publiek, student, mentor) live geverifieerd op
+>   `digitale-gids.fly.dev` (Da Vinci): out-of-OER-vraag → ⚠️-balk + volledige
+>   activiteitentabel met concrete data + `Bron:` davinci.nl; OER-vraag → normale
 >   OER-citatie zonder balk (geen regressie/outage).
 
 ## 1. Probleemstelling & doel
@@ -109,12 +118,14 @@ Zo blijft de bestaande blockquote-pull-quote-CSS gereserveerd voor de echte juri
 - Beide templates aanpassen (slotregel + zoek-eerst-instructie + web-citatieformat per §5).
 - *Succescriterium:* op `0_oer_vraag` een vraag stellen die aantoonbaar **niet** in de OER staat (bv. "wanneer is de eerstvolgende open dag?") → antwoord begint met de waarschuwingsbalk, bevat een bron-URL op het schooldomein, en een OER-vraag in dezelfde sessie geeft nog steeds een correct juridisch citaat (regressie-check). Geverifieerd via UI-smoke-test (chrome-devtools-mcp, publiek account).
 
-**Fase 2 — student- & mentor-pagina's**
+**Fase 2 — student- & mentor-pagina's** — ✅ GEDAAN (PR #166)
 - `main.py`: `i.naam` toevoegen aan de OER-query en als `instelling_naam` in session_state zetten (student + mentor).
 - `1_oer_assistent.py` en `5_begeleidingssessie.py` de domein-scoping laten meegeven.
-- *Succescriterium:* ingelogde student (account uit seed) krijgt voor een niet-in-OER-vraag een gemarkeerd webantwoord op het juiste schooldomein; UI-smoke-test per rol.
+- *Succescriterium:* ingelogde student (account uit seed) krijgt voor een niet-in-OER-vraag een gemarkeerd webantwoord op het juiste schooldomein; UI-smoke-test per rol. ✅ live geverifieerd (student + mentor, Da Vinci).
 
 **Fase 3 — verfijning (optioneel, uitgesteld)**
+- ✅ **Volledige pagina-inhoud i.p.v. snippets** — `web_fetch` toegevoegd (PR #167); betrouwbare feiten-extractie voor alle rollen. (Eerder als risico genoemd; naar voren gehaald.)
+- Optioneel: upgraden naar de `_20260209`-tools met **dynamic filtering** (vereist code-execution-tool) voor extra token-efficiëntie.
 - Structurele citatieblokken uit de server-side response renderen (i.p.v. alleen URL-in-tekst).
 - `pause_turn`-resume-loop indien fallbacks complexere zoekopdrachten blijken te vergen.
 - Domeinen eventueel naar de DB als het aantal instellingen groeit.
