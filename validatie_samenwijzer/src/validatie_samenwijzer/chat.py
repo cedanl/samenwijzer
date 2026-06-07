@@ -70,11 +70,13 @@ _WEB_DISCLAIMER = (
 _WEB_ZOEK_BLOK = f"""
 
 WEBZOEKEN (uitzondering — alleen als de bronnen tekortschieten). Behandelt geen enkele
-bovenstaande bron het onderwerp, dan mag je de webzoek-functie gebruiken, uitsluitend op
-de officiële website van de instelling. Dit is geen "eigen kennis" maar geverifieerde
-informatie van de schoolwebsite; de OER en de andere bronnen blijven leidend, dus zoek
-alleen als het antwoord echt niet in de documenten staat. Begin een webantwoord ALTIJD met
-deze waarschuwing op een eigen regel als blockquote:
+bovenstaande bron het onderwerp, dan mag je op de officiële website van de instelling zoeken
+(web_search) ÉN de relevante gevonden pagina openen (web_fetch) om de volledige, actuele inhoud
+te lezen — vertrouw niet op de zoekfragmenten alleen, want die missen vaak specifieke gegevens
+zoals data, bedragen of deadlines. Dit is geen "eigen kennis" maar geverifieerde informatie van
+de schoolwebsite; de OER en de andere bronnen blijven leidend, dus doe dit alleen als het antwoord
+echt niet in de documenten staat. Begin een webantwoord ALTIJD met EXACT de volgende regel
+(één keer — niet herhalen of parafraseren):
 {_WEB_DISCLAIMER}
 Geef webinformatie NOOIT de vorm van een OER-citaat (geen "Volgens de OER", geen sectie-,
 artikel- of paginanummer) en verzin nooit een vindplaats. Sluit een webantwoord ALTIJD af
@@ -424,8 +426,8 @@ def genereer_antwoord(
         berichten: Gesprekshistorie als lijst van rol/content-dicts.
         model: Claude-model ID.
         max_tokens: Maximum aantal tokens in het antwoord.
-        web_search_domeinen: indien gezet, krijgt het model de webzoek-tool
-            (graceful degradation), gescoped tot deze domeinen. Stuur dan ook
+        web_search_domeinen: indien gezet, krijgt het model de webzoek- én webfetch-tools
+            (graceful degradation), beide gescoped tot deze domeinen. Stuur dan ook
             `web_zoeken=True` mee aan `bouw_systeem`/`bouw_gecombineerd_systeem`.
 
     Yields:
@@ -433,16 +435,28 @@ def genereer_antwoord(
     """
     extra: dict = {}
     if web_search_domeinen:
-        # web_search_20250305 (zonder dynamic filtering): geen code-execution-
-        # afhankelijkheid, wel allowed_domains + max_uses. max_uses bondig gehouden
-        # i.v.m. het 30s-streamcontract (elke zoekopdracht is een server-side pauze).
+        _domeinen = sorted(web_search_domeinen)
+        # web_search vindt de juiste pagina op de schoolsite; web_fetch leest daarna de
+        # VOLLEDIGE paginatekst (zoek-snippets missen vaak specifieke feiten zoals
+        # open-dag-data of bedragen). Beide gescoped tot de schooldomeinen. De
+        # _20250305/_20250910-versies hebben geen code-execution-afhankelijkheid; web_fetch
+        # mag bovendien alléén URLs openen die uit een eerder search-resultaat komen.
+        # max_uses/max_content_tokens bondig i.v.m. het 30s-streamcontract.
         extra["tools"] = [
             {
                 "type": "web_search_20250305",
                 "name": "web_search",
                 "max_uses": 3,
-                "allowed_domains": sorted(web_search_domeinen),
-            }
+                "allowed_domains": _domeinen,
+            },
+            {
+                "type": "web_fetch_20250910",
+                "name": "web_fetch",
+                "max_uses": 2,
+                "allowed_domains": _domeinen,
+                "citations": {"enabled": True},
+                "max_content_tokens": 30000,
+            },
         ]
     with client.messages.stream(
         model=model,
