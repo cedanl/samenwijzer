@@ -103,6 +103,10 @@ uv run python -m validatie_samenwijzer.ingest --alles          # nieuw indexeren
 uv run python -m validatie_samenwijzer.ingest --alles --reset  # alles herindexeren
 uv run python -m validatie_samenwijzer.ingest --bestand oeren/davinci_oeren/25751BBL2025Examenplan.pdf
 
+# Opleidingsnamen helen (records die als "Opleiding <crebo>" renderen → echte naam)
+OEREN_PAD=../oeren uv run python scripts/fix_opleiding_namen.py --dry-run
+OEREN_PAD=../oeren uv run python scripts/fix_opleiding_namen.py --instelling davinci
+
 # Bestandswatcher (herindexeer + reconcilieer KD/skills automatisch bij wijzigingen in oeren/)
 uv run python -m validatie_samenwijzer.watcher          # bewaakt oeren/ (default)
 uv run python -m validatie_samenwijzer.watcher --oeren-pad /pad/naar/oeren
@@ -282,6 +286,18 @@ nul OER-kerntaken, dus instellingen die hun kerntaken wél in de OER hebben blij
 
 Bestanden zonder crebo in naam (Aeres, Utrecht) worden hernoemd via `scripts/rename_oers.py`
 dat de titelpagina uitleest.
+
+**Opleidingsnaam-afleiding**: primair de bestandsnaam-stem; bevat die geen naam (bv. de kale
+Da Vinci `25882BOL2025Examenplan.pdf`), dan leest `_extraheer_opleiding_uit_pdf` de titelpagina —
+herkent zowel het ROC Utrecht-format (`Kwalificatie (profiel): …`) als de drie Da Vinci-formaten
+(`Examenplan <naam> vanaf cohort … – crebo …`, via `_OPLEIDING_LIJN_DAVINCI`). De ruwe waarde wordt
+op de read-boundary opgeschoond door `opleiding.schoon_opleiding_naam` — een **UI-loze module**
+(`src/validatie_samenwijzer/opleiding.py`) zodat ingest, `chat.py` (injectie in de system-prompt)
+én scripts 'm delen; `styles.py` her-exporteert voor bestaande UI-callers. Bestaande DB-records die
+nog als "Opleiding <crebo>" renderen heel je met `scripts/fix_opleiding_namen.py` (bron-volgorde:
+eigen bestand — sibling-bestandsnaam of titelpagina, kwaliteit-gekozen — dan crebo-leen van een
+ander record met dezelfde landelijke opleidingscode; idempotent, `--dry-run`). Dit is een
+**data-heal op de gebakken DB**, dus draai 'm vóór een Fly-deploy als de namen wijzigen.
 
 > **Sync met de parent-monorepo**: de parse-helpers in `ingest.py` (`parseer_bestandsnaam`,
 > `extraheer_kerntaken`, opleidingsnaam/niveau-regex) zijn de **bron** die bewust gespiegeld wordt
