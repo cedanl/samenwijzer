@@ -25,6 +25,7 @@ from validatie_samenwijzer.chat import (  # noqa: E402
     laad_oer_tekst,
     laad_skills_tekst,
     resolve_oer_pad,
+    web_zoek_domeinen,
 )
 from validatie_samenwijzer.styles import (  # noqa: E402
     CSS,
@@ -42,6 +43,7 @@ MAX_GESCHIEDENIS = 20  # 10 uitwisselingen
 
 opleiding = st.session_state.get("opleiding", "")
 instelling = st.session_state.get("instelling", "")
+instelling_naam = st.session_state.get("instelling_naam", "")
 bestandspad = st.session_state.get("bestandspad", "")
 crebo = st.session_state.get("crebo", "")
 
@@ -62,6 +64,8 @@ if "oer_systeem" not in st.session_state:
         (label, laad_instelling_bron_tekst(resolve_oer_pad(pad)))
         for label, pad in st.session_state.get("instelling_bron_paden", [])
     ]
+    domeinen = web_zoek_domeinen([{"naam": instelling_naam}]) if instelling_naam else []
+    st.session_state.oer_domeinen = domeinen
     st.session_state.oer_systeem = (
         bouw_systeem(
             oer_tekst,
@@ -71,6 +75,7 @@ if "oer_systeem" not in st.session_state:
             crebo=crebo,
             skills_tekst=skills_tekst,
             instelling_bronnen=instelling_bronnen,
+            web_zoeken=bool(domeinen),
         )
         if oer_tekst
         else ""
@@ -104,7 +109,10 @@ if vraag:
             with st.container(key="chatantwoord_stream"):
                 placeholder = st.empty()
                 for fragment in genereer_antwoord(
-                    ai_client(), st.session_state.oer_systeem, berichten
+                    ai_client(),
+                    st.session_state.oer_systeem,
+                    berichten,
+                    web_search_domeinen=st.session_state.get("oer_domeinen") or None,
                 ):
                     antwoord += fragment
                     placeholder.markdown(antwoord)
