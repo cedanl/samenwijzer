@@ -49,6 +49,18 @@ def test_laad_context_geeft_systeem_en_label():
     assert isinstance(domeinen, list)
 
 
+def test_laad_context_student_soorten_minstens_zo_breed():
+    """Meer instelling-soorten (student) → minstens zoveel context als publiek (examenreglement)."""
+    from app_fastapi.context import STUDENT_SOORTEN
+
+    oer_id = _leesbare_oer_id()
+    if oer_id is None:
+        pytest.skip("Geen geïndexeerde OER met leesbare tekst beschikbaar.")
+    publiek, _, _ = laad_context([oer_id])
+    student, _, _ = laad_context([oer_id], STUDENT_SOORTEN)
+    assert len(student) >= len(publiek)
+
+
 # ── sessie ────────────────────────────────────────────────────────────────────
 def test_sessie_voeg_beurt_kapt_op_max():
     from app_fastapi.sessie import MAX_GESCHIEDENIS, Sessie

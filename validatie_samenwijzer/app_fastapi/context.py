@@ -22,6 +22,26 @@ from validatie_samenwijzer.chat import (
 )
 from validatie_samenwijzer.opleiding import schoon_opleiding_naam
 
+# Welke instellingsbrede documenten als bron meegaan, per context — mirror van
+# app/main.py (_STUDENT_SOORTEN/_MENTOR_SOORTEN) en 0_oer_vraag.py (publiek = enkel
+# examenreglement). Labels komen uit db.INSTELLING_SOORTEN (bron van waarheid).
+PUBLIEK_SOORTEN = ("examenreglement",)
+STUDENT_SOORTEN = (
+    "examenreglement",
+    "studentenstatuut",
+    "bindend_studieadvies",
+    "klachtenregeling",
+    "algemene_informatie",
+)
+MENTOR_SOORTEN = (
+    "examenreglement",
+    "begeleidingsbeleid",
+    "studentenstatuut",
+    "bindend_studieadvies",
+    "klachtenregeling",
+    "algemene_informatie",
+)
+
 
 def _conn() -> sqlite3.Connection:
     return db.get_connection(os.environ.get("DB_PATH", "data/validatie.db"))
@@ -48,7 +68,9 @@ def _oer_blok(oer_id: int):
     return row, tekst
 
 
-def laad_context(oer_ids: list[int]) -> tuple[str, list[str], list[str]]:
+def laad_context(
+    oer_ids: list[int], soorten: tuple[str, ...] = PUBLIEK_SOORTEN
+) -> tuple[str, list[str], list[str]]:
     """Geef (gecombineerde system-prompt, labels, web-zoek-domeinen) voor de gekozen OER's.
 
     Spiegelt 0_oer_vraag.py: per OER de volledige tekst + KD + skills + examenreglement
@@ -66,11 +88,13 @@ def laad_context(oer_ids: list[int]) -> tuple[str, list[str], list[str]]:
         crebo = row["crebo"]
 
         instelling_bronnen: list[tuple[str, str]] = []
-        regl = db.haal_instelling_document_op(conn, row["instelling_id"], "examenreglement")
-        if regl is not None:
-            regl_tekst = laad_instelling_bron_tekst(resolve_oer_pad(regl["bestandspad"]))
-            if regl_tekst:
-                instelling_bronnen.append(("Examenreglement", regl_tekst))
+        for soort in soorten:
+            doc = db.haal_instelling_document_op(conn, row["instelling_id"], soort)
+            if doc is None or not doc["geindexeerd"]:
+                continue
+            doc_tekst = laad_instelling_bron_tekst(resolve_oer_pad(doc["bestandspad"]))
+            if doc_tekst:
+                instelling_bronnen.append((db.INSTELLING_SOORTEN[soort], doc_tekst))
 
         items.append(
             {
