@@ -46,3 +46,47 @@ def test_laad_context_geeft_systeem_en_label():
     assert systeem and len(systeem) > 500
     assert len(labels) == 1 and " · " in labels[0]
     assert isinstance(domeinen, list)
+
+
+# ── sessie ────────────────────────────────────────────────────────────────────
+def test_sessie_voeg_beurt_kapt_op_max():
+    from app_fastapi.sessie import MAX_GESCHIEDENIS, Sessie
+
+    s = Sessie()
+    for i in range(MAX_GESCHIEDENIS):  # elk = 2 berichten → ruim over de cap
+        s.voeg_beurt_toe(f"v{i}", f"a{i}")
+    assert len(s.chat_history) == MAX_GESCHIEDENIS
+    assert s.chat_history[-1]["content"].startswith("a")  # nieuwste behouden
+
+
+def test_sessie_reset_leegt_alles():
+    from app_fastapi.sessie import Sessie
+
+    s = Sessie(oer_systeem="x", oer_labels=["l"], oer_ids=[1])
+    s.voeg_beurt_toe("v", "a")
+    s.reset()
+    assert s.chat_history == [] and s.oer_systeem is None and s.oer_ids == []
+
+
+# ── api (geen AI-call) ─────────────────────────────────────────────────────────
+def _client():
+    from fastapi.testclient import TestClient
+
+    from app_fastapi.main import app
+
+    return TestClient(app)
+
+
+def test_api_index_serveert_landing():
+    r = _client().get("/")
+    assert r.status_code == 200 and "/static/app.css" in r.text
+
+
+def test_api_vraag_zonder_match_geeft_intake():
+    r = _client().post("/api/vraag", json={"vraag": "zxcvqwer onbekende instelling blabla"})
+    assert r.status_code == 200 and r.json()["modus"] == "intake"
+
+
+def test_api_reset_ok():
+    r = _client().post("/api/reset")
+    assert r.status_code == 200 and r.json()["ok"] is True

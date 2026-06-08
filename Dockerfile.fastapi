@@ -1,0 +1,28 @@
+# POC-image voor de FastAPI-variant van "De digitale gids" (publieke OER-chat).
+# NIET gekoppeld aan fly.toml — de productie-deploy gebruikt nog de Streamlit-`Dockerfile`.
+# Deze Dockerfile bewijst alleen dat de FastAPI-POC identiek te containeriseren is.
+# Bouwen (build-context = repo-root, net als de Streamlit-Dockerfile):
+#   docker build -f Dockerfile.fastapi -t digitale-gids-fastapi .
+# Of, om 'm te deployen i.p.v. Streamlit: zet `dockerfile = "Dockerfile.fastapi"` in fly.toml.
+FROM python:3.13-slim
+
+RUN pip install --no-cache-dir uv
+WORKDIR /app/validatie_samenwijzer
+
+# Code + vooraf gebouwde validatie.db (in data/) + skills (data/skills)
+COPY validatie_samenwijzer/ ./
+RUN uv sync --frozen --no-dev
+
+# Read-only referentiedata (oeren + KD-markdown), zoals de Streamlit-image.
+COPY oeren/ /app/oeren/
+COPY kwalificatiedossiers/ /app/kwalificatiedossiers/
+
+ENV OEREN_PAD=/app/oeren \
+    KWALDOSSIERS_PAD=/app/kwalificatiedossiers/pdfs \
+    SKILLS_PAD=/app/validatie_samenwijzer/data/skills \
+    DB_PATH=/app/validatie_samenwijzer/data/validatie.db \
+    SESSION_SECRET=change-me-in-fly-secrets
+
+EXPOSE 8080
+CMD ["uv", "run", "--no-dev", "uvicorn", "app_fastapi.main:app", \
+     "--host", "0.0.0.0", "--port", "8080"]

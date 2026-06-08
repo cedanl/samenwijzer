@@ -30,12 +30,16 @@ def _conn() -> sqlite3.Connection:
 @lru_cache(maxsize=64)
 def _oer_blok(oer_id: int):
     """Geef (db-rij, geladen OER-tekst) voor één OER, of None als niet leesbaar/onbekend."""
-    row = _conn().execute(
-        """SELECT o.*, i.display_naam, i.naam
+    row = (
+        _conn()
+        .execute(
+            """SELECT o.*, i.display_naam, i.naam
            FROM oer_documenten o JOIN instellingen i ON i.id = o.instelling_id
            WHERE o.id = ?""",
-        (oer_id,),
-    ).fetchone()
+            (oer_id,),
+        )
+        .fetchone()
+    )
     if row is None:
         return None
     tekst = laad_oer_tekst(resolve_oer_pad(row["bestandspad"]))
