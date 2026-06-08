@@ -184,7 +184,10 @@ def extraheer_kerntaken(tekst: str) -> list[dict]:
 
         # Filter garbled fragments uit afgevlakte tabellen: een echte beschrijving
         # heeft minstens 12 letters en bevat lowercase tekst (niet alleen codes
-        # of cijfers zoals "1", "W2", "TE").
+        # of cijfers zoals "1", "W2", "TE"). Een pipe verraadt een markdown-tabelrij
+        # waarin de code toevallig vooraan staat (bv. "| | Examenonderdeel 1 | ... |").
+        if "|" in naam:
+            continue
         if sum(1 for c in naam if c.isalpha()) < 12:
             continue
         if not any(c.islower() for c in naam):

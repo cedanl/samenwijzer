@@ -67,6 +67,10 @@ def extraheer_kerntaken(tekst: str) -> list[dict]:
     for m in _KT_PATROON.finditer(tekst):
         code = m.group(1).strip()
         naam = m.group(2).strip()[:200]
+        # Een pipe verraadt een markdown-tabelrij waarin de code toevallig vooraan
+        # staat (bv. "| | Examenonderdeel 1 | ... |") — geen echte kerntaaknaam.
+        if "|" in naam:
+            continue
         if "werkproces" in code.lower() or re.match(r"B\d+-K\d+-W\d+", code):
             type_ = "werkproces"
         else:
