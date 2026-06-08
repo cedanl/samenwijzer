@@ -90,3 +90,76 @@ def test_api_vraag_zonder_match_geeft_intake():
 def test_api_reset_ok():
     r = _client().post("/api/reset")
     assert r.status_code == 200 and r.json()["ok"] is True
+
+
+# ── auth / ingelogde pagina's (skip als seed-DB ontbreekt) ─────────────────────
+def _student_met_mentor():
+    """(studentnummer, student_id, mentor_naam, mentor_id) of None."""
+    import os
+
+    from validatie_samenwijzer import db
+
+    db_path = os.environ.get("DB_PATH", "data/validatie.db")
+    if not os.path.exists(db_path):
+        return None
+    conn = db.get_connection(db_path)
+    row = conn.execute(
+        """SELECT s.studentnummer, s.id AS sid, m.naam AS mnaam, m.id AS mid
+           FROM studenten s JOIN mentoren m ON m.id = s.mentor_id LIMIT 1"""
+    ).fetchone()
+    return tuple(row) if row else None
+
+
+def test_login_student_en_paginas():
+    info = _student_met_mentor()
+    if info is None:
+        pytest.skip("Seed-DB ontbreekt.")
+    studentnummer = info[0]
+    c = _client()
+    r = c.post(
+        "/login",
+        data={"rol": "student", "identifier": studentnummer, "wachtwoord": "Welkom123"},
+        follow_redirects=False,
+    )
+    assert r.status_code == 303 and r.headers["location"] == "/student"
+    assert c.get("/student").status_code == 200
+    assert c.get("/student/voortgang").status_code == 200
+    assert c.get("/student/studiegids").status_code == 200
+
+
+def test_login_fout_wachtwoord_redirect():
+    info = _student_met_mentor()
+    if info is None:
+        pytest.skip("Seed-DB ontbreekt.")
+    r = _client().post(
+        "/login",
+        data={"rol": "student", "identifier": info[0], "wachtwoord": "fout"},
+        follow_redirects=False,
+    )
+    assert r.headers["location"] == "/login?fout=1"
+
+
+def test_mentor_idor_guard():
+    info = _student_met_mentor()
+    if info is None:
+        pytest.skip("Seed-DB ontbreekt.")
+    import os
+
+    from validatie_samenwijzer import db
+
+    _, eigen_sid, mnaam, mid = info
+    conn = db.get_connection(os.environ.get("DB_PATH", "data/validatie.db"))
+    vreemd = conn.execute(
+        "SELECT id FROM studenten WHERE mentor_id IS NOT ? OR mentor_id IS NULL LIMIT 1", (mid,)
+    ).fetchone()
+    c = _client()
+    c.post(
+        "/login",
+        data={"rol": "mentor", "identifier": mnaam, "wachtwoord": "Welkom123"},
+        follow_redirects=False,
+    )
+    assert c.get(f"/mentor/student/{eigen_sid}").status_code == 200  # eigen student → ok
+    if vreemd is not None:
+        # vreemde student → geweerd (redirect naar /mentor)
+        r = c.get(f"/mentor/student/{vreemd['id']}", follow_redirects=False)
+        assert r.status_code == 303 and r.headers["location"] == "/mentor"

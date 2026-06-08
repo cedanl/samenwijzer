@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}{{ prof.naam }} · Begeleidingssessie{% endblock %}
+{% block content %}
+<a href="/mentor" class="terug">← Mijn studenten</a>
+<div class="pagehead">
+  <div class="kicker mono">Begeleidingssessie</div>
+  <h1 class="serif">{{ prof.naam }}</h1>
+  <div class="labelrow"><span class="ov-label">{{ prof.opleiding_label }}</span></div>
+</div>
+
+<div class="sessiegrid">
+  <aside class="profiel">
+    <div class="profblok">
+      <div class="statlabel mono">Voortgang</div>
+      <div class="statbig {{ prof.voortgang_kleur }}">{{ prof.voortgang_pct }}%</div>
+      <div class="bar"><div class="fill {{ prof.voortgang_kleur }}" style="width:{{ prof.voortgang_pct }}%"></div></div>
+      <div class="profmeta">BSA <b class="{{ prof.bsa_kleur }}">{{ prof.bsa_behaald }}/{{ prof.bsa_vereist }} uur</b> ({{ prof.bsa_pct }}%)</div>
+      <div class="profmeta">Ongeoorl. afwezigheid <b class="{{ prof.afwezigheid_kleur }}">{{ prof.afwezigheid }} uur</b></div>
+    </div>
+
+    {% if prof.kerntaken %}
+    <div class="profblok">
+      <div class="statlabel mono">Kerntaken</div>
+      {% for kt in prof.kerntaken %}
+      <div class="ktrow sm">
+        <div class="ktnaam">{{ kt.naam }}</div>
+        <div class="bar"><div class="fill {{ kt.kleur }}" style="width:{{ kt.score }}%"></div></div>
+        <div class="ktscore {{ kt.kleur }}">{{ kt.score }}</div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if prof.bespreekpunten %}
+    <div class="profblok bespreek">
+      <div class="statlabel mono">💡 Bespreekpunten</div>
+      {% for p in prof.bespreekpunten %}<div class="bespreekpunt">{{ p }}</div>{% endfor %}
+    </div>
+    {% endif %}
+  </aside>
+
+  <section class="chatpanel sessie">
+    <div class="paneltabs">
+      <button type="button" class="ptab actief" data-tab="chat">💬 Vraag &amp; antwoord</button>
+      <button type="button" class="ptab" data-tab="gids">📄 Volledige studiegids</button>
+    </div>
+    <div id="tab-chat">
+      <div class="thread" id="thread" data-scroll></div>
+      <div class="chatfoot">
+        <form class="ask" id="chatForm">
+          <input type="text" placeholder="Stel een vraag over {{ prof.naam.split(' ')[0] }}'s studiegids…" autocomplete="off" />
+          <button type="submit" class="iconbtn" aria-label="Vraag stellen">→</button>
+        </form>
+        <button class="linkbtn" id="resetBtn" type="button">Nieuw gesprek</button>
+      </div>
+    </div>
+    <div id="tab-gids" hidden>
+      <div class="pdf-frame open" id="frame" data-scroll></div>
+    </div>
+  </section>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+  mountInlineChat({ form: chatForm, thread: thread, resetBtn: resetBtn });
+  let gidsGeladen = false;
+  document.querySelectorAll(".ptab").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".ptab").forEach((b) => b.classList.toggle("actief", b === btn));
+      const gids = btn.dataset.tab === "gids";
+      document.getElementById("tab-chat").hidden = gids;
+      document.getElementById("tab-gids").hidden = !gids;
+      if (gids && !gidsGeladen) {
+        gidsGeladen = true;
+        mountStudiegids({{ prof.oer_id }}, document.getElementById("frame"));
+      }
+    });
+  });
+</script>
+{% endblock %}

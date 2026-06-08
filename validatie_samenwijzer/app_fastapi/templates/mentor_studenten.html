@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Mijn studenten · De digitale gids{% endblock %}
+{% block content %}
+<div class="pagehead">
+  <div class="kicker mono">Begeleiding</div>
+  <h1 class="serif">Mijn studenten</h1>
+  <p class="sub">{{ studenten|length }} student{{ "" if studenten|length == 1 else "en" }} gekoppeld aan {{ naam }}.</p>
+</div>
+{% if not studenten %}
+  <p class="sub">Geen studenten gekoppeld.</p>
+{% else %}
+<div class="studentgrid">
+  {% for st in studenten %}
+  <a class="studentcard" href="/mentor/student/{{ st.id }}">
+    <div class="snaam">{{ st.naam }}</div>
+    <div class="sopl mono">{{ st.opleiding_label }}</div>
+    <div class="bar"><div class="fill {{ st.voortgang_kleur }}" style="width:{{ st.voortgang_pct }}%"></div></div>
+    <div class="smeta">
+      <span class="{{ st.voortgang_kleur }}">Voortgang {{ st.voortgang_pct }}%</span> ·
+      <span class="{{ st.bsa_kleur }}">BSA {{ st.bsa_pct }}%</span> ·
+      <span class="{{ st.afwezigheid_kleur }}">afw {{ st.afwezigheid }}u</span>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

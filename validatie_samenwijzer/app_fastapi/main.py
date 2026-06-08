@@ -13,12 +13,19 @@ from pathlib import Path
 
 import anthropic
 from dotenv import load_dotenv
-from fastapi import FastAPI, Request
-from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
+from fastapi import FastAPI, Form, Request
+from fastapi.responses import (
+    FileResponse,
+    JSONResponse,
+    RedirectResponse,
+    StreamingResponse,
+)
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.middleware.sessions import SessionMiddleware
 
+from app_fastapi import data
+from app_fastapi.auth import auth_mentor, auth_student
 from app_fastapi.context import laad_context
 from app_fastapi.sessie import get_sessie
 from validatie_samenwijzer import db
@@ -154,5 +161,132 @@ def api_oer_bestand(oer_id: int):
 
 @app.post("/api/reset")
 def api_reset(request: Request):
-    get_sessie(request).reset()
+    s = get_sessie(request)
+    if s.rol:  # ingelogd: OER-context blijft, alleen het gesprek wist
+        s.nieuw_gesprek()
+    else:
+        s.reset()
     return JSONResponse({"ok": True})
+
+
+# ── Login / sessie ─────────────────────────────────────────────────────────────
+@app.get("/login")
+def login_form(request: Request, fout: int = 0):
+    return templates.TemplateResponse(request, "login.html", {"fout": bool(fout)})
+
+
+@app.post("/login")
+def login_post(
+    request: Request,
+    rol: str = Form(...),
+    identifier: str = Form(...),
+    wachtwoord: str = Form(...),
+):
+    s = get_sessie(request)
+    if rol == "student":
+        student = auth_student(identifier, wachtwoord)
+        if student:
+            s.uitloggen()
+            s.rol = "student"
+            s.gebruiker = {
+                "id": student["id"],
+                "naam": student["naam"],
+                "studentnummer": student["studentnummer"],
+            }
+            s.oer_systeem, s.oer_labels, s.domeinen = laad_context([student["oer_id"]])
+            s.oer_ids = [student["oer_id"]]
+            return RedirectResponse("/student", status_code=303)
+    elif rol == "mentor":
+        mentor = auth_mentor(identifier, wachtwoord)
+        if mentor:
+            s.uitloggen()
+            s.rol = "mentor"
+            s.gebruiker = {"id": mentor["id"], "naam": mentor["naam"]}
+            return RedirectResponse("/mentor", status_code=303)
+    return RedirectResponse("/login?fout=1", status_code=303)
+
+
+@app.get("/uitloggen")
+def uitloggen(request: Request):
+    get_sessie(request).uitloggen()
+    return RedirectResponse("/", status_code=303)
+
+
+def _eis(request: Request, rol: str):
+    s = get_sessie(request)
+    return s if s.rol == rol else None
+
+
+# ── Student ─────────────────────────────────────────────────────────────────────
+@app.get("/student")
+def student_home(request: Request):
+    s = _eis(request, "student")
+    if not s:
+        return RedirectResponse("/login", status_code=303)
+    return templates.TemplateResponse(
+        request,
+        "student_assistent.html",
+        {"rol": "student", "naam": s.gebruiker["naam"], "labels": s.oer_labels},
+    )
+
+
+@app.get("/student/studiegids")
+def student_studiegids(request: Request):
+    s = _eis(request, "student")
+    if not s:
+        return RedirectResponse("/login", status_code=303)
+    return templates.TemplateResponse(
+        request,
+        "studiegids.html",
+        {
+            "oer_id": s.oer_ids[0] if s.oer_ids else None,
+            "labels": s.oer_labels,
+            "rol": "student",
+            "naam": s.gebruiker["naam"],
+        },
+    )
+
+
+@app.get("/student/voortgang")
+def student_voortgang(request: Request):
+    s = _eis(request, "student")
+    if not s:
+        return RedirectResponse("/login", status_code=303)
+    vg = data.voortgang_voor_studentnummer(s.gebruiker["studentnummer"])
+    return templates.TemplateResponse(
+        request, "voortgang.html", {"rol": "student", "vg": vg, "naam": s.gebruiker["naam"]}
+    )
+
+
+# ── Mentor ──────────────────────────────────────────────────────────────────────
+@app.get("/mentor")
+def mentor_home(request: Request):
+    s = _eis(request, "mentor")
+    if not s:
+        return RedirectResponse("/login", status_code=303)
+    studenten = data.studenten_van_mentor(s.gebruiker["id"])
+    return templates.TemplateResponse(
+        request,
+        "mentor_studenten.html",
+        {"rol": "mentor", "studenten": studenten, "naam": s.gebruiker["naam"]},
+    )
+
+
+@app.get("/mentor/student/{student_id}")
+def mentor_sessie(request: Request, student_id: int):
+    s = _eis(request, "mentor")
+    if not s:
+        return RedirectResponse("/login", status_code=303)
+    # IDOR-guard: een mentor mag alleen z'n eigen studenten openen.
+    if student_id not in {st["id"] for st in data.studenten_van_mentor(s.gebruiker["id"])}:
+        return RedirectResponse("/mentor", status_code=303)
+    prof = data.profiel_van_student(student_id)
+    s.actieve_student = prof
+    s.oer_systeem, s.oer_labels, s.domeinen = laad_context([prof["oer_id"]])
+    s.oer_ids = [prof["oer_id"]]
+    s.chat_history = []
+    return templates.TemplateResponse(
+        request,
+        "mentor_sessie.html",
+        {"rol": "mentor", "prof": prof, "labels": s.oer_labels, "naam": s.gebruiker["naam"]},
+    )

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Mijn studiegids · De digitale gids{% endblock %}
+{% block content %}
+<div class="pagehead">
+  <div class="kicker mono">De regels van je opleiding</div>
+  <h1 class="serif">Mijn studiegids</h1>
+  <div class="labelrow">{% for l in labels %}<span class="ov-label">{{ l }}</span>{% endfor %}</div>
+</div>
+{% if oer_id %}
+  <div class="pdf-frame open" id="frame" data-scroll></div>
+{% else %}
+  <p class="sub">Geen studiegids gekoppeld aan je profiel. Vraag je mentor of beheerder.</p>
+{% endif %}
+{% endblock %}
+{% block scripts %}
+{% if oer_id %}<script>mountStudiegids({{ oer_id }}, document.getElementById("frame"));</script>{% endif %}
+{% endblock %}
