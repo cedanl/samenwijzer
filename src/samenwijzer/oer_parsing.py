@@ -56,27 +56,49 @@ _KT_PATROON = re.compile(
 def extraheer_kerntaken(tekst: str) -> list[dict]:
     """Haal kerntaken en werkprocessen uit OER-tekst via regex.
 
+    Filtert garbled fragments (geen complete zin) en dedupliceert binnen
+    één document — dezelfde kerntaak komt vaak meerdere keren in een OER
+    voor (introductie + tabel + uitwerking). Gespiegeld uit
+    ``validatie_samenwijzer/src/validatie_samenwijzer/ingest.py`` — houd gelijk.
+
     Returns:
         Lijst van dicts met sleutels: code, naam, type ('kerntaak'|'werkproces'), volgorde.
     """
     if not tekst:
         return []
 
+    seen: set[tuple[str, str, str]] = set()
     resultaten = []
     volgorde = 0
     for m in _KT_PATROON.finditer(tekst):
         code = m.group(1).strip()
         naam = m.group(2).strip()[:200]
-        # Een pipe verraadt een markdown-tabelrij waarin de code toevallig vooraan
-        # staat (bv. "| | Examenonderdeel 1 | ... |") — geen echte kerntaaknaam.
+
+        # Filter garbled fragments uit afgevlakte tabellen: een echte beschrijving
+        # heeft minstens 12 letters en bevat lowercase tekst (niet alleen codes
+        # of cijfers zoals "1", "W2", "TE"). Een pipe verraadt een markdown-tabelrij
+        # waarin de code toevallig vooraan staat (bv. "| | Examenonderdeel 1 | ... |").
         if "|" in naam:
             continue
-        if "werkproces" in code.lower() or re.match(r"B\d+-K\d+-W\d+", code):
-            type_ = "werkproces"
-        else:
-            type_ = "kerntaak"
+        if sum(1 for c in naam if c.isalpha()) < 12:
+            continue
+        if not any(c.islower() for c in naam):
+            continue
+
+        type_ = (
+            "werkproces"
+            if "werkproces" in code.lower() or re.match(r"B\d+-K\d+-W\d+", code)
+            else "kerntaak"
+        )
+
+        sleutel = (type_, code, naam)
+        if sleutel in seen:
+            continue
+        seen.add(sleutel)
+
         resultaten.append({"code": code, "naam": naam, "type": type_, "volgorde": volgorde})
         volgorde += 1
+
     return resultaten
 
 
