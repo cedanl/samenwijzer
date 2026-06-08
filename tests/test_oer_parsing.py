@@ -64,6 +64,23 @@ def test_extraheer_kerntaken_negeert_overige_regels():
     assert resultaten[0]["code"] == "B1-K1"
 
 
+def test_extraheer_kerntaken_filtert_garbled_fragments():
+    # Te kort / geen lowercase / tabelfragment → geweerd; echte beschrijving blijft.
+    tekst = (
+        "B1-K1: Bieden van zorg en ondersteuning\n"
+        "B1-K2: W2\n"
+        "B1-K3: ALLEEN HOOFDLETTERS ZONDER LOWERCASE\n"
+        "B1-K4-W1 |  | Examenonderdeel 1 |  | Cijfer 30% |\n"
+    )
+    codes = {r["code"] for r in extraheer_kerntaken(tekst)}
+    assert codes == {"B1-K1"}
+
+
+def test_extraheer_kerntaken_dedupt_binnen_document():
+    tekst = "B1-K1: Bieden van zorg en ondersteuning\nB1-K1: Bieden van zorg en ondersteuning\n"
+    assert len(extraheer_kerntaken(tekst)) == 1
+
+
 def test_extraheer_schone_naam_davinci():
     naam = extraheer_opleidingsnaam("25655_BOL_2025__verzorgende-ig.md")
     assert "Verzorgende" in naam
