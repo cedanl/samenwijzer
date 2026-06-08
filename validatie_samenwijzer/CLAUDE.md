@@ -287,6 +287,18 @@ nul OER-kerntaken, dus instellingen die hun kerntaken wél in de OER hebben blij
 Bestanden zonder crebo in naam (Aeres, Utrecht) worden hernoemd via `scripts/rename_oers.py`
 dat de titelpagina uitleest.
 
+**Deltion = gestructureerde markdown** (`scripts/fetch_deltion.py`): de Deltion-studiegidsen komen
+uit de SQill-publisher-API als rijke HTML en worden via **markitdown** naar gestructureerde
+markdown (koppen, tabellen, lijsten, links, logo) geschreven — niet meer platgeslagen met
+BeautifulSoup `get_text`. Daarom tolereert `_KT_PATROON` nu een optionele markdown lijst-marker
+(`* `/`+ `/`- `), zodat de `B1-K1-W1`-codes in lijstitems blijven extracten; en weert
+`extraheer_kerntaken` namen met een `|` (markdown-tabelrij waar de code toevallig vooraan staat).
+
+**Bestandspad-selectie**: bij meerdere bestanden per crebo/leerweg/cohort (bv. Da Vinci's gescande
+Examenplan náást een tekstrijke MJP) werkt `_resolveer_oer` de `bestandspad` pas bij **ná bewezen
+leesbare tekst** (PDF-prioriteit behouden) — een tekstloze, gescande PDF wordt dus nooit de bron
+als er een tekstrijke variant bestaat.
+
 **Opleidingsnaam-afleiding**: primair de bestandsnaam-stem; bevat die geen naam (bv. de kale
 Da Vinci `25882BOL2025Examenplan.pdf`), dan leest `_extraheer_opleiding_uit_pdf` de titelpagina —
 herkent zowel het ROC Utrecht-format (`Kwalificatie (profiel): …`) als de drie Da Vinci-formaten
@@ -338,6 +350,27 @@ Login: studenten op studentnummer, mentoren op naam.
 | `5_begeleidingssessie.py` | mentor | Profiel + twee tabs: OER-chat en volledig OER bekijken |
 | `9_beheer.py` | dev | Sync/ingest/seed/status (alleen als `BEHEER_ENABLED=true`) |
 | `uitloggen.py` | beide | Sessie wissen + redirect naar `/` |
+
+### FastAPI-frontend-POC (`app_fastapi/`)
+
+Náást de Streamlit-app leeft een **proof-of-concept FastAPI-frontend** (`app_fastapi/`, eigen
+poort 8504: `uv run uvicorn app_fastapi.main:app --port 8504`). Reden: de mock-up-kwaliteit
+(`docs/mockups/oer-vraag-landing.html`) is in Streamlit structureel niet haalbaar (geen DOM-bezit,
+geen page-JS, rerun-model). De POC vervangt **alleen de UI-schil** en hergebruikt de Python-laag
+(`chat.py`, `db.py`, `_ai.py`, `auth.py`) **ongewijzigd** — die importeren geen streamlit.
+
+- `main.py` (routes + SSE-chat), `context.py` (OER-context-orchestrator: OER + KD + skills +
+  instellingsdocumenten per rol via `PUBLIEK/STUDENT/MENTOR_SOORTEN` + web-zoek-domeinen),
+  `auth.py` (login-hergebruik), `data.py` (voortgang/studenten/profiel), `sessie.py` (server-side
+  sessie via signed-cookie `sid`), `static/chat.js` (escapende markdown-renderer + SSE + viewer —
+  één plek voor de security-gevoelige rendering), templates.
+- **Toegangspoort**: de hele app achter `ALGEMEEN_WACHTWOORD` (`.env`); login student/mentor erachter.
+- Streaming via `text/event-stream`; dezelfde `_ai._client()` → prompt-cache blijft werken.
+- Tests: `tests/test_fastapi_poc.py`. Draait náást Streamlit (8503 ongemoeid).
+- **Status**: POC op `main`. `Dockerfile.fastapi` is voorbereid maar **niet** aan `fly.toml`
+  gekoppeld — de productie-deploy gebruikt nog de Streamlit-`Dockerfile`. Open vóór een
+  FastAPI-deploy: sessiestore met TTL/gedeeld (i.p.v. in-memory) + cookie-hardening
+  (`SESSION_SECRET` verplicht, `https_only`). Zie `docs/plans/2026-06-08-fastapi-poc-publieke-oer-chat.md`.
 
 ### AI-isolatie
 
