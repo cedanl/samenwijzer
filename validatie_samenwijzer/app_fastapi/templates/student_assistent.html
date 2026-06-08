@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Stel je vraag · De digitale gids{% endblock %}
+{% block content %}
+<div class="pagehead">
+  <div class="kicker mono">Stel je vraag</div>
+  <h1 class="serif">Hoi {{ naam.split(' ')[0] }} 👋</h1>
+  <p class="sub">Antwoord uit je studiegids — mét bron, vindplaats én woordelijk citaat, zodat je het zelf kunt nazoeken.</p>
+  <div class="labelrow">{% for l in labels %}<span class="ov-label">{{ l }}</span>{% endfor %}</div>
+</div>
+
+<div class="chatpanel">
+  <div class="thread" id="thread" data-scroll></div>
+  <div class="chatfoot">
+    <form class="ask" id="chatForm">
+      <input type="text" placeholder="Stel een vraag over je opleiding…" autocomplete="off" />
+      <button type="submit" class="iconbtn" aria-label="Vraag stellen">→</button>
+    </form>
+    <button class="linkbtn" id="resetBtn" type="button">Nieuw gesprek</button>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>mountInlineChat({ form: chatForm, thread: thread, resetBtn: resetBtn });</script>
+{% endblock %}

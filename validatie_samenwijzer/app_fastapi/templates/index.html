@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>De digitale gids — stel je vraag over je studiegids</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/static/app.css" />
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="glyph">§</span>De digitale gids</div>
+    <div class="nav-right">
+      <a href="#werkt" class="mono">Zo werkt het</a>
+      <a href="#bronnen" class="mono">Bronnen</a>
+      <a href="#start" class="nav-cta">Stel je vraag</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <div class="overline mono rise">De regels van je opleiding · de assistent</div>
+      <h1 class="lede rise" style="transition-delay:.08s">
+        Stel je vraag.<br>
+        <span class="it">Je studiegids</span> antwoordt —
+        <span class="small">mét de regel erbij.</span>
+      </h1>
+      <p class="sub rise" style="transition-delay:.16s">
+        Je studiegids — de regels van je opleiding — is soms honderd pagina's. Vraag in
+        gewone taal naar je <b>BSA</b>, je <b>stage</b> of je <b>herkansing</b> — en krijg
+        antwoord mét bron, vindplaats én woordelijk citaat, zodat je het zelf kunt nazoeken.
+      </p>
+      <div class="rise" style="transition-delay:.24s" id="start">
+        <form class="ask" data-ask>
+          <input type="text" placeholder="Bijv. Hoeveel punten heb ik nodig voor mijn BSA?" autocomplete="off" />
+          <button type="submit" aria-label="Vraag stellen">→</button>
+        </form>
+        <div class="chips">
+          <button class="chip" type="button">Wanneer krijg ik een bindend studieadvies?</button>
+          <button class="chip" type="button">Hoe vaak mag ik herkansen?</button>
+          <button class="chip" type="button">Telt mijn stage mee voor mijn diploma?</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="artifact rise" style="transition-delay:.3s">
+      <div class="doc">
+        <span class="stamp">STUDIEGIDS · COHORT '25</span>
+        <h4>Je studiegids</h4>
+        <div class="docmeta">Hoofdstuk 4 — Studievoortgang</div>
+        <div class="l w1"></div><div class="l w2"></div>
+        <div class="arttag">ARTIKEL 4.3 — BINDEND STUDIEADVIES</div>
+        <p class="clause">De student ontvangt aan het einde van het eerste jaar een
+          <span class="mark" id="m-doc">bindend studieadvies indien minder dan 40 studiepunten zijn behaald</span>.</p>
+        <div class="l w4"></div><div class="l w3"></div>
+      </div>
+      <div class="float-quote">
+        <span class="mono">Volgens de OER · art. 4.3</span>
+        "…indien minder dan 40 studiepunten zijn behaald."
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="werkt">
+  <div class="wrap">
+    <div class="seclabel mono rise">Zo werkt het</div>
+    <h2 class="sec rise" style="transition-delay:.06s">Geen zoekfunctie. <span class="it">Een gesprek.</span></h2>
+    <p class="sec-intro rise" style="transition-delay:.12s">
+      Je hoeft niet te weten waar iets staat. Je hoeft niet eens te weten welke studiegids van jou is —
+      de assistent vraagt ernaar als dat nodig is.
+    </p>
+    <div class="steps">
+      <div class="step rise"><span class="num">01</span><h3>Stel je vraag in gewone taal</h3><p>Type wat je wilt weten. Geen vaktermen of artikelnummers nodig.</p><span class="tag">Vrije tekst</span></div>
+      <div class="step rise" style="transition-delay:.1s"><span class="num">02</span><h3>De assistent vindt jouw studiegids</h3><p>Op basis van instelling, opleiding, leerweg (BOL/BBL) en cohortjaar — of hij vraagt ernaar.</p><span class="tag">Intake · max 3 studiegidsen</span></div>
+      <div class="step rise" style="transition-delay:.2s"><span class="num">03</span><h3>Antwoord mét bewijs</h3><p>Elke claim krijgt een bron, een vindplaats en een woordelijk citaat — verifieerbaar.</p><span class="tag">Bron · vindplaats · citaat</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="demo-band">
+  <div class="wrap">
+    <div class="seclabel mono rise">Het verschil</div>
+    <h2 class="sec rise" style="transition-delay:.06s">Geen verzonnen antwoorden. <span class="it">Citaten.</span></h2>
+    <div class="demo-grid">
+      <div class="demo-copy rise" style="transition-delay:.1s">
+        <p>De meeste chatbots klinken zeker — ook als ze het mis hebben. Bij je studiegids kan dat niet: het is een juridisch bindend document.</p>
+        <p>Daarom mag deze assistent niets beweren zonder bewijs. Elk antwoord noemt de <b style="color:var(--paper)">bron</b>, de <b style="color:var(--paper)">vindplaats</b> en een <b style="color:var(--paper)">woordelijk citaat</b> tussen aanhalingstekens.</p>
+        <p class="promise">Klopt het niet met de tekst? Dan zie je dat meteen — het citaat staat erbij.</p>
+      </div>
+      <div class="convo rise" style="transition-delay:.16s">
+        <div class="bubble-q">Krijg ik een bindend studieadvies als ik mijn punten niet haal?</div>
+        <div class="bubble-a">
+          <span class="src">Volgens de OER</span>
+          Ja. Aan het einde van je eerste studiejaar geeft je opleiding een bindend studieadvies. Dat advies is negatief als je onder de norm van 40 studiepunten blijft.
+          <div class="cite">
+            <span class="find">Onderwijs- en examenregeling — artikel 4.3</span>
+            <q>De student ontvangt aan het einde van het eerste jaar een bindend studieadvies indien minder dan 40 studiepunten zijn behaald.</q>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="bronnen">
+  <div class="wrap">
+    <div class="seclabel mono rise">De bronnen</div>
+    <h2 class="sec rise" style="transition-delay:.06s">Vier bronnen, <span class="it">één antwoord.</span></h2>
+    <p class="sec-intro rise" style="transition-delay:.12s">Je studiegids is leidend. Behandelt die je vraag niet of onvoldoende, dan put de assistent uit drie aanvullende, even goed benoemde bronnen.</p>
+    <div class="src-grid">
+      <div class="srccard primary rise"><span class="lead">Leidend</span><span class="idx">01</span><h4>Je studiegids</h4><p>De volledige regels van je opleiding (officieel: de OER) — als hele tekst, niet als fragment.</p></div>
+      <div class="srccard rise" style="transition-delay:.08s"><span class="idx">02</span><h4>Kwalificatie&shy;dossier</h4><p>Het landelijke dossier achter je opleiding — geraadpleegd als je studiegids het onderwerp niet dekt.</p></div>
+      <div class="srccard rise" style="transition-delay:.16s"><span class="idx">03</span><h4>Skills&shy;taxonomie</h4><p>Welke vaardigheden horen bij je beroep — uit CompetentNL of ESCO, met de exacte skill-naam.</p></div>
+      <div class="srccard rise" style="transition-delay:.24s"><span class="idx">04</span><h4>Examen&shy;reglement</h4><p>De instellingsbrede regeling van je school — even bindend als je studiegids, dus een eigen bron.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <h2 class="sec rise">Wat wil je <span class="it">weten?</span></h2>
+    <div class="rise" style="transition-delay:.1s">
+      <form class="ask" data-ask>
+        <input type="text" placeholder="Stel een vraag over jouw opleiding…" autocomplete="off" />
+        <button type="submit" aria-label="Vraag stellen">→</button>
+      </form>
+      <div class="chips">
+        <button class="chip" type="button">Wat is mijn slaag-zakregeling?</button>
+        <button class="chip" type="button">Hoeveel uur stage moet ik lopen?</button>
+        <button class="chip" type="button">Mag ik een vak vrijstellen?</button>
+      </div>
+      <div class="multi-note">Tot 3 studiegidsen tegelijk vergelijken · geen account nodig</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand">De digitale gids<span style="color:var(--vermilion)">.</span></div>
+    <div class="mono">CEDA × Npuls · Studiesucces in het MBO</div>
+    <div class="mono">Antwoorden zijn indicatief — je studiegids blijft leidend</div>
+  </div>
+</footer>
+
+<!-- ══ CHAT-OVERLAY ══ -->
+<div class="overlay" id="overlay">
+  <div class="ov-head">
+    <div class="wrap">
+      <div class="brand"><span class="glyph">§</span>De digitale gids</div>
+      <div class="ov-labels" id="ovLabels"></div>
+      <button class="ov-pdfbtn" id="ovPdfBtn" style="display:none">📄 Bekijk studiegids</button>
+      <button class="ov-reset" id="ovReset">Nieuw gesprek</button>
+    </div>
+  </div>
+  <div class="pdf-frame" id="pdfFrame" style="display:none"></div>
+  <div class="ov-body" data-scroll>
+    <div class="wrap"><div class="thread" id="thread"></div></div>
+  </div>
+  <div class="ov-foot">
+    <div class="wrap">
+      <div id="picker"></div>
+      <form class="ask" id="ovAsk">
+        <input type="text" placeholder="Stel een vraag over jouw opleiding…" autocomplete="off" />
+        <button type="submit" class="iconbtn" aria-label="Vraag stellen">→</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="/static/chat.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>

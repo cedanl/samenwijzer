@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Inloggen · De digitale gids</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/static/app.css" />
+</head>
+<body class="loginpage">
+  <form class="loginbox" method="post" action="/login">
+    <div class="brand"><span class="glyph">§</span>De digitale gids</div>
+    <h1 class="serif">Welkom terug</h1>
+    <p class="sub">Log in om je studiegids, voortgang en vragen op één plek te zien.</p>
+    {% if fout %}<div class="loginfout">Onjuiste inloggegevens. Probeer het opnieuw.</div>{% endif %}
+    <div class="rolradio">
+      <label><input type="radio" name="rol" value="student" checked> Student</label>
+      <label><input type="radio" name="rol" value="mentor"> Mentor</label>
+    </div>
+    <input name="identifier" placeholder="Studentnummer of mentornaam" autocomplete="username" required />
+    <input name="wachtwoord" type="password" placeholder="Wachtwoord" autocomplete="current-password" required />
+    <button type="submit" class="iconbtn wide">Inloggen</button>
+    <a href="/" class="terug">← Verder zonder inloggen (openbare vraagpagina)</a>
+  </form>
+</body>
+</html>

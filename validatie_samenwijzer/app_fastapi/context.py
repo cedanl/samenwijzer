@@ -1,0 +1,98 @@
+"""Dunne orchestrator: bouwt de chat-context uit gekozen OER-id's.
+
+Hergebruikt de loaders en system-prompt-bouwers uit ``chat.py`` ongewijzigd; dit is
+precies wat ``app/pages/0_oer_vraag.py`` nu inline doet, maar UI-vrij en testbaar.
+"""
+
+from __future__ import annotations
+
+import os
+import sqlite3
+from functools import lru_cache
+
+from validatie_samenwijzer import db
+from validatie_samenwijzer.chat import (
+    bouw_gecombineerd_systeem,
+    laad_instelling_bron_tekst,
+    laad_kwalificatiedossier_tekst,
+    laad_oer_tekst,
+    laad_skills_tekst,
+    resolve_oer_pad,
+    web_zoek_domeinen,
+)
+from validatie_samenwijzer.opleiding import schoon_opleiding_naam
+
+
+def _conn() -> sqlite3.Connection:
+    return db.get_connection(os.environ.get("DB_PATH", "data/validatie.db"))
+
+
+@lru_cache(maxsize=64)
+def _oer_blok(oer_id: int):
+    """Geef (db-rij, geladen OER-tekst) voor één OER, of None als niet leesbaar/onbekend."""
+    row = (
+        _conn()
+        .execute(
+            """SELECT o.*, i.display_naam, i.naam
+           FROM oer_documenten o JOIN instellingen i ON i.id = o.instelling_id
+           WHERE o.id = ?""",
+            (oer_id,),
+        )
+        .fetchone()
+    )
+    if row is None:
+        return None
+    tekst = laad_oer_tekst(resolve_oer_pad(row["bestandspad"]))
+    if not tekst.strip():
+        return None
+    return row, tekst
+
+
+def laad_context(oer_ids: list[int]) -> tuple[str, list[str], list[str]]:
+    """Geef (gecombineerde system-prompt, labels, web-zoek-domeinen) voor de gekozen OER's.
+
+    Spiegelt 0_oer_vraag.py: per OER de volledige tekst + KD + skills + examenreglement
+    (instellingsbrede bron), gecombineerd via ``bouw_gecombineerd_systeem``. Lege string
+    als geen enkele OER leesbaar is (→ chat valt terug op het lage-relevantie-bericht).
+    """
+    items: list[dict] = []
+    labels: list[str] = []
+    conn = _conn()
+    for oid in oer_ids[:3]:
+        res = _oer_blok(oid)
+        if res is None:
+            continue
+        row, tekst = res
+        crebo = row["crebo"]
+
+        instelling_bronnen: list[tuple[str, str]] = []
+        regl = db.haal_instelling_document_op(conn, row["instelling_id"], "examenreglement")
+        if regl is not None:
+            regl_tekst = laad_instelling_bron_tekst(resolve_oer_pad(regl["bestandspad"]))
+            if regl_tekst:
+                instelling_bronnen.append(("Examenreglement", regl_tekst))
+
+        items.append(
+            {
+                "tekst": tekst,
+                "opleiding": row["opleiding"],
+                "display_naam": row["display_naam"],
+                "naam": row["naam"],  # korte instelling-sleutel — voor web_zoek_domeinen
+                "leerweg": row["leerweg"],
+                "cohort": row["cohort"],
+                "crebo": crebo,
+                "dossier_tekst": laad_kwalificatiedossier_tekst(crebo),
+                "skills_tekst": laad_skills_tekst(crebo),
+                "instelling_bronnen": instelling_bronnen,
+            }
+        )
+        labels.append(
+            f"{row['display_naam']} · {schoon_opleiding_naam(row['opleiding'], crebo)} · "
+            f"{row['leerweg']} {row['cohort']}"
+        )
+
+    if not items:
+        return "", [], []
+    domeinen = web_zoek_domeinen(items)
+    systeem = bouw_gecombineerd_systeem(items, web_zoeken=bool(domeinen))
+    return systeem, labels, domeinen

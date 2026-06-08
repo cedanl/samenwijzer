@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Mijn voortgang · De digitale gids{% endblock %}
+{% block content %}
+<div class="pagehead">
+  <div class="kicker mono">Hoe sta je ervoor</div>
+  <h1 class="serif">Mijn voortgang</h1>
+</div>
+{% if not vg %}
+  <p class="sub">Geen voortgangsgegevens gevonden.</p>
+{% else %}
+<div class="statrow">
+  <div class="statcard">
+    <div class="statlabel mono">Voortgang</div>
+    <div class="statbig {{ vg.voortgang_kleur }}">{{ vg.voortgang_pct }}%</div>
+    <div class="bar"><div class="fill {{ vg.voortgang_kleur }}" style="width:{{ vg.voortgang_pct }}%"></div></div>
+  </div>
+  <div class="statcard">
+    <div class="statlabel mono">BSA (studiepunten)</div>
+    <div class="statbig {{ vg.bsa_kleur }}">{{ vg.bsa_behaald }}<span class="statsub">/{{ vg.bsa_vereist }} stp</span></div>
+    <div class="bar"><div class="fill {{ vg.bsa_kleur }}" style="width:{{ vg.bsa_pct }}%"></div></div>
+  </div>
+  <div class="statcard">
+    <div class="statlabel mono">Ongeoorl. afwezigheid</div>
+    <div class="statbig {{ vg.afwezigheid_kleur }}">{{ vg.afwezigheid }}<span class="statsub"> uur</span></div>
+  </div>
+</div>
+
+{% if vg.kerntaken %}
+<h2 class="serif sectie">Kerntaken</h2>
+<div class="ktlijst">
+  {% for kt in vg.kerntaken %}
+  <div class="ktrow">
+    <div class="ktnaam">{{ kt.naam }}</div>
+    <div class="bar"><div class="fill {{ kt.kleur }}" style="width:{{ kt.score }}%"></div></div>
+    <div class="ktscore {{ kt.kleur }}">{{ kt.score }}</div>
+  </div>
+  {% for wp in kt.werkprocessen %}
+  <div class="ktrow wp">
+    <div class="ktnaam">↳ {{ wp.naam }}</div>
+    <div class="bar"><div class="fill {{ wp.kleur }}" style="width:{{ wp.score }}%"></div></div>
+    <div class="ktscore {{ wp.kleur }}">{{ wp.score }}</div>
+  </div>
+  {% endfor %}
+  {% endfor %}
+</div>
+{% endif %}
+{% endif %}
+{% endblock %}
