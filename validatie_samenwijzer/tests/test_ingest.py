@@ -219,6 +219,18 @@ def test_verwerk_bestand_negeert_kd_als_oer_kerntaken_heeft(tmp_path, monkeypatc
     assert "B9-K9" not in codes
 
 
+def test_extraheer_kerntaken_weert_tabelfragmenten():
+    """Een markdown-tabelrij waar de code vooraan staat is geen echte kerntaaknaam."""
+    tekst = (
+        "B1-K1 - Begeleidt de client bij dagelijkse activiteiten\n"
+        "B1-K1-W4 |        | Examenonderdeel 1  |     | Cijfer  30%  |\n"
+    )
+    resultaten = extraheer_kerntaken(tekst)
+    codes = {r["code"] for r in resultaten}
+    assert "B1-K1" in codes  # echte naam blijft
+    assert "B1-K1-W4" not in codes  # tabelfragment wordt geweerd
+
+
 def test_verwerk_bestand_kiest_tekstrijk_bestand_als_bestandspad(tmp_path, conn):
     """Een tekstloos bestand (bv. gescande Examenplan-PDF) mag de bestandspad niet
     worden als er voor dezelfde crebo/leerweg/cohort een tekstrijke variant (MJP) is."""
