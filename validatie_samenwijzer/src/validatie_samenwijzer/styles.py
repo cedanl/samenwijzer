@@ -850,3 +850,22 @@ def render_footer() -> None:
         '<div class="footer">De digitale gids · CEDA 2026 · Npuls</div>',
         unsafe_allow_html=True,
     )
+
+
+def render_oer_markdown(tekst: str) -> None:
+    """Render OER-.md-inhoud leesbaar in de viewer.
+
+    Markitdown-output (de meeste instellingen) bevat blanco regels en/of #-koppen en
+    rendert ongewijzigd als markdown. De Deltion-scrape is platte BeautifulSoup-tekst
+    (één regel per alinea, geen blanco regels of koppen — bewust zo voor de kerntaken-
+    extractie); zonder ingreep plakt st.markdown die tot één muur tekst. Detecteer dat
+    platte geval en toon elke regel als eigen alinea zodat het leesbaar blijft.
+    """
+    import streamlit as st
+
+    is_plat = "\n\n" not in tekst and not any(
+        regel.lstrip().startswith("#") for regel in tekst.splitlines()
+    )
+    if is_plat:
+        tekst = "\n\n".join(regel.strip() for regel in tekst.splitlines() if regel.strip())
+    st.markdown(tekst)

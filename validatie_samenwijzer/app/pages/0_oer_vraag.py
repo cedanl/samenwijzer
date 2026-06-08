@@ -36,7 +36,12 @@ from validatie_samenwijzer.db import (  # noqa: E402
     haal_instelling_document_op,
 )
 from validatie_samenwijzer.ingest import extraheer_tekst_html  # noqa: E402
-from validatie_samenwijzer.styles import CSS, render_footer, schoon_opleiding_naam  # noqa: E402
+from validatie_samenwijzer.styles import (  # noqa: E402
+    CSS,
+    render_footer,
+    render_oer_markdown,
+    schoon_opleiding_naam,
+)
 
 st.markdown(CSS, unsafe_allow_html=True)
 
@@ -103,7 +108,7 @@ def _render_oer_bestand(pad: Path) -> None:
     elif suffix in {".html", ".htm"}:
         st.text_area("Inhoud studiegids", extraheer_tekst_html(pad), height=800)
     elif suffix == ".md":
-        st.markdown(pad.read_text(encoding="utf-8"))
+        render_oer_markdown(pad.read_text(encoding="utf-8"))
     else:
         st.warning(f"Bestandstype '{suffix}' wordt niet ondersteund.")
 

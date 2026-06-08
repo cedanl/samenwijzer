@@ -6,11 +6,14 @@ Per opleiding levert de zoek-API een ``report``-UUID; ``/reports/<uuid>/html`` g
 volledige studiegids — dé OER, inclusief kerntaken/werkprocessen (B1-K1-W1-codes),
 examenplan, BSA, examinering en LOB — als zelfstandige HTML.
 
-De studiegids wordt als platte tekst (BeautifulSoup) opgeslagen als ``.md`` naast de
-overige instellingen onder ``oeren/deltion_oeren/``. Reden voor ``.md`` en niet ``.pdf``:
-``chat.laad_oer_tekst`` leest alleen ``.md``/``.pdf`` als chat-context, en BeautifulSoup-
-tekst (één code+naam per regel) is de enige conversie waaruit ``ingest.extraheer_kerntaken``
-de kerntaken betrouwbaar haalt (markitdown rendert ze als tabellen → 0 kerntaken).
+De studiegids wordt via markitdown naar **gestructureerde Markdown** geconverteerd en
+opgeslagen als ``.md`` naast de overige instellingen onder ``oeren/deltion_oeren/``.
+Reden voor ``.md`` en niet ``.pdf``: ``chat.laad_oer_tekst`` leest alleen ``.md``/``.pdf``
+als chat-context. markitdown behoudt de koppen, tabellen en lijsten van de bron-HTML
+(zodat de viewer en de chat-context leesbaar blijven); de kerntaken (``B1-K1-W1``) staan
+in lijst-items en worden door ``ingest.extraheer_kerntaken`` herkend dankzij de
+lijst-marker-tolerante regex. (Eerdere versies sloegen de HTML plat met BeautifulSoup
+``get_text`` omdat de toenmalige regex lijst-markers niet aankon → onleesbare muur tekst.)
 
 Dit script is tevens het **regeneratie-recept**: ``oeren/deltion_oeren/`` is gitignored
 (Box-only, zoals de andere niet-publieke instellingen), dus andere machines draaien dit
@@ -32,10 +35,11 @@ import os
 import re
 import unicodedata
 from concurrent.futures import ThreadPoolExecutor
+from io import BytesIO
 from pathlib import Path
 
 import httpx
-from bs4 import BeautifulSoup
+from markitdown import MarkItDown
 
 log = logging.getLogger(__name__)
 
@@ -129,18 +133,17 @@ def _record(item: dict) -> dict | None:
     }
 
 
-def _haal_studiegids_tekst(client: httpx.Client, uuid: str) -> str:
-    """Haal de volledige studiegids-HTML op en geef de zichtbare tekst.
+def _haal_studiegids_md(client: httpx.Client, uuid: str) -> str:
+    """Haal de volledige studiegids-HTML op en converteer naar gestructureerde Markdown.
 
-    BeautifulSoup met newline-separator spiegelt ``ingest.extraheer_tekst_html``;
-    dit is de conversie waaruit de kerntaken-regex de B1-K1-W1-codes haalt.
+    markitdown behoudt koppen, tabellen en lijsten van de bron-HTML; de kerntaken
+    (B1-K1-W1) blijven als lijst-items staan en worden door ``ingest.extraheer_kerntaken``
+    herkend dankzij de lijst-marker-tolerante regex.
     """
     resp = client.get(REPORT_URL.format(uuid=uuid), timeout=30.0)
     resp.raise_for_status()
-    soup = BeautifulSoup(resp.text, "html.parser")
-    for tag in soup(["script", "style", "nav", "header", "footer"]):
-        tag.decompose()
-    return soup.get_text(separator="\n", strip=True)
+    resultaat = MarkItDown().convert_stream(BytesIO(resp.content), file_extension=".html")
+    return resultaat.text_content
 
 
 def main() -> None:
@@ -163,7 +166,7 @@ def main() -> None:
         def _fetch(rec: dict) -> dict:
             rec = dict(rec)
             try:
-                rec["tekst"] = _haal_studiegids_tekst(client, rec["uuid"])
+                rec["tekst"] = _haal_studiegids_md(client, rec["uuid"])
             except httpx.HTTPError as exc:
                 log.warning("Studiegids %s (%s) mislukt: %s", rec["crebo"], rec["naam"], exc)
                 rec["tekst"] = ""

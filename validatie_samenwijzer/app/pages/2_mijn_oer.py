@@ -15,6 +15,7 @@ from validatie_samenwijzer.styles import (  # noqa: E402
     CSS,
     render_footer,
     render_nav,
+    render_oer_markdown,
     render_student_info,
 )
 
@@ -55,7 +56,7 @@ else:
         tekst = extraheer_tekst_html(pad)
         st.text_area("Inhoud studiegids", tekst, height=600)
     elif pad.suffix.lower() == ".md":
-        st.markdown(pad.read_text(encoding="utf-8"))
+        render_oer_markdown(pad.read_text(encoding="utf-8"))
     else:
         st.warning(f"Bestandstype '{pad.suffix}' wordt niet ondersteund.")
         st.info("Vraag je mentor of beheerder om het bestand te uploaden.")
