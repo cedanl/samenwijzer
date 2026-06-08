@@ -1,4 +1,6 @@
 import json
+import sys
+import types
 
 from validatie_samenwijzer.chat import (
     LAGE_RELEVANTIE_BERICHT,
@@ -8,11 +10,52 @@ from validatie_samenwijzer.chat import (
     identificeer_oer_kandidaten,
     laad_instelling_bron_tekst,
     laad_kwalificatiedossier_tekst,
+    laad_oer_tekst,
     laad_skills_tekst,
     pad_kwalificatiedossier,
     pad_skills,
     web_zoek_domeinen,
 )
+
+
+def _fake_pdfplumber(tekst: str):
+    """Minimale pdfplumber-vervanger die één pagina met vaste tekst teruggeeft."""
+
+    class _Page:
+        def extract_text(self):
+            return tekst
+
+    class _PDF:
+        pages = [_Page()]
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    return types.SimpleNamespace(open=lambda _p: _PDF())
+
+
+def test_laad_oer_tekst_valt_terug_op_pdf_bij_leeg_md(tmp_path, monkeypatch):
+    """Een leeg/whitespace-only .md-broertje mag de pdfplumber-fallback niet blokkeren
+    (gescande PDF met mislukte markitdown-conversie)."""
+    pdf = tmp_path / "25690_BOL_2025__MJP.pdf"
+    pdf.write_bytes(b"%PDF-1.4 dummy")
+    (tmp_path / "25690_BOL_2025__MJP.md").write_text("   \n", encoding="utf-8")
+    monkeypatch.setitem(sys.modules, "pdfplumber", _fake_pdfplumber("Tekst uit de PDF"))
+
+    assert laad_oer_tekst(pdf) == "Tekst uit de PDF"
+
+
+def test_laad_oer_tekst_geeft_voorrang_aan_gevuld_md(tmp_path, monkeypatch):
+    """Een gevuld .md-broertje wint van de PDF-fallback."""
+    pdf = tmp_path / "25690_BOL_2025__MJP.pdf"
+    pdf.write_bytes(b"%PDF-1.4 dummy")
+    (tmp_path / "25690_BOL_2025__MJP.md").write_text("Echte MD-inhoud", encoding="utf-8")
+    monkeypatch.setitem(sys.modules, "pdfplumber", _fake_pdfplumber("Mag niet gebruikt worden"))
+
+    assert laad_oer_tekst(pdf) == "Echte MD-inhoud"
 
 
 def test_bouw_berichten_nieuwe_vraag():

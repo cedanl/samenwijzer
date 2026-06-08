@@ -382,16 +382,18 @@ def _resolveer_oer(
     conn: sqlite3.Connection,
     *,
     reset: bool,
-) -> tuple[int, dict] | None:
-    """Zoek of maak een OER-record aan; geef (oer_id, meta) of None als overgeslagen.
+) -> tuple[int, dict, str] | None:
+    """Zoek of maak een OER-record aan; geef (oer_id, meta, huidig_bestandspad) of None.
 
     Meerdere bestanden met hetzelfde crebo/leerweg/cohort (bijv. OER + examenplan)
-    worden allemaal geïndexeerd onder hetzelfde oer_id.
+    worden allemaal geïndexeerd onder hetzelfde oer_id. ``huidig_bestandspad`` is het
+    pad dat nu in de DB staat; ``_verwerk_bestand`` werkt het ná tekstextractie bij,
+    zodat alleen een bestand mét leesbare tekst de bestandspad wordt (geen gescande,
+    tekstloze PDF terwijl er een tekstrijke variant naast ligt).
     """
     from validatie_samenwijzer.db import (
         get_instelling_by_naam,
         get_oer_document,
-        update_oer_bestandspad,
         update_oer_opleiding,
         voeg_oer_document_toe,
     )
@@ -420,19 +422,13 @@ def _resolveer_oer(
             leerweg=meta["leerweg"],
             bestandspad=bestandspad_db,
         )
+        huidig_bestandspad = bestandspad_db
     else:
         oer_id = oer["id"]
         if bestandspad_db == oer["bestandspad"] and oer["geindexeerd"] and not reset:
             log.info("'%s' al geïndexeerd — overgeslagen.", pad.name)
             return None
-        # PDF heeft prioriteit boven MD; update als pad afwijkt.
-        stored_suffix = Path(oer["bestandspad"]).suffix.lower()
-        incoming_suffix = pad.suffix.lower()
-        if (incoming_suffix == ".pdf" or stored_suffix not in {".pdf"}) and (
-            bestandspad_db != oer["bestandspad"]
-        ):
-            log.info("Bestandspad bijgewerkt naar '%s'.", pad.name)
-            update_oer_bestandspad(conn, oer_id, bestandspad_db)
+        huidig_bestandspad = oer["bestandspad"]
         # Werk de opleidingsnaam bij als de nieuwe variant informatiever is
         # dan wat eerder is opgeslagen (bv. PDF-titelpagina vs. generieke
         # filename als "Examenplan - 25698").
@@ -444,7 +440,7 @@ def _resolveer_oer(
             log.info("Opleiding bijgewerkt: '%s' → '%s'.", oer["opleiding"], opleiding)
             update_oer_opleiding(conn, oer_id, opleiding)
 
-    return oer_id, meta
+    return oer_id, meta, huidig_bestandspad
 
 
 def _verwerk_bestand(
@@ -455,12 +451,16 @@ def _verwerk_bestand(
     reset: bool = False,
 ) -> None:
     """Verwerk één OER-bestand: parse → extraheer tekst en kerntaken → sla op in SQLite."""
-    from validatie_samenwijzer.db import markeer_geindexeerd, voeg_kerntaak_toe
+    from validatie_samenwijzer.db import (
+        markeer_geindexeerd,
+        update_oer_bestandspad,
+        voeg_kerntaak_toe,
+    )
 
     result = _resolveer_oer(pad, instelling_naam, conn, reset=reset)
     if result is None:
         return
-    oer_id, meta = result
+    oer_id, meta, huidig_bestandspad = result
 
     log.info("Verwerk '%s' (oer_id=%d)...", pad.name, oer_id)
 
@@ -479,6 +479,16 @@ def _verwerk_bestand(
     if not tekst.strip():
         log.warning("'%s' bevat geen extraheerbare tekst — overgeslagen.", pad.name)
         return
+
+    # Pas hier — ná bewezen leesbare tekst — de bestandspad aan, met PDF-prioriteit.
+    # Zo wordt een OER nooit gekoppeld aan een tekstloze (gescande) PDF terwijl er een
+    # tekstrijke variant (bv. MJP naast Examenplan) bestaat die wél tekst oplevert.
+    bestandspad_db = _pad_relatief_aan_oeren_root(pad)
+    if bestandspad_db != huidig_bestandspad:
+        stored_suffix = Path(huidig_bestandspad).suffix.lower()
+        if pad.suffix.lower() == ".pdf" or stored_suffix != ".pdf":
+            log.info("Bestandspad bijgewerkt naar '%s'.", pad.name)
+            update_oer_bestandspad(conn, oer_id, bestandspad_db)
 
     kerntaken = extraheer_kerntaken(tekst)
     if not kerntaken:
