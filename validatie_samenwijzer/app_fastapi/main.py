@@ -26,7 +26,7 @@ from starlette.middleware.sessions import SessionMiddleware
 
 from app_fastapi import data
 from app_fastapi.auth import auth_mentor, auth_student
-from app_fastapi.context import laad_context
+from app_fastapi.context import MENTOR_SOORTEN, STUDENT_SOORTEN, laad_context
 from app_fastapi.sessie import get_sessie
 from validatie_samenwijzer import db
 from validatie_samenwijzer._ai import _client as ai_client
@@ -231,7 +231,9 @@ def login_post(
                 "naam": student["naam"],
                 "studentnummer": student["studentnummer"],
             }
-            s.oer_systeem, s.oer_labels, s.domeinen = laad_context([student["oer_id"]])
+            s.oer_systeem, s.oer_labels, s.domeinen = laad_context(
+                [student["oer_id"]], STUDENT_SOORTEN
+            )
             s.oer_ids = [student["oer_id"]]
             return RedirectResponse("/student", status_code=303)
     elif rol == "mentor":
@@ -320,7 +322,7 @@ def mentor_sessie(request: Request, student_id: int):
         return RedirectResponse("/mentor", status_code=303)
     prof = data.profiel_van_student(student_id)
     s.actieve_student = prof
-    s.oer_systeem, s.oer_labels, s.domeinen = laad_context([prof["oer_id"]])
+    s.oer_systeem, s.oer_labels, s.domeinen = laad_context([prof["oer_id"]], MENTOR_SOORTEN)
     s.oer_ids = [prof["oer_id"]]
     s.chat_history = []
     return templates.TemplateResponse(
