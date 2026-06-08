@@ -47,7 +47,7 @@ def parseer_bestandsnaam(bestandsnaam: str) -> dict | None:
 # ── Kerntaken extraheren ──────────────────────────────────────────────────────
 
 _KT_PATROON = re.compile(
-    r"^\s*(B\d+-K\d+(?:-W\d+)?|Kerntaak\s+\d+|Werkproces\s+\d+\.\d+)"
+    r"^\s*[*+\-]?\s*(B\d+-K\d+(?:-W\d+)?|Kerntaak\s+\d+|Werkproces\s+\d+\.\d+)"
     r"\s*[:\-–]?\s*(.+)$",
     re.MULTILINE | re.IGNORECASE,
 )

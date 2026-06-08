@@ -41,6 +41,7 @@ from validatie_samenwijzer.styles import (  # noqa: E402
     render_app_hero,
     render_footer,
     render_nav,
+    render_oer_markdown,
     render_progress_bar,
     schoon_opleiding_naam,
 )
@@ -267,7 +268,7 @@ with col_chat:
             elif pad.suffix.lower() in {".html", ".htm"}:
                 st.text_area("Inhoud studiegids", extraheer_tekst_html(pad), height=600)
             elif pad.suffix.lower() == ".md":
-                st.markdown(pad.read_text(encoding="utf-8"))
+                render_oer_markdown(pad.read_text(encoding="utf-8"))
             else:
                 st.warning(f"Bestandstype '{pad.suffix}' wordt niet ondersteund.")
 
