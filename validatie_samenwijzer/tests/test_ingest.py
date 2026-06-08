@@ -219,6 +219,30 @@ def test_verwerk_bestand_negeert_kd_als_oer_kerntaken_heeft(tmp_path, monkeypatc
     assert "B9-K9" not in codes
 
 
+def test_verwerk_bestand_kiest_tekstrijk_bestand_als_bestandspad(tmp_path, conn):
+    """Een tekstloos bestand (bv. gescande Examenplan-PDF) mag de bestandspad niet
+    worden als er voor dezelfde crebo/leerweg/cohort een tekstrijke variant (MJP) is."""
+    voeg_instelling_toe(conn, "davinci", "Da Vinci College")
+    leeg = tmp_path / "25690_BOL_2025__Examenplan-leeg.md"
+    leeg.write_text("", encoding="utf-8")
+    vol = tmp_path / "25690_BOL_2025__MJP-met-tekst.md"
+    vol.write_text("B1-K1: Voert beveiligingswerkzaamheden uit in de praktijk\n", encoding="utf-8")
+
+    def _bestandspad() -> str:
+        return conn.execute(
+            "SELECT bestandspad FROM oer_documenten WHERE id = ?", (_oer_id(conn),)
+        ).fetchone()[0]
+
+    # Leeg eerst, dan tekstrijk: de bestandspad upgradet naar het tekstrijke bestand.
+    _verwerk_bestand(leeg, "davinci", conn)
+    _verwerk_bestand(vol, "davinci", conn)
+    assert _bestandspad().endswith("MJP-met-tekst.md")
+
+    # Het lege bestand opnieuw verwerken mag de tekstrijke bestandspad niet overschrijven.
+    _verwerk_bestand(leeg, "davinci", conn)
+    assert _bestandspad().endswith("MJP-met-tekst.md")
+
+
 def test_verwerk_instelling_documenten_indexeert_bekende_soorten(tmp_path, conn):
     voeg_instelling_toe(conn, "rijn_ijssel", "Rijn IJssel")
     inst_map = tmp_path / "rijn_ijssel_oer" / "_instelling"

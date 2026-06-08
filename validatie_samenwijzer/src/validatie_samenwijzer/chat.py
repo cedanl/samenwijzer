@@ -182,7 +182,9 @@ def laad_oer_tekst(bestandspad: Path) -> str:
         # Probeer het .md-broertje ook als het bronbestand zelf ontbreekt
         md_pad = bestandspad.with_suffix(".md")
         if md_pad.exists():
-            return md_pad.read_text(encoding="utf-8", errors="replace")[:_MAX_OER_TEKST_TEKENS]
+            md_tekst = md_pad.read_text(encoding="utf-8", errors="replace")
+            if md_tekst.strip():
+                return md_tekst[:_MAX_OER_TEKST_TEKENS]
         return ""
 
     suffix = bestandspad.suffix.lower()
@@ -191,10 +193,14 @@ def laad_oer_tekst(bestandspad: Path) -> str:
         return bestandspad.read_text(encoding="utf-8", errors="replace")[:_MAX_OER_TEKST_TEKENS]
 
     if suffix == ".pdf":
-        # Voorkeur: naastliggend .md-bestand van markitdown-conversie
+        # Voorkeur: naastliggend .md-bestand van markitdown-conversie — maar alleen als
+        # het écht inhoud heeft. Een leeg .md (bv. mislukte conversie van een gescande
+        # PDF) mag de pdfplumber-fallback niet blokkeren.
         md_pad = bestandspad.with_suffix(".md")
         if md_pad.exists():
-            return md_pad.read_text(encoding="utf-8", errors="replace")[:_MAX_OER_TEKST_TEKENS]
+            md_tekst = md_pad.read_text(encoding="utf-8", errors="replace")
+            if md_tekst.strip():
+                return md_tekst[:_MAX_OER_TEKST_TEKENS]
         # Fallback: pdfplumber
         try:
             import pdfplumber
