@@ -40,14 +40,46 @@ from validatie_samenwijzer.chat import (
 
 load_dotenv()
 log = logging.getLogger("oer_poc")
+_ALGEMEEN_WACHTWOORD = os.environ.get("ALGEMEEN_WACHTWOORD", "")
 
 _HIER = Path(__file__).resolve().parent
 app = FastAPI(title="De digitale gids — POC")
+
+
+@app.middleware("http")
+async def _toegangspoort(request: Request, call_next):
+    """De hele app zit achter het algemene wachtwoord — sommige instellingen zetten
+    hun OER achter een wachtwoord, dus niets is publiek vindbaar zonder de poort."""
+    pad = request.url.path
+    if pad.startswith("/static") or pad == "/toegang":
+        return await call_next(request)
+    if not get_sessie(request).toegang:
+        if pad.startswith("/api/"):
+            return JSONResponse({"error": "geen toegang"}, status_code=401)
+        return RedirectResponse("/toegang", status_code=303)
+    return await call_next(request)
+
+
+# SessionMiddleware ná de poort geregistreerd → draait als buitenste laag, zodat
+# request.session (en dus get_sessie) in de poort beschikbaar is.
 app.add_middleware(SessionMiddleware, secret_key=os.environ.get("SESSION_SECRET", "dev-poc-secret"))
 app.mount("/static", StaticFiles(directory=_HIER / "static"), name="static")
 templates = Jinja2Templates(directory=_HIER / "templates")
 
 _MAX_KANDIDATEN = 40
+
+
+@app.get("/toegang")
+def toegang_form(request: Request, fout: int = 0):
+    return templates.TemplateResponse(request, "toegang.html", {"fout": bool(fout)})
+
+
+@app.post("/toegang")
+def toegang_post(request: Request, wachtwoord: str = Form(...)):
+    if _ALGEMEEN_WACHTWOORD and wachtwoord == _ALGEMEEN_WACHTWOORD:
+        get_sessie(request).toegang = True
+        return RedirectResponse("/", status_code=303)
+    return RedirectResponse("/toegang?fout=1", status_code=303)
 
 
 def _conn():
@@ -145,8 +177,14 @@ async def api_chat(request: Request):
 
 
 @app.get("/api/oer/{oer_id}/bestand")
-def api_oer_bestand(oer_id: int):
-    """Serveer het OER-bronbestand (PDF inline / markdown) voor de viewer."""
+def api_oer_bestand(request: Request, oer_id: int):
+    """Serveer het OER-bronbestand (PDF inline / markdown) voor de viewer.
+
+    Alleen de OER('s) die in de eigen sessie geladen zijn — anders kon men per id
+    elke (ook rechten-beperkte) studiegids enumereren/downloaden.
+    """
+    if oer_id not in get_sessie(request).oer_ids:
+        return JSONResponse({"error": "geen toegang"}, status_code=403)
     row = (
         _conn().execute("SELECT bestandspad FROM oer_documenten WHERE id = ?", (oer_id,)).fetchone()
     )

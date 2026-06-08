@@ -14,7 +14,7 @@
       <div class="statlabel mono">Voortgang</div>
       <div class="statbig {{ prof.voortgang_kleur }}">{{ prof.voortgang_pct }}%</div>
       <div class="bar"><div class="fill {{ prof.voortgang_kleur }}" style="width:{{ prof.voortgang_pct }}%"></div></div>
-      <div class="profmeta">BSA <b class="{{ prof.bsa_kleur }}">{{ prof.bsa_behaald }}/{{ prof.bsa_vereist }} uur</b> ({{ prof.bsa_pct }}%)</div>
+      <div class="profmeta">BSA <b class="{{ prof.bsa_kleur }}">{{ prof.bsa_behaald }}/{{ prof.bsa_vereist }} stp</b> ({{ prof.bsa_pct }}%)</div>
       <div class="profmeta">Ongeoorl. afwezigheid <b class="{{ prof.afwezigheid_kleur }}">{{ prof.afwezigheid }} uur</b></div>
     </div>
 
@@ -27,6 +27,13 @@
         <div class="bar"><div class="fill {{ kt.kleur }}" style="width:{{ kt.score }}%"></div></div>
         <div class="ktscore {{ kt.kleur }}">{{ kt.score }}</div>
       </div>
+      {% for wp in kt.werkprocessen %}
+      <div class="ktrow sm wp">
+        <div class="ktnaam">↳ {{ wp.naam }}</div>
+        <div class="bar"><div class="fill {{ wp.kleur }}" style="width:{{ wp.score }}%"></div></div>
+        <div class="ktscore {{ wp.kleur }}">{{ wp.score }}</div>
+      </div>
+      {% endfor %}
       {% endfor %}
     </div>
     {% endif %}

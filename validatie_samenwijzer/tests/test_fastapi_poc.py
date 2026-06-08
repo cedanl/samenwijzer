@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 from app_fastapi.context import laad_context
 
 load_dotenv()  # OEREN_PAD=../oeren etc. — zoals de app bij opstart doet
+_WW = os.environ.get("ALGEMEEN_WACHTWOORD", "")
 
 
 def _leesbare_oer_id() -> int | None:
@@ -70,24 +71,44 @@ def test_sessie_reset_leegt_alles():
 
 # ── api (geen AI-call) ─────────────────────────────────────────────────────────
 def _client():
+    """TestClient die al door de algemene toegangspoort is (gedeeld wachtwoord)."""
     from fastapi.testclient import TestClient
 
     from app_fastapi.main import app
 
-    return TestClient(app)
+    c = TestClient(app)
+    c.post("/toegang", data={"wachtwoord": _WW})
+    return c
+
+
+def test_toegangspoort_blokkeert_zonder_wachtwoord():
+    from fastapi.testclient import TestClient
+
+    from app_fastapi.main import app
+
+    c = TestClient(app)  # geen toegang
+    r = c.get("/", follow_redirects=False)
+    assert r.status_code == 303 and r.headers["location"] == "/toegang"
+    assert c.post("/api/reset").status_code == 401
 
 
 def test_api_index_serveert_landing():
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
     r = _client().get("/")
     assert r.status_code == 200 and "/static/app.css" in r.text
 
 
 def test_api_vraag_zonder_match_geeft_intake():
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
     r = _client().post("/api/vraag", json={"vraag": "zxcvqwer onbekende instelling blabla"})
     assert r.status_code == 200 and r.json()["modus"] == "intake"
 
 
 def test_api_reset_ok():
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
     r = _client().post("/api/reset")
     assert r.status_code == 200 and r.json()["ok"] is True
 

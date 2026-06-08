@@ -27,6 +27,9 @@ class Sessie:
     domeinen: list[str] = field(default_factory=list)
     kandidaten: list[dict] = field(default_factory=list)
     wachtende_vraag: str | None = None
+    # Algemene toegang (gedeeld wachtwoord — sommige instellingen zetten hun OER
+    # achter een wachtwoord, dus de hele app zit achter deze poort).
+    toegang: bool = False
     # Ingelogde gebruiker (None = publiek)
     rol: str | None = None  # "student" | "mentor"
     gebruiker: dict | None = None  # {id, naam, studentnummer?}

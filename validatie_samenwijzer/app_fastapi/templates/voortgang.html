@@ -15,8 +15,8 @@
     <div class="bar"><div class="fill {{ vg.voortgang_kleur }}" style="width:{{ vg.voortgang_pct }}%"></div></div>
   </div>
   <div class="statcard">
-    <div class="statlabel mono">BSA behaald</div>
-    <div class="statbig {{ vg.bsa_kleur }}">{{ vg.bsa_behaald }}<span class="statsub">/{{ vg.bsa_vereist }} uur</span></div>
+    <div class="statlabel mono">BSA (studiepunten)</div>
+    <div class="statbig {{ vg.bsa_kleur }}">{{ vg.bsa_behaald }}<span class="statsub">/{{ vg.bsa_vereist }} stp</span></div>
     <div class="bar"><div class="fill {{ vg.bsa_kleur }}" style="width:{{ vg.bsa_pct }}%"></div></div>
   </div>
   <div class="statcard">
@@ -34,6 +34,13 @@
     <div class="bar"><div class="fill {{ kt.kleur }}" style="width:{{ kt.score }}%"></div></div>
     <div class="ktscore {{ kt.kleur }}">{{ kt.score }}</div>
   </div>
+  {% for wp in kt.werkprocessen %}
+  <div class="ktrow wp">
+    <div class="ktnaam">↳ {{ wp.naam }}</div>
+    <div class="bar"><div class="fill {{ wp.kleur }}" style="width:{{ wp.score }}%"></div></div>
+    <div class="ktscore {{ wp.kleur }}">{{ wp.score }}</div>
+  </div>
+  {% endfor %}
   {% endfor %}
 </div>
 {% endif %}

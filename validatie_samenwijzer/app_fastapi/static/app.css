@@ -295,3 +295,8 @@ body.app { padding-top: 60px; }
   .appnav .nav-right { width: 100%; gap: 2px; justify-content: flex-start; }
   .appmain { padding-top: 1.4rem; }
 }
+
+/* Geneste werkprocessen onder een kerntaak (voortgang + mentor-profiel). */
+.ktrow.wp { border-bottom: 1px solid var(--line-soft); }
+.ktrow.wp .ktnaam { padding-left: 1.1rem; color: var(--ink-soft); font-size: .88rem; }
+.ktrow.sm.wp .ktnaam { font-size: .82rem; }

@@ -61,18 +61,28 @@ def _opleiding_label(oer_id: int) -> tuple[str, int | None]:
 
 
 def _kerntaken(student_id: int) -> list[dict]:
-    """Gededupliceerde kerntaken (type 'kerntaak') met score + kleur."""
+    """Kerntaken met per kerntaak de geneste werkprocessen (score + kleur).
+
+    Werkprocessen worden aan hun kerntaak gekoppeld via de code-prefix
+    (``B1-K1-W1`` → kerntaak ``B1-K1``).
+    """
     rows = db.get_kerntaak_scores_by_student_id(_conn(), student_id)
-    gezien: set[str] = set()
-    out: list[dict] = []
+
+    def _item(r) -> dict:
+        return {"naam": r["naam"], "score": round(r["score"]), "kleur": _kleur_score(r["score"])}
+
+    kts: dict[str, dict] = {}
+    volgorde: list[str] = []
     for r in rows:
-        if r["type"] != "kerntaak" or r["naam"] in gezien:
-            continue
-        gezien.add(r["naam"])
-        out.append(
-            {"naam": r["naam"], "score": round(r["score"]), "kleur": _kleur_score(r["score"])}
-        )
-    return out
+        if r["type"] == "kerntaak" and r["code"] not in kts:
+            kts[r["code"]] = {**_item(r), "code": r["code"], "werkprocessen": []}
+            volgorde.append(r["code"])
+    for r in rows:
+        if r["type"] == "werkproces":
+            kt_code = r["code"].split("-W")[0]
+            if kt_code in kts:
+                kts[kt_code]["werkprocessen"].append(_item(r))
+    return [kts[c] for c in volgorde]
 
 
 def _student_row(student_id: int) -> sqlite3.Row | None:
