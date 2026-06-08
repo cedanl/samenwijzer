@@ -5,6 +5,14 @@
 > Let op: implementer-subagents in deze repo zijn gesandboxed (geen `uvicorn`/`pytest`/`git`);
 > de bouw- en verificatiestappen worden **inline** gedaan, subagents alleen voor review.
 
+> **STATUS (2026-06-08): GEÏMPLEMENTEERD + UITGEBREID, op `main`.** De POC is verder gegaan dan
+> alleen de publieke pagina: ook student- & mentorpagina's, een algemene toegangspoort
+> (`ALGEMEEN_WACHTWOORD`), en alle bronnen (KD + skills + instellingsdocumenten per rol +
+> web-zoek-fallback) zijn gebouwd. PR's #174 (publiek+student+mentor) en #175 (volledige bronnen)
+> gemerged. Sessieverslag: `docs/plans/2026-06-08-sessie-oer-bronkwaliteit-en-fastapi-poc.md`.
+> Het onderstaande plan is het oorspronkelijke (publieke-pagina-)plan; de gerealiseerde architectuur
+> staat in `CLAUDE.md` → "FastAPI-frontend-POC (`app_fastapi/`)".
+
 **Doel:** Bewijs dat we de publieke OER-chat (`app/pages/0_oer_vraag.py`) kunnen herbouwen in
 FastAPI met de mock-up als frontend (volledige CSS/JS-vrijheid), terwijl we de hele Python-
 "brein"-laag (`chat.py`, `db.py`, `_ai.py`) **ongewijzigd** hergebruiken.
