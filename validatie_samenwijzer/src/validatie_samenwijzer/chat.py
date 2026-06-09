@@ -88,9 +88,7 @@ De OER blijft de juridisch bindende bron; webinformatie is aanvullend en indicat
 _SYSTEEM_TEMPLATE = """\
 Je bent een onderwijs-assistent voor de opleiding {opleiding} bij {instelling}.
 
-PRIMAIRE BRON — de Onderwijs- en Examenregeling (OER) van deze opleiding.
-Dit is het leidende, schoolspecifieke document. Beantwoord vragen primair op
-basis van de OER.
+{primaire_bron}
 
 AANVULLENDE BRON — instellingsbrede regelingen van de school (zie de koppen
 hieronder, zoals het examenreglement en het begeleidings-/welzijnsbeleid). Dit
@@ -98,10 +96,7 @@ zijn APARTE documenten, NIET de OER. Ze gelden voor de hele instelling.
 Raadpleeg ze voor vragen over examinering, herkansingen, fraude, bezwaar of
 begeleiding; bij school-specifieke regels gaan ze vóór het landelijke KD.
 
-AANVULLENDE BRON — het landelijke kwalificatiedossier (KD). Raadpleeg het KD
-alléén als de OER het onderwerp niet of onvoldoende behandelt. Geef niet
-onnodig een tweede antwoord uit het KD als de OER de vraag al beantwoordt —
-de OER is leidend.
+{kd_instructie}
 
 AANVULLENDE BRON — de skills-taxonomie (ESCO): de skills, vaardigheden en
 competenties die horen bij het beroep waarvoor deze opleiding opleidt. Raadpleeg
@@ -146,8 +141,38 @@ uitsluitend op basis van deze bronnen — nooit vanuit eigen kennis. Als de
 informatie in geen van de bronnen staat, zeg dat dan expliciet. Antwoord in het
 Nederlands.{web_zoek_blok}
 
-=== ONDERWIJS- EN EXAMENREGELING (OER) ===
-{oer_tekst}{instelling_blok}{dossier_blok}{skills_blok}"""
+{oer_sectie}{instelling_blok}{dossier_blok}{skills_blok}"""
+
+# Twee modi voor de bronhiërarchie: normaal (OER leidend) en onleesbaar (gescande OER
+# zonder tekstlaag → KD/regelingen als hoofdbron). Zie spec 2026-06-09-chat-kd-fallback.
+_PRIMAIRE_BRON_OER = """\
+PRIMAIRE BRON — de Onderwijs- en Examenregeling (OER) van deze opleiding.
+Dit is het leidende, schoolspecifieke document. Beantwoord vragen primair op
+basis van de OER."""
+
+_PRIMAIRE_BRON_GEEN_OER = """\
+LET OP — de OER van deze opleiding is niet machine-leesbaar en dus NIET
+beschikbaar als bron. Baseer je antwoord volledig op de aanvullende bronnen
+hieronder (instellingsbrede regelingen en het kwalificatiedossier)."""
+
+_KD_INSTRUCTIE_OER = """\
+AANVULLENDE BRON — het landelijke kwalificatiedossier (KD). Raadpleeg het KD
+alléén als de OER het onderwerp niet of onvoldoende behandelt. Geef niet
+onnodig een tweede antwoord uit het KD als de OER de vraag al beantwoordt —
+de OER is leidend."""
+
+_KD_INSTRUCTIE_GEEN_OER = """\
+HOOFDBRON — het landelijke kwalificatiedossier (KD). Omdat de OER ontbreekt is
+het KD je hoofdbron voor opleidings- en beroepsinhoud. Citeer het KD direct met
+bron, vindplaats en woordelijk citaat; gebruik NIET de inleider "De OER
+beschrijft dit niet"."""
+
+_OER_SECTIE_OER = "=== ONDERWIJS- EN EXAMENREGELING (OER) ===\n{oer_tekst}"
+_OER_SECTIE_GEEN_OER = (
+    "=== ONDERWIJS- EN EXAMENREGELING (OER) ===\n"
+    "(De OER van deze opleiding is niet machine-leesbaar; gebruik de aanvullende "
+    "bronnen hieronder.)"
+)
 
 _DOSSIER_BLOK_TEMPLATE = "\n\n=== KWALIFICATIEDOSSIER (Crebo {crebo}) ===\n{dossier_tekst}"
 _INSTELLING_BLOK_TEMPLATE = "\n\n=== {kop} ({instelling}) ===\n{tekst}"
@@ -363,10 +388,18 @@ def bouw_systeem(
             crebo=crebo or "onbekend",
             dossier_tekst=dossier_tekst,
         )
+    oer_onleesbaar = not oer_tekst.strip()
+    oer_sectie = (
+        _OER_SECTIE_GEEN_OER
+        if oer_onleesbaar
+        else _OER_SECTIE_OER.format(oer_tekst=oer_tekst)
+    )
     return _SYSTEEM_TEMPLATE.format(
         opleiding=opleiding,
         instelling=instelling,
-        oer_tekst=oer_tekst,
+        primaire_bron=_PRIMAIRE_BRON_GEEN_OER if oer_onleesbaar else _PRIMAIRE_BRON_OER,
+        kd_instructie=_KD_INSTRUCTIE_GEEN_OER if oer_onleesbaar else _KD_INSTRUCTIE_OER,
+        oer_sectie=oer_sectie,
         instelling_blok=_instelling_blok(instelling, instelling_bronnen),
         dossier_blok=dossier_blok,
         skills_blok=skills_tekst,

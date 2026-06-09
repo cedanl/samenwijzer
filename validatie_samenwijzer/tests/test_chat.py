@@ -156,6 +156,20 @@ def test_bouw_systeem_schoont_ruwe_opleidingsnaam():
     assert "25642BBL2025Examenplan" not in systeem
 
 
+def test_bouw_systeem_onleesbare_oer_gebruikt_kd_modus():
+    systeem = bouw_systeem("", "Kok", "Da Vinci", dossier_tekst="KD-INHOUD-HIER", crebo="25180")
+    assert "KD-INHOUD-HIER" in systeem  # KD-blok aanwezig
+    assert "niet machine-leesbaar" in systeem  # onleesbaar-modus framing
+    assert "Dit is het leidende, schoolspecifieke document" not in systeem  # normale framing weg
+
+
+def test_bouw_systeem_leesbare_oer_blijft_normale_modus():
+    systeem = bouw_systeem("ECHTE OER-TEKST", "Kok", "Da Vinci", dossier_tekst="KD", crebo="25180")
+    assert "ECHTE OER-TEKST" in systeem
+    assert "Dit is het leidende, schoolspecifieke document" in systeem  # normale framing
+    assert "niet machine-leesbaar" not in systeem
+
+
 def test_lage_relevantie_bericht_is_string():
     assert isinstance(LAGE_RELEVANTIE_BERICHT, str)
     assert len(LAGE_RELEVANTIE_BERICHT) > 10
