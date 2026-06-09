@@ -390,9 +390,7 @@ def bouw_systeem(
         )
     oer_onleesbaar = not oer_tekst.strip()
     oer_sectie = (
-        _OER_SECTIE_GEEN_OER
-        if oer_onleesbaar
-        else _OER_SECTIE_OER.format(oer_tekst=oer_tekst)
+        _OER_SECTIE_GEEN_OER if oer_onleesbaar else _OER_SECTIE_OER.format(oer_tekst=oer_tekst)
     )
     return _SYSTEEM_TEMPLATE.format(
         opleiding=opleiding,
