@@ -52,7 +52,7 @@ def main() -> int:
                 elapsed = time.time() - start
                 tempo = voltooid / elapsed
                 print(f"  [{voltooid}/{len(pdfs)}] {status}  (~{tempo:.1f}/s)")
-    print(f"\nKlaar in {time.time()-start:.0f}s. Failures: {len(failures)}")
+    print(f"\nKlaar in {time.time() - start:.0f}s. Failures: {len(failures)}")
     for pad, status in failures:
         print(f"  {pad.name}: {status}")
     return 0 if not failures else 2
