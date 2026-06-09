@@ -526,6 +526,8 @@ AANVULLENDE BRON — de KDs (landelijke eisen, kerntaken, werkprocessen).
 Raadpleeg een KD alléén als de bijbehorende OER het onderwerp niet of
 onvoldoende behandelt. Geef niet onnodig een tweede antwoord uit het KD als
 de OER de vraag al beantwoordt — de OER is leidend.
+Staat bij een OER dat deze niet machine-leesbaar is, gebruik dan voor díe
+opleiding het bijbehorende KD en de instellingsregelingen als hoofdbron.
 AANVULLENDE BRON — de skills-taxonomie (ESCO) waar beschikbaar: de skills en
 vaardigheden die horen bij het beroep van een opleiding. Raadpleeg deze alléén
 bij vragen over welke skills of vaardigheden het beroep vereist.
@@ -594,7 +596,15 @@ def bouw_gecombineerd_systeem(oer_items: list[dict], web_zoeken: bool = False) -
     for i, item in enumerate(oer_items, 1):
         schone_opl = schoon_opleiding_naam(item["opleiding"], str(item.get("crebo") or ""))
         label = f"{item['display_naam']} · {schone_opl} · {item['leerweg']} {item['cohort']}"
-        oer_blok = f"=== OER {i}: {label} ===\n\n{item['tekst']}"
+        oer_inhoud = (
+            item["tekst"]
+            if item["tekst"].strip()
+            else (
+                "(De OER van deze opleiding is niet machine-leesbaar; gebruik het "
+                "bijbehorende kwalificatiedossier / de instellingsregelingen hieronder.)"
+            )
+        )
+        oer_blok = f"=== OER {i}: {label} ===\n\n{oer_inhoud}"
         for kop, tekst in item.get("instelling_bronnen", ()):
             if tekst:
                 oer_blok += f"\n\n=== {kop.upper()} {i} ({item['display_naam']}) ===\n\n{tekst}"

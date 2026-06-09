@@ -252,6 +252,24 @@ def test_bouw_gecombineerd_systeem_meervoudig_bevat_alle_oers():
     assert "Kok" in systeem and "Verzorgende IG" in systeem
 
 
+def test_bouw_gecombineerd_meervoudig_neemt_oer_loos_item_op_via_kd():
+    items = [
+        _oer_item(tekst="ECHTE OER 1", opleiding="Kok", display_naam="Da Vinci"),
+        _oer_item(
+            tekst="",  # onleesbare OER
+            opleiding="Gastheer",
+            display_naam="Da Vinci",
+            leerweg="BBL",
+            crebo="25168",
+            dossier_tekst="KD-GASTHEER-INHOUD",
+        ),
+    ]
+    systeem = bouw_gecombineerd_systeem(items)
+    assert "ECHTE OER 1" in systeem
+    assert "KD-GASTHEER-INHOUD" in systeem  # OER-loos item tóch opgenomen via KD
+    assert "niet machine-leesbaar" in systeem  # notitie bij het OER-loze blok
+
+
 # ── identificeer_oer_kandidaten ───────────────────────────────────────────────
 
 
