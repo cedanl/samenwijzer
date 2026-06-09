@@ -255,6 +255,48 @@ def test_verwerk_bestand_kiest_tekstrijk_bestand_als_bestandspad(tmp_path, conn)
     assert _bestandspad().endswith("MJP-met-tekst.md")
 
 
+def test_verwerk_bestand_lege_oer_valt_terug_op_kd(tmp_path, monkeypatch, conn):
+    """Een OER zonder leesbare tekst (bv. een gescande PDF) wordt niet overgeslagen maar
+    via het kwalificatiedossier alsnog geïndexeerd met kerntaken."""
+    voeg_instelling_toe(conn, "davinci", "Da Vinci College")
+    oer = tmp_path / "25168_BOL_2025__Examenplan-gescand.md"
+    oer.write_text("", encoding="utf-8")  # geen leesbare tekstlaag
+    kd_dir = tmp_path / "kd"
+    kd_dir.mkdir()
+    (kd_dir / "25168.md").write_text(
+        "B1-K1:  Bereidt gerechten voor  ....  6\n"
+        "B1-K1-W1:  Neemt bestellingen op  ..........  7\n",
+        encoding="utf-8",
+    )
+    monkeypatch.setenv("KWALDOSSIERS_PAD", str(kd_dir))
+
+    _verwerk_bestand(oer, "davinci", conn)
+
+    codes = {r["code"] for r in get_kerntaken_by_oer_id(conn, _oer_id(conn))}
+    assert {"B1-K1", "B1-K1-W1"} <= codes
+    geindexeerd = conn.execute(
+        "SELECT geindexeerd FROM oer_documenten WHERE id = ?", (_oer_id(conn),)
+    ).fetchone()[0]
+    assert geindexeerd == 1
+
+
+def test_verwerk_bestand_lege_oer_zonder_kd_blijft_overgeslagen(tmp_path, monkeypatch, conn):
+    """Lege OER-tekst én geen KD-kerntaken: niets te indexeren, dus geindexeerd blijft 0."""
+    voeg_instelling_toe(conn, "davinci", "Da Vinci College")
+    oer = tmp_path / "99999_BOL_2025__Examenplan-gescand.md"
+    oer.write_text("", encoding="utf-8")
+    kd_dir = tmp_path / "kd"
+    kd_dir.mkdir()  # geen 99999.md
+    monkeypatch.setenv("KWALDOSSIERS_PAD", str(kd_dir))
+
+    _verwerk_bestand(oer, "davinci", conn)
+
+    geindexeerd = conn.execute(
+        "SELECT geindexeerd FROM oer_documenten WHERE id = ?", (_oer_id(conn),)
+    ).fetchone()[0]
+    assert geindexeerd == 0
+
+
 def test_verwerk_instelling_documenten_indexeert_bekende_soorten(tmp_path, conn):
     voeg_instelling_toe(conn, "rijn_ijssel", "Rijn IJssel")
     inst_map = tmp_path / "rijn_ijssel_oer" / "_instelling"
