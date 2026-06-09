@@ -63,6 +63,7 @@ _DEFAULTS: dict = {
     "pub_oer_labels": [],
     "pub_oer_paden": [],
     "pub_oer_domeinen": [],
+    "pub_oer_onleesbaar": False,
     "pub_kandidaten": [],
     "pub_wachtende_vraag": None,
 }
@@ -191,6 +192,13 @@ if st.session_state.pub_oer_paden:
             with st.expander(f"📄 {st.session_state.pub_oer_labels[i]}", expanded=True):
                 _render_oer_bestand(pad)
 
+# ── Melding bij onleesbare OER ─────────────────────────────────────────────────
+if st.session_state.get("pub_oer_onleesbaar"):
+    st.info(
+        "De OER van deze opleiding is niet machine-leesbaar; antwoorden komen "
+        "uit het landelijke kwalificatiedossier en de instellingsregelingen."
+    )
+
 # ── Chatgeschiedenis ───────────────────────────────────────────────────────────
 for i, bericht in enumerate(st.session_state.pub_chat_history):
     if bericht["role"] == "user":
@@ -230,11 +238,18 @@ if st.session_state.pub_kandidaten:
         oer_items = []
         labels = []
         paden = []
+        onleesbaar = False
         for lbl in geselecteerd:
             k = opties[lbl]
             pad = resolve_oer_pad(k["bestandspad"])
             tekst = laad_oer_tekst(pad)
-            if tekst:
+            dossier_tekst = laad_kwalificatiedossier_tekst(k.get("crebo"))
+            instelling_bronnen = _examenreglement_bron(k["instelling_id"])
+            # Neem een OER ook op als de fulltext onleesbaar is maar het KD of een
+            # instellingsregeling het onderwerp dekt.
+            if tekst or dossier_tekst or instelling_bronnen:
+                if not tekst:
+                    onleesbaar = True
                 oer_items.append(
                     {
                         "tekst": tekst,
@@ -244,9 +259,9 @@ if st.session_state.pub_kandidaten:
                         "leerweg": k["leerweg"],
                         "cohort": k["cohort"],
                         "crebo": k.get("crebo", ""),
-                        "dossier_tekst": laad_kwalificatiedossier_tekst(k.get("crebo")),
+                        "dossier_tekst": dossier_tekst,
                         "skills_tekst": laad_skills_tekst(k.get("crebo")),
-                        "instelling_bronnen": _examenreglement_bron(k["instelling_id"]),
+                        "instelling_bronnen": instelling_bronnen,
                     }
                 )
                 labels.append(_label(k))
@@ -262,6 +277,7 @@ if st.session_state.pub_kandidaten:
             st.session_state.pub_oer_labels = labels
             st.session_state.pub_oer_paden = paden
             st.session_state.pub_oer_domeinen = domeinen
+            st.session_state.pub_oer_onleesbaar = onleesbaar
             st.session_state.pub_kandidaten = []
 
             if st.session_state.pub_wachtende_vraag:
@@ -336,7 +352,10 @@ if kandidaten:
         k = top_tier[0]
         pad = resolve_oer_pad(k["bestandspad"])
         tekst = laad_oer_tekst(pad)
-        if tekst:
+        dossier_tekst = laad_kwalificatiedossier_tekst(k.get("crebo"))
+        instelling_bronnen = _examenreglement_bron(k["instelling_id"])
+        if tekst or dossier_tekst or instelling_bronnen:
+            st.session_state.pub_oer_onleesbaar = not bool(tekst)
             oer_items = [
                 {
                     "tekst": tekst,
@@ -346,9 +365,9 @@ if kandidaten:
                     "leerweg": k["leerweg"],
                     "cohort": k["cohort"],
                     "crebo": k.get("crebo", ""),
-                    "dossier_tekst": laad_kwalificatiedossier_tekst(k.get("crebo")),
+                    "dossier_tekst": dossier_tekst,
                     "skills_tekst": laad_skills_tekst(k.get("crebo")),
-                    "instelling_bronnen": _examenreglement_bron(k["instelling_id"]),
+                    "instelling_bronnen": instelling_bronnen,
                 }
             ]
             domeinen = web_zoek_domeinen(oer_items)

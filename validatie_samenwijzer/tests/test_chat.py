@@ -156,6 +156,20 @@ def test_bouw_systeem_schoont_ruwe_opleidingsnaam():
     assert "25642BBL2025Examenplan" not in systeem
 
 
+def test_bouw_systeem_onleesbare_oer_gebruikt_kd_modus():
+    systeem = bouw_systeem("", "Kok", "Da Vinci", dossier_tekst="KD-INHOUD-HIER", crebo="25180")
+    assert "KD-INHOUD-HIER" in systeem  # KD-blok aanwezig
+    assert "niet machine-leesbaar" in systeem  # onleesbaar-modus framing
+    assert "Dit is het leidende, schoolspecifieke document" not in systeem  # normale framing weg
+
+
+def test_bouw_systeem_leesbare_oer_blijft_normale_modus():
+    systeem = bouw_systeem("ECHTE OER-TEKST", "Kok", "Da Vinci", dossier_tekst="KD", crebo="25180")
+    assert "ECHTE OER-TEKST" in systeem
+    assert "Dit is het leidende, schoolspecifieke document" in systeem  # normale framing
+    assert "niet machine-leesbaar" not in systeem
+
+
 def test_lage_relevantie_bericht_is_string():
     assert isinstance(LAGE_RELEVANTIE_BERICHT, str)
     assert len(LAGE_RELEVANTIE_BERICHT) > 10
@@ -236,6 +250,24 @@ def test_bouw_gecombineerd_systeem_meervoudig_bevat_alle_oers():
     assert "Tekst A" in systeem and "Tekst B" in systeem
     assert "Da Vinci" in systeem and "Rijn IJssel" in systeem
     assert "Kok" in systeem and "Verzorgende IG" in systeem
+
+
+def test_bouw_gecombineerd_meervoudig_neemt_oer_loos_item_op_via_kd():
+    items = [
+        _oer_item(tekst="ECHTE OER 1", opleiding="Kok", display_naam="Da Vinci"),
+        _oer_item(
+            tekst="",  # onleesbare OER
+            opleiding="Gastheer",
+            display_naam="Da Vinci",
+            leerweg="BBL",
+            crebo="25168",
+            dossier_tekst="KD-GASTHEER-INHOUD",
+        ),
+    ]
+    systeem = bouw_gecombineerd_systeem(items)
+    assert "ECHTE OER 1" in systeem
+    assert "KD-GASTHEER-INHOUD" in systeem  # OER-loos item tóch opgenomen via KD
+    assert "niet machine-leesbaar" in systeem  # notitie bij het OER-loze blok
 
 
 # ── identificeer_oer_kandidaten ───────────────────────────────────────────────

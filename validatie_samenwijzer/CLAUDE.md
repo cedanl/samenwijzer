@@ -428,8 +428,16 @@ aan `bouw_systeem` / `bouw_gecombineerd_systeem`, die ze als blokken `=== LABEL 
 in de system prompt zetten. Bedraad in `1_oer_assistent.py`, `5_begeleidingssessie.py` en
 `0_oer_vraag.py`. Zie de Instellingsbrede-bron-sectie verderop.
 
-Toon `LAGE_RELEVANTIE_BERICHT` wanneer `laad_oer_tekst()` een lege string teruggeeft
-(bestand ontbreekt of niet leesbaar).
+**OER-onleesbaar-modus**: is de OER-fulltext leeg (gescande PDF zonder tekstlaag), dan bouwt
+`bouw_systeem` de prompt in een aangepaste modus die het kwalificatiedossier + instellingsregelingen
+als hoofdbron neemt (i.p.v. de OER) en de citatie-instructie daarop aanpast (drie template-varianten:
+`_PRIMAIRE_BRON_*`, `_KD_INSTRUCTIE_*`, `_OER_SECTIE_*`). De chatpagina's antwoorden zolang er een
+KD óf instellingsbron is (`heeft_bron`) en tonen dan een `st.info`-banner dat de OER niet
+machine-leesbaar is. Alleen zónder enige bron volgt nog `LAGE_RELEVANTIE_BERICHT`. Spec/plan:
+`docs/plans/2026-06-09-chat-kd-fallback-onleesbare-oer.md`.
+
+Toon `LAGE_RELEVANTIE_BERICHT` wanneer `laad_oer_tekst()` een lege string teruggeeft én er geen
+KD/instellingsbron is (bestand ontbreekt of niet leesbaar, zonder aanvullende bron).
 
 **Juridische citatieplicht**: zowel `_SYSTEEM_TEMPLATE` als `_MULTI_SYSTEEM_TEMPLATE` eisen per
 claim drie elementen: **bron** ("Volgens de OER", "Volgens het kwalificatiedossier" of "Volgens

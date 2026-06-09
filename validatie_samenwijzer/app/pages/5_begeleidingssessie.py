@@ -171,6 +171,8 @@ with col_chat:
             ]
             domeinen = web_zoek_domeinen([{"naam": oer["naam"]}]) if oer else []
             st.session_state.oer_domeinen = domeinen
+            heeft_bron = bool(oer_tekst.strip() or dossier_tekst or instelling_bronnen)
+            st.session_state.oer_onleesbaar = heeft_bron and not oer_tekst.strip()
             st.session_state.oer_systeem = (
                 bouw_systeem(
                     oer_tekst,
@@ -182,8 +184,15 @@ with col_chat:
                     instelling_bronnen=instelling_bronnen,
                     web_zoeken=bool(domeinen),
                 )
-                if oer_tekst
+                if heeft_bron
                 else ""
+            )
+
+        if st.session_state.get("oer_onleesbaar"):
+            st.info(
+                "De OER van deze student is niet machine-leesbaar; antwoorden "
+                "komen uit het landelijke kwalificatiedossier en de "
+                "instellingsregelingen."
             )
 
         for i, bericht in enumerate(st.session_state.chat_history):
