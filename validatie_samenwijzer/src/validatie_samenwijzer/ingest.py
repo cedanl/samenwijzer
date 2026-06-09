@@ -479,19 +479,21 @@ def _verwerk_bestand(
         log.error("Extractie mislukt voor '%s': %s", pad.name, e)
         return
 
-    if not tekst.strip():
-        log.warning("'%s' bevat geen extraheerbare tekst — overgeslagen.", pad.name)
-        return
+    # Lege OER-tekst (bv. een gescande PDF zonder leesbare tekstlaag) is geen reden om de
+    # OER over te slaan: een lege OER levert nul kerntaken, dus val — net als een OER die
+    # wél tekst heeft maar geen kerntaakcodes bevat — terug op het kwalificatiedossier.
+    tekst_leeg = not tekst.strip()
 
-    # Pas hier — ná bewezen leesbare tekst — de bestandspad aan, met PDF-prioriteit.
-    # Zo wordt een OER nooit gekoppeld aan een tekstloze (gescande) PDF terwijl er een
-    # tekstrijke variant (bv. MJP naast Examenplan) bestaat die wél tekst oplevert.
-    bestandspad_db = _pad_relatief_aan_oeren_root(pad)
-    if bestandspad_db != huidig_bestandspad:
-        stored_suffix = Path(huidig_bestandspad).suffix.lower()
-        if pad.suffix.lower() == ".pdf" or stored_suffix != ".pdf":
-            log.info("Bestandspad bijgewerkt naar '%s'.", pad.name)
-            update_oer_bestandspad(conn, oer_id, bestandspad_db)
+    if not tekst_leeg:
+        # Pas hier — ná bewezen leesbare tekst — de bestandspad aan, met PDF-prioriteit.
+        # Zo wordt een OER nooit gekoppeld aan een tekstloze (gescande) PDF terwijl er een
+        # tekstrijke variant (bv. MJP naast Examenplan) bestaat die wél tekst oplevert.
+        bestandspad_db = _pad_relatief_aan_oeren_root(pad)
+        if bestandspad_db != huidig_bestandspad:
+            stored_suffix = Path(huidig_bestandspad).suffix.lower()
+            if pad.suffix.lower() == ".pdf" or stored_suffix != ".pdf":
+                log.info("Bestandspad bijgewerkt naar '%s'.", pad.name)
+                update_oer_bestandspad(conn, oer_id, bestandspad_db)
 
     kerntaken = extraheer_kerntaken(tekst)
     if not kerntaken:
@@ -510,6 +512,14 @@ def _verwerk_bestand(
                     len(kerntaken),
                     meta["crebo"],
                 )
+
+    if tekst_leeg and not kerntaken:
+        log.warning(
+            "'%s' bevat geen extraheerbare tekst en geen KD-kerntaken — overgeslagen.",
+            pad.name,
+        )
+        return
+
     for kt in kerntaken:
         voeg_kerntaak_toe(
             conn,
