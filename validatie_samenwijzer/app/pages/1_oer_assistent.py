@@ -66,6 +66,10 @@ if "oer_systeem" not in st.session_state:
     ]
     domeinen = web_zoek_domeinen([{"naam": instelling_naam}]) if instelling_naam else []
     st.session_state.oer_domeinen = domeinen
+    # Antwoord zodra er een bruikbare bron is — ook als de OER zelf onleesbaar is
+    # (gescande PDF) maar het KD of een instellingsregeling het onderwerp dekt.
+    heeft_bron = bool(oer_tekst.strip() or dossier_tekst or instelling_bronnen)
+    st.session_state.oer_onleesbaar = heeft_bron and not oer_tekst.strip()
     st.session_state.oer_systeem = (
         bouw_systeem(
             oer_tekst,
@@ -77,8 +81,14 @@ if "oer_systeem" not in st.session_state:
             instelling_bronnen=instelling_bronnen,
             web_zoeken=bool(domeinen),
         )
-        if oer_tekst
+        if heeft_bron
         else ""
+    )
+
+if st.session_state.get("oer_onleesbaar"):
+    st.info(
+        "De OER van jouw opleiding is niet machine-leesbaar; antwoorden komen "
+        "uit het landelijke kwalificatiedossier en de instellingsregelingen."
     )
 
 for i, bericht in enumerate(st.session_state.chat_history):
