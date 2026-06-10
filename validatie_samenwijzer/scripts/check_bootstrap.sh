@@ -20,7 +20,7 @@ from pathlib import Path
 
 os.environ.setdefault("OEREN_PAD", "../oeren")
 
-from validatie_samenwijzer._db import get_conn
+from validatie_samenwijzer import db
 from validatie_samenwijzer.chat import resolve_oer_pad
 
 # Verwachte waarden: vastgelegd op de master-machine na een succesvolle
@@ -56,7 +56,8 @@ def check(label: str, actual, expected, *, exact: bool = True) -> bool:
     return ok
 
 
-conn = get_conn()
+conn = db.get_connection(Path(os.environ.get("DB_PATH", "data/validatie.db")))
+db.init_db(conn)
 resultaten = []
 
 print("OERs per instelling:")

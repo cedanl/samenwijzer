@@ -1,11 +1,9 @@
-"""Authenticatie: wachtwoord-hashing, login en Streamlit rolcontrole."""
+"""Authenticatie: wachtwoord-hashing en UI-vrije login (PBKDF2-HMAC-SHA256)."""
 
 import hashlib
 import hmac
 import os
 import sqlite3
-
-import streamlit as st
 
 _ITERATIONS = 600_000
 _SALT_BYTES = 32
@@ -51,22 +49,3 @@ def login_student(
 def login_mentor(conn: sqlite3.Connection, naam: str, wachtwoord: str) -> sqlite3.Row | None:
     """Authenticeer een mentor op naam en wachtwoord. Geeft None bij mismatch."""
     return _login(conn, "mentoren", "naam", naam, wachtwoord)
-
-
-def vereist_rol(vereiste_rol: str) -> None:
-    """Stop de pagina met een foutmelding als de sessie niet de vereiste rol heeft."""
-    if st.session_state.get("rol") != vereiste_rol:
-        label = "studenten" if vereiste_rol == "student" else "mentoren"
-        st.error(f"🔒 Deze pagina is alleen toegankelijk voor {label}.")
-        st.page_link("main.py", label="Terug naar de startpagina", icon="🏠")
-        st.stop()
-
-
-def vereist_student() -> None:
-    """Stop de pagina als de ingelogde gebruiker geen student is."""
-    vereist_rol("student")
-
-
-def vereist_mentor() -> None:
-    """Stop de pagina als de ingelogde gebruiker geen mentor is."""
-    vereist_rol("mentor")
