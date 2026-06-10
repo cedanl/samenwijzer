@@ -121,16 +121,25 @@ async def api_vraag(request: Request):
 
     # Al een OER geladen? → direct doorchatten.
     if s.oer_systeem:
-        return JSONResponse({"modus": "chat", "labels": s.oer_labels})
+        return JSONResponse(
+            {"modus": "chat", "labels": s.oer_labels, "oer_onleesbaar": s.oer_onleesbaar}
+        )
 
     oers = [dict(r) for r in db.get_alle_oers_met_instelling(_conn())]
     kandidaten = identificeer_oer_kandidaten(oers, vraag, min_score=1)
 
     if len(kandidaten) == 1:
         oer_id = kandidaten[0]["id"]
-        s.oer_systeem, s.oer_labels, s.domeinen = laad_context([oer_id])
+        s.oer_systeem, s.oer_labels, s.domeinen, s.oer_onleesbaar = laad_context([oer_id])
         s.oer_ids = [oer_id]
-        return JSONResponse({"modus": "chat", "labels": s.oer_labels, "oer_ids": s.oer_ids})
+        return JSONResponse(
+            {
+                "modus": "chat",
+                "labels": s.oer_labels,
+                "oer_ids": s.oer_ids,
+                "oer_onleesbaar": s.oer_onleesbaar,
+            }
+        )
 
     if len(kandidaten) > 1:
         s.kandidaten = kandidaten[:_MAX_KANDIDATEN]
@@ -152,11 +161,20 @@ async def api_kies(request: Request):
     """Laad de gekozen OER's als context en geef de wachtende vraag terug."""
     oer_ids = (await request.json()).get("oer_ids", [])[:3]
     s = get_sessie(request)
-    s.oer_systeem, s.oer_labels, s.domeinen = laad_context([int(i) for i in oer_ids])
+    s.oer_systeem, s.oer_labels, s.domeinen, s.oer_onleesbaar = laad_context(
+        [int(i) for i in oer_ids]
+    )
     s.oer_ids = [int(i) for i in oer_ids]
     s.kandidaten = []
     vraag, s.wachtende_vraag = s.wachtende_vraag, None
-    return JSONResponse({"labels": s.oer_labels, "oer_ids": s.oer_ids, "wachtende_vraag": vraag})
+    return JSONResponse(
+        {
+            "labels": s.oer_labels,
+            "oer_ids": s.oer_ids,
+            "wachtende_vraag": vraag,
+            "oer_onleesbaar": s.oer_onleesbaar,
+        }
+    )
 
 
 @app.post("/api/chat")
@@ -247,7 +265,7 @@ def login_post(
                 "naam": student["naam"],
                 "studentnummer": student["studentnummer"],
             }
-            s.oer_systeem, s.oer_labels, s.domeinen = laad_context(
+            s.oer_systeem, s.oer_labels, s.domeinen, s.oer_onleesbaar = laad_context(
                 [student["oer_id"]], STUDENT_SOORTEN
             )
             s.oer_ids = [student["oer_id"]]
@@ -283,7 +301,12 @@ def student_home(request: Request):
     return templates.TemplateResponse(
         request,
         "student_assistent.html",
-        {"rol": "student", "naam": s.gebruiker["naam"], "labels": s.oer_labels},
+        {
+            "rol": "student",
+            "naam": s.gebruiker["naam"],
+            "labels": s.oer_labels,
+            "oer_onleesbaar": s.oer_onleesbaar,
+        },
     )
 
 
@@ -339,12 +362,20 @@ def mentor_sessie(request: Request, student_id: int):
         return RedirectResponse("/mentor", status_code=303)
     prof = data.profiel_van_student(student_id)
     s.actieve_student = prof
-    s.oer_systeem, s.oer_labels, s.domeinen = laad_context([prof["oer_id"]], MENTOR_SOORTEN)
+    s.oer_systeem, s.oer_labels, s.domeinen, s.oer_onleesbaar = laad_context(
+        [prof["oer_id"]], MENTOR_SOORTEN
+    )
     s.oer_ids = [prof["oer_id"]]
     s.chat_history = []
     bewaar_sessie(request)  # mutaterende GET → expliciet bewaren (middleware slaat GET over)
     return templates.TemplateResponse(
         request,
         "mentor_sessie.html",
-        {"rol": "mentor", "prof": prof, "labels": s.oer_labels, "naam": s.gebruiker["naam"]},
+        {
+            "rol": "mentor",
+            "prof": prof,
+            "labels": s.oer_labels,
+            "naam": s.gebruiker["naam"],
+            "oer_onleesbaar": s.oer_onleesbaar,
+        },
     )
