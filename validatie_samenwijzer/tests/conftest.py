@@ -1,8 +1,15 @@
 """Globale pytest-fixtures."""
 
+import os
+
 import pytest
 
-from validatie_samenwijzer import _ai
+# De FastAPI-app eist SESSION_SECRET (fail-closed) en zet standaard een Secure-cookie;
+# de TestClient draait over http, dus de cookie-hardening hier uitschakelen voor de test.
+os.environ.setdefault("SESSION_SECRET", "test-secret")
+os.environ.setdefault("COOKIE_HTTPS_ONLY", "0")
+
+from validatie_samenwijzer import _ai  # noqa: E402
 
 
 @pytest.fixture(autouse=True)

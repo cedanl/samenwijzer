@@ -67,7 +67,15 @@ async def _toegangspoort(request: Request, call_next):
 
 # SessionMiddleware ná de poort geregistreerd → draait als buitenste laag, zodat
 # request.session (en dus get_sessie) in de poort beschikbaar is.
-app.add_middleware(SessionMiddleware, secret_key=os.environ.get("SESSION_SECRET", "dev-poc-secret"))
+_SESSION_SECRET = os.environ.get("SESSION_SECRET")
+if not _SESSION_SECRET:
+    raise RuntimeError("SESSION_SECRET is verplicht (geen default) — zet 'm in .env / Fly-secrets.")
+app.add_middleware(
+    SessionMiddleware,
+    secret_key=_SESSION_SECRET,
+    https_only=os.environ.get("COOKIE_HTTPS_ONLY", "1") != "0",
+    same_site="lax",
+)
 app.mount("/static", StaticFiles(directory=_HIER / "static"), name="static")
 templates = Jinja2Templates(directory=_HIER / "templates")
 

@@ -146,6 +146,22 @@ def test_get_sessie_write_through_round_trip(tmp_path, monkeypatch):
     assert s2.toegang is True
 
 
+def test_session_secret_verplicht(monkeypatch):
+    """Zonder SESSION_SECRET moet het opzetten van de app falen (fail-closed)."""
+    import importlib
+
+    import app_fastapi.main as main_mod
+
+    monkeypatch.delenv("SESSION_SECRET", raising=False)
+    try:
+        with pytest.raises(RuntimeError, match="SESSION_SECRET"):
+            importlib.reload(main_mod)
+    finally:
+        # Herstel een werkende module voor de overige tests.
+        monkeypatch.setenv("SESSION_SECRET", "test-secret")
+        importlib.reload(main_mod)
+
+
 # ── api (geen AI-call) ─────────────────────────────────────────────────────────
 def _client():
     """TestClient die al door de algemene toegangspoort is (gedeeld wachtwoord)."""

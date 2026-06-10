@@ -109,7 +109,8 @@ def bewaar(sid: str, sessie: Sessie) -> None:
     _verwijder_verouderd(nu)
     _store().execute(
         "INSERT INTO sessies (sid, data, laatst_gebruikt) VALUES (?, ?, ?) "
-        "ON CONFLICT(sid) DO UPDATE SET data=excluded.data, laatst_gebruikt=excluded.laatst_gebruikt",
+        "ON CONFLICT(sid) DO UPDATE SET "
+        "data=excluded.data, laatst_gebruikt=excluded.laatst_gebruikt",
         (sid, json.dumps(asdict(sessie)), nu),
     )
     _store().commit()
