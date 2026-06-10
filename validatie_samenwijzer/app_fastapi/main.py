@@ -42,6 +42,12 @@ from validatie_samenwijzer.chat import (
 load_dotenv()
 log = logging.getLogger("oer_poc")
 _ALGEMEEN_WACHTWOORD = os.environ.get("ALGEMEEN_WACHTWOORD", "")
+if not _ALGEMEEN_WACHTWOORD:
+    # Fail-closed (spiegelt SESSION_SECRET): zonder wachtwoord lockt de toegangspoort de
+    # hele app uit — geef een duidelijk operator-signaal i.p.v. een stille DoS.
+    raise RuntimeError(
+        "ALGEMEEN_WACHTWOORD is verplicht (geen default) — zet 'm in .env / Fly-secrets."
+    )
 
 _HIER = Path(__file__).resolve().parent
 app = FastAPI(title="De digitale gids — POC")

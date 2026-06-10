@@ -20,6 +20,10 @@ validatie_samenwijzer/.venv
 # Vector-store cache (uitgefaseerd, regenereerbaar)
 validatie_samenwijzer/data/chroma
 
+# Runtime FastAPI-sessiestore — nooit met oude sessies in het image bakken
+validatie_samenwijzer/data/sessies.db
+validatie_samenwijzer/data/sessies.db-*
+
 # Kwalificatiedossiers: runtime leest alleen .md → pdf/zip/lijsten niet mee
 kwalificatiedossiers/pdfs/*.pdf
 kwalificatiedossiers/*.zip
