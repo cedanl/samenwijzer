@@ -67,8 +67,14 @@ def test_laad_context_onleesbare_oer_via_kd(monkeypatch):
     import app_fastapi.context as ctx
 
     fake_row = {
-        "id": 1, "crebo": "25168", "opleiding": "Gastheer", "display_naam": "Da Vinci",
-        "naam": "davinci", "leerweg": "BBL", "cohort": "2025", "instelling_id": 2,
+        "id": 1,
+        "crebo": "25168",
+        "opleiding": "Gastheer",
+        "display_naam": "Da Vinci",
+        "naam": "davinci",
+        "leerweg": "BBL",
+        "cohort": "2025",
+        "instelling_id": 2,
         "bestandspad": "x.pdf",
     }
     monkeypatch.setattr(ctx, "_oer_blok", lambda oid: (fake_row, ""))
@@ -87,8 +93,14 @@ def test_laad_context_leesbare_oer_niet_onleesbaar(monkeypatch):
     import app_fastapi.context as ctx
 
     fake_row = {
-        "id": 1, "crebo": "25168", "opleiding": "Gastheer", "display_naam": "Da Vinci",
-        "naam": "davinci", "leerweg": "BBL", "cohort": "2025", "instelling_id": 2,
+        "id": 1,
+        "crebo": "25168",
+        "opleiding": "Gastheer",
+        "display_naam": "Da Vinci",
+        "naam": "davinci",
+        "leerweg": "BBL",
+        "cohort": "2025",
+        "instelling_id": 2,
         "bestandspad": "x.pdf",
     }
     monkeypatch.setattr(ctx, "_oer_blok", lambda oid: (fake_row, "ECHTE OER-TEKST"))
