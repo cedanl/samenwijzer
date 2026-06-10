@@ -180,6 +180,7 @@ def refresh_fallbacks() -> tuple[list[str], list[str]]:
     crebo-direct). De niet-deterministische ESCO-LLM-match wordt nooit opnieuw
     gerold: een miss laat het bestaande artefact byte-identiek ongemoeid. Upgrade
     alleen bij een record mét skills (een leeg CompetentNL-record is geen upgrade).
+    Ontbreekt de API-key, dan vroegtijdig terug: geen artefact wordt verwerkt.
     Working-tree only — returnt (upgraded, nog_fallback) voor de rapportage.
     """
     if not os.environ.get("COMPETENTNL_API_KEY"):
