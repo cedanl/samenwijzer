@@ -28,21 +28,32 @@ const ovPdfBtn = document.getElementById("ovPdfBtn");
 const pdfFrame = document.getElementById("pdfFrame");
 let oerIds = [];
 
+let _gehydrateerd = false;
 function openOverlay() { overlay.classList.add("open"); document.body.style.overflow = "hidden"; }
 function setLabels(labels) {
   ovLabels.innerHTML = (labels || []).map((l) => `<span class="ov-label">${esc(l)}</span>`).join("");
   ovPdfBtn.style.display = oerIds.length ? "" : "none";
 }
+function setBanner(onleesbaar) {
+  const b = document.getElementById("ovBanner");
+  if (!b) return;
+  b.hidden = !onleesbaar;
+  if (onleesbaar) b.textContent =
+    "De OER van deze opleiding is niet machine-leesbaar; antwoorden komen uit het landelijke kwalificatiedossier en de instellingsregelingen.";
+}
 
 async function start(vraag) {
   openOverlay();
+  // Eerst de bestaande historie herstellen (awaited), dán de nieuwe vraag — anders
+  // landt de async-opgehaalde historie ónder de nieuwe beurt.
+  if (!_gehydrateerd) { _gehydrateerd = true; await rehydrateer(thread); }
   addVraag(thread, vraag);
   const r = await (await fetch("/api/vraag", {
     method: "POST", headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ vraag }),
   })).json();
   if (r.modus === "kies") { renderPicker(r.opties); return; }
-  if (r.modus === "chat") { oerIds = r.oer_ids || oerIds; setLabels(r.labels); }
+  if (r.modus === "chat") { oerIds = r.oer_ids || oerIds; setLabels(r.labels); setBanner(r.oer_onleesbaar); }
   await streamAntwoord(thread, vraag);
 }
 
@@ -71,6 +82,7 @@ function renderPicker(opties) {
     })).json();
     oerIds = r.oer_ids || ids;
     setLabels(r.labels);
+    setBanner(r.oer_onleesbaar);
     picker.innerHTML = "";
     if (r.wachtende_vraag) await streamAntwoord(thread, r.wachtende_vraag);
   });
@@ -86,6 +98,7 @@ ovReset.addEventListener("click", async () => {
   await fetch("/api/reset", { method: "POST" });
   overlay.classList.remove("open"); document.body.style.overflow = "";
   thread.innerHTML = ""; picker.innerHTML = ""; ovLabels.innerHTML = "";
+  setBanner(false); _gehydrateerd = false;
   pdfFrame.style.display = "none"; pdfFrame.innerHTML = ""; oerIds = [];
 });
 

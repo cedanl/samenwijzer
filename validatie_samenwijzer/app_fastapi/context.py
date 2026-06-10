@@ -63,22 +63,23 @@ def _oer_blok(oer_id: int):
     if row is None:
         return None
     tekst = laad_oer_tekst(resolve_oer_pad(row["bestandspad"]))
-    if not tekst.strip():
-        return None
-    return row, tekst
+    return row, tekst  # tekst mag leeg zijn (gescande OER) — laad_context beslist op KD/bron
 
 
 def laad_context(
     oer_ids: list[int], soorten: tuple[str, ...] = PUBLIEK_SOORTEN
-) -> tuple[str, list[str], list[str]]:
-    """Geef (gecombineerde system-prompt, labels, web-zoek-domeinen) voor de gekozen OER's.
+) -> tuple[str, list[str], list[str], bool]:
+    """Geef (system-prompt, labels, web-zoek-domeinen, oer_onleesbaar) voor de gekozen OER's.
 
     Spiegelt 0_oer_vraag.py: per OER de volledige tekst + KD + skills + examenreglement
-    (instellingsbrede bron), gecombineerd via ``bouw_gecombineerd_systeem``. Lege string
-    als geen enkele OER leesbaar is (→ chat valt terug op het lage-relevantie-bericht).
+    (instellingsbrede bron), gecombineerd via ``bouw_gecombineerd_systeem``. Een OER zonder
+    leesbare tekst (gescande PDF) wordt tóch opgenomen als er een KD of instellingsbron is
+    (KD-fallback, mirror van PR #182); ``oer_onleesbaar`` is dan True (→ banner in de UI).
+    Lege string + False als geen enkele OER een bruikbare bron heeft.
     """
     items: list[dict] = []
     labels: list[str] = []
+    oer_onleesbaar = False
     conn = _conn()
     for oid in oer_ids[:3]:
         res = _oer_blok(oid)
@@ -96,6 +97,13 @@ def laad_context(
             if doc_tekst:
                 instelling_bronnen.append((db.INSTELLING_SOORTEN[soort], doc_tekst))
 
+        dossier_tekst = laad_kwalificatiedossier_tekst(crebo)
+        # Onleesbare OER (gescande PDF) tóch opnemen als er een KD of instellingsbron is.
+        if not tekst.strip() and not dossier_tekst and not instelling_bronnen:
+            continue
+        if not tekst.strip():
+            oer_onleesbaar = True
+
         items.append(
             {
                 "tekst": tekst,
@@ -105,7 +113,7 @@ def laad_context(
                 "leerweg": row["leerweg"],
                 "cohort": row["cohort"],
                 "crebo": crebo,
-                "dossier_tekst": laad_kwalificatiedossier_tekst(crebo),
+                "dossier_tekst": dossier_tekst,
                 "skills_tekst": laad_skills_tekst(crebo),
                 "instelling_bronnen": instelling_bronnen,
             }
@@ -116,7 +124,7 @@ def laad_context(
         )
 
     if not items:
-        return "", [], []
+        return "", [], [], False
     domeinen = web_zoek_domeinen(items)
     systeem = bouw_gecombineerd_systeem(items, web_zoeken=bool(domeinen))
-    return systeem, labels, domeinen
+    return systeem, labels, domeinen, oer_onleesbaar
