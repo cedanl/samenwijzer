@@ -523,7 +523,7 @@ def beheer_run(request: Request, taak: str, reset: int = 0, instelling: str = ""
 ## Task 4: Styling-pariteit-fixes
 **Files:** `app_fastapi/static/app.css`, `app_fastapi/templates/base.html`
 - [ ] **Groen-tint** (`app.css`): de drie groenen (`--green:#2E4636` r.13, `.groen` r.190, `.fill.groen:#2e7d4f` r.191) consolideren naar de Streamlit-status-groen `#27ae60` (`styles.GROEN`). Verifieer met `grep` dat `--green` alleen in deze regels gebruikt wordt; zo ja: `--green: #27ae60` + beide `.groen`-regels via `var(--green)`.
-- [ ] **Mentor-nav-link** — ⚠️ **open productbeslissing** (geen 1-op-1 pariteit): FastAPI heeft géén losse begeleidingssessie-route (die opent per student via `/mentor/student/{id}`). Streamlit toont 'm wel als los nav-item. Opties: (a) tweede mentor-link in `base.html` (~r.22-24) met `href="/mentor"` + label "🎓 Begeleidingssessie", actief op `/mentor/student/`-pad; of (b) bewust niet — de FastAPI-IA verschilt. **Vóór uitvoering met Ed bevestigen.**
+- [ ] **Mentor-nav-link** — **besloten: optie (a)**. Voeg in `base.html` (binnen het `{% elif rol == 'mentor' %}`-blok, ~r.22-24) een tweede mentor-link toe met `href="/mentor"` en label "🎓 Begeleidingssessie", die `actief` wordt op een `/mentor/student/`-pad (FastAPI heeft geen losse sessie-route; de sessie start per student vanaf `/mentor`). Gebruik `{% if request.url.path.startswith('/mentor/student/') %}actief{% endif %}` voor de actief-staat.
 - [ ] Commit (`fix(validatie): groen-tint pariteit + (evt.) mentor-nav-link`).
 
 ## Afronding 2c
