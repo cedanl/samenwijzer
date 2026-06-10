@@ -1,12 +1,14 @@
-"""Server-side sessiestate voor de publieke OER-chat.
+"""Server-side sessiestate voor de OER-chat (publiek én ingelogd).
 
 De gecombineerde system-prompt is tot ~500K tekens × 3 → past nooit in een cookie.
 Daarom houdt een ondertekende cookie (via Starlette ``SessionMiddleware``) enkel een
-``sid``; de echte state leeft in een in-memory store. Spiegelt het ``pub_*``-
-session_state-contract van ``app/pages/0_oer_vraag.py``.
+``sid``; de echte state leeft in een **SQLite-store** (``data/sessies.db``, write-through
+met TTL-opruiming). Spiegelt het ``pub_*``-session_state-contract van
+``app/pages/0_oer_vraag.py``.
 
-POC-grens: in-memory store werkt op één machine. Multi-machine vereist sticky sessions
-of een gedeelde store (Redis/sqlite) — zie het plan-doc.
+Schaal-grens (bewust, Fase 1): één machine. De store overleeft proces-restarts, maar
+niet een redeploy (nieuwe ephemerale container-fs). Multi-machine zou een gedeelde store
+(Redis) of een Fly-volume vereisen — buiten scope. Zie de FastAPI-migratie-spec.
 """
 
 from __future__ import annotations
@@ -117,11 +119,18 @@ def bewaar(sid: str, sessie: Sessie) -> None:
 
 
 def laad(sid: str) -> Sessie | None:
-    """Lees een sessie uit de store, of None als die niet (meer) bestaat."""
+    """Lees een sessie uit de store, of None als die niet (meer) bestaat.
+
+    Een schema-mismatch (oude rij ná het verwijderen/hernoemen van een ``Sessie``-veld)
+    laat de sessie netjes vervallen i.p.v. een harde 500 te geven.
+    """
     row = _store().execute("SELECT data FROM sessies WHERE sid = ?", (sid,)).fetchone()
     if row is None:
         return None
-    return Sessie(**json.loads(row[0]))
+    try:
+        return Sessie(**json.loads(row[0]))
+    except TypeError:
+        return None
 
 
 def get_sessie(request) -> Sessie:

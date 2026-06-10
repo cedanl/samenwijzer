@@ -51,17 +51,19 @@ async def _toegangspoort(request: Request, call_next):
     """De hele app zit achter het algemene wachtwoord — sommige instellingen zetten
     hun OER achter een wachtwoord, dus niets is publiek vindbaar zonder de poort."""
     pad = request.url.path
-    if pad.startswith("/static") or pad == "/toegang":
-        response = await call_next(request)
-        bewaar_sessie(request)
-        return response
-    if not get_sessie(request).toegang:
-        bewaar_sessie(request)
+    if pad.startswith("/static"):
+        return await call_next(request)
+    if pad != "/toegang" and not get_sessie(request).toegang:
         if pad.startswith("/api/"):
             return JSONResponse({"error": "geen toegang"}, status_code=401)
         return RedirectResponse("/toegang", status_code=303)
     response = await call_next(request)
-    bewaar_sessie(request)
+    # Bewaar alleen op mutaterende requests. Een read-only GET zou zijn (stale) kopie
+    # terugschrijven en zo een gelijktijdige chat-beurt kunnen overschrijven (lost update).
+    # /api/chat bewaart zélf ná de stream (post-turn); de twee mutaterende GET-routes
+    # (/uitloggen, /mentor/student/...) bewaren expliciet in hun handler.
+    if request.method != "GET" and pad != "/api/chat":
+        bewaar_sessie(request)
     return response
 
 
@@ -263,6 +265,7 @@ def login_post(
 @app.get("/uitloggen")
 def uitloggen(request: Request):
     get_sessie(request).uitloggen()
+    bewaar_sessie(request)  # mutaterende GET → expliciet bewaren (middleware slaat GET over)
     return RedirectResponse("/", status_code=303)
 
 
@@ -339,6 +342,7 @@ def mentor_sessie(request: Request, student_id: int):
     s.oer_systeem, s.oer_labels, s.domeinen = laad_context([prof["oer_id"]], MENTOR_SOORTEN)
     s.oer_ids = [prof["oer_id"]]
     s.chat_history = []
+    bewaar_sessie(request)  # mutaterende GET → expliciet bewaren (middleware slaat GET over)
     return templates.TemplateResponse(
         request,
         "mentor_sessie.html",

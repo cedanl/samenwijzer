@@ -162,6 +162,29 @@ def test_session_secret_verplicht(monkeypatch):
         importlib.reload(main_mod)
 
 
+def test_read_only_get_bewaart_niet(tmp_path, monkeypatch):
+    """Lost-update-fix: een read-only GET schrijft de sessie niet terug; mutaties wel."""
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    monkeypatch.setattr("app_fastapi.sessie._DB_PAD", str(tmp_path / "s.db"))
+    import app_fastapi.sessie as sessie_mod
+
+    sessie_mod._reset_store_voor_test()
+    from fastapi.testclient import TestClient
+
+    from app_fastapi.main import app
+
+    client = TestClient(app)
+    client.post("/toegang", data={"wachtwoord": _WW})  # toegang verleend + (echt) bewaard
+
+    saves: list[str] = []
+    monkeypatch.setattr(sessie_mod, "bewaar", lambda sid, s: saves.append(sid))
+    client.get("/")  # read-only → géén save
+    assert saves == []
+    client.post("/api/reset")  # mutaterend → wél save
+    assert len(saves) == 1
+
+
 # ── api (geen AI-call) ─────────────────────────────────────────────────────────
 def _client():
     """TestClient die al door de algemene toegangspoort is (gedeeld wachtwoord)."""
