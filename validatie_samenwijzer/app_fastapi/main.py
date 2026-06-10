@@ -27,7 +27,7 @@ from starlette.middleware.sessions import SessionMiddleware
 from app_fastapi import data
 from app_fastapi.auth import auth_mentor, auth_student
 from app_fastapi.context import MENTOR_SOORTEN, STUDENT_SOORTEN, laad_context
-from app_fastapi.sessie import get_sessie
+from app_fastapi.sessie import bewaar_sessie, get_sessie
 from validatie_samenwijzer import db
 from validatie_samenwijzer._ai import _client as ai_client
 from validatie_samenwijzer.chat import (
@@ -52,12 +52,17 @@ async def _toegangspoort(request: Request, call_next):
     hun OER achter een wachtwoord, dus niets is publiek vindbaar zonder de poort."""
     pad = request.url.path
     if pad.startswith("/static") or pad == "/toegang":
-        return await call_next(request)
+        response = await call_next(request)
+        bewaar_sessie(request)
+        return response
     if not get_sessie(request).toegang:
+        bewaar_sessie(request)
         if pad.startswith("/api/"):
             return JSONResponse({"error": "geen toegang"}, status_code=401)
         return RedirectResponse("/toegang", status_code=303)
-    return await call_next(request)
+    response = await call_next(request)
+    bewaar_sessie(request)
+    return response
 
 
 # SessionMiddleware ná de poort geregistreerd → draait als buitenste laag, zodat
@@ -166,6 +171,7 @@ async def api_chat(request: Request):
                 antwoord += chunk
                 yield f"data: {json.dumps({'chunk': chunk})}\n\n"
             s.voeg_beurt_toe(vraag, antwoord)
+            bewaar_sessie(request)
             yield f"data: {json.dumps({'done': True})}\n\n"
         except anthropic.APITimeoutError:
             yield f"data: {json.dumps({'error': 'timeout'})}\n\n"

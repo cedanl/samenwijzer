@@ -126,6 +126,26 @@ def test_sessiestore_ttl_verwijdert_verouderd(tmp_path, monkeypatch):
     assert sessie_mod.laad("nieuw") is not None
 
 
+def test_get_sessie_write_through_round_trip(tmp_path, monkeypatch):
+    """get_sessie + bewaar_sessie: een tweede request met dezelfde sid krijgt de state terug."""
+    from types import SimpleNamespace
+
+    from app_fastapi import sessie as sessie_mod
+
+    monkeypatch.setattr(sessie_mod, "_DB_PAD", str(tmp_path / "s.db"))
+    sessie_mod._reset_store_voor_test()
+
+    req1 = SimpleNamespace(session={}, state=SimpleNamespace())
+    s1 = sessie_mod.get_sessie(req1)
+    s1.toegang = True
+    sessie_mod.bewaar_sessie(req1)
+    sid = req1.session["sid"]
+
+    req2 = SimpleNamespace(session={"sid": sid}, state=SimpleNamespace())
+    s2 = sessie_mod.get_sessie(req2)
+    assert s2.toegang is True
+
+
 # ── api (geen AI-call) ─────────────────────────────────────────────────────────
 def _client():
     """TestClient die al door de algemene toegangspoort is (gedeeld wachtwoord)."""
