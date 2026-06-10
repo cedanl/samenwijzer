@@ -81,6 +81,51 @@ def test_sessie_reset_leegt_alles():
     assert s.chat_history == [] and s.oer_systeem is None and s.oer_ids == []
 
 
+# ── sessiestore (SQLite, write-through + TTL) ───────────────────────────────────
+def test_sessiestore_bewaart_en_laadt(tmp_path, monkeypatch):
+    from app_fastapi import sessie as sessie_mod
+
+    monkeypatch.setattr(sessie_mod, "_DB_PAD", str(tmp_path / "sessies.db"))
+    sessie_mod._reset_store_voor_test()
+    s = sessie_mod.Sessie()
+    s.oer_systeem = "PROMPT"
+    s.oer_ids = [1, 2]
+    s.voeg_beurt_toe("vraag", "antwoord")
+    sessie_mod.bewaar("sid-1", s)
+
+    geladen = sessie_mod.laad("sid-1")
+    assert geladen is not None
+    assert geladen.oer_systeem == "PROMPT"
+    assert geladen.oer_ids == [1, 2]
+    assert geladen.chat_history == [
+        {"role": "user", "content": "vraag"},
+        {"role": "assistant", "content": "antwoord"},
+    ]
+
+
+def test_sessiestore_laad_onbekende_sid_is_none(tmp_path, monkeypatch):
+    from app_fastapi import sessie as sessie_mod
+
+    monkeypatch.setattr(sessie_mod, "_DB_PAD", str(tmp_path / "sessies.db"))
+    sessie_mod._reset_store_voor_test()
+    assert sessie_mod.laad("bestaat-niet") is None
+
+
+def test_sessiestore_ttl_verwijdert_verouderd(tmp_path, monkeypatch):
+    from app_fastapi import sessie as sessie_mod
+
+    monkeypatch.setattr(sessie_mod, "_DB_PAD", str(tmp_path / "sessies.db"))
+    monkeypatch.setattr(sessie_mod, "_TTL_SECONDEN", 100)
+    sessie_mod._reset_store_voor_test()
+    klok = [1_000_000.0]
+    monkeypatch.setattr(sessie_mod.time, "time", lambda: klok[0])
+    sessie_mod.bewaar("oud", sessie_mod.Sessie())
+    klok[0] += 200  # voorbij de TTL
+    sessie_mod.bewaar("nieuw", sessie_mod.Sessie())  # triggert lazy opruiming
+    assert sessie_mod.laad("oud") is None
+    assert sessie_mod.laad("nieuw") is not None
+
+
 # ── api (geen AI-call) ─────────────────────────────────────────────────────────
 def _client():
     """TestClient die al door de algemene toegangspoort is (gedeeld wachtwoord)."""
