@@ -10,6 +10,7 @@
   --vermilion:  #DA3A1E;
   --vermilion-d:#B22C12;
   --marker:     #FFD84D;
+  --marker-was: rgba(255, 216, 77, 0.16);
   --green:      #2E4636;
   --line:       rgba(33,25,16,.14);
   --line-soft:  rgba(33,25,16,.08);
@@ -18,6 +19,7 @@
   --ease:       cubic-bezier(.22,.61,.36,1);
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
+.banner-warn { margin: 0 0 12px; padding: 10px 14px; border-radius: 8px; background: var(--marker-was); border: 1px solid var(--marker); font-weight: 500; font-size: .92rem; line-height: 1.4; color: var(--ink); }
 html { scroll-behavior: smooth; }
 body {
   background: var(--paper); color: var(--ink);

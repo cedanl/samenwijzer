@@ -33,6 +33,13 @@ function setLabels(labels) {
   ovLabels.innerHTML = (labels || []).map((l) => `<span class="ov-label">${esc(l)}</span>`).join("");
   ovPdfBtn.style.display = oerIds.length ? "" : "none";
 }
+function setBanner(onleesbaar) {
+  const b = document.getElementById("ovBanner");
+  if (!b) return;
+  b.hidden = !onleesbaar;
+  if (onleesbaar) b.textContent =
+    "De OER van deze opleiding is niet machine-leesbaar; antwoorden komen uit het landelijke kwalificatiedossier en de instellingsregelingen.";
+}
 
 async function start(vraag) {
   openOverlay();
@@ -42,7 +49,7 @@ async function start(vraag) {
     body: JSON.stringify({ vraag }),
   })).json();
   if (r.modus === "kies") { renderPicker(r.opties); return; }
-  if (r.modus === "chat") { oerIds = r.oer_ids || oerIds; setLabels(r.labels); }
+  if (r.modus === "chat") { oerIds = r.oer_ids || oerIds; setLabels(r.labels); setBanner(r.oer_onleesbaar); }
   await streamAntwoord(thread, vraag);
 }
 
@@ -71,6 +78,7 @@ function renderPicker(opties) {
     })).json();
     oerIds = r.oer_ids || ids;
     setLabels(r.labels);
+    setBanner(r.oer_onleesbaar);
     picker.innerHTML = "";
     if (r.wachtende_vraag) await streamAntwoord(thread, r.wachtende_vraag);
   });
@@ -86,6 +94,7 @@ ovReset.addEventListener("click", async () => {
   await fetch("/api/reset", { method: "POST" });
   overlay.classList.remove("open"); document.body.style.overflow = "";
   thread.innerHTML = ""; picker.innerHTML = ""; ovLabels.innerHTML = "";
+  setBanner(false);
   pdfFrame.style.display = "none"; pdfFrame.innerHTML = ""; oerIds = [];
 });
 
