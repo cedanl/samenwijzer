@@ -123,15 +123,55 @@ async function streamAntwoord(thread, vraag) {
   }
 }
 
-/* Studiegids-viewer: PDF → iframe; markdown (bv. Deltion) → gerenderd. */
+/* Studiegids-viewer: PDF → PDF.js-canvas (mobiel-proof) met download/open-fallback;
+   markdown (bv. Deltion) → gerenderd. PDF.js lazy via CDN (geen build-stap). */
+const _PDFJS_VERSIE = "4.7.76";
+const _PDFJS_CDN = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${_PDFJS_VERSIE}/pdf.min.mjs`;
+const _PDFJS_WORKER = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${_PDFJS_VERSIE}/pdf.worker.min.mjs`;
+
+function _pdfActies(oerId) {
+  const url = `/api/oer/${oerId}/bestand`;
+  return `<div class="pdf-acties">`
+    + `<a class="linkbtn" href="${url}?download=1" download>⬇️ Download</a>`
+    + `<a class="linkbtn" href="${url}" target="_blank" rel="noopener">↗ Open in nieuw tabblad</a>`
+    + `</div>`;
+}
+
 async function mountStudiegids(oerId, frameEl) {
-  const resp = await fetch(`/api/oer/${oerId}/bestand`);
+  let resp;
+  try {
+    resp = await fetch(`/api/oer/${oerId}/bestand`);
+  } catch (e) {
+    resp = null;
+  }
+  if (!resp || !resp.ok) {
+    frameEl.innerHTML = `<div class="wrap"><p class="studiegids-fout">Studiegids kon niet geladen worden.</p></div>`;
+    return;
+  }
   const ct = resp.headers.get("content-type") || "";
-  if (ct.includes("pdf")) {
-    frameEl.innerHTML = `<iframe src="/api/oer/${oerId}/bestand" title="Studiegids"></iframe>`;
-  } else {
+  if (!ct.includes("pdf")) {
     const tekst = await resp.text();
     frameEl.innerHTML = `<div class="wrap"><div class="studiegids-doc">${renderMarkdown(tekst)}</div></div>`;
+    return;
+  }
+  // PDF: knoppen eerst (altijd zichtbare fallback), dan de canvas-render.
+  frameEl.innerHTML = _pdfActies(oerId);
+  try {
+    const data = await resp.arrayBuffer();
+    const pdfjs = await import(_PDFJS_CDN);
+    pdfjs.GlobalWorkerOptions.workerSrc = _PDFJS_WORKER;
+    const pdf = await pdfjs.getDocument({ data }).promise;
+    const dpr = window.devicePixelRatio || 1;
+    for (let n = 1; n <= pdf.numPages; n++) {
+      const page = await pdf.getPage(n);
+      const vp = page.getViewport({ scale: 1.4 * dpr });
+      const canvas = document.createElement("canvas");
+      canvas.width = vp.width; canvas.height = vp.height;
+      frameEl.appendChild(canvas);
+      await page.render({ canvasContext: canvas.getContext("2d"), viewport: vp }).promise;
+    }
+  } catch (e) {
+    // PDF.js faalde (CDN-uitval/render-fout) → de download/open-knoppen blijven staan.
   }
 }
 
