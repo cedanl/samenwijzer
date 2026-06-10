@@ -69,12 +69,19 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 
 ## Wat dit project is
 
-Standalone Streamlit-app (`validatie_samenwijzer/`) die MBO-studenten en mentoren laat chatten
-met hun OER (Onderwijs- en Examenregeling) via Claude streaming met de **volledige OER als
+Standalone **FastAPI-app** (`validatie_samenwijzer/app_fastapi/`) die MBO-studenten en mentoren laat
+chatten met hun OER (Onderwijs- en Examenregeling) via Claude streaming met de **volledige OER als
 context** (Sonnet 4.6, 1M-tokenvenster). Het landelijke **kwalificatiedossier (KD)** wordt waar
 beschikbaar mee-ingebed als aanvullende bron — de OER blijft leidend; het KD wordt alleen
 geraadpleegd als de OER het onderwerp niet of onvoldoende behandelt. Leeft als subproject binnen
 de `samenwijzer`-monorepo maar heeft zijn eigen `pyproject.toml`, `.venv` en database.
+
+> **Frontend-migratie (juni 2026)**: de oorspronkelijke Streamlit-frontend (`app/`) is **geretired**
+> en vervangen door de FastAPI-frontend (`app_fastapi/`) — die haalt de mockup-kwaliteit die Streamlit
+> structureel niet kon (geen DOM-bezit/page-JS, rerun-model). De productie-`digitale-gids` draait nu
+> `Dockerfile.fastapi`. De Python-kern (`chat.py`, `db.py`, `_ai.py`, `auth.py`-loginfuncties) bleef
+> ongewijzigd gedeeld. Onderdelen hieronder die naar `app/`, `st.session_state` of poort 8503 verwijzen
+> beschrijven de geretirede Streamlit-app. Spec/plan: `docs/plans/2026-06-10-fastapi-migratie-*.md`.
 
 > **Geen vector store**: PR #33 (mei 2026) heeft ChromaDB en OpenAI-embeddings verwijderd. De
 > retrieval-laag is vervangen door full-document context. Zie ook `chat.py:_MAX_OER_TEKST_TEKENS`.
@@ -84,8 +91,8 @@ de `samenwijzer`-monorepo maar heeft zijn eigen `pyproject.toml`, `.venv` en dat
 Alle commando's uitvoeren vanuit `validatie_samenwijzer/`:
 
 ```bash
-# App starten (poort 8503)
-uv run streamlit run app/main.py
+# App starten (poort 8504) — vereist SESSION_SECRET + ALGEMEEN_WACHTWOORD in .env
+uv run uvicorn app_fastapi.main:app --port 8504 --reload
 
 # Alle tests
 uv sync --extra dev && uv run python -m pytest
