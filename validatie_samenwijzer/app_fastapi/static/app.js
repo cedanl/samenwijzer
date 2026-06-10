@@ -29,10 +29,7 @@ const pdfFrame = document.getElementById("pdfFrame");
 let oerIds = [];
 
 let _gehydrateerd = false;
-function openOverlay() {
-  overlay.classList.add("open"); document.body.style.overflow = "hidden";
-  if (!_gehydrateerd) { _gehydrateerd = true; rehydrateer(thread); }
-}
+function openOverlay() { overlay.classList.add("open"); document.body.style.overflow = "hidden"; }
 function setLabels(labels) {
   ovLabels.innerHTML = (labels || []).map((l) => `<span class="ov-label">${esc(l)}</span>`).join("");
   ovPdfBtn.style.display = oerIds.length ? "" : "none";
@@ -47,6 +44,9 @@ function setBanner(onleesbaar) {
 
 async function start(vraag) {
   openOverlay();
+  // Eerst de bestaande historie herstellen (awaited), dán de nieuwe vraag — anders
+  // landt de async-opgehaalde historie ónder de nieuwe beurt.
+  if (!_gehydrateerd) { _gehydrateerd = true; await rehydrateer(thread); }
   addVraag(thread, vraag);
   const r = await (await fetch("/api/vraag", {
     method: "POST", headers: { "Content-Type": "application/json" },
