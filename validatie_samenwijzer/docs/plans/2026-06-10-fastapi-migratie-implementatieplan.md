@@ -450,10 +450,24 @@ git commit -m "chore(validatie): Fly single-machine voor SQLite-sessiestore (Fas
    aanwezig) de juiste prompt geeft. TDD: context-test (gate + signaal) + route-test (banner-veld).
 2. **beheer porten** — nieuwe routes `/beheer` (+ subprocess-streaming) achter `BEHEER_ENABLED`,
    template `beheer.html`; mirror van `app/pages/9_beheer.py`. TDD: route geblokkeerd zonder flag.
-3. **Kwaliteits-pariteit verifiëren** — citatieplicht-pull-quotes in `static/chat.js`; PDF-bekijk
-   mobiel-proof (geen blanco data-URI-iframe op iOS/Android); dual-theme student/docent.
-   UI-smoke-test per rol.
-4. PR 2: `feat(validatie): FastAPI feature/kwaliteits-pariteit (KD-fallback, beheer)`.
+3. **Kwaliteits-pariteit** — concreet gemaakt via de parallelle audit (2026-06-10):
+   - **PDF mobiel-proof** (grootste gat): de viewer gebruikt al een server-URL-iframe (géén
+     data-URI-valkuil), maar mist een **PDF.js-renderer** (st.pdf-equivalent) én **een
+     download-/open-knop** als mobiele fallback — die ontbreekt in alle drie aanroepers
+     (`studiegids.html`, `mentor_sessie.html`-tab, `index.html`-overlay). Backend `api_oer_bestand`
+     (`main.py:179-197`) kan een `?download=1` → `FileResponse(filename=…, Content-Disposition:
+     attachment` krijgen. Plus foutafhandeling in `mountStudiegids` (`chat.js:115`, check `resp.ok`).
+   - **Chat-rendering**: definieer de ontbrekende `--marker-was` CSS-var (`app.css:160`); voeg
+     **chat-historie-rehydratie** toe bij page-load (server houdt `chat_history`, maar de thread
+     start leeg → divergeert van Streamlit `session_state`); spiegel een `LAGE_RELEVANTIE`-melding
+     in de stream/`context.py` bij lege OER-context. (Escaping is al veilig — geen XSS-werk nodig.)
+   - **Nav/styling**: mentor-nav mist de "Begeleidingssessie"-link (`base.html:22-24` vs
+     `styles.py:_NAV_MENTOR`); groen-tint inconsistent (`app.css:13,190-191` vs `styles.py` `#27ae60`).
+   - **GEEN dual-theme-werk**: het lime/sage student-vs-docent-thema zit in de *parent*-app, niet in
+     dit subproject — hier is één editorial-thema dat al correct geport is. (Spec-aanname gecorrigeerd.)
+   - UI-smoke-test per rol; PDF op **echt** mobiel verifiëren (iOS Safari + Android Chrome), niet
+     alleen DevTools-emulatie.
+4. PR 2: `feat(validatie): FastAPI feature/kwaliteits-pariteit (KD-fallback, beheer, PDF, chat-UX)`.
 
 ## Fase 3 — Cutover + retire (outline — apart plannen na Fase 2)
 
