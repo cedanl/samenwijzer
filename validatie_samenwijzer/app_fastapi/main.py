@@ -27,7 +27,7 @@ from starlette.middleware.sessions import SessionMiddleware
 from app_fastapi import data
 from app_fastapi.auth import auth_mentor, auth_student
 from app_fastapi.context import MENTOR_SOORTEN, STUDENT_SOORTEN, laad_context
-from app_fastapi.sessie import get_sessie
+from app_fastapi.sessie import bewaar_sessie, get_sessie
 from validatie_samenwijzer import db
 from validatie_samenwijzer._ai import _client as ai_client
 from validatie_samenwijzer.chat import (
@@ -51,18 +51,33 @@ async def _toegangspoort(request: Request, call_next):
     """De hele app zit achter het algemene wachtwoord — sommige instellingen zetten
     hun OER achter een wachtwoord, dus niets is publiek vindbaar zonder de poort."""
     pad = request.url.path
-    if pad.startswith("/static") or pad == "/toegang":
+    if pad.startswith("/static"):
         return await call_next(request)
-    if not get_sessie(request).toegang:
+    if pad != "/toegang" and not get_sessie(request).toegang:
         if pad.startswith("/api/"):
             return JSONResponse({"error": "geen toegang"}, status_code=401)
         return RedirectResponse("/toegang", status_code=303)
-    return await call_next(request)
+    response = await call_next(request)
+    # Bewaar alleen op mutaterende requests. Een read-only GET zou zijn (stale) kopie
+    # terugschrijven en zo een gelijktijdige chat-beurt kunnen overschrijven (lost update).
+    # /api/chat bewaart zélf ná de stream (post-turn); de twee mutaterende GET-routes
+    # (/uitloggen, /mentor/student/...) bewaren expliciet in hun handler.
+    if request.method != "GET" and pad != "/api/chat":
+        bewaar_sessie(request)
+    return response
 
 
 # SessionMiddleware ná de poort geregistreerd → draait als buitenste laag, zodat
 # request.session (en dus get_sessie) in de poort beschikbaar is.
-app.add_middleware(SessionMiddleware, secret_key=os.environ.get("SESSION_SECRET", "dev-poc-secret"))
+_SESSION_SECRET = os.environ.get("SESSION_SECRET")
+if not _SESSION_SECRET:
+    raise RuntimeError("SESSION_SECRET is verplicht (geen default) — zet 'm in .env / Fly-secrets.")
+app.add_middleware(
+    SessionMiddleware,
+    secret_key=_SESSION_SECRET,
+    https_only=os.environ.get("COOKIE_HTTPS_ONLY", "1") != "0",
+    same_site="lax",
+)
 app.mount("/static", StaticFiles(directory=_HIER / "static"), name="static")
 templates = Jinja2Templates(directory=_HIER / "templates")
 
@@ -166,6 +181,7 @@ async def api_chat(request: Request):
                 antwoord += chunk
                 yield f"data: {json.dumps({'chunk': chunk})}\n\n"
             s.voeg_beurt_toe(vraag, antwoord)
+            bewaar_sessie(request)
             yield f"data: {json.dumps({'done': True})}\n\n"
         except anthropic.APITimeoutError:
             yield f"data: {json.dumps({'error': 'timeout'})}\n\n"
@@ -249,6 +265,7 @@ def login_post(
 @app.get("/uitloggen")
 def uitloggen(request: Request):
     get_sessie(request).uitloggen()
+    bewaar_sessie(request)  # mutaterende GET → expliciet bewaren (middleware slaat GET over)
     return RedirectResponse("/", status_code=303)
 
 
@@ -325,6 +342,7 @@ def mentor_sessie(request: Request, student_id: int):
     s.oer_systeem, s.oer_labels, s.domeinen = laad_context([prof["oer_id"]], MENTOR_SOORTEN)
     s.oer_ids = [prof["oer_id"]]
     s.chat_history = []
+    bewaar_sessie(request)  # mutaterende GET → expliciet bewaren (middleware slaat GET over)
     return templates.TemplateResponse(
         request,
         "mentor_sessie.html",
