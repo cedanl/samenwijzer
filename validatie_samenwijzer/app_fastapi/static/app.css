@@ -11,7 +11,7 @@
   --vermilion-d:#B22C12;
   --marker:     #FFD84D;
   --marker-was: rgba(255, 216, 77, 0.16);
-  --green:      #2E4636;
+  --green:      #27ae60;
   --line:       rgba(33,25,16,.14);
   --line-soft:  rgba(33,25,16,.08);
   --shadow:     22px 30px 60px -28px rgba(33,25,16,.45);
@@ -193,7 +193,12 @@ footer .fbrand { font-family: "Instrument Serif", serif; font-size: 1.4rem; }
 
 /* ══ INGELOGDE PAGINA'S (POC-uitbreiding) ════════════════════════════════════ */
 .groen { color: var(--green); } .oranje { color: #b07a18; } .rood { color: var(--vermilion-d); }
-.fill.groen { background: #2e7d4f; } .fill.oranje { background: #c9881c; } .fill.rood { background: var(--vermilion); }
+.fill.groen { background: var(--green); } .fill.oranje { background: #c9881c; } .fill.rood { background: var(--vermilion); }
+.beheer-tabel { border-collapse: collapse; margin: .6em 0; font-size: .92rem; }
+.beheer-tabel th, .beheer-tabel td { border: 1px solid var(--line); padding: 5px 12px; text-align: left; }
+.beheer-tabel th { background: var(--paper-deep); }
+.beheer-knoppen, .beheer-ingest { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: .6em 0; }
+.beheer-output { background: var(--ink); color: var(--paper); padding: 14px; border-radius: 8px; max-height: 50vh; overflow-y: auto; white-space: pre-wrap; font-size: .82rem; }
 .bar { height: 8px; border-radius: 4px; background: var(--paper-deep); overflow: hidden; margin: 8px 0; }
 .bar .fill { height: 100%; border-radius: 4px; }
 .terug { display: inline-block; color: var(--ink-soft); font-size: .9rem; margin-bottom: .6rem; }

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Beheer · De digitale gids{% endblock %}
+{% block content %}
+<div class="pagehead">
+  <div class="kicker mono">Beheer · dev-only</div>
+  <h1 class="serif">Beheer</h1>
+  <p class="sub">Sync, ingest en seed draaien op de host; de output streamt live hieronder.</p>
+</div>
+
+<div class="profblok">
+  <div class="statlabel mono">Status</div>
+  <table class="beheer-tabel">
+    <thead><tr><th>Instelling</th><th>Totaal OERs</th><th>Geïndexeerd</th></tr></thead>
+    <tbody>
+      {% for r in status.per_instelling %}
+      <tr><td>{{ r.display_naam }}</td><td>{{ r.totaal }}</td><td>{{ r.geindexeerd }}</td></tr>
+      {% else %}
+      <tr><td colspan="3">Geen OERs in DB — draai eerst een ingest.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% if status.laatste_ingest %}
+  <p class="mono">Laatste ingest: <b>{{ status.laatste_ingest.scope }}</b> op {{ status.laatste_ingest.tijdstip }}
+     ({{ status.laatste_ingest.n_oers }} OERs, {{ status.laatste_ingest.n_kerntaken }} kerntaken)</p>
+  {% else %}<p class="mono">Nog geen ingest-run geregistreerd.</p>{% endif %}
+</div>
+
+<div class="profblok">
+  <div class="statlabel mono">Taken</div>
+  <div class="beheer-knoppen">
+    <button class="iconbtn" data-taak="sync_oeren">Sync oeren</button>
+    <button class="iconbtn" data-taak="ingest_alles">Re-ingest (alles)</button>
+    <button class="iconbtn" data-taak="kd_sync">Sync KD's</button>
+    <button class="iconbtn" data-taak="seed_bulk">Seed (bulk)</button>
+    <button class="iconbtn" data-taak="seed_minimal">Seed (minimal)</button>
+  </div>
+  <div class="beheer-ingest">
+    <label>Re-ingest één instelling:
+      <select id="ingestScope">
+        {% for k in instellingen %}<option value="{{ k }}">{{ k }}</option>{% endfor %}
+      </select>
+    </label>
+    <label><input type="checkbox" id="ingestReset"> --reset</label>
+    <button class="iconbtn" id="ingestBtn">Re-ingest instelling</button>
+  </div>
+</div>
+
+<pre class="beheer-output mono" id="output">Klik een taak om te starten…</pre>
+{% endblock %}
+{% block scripts %}
+<script>
+  const out = document.getElementById("output");
+  let bron = null;
+  function run(url) {
+    if (bron) bron.close();
+    out.textContent = "";
+    bron = new EventSource(url);
+    bron.onmessage = (e) => {
+      const d = JSON.parse(e.data);
+      if (d.regel !== undefined) { out.textContent += d.regel + "\n"; out.scrollTop = out.scrollHeight; }
+      if (d.done) { out.textContent += `\n[exit ${d.exit}]\n`; bron.close(); }
+    };
+    bron.onerror = () => { out.textContent += "\n[verbinding verbroken]\n"; bron.close(); };
+  }
+  document.querySelectorAll("[data-taak]").forEach((b) => {
+    b.addEventListener("click", () => run(`/api/beheer/run?taak=${b.dataset.taak}`));
+  });
+  document.getElementById("ingestBtn").addEventListener("click", () => {
+    const scope = document.getElementById("ingestScope").value;
+    const reset = document.getElementById("ingestReset").checked ? 1 : 0;
+    run(`/api/beheer/run?taak=ingest&instelling=${scope}&reset=${reset}`);
+  });
+</script>
+{% endblock %}
