@@ -1,9 +1,8 @@
-# POC-image voor de FastAPI-variant van "De digitale gids" (publieke OER-chat).
-# NIET gekoppeld aan fly.toml — de productie-deploy gebruikt nog de Streamlit-`Dockerfile`.
-# Deze Dockerfile bewijst alleen dat de FastAPI-POC identiek te containeriseren is.
-# Bouwen (build-context = repo-root, net als de Streamlit-Dockerfile):
-#   docker build -f Dockerfile.fastapi -t digitale-gids-fastapi .
-# Of, om 'm te deployen i.p.v. Streamlit: zet `dockerfile = "Dockerfile.fastapi"` in fly.toml.
+# Productie-image voor "De digitale gids" (FastAPI-frontend, publieke OER-chat).
+# Gekoppeld aan fly.toml (`dockerfile = "Dockerfile.fastapi"`). Build-context = repo-root
+# (data leeft buiten het subproject). Deploy vanuit de repo-root:
+#   flyctl deploy -a digitale-gids --remote-only
+# Vereist Fly-secrets: SESSION_SECRET (cookie-signing), ALGEMEEN_WACHTWOORD, ANTHROPIC_API_KEY.
 FROM python:3.13-slim
 
 RUN pip install --no-cache-dir uv
@@ -17,11 +16,13 @@ RUN uv sync --frozen --no-dev
 COPY oeren/ /app/oeren/
 COPY kwalificatiedossiers/ /app/kwalificatiedossiers/
 
+# SESSION_SECRET wordt NIET hier gezet (fail-closed) — het is een Fly-secret, zodat
+# cookies niet met een bekend secret getekend worden. BEHEER_ENABLED expliciet uit.
 ENV OEREN_PAD=/app/oeren \
     KWALDOSSIERS_PAD=/app/kwalificatiedossiers/pdfs \
     SKILLS_PAD=/app/validatie_samenwijzer/data/skills \
     DB_PATH=/app/validatie_samenwijzer/data/validatie.db \
-    SESSION_SECRET=change-me-in-fly-secrets
+    BEHEER_ENABLED=false
 
 EXPOSE 8080
 CMD ["uv", "run", "--no-dev", "uvicorn", "app_fastapi.main:app", \
