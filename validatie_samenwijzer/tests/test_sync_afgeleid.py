@@ -105,3 +105,14 @@ def test_skills_gat_gerapporteerd(dirs, monkeypatch):
 def test_samenvatting_niets_veranderd():
     assert not sync_afgeleid.Samenvatting().iets_veranderd
     assert sync_afgeleid.Samenvatting(nieuwe_skills=["X"]).iets_veranderd
+
+
+def test_refresh_fallbacks_shelt_naar_build_script(monkeypatch):
+    cmds = []
+    monkeypatch.setattr(sync_afgeleid, "_run", lambda cmd: cmds.append(cmd) or 0)
+
+    sync_afgeleid._refresh_fallbacks()
+
+    assert len(cmds) == 1
+    assert str(sync_afgeleid._SKILLS_SCRIPT) in cmds[0]
+    assert "--refresh-fallbacks" in cmds[0]
