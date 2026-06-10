@@ -24,26 +24,27 @@ def _leesbare_oer_id() -> int | None:
     for row in conn.execute(
         "SELECT id FROM oer_documenten WHERE geindexeerd = 1 ORDER BY id"
     ).fetchall():
-        systeem, _labels, _dom = laad_context([row["id"]])
+        systeem, _labels, _dom, _onl = laad_context([row["id"]])
         if systeem:
             return row["id"]
     return None
 
 
 def test_laad_context_lege_lijst():
-    assert laad_context([]) == ("", [], [])
+    # Contract: 4-tuple (systeem, labels, domeinen, oer_onleesbaar).
+    assert laad_context([]) == ("", [], [], False)
 
 
 def test_laad_context_onbekende_id():
     # Een niet-bestaand id levert geen leesbare OER → lege context.
-    assert laad_context([99_999_999]) == ("", [], [])
+    assert laad_context([99_999_999]) == ("", [], [], False)
 
 
 def test_laad_context_geeft_systeem_en_label():
     oer_id = _leesbare_oer_id()
     if oer_id is None:
         pytest.skip("Geen geïndexeerde OER met leesbare tekst beschikbaar (DB/oeren afwezig).")
-    systeem, labels, domeinen = laad_context([oer_id])
+    systeem, labels, domeinen, _ = laad_context([oer_id])
     assert systeem and len(systeem) > 500
     assert len(labels) == 1 and " · " in labels[0]
     assert isinstance(domeinen, list)
@@ -56,9 +57,49 @@ def test_laad_context_student_soorten_minstens_zo_breed():
     oer_id = _leesbare_oer_id()
     if oer_id is None:
         pytest.skip("Geen geïndexeerde OER met leesbare tekst beschikbaar.")
-    publiek, _, _ = laad_context([oer_id])
-    student, _, _ = laad_context([oer_id], STUDENT_SOORTEN)
+    publiek, _, _, _ = laad_context([oer_id])
+    student, _, _, _ = laad_context([oer_id], STUDENT_SOORTEN)
     assert len(student) >= len(publiek)
+
+
+def test_laad_context_onleesbare_oer_via_kd(monkeypatch):
+    """Een OER zonder leesbare tekst maar mét KD levert tóch context + oer_onleesbaar=True."""
+    import app_fastapi.context as ctx
+
+    fake_row = {
+        "id": 1, "crebo": "25168", "opleiding": "Gastheer", "display_naam": "Da Vinci",
+        "naam": "davinci", "leerweg": "BBL", "cohort": "2025", "instelling_id": 2,
+        "bestandspad": "x.pdf",
+    }
+    monkeypatch.setattr(ctx, "_oer_blok", lambda oid: (fake_row, ""))
+    monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c: "KD-INHOUD")
+    monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
+    monkeypatch.setattr(ctx.db, "haal_instelling_document_op", lambda *a, **k: None)
+    monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
+
+    systeem, labels, domeinen, onleesbaar = laad_context([1])
+    assert "KD-INHOUD" in systeem
+    assert onleesbaar is True
+    assert len(labels) == 1
+
+
+def test_laad_context_leesbare_oer_niet_onleesbaar(monkeypatch):
+    import app_fastapi.context as ctx
+
+    fake_row = {
+        "id": 1, "crebo": "25168", "opleiding": "Gastheer", "display_naam": "Da Vinci",
+        "naam": "davinci", "leerweg": "BBL", "cohort": "2025", "instelling_id": 2,
+        "bestandspad": "x.pdf",
+    }
+    monkeypatch.setattr(ctx, "_oer_blok", lambda oid: (fake_row, "ECHTE OER-TEKST"))
+    monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c: "")
+    monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
+    monkeypatch.setattr(ctx.db, "haal_instelling_document_op", lambda *a, **k: None)
+    monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
+
+    systeem, labels, domeinen, onleesbaar = laad_context([1])
+    assert "ECHTE OER-TEKST" in systeem
+    assert onleesbaar is False
 
 
 # ── sessie ────────────────────────────────────────────────────────────────────
