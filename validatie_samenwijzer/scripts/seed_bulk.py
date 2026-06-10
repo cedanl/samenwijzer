@@ -53,6 +53,8 @@ INSTELLINGEN: list[dict] = [
     {"naam": "curio", "display_naam": "Curio", "klas_prefix": "CU"},
     # Deltion als laatste appenden (zelfde reden — RNG-volgorde behouden).
     {"naam": "deltion", "display_naam": "Deltion College", "klas_prefix": "DE"},
+    # Graafschap als laatste appenden (zelfde reden — RNG-volgorde behouden).
+    {"naam": "graafschap", "display_naam": "Graafschap College", "klas_prefix": "GR"},
 ]
 
 VOORNAMEN_V = [

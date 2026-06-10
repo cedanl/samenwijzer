@@ -100,6 +100,7 @@ _INSTELLING_KEYS = {
     "curio",
     "davinci",
     "deltion",
+    "graafschap",
     "kwic",
     "rijn_ijssel",
     "talland",

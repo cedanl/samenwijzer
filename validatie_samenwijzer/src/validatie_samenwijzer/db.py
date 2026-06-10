@@ -13,6 +13,7 @@ INSTELLING_SOORTEN = {
     "studentenstatuut": "Studentenstatuut",
     "bindend_studieadvies": "Regeling bindend studieadvies",
     "klachtenregeling": "Klachtenregeling",
+    "gedragscode": "Gedragscode",
     "algemene_informatie": "Algemene informatie",
 }
 
