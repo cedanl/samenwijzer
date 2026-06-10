@@ -72,6 +72,18 @@ function _scroll(thread) {
   const sc = thread.closest("[data-scroll]") || thread.parentElement;
   if (sc) sc.scrollTop = sc.scrollHeight;
 }
+function addAntwoord(thread, md) {
+  const d = document.createElement("div");
+  d.className = "bubble-a"; d.innerHTML = renderMarkdown(md);
+  thread.appendChild(d); _scroll(thread);
+}
+async function rehydrateer(thread) {
+  const r = await (await fetch("/api/geschiedenis")).json();
+  for (const b of r.beurten || []) {
+    if (b.role === "user") addVraag(thread, b.content);
+    else addAntwoord(thread, b.content);
+  }
+}
 
 async function streamAntwoord(thread, vraag) {
   const node = document.createElement("div");
@@ -125,6 +137,7 @@ async function mountStudiegids(oerId, frameEl) {
 
 /* Bedraad een inline chat: een form + een thread-element, met optionele "nieuw gesprek". */
 function mountInlineChat({ form, thread, resetBtn }) {
+  rehydrateer(thread);  // herstel de zichtbare gespreksgeschiedenis bij page-load
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const inp = form.querySelector("input, textarea");

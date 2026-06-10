@@ -28,7 +28,11 @@ const ovPdfBtn = document.getElementById("ovPdfBtn");
 const pdfFrame = document.getElementById("pdfFrame");
 let oerIds = [];
 
-function openOverlay() { overlay.classList.add("open"); document.body.style.overflow = "hidden"; }
+let _gehydrateerd = false;
+function openOverlay() {
+  overlay.classList.add("open"); document.body.style.overflow = "hidden";
+  if (!_gehydrateerd) { _gehydrateerd = true; rehydrateer(thread); }
+}
 function setLabels(labels) {
   ovLabels.innerHTML = (labels || []).map((l) => `<span class="ov-label">${esc(l)}</span>`).join("");
   ovPdfBtn.style.display = oerIds.length ? "" : "none";
@@ -94,7 +98,7 @@ ovReset.addEventListener("click", async () => {
   await fetch("/api/reset", { method: "POST" });
   overlay.classList.remove("open"); document.body.style.overflow = "";
   thread.innerHTML = ""; picker.innerHTML = ""; ovLabels.innerHTML = "";
-  setBanner(false);
+  setBanner(false); _gehydrateerd = false;
   pdfFrame.style.display = "none"; pdfFrame.innerHTML = ""; oerIds = [];
 });
 

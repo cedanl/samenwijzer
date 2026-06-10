@@ -241,6 +241,12 @@ def api_reset(request: Request):
     return JSONResponse({"ok": True})
 
 
+@app.get("/api/geschiedenis")
+def api_geschiedenis(request: Request):
+    """Geef de bewaarde gespreksgeschiedenis terug voor rehydratie bij page-load."""
+    return JSONResponse({"beurten": get_sessie(request).chat_history})
+
+
 # ── Login / sessie ─────────────────────────────────────────────────────────────
 @app.get("/login")
 def login_form(request: Request, fout: int = 0):

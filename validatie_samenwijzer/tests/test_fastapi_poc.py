@@ -282,6 +282,13 @@ def test_api_reset_ok():
     assert r.status_code == 200 and r.json()["ok"] is True
 
 
+def test_api_geschiedenis_geeft_beurten():
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    r = _client().get("/api/geschiedenis")
+    assert r.status_code == 200 and r.json() == {"beurten": []}
+
+
 # ── auth / ingelogde pagina's (skip als seed-DB ontbreekt) ─────────────────────
 def _student_met_mentor():
     """(studentnummer, student_id, mentor_naam, mentor_id) of None."""
