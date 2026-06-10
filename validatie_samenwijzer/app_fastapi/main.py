@@ -9,6 +9,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import subprocess
 from pathlib import Path
 
 import anthropic
@@ -82,6 +83,48 @@ app.mount("/static", StaticFiles(directory=_HIER / "static"), name="static")
 templates = Jinja2Templates(directory=_HIER / "templates")
 
 _MAX_KANDIDATEN = 40
+
+# ── Beheer (dev-only, achter BEHEER_ENABLED) ────────────────────────────────────
+_BEHEER_ENABLED = os.environ.get("BEHEER_ENABLED", "").lower() == "true"
+_PROJECT_ROOT = (
+    Path(__file__).resolve().parents[2]
+)  # repo-root: scripts/ + uv verwachten dit als cwd
+_INSTELLING_KEYS = {
+    "aeres",
+    "curio",
+    "davinci",
+    "deltion",
+    "kwic",
+    "rijn_ijssel",
+    "talland",
+    "utrecht",
+}
+# Vaste commando-allowlist: de browser stuurt alleen een taak-KEY, nooit een commando-string.
+_BEHEER_TAKEN: dict[str, list[str]] = {
+    "sync_oeren": ["bash", "scripts/sync_oeren.sh"],
+    "ingest_alles": ["uv", "run", "python", "-m", "validatie_samenwijzer.ingest", "--alles"],
+    "ingest": ["uv", "run", "python", "-m", "validatie_samenwijzer.ingest"],  # vereist --instelling
+    "seed_bulk": ["uv", "run", "python", "scripts/seed_bulk.py"],
+    "seed_minimal": ["uv", "run", "python", "scripts/seed.py"],
+    "kd_sync": ["bash", "scripts/sync_kwalificatiedossiers.sh"],
+}
+
+
+def _beheer_status() -> dict:
+    """OERs per instelling (totaal + geïndexeerd) en de laatste ingest-run."""
+    conn = db.get_connection(os.environ.get("DB_PATH", "data/validatie.db"))
+    db.init_db(conn)
+    rijen = conn.execute(
+        "SELECT i.display_naam, COUNT(*) AS totaal, "
+        "SUM(CASE WHEN o.geindexeerd=1 THEN 1 ELSE 0 END) AS geindexeerd "
+        "FROM oer_documenten o JOIN instellingen i ON i.id = o.instelling_id "
+        "GROUP BY i.display_naam ORDER BY i.display_naam"
+    ).fetchall()
+    laatste = db.laatste_ingest_run(conn)
+    return {
+        "per_instelling": [dict(r) for r in rijen],
+        "laatste_ingest": dict(laatste) if laatste else None,
+    }
 
 
 @app.get("/toegang")
@@ -389,3 +432,54 @@ def mentor_sessie(request: Request, student_id: int):
             "oer_onleesbaar": s.oer_onleesbaar,
         },
     )
+
+
+# ── Beheer (dev-only) ───────────────────────────────────────────────────────────
+@app.get("/beheer")
+def beheer_home(request: Request):
+    if not _BEHEER_ENABLED:
+        return JSONResponse({"error": "uit"}, status_code=404)
+    return templates.TemplateResponse(
+        request,
+        "beheer.html",
+        {
+            "status": _beheer_status(),
+            "instellingen": sorted(_INSTELLING_KEYS),
+        },
+    )
+
+
+@app.get("/api/beheer/run")
+def beheer_run(request: Request, taak: str, reset: int = 0, instelling: str = ""):
+    """Stream de stdout van een vaste beheer-taak als SSE. GET → middleware bewaart niet.
+
+    Veiligheid: dubbele gate (BEHEER_ENABLED + algemene poort), vaste commando-allowlist
+    (lijst-vorm Popen, geen shell), gevalideerde scope, cwd hard op de repo-root.
+    """
+    if not _BEHEER_ENABLED:
+        return JSONResponse({"error": "uit"}, status_code=404)
+    cmd = list(_BEHEER_TAKEN.get(taak, []))
+    if not cmd:
+        return JSONResponse({"error": "onbekende taak"}, status_code=400)
+    if taak == "ingest":
+        if instelling not in _INSTELLING_KEYS:
+            return JSONResponse({"error": "ongeldige instelling"}, status_code=400)
+        cmd = cmd + ["--instelling", instelling]
+    if reset:
+        cmd.append("--reset")
+
+    def stream():
+        proc = subprocess.Popen(
+            cmd,
+            cwd=str(_PROJECT_ROOT),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            bufsize=1,
+        )
+        for regel in iter(proc.stdout.readline, ""):
+            yield f"data: {json.dumps({'regel': regel.rstrip()})}\n\n"
+        proc.wait()
+        yield f"data: {json.dumps({'done': True, 'exit': proc.returncode})}\n\n"
+
+    return StreamingResponse(stream(), media_type="text/event-stream")

@@ -301,6 +301,56 @@ def test_oer_bestand_download_geeft_attachment():
     assert "attachment" in r.headers.get("content-disposition", "").lower()
 
 
+def test_beheer_uit_zonder_flag(monkeypatch):
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    import app_fastapi.main as m
+
+    monkeypatch.setattr(m, "_BEHEER_ENABLED", False)
+    c = _client()
+    assert c.get("/beheer").status_code == 404
+    assert c.get("/api/beheer/run?taak=sync_oeren").status_code == 404
+
+
+def test_beheer_onbekende_taak_400(monkeypatch):
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    import app_fastapi.main as m
+
+    monkeypatch.setattr(m, "_BEHEER_ENABLED", True)
+    c = _client()
+    assert c.get("/api/beheer/run?taak=bestaatniet").status_code == 400
+    # ingest zonder geldige instelling → 400
+    assert c.get("/api/beheer/run?taak=ingest&instelling=onzin").status_code == 400
+
+
+def test_beheer_run_streamt_output(monkeypatch):
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    import app_fastapi.main as m
+
+    class _FakeStdout:
+        def __init__(self, regels):
+            self._it = iter([*regels, ""])
+
+        def readline(self):
+            return next(self._it)
+
+    class _FakeProc:
+        def __init__(self, *a, **k):
+            self.stdout = _FakeStdout(["regel1\n", "regel2\n"])
+            self.returncode = 0
+
+        def wait(self):
+            pass
+
+    monkeypatch.setattr(m, "_BEHEER_ENABLED", True)
+    monkeypatch.setattr(m.subprocess, "Popen", lambda *a, **k: _FakeProc())
+    body = _client().get("/api/beheer/run?taak=sync_oeren").text
+    assert "regel1" in body and "regel2" in body
+    assert '"done": true' in body
+
+
 # ── auth / ingelogde pagina's (skip als seed-DB ontbreekt) ─────────────────────
 def _student_met_mentor():
     """(studentnummer, student_id, mentor_naam, mentor_id) of None."""

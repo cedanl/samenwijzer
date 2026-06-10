@@ -21,6 +21,7 @@
         <a class="mono {% if request.url.path == '/student/voortgang' %}actief{% endif %}" href="/student/voortgang">📊 Mijn voortgang</a>
       {% elif rol == 'mentor' %}
         <a class="mono {% if request.url.path == '/mentor' %}actief{% endif %}" href="/mentor">👥 Mijn studenten</a>
+        <a class="mono {% if request.url.path.startswith('/mentor/student/') %}actief{% endif %}" href="/mentor">🎓 Begeleidingssessie</a>
       {% endif %}
       <a class="mono uit" href="/uitloggen">Uitloggen</a>
     </div>
