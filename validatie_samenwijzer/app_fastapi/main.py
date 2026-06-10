@@ -211,11 +211,12 @@ async def api_chat(request: Request):
 
 
 @app.get("/api/oer/{oer_id}/bestand")
-def api_oer_bestand(request: Request, oer_id: int):
+def api_oer_bestand(request: Request, oer_id: int, download: int = 0):
     """Serveer het OER-bronbestand (PDF inline / markdown) voor de viewer.
 
     Alleen de OER('s) die in de eigen sessie geladen zijn — anders kon men per id
-    elke (ook rechten-beperkte) studiegids enumereren/downloaden.
+    elke (ook rechten-beperkte) studiegids enumereren/downloaden. ``?download=1``
+    serveert als attachment (mobiele fallback wanneer inline-rendering faalt).
     """
     if oer_id not in get_sessie(request).oer_ids:
         return JSONResponse({"error": "geen toegang"}, status_code=403)
@@ -228,6 +229,9 @@ def api_oer_bestand(request: Request, oer_id: int):
     if not pad.exists():
         return JSONResponse({"error": "bestand ontbreekt"}, status_code=404)
     media = "application/pdf" if pad.suffix.lower() == ".pdf" else "text/plain; charset=utf-8"
+    if download:
+        # filename= zet automatisch Content-Disposition: attachment
+        return FileResponse(pad, media_type=media, filename=pad.name)
     return FileResponse(pad, media_type=media)
 
 

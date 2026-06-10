@@ -289,6 +289,18 @@ def test_api_geschiedenis_geeft_beurten():
     assert r.status_code == 200 and r.json() == {"beurten": []}
 
 
+def test_oer_bestand_download_geeft_attachment():
+    """?download=1 levert het bestand als attachment (mobiele download-fallback)."""
+    oer_id = _leesbare_oer_id()
+    if oer_id is None or not _WW:
+        pytest.skip("Geen geïndexeerde OER / ALGEMEEN_WACHTWOORD afwezig.")
+    c = _client()
+    c.post("/api/kies", json={"oer_ids": [oer_id]})  # zet oer_id in de sessie (IDOR-guard)
+    r = c.get(f"/api/oer/{oer_id}/bestand?download=1")
+    assert r.status_code == 200
+    assert "attachment" in r.headers.get("content-disposition", "").lower()
+
+
 # ── auth / ingelogde pagina's (skip als seed-DB ontbreekt) ─────────────────────
 def _student_met_mentor():
     """(studentnummer, student_id, mentor_naam, mentor_id) of None."""
