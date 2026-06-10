@@ -187,6 +187,19 @@ def test_web_zoek_domeinen_negeert_onbekende_instelling():
     assert web_zoek_domeinen([{"naam": "onbekend"}, {}]) == []
 
 
+def test_elke_instelling_heeft_web_domein():
+    """Guard: elke onboardde instelling moet een web-search-domein hebben.
+
+    Anders krijgen studenten van die instelling stil geen webzoek-fallback naar de
+    eigen schoolsite (graceful degradation) als het antwoord niet in de documenten staat.
+    """
+    from validatie_samenwijzer.chat import _INSTELLING_DOMEINEN
+    from validatie_samenwijzer.ingest import _INSTELLINGEN
+
+    ontbreekt = set(_INSTELLINGEN) - set(_INSTELLING_DOMEINEN)
+    assert not ontbreekt, f"Instellingen zonder web-search-domein: {sorted(ontbreekt)}"
+
+
 def test_bouw_systeem_web_zoeken_voegt_instructie_en_disclaimer_toe():
     met = bouw_systeem("OER", "Kok", "Da Vinci", web_zoeken=True)
     assert "WEBZOEKEN" in met
