@@ -14,6 +14,7 @@ build/
 
 # Data — generated/sensitive files
 data/02-prepared/*.db
+data/validatie.db
 data/02-prepared/.whatsapp.key
 data/02-prepared/whatsapp_context_*.json
 data/03-output/*
@@ -49,6 +50,11 @@ htmlcov/
 # B3a: OER-catalog
 .superpowers/
 kwalificatiedossiers/
+
+# Skills-plugin tooling (machine-lokaal — symlinks naar anthropics/skills)
+.agents/
+.claude/
+skills-lock.json
 
 # Niet-publieke instellings-OER's — alleen via de app, niet in (publieke) git.
 # Canonieke opslag: Box (box:samenwijzer/oeren). Zie
