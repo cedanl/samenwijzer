@@ -1,16 +1,19 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guidance for Claude Code in deze repo. Dagelijkse essentials + harde invarianten staan hier; de
+volledige laagbeschrijving en module-rollen staan in **`ARCHITECTURE.md`** + **`AGENTS.md`**,
+UI-conventies in **`docs/FRONTEND.md`**, lokale opstart in **`INSTRUCTIONS.md`**.
 
-Werkstijl: vraag bij twijfel vóór je begint; lever de kleinste oplossing die het probleem afdekt; raak alleen aan wat de taak vereist (geen ongevraagde refactors van aangrenzende code); definieer per taak een verifieerbaar success-criterium. Volledige agent-regels: `AGENTS.md`.
+Werkstijl: vraag bij twijfel vóór je begint; lever de kleinste oplossing die het probleem afdekt;
+raak alleen aan wat de taak vereist (geen ongevraagde refactors van aangrenzende code); definieer
+per taak een verifieerbaar success-criterium. Volledige agent-regels: `AGENTS.md`.
 
 ## Overview
 
 Python/Streamlit app die AI en Data gebruikt om MBO-studenten te ondersteunen bij het leren.
 Doelgroepen: studenten (voortgang, tutor, leercoach, welzijnscheck) en docenten (groepsoverzicht,
-outreach, campagnebeheer, peer matching).
-
-CEDA technical standards: https://github.com/cedanl/.github/tree/main/standards/README.md.
+outreach, campagnebeheer, peer matching). CEDA technical standards:
+https://github.com/cedanl/.github/tree/main/standards/README.md.
 
 ## Tech & tooling
 
@@ -39,15 +42,14 @@ uv run python scripts/generate_synthetisch_welzijn.py      # Regenereer welzijn-
 ```
 
 `validatie_samenwijzer/` is een **zelfstandig subproject** met eigen `pyproject.toml`, `.venv`,
-`CLAUDE.md` en poort 8503 — draai `uv`, `pytest` en `ruff` altijd vanuit de juiste projectroot.
+`CLAUDE.md` en poort — draai `uv`, `pytest` en `ruff` altijd vanuit de juiste projectroot.
 
 ## Deployment
 
 De repo-root `Dockerfile` + `fly.toml` deployen **het validatie-subproject** (publieksnaam
 "De digitale gids") naar Fly als app `digitale-gids` (https://digitale-gids.fly.dev, regio `ams`).
-De container draait `validatie_samenwijzer/app/main.py` op poort 8080; de build-context is bewust
-de **repo-root** omdat de data (`oeren/`, `kwalificatiedossiers/`) buiten het subproject leeft.
-Deploy vanuit de repo-root:
+De build-context is bewust de **repo-root** omdat de data (`oeren/`, `kwalificatiedossiers/`) buiten
+het subproject leeft. Deploy vanuit de repo-root:
 
 ```bash
 flyctl deploy -a digitale-gids --remote-only
@@ -60,171 +62,88 @@ De hoofd-app (`app/main.py`) heeft geen eigen Fly-deploy. WhatsApp-check-in draa
 
 `.env` in projectroot. `ANTHROPIC_API_KEY` is verplicht voor alle AI-functies. Optioneel:
 SMTP (outreach-mail), Twilio (`TWILIO_*`, `WHATSAPP_ENCRYPT_KEY` voor Fernet-encryptie).
-Zie `README.md` voor de volledige lijst.
+Zie `README.md` / `INSTRUCTIONS.md` voor de volledige lijst.
 
-## Architecture
+## Architectuur-invarianten (niet breken)
 
-Source-package leeft in `src/samenwijzer/` (importeerbaar als `samenwijzer.*`). UI in `app/`,
-scripts in `scripts/`, tests in `tests/`.
+Source-package in `src/samenwijzer/`, UI in `app/`, scripts in `scripts/`, tests in `tests/`.
+Volledige laagbeschrijving + module-rollen: `ARCHITECTURE.md`. De regels die een wijziging niet
+mag overtreden:
 
-Dependency-richting **strikt**: `prepare → transform → analyze → feature-laag → app`.
-Feature-laag (afgedwongen in `tests/test_architecture.py`) = `visualize, coach, tutor, welzijn,
-wellbeing, outreach, outreach_store, whatsapp, whatsapp_store, auth, styles`. Nooit omgekeerd.
-`groei.py` (groeidossier-businesslogic) staat naast die feature-laag en leunt uitsluitend op
-`groei_store.py` + stdlib/pandas — geen AI- of app-imports. UI-laag (`app/`) bevat geen
-business logic; pagina-refactors (bv. PR #95–#99) verplaatsten BSA-percentage, effectiviteit-
-aggregatie en spinneweb-figuren naar respectievelijk `outreach.py`, `visualize.py` en
-`wellbeing.py`. Laagovertredingen breken CI, niet alleen conventie.
+- **Dependency-richting strikt**: `prepare → transform → analyze → feature-laag → app` — nooit
+  omgekeerd (afgedwongen in `tests/test_architecture.py`; laagovertredingen breken CI). `groei.py`
+  leunt uitsluitend op `groei_store.py` + stdlib/pandas, geen AI/app-imports.
+- **Geen business logic in `app/`**; geen raw SQL in pagina's.
+- **AI-isolatie**: Anthropic-calls alleen in `tutor.py`, `coach.py`, `outreach.py`, `welzijn.py`,
+  `whatsapp.py`. Client **altijd** via `_ai._client()` — nooit eigen `anthropic.Anthropic()`, nooit
+  `anthropic` importeren in `app/`.
+- **Sessiedata**: `st.session_state["df"]` wordt eenmalig geladen op de startpagina
+  (`prepare.load_synthetisch_csv()` + `transform.transform_student_data()`); pagina's lezen daaruit,
+  nooit opnieuw laden.
+- **SQLite-isolatie**: writes via de store-module — `outreach.db`→`outreach_store.py`,
+  `whatsapp.db`→`whatsapp_store.py`, `groei.db`→`groei_store.py`. Read-only `oeren.db` alleen via
+  `oer_store.py`, alleen geschreven door `scripts/build_oer_catalog.py` (herbouw lokaal als hij
+  ontbreekt). Alle vier DBs gitignored.
+- **Bewijsstukken**: uploads via `bewijsstuk_store.py` (filesystem onder
+  `data/bewijsstukken/<studentnummer>/`, max 10 MB, alleen pdf/jpg/jpeg/png/docx/xlsx);
+  studentnummer- + extensie-validatie gebeurt daar — `app/` schrijft niet direct naar filesystem.
+- **Groeidossier-goedkeuring**: werkproces-status `concept → ingediend → goedgekeurd/teruggegeven`
+  (`dien_in`/`keur_goed`/`geef_terug`, met SQL-guards in de store). **Alleen `goedgekeurde_score`
+  telt mee**: `groei.overlay_self_scores()` legt goedgekeurde scores over `df` en herberekent
+  kt-scores, `voortgang` én `risico` (`transform._bereken_risico`). Bewerken van een goedgekeurd
+  werkproces zet het terug naar concept maar de oude score blijft tellen tot heraccordering. Na een
+  mentor-actie wordt `st.session_state["df"]` ververst.
+- **OER-parsing-sync**: `oer_parsing.py` is bewust **gesynchroniseerd** uit
+  `validatie_samenwijzer/src/validatie_samenwijzer/ingest.py` — houd functioneel gelijk; wijzig hier
+  alleen samen met de bron.
 
-**AI-isolatie**: alle Anthropic-calls zitten in `tutor.py`, `coach.py`, `outreach.py`, `welzijn.py`,
-`whatsapp.py`. Maak de client **altijd** via `_ai._client()` — nooit een eigen `anthropic.Anthropic()`
-instantiëren, en nooit `anthropic` direct importeren in `app/`.
+## UI-conventies (samenvatting)
 
-**Sessiedata**: `st.session_state["df"]` wordt eenmalig geladen op de startpagina via
-`prepare.load_synthetisch_csv()` + `transform.transform_student_data()`. Pagina's lezen daaruit —
-nooit opnieuw laden.
-
-**SQLite-isolatie**: schrijfbewerkingen naar `outreach.db` lopen uitsluitend via `outreach_store.py`,
-naar `whatsapp.db` via `whatsapp_store.py`, naar `groei.db` (groeidossier) via `groei_store.py`.
-Nooit raw SQL in `app/`. Alle drie DBs zijn gitignored. De read-only OER-catalog `oeren.db`
-(eveneens gitignored) wordt uitsluitend gelezen via `oer_store.py` en alleen geschreven door
-`scripts/build_oer_catalog.py` — herbouw lokaal als hij ontbreekt.
-
-**Bewijsstukken**: file-uploads in het groeidossier lopen via `bewijsstuk_store.py` (filesystem-IO
-onder `data/bewijsstukken/<studentnummer>/`, max 10 MB, alleen pdf/jpg/jpeg/png/docx/xlsx). Validatie
-van studentnummer en extensie gebeurt daar — `app/` doet geen directe filesystem-writes.
-
-**Groeidossier-goedkeuring**: elk werkproces in `groei_actueel` heeft een status
-(`concept → ingediend → goedgekeurd / teruggegeven`). De student dient in (`dien_in`), de mentor
-keurt goed (`keur_goed`) of geeft terug met verbeterfeedback (`geef_terug`). **Alleen
-`goedgekeurde_score` telt mee**: `groei.overlay_self_scores()` legt uitsluitend goedgekeurde scores
-over `df` en herberekent kt-scores, `voortgang` én de `risico`-vlag (via `transform._bereken_risico`).
-Concept/ingediend tellen nooit mee; bewerken van een goedgekeurd werkproces zet het terug naar
-concept terwijl de oude goedgekeurde score blijft tellen tot heraccordering. De store dwingt de
-statusovergangen af via SQL-guards. Na een mentor-actie wordt `st.session_state["df"]` ververst zodat
-voortgang/risico meteen meebewegen.
-
-Volledige laagbeschrijving en module-rollen: zie `ARCHITECTURE.md` en `AGENTS.md`.
-
-## UI- & paginaconventies
-
-Geen sidebar — volledig verborgen via `.streamlit/config.toml` + CSS. Elke pagina:
-1. `st.set_page_config(...)`
-2. `inject_theme(rol)` (uit `styles.py`) — kiest student- of docent-thema op basis van
-   `st.session_state["rol"]`. Bij ontbrekende rol (login of toegangsfout) `inject_theme(None)`.
-3. `render_nav()` direct daarna (vaste header, `position:fixed`)
-4. `render_footer()` onderaan
-5. AI-calls > ~1 seconde in `st.spinner()`, met try/except voor `anthropic.APITimeoutError` (timeout = 30s)
-6. Streaming: gebruik `st.write_stream()` en sla het resultaat op in `st.session_state` zodat
-   re-renders de API-call niet opnieuw triggeren
-
-Uitloggen verloopt via `app/pages/uitloggen.py` (sessie wissen + redirect naar `/`).
-
-### Dual-theme design-systeem
-
-`styles.py` exporteert twee thema's bovenop één gedeeld fundament:
-
-* **student** — donker (#0F0F12 + #1A1A1F) met lime-accent (#A8FF60) en coral-alert (#FF5E3A).
-  Mobile-first, energiek, pill-vormige badges en knoppen.
-* **docent** — paper (#F0EBE1 + #FAF5EC) met sage-accent (#6F8265) en rust-alert (#B04A1A).
-  Desktop-georiënteerd, atelier-rustig, rechthoekige chips en knoppen.
-
-Gedeeld: Cabinet Grotesk display, Satoshi body, JetBrains Mono labels, spacing-scale, motion-curves.
-
-**Component-helpers** in `styles.py` (gebruik die ipv inline HTML):
-
-| Helper | Doel |
-|---|---|
-| `inject_theme(rol)` | Base + thema-CSS injecteren |
-| `hero(naam, meta, badges=[])` | Hero-blok bovenaan pagina |
-| `stat_card(label, value, *, value_sub, delta, delta_negative, sub, progress, alert_ring)` | Stat-card met optionele inline progress-ring |
-| `badge(kind, text)` | HTML-string voor inline gebruik (in `st.markdown`) |
-| `alert(text, level)` | Inline alert-balk (info/warning/urgent) |
-| `section_label(text, *, warning)` | Mono-uppercase label |
-| `action_tile(icon, titel, sub, page, *, key)` | Klikbare home-tegel (kaart + button + switch_page) |
-
-Inline `st.markdown("<p style='...'>")` voor onderdelen die een helper hebben is niet
-toegestaan — gebruik de helper zodat beide thema's correct meebewegen.
+Volledige conventies + helpers + thema-tokens: **`docs/FRONTEND.md`**. Kort: geen sidebar; elke
+pagina volgt `set_page_config → inject_theme(rol) → render_nav() → render_footer()`; AI-calls >~1s in
+`st.spinner()` met try/except op `anthropic.APITimeoutError` (timeout 30s); streaming via
+`st.write_stream()` met resultaat in `st.session_state`. Gebruik de `styles.py`-helpers (`hero`,
+`stat_card`, `badge`, `alert`, `section_label`, `action_tile`) i.p.v. inline HTML — anders bewegen de
+student- (donker+lime) en docent- (paper+sage) thema's niet correct mee.
 
 ## Auth & toegangsbeheer
 
-Login via `app/main.py`. Wachtwoord voor student én docent: **Welkom123** (SHA-256 gehashed).
-
-Test-accounts (10 studenten, 10 mentoren, verspreid over 4 instellingen en risicocategorieën):
-zie `gebruikers.txt` in de root. Daar staan de actuele studentnummers, mentor-namen en hun
-voortgangsprofielen — gebruik die voor UI-tests in plaats van willekeurige IDs.
+Login via `app/main.py`. Wachtwoord student én docent: **Welkom123** (SHA-256). `st.session_state`
+na login: `rol` ∈ {`"student"`, `"docent"`}, `df`, plus `studentnummer` (student) of `mentor_naam`
+(docent). Docent-only: `auth.vereist_docent()` + `auth.mentor_filter(df)`. Student-only:
+`st.session_state.get("rol") == "student"` met `st.stop()` bij afwijking.
 
 **UI-smoke-test verplicht** bij wijzigingen aan pagina's, navigatie, sessie-state of file-paths:
-pytest groen ≠ feature werkt. Start de app (`uv run streamlit run app/main.py`), log in via
-`chrome-devtools-mcp` met een account uit `gebruikers.txt` dat het gewijzigde scenario raakt
-(bv. risico-student voor outreach, mentor voor groepsoverzicht) en doorloop de feature voordat
-je "klaar" claimt.
-
-`st.session_state` na login: `rol` ∈ {`"student"`, `"docent"`}, `df`, plus `studentnummer`
-(student) of `mentor_naam` (docent).
-
-**Docent-only pagina**: roep `auth.vereist_docent()` aan vlak na CSS-injectie, gevolgd door
-`auth.mentor_filter(df)` voor de eigen-studenten-subset.
-**Student-only pagina**: check `st.session_state.get("rol") == "student"` met `st.stop()` bij afwijking.
+pytest groen ≠ feature werkt. Start de app, log in via `chrome-devtools-mcp` met een account uit
+`gebruikers.txt` dat het gewijzigde scenario raakt (risico-student voor outreach, mentor voor
+groepsoverzicht) en doorloop de feature voordat je "klaar" claimt.
 
 ## Dataset & OER
 
-Synthetische dataset (1000 studenten, seed=42, 4 instellingen × ~250 studenten,
-~12-13 mentoren elk; Aeres MBO is uitgesloten omdat de geïndexeerde Aeres-OERs landbouw-specifieke
-opleidingen betreffen zonder overlap met de gecureerde 14 generieke opleidingen). Bron-CSV:
-`data/01-raw/synthetisch/studenten.csv`.
+Synthetische dataset (1000 studenten, seed=42, 4 instellingen × ~250, ~12-13 mentoren elk; Aeres MBO
+uitgesloten — geen overlap met de gecureerde 14 generieke opleidingen). Bron-CSV:
+`data/01-raw/synthetisch/studenten.csv`. `prepare._voeg_kt_wp_scores_toe()` voegt synthetische
+`kt_1`/`kt_2` + `wp_1_1`–`wp_2_3` toe (0–100, gecorreleerd met voortgang); ontbrekende kt_3/wp_3_x →
+NaN (analyse-/labelfuncties filteren NaN weg).
 
-Per student worden via `prepare._voeg_kt_wp_scores_toe()` synthetische scores toegevoegd voor
-`kt_1`, `kt_2` (kerntaken, 0–100, gecorreleerd met voortgang) en `wp_1_1`–`wp_2_3` (werkprocessen).
-Studenten zonder kt_3/wp_3_x in hun opleiding krijgen NaN; analyse- en labelfuncties filteren NaN weg.
+**OER-catalog** (`data/02-prepared/oeren.db`, via `scripts/build_oer_catalog.py`): tabellen
+`instellingen`, `oer_documenten`, `kerntaken`. Lookup-prioriteit in `analyze._oer_label()`/`prepare`:
+**crebo** (robuust) → opleidingsnaam (legacy). `scripts/oer_kerntaken_fallback.json` = gecureerde
+kerntaken voor crebos zonder parsebare structuur. `oer_context.haal_oer_context_op(student_row)`
+levert OER-tekst aan `tutor.py`/`coach.py`. Velduitleg:
+`src/samenwijzer/metadata/data_dictionary.csv` (tracked asset).
 
-**OER-catalog** (`data/02-prepared/oeren.db`, gevuld door `scripts/build_oer_catalog.py`):
-SQLite met `instellingen`, `oer_documenten`, `kerntaken`. Lookup-prioriteit in `analyze._oer_label()`
-en `prepare`: **crebo** (cross-instelling, robuust) → opleidingsnaam (legacy). `oer_kerntaken.json`
-is uitgefaseerd; `scripts/oer_kerntaken_fallback.json` bevat gecureerde kerntaken voor crebos
-zonder parsebare kwalificatiestructuur (bv. crebo 25736).
+## Welzijn & privacy
 
-`oer_context.haal_oer_context_op(student_row)` levert OER-tekst als context aan `tutor.py` en
-`coach.py`.
+Twee modules: `welzijn.py` (student self-assessment; 5 hulpcategorieën, 3 urgentieniveaus) en
+`wellbeing.py` (CSV-signalering voor groepsoverzicht). Toon vrije-tekst studentreacties **nooit** in
+geaggregeerde dashboards — alleen de toegewezen mentor ziet individuele check-details. Urgentie 3
+vereist directe mentor-actie.
 
-**Data dictionary**: `src/samenwijzer/metadata/data_dictionary.csv` beschrijft de kolommen van
-de synthetische dataset — raadpleeg dit bij twijfel over veldbetekenis (is een tracked package-asset,
-geen gegenereerde data).
-
-**OER-parsing** (`oer_parsing.py`): regex-helpers voor bestandsnaam → crebo/leerweg/jaar,
-kerntaken, opleidingsnaam en niveau. Bewust **gesynchroniseerd** uit het `validatie_samenwijzer`-
-subproject (`src/validatie_samenwijzer/ingest.py`) — houd functioneel gelijk; wijzig hier alleen
-samen met de bron, niet los.
-
-## Welzijn & gevoeligheid
-
-Twee aparte modules: `welzijn.py` (student self-assessment via webapp; 5 hulpcategorieën, 3 urgentieniveaus)
-en `wellbeing.py` (CSV-gebaseerde signalering voor groepsoverzicht). Toon vrije-tekst studentreacties
-**nooit** in geaggregeerde dashboards — alleen de toegewezen mentor ziet individuele check-details.
-Urgentie 3 vereist directe mentor-actie.
-
-## WhatsApp lokaal testen
-
-Twilio vereist een publieke URL. Drie terminals:
-```
-uv run streamlit run app/main.py
-uv run uvicorn app.webhook:app --host 0.0.0.0 --port 8502
-ngrok http 8502
-```
-Zet de ngrok-URL op **Twilio Console → Messaging → Sandbox → "When a message comes in"** →
-`https://<ngrok-url>/webhook/whatsapp`.
-
-Telefoonnummers worden Fernet-versleuteld opgeslagen; gesprekshistorie max 30 dagen bewaren (AVG).
-De retentie wordt **lazy** afgedwongen: `verwerk_inkomend_bericht` roept bij elk inkomend bericht
-`whatsapp.verwijder_verouderde_gesprekshistorie(peildatum=ontvangen_op)` aan, die `whatsapp_sessies`
-(op `gestart_op`) én de `whatsapp_context_*.json`-bestanden (op mtime) ouder dan 30 dagen verwijdert.
-Telefoonregistraties zijn opt-in-toestemming, geen gesprekshistorie, en blijven bewaard.
-
-`scheduler.py` is het entry point voor de wekelijkse check-in cron (GitHub Actions, ma 08:00):
-```bash
-uv run python -m samenwijzer.scheduler             # echt versturen
-DRY_RUN=true uv run python -m samenwijzer.scheduler  # alleen loggen
-```
+**WhatsApp/AVG**: telefoonnummers Fernet-versleuteld; gesprekshistorie **max 30 dagen** (lazy
+afgedwongen — `verwerk_inkomend_bericht` → `whatsapp.verwijder_verouderde_gesprekshistorie` wist
+`whatsapp_sessies` + `whatsapp_context_*.json` ouder dan 30 dagen). Telefoonregistraties (opt-in,
+geen historie) blijven bewaard. Lokaal testen (ngrok/Twilio-sandbox) + scheduler: `INSTRUCTIONS.md`.
 
 ## Kennisbank
 
@@ -232,24 +151,21 @@ DRY_RUN=true uv run python -m samenwijzer.scheduler  # alleen loggen
 |---|---|
 | Lokale opstart (alle services) | `INSTRUCTIONS.md` |
 | Architectuur & module-rollen | `ARCHITECTURE.md`, `AGENTS.md` |
-| Productvision & features | `docs/PRODUCT_SENSE.md` |
 | Frontend- & UI-conventies | `docs/FRONTEND.md` |
+| Productvision & features | `docs/PRODUCT_SENSE.md` |
 | Ontwerpbeslissingen | `docs/designs/index.md` |
 | Uitvoeringsplannen | `docs/plans/active/`, `docs/plans/completed/` |
 | Product specs | `docs/specs/index.md` |
-| Kwaliteitsscores | `docs/QUALITY_SCORE.md` |
-| Beveiliging | `docs/SECURITY.md` |
-| Betrouwbaarheid | `docs/RELIABILITY.md` |
+| Kwaliteit / Beveiliging / Betrouwbaarheid | `docs/QUALITY_SCORE.md`, `docs/SECURITY.md`, `docs/RELIABILITY.md` |
 | Tech debt | `docs/plans/tech-debt-tracker.md` |
 | Test-accounts | `gebruikers.txt` |
-| OER-chat subproject (poort 8503) | `validatie_samenwijzer/` — Streamlit-app voor conversationeel chatten met de eigen OER via volledige Claude-documentcontext, met landelijke kwalificatiedossiers én een skills-taxonomie (CompetentNL/ESCO) als aanvullende bronnen; afgeleide bronnen worden automatisch gereconcilieerd bij oeren-wijzigingen (eigen `CLAUDE.md`) |
-| Presentatie (Slidev, poort 3030) | `validatie_samenwijzer/presentatie/` — zelfstandige CEDA/Npuls-deck over vector store → full-document context; `./start.sh` |
+| OER-chat subproject | `validatie_samenwijzer/` — FastAPI-app voor conversationeel chatten met de eigen OER via volledige Claude-documentcontext (+ KD + skills-taxonomie); eigen `CLAUDE.md` + `docs/ARCHITECTURE.md` |
+| Presentatie (Slidev, poort 3030) | `validatie_samenwijzer/presentatie/` — CEDA/Npuls-deck; `./start.sh` |
 
-**Doc-locatie-conventie** (overschrijft skill-defaults): specs horen in `docs/specs/`, plannen in
+**Doc-locatie-conventie** (overschrijft skill-defaults): specs in `docs/specs/`, plannen in
 `docs/plans/{active,completed}/`, ontwerpbeslissingen in `docs/designs/`. Schrijf **niet** naar
-`docs/superpowers/` — die map is bij de folderstructuur-opschoning opgeheven. De brainstorming- en
-writing-plans-skills defaulten naar `docs/superpowers/`; honoreer hier deze conventie als override.
-In het `validatie_samenwijzer/`-subproject geldt `docs/plans/` voor zowel specs als plannen.
+`docs/superpowers/` (opgeheven). In het `validatie_samenwijzer/`-subproject geldt `docs/plans/` voor
+zowel specs als plannen.
 
 ## Agent rules (samenvatting van AGENTS.md)
 
