@@ -8,6 +8,7 @@ import pytest
 # de TestClient draait over http, dus de cookie-hardening hier uitschakelen voor de test.
 os.environ.setdefault("SESSION_SECRET", "test-secret")
 os.environ.setdefault("COOKIE_HTTPS_ONLY", "0")
+os.environ.setdefault("ALGEMEEN_WACHTWOORD", "test-pw")
 
 from validatie_samenwijzer import _ai  # noqa: E402
 
