@@ -10,12 +10,14 @@ primary_region = "ams"
 [build]
   dockerfile = "Dockerfile"
 
+# SQLite-sessiestore (FastAPI) vereist één machine: draai `flyctl scale count 1 -a digitale-gids`
+# vóór/na de cutover-deploy en houd min_machines_running = 1. Zie de FastAPI-migratie-spec.
 [http_service]
   internal_port = 8080
   force_https = true
   auto_stop_machines = "stop"
   auto_start_machines = true
-  min_machines_running = 0
+  min_machines_running = 1
 
   [http_service.concurrency]
     type = "requests"
