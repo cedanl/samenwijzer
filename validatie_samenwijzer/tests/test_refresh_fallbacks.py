@@ -130,6 +130,17 @@ def test_artefact_zonder_crebo_overgeslagen(skills_dir, monkeypatch, caplog):
     assert "Onleesbaar skills-artefact" in caplog.text
 
 
+def test_cli_refresh_fallbacks_roept_functie(skills_dir, monkeypatch):
+    aangeroepen = []
+    monkeypatch.setattr(bst, "refresh_fallbacks", lambda: aangeroepen.append(True) or ([], []))
+    monkeypatch.setattr(sys, "argv", ["build_skills_taxonomie.py", "--refresh-fallbacks"])
+
+    rc = bst.main()
+
+    assert rc == 0
+    assert aangeroepen == [True]
+
+
 def test_competentnl_artefact_overgeslagen(skills_dir, monkeypatch):
     (skills_dir / "25234.json").write_text(_competentnl_json("25234"), encoding="utf-8")
     aangeroepen = []

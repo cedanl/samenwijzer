@@ -68,9 +68,17 @@ def main() -> int:
     parser.add_argument("--crebo", help="Bouw alleen deze crebo")
     parser.add_argument("--limit", type=int, help="Beperk tot de eerste N crebo's (test)")
     parser.add_argument("--reset", action="store_true", help="Herbouw ook bestaande bestanden")
+    parser.add_argument(
+        "--refresh-fallbacks",
+        action="store_true",
+        help="Her-check non-CompetentNL artefacten tegen CompetentNL en upgrade hits (Fase 3)",
+    )
     args = parser.parse_args()
 
     _SKILLS_DIR.mkdir(parents=True, exist_ok=True)
+    if args.refresh_fallbacks:
+        refresh_fallbacks()
+        return 0
     opleidingen = _beste_opleiding_per_crebo()
     kd_domeinen = _kd_domein_per_crebo()
 
