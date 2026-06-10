@@ -68,9 +68,17 @@ def main() -> int:
     parser.add_argument("--crebo", help="Bouw alleen deze crebo")
     parser.add_argument("--limit", type=int, help="Beperk tot de eerste N crebo's (test)")
     parser.add_argument("--reset", action="store_true", help="Herbouw ook bestaande bestanden")
+    parser.add_argument(
+        "--refresh-fallbacks",
+        action="store_true",
+        help="Her-check non-CompetentNL artefacten tegen CompetentNL en upgrade hits (Fase 3)",
+    )
     args = parser.parse_args()
 
     _SKILLS_DIR.mkdir(parents=True, exist_ok=True)
+    if args.refresh_fallbacks:
+        refresh_fallbacks()
+        return 0
     opleidingen = _beste_opleiding_per_crebo()
     kd_domeinen = _kd_domein_per_crebo()
 
@@ -163,6 +171,60 @@ def _schrijf_overzicht() -> None:
         schrijver.writeheader()
         schrijver.writerows(rijen)
     logger.info("Review-overzicht: %s (%d rijen)", overzicht_pad, len(rijen))
+
+
+def refresh_fallbacks() -> tuple[list[str], list[str]]:
+    """Her-check non-CompetentNL artefacten tegen CompetentNL; upgrade bij een hit.
+
+    Roept alléén ``competentnl_bron.haal_skills_record()`` aan (deterministisch,
+    crebo-direct). De niet-deterministische ESCO-LLM-match wordt nooit opnieuw
+    gerold: een miss laat het bestaande artefact byte-identiek ongemoeid. Upgrade
+    alleen bij een record mét skills (een leeg CompetentNL-record is geen upgrade).
+    Ontbreekt de API-key, dan vroegtijdig terug: geen artefact wordt verwerkt.
+    Working-tree only — returnt (upgraded, nog_fallback) voor de rapportage.
+    """
+    if not os.environ.get("COMPETENTNL_API_KEY"):
+        logger.warning(
+            "COMPETENTNL_API_KEY ontbreekt — refresh-fallbacks kan niets upgraden. "
+            "Zet de key in .env en draai opnieuw."
+        )
+        return [], []
+
+    upgraded: list[str] = []
+    nog_fallback: list[str] = []
+    for pad in sorted(_SKILLS_DIR.glob("*.json")):
+        try:
+            record = json.loads(pad.read_text(encoding="utf-8"))
+            if record.get("bron") == "CompetentNL":
+                continue  # al de voorkeursbron — nooit opnieuw bevragen
+            crebo = record["crebo"]
+            opleiding = record["opleiding"]
+        except (json.JSONDecodeError, OSError, KeyError):
+            logger.warning("Onleesbaar skills-artefact, overgeslagen: %s", pad.name)
+            continue
+
+        nieuw = competentnl_bron.haal_skills_record(crebo, opleiding)
+        if nieuw is not None and nieuw.skills:
+            pad.write_text(
+                json.dumps(nieuw.to_dict(), ensure_ascii=False, indent=2), encoding="utf-8"
+            )
+            upgraded.append(crebo)
+            logger.info("UPGRADE %s → CompetentNL (%d skills)", crebo, len(nieuw.skills))
+        else:
+            nog_fallback.append(crebo)
+
+    if upgraded:
+        _schrijf_overzicht()
+
+    logger.info(
+        "Refresh-fallbacks klaar: %d geüpgraded naar CompetentNL%s, %d nog ESCO/geen-match.",
+        len(upgraded),
+        f" ({', '.join(sorted(upgraded))})" if upgraded else "",
+        len(nog_fallback),
+    )
+    if upgraded:
+        logger.info("→ commit data/skills/ via PR")
+    return sorted(upgraded), sorted(nog_fallback)
 
 
 if __name__ == "__main__":

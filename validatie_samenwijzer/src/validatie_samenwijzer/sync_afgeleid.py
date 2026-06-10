@@ -144,6 +144,15 @@ def _bouw_skills(crebo: str | None, force: bool) -> None:
     _run(cmd)
 
 
+def _refresh_fallbacks() -> None:
+    """Her-check non-CompetentNL skills-artefacten tegen CompetentNL (Fase 3).
+
+    Shelt naar het build-script, dat zelf rapporteert welke crebo's upgraden en
+    dat de mens ``data/skills/`` via een PR moet committen.
+    """
+    _run([sys.executable, str(_SKILLS_SCRIPT), "--refresh-fallbacks"])
+
+
 def werk_afgeleide_bronnen_bij(
     crebo: str | None = None, *, alles: bool = False, force: bool = False
 ) -> Samenvatting:
@@ -216,9 +225,17 @@ def main() -> int:
     groep.add_argument(
         "--alles", action="store_true", help="Reconcilieer alle geïndexeerde crebo's"
     )
+    groep.add_argument(
+        "--refresh-fallbacks",
+        action="store_true",
+        help="Her-check ESCO-fallbacks tegen CompetentNL en upgrade hits (Fase 3)",
+    )
     parser.add_argument("--force", action="store_true", help="Herbouw bestaande skills (--reset)")
     args = parser.parse_args()
 
+    if args.refresh_fallbacks:
+        _refresh_fallbacks()
+        return 0
     werk_afgeleide_bronnen_bij(crebo=args.crebo, alles=args.alles, force=args.force)
     return 0
 
