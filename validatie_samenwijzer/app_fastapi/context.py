@@ -31,6 +31,7 @@ STUDENT_SOORTEN = (
     "studentenstatuut",
     "bindend_studieadvies",
     "klachtenregeling",
+    "gedragscode",
     "algemene_informatie",
 )
 MENTOR_SOORTEN = (
@@ -39,6 +40,7 @@ MENTOR_SOORTEN = (
     "studentenstatuut",
     "bindend_studieadvies",
     "klachtenregeling",
+    "gedragscode",
     "algemene_informatie",
 )
 

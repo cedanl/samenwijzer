@@ -32,6 +32,7 @@ from app_fastapi.sessie import bewaar_sessie, get_sessie
 from validatie_samenwijzer import db
 from validatie_samenwijzer._ai import _client as ai_client
 from validatie_samenwijzer.chat import (
+    LAGE_RELEVANTIE_BERICHT,
     bouw_berichten,
     genereer_antwoord,
     genereer_intake_antwoord,
@@ -234,17 +235,23 @@ async def api_chat(request: Request):
     s = get_sessie(request)
     berichten = bouw_berichten(s.chat_history, vraag)
     systeem = s.oer_systeem
+    heeft_oer = bool(s.oer_ids)
     domeinen = s.domeinen or None
     instellingen = _instellingen()
 
     def stream():
         antwoord = ""
         try:
-            client = ai_client()
             if systeem:
-                gen = genereer_antwoord(client, systeem, berichten, web_search_domeinen=domeinen)
+                gen = genereer_antwoord(
+                    ai_client(), systeem, berichten, web_search_domeinen=domeinen
+                )
+            elif heeft_oer:
+                # OER('s) toegewezen maar geen bruikbare bron geladen (onleesbaar + geen
+                # KD/instellingsbron) → expliciete melding, geen verwarrende intake-modus.
+                gen = iter([LAGE_RELEVANTIE_BERICHT])
             else:
-                gen = genereer_intake_antwoord(client, berichten, instellingen)
+                gen = genereer_intake_antwoord(ai_client(), berichten, instellingen)
             for chunk in gen:
                 antwoord += chunk
                 yield f"data: {json.dumps({'chunk': chunk})}\n\n"
