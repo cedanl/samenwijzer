@@ -18,6 +18,7 @@ from validatie_samenwijzer.chat import (
     laad_oer_tekst,
     laad_skills_tekst,
     resolve_oer_pad,
+    vacature_domeinen,
     web_zoek_domeinen,
 )
 from validatie_samenwijzer.opleiding import schoon_opleiding_naam
@@ -127,6 +128,10 @@ def laad_context(
 
     if not items:
         return "", [], [], False
-    domeinen = web_zoek_domeinen(items)
-    systeem = bouw_gecombineerd_systeem(items, web_zoeken=bool(domeinen))
+    school_domeinen = web_zoek_domeinen(items)
+    # Vacaturezoek is altijd beschikbaar (beroep bekend via de OER/skills); het prompt-blok
+    # gate't zelf op een expliciete vacaturevraag. Los van school_domeinen, zodat het ook
+    # werkt bij een instelling zonder scrapebaar webdomein.
+    systeem = bouw_gecombineerd_systeem(items, web_zoeken=bool(school_domeinen), vacatures=True)
+    domeinen = sorted(set(school_domeinen) | set(vacature_domeinen()))
     return systeem, labels, domeinen, oer_onleesbaar

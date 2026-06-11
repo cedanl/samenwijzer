@@ -62,6 +62,15 @@ def test_laad_context_student_soorten_minstens_zo_breed():
     assert len(student) >= len(publiek)
 
 
+def test_laad_context_bevat_vacature_domeinen():
+    oer_id = _leesbare_oer_id()
+    if oer_id is None:
+        pytest.skip("Geen geïndexeerde OER met leesbare tekst beschikbaar (DB/oeren afwezig).")
+    _systeem, _labels, domeinen, _ = laad_context([oer_id])
+    for d in ("stagemarkt.nl", "indeed.nl"):
+        assert d in domeinen
+
+
 def test_laad_context_onleesbare_oer_via_kd(monkeypatch):
     """Een OER zonder leesbare tekst maar mét KD levert tóch context + oer_onleesbaar=True."""
     import app_fastapi.context as ctx
