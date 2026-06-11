@@ -275,6 +275,38 @@ def test_api_vraag_zonder_match_geeft_intake():
     assert r.status_code == 200 and r.json()["modus"] == "intake"
 
 
+def test_elke_instelling_soort_is_bereikbaar_in_een_context():
+    """Guard: elke geïndexeerde instelling-soort moet in minstens één context-tuple zitten.
+
+    Anders is een geïndexeerde bron (zoals gedragscode) onzichtbaar als document-fallback.
+    """
+    from app_fastapi.context import MENTOR_SOORTEN, PUBLIEK_SOORTEN, STUDENT_SOORTEN
+    from validatie_samenwijzer import db
+
+    bereikbaar = set(PUBLIEK_SOORTEN) | set(STUDENT_SOORTEN) | set(MENTOR_SOORTEN)
+    onbereikbaar = set(db.INSTELLING_SOORTEN) - bereikbaar
+    assert not onbereikbaar, f"Soorten zonder context-tuple (onzichtbaar): {sorted(onbereikbaar)}"
+
+
+def test_chat_toegewezen_maar_onleesbare_oer_geeft_lage_relevantie(monkeypatch):
+    """Toegewezen OER zonder bruikbare bron → expliciete melding, geen intake (geen AI-call)."""
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    import app_fastapi.main as m
+    from validatie_samenwijzer.chat import LAGE_RELEVANTIE_BERICHT
+
+    # laad_context geeft 'geen bruikbare bron' terug; ai_client mag niet aangeroepen worden.
+    monkeypatch.setattr(m, "laad_context", lambda ids, *a, **k: ("", [], [], False))
+    monkeypatch.setattr(
+        m, "ai_client", lambda: (_ for _ in ()).throw(AssertionError("AI niet aanroepen"))
+    )
+    c = _client()
+    c.post("/api/kies", json={"oer_ids": [1]})  # sessie: oer_ids=[1], oer_systeem=""
+    r = c.post("/api/chat", json={"vraag": "hoe werkt herkansen?"})
+    assert r.status_code == 200
+    assert LAGE_RELEVANTIE_BERICHT in r.text
+
+
 def test_api_reset_ok():
     if not _WW:
         pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
