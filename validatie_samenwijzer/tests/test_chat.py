@@ -170,6 +170,27 @@ def test_bouw_systeem_leesbare_oer_blijft_normale_modus():
     assert "niet machine-leesbaar" not in systeem
 
 
+def test_bouw_systeem_bevat_doelgroep_instructie_naast_citatieplicht():
+    """De MBO niveau 1-4-uitleg staat in de prompt, NAAST de woordelijke citatieplicht."""
+    systeem = bouw_systeem("OER-tekst", "Kok", "Da Vinci")
+    assert "DOELGROEP & TOON" in systeem
+    assert "niveau 1 t/m 4" in systeem
+    assert "In gewone taal:" in systeem
+    # De citatieplicht blijft onverkort gelden (uitleg vervangt het citaat niet).
+    assert "WOORDELIJK citeren" in systeem
+    assert "verander een citaat NOOIT" in systeem
+
+
+def test_bouw_gecombineerd_meervoudig_bevat_doelgroep_instructie():
+    oers = [
+        _oer_item(tekst="Tekst A", opleiding="Kok", display_naam="Da Vinci"),
+        _oer_item(tekst="Tekst B", opleiding="Verzorgende IG", display_naam="Rijn IJssel"),
+    ]
+    systeem = bouw_gecombineerd_systeem(oers)
+    assert "DOELGROEP & TOON" in systeem
+    assert "niveau 1 t/m 4" in systeem
+
+
 def test_lage_relevantie_bericht_is_string():
     assert isinstance(LAGE_RELEVANTIE_BERICHT, str)
     assert len(LAGE_RELEVANTIE_BERICHT) > 10
