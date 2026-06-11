@@ -657,12 +657,18 @@ def identificeer_oer_kandidaten(oers: list, tekst: str, min_score: int = 0) -> l
     scholen in beeld (terecht — de gebruiker koos nog geen school).
 
     **Aanscherping 2 — opleidingsfilter per instelling:** noemt de vraag binnen een instelling een
-    opleiding (identiteit > 0 bij minstens één OER van die instelling), dan vallen de OER's van
-    diezelfde instelling zónder identiteitssignaal weg. Zo levert "software developer bij
-    Graafschap" alleen de Software-developer-OER's, niet alle OER's van Graafschap. Heeft géén OER
-    binnen de
-    instelling een identiteitssignaal (kale instellingsvraag, of een onleesbare/aaneengeplakte
-    opleidingsnaam zoals bij kwic), dan blijft de hele instellingsgroep staan.
+    opleiding (identiteit > 0 bij minstens één OER van die instelling), dan houden we per
+    instelling alleen de OER's met het **sterkste** identiteitssignaal (hoogste tier). Zo levert
+    "software developer bij Graafschap" alleen de Software-developer-OER's, en "assistent horeca
+    bij Talland" alleen "Assistent-horeca-voeding" (twee woorden, identiteit 2) i.p.v. de hele
+    Entree-Assistent-familie (losse "assistent", identiteit 1). Gelijke top-tiers blijven samen in
+    beeld (gelijkspel-dropdown). Heeft géén OER binnen de instelling een identiteitssignaal (kale
+    instellingsvraag, of een onleesbare/aaneengeplakte opleidingsnaam zoals bij kwic), dan blijft
+    de hele instellingsgroep staan.
+
+    De opleidingswoorden sluiten de instellingstokens uit: sommige scholen (Talland) embedden hun
+    eigen slug in de opleiding-bestandsnaam, wat anders élke OER een vals identiteitssignaal zou
+    geven (= het instelling-signaal, niet de opleiding).
 
     CamelCase-namen (Da Vinci-stijl) worden gesplitst vóór matching.
     Numerieke tokens worden uitgesloten zodat jaarcijfers niet dubbel tellen.
@@ -680,18 +686,34 @@ def identificeer_oer_kandidaten(oers: list, tekst: str, min_score: int = 0) -> l
     for oer in oers:
         d = dict(oer)
 
+        # Instellingsmatch op woorden uit de display-naam ("Koning", "Willem") én
+        # de korte sleutel ("kwic"). Eén match volstaat voor de volle bonus. Vóór de
+        # opleidingsscore berekend, omdat instellingstokens uit de opleidingswoorden
+        # gefilterd worden (zie hieronder).
+        inst_woorden = {
+            w for w in d["display_naam"].lower().split() if len(w) >= 4 and w not in _generiek
+        }
+        if d.get("naam"):
+            inst_woorden.add(d["naam"].lower())
+            inst_woorden |= _aliassen.get(d["naam"].lower(), set())
+        instelling = 3 if inst_woorden & tekst_woorden else 0
+
         # Identiteit: crebo (+3) + opleidingswoorden (max +2) — "wélke opleiding".
         identiteit = 3 if d["crebo"] in tekst_woorden else 0
         # CamelCase split (VerzorgendeIG → Verzorgende IG) + underscore als separator.
         # Dedupliceren met set: filename-prefixen herhalen vaak BOL/BBL/jaar, anders
         # zou een opleiding "Kok BOL" via een prefix "_BOL_" dubbel scoren.
-        # Sluit BOL/BBL uit; die worden al via `leerweg` gescoord.
+        # Sluit BOL/BBL uit; die worden al via `leerweg` gescoord. Sluit ook de
+        # instellingstokens uit: sommige scholen (Talland) embedden hun eigen slug in de
+        # opleiding-bestandsnaam ("..._talland-Business-Services"), waardoor de genoemde
+        # instelling anders élke OER een vals identiteit-signaal zou geven — dat is het
+        # instelling-signaal, niet de opleiding.
         opl_gesplit = re.sub(r"(?<=[a-z])(?=[A-Z])", " ", d["opleiding"])
         woorden = {
             w
             for w in re.sub(r"[_\W]+", " ", opl_gesplit).lower().split()
             if len(w) >= 3 and not w.isdigit() and w not in {"bol", "bbl"}
-        }
+        } - inst_woorden
         identiteit += min(sum(1 for w in woorden if w in tekst_woorden), 2)
 
         # Modifiers: leerweg (+2) + cohort (+2) — verfijnen, geen opleiding-keuze.
@@ -700,16 +722,6 @@ def identificeer_oer_kandidaten(oers: list, tekst: str, min_score: int = 0) -> l
             modifier += 2
         if d["cohort"] in tekst_woorden:
             modifier += 2
-
-        # Instellingsmatch op woorden uit de display-naam ("Koning", "Willem") én
-        # de korte sleutel ("kwic"). Eén match volstaat voor de volle bonus.
-        inst_woorden = {
-            w for w in d["display_naam"].lower().split() if len(w) >= 4 and w not in _generiek
-        }
-        if d.get("naam"):
-            inst_woorden.add(d["naam"].lower())
-            inst_woorden |= _aliassen.get(d["naam"].lower(), set())
-        instelling = 3 if inst_woorden & tekst_woorden else 0
 
         sleutel = d.get("naam") or d["display_naam"]
         per_instelling.setdefault(sleutel, []).append(
@@ -727,11 +739,16 @@ def identificeer_oer_kandidaten(oers: list, tekst: str, min_score: int = 0) -> l
         # deze groep de genoemde instelling is.
         if instelling_genoemd and groep[0][1] == 0:
             continue
-        # Aanscherping 2: is er binnen deze instelling een opleiding genoemd? Dan vallen
-        # de OER's zónder identiteitssignaal weg (de "te brede instellingslijst"-fix).
-        heeft_identiteit = any(identiteit > 0 for identiteit, _, _, _ in groep)
+        # Aanscherping 2: is er binnen deze instelling een opleiding genoemd, houd dan
+        # alleen de OER's met het sterkste identiteitssignaal (hoogste tier). "Assistent
+        # horeca" matcht "Assistent-horeca-voeding" (twee woorden, identiteit 2) sterker
+        # dan een OER met losse "assistent" of "horeca" (identiteit 1); de zwakkere,
+        # toevallige matches vallen weg. Gelijke top-tiers blijven samen in beeld
+        # (gelijkspel-dropdown). Géén opleiding genoemd (max 0) → hele instellingsgroep
+        # blijft staan, zoals bij een kale instellingsvraag.
+        max_identiteit = max(identiteit for identiteit, _, _, _ in groep)
         for identiteit, _inst, score, d in groep:
-            if heeft_identiteit and identiteit == 0:
+            if max_identiteit > 0 and identiteit < max_identiteit:
                 continue
             if score >= min_score:
                 kandidaten.append({**d, "_score": score})
