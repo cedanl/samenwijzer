@@ -44,11 +44,13 @@ Vanuit `validatie_samenwijzer/`. Volledige catalogus (ingest, KD/skills-build, b
 uv run uvicorn app_fastapi.main:app --port 8504 --reload   # app (vereist SESSION_SECRET + ALGEMEEN_WACHTWOORD in .env)
 uv sync --extra dev && uv run python -m pytest             # tests
 uv run python -m pytest tests/test_ingest.py::test_parseer_bestandsnaam_davinci -v  # één test
-uv run ruff check --fix src/ app/ && uv run ruff format src/ app/ scripts/          # lint + format
+uv run ruff check --fix src/ app_fastapi/ scripts/ && uv run ruff format src/ app_fastapi/ scripts/  # lint + format
 uv run python -m validatie_samenwijzer.ingest --alles      # (her)indexeer OERs (+ --reset)
 ```
 
-Lint: line-length 100; selectie `E,F,I,N,W,UP`; E501 vrijgesteld voor `app/` + `styles.py`.
+Lint: line-length 100; selectie `E,F,I,N,W,UP`. `app_fastapi/*.py` wordt volledig gelint (HTML/CSS/JS
+leeft in `app_fastapi/templates|static`, buiten ruff). De E501-vrijstellingen in `pyproject.toml`
+verwijzen nog naar de geretirede `app/` + `styles.py` en zijn dode config.
 
 ## Tests
 
@@ -78,8 +80,8 @@ Volledige beschrijving in `docs/ARCHITECTURE.md`. De regels die een wijziging ni
 - **AI-isolatie**: alle Anthropic-calls via `_ai._client()`; `chat.py` is de enige module met
   streaming-aanroepen. **Nooit** `anthropic.Anthropic()` direct instantiëren. De client dwingt het
   30s-timeout-contract af (`_CLIENT_OPTS`).
-- **Geen business logic in `app/`**; geen raw SQL in pagina's — alle DB-toegang via `db.py`
-  (scripts/tests) of `_db.get_conn()` (pagina's).
+- **Geen business logic in `app_fastapi/`**; geen raw SQL in routes — alle DB-toegang via `db.py`
+  (`get_connection()`), zowel in scripts/tests als via de route-lokale `_conn()`-helper.
 - **Vier chat-bronnen**, alle full-document: OER (leidend) + KD + skills + instellingsbrede regelingen.
   Loaders + caps in `chat.py` (`laad_oer_tekst` 500K, KD 300K, skills 50K, instelling 300K).
 - **Juridische citatieplicht**: elke claim eist **bron + vindplaats + woordelijk citaat tussen
@@ -87,7 +89,7 @@ Volledige beschrijving in `docs/ARCHITECTURE.md`. De regels die een wijziging ni
   categorie + skill-naam) — verzonnen paginanummers zijn verboden. Templates: `_SYSTEEM_TEMPLATE`,
   `_MULTI_SYSTEEM_TEMPLATE`.
 - **Drie hardgecodeerde instelling-lijsten** moeten synchroon blijven: `ingest._INSTELLINGEN`/
-  `_MAP_NAAM`, `scripts/seed_bulk.py:INSTELLINGEN`, `9_beheer.py:_INSTELLING_KEYS`. Ontbreekt een
+  `_MAP_NAAM`, `scripts/seed_bulk.py:INSTELLINGEN`, `app_fastapi/main.py:_INSTELLING_KEYS`. Ontbreekt een
   nieuwe instelling in de seed-lijst → stil **0 studenten**.
 - **Parser-sync met de parent**: de parse-helpers in `ingest.py` worden bewust gespiegeld naar
   `src/samenwijzer/oer_parsing.py`. Wijzig je ze hier, werk de parent-kopie mee bij (en omgekeerd).
@@ -110,8 +112,8 @@ PDF/MD nog op schijf staat. `chat.laad_oer_tekst()` valt terug op `<stem>.md` �
 **Markitdown-conversie mislukt**: `converteer_naar_markdown()` is best-effort; bij falen blijft alleen
 pdfplumber over (geen tabellen). Log: `Markitdown-conversie mislukt voor '…'`.
 
-**Streamlit module-cache bij styles-wijzigingen** (geretirede app): hot-reload herlaadt `styles.py`
-niet — bij CSS-edits in `src/validatie_samenwijzer/styles.py` is een volledige restart nodig.
+**Static-asset-cache (`app_fastapi/`)**: CSS/JS in `app_fastapi/static/` wordt door de browser gecachet —
+hard-refresh (of cache-bust) na edits aan `app.css`/`app.js`/`chat.js`, anders zie je oude styling.
 
 ## Kennisbank
 
