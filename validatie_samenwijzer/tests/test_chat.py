@@ -246,6 +246,12 @@ def test_bouw_systeem_vacatures_blok_bevat_niveau_en_locatie():
     assert "±10 km" in met and "LOCATIE" in met  # vraagt om plaats + straal
 
 
+def test_bouw_systeem_vacatures_blok_eist_klikbare_links():
+    met = bouw_systeem("OER-tekst", "Kok", "Da Vinci", leerweg="BOL", vacatures=True)
+    assert "klikbare Markdown-link" in met  # elk resultaat klikbaar
+    assert "verzin NOOIT een URL" in met  # geen gefabriceerde links
+
+
 def test_bouw_systeem_leerweg_in_prompt():
     systeem = bouw_systeem("OER-tekst", "Kok", "Da Vinci", leerweg="BOL")
     assert "Leerweg van deze opleiding: BOL" in systeem

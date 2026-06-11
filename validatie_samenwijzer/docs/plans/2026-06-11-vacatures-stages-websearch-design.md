@@ -93,12 +93,16 @@ Het blok schrijft voor:
      `<plaats>` (±10 km)", breder bij een regio. (Bewuste keuze: locatie via de student vragen
      i.p.v. een instelling→stad-mapping — de DB heeft geen locatie, instellingen zijn vaak
      multi-campus, en een student zoekt z'n stage vaak bij z'n woonplaats.)
-3. Begin het vacature-antwoord (zodra er echt resultaten zijn) met een vaste disclaimer-regel
-   (externe bron, dagelijks wisselend, géén juridische bron, controleer zelf bij opleiding/SBB).
+3. Begin het vacature-antwoord (zodra er echt resultaten zijn) met één vaste disclaimer-regel,
+   exact één keer (externe bron, dagelijks wisselend, géén juridische bron, controleer zelf bij
+   opleiding/SBB). De disclaimer-string bevat **geen** `> `-prefix meer — dat lokte een dubbele
+   weergave uit (plat + blockquote); zie open punten.
 4. **Nooit** in OER-citaatvorm ("Volgens de OER", geen artikel-/sectie-/paginanummer), geen
    verzonnen vindplaats.
-5. Per resultaat: functietitel als **klikbare apply-link** (Markdown), met werkgever, plaats en
-   (waar zichtbaar) het niveau; sluit af met de bron-URL('s).
+5. **Elk** resultaat als een **klikbare Markdown-link** `[functietitel — werkgever, plaats](URL)`
+   met (waar bekend) het niveau — nooit een kale kop/tabelrij zonder link. Gebruik **altijd** de
+   echte URL uit de zoek-/fetch-resultaten en **verzin nooit een URL**; geen eigen URL voor een
+   plek → link naar de zoek-/filterpagina van die site. Sluit af met de bron-URL('s).
 6. Niets gevonden → eerlijk melden, geen verzonnen vacatures.
 
 De bestaande citatieplicht voor OER/KD/examenreglement blijft volledig ongemoeid; dit is een
@@ -144,7 +148,10 @@ Een nieuw vacaturedomein toevoegen vereist eerst een live check dat de crawler h
 - De false-positive uit de demo ("De Kok Staalbouw" matchte op bedrijfsnaam) wordt hier alleen
   via prompt-instructie beperkt; harde code-filtering/herrangschikking is bewust uitgesteld
   (aanpak C) tot na evaluatie van het prototype.
-- **Disclaimer-dubbeling (cosmetisch):** in de UI-smoke verscheen de disclaimer-regel soms dubbel
-  (één keer plat, één keer met letterlijke `> `-prefix), doordat `_VACATURE_DISCLAIMER` zelf met
-  `> ` begint en het model 'm dan twee keer echode. Intermitterend (trad in de schone run niet op).
-  Op te lossen met een strakkere prompt-formulering; niet kritiek, daarom uitgesteld.
+- **Disclaimer-dubbeling (aangepakt):** de disclaimer verscheen soms dubbel (plat + blockquote)
+  doordat `_VACATURE_DISCLAIMER` met `> ` begon en het model beide varianten echode. Fix: de `> `
+  uit de string gehaald en de instructie aangescherpt ("exact één keer, geen tweede variant").
+  Prompt-niveau, dus geen harde garantie — een 100%-oplossing vergt structured output/rendering.
+- **Per-resultaat-klikbaarheid is prompt-gestuurd**, dus zeer betrouwbaar maar niet 100%. Een harde
+  garantie (elk gevonden resultaat gegarandeerd een klikbare, niet-gefabriceerde link) vergt
+  structured output + rendering in `chat.js`; uitgesteld tot na evaluatie van het prototype.
