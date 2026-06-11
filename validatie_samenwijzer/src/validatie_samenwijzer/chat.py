@@ -6,7 +6,7 @@ import json
 import logging
 import os
 import re
-from collections.abc import Generator, Sequence
+from collections.abc import Generator, Iterable, Sequence
 from pathlib import Path
 
 import anthropic
@@ -517,6 +517,37 @@ def _messages_met_cache(berichten: list[dict]) -> list[dict]:
     return [*kop, {**laatste, "content": [blok]}]
 
 
+def dedup_disclaimer(chunks: Iterable[str], disclaimer: str) -> Generator[str]:
+    """Stream `chunks` door, maar laat `disclaimer` hooguit één keer passeren.
+
+    Het model herhaalt de vacature-disclaimer soms (typisch ná een web_search-tool-call):
+    één keer aan het begin en nog eens vlak voor de resultaten. Deze filter behoudt het
+    eerste voorkomen en verwijdert latere identieke voorkomens. Buffert maximaal
+    len(disclaimer)-1 tekens zodat een over chunk-grenzen gesplitste disclaimer toch matcht.
+    """
+    n = len(disclaimer)
+    if n == 0:
+        yield from chunks
+        return
+    buf = ""
+    gezien = False
+    for chunk in chunks:
+        buf += chunk
+        while (idx := buf.find(disclaimer)) != -1:
+            yield buf[:idx]
+            if not gezien:
+                yield disclaimer
+                gezien = True
+            buf = buf[idx + n :]
+        # Houd een staart van n-1 tekens vast — die kan het begin van een disclaimer zijn.
+        if len(buf) >= n:
+            grens = len(buf) - (n - 1)
+            yield buf[:grens]
+            buf = buf[grens:]
+    if buf:
+        yield buf
+
+
 def genereer_antwoord(
     client: anthropic.Anthropic,
     system: str,
@@ -575,7 +606,9 @@ def genereer_antwoord(
         messages=_messages_met_cache(berichten),
         **extra,
     ) as stream:
-        yield from stream.text_stream
+        # Vangnet: verwijder een door het model herhaalde vacature-disclaimer (no-op als
+        # die niet voorkomt, bv. bij gewone OER-antwoorden).
+        yield from dedup_disclaimer(stream.text_stream, _VACATURE_DISCLAIMER)
 
 
 # ── Multi-OER ──────────────────────────────────────────────────────────────────

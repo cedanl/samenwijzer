@@ -93,10 +93,11 @@ Het blok schrijft voor:
      `<plaats>` (±10 km)", breder bij een regio. (Bewuste keuze: locatie via de student vragen
      i.p.v. een instelling→stad-mapping — de DB heeft geen locatie, instellingen zijn vaak
      multi-campus, en een student zoekt z'n stage vaak bij z'n woonplaats.)
-3. Begin het vacature-antwoord (zodra er echt resultaten zijn) met één vaste disclaimer-regel,
-   exact één keer (externe bron, dagelijks wisselend, géén juridische bron, controleer zelf bij
-   opleiding/SBB). De disclaimer-string bevat **geen** `> `-prefix meer — dat lokte een dubbele
-   weergave uit (plat + blockquote); zie open punten.
+3. Begin het vacature-antwoord (zodra er echt resultaten zijn) met één vaste disclaimer-regel
+   (externe bron, dagelijks wisselend, géén juridische bron, controleer zelf bij opleiding/SBB).
+   Het model wordt geïnstrueerd 'm één keer te schrijven, maar als safety-net **dedupliceert de
+   stream-filter `dedup_disclaimer` in code** elke herhaling (het model re-stateth de disclaimer
+   soms ná de web_search-tool-call). De disclaimer-string bevat geen `> `-prefix.
 4. **Nooit** in OER-citaatvorm ("Volgens de OER", geen artikel-/sectie-/paginanummer), geen
    verzonnen vindplaats.
 5. **Elk** resultaat als een **klikbare Markdown-link** `[functietitel — werkgever, plaats](URL)`
@@ -148,10 +149,12 @@ Een nieuw vacaturedomein toevoegen vereist eerst een live check dat de crawler h
 - De false-positive uit de demo ("De Kok Staalbouw" matchte op bedrijfsnaam) wordt hier alleen
   via prompt-instructie beperkt; harde code-filtering/herrangschikking is bewust uitgesteld
   (aanpak C) tot na evaluatie van het prototype.
-- **Disclaimer-dubbeling (aangepakt):** de disclaimer verscheen soms dubbel (plat + blockquote)
-  doordat `_VACATURE_DISCLAIMER` met `> ` begon en het model beide varianten echode. Fix: de `> `
-  uit de string gehaald en de instructie aangescherpt ("exact één keer, geen tweede variant").
-  Prompt-niveau, dus geen harde garantie — een 100%-oplossing vergt structured output/rendering.
+- **Disclaimer-dubbeling (opgelost, code-niveau):** het model herhaalde de disclaimer soms ná de
+  web_search-tool-call. Eerst prompt-getweakt (`> `-prefix weg + "exact één keer"), maar dat hield
+  niet betrouwbaar. Definitieve fix: de stream-filter `dedup_disclaimer(chunks, disclaimer)` in
+  `chat.py` laat de disclaimer **deterministisch hooguit één keer** door (buffert ≤ len-1 tekens om
+  een over chunk-grenzen gesplitste herhaling te vangen). Unit-getest. Vangt verbatim-herhalingen;
+  een geparafraseerde tweede variant zou 'm ontwijken, maar de instructie eist letterlijke tekst.
 - **Per-resultaat-klikbaarheid is prompt-gestuurd**, dus zeer betrouwbaar maar niet 100%. Een harde
   garantie (elk gevonden resultaat gegarandeerd een klikbare, niet-gefabriceerde link) vergt
   structured output + rendering in `chat.js`; uitgesteld tot na evaluatie van het prototype.
