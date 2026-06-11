@@ -86,6 +86,22 @@ geraadpleegde pagina('s) op de schoolwebsite, zodat de gebruiker het zelf kan na
 De OER blijft de juridisch bindende bron; webinformatie is aanvullend en indicatief."""
 
 
+# Doelgroep-instructie: MBO-studenten niveau 1 t/m 4 lezen mee. In beide system-templates
+# ingespoten (zelfde patroon als _WEB_ZOEK_BLOK). De woordelijke citaten blijven onaangetast —
+# de uitleg in simpele taal komt ERNAAST, nooit in de plaats van het citaat.
+_DOELGROEP_TOON = """
+
+DOELGROEP & TOON.
+Je schrijft voor MBO-studenten van niveau 1 t/m 4. Gebruik korte zinnen en
+eenvoudige, alledaagse taal; vermijd ambtelijk jargon en leg een afkorting de
+eerste keer kort uit (bv. "BSA (bindend studieadvies)"). Citeer altijd eerst
+woordelijk zoals hierboven voorgeschreven en verander een citaat NOOIT — het
+zijn juridische teksten. Voeg daarna, ALS het citaat formeel of ingewikkeld is,
+één of twee zinnen uitleg in gewone taal toe, herkenbaar ingeleid met
+"In gewone taal:" of "Oftewel:". De uitleg komt náást het citaat, niet in de
+plaats ervan; een eenvoudig, al begrijpelijk citaat hoeft geen extra uitleg."""
+
+
 _SYSTEEM_TEMPLATE = """\
 Je bent een onderwijs-assistent voor de opleiding {opleiding} bij {instelling}.
 
@@ -140,7 +156,7 @@ Een claim zonder correcte bronvermelding is niet toegestaan. Parafraseren mag
 alleen ter inleiding van een citaat, niet ter vervanging ervan. Beantwoord vragen
 uitsluitend op basis van deze bronnen — nooit vanuit eigen kennis. Als de
 informatie in geen van de bronnen staat, zeg dat dan expliciet. Antwoord in het
-Nederlands.{web_zoek_blok}
+Nederlands.{web_zoek_blok}{doelgroep_toon}
 
 {oer_sectie}{instelling_blok}{dossier_blok}{skills_blok}"""
 
@@ -403,6 +419,7 @@ def bouw_systeem(
         dossier_blok=dossier_blok,
         skills_blok=skills_tekst,
         web_zoek_blok=_WEB_ZOEK_BLOK if web_zoeken else "",
+        doelgroep_toon=_DOELGROEP_TOON,
     )
 
 
@@ -562,7 +579,7 @@ Een claim zonder correcte bronvermelding is niet toegestaan.
 Parafraseren mag alleen ter inleiding van een citaat, niet ter vervanging ervan.
 Beantwoord uitsluitend op basis van deze bronnen — nooit vanuit eigen kennis.
 Als de informatie in geen van de bronnen staat, zeg dat dan expliciet.
-Antwoord in het Nederlands.{web_zoek_blok}
+Antwoord in het Nederlands.{web_zoek_blok}{doelgroep_toon}
 
 {oer_blokken}"""
 
@@ -619,6 +636,7 @@ def bouw_gecombineerd_systeem(oer_items: list[dict], web_zoeken: bool = False) -
         n=len(oer_items),
         oer_blokken="\n\n---\n\n".join(blokken),
         web_zoek_blok=_WEB_ZOEK_BLOK if web_zoeken else "",
+        doelgroep_toon=_DOELGROEP_TOON,
     )
 
 
