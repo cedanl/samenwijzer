@@ -141,7 +141,7 @@ footer .fbrand { font-family: "Instrument Serif", serif; font-size: 1.4rem; }
 .overlay.open { display: flex; }
 .overlay::before { content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .05; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 .ov-head { position: relative; z-index: 1; border-bottom: 1px solid var(--line-soft); background: rgba(242,236,224,.85); backdrop-filter: blur(8px); }
-.ov-head .wrap { display: flex; align-items: center; gap: 1rem; height: 64px; flex-wrap: wrap; }
+.ov-head .wrap { display: flex; align-items: center; gap: 1rem; min-height: 64px; flex-wrap: wrap; row-gap: 8px; padding: 8px 0; }
 .ov-head .brand { margin-right: auto; }
 .ov-labels { display: flex; gap: 6px; flex-wrap: wrap; }
 .ov-label { font-size: .72rem; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 999px; padding: .25rem .7rem; }
