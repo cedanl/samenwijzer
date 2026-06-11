@@ -4,9 +4,9 @@ Diepe referentie voor `validatie_samenwijzer`. `CLAUDE.md` houdt de dagelijkse e
 invarianten; dit bestand bevat de volledige module-rollen, datapipelines en multi-machine-workflow.
 
 > **Frontend-status (juni 2026)**: de Streamlit-frontend (`app/`) is **geretired**; `app_fastapi/`
-> is DE frontend. Secties hieronder die naar `app/main.py`, `app/pages/*`, `st.session_state` of
-> poort 8503/8504 verwijzen beschrijven óf de geretirede Streamlit-app óf gedeelde Python-kern.
-> Spec/plan: `docs/plans/2026-06-10-fastapi-migratie-*.md`.
+> (poort 8504) is DE frontend. De Python-kern (`chat.py`, `db.py`, `_ai.py`, `auth.py`) is gedeeld
+> en UI-vrij. Een enkele verwijzing naar `app/`/`st.session_state` markeert bewust de geretirede
+> Streamlit-laag. Spec/plan: `docs/plans/2026-06-10-fastapi-migratie-*.md`.
 
 ## Commando's (volledige catalogus)
 
@@ -18,9 +18,9 @@ de volledige lijst inclusief data-pipelines.
 uv run uvicorn app_fastapi.main:app --port 8504 --reload   # vereist SESSION_SECRET + ALGEMEEN_WACHTWOORD
 uv sync --extra dev && uv run python -m pytest
 uv run python -m pytest tests/test_ingest.py::test_parseer_bestandsnaam_davinci -v
-uv run ruff check src/ app/ scripts/
-uv run ruff check --fix src/ app/
-uv run ruff format src/ app/ scripts/                       # CI elders eist ook `ruff format --check`
+uv run ruff check src/ app_fastapi/ scripts/
+uv run ruff check --fix src/ app_fastapi/
+uv run ruff format src/ app_fastapi/ scripts/              # geen CI-gate hier — draai lokaal vóór commit
 
 # Ingestie-pipeline
 uv run python -m validatie_samenwijzer.ingest --alles          # nieuw indexeren
@@ -39,14 +39,14 @@ uv run python -m validatie_samenwijzer.watcher --oeren-pad /pad/naar/oeren
 
 # Seed testdata
 uv run python scripts/seed.py        # 3 studenten + 2 mentoren (dev-demo)
-uv run python scripts/seed_bulk.py   # ~1000 studenten over geïndexeerde OERs (vereist eerst `ingest --alles`)
+uv run python scripts/seed_bulk.py   # ~1700 studenten over geïndexeerde OERs (vereist eerst `ingest --alles`)
 
 # Bestandsnamen aanvullen + indexeren (alles-in-één)
 ./scripts/verwerk_oers.sh --preview  # droge run
 ./scripts/verwerk_oers.sh            # hernoem + indexeer
 
 # Multi-machine setup: sync oeren vanuit Box + ingest + bulk-seed
-./scripts/bootstrap.sh                  # default = bulk-seed (~1000 studenten)
+./scripts/bootstrap.sh                  # default = bulk-seed (~1700 studenten)
 ./scripts/bootstrap.sh --skip-sync      # alleen ingest + seed (oeren/ al lokaal)
 ./scripts/bootstrap.sh --seed-minimal   # 3+2 dev-demo i.p.v. bulk
 ./scripts/bootstrap.sh --skip-seed      # geen testdata
@@ -130,18 +130,20 @@ RCLONE_REMOTE=mijnbox RCLONE_OEREN_PAD=team/oeren ./scripts/sync_oeren.sh
 
 ## Beheerpagina
 
-`app/pages/9_beheer.py` bundelt sync, re-ingest, seed en DB-status achter knoppen.
-Bereikbaar op `/beheer` als `BEHEER_ENABLED=true` staat in `.env`. Subprocesses
-draaien op de host en de output wordt live gestreamd in de UI. Niet aanzetten op
-gedeelde servers — de pagina kan rclone, ingest en seed-scripts triggeren.
+Route `GET /beheer` (template `beheer.html`) + `GET /api/beheer/run` in `app_fastapi/main.py`
+bundelen re-ingest, seed en DB-status. Bereikbaar als `BEHEER_ENABLED=true` staat in `.env` —
+anders geeft de route 404. Taken draaien als subprocess op de host; de stdout wordt live als SSE
+(`text/event-stream`) naar de pagina gestreamd. Niet aanzetten op gedeelde servers — de allowlist
+omvat rclone-sync, ingest en seed-scripts.
 
-Tabs:
-- **Status** — # OERs per instelling, # geïndexeerd, laatste ingest-run (uit
-  tabel `ingest_runs`), aantal PDFs/markdown op schijf.
-- **Sync oeren** — wrapper rond `scripts/sync_oeren.sh`.
-- **Re-ingest** — scope-dropdown (alles/aeres/davinci/rijn_ijssel/talland/utrecht)
-  + `--reset` checkbox.
-- **Seed** — `seed_bulk.py` (~1000 studenten, default werkdata) of `seed.py` (3+2 dev-demo).
+Veiligheid van `/api/beheer/run`: dubbele gate (`BEHEER_ENABLED` + de algemene toegangspoort),
+een vaste commando-allowlist (`_BEHEER_TAKEN`, lijst-vorm `Popen` zonder shell), instelling-scope
+gevalideerd tegen `_INSTELLING_KEYS`, en `cwd` hard op de repo-root.
+
+De pagina toont DB-status (`_beheer_status()`: # OERs per instelling, # geïndexeerd, laatste
+ingest-run uit tabel `ingest_runs`) en draait de allowlist-taken `_BEHEER_TAKEN`: `sync_oeren` +
+`kd_sync` (rclone vanaf Box), `ingest_alles`/`ingest` (per instelling, + optionele `--reset`) en
+`seed_bulk`/`seed_minimal`.
 
 ## Data-laag
 
@@ -153,9 +155,10 @@ instellingsbrede document-soorten → citeer-label; een nieuwe soort toevoegen =
 geen schema-migratie (soort-validatie staat in `voeg_instelling_document_toe`, niet in een DB-CHECK).
 Verbinding via `get_connection()` met WAL-modus en `check_same_thread=False`.
 
-**`_db.py`** — dunne Streamlit-wrapper: `get_conn()` is `@st.cache_resource` en roept
-`get_connection()` + `init_db()` aan. Gebruik `_db.get_conn()` in pagina's,
-`db.get_connection()` in scripts en tests.
+**Verbinden vanuit de app**: routes openen de DB via een module-lokale `_conn()`-helper
+(`app_fastapi/main.py` en `context.py`) die `db.get_connection(DB_PATH)` aanroept; scripts en tests
+gebruiken `db.get_connection()` direct. (De geretirede Streamlit-wrapper `_db.py` met
+`@st.cache_resource` bestaat niet meer.)
 
 ## Ingestie-pipeline (`ingest.py`)
 
@@ -215,18 +218,21 @@ ander record met dezelfde landelijke opleidingscode; idempotent, `--dry-run`). D
 
 ## Sessiemodel
 
-Login in `app/main.py`. Na login staat in `st.session_state`:
+Server-side sessie in `app_fastapi/sessie.py`: een `Sessie`-dataclass per gebruiker, bewaard in
+een SQLite-store met TTL die proces-restarts overleeft. De browser houdt alleen de door
+`SESSION_SECRET` ondertekende `SessionMiddleware`-cookie vast met daarin een `sid`-sleutel; die
+`sid` wijst naar het server-side `Sessie`-object. `get_sessie(request)` laadt/maakt het object,
+write-through naar de store gebeurt via middleware (mutaterende GET-routes roepen `bewaar_sessie()`
+expliciet aan).
 
-| Sleutel | Student | Mentor |
-|---|---|---|
-| `rol` | `"student"` | `"mentor"` |
-| `oer_id` | id van hun OER | — |
-| `oer_ids` | — | lijst van gekoppelde OER-ids |
-| `opleiding` | naam | `"Mentor"` |
-| `instelling` | display_naam | display_naam |
-| `gebruiker_id` | student-id | mentor-id |
+Relevante velden: `toegang` (algemene poort gepasseerd), `rol` (`"student"`/`"mentor"`/`None`),
+`gebruiker` (`{id, naam, studentnummer?}`), `oer_ids` + `oer_systeem` (geladen context),
+`oer_labels`, `oer_onleesbaar`, `chat_history`, en mentor-specifiek `actieve_student`. Login
+(`POST /login`) vult deze velden; `reset()`/`uitloggen()` wissen ze.
 
-Rolbewaking: `vereist_student()` / `vereist_mentor()` bovenaan elke pagina aanroepen, direct na CSS-injectie.
+Rolbewaking: de `_eis(request, rol)`-helper in `main.py` redirect naar `/login` als de rol niet
+klopt; mentor-routes checken bovendien IDOR (`/mentor/student/{id}` weigert studenten buiten de
+eigen koppeling).
 
 ## Authenticatie
 
@@ -234,19 +240,11 @@ Wachtwoorden opgeslagen als PBKDF2-HMAC-SHA256 (`salt_hex:hash_hex`). Legacy bar
 worden nog geaccepteerd en bij volgende login automatisch gemigreerd. Seed-wachtwoord voor alle
 test-accounts: **Welkom123**. Login: studenten op studentnummer, mentoren op naam.
 
-## Pagina's (Streamlit, geretired)
+## Routes & frontend (`app_fastapi/`)
 
-| Bestand | Rol | Functie |
-|---|---|---|
-| `app/main.py` | beide | Login, sessie-initialisatie |
-| `0_oer_vraag.py` | publiek (geen login) | Conversationele OER-chat; intake-stap als nog geen OER geselecteerd, multi-OER (max 3 tegelijk) |
-| `1_oer_assistent.py` | student | OER-chat met volledige documentcontext (eigen `oer_id`) |
-| `2_mijn_oer.py` | student | Volledig OER inzien of downloaden |
-| `3_mijn_voortgang.py` | student | Voortgang, BSA, scores visualiseren |
-| `4_mijn_studenten.py` | mentor | Studentenlijst van eigen koppeling |
-| `5_begeleidingssessie.py` | mentor | Profiel + twee tabs: OER-chat en volledig OER bekijken |
-| `9_beheer.py` | dev | Sync/ingest/seed/status (alleen als `BEHEER_ENABLED=true`) |
-| `uitloggen.py` | beide | Sessie wissen + redirect naar `/` |
+De volledige route-tabel (publieke OER-vraag, login, student-, mentor- en beheer-routes) staat in
+`README.md`. De geretirede Streamlit-pagina's (`app/pages/*.py`) zijn vervangen; verwijzingen ernaar
+elders in dit document beschrijven de gedeelde Python-kern, niet een bestaande UI-laag.
 
 ## FastAPI-frontend (`app_fastapi/`)
 
@@ -274,16 +272,18 @@ inter-event, dus een lang antwoord wordt niet afgebroken — alleen een vastgelo
 
 ## OER-chat-flow
 
-`chat.py` levert drie ingangen, allemaal full-document context:
+`chat.py` levert de system-prompt-bouwers; `app_fastapi/context.py:laad_context()` is de UI-loze
+orchestrator die alle chat-routes (publiek `/`, `/student`, `/mentor/student/{id}`) gebruiken:
 
-1. **Single-OER** (`bouw_systeem`) — gebruikt door `1_oer_assistent.py` en het tweede tabblad
-   van `5_begeleidingssessie.py`. Laadt één OER via `laad_oer_tekst()`.
-2. **Multi-OER** (`bouw_gecombineerd_systeem`) — gebruikt door `0_oer_vraag.py`. Combineert
-   tot 3 OERs in één system prompt met blok-headers `=== OER 1: … ===`.
-3. **Intake** (`genereer_intake_antwoord` + `identificeer_oer_kandidaten`) — fallback in
-   `0_oer_vraag.py` zolang nog geen OER geselecteerd is. `identificeer_oer_kandidaten()`
-   scoort op crebo (+3), leerweg (+2), cohort (+2), opleidingswoorden (+1, max 2),
-   instelling (+1).
+1. **Context bouwen** (`bouw_gecombineerd_systeem`) — `laad_context()` laadt per gekozen OER de
+   volledige tekst + KD + skills + instellingsbronnen en combineert tot 3 OER's in één system
+   prompt met blok-headers `=== OER 1: … ===`. Bij één OER delegeert `bouw_gecombineerd_systeem`
+   naar `bouw_systeem` (single-OER pad), dus de student-/mentor-route (één gekoppelde OER) en de
+   publieke multi-OER-vraag lopen door dezelfde functie.
+2. **Intake** (`genereer_intake_antwoord` + `identificeer_oer_kandidaten`) — fallback in
+   `POST /api/vraag` zolang nog geen OER gekozen is. `identificeer_oer_kandidaten()` scoort op
+   crebo (+3), leerweg (+2), cohort (+2), opleidingswoorden (+1, max 2), instelling (+1) en
+   bepaalt de modus (`chat` bij één match, `kies` bij meer, `intake` bij geen).
 
 `laad_oer_tekst()` voorkeursvolgorde: `<stem>.md` (markitdown-output) → bron-`.md` →
 pdfplumber over PDF. Hard cap: `_MAX_OER_TEKST_TEKENS = 500_000` tekens.
@@ -295,11 +295,10 @@ op het system-blok én een cache-breakpoint op de laatste beurt (`_messages_met_
 volledige OER-context én de gespreksgeschiedenis bij vervolgvragen uit de prompt-cache worden gelezen
 i.p.v. elke beurt vol betaald — overleeft leespauzes >5 min tussen vragen.
 
-**Antwoord-rendering**: AI-antwoorden renderen via native `st.markdown(antwoord)` binnen een keyed
-`st.container(key="chatantwoord_*")` — **niet** in een rauwe `<div>` met `unsafe_allow_html` (dat brak
-op een letterlijke `<` of code in het antwoord). De bubble- en citaat-pull-quote-CSS targeten daarom
-`.chat-antwoord` (statische loading-indicator) én `[class*="st-key-chatantwoord"]` (het antwoord).
-Vraag-bubbels blijven `html.escape` + `.chat-vraag`.
+**Antwoord-rendering**: het AI-antwoord streamt als SSE naar `app_fastapi/static/chat.js`, dat de
+markdown client-side rendert via een **escapende** renderer — één plek voor de security-gevoelige
+weergave, zodat een letterlijke `<`, code of HTML in het antwoord niet als markup uitvoert.
+Markdown-blockquotes worden als citaat-pull-quotes gestyled (`app.css`).
 
 `laad_kwalificatiedossier_tekst(crebo)` leest `kwalificatiedossiers/pdfs/<crebo>.md` (hard cap
 `_MAX_DOSSIER_TEKST_TEKENS = 300_000`). Pad-resolutie via `pad_kwalificatiedossier(crebo)`:
@@ -314,18 +313,19 @@ chat werkt dan zonder skills. Zie de Skills-taxonomie-sectie verderop.
 
 `laad_instelling_bron_tekst(bestandspad)` leest een instellingsbreed document (examenreglement,
 begeleidingsbeleid, studentenstatuut, algemene informatie; hard cap
-`_MAX_INSTELLING_TEKST_TEKENS = 300_000`). Pagina's halen de paden uit `instelling_documenten`
-(`db.haal_instelling_document_op`) en geven `(label, tekst)`-paren door als `instelling_bronnen`
-aan `bouw_systeem` / `bouw_gecombineerd_systeem`, die ze als blokken `=== LABEL (instelling) ===`
-in de system prompt zetten. Bedraad in `1_oer_assistent.py`, `5_begeleidingssessie.py` en
-`0_oer_vraag.py`. Zie de Instellingsbrede-bron-sectie verderop.
+`_MAX_INSTELLING_TEKST_TEKENS = 300_000`). `context.laad_context()` haalt de paden uit
+`instelling_documenten` (`db.haal_instelling_document_op`), gefilterd op de rol-soorten
+(`PUBLIEK/STUDENT/MENTOR_SOORTEN`), en geeft `(label, tekst)`-paren door als `instelling_bronnen`
+aan `bouw_gecombineerd_systeem`, dat ze als blokken `=== LABEL (instelling) ===` in de system
+prompt zet. Zie de Instellingsbrede-bron-sectie verderop.
 
 **OER-onleesbaar-modus**: is de OER-fulltext leeg (gescande PDF zonder tekstlaag), dan bouwt
 `bouw_systeem` de prompt in een aangepaste modus die het kwalificatiedossier + instellingsregelingen
 als hoofdbron neemt (i.p.v. de OER) en de citatie-instructie daarop aanpast (drie template-varianten:
-`_PRIMAIRE_BRON_*`, `_KD_INSTRUCTIE_*`, `_OER_SECTIE_*`). De chatpagina's antwoorden zolang er een
-KD óf instellingsbron is (`heeft_bron`) en tonen dan een `st.info`-banner dat de OER niet
-machine-leesbaar is. Alleen zónder enige bron volgt nog `LAGE_RELEVANTIE_BERICHT`. Spec/plan:
+`_PRIMAIRE_BRON_*`, `_KD_INSTRUCTIE_*`, `_OER_SECTIE_*`). `context.laad_context()` neemt de OER
+tóch op zolang er een KD óf instellingsbron is en zet dan `oer_onleesbaar=True`; de route geeft die
+vlag door aan de template → banner dat de OER niet machine-leesbaar is. Alleen zónder enige bron
+geeft `laad_context` een lege system-prompt terug en volgt `LAGE_RELEVANTIE_BERICHT`. Spec/plan:
 `docs/plans/2026-06-09-chat-kd-fallback-onleesbare-oer.md`.
 
 Toon `LAGE_RELEVANTIE_BERICHT` wanneer `laad_oer_tekst()` een lege string teruggeeft én er geen
@@ -345,10 +345,10 @@ beroep "kok" de essentiële skill "kooktechnieken gebruiken"*. Het template verb
 verzonnen paginanummers bij skills. Markdown-blockquotes uit het AI-antwoord renderen via CSS als
 pull-quote citaten. Spec: `docs/specs/2026-05-06-publieke-oer-citaten-en-pdf-design.md` (vanuit repo-root).
 
-**PDF-bekijken op publieke pagina** (`0_oer_vraag.py`): `pub_oer_paden: list[Path]` in session
-state parallel aan `pub_oer_labels`. Per geladen OER een `📄 Bekijk OER N` knop boven de chat;
-klik toggelt een expander met PDF-iframe (800px) + download-knop. Helper `_render_oer_bestand()`
-spiegelt de logica van `2_mijn_oer.py`.
+**OER-bestand bekijken/downloaden**: de viewer in `static/chat.js` haalt het bronbestand op via
+`GET /api/oer/{oer_id}/bestand` (FastAPI `FileResponse`). Dezelfde route bedient zowel de publieke
+vraag als de student-studiegids; toegang loopt via de sessie-`oer_ids`, niet via een vrij
+bestandspad.
 
 ## OER-bestanden
 
@@ -359,7 +359,7 @@ submap per instelling (`davinci_oeren/`, `rijn_ijssel_oer/`,
 `talland_oeren/`, `aeres_oeren/`, `utrecht_oeren/`, `kwic_oeren/` = Koning Willem I College).
 Daarnaast `oer_algemeen/` voor instelling-overstijgende documenten. De instelling-keys leven in
 **drie hardgecodeerde lijsten** die synchroon moeten blijven: `ingest._INSTELLINGEN`/`_MAP_NAAM`,
-`scripts/seed_bulk.py:INSTELLINGEN` en `9_beheer.py:_INSTELLING_KEYS` — ontbreekt een nieuwe
+`scripts/seed_bulk.py:INSTELLINGEN` en `app_fastapi/main.py:_INSTELLING_KEYS` — ontbreekt een nieuwe
 instelling in de seed-lijst, dan krijgt ze stil 0 studenten. Geïndexeerde OERs staan als
 `geindexeerd=1` in `oer_documenten`. Studenten met `oer_id` naar niet-geïndexeerde OERs krijgen
 geen chatantwoorden.
