@@ -59,6 +59,18 @@ def web_zoek_domeinen(oer_items: list[dict]) -> list[str]:
     return sorted(domeinen)
 
 
+# Vacaturesites voor de vacature-/stagezoek (los van de school-webzoek). Stagemarkt =
+# SBB (officiële erkende leerbedrijven/BPV); Indeed = reguliere vacatures. Alleen domeinen
+# die de Anthropic-crawler toelaat — een geblokkeerd domein (bv. nationalevacaturebank.nl)
+# geeft een 400 op de HELE web_search-call. Gescoped als allowed_domains op web_search/web_fetch.
+_VACATURE_DOMEINEN = ["stagemarkt.nl", "indeed.nl"]
+
+
+def vacature_domeinen() -> list[str]:
+    """Vaste vacaturesites (kopie, gesorteerd voor cache-stabiliteit)."""
+    return sorted(_VACATURE_DOMEINEN)
+
+
 # Instructie + verplichte waarschuwing/citatie voor de webzoek-fallback. Alleen in de
 # system-prompt opgenomen als de webzoek-tool ook echt wordt meegestuurd (web_zoeken=True),
 # zodat het model niet naar een tool verwijst die er niet is.
@@ -86,6 +98,37 @@ geraadpleegde pagina('s) op de schoolwebsite, zodat de gebruiker het zelf kan na
 De OER blijft de juridisch bindende bron; webinformatie is aanvullend en indicatief."""
 
 
+# Instructie voor de vacature-/stagezoek. Alleen in de prompt als vacatures=True; gate't
+# zelf op een EXPLICIETE vacaturevraag zodat een gewone OER-vraag ongemoeid blijft.
+_VACATURE_DISCLAIMER = (
+    "> ⚠️ Let op: onderstaande vacatures/stageplekken komen van externe sites (zoals "
+    "Stagemarkt of Indeed), wisselen dagelijks en zijn géén officiële of bindende "
+    "informatie van je opleiding — controleer altijd zelf en overleg met je "
+    "stagebegeleider of SBB."
+)
+_VACATURE_BLOK = f"""
+
+VACATURES & STAGES (alleen bij een expliciete vraag hierover). Vraagt de student naar
+vacatures, banen of stage-/BPV-plekken voor het beroep van deze opleiding, dan mag je op
+de vacaturesites zoeken (web_search) en een relevante pagina openen (web_fetch). Doe dit
+ALLEEN bij zo'n expliciete vraag — niet bij OER-, examinerings- of begeleidingsvragen.
+Stem de zoekopdracht af op vier dingen:
+- BEROEP: uit de opleiding en het skills-blok hierboven.
+- LEERWEG: bij BOL zoek je naar "stage"/"BPV-plek", bij BBL naar "leerbaan"/"BBL-plek".
+- MBO-NIVEAU (1 t/m 4): lees dit uit de OER- of KD-tekst hierboven en neem het mee in de
+  zoekopdracht (bv. "MBO niveau 3"); staat het er nergens, gebruik dan alleen beroep + leerweg.
+- LOCATIE: staat er GEEN plaats in de vraag, vraag de student dan EERST in welke plaats of
+  regio hij wil zoeken en zoek nog NIET; noemt hij wél een plaats, zoek dan in en rond die
+  plaats (binnen ±10 km), of breder bij een regio.
+Begin een vacature-antwoord (zodra je echt resultaten toont) met EXACT deze regel (één keer —
+niet herhalen of parafraseren):
+{_VACATURE_DISCLAIMER}
+Geef vacature-informatie NOOIT de vorm van een OER-citaat (geen "Volgens de OER", geen sectie-,
+artikel- of paginanummer) en verzin nooit een vindplaats. Toon per resultaat de functietitel als
+klikbare Markdown-link, met werkgever, plaats en (waar zichtbaar) het niveau. Vind je niets, zeg
+dat dan eerlijk — verzin geen vacatures. Sluit af met de bron-URL('s)."""
+
+
 # Doelgroep-instructie: MBO-studenten niveau 1 t/m 4 lezen mee. In beide system-templates
 # ingespoten (zelfde patroon als _WEB_ZOEK_BLOK). De woordelijke citaten blijven onaangetast —
 # de uitleg in simpele taal komt ERNAAST, nooit in de plaats van het citaat.
@@ -103,7 +146,7 @@ plaats ervan; een eenvoudig, al begrijpelijk citaat hoeft geen extra uitleg."""
 
 
 _SYSTEEM_TEMPLATE = """\
-Je bent een onderwijs-assistent voor de opleiding {opleiding} bij {instelling}.
+Je bent een onderwijs-assistent voor de opleiding {opleiding} bij {instelling}.{leerweg_blok}
 
 {primaire_bron}
 
@@ -156,7 +199,7 @@ Een claim zonder correcte bronvermelding is niet toegestaan. Parafraseren mag
 alleen ter inleiding van een citaat, niet ter vervanging ervan. Beantwoord vragen
 uitsluitend op basis van deze bronnen — nooit vanuit eigen kennis. Als de
 informatie in geen van de bronnen staat, zeg dat dan expliciet. Antwoord in het
-Nederlands.{web_zoek_blok}{doelgroep_toon}
+Nederlands.{web_zoek_blok}{vacature_blok}{doelgroep_toon}
 
 {oer_sectie}{instelling_blok}{dossier_blok}{skills_blok}"""
 
@@ -385,6 +428,8 @@ def bouw_systeem(
     skills_tekst: str = "",
     instelling_bronnen: Sequence[tuple[str, str]] = (),
     web_zoeken: bool = False,
+    leerweg: str = "",
+    vacatures: bool = False,
 ) -> str:
     """Stel de systeemprompt samen met OER, optionele instellingsbrede regelingen, KD en skills.
 
@@ -409,9 +454,11 @@ def bouw_systeem(
     oer_sectie = (
         _OER_SECTIE_GEEN_OER if oer_onleesbaar else _OER_SECTIE_OER.format(oer_tekst=oer_tekst)
     )
+    leerweg_blok = f"\nLeerweg van deze opleiding: {leerweg}." if leerweg else ""
     return _SYSTEEM_TEMPLATE.format(
         opleiding=opleiding,
         instelling=instelling,
+        leerweg_blok=leerweg_blok,
         primaire_bron=_PRIMAIRE_BRON_GEEN_OER if oer_onleesbaar else _PRIMAIRE_BRON_OER,
         kd_instructie=_KD_INSTRUCTIE_GEEN_OER if oer_onleesbaar else _KD_INSTRUCTIE_OER,
         oer_sectie=oer_sectie,
@@ -419,6 +466,7 @@ def bouw_systeem(
         dossier_blok=dossier_blok,
         skills_blok=skills_tekst,
         web_zoek_blok=_WEB_ZOEK_BLOK if web_zoeken else "",
+        vacature_blok=_VACATURE_BLOK if vacatures else "",
         doelgroep_toon=_DOELGROEP_TOON,
     )
 
@@ -579,12 +627,14 @@ Een claim zonder correcte bronvermelding is niet toegestaan.
 Parafraseren mag alleen ter inleiding van een citaat, niet ter vervanging ervan.
 Beantwoord uitsluitend op basis van deze bronnen — nooit vanuit eigen kennis.
 Als de informatie in geen van de bronnen staat, zeg dat dan expliciet.
-Antwoord in het Nederlands.{web_zoek_blok}{doelgroep_toon}
+Antwoord in het Nederlands.{web_zoek_blok}{vacature_blok}{doelgroep_toon}
 
 {oer_blokken}"""
 
 
-def bouw_gecombineerd_systeem(oer_items: list[dict], web_zoeken: bool = False) -> str:
+def bouw_gecombineerd_systeem(
+    oer_items: list[dict], web_zoeken: bool = False, vacatures: bool = False
+) -> str:
     """Bouw een systeemprompt voor één of meerdere OERs.
 
     Args:
@@ -606,6 +656,8 @@ def bouw_gecombineerd_systeem(oer_items: list[dict], web_zoeken: bool = False) -
             skills_tekst=item.get("skills_tekst", ""),
             instelling_bronnen=item.get("instelling_bronnen", ()),
             web_zoeken=web_zoeken,
+            leerweg=item.get("leerweg", ""),
+            vacatures=vacatures,
         )
 
     blokken = []
@@ -636,6 +688,7 @@ def bouw_gecombineerd_systeem(oer_items: list[dict], web_zoeken: bool = False) -
         n=len(oer_items),
         oer_blokken="\n\n---\n\n".join(blokken),
         web_zoek_blok=_WEB_ZOEK_BLOK if web_zoeken else "",
+        vacature_blok=_VACATURE_BLOK if vacatures else "",
         doelgroep_toon=_DOELGROEP_TOON,
     )
 

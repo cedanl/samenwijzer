@@ -233,6 +233,52 @@ def test_bouw_systeem_zonder_web_zoeken_heeft_geen_webblok():
     assert "WEBZOEKEN" not in zonder
 
 
+def test_bouw_systeem_vacatures_voegt_blok_toe():
+    met = bouw_systeem("OER-tekst", "Kok", "Da Vinci", leerweg="BOL", vacatures=True)
+    zonder = bouw_systeem("OER-tekst", "Kok", "Da Vinci", leerweg="BOL")
+    assert "VACATURES & STAGES" in met
+    assert "VACATURES & STAGES" not in zonder
+
+
+def test_bouw_systeem_vacatures_blok_bevat_niveau_en_locatie():
+    met = bouw_systeem("OER-tekst", "Kok", "Da Vinci", leerweg="BOL", vacatures=True)
+    assert "MBO-NIVEAU" in met  # zoekt op opleidingsniveau (uit de OER/KD-tekst)
+    assert "±10 km" in met and "LOCATIE" in met  # vraagt om plaats + straal
+
+
+def test_bouw_systeem_leerweg_in_prompt():
+    systeem = bouw_systeem("OER-tekst", "Kok", "Da Vinci", leerweg="BOL")
+    assert "Leerweg van deze opleiding: BOL" in systeem
+
+
+def test_bouw_systeem_zonder_leerweg_geen_leerweg_regel():
+    systeem = bouw_systeem("OER-tekst", "Kok", "Da Vinci")
+    assert "Leerweg van deze opleiding" not in systeem
+
+
+def _vac_items():
+    return [
+        {"tekst": "OER A", "opleiding": "Kok", "display_naam": "Da Vinci",
+         "leerweg": "BOL", "cohort": "2025", "crebo": "25180"},
+        {"tekst": "OER B", "opleiding": "Kapper", "display_naam": "Rijn IJssel",
+         "leerweg": "BBL", "cohort": "2025", "crebo": "25201"},
+    ]
+
+
+def test_bouw_gecombineerd_systeem_vacatures_multi():
+    items = _vac_items()
+    assert "VACATURES & STAGES" in bouw_gecombineerd_systeem(items, vacatures=True)
+    assert "VACATURES & STAGES" not in bouw_gecombineerd_systeem(items)
+
+
+def test_bouw_gecombineerd_systeem_vacatures_single_delegeert_met_leerweg():
+    items = [{"tekst": "OER A", "opleiding": "Kok", "display_naam": "Da Vinci",
+              "leerweg": "BBL", "cohort": "2025", "crebo": "25180"}]
+    systeem = bouw_gecombineerd_systeem(items, vacatures=True)
+    assert "VACATURES & STAGES" in systeem
+    assert "Leerweg van deze opleiding: BBL" in systeem
+
+
 def test_bouw_gecombineerd_systeem_meervoudig_web_zoeken():
     items = [
         {
@@ -271,7 +317,8 @@ def _oer_item(**overrides):
 def test_bouw_gecombineerd_systeem_enkel_delegeert_naar_bouw_systeem():
     item = _oer_item(tekst="Tekst A", opleiding="Kok", display_naam="Da Vinci")
     systeem = bouw_gecombineerd_systeem([item])
-    assert systeem == bouw_systeem("Tekst A", "Kok", "Da Vinci")
+    # De single-OER-delegatie geeft nu ook de leerweg door (item["leerweg"] == "BOL").
+    assert systeem == bouw_systeem("Tekst A", "Kok", "Da Vinci", leerweg="BOL")
 
 
 def test_bouw_gecombineerd_systeem_meervoudig_bevat_alle_oers():
