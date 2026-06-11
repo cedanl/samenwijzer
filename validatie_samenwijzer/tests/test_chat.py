@@ -7,6 +7,7 @@ from validatie_samenwijzer.chat import (
     bouw_berichten,
     bouw_gecombineerd_systeem,
     bouw_systeem,
+    dedup_disclaimer,
     identificeer_oer_kandidaten,
     laad_instelling_bron_tekst,
     laad_kwalificatiedossier_tekst,
@@ -244,6 +245,38 @@ def test_bouw_systeem_vacatures_blok_bevat_niveau_en_locatie():
     met = bouw_systeem("OER-tekst", "Kok", "Da Vinci", leerweg="BOL", vacatures=True)
     assert "MBO-NIVEAU" in met  # zoekt op opleidingsniveau (uit de OER/KD-tekst)
     assert "±10 km" in met and "LOCATIE" in met  # vraagt om plaats + straal
+
+
+def test_bouw_systeem_vacatures_blok_eist_klikbare_links():
+    met = bouw_systeem("OER-tekst", "Kok", "Da Vinci", leerweg="BOL", vacatures=True)
+    assert "klikbare Markdown-link" in met  # elk resultaat klikbaar
+    assert "verzin NOOIT een URL" in met  # geen gefabriceerde links
+
+
+_DISC = "⚠️ Let op: externe bron."
+
+
+def test_dedup_disclaimer_laat_enkel_voorkomen_ongemoeid():
+    chunks = ["Hallo ", _DISC, " en de rest"]
+    assert "".join(dedup_disclaimer(chunks, _DISC)) == f"Hallo {_DISC} en de rest"
+
+
+def test_dedup_disclaimer_verwijdert_herhaling():
+    chunks = [_DISC, " tussentekst ", _DISC, " slot"]
+    # Eerste blijft, tweede weg.
+    assert "".join(dedup_disclaimer(chunks, _DISC)) == f"{_DISC} tussentekst  slot"
+
+
+def test_dedup_disclaimer_herhaling_gesplitst_over_chunks():
+    # De tweede disclaimer arriveert in stukjes verdeeld over meerdere chunks.
+    mid = len(_DISC) // 2
+    chunks = [_DISC, " x ", _DISC[:mid], _DISC[mid:], " y"]
+    assert "".join(dedup_disclaimer(chunks, _DISC)) == f"{_DISC} x  y"
+
+
+def test_dedup_disclaimer_zonder_voorkomen_is_passthrough():
+    chunks = ["geen ", "disclaimer ", "hier"]
+    assert "".join(dedup_disclaimer(chunks, _DISC)) == "geen disclaimer hier"
 
 
 def test_bouw_systeem_leerweg_in_prompt():

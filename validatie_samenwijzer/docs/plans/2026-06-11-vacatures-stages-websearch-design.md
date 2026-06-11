@@ -93,12 +93,17 @@ Het blok schrijft voor:
      `<plaats>` (±10 km)", breder bij een regio. (Bewuste keuze: locatie via de student vragen
      i.p.v. een instelling→stad-mapping — de DB heeft geen locatie, instellingen zijn vaak
      multi-campus, en een student zoekt z'n stage vaak bij z'n woonplaats.)
-3. Begin het vacature-antwoord (zodra er echt resultaten zijn) met een vaste disclaimer-regel
+3. Begin het vacature-antwoord (zodra er echt resultaten zijn) met één vaste disclaimer-regel
    (externe bron, dagelijks wisselend, géén juridische bron, controleer zelf bij opleiding/SBB).
+   Het model wordt geïnstrueerd 'm één keer te schrijven, maar als safety-net **dedupliceert de
+   stream-filter `dedup_disclaimer` in code** elke herhaling (het model re-stateth de disclaimer
+   soms ná de web_search-tool-call). De disclaimer-string bevat geen `> `-prefix.
 4. **Nooit** in OER-citaatvorm ("Volgens de OER", geen artikel-/sectie-/paginanummer), geen
    verzonnen vindplaats.
-5. Per resultaat: functietitel als **klikbare apply-link** (Markdown), met werkgever, plaats en
-   (waar zichtbaar) het niveau; sluit af met de bron-URL('s).
+5. **Elk** resultaat als een **klikbare Markdown-link** `[functietitel — werkgever, plaats](URL)`
+   met (waar bekend) het niveau — nooit een kale kop/tabelrij zonder link. Gebruik **altijd** de
+   echte URL uit de zoek-/fetch-resultaten en **verzin nooit een URL**; geen eigen URL voor een
+   plek → link naar de zoek-/filterpagina van die site. Sluit af met de bron-URL('s).
 6. Niets gevonden → eerlijk melden, geen verzonnen vacatures.
 
 De bestaande citatieplicht voor OER/KD/examenreglement blijft volledig ongemoeid; dit is een
@@ -144,7 +149,12 @@ Een nieuw vacaturedomein toevoegen vereist eerst een live check dat de crawler h
 - De false-positive uit de demo ("De Kok Staalbouw" matchte op bedrijfsnaam) wordt hier alleen
   via prompt-instructie beperkt; harde code-filtering/herrangschikking is bewust uitgesteld
   (aanpak C) tot na evaluatie van het prototype.
-- **Disclaimer-dubbeling (cosmetisch):** in de UI-smoke verscheen de disclaimer-regel soms dubbel
-  (één keer plat, één keer met letterlijke `> `-prefix), doordat `_VACATURE_DISCLAIMER` zelf met
-  `> ` begint en het model 'm dan twee keer echode. Intermitterend (trad in de schone run niet op).
-  Op te lossen met een strakkere prompt-formulering; niet kritiek, daarom uitgesteld.
+- **Disclaimer-dubbeling (opgelost, code-niveau):** het model herhaalde de disclaimer soms ná de
+  web_search-tool-call. Eerst prompt-getweakt (`> `-prefix weg + "exact één keer"), maar dat hield
+  niet betrouwbaar. Definitieve fix: de stream-filter `dedup_disclaimer(chunks, disclaimer)` in
+  `chat.py` laat de disclaimer **deterministisch hooguit één keer** door (buffert ≤ len-1 tekens om
+  een over chunk-grenzen gesplitste herhaling te vangen). Unit-getest. Vangt verbatim-herhalingen;
+  een geparafraseerde tweede variant zou 'm ontwijken, maar de instructie eist letterlijke tekst.
+- **Per-resultaat-klikbaarheid is prompt-gestuurd**, dus zeer betrouwbaar maar niet 100%. Een harde
+  garantie (elk gevonden resultaat gegarandeerd een klikbare, niet-gefabriceerde link) vergt
+  structured output + rendering in `chat.js`; uitgesteld tot na evaluatie van het prototype.

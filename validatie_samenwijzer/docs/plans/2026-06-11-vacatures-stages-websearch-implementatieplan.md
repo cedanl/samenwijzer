@@ -83,7 +83,7 @@ In `chat.py`, direct ná de definitie van `_WEB_ZOEK_BLOK` (vóór `_DOELGROEP_T
 # Instructie voor de vacature-/stagezoek. Alleen in de prompt als vacatures=True; gate't
 # zelf op een EXPLICIETE vacaturevraag zodat een gewone OER-vraag ongemoeid blijft.
 _VACATURE_DISCLAIMER = (
-    "> ⚠️ Let op: onderstaande vacatures/stageplekken komen van externe sites (zoals "
+    "⚠️ Let op: onderstaande vacatures/stageplekken komen van externe sites (zoals "
     "Stagemarkt of Indeed), wisselen dagelijks en zijn géén officiële of bindende "
     "informatie van je opleiding — controleer altijd zelf en overleg met je "
     "stagebegeleider of SBB."
@@ -102,13 +102,17 @@ Stem de zoekopdracht af op vier dingen:
 - LOCATIE: staat er GEEN plaats in de vraag, vraag de student dan EERST in welke plaats of
   regio hij wil zoeken en zoek nog NIET; noemt hij wél een plaats, zoek dan in en rond die
   plaats (binnen ±10 km), of breder bij een regio.
-Begin een vacature-antwoord (zodra je echt resultaten toont) met EXACT deze regel (één keer —
-niet herhalen of parafraseren):
+Begin een vacature-antwoord (zodra je echt resultaten toont) met PRECIES deze ene
+waarschuwingsregel — letterlijk, exact één keer, en zet er geen tweede variant (plat óf als
+blockquote) vóór of ná:
 {_VACATURE_DISCLAIMER}
 Geef vacature-informatie NOOIT de vorm van een OER-citaat (geen "Volgens de OER", geen sectie-,
-artikel- of paginanummer) en verzin nooit een vindplaats. Toon per resultaat de functietitel als
-klikbare Markdown-link, met werkgever, plaats en (waar zichtbaar) het niveau. Vind je niets, zeg
-dat dan eerlijk — verzin geen vacatures. Sluit af met de bron-URL('s)."""
+artikel- of paginanummer) en verzin nooit een vindplaats. Toon ELK gevonden resultaat als een
+klikbare Markdown-link in de vorm [functietitel — werkgever, plaats](URL), met (waar bekend) het
+niveau erbij — NOOIT een kale kop, tabelrij of bullet zonder link. Gebruik ALTIJD de echte URL uit
+je zoek-/fetch-resultaten en verzin NOOIT een URL; heb je geen eigen URL voor een plek, link dan
+naar de zoek-/filterpagina van die site. Vind je niets, zeg dat dan eerlijk — verzin geen
+vacatures. Sluit af met de bron-URL('s)."""
 ```
 
 - [ ] **Step 5: Voeg de placeholders toe aan `_SYSTEEM_TEMPLATE`**
