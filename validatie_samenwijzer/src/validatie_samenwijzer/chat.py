@@ -638,39 +638,50 @@ Vraag vriendelijk naar de ontbrekende informatie. Reageer beknopt. Antwoord in h
 def identificeer_oer_kandidaten(oers: list, tekst: str, min_score: int = 0) -> list[dict]:
     """Geeft OER-kandidaten gesorteerd op match-score (hoogste eerst).
 
-    Scoort op: crebo-nummer (+3), leerweg (+2), cohortjaar (+2),
-    opleidingswoorden (+1 elk, max 2), instellingsnaam (+3).
-    De instellingsnaam weegt bewust even zwaar als het crebo: een expliciet genoemde
-    instelling moet de OER van een ándere instelling met dezelfde opleidingswoorden
-    overstemmen (anders wint de instelling met de "schoonste" opleidingsnaam, bv.
-    Talland boven kwic, waarvan de opleidingsnaam aaneengeplakt in de bestandsnaam zit).
-    Bewust niet zwaarder dan crebo (+3): zo blijft het crebo het sterkste enkele
-    signaal en degradeert een toevallige stad/naam-match ("Utrecht") tot een
-    gelijkspel-dropdown i.p.v. een stille verkeerde keuze.
+    Scoort op twee niveaus:
+    - **identiteit** = crebo-nummer (+3) + opleidingswoorden (+1 elk, max 2). Dit beantwoordt
+      "wélke opleiding bedoel je"; het is het discriminerende signaal binnen een instelling.
+    - **modifiers** = leerweg (+2) + cohortjaar (+2). Verfijnen de keuze, maar bepalen niet de
+      opleiding (BOL/2025 geldt voor tientallen OER's van dezelfde instelling).
+    - **instelling** = +3 (rangschikking). Weegt bewust even zwaar als het crebo: een expliciet
+      genoemde instelling moet de OER van een ándere instelling met dezelfde opleidingswoorden
+      overstemmen (anders wint de instelling met de "schoonste" opleidingsnaam, bv. Talland boven
+      kwic, waarvan de opleidingsnaam aaneengeplakt in de bestandsnaam zit). Niet zwaarder dan
+      crebo, zodat een toevallige stad/naam-match ("Utrecht") een gelijkspel-dropdown wordt
+      i.p.v. een stille verkeerde keuze.
+
+    **Aanscherping 1 — harde instellingsfilter:** noemt de vraag een instelling (≥1 OER met een
+    instellingsmatch), dan beperken we de kandidaten tot díe instelling(en). Een publieke vraag
+    "X bij Graafschap" hoort geen OER's van andere scholen te tonen (de picker vraagt letterlijk
+    "Welke studiegids is van jou?"). Zonder genoemde instelling vervalt het filter en blijven alle
+    scholen in beeld (terecht — de gebruiker koos nog geen school).
+
+    **Aanscherping 2 — opleidingsfilter per instelling:** noemt de vraag binnen een instelling een
+    opleiding (identiteit > 0 bij minstens één OER van die instelling), dan vallen de OER's van
+    diezelfde instelling zónder identiteitssignaal weg. Zo levert "software developer bij
+    Graafschap" alleen de Software-developer-OER's, niet alle OER's van Graafschap. Heeft géén OER
+    binnen de
+    instelling een identiteitssignaal (kale instellingsvraag, of een onleesbare/aaneengeplakte
+    opleidingsnaam zoals bij kwic), dan blijft de hele instellingsgroep staan.
+
     CamelCase-namen (Da Vinci-stijl) worden gesplitst vóór matching.
     Numerieke tokens worden uitgesloten zodat jaarcijfers niet dubbel tellen.
     """
     tekst_lower = tekst.lower()
     tekst_woorden = set(re.findall(r"\w+", tekst_lower))
-    kandidaten = []
     _generiek = {"college", "school", "mbo", "roc"}
     # Officiële afkortingen die niet uit de display-naam of sleutel af te leiden zijn
     # (kwic ≠ de merknaam "KW1C"). Per instelling-sleutel uitbreidbaar.
     _aliassen = {"kwic": {"kw1c"}}
 
+    # Per instelling: lijst van (identiteit, instelling, score, oer-dict). De instellingssleutel
+    # valt terug op de display-naam als de korte `naam` ontbreekt (los aangeleverde test-rijen).
+    per_instelling: dict[str, list[tuple[int, int, int, dict]]] = {}
     for oer in oers:
         d = dict(oer)
-        score = 0
 
-        if d["crebo"] in tekst_woorden:
-            score += 3
-
-        if d["leerweg"].lower() in tekst_woorden:
-            score += 2
-
-        if d["cohort"] in tekst_woorden:
-            score += 2
-
+        # Identiteit: crebo (+3) + opleidingswoorden (max +2) — "wélke opleiding".
+        identiteit = 3 if d["crebo"] in tekst_woorden else 0
         # CamelCase split (VerzorgendeIG → Verzorgende IG) + underscore als separator.
         # Dedupliceren met set: filename-prefixen herhalen vaak BOL/BBL/jaar, anders
         # zou een opleiding "Kok BOL" via een prefix "_BOL_" dubbel scoren.
@@ -681,7 +692,14 @@ def identificeer_oer_kandidaten(oers: list, tekst: str, min_score: int = 0) -> l
             for w in re.sub(r"[_\W]+", " ", opl_gesplit).lower().split()
             if len(w) >= 3 and not w.isdigit() and w not in {"bol", "bbl"}
         }
-        score += min(sum(1 for w in woorden if w in tekst_woorden), 2)
+        identiteit += min(sum(1 for w in woorden if w in tekst_woorden), 2)
+
+        # Modifiers: leerweg (+2) + cohort (+2) — verfijnen, geen opleiding-keuze.
+        modifier = 0
+        if d["leerweg"].lower() in tekst_woorden:
+            modifier += 2
+        if d["cohort"] in tekst_woorden:
+            modifier += 2
 
         # Instellingsmatch op woorden uit de display-naam ("Koning", "Willem") én
         # de korte sleutel ("kwic"). Eén match volstaat voor de volle bonus.
@@ -691,11 +709,32 @@ def identificeer_oer_kandidaten(oers: list, tekst: str, min_score: int = 0) -> l
         if d.get("naam"):
             inst_woorden.add(d["naam"].lower())
             inst_woorden |= _aliassen.get(d["naam"].lower(), set())
-        if inst_woorden & tekst_woorden:
-            score += 3
+        instelling = 3 if inst_woorden & tekst_woorden else 0
 
-        if score >= min_score:
-            kandidaten.append({**d, "_score": score})
+        sleutel = d.get("naam") or d["display_naam"]
+        per_instelling.setdefault(sleutel, []).append(
+            (identiteit, instelling, identiteit + modifier + instelling, d)
+        )
+
+    # Aanscherping 1: is er een instelling genoemd, beperk dan tot die instelling(en).
+    instelling_genoemd = any(
+        inst > 0 for groep in per_instelling.values() for _, inst, _, _ in groep
+    )
+
+    kandidaten = []
+    for groep in per_instelling.values():
+        # Alle OER's van een groep delen de instelling, dus de eerste bepaalt of
+        # deze groep de genoemde instelling is.
+        if instelling_genoemd and groep[0][1] == 0:
+            continue
+        # Aanscherping 2: is er binnen deze instelling een opleiding genoemd? Dan vallen
+        # de OER's zónder identiteitssignaal weg (de "te brede instellingslijst"-fix).
+        heeft_identiteit = any(identiteit > 0 for identiteit, _, _, _ in groep)
+        for identiteit, _inst, score, d in groep:
+            if heeft_identiteit and identiteit == 0:
+                continue
+            if score >= min_score:
+                kandidaten.append({**d, "_score": score})
 
     return sorted(kandidaten, key=lambda x: x["_score"], reverse=True)
 

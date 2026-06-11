@@ -373,6 +373,118 @@ def test_identificeer_instelling_alias_kw1c():
     assert resultaat[0]["id"] == 1
 
 
+def test_identificeer_opleiding_filtert_instelling_only_matches_weg():
+    """Vraag noemt instelling + opleiding → alleen de opleiding-OER's van die instelling.
+
+    Regressie: 'software developer bij Graafschap' leverde voorheen álle Graafschap-OER's
+    op (instellingsmatch +3 op elke OER). Nu vallen de OER's zónder identiteitssignaal
+    (geen crebo/opleidingswoord-match) binnen die instelling weg.
+    """
+    oers = [
+        _oer_row(
+            id=1,
+            naam="graafschap",
+            display_naam="Graafschap College",
+            crebo="25998",
+            opleiding="25998 Software developer BOL 2025",
+        ),
+        _oer_row(
+            id=2,
+            naam="graafschap",
+            display_naam="Graafschap College",
+            crebo="25999",
+            opleiding="25999 Medewerker ICT BOL 2025",
+        ),
+        _oer_row(
+            id=3,
+            naam="graafschap",
+            display_naam="Graafschap College",
+            crebo="27016",
+            opleiding="27016 ICT system engineer BBL 2025",
+        ),
+    ]
+    resultaat = identificeer_oer_kandidaten(oers, "software developer bij Graafschap", min_score=1)
+    assert [r["id"] for r in resultaat] == [1]
+
+
+def test_identificeer_genoemde_instelling_filtert_andere_scholen_weg():
+    """Vraag noemt een instelling → OER's van ándere scholen vallen weg.
+
+    Regressie: 'software developer bij Graafschap' leverde ook de software-developer-OER's
+    van Curio/Deltion/ROC Utrecht op (opleidingswoord-match +2). Een publieke 'welke
+    studiegids is van jou'-vraag hoort alleen de genoemde school te tonen.
+    """
+    oers = [
+        _oer_row(
+            id=1,
+            naam="graafschap",
+            display_naam="Graafschap College",
+            crebo="25998",
+            opleiding="25998 Software developer BOL 2025",
+        ),
+        _oer_row(
+            id=2,
+            naam="curio",
+            display_naam="Curio",
+            crebo="25998",
+            opleiding="25998 Software developer BOL 2025",
+        ),
+        _oer_row(
+            id=3,
+            naam="utrecht",
+            display_naam="ROC Utrecht",
+            crebo="25998",
+            opleiding="Software developer",
+        ),
+    ]
+    resultaat = identificeer_oer_kandidaten(oers, "software developer bij Graafschap", min_score=1)
+    assert [r["id"] for r in resultaat] == [1]
+
+
+def test_identificeer_zonder_instelling_blijven_alle_scholen():
+    """Geen instelling genoemd → opleiding-match over alle scholen blijft staan."""
+    oers = [
+        _oer_row(
+            id=1,
+            naam="graafschap",
+            display_naam="Graafschap College",
+            crebo="25998",
+            opleiding="25998 Software developer BOL 2025",
+        ),
+        _oer_row(
+            id=2,
+            naam="curio",
+            display_naam="Curio",
+            crebo="25998",
+            opleiding="25998 Software developer BOL 2025",
+        ),
+    ]
+    resultaat = identificeer_oer_kandidaten(oers, "software developer", min_score=1)
+    assert {r["id"] for r in resultaat} == {1, 2}
+
+
+def test_identificeer_kale_instelling_houdt_hele_groep():
+    """Kale instellingsvraag (geen opleiding) → toon alle OER's van die instelling."""
+    oers = [
+        _oer_row(
+            id=1,
+            naam="graafschap",
+            display_naam="Graafschap College",
+            crebo="25998",
+            opleiding="25998 Software developer BOL 2025",
+        ),
+        _oer_row(
+            id=2,
+            naam="graafschap",
+            display_naam="Graafschap College",
+            crebo="25999",
+            opleiding="25999 Medewerker ICT BOL 2025",
+        ),
+    ]
+    resultaat = identificeer_oer_kandidaten(oers, "iets over Graafschap", min_score=1)
+    assert {r["id"] for r in resultaat} == {1, 2}
+
+
 # ── kwalificatiedossier ───────────────────────────────────────────────────────
 
 
