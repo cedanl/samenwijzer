@@ -485,6 +485,96 @@ def test_identificeer_kale_instelling_houdt_hele_groep():
     assert {r["id"] for r in resultaat} == {1, 2}
 
 
+def test_identificeer_instellingsslug_in_opleiding_telt_niet_als_identiteit():
+    """De instellingsnaam in de bestandsnaam mag geen opleiding-identiteit geven.
+
+    Regressie (Talland-naamgeving): de opleiding-strings embedden de instellingsslug
+    ('..._talland-Business-Services'), waardoor het query-woord 'Talland' als
+    opleidingswoord matchte op élke OER → identiteit +1 op alle 206, zodat de
+    opleidingsfilter niets meer wegfilterde. De instellingsnaam is het instelling-signaal,
+    niet het opleiding-signaal; 'assistent bij Talland' hoort alleen de assistent-OER over
+    te houden, niet ook Business-Services.
+    """
+    oers = [
+        _oer_row(
+            id=1,
+            naam="talland",
+            display_naam="Talland College",
+            crebo="25742",
+            opleiding="25742_BOL_2025__talland-Assistent-horeca-voeding",
+        ),
+        _oer_row(
+            id=2,
+            naam="talland",
+            display_naam="Talland College",
+            crebo="23296",
+            opleiding="23296_BOL_2025__talland-Business-Services",
+        ),
+    ]
+    resultaat = identificeer_oer_kandidaten(oers, "assistent bij Talland College", min_score=1)
+    assert [r["id"] for r in resultaat] == [1]
+
+
+def test_identificeer_houdt_alleen_sterkste_opleiding_tier_per_instelling():
+    """Binnen een school overstemt de sterkste opleiding-match de zwakkere.
+
+    'assistent horeca bij Talland' matcht 'Assistent-horeca' (twee woorden, identiteit 2)
+    sterker dan een OER met losse 'assistent' of losse 'horeca' (identiteit 1). Alleen de
+    top-tier blijft staan; gelijke top-tiers blijven samen in beeld (gelijkspel-dropdown).
+    """
+    oers = [
+        _oer_row(
+            id=1,
+            naam="talland",
+            display_naam="Talland College",
+            crebo="25742",
+            opleiding="25742_BOL_2025__talland-Assistent-horeca-voeding",
+        ),
+        _oer_row(
+            id=2,
+            naam="talland",
+            display_naam="Talland College",
+            crebo="25184",
+            opleiding="25184_BOL_2025__talland-Managerondernemer-horeca",
+        ),
+        _oer_row(
+            id=3,
+            naam="talland",
+            display_naam="Talland College",
+            crebo="25741",
+            opleiding="25741_BOL_2025__talland-Assistent-dienstverlening-Entree",
+        ),
+    ]
+    resultaat = identificeer_oer_kandidaten(
+        oers, "assistent horeca bij Talland College", min_score=1
+    )
+    assert [r["id"] for r in resultaat] == [1]
+
+
+def test_identificeer_gelijke_top_tier_blijven_samen():
+    """Twee opleidingen met dezelfde (hoogste) identiteit blijven beide staan."""
+    oers = [
+        _oer_row(
+            id=1,
+            naam="talland",
+            display_naam="Talland College",
+            crebo="25742",
+            opleiding="25742_BOL_2025__talland-Assistent-horeca-voeding",
+        ),
+        _oer_row(
+            id=2,
+            naam="talland",
+            display_naam="Talland College",
+            crebo="25742",
+            opleiding="25742_BBL_2025__talland-Assistent-horeca-voeding",
+        ),
+    ]
+    resultaat = identificeer_oer_kandidaten(
+        oers, "assistent horeca bij Talland College", min_score=1
+    )
+    assert {r["id"] for r in resultaat} == {1, 2}
+
+
 # ── kwalificatiedossier ───────────────────────────────────────────────────────
 
 
