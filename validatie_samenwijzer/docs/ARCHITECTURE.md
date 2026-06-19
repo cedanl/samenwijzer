@@ -66,6 +66,9 @@ uv run python scripts/build_skills_taxonomie.py --crebo 25180   # één crebo
 # Afgeleide bronnen reconciliëren (KD + skills) — bouwt alleen ontbrekende, idempotent
 uv run python -m validatie_samenwijzer.sync_afgeleid --alles      # alle geïndexeerde crebo's
 uv run python -m validatie_samenwijzer.sync_afgeleid --crebo 25180 # één crebo
+
+# Crebo→nette opleidingsnaam-asset (voedt de opleidingskiezer + chiplabels) herbouwen
+uv run python scripts/build_opleidingsnamen.py            # → data/opleidingsnamen.json
 ```
 
 Overige scripts in `scripts/` (`seed_rebuild_students.py`, `convert_oers_markdown.py`,
@@ -211,6 +214,14 @@ eigen bestand — sibling-bestandsnaam of titelpagina, kwaliteit-gekozen — dan
 ander record met dezelfde landelijke opleidingscode; idempotent, `--dry-run`). Dit is een
 **data-heal op de gebakken DB**, dus draai 'm vóór een Fly-deploy als de namen wijzigen.
 
+**Autoritatieve crebo→naam-laag**: `opleiding.nette_opleiding_naam(crebo, opleiding)` geeft de
+officiële kwalificatie-naam ("Kapper", "Pedagogisch medewerker kinderopvang") uit
+`data/opleidingsnamen.json` (gebouwd door `scripts/build_opleidingsnamen.py` uit
+`kwalificatiedossiers/crebolijst.xlsx` + `mapping.json`, ~93% dekking; gitignored **mét** exceptie
+zodat de Fly-image 'm bevat). Ontbreekt de crebo, dan valt het terug op `schoon_opleiding_naam`. Dit
+voedt de opleidingskiezer (`data.opleidingen_boom()`) én het chiplabel in `context.laad_context`,
+zodat het label matcht met wat de student in de dropdown koos.
+
 > **Sync met de parent-monorepo**: de parse-helpers in `ingest.py` (`parseer_bestandsnaam`,
 > `extraheer_kerntaken`, opleidingsnaam/niveau-regex) zijn de **bron** die bewust gespiegeld wordt
 > naar `src/samenwijzer/oer_parsing.py` in de parent. Wijzig je ze hier, werk dan de parent-kopie
@@ -284,6 +295,11 @@ orchestrator die alle chat-routes (publiek `/`, `/student`, `/mentor/student/{id
    `POST /api/vraag` zolang nog geen OER gekozen is. `identificeer_oer_kandidaten()` scoort op
    crebo (+3), leerweg (+2), cohort (+2), opleidingswoorden (+1, max 2), instelling (+1) en
    bepaalt de modus (`chat` bij één match, `kies` bij meer, `intake` bij geen).
+3. **Opleidingskiezer** (`kies`-modus + optionele shortcut op de landing) — bij meerdere kandidaten
+   toont de frontend géén platte lijst maar een **cascade** instelling → leerweg → opleiding →
+   cohort, gevoed door `GET /api/opleidingen` (`data.opleidingen_boom()`, alleen geïndexeerde OER's,
+   schone namen). De keuze laadt via het bestaande `POST /api/kies`; een opleidingsnaam die meerdere
+   crebo's dekt laadt de siblings samen (gecapt op 3). Vrije tekst blijft de primaire start.
 
 `laad_oer_tekst()` voorkeursvolgorde: `<stem>.md` (markitdown-output) → bron-`.md` →
 pdfplumber over PDF. Hard cap: `_MAX_OER_TEKST_TEKENS = 500_000` tekens.
