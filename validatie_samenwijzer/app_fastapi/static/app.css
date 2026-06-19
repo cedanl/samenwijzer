@@ -310,3 +310,25 @@ body.app { padding-top: 60px; }
 .ktrow.wp { border-bottom: 1px solid var(--line-soft); }
 .ktrow.wp .ktnaam { padding-left: 1.1rem; color: var(--ink-soft); font-size: .88rem; }
 .ktrow.sm.wp .ktnaam { font-size: .82rem; }
+
+/* ── opleidingskiezer ─────────────────────────────────────────────────────── */
+.oplkiezer { margin-top: 1.1rem; }
+.oplkiezer > summary {
+  cursor: pointer; display: inline-flex; align-items: center; gap: .4rem;
+  font-size: .9rem; color: var(--ink-soft); list-style: none; user-select: none;
+}
+.oplkiezer > summary::-webkit-details-marker { display: none; }
+.oplkiezer > summary::before { content: "▸"; transition: transform .2s; }
+.oplkiezer[open] > summary::before { transform: rotate(90deg); }
+.oplkiezer > summary:hover { color: var(--ink); }
+.cascade-host { margin-top: .9rem; }
+.cascade { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+.cascade select {
+  font-family: inherit; font-size: .95rem; color: var(--ink);
+  background: var(--paper-card); border: 1px solid var(--line); border-radius: 10px;
+  padding: .6rem .9rem; min-width: 0; flex: 1 1 180px; cursor: pointer;
+}
+.cascade select:disabled { opacity: .5; cursor: not-allowed; }
+.cascade select:focus { outline: 2px solid var(--vermilion); outline-offset: 1px; }
+.cascade .cas-start { flex: 1 1 200px; height: 48px; }
+.cascade .cas-start:disabled { opacity: .45; cursor: not-allowed; }

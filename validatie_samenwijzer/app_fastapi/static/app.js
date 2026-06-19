@@ -28,6 +28,87 @@ const ovPdfBtn = document.getElementById("ovPdfBtn");
 const pdfFrame = document.getElementById("pdfFrame");
 let oerIds = [];
 
+/* ── opleidingskiezer-cascade (gedeeld: startpagina + picker) ──────────────── */
+let _oplBoom = null;
+async function laadOplBoom() {
+  if (!_oplBoom) _oplBoom = await (await fetch("/api/opleidingen")).json();
+  return _oplBoom;
+}
+
+function _vulOpties(sel, labels, placeholder) {
+  sel.innerHTML = `<option value="">${esc(placeholder)}</option>` +
+    labels.map((t, i) => `<option value="${i}">${esc(t)}</option>`).join("");
+}
+
+/* Bouwt 4 afhankelijke selects + startknop in `container`. Roept onKies(oerIds[]) aan. */
+function bouwCascade(container, boom, onKies) {
+  container.innerHTML = `
+    <div class="cascade">
+      <select class="cas-inst" aria-label="School"></select>
+      <select class="cas-lw" aria-label="Leerweg" disabled></select>
+      <select class="cas-opl" aria-label="Opleiding" disabled></select>
+      <select class="cas-coh" aria-label="Cohort" disabled hidden></select>
+      <button type="button" class="iconbtn cas-start" disabled>Open mijn studiegids →</button>
+    </div>`;
+  const selI = container.querySelector(".cas-inst");
+  const selL = container.querySelector(".cas-lw");
+  const selO = container.querySelector(".cas-opl");
+  const selC = container.querySelector(".cas-coh");
+  const btn = container.querySelector(".cas-start");
+  let inst = null, lw = null, opl = null;
+
+  const resetSel = (sel, ph) => { sel.innerHTML = `<option value="">${esc(ph)}</option>`; sel.disabled = true; };
+  const check = () => { btn.disabled = !(opl && (opl.cohorten.length === 1 || selC.value !== "")); };
+
+  _vulOpties(selI, boom.map((b) => b.instelling), "Kies je school…");
+  resetSel(selL, "Leerweg…"); resetSel(selO, "Opleiding…"); resetSel(selC, "Cohort…");
+
+  selI.addEventListener("change", () => {
+    inst = selI.value === "" ? null : boom[Number(selI.value)];
+    lw = null; opl = null;
+    resetSel(selL, "Leerweg…"); resetSel(selO, "Opleiding…"); resetSel(selC, "Cohort…"); selC.hidden = true;
+    if (inst) { _vulOpties(selL, inst.leerwegen.map((x) => x.leerweg), "Leerweg…"); selL.disabled = false; }
+    check();
+  });
+  selL.addEventListener("change", () => {
+    lw = selL.value === "" ? null : inst.leerwegen[Number(selL.value)];
+    opl = null;
+    resetSel(selO, "Opleiding…"); resetSel(selC, "Cohort…"); selC.hidden = true;
+    if (lw) { _vulOpties(selO, lw.opleidingen.map((x) => x.naam), "Opleiding…"); selO.disabled = false; }
+    check();
+  });
+  selO.addEventListener("change", () => {
+    opl = selO.value === "" ? null : lw.opleidingen[Number(selO.value)];
+    resetSel(selC, "Cohort…"); selC.hidden = true;
+    if (opl && opl.cohorten.length > 1) {
+      _vulOpties(selC, opl.cohorten.map((c) => c.cohort), "Cohort…");
+      selC.disabled = false; selC.hidden = false;
+    }
+    check();
+  });
+  selC.addEventListener("change", check);
+  btn.addEventListener("click", () => {
+    if (!opl) return;
+    const coh = opl.cohorten.length === 1 ? opl.cohorten[0] : opl.cohorten[Number(selC.value)];
+    onKies(coh.oer_ids);
+  });
+}
+
+/* Laadt de gekozen studiegids in de sessie en opent de chat (gedeeld door beide paden). */
+async function laadStudiegidsEnOpen(ids) {
+  openOverlay();
+  if (!_gehydrateerd) { _gehydrateerd = true; await rehydrateer(thread); }
+  const r = await (await fetch("/api/kies", {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ oer_ids: ids }),
+  })).json();
+  oerIds = r.oer_ids || ids;
+  setLabels(r.labels);
+  setBanner(r.oer_onleesbaar);
+  if (r.wachtende_vraag) { await streamAntwoord(thread, r.wachtende_vraag); }
+  else { ovAsk.querySelector("input").focus(); }
+}
+
 let _gehydrateerd = false;
 function openOverlay() { overlay.classList.add("open"); document.body.style.overflow = "hidden"; }
 function setLabels(labels) {
@@ -52,30 +133,20 @@ async function start(vraag) {
     method: "POST", headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ vraag }),
   })).json();
-  if (r.modus === "kies") { renderPicker(r.opties); return; }
+  if (r.modus === "kies") { renderPicker(); return; }
   if (r.modus === "chat") { oerIds = r.oer_ids || oerIds; setLabels(r.labels); setBanner(r.oer_onleesbaar); }
   await streamAntwoord(thread, vraag);
 }
 
-function renderPicker(opties) {
+async function renderPicker() {
+  const boom = await laadOplBoom();
   picker.innerHTML = `
     <div class="picker">
       <h3>Welke studiegids is van jou?</h3>
-      <div class="hint">Kies er één — of meerdere om te vergelijken (max 3).</div>
-      <div class="opts">${opties.map((o) =>
-        `<label><input type="checkbox" value="${o.id}"> <span>${esc(o.label)}</span></label>`).join("")}</div>
-      <button class="iconbtn" id="pickConfirm" disabled>Bevestig keuze</button>
+      <div class="hint">Kies je school, leerweg en opleiding.</div>
+      <div id="pickerCascade" class="cascade-host"></div>
     </div>`;
-  const boxes = () => Array.from(picker.querySelectorAll("input[type=checkbox]"));
-  const confirm = picker.querySelector("#pickConfirm");
-  picker.addEventListener("change", () => {
-    const checked = boxes().filter((b) => b.checked);
-    if (checked.length > 3) checked[checked.length - 1].checked = false;
-    confirm.disabled = boxes().filter((b) => b.checked).length === 0;
-  });
-  confirm.addEventListener("click", async () => {
-    const ids = boxes().filter((b) => b.checked).map((b) => Number(b.value));
-    confirm.disabled = true;
+  bouwCascade(picker.querySelector("#pickerCascade"), boom, async (ids) => {
     const r = await (await fetch("/api/kies", {
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ oer_ids: ids }),
@@ -122,3 +193,9 @@ document.querySelectorAll("form.ask[data-ask]").forEach((form) => {
 document.querySelectorAll(".chip").forEach((c) => {
   c.addEventListener("click", () => start(c.textContent.trim()));
 });
+
+/* startpagina-cascade vullen */
+const oplCascadeEl = document.getElementById("oplCascade");
+if (oplCascadeEl) {
+  laadOplBoom().then((boom) => bouwCascade(oplCascadeEl, boom, laadStudiegidsEnOpen));
+}
