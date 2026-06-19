@@ -21,7 +21,7 @@ from validatie_samenwijzer.chat import (
     vacature_domeinen,
     web_zoek_domeinen,
 )
-from validatie_samenwijzer.opleiding import schoon_opleiding_naam
+from validatie_samenwijzer.opleiding import nette_opleiding_naam
 
 # Welke instellingsbrede documenten als bron meegaan, per context — mirror van
 # app/main.py (_STUDENT_SOORTEN/_MENTOR_SOORTEN) en 0_oer_vraag.py (publiek = enkel
@@ -122,7 +122,7 @@ def laad_context(
             }
         )
         labels.append(
-            f"{row['display_naam']} · {schoon_opleiding_naam(row['opleiding'], crebo)} · "
+            f"{row['display_naam']} · {nette_opleiding_naam(crebo, row['opleiding'])} · "
             f"{row['leerweg']} {row['cohort']}"
         )
 

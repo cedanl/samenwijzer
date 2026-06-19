@@ -162,6 +162,12 @@ def index(request: Request):
     return templates.TemplateResponse(request, "index.html")
 
 
+@app.get("/api/opleidingen")
+def api_opleidingen() -> JSONResponse:
+    """Keuzeboom instelling → leerweg → opleiding → cohort voor de publieke kiezer."""
+    return JSONResponse(data.opleidingen_boom())
+
+
 @app.post("/api/vraag")
 async def api_vraag(request: Request):
     """Identificeer de OER(s) voor een vraag; bepaal de modus (chat/kies/intake)."""

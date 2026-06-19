@@ -3,6 +3,9 @@ data/*
 # skills-taxonomie-artefact is klein + ESCO-afgeleid (CC BY) → wel tracken, zodat
 # de gecureerde matches in de repo zitten en op elke machine werken (geen rebuild nodig).
 !data/skills/
+# crebo→naam-lookup voor de opleidingskiezer: klein, deterministisch, afgeleid uit
+# kwalificatiedossiers/crebolijst.xlsx → tracken zodat de Fly-image 'm bevat (geen rebuild).
+!data/opleidingsnamen.json
 __pycache__/
 *.pyc
 .venv/

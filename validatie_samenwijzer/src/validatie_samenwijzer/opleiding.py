@@ -6,7 +6,10 @@ opschoning kunnen hergebruiken zonder streamlit te importeren.
 
 from __future__ import annotations
 
+import json
+import os
 import re
+from functools import lru_cache
 
 _OPLEIDING_DROP = {
     "oer",
@@ -69,3 +72,24 @@ def schoon_opleiding_naam(opleiding: str, crebo: str = "") -> str:
     return " ".join(
         w if i == 0 or w not in _OPLEIDING_KLEIN else w.lower() for i, w in enumerate(woorden)
     )
+
+
+@lru_cache(maxsize=1)
+def laad_crebo_namen(pad: str | None = None) -> dict[str, str]:
+    """Autoritatieve crebo → kwalificatie-naam-lookup (gecommit JSON-asset).
+
+    Pad via ``OPLEIDINGSNAMEN_PAD`` (default ``data/opleidingsnamen.json``). Ontbreekt
+    het bestand, dan een lege dict — de resolver valt dan terug op de string-opschoner.
+    """
+    pad = pad or os.environ.get("OPLEIDINGSNAMEN_PAD", "data/opleidingsnamen.json")
+    try:
+        with open(pad, encoding="utf-8") as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
+
+
+def nette_opleiding_naam(crebo: str, opleiding: str = "") -> str:
+    """Autoritatieve kwalificatie-naam per crebo; valt terug op ``schoon_opleiding_naam``."""
+    naam = laad_crebo_namen().get(str(crebo))
+    return naam if naam else schoon_opleiding_naam(opleiding, crebo)

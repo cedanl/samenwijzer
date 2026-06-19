@@ -10,7 +10,7 @@ import os
 import sqlite3
 
 from validatie_samenwijzer import db
-from validatie_samenwijzer.opleiding import schoon_opleiding_naam
+from validatie_samenwijzer.opleiding import nette_opleiding_naam, schoon_opleiding_naam
 
 
 def _conn() -> sqlite3.Connection:
@@ -145,3 +145,38 @@ def profiel_van_student(student_id: int) -> dict | None:
             punten.append(f"📉 Lage score: {kt['naam']}")
     data["bespreekpunten"] = punten
     return data
+
+
+def opleidingen_boom() -> list[dict]:
+    """Geneste keuzeboom instelling → leerweg → opleiding → cohort voor de publieke kiezer.
+
+    Alleen geïndexeerde OER's. Opleidingsnamen via de autoritatieve crebo-lookup; een naam
+    die binnen één cohort meerdere crebo's dekt levert meerdere oer_ids op (samen te laden).
+    """
+    rows = db.get_alle_oers_met_instelling(_conn())
+    boom: dict[str, dict[str, dict[str, dict[str, list[int]]]]] = {}
+    for r in rows:
+        if not r["geindexeerd"]:
+            continue
+        naam = nette_opleiding_naam(r["crebo"], r["opleiding"])
+        inst = boom.setdefault(r["display_naam"], {})
+        lw = inst.setdefault(r["leerweg"], {})
+        opl = lw.setdefault(naam, {})
+        opl.setdefault(r["cohort"], []).append(r["id"])
+
+    result: list[dict] = []
+    for inst_naam in sorted(boom):
+        leerwegen = []
+        for lw_naam in sorted(boom[inst_naam]):
+            opleidingen = []
+            for opl_naam in sorted(boom[inst_naam][lw_naam], key=str.casefold):
+                cohorten = [
+                    # cap op 3: een naam die >3 crebo's dekt (brede dossier-fallback) zou
+                    # anders door /api/kies stil afgekapt worden. De geladen chips tonen welke.
+                    {"cohort": coh, "oer_ids": boom[inst_naam][lw_naam][opl_naam][coh][:3]}
+                    for coh in sorted(boom[inst_naam][lw_naam][opl_naam], reverse=True)
+                ]
+                opleidingen.append({"naam": opl_naam, "cohorten": cohorten})
+            leerwegen.append({"leerweg": lw_naam, "opleidingen": opleidingen})
+        result.append({"instelling": inst_naam, "leerwegen": leerwegen})
+    return result
