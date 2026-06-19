@@ -299,6 +299,8 @@ def test_api_kies_zonder_wachtende_vraag():
         pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
     c = _client()  # verse sessie: geen vraag, geen geladen OER
     boom = c.get("/api/opleidingen").json()
+    if not boom:
+        pytest.skip("geen geïndexeerde OER's in de testdatabase.")
     oer_id = boom[0]["leerwegen"][0]["opleidingen"][0]["cohorten"][0]["oer_ids"][0]
     r = c.post("/api/kies", json={"oer_ids": [oer_id]})
     assert r.status_code == 200

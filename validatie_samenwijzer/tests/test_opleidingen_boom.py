@@ -48,6 +48,7 @@ def test_boom_alleen_geindexeerd():
         for c in o["cohorten"]
         for i in c["oer_ids"]
     }
+    assert ids, "verwacht geïndexeerde OER's in de testdatabase"
     conn = sqlite3.connect(os.environ.get("DB_PATH", "data/validatie.db"))
     rij = conn.execute(
         f"SELECT COUNT(*) FROM oer_documenten WHERE geindexeerd=0 "
