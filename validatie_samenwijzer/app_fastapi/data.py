@@ -171,7 +171,9 @@ def opleidingen_boom() -> list[dict]:
             opleidingen = []
             for opl_naam in sorted(boom[inst_naam][lw_naam], key=str.casefold):
                 cohorten = [
-                    {"cohort": coh, "oer_ids": boom[inst_naam][lw_naam][opl_naam][coh]}
+                    # cap op 3: een naam die >3 crebo's dekt (brede dossier-fallback) zou
+                    # anders door /api/kies stil afgekapt worden. De geladen chips tonen welke.
+                    {"cohort": coh, "oer_ids": boom[inst_naam][lw_naam][opl_naam][coh][:3]}
                     for coh in sorted(boom[inst_naam][lw_naam][opl_naam], reverse=True)
                 ]
                 opleidingen.append({"naam": opl_naam, "cohorten": cohorten})
