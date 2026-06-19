@@ -284,6 +284,30 @@ def test_api_vraag_zonder_match_geeft_intake():
     assert r.status_code == 200 and r.json()["modus"] == "intake"
 
 
+def test_api_opleidingen_geeft_boom():
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    r = _client().get("/api/opleidingen")
+    assert r.status_code == 200
+    boom = r.json()
+    assert isinstance(boom, list) and boom
+    assert {"instelling", "leerwegen"} <= set(boom[0])
+
+
+def test_api_kies_zonder_wachtende_vraag():
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    c = _client()  # verse sessie: geen vraag, geen geladen OER
+    boom = c.get("/api/opleidingen").json()
+    oer_id = boom[0]["leerwegen"][0]["opleidingen"][0]["cohorten"][0]["oer_ids"][0]
+    r = c.post("/api/kies", json={"oer_ids": [oer_id]})
+    assert r.status_code == 200
+    body = r.json()
+    assert body["oer_ids"] == [oer_id]
+    assert body["wachtende_vraag"] is None
+    assert "labels" in body
+
+
 def test_elke_instelling_soort_is_bereikbaar_in_een_context():
     """Guard: elke geïndexeerde instelling-soort moet in minstens één context-tuple zitten.
 
