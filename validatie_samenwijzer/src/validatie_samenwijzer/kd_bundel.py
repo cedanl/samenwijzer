@@ -79,6 +79,11 @@ def bundel_status(kwal_dir: Path = _KWAL_DIR) -> dict:
 
     toestand: 'geen_manifest' | 'gewijzigd' | 'in_sync'. Bij 'gewijzigd' bevat
     gewijzigde_zips de zips met een afwijkende hash (of toegevoegd/verdwenen).
+
+    Bewust **alleen de zip-hashes** bepalen 'gewijzigd' — de zips bevatten de
+    dossier-PDF's en zijn dus de re-ingest-trigger. ``crebolijst_jaar`` is
+    informatief (in de praktijk ververst SBB het jaar mét nieuwe zips); een
+    jaar-only bump als 're-ingest nodig' markeren zou onterecht zeuren.
     """
     jaar = nieuwste_crebolijst_jaar(kwal_dir)
     manifest = lees_manifest(kwal_dir)

@@ -65,10 +65,15 @@ def _skills_status() -> BronStatus:
 def _kd_status() -> BronStatus:
     crebos = sync_afgeleid.geindexeerde_crebos()
     kd_dir = sync_afgeleid.kd_dir()
-    ontbrekend = sorted(crebos - {p.stem for p in kd_dir.glob("*.md")}) if kd_dir.exists() else []
+    # Onderscheid "geen gaten" (map bestaat, alles gedekt) van "onbekend" (map mist):
+    # zonder dat onderscheid zou "0 zonder dekking" volle dekking suggereren terwijl
+    # we het niet weten.
+    dekking_onbekend = not kd_dir.exists()
+    ontbrekend = [] if dekking_onbekend else sorted(crebos - {p.stem for p in kd_dir.glob("*.md")})
 
     bundel = kd_bundel.bundel_status()
     toestand = bundel["toestand"]
+    jaar = bundel["crebolijst_jaar"]
     if toestand == "gewijzigd":
         signaal = (
             f"SBB-bundel gewijzigd sinds laatste ingest "
@@ -76,20 +81,20 @@ def _kd_status() -> BronStatus:
         )
     elif toestand == "geen_manifest":
         signaal = "geen bundelmanifest — draai `python -m validatie_samenwijzer.kd_bundel`"
+    elif dekking_onbekend:
+        signaal = f"bundel in sync (crebolijst {jaar}); KD-dekking onbekend (map niet gevonden)"
     else:
-        signaal = (
-            f"bundel in sync (crebolijst {bundel['crebolijst_jaar']}); "
-            f"{len(ontbrekend)} crebo('s) zonder dekking"
-        )
+        signaal = f"bundel in sync (crebolijst {jaar}); {len(ontbrekend)} crebo('s) zonder dekking"
     return BronStatus(
         "kd",
         automatisch=True,
         signaal=signaal,
         details={
             "toestand": toestand,
-            "crebolijst_jaar": bundel["crebolijst_jaar"],
+            "crebolijst_jaar": jaar,
             "gewijzigde_zips": bundel["gewijzigde_zips"],
             "ontbrekende_dekking": ontbrekend,
+            "dekking_onbekend": dekking_onbekend,
         },
     )
 

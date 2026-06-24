@@ -58,11 +58,19 @@ def test_oer_status_is_handmatig(gemockte_bronnen):
     assert "rijn_ijssel" in oer.details["crawlbaar"]
 
 
-def test_kd_status_ontbrekende_map_geen_crash(gemockte_bronnen, monkeypatch):
+def test_kd_status_ontbrekende_map_meldt_onbekend(gemockte_bronnen, monkeypatch):
     afwezig = gemockte_bronnen / "bestaat-niet"  # niet aangemaakt
     monkeypatch.setattr(sync_afgeleid, "kd_dir", lambda: afwezig)
     kd = bron_updates._kd_status()
-    assert kd.details["ontbrekende_dekking"] == []  # geen crash, geen valse "alles ontbreekt"
+    # Map mist → dekking is ONBEKEND, niet "0 zonder dekking" (geen valse volle dekking).
+    assert kd.details["dekking_onbekend"] is True
+    assert kd.details["ontbrekende_dekking"] == []
+    assert "onbekend" in kd.signaal
+
+
+def test_kd_status_aanwezige_map_dekking_bekend(gemockte_bronnen):
+    kd = {s.bron: s for s in bron_updates.verzamel_bron_status()}["kd"]
+    assert kd.details["dekking_onbekend"] is False  # map bestaat → dekking wél bekend
 
 
 def test_rapporteer_bevat_alle_bronnen(gemockte_bronnen):
