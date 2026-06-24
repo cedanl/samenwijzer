@@ -35,6 +35,7 @@ _STANDAARD_VELDEN = ("crebo", "leerweg", "cohort")
 _DIFF_SLEUTEL_VELDEN: dict[str, tuple[str, ...]] = {
     "aeres": ("crebo", "cohort"),
     "rijn_ijssel": ("crebo", "cohort"),
+    "utrecht": ("crebo", "cohort"),
 }
 
 
@@ -207,10 +208,90 @@ def rijnijssel_catalogus() -> list[CatalogusItem]:
     return items
 
 
+# MBO Utrecht: practicalinformation-sitemap → academie-pagina's (server-side HTML) met
+# WordPress-OER-PDF's `…/wp-content/uploads/<jaar>/<mm>/<jaar>_OER_<leerweg>_<naam>.pdf`.
+# De crebo staat NIET in de bestandsnaam → per PDF de inhoud parsen (pagina 1-5). Cohort
+# uit de bestandsnaam (het _OER_-jaar, niet de uploadmaand). Diff op (crebo, cohort).
+# Hiaat in v1: cohort-2025-OER's op het externe sqill.it-portaal worden nog niet gedekt.
+_MBOU_SITEMAP = "https://mboutrecht.nl/practicalinformation-sitemap.xml"
+_MBOU_LOC_RE = re.compile(r"<loc>(https://[^<]*mboutrecht\.nl/[^<]+)</loc>", re.IGNORECASE)
+_MBOU_PDF_RE = re.compile(
+    r"https://(?:www\.)?mboutrecht\.nl/wp-content/uploads/[^\s\"'<>]*_OER_[^\s\"'<>]*\.pdf",
+    re.IGNORECASE,
+)
+_MBOU_COHORT_RE = re.compile(r"/(\d{4})_OER_", re.IGNORECASE)
+_MBOU_CREBO_RE = re.compile(r"crebo(?:nr)?\.?\s*(\d{5})", re.IGNORECASE)
+
+
+def _mbou_crebo_uit_tekst(tekst: str) -> str | None:
+    """Crebo uit PDF-tekst (`crebo 25655` / `Crebonr. 25998`)."""
+    m = _MBOU_CREBO_RE.search(tekst)
+    return m.group(1) if m else None
+
+
+def _mbou_cohort_uit_url(url: str) -> str | None:
+    """Cohort = het jaar vóór `_OER_` in de bestandsnaam (niet de uploadmaand)."""
+    m = _MBOU_COHORT_RE.search(url)
+    return m.group(1) if m else None
+
+
+def _mbou_pdf_urls(html: str) -> list[str]:
+    """De OER-PDF-URL's uit een academie-pagina (gesorteerd, ontdubbeld)."""
+    return sorted(set(_MBOU_PDF_RE.findall(html)))
+
+
+def _mbou_crebo_uit_pdf(pdf_bytes: bytes) -> str | None:
+    """Open de PDF en zoek de crebo in de eerste 5 pagina's (best-effort)."""
+    import io
+
+    import pdfplumber
+
+    try:
+        with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
+            for page in pdf.pages[:5]:
+                crebo = _mbou_crebo_uit_tekst(page.extract_text() or "")
+                if crebo:
+                    return crebo
+    except Exception as e:  # corrupte/onleesbare PDF → overslaan, niet de hele crawl breken
+        logger.warning("MBO Utrecht: PDF onleesbaar (%s)", e)
+    return None
+
+
+def mboutrecht_catalogus() -> list[CatalogusItem]:
+    """Crawl de MBO Utrecht-academiepagina's, download de OER-PDF's en parse de crebo."""
+    items: list[CatalogusItem] = []
+    with httpx.Client(headers={"user-agent": _UA}, timeout=60, follow_redirects=True) as client:
+        sitemap = client.get(_MBOU_SITEMAP)
+        sitemap.raise_for_status()
+        pdf_urls: set[str] = set()
+        for pagina_url in _MBOU_LOC_RE.findall(sitemap.text):
+            try:
+                resp = client.get(pagina_url)
+                resp.raise_for_status()
+            except httpx.HTTPError:
+                continue
+            pdf_urls.update(_mbou_pdf_urls(resp.text))
+        for url in sorted(pdf_urls):
+            cohort = _mbou_cohort_uit_url(url)
+            if not cohort:
+                continue
+            try:
+                pdf = client.get(url)
+                pdf.raise_for_status()
+            except httpx.HTTPError:
+                continue
+            crebo = _mbou_crebo_uit_pdf(pdf.content)
+            if crebo:
+                naam = url.rsplit("/", 1)[-1]
+                items.append(CatalogusItem(crebo, "onbekend", cohort, naam, "utrecht"))
+    return items
+
+
 _CATALOGUS_BRONNEN: dict[str, Callable[[], list[CatalogusItem]]] = {
     "deltion": deltion_catalogus,
     "aeres": aeres_catalogus,
     "rijn_ijssel": rijnijssel_catalogus,
+    "utrecht": mboutrecht_catalogus,
 }
 
 

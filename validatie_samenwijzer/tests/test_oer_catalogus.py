@@ -95,6 +95,35 @@ def test_rijnijssel_diff_sleutel_is_crebo_cohort():
     assert oer_catalogus._DIFF_SLEUTEL_VELDEN["rijn_ijssel"] == ("crebo", "cohort")
 
 
+def test_mbou_crebo_uit_tekst():
+    # echte crebo-regels uit MBO Utrecht-PDF's (live geverifieerd)
+    assert oer_catalogus._mbou_crebo_uit_tekst("voor crebo 25655 bestaat") == "25655"
+    assert oer_catalogus._mbou_crebo_uit_tekst("Software developer (Crebonr. 25998)") == "25998"
+    assert oer_catalogus._mbou_crebo_uit_tekst("geen nummer hier") is None
+
+
+def test_mbou_cohort_uit_url():
+    base = "https://mboutrecht.nl/wp-content/uploads/2025/05"
+    # cohort = jaar vóór _OER_ in de bestandsnaam, NIET de uploadmaand (2025/05)
+    assert oer_catalogus._mbou_cohort_uit_url(f"{base}/2024_OER_BOL_Verpleegkundige.pdf") == "2024"
+    assert oer_catalogus._mbou_cohort_uit_url(f"{base}/2023_OER_Software-developer.pdf") == "2023"
+    assert oer_catalogus._mbou_cohort_uit_url(f"{base}/geen-oer.pdf") is None
+
+
+def test_mbou_pdf_urls_uit_html():
+    base = "https://mboutrecht.nl/wp-content/uploads/2025/05"
+    html = (
+        f'<a href="{base}/2024_OER_BOL_Verpleegkundige.pdf">OER</a>'
+        f'<a href="{base}/brochure.pdf">geen OER</a>'
+    )
+    urls = oer_catalogus._mbou_pdf_urls(html)
+    assert urls == [f"{base}/2024_OER_BOL_Verpleegkundige.pdf"]
+
+
+def test_utrecht_diff_sleutel_is_crebo_cohort():
+    assert oer_catalogus._DIFF_SLEUTEL_VELDEN["utrecht"] == ("crebo", "cohort")
+
+
 def test_items_naar_catalogus_slaat_none_over():
     raw = [{"id": 1}, {"id": 2}]
 
