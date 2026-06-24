@@ -220,7 +220,7 @@ _MBOU_PDF_RE = re.compile(
     re.IGNORECASE,
 )
 _MBOU_COHORT_RE = re.compile(r"/(\d{4})_OER_", re.IGNORECASE)
-_MBOU_CREBO_RE = re.compile(r"crebo(?:nr)?\.?\s*(\d{5})", re.IGNORECASE)
+_MBOU_CREBO_RE = re.compile(r"crebo(?:nr)?[.:]?\s*(\d{5})", re.IGNORECASE)
 
 
 def _mbou_crebo_uit_tekst(tekst: str) -> str | None:

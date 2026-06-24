@@ -99,6 +99,7 @@ def test_mbou_crebo_uit_tekst():
     # echte crebo-regels uit MBO Utrecht-PDF's (live geverifieerd)
     assert oer_catalogus._mbou_crebo_uit_tekst("voor crebo 25655 bestaat") == "25655"
     assert oer_catalogus._mbou_crebo_uit_tekst("Software developer (Crebonr. 25998)") == "25998"
+    assert oer_catalogus._mbou_crebo_uit_tekst("CREBO: 25655") == "25655"  # colon-variant
     assert oer_catalogus._mbou_crebo_uit_tekst("geen nummer hier") is None
 
 
