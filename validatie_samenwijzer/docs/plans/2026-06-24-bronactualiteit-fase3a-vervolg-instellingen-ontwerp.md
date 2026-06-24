@@ -12,6 +12,22 @@
 instellingen, zodat `check-bron-updates --oer` per instelling "nieuwe OER('s)/cohorten
 beschikbaar" meldt.
 
+## Implementatiestatus (24 juni 2026)
+
+Na live-probes + implementatie:
+
+| Instelling | Status | Diff-sleutel | Notitie |
+|---|---|---|---|
+| **Aeres** | ✅ adapter | `(crebo, cohort)` | per-crebo examenplannen (2026-2027 e.v.); leerweg niet beschikbaar |
+| **Rijn IJssel** | ✅ adapter | `(crebo, cohort)` | sitemap-crawl (~136 pagina's); crebo+cohort uit bestandsnaam (~55%; rest mist crebo → overgeslagen) |
+| **MBO Utrecht** | ✅ adapter | `(crebo, cohort)` | crebo uit PDF-inhoud; **hiaat:** cohort-2025 op sqill.it nog niet gedekt |
+| **Talland** | ⏸️ uitgesteld | — | 504-gevoelig, ~220 server-side PDF's, crebo uit PDF → impraktisch; blijft "handmatig" tot er een API/manifest is |
+| **Curio** | ⏸️ handmatig | — | echte URL's geven 200 maar **niet enumerabel** (geen listing/API/sitemap); de DB-set was een handmatige sample |
+
+Het `--oer`-rapport draait nu 4 van de 6 crawlbare instellingen automatisch; Curio + Talland blijven
+"handmatig" (geen adapter). De gedeelde **instelbare diff-sleutel** (`_DIFF_SLEUTEL_VELDEN`) is
+toegevoegd: instellingen zonder betrouwbare leerweg vergelijken op `(crebo, cohort)`.
+
 **Context:** Fase 3a leverde het raamwerk: `oer_catalogus._CATALOGUS_BRONNEN` (registry van
 `() -> list[CatalogusItem]`-adapters), de pure tuple-diff `nieuwe_oers` (mét dedup op sleutel),
 per-instelling degradatie bij een onbereikbare bron (`CatalogusOnbereikbaarError`), en de
