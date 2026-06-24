@@ -214,6 +214,11 @@ def test_session_secret_verplicht(monkeypatch):
 
     import app_fastapi.main as main_mod
 
+    # main.load_dotenv() zou SESSION_SECRET uit een lokale .env herladen en de
+    # fail-closed-check maskeren; noop'en zodat de test ook slaagt op een dev-machine
+    # mét .env (niet alleen op CI zonder .env). ALGEMEEN_WACHTWOORD blijft via conftest
+    # in os.environ, dus de eerdere fail-closed-guard gaat niet eerst af.
+    monkeypatch.setattr("dotenv.load_dotenv", lambda *a, **k: None)
     monkeypatch.delenv("SESSION_SECRET", raising=False)
     try:
         with pytest.raises(RuntimeError, match="SESSION_SECRET"):
