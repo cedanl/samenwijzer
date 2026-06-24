@@ -64,9 +64,15 @@ def test_oer_status_offline_hint_naar_oer_flag(gemockte_bronnen):
     assert "--oer" in oer.signaal  # offline: verwijs naar de online-modus
 
 
+class _DummyConn:
+    def close(self):
+        pass
+
+
 def test_oer_status_online_aggregeert_nieuwe_oers(monkeypatch):
     from validatie_samenwijzer.oer_catalogus import CatalogusItem
 
+    monkeypatch.setattr(bron_updates.oer_catalogus, "open_conn", lambda: _DummyConn())
     monkeypatch.setattr(
         bron_updates.oer_catalogus,
         "_CATALOGUS_BRONNEN",
@@ -81,6 +87,19 @@ def test_oer_status_online_aggregeert_nieuwe_oers(monkeypatch):
     assert oer.automatisch is True
     assert "1" in oer.signaal and "deltion" in oer.signaal
     assert oer.details["nieuw_per_instelling"]["deltion"] == [("25180", "BOL", "2026")]
+
+
+def test_oer_status_online_degradeert_bij_onbereikbare_api(monkeypatch):
+    monkeypatch.setattr(bron_updates.oer_catalogus, "open_conn", lambda: _DummyConn())
+    monkeypatch.setattr(bron_updates.oer_catalogus, "_CATALOGUS_BRONNEN", {"deltion": lambda: []})
+
+    def _faalt(inst, conn=None):
+        raise bron_updates.oer_catalogus.CatalogusOnbereikbaarError(f"{inst}: timeout")
+
+    monkeypatch.setattr(bron_updates.oer_catalogus, "instelling_nieuwe_oers", _faalt)
+    oer = bron_updates._oer_status(online=True)  # mag NIET crashen
+    assert oer.details["onbereikbaar"] == ["deltion"]
+    assert "onbereikbaar" in oer.signaal
 
 
 def test_kd_status_ontbrekende_map_meldt_onbekend(gemockte_bronnen, monkeypatch):

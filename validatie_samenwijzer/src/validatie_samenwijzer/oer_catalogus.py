@@ -19,9 +19,15 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 
+import httpx
+
 from . import db
 
 logger = logging.getLogger(__name__)
+
+
+class CatalogusOnbereikbaarError(Exception):
+    """De catalogus van een instelling kon niet worden opgehaald (netwerk/API-fout)."""
 
 
 @dataclass(frozen=True)
@@ -40,8 +46,19 @@ class CatalogusItem:
 def nieuwe_oers(
     catalogus: list[CatalogusItem], db_tupels: set[tuple[str, str, str]]
 ) -> list[CatalogusItem]:
-    """Catalogus-items waarvan de (crebo, leerweg, cohort) niet in de DB staat."""
-    return [item for item in catalogus if item.sleutel not in db_tupels]
+    """Catalogus-items waarvan de (crebo, leerweg, cohort) niet in de DB staat.
+
+    Dedupliceert op sleutel: de API kan dezelfde (crebo, leerweg, cohort) onder
+    meerdere items teruggeven, anders telt die dubbel mee.
+    """
+    nieuw: list[CatalogusItem] = []
+    gezien: set[tuple[str, str, str]] = set()
+    for item in catalogus:
+        if item.sleutel in db_tupels or item.sleutel in gezien:
+            continue
+        gezien.add(item.sleutel)
+        nieuw.append(item)
+    return nieuw
 
 
 def _tupels_uit_rows(rows, instelling: str) -> set[tuple[str, str, str]]:
@@ -79,8 +96,6 @@ def _fetch_deltion():
 
 def deltion_catalogus() -> list[CatalogusItem]:
     """Haal de volledige Deltion-catalogus (alle cohorten) op via de SQill-API."""
-    import httpx
-
     fd = _fetch_deltion()
     with httpx.Client(headers=fd._HEADERS, timeout=30) as client:
         raw = fd.haal_items_op(client, None)  # None = alle cohorten
@@ -92,15 +107,30 @@ _CATALOGUS_BRONNEN: dict[str, Callable[[], list[CatalogusItem]]] = {
 }
 
 
+def open_conn():
+    """Open een DB-connectie op het geconfigureerde pad (caller sluit 'm)."""
+    return db.get_connection(Path(os.environ.get("DB_PATH", "data/validatie.db")))
+
+
 def instelling_nieuwe_oers(instelling: str, conn=None) -> list[CatalogusItem]:
     """Haal de catalogus van een instelling en diff tegen de DB.
 
-    Lege lijst als er (nog) geen adapter voor de instelling is.
+    Lege lijst als er (nog) geen adapter voor de instelling is. Geef een open
+    ``conn`` mee om bij meerdere instellingen één connectie te delen; zonder
+    ``conn`` opent (en sluit) de functie er zelf één. Bij een netwerk-/API-fout
+    raise't hij ``CatalogusOnbereikbaarError`` zodat de aanroeper kan degraderen.
     """
     bron = _CATALOGUS_BRONNEN.get(instelling)
     if bron is None:
         return []
-    catalogus = bron()
-    eigen = conn or db.get_connection(Path(os.environ.get("DB_PATH", "data/validatie.db")))
-    rows = db.get_alle_oers_met_instelling(eigen)
+    try:
+        catalogus = bron()
+    except httpx.HTTPError as e:
+        raise CatalogusOnbereikbaarError(f"{instelling}: {e}") from e
+    eigen = conn or open_conn()
+    try:
+        rows = db.get_alle_oers_met_instelling(eigen)
+    finally:
+        if conn is None:
+            eigen.close()
     return nieuwe_oers(catalogus, _tupels_uit_rows(rows, instelling))

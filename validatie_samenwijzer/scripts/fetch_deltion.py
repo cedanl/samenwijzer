@@ -127,10 +127,13 @@ def _record(item: dict) -> dict | None:
             data.get("studiegids"),
         )
         return None
+    cohort = (data.get("cohort") or "").split("-")[0]
+    if not cohort:
+        log.warning("Item %s zonder cohort — fallback 2025 (controleer API-format)", item.get("id"))
     return {
         "crebo": str(crebo),
         "leerweg": _collapse_leerweg(data.get("bol_bbl")),
-        "cohort": (data.get("cohort") or "").split("-")[0] or "2025",
+        "cohort": cohort or "2025",
         "naam": (data.get("naam") or "").strip(),
         "uuid": uuid_match.group(1),
     }

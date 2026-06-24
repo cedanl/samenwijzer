@@ -19,6 +19,12 @@ def test_nieuwe_oers_geeft_alleen_onbekende_tupels():
     assert [i.sleutel for i in nieuw] == [("25180", "BOL", "2026")]  # nieuw cohort zichtbaar
 
 
+def test_nieuwe_oers_dedupliceert_op_sleutel():
+    catalogus = [_item("25180", "BOL", "2026"), _item("25180", "BOL", "2026", naam="dubbel")]
+    nieuw = oer_catalogus.nieuwe_oers(catalogus, set())
+    assert [i.sleutel for i in nieuw] == [("25180", "BOL", "2026")]  # geen dubbel
+
+
 def test_tupels_uit_rows_filtert_op_instelling():
     rows = [
         {"crebo": "25180", "leerweg": "BOL", "cohort": "2025", "naam": "deltion"},

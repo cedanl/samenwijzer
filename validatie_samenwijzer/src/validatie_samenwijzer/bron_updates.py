@@ -108,25 +108,39 @@ def _oer_status(online: bool = False) -> BronStatus:
             details={"crawlbaar": _OER_CRAWLBAAR, "niet_crawlbaar": _OER_NIET_CRAWLBAAR},
         )
     nieuw: dict[str, list] = {}
-    for inst in sorted(oer_catalogus._CATALOGUS_BRONNEN):
-        items = oer_catalogus.instelling_nieuwe_oers(inst)
-        if items:
-            nieuw[inst] = items
+    onbereikbaar: list[str] = []
+    conn = oer_catalogus.open_conn()
+    try:
+        for inst in sorted(oer_catalogus._CATALOGUS_BRONNEN):
+            try:
+                items = oer_catalogus.instelling_nieuwe_oers(inst, conn=conn)
+            except oer_catalogus.CatalogusOnbereikbaarError as e:
+                logger.warning("OER-catalogus overgeslagen (%s)", e)
+                onbereikbaar.append(inst)
+                continue
+            if items:
+                nieuw[inst] = items
+    finally:
+        conn.close()
     n_totaal = sum(len(v) for v in nieuw.values())
     rest = sorted(set(_OER_CRAWLBAAR) - set(oer_catalogus._CATALOGUS_BRONNEN))
-    if n_totaal:
-        per = ", ".join(f"{i}: {len(v)}" for i, v in sorted(nieuw.items()))
-        signaal = (
-            f"{n_totaal} nieuwe OER('s) beschikbaar ({per}); {len(rest)} instelling(en) handmatig"
-        )
-    else:
-        signaal = f"geen nieuwe OER's via API; {len(rest)} instelling(en) nog handmatig"
+    delen = [
+        f"{n_totaal} nieuwe OER('s) beschikbaar ("
+        + ", ".join(f"{i}: {len(v)}" for i, v in sorted(nieuw.items()))
+        + ")"
+        if n_totaal
+        else "geen nieuwe OER's via API"
+    ]
+    if onbereikbaar:
+        delen.append(f"{len(onbereikbaar)} instelling(en) onbereikbaar")
+    delen.append(f"{len(rest)} instelling(en) handmatig")
     return BronStatus(
         "oer",
         automatisch=True,
-        signaal=signaal,
+        signaal="; ".join(delen),
         details={
             "nieuw_per_instelling": {i: [it.sleutel for it in v] for i, v in nieuw.items()},
+            "onbereikbaar": onbereikbaar,
             "handmatig": rest,
             "niet_crawlbaar": _OER_NIET_CRAWLBAAR,
         },
