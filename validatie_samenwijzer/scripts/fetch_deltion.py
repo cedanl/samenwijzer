@@ -85,15 +85,18 @@ def _slug(naam: str) -> str:
     return naam[:80] or "Studiegids"
 
 
-def haal_items_op(client: httpx.Client, cohort: str) -> list[dict]:
-    """Pagineer de zoek-API en geef alle studiegids-items voor het cohort."""
+def haal_items_op(client: httpx.Client, cohort: str | None = None) -> list[dict]:
+    """Pagineer de zoek-API. cohort=None → alle cohorten (leeg filter), zodat ook
+    een gloednieuw cohort (bv. 2026-2027) wordt meegenomen; een cohortstring
+    filtert op dat ene cohort (zoals bij een gerichte download)."""
+    filters = {"cohort": [cohort]} if cohort else {}
     items: list[dict] = []
     offset = 0
     while True:
         resp = client.post(
             SEARCH_URL,
             params={"size": _PAGE, "offset": offset},
-            json={"query": "", "filters": {"cohort": [cohort]}, "language": "nl"},
+            json={"query": "", "filters": filters, "language": "nl"},
         )
         resp.raise_for_status()
         body = resp.json()
