@@ -69,6 +69,32 @@ def test_parse_aeres_pakt_per_crebo_en_slaat_bundel_over():
     assert all(i.instelling == "aeres" and i.leerweg == "onbekend" for i in items)
 
 
+_RIJNIJSSEL_DOCS = "https://apicms.rijnijssel.nl/documents"
+_RIJNIJSSEL_HTML = (
+    f'<a href="{_RIJNIJSSEL_DOCS}/179/oer-2025-2026-ci-25633-mediavormgever.pdf">OER</a>\n'
+    f'<a href="{_RIJNIJSSEL_DOCS}/194/EU_OER_2024_KAPPER_25641_BOL_BBL_3-7-24.pdf">OER</a>\n'
+    # geen 5-cijferige crebo in de bestandsnaam → bewust overgeslagen (cheap subset)
+    f'<a href="{_RIJNIJSSEL_DOCS}/186/vw-oer-bbk-bakkerij2025-bolbbl.pdf">OER</a>\n'
+)
+
+
+def test_parse_rijnijssel_pakt_crebo_cohort_uit_bestandsnaam():
+    items = oer_catalogus._parse_rijnijssel(_RIJNIJSSEL_HTML)
+    assert sorted((i.crebo, i.cohort) for i in items) == [("25633", "2025"), ("25641", "2024")]
+    assert all(i.instelling == "rijn_ijssel" for i in items)
+
+
+def test_parse_rijnijssel_slaat_over_zonder_crebo_of_cohort():
+    # bestandsnaam zonder 5-cijferige crebo (alleen jaartallen) → niet goedkoop te bepalen
+    naam = "OER_2025-2026_pedagogisch-werk-cohort-2025-bbl.pdf"
+    html = f'<a href="{_RIJNIJSSEL_DOCS}/152/{naam}">x</a>'
+    assert oer_catalogus._parse_rijnijssel(html) == []
+
+
+def test_rijnijssel_diff_sleutel_is_crebo_cohort():
+    assert oer_catalogus._DIFF_SLEUTEL_VELDEN["rijn_ijssel"] == ("crebo", "cohort")
+
+
 def test_items_naar_catalogus_slaat_none_over():
     raw = [{"id": 1}, {"id": 2}]
 

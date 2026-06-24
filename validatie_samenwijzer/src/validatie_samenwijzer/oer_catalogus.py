@@ -32,7 +32,10 @@ _UA = "Mozilla/5.0 (samenwijzer bronactualiteit-check)"
 # vergelijken op een subset, anders matcht hun tuple nooit de DB (die wél BOL/BBL heeft)
 # en lijkt elke OER 'nieuw'.
 _STANDAARD_VELDEN = ("crebo", "leerweg", "cohort")
-_DIFF_SLEUTEL_VELDEN: dict[str, tuple[str, ...]] = {"aeres": ("crebo", "cohort")}
+_DIFF_SLEUTEL_VELDEN: dict[str, tuple[str, ...]] = {
+    "aeres": ("crebo", "cohort"),
+    "rijn_ijssel": ("crebo", "cohort"),
+}
 
 
 class CatalogusOnbereikbaarError(Exception):
@@ -154,9 +157,60 @@ def aeres_catalogus() -> list[CatalogusItem]:
     return _parse_aeres(resp.text)
 
 
+# Rijn IJssel: sitemap → ~136 opleidingpagina's (server-side HTML) met
+# `apicms.rijnijssel.nl/documents/<id>/<bestand>.pdf`-links. Crebo + cohort komen uit
+# de bestandsnaam; ~45% van de bestanden mist een crebo in de naam → die slaan we
+# bewust over (de goedkope subset). Diff op (crebo, cohort) — leerweg is inconsistent
+# (soms "bolbbl") en niet betrouwbaar uit de naam te halen.
+_RIJNIJSSEL_SITEMAP = "https://www.rijnijssel.nl/sitemap-0.xml"
+_RIJNIJSSEL_OPLEIDING_RE = re.compile(
+    r"<loc>(https://www\.rijnijssel\.nl/mbo-opleidingen/[^<]+)</loc>", re.IGNORECASE
+)
+_RIJNIJSSEL_DOC_RE = re.compile(
+    r"https://apicms\.rijnijssel\.nl/documents/\d+/[^\s\"'<>]+\.pdf", re.IGNORECASE
+)
+_CREBO_RE = re.compile(r"\d{5}")
+_COHORT_RE = re.compile(r"20\d{2}")
+
+
+def _parse_rijnijssel(html: str) -> list[CatalogusItem]:
+    """Pure parse: apicms-doc-links → CatalogusItem (primaire crebo + cohort uit naam).
+
+    Alleen items waarvan zowel crebo als cohort in de bestandsnaam staan; de rest is
+    niet goedkoop te bepalen (zou crebo uit de PDF-inhoud vereisen) en wordt overgeslagen.
+    """
+    items: list[CatalogusItem] = []
+    for url in _RIJNIJSSEL_DOC_RE.findall(html):
+        naam = url.rsplit("/", 1)[-1]
+        crebo = _CREBO_RE.search(naam)
+        cohort = _COHORT_RE.search(naam)
+        if crebo and cohort:
+            items.append(
+                CatalogusItem(crebo.group(), "onbekend", cohort.group(), naam, "rijn_ijssel")
+            )
+    return items
+
+
+def rijnijssel_catalogus() -> list[CatalogusItem]:
+    """Crawl de Rijn IJssel-opleidingpagina's en verzamel de OER-doc-links."""
+    items: list[CatalogusItem] = []
+    with httpx.Client(headers={"user-agent": _UA}, timeout=30, follow_redirects=True) as client:
+        sitemap = client.get(_RIJNIJSSEL_SITEMAP)
+        sitemap.raise_for_status()
+        for url in _RIJNIJSSEL_OPLEIDING_RE.findall(sitemap.text):
+            try:
+                resp = client.get(url)
+                resp.raise_for_status()
+            except httpx.HTTPError:
+                continue  # sla een kapotte/trage opleidingpagina over, niet de hele crawl
+            items.extend(_parse_rijnijssel(resp.text))
+    return items
+
+
 _CATALOGUS_BRONNEN: dict[str, Callable[[], list[CatalogusItem]]] = {
     "deltion": deltion_catalogus,
     "aeres": aeres_catalogus,
+    "rijn_ijssel": rijnijssel_catalogus,
 }
 
 
