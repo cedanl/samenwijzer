@@ -33,6 +33,42 @@ def test_tupels_uit_rows_filtert_op_instelling():
     assert oer_catalogus._tupels_uit_rows(rows, "deltion") == {("25180", "BOL", "2025")}
 
 
+def test_diff_op_crebo_cohort_negeert_leerweg():
+    # Aeres levert geen leerweg → diff op (crebo, cohort), anders valse "nieuw".
+    velden = ("crebo", "cohort")
+    rows = [{"crebo": "25981", "leerweg": "BOL", "cohort": "2026", "naam": "aeres"}]
+    db_tupels = oer_catalogus._tupels_uit_rows(rows, "aeres", velden)
+    assert db_tupels == {("25981", "2026")}  # leerweg weggelaten
+    catalogus = [
+        _item("25981", "onbekend", "2026", instelling="aeres"),  # hebben we al (op crebo+cohort)
+        _item("25730", "onbekend", "2026", instelling="aeres"),  # nieuw
+    ]
+    nieuw = oer_catalogus.nieuwe_oers(catalogus, db_tupels, velden)
+    assert [i.crebo for i in nieuw] == ["25730"]
+
+
+def test_aeres_diff_sleutel_is_crebo_cohort():
+    assert oer_catalogus._DIFF_SLEUTEL_VELDEN["aeres"] == ("crebo", "cohort")
+
+
+_AERES_BASIS = "/-/media/aeres-mbo/files/regelingen-en-statuten"
+_AERES_HTML = (
+    f'<a href="{_AERES_BASIS}/2026-2027/examenplannen/'
+    'examenplan-25981-medewerker-teelt-vastgesteld.pdf">x</a>\n'
+    f'<a href="https://www.aeresmbo.nl{_AERES_BASIS}/2026-2027/examenplannen/'
+    'examenplan-25730-bedrijfsleider-dierverzorging-vastgesteld.pdf">y</a>\n'
+    f'<a href="{_AERES_BASIS}/2025-2026/'
+    'examenplannen-teelt-en-loonwerk-25-26.pdf">gebundeld, overslaan</a>\n'
+)
+
+
+def test_parse_aeres_pakt_per_crebo_en_slaat_bundel_over():
+    items = oer_catalogus._parse_aeres(_AERES_HTML)
+    paren = sorted((i.crebo, i.cohort) for i in items)
+    assert paren == [("25730", "2026"), ("25981", "2026")]  # cohort genormaliseerd; bundel weg
+    assert all(i.instelling == "aeres" and i.leerweg == "onbekend" for i in items)
+
+
 def test_items_naar_catalogus_slaat_none_over():
     raw = [{"id": 1}, {"id": 2}]
 
