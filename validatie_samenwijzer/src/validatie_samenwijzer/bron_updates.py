@@ -19,7 +19,7 @@ import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from . import kd_bundel, sync_afgeleid
+from . import kd_bundel, oer_catalogus, sync_afgeleid
 
 logger = logging.getLogger(__name__)
 
@@ -99,17 +99,42 @@ def _kd_status() -> BronStatus:
     )
 
 
-def _oer_status() -> BronStatus:
+def _oer_status(online: bool = False) -> BronStatus:
+    if not online:
+        return BronStatus(
+            "oer",
+            automatisch=False,
+            signaal="OER-catalogus-check niet gedraaid — gebruik `check-bron-updates --oer`",
+            details={"crawlbaar": _OER_CRAWLBAAR, "niet_crawlbaar": _OER_NIET_CRAWLBAAR},
+        )
+    nieuw: dict[str, list] = {}
+    for inst in sorted(oer_catalogus._CATALOGUS_BRONNEN):
+        items = oer_catalogus.instelling_nieuwe_oers(inst)
+        if items:
+            nieuw[inst] = items
+    n_totaal = sum(len(v) for v in nieuw.values())
+    rest = sorted(set(_OER_CRAWLBAAR) - set(oer_catalogus._CATALOGUS_BRONNEN))
+    if n_totaal:
+        per = ", ".join(f"{i}: {len(v)}" for i, v in sorted(nieuw.items()))
+        signaal = (
+            f"{n_totaal} nieuwe OER('s) beschikbaar ({per}); {len(rest)} instelling(en) handmatig"
+        )
+    else:
+        signaal = f"geen nieuwe OER's via API; {len(rest)} instelling(en) nog handmatig"
     return BronStatus(
         "oer",
-        automatisch=False,
-        signaal="OER-/instellingscatalogus-check niet geautomatiseerd — handmatige crawl",
-        details={"crawlbaar": _OER_CRAWLBAAR, "niet_crawlbaar": _OER_NIET_CRAWLBAAR},
+        automatisch=True,
+        signaal=signaal,
+        details={
+            "nieuw_per_instelling": {i: [it.sleutel for it in v] for i, v in nieuw.items()},
+            "handmatig": rest,
+            "niet_crawlbaar": _OER_NIET_CRAWLBAAR,
+        },
     )
 
 
-def verzamel_bron_status() -> list[BronStatus]:
-    return [_skills_status(), _kd_status(), _oer_status()]
+def verzamel_bron_status(online: bool = False) -> list[BronStatus]:
+    return [_skills_status(), _kd_status(), _oer_status(online=online)]
 
 
 def rapporteer(statussen: list[BronStatus]) -> str:
@@ -121,9 +146,16 @@ def rapporteer(statussen: list[BronStatus]) -> str:
 
 
 def main() -> int:
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Bronactualiteit-rapport")
+    parser.add_argument(
+        "--oer", action="store_true", help="Draai ook de online OER-catalogus-check (netwerk)"
+    )
+    args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     try:
-        statussen = verzamel_bron_status()
+        statussen = verzamel_bron_status(online=args.oer)
     except sqlite3.OperationalError as e:
         logger.error("Kan de database niet lezen (%s) — is DB_PATH correct?", e)
         return 1
