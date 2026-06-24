@@ -84,6 +84,32 @@ def test_upgrade_bij_competentnl_hit(skills_dir, monkeypatch):
     assert "CompetentNL" in csv.read_text(encoding="utf-8")  # CSV bevat de nieuwe bron
 
 
+def test_dry_run_rapporteert_zonder_te_muteren(skills_dir, monkeypatch):
+    pad = skills_dir / "25180.json"
+    origineel = _esco_json("25180")
+    pad.write_text(origineel, encoding="utf-8")
+
+    def fake(crebo, opleiding):
+        return SkillsRecord(
+            crebo=crebo,
+            opleiding=opleiding,
+            bron="CompetentNL",
+            beroep=Beroep(label="Kok", uri="", definitie="..."),
+            skills=[Skill(label="koken", uri="cnl:s1", categorie="essentieel")],
+            match_methode="crebo-direct",
+            kandidaten=[],
+        )
+
+    monkeypatch.setattr(bst.competentnl_bron, "haal_skills_record", fake)
+
+    upgraded, nog_fallback = bst.refresh_fallbacks(dry_run=True)
+
+    assert upgraded == ["25180"]  # zou upgraden
+    assert nog_fallback == []
+    assert pad.read_text(encoding="utf-8") == origineel  # byte-identiek: niets geschreven
+    assert not (skills_dir / "_match_overzicht.csv").exists()  # geen overzicht in dry-run
+
+
 def test_miss_laat_esco_ongemoeid(skills_dir, monkeypatch):
     pad = skills_dir / "23110.json"
     origineel = _esco_json("23110")
@@ -132,13 +158,30 @@ def test_artefact_zonder_crebo_overgeslagen(skills_dir, monkeypatch, caplog):
 
 def test_cli_refresh_fallbacks_roept_functie(skills_dir, monkeypatch):
     aangeroepen = []
-    monkeypatch.setattr(bst, "refresh_fallbacks", lambda: aangeroepen.append(True) or ([], []))
+    monkeypatch.setattr(
+        bst, "refresh_fallbacks", lambda dry_run=False: aangeroepen.append(dry_run) or ([], [])
+    )
     monkeypatch.setattr(sys, "argv", ["build_skills_taxonomie.py", "--refresh-fallbacks"])
 
     rc = bst.main()
 
     assert rc == 0
-    assert aangeroepen == [True]
+    assert aangeroepen == [False]  # zonder --dry-run draait het de echte upgrade
+
+
+def test_cli_refresh_fallbacks_dry_run_propageert(skills_dir, monkeypatch):
+    aangeroepen = []
+    monkeypatch.setattr(
+        bst, "refresh_fallbacks", lambda dry_run=False: aangeroepen.append(dry_run) or ([], [])
+    )
+    monkeypatch.setattr(
+        sys, "argv", ["build_skills_taxonomie.py", "--refresh-fallbacks", "--dry-run"]
+    )
+
+    rc = bst.main()
+
+    assert rc == 0
+    assert aangeroepen == [True]  # --dry-run wordt doorgegeven
 
 
 def test_competentnl_artefact_overgeslagen(skills_dir, monkeypatch):

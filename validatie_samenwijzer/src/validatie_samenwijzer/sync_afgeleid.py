@@ -71,6 +71,11 @@ def geindexeerde_crebos() -> set[str]:
     return {r[0] for r in rijen}
 
 
+def kd_dir() -> Path:
+    """Map met de KD-markdownbestanden (publieke accessor voor andere modules)."""
+    return _KD_DIR
+
+
 def _bestaande_kd() -> set[str]:
     return {p.stem for p in _KD_DIR.glob("*.md")} if _KD_DIR.exists() else set()
 

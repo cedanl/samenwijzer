@@ -23,6 +23,7 @@ dependencies = [
 [project.scripts]
 ingest = "validatie_samenwijzer.ingest:main"
 watcher = "validatie_samenwijzer.watcher:main"
+check-bron-updates = "validatie_samenwijzer.bron_updates:main"
 
 [project.optional-dependencies]
 dev = [

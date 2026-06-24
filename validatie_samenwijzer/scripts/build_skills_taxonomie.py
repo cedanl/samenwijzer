@@ -73,11 +73,16 @@ def main() -> int:
         action="store_true",
         help="Her-check non-CompetentNL artefacten tegen CompetentNL en upgrade hits (Fase 3)",
     )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Met --refresh-fallbacks: rapporteer upgrades zonder te schrijven",
+    )
     args = parser.parse_args()
 
     _SKILLS_DIR.mkdir(parents=True, exist_ok=True)
     if args.refresh_fallbacks:
-        refresh_fallbacks()
+        refresh_fallbacks(dry_run=args.dry_run)
         return 0
     opleidingen = _beste_opleiding_per_crebo()
     kd_domeinen = _kd_domein_per_crebo()
@@ -173,7 +178,7 @@ def _schrijf_overzicht() -> None:
     logger.info("Review-overzicht: %s (%d rijen)", overzicht_pad, len(rijen))
 
 
-def refresh_fallbacks() -> tuple[list[str], list[str]]:
+def refresh_fallbacks(dry_run: bool = False) -> tuple[list[str], list[str]]:
     """Her-check non-CompetentNL artefacten tegen CompetentNL; upgrade bij een hit.
 
     Roept alléén ``competentnl_bron.haal_skills_record()`` aan (deterministisch,
@@ -205,15 +210,21 @@ def refresh_fallbacks() -> tuple[list[str], list[str]]:
 
         nieuw = competentnl_bron.haal_skills_record(crebo, opleiding)
         if nieuw is not None and nieuw.skills:
-            pad.write_text(
-                json.dumps(nieuw.to_dict(), ensure_ascii=False, indent=2), encoding="utf-8"
-            )
+            if not dry_run:
+                pad.write_text(
+                    json.dumps(nieuw.to_dict(), ensure_ascii=False, indent=2), encoding="utf-8"
+                )
             upgraded.append(crebo)
-            logger.info("UPGRADE %s → CompetentNL (%d skills)", crebo, len(nieuw.skills))
+            logger.info(
+                "%s %s → CompetentNL (%d skills)",
+                "ZOU UPGRADEN" if dry_run else "UPGRADE",
+                crebo,
+                len(nieuw.skills),
+            )
         else:
             nog_fallback.append(crebo)
 
-    if upgraded:
+    if upgraded and not dry_run:
         _schrijf_overzicht()
 
     logger.info(
