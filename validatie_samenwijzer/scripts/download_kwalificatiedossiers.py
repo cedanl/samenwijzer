@@ -18,6 +18,8 @@ from pathlib import Path
 import openpyxl
 import pdfplumber
 
+from validatie_samenwijzer import kd_bundel
+
 ROOT = Path(__file__).resolve().parents[2]
 KWAL_DIR = ROOT / "kwalificatiedossiers"
 PDF_DIR = KWAL_DIR / "pdfs"
@@ -276,10 +278,12 @@ def main() -> int:
     (KWAL_DIR / "download_rapport.json").write_text(
         json.dumps(rapport, indent=2, ensure_ascii=False)
     )
+    manifest = kd_bundel.schrijf_manifest()
     print(
         f"\nKlaar: {len(resultaten)} PDFs opgeslagen in {PDF_DIR}. "
         f"Geen PDF voor {len(geen_pdf)} crebos, "
-        f"{len(excel_unmatched)} crebos niet in crebolijsten."
+        f"{len(excel_unmatched)} crebos niet in crebolijsten. "
+        f"Bundelmanifest bijgewerkt: crebolijst {manifest['crebolijst_jaar']}."
     )
     return 0
 
