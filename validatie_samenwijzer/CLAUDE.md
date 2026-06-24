@@ -27,6 +27,12 @@ aanvullende bron — de OER blijft leidend; het KD wordt alleen geraadpleegd als
 niet of onvoldoende behandelt. Leeft als subproject binnen de `samenwijzer`-monorepo met eigen
 `pyproject.toml`, `.venv` en database.
 
+De **publieke startpagina** (`/`, geen login) is de primaire ingang: een vrije vraag of de
+opleidingskiezer-cascade (`/api/opleidingen` → instelling → leerweg → opleiding → cohort) identificeert
+de juiste OER(s) via `identificeer_oer_kandidaten`. De flow kent drie modi — `chat` (1 kandidaat,
+direct laden), `kies` (meerdere → `/api/kies`), `intake` (geen) — en valt daarna terug op dezelfde
+chat-streaming. Student/mentor-routes achter login (`/student`, `/mentor`, `/beheer`) delen die kern.
+
 > **Frontend (juni 2026)**: de Streamlit-frontend (`app/`) is **geretired**; `app_fastapi/` is DE
 > frontend en draait in productie als `digitale-gids` op Fly via `Dockerfile.fastapi`. De Python-kern
 > (`chat.py`, `db.py`, `_ai.py`, `auth.py`) is ongewijzigd gedeeld. Referenties naar `app/`,
@@ -93,6 +99,10 @@ Volledige beschrijving in `docs/ARCHITECTURE.md`. De regels die een wijziging ni
   nieuwe instelling in de seed-lijst → stil **0 studenten**.
 - **Parser-sync met de parent**: de parse-helpers in `ingest.py` worden bewust gespiegeld naar
   `src/samenwijzer/oer_parsing.py`. Wijzig je ze hier, werk de parent-kopie mee bij (en omgekeerd).
+- **Opleidingsnaam-opschoning** loopt uitsluitend via `opleiding.py` (geen streamlit-import):
+  `nette_opleiding_naam(crebo, …)` = autoritatieve crebo-asset (gebouwd door
+  `scripts/build_opleidingsnamen.py`), `schoon_opleiding_naam(...)` = token-fallback. Gedeeld door
+  `chat.py`, `app_fastapi/data.py` en ingest — voer ruwe `opleiding`-strings nooit ongeschoond naar UI.
 - **OER-onleesbaar-modus**: bij lege OER-fulltext bouwt `bouw_systeem` de prompt met KD +
   instellingsregelingen als hoofdbron; alleen zónder enige bron volgt `LAGE_RELEVANTIE_BERICHT`.
 
