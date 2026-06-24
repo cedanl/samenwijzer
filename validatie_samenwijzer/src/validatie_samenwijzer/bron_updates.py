@@ -19,7 +19,7 @@ import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from . import sync_afgeleid
+from . import kd_bundel, sync_afgeleid
 
 logger = logging.getLogger(__name__)
 
@@ -65,22 +65,32 @@ def _skills_status() -> BronStatus:
 def _kd_status() -> BronStatus:
     crebos = sync_afgeleid.geindexeerde_crebos()
     kd_dir = sync_afgeleid.kd_dir()
-    if not kd_dir.exists():
-        return BronStatus(
-            "kd",
-            automatisch=False,
-            signaal=f"KD-map niet gevonden ({kd_dir}); kan dekkingsgaten niet bepalen",
-            details={"ontbrekende_dekking": []},
+    ontbrekend = sorted(crebos - {p.stem for p in kd_dir.glob("*.md")}) if kd_dir.exists() else []
+
+    bundel = kd_bundel.bundel_status()
+    toestand = bundel["toestand"]
+    if toestand == "gewijzigd":
+        signaal = (
+            f"SBB-bundel gewijzigd sinds laatste ingest "
+            f"({len(bundel['gewijzigde_zips'])} zip(s)) — re-ingest nodig"
         )
-    aanwezig = {p.stem for p in kd_dir.glob("*.md")}
-    ontbrekend = sorted(crebos - aanwezig)
-    signaal = (
-        f"{len(ontbrekend)} crebo('s) zonder KD-dekking; SBB-bundel-versheid niet geautomatiseerd"
-        if ontbrekend
-        else "KD-dekking compleet; SBB-bundel-versheid niet geautomatiseerd"
-    )
+    elif toestand == "geen_manifest":
+        signaal = "geen bundelmanifest — draai `python -m validatie_samenwijzer.kd_bundel`"
+    else:
+        signaal = (
+            f"bundel in sync (crebolijst {bundel['crebolijst_jaar']}); "
+            f"{len(ontbrekend)} crebo('s) zonder dekking"
+        )
     return BronStatus(
-        "kd", automatisch=False, signaal=signaal, details={"ontbrekende_dekking": ontbrekend}
+        "kd",
+        automatisch=True,
+        signaal=signaal,
+        details={
+            "toestand": toestand,
+            "crebolijst_jaar": bundel["crebolijst_jaar"],
+            "gewijzigde_zips": bundel["gewijzigde_zips"],
+            "ontbrekende_dekking": ontbrekend,
+        },
     )
 
 
