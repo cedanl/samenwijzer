@@ -11,7 +11,7 @@ def gemockte_bronnen(tmp_path, monkeypatch):
     kd_dir = tmp_path / "kd"
     kd_dir.mkdir()
     (kd_dir / "25180.md").write_text("kd", encoding="utf-8")  # 25180 heeft dekking
-    monkeypatch.setattr(sync_afgeleid, "_KD_DIR", kd_dir)
+    monkeypatch.setattr(sync_afgeleid, "kd_dir", lambda: kd_dir)
     monkeypatch.setattr(sync_afgeleid, "geindexeerde_crebos", lambda: {"25180", "23110"})
     # skills-adapter: 1 upgrade beschikbaar
     monkeypatch.setattr(bron_updates, "_skills_dry_run", lambda: (["25180"], ["23110"]))
@@ -39,7 +39,26 @@ def test_oer_status_is_handmatig(gemockte_bronnen):
     assert "rijn_ijssel" in oer.details["crawlbaar"]
 
 
+def test_kd_status_meldt_ontbrekende_map(tmp_path, monkeypatch):
+    afwezig = tmp_path / "bestaat-niet"  # niet aangemaakt
+    monkeypatch.setattr(sync_afgeleid, "kd_dir", lambda: afwezig)
+    monkeypatch.setattr(sync_afgeleid, "geindexeerde_crebos", lambda: {"25180"})
+    kd = bron_updates._kd_status()
+    assert kd.details["ontbrekende_dekking"] == []  # geen valse "alles ontbreekt"
+    assert "niet gevonden" in kd.signaal
+
+
 def test_rapporteer_bevat_alle_bronnen(gemockte_bronnen):
     tekst = bron_updates.rapporteer(bron_updates.verzamel_bron_status())
     for bron in ("skills", "kd", "oer"):
         assert bron in tekst
+
+
+def test_oer_lijsten_dekken_alle_instellingen():
+    """De OER-crawlbaarheidslijsten moeten synchroon blijven met ingest._INSTELLINGEN
+    (vierde hardcoded instellingslijst — drift = stille status-degradatie)."""
+    from validatie_samenwijzer import ingest
+
+    ingest_namen = set(ingest._INSTELLINGEN.keys())
+    gedekt = set(bron_updates._OER_CRAWLBAAR) | set(bron_updates._OER_NIET_CRAWLBAAR)
+    assert gedekt == ingest_namen, f"Niet gedekt: {ingest_namen - gedekt}"

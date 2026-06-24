@@ -14,6 +14,7 @@ muteert niets. Per bron een adapter die een ``BronStatus`` oplevert:
 from __future__ import annotations
 
 import logging
+import sqlite3
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -63,7 +64,15 @@ def _skills_status() -> BronStatus:
 
 def _kd_status() -> BronStatus:
     crebos = sync_afgeleid.geindexeerde_crebos()
-    aanwezig = {p.stem for p in sync_afgeleid._KD_DIR.glob("*.md")}
+    kd_dir = sync_afgeleid.kd_dir()
+    if not kd_dir.exists():
+        return BronStatus(
+            "kd",
+            automatisch=False,
+            signaal=f"KD-map niet gevonden ({kd_dir}); kan dekkingsgaten niet bepalen",
+            details={"ontbrekende_dekking": []},
+        )
+    aanwezig = {p.stem for p in kd_dir.glob("*.md")}
     ontbrekend = sorted(crebos - aanwezig)
     signaal = (
         f"{len(ontbrekend)} crebo('s) zonder KD-dekking; SBB-bundel-versheid niet geautomatiseerd"
@@ -98,7 +107,12 @@ def rapporteer(statussen: list[BronStatus]) -> str:
 
 def main() -> int:
     logging.basicConfig(level=logging.INFO, format="%(message)s")
-    print(rapporteer(verzamel_bron_status()))
+    try:
+        statussen = verzamel_bron_status()
+    except sqlite3.OperationalError as e:
+        logger.error("Kan de database niet lezen (%s) — is DB_PATH correct?", e)
+        return 1
+    print(rapporteer(statussen))
     return 0
 
 
