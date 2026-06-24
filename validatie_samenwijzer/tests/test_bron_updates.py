@@ -15,6 +15,12 @@ def gemockte_bronnen(tmp_path, monkeypatch):
     monkeypatch.setattr(sync_afgeleid, "geindexeerde_crebos", lambda: {"25180", "23110"})
     # skills-adapter: 1 upgrade beschikbaar
     monkeypatch.setattr(bron_updates, "_skills_dry_run", lambda: (["25180"], ["23110"]))
+    # KD-bundel: standaard in sync (crebolijst 2025)
+    monkeypatch.setattr(
+        bron_updates.kd_bundel,
+        "bundel_status",
+        lambda: {"toestand": "in_sync", "crebolijst_jaar": 2025, "gewijzigde_zips": []},
+    )
     return tmp_path
 
 
@@ -26,10 +32,23 @@ def test_skills_status_meldt_upgrades(gemockte_bronnen):
     assert "1" in skills.signaal
 
 
-def test_kd_status_meldt_dekkingsgaten(gemockte_bronnen):
+def test_kd_status_in_sync_meldt_jaar_en_gaten(gemockte_bronnen):
     kd = {s.bron: s for s in bron_updates.verzamel_bron_status()}["kd"]
+    assert kd.automatisch is True  # bundelwijziging wordt nu automatisch gedetecteerd
+    assert kd.details["crebolijst_jaar"] == 2025
     assert kd.details["ontbrekende_dekking"] == ["23110"]  # 25180 heeft .md, 23110 niet
-    assert kd.automatisch is False  # bundel-versheid niet geautomatiseerd
+    assert "2025" in kd.signaal
+
+
+def test_kd_status_gewijzigd_vraagt_reingest(gemockte_bronnen, monkeypatch):
+    monkeypatch.setattr(
+        bron_updates.kd_bundel,
+        "bundel_status",
+        lambda: {"toestand": "gewijzigd", "crebolijst_jaar": 2025, "gewijzigde_zips": ["ae.zip"]},
+    )
+    kd = {s.bron: s for s in bron_updates.verzamel_bron_status()}["kd"]
+    assert "gewijzigd" in kd.signaal
+    assert kd.details["gewijzigde_zips"] == ["ae.zip"]
 
 
 def test_oer_status_is_handmatig(gemockte_bronnen):
@@ -39,13 +58,19 @@ def test_oer_status_is_handmatig(gemockte_bronnen):
     assert "rijn_ijssel" in oer.details["crawlbaar"]
 
 
-def test_kd_status_meldt_ontbrekende_map(tmp_path, monkeypatch):
-    afwezig = tmp_path / "bestaat-niet"  # niet aangemaakt
+def test_kd_status_ontbrekende_map_meldt_onbekend(gemockte_bronnen, monkeypatch):
+    afwezig = gemockte_bronnen / "bestaat-niet"  # niet aangemaakt
     monkeypatch.setattr(sync_afgeleid, "kd_dir", lambda: afwezig)
-    monkeypatch.setattr(sync_afgeleid, "geindexeerde_crebos", lambda: {"25180"})
     kd = bron_updates._kd_status()
-    assert kd.details["ontbrekende_dekking"] == []  # geen valse "alles ontbreekt"
-    assert "niet gevonden" in kd.signaal
+    # Map mist → dekking is ONBEKEND, niet "0 zonder dekking" (geen valse volle dekking).
+    assert kd.details["dekking_onbekend"] is True
+    assert kd.details["ontbrekende_dekking"] == []
+    assert "onbekend" in kd.signaal
+
+
+def test_kd_status_aanwezige_map_dekking_bekend(gemockte_bronnen):
+    kd = {s.bron: s for s in bron_updates.verzamel_bron_status()}["kd"]
+    assert kd.details["dekking_onbekend"] is False  # map bestaat → dekking wél bekend
 
 
 def test_rapporteer_bevat_alle_bronnen(gemockte_bronnen):
