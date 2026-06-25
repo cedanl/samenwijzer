@@ -13,6 +13,7 @@ gloednieuw cohort (bv. 2026-2027) als 'nieuwe OER' zichtbaar wordt.
 from __future__ import annotations
 
 import hashlib
+import json
 import logging
 import os
 import re
@@ -109,6 +110,17 @@ def _tupels_uit_rows(
         _projecteer(r["crebo"], r["leerweg"], r["cohort"], velden)
         for r in rows
         if r["naam"] == instelling
+    }
+
+
+def _tupels_uit_manifest(
+    instelling: str, velden: tuple[str, ...], pad: Path
+) -> set[tuple[str, ...]]:
+    """De op `velden` geprojecteerde set uit de gecommitte corpus-manifest."""
+    data = json.loads(pad.read_text(encoding="utf-8"))
+    return {
+        _projecteer(crebo, leerweg, cohort, velden)
+        for crebo, leerweg, cohort in data.get(instelling, [])
     }
 
 
@@ -320,13 +332,40 @@ def open_conn():
     return db.get_connection(Path(os.environ.get("DB_PATH", "data/validatie.db")))
 
 
-def instelling_nieuwe_oers(instelling: str, conn=None) -> list[CatalogusItem]:
-    """Haal de catalogus van een instelling en diff tegen de DB.
+def manifest_pad() -> Path:
+    """Pad van de gecommitte corpus-manifest (naast de DB; gitignored-met-exceptie)."""
+    return Path(os.environ.get("DB_PATH", "data/validatie.db")).parent / "oer_corpus_manifest.json"
 
-    Lege lijst als er (nog) geen adapter voor de instelling is. Geef een open
-    ``conn`` mee om bij meerdere instellingen één connectie te delen; zonder
-    ``conn`` opent (en sluit) de functie er zelf één. Bij een netwerk-/API-fout
-    raise't hij ``CatalogusOnbereikbaarError`` zodat de aanroeper kan degraderen.
+
+def genereer_corpus_manifest(conn, pad: Path) -> None:
+    """Schrijf een deterministische snapshot van (crebo, leerweg, cohort) per instelling.
+
+    De Action diff't hiertegen i.p.v. tegen de DB (validatie.db + een deel van oeren/ zijn
+    gitignored). Gegenereerd uit de VOLLEDIGE lokale DB, dus inclusief Deltion. Gesorteerd
+    + ontdubbeld zodat de diff klein en de git-diff stabiel blijft.
+    """
+    manifest: dict[str, list[tuple[str, str, str]]] = {}
+    for r in db.get_alle_oers_met_instelling(conn):
+        manifest.setdefault(r["naam"], []).append((r["crebo"], r["leerweg"], r["cohort"]))
+    uit = {
+        inst: [list(t) for t in sorted(set(tupels))]
+        for inst, tupels in sorted(manifest.items())
+    }
+    pad.write_text(
+        json.dumps(uit, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
+
+
+def instelling_nieuwe_oers(
+    instelling: str, conn=None, *, manifest: bool = False
+) -> list[CatalogusItem]:
+    """Haal de catalogus van een instelling en diff tegen wat we al hebben.
+
+    Lege lijst als er (nog) geen adapter voor de instelling is. Standaard diff't hij tegen
+    de DB; met ``manifest=True`` tegen de gecommitte ``oer_corpus_manifest.json`` — die modus
+    heeft geen DB nodig en is bedoeld voor de wekelijkse Action (validatie.db is gitignored).
+    Geef een open ``conn`` mee om bij meerdere instellingen één connectie te delen. Bij een
+    netwerk-/API-fout raise't hij ``CatalogusOnbereikbaarError`` zodat de aanroeper kan degraderen.
     """
     bron = _CATALOGUS_BRONNEN.get(instelling)
     if bron is None:
@@ -336,13 +375,17 @@ def instelling_nieuwe_oers(instelling: str, conn=None) -> list[CatalogusItem]:
     except httpx.HTTPError as e:
         raise CatalogusOnbereikbaarError(f"{instelling}: {e}") from e
     velden = _DIFF_SLEUTEL_VELDEN.get(instelling, _STANDAARD_VELDEN)
-    eigen = conn or open_conn()
-    try:
-        rows = db.get_alle_oers_met_instelling(eigen)
-    finally:
-        if conn is None:
-            eigen.close()
-    return nieuwe_oers(catalogus, _tupels_uit_rows(rows, instelling, velden), velden)
+    if manifest:
+        db_tupels = _tupels_uit_manifest(instelling, velden, manifest_pad())
+    else:
+        eigen = conn or open_conn()
+        try:
+            rows = db.get_alle_oers_met_instelling(eigen)
+        finally:
+            if conn is None:
+                eigen.close()
+        db_tupels = _tupels_uit_rows(rows, instelling, velden)
+    return nieuwe_oers(catalogus, db_tupels, velden)
 
 
 def gewijzigde_oers(instelling: str, conn=None) -> tuple[list[CatalogusItem], int]:

@@ -243,3 +243,46 @@ class _NullClient:
 
     def __exit__(self, *a):
         return False
+
+
+def test_instelling_nieuwe_oers_manifest_modus(tmp_path, monkeypatch):
+    import json
+
+    from validatie_samenwijzer import oer_catalogus
+    from validatie_samenwijzer.oer_catalogus import CatalogusItem
+
+    pad = tmp_path / "oer_corpus_manifest.json"
+    pad.write_text(json.dumps({"deltion": [["25180", "BOL", "2025"]]}), encoding="utf-8")
+    monkeypatch.setattr(oer_catalogus, "manifest_pad", lambda: pad)
+    monkeypatch.setitem(
+        oer_catalogus._CATALOGUS_BRONNEN,
+        "deltion",
+        lambda: [
+            CatalogusItem("25180", "BOL", "2025", "Kok", "deltion"),  # in manifest → niet nieuw
+            CatalogusItem("25180", "BOL", "2026", "Kok", "deltion"),  # nieuw cohort
+        ],
+    )
+    nieuw = oer_catalogus.instelling_nieuwe_oers("deltion", manifest=True)
+    assert [i.sleutel for i in nieuw] == [("25180", "BOL", "2026")]
+
+
+def test_genereer_corpus_manifest_schrijft_gesorteerde_tupels(tmp_path):
+    import json
+    import sqlite3
+
+    from validatie_samenwijzer import oer_catalogus
+    from validatie_samenwijzer.db import init_db, voeg_instelling_toe, voeg_oer_document_toe
+
+    conn = sqlite3.connect(":memory:")
+    conn.row_factory = sqlite3.Row
+    init_db(conn)
+    inst = voeg_instelling_toe(conn, "deltion", "Deltion")
+    voeg_oer_document_toe(conn, inst, "Kok", "25180", "2026", "BOL", "b.md")
+    voeg_oer_document_toe(conn, inst, "Kok", "25180", "2025", "BOL", "a.md")
+
+    pad = tmp_path / "oer_corpus_manifest.json"
+    oer_catalogus.genereer_corpus_manifest(conn, pad)
+
+    data = json.loads(pad.read_text(encoding="utf-8"))
+    assert data["deltion"] == [["25180", "BOL", "2025"], ["25180", "BOL", "2026"]]
+    conn.close()

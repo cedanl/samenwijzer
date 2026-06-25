@@ -1,0 +1,58 @@
+name: Bronactualiteit-check (wekelijks)
+
+on:
+  schedule:
+    # Maandag 07:00 UTC — vóór de WhatsApp-checkin (08:00) zodat ze elkaar niet raken.
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: validatie_samenwijzer
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Installeer uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          version: "latest"
+
+      - name: Installeer dependencies (subproject)
+        run: uv sync --extra dev
+
+      - name: Draai de OER-bronactualiteit-check (manifest-modus, geen DB)
+        run: uv run check-bron-updates --oer --manifest --alleen-oer | tee rapport.txt
+
+      - name: Open of actualiseer een issue bij een signaal
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if ! grep -qF "OER('s) beschikbaar" rapport.txt; then
+            echo "Geen nieuwe OER's — geen issue."
+            exit 0
+          fi
+          gh label create bronactualiteit --color FBCA04 --description "Wekelijkse OER-bronactualiteit-check" --force
+          # Body via bestand (rapport-inhoud nooit door een shell-variabele → geen quote-injectie).
+          {
+            echo "Wekelijkse OER-bronactualiteit-check vond nieuwe OER('s) upstream."
+            echo
+            echo '```'
+            cat rapport.txt
+            echo '```'
+            echo
+            echo "Actie: ingest de nieuwe OER('s) lokaal en commit de bijgewerkte \`data/oer_corpus_manifest.json\`."
+          } > issue-body.md
+          NUM=$(gh issue list --label bronactualiteit --state open --json number --jq '.[0].number // empty')
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --body-file issue-body.md
+          else
+            gh issue create --label bronactualiteit \
+              --title "Bronactualiteit: nieuwe OER('s) beschikbaar" --body-file issue-body.md
+          fi

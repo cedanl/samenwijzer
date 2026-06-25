@@ -81,7 +81,9 @@ def test_oer_status_online_aggregeert_nieuwe_oers(monkeypatch):
     monkeypatch.setattr(
         bron_updates.oer_catalogus,
         "instelling_nieuwe_oers",
-        lambda inst, conn=None: [CatalogusItem("25180", "BOL", "2026", "Kok", "deltion")],
+        lambda inst, conn=None, manifest=False: [
+            CatalogusItem("25180", "BOL", "2026", "Kok", "deltion")
+        ],
     )
     oer = bron_updates._oer_status(online=True)
     assert oer.automatisch is True
@@ -93,7 +95,7 @@ def test_oer_status_online_degradeert_bij_onbereikbare_api(monkeypatch):
     monkeypatch.setattr(bron_updates.oer_catalogus, "open_conn", lambda: _DummyConn())
     monkeypatch.setattr(bron_updates.oer_catalogus, "_CATALOGUS_BRONNEN", {"deltion": lambda: []})
 
-    def _faalt(inst, conn=None):
+    def _faalt(inst, conn=None, manifest=False):
         raise bron_updates.oer_catalogus.CatalogusOnbereikbaarError(f"{inst}: timeout")
 
     monkeypatch.setattr(bron_updates.oer_catalogus, "instelling_nieuwe_oers", _faalt)
@@ -156,6 +158,19 @@ def test_oer_inhoud_status_aggregeert_gewijzigde_oers(monkeypatch):
     assert "1" in status.signaal and "deltion" in status.signaal
     assert status.details["gewijzigd_per_instelling"]["deltion"] == [("25180", "BOL", "2025")]
     assert status.details["zonder_baseline"] == 2
+
+
+def test_verzamel_bron_status_alleen_oer(monkeypatch):
+    monkeypatch.setattr(
+        bron_updates.oer_catalogus, "_CATALOGUS_BRONNEN", {"deltion": lambda: []}
+    )
+    monkeypatch.setattr(
+        bron_updates.oer_catalogus,
+        "instelling_nieuwe_oers",
+        lambda inst, conn=None, manifest=False: [],
+    )
+    statussen = bron_updates.verzamel_bron_status(online=True, manifest=True, alleen_oer=True)
+    assert [s.bron for s in statussen] == ["oer"]  # geen skills/kd
 
 
 def test_verzamel_bron_status_voegt_inhoud_toe_met_flag(monkeypatch, gemockte_bronnen):

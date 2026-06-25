@@ -94,8 +94,8 @@ _MAX_KANDIDATEN = 40
 # ── Beheer (dev-only, achter BEHEER_ENABLED) ────────────────────────────────────
 _BEHEER_ENABLED = os.environ.get("BEHEER_ENABLED", "").lower() == "true"
 _PROJECT_ROOT = (
-    Path(__file__).resolve().parents[2]
-)  # repo-root: scripts/ + uv verwachten dit als cwd
+    Path(__file__).resolve().parents[1]
+)  # subproject-root: scripts/, pyproject + uv-env leven hier; OEREN_PAD=../oeren rekent hierop
 _INSTELLING_KEYS = {
     "aeres",
     "curio",
@@ -115,6 +115,10 @@ _BEHEER_TAKEN: dict[str, list[str]] = {
     "seed_bulk": ["uv", "run", "python", "scripts/seed_bulk.py"],
     "seed_minimal": ["uv", "run", "python", "scripts/seed.py"],
     "kd_sync": ["bash", "scripts/sync_kwalificatiedossiers.sh"],
+    "bron_updates": ["uv", "run", "python", "-m", "validatie_samenwijzer.bron_updates"],
+    "bron_updates_oer": [
+        "uv", "run", "python", "-m", "validatie_samenwijzer.bron_updates", "--oer"
+    ],
 }
 
 
@@ -474,7 +478,7 @@ def beheer_run(request: Request, taak: str, reset: int = 0, instelling: str = ""
     """Stream de stdout van een vaste beheer-taak als SSE. GET → middleware bewaart niet.
 
     Veiligheid: dubbele gate (BEHEER_ENABLED + algemene poort), vaste commando-allowlist
-    (lijst-vorm Popen, geen shell), gevalideerde scope, cwd hard op de repo-root.
+    (lijst-vorm Popen, geen shell), gevalideerde scope, cwd hard op de subproject-root.
     """
     if not _BEHEER_ENABLED:
         return JSONResponse({"error": "uit"}, status_code=404)

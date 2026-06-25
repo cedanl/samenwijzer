@@ -6,6 +6,9 @@ data/*
 # crebo→naam-lookup voor de opleidingskiezer: klein, deterministisch, afgeleid uit
 # kwalificatiedossiers/crebolijst.xlsx → tracken zodat de Fly-image 'm bevat (geen rebuild).
 !data/opleidingsnamen.json
+# corpus-manifest (crebo/leerweg/cohort per instelling) → tracken zodat de wekelijkse
+# bronactualiteit-Action zonder DB kan diffen (validatie.db is gitignored).
+!data/oer_corpus_manifest.json
 __pycache__/
 *.pyc
 .venv/
