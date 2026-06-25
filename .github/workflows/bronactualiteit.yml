@@ -1,0 +1,49 @@
+name: Bronactualiteit-check (wekelijks)
+
+on:
+  schedule:
+    # Maandag 07:00 UTC — vóór de WhatsApp-checkin (08:00) zodat ze elkaar niet raken.
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: validatie_samenwijzer
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Installeer uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          version: "latest"
+
+      - name: Installeer dependencies (subproject)
+        run: uv sync --extra dev
+
+      - name: Draai de OER-bronactualiteit-check (manifest-modus, geen DB)
+        run: uv run check-bron-updates --oer --manifest --alleen-oer | tee rapport.txt
+
+      - name: Open of actualiseer een issue bij een signaal
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if ! grep -qF "OER('s) beschikbaar" rapport.txt; then
+            echo "Geen nieuwe OER's — geen issue."
+            exit 0
+          fi
+          gh label create bronactualiteit --color FBCA04 --description "Wekelijkse OER-bronactualiteit-check" --force
+          NUM=$(gh issue list --label bronactualiteit --state open --json number --jq '.[0].number // empty')
+          BODY=$'Wekelijkse OER-bronactualiteit-check vond nieuwe OER('"'"'s) upstream.\n\n```\n'"$(cat rapport.txt)"$'\n```\n\nActie: ingest de nieuwe OER('"'"'s) lokaal en commit de bijgewerkte `data/oer_corpus_manifest.json`.'
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --body "$BODY"
+          else
+            gh issue create --label bronactualiteit \
+              --title "Bronactualiteit: nieuwe OER('s) beschikbaar" --body "$BODY"
+          fi
