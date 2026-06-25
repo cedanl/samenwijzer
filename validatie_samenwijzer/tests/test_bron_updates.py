@@ -131,3 +131,41 @@ def test_oer_lijsten_dekken_alle_instellingen():
     ingest_namen = set(ingest._INSTELLINGEN.keys())
     gedekt = set(bron_updates._OER_CRAWLBAAR) | set(bron_updates._OER_NIET_CRAWLBAAR)
     assert gedekt == ingest_namen, f"Niet gedekt: {ingest_namen - gedekt}"
+
+
+def test_oer_inhoud_status_aggregeert_gewijzigde_oers(monkeypatch):
+    from validatie_samenwijzer.oer_catalogus import CatalogusItem
+
+    class _Conn:
+        def close(self):
+            pass
+
+    monkeypatch.setattr(bron_updates.oer_catalogus, "open_conn", lambda: _Conn())
+    monkeypatch.setattr(
+        bron_updates.oer_catalogus, "_CATALOGUS_BRONNEN", {"deltion": lambda: []}
+    )
+
+    def _fake_gewijzigd(inst, conn=None):
+        return ([CatalogusItem("25180", "BOL", "2025", "Kok", "deltion", "u")], 2)
+
+    monkeypatch.setattr(bron_updates.oer_catalogus, "gewijzigde_oers", _fake_gewijzigd)
+
+    status = bron_updates._oer_inhoud_status()
+    assert status.bron == "oer-inhoud"
+    assert status.automatisch is True
+    assert "1" in status.signaal and "deltion" in status.signaal
+    assert status.details["gewijzigd_per_instelling"]["deltion"] == [("25180", "BOL", "2025")]
+    assert status.details["zonder_baseline"] == 2
+
+
+def test_verzamel_bron_status_voegt_inhoud_toe_met_flag(monkeypatch, gemockte_bronnen):
+    bronnen = {s.bron for s in bron_updates.verzamel_bron_status(inhoud=False)}
+    assert "oer-inhoud" not in bronnen  # standaard niet
+    monkeypatch.setattr(
+        bron_updates.oer_catalogus, "_CATALOGUS_BRONNEN", {"deltion": lambda: []}
+    )
+    dummy_conn_cls = type("C", (), {"close": lambda s: None})
+    monkeypatch.setattr(bron_updates.oer_catalogus, "open_conn", lambda: dummy_conn_cls())
+    monkeypatch.setattr(bron_updates.oer_catalogus, "gewijzigde_oers", lambda i, conn=None: ([], 0))
+    bronnen2 = {s.bron for s in bron_updates.verzamel_bron_status(inhoud=True)}
+    assert "oer-inhoud" in bronnen2
