@@ -39,11 +39,20 @@ jobs:
             exit 0
           fi
           gh label create bronactualiteit --color FBCA04 --description "Wekelijkse OER-bronactualiteit-check" --force
+          # Body via bestand (rapport-inhoud nooit door een shell-variabele → geen quote-injectie).
+          {
+            echo "Wekelijkse OER-bronactualiteit-check vond nieuwe OER('s) upstream."
+            echo
+            echo '```'
+            cat rapport.txt
+            echo '```'
+            echo
+            echo "Actie: ingest de nieuwe OER('s) lokaal en commit de bijgewerkte \`data/oer_corpus_manifest.json\`."
+          } > issue-body.md
           NUM=$(gh issue list --label bronactualiteit --state open --json number --jq '.[0].number // empty')
-          BODY=$'Wekelijkse OER-bronactualiteit-check vond nieuwe OER('"'"'s) upstream.\n\n```\n'"$(cat rapport.txt)"$'\n```\n\nActie: ingest de nieuwe OER('"'"'s) lokaal en commit de bijgewerkte `data/oer_corpus_manifest.json`.'
           if [ -n "$NUM" ]; then
-            gh issue comment "$NUM" --body "$BODY"
+            gh issue comment "$NUM" --body-file issue-body.md
           else
             gh issue create --label bronactualiteit \
-              --title "Bronactualiteit: nieuwe OER('s) beschikbaar" --body "$BODY"
+              --title "Bronactualiteit: nieuwe OER('s) beschikbaar" --body-file issue-body.md
           fi
