@@ -94,8 +94,8 @@ _MAX_KANDIDATEN = 40
 # ── Beheer (dev-only, achter BEHEER_ENABLED) ────────────────────────────────────
 _BEHEER_ENABLED = os.environ.get("BEHEER_ENABLED", "").lower() == "true"
 _PROJECT_ROOT = (
-    Path(__file__).resolve().parents[2]
-)  # repo-root: scripts/ + uv verwachten dit als cwd
+    Path(__file__).resolve().parents[1]
+)  # subproject-root: scripts/, pyproject + uv-env leven hier; OEREN_PAD=../oeren rekent hierop
 _INSTELLING_KEYS = {
     "aeres",
     "curio",
