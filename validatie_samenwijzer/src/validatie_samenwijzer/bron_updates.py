@@ -147,8 +147,61 @@ def _oer_status(online: bool = False) -> BronStatus:
     )
 
 
-def verzamel_bron_status(online: bool = False) -> list[BronStatus]:
-    return [_skills_status(), _kd_status(), _oer_status(online=online)]
+def _oer_inhoud_status() -> BronStatus:
+    """Content-wijzigingscheck: bestaande OER's die upstream zijn herzien (Deltion-only).
+
+    Duur (één refetch per gematcht document) → eigen flag (--oer-inhoud). Instellingen
+    zonder per-OER content-endpoint leveren ([], 0) en worden als 'niet gecheckt'
+    gerapporteerd, niet als 'ongewijzigd'.
+    """
+    gewijzigd: dict[str, list] = {}
+    onbereikbaar: list[str] = []
+    zonder_baseline = 0
+    conn = oer_catalogus.open_conn()
+    try:
+        for inst in sorted(oer_catalogus._CATALOGUS_BRONNEN):
+            try:
+                items, nb = oer_catalogus.gewijzigde_oers(inst, conn=conn)
+            except oer_catalogus.CatalogusOnbereikbaarError as e:
+                logger.warning("OER-inhoudcheck overgeslagen (%s)", e)
+                onbereikbaar.append(inst)
+                continue
+            zonder_baseline += nb
+            if items:
+                gewijzigd[inst] = items
+    finally:
+        conn.close()
+    n_totaal = sum(len(v) for v in gewijzigd.values())
+    gecheckt = sorted(set(oer_catalogus._CATALOGUS_BRONNEN) - set(onbereikbaar))
+    niet_gecheckt = sorted(set(_OER_CRAWLBAAR) - {"deltion"})
+    if n_totaal:
+        per = ", ".join(f"{i}: {len(v)}" for i, v in sorted(gewijzigd.items()))
+        kop = f"{n_totaal} herziene OER('s) ({per})"
+    else:
+        kop = "geen herziene OER's via content-check"
+    delen = [kop]
+    if zonder_baseline:
+        delen.append(f"{zonder_baseline} zonder baseline (her-ingest legt 'm vast)")
+    delen.append(f"{len(niet_gecheckt)} instelling(en) niet gecheckt (geen content-endpoint)")
+    return BronStatus(
+        "oer-inhoud",
+        automatisch=True,
+        signaal="; ".join(delen),
+        details={
+            "gewijzigd_per_instelling": {i: [it.sleutel for it in v] for i, v in gewijzigd.items()},
+            "zonder_baseline": zonder_baseline,
+            "onbereikbaar": onbereikbaar,
+            "gecheckt": gecheckt,
+            "niet_gecheckt": niet_gecheckt,
+        },
+    )
+
+
+def verzamel_bron_status(online: bool = False, inhoud: bool = False) -> list[BronStatus]:
+    statussen = [_skills_status(), _kd_status(), _oer_status(online=online)]
+    if inhoud:
+        statussen.append(_oer_inhoud_status())
+    return statussen
 
 
 def rapporteer(statussen: list[BronStatus]) -> str:
@@ -166,10 +219,15 @@ def main() -> int:
     parser.add_argument(
         "--oer", action="store_true", help="Draai ook de online OER-catalogus-check (netwerk)"
     )
+    parser.add_argument(
+        "--oer-inhoud",
+        action="store_true",
+        help="Draai ook de content-wijzigingscheck (duur: refetch per Deltion-OER)",
+    )
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     try:
-        statussen = verzamel_bron_status(online=args.oer)
+        statussen = verzamel_bron_status(online=args.oer, inhoud=args.oer_inhoud)
     except sqlite3.OperationalError as e:
         logger.error("Kan de database niet lezen (%s) — is DB_PATH correct?", e)
         return 1

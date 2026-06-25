@@ -18,6 +18,12 @@ INSTELLING_SOORTEN = {
 }
 
 
+def _kolom_bestaat(conn: sqlite3.Connection, tabel: str, kolom: str) -> bool:
+    """True als `kolom` in `tabel` bestaat. Gebruikt positie 1 (de naam) zodat de check
+    onafhankelijk is van de row_factory. Tabelnamen zijn hardgecodeerde literals."""
+    return any(r[1] == kolom for r in conn.execute(f"PRAGMA table_info({tabel})"))
+
+
 def init_db(conn: sqlite3.Connection) -> None:
     """Maak alle tabellen aan als ze nog niet bestaan en activeer foreign keys."""
     # Migratie: instelling_documenten had eerst een CHECK-constraint op `soort`
@@ -124,6 +130,13 @@ def init_db(conn: sqlite3.Connection) -> None:
     """)
     conn.commit()
 
+    # Additieve migratie (Fase 3b): content_hash per document voor upstream-
+    # wijzigingsdetectie. ADD COLUMN i.p.v. DROP — deze tabellen bevatten echte OER's.
+    for tabel in ("oer_documenten", "instelling_documenten"):
+        if not _kolom_bestaat(conn, tabel, "content_hash"):
+            conn.execute(f"ALTER TABLE {tabel} ADD COLUMN content_hash TEXT")
+    conn.commit()
+
 
 def get_connection(db_path: Path, timeout: float = 30.0) -> sqlite3.Connection:
     """Open een SQLite-verbinding met WAL-modus en Row-factory."""
@@ -191,6 +204,14 @@ def get_oer_document_by_id(conn: sqlite3.Connection, oer_id: int) -> sqlite3.Row
 def markeer_geindexeerd(conn: sqlite3.Connection, oer_id: int) -> None:
     """Zet geindexeerd=1 voor het OER-document met het gegeven id."""
     conn.execute("UPDATE oer_documenten SET geindexeerd = 1 WHERE id = ?", (oer_id,))
+    conn.commit()
+
+
+def set_oer_content_hash(conn: sqlite3.Connection, oer_id: int, content_hash: str) -> None:
+    """Sla de content-hash van een OER-document op (voor upstream-wijzigingsdetectie)."""
+    conn.execute(
+        "UPDATE oer_documenten SET content_hash = ? WHERE id = ?", (content_hash, oer_id)
+    )
     conn.commit()
 
 
@@ -265,6 +286,16 @@ def haal_instelling_document_op(
 def markeer_instelling_document_geindexeerd(conn: sqlite3.Connection, doc_id: int) -> None:
     """Zet geindexeerd=1 voor het instellingsbrede document met het gegeven id."""
     conn.execute("UPDATE instelling_documenten SET geindexeerd = 1 WHERE id = ?", (doc_id,))
+    conn.commit()
+
+
+def set_instelling_document_content_hash(
+    conn: sqlite3.Connection, doc_id: int, content_hash: str
+) -> None:
+    """Sla de content-hash van een instellingsbreed document op."""
+    conn.execute(
+        "UPDATE instelling_documenten SET content_hash = ? WHERE id = ?", (content_hash, doc_id)
+    )
     conn.commit()
 
 

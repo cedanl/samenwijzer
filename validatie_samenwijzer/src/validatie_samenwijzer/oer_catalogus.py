@@ -12,6 +12,7 @@ gloednieuw cohort (bv. 2026-2027) als 'nieuwe OER' zichtbaar wordt.
 
 from __future__ import annotations
 
+import hashlib
 import logging
 import os
 import re
@@ -50,10 +51,22 @@ class CatalogusItem:
     cohort: str
     naam: str
     instelling: str
+    uuid: str | None = None  # alleen Deltion levert 'm; nodig voor de content-refetch
 
     @property
     def sleutel(self) -> tuple[str, str, str]:
         return (self.crebo, self.leerweg, self.cohort)
+
+
+def bereken_content_hash(tekst: str) -> str:
+    """Genormaliseerde SHA256-hex van documenttekst, voor upstream-wijzigingsdetectie.
+
+    Whitespace wordt gecollapst (`" ".join(tekst.split())`) zodat onbelangrijke
+    verschillen (regeleindes, dubbele spaties) geen valse 'gewijzigd' triggeren. DEZE
+    helper is de enige bron van waarheid: ingest (producent) en `gewijzigde_oers`
+    (consument) MOETEN beide hierlangs, anders matchen ongewijzigde documenten nooit.
+    """
+    return hashlib.sha256(" ".join(tekst.split()).encode("utf-8")).hexdigest()
 
 
 def _projecteer(crebo: str, leerweg: str, cohort: str, velden: tuple[str, ...]) -> tuple[str, ...]:
@@ -108,7 +121,14 @@ def _items_naar_catalogus(
         rec = parse(raw)
         if rec:
             uit.append(
-                CatalogusItem(rec["crebo"], rec["leerweg"], rec["cohort"], rec["naam"], instelling)
+                CatalogusItem(
+                    rec["crebo"],
+                    rec["leerweg"],
+                    rec["cohort"],
+                    rec["naam"],
+                    instelling,
+                    rec.get("uuid"),
+                )
             )
     return uit
 
@@ -323,3 +343,57 @@ def instelling_nieuwe_oers(instelling: str, conn=None) -> list[CatalogusItem]:
         if conn is None:
             eigen.close()
     return nieuwe_oers(catalogus, _tupels_uit_rows(rows, instelling, velden), velden)
+
+
+def gewijzigde_oers(instelling: str, conn=None) -> tuple[list[CatalogusItem], int]:
+    """OER's die wij hebben én die upstream inhoudelijk zijn gewijzigd (Deltion-only).
+
+    Matcht elk catalogus-item op zijn diff-sleutel tegen onze DB-rijen. Voor een match
+    met een opgeslagen `content_hash` wordt de upstream-content gerefetcht
+    (`/reports/<uuid>/html`) en via `bereken_content_hash` vergeleken. Returnt
+    ``(gewijzigde_items, aantal_zonder_baseline)``. Een rij met `content_hash IS NULL`
+    telt als zonder-baseline (niet gefetcht). Niet-Deltion-instellingen → ``([], 0)``
+    omdat ze geen per-OER content-endpoint hebben.
+
+    Raises:
+        CatalogusOnbereikbaarError: bij een netwerk-/API-fout op de catalogus-call.
+    """
+    if instelling != "deltion":
+        return [], 0
+    try:
+        catalogus = deltion_catalogus()
+    except httpx.HTTPError as e:
+        raise CatalogusOnbereikbaarError(f"{instelling}: {e}") from e
+    velden = _DIFF_SLEUTEL_VELDEN.get(instelling, _STANDAARD_VELDEN)
+    eigen = conn or open_conn()
+    try:
+        rows = db.get_alle_oers_met_instelling(eigen)
+    finally:
+        if conn is None:
+            eigen.close()
+    hash_per_sleutel = {
+        _projecteer(r["crebo"], r["leerweg"], r["cohort"], velden): r["content_hash"]
+        for r in rows
+        if r["naam"] == instelling
+    }
+    gewijzigd: list[CatalogusItem] = []
+    zonder_baseline = 0
+    fd = _fetch_deltion()
+    with httpx.Client(headers=fd._HEADERS, timeout=30) as client:
+        for item in catalogus:
+            sleutel = _projecteer(item.crebo, item.leerweg, item.cohort, velden)
+            if sleutel not in hash_per_sleutel:
+                continue  # nieuwe OER → telt onder nieuwe_oers, niet hier
+            opgeslagen = hash_per_sleutel[sleutel]
+            if not opgeslagen:
+                zonder_baseline += 1
+                continue
+            if not item.uuid:
+                continue
+            try:
+                md = fd._haal_studiegids_md(client, item.uuid)
+            except httpx.HTTPError:
+                continue  # sla een kapotte refetch over, niet de hele check
+            if bereken_content_hash(md) != opgeslagen:
+                gewijzigd.append(item)
+    return gewijzigd, zonder_baseline

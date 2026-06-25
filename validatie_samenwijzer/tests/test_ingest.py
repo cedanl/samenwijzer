@@ -367,3 +367,25 @@ def test_opleiding_lijn_davinci_negeert_naamloze_kop(regel):
     """Cover-pagina's zonder opleidingsnaam mogen geen valse match geven."""
     m = _OPLEIDING_LIJN_DAVINCI.match(regel)
     assert m is None or len(m.group(1).strip()) < 3
+
+
+def test_verwerk_bestand_slaat_content_hash_op(conn, tmp_path, monkeypatch):
+    """Na ingest heeft de OER-rij de hash van de geëxtraheerde tekst."""
+    from validatie_samenwijzer import ingest
+    from validatie_samenwijzer.db import voeg_instelling_toe
+    from validatie_samenwijzer.oer_catalogus import bereken_content_hash
+
+    voeg_instelling_toe(conn, "deltion", "Deltion")
+    map_ = tmp_path / "deltion_oeren"
+    map_.mkdir()
+    tekst = "Kerntaak B1-K1 Bereidt gerechten voor. Crebo 25180."
+    bestand = map_ / "25180_BOL_2025__studiegids.md"
+    bestand.write_text(tekst, encoding="utf-8")
+    monkeypatch.setenv("OEREN_PAD", str(tmp_path))
+
+    ingest._verwerk_bestand(bestand, "deltion", conn)
+
+    rij = conn.execute(
+        "SELECT content_hash FROM oer_documenten WHERE crebo='25180'"
+    ).fetchone()
+    assert rij["content_hash"] == bereken_content_hash(tekst)
