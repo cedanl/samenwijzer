@@ -115,6 +115,10 @@ _BEHEER_TAKEN: dict[str, list[str]] = {
     "seed_bulk": ["uv", "run", "python", "scripts/seed_bulk.py"],
     "seed_minimal": ["uv", "run", "python", "scripts/seed.py"],
     "kd_sync": ["bash", "scripts/sync_kwalificatiedossiers.sh"],
+    "bron_updates": ["uv", "run", "python", "-m", "validatie_samenwijzer.bron_updates"],
+    "bron_updates_oer": [
+        "uv", "run", "python", "-m", "validatie_samenwijzer.bron_updates", "--oer"
+    ],
 }
 
 
