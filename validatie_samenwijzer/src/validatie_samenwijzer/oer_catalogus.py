@@ -12,6 +12,7 @@ gloednieuw cohort (bv. 2026-2027) als 'nieuwe OER' zichtbaar wordt.
 
 from __future__ import annotations
 
+import hashlib
 import logging
 import os
 import re
@@ -54,6 +55,17 @@ class CatalogusItem:
     @property
     def sleutel(self) -> tuple[str, str, str]:
         return (self.crebo, self.leerweg, self.cohort)
+
+
+def bereken_content_hash(tekst: str) -> str:
+    """Genormaliseerde SHA256-hex van documenttekst, voor upstream-wijzigingsdetectie.
+
+    Whitespace wordt gecollapst (`" ".join(tekst.split())`) zodat onbelangrijke
+    verschillen (regeleindes, dubbele spaties) geen valse 'gewijzigd' triggeren. DEZE
+    helper is de enige bron van waarheid: ingest (producent) en `gewijzigde_oers`
+    (consument) MOETEN beide hierlangs, anders matchen ongewijzigde documenten nooit.
+    """
+    return hashlib.sha256(" ".join(tekst.split()).encode("utf-8")).hexdigest()
 
 
 def _projecteer(crebo: str, leerweg: str, cohort: str, velden: tuple[str, ...]) -> tuple[str, ...]:

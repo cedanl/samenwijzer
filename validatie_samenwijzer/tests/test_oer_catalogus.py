@@ -163,3 +163,13 @@ def test_haal_items_op_zonder_cohort_stuurt_leeg_filter():
 
     fetch_deltion.haal_items_op(_FakeClient(), "2026-2027")
     assert verstuurd["filters"] == {"cohort": ["2026-2027"]}
+
+
+def test_bereken_content_hash_negeert_whitespace_verschillen():
+    from validatie_samenwijzer.oer_catalogus import bereken_content_hash
+
+    assert bereken_content_hash("hallo  wereld") == bereken_content_hash("hallo\n\nwereld\n")
+    assert bereken_content_hash("hallo wereld") != bereken_content_hash("hallo werelt")
+    # Deterministisch + hex SHA256 (64 tekens).
+    h = bereken_content_hash("x")
+    assert len(h) == 64 and all(c in "0123456789abcdef" for c in h)

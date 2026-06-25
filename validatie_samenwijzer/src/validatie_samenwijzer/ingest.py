@@ -458,9 +458,11 @@ def _verwerk_bestand(
     """Verwerk één OER-bestand: parse → extraheer tekst en kerntaken → sla op in SQLite."""
     from validatie_samenwijzer.db import (
         markeer_geindexeerd,
+        set_oer_content_hash,
         update_oer_bestandspad,
         voeg_kerntaak_toe,
     )
+    from validatie_samenwijzer.oer_catalogus import bereken_content_hash
 
     result = _resolveer_oer(pad, instelling_naam, conn, reset=reset)
     if result is None:
@@ -532,6 +534,7 @@ def _verwerk_bestand(
             volgorde=kt["volgorde"],
         )
 
+    set_oer_content_hash(conn, oer_id, bereken_content_hash(tekst))
     markeer_geindexeerd(conn, oer_id)
     log.info("'%s' geïndexeerd: %d kerntaken.", pad.name, len(kerntaken))
 
@@ -578,8 +581,10 @@ def _verwerk_instelling_documenten(
         INSTELLING_SOORTEN,
         get_instelling_by_naam,
         markeer_instelling_document_geindexeerd,
+        set_instelling_document_content_hash,
         voeg_instelling_document_toe,
     )
+    from validatie_samenwijzer.oer_catalogus import bereken_content_hash
 
     map_naam = _MAP_NAAM.get(naam, naam)
     pad = oeren_pad / map_naam / _INSTELLING_SUBMAP
@@ -599,6 +604,13 @@ def _verwerk_instelling_documenten(
             if md_pad.exists():
                 md_pad.unlink()
         converteer_naar_markdown(bestand)
+        md_pad = bestand.with_suffix(".md")
+        verwerk_pad = md_pad if md_pad.exists() else bestand
+        try:
+            tekst = extraheer_tekst(verwerk_pad)
+        except Exception as e:
+            log.error("Extractie mislukt voor '%s': %s", bestand.name, e)
+            tekst = ""
         titel = f"{INSTELLING_SOORTEN[soort]} {inst['display_naam']}"
         doc_id = voeg_instelling_document_toe(
             conn,
@@ -607,6 +619,7 @@ def _verwerk_instelling_documenten(
             titel=titel,
             bestandspad=_pad_relatief_aan_oeren_root(bestand),
         )
+        set_instelling_document_content_hash(conn, doc_id, bereken_content_hash(tekst))
         markeer_instelling_document_geindexeerd(conn, doc_id)
         log.info("Instellingsbron '%s' geïndexeerd voor %s.", soort, inst["display_naam"])
 
