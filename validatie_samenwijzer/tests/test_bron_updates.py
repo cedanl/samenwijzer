@@ -160,7 +160,7 @@ def test_oer_inhoud_status_aggregeert_gewijzigde_oers(monkeypatch):
     assert status.details["zonder_baseline"] == 2
 
 
-def test_verzamel_bron_status_alleen_oer(monkeypatch, gemockte_bronnen):
+def test_verzamel_bron_status_alleen_oer(monkeypatch):
     monkeypatch.setattr(
         bron_updates.oer_catalogus, "_CATALOGUS_BRONNEN", {"deltion": lambda: []}
     )

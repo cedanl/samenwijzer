@@ -117,7 +117,7 @@ def _tupels_uit_manifest(
     instelling: str, velden: tuple[str, ...], pad: Path
 ) -> set[tuple[str, ...]]:
     """De op `velden` geprojecteerde set uit de gecommitte corpus-manifest."""
-    data = json.loads(Path(pad).read_text(encoding="utf-8"))
+    data = json.loads(pad.read_text(encoding="utf-8"))
     return {
         _projecteer(crebo, leerweg, cohort, velden)
         for crebo, leerweg, cohort in data.get(instelling, [])

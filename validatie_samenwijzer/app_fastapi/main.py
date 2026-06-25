@@ -478,7 +478,7 @@ def beheer_run(request: Request, taak: str, reset: int = 0, instelling: str = ""
     """Stream de stdout van een vaste beheer-taak als SSE. GET → middleware bewaart niet.
 
     Veiligheid: dubbele gate (BEHEER_ENABLED + algemene poort), vaste commando-allowlist
-    (lijst-vorm Popen, geen shell), gevalideerde scope, cwd hard op de repo-root.
+    (lijst-vorm Popen, geen shell), gevalideerde scope, cwd hard op de subproject-root.
     """
     if not _BEHEER_ENABLED:
         return JSONResponse({"error": "uit"}, status_code=404)
