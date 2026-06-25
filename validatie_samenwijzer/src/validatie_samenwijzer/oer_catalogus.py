@@ -113,6 +113,17 @@ def _tupels_uit_rows(
     }
 
 
+def _tupels_uit_manifest(
+    instelling: str, velden: tuple[str, ...], pad: Path
+) -> set[tuple[str, ...]]:
+    """De op `velden` geprojecteerde set uit de gecommitte corpus-manifest."""
+    data = json.loads(Path(pad).read_text(encoding="utf-8"))
+    return {
+        _projecteer(crebo, leerweg, cohort, velden)
+        for crebo, leerweg, cohort in data.get(instelling, [])
+    }
+
+
 def _items_naar_catalogus(
     raw_items: list[dict], instelling: str, parse: Callable[[dict], dict | None]
 ) -> list[CatalogusItem]:
@@ -345,13 +356,16 @@ def genereer_corpus_manifest(conn, pad: Path) -> None:
     )
 
 
-def instelling_nieuwe_oers(instelling: str, conn=None) -> list[CatalogusItem]:
-    """Haal de catalogus van een instelling en diff tegen de DB.
+def instelling_nieuwe_oers(
+    instelling: str, conn=None, *, manifest: bool = False
+) -> list[CatalogusItem]:
+    """Haal de catalogus van een instelling en diff tegen wat we al hebben.
 
-    Lege lijst als er (nog) geen adapter voor de instelling is. Geef een open
-    ``conn`` mee om bij meerdere instellingen één connectie te delen; zonder
-    ``conn`` opent (en sluit) de functie er zelf één. Bij een netwerk-/API-fout
-    raise't hij ``CatalogusOnbereikbaarError`` zodat de aanroeper kan degraderen.
+    Lege lijst als er (nog) geen adapter voor de instelling is. Standaard diff't hij tegen
+    de DB; met ``manifest=True`` tegen de gecommitte ``oer_corpus_manifest.json`` — die modus
+    heeft geen DB nodig en is bedoeld voor de wekelijkse Action (validatie.db is gitignored).
+    Geef een open ``conn`` mee om bij meerdere instellingen één connectie te delen. Bij een
+    netwerk-/API-fout raise't hij ``CatalogusOnbereikbaarError`` zodat de aanroeper kan degraderen.
     """
     bron = _CATALOGUS_BRONNEN.get(instelling)
     if bron is None:
@@ -361,13 +375,17 @@ def instelling_nieuwe_oers(instelling: str, conn=None) -> list[CatalogusItem]:
     except httpx.HTTPError as e:
         raise CatalogusOnbereikbaarError(f"{instelling}: {e}") from e
     velden = _DIFF_SLEUTEL_VELDEN.get(instelling, _STANDAARD_VELDEN)
-    eigen = conn or open_conn()
-    try:
-        rows = db.get_alle_oers_met_instelling(eigen)
-    finally:
-        if conn is None:
-            eigen.close()
-    return nieuwe_oers(catalogus, _tupels_uit_rows(rows, instelling, velden), velden)
+    if manifest:
+        db_tupels = _tupels_uit_manifest(instelling, velden, manifest_pad())
+    else:
+        eigen = conn or open_conn()
+        try:
+            rows = db.get_alle_oers_met_instelling(eigen)
+        finally:
+            if conn is None:
+                eigen.close()
+        db_tupels = _tupels_uit_rows(rows, instelling, velden)
+    return nieuwe_oers(catalogus, db_tupels, velden)
 
 
 def gewijzigde_oers(instelling: str, conn=None) -> tuple[list[CatalogusItem], int]:

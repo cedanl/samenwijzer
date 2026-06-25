@@ -99,7 +99,7 @@ def _kd_status() -> BronStatus:
     )
 
 
-def _oer_status(online: bool = False) -> BronStatus:
+def _oer_status(online: bool = False, manifest: bool = False) -> BronStatus:
     if not online:
         return BronStatus(
             "oer",
@@ -109,11 +109,11 @@ def _oer_status(online: bool = False) -> BronStatus:
         )
     nieuw: dict[str, list] = {}
     onbereikbaar: list[str] = []
-    conn = oer_catalogus.open_conn()
+    conn = None if manifest else oer_catalogus.open_conn()
     try:
         for inst in sorted(oer_catalogus._CATALOGUS_BRONNEN):
             try:
-                items = oer_catalogus.instelling_nieuwe_oers(inst, conn=conn)
+                items = oer_catalogus.instelling_nieuwe_oers(inst, conn=conn, manifest=manifest)
             except oer_catalogus.CatalogusOnbereikbaarError as e:
                 logger.warning("OER-catalogus overgeslagen (%s)", e)
                 onbereikbaar.append(inst)
@@ -121,7 +121,8 @@ def _oer_status(online: bool = False) -> BronStatus:
             if items:
                 nieuw[inst] = items
     finally:
-        conn.close()
+        if conn is not None:
+            conn.close()
     n_totaal = sum(len(v) for v in nieuw.values())
     rest = sorted(set(_OER_CRAWLBAAR) - set(oer_catalogus._CATALOGUS_BRONNEN))
     delen = [
@@ -197,8 +198,11 @@ def _oer_inhoud_status() -> BronStatus:
     )
 
 
-def verzamel_bron_status(online: bool = False, inhoud: bool = False) -> list[BronStatus]:
-    statussen = [_skills_status(), _kd_status(), _oer_status(online=online)]
+def verzamel_bron_status(
+    online: bool = False, manifest: bool = False, alleen_oer: bool = False, inhoud: bool = False
+) -> list[BronStatus]:
+    statussen = [] if alleen_oer else [_skills_status(), _kd_status()]
+    statussen.append(_oer_status(online=online, manifest=manifest))
     if inhoud:
         statussen.append(_oer_inhoud_status())
     return statussen
@@ -220,6 +224,16 @@ def main() -> int:
         "--oer", action="store_true", help="Draai ook de online OER-catalogus-check (netwerk)"
     )
     parser.add_argument(
+        "--manifest",
+        action="store_true",
+        help="Diff tegen de gecommitte corpus-manifest i.p.v. de DB (voor de Action)",
+    )
+    parser.add_argument(
+        "--alleen-oer",
+        action="store_true",
+        help="Rapporteer alleen de OER-bron (sla skills/kd over)",
+    )
+    parser.add_argument(
         "--oer-inhoud",
         action="store_true",
         help="Draai ook de content-wijzigingscheck (duur: refetch per Deltion-OER)",
@@ -227,7 +241,12 @@ def main() -> int:
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     try:
-        statussen = verzamel_bron_status(online=args.oer, inhoud=args.oer_inhoud)
+        statussen = verzamel_bron_status(
+            online=args.oer,
+            manifest=args.manifest,
+            alleen_oer=args.alleen_oer,
+            inhoud=args.oer_inhoud,
+        )
     except sqlite3.OperationalError as e:
         logger.error("Kan de database niet lezen (%s) — is DB_PATH correct?", e)
         return 1
