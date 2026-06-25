@@ -355,6 +355,59 @@ def test_get_alle_oers_met_instelling_leeg(conn):
     assert get_alle_oers_met_instelling(conn) == []
 
 
+def test_init_db_voegt_content_hash_kolom_toe(conn):
+    for tabel in ("oer_documenten", "instelling_documenten"):
+        kolommen = {r[1] for r in conn.execute(f"PRAGMA table_info({tabel})")}
+        assert "content_hash" in kolommen
+
+
+def test_init_db_migratie_is_idempotent_en_behoudt_data():
+    """ALTER TABLE ADD COLUMN op een bestaande tabel mét data mag niet DROPpen."""
+    import sqlite3
+
+    from validatie_samenwijzer.db import init_db
+
+    c = sqlite3.connect(":memory:")
+    c.row_factory = sqlite3.Row
+    # Oud schema: oer_documenten ZONDER content_hash, met één rij.
+    c.executescript(
+        """
+        CREATE TABLE instellingen (id INTEGER PRIMARY KEY, naam TEXT, display_naam TEXT);
+        CREATE TABLE oer_documenten (
+            id INTEGER PRIMARY KEY AUTOINCREMENT, instelling_id INTEGER NOT NULL,
+            opleiding TEXT NOT NULL, crebo TEXT NOT NULL, cohort TEXT NOT NULL,
+            leerweg TEXT NOT NULL, bestandspad TEXT NOT NULL,
+            geindexeerd INTEGER NOT NULL DEFAULT 0
+        );
+        INSERT INTO instellingen (id, naam, display_naam) VALUES (1, 'deltion', 'Deltion');
+        INSERT INTO oer_documenten (instelling_id, opleiding, crebo, cohort, leerweg, bestandspad)
+            VALUES (1, 'Kok', '25180', '2025', 'BOL', 'x.md');
+        """
+    )
+    c.commit()
+    init_db(c)  # eerste keer: voegt kolom toe
+    init_db(c)  # tweede keer: idempotent, geen fout
+    rij = c.execute("SELECT crebo, content_hash FROM oer_documenten").fetchone()
+    assert rij["crebo"] == "25180"  # rij behouden, niet ge-DROPt
+    assert rij["content_hash"] is None  # nieuwe kolom, nog leeg
+    c.close()
+
+
+def test_set_oer_content_hash(conn):
+    from validatie_samenwijzer.db import (
+        set_oer_content_hash,
+        voeg_instelling_toe,
+        voeg_oer_document_toe,
+    )
+
+    inst = voeg_instelling_toe(conn, "deltion", "Deltion")
+    oer_id = voeg_oer_document_toe(conn, inst, "Kok", "25180", "2025", "BOL", "x.md")
+    set_oer_content_hash(conn, oer_id, "abc123")
+    assert conn.execute(
+        "SELECT content_hash FROM oer_documenten WHERE id = ?", (oer_id,)
+    ).fetchone()[0] == "abc123"
+
+
 def test_student_kerntaak_score(conn):
     voeg_instelling_toe(conn, "rijn", "Rijn IJssel")
     inst = get_instelling_by_naam(conn, "rijn")
