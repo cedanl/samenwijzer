@@ -173,3 +173,73 @@ def test_bereken_content_hash_negeert_whitespace_verschillen():
     # Deterministisch + hex SHA256 (64 tekens).
     h = bereken_content_hash("x")
     assert len(h) == 64 and all(c in "0123456789abcdef" for c in h)
+
+
+def test_catalogusitem_uuid_default_none():
+    # Bestaande 5-arg-constructie (de niet-Deltion-parsers) blijft werken.
+    item = CatalogusItem("25180", "BOL", "2025", "Kok", "deltion")
+    assert item.uuid is None
+    assert CatalogusItem("25180", "BOL", "2025", "Kok", "deltion", "u-1").uuid == "u-1"
+
+
+def test_gewijzigde_oers_niet_deltion_is_leeg():
+    items, zonder_baseline = oer_catalogus.gewijzigde_oers("aeres", conn=None)
+    assert items == [] and zonder_baseline == 0
+
+
+def test_gewijzigde_oers_detecteert_andere_upstream_hash(monkeypatch):
+    """Een Deltion-OER die we hebben, met afwijkende upstream-content, telt als gewijzigd;
+    een rij zonder baseline telt als zonder_baseline en wordt niet gefetcht."""
+    import sqlite3
+
+    from validatie_samenwijzer.db import (
+        init_db,
+        set_oer_content_hash,
+        voeg_instelling_toe,
+        voeg_oer_document_toe,
+    )
+    from validatie_samenwijzer.oer_catalogus import CatalogusItem, bereken_content_hash
+
+    conn = sqlite3.connect(":memory:")
+    conn.row_factory = sqlite3.Row
+    init_db(conn)
+    inst = voeg_instelling_toe(conn, "deltion", "Deltion")
+    # OER A: baseline = hash van "oud" → upstream "nieuw" → gewijzigd.
+    a = voeg_oer_document_toe(conn, inst, "Kok", "25180", "2025", "BOL", "a.md")
+    set_oer_content_hash(conn, a, bereken_content_hash("oud"))
+    # OER B: geen baseline (NULL) → zonder_baseline, geen fetch.
+    voeg_oer_document_toe(conn, inst, "Bakker", "25181", "2025", "BOL", "b.md")
+
+    monkeypatch.setattr(
+        oer_catalogus,
+        "deltion_catalogus",
+        lambda: [
+            CatalogusItem("25180", "BOL", "2025", "Kok", "deltion", "uuid-a"),
+            CatalogusItem("25181", "BOL", "2025", "Bakker", "deltion", "uuid-b"),
+        ],
+    )
+    monkeypatch.setitem(
+        oer_catalogus._CATALOGUS_BRONNEN, "deltion", oer_catalogus.deltion_catalogus
+    )
+
+    class _FakeFD:
+        _HEADERS = {}
+
+        def _haal_studiegids_md(self, client, uuid):
+            return "nieuw"  # afwijkend van baseline "oud"
+
+    monkeypatch.setattr(oer_catalogus, "_fetch_deltion", lambda: _FakeFD())
+    monkeypatch.setattr(oer_catalogus.httpx, "Client", lambda **kw: _NullClient())
+
+    items, zonder_baseline = oer_catalogus.gewijzigde_oers("deltion", conn=conn)
+    assert [i.crebo for i in items] == ["25180"]
+    assert zonder_baseline == 1
+    conn.close()
+
+
+class _NullClient:
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *a):
+        return False
