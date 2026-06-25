@@ -243,3 +243,25 @@ class _NullClient:
 
     def __exit__(self, *a):
         return False
+
+
+def test_genereer_corpus_manifest_schrijft_gesorteerde_tupels(tmp_path):
+    import json
+    import sqlite3
+
+    from validatie_samenwijzer import oer_catalogus
+    from validatie_samenwijzer.db import init_db, voeg_instelling_toe, voeg_oer_document_toe
+
+    conn = sqlite3.connect(":memory:")
+    conn.row_factory = sqlite3.Row
+    init_db(conn)
+    inst = voeg_instelling_toe(conn, "deltion", "Deltion")
+    voeg_oer_document_toe(conn, inst, "Kok", "25180", "2026", "BOL", "b.md")
+    voeg_oer_document_toe(conn, inst, "Kok", "25180", "2025", "BOL", "a.md")
+
+    pad = tmp_path / "oer_corpus_manifest.json"
+    oer_catalogus.genereer_corpus_manifest(conn, pad)
+
+    data = json.loads(pad.read_text(encoding="utf-8"))
+    assert data["deltion"] == [["25180", "BOL", "2025"], ["25180", "BOL", "2026"]]
+    conn.close()

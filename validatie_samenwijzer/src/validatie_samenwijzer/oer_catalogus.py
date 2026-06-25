@@ -13,6 +13,7 @@ gloednieuw cohort (bv. 2026-2027) als 'nieuwe OER' zichtbaar wordt.
 from __future__ import annotations
 
 import hashlib
+import json
 import logging
 import os
 import re
@@ -318,6 +319,30 @@ _CATALOGUS_BRONNEN: dict[str, Callable[[], list[CatalogusItem]]] = {
 def open_conn():
     """Open een DB-connectie op het geconfigureerde pad (caller sluit 'm)."""
     return db.get_connection(Path(os.environ.get("DB_PATH", "data/validatie.db")))
+
+
+def manifest_pad() -> Path:
+    """Pad van de gecommitte corpus-manifest (naast de DB; gitignored-met-exceptie)."""
+    return Path(os.environ.get("DB_PATH", "data/validatie.db")).parent / "oer_corpus_manifest.json"
+
+
+def genereer_corpus_manifest(conn, pad: Path) -> None:
+    """Schrijf een deterministische snapshot van (crebo, leerweg, cohort) per instelling.
+
+    De Action diff't hiertegen i.p.v. tegen de DB (validatie.db + een deel van oeren/ zijn
+    gitignored). Gegenereerd uit de VOLLEDIGE lokale DB, dus inclusief Deltion. Gesorteerd
+    + ontdubbeld zodat de diff klein en de git-diff stabiel blijft.
+    """
+    manifest: dict[str, list[tuple[str, str, str]]] = {}
+    for r in db.get_alle_oers_met_instelling(conn):
+        manifest.setdefault(r["naam"], []).append((r["crebo"], r["leerweg"], r["cohort"]))
+    uit = {
+        inst: [list(t) for t in sorted(set(tupels))]
+        for inst, tupels in sorted(manifest.items())
+    }
+    pad.write_text(
+        json.dumps(uit, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
 
 
 def instelling_nieuwe_oers(instelling: str, conn=None) -> list[CatalogusItem]:

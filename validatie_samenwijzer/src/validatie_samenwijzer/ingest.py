@@ -691,6 +691,12 @@ def main() -> None:
             n_kerntaken=n_kerntaken,
             duur_seconden=time.monotonic() - start,
         )
+        from validatie_samenwijzer.oer_catalogus import genereer_corpus_manifest, manifest_pad
+
+        pad = manifest_pad()
+        pad.parent.mkdir(parents=True, exist_ok=True)
+        genereer_corpus_manifest(conn, pad)
+        log.info("Corpus-manifest bijgewerkt: %s", pad)
 
 
 if __name__ == "__main__":
