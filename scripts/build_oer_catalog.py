@@ -28,10 +28,15 @@ _FALLBACK_PAD = Path(__file__).parent / "oer_kerntaken_fallback.json"
 
 log = logging.getLogger(__name__)
 
-# folder-naam → (snake_case key, display naam)
+# folder-naam → display naam. Houd synchroon met de 9 instellingen in
+# validatie_samenwijzer/src/validatie_samenwijzer/ingest.py:_INSTELLINGEN.
 _INSTELLING_DISPLAY = {
     "aeres_oeren": "Aeres MBO",
+    "curio_oeren": "Curio",
     "davinci_oeren": "Da Vinci",
+    "deltion_oeren": "Deltion College",
+    "graafschap_oeren": "Graafschap College",
+    "kwic_oeren": "Koning Willem I College",
     "rijn_ijssel_oer": "Rijn IJssel",
     "talland_oeren": "Talland",
     "utrecht_oeren": "Utrecht",

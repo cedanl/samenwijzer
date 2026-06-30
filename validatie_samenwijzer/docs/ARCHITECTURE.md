@@ -374,9 +374,9 @@ die via de root-`.gitignore` **Box-only** zijn (rechten — zie Multi-machine wo
 submap per instelling (`davinci_oeren/`, `rijn_ijssel_oer/`,
 `talland_oeren/`, `aeres_oeren/`, `utrecht_oeren/`, `kwic_oeren/` = Koning Willem I College).
 Daarnaast `oer_algemeen/` voor instelling-overstijgende documenten. De instelling-keys leven in
-**drie hardgecodeerde lijsten** die synchroon moeten blijven: `ingest._INSTELLINGEN`/`_MAP_NAAM`,
-`scripts/seed_bulk.py:INSTELLINGEN` en `app_fastapi/main.py:_INSTELLING_KEYS` — ontbreekt een nieuwe
-instelling in de seed-lijst, dan krijgt ze stil 0 studenten. Geïndexeerde OERs staan als
+**vier hardgecodeerde lijsten** die synchroon moeten blijven: `ingest._INSTELLINGEN`,
+`ingest._MAP_NAAM`, `scripts/seed_bulk.py:INSTELLINGEN` en `app_fastapi/main.py:_INSTELLING_KEYS` —
+ontbreekt een nieuwe instelling in de seed-lijst, dan krijgt ze stil 0 studenten. Geïndexeerde OERs staan als
 `geindexeerd=1` in `oer_documenten`. Studenten met `oer_id` naar niet-geïndexeerde OERs krijgen
 geen chatantwoorden.
 
