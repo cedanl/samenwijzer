@@ -53,7 +53,11 @@ kwalificatiedossiers/
 
 # Skills-plugin tooling (machine-lokaal — symlinks naar anthropics/skills)
 .agents/
-.claude/
+.claude/*
+!.claude/skills/
+.claude/skills/*
+# Uitzondering: handgeschreven team-skills wél in git (geen symlinks, geen persoonlijke settings)
+!.claude/skills/add-institution/
 skills-lock.json
 
 # Niet-publieke instellings-OER's — alleen via de app, niet in (publieke) git.
