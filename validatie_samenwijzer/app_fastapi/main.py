@@ -103,6 +103,7 @@ _INSTELLING_KEYS = {
     "deltion",
     "graafschap",
     "kwic",
+    "landstede",
     "rijn_ijssel",
     "talland",
     "utrecht",

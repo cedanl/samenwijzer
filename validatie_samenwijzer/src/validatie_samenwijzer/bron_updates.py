@@ -26,7 +26,7 @@ logger = logging.getLogger(__name__)
 # Crawlbaarheid per instelling (juni 2026 in kaart gebracht; zie reference-memory
 # + scripts/fetch_deltion.py). Bepaalt of een OER-/instellingscatalogus-check
 # geautomatiseerd kan worden (Fase 3) of handmatig blijft.
-_OER_CRAWLBAAR = ["aeres", "curio", "deltion", "rijn_ijssel", "talland", "utrecht"]
+_OER_CRAWLBAAR = ["aeres", "curio", "deltion", "landstede", "rijn_ijssel", "talland", "utrecht"]
 _OER_NIET_CRAWLBAAR = ["davinci", "graafschap", "kwic"]
 
 
