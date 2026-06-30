@@ -94,8 +94,9 @@ Volledige beschrijving in `docs/ARCHITECTURE.md`. De regels die een wijziging ni
   aanhalingstekens** (OER/KD/examenreglement). Skills hebben een aangepaste citatie (bron + beroep +
   categorie + skill-naam) — verzonnen paginanummers zijn verboden. Templates: `_SYSTEEM_TEMPLATE`,
   `_MULTI_SYSTEEM_TEMPLATE`.
-- **Drie hardgecodeerde instelling-lijsten** moeten synchroon blijven: `ingest._INSTELLINGEN`/
-  `_MAP_NAAM`, `scripts/seed_bulk.py:INSTELLINGEN`, `app_fastapi/main.py:_INSTELLING_KEYS`. Ontbreekt een
+- **Vier hardgecodeerde instelling-lijsten** moeten synchroon blijven (afgedwongen door
+  `tests/test_instelling_lijsten_sync.py`): `ingest._INSTELLINGEN`, `ingest._MAP_NAAM`,
+  `scripts/seed_bulk.py:INSTELLINGEN`, `app_fastapi/main.py:_INSTELLING_KEYS`. Ontbreekt een
   nieuwe instelling in de seed-lijst → stil **0 studenten**.
 - **Parser-sync met de parent**: de parse-helpers in `ingest.py` worden bewust gespiegeld naar
   `src/samenwijzer/oer_parsing.py`. Wijzig je ze hier, werk de parent-kopie mee bij (en omgekeerd).
@@ -105,6 +106,23 @@ Volledige beschrijving in `docs/ARCHITECTURE.md`. De regels die een wijziging ni
   `chat.py`, `app_fastapi/data.py` en ingest — voer ruwe `opleiding`-strings nooit ongeschoond naar UI.
 - **OER-onleesbaar-modus**: bij lege OER-fulltext bouwt `bouw_systeem` de prompt met KD +
   instellingsregelingen als hoofdbron; alleen zónder enige bron volgt `LAGE_RELEVANTIE_BERICHT`.
+
+## Nieuwe instelling toevoegen (volgorde)
+
+De vier hardcoded lijsten hierboven moeten synchroon blijven — vergeet er één en het faalt
+stil. Werkende volgorde:
+
+1. Editeer de 4 lijsten. `seed_bulk.INSTELLINGEN`: nieuwe instelling **als laatste appenden**
+   (de seed deelt één `Random(2026)` op lijstvolgorde; mid-list invoegen verschuift álle
+   bestaande studenten).
+2. Plaats OER's + `_instelling/`-bronnen onder `oeren/<key>_oeren/` (mapconventie `<key>_oeren`).
+3. `ingest --instelling <key>`.
+4. **Verifieer ≥2 OER's met kerntaken** — anders bij seed stil 0 studenten.
+5. Smoke-test (publieke intake `0_oer_vraag` chat zónder login/seed met élke geïndexeerde OER).
+
+Re-seed van de gedeelde demo-dataset (~200 nepstudenten/instelling) is een aparte, **expliciet te
+bevestigen** stap — niet impliciet bij onboarding. KD + skills zijn crebo-gedeeld (niet
+instelling-gebonden): overschrijf het landelijke KD nooit met een instelling-meegeleverde variant.
 
 ## Bekende valkuilen
 
