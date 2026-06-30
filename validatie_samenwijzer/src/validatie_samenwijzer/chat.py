@@ -39,6 +39,7 @@ _INSTELLING_DOMEINEN: dict[str, str] = {
     "deltion": "deltion.nl",
     "graafschap": "graafschapcollege.nl",
     "kwic": "kw1c.nl",
+    "landstede": "landstedembo.nl",
     "rijn_ijssel": "rijnijssel.nl",
     "talland": "talland.nl",
     "utrecht": "mboutrecht.nl",
