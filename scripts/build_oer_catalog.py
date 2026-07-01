@@ -38,6 +38,7 @@ _INSTELLING_DISPLAY = {
     "graafschap_oeren": "Graafschap College",
     "kwic_oeren": "Koning Willem I College",
     "landstede_oeren": "Landstede MBO",
+    "nijmegen_oeren": "ROC Nijmegen",
     "rijn_ijssel_oer": "Rijn IJssel",
     "talland_oeren": "Talland",
     "utrecht_oeren": "Utrecht",

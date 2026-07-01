@@ -104,6 +104,7 @@ _INSTELLING_KEYS = {
     "graafschap",
     "kwic",
     "landstede",
+    "nijmegen",
     "rijn_ijssel",
     "talland",
     "utrecht",
