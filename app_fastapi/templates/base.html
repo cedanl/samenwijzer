@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Samenwijzer{% endblock %}</title>
+  <link rel="stylesheet" href="/static/app.css">
+  {% block head %}{% endblock %}
+</head>
+<body class="theme-{{ rol or 'docent' }}">
+  {% if rol %}
+  <nav class="sw-nav">
+    {% if rol == "student" %}
+      <a href="/home">Home</a>
+      <a href="/voortgang">Voortgang</a>
+      <a href="/groeidossier">Groeidossier</a>
+      <a href="/leercoach">Leercoach</a>
+      <a href="/welzijn">Welzijn</a>
+    {% else %}
+      <a href="/home">Home</a>
+      <a href="/groep">Groep</a>
+      <a href="/groeidossier">Groeidossier</a>
+      <a href="/outreach">Outreach</a>
+      <a href="/leercoach">Leercoach</a>
+    {% endif %}
+    <span class="sw-nav__spacer"></span>
+    <span class="sw-nav__user">{{ studentnummer or mentor_naam or "" }}</span>
+    <a href="/uitloggen">Uitloggen</a>
+  </nav>
+  {% endif %}
+  <main class="sw-container">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="sw-footer">
+    <span>Samenwijzer</span>
+    <span>CEDA · Npuls</span>
+  </footer>
+  <script src="/static/app.js"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

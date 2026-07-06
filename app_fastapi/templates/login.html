@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Samenwijzer — inloggen{% endblock %}
+{% block content %}
+<div class="sw-login">
+  <div class="sw-login__side sw-login__side--stu">
+    <p class="sw-login__ey">— Student</p>
+    <p class="sw-login__ti">Hoe sta<br>jij ervoor?</p>
+    <p class="sw-login__sb">Bekijk je voortgang, krijg een persoonlijk weekplan en deel hoe het met je gaat.</p>
+  </div>
+  <div class="sw-login__side sw-login__side--doc">
+    <p class="sw-login__ey">— Docent</p>
+    <p class="sw-login__ti">Mentor&shy;overzicht</p>
+    <p class="sw-login__sb">Vroege signalen, gerichte outreach en alle studentdata op één plek.</p>
+  </div>
+</div>
+
+{% if fout %}<div class="sw-alert sw-alert--error">Onbekend wachtwoord of onbekende gebruiker.</div>{% endif %}
+
+<div class="sw-login-forms">
+  <form class="sw-card" method="post" action="/login">
+    <input type="hidden" name="rol" value="student">
+    <label for="login-student">Selecteer je naam</label>
+    <select id="login-student" name="identifier" required>
+      {% for s in studenten %}
+      <option value="{{ s.studentnummer }}">{{ s.naam }} ({{ s.studentnummer }})</option>
+      {% endfor %}
+    </select>
+    <input type="password" name="wachtwoord" placeholder="Wachtwoord" required>
+    <button type="submit" class="sw-btn sw-btn--primary">INLOGGEN ALS STUDENT</button>
+  </form>
+
+  <form class="sw-card" method="post" action="/login">
+    <input type="hidden" name="rol" value="docent">
+    <label for="login-docent">Selecteer je naam</label>
+    <select id="login-docent" name="identifier" required>
+      {% for m in mentoren %}
+      <option value="{{ m }}">{{ m }}</option>
+      {% endfor %}
+    </select>
+    <input type="password" name="wachtwoord" placeholder="Wachtwoord" required>
+    <button type="submit" class="sw-btn sw-btn--primary">INLOGGEN ALS DOCENT</button>
+  </form>
+</div>
+{% endblock %}

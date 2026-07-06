@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Samenwijzer — home{% endblock %}
+{% block content %}
+<div class="sw-hero">
+  <h1>Goedemorgen, {{ voornaam }}</h1>
+  <p class="sw-hero__sub">{{ totaal }} studenten in jouw groep · {{ risico }} vragen aandacht</p>
+</div>
+
+<div class="sw-grid sw-grid--4">
+  <div class="sw-stat">
+    <p class="sw-stat__label">Op schema</p>
+    <p class="sw-stat__value">{{ op_schema }}</p>
+  </div>
+  <div class="sw-stat sw-stat--alert">
+    <p class="sw-stat__label">Aandacht nodig</p>
+    <p class="sw-stat__value">{{ risico }}</p>
+    {% if totaal %}<p class="sw-stat__sub">{{ risico_pct }}% van groep</p>{% endif %}
+  </div>
+  <div class="sw-stat">
+    <p class="sw-stat__label">Gem. voortgang</p>
+    <p class="sw-stat__value">{{ gem_voortgang }}%</p>
+    <div class="sw-progress"><div class="sw-progress__bar" style="width: {{ gem_voortgang }}%"></div></div>
+  </div>
+  <div class="sw-stat">
+    <p class="sw-stat__label">Studenten totaal</p>
+    <p class="sw-stat__value">{{ totaal }}</p>
+  </div>
+</div>
+
+<p class="sw-section-label">Wat wil je doen?</p>
+<div class="sw-grid sw-grid--4">
+  <a class="sw-tile" href="/voortgang">
+    <p class="sw-tile__ey">— per student</p>
+    <p class="sw-tile__ti">Voortgang</p>
+    <p class="sw-tile__sb">Individueel dashboard met scores en weekplan.</p>
+  </a>
+  <a class="sw-tile" href="/groep">
+    <p class="sw-tile__ey">— groep</p>
+    <p class="sw-tile__ti">Groepsoverzicht</p>
+    <p class="sw-tile__sb">Alle studenten, filteren op risico, niveau, cohort.</p>
+  </a>
+  <a class="sw-tile" href="/outreach">
+    <p class="sw-tile__ey">— actie</p>
+    <p class="sw-tile__ti">Outreach</p>
+    <p class="sw-tile__sb">Signaleer risico's en neem contact op.</p>
+  </a>
+  <a class="sw-tile" href="/leercoach">
+    <p class="sw-tile__ey">— ai</p>
+    <p class="sw-tile__ti">Leercoach</p>
+    <p class="sw-tile__sb">Tutor, oefentoets, feedback op werk.</p>
+  </a>
+</div>
+{% endblock %}
