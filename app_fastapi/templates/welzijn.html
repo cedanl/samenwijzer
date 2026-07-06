@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Welzijnscheck — Samenwijzer{% endblock %}
+{% block content %}
+<div class="sw-hero">
+  <h1>Hoe gaat het, {{ voornaam }}?</h1>
+  <p class="sw-hero__sub">Veilig · alleen jij en je mentor zien de details</p>
+</div>
+<p class="sw-muted">Je mentor krijgt een signaal en kan je helpen. Alles is veilig en vertrouwelijk.</p>
+
+{% if melding_tekst %}
+<div class="sw-alert sw-alert--{{ melding_klasse }}">{{ melding_tekst }}</div>
+{% endif %}
+
+<p class="sw-section-label">Wat speelt er?</p>
+<div class="sw-card">
+  <form method="post" action="/welzijn">
+    <label for="welzijn-categorie">Waar heb je moeite mee?</label>
+    <select id="welzijn-categorie" name="categorie">
+      {% for cat in categorieen %}
+      <option value="{{ cat.value }}">{{ cat.label }}</option>
+      {% endfor %}
+    </select>
+
+    <label for="welzijn-toelichting">Vertel er iets meer over (optioneel)</label>
+    <textarea id="welzijn-toelichting" name="toelichting" placeholder="Beschrijf kort wat er speelt…"></textarea>
+
+    <label>Hoe dringend is het?</label>
+    {% for u in urgenties %}
+    <label class="sw-check">
+      <input type="radio" name="urgentie" value="{{ u.value }}" {% if u.value == 1 %}checked{% endif %}>
+      {{ u.label }}
+    </label>
+    {% endfor %}
+
+    <button type="submit" class="sw-btn sw-btn--primary">Verstuur check</button>
+  </form>
+</div>
+
+{% if nieuwe_check %}
+<div class="sw-card">
+  <p class="sw-section-label">Reactie van Samenwijzer</p>
+  <div class="sw-chat">
+    <div class="sw-chat__msg sw-chat__msg--ai" id="welzijn-reactie"><span class="sw-spinner"></span></div>
+  </div>
+</div>
+{% endif %}
+
+{% if eerdere %}
+<details class="sw-card sw-details">
+  <summary>Eerdere checks ({{ eerdere|length }})</summary>
+  {% for c in eerdere %}
+  <div class="sw-alert">
+    <span class="sw-muted">{{ c.timestamp[:10] }}</span> ·
+    {{ c.categorie_label }} · {{ c.urgentie_label }}
+    {% if c.toelichting %}<br><span class="sw-muted">{{ c.toelichting[:120] }}</span>{% endif %}
+  </div>
+  {% endfor %}
+</details>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+{% if nieuwe_check %}
+<script>
+(function () {
+  const el = document.getElementById("welzijn-reactie");
+  let buffer = "";
+  swStream("/welzijn/reactie", { check_id: {{ nieuwe_check.id }} }, {
+    onChunk: (chunk) => { buffer += chunk; el.textContent = buffer; },
+    onDone: () => {},
+    onError: (err) => {
+      el.textContent = err === "timeout"
+        ? "De AI-service reageert niet. Probeer het over een moment opnieuw."
+        : "Er ging iets mis bij het genereren van de reactie.";
+    },
+  });
+})();
+</script>
+{% endif %}
+{% endblock %}

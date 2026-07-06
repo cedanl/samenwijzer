@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+{% block title %}Samenwijzer — leercoach{% endblock %}
+{% block head %}<link rel="stylesheet" href="/static/pages/leercoach.css">{% endblock %}
+{% block content %}
+
+{% if rol == "docent" %}
+<label for="lc-student-select">Selecteer een student</label>
+<select id="lc-student-select">
+  {% for optie in opties_docent %}
+  <option value="{{ optie.studentnummer }}" {% if optie.studentnummer == snr %}selected{% endif %}>
+    {{ optie.naam }} ({{ optie.studentnummer }})
+  </option>
+  {% endfor %}
+</select>
+{% endif %}
+
+<div class="sw-hero">
+  {% if rol == "student" %}
+  <h1>AI Leerondersteuning</h1>
+  {% else %}
+  <h1>Leercoach voor {{ student.naam }}</h1>
+  {% endif %}
+  <p class="sw-hero__sub">{{ opleiding }} · Niveau {{ student.niveau }}</p>
+  <span class="sw-badge sw-badge--{{ leerpad_badge }}">{{ leerpad }}</span>
+</div>
+
+{% if api_key_ontbreekt %}
+<div class="sw-alert sw-alert--error">
+  Geen ANTHROPIC_API_KEY gevonden. Maak een <code>.env</code> bestand aan met
+  <code>ANTHROPIC_API_KEY=sk-ant-...</code> en herstart de app.
+</div>
+{% else %}
+
+<div id="lc-root" data-student="{{ snr }}">
+
+<div class="lc-tabs" role="tablist">
+  <button class="lc-tab is-active" data-tab="tutor" role="tab">🎓 Tutor</button>
+  <button class="lc-tab" data-tab="les" role="tab">📚 Lesmateriaal</button>
+  <button class="lc-tab" data-tab="toets" role="tab">📝 Oefentoets</button>
+  <button class="lc-tab" data-tab="werk" role="tab">✏️ Feedback op werk</button>
+  <button class="lc-tab" data-tab="rol" role="tab">🎭 Rollenspel</button>
+</div>
+
+<!-- ── Tab 1: Tutor ─────────────────────────────────────────────────────── -->
+<section class="lc-panel is-active" data-panel="tutor">
+  <p class="sw-muted">Stel je vraag over de OER, kerntaken, werkprocessen of leerstof —
+    de tutor antwoordt direct met je eigen OER als bron.</p>
+
+  <div class="lc-toolbar">
+    <div class="lc-toolbar__grow">
+      <label for="lc-focus">Focus op kerntaak of werkproces</label>
+      <select id="lc-focus">
+        <option value="">(geen specifiek)</option>
+        {% for optie in focus_opties %}
+        <option value="{{ optie }}">{{ optie }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button id="lc-tutor-reset" class="sw-btn sw-btn--secondary" type="button">↺ Nieuw gesprek</button>
+  </div>
+
+  {% if wa_datum and tutor_historie %}
+  <div class="sw-alert sw-alert--ok">📱 WhatsApp-gesprek van {{ wa_datum }} is geladen als
+    startcontext. De tutor is op de hoogte van dit gesprek.</div>
+  {% endif %}
+
+  <div id="lc-tutor-chat" class="sw-chat">
+    {% for bericht in tutor_historie %}
+    <div class="sw-chat__msg sw-chat__msg--{{ 'user' if bericht.role == 'user' else 'ai' }}">{{ bericht.content }}</div>
+    {% endfor %}
+  </div>
+  <div id="lc-tutor-fout" class="sw-alert sw-alert--error" hidden></div>
+
+  <form id="lc-tutor-form" class="lc-chatrow">
+    <input type="text" id="lc-tutor-invoer" placeholder="Typ je vraag of gedachte hier…" autocomplete="off">
+    <button class="sw-btn sw-btn--primary" type="submit">Versturen</button>
+  </form>
+</section>
+
+<!-- ── Tab 2: Lesmateriaal ──────────────────────────────────────────────── -->
+<section class="lc-panel" data-panel="les">
+  <h2>Gepersonaliseerd lesmateriaal</h2>
+  <p class="sw-muted">Afgestemd op <strong>{{ leerpad }}</strong>-niveau voor <strong>{{ opleiding }}</strong>.</p>
+  <div class="sw-card">
+    <label for="lc-les-onderwerp">Onderwerp</label>
+    <input type="text" id="lc-les-onderwerp" value="{{ zwakste_kt }}"
+           placeholder="bijv. wondverzorging, communicatie met cliënten …">
+    <button id="lc-les-btn" class="sw-btn sw-btn--primary" type="button">📚 Genereer lesmateriaal</button>
+  </div>
+  <div id="lc-les-fout" class="sw-alert sw-alert--error" hidden></div>
+  <div id="lc-les-uit" class="sw-card lc-output" hidden></div>
+</section>
+
+<!-- ── Tab 3: Oefentoets ────────────────────────────────────────────────── -->
+<section class="lc-panel" data-panel="toets">
+  <h2>AI-Oefentoets</h2>
+  <p class="sw-muted">Genereer een toets en ontvang directe AI-feedback op je antwoorden.</p>
+  <div class="sw-card">
+    <label for="lc-toets-onderwerp">Onderwerp voor de toets</label>
+    <input type="text" id="lc-toets-onderwerp" value="{{ zwakste_kt }}"
+           placeholder="bijv. wondverzorging, medicatieveiligheid …">
+    <button id="lc-toets-btn" class="sw-btn sw-btn--primary" type="button">📝 Genereer oefentoets</button>
+    <span id="lc-toets-spinner" class="sw-spinner" hidden></span>
+  </div>
+  <div id="lc-toets-fout" class="sw-alert sw-alert--error" hidden></div>
+
+  <div id="lc-toets-blok" class="sw-card" hidden>
+    <div id="lc-toets-vragen" class="lc-output"></div>
+    <hr>
+    <p><strong>Vul jouw antwoorden in:</strong></p>
+    <div class="lc-antwoorden">
+      {% for i in [1, 2, 3, 4, 5] %}
+      <div>
+        <label for="lc-antw-{{ i }}">Vraag {{ i }}</label>
+        <select id="lc-antw-{{ i }}" data-vraag="{{ i }}">
+          <option value="">—</option>
+          <option>A</option><option>B</option><option>C</option><option>D</option>
+        </select>
+      </div>
+      {% endfor %}
+    </div>
+    <button id="lc-controleer-btn" class="sw-btn sw-btn--primary" type="button">✓ Controleer antwoorden</button>
+    <div id="lc-toets-feedback" class="lc-output" hidden></div>
+  </div>
+</section>
+
+<!-- ── Tab 4: Feedback op werk ──────────────────────────────────────────── -->
+<section class="lc-panel" data-panel="werk">
+  <h2>Feedback op jouw werk</h2>
+  <p class="sw-muted">Upload een tekstbestand of plak je werk hieronder.
+    De AI geeft feedback afgestemd op jouw opleiding en niveau.</p>
+  <div class="sw-card">
+    <label for="lc-werk-bestand">Upload een .txt bestand (optioneel)</label>
+    <input type="file" id="lc-werk-bestand" accept=".txt,text/plain">
+    <label for="lc-werk-tekst">Of plak je werk hier</label>
+    <textarea id="lc-werk-tekst" rows="8"
+              placeholder="Plak hier je verslag, samenvatting of opdracht…"></textarea>
+    <button id="lc-werk-btn" class="sw-btn sw-btn--primary" type="button">✏️ Geef feedback</button>
+  </div>
+  <div id="lc-werk-fout" class="sw-alert sw-alert--error" hidden></div>
+  <div id="lc-werk-uit" class="sw-card lc-output" hidden></div>
+</section>
+
+<!-- ── Tab 5: Rollenspel ────────────────────────────────────────────────── -->
+<section class="lc-panel" data-panel="rol">
+  <h2>🎭 Rollenspel</h2>
+  <p class="sw-muted">Oefen een gesprek met een AI-tegenpartij.
+    Na afloop geeft de AI coaching op hoe het gesprek verliep.</p>
+
+  {% if not rp %}
+  <div class="sw-card">
+    <label for="lc-rp-scenario">Kies een scenario</label>
+    <select id="lc-rp-scenario">
+      {% for code, label in scenario_opties.items() %}
+      <option value="{{ code }}">{{ label }}</option>
+      {% endfor %}
+    </select>
+    <button id="lc-rp-start" class="sw-btn sw-btn--primary" type="button">🎭 Start rollenspel</button>
+  </div>
+  {% else %}
+  <div class="lc-toolbar">
+    <p class="sw-muted lc-toolbar__grow">Scenario: <strong>{{ rp_scenario_label }}</strong> ·
+      Tegenpartij: <strong>{{ rp_tegenpartij }}</strong></p>
+    <button id="lc-rp-reset" class="sw-btn sw-btn--secondary" type="button">↺ Nieuw gesprek</button>
+  </div>
+
+  <div id="lc-rp-chat" class="sw-chat">
+    {% for bericht in rp.hist %}
+    <div class="sw-chat__msg sw-chat__msg--{{ 'user' if bericht.role == 'user' else 'ai' }}">{{ bericht.content }}</div>
+    {% endfor %}
+  </div>
+  <div id="lc-rp-fout" class="sw-alert sw-alert--error" hidden></div>
+
+  {% if not rp.klaar %}
+  <form id="lc-rp-form" class="lc-chatrow">
+    <input type="text" id="lc-rp-invoer" autocomplete="off"
+           placeholder="Typ wat jij zegt tegen de {{ rp_tegenpartij }}…">
+    <button class="sw-btn sw-btn--primary" type="submit">Versturen</button>
+  </form>
+  <div class="lc-toolbar">
+    <button id="lc-rp-afronden" class="sw-btn sw-btn--secondary" type="button"
+            {% if not rp.hist %}disabled{% endif %}>✅ Afronden &amp; feedback</button>
+    <span id="lc-rp-spinner" class="sw-spinner" hidden></span>
+  </div>
+  {% else %}
+  <div class="sw-alert">Dit rollenspel is afgerond. Start een nieuw gesprek om opnieuw te oefenen.</div>
+  {% endif %}
+  <div id="lc-rp-feedback-blok" class="sw-card" hidden>
+    <h3>Nabespreking</h3>
+    <div id="lc-rp-feedback" class="lc-output"></div>
+  </div>
+  {% endif %}
+</section>
+
+</div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+{% if not api_key_ontbreekt %}<script src="/static/pages/leercoach.js"></script>{% endif %}
+{% endblock %}

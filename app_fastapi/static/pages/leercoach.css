@@ -1,0 +1,39 @@
+/* Leercoach — tabs, chatinvoer en AI-output (bovenop static/app.css). */
+
+.lc-tabs {
+    display: flex; gap: 6px;
+    border-bottom: 1px solid var(--border);
+    margin: var(--space-5) 0 var(--space-4);
+    overflow-x: auto;
+}
+.lc-tab {
+    background: none; border: none; cursor: pointer;
+    border-bottom: 2px solid transparent;
+    padding: 10px 14px;
+    font-family: var(--font-body);
+    font-weight: 700; font-size: 13px;
+    color: var(--text-faint);
+    white-space: nowrap;
+    transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.lc-tab:hover { color: var(--text); }
+.lc-tab.is-active { color: var(--accent-strong); border-bottom-color: var(--accent); }
+
+.lc-panel { display: none; }
+.lc-panel.is-active { display: block; }
+
+.lc-toolbar { display: flex; gap: var(--space-3); align-items: flex-end; margin: var(--space-3) 0; }
+.lc-toolbar__grow { flex: 1; min-width: 0; }
+.lc-toolbar .sw-btn { margin-bottom: var(--space-3); }
+
+.lc-chatrow { display: flex; gap: var(--space-2); align-items: flex-start; margin-top: var(--space-3); }
+.lc-chatrow input { flex: 1; margin-bottom: 0; }
+
+.lc-output { white-space: pre-wrap; line-height: 1.55; }
+.lc-output h4 { margin: var(--space-3) 0 var(--space-1); }
+
+.lc-antwoorden {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-3); margin-bottom: var(--space-3);
+}
+@media (max-width: 700px) { .lc-antwoorden { grid-template-columns: repeat(2, 1fr); } }
