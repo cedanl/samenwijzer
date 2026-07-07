@@ -34,7 +34,18 @@ Vereist dat de `oeren/`-map met submappen per instelling lokaal aanwezig is.
 
 ---
 
-## 3. Streamlit-app starten
+## 3. Frontend starten
+
+**FastAPI-frontend (nieuwe hoofdlaag):**
+
+```bash
+SESSION_SECRET=dev-secret uv run uvicorn app_fastapi.main:app --port 8505 --reload
+```
+
+Opent op **http://localhost:8505**. `SESSION_SECRET` mag lokaal een willekeurige waarde zijn;
+buiten lokaal is hij verplicht (cookie-signing).
+
+**Streamlit-frontend (legacy/parity-bron):**
 
 ```bash
 uv run streamlit run app/main.py
@@ -42,7 +53,7 @@ uv run streamlit run app/main.py
 
 Opent op **http://localhost:8501**.
 
-Inloggen:
+Inloggen (beide frontends, zelfde accounts uit `gebruikers.txt`):
 | Rol | Gebruikersnaam | Wachtwoord |
 |---|---|---|
 | Student | een studentnummer uit de dataset (bijv. `100001`) | `Welkom123` |
@@ -103,7 +114,7 @@ uv run python -m samenwijzer.scheduler
 Bij volledige lokale test met WhatsApp:
 
 ```
-Terminal 1:  uv run streamlit run app/main.py
+Terminal 1:  SESSION_SECRET=dev-secret uv run uvicorn app_fastapi.main:app --port 8505 --reload
 Terminal 2:  uv run uvicorn app.webhook:app --host 0.0.0.0 --port 8502
 Terminal 3:  ngrok http 8502
 ```
@@ -140,5 +151,6 @@ WHATSAPP_ENCRYPT_KEY=...   # leeg laten → wordt automatisch aangemaakt in data
 
 | Proces | Poort |
 |---|---|
-| Streamlit-app | 8501 |
+| FastAPI-frontend (`app_fastapi`) | 8505 |
+| Streamlit-app (legacy) | 8501 |
 | FastAPI webhook | 8502 |
