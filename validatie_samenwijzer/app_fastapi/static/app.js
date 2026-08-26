@@ -130,6 +130,9 @@ async function routeerVraag(vraag) {
     body: JSON.stringify({ vraag }),
   })).json();
   if (r.modus === "kies") { renderPicker(); return; }
+  // Chat/intake: een eventuele nog-zichtbare picker uit een eerder kies-ronde moet weg —
+  // anders kan een klik erop later de net-geladen (of nog te laden) bron overschrijven.
+  picker.innerHTML = "";
   if (r.modus === "chat") { oerIds = r.oer_ids || oerIds; setLabels(r.labels); setBanner(r.oer_onleesbaar); }
   await streamAntwoord(thread, vraag);
 }

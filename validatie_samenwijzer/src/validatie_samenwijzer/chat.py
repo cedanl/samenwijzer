@@ -745,9 +745,7 @@ zitten. Beweer dat dus nooit. Om de juiste studiegids te vinden heb je vier gege
 
 Vraag vriendelijk naar de ontbrekende informatie. Zodra alle vier bekend zijn, kun jij de
 studiegids niet laden — vraag de student in plaats daarvan om alle gegevens in één bericht te
-herhalen, of te kiezen via "Of kies direct je opleiding" op de startpagina of de keuzelijst in
-dit chatvenster: dat opent wel echt de juiste studiegids. Reageer beknopt. Antwoord in het
-Nederlands."""
+herhalen: dat opent wel echt de juiste studiegids. Reageer beknopt. Antwoord in het Nederlands."""
 
 
 def identificeer_oer_kandidaten(oers: list, tekst: str, min_score: int = 0) -> list[dict]:

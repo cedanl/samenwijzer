@@ -91,6 +91,35 @@ def test_vraag_zonder_historie_matcht_niet_op_fragment_alleen(monkeypatch):
     assert r.json()["modus"] == "intake"
 
 
+def test_vraag_accumuleert_naar_eenduidige_match_laadt_direct(monkeypatch):
+    """Seeded historie + vervolgfragment lossen samen op tot precies 1 kandidaat → modus
+    "chat" met `oer_ids` gezet, en de kies-state (`wachtende_vraag`/`kandidaten`) van een
+    eerdere ronde wordt niet per ongeluk laten staan (regressie voor Finding 1)."""
+    import app_fastapi.main as m
+    from app_fastapi.sessie import Sessie
+
+    monkeypatch.setattr(m.db, "get_alle_oers_met_instelling", lambda conn: _FAKE_OERS)
+    monkeypatch.setattr(m, "laad_context", lambda oer_ids, **k: ("PROMPT", ["label"], [], False))
+
+    s = Sessie(
+        toegang=True,
+        chat_history=[{"role": "user", "content": "Ik zit op Talland College, ik doe Kok"}],
+        # Stale kies-state uit een eerdere ronde die deze beurt zou moeten opruimen.
+        wachtende_vraag="oude vraag",
+        kandidaten=[{"id": 99, "display_naam": "oud"}],
+    )
+    monkeypatch.setattr(m, "get_sessie", lambda request: s)
+
+    r = _client().post("/api/vraag", json={"vraag": "en dan?"})
+
+    assert r.status_code == 200
+    body = r.json()
+    assert body["modus"] == "chat"
+    assert body["oer_ids"] == [1]
+    assert s.wachtende_vraag is None
+    assert s.kandidaten == []
+
+
 def test_vraag_met_al_geladen_oer_blijft_shortcut_nemen(monkeypatch):
     """Bestaande shortcut (OER al geladen) blijft ongewijzigd: geen scoring, direct chat."""
     import app_fastapi.main as m

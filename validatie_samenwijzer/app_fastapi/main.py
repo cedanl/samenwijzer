@@ -201,6 +201,8 @@ async def api_vraag(request: Request):
         oer_id = kandidaten[0]["id"]
         s.oer_systeem, s.oer_labels, s.domeinen, s.oer_onleesbaar = laad_context([oer_id])
         s.oer_ids = [oer_id]
+        s.wachtende_vraag = None
+        s.kandidaten = []
         return JSONResponse(
             {
                 "modus": "chat",
