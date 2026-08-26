@@ -123,19 +123,27 @@ function setBanner(onleesbaar) {
     "De OER van deze opleiding is niet machine-leesbaar; antwoorden komen uit het landelijke kwalificatiedossier en de instellingsregelingen.";
 }
 
+/* POST /api/vraag + modus-routering (gedeeld door start() en de ovAsk-handler). */
+async function routeerVraag(vraag) {
+  const r = await (await fetch("/api/vraag", {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ vraag }),
+  })).json();
+  if (r.modus === "kies") { renderPicker(); return; }
+  // Chat/intake: een eventuele nog-zichtbare picker uit een eerder kies-ronde moet weg —
+  // anders kan een klik erop later de net-geladen (of nog te laden) bron overschrijven.
+  picker.innerHTML = "";
+  if (r.modus === "chat") { oerIds = r.oer_ids || oerIds; setLabels(r.labels); setBanner(r.oer_onleesbaar); }
+  await streamAntwoord(thread, vraag);
+}
+
 async function start(vraag) {
   openOverlay();
   // Eerst de bestaande historie herstellen (awaited), dán de nieuwe vraag — anders
   // landt de async-opgehaalde historie ónder de nieuwe beurt.
   if (!_gehydrateerd) { _gehydrateerd = true; await rehydrateer(thread); }
   addVraag(thread, vraag);
-  const r = await (await fetch("/api/vraag", {
-    method: "POST", headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ vraag }),
-  })).json();
-  if (r.modus === "kies") { renderPicker(); return; }
-  if (r.modus === "chat") { oerIds = r.oer_ids || oerIds; setLabels(r.labels); setBanner(r.oer_onleesbaar); }
-  await streamAntwoord(thread, vraag);
+  await routeerVraag(vraag);
 }
 
 async function renderPicker() {
@@ -180,7 +188,9 @@ ovAsk.addEventListener("submit", (e) => {
   if (!v) return;
   inp.value = "";
   addVraag(thread, v);
-  streamAntwoord(thread, v);
+  // Nog geen studiegids geladen (intake-vervolgbeurt): route via dezelfde modus-flow als start().
+  if (oerIds.length === 0) { routeerVraag(v); }
+  else { streamAntwoord(thread, v); }
 });
 
 document.querySelectorAll("form.ask[data-ask]").forEach((form) => {

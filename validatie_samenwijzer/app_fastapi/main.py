@@ -189,12 +189,20 @@ async def api_vraag(request: Request):
         )
 
     oers = [dict(r) for r in db.get_alle_oers_met_instelling(_conn())]
-    kandidaten = identificeer_oer_kandidaten(oers, vraag, min_score=1)
+    # Score op de opgetelde gesprekstekst (eerdere user-beurten + nieuwe vraag), niet op de
+    # kale vraag: een vervolgbeurt ("2024", "Tandartsassistent, BOL") heeft de context van
+    # eerdere beurten nodig om te matchen. Bij lege historie is dit gelijk aan `vraag`.
+    context_tekst = " ".join(
+        [b["content"] for b in s.chat_history if b["role"] == "user"] + [vraag]
+    )
+    kandidaten = identificeer_oer_kandidaten(oers, context_tekst, min_score=1)
 
     if len(kandidaten) == 1:
         oer_id = kandidaten[0]["id"]
         s.oer_systeem, s.oer_labels, s.domeinen, s.oer_onleesbaar = laad_context([oer_id])
         s.oer_ids = [oer_id]
+        s.wachtende_vraag = None
+        s.kandidaten = []
         return JSONResponse(
             {
                 "modus": "chat",
