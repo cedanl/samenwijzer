@@ -153,8 +153,8 @@ footer .fbrand { font-family: "Instrument Serif", Georgia, serif; font-size: 1.4
 .ov-head .brand { margin-right: auto; }
 .ov-labels { display: flex; gap: 6px; flex-wrap: wrap; }
 .ov-label { font-size: .72rem; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 999px; padding: .25rem .7rem; }
-.ov-pdfbtn, .ov-reset { font-family: inherit; font-size: .8rem; cursor: pointer; border-radius: 999px; padding: .4rem .9rem; background: transparent; border: 1px solid var(--line); color: var(--ink-soft); transition: all .2s var(--ease); }
-.ov-pdfbtn:hover, .ov-reset:hover { border-color: var(--ink); color: var(--ink); }
+.ov-pdfbtn, .ov-reset, .ov-close { font-family: inherit; font-size: .8rem; cursor: pointer; border-radius: 999px; padding: .4rem .9rem; background: transparent; border: 1px solid var(--line); color: var(--ink-soft); transition: all .2s var(--ease); }
+.ov-pdfbtn:hover, .ov-reset:hover, .ov-close:hover { border-color: var(--ink); color: var(--ink); }
 .ov-reset { border-color: var(--vermilion); color: var(--vermilion); }
 .ov-body { position: relative; z-index: 1; flex: 1; overflow-y: auto; }
 .ov-body .wrap { max-width: 820px; padding-top: 2rem; padding-bottom: 2rem; }
@@ -177,9 +177,6 @@ footer .fbrand { font-family: "Instrument Serif", Georgia, serif; font-size: 1.4
 .picker { background: var(--paper-card); border: 1px solid var(--line); border-radius: 12px; padding: 1.4rem 1.6rem; box-shadow: var(--shadow-sm); }
 .picker h3 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: 1.5rem; margin-bottom: .3rem; }
 .picker .hint { color: var(--ink-soft); font-size: .9rem; margin-bottom: 1rem; }
-.picker label { display: flex; gap: .6rem; align-items: flex-start; padding: .5rem .2rem; border-bottom: 1px solid var(--line-soft); cursor: pointer; font-size: .95rem; }
-.picker label:hover { color: var(--vermilion); }
-.picker .opts { max-height: 46vh; overflow-y: auto; margin-bottom: 1rem; }
 .pdf-frame { position: relative; z-index: 1; border-top: 1px solid var(--line); max-height: 72vh; overflow-y: auto; background: var(--paper-card); }
 .pdf-frame iframe { width: 100%; height: 70vh; border: 0; background: var(--paper-deep); display: block; }
 .pdf-frame canvas { width: 100%; height: auto; display: block; margin: 0 auto 12px; box-shadow: var(--shadow-sm); }

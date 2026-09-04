@@ -282,6 +282,18 @@ def test_api_index_serveert_landing():
     assert r.status_code == 200 and "/static/app.css" in r.text
 
 
+def test_static_assets_hebben_cache_bust_versie():
+    """Cache-busting: terugkerende bezoekers moeten een gewijzigde app.js/app.css oppikken
+    zonder hard-refresh — static_url() hangt ?v=<mtime> aan elk static-asset-path."""
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    r = _client().get("/")
+    assert r.status_code == 200
+    assert "app.js?v=" in r.text
+    assert "app.css?v=" in r.text
+    assert "chat.js?v=" in r.text
+
+
 def test_api_vraag_zonder_match_geeft_intake():
     if not _WW:
         pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
