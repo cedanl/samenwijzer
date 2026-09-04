@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Samenwijzer — home{% endblock %}
+{% block content %}
+<div class="sw-hero">
+  <h1>Hey, {{ voornaam }}</h1>
+  <p class="sw-hero__sub">{{ student.opleiding }} · Niveau {{ student.niveau }} · {{ student.leerweg }} · Cohort {{ student.cohort }}</p>
+  <span class="sw-badge sw-badge--accent">Welkom terug</span>
+</div>
+
+<div class="sw-grid sw-grid--2">
+  <div class="sw-stat">
+    <p class="sw-stat__label">Studievoortgang</p>
+    <p class="sw-stat__value">{{ voortgang_pct }}%</p>
+    <div class="sw-progress"><div class="sw-progress__bar" style="width: {{ voortgang_pct }}%"></div></div>
+  </div>
+  <div class="sw-stat {% if bsa_progress < 0.7 %}sw-stat--alert{% endif %}">
+    <p class="sw-stat__label">Studiepunten BSA</p>
+    <p class="sw-stat__value">{{ bsa_behaald }}<span class="sw-stat__sub"> / {{ bsa_vereist }}</span></p>
+    <div class="sw-progress"><div class="sw-progress__bar" style="width: {{ (bsa_progress * 100) | round }}%"></div></div>
+  </div>
+</div>
+
+<p class="sw-section-label">Wat wil je doen?</p>
+<div class="sw-grid sw-grid--3">
+  <a class="sw-tile" href="/voortgang">
+    <p class="sw-tile__ey">— voortgang</p>
+    <p class="sw-tile__ti">Mijn voortgang</p>
+    <p class="sw-tile__sb">Bekijk je studievoortgang, BSA en competentiescores.</p>
+  </a>
+  <a class="sw-tile" href="/leercoach">
+    <p class="sw-tile__ey">— ai leercoach</p>
+    <p class="sw-tile__ti">Leercoach</p>
+    <p class="sw-tile__sb">Tutor, oefentoets en feedback op werk.</p>
+  </a>
+  <a class="sw-tile" href="/welzijn">
+    <p class="sw-tile__ey">— welzijn</p>
+    <p class="sw-tile__ti">Welzijnscheck</p>
+    <p class="sw-tile__sb">Deel hoe het met je gaat en krijg ondersteuning.</p>
+  </a>
+</div>
+
+{% if whatsapp_status == "verstuurd" %}
+<div class="sw-alert sw-alert--ok">Verificatiebericht verstuurd. Antwoord JA in WhatsApp om te bevestigen.</div>
+{% elif whatsapp_status == "geen_twilio" %}
+<div class="sw-alert">WhatsApp-koppeling is nog niet geconfigureerd (geen Twilio-credentials). Je registratie is opgeslagen.</div>
+{% elif whatsapp_status == "ongeldig" %}
+<div class="sw-alert sw-alert--error">Voer een geldig internationaal nummer in, bijv. +31612345678.</div>
+{% elif whatsapp_status == "geen_akkoord" %}
+<div class="sw-alert sw-alert--error">Geef toestemming om je aan te melden.</div>
+{% endif %}
+
+{% if toon_whatsapp_optin %}
+<details class="sw-card sw-details">
+  <summary>Ontvang wekelijkse check-ins via WhatsApp</summary>
+  <p class="sw-muted">Samenwijzer kan je elke maandag een kort berichtje sturen: hoe gaat het?
+     Zo hoef je de app niet te openen om in contact te blijven met je mentor.</p>
+  <form method="post" action="/whatsapp/optin">
+    <input type="tel" name="nummer" placeholder="+31612345678" required>
+    <label class="sw-check">
+      <input type="checkbox" name="akkoord" value="ja">
+      Ik geef toestemming om wekelijks een WhatsApp-bericht te ontvangen en begrijp dat ik me altijd kan afmelden door STOP te sturen.
+    </label>
+    <button type="submit" class="sw-btn sw-btn--primary">Aanmelden</button>
+  </form>
+</details>
+{% endif %}
+{% endblock %}

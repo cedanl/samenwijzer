@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+{% block title %}Voortgang — Samenwijzer{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/static/pages/voortgang.css">
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@7"></script>
+{% endblock %}
+{% block content %}
+
+{% if rol == "docent" %}
+<form method="get" action="/voortgang" class="sw-card sw-vg-select">
+  <label for="studentnummer">Selecteer een student uit jouw groep</label>
+  <select name="studentnummer" id="studentnummer" onchange="this.form.submit()">
+    {% for o in opties %}
+    <option value="{{ o.studentnummer }}" {% if o.studentnummer == gekozen %}selected{% endif %}>
+      {{ o.naam }} ({{ o.studentnummer }})
+    </option>
+    {% endfor %}
+  </select>
+  <noscript><button type="submit" class="sw-btn sw-btn--secondary">Tonen</button></noscript>
+</form>
+{% endif %}
+
+{% if geen_studenten %}
+<div class="sw-alert">Er zijn nog geen studenten in jouw mentorgroep.</div>
+{% else %}
+
+<div class="sw-hero">
+  <h1>{{ student.naam }}</h1>
+  <p class="sw-hero__sub">{{ student.opleiding }} · Niveau {{ student.niveau }} · {{ student.leerweg }} · Cohort {{ student.cohort }} · Mentor {{ student.mentor }}</p>
+  <span class="sw-badge sw-badge--{{ niveau_kind }}">{{ niveau }}</span>
+  <span class="sw-badge sw-badge--{{ status_kind }}">{{ status_label }}</span>
+</div>
+
+{% if heeft_rating %}
+<p class="sw-muted">Zelf beoordeeld op {{ laatst }}</p>
+{% else %}
+<p class="sw-muted">Schatting op basis van OER — vul je groeidossier in voor je eigen scores</p>
+{% endif %}
+
+<div class="sw-grid sw-grid--3">
+  <div class="sw-stat">
+    <p class="sw-stat__label">Studievoortgang</p>
+    <p class="sw-stat__value">{{ voortgang_pct }}%</p>
+    <div class="sw-progress"><div class="sw-progress__bar" style="width: {{ voortgang_pct }}%"></div></div>
+  </div>
+  <div class="sw-stat {% if bsa_progress < 0.7 %}sw-stat--alert{% endif %}">
+    <p class="sw-stat__label">Studiepunten BSA</p>
+    <p class="sw-stat__value">{{ bsa_behaald }}<span class="sw-stat__sub"> / {{ bsa_vereist }}</span></p>
+    <div class="sw-progress"><div class="sw-progress__bar" style="width: {{ (bsa_progress * 100) | round }}%"></div></div>
+  </div>
+  <div class="sw-stat">
+    <p class="sw-stat__label">Positie in cohort</p>
+    <p class="sw-stat__value">{{ positie }}<span class="sw-stat__sub"> / {{ totaal_cohort }}</span></p>
+    <p class="sw-stat__sub">{{ '+' if delta >= 0 else '' }}{{ delta }}% vs. gemiddelde · Cohort {{ cohort }}</p>
+    <div class="sw-progress"><div class="sw-progress__bar" style="width: {{ (positie_progress * 100) | round }}%"></div></div>
+  </div>
+</div>
+
+<div class="sw-tabs">
+  <input type="radio" name="vg-tab" id="vg-tab-scores" checked>
+  <input type="radio" name="vg-tab" id="vg-tab-aandacht">
+  <input type="radio" name="vg-tab" id="vg-tab-weekplan">
+  <div class="sw-tabs__nav">
+    <label for="vg-tab-scores">Scores</label>
+    <label for="vg-tab-aandacht">Aandachtspunten</label>
+    <label for="vg-tab-weekplan">Weekplan</label>
+  </div>
+
+  <div class="sw-tabs__panel" id="panel-scores">
+    {% if not kerntaken %}
+    <div class="sw-alert">Geen kerntaakscores beschikbaar.</div>
+    {% else %}
+    {% for kt in kerntaken %}
+    <div class="sw-card">
+      <p class="sw-stat__label">Kerntaak {{ kt.idx }} · {{ kt.label }}</p>
+      <p class="sw-stat__value">{{ "%.0f" | format(kt.score) }}<span class="sw-stat__sub"> / 100</span></p>
+      {% if kt.chart_json %}
+      <p class="sw-section-label">Werkprocessen</p>
+      <div id="{{ kt.chart_id }}"></div>
+      <script>
+        vegaEmbed("#{{ kt.chart_id }}", {{ kt.chart_json | safe }}, {actions: false});
+      </script>
+      {% endif %}
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+
+  <div class="sw-tabs__panel" id="panel-aandacht">
+    {% if zkt or zwp %}
+    <div class="sw-grid sw-grid--2">
+      {% if zkt %}
+      <div class="sw-card">
+        <p class="sw-section-label">Zwakste kerntaak</p>
+        <p class="sw-stat__label">{{ zkt[0] }}</p>
+        <p class="sw-stat__sub">{{ "%.0f" | format(zkt[1]) }} punten</p>
+        <p class="sw-muted">Bespreek dit met je mentor of gebruik de AI Leercoach voor gerichte oefening.</p>
+      </div>
+      {% endif %}
+      {% if zwp %}
+      <div class="sw-card">
+        <p class="sw-section-label">Zwakste werkproces</p>
+        <p class="sw-stat__label">{{ zwp[0] }}</p>
+        <p class="sw-stat__sub">{{ "%.0f" | format(zwp[1]) }} punten</p>
+        <p class="sw-muted">Focus extra op dit werkproces bij je volgende stage of opdracht.</p>
+      </div>
+      {% endif %}
+    </div>
+    {% else %}
+    <div class="sw-alert sw-alert--ok">Geen specifieke aandachtspunten gevonden — goed bezig.</div>
+    {% endif %}
+  </div>
+
+  <div class="sw-tabs__panel" id="panel-weekplan">
+    <p class="sw-muted">Een persoonlijk studieplan voor deze week, afgestemd op jouw voortgang, BSA-status en aandachtspunten.</p>
+    <div class="sw-vg-weekplan-actions">
+      <button type="button" class="sw-btn sw-btn--primary" id="btn-weekplan-genereer">Genereer weekplan</button>
+      <button type="button" class="sw-btn sw-btn--secondary" id="btn-weekplan-reset">Reset</button>
+    </div>
+    <div id="weekplan-spinner" class="sw-vg-hidden"><span class="sw-spinner"></span> Weekplan wordt opgesteld…</div>
+    <div id="weekplan-fout" class="sw-alert sw-alert--error sw-vg-hidden"></div>
+    <div id="weekplan-leeg" class="sw-alert sw-alert--ok">
+      Klik op <span class="sw-badge sw-badge--accent">Genereer weekplan</span> om je persoonlijke studieplan te maken.
+    </div>
+    <div id="weekplan-resultaat" class="sw-vg-hidden"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const snr = {{ studentnummer | tojson }};
+  const btnGen = document.getElementById("btn-weekplan-genereer");
+  const btnReset = document.getElementById("btn-weekplan-reset");
+  const spinner = document.getElementById("weekplan-spinner");
+  const fout = document.getElementById("weekplan-fout");
+  const leeg = document.getElementById("weekplan-leeg");
+  const resultaat = document.getElementById("weekplan-resultaat");
+
+  function toon(el) { el.classList.remove("sw-vg-hidden"); }
+  function verberg(el) { el.classList.add("sw-vg-hidden"); }
+
+  btnReset.addEventListener("click", function () {
+    resultaat.textContent = "";
+    verberg(resultaat);
+    verberg(fout);
+    toon(leeg);
+  });
+
+  btnGen.addEventListener("click", function () {
+    verberg(leeg);
+    verberg(fout);
+    verberg(resultaat);
+    resultaat.textContent = "";
+    toon(spinner);
+    swStream(
+      "/voortgang/api/weekplan",
+      { studentnummer: snr },
+      {
+        onChunk: function (chunk) {
+          resultaat.textContent += chunk;
+        },
+        onDone: function () {
+          verberg(spinner);
+          toon(resultaat);
+        },
+        onError: function (err) {
+          verberg(spinner);
+          fout.textContent = err === "timeout"
+            ? "De AI-service reageert niet. Probeer het over een moment opnieuw."
+            : err;
+          toon(fout);
+        },
+      }
+    );
+  });
+})();
+</script>
+
+{% endif %}
+{% endblock %}

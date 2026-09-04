@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+{% block title %}Outreach — Samenwijzer{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/static/pages/outreach.css">
+{% endblock %}
+{% block content %}
+<div class="sw-hero">
+  <h1>Outreach</h1>
+  <p class="sw-hero__sub">Mentor {{ mentor_naam }} · {{ aantal_at_risk }} studenten vragen aandacht</p>
+</div>
+
+{% if melding_tekst %}
+<div class="sw-alert sw-alert--{{ melding_klasse }}">{{ melding_tekst }}</div>
+{% endif %}
+
+<div class="sw-tabs" role="tablist">
+  <button class="sw-tab" data-tab="werklijst" role="tab">Werklijst</button>
+  <button class="sw-tab" data-tab="campagnes" role="tab">Campagnes</button>
+  <button class="sw-tab" data-tab="effectiviteit" role="tab">Effectiviteit</button>
+</div>
+
+<!-- ══ Tab 1 — Werklijst ══════════════════════════════════════════════════ -->
+<section class="sw-tabpanel" data-panel="werklijst">
+  <h2>Studenten die aandacht nodig hebben ({{ aantal_at_risk }})</h2>
+  <p class="sw-muted">Studenten met risicovlag, voortgang &lt; 40 % of meer dan 25 % achter op BSA-norm.</p>
+
+  {% if not werklijst %}
+  <div class="sw-alert sw-alert--ok">Geen studenten vereisen op dit moment outreach.</div>
+  {% endif %}
+
+  {% for s in werklijst %}
+  <div class="sw-card outreach-card" id="student-{{ s.snr }}" data-snr="{{ s.snr }}">
+    <div class="outreach-card__kop">
+      <div>
+        <strong>{{ s.naam }}</strong>
+        <span class="sw-badge sw-badge--{{ s.status_klasse }}">{{ s.status.status.replace("_", " ") }}</span>
+        {% if s.moment_label %}<span class="sw-badge sw-badge--transitie">{{ s.moment_label }}</span>{% endif %}
+        <p class="sw-muted">
+          {{ s.opleiding }} · Niveau {{ s.niveau }} ·
+          Voortgang {{ s.voortgang_pct }} % ·
+          BSA {{ s.bsa_behaald }}/{{ s.bsa_vereist }} pt
+        </p>
+        {% if s.status.laatste_contact %}
+        <p class="sw-muted">Laatste contact: {{ s.status.laatste_contact[:10] }} door {{ s.status.laatste_mentor or "—" }}</p>
+        {% endif %}
+        {% if s.status.notitie %}<p class="sw-muted">📝 {{ s.status.notitie }}</p>{% endif %}
+      </div>
+    </div>
+
+    <details class="sw-details" {% if s.expanded %}open{% endif %}>
+      <summary>Bericht opstellen voor {{ s.voornaam }}</summary>
+
+      <form method="post" action="/outreach/werklijst" class="outreach-form">
+        <input type="hidden" name="studentnummer" value="{{ s.snr }}">
+
+        <div class="outreach-rij">
+          <div>
+            <label>Status</label>
+            <select name="status">
+              {% for st in statussen_opties %}
+              <option value="{{ st }}" {% if st == s.status.status %}selected{% endif %}>{{ st.replace("_", " ") }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div>
+            <label>Toon</label>
+            <div class="outreach-tonen">
+              {% for t in tonen %}
+              <label class="sw-check"><input type="radio" name="toon-kies" value="{{ t }}" {% if loop.first %}checked{% endif %}> {{ t }}</label>
+              {% endfor %}
+            </div>
+          </div>
+          <div>
+            <label class="sw-check"><input type="checkbox" class="verwijzing-check"> Verwijzing opnemen</label>
+            <select class="verwijzing-cat" hidden>
+              {% for cat, info in verwijzingen.items() %}
+              <option value="{{ cat }}">{{ info.label }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="sw-alert verwijzing-info" hidden></div>
+
+        <button type="button" class="sw-btn sw-btn--secondary genereer-btn">✨ Genereer bericht</button>
+        <span class="sw-spinner" hidden></span>
+        <p class="sw-alert sw-alert--error genereer-fout" hidden></p>
+
+        <label>Bericht (pas aan indien gewenst)</label>
+        <textarea name="bericht" rows="7"></textarea>
+
+        <label>Interne notitie (optioneel)</label>
+        <input type="text" name="notitie" value="{{ s.status.notitie or '' }}">
+
+        <div class="outreach-rij outreach-rij--acties">
+          <button type="submit" name="actie" value="opslaan" class="sw-btn sw-btn--primary">💾 Sla status op</button>
+          <div class="outreach-mail">
+            <input type="email" name="email" placeholder="student@school.nl">
+            <button type="submit" name="actie" value="mailen" class="sw-btn sw-btn--secondary"
+                    {% if not smtp_klaar %}disabled title="Configureer SMTP_HOST, SMTP_USER en SMTP_PASSWORD in .env"{% endif %}>
+              📧 Verstuur e-mail
+            </button>
+          </div>
+        </div>
+      </form>
+
+      {% if s.interventies %}
+      <p class="sw-muted"><strong>Eerdere interventies ({{ s.interventies_totaal }})</strong></p>
+      {% for iv in s.interventies %}
+      <p class="sw-muted">• {{ iv.timestamp[:10] }} · {{ iv.mentor }} · {{ iv.status_voor }} → {{ iv.status_na }}</p>
+      {% endfor %}
+      {% endif %}
+    </details>
+  </div>
+  {% endfor %}
+</section>
+
+<!-- ══ Tab 2 — Campagnes ══════════════════════════════════════════════════ -->
+<section class="sw-tabpanel" data-panel="campagnes" hidden>
+  <h2>Campagnes</h2>
+  <p class="sw-muted">Maak gerichte outreach-campagnes aan voor specifieke transitiemomenten.
+    Gebruik de werklijst om individuele studenten te benaderen.</p>
+
+  <details class="sw-details sw-card">
+    <summary>➕ Nieuwe campagne aanmaken</summary>
+    <form method="post" action="/outreach/campagne">
+      <label>Naam campagne</label>
+      <input type="text" name="naam" placeholder="BSA-sprint april 2026">
+      <label>Transitiemoment</label>
+      <select name="transitiemoment">
+        {% for waarde, label in transitiemoment_opties %}
+        <option value="{{ waarde }}">{{ label }}</option>
+        {% endfor %}
+      </select>
+      <label>Berichttemplate</label>
+      <textarea name="bericht_template" rows="6" placeholder="Beste [naam],
+
+Ik zie dat je voortgang aandacht vraagt. Laten we een afspraak maken om je verder te helpen.
+
+Groeten, [mentor]"></textarea>
+      <button type="submit" class="sw-btn sw-btn--primary">📣 Maak campagne aan</button>
+    </form>
+  </details>
+
+  {% if not campagnes_actief and not campagnes_afgesloten %}
+  <div class="sw-alert">Nog geen campagnes aangemaakt.</div>
+  {% endif %}
+
+  {% if campagnes_actief %}
+  <p class="sw-section-label">Actieve campagnes</p>
+  {% for camp in campagnes_actief %}
+  <div class="sw-card">
+    <div class="outreach-rij outreach-rij--acties">
+      <div>
+        <strong>{{ camp.naam }}</strong>
+        <span class="sw-badge sw-badge--transitie">{{ transitiemoment_label(camp.transitiemoment) }}</span>
+        <p class="sw-muted">Aangemaakt door {{ camp.aangemaakt_door }} op {{ camp.aangemaakt_op[:10] }}</p>
+        <details class="sw-details">
+          <summary>Berichttemplate</summary>
+          <pre class="outreach-template">{{ camp.bericht_template }}</pre>
+        </details>
+      </div>
+      <form method="post" action="/outreach/campagne/{{ camp.id }}/sluiten">
+        <button type="submit" class="sw-btn sw-btn--secondary">Afsluiten</button>
+      </form>
+    </div>
+  </div>
+  {% endfor %}
+  {% endif %}
+
+  {% if campagnes_afgesloten %}
+  <details class="sw-details">
+    <summary>Afgesloten campagnes ({{ campagnes_afgesloten | length }})</summary>
+    {% for camp in campagnes_afgesloten %}
+    <p class="sw-muted"><strong>{{ camp.naam }}</strong> · {{ camp.aangemaakt_op[:10] }} ·
+      {{ transitiemoment_label(camp.transitiemoment) }}</p>
+    {% endfor %}
+  </details>
+  {% endif %}
+</section>
+
+<!-- ══ Tab 3 — Effectiviteit ══════════════════════════════════════════════ -->
+<section class="sw-tabpanel" data-panel="effectiviteit" hidden>
+  <h2>Effectiviteit van interventies</h2>
+
+  {% if not effectiviteit %}
+  <div class="sw-alert">Nog geen interventies geregistreerd.</div>
+  {% else %}
+  <div class="sw-grid sw-grid--4">
+    <div class="sw-stat">
+      <p class="sw-stat__label">Totaal interventies</p>
+      <p class="sw-stat__value">{{ effectiviteit.totaal_interventies }}</p>
+    </div>
+    <div class="sw-stat">
+      <p class="sw-stat__label">Contactratio</p>
+      <p class="sw-stat__value">{{ "%.0f" | format(effectiviteit.metrics.contact_rate) }}%</p>
+      <p class="sw-stat__sub">Gecontacteerd / at-risk</p>
+      <div class="sw-progress"><div class="sw-progress__bar" style="width: {{ effectiviteit.metrics.contact_rate }}%"></div></div>
+    </div>
+    <div class="sw-stat">
+      <p class="sw-stat__label">Responsratio</p>
+      <p class="sw-stat__value">{{ "%.0f" | format(effectiviteit.metrics.respons_rate) }}%</p>
+      <p class="sw-stat__sub">Gereageerd / gecontacteerd</p>
+      <div class="sw-progress"><div class="sw-progress__bar" style="width: {{ effectiviteit.metrics.respons_rate }}%"></div></div>
+    </div>
+    <div class="sw-stat">
+      <p class="sw-stat__label">Opgelost</p>
+      <p class="sw-stat__value">{{ "%.0f" | format(effectiviteit.metrics.oplossing_rate) }}%</p>
+      <p class="sw-stat__sub">Opgelost / gereageerd</p>
+      <div class="sw-progress"><div class="sw-progress__bar" style="width: {{ effectiviteit.metrics.oplossing_rate }}%"></div></div>
+    </div>
+  </div>
+
+  <p class="sw-section-label">Statustrechter</p>
+  <div class="sw-table-wrap">
+    <table class="sw-table">
+      <thead><tr><th>Fase</th><th>Aantal</th></tr></thead>
+      <tbody>
+        {% for fase, aantal in effectiviteit.trechter %}
+        <tr><td>{{ fase }}</td><td>{{ aantal }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="sw-section-label">Interventies per mentor</p>
+  <div class="sw-table-wrap">
+    <table class="sw-table">
+      <thead><tr><th>Mentor</th><th>Interventies</th><th>Unieke studenten</th></tr></thead>
+      <tbody>
+        {% for rij in effectiviteit.mentor_counts %}
+        <tr><td>{{ rij.mentor }}</td><td>{{ rij.interventies }}</td><td>{{ rij.uniek_studenten }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="sw-section-label">Volledige interventielog</p>
+  <div class="sw-table-wrap">
+    <table class="sw-table">
+      <thead><tr><th>Datum</th><th>Student</th><th>Mentor</th><th>Van</th><th>Naar</th><th>Voortgang</th><th>BSA %</th></tr></thead>
+      <tbody>
+        {% for rij in effectiviteit.log %}
+        <tr>
+          <td>{{ rij.datum }}</td><td>{{ rij.student }}</td><td>{{ rij.mentor }}</td>
+          <td>{{ rij.status_voor }}</td><td>{{ rij.status_na }}</td>
+          <td>{{ "%.0f" | format(rij.voortgang * 100) }}%</td>
+          <td>{{ "%.0f" | format(rij.bsa_pct * 100) }}%</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+</section>
+
+<script id="outreach-data" type="application/json">
+  {{ {"tab": tab, "verwijzingen": verwijzingen} | tojson }}
+</script>
+{% endblock %}
+{% block scripts %}
+<script src="/static/pages/outreach.js"></script>
+{% endblock %}

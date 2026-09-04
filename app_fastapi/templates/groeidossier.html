@@ -1,0 +1,235 @@
+{% extends "base.html" %}
+{% block title %}Groeidossier — Samenwijzer{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/pages/groeidossier.css">
+<script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js"></script>
+{% endblock %}
+
+{% block content %}
+{% if rol == "docent" %}
+<form method="get" action="/groeidossier" class="gd-select">
+  <label for="gd-student">Selecteer een student uit jouw groep</label>
+  <select id="gd-student" name="student" onchange="this.form.submit()">
+    {% for optie in groep_opties %}
+    <option value="{{ optie.studentnummer }}"
+            {% if optie.studentnummer == gekozen_studentnummer %}selected{% endif %}>
+      {{ optie.naam }} ({{ optie.studentnummer }})
+    </option>
+    {% endfor %}
+  </select>
+</form>
+{% endif %}
+
+{% if geen_studenten %}
+<div class="sw-alert">Je hebt geen studenten in je groep.</div>
+{% else %}
+
+<div class="sw-hero">
+  <h1>Groeidossier — {{ student.naam }}</h1>
+  <p class="sw-hero__sub">{{ opleiding }} · Niveau {{ niveau }} · Cohort {{ cohort }}</p>
+</div>
+
+{% if melding_tekst %}
+<div class="sw-alert{% if melding_soort %} sw-alert--{{ melding_soort }}{% endif %}">{{ melding_tekst }}</div>
+{% endif %}
+
+<div class="gd-tabs" role="tablist">
+  <button type="button" class="gd-tab" data-tab="scores">📊 {% if is_eigenaar %}Mijn beoordeling{% else %}Beoordeling{% endif %}</button>
+  <button type="button" class="gd-tab" data-tab="historie">📈 Groei over tijd</button>
+  <button type="button" class="gd-tab" data-tab="spinneweb">🕸️ Spinneweb</button>
+</div>
+
+{# ── Tab: scores ─────────────────────────────────────────────────────────── #}
+<section id="tab-scores" class="gd-panel">
+  {% if is_eigenaar %}<form method="post" action="/groeidossier/opslaan" id="gd-hoofdform">{% endif %}
+
+  {% for blok in blokken %}
+  <div class="sw-card">
+    <h3>{{ blok.label }}</h3>
+
+    {% if blok.feedback %}
+    <div class="gd-feedback">
+      <b>Feedback van {{ blok.feedback.mentor_naam }}</b><br>{{ blok.feedback.tekst }}
+    </div>
+    {% endif %}
+
+    {% for wp in blok.wps %}
+    <div class="gd-wp">
+      <p class="gd-wp__label"><b>{{ wp.label }}</b></p>
+      {% if wp.status %}
+      <p class="sw-muted">{{ badges_student[wp.status] if wp.status in badges_student else wp.status }}</p>
+      {% endif %}
+      {% if wp.status == "teruggegeven" and wp.mentor_opmerking %}
+      <div class="sw-alert sw-alert--urgent"><b>Verbeterpunt van je mentor:</b> {{ wp.mentor_opmerking }}</div>
+      {% endif %}
+      <p class="sw-muted">{{ niveau_labels }}</p>
+
+      <div class="gd-slider">
+        <input type="range" min="0" max="100" step="1"
+               name="score__{{ wp.wp_col }}" value="{{ wp.score }}"
+               {% if not is_eigenaar %}disabled{% endif %}
+               oninput="this.nextElementSibling.value = this.value">
+        <output>{{ wp.score }}</output>
+      </div>
+
+      <label class="sw-muted" for="verant-{{ wp.wp_col }}">Waarom vind je dit?</label>
+      <textarea id="verant-{{ wp.wp_col }}" name="verant__{{ wp.wp_col }}" maxlength="1000"
+                {% if not is_eigenaar %}disabled{% endif %}>{{ wp.verantwoording }}</textarea>
+
+      {% if is_eigenaar %}
+      <div class="gd-aanscherp">
+        <button type="button" class="sw-btn sw-btn--secondary gd-aanscherp__btn"
+                data-wp="{{ wp.wp_col }}"
+                title="Vraag de tutor om je verantwoording aan te scherpen">✨ Aanscherpen</button>
+        <div class="gd-aanscherp__uit" id="aanscherp-{{ wp.wp_col }}" hidden></div>
+      </div>
+      {% endif %}
+
+      <details class="sw-details gd-bewijs">
+        <summary>📎 Bewijsstukken ({{ wp.stukken | length }})</summary>
+        {% for stuk in wp.stukken %}
+        <div class="gd-bewijs__rij">
+          <span>
+            <b>{{ stuk.bestandsnaam }}</b>
+            <span class="sw-muted">{{ (stuk.grootte_bytes // 1024) }} kB</span>
+            {% if stuk.toelichting %}<br><span class="sw-muted">{{ stuk.toelichting }}</span>{% endif %}
+          </span>
+          <span class="gd-bewijs__acties">
+            <a class="sw-btn sw-btn--secondary" href="/groeidossier/bewijsstuk/{{ stuk.id }}">⬇️ Download</a>
+            {% if is_eigenaar %}
+            <button type="submit" class="sw-btn sw-btn--secondary" form="gd-del-{{ stuk.id }}"
+                    title="Verwijderen">🗑️</button>
+            {% endif %}
+          </span>
+        </div>
+        {% endfor %}
+        {% if is_eigenaar %}
+        <div class="gd-bewijs__upload">
+          <label for="upl-{{ wp.wp_col }}">Voeg bewijsstuk toe voor {{ wp.label }}</label>
+          <input type="file" id="upl-{{ wp.wp_col }}" name="bestand"
+                 accept="{{ toegestane_extensies }}" form="gd-upl-{{ wp.wp_col }}" required>
+          <label for="upl-toel-{{ wp.wp_col }}">Toelichting (optioneel)</label>
+          <input type="text" id="upl-toel-{{ wp.wp_col }}" name="toelichting" maxlength="200"
+                 form="gd-upl-{{ wp.wp_col }}">
+          <button type="submit" class="sw-btn sw-btn--secondary" form="gd-upl-{{ wp.wp_col }}">📤 Uploaden</button>
+        </div>
+        {% endif %}
+      </details>
+    </div>
+    {% endfor %}
+  </div>
+  {% endfor %}
+
+  {% if is_eigenaar %}
+  <div class="gd-acties">
+    <button type="submit" name="actie" value="opslaan" class="sw-btn sw-btn--secondary">💾 Concept opslaan</button>
+    <button type="submit" name="actie" value="indienen" class="sw-btn sw-btn--primary">📤 Indienen bij mentor</button>
+  </div>
+  </form>
+  {% endif %}
+
+  {% if not is_eigenaar %}
+  <h2>Beoordeel ingediende werkprocessen</h2>
+  {% for blok in blokken %}
+  <h4>{{ blok.label }}</h4>
+  {% for wp in blok.wps %}
+  {% if wp.status %}
+  <div class="sw-card">
+    <p><b>{{ wp.label }}</b> — {{ badges_docent[wp.status] if wp.status in badges_docent else wp.status }}</p>
+    <p class="sw-muted">Score student: {{ wp.score }} · {{ wp.verantwoording or "(geen toelichting)" }}</p>
+    {% if wp.status == "ingediend" %}
+    <form method="post" action="/groeidossier/beoordeel">
+      <input type="hidden" name="studentnummer" value="{{ gekozen_studentnummer }}">
+      <input type="hidden" name="wp_kolom" value="{{ wp.wp_col }}">
+      <label for="opm-{{ wp.wp_col }}">Verbeterfeedback (verplicht bij teruggeven)</label>
+      <textarea id="opm-{{ wp.wp_col }}" name="opmerking" maxlength="1000"></textarea>
+      <div class="gd-acties">
+        <button type="submit" name="actie" value="goedkeuren" class="sw-btn sw-btn--primary">✅ Goedkeuren</button>
+        <button type="submit" name="actie" value="teruggeven" class="sw-btn sw-btn--secondary">↩️ Teruggeven</button>
+      </div>
+    </form>
+    {% elif wp.status == "teruggegeven" and wp.mentor_opmerking %}
+    <p class="sw-muted">Jouw eerdere feedback: {{ wp.mentor_opmerking }}</p>
+    {% endif %}
+  </div>
+  {% endif %}
+  {% endfor %}
+  {% endfor %}
+
+  <h2>Algemene feedback per kerntaak</h2>
+  {% for blok in blokken %}
+  <form method="post" action="/groeidossier/feedback" class="sw-card">
+    <input type="hidden" name="studentnummer" value="{{ gekozen_studentnummer }}">
+    <input type="hidden" name="kt_kolom" value="{{ blok.kt_col }}">
+    <label for="fb-{{ blok.kt_col }}">Feedback op {{ blok.label }}</label>
+    <textarea id="fb-{{ blok.kt_col }}" name="tekst" maxlength="1000">{{ blok.feedback.tekst if blok.feedback else "" }}</textarea>
+    <button type="submit" class="sw-btn sw-btn--secondary">💬 Feedback opslaan ({{ blok.kt_col }})</button>
+  </form>
+  {% endfor %}
+  {% endif %}
+</section>
+
+{# ── Tab: historie ───────────────────────────────────────────────────────── #}
+<section id="tab-historie" class="gd-panel" hidden>
+  {% if not heeft_historie %}
+  <div class="sw-alert">Nog geen groeihistorie — sla je beoordeling op om je eerste meetpunt vast te leggen.</div>
+  {% else %}
+  <div class="sw-card"><div id="gd-hist-chart"></div></div>
+  <h4>Delta t.o.v. vorige meting</h4>
+  <div class="sw-grid sw-grid--3">
+    {% for d in deltas %}
+    <div class="sw-stat">
+      <p class="sw-stat__label">{{ d.label }}</p>
+      <p class="sw-stat__value gd-delta--{{ d.richting }}">{{ d.pijl }} {{ d.delta | abs }}</p>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
+
+{# ── Tab: spinneweb ──────────────────────────────────────────────────────── #}
+<section id="tab-spinneweb" class="gd-panel" hidden>
+  <p class="sw-muted">
+    Per kerntaak een radar van je werkprocessen.
+    Groen gevuld = jouw huidige meting · oranje stippellijn = jouw vorige meting ·
+    blauwe lijn = klasgemiddelde ({{ opleiding }}, cohort {{ cohort }}).
+  </p>
+  {% for figuur in figuren %}
+  {% if figuur.fig_json %}
+  <div class="sw-card"><div class="gd-spinneweb" id="gd-spin-{{ loop.index }}"></div></div>
+  {% else %}
+  <div class="sw-alert">Nog geen metingen voor <i>{{ figuur.label }}</i> —
+    sla je beoordeling op om het spinneweb te zien.</div>
+  {% endif %}
+  {% endfor %}
+</section>
+
+{# Losse formulieren voor upload/verwijderen (buiten het hoofdformulier; gekoppeld via form-attr) #}
+{% if is_eigenaar %}
+{% for blok in blokken %}{% for wp in blok.wps %}
+<form id="gd-upl-{{ wp.wp_col }}" method="post" action="/groeidossier/bewijsstuk"
+      enctype="multipart/form-data">
+  <input type="hidden" name="wp_kolom" value="{{ wp.wp_col }}">
+</form>
+{% for stuk in wp.stukken %}
+<form id="gd-del-{{ stuk.id }}" method="post"
+      action="/groeidossier/bewijsstuk/{{ stuk.id }}/verwijderen"></form>
+{% endfor %}
+{% endfor %}{% endfor %}
+{% endif %}
+
+<script type="application/json" id="gd-hist-data">{{ historie_json | safe }}</script>
+{% for figuur in figuren %}
+{% if figuur.fig_json %}
+<script type="application/json" class="gd-spin-data" data-doel="gd-spin-{{ loop.index }}">{{ figuur.fig_json | safe }}</script>
+{% endif %}
+{% endfor %}
+<script id="gd-config" type="application/json">{"tab": "{{ actieve_tab }}"}</script>
+
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/pages/groeidossier.js"></script>
+{% endblock %}

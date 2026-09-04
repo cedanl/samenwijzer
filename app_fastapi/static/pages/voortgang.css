@@ -1,0 +1,52 @@
+/* Voortgang-pagina — extra's bovenop static/app.css. */
+
+.sw-vg-select {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+}
+.sw-vg-select label { margin: 0; white-space: nowrap; }
+.sw-vg-select select { margin-bottom: 0; }
+
+.sw-vg-hidden { display: none !important; }
+
+.sw-vg-weekplan-actions {
+    display: flex;
+    gap: var(--space-3);
+    margin: var(--space-3) 0 var(--space-4);
+}
+
+/* ── Radio-gestuurde tabs (geen JS nodig) ───────────────────────────────── */
+.sw-tabs { margin-top: var(--space-2); }
+.sw-tabs > input[type="radio"] { display: none; }
+.sw-tabs__nav {
+    display: flex;
+    gap: var(--space-2);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: var(--space-4);
+}
+.sw-tabs__nav label {
+    margin: 0;
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+.sw-tabs__panel { display: none; }
+
+#vg-tab-scores:checked ~ .sw-tabs__nav label[for="vg-tab-scores"],
+#vg-tab-aandacht:checked ~ .sw-tabs__nav label[for="vg-tab-aandacht"],
+#vg-tab-weekplan:checked ~ .sw-tabs__nav label[for="vg-tab-weekplan"] {
+    color: var(--accent-strong);
+    border-bottom-color: var(--accent-strong);
+}
+#vg-tab-scores:checked ~ #panel-scores,
+#vg-tab-aandacht:checked ~ #panel-aandacht,
+#vg-tab-weekplan:checked ~ #panel-weekplan {
+    display: block;
+}

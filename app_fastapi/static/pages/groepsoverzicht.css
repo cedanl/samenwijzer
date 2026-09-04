@@ -1,0 +1,49 @@
+/* Groepsoverzicht — extra's bovenop app.css (filters, tabs, signaleringen). */
+
+.sw-filters__row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+}
+@media (max-width: 560px) {
+    .sw-filters__row { grid-template-columns: 1fr; }
+}
+
+.sw-tabs {
+    display: flex;
+    gap: var(--space-2);
+    border-bottom: 1px solid var(--border);
+    margin: var(--space-5) 0 var(--space-4);
+}
+.sw-tabs__link {
+    padding: 10px 4px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    text-decoration: none;
+    color: var(--text-faint);
+    border-bottom: 2px solid transparent;
+    margin-right: var(--space-4);
+}
+.sw-tabs__link--active {
+    color: var(--text);
+    border-bottom-color: var(--accent-strong);
+}
+
+.sw-table__row--risico td { background: color-mix(in srgb, var(--alert) 8%, transparent); }
+
+.sw-signalering {
+    display: flex;
+    gap: var(--space-5);
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.sw-signalering__info { flex: 2 1 320px; }
+.sw-signalering__info p { margin: 0 0 6px; }
+.sw-signalering__info ul { margin: 0; padding-left: 18px; }
+.sw-signalering__form {
+    flex: 1 1 220px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+.sw-signalering__form input[type="text"] { margin-bottom: 0; }

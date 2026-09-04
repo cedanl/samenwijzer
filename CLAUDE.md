@@ -10,7 +10,10 @@ per taak een verifieerbaar success-criterium. Volledige agent-regels: `AGENTS.md
 
 ## Overview
 
-Python/Streamlit app die AI en Data gebruikt om MBO-studenten te ondersteunen bij het leren.
+Python-app die AI en Data gebruikt om MBO-studenten te ondersteunen bij het leren. De frontend
+migreert van Streamlit (`app/`, poort 8501) naar een FastAPI + Jinja-app (`app_fastapi/`, poort
+8505 — nieuwe hoofdlaag; migratieconventies in `app_fastapi/MIGRATIE.md`). Beide delen dezelfde
+business-logic in `src/samenwijzer/`.
 Doelgroepen: studenten (voortgang, tutor, leercoach, welzijnscheck) en docenten (groepsoverzicht,
 outreach, campagnebeheer, peer matching). CEDA technical standards:
 https://github.com/cedanl/.github/tree/main/standards/README.md.
@@ -30,11 +33,12 @@ HTML-strings in `styles.py`, `app/main.py` en `app/pages/*.py` zijn vrijgesteld 
 
 ```bash
 uv sync                                                    # Install
-uv run streamlit run app/main.py                           # App (poort 8501)
+uv run streamlit run app/main.py                           # Streamlit-frontend (poort 8501, legacy)
+SESSION_SECRET=dev uv run uvicorn app_fastapi.main:app --port 8505 --reload  # FastAPI-frontend (nieuw)
 uv run uvicorn app.webhook:app --host 0.0.0.0 --port 8502  # WhatsApp-webhook
 uv run pytest                                              # Tests + coverage
 uv run pytest tests/test_analyze.py::test_leerpad_niveau   # Eén test
-uv run ruff check --fix src/ app/ && uv run ruff format src/ app/
+uv run ruff check --fix src/ app/ app_fastapi/ && uv run ruff format src/ app/ app_fastapi/
 uv run ty check
 uv run python scripts/build_oer_catalog.py                 # Herbouw oeren.db uit oeren/
 uv run python scripts/generate_synthetisch_data.py         # Regenereer dataset (vereist oeren.db)
@@ -112,6 +116,10 @@ Login via `app/main.py`. Wachtwoord student én docent: **Welkom123** (SHA-256).
 na login: `rol` ∈ {`"student"`, `"docent"`}, `df`, plus `studentnummer` (student) of `mentor_naam`
 (docent). Docent-only: `auth.vereist_docent()` + `auth.mentor_filter(df)`. Student-only:
 `st.session_state.get("rol") == "student"` met `st.stop()` bij afwijking.
+
+**FastAPI-frontend** (`app_fastapi/`): login via `app_fastapi/main.py` naar een cookie-sessie
+(`request.session`, `SessionMiddleware` — vereist `SESSION_SECRET` buiten lokaal); zelfde rol/`studentnummer`/`mentor_naam`. Guards via `app_fastapi/auth.eis_rol(request, "docent")` +
+`data.mentor_df(naam)`; contexthelper `sessie_context(request)`. Geen business logic in `app_fastapi/`.
 
 **UI-smoke-test verplicht** bij wijzigingen aan pagina's, navigatie, sessie-state of file-paths:
 pytest groen ≠ feature werkt. Start de app, log in via `chrome-devtools-mcp` met een account uit

@@ -2,14 +2,25 @@
 
 ## Overview
 
-Samenwijzer is a single-service Python application with a Streamlit frontend.
+Samenwijzer is a single-service Python application. De frontend migreert van Streamlit
+(`app/`) naar een FastAPI + Jinja-app (`app_fastapi/`, poort 8505); beide draaien op dezelfde
+business-logic in `src/samenwijzer/`. De FastAPI-frontend is de nieuwe hoofdlaag (mirror van de
+6 Streamlit-pagina's, één rol-nav + dual-theme CSS); zie `app_fastapi/MIGRATIE.md` voor de
+migratieconventies. De Streamlit-pagina's blijven voorlopig als referentie/parity-bron bestaan.
 
 ## Layer model
 
 ```
-app/            ← UI only. Two processes:
+app/            ← UI only (Streamlit, legacy/parity-bron). Two processes:
   main.py + pages/  ← Streamlit frontend (poort 8501)
   webhook.py        ← FastAPI server (poort 8502) — verwerkt inkomende WhatsApp-berichten
+app_fastapi/     ← UI only (FastAPI + Jinja-frontend, poort 8505 — nieuwe hoofdlaag)
+  main.py           ← Login, home per rol, WhatsApp-optin, router-mount, sessie-middleware
+  auth.py           ← eis_rol() + sessie_context() (cookie-sessie i.p.v. st.session_state)
+  data.py           ← get_df() (met groei-overlay), student_row(), mentor_df()
+  routes/           ← Eén router per feature (voortgang, groepsoverzicht, leercoach, outreach, welzijn, groeidossier)
+  templates/        ← Jinja-templates, extends base.html; SSE voor AI-streaming
+  static/           ← app.css (dual-theme) + app.js (swStream SSE-helper) + pages/<feature>.{css,js}
 src/samenwijzer/
   prepare.py    ← Ingest and clean raw data
   transform.py  ← Shape data for analysis
@@ -84,6 +95,18 @@ AI calls are isolated in dedicated modules; they are **never** called from the U
 | `app/pages/5_welzijn.py` | Student self-assessment | student |
 | `app/pages/uitloggen.py` | Sessie wissen + redirect naar `/` | — |
 | `app/webhook.py` | FastAPI webhook voor inkomende WhatsApp-berichten (Twilio) | intern |
+
+FastAPI-frontend (`app_fastapi/`) — mirror van bovenstaande pagina's, gelijke rol-guards:
+
+| Route | Router | Rol |
+|---|---|---|
+| `/`, `/login`, `/home`, `/uitloggen`, `/whatsapp/optin` | `app_fastapi/main.py` | public / na login |
+| `/voortgang` | `routes/voortgang.py` | student (docent kiest student) |
+| `/groep` | `routes/groepsoverzicht.py` | docent |
+| `/leercoach` | `routes/leercoach.py` | student + docent |
+| `/outreach` | `routes/outreach.py` | docent |
+| `/welzijn` | `routes/welzijn.py` | student |
+| `/groeidossier` | `routes/groeidossier.py` | student + docent |
 
 ## Key dependencies
 

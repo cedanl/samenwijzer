@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+{% block title %}Groepsoverzicht — Samenwijzer{% endblock %}
+{% block head %}
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@7"></script>
+<link rel="stylesheet" href="/static/pages/groepsoverzicht.css">
+{% endblock %}
+{% block content %}
+<div class="sw-hero">
+  <h1>Groepsoverzicht</h1>
+  <p class="sw-hero__sub">Mentor {{ mentor_naam }} · {{ totaal_alle }} studenten</p>
+</div>
+
+<div class="sw-grid sw-grid--4">
+  <div class="sw-stat">
+    <p class="sw-stat__label">Studenten</p>
+    <p class="sw-stat__value">{{ totaal_alle }}</p>
+  </div>
+  <div class="sw-stat">
+    <p class="sw-stat__label">Op schema</p>
+    <p class="sw-stat__value">{{ op_schema }}</p>
+    <div class="sw-progress"><div class="sw-progress__bar" style="width: {{ (op_schema / totaal_alle * 100) | round if totaal_alle else 0 }}%"></div></div>
+  </div>
+  <div class="sw-stat sw-stat--alert">
+    <p class="sw-stat__label">Aandacht nodig</p>
+    <p class="sw-stat__value">{{ risico_alle }}</p>
+    {% if totaal_alle %}<p class="sw-stat__sub">{{ risico_alle_pct }}% van de groep</p>{% endif %}
+  </div>
+  <div class="sw-stat">
+    <p class="sw-stat__label">Gem. voortgang</p>
+    <p class="sw-stat__value">{{ gem_voortgang_pct }}%</p>
+    <div class="sw-progress"><div class="sw-progress__bar" style="width: {{ gem_voortgang_pct }}%"></div></div>
+  </div>
+</div>
+
+<p class="sw-section-label">Filters</p>
+<form class="sw-card sw-filters" method="get" action="/groep">
+  <input type="hidden" name="tab" value="{{ tab }}">
+  <div class="sw-filters__row">
+    <div>
+      <label for="opleiding">Opleiding</label>
+      <select id="opleiding" name="opleiding" onchange="this.form.submit()">
+        {% for o in opleidingen %}
+        <option value="{{ o }}" {% if o == opleiding %}selected{% endif %}>{{ o }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div>
+      <label for="cohort">Cohort</label>
+      <select id="cohort" name="cohort" onchange="this.form.submit()">
+        {% for c in cohorten %}
+        <option value="{{ c }}" {% if c == cohort %}selected{% endif %}>{{ c }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+</form>
+
+<div class="sw-tabs">
+  <a class="sw-tabs__link {% if tab == 'voortgang' %}sw-tabs__link--active{% endif %}"
+     href="/groep?opleiding={{ opleiding }}&cohort={{ cohort }}&tab=voortgang">Voortgang</a>
+  <a class="sw-tabs__link {% if tab == 'signaleringen' %}sw-tabs__link--active{% endif %}"
+     href="/groep?opleiding={{ opleiding }}&cohort={{ cohort }}&tab=signaleringen">Signaleringen{% if signaleringen %} ({{ signaleringen|length }}){% endif %}</a>
+</div>
+
+{% if tab == "voortgang" %}
+<p class="sw-section-label">Voortgang vs. BSA per student</p>
+{% if chart_json %}
+<div id="sw-groep-chart"></div>
+<script>
+  vegaEmbed("#sw-groep-chart", {{ chart_json | safe }}, { actions: false });
+</script>
+{% else %}
+<p class="sw-muted">Geen studenten in deze selectie.</p>
+{% endif %}
+
+{% if risico_studenten %}
+<p class="sw-section-label">⚠️ Studenten die aandacht nodig hebben ({{ risico_studenten | length }})</p>
+<div class="sw-table-wrap">
+  <table class="sw-table">
+    <thead>
+      <tr>
+        <th>Naam</th><th>Opleiding</th><th>Mentor</th><th>Voortgang</th>
+        <th>BSA behaald</th><th>BSA vereist</th><th>BSA %</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in risico_studenten %}
+      <tr>
+        <td>{{ r.naam }}</td>
+        <td>{{ r.opleiding }}</td>
+        <td>{{ r.mentor }}</td>
+        <td>{{ (r.voortgang * 100) | round }}%</td>
+        <td>{{ r.bsa_behaald }}</td>
+        <td>{{ r.bsa_vereist }}</td>
+        <td>{{ (r.bsa_percentage * 100) | round }}%</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
+
+<p class="sw-section-label">Alle studenten</p>
+<div class="sw-table-wrap">
+  <table class="sw-table">
+    <thead>
+      <tr>
+        <th>Nr.</th><th>Naam</th><th>Opleiding</th><th>Cohort</th><th>Leerweg</th><th>Mentor</th>
+        <th>Voortgang</th><th>BSA behaald</th><th>BSA vereist</th><th>BSA %</th>
+        {% if heeft_kt_gemiddelde %}<th>KT gem.</th>{% endif %}
+        <th>Risico</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in alle_studenten %}
+      <tr {% if r.risico %}class="sw-table__row--risico"{% endif %}>
+        <td>{{ r.studentnummer }}</td>
+        <td>{{ r.naam }}</td>
+        <td>{{ r.opleiding }}</td>
+        <td>{{ r.cohort }}</td>
+        <td>{{ r.leerweg }}</td>
+        <td>{{ r.mentor }}</td>
+        <td>{{ (r.voortgang * 100) | round }}%</td>
+        <td>{{ r.bsa_behaald }}</td>
+        <td>{{ r.bsa_vereist }}</td>
+        <td>{{ (r.bsa_percentage * 100) | round }}%</td>
+        {% if heeft_kt_gemiddelde %}<td>{{ r.kt_gemiddelde | round if r.kt_gemiddelde is not none else "—" }}</td>{% endif %}
+        <td>{{ "Ja" if r.risico else "Nee" }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<details class="sw-details sw-card">
+  <summary>👥 Peer Learning — koppeladvies op basis van kerntaken</summary>
+  {% if peer_profielen %}
+  <p class="sw-muted">Overzicht van de sterkste en zwakste kerntaak per student. Koppel studenten die elkaars sterke punten kunnen benutten.</p>
+  <div class="sw-table-wrap">
+    <table class="sw-table">
+      <thead>
+        <tr><th>Student</th><th>Sterk in</th><th>Score</th><th>Aandacht voor</th><th>Score</th></tr>
+      </thead>
+      <tbody>
+        {% for p in peer_profielen %}
+        <tr>
+          <td>{{ p.naam }}</td>
+          <td>{{ p.sterkste_kt }}</td>
+          <td>{{ p.sterkste_score | round }}</td>
+          <td>{{ p.zwakste_kt }}</td>
+          <td>{{ p.zwakste_score | round }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <p class="sw-muted">Geen kerntaakdata beschikbaar voor peer matching.</p>
+  {% endif %}
+</details>
+
+<p class="sw-section-label">Gemiddelden per cohort</p>
+{% if cohort_gemiddelden %}
+<div class="sw-table-wrap">
+  <table class="sw-table">
+    <thead>
+      <tr><th>Opleiding</th><th>Cohort</th><th>Aantal</th><th>Gem. voortgang</th><th>Gem. BSA %</th><th># Risico</th></tr>
+    </thead>
+    <tbody>
+      {% for c in cohort_gemiddelden %}
+      <tr>
+        <td>{{ c.opleiding }}</td>
+        <td>{{ c.cohort }}</td>
+        <td>{{ c.aantal }}</td>
+        <td>{{ (c.gem_voortgang * 100) | round }}%</td>
+        <td>{{ (c.gem_bsa_percentage * 100) | round }}%</td>
+        <td>{{ c.studenten_met_risico }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
+
+{% else %}
+{# ── Tab: Signaleringen ── #}
+{% if not signaleringen %}
+<div class="sw-alert sw-alert--ok">Geen actieve signaleringen voor mentor <strong>{{ mentor_naam }}</strong>.</div>
+{% else %}
+<p class="sw-muted">
+  Studenten met een recente welzijnsscore van <strong>Matig</strong> of <strong>Zwaar</strong>.
+  {{ signaleringen | length }} signalering(en) — meest zorgelijk bovenaan.
+</p>
+{% for s in signaleringen %}
+<div class="sw-card sw-signalering">
+  <div class="sw-signalering__info">
+    <p>
+      <span class="sw-badge {% if s.kleur == 'urgent' %}sw-badge--urgent{% else %}sw-badge--onderweg{% endif %}">{{ s.score_label }}</span>
+      <strong>{{ s.naam }}</strong> · Laatste check: {{ s.datum }}
+    </p>
+    {% if s.toelichting %}<p class="sw-muted">Toelichting student: "{{ s.toelichting }}"</p>{% endif %}
+    {% if s.notities %}
+    <p class="sw-muted">Eerdere notities:</p>
+    <ul class="sw-muted">
+      {% for n in s.notities %}
+      <li>— {{ n.datum }}: {{ n.notitie }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+  <form class="sw-signalering__form" method="post" action="/groep/notitie">
+    <input type="hidden" name="studentnummer" value="{{ s.studentnummer }}">
+    <input type="hidden" name="opleiding" value="{{ opleiding }}">
+    <input type="hidden" name="cohort" value="{{ cohort }}">
+    <input type="text" name="notitie" placeholder="Bijv. 'Heb contact opgenomen'" required>
+    <button class="sw-btn sw-btn--primary" type="submit">Opslaan</button>
+  </form>
+</div>
+{% endfor %}
+{% endif %}
+{% endif %}
+{% endblock %}

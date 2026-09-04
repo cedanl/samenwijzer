@@ -1,0 +1,46 @@
+/* Outreach — tabs, werklijstkaarten en status-/transitiebadges. */
+
+.sw-tabs {
+    display: flex; gap: 6px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: var(--space-5);
+}
+.sw-tab {
+    background: none; border: none; cursor: pointer;
+    font-family: var(--font-body); font-weight: 700; font-size: 13.5px;
+    color: var(--text-faint);
+    padding: 10px 14px;
+    border-bottom: 2px solid transparent;
+    transition: color var(--dur-fast) var(--ease);
+}
+.sw-tab:hover { color: var(--text); }
+.sw-tab--actief { color: var(--accent-strong); border-bottom-color: var(--accent-strong); }
+
+/* Statusbadges (zelfde klassen als de Streamlit-pagina) */
+.sw-badge--niet-gecontacteerd { background: var(--badge-urg-bg); color: var(--badge-urg-fg); border-color: var(--badge-urg-border); }
+.sw-badge--gecontacteerd { background: var(--badge-onderweg-bg); color: var(--badge-onderweg-fg); border-color: var(--badge-onderweg-border); }
+.sw-badge--gereageerd { background: var(--badge-gev-bg); color: var(--badge-gev-fg); border-color: var(--badge-gev-border); }
+.sw-badge--opgelost { background: var(--badge-ok-bg); color: var(--badge-ok-fg); border-color: var(--badge-ok-border); }
+.sw-badge--transitie { background: var(--badge-starter-bg); color: var(--badge-starter-fg); border-color: var(--badge-starter-border); }
+
+.outreach-card .sw-details { margin-top: var(--space-3); }
+.outreach-rij {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-4); align-items: start;
+}
+.outreach-rij--acties { grid-template-columns: auto 1fr; align-items: center; margin-top: var(--space-3); }
+.outreach-tonen { display: flex; gap: var(--space-3); flex-wrap: wrap; padding-top: 8px; }
+.outreach-mail { display: flex; gap: var(--space-2); align-items: center; justify-content: end; }
+.outreach-mail input { margin-bottom: 0; max-width: 260px; }
+.outreach-mail .sw-btn { white-space: nowrap; }
+.outreach-template {
+    font-family: var(--font-mono); font-size: 0.85rem;
+    white-space: pre-wrap;
+    background: var(--surface-2);
+    border-radius: var(--radius-sm);
+    padding: var(--space-3);
+}
+@media (max-width: 700px) {
+    .outreach-rij, .outreach-rij--acties { grid-template-columns: 1fr; }
+    .outreach-mail { justify-content: start; flex-wrap: wrap; }
+}
