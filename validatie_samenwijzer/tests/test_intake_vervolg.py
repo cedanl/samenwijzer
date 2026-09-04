@@ -145,3 +145,35 @@ def test_vraag_met_al_geladen_oer_blijft_shortcut_nemen(monkeypatch):
     body = r.json()
     assert body["modus"] == "chat"
     assert body["labels"] == ["Talland College · Kok · BOL 2025"]
+
+
+def test_kies_beurt_telt_mee_bij_genegeerde_picker(monkeypatch):
+    """Regressie voor de #243-follow-up: de kies-beurt zelf ontbrak in `chat_history`, dus als
+    de gebruiker de picker negeert en verder typt, mist de accumulatie de kandidaten-context.
+
+    Gebruikt de echte `validatie.db` (geen synthetische fixture): "tandartsassistent" alleen
+    levert meerdere kandidaten op (4 instellingen, kies-modus). Zonder de kies-beurt-fix ziet de
+    vervolgvraag "in Nijmegen" alleen zichzelf en matcht op instelling-naam alleen (5 ROC
+    Nijmegen-OER's, kies-modus opnieuw). Mét de fix telt "tandartsassistent" nog mee en
+    resolveert de combinatie naar precies de ROC Nijmegen-tandartsassistent-OER (crebo 25699,
+    bekende val: bestandsnaam-token "Tandartsassistent1" bij Da Vinci matcht niet op naam).
+    """
+    import app_fastapi.main as m
+    from app_fastapi.sessie import Sessie
+
+    monkeypatch.setattr(m, "laad_context", lambda oer_ids, **k: ("PROMPT", ["label"], [], False))
+
+    s = Sessie(toegang=True)
+    monkeypatch.setattr(m, "get_sessie", lambda request: s)
+
+    c = _client()
+    r1 = c.post("/api/vraag", json={"vraag": "tandartsassistent"})
+    assert r1.json()["modus"] == "kies"
+    assert len(r1.json()["opties"]) > 1
+    # De kies-beurt moet nu ook zelf als user-turn in de historie staan.
+    assert {"role": "user", "content": "tandartsassistent"} in s.chat_history
+
+    r2 = c.post("/api/vraag", json={"vraag": "in Nijmegen"})
+    body = r2.json()
+    assert body["modus"] == "chat", body
+    assert body["oer_ids"] == [1193]
