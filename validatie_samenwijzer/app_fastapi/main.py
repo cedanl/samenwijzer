@@ -215,6 +215,10 @@ async def api_vraag(request: Request):
     if len(kandidaten) > 1:
         s.kandidaten = kandidaten[:_MAX_KANDIDATEN]
         s.wachtende_vraag = vraag
+        # Ook opnemen in chat_history (lege "assistent"-kant, net als een mislukte AI-call —
+        # bouw_berichten() saneert dat al): negeert de gebruiker de picker en typt hij verder,
+        # dan telt deze kies-beurt alsnog mee in de opgetelde context_tekst hierboven.
+        s.voeg_beurt_toe(vraag, "")
         opties = [
             {
                 "id": k["id"],
