@@ -24,6 +24,7 @@ const picker = document.getElementById("picker");
 const ovLabels = document.getElementById("ovLabels");
 const ovAsk = document.getElementById("ovAsk");
 const ovReset = document.getElementById("ovReset");
+const ovClose = document.getElementById("ovClose");
 const ovPdfBtn = document.getElementById("ovPdfBtn");
 const pdfFrame = document.getElementById("pdfFrame");
 let oerIds = [];
@@ -171,6 +172,12 @@ ovPdfBtn.addEventListener("click", () => {
   if (!oerIds.length) return;
   if (pdfFrame.style.display === "block") { pdfFrame.style.display = "none"; pdfFrame.innerHTML = ""; }
   else { mountStudiegids(oerIds[0], pdfFrame); pdfFrame.style.display = "block"; }
+});
+
+// Niet-destructief sluiten: verbergt de overlay, behoudt gesprek/gekozen studiegids
+// (in tegenstelling tot ovReset hierboven, die /api/reset aanroept en alles wist).
+ovClose.addEventListener("click", () => {
+  overlay.classList.remove("open"); document.body.style.overflow = "";
 });
 
 ovReset.addEventListener("click", async () => {

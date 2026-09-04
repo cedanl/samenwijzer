@@ -89,6 +89,29 @@ app.add_middleware(
 app.mount("/static", StaticFiles(directory=_HIER / "static"), name="static")
 templates = Jinja2Templates(directory=_HIER / "templates")
 
+_STATIC_DIR = _HIER / "static"
+# Eenmalig bij opstart: mtime per static-asset (relatief pad, posix-stijl). `--reload` herstart
+# het process en dus deze dict, dus een edit tijdens lokaal ontwikkelen wordt alsnog opgepikt.
+_STATIC_VERSIES = {
+    str(p.relative_to(_STATIC_DIR).as_posix()): int(p.stat().st_mtime)
+    for p in _STATIC_DIR.rglob("*")
+    if p.is_file()
+}
+
+
+def static_url(pad: str) -> str:
+    """Cache-buster voor `/static/...`-assets: hangt `?v=<mtime>` van het bestand aan
+    (berekend bij opstart) — voorkomt dat terugkerende bezoekers oude JS/CSS vasthouden
+    zonder hard-refresh."""
+    pad = pad.lstrip("/")
+    versie = _STATIC_VERSIES.get(pad)
+    if versie is None:
+        return f"/static/{pad}"
+    return f"/static/{pad}?v={versie}"
+
+
+templates.env.globals["static_url"] = static_url
+
 _MAX_KANDIDATEN = 40
 
 # ── Beheer (dev-only, achter BEHEER_ENABLED) ────────────────────────────────────
