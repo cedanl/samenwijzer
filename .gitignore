@@ -68,3 +68,6 @@ oeren/kwic_oeren/
 oeren/graafschap_oeren/
 oeren/deltion_oeren/
 oeren/landstede_oeren/
+
+# graphify knowledge-graph output
+graphify-out/

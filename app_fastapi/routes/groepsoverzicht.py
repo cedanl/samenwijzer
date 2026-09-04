@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import logging
 from pathlib import Path
 
 from fastapi import APIRouter, Form, Request
@@ -21,6 +22,7 @@ from samenwijzer.wellbeing import (
 )
 
 router = APIRouter()
+log = logging.getLogger("samenwijzer_web")
 
 _ROOT = Path(__file__).resolve().parent.parent.parent
 _WELZIJN_CSV = _ROOT / "data" / "01-raw" / "synthetisch" / "welzijn.csv"
@@ -138,7 +140,7 @@ def groepsoverzicht_notitie(
     try:
         sla_notitie_op(_NOTITIES_PAD, studentnummer, mentor_naam, notitie)
     except ValueError:
-        pass
+        log.warning("notitie geweigerd (ongeldige invoer)")
     return RedirectResponse(
         f"/groep?opleiding={opleiding}&cohort={cohort}&tab=signaleringen", status_code=303
     )

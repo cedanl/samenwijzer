@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import logging
 from datetime import datetime
 
 import anthropic  # alleen voor except-clausules; geen client-instantiatie hier
@@ -26,6 +27,7 @@ from samenwijzer.welzijn import (
 )
 
 router = APIRouter()
+log = logging.getLogger("samenwijzer_web")
 
 _URGENTIES = (1, 2, 3)
 
@@ -164,5 +166,8 @@ async def welzijn_reactie(request: Request):
             yield _sse({"error": "timeout"})
         except anthropic.AnthropicError:
             yield _sse({"error": "AI-dienst niet bereikbaar"})
+        except Exception:
+            log.exception("welzijnsreactie-stream mislukt")
+            yield _sse({"error": "Er ging iets mis bij het opstellen van de reactie."})
 
     return StreamingResponse(stream(), media_type="text/event-stream")
