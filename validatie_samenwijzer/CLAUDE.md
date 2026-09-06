@@ -121,6 +121,12 @@ Volledige beschrijving in `docs/ARCHITECTURE.md`. De regels die een wijziging ni
   `tests/test_instelling_lijsten_sync.py`): `ingest._INSTELLINGEN`, `ingest._MAP_NAAM`,
   `scripts/seed_bulk.py:INSTELLINGEN`, `app_fastapi/main.py:_INSTELLING_KEYS`. Ontbreekt een
   nieuwe instelling in de seed-lijst → stil **0 studenten**.
+  Een **vijfde** lijst, `chat._INSTELLING_DOMEINEN` (schoolsite-domein per instelling), zit **niet**
+  in die test: ontbreekt een instelling daar → stil geen webzoek-fallback voor die school.
+- **Webzoek-tools** (`web_search`/`web_fetch`, alleen in `chat.stream_antwoord`): gescoped via
+  `allowed_domains` op schoolsite (`web_zoek_domeinen`) + vacaturesites (`_VACATURE_DOMEINEN`,
+  stagemarkt.nl/indeed.nl). Eén domein dat de Anthropic-crawler blokkeert geeft een **400 op de
+  héle call** (brak eerder alle chat) — voeg alleen geverifieerd-crawlbare domeinen toe.
 - **Parser-sync met de parent**: de parse-helpers in `ingest.py` worden bewust gespiegeld naar
   `src/samenwijzer/oer_parsing.py`. Wijzig je ze hier, werk de parent-kopie mee bij (en omgekeerd).
 - **Opleidingsnaam-opschoning** loopt uitsluitend via `opleiding.py` (geen streamlit-import):
@@ -170,3 +176,4 @@ edit aan alleen `app.css`/`app.js`/`chat.js` blijft de oude `?v=` staan: herstar
 | Bronactualiteit-Action (wekelijks) | `../.github/workflows/bronactualiteit.yml` |
 | Mockups | `docs/mockups/` |
 | Presentatie (Slidev, poort 3030) | `presentatie/` — `./start.sh` |
+| Kennisgraaf codebase | `graphify-out/` (gitignored) — vragen over structuur/relaties eerst via `/graphify` |
