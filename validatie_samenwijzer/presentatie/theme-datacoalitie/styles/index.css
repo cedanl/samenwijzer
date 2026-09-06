@@ -1,0 +1,154 @@
+/* ============================================================
+   Datacoalitie-thema voor Slidev — sluit aan op de stuurgroep-
+   presentatie "Datacoalitie & Npuls" (lichtblauw verloop, navy
+   titels, omkaderde blokken, logo linksboven, chip-navigatie).
+   Presentaties hoeven geen <style>-blok te bevatten.
+   ============================================================ */
+
+:root {
+  --dc-navy: #1b3a8c;
+  --dc-blue: #2e5bba;
+  --dc-blue-soft: #5b7fd1;
+  --dc-ink: #22315a;
+  --dc-muted: #5b6b8f;
+  --dc-line: #1b3a8c;
+  --dc-light: #e4eef8;
+  --dc-lighter: #f3f8fc;
+  --dc-accent: #0f9ed5;
+  --dc-green: #1f8a5b;
+  --dc-orange: #e97132;
+}
+
+.slidev-layout {
+  font-family: 'Segoe UI', 'Aptos', Calibri, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--dc-ink);
+  background: linear-gradient(135deg, #ffffff 0%, #eef5fb 45%, #cfe2f2 100%) !important;
+  padding: 0;
+  height: 100%; min-height: 100%;
+}
+/* De layout is leeg (alle content absoluut), dus het verloop óók op de pagina zelf */
+.slidev-page { background: linear-gradient(135deg, #ffffff 0%, #eef5fb 45%, #cfe2f2 100%) !important; }
+#slide-content { background: transparent !important; }
+
+/* Vaste elementen: logo linksboven, voettekst */
+.dc-logo {
+  position: absolute; top: 0.9rem; left: 1.1rem; z-index: 5;
+  width: 3.1rem; height: 3.1rem; border-radius: 4px;
+  background: url('/datacoalitie/logo_datacoalitie.png') center / cover no-repeat;
+  box-shadow: 0 1px 4px rgba(27, 58, 140, 0.25);
+}
+.dc-footer {
+  position: absolute; bottom: 0.7rem; left: 0; right: 0; z-index: 5;
+  text-align: center; font-size: 0.62rem; letter-spacing: 0.06em;
+  color: var(--dc-muted); text-transform: uppercase;
+}
+
+/* Chip-navigatie rechtsboven (Probleem → Fasering → Demo) */
+.dc-nav {
+  position: absolute; top: 1.05rem; right: 1.3rem; z-index: 5;
+  display: flex; align-items: center; gap: 0.25rem; font-size: 0.62rem;
+}
+.dc-nav .chip {
+  border: 1px solid var(--dc-navy); color: var(--dc-navy); background: #fff;
+  border-radius: 3px; padding: 0.12rem 0.55rem; font-weight: 600; letter-spacing: 0.02em;
+}
+.dc-nav .chip.active { background: var(--dc-navy); color: #fff; }
+.dc-nav .arrow { color: var(--dc-navy); font-size: 0.7rem; }
+
+/* Inhoudsvlak */
+.dc-fill {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  justify-content: center; padding: 3.4rem 3.2rem 2.4rem 3.2rem; z-index: 1;
+}
+.dc-fill.top { justify-content: flex-start; }
+
+/* Typografie */
+.slidev-layout h1 {
+  font-size: 1.75rem; font-weight: 700; color: var(--dc-navy);
+  text-align: center; margin: 0 0 0.35rem 0; line-height: 1.2;
+}
+.slidev-layout h2 {
+  font-size: 1.05rem; font-weight: 700; color: var(--dc-navy); margin: 0 0 0.4rem 0;
+}
+.slidev-layout h3 {
+  font-size: 0.92rem; font-weight: 700; color: var(--dc-navy); margin: 0 0 0.25rem 0;
+}
+.dc-subtitle {
+  text-align: center; color: var(--dc-muted); font-size: 0.88rem; margin: 0 0 0.9rem 0;
+  font-style: italic;
+}
+.slidev-layout p, .slidev-layout li { font-size: 0.82rem; line-height: 1.5; }
+.slidev-layout ul { margin: 0.2rem 0 0 0; padding-left: 1.1rem; list-style: disc; }
+.slidev-layout li { margin: 0.12rem 0; list-style: disc; }
+.slidev-layout li::marker { color: var(--dc-navy); }
+.slidev-layout strong { color: var(--dc-navy); font-weight: 700; }
+.slidev-layout em { color: var(--dc-blue); }
+.slidev-layout a { color: var(--dc-blue); text-decoration: underline; }
+.muted { color: var(--dc-muted); }
+.small { font-size: 0.74rem; line-height: 1.45; }
+.dc-fill.compact { padding-top: 2.9rem; padding-bottom: 2.1rem; }
+.dc-fill.compact .dc-box { padding: 0.5rem 0.75rem; }
+.dc-fill.compact .small { font-size: 0.7rem; line-height: 1.4; }
+.dc-fill.compact h3 { font-size: 0.86rem; }
+
+/* Omkaderd blok (de "boxen" uit de stuurgroep-deck) */
+.dc-box {
+  background: rgba(255, 255, 255, 0.92); border: 1px solid var(--dc-line);
+  border-radius: 3px; padding: 0.65rem 0.9rem;
+}
+.dc-box .label {
+  display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--dc-navy); border: 1px solid var(--dc-navy);
+  border-radius: 3px; padding: 0.05rem 0.45rem; margin-bottom: 0.35rem; background: #fff;
+}
+.dc-box.fill { background: var(--dc-navy); color: #fff; border-color: var(--dc-navy); }
+.dc-box.fill h3, .dc-box.fill strong, .dc-box.fill p, .dc-box.fill li { color: #fff; }
+.dc-box.soft { background: var(--dc-light); border-color: var(--dc-blue-soft); }
+
+/* Rasters */
+.dc-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+.dc-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
+.dc-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.7rem; }
+
+/* Kengetallen */
+.dc-kpi { text-align: center; }
+.dc-kpi .n { font-size: 2rem; font-weight: 700; color: var(--dc-navy); line-height: 1.1; }
+.dc-kpi .l { font-size: 0.72rem; color: var(--dc-muted); }
+
+/* Fase-tijdlijn */
+.dc-timeline { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; margin-top: 0.4rem; }
+.dc-timeline::before {
+  content: ''; position: absolute; left: 4%; right: 4%; top: 0.55rem; height: 2px;
+  background: var(--dc-blue-soft); z-index: 0;
+}
+.dc-phase { position: relative; z-index: 1; }
+.dc-phase .dot {
+  width: 1.15rem; height: 1.15rem; border-radius: 50%; margin: 0 auto 0.4rem auto;
+  background: var(--dc-navy); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--dc-navy);
+}
+.dc-phase.now .dot { background: var(--dc-accent); box-shadow: 0 0 0 2px var(--dc-accent); }
+.dc-phase.next .dot { background: #fff; }
+.dc-phase .tag { text-align: center; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dc-muted); margin-bottom: 0.1rem; }
+.dc-phase h3 { text-align: center; }
+
+/* Citaatblok (uit de app) */
+.dc-quote {
+  background: #fff; border-left: 4px solid var(--dc-navy); border-radius: 3px;
+  padding: 0.55rem 0.9rem; font-size: 0.8rem;
+}
+.dc-quote .src { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--dc-navy); }
+.dc-quote em { color: var(--dc-ink); font-family: Georgia, 'Times New Roman', serif; }
+
+/* Tabellen */
+.slidev-layout table { border-collapse: collapse; width: 100%; font-size: 0.78rem; background: rgba(255,255,255,0.92); }
+.slidev-layout th { background: var(--dc-navy); color: #fff; text-align: left; padding: 0.35rem 0.6rem; font-weight: 600; }
+.slidev-layout td { border: 1px solid #c9d7ea; padding: 0.32rem 0.6rem; vertical-align: top; }
+
+/* Screenshot-frame */
+.dc-shot { border: 1px solid #c9d7ea; border-radius: 4px; box-shadow: 0 4px 16px rgba(27, 58, 140, 0.18); }
+
+/* Sprekersnotities niet beïnvloeden; Slidev-navigatiebalk lager in z-index laten */
+
+/* Slidev 52.14: de "Ga naar dia"-dialoog staat gesloten op -top-20, maar de titellijst
+   eronder steekt zichtbaar het scherm in. Verberg de lijst zolang de dialoog dicht is. */
+#slidev-goto-dialog.-top-20 .autocomplete-list { display: none !important; }

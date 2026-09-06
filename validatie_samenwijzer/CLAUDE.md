@@ -47,21 +47,23 @@ Vanuit `validatie_samenwijzer/`. Volledige catalogus (ingest, KD/skills-build, b
 `docs/ARCHITECTURE.md`.
 
 ```bash
-uv run uvicorn app_fastapi.main:app --port 8504 --reload   # app (vereist SESSION_SECRET + ALGEMEEN_WACHTWOORD in .env)
+./start.sh                                                  # app op :8504 (PORT=… / --no-reload); checkt .env
+uv run uvicorn app_fastapi.main:app --port 8504 --reload   # zelfde, zonder .env-check
 uv sync --extra dev && uv run python -m pytest             # tests
 uv run python -m pytest tests/test_ingest.py::test_parseer_bestandsnaam_davinci -v  # één test
 uv run ruff check --fix src/ app_fastapi/ scripts/ && uv run ruff format src/ app_fastapi/ scripts/  # lint + format
-uv run python -m validatie_samenwijzer.ingest --alles      # (her)indexeer OERs (+ --reset)
+uv run python -m validatie_samenwijzer.ingest --alles      # (her)indexeer OERs (+ --reset, --instelling <key>)
+uv run python -m validatie_samenwijzer.sync_afgeleid --alles  # KD + skills reconciliëren (bouwt alleen ontbrekende)
+uv run python -m validatie_samenwijzer.bron_updates        # bronactualiteit-rapport (ook wekelijks via GitHub Action)
 ```
 
 Lint: line-length 100; selectie `E,F,I,N,W,UP`. `app_fastapi/*.py` wordt volledig gelint (HTML/CSS/JS
-leeft in `app_fastapi/templates|static`, buiten ruff). De E501-vrijstellingen in `pyproject.toml`
-verwijzen nog naar de geretirede `app/` + `styles.py` en zijn dode config.
+leeft in `app_fastapi/templates|static`, buiten ruff).
 
 ## Tests
 
-Tests in `tests/`; discovery via `[tool.pytest.ini_options]`. De autouse-fixture in `conftest.py`
-reset de gecachete `_ai`-client tussen tests zodat een gemockte client niet lekt.
+De autouse-fixtures in `tests/conftest.py` resetten de gecachete `_ai`-client en de crebo-naam-cache
+tussen tests, zodat een gemockte client of een gemonkeypatcht namenbestand niet lekt.
 
 > **Geen CI-gate voor dit subproject**: de root-`ci.yml` draait `ruff`/`pytest` vanuit de
 > monorepo-root en raakt dit subproject (eigen `.venv`) niet. Draai lint, format en tests **lokaal**
@@ -69,15 +71,25 @@ reset de gecachete `_ai`-client tussen tests zodat een gemockte client niet lekt
 
 ## Omgeving
 
-`.env` in `validatie_samenwijzer/`:
+`.env` in `validatie_samenwijzer/` (sjabloon: `.env.example`):
 
 ```
 ANTHROPIC_API_KEY=sk-ant-...
+SESSION_SECRET=...           # verplicht, fail-closed: app weigert te starten zonder
+ALGEMEEN_WACHTWOORD=...      # verplicht, fail-closed: poort vóór de hele app (/toegang)
+COOKIE_HTTPS_ONLY=0          # lokaal over http nodig, anders wordt de sessiecookie niet gezet
 DB_PATH=data/validatie.db   # default
 OEREN_PAD=../oeren          # default (root-oeren/ hergebruikt)
-BEHEER_ENABLED=true         # activeer beheerpagina (alleen op dev-machines)
+BEHEER_ENABLED=true         # activeer beheerpagina (alleen op dev-machines; prod = false)
 COMPETENTNL_API_KEY=...      # optioneel: skills-build gebruikt CompetentNL ipv ESCO
 ```
+
+`tests/conftest.py` zet `SESSION_SECRET`, `ALGEMEEN_WACHTWOORD` en `COOKIE_HTTPS_ONLY=0` zelf;
+tests hebben geen `.env` nodig.
+
+**Deploy** (commando + Fly-app: root-`CLAUDE.md`): `validatie.db` en `data/skills` worden **in het
+image gebakken** — na een re-ingest of re-seed is een nieuwe deploy nodig. `SESSION_SECRET`,
+`ALGEMEEN_WACHTWOORD` en `ANTHROPIC_API_KEY` zijn Fly-secrets; `BEHEER_ENABLED=false` in prod.
 
 ## Architectuur-invarianten (niet breken)
 
@@ -88,6 +100,17 @@ Volledige beschrijving in `docs/ARCHITECTURE.md`. De regels die een wijziging ni
   30s-timeout-contract af (`_CLIENT_OPTS`).
 - **Geen business logic in `app_fastapi/`**; geen raw SQL in routes — alle DB-toegang via `db.py`
   (`get_connection()`), zowel in scripts/tests als via de route-lokale `_conn()`-helper.
+  `app_fastapi/context.py` (chat-context uit OER-id's) en `data.py` (UI-vrije dicts voor de
+  ingelogde pagina's) zijn dunne orchestrators over `chat.py`/`db.py`.
+- **Toegangspoort**: middleware `_toegangspoort` in `main.py` zet de héle app achter
+  `ALGEMEEN_WACHTWOORD` (`/toegang`); `/api/*` krijgt 401, pagina's een redirect. Alleen `/static`
+  is vrij. Pas op: `/` is "publiek" (geen login) maar zit wél achter de poort.
+- **Sessiestate leeft server-side** (`app_fastapi/sessie.py`): de cookie draagt alleen een `sid`;
+  de chat-state (system-prompt tot ~500K × bronnen) staat in SQLite `data/sessies.db`
+  (`SESSIE_DB_PATH`, TTL 6 uur). Consequentie: **één Fly-machine** (`min_machines_running = 1`,
+  geen scale-out) en de store overleeft geen redeploy. De middleware bewaart alleen op
+  niet-GET-requests (behalve `/api/chat`, dat zelf post-stream bewaart) — een GET die de sessie
+  muteert moet expliciet `bewaar_sessie()` aanroepen, anders lost update.
 - **Vier chat-bronnen**, alle full-document: OER (leidend) + KD + skills + instellingsbrede regelingen.
   Loaders + caps in `chat.py` (`laad_oer_tekst` 500K, KD 300K, skills 50K, instelling 300K).
 - **Juridische citatieplicht**: elke claim eist **bron + vindplaats + woordelijk citaat tussen
@@ -109,20 +132,10 @@ Volledige beschrijving in `docs/ARCHITECTURE.md`. De regels die een wijziging ni
 
 ## Nieuwe instelling toevoegen (volgorde)
 
-De vier hardcoded lijsten hierboven moeten synchroon blijven — vergeet er één en het faalt
-stil. Werkende volgorde:
-
-1. Editeer de 4 lijsten. `seed_bulk.INSTELLINGEN`: nieuwe instelling **als laatste appenden**
-   (de seed deelt één `Random(2026)` op lijstvolgorde; mid-list invoegen verschuift álle
-   bestaande studenten).
-2. Plaats OER's + `_instelling/`-bronnen onder `oeren/<key>_oeren/` (mapconventie `<key>_oeren`).
-3. `ingest --instelling <key>`.
-4. **Verifieer ≥2 OER's met kerntaken** — anders bij seed stil 0 studenten.
-5. Smoke-test (publieke intake `0_oer_vraag` chat zónder login/seed met élke geïndexeerde OER).
-
-Re-seed van de gedeelde demo-dataset (~200 nepstudenten/instelling) is een aparte, **expliciet te
-bevestigen** stap — niet impliciet bij onboarding. KD + skills zijn crebo-gedeeld (niet
-instelling-gebonden): overschrijf het landelijke KD nooit met een instelling-meegeleverde variant.
+Volledige, geverifieerde procedure (4 lijsten, seed **als laatste appenden**, ingest, ≥2 OER's met
+kerntaken, smoke-test, aparte expliciet te bevestigen re-seed): skill **`add-institution`**.
+KD + skills zijn crebo-gedeeld (niet instelling-gebonden): overschrijf het landelijke KD nooit met een
+instelling-meegeleverde variant.
 
 ## Bekende valkuilen
 
@@ -140,8 +153,9 @@ PDF/MD nog op schijf staat. `chat.laad_oer_tekst()` valt terug op `<stem>.md` �
 **Markitdown-conversie mislukt**: `converteer_naar_markdown()` is best-effort; bij falen blijft alleen
 pdfplumber over (geen tabellen). Log: `Markitdown-conversie mislukt voor '…'`.
 
-**Static-asset-cache (`app_fastapi/`)**: CSS/JS in `app_fastapi/static/` wordt door de browser gecachet —
-hard-refresh (of cache-bust) na edits aan `app.css`/`app.js`/`chat.js`, anders zie je oude styling.
+**Static-asset-cache (`app_fastapi/`)**: templates linken assets via `static_url()` (`?v=<mtime>`,
+eenmalig berekend bij **opstart**). `uvicorn --reload` herstart alleen bij `.py`-wijzigingen — na een
+edit aan alleen `app.css`/`app.js`/`chat.js` blijft de oude `?v=` staan: herstart de app of hard-refresh.
 
 ## Kennisbank
 
@@ -150,5 +164,9 @@ hard-refresh (of cache-bust) na edits aan `app.css`/`app.js`/`chat.js`, anders z
 | Architectuur, datapipelines, module-rollen | `docs/ARCHITECTURE.md` |
 | Multi-machine workflow + volledige commando-catalogus | `docs/ARCHITECTURE.md` |
 | Specs & plannen | `docs/plans/` (specs én plannen wonen hier in dit subproject) |
+| Sessielogs | `docs/sessions/` (lees de laatste vóór substantieel werk) |
+| Route-overzicht + seed-volgorde | `README.md` |
+| Beheertaken (dev-only `/beheer`) | `app_fastapi/main.py:_BEHEER_TAKEN`-tabel → `scripts/*.sh`, ingest, seed, bron_updates |
+| Bronactualiteit-Action (wekelijks) | `../.github/workflows/bronactualiteit.yml` |
 | Mockups | `docs/mockups/` |
 | Presentatie (Slidev, poort 3030) | `presentatie/` — `./start.sh` |

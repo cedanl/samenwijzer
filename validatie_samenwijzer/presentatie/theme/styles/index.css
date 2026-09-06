@@ -215,3 +215,7 @@ img[src*="powerpoint_illustrations"] {
 #slidev-goto-dialog.\-top-20 {
   display: none;
 }
+
+/* Slidev 52.14: de "Ga naar dia"-dialoog staat gesloten op -top-20, maar de titellijst
+   eronder steekt zichtbaar het scherm in. Verberg de lijst zolang de dialoog dicht is. */
+#slidev-goto-dialog.-top-20 .autocomplete-list { display: none !important; }

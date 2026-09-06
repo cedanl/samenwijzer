@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SamenWijzer — De digitale gids: hoe komt het antwoord tot stand?</title>
+<style>
+  :root{
+    --oranje:#DD784B; --blauw:#3D68EC; --roze:#F4D9DC; --geel:#F4D74B;
+    --groen:#00AF81; --zwart:#111111; --grijs:#6B7280; --gray100:#F3F4F6;
+    --oer:#DD784B; --oer-bg:#fbeae2;
+    --kd:#3D68EC; --kd-bg:#e9eefd;
+    --skill:#8a6d0a; --skill-bg:#fbf3cd;
+    --regel:#00785a; --regel-bg:#e0f5ee;
+    --mid:#a5701a; --mid-bg:#fdf0d8;
+  }
+  *{box-sizing:border-box}
+  html{font-family:'General Sans','Inter','Segoe UI',system-ui,Arial,sans-serif;color:var(--zwart);font-size:11.2px;line-height:1.5}
+  body{margin:0;background:var(--gray100)}
+  .page{
+    width:210mm;min-height:297mm;padding:14mm 17mm;margin:8mm auto;background:#fff;
+    box-shadow:0 2px 18px rgba(0,0,0,.08);border-radius:4px;
+  }
+  header.brand{display:flex;align-items:center;justify-content:flex-end;gap:8px;color:var(--grijs);font-size:10px;margin-bottom:6px}
+  header.brand svg{width:20px;height:20px}
+  h1{color:var(--oranje);font-size:21px;line-height:1.15;margin:0 0 3px;border-bottom:3px solid var(--oranje);padding-bottom:5px}
+  h2{color:var(--oranje);font-size:14px;margin:15px 0 6px}
+  .sub{font-style:italic;color:var(--grijs);margin:4px 0 8px;font-size:11.5px}
+  .kicker{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.9px;text-transform:uppercase;color:var(--blauw);margin-bottom:4px}
+  p{margin:6px 0}
+  .lead{font-size:12px}
+  strong{font-weight:650}
+  .pill{display:inline-block;font-size:9.5px;font-weight:700;padding:1px 7px;border-radius:9px;vertical-align:middle}
+  .pill.oer{background:var(--oer-bg);color:var(--oer)}
+  .pill.kd{background:var(--kd-bg);color:var(--kd)}
+  .pill.skill{background:var(--skill-bg);color:var(--skill)}
+  .pill.regel{background:var(--regel-bg);color:var(--regel)}
+  .pill.mid{background:var(--mid-bg);color:var(--mid)}
+  .pill.grijs{background:var(--gray100);color:var(--grijs)}
+  .poc{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.4px;padding:2px 9px;border-radius:9px;background:var(--roze);color:var(--blauw);border:1px solid #e4c9cd}
+  .grid2{display:flex;gap:18px;align-items:flex-start}
+  .col{flex:1}
+  table{width:100%;border-collapse:collapse;margin:8px 0;font-size:10.6px}
+  th{background:var(--roze);color:var(--blauw);text-align:left;padding:6px 9px;border:1px solid #e4c9cd;font-size:9.5px;text-transform:uppercase;letter-spacing:.5px}
+  td{text-align:left;padding:5px 9px;border:1px solid #e7e7e7;vertical-align:top}
+  tr:nth-child(even) td{background:#fafafa}
+  td.src{font-weight:650}
+  .note{background:#f6f7fb;border-left:3px solid var(--blauw);padding:8px 11px;margin:9px 0;font-size:10.6px;color:#374151}
+  .note b{color:var(--zwart)}
+  .poc-box{background:#fdf5f0;border:1px solid #ecc4ae;border-radius:8px;padding:11px 13px;margin:10px 0;font-size:10.7px}
+  .poc-box h3{margin:0 0 5px;font-size:11.5px;color:var(--oranje)}
+  figure{margin:10px 0 4px;text-align:center}
+  figcaption{font-size:10px;color:var(--grijs);margin-top:5px}
+  .caveat{display:flex;gap:9px;margin:7px 0;align-items:flex-start}
+  .caveat .n{flex:0 0 auto;width:18px;height:18px;border-radius:50%;background:var(--oranje);color:#fff;font-weight:700;font-size:10px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .foot{margin-top:14px;padding-top:8px;border-top:1px solid #e7e7e7;font-size:9.5px;color:var(--grijs);display:flex;justify-content:space-between}
+  code{background:var(--gray100);padding:0 4px;border-radius:3px;font-size:10px;color:#374151}
+  .cite{background:#fff;border:1px solid #e7e7e7;border-left:3px solid var(--oranje);border-radius:6px;padding:9px 12px;margin:9px 0;font-size:10.6px}
+  .cite .waar{font-size:9px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--oranje)}
+  @media print{
+    body{background:#fff}
+    .page{margin:0;box-shadow:none;width:auto;min-height:auto;border-radius:0}
+    .page+.page{page-break-before:always}
+  }
+  @page{size:A4;margin:0}
+</style>
+</head>
+<body>
+
+<!-- ================= PAGINA 1 ================= -->
+<section class="page">
+  <header class="brand"><span>Npuls · Moving Education.</span></header>
+  <span class="kicker">SamenWijzer · Fase 1 · technische bijlage &nbsp;·&nbsp; <span class="poc">PROOF OF CONCEPT</span></span>
+  <h1>De digitale gids — hoe komt het antwoord tot stand?</h1>
+  <p class="sub">Technische bijlage bij het fase&nbsp;1-overzicht "De digitale gids" — hoe de assistent onder de
+  motorkap werkt. Peildatum juli 2026.</p>
+
+  <p class="lead">De digitale gids laat een student (of SLB'er) in gewone taal chatten met de eigen
+  <strong>studiegids</strong> (officieel: de OER). Elk antwoord doorloopt twee stappen:
+  <strong>1)</strong> wélke studiegids is van jou? en <strong>2)</strong> wat zegt die gids — mét bron,
+  vindplaats en woordelijk citaat. Deze bijlage legt beide stappen uit.</p>
+
+  <h2>Stap 1 — van vrije vraag naar de juiste studiegids</h2>
+  <div class="grid2">
+    <div class="col" style="flex:1.15">
+      <p>Een vraag op de startpagina ("hoe vaak mag ik herkansen bij Graafschap?") wordt tegen alle
+      geïndexeerde studiegidsen gescoord, op twee niveaus:</p>
+      <table>
+        <tr><th>Signaal</th><th style="width:16%">Punten</th><th>Rol</th></tr>
+        <tr><td class="src">Crebo-nummer</td><td>+3</td><td><b>identiteit</b> — wélke opleiding bedoel je</td></tr>
+        <tr><td class="src">Opleidingswoorden</td><td>+1 p/woord (max 2)</td><td><b>identiteit</b></td></tr>
+        <tr><td class="src">Instelling genoemd</td><td>+3</td><td>rangschikking — bewust even zwaar als crebo</td></tr>
+        <tr><td class="src">Leerweg (BOL/BBL)</td><td>+2</td><td><b>modifier</b> — verfijnt, bepaalt de opleiding niet</td></tr>
+        <tr><td class="src">Cohortjaar</td><td>+2</td><td><b>modifier</b></td></tr>
+      </table>
+      <div class="note"><b>Twee harde filters bovenop de score.</b>
+      <b>1 · Instellingsfilter:</b> noemt de vraag een school, dan doen alléén studiegidsen van die school mee —
+      "X bij Graafschap" hoort nooit een gids van een andere school te tonen.
+      <b>2 · Opleidingsfilter:</b> binnen een school blijven alleen de gidsen met het <em>sterkste</em>
+      opleidingssignaal staan; gelijke toppers blijven samen in beeld als keuzelijst in plaats van een
+      stille verkeerde keuze.</div>
+    </div>
+    <div class="col" style="flex:.85">
+      <figure>
+        <svg viewBox="0 0 300 230" width="100%" role="img" aria-label="Stroomdiagram vraag naar modus">
+          <rect x="75" y="8" width="150" height="30" rx="8" fill="var(--oer-bg)" stroke="var(--oranje)" stroke-width="1.5"/>
+          <text x="150" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="var(--oranje)">vrije vraag</text>
+          <line x1="150" y1="38" x2="150" y2="58" stroke="var(--grijs)" stroke-width="1.5"/>
+          <rect x="60" y="58" width="180" height="30" rx="8" fill="#fff" stroke="var(--grijs)" stroke-width="1.2"/>
+          <text x="150" y="77" text-anchor="middle" font-size="10.5" font-weight="650" fill="var(--zwart)">scoren + harde filters</text>
+          <line x1="150" y1="88" x2="55" y2="122" stroke="var(--grijs)" stroke-width="1.2"/>
+          <line x1="150" y1="88" x2="150" y2="122" stroke="var(--grijs)" stroke-width="1.2"/>
+          <line x1="150" y1="88" x2="245" y2="122" stroke="var(--grijs)" stroke-width="1.2"/>
+          <rect x="8" y="122" width="94" height="42" rx="8" fill="var(--regel-bg)" stroke="var(--groen)" stroke-width="1.5"/>
+          <text x="55" y="139" text-anchor="middle" font-size="10" font-weight="700" fill="var(--regel)">1 kandidaat</text>
+          <text x="55" y="153" text-anchor="middle" font-size="9" fill="var(--regel)">→ direct chatten</text>
+          <rect x="108" y="122" width="84" height="42" rx="8" fill="var(--skill-bg)" stroke="var(--skill)" stroke-width="1.5"/>
+          <text x="150" y="139" text-anchor="middle" font-size="10" font-weight="700" fill="var(--skill)">meerdere</text>
+          <text x="150" y="153" text-anchor="middle" font-size="9" fill="var(--skill)">→ keuzelijst</text>
+          <rect x="198" y="122" width="94" height="42" rx="8" fill="var(--gray100)" stroke="var(--grijs)" stroke-width="1.5"/>
+          <text x="245" y="139" text-anchor="middle" font-size="10" font-weight="700" fill="var(--grijs)">geen</text>
+          <text x="245" y="153" text-anchor="middle" font-size="9" fill="var(--grijs)">→ keuzehulp</text>
+          <text x="245" y="185" text-anchor="middle" font-size="8.5" fill="var(--grijs)">school → leerweg →</text>
+          <text x="245" y="196" text-anchor="middle" font-size="8.5" fill="var(--grijs)">opleiding → cohort</text>
+          <text x="150" y="185" text-anchor="middle" font-size="8.5" fill="var(--grijs)">tot 3 gidsen</text>
+          <text x="150" y="196" text-anchor="middle" font-size="8.5" fill="var(--grijs)">naast elkaar</text>
+        </svg>
+        <figcaption>Drie uitkomsten: <b>chat</b> (direct), <b>kies</b> (keuzelijst) of <b>keuzehulp</b> (cascade).</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <h2>Waarom een puntenmodel en geen AI-gok?</h2>
+  <p>De gids-keuze is <strong>deterministisch</strong>: dezelfde vraag levert altijd dezelfde kandidaten, en elke
+  keuze is uitlegbaar ("crebo +3, BOL +2"). Twijfel wordt nooit stil weggegokt maar zichtbaar gemaakt als
+  keuzelijst — de student kiest zelf. Pas <em>daarna</em>, in stap 2, komt het taalmodel eraan te pas.</p>
+
+  <div class="foot">
+    <span>CEDA · Npuls — Studiesucces · SamenWijzer fase 1 · technische bijlage</span>
+    <span>1 / 3</span>
+  </div>
+</section>
+
+<!-- ================= PAGINA 2 ================= -->
+<section class="page">
+  <header class="brand"><span>Npuls · Moving Education.</span></header>
+  <span class="kicker">SamenWijzer · vier bronnen, volledig meegelezen</span>
+  <h1>Geen fragmenten. De héle gids.</h1>
+  <p class="sub">Volledige documentcontext in plaats van losse zoekfragmenten — niets wordt uit zijn verband getrokken.</p>
+
+  <div class="grid2">
+    <div class="col" style="flex:1.2">
+      <p>Veel chatbots knippen documenten in snippers en zoeken daar de "beste" bij de vraag (RAG). Voor een
+      <strong>juridisch document</strong> is dat riskant: artikelen verwijzen naar elkaar, uitzonderingen staan
+      drie hoofdstukken verderop. De digitale gids doet het anders: het taalmodel
+      (<code>Claude Sonnet 4.6</code>, contextvenster van 1&nbsp;miljoen tokens) krijgt de <strong>volledige
+      studiegids</strong> te lezen — plus drie aanvullende bronnen, elk met een eigen rol:</p>
+      <table>
+        <tr><th style="width:6%">#</th><th style="width:34%">Bron</th><th>Rol</th><th style="width:15%">Cap</th></tr>
+        <tr><td>01</td><td class="src"><span class="pill oer">OER / studiegids</span></td><td><b>Leidend.</b> De formele regels van de opleiding.</td><td>500K tekens</td></tr>
+        <tr><td>02</td><td class="src"><span class="pill kd">Kwalificatiedossier</span></td><td>Landelijke kerntaken en werkprocessen (SBB) — geraadpleegd als de gids het onderwerp niet dekt.</td><td>300K</td></tr>
+        <tr><td>03</td><td class="src"><span class="pill skill">Skills-taxonomie</span></td><td>"Welke skills heb ik nodig voor mijn beroep?" (CompetentNL / ESCO), per crebo.</td><td>50K</td></tr>
+        <tr><td>04</td><td class="src"><span class="pill regel">Instellingsregelingen</span></td><td>Examenreglement, statuut, beleid — instellingsbreed, even bindend.</td><td>300K</td></tr>
+      </table>
+      <div class="note"><b>Waarom heel i.p.v. geknipt?</b> Fragmenten missen samenhang en verwijzingen
+      ("zie artikel 4.3"). Het 1M-venster maakt knippen onnodig: zelfs de grootste gids (± 500K tekens) past
+      ruim, mét KD en regelingen erbij. De caps zijn veiligheidsremmen, geen zoekfilters. Keerzijde: meer
+      AI-verbruik per vraag — bij brede uitrol te blijven monitoren (zie het fase&nbsp;1-overzicht, §5).</div>
+    </div>
+    <div class="col" style="flex:.8">
+      <figure>
+        <svg viewBox="0 0 190 205" width="92%" role="img" aria-label="Gestapelde context">
+          <rect x="20" y="10" width="150" height="70" rx="8" fill="var(--oer-bg)" stroke="var(--oranje)" stroke-width="2"/>
+          <text x="95" y="40" text-anchor="middle" font-size="12" font-weight="700" fill="var(--oranje)">studiegids</text>
+          <text x="95" y="56" text-anchor="middle" font-size="8.5" fill="var(--oranje)">volledig · leidend</text>
+          <rect x="20" y="86" width="150" height="34" rx="8" fill="var(--kd-bg)" stroke="var(--blauw)" stroke-width="1.5"/>
+          <text x="95" y="107" text-anchor="middle" font-size="10" font-weight="700" fill="var(--blauw)">kwalificatiedossier</text>
+          <rect x="20" y="126" width="150" height="26" rx="8" fill="var(--skill-bg)" stroke="var(--skill)" stroke-width="1.5"/>
+          <text x="95" y="143" text-anchor="middle" font-size="10" font-weight="700" fill="var(--skill)">skills</text>
+          <rect x="20" y="158" width="150" height="34" rx="8" fill="var(--regel-bg)" stroke="var(--groen)" stroke-width="1.5"/>
+          <text x="95" y="179" text-anchor="middle" font-size="10" font-weight="700" fill="var(--regel)">instellingsregelingen</text>
+        </svg>
+        <figcaption>Eén contextvenster, vier bronnen — de gids bovenaan en leidend.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <h2>Stap 2 — de citatieplicht: geen claim zonder bewijs</h2>
+  <p>Het systeem­contract verplicht het model bij <strong>elke</strong> inhoudelijke bewering tot drie dingen:
+  de <strong>bron</strong> (welke van de vier), de <strong>exacte vindplaats</strong> (sectienummer, kopje,
+  artikel of pagina) en een <strong>woordelijk citaat</strong> tussen aanhalingstekens. Verzonnen vindplaatsen
+  zijn expliciet verboden; skills krijgen een eigen citatievorm (bron + beroep + categorie + skill-naam).
+  De uitleg eromheen is begrijpelijke taal op mbo-maat — het citaat zelf blijft onaangetast.</p>
+  <div class="cite">
+    <span class="waar">Volgens de OER · sectie 3.1.2 "Kerntaken en werkprocessen"</span><br>
+    "Het werk van een Verzorgende-IG wordt beschreven aan de hand van activiteiten, die kenmerkend zijn
+    voor het beroep; deze noemen we kerntaken."
+  </div>
+  <p>Klopt een antwoord niet met de tekst, dan ziet de student dat <em>meteen</em> — het citaat staat ernaast
+  en is zelf na te lezen via "Bekijk studiegids". <strong>Ontsluiten, niet adviseren:</strong> de assistent
+  ontsluit informatie; de oordeelsvorming blijft bij student en SLB'er.</p>
+
+  <h2>Als de documenten het niet dekken: eerlijke terugval, geen stille gok</h2>
+  <table>
+    <tr><th style="width:32%">Situatie</th><th>Gedrag</th></tr>
+    <tr><td class="src">Gids-tekst onleesbaar</td><td>KD + instellingsregelingen worden hoofdbron — expliciet benoemd.</td></tr>
+    <tr><td class="src">Geen enkele bron</td><td>Eerlijke melding "kon de studiegids niet laden" — geen verzonnen antwoord.</td></tr>
+    <tr><td class="src">Actualiteit buiten de gids</td><td>Webzoek, beperkt tot het <b>eigen schooldomein</b> (bv. <code>rijnijssel.nl</code>, <code>kw1c.nl</code>) — altijd als web-resultaat gelabeld, zónder de harde citatieplicht.</td></tr>
+    <tr><td class="src">Werk-/stage-vraag (BPV)</td><td>Prototype: zoekt op <code>stagemarkt.nl</code> (SBB) en <code>indeed.nl</code>, mét waarschuwing "externe bron, geen advies" en verwijzing naar SLB'er/SBB.</td></tr>
+  </table>
+
+  <div class="foot">
+    <span>CEDA · Npuls — Studiesucces · SamenWijzer fase 1 · technische bijlage</span>
+    <span>2 / 3</span>
+  </div>
+</section>
+
+<!-- ================= PAGINA 3 ================= -->
+<section class="page">
+  <header class="brand"><span>Npuls · Moving Education.</span></header>
+  <span class="kicker">SamenWijzer · corpus, eerlijkheid &amp; koers</span>
+  <h1>Waar komt het corpus vandaan — en wat benoemen we eerlijk?</h1>
+  <p class="sub">Elke school publiceert anders; de pijplijn maakt er één centraal beheerd, geïndexeerd geheel van.</p>
+
+  <h2>De ingest-pijplijn</h2>
+  <p><span class="pill grijs">1 · OPHALEN</span> per school anders: publieke API (Deltion), downloadboom
+  (ROC Nijmegen), losse PDF's (Rijn IJssel, Aeres, Curio) of aanlevering (Graafschap, Da Vinci) —
+  per school een eigen ophaal-script of handmatige route.<br>
+  <span class="pill grijs">2 · SPLITSEN</span> gebundelde documenten worden gesplitst tot <strong>één document
+  per crebo</strong> (opleidingscode), met leerweg en cohort in de naam.<br>
+  <span class="pill grijs">3 · EXTRAHEREN</span> uit elke gids halen we de <strong>kerntaken en werkprocessen</strong>
+  (<code>B1-K1</code>, <code>B1-K1-W1</code>, …) — dé kwaliteitstoets: zonder herkenbare kerntaken telt een gids
+  niet als volwaardig mee.<br>
+  <span class="pill grijs">4 · INDEXEREN</span> gids, KD-koppeling, skills en regelingen komen samen in één index
+  die de gids-keuze (stap 1) en de chat (stap 2) voeden.</p>
+
+  <h2>Het corpus in cijfers <span style="font-weight:400;color:var(--grijs);font-size:10px">(peildatum juli 2026)</span></h2>
+  <table>
+    <tr><th>Wat</th><th style="width:16%">Aantal</th><th>Toelichting</th></tr>
+    <tr><td class="src">Instellingen</td><td>11</td><td>ROC's en vakcolleges, publiek gepubliceerd én aangeleverd.</td></tr>
+    <tr><td class="src">Studiegidsen (OER's)</td><td>928</td><td>Alle geïndexeerd; één per crebo × leerweg × cohort.</td></tr>
+    <tr><td class="src">Kerntaken geëxtraheerd</td><td>7.222</td><td>Machinaal herkend en per gids gekoppeld.</td></tr>
+    <tr><td class="src">Instellingsregelingen</td><td>36</td><td>Examenreglementen, statuten, klachtenregelingen e.d.</td></tr>
+  </table>
+
+  <h2>Wat we eerlijk benoemen</h2>
+  <div class="caveat"><div class="n">1</div><div><b>Antwoorden zijn indicatief — de gids blijft leidend.</b>
+  Dat staat letterlijk in de voettekst van de app. Het woordelijke citaat + "Bekijk studiegids" maken elk
+  antwoord zelf controleerbaar; bij twijfel wint het brondocument.</div></div>
+  <div class="caveat"><div class="n">2</div><div><b>De dekking verschilt per school.</b> Sommige instellingen
+  publiceren (vrijwel) alles publiek (Deltion: 162 gidsen), andere maar een deel (ROC Nijmegen: 3 opleidingen)
+  of leverden een selectie aan. Wat er niet is, doet ook niet mee — we vullen niets aan met aannames. Dit is
+  de grootste praktische rem op opschaling (fase&nbsp;1-overzicht, §5).</div></div>
+  <div class="caveat"><div class="n">3</div><div><b>Studentdata is synthetisch.</b> De ingelogde demo-omgeving
+  draait op gegenereerde nepstudenten; het publieke deel werkt zonder account. Er worden in fase&nbsp;1 bewust
+  geen studentgebonden gegevens verwerkt.</div></div>
+  <div class="caveat"><div class="n">4</div><div><b>Actualiteit is een proces, geen aanname.</b> Voor scholen met
+  een crawlbare catalogus draait een wekelijkse versheids­check (nieuwe of herziene gidsen, KD-bundelwijzigingen);
+  bij de rest blijft het handwerk — en dat rapporteren we als zodanig.</div></div>
+
+  <div class="poc-box">
+    <h3>Dit is een proof of concept</h3>
+    <p style="margin:4px 0"><strong>1 · Meer scholen, zelfde lat.</strong> Nieuwe instellingen worden via een
+    vaste onboarding-pijplijn toegevoegd (ophalen → splitsen → kerntaken-toets → controle in de app). De
+    kerntaken-toets is hard: een school zonder machinaal herkenbare kerntaken komt er niet "half" in.</p>
+    <p style="margin:4px 0"><strong>2 · Van gids naar begeleiding.</strong> Fase 1 is een afgerond product met
+    eigen waarde. Fase 2 (voortgangsmonitor) en fase 3 (optimale begeleiding) bouwen erop voort — met dezelfde
+    uitgangspunten: bron-getrouw, controleerbaar en privacy-eerst. Zie het fase&nbsp;1-overzicht, §6.</p>
+  </div>
+
+  <p class="lead" style="margin-top:10px"><strong>In één zin:</strong> we vinden eerst met een uitlegbaar
+  puntenmodel en harde filters de juiste studiegids, laten het model vervolgens de <em>héle</em> gids lezen
+  (plus kwalificatiedossier, skills en instellingsregelingen), en verplichten elk antwoord tot bron, vindplaats
+  en woordelijk citaat — zodat student en SLB'er het zelf kunnen nazoeken.</p>
+
+  <div class="foot">
+    <span>CEDA · Npuls — Studiesucces · SamenWijzer fase 1 · technische bijlage</span>
+    <span>3 / 3</span>
+  </div>
+</section>
+
+</body>
+</html>
