@@ -45,7 +45,8 @@ Lees eerst de bron-Streamlitpagina volledig; repliceer het rolgedrag exact (stud
 
 - Hergebruik `samenwijzer.visualize`-functies waar mogelijk: Altair-chart →
   `chart.to_json()` → in template renderen met vega-embed (CDN in `{% block head %}`:
-  jsdelivr vega5 + vega-lite6 + vega-embed7). Plotly → `fig.to_json()` + plotly CDN.
+  jsdelivr vega@6.4.0 + vega-lite@6.4.3 + vega-embed@7.2.0 — exact gepind en gelijk aan de
+  Altair-major, zie `tests/test_app_fastapi_templates.py`). Plotly → `fig.to_json()` + plotly CDN.
 - Simpele voortgangsbalken/percentages: liever puur HTML/CSS (`sw-progress`).
 
 ## Verificatie (verplicht vóór je klaar meldt)
