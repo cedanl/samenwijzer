@@ -122,6 +122,19 @@ a { color: var(--accent-strong); }
     letter-spacing: 0.08em; text-transform: uppercase;
     white-space: nowrap;
 }
+/* Mobiel: nav wikkelt over meerdere regels i.p.v. horizontaal te scrollen
+   (sticky, dus de balk neemt zijn eigen hoogte in het document in). */
+@media (max-width: 768px) {
+    .sw-nav {
+        position: sticky; left: auto; right: auto;
+        height: auto; flex-wrap: wrap;
+        gap: 4px; padding: 6px 16px;
+        overflow-x: visible;
+    }
+    .sw-nav__spacer { display: none; }
+    .sw-nav a { padding: 6px 10px; }
+    .sw-container { padding: var(--space-5) 16px 96px; }
+}
 
 /* ── Footer ──────────────────────────────────────────────────────────────── */
 .sw-footer {
@@ -284,6 +297,12 @@ textarea { min-height: 110px; resize: vertical; }
 .sw-btn--primary:hover { background: var(--btn-prim-bg-hover); transform: translateY(-1px); }
 .sw-btn--secondary { background: var(--btn-sec-bg); color: var(--btn-sec-fg); border: 1px solid var(--border); }
 .sw-btn--secondary:hover { background: var(--surface-2); }
+
+/* ── Grafieken ───────────────────────────────────────────────────────────── */
+/* Vega-Lite rendert een SVG met vaste breedte + viewBox; laat hem meeschalen
+   zodat een grafiek op smalle viewports geen horizontale paginascroll geeft. */
+.vega-embed { max-width: 100%; padding-right: 0; }
+.vega-embed svg { max-width: 100%; height: auto; }
 
 /* ── Tabellen ────────────────────────────────────────────────────────────── */
 .sw-table-wrap { overflow-x: auto; }
