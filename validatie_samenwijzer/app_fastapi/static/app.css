@@ -143,6 +143,12 @@ footer { border-top: 1px solid var(--line); padding: 3rem 0 3.5rem; }
 footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
 footer .mono { color: var(--ink-faint); }
 footer .fbrand { font-family: "Instrument Serif", Georgia, serif; font-size: 1.4rem; }
+.licentie { flex-basis: 100%; margin: 0; font-size: .78rem; line-height: 1.5; color: var(--ink-faint); }
+.licentie a { color: inherit; text-decoration: underline; }
+.licentie cite { font-style: italic; }
+.appfooter { padding: 1.6rem 0 2.2rem; }
+.appfooter .wrap { max-width: 940px; }
+.loginpage .licentie { max-width: 400px; align-self: start; text-align: center; }
 
 /* ══ CHAT-OVERLAY (POC-aanvulling) ══════════════════════════════════════════ */
 .overlay { position: fixed; inset: 0; z-index: 200; background: var(--paper); display: none; flex-direction: column; }
