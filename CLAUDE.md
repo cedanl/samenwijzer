@@ -20,8 +20,7 @@ https://github.com/cedanl/.github/tree/main/standards/README.md.
 
 ## Tech & tooling
 
-Python 3.13, Streamlit, pandas, Anthropic SDK. Visualisatie: Altair + Plotly. Webhook:
-FastAPI + uvicorn. Encryptie: cryptography (Fernet). Package manager: `uv`. Type checker: `ty`
+Package manager: `uv`. Type checker: `ty`
 (lokaal — CI gate is alleen `ruff check`, `ruff format --check` en `pytest`; draai `ty check`
 zelf vóór een PR). Linter/formatter: `ruff` (line-length 100, selectie `E,F,I,N,W,UP`;
 HTML-strings in `styles.py`, `app/main.py` en `app/pages/*.py` zijn vrijgesteld van E501).
