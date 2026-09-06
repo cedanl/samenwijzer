@@ -64,9 +64,13 @@ function renderMarkdown(md) {
 }
 
 function addVraag(thread, text) {
+  _verwijderVervolgvragen(thread);
   const d = document.createElement("div");
   d.className = "bubble-q"; d.textContent = text;
   thread.appendChild(d); _scroll(thread);
+}
+function _verwijderVervolgvragen(thread) {
+  thread.querySelectorAll(".vervolg").forEach((el) => el.remove());
 }
 function _scroll(thread) {
   const sc = thread.closest("[data-scroll]") || thread.parentElement;
@@ -90,6 +94,7 @@ async function streamAntwoord(thread, vraag) {
   node.className = "thinking"; node.textContent = "De gids zoekt het op";
   thread.appendChild(node); _scroll(thread);
   let acc = "";
+  let fout = false;
   try {
     const resp = await fetch("/api/chat", {
       method: "POST", headers: { "Content-Type": "application/json" },
@@ -110,6 +115,7 @@ async function streamAntwoord(thread, vraag) {
         const ev = JSON.parse(line);
         if (ev.chunk) { acc += ev.chunk; node.innerHTML = renderMarkdown(acc); _scroll(thread); }
         else if (ev.error) {
+          fout = true;
           node.innerHTML = `<em>${ev.error === "timeout"
             ? "De AI-service reageert niet. Probeer het zo opnieuw."
             : "Er ging iets mis. Probeer het later opnieuw."}</em>`;
@@ -117,10 +123,67 @@ async function streamAntwoord(thread, vraag) {
       }
     }
     if (!acc) node.innerHTML = "<em>Geen antwoord ontvangen. Probeer het opnieuw.</em>";
+    else if (!fout) await toonVervolgvragen(thread);
   } catch (e) {
     node.className = "bubble-a";
     node.innerHTML = "<em>Verbinding verbroken. Probeer het opnieuw.</em>";
   }
+}
+
+/* Vervolgvragen: 2-4 klikbare chips onder het laatste antwoord, opgehaald na een
+   succesvolle stream. Skeleton-pills tijdens het laden; lege lijst/fout → niets tonen. */
+async function toonVervolgvragen(thread) {
+  const bubbels = thread.querySelectorAll(".bubble-a");
+  const laatste = bubbels[bubbels.length - 1];
+  if (!laatste) return;
+
+  const wrap = document.createElement("div");
+  wrap.className = "vervolg";
+  const label = document.createElement("div");
+  label.className = "vervolg-label"; label.textContent = "Verder vragen";
+  const lijst = document.createElement("div");
+  lijst.className = "vervolg-lijst";
+  for (let i = 0; i < 3; i++) {
+    const sk = document.createElement("span");
+    sk.className = "vervolg-skelet";
+    lijst.appendChild(sk);
+  }
+  wrap.appendChild(label); wrap.appendChild(lijst);
+  laatste.insertAdjacentElement("afterend", wrap);
+  _scroll(thread);
+
+  let vragen = [];
+  try {
+    const resp = await fetch("/api/vervolgvragen", {
+      method: "POST", headers: { "Content-Type": "application/json" }, body: "{}",
+    });
+    if (resp.ok) {
+      const data = await resp.json();
+      if (Array.isArray(data.vragen)) vragen = data.vragen;
+    }
+  } catch (e) {
+    vragen = [];
+  }
+
+  if (!wrap.isConnected) return; // ondertussen weggehaald (nieuwe vraag gesteld)
+  if (!vragen.length) { wrap.remove(); return; }
+
+  lijst.innerHTML = "";
+  vragen.forEach((vraagTekst, idx) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "vervolg-chip";
+    btn.style.setProperty("--vi", idx);
+    btn.textContent = vraagTekst; // NOOIT innerHTML: modelgegenereerde tekst
+    btn.addEventListener("click", () => {
+      if (btn.disabled) return;
+      lijst.querySelectorAll(".vervolg-chip").forEach((c) => { c.disabled = true; });
+      addVraag(thread, vraagTekst); // verwijdert zelf ook alle .vervolg-blokken
+      streamAntwoord(thread, vraagTekst);
+    });
+    lijst.appendChild(btn);
+  });
+  _scroll(thread);
 }
 
 /* Studiegids-viewer: PDF → PDF.js-canvas (mobiel-proof) met download/open-fallback;
