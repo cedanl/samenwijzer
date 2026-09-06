@@ -885,3 +885,80 @@ def genereer_intake_antwoord(
         messages=berichten,
     ) as stream:
         yield from stream.text_stream
+
+
+# ── Vervolgvragen ────────────────────────────────────────────────────────────
+
+_MAX_ANTWOORD_TEKENS_VERVOLGVRAGEN = 4000
+_MAX_VERVOLGVRAGEN = 4
+_MAX_VERVOLGVRAAG_TEKENS = 140
+
+_VERVOLGVRAGEN_SYSTEEM = """\
+Je bent de assistent van "De digitale gids". Je krijgt de laatste vraag en het laatste \
+antwoord uit een gesprek met een MBO-student over zijn studiegids (OER) of \
+kwalificatiedossier. Geef 3 korte, natuurlijke vervolgvragen die de student als \
+volgende zou kunnen stellen.
+
+Regels:
+- Maximaal ~12 woorden per vraag.
+- Formuleer vanuit de student, in de ik-vorm of als directe vraag.
+- Alleen onderwerpen die in een OER/KD te beantwoorden zijn: examens, herkansing, \
+BPV/stage, keuzedelen, urenverdeling, diploma-eisen, begeleiding.
+- Geen herhaling van de zojuist gestelde vraag.
+- Antwoord UITSLUITEND met een JSON-array van strings, zonder verdere tekst."""
+
+
+def genereer_vervolgvragen(
+    client: anthropic.Anthropic,
+    vraag: str,
+    antwoord: str,
+    opleiding_labels: list[str] | None = None,
+    model: str = "claude-haiku-4-5-20251001",
+) -> list[str]:
+    """Genereer max. 4 klikbare vervolgvragen na een antwoord.
+
+    Niet-streaming, best-effort: elke fout (API- of parsefout) levert een lege lijst
+    op — de functie mag nooit raisen, want dit is een UI-verrijking, geen kernfunctie.
+    """
+    antwoord_gekapt = antwoord[:_MAX_ANTWOORD_TEKENS_VERVOLGVRAGEN]
+    user_content = f"Vraag: {vraag}\n\nAntwoord: {antwoord_gekapt}"
+    if opleiding_labels:
+        user_content += "\n\nOpleiding(en): " + ", ".join(opleiding_labels)
+
+    try:
+        resp = client.messages.create(
+            model=model,
+            max_tokens=300,
+            system=_VERVOLGVRAGEN_SYSTEEM,
+            messages=[{"role": "user", "content": user_content}],
+        )
+        tekst = resp.content[0].text.strip()
+    except (anthropic.APIError, IndexError, AttributeError) as e:
+        logger.warning("Vervolgvragen genereren mislukt (API-fout): %s", type(e).__name__)
+        return []
+
+    tekst = re.sub(r"^```(?:json)?\s*|\s*```$", "", tekst.strip(), flags=re.IGNORECASE)
+
+    try:
+        ruwe_vragen = json.loads(tekst)
+    except json.JSONDecodeError:
+        logger.warning("Vervolgvragen genereren mislukt: geen geldige JSON in antwoord")
+        return []
+
+    if not isinstance(ruwe_vragen, list):
+        logger.warning("Vervolgvragen genereren mislukt: geen JSON-array")
+        return []
+
+    resultaat: list[str] = []
+    gezien: set[str] = set()
+    for v in ruwe_vragen:
+        if not isinstance(v, str):
+            continue
+        v = v.strip()[:_MAX_VERVOLGVRAAG_TEKENS]
+        if not v or v in gezien:
+            continue
+        gezien.add(v)
+        resultaat.append(v)
+        if len(resultaat) >= _MAX_VERVOLGVRAGEN:
+            break
+    return resultaat

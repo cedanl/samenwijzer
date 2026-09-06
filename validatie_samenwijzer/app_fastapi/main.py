@@ -36,6 +36,7 @@ from validatie_samenwijzer.chat import (
     bouw_berichten,
     genereer_antwoord,
     genereer_intake_antwoord,
+    genereer_vervolgvragen,
     identificeer_oer_kandidaten,
     resolve_oer_pad,
 )
@@ -69,8 +70,9 @@ async def _toegangspoort(request: Request, call_next):
     # Bewaar alleen op mutaterende requests. Een read-only GET zou zijn (stale) kopie
     # terugschrijven en zo een gelijktijdige chat-beurt kunnen overschrijven (lost update).
     # /api/chat bewaart zélf ná de stream (post-turn); de twee mutaterende GET-routes
-    # (/uitloggen, /mentor/student/...) bewaren expliciet in hun handler.
-    if request.method != "GET" and pad != "/api/chat":
+    # (/uitloggen, /mentor/student/...) bewaren expliciet in hun handler. /api/vervolgvragen
+    # is ondanks de POST-methode read-only (geen sessie-mutatie) — dezelfde lost-update-reden.
+    if request.method != "GET" and pad not in ("/api/chat", "/api/vervolgvragen"):
         bewaar_sessie(request)
     return response
 
@@ -312,6 +314,26 @@ async def api_chat(request: Request):
             yield f"data: {json.dumps({'error': 'onbekend'})}\n\n"
 
     return StreamingResponse(stream(), media_type="text/event-stream")
+
+
+@app.post("/api/vervolgvragen")
+def api_vervolgvragen(request: Request):
+    """Klikbare vervolgvragen na het laatste antwoord (best-effort, geen sessie-mutatie)."""
+    s = get_sessie(request)
+    if not s.oer_systeem or len(s.chat_history) < 2:
+        return JSONResponse({"vragen": []})
+
+    laatste_assistant = s.chat_history[-1]
+    laatste_user = s.chat_history[-2]
+    if laatste_assistant["role"] != "assistant" or laatste_user["role"] != "user":
+        return JSONResponse({"vragen": []})
+    antwoord = laatste_assistant["content"]
+    if not antwoord:
+        return JSONResponse({"vragen": []})
+    vraag = laatste_user["content"]
+
+    vragen = genereer_vervolgvragen(ai_client(), vraag, antwoord, s.oer_labels)
+    return JSONResponse({"vragen": vragen})
 
 
 @app.get("/api/oer/{oer_id}/bestand")

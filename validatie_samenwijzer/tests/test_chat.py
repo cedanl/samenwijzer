@@ -2,12 +2,15 @@ import json
 import sys
 import types
 
+import anthropic
+
 from validatie_samenwijzer.chat import (
     LAGE_RELEVANTIE_BERICHT,
     bouw_berichten,
     bouw_gecombineerd_systeem,
     bouw_systeem,
     dedup_disclaimer,
+    genereer_vervolgvragen,
     identificeer_oer_kandidaten,
     laad_instelling_bron_tekst,
     laad_kwalificatiedossier_tekst,
@@ -1013,3 +1016,82 @@ def test_identificeer_sorteert_op_score_aflopend():
     scores = [r["_score"] for r in resultaat]
     assert scores == sorted(scores, reverse=True)
     assert resultaat[0]["id"] == 3
+
+
+# ── genereer_vervolgvragen ───────────────────────────────────────────────────
+
+
+class _FakeVervolgClient:
+    """Minimale Anthropic-client-vervanger: legt de laatste call vast."""
+
+    def __init__(self, tekst: str | None = None, exc: Exception | None = None):
+        self._tekst = tekst
+        self._exc = exc
+        self.laatste_kwargs: dict | None = None
+
+    def _messages_create(self, **kwargs):
+        self.laatste_kwargs = kwargs
+        if self._exc is not None:
+            raise self._exc
+        return types.SimpleNamespace(content=[types.SimpleNamespace(text=self._tekst)])
+
+    @property
+    def messages(self):
+        return types.SimpleNamespace(create=self._messages_create)
+
+
+def test_genereer_vervolgvragen_nette_json():
+    client = _FakeVervolgClient(json.dumps(["Wat is de urenverdeling?", "Hoe zit herkansen?"]))
+    result = genereer_vervolgvragen(client, "Wat zijn de examens?", "Er zijn twee examens.")
+    assert result == ["Wat is de urenverdeling?", "Hoe zit herkansen?"]
+
+
+def test_genereer_vervolgvragen_json_in_fences():
+    tekst = '```json\n["Wanneer is het BPV-examen?", "Wat als ik zak?"]\n```'
+    client = _FakeVervolgClient(tekst)
+    result = genereer_vervolgvragen(client, "Hoe werkt het examen?", "Uitleg over examens.")
+    assert result == ["Wanneer is het BPV-examen?", "Wat als ik zak?"]
+
+
+def test_genereer_vervolgvragen_rommel_geeft_lege_lijst():
+    client = _FakeVervolgClient("Dit is geen JSON, gewoon tekst.")
+    result = genereer_vervolgvragen(client, "Vraag?", "Antwoord.")
+    assert result == []
+
+
+def test_genereer_vervolgvragen_exception_geeft_lege_lijst():
+    client = _FakeVervolgClient(exc=anthropic.APITimeoutError(request=None))
+    result = genereer_vervolgvragen(client, "Vraag?", "Antwoord.")
+    assert result == []
+
+
+def test_genereer_vervolgvragen_dedup_cap_en_trunc():
+    lang = "x" * 200
+    vragen = ["", "  ", lang, "Vraag A", "Vraag A", "Vraag B", "Vraag C", "Vraag D"]
+    client = _FakeVervolgClient(json.dumps(vragen))
+    result = genereer_vervolgvragen(client, "Vraag?", "Antwoord.")
+    assert result == ["x" * 140, "Vraag A", "Vraag B", "Vraag C"]
+
+
+def test_genereer_vervolgvragen_prompt_bevat_vraag_en_antwoord():
+    client = _FakeVervolgClient(json.dumps(["Vervolgvraag?"]))
+    lang_antwoord = "a" * 5000
+    genereer_vervolgvragen(client, "Wat is de urennorm?", lang_antwoord)
+    kwargs = client.laatste_kwargs
+    assert kwargs is not None
+    assert kwargs["max_tokens"] == 300
+    assert kwargs["model"] == "claude-haiku-4-5-20251001"
+    user_content = kwargs["messages"][0]["content"]
+    assert "Wat is de urennorm?" in user_content
+    # antwoord gekapt op 4000 tekens
+    antwoord_deel = user_content.split("Antwoord: ", 1)[1]
+    assert len(antwoord_deel) == 4000
+
+
+def test_genereer_vervolgvragen_bevat_opleiding_labels():
+    client = _FakeVervolgClient(json.dumps(["Vervolgvraag?"]))
+    genereer_vervolgvragen(
+        client, "Vraag?", "Antwoord.", opleiding_labels=["Talland College · Kok · BOL 2025"]
+    )
+    user_content = client.laatste_kwargs["messages"][0]["content"]
+    assert "Opleiding(en): Talland College · Kok · BOL 2025" in user_content

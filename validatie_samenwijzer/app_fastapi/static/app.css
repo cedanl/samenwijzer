@@ -175,6 +175,26 @@ footer .fbrand { font-family: "Instrument Serif", Georgia, serif; font-size: 1.4
 .thread .bubble-a th, .thread .bubble-a td { border: 1px solid var(--line); padding: 4px 10px; text-align: left; }
 .thread .bubble-a blockquote { margin: .8rem 0; padding: 12px 16px; background: var(--marker-was, rgba(255,216,77,.16)); border-left: 3px solid var(--marker); border-radius: 0 8px 8px 0; font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: 1.12rem; line-height: 1.4; color: var(--ink); }
 .thread .bubble-a a { color: var(--vermilion); border-bottom: 1px solid var(--marker); }
+
+/* ══ Vervolgvragen na een antwoord ═══════════════════════════════════════════ */
+.vervolg { margin-top: 4px; animation: vervolgIn .4s var(--ease); }
+.vervolg-label { font-family: "JetBrains Mono", ui-monospace, Consolas, monospace; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: .5rem; }
+.vervolg-lijst { display: flex; flex-wrap: wrap; gap: 8px; }
+.vervolg-chip { font-family: inherit; font-size: .86rem; line-height: 1.35; text-align: left; color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: .55rem 1.1rem; cursor: pointer; opacity: 0; animation: vervolgChipIn .4s var(--ease) forwards; animation-delay: calc(var(--vi, 0) * .09s); transition: transform .2s var(--ease), border-color .2s, background .2s; }
+.vervolg-chip:hover:not(:disabled) { border-color: var(--vermilion); background: var(--marker-was); transform: translateY(-2px); }
+.vervolg-chip:focus-visible { outline: 2px solid var(--vermilion); outline-offset: 2px; }
+.vervolg-chip:disabled { opacity: .55; cursor: default; transform: none; }
+.vervolg-skelet { display: inline-block; width: 8em; height: 2.3em; border-radius: 999px; background: linear-gradient(90deg, var(--line-soft) 25%, var(--paper-deep) 37%, var(--line-soft) 63%); background-size: 400% 100%; animation: vervolgShimmer 1.4s ease infinite; }
+@keyframes vervolgShimmer { 0% { background-position: 100% 50%; } 100% { background-position: 0 50%; } }
+@keyframes vervolgIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes vervolgChipIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .vervolg, .vervolg-chip, .vervolg-skelet { animation: none; opacity: 1; }
+}
+@media (max-width: 560px) {
+  .vervolg-chip { flex: 1 1 100%; }
+}
+
 .thinking { align-self: flex-start; color: var(--ink-faint); font-style: italic; }
 .thinking::after { content: "▍"; animation: blink 1s steps(2) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
