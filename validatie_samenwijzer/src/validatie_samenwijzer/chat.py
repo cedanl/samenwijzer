@@ -141,14 +141,30 @@ vacatures. Sluit af met de bron-URL('s)."""
 _DOELGROEP_TOON = """
 
 DOELGROEP & TOON.
-Je schrijft voor MBO-studenten van niveau 1 t/m 4. Gebruik korte zinnen en
-eenvoudige, alledaagse taal; vermijd ambtelijk jargon en leg een afkorting de
-eerste keer kort uit (bv. "BSA (bindend studieadvies)"). Citeer altijd eerst
-woordelijk zoals hierboven voorgeschreven en verander een citaat NOOIT — het
-zijn juridische teksten. Voeg daarna, ALS het citaat formeel of ingewikkeld is,
-één of twee zinnen uitleg in gewone taal toe, herkenbaar ingeleid met
-"In gewone taal:" of "Oftewel:". De uitleg komt náást het citaat, niet in de
-plaats ervan; een eenvoudig, al begrijpelijk citaat hoeft geen extra uitleg."""
+Je schrijft voor MBO-studenten van niveau 1 t/m 4. Sommigen lezen moeilijk.
+Schrijf zoals een goede studieloopbaanbegeleider praat:
+- Korte zinnen, één gedachte per zin. Actieve vorm. Spreek de student aan met "je".
+- Gewone, alledaagse woorden. Vermijd ambtelijke taal ("dient te", "conform",
+  "vastgesteld bij", "zulks"). Schrijf "moet", "volgens", "je krijgt".
+- Leg ELK vakwoord en ELKE afkorting de eerste keer uit, ook in je eigen zinnen
+  en niet alleen in een citaat. Denk aan BSA, BOT, BPV, OER, crebo, kerntaak,
+  werkproces, keuzedeel, instellingsexamen, centraal examen, generiek, 2F/3F,
+  studiebelasting, studielast. Vorm: term + haakjes met de uitleg, bijvoorbeeld
+  "BPV (beroepspraktijkvorming, oftewel je stage)".
+
+Citeer altijd eerst woordelijk zoals hierboven voorgeschreven; je
+verander een citaat NOOIT — het zijn juridische teksten. Voeg ná het citaat
+uitleg in gewone taal toe, ingeleid met "In gewone taal:" of "Oftewel:". Die
+uitleg is VERPLICHT zodra het citaat een vakterm, een afkorting, een
+getallenreeks of een stuk tabel bevat; vertel dan wat de getallen voor de
+student betekenen. Alleen een citaat dat zelf al in gewone taal staat mag
+zonder uitleg blijven. De uitleg komt náást het citaat, nooit in de plaats
+ervan.
+
+Citeer je een tabel of een rij losse getallen, zet er dan één zin vóór die zegt
+waar de tabel over gaat, en zet de uitleg erna om in hele zinnen of een korte
+opsomming. Plak nooit een kale rij cijfers neer zonder te zeggen wat ze
+betekenen."""
 
 
 _SYSTEEM_TEMPLATE = """\
@@ -608,9 +624,12 @@ def genereer_antwoord(
         messages=_messages_met_cache(berichten),
         **extra,
     ) as stream:
-        # Vangnet: verwijder een door het model herhaalde vacature-disclaimer (no-op als
-        # die niet voorkomt, bv. bij gewone OER-antwoorden).
-        yield from dedup_disclaimer(stream.text_stream, _VACATURE_DISCLAIMER)
+        # Vangnet: verwijder een door het model herhaalde disclaimer (no-op als die niet
+        # voorkomt, bv. bij gewone OER-antwoorden). Beide disclaimers worden gefilterd —
+        # het model herhaalde ook de webzoek-variant, aaneengeplakt zonder witregel.
+        yield from dedup_disclaimer(
+            dedup_disclaimer(stream.text_stream, _VACATURE_DISCLAIMER), _WEB_DISCLAIMER
+        )
 
 
 # ── Multi-OER ──────────────────────────────────────────────────────────────────

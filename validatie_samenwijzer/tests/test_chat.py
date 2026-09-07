@@ -1175,3 +1175,36 @@ def test_identificeer_volledige_match_is_niet_partieel():
     )
     assert [r["id"] for r in resultaat] == [2]
     assert resultaat[0]["_partieel"] is False
+
+
+def test_genereer_antwoord_ontdubbelt_ook_de_web_disclaimer(monkeypatch):
+    """Regressie: het model herhaalde de webzoek-disclaimer (twee keer, aaneengeplakt).
+
+    De filter stond alleen op de vacature-disclaimer; een webantwoord glipte erdoor.
+    """
+    from validatie_samenwijzer import chat
+    from validatie_samenwijzer.chat import _WEB_DISCLAIMER
+
+    stukken = [f"{_WEB_DISCLAIMER}{_WEB_DISCLAIMER}", "\n\nHier is het antwoord."]
+
+    class _Stream:
+        text_stream = iter(stukken)
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    class _Messages:
+        def stream(self, **kwargs):
+            return _Stream()
+
+    class _Client:
+        messages = _Messages()
+
+    uit = "".join(
+        chat.genereer_antwoord(_Client(), "systeem", [{"role": "user", "content": "hoi"}])
+    )
+    assert uit.count(_WEB_DISCLAIMER) == 1
+    assert uit.endswith("Hier is het antwoord.")

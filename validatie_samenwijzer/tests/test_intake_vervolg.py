@@ -221,3 +221,25 @@ def test_vraag_partiele_enkele_kandidaat_geeft_kies(monkeypatch):
     assert r.json()["modus"] == "kies"
     assert geladen == []
     assert [k["id"] for k in s.kandidaten] == [1]
+
+
+def test_kies_opties_tonen_schone_opleidingsnaam(monkeypatch):
+    """Regressie: de picker toonde de ruwe `opleiding`-string (een bestandsnaam met crebo,
+    leerweg en cohort erin) i.p.v. de opgeschoonde naam die `/api/kies` wél teruggeeft."""
+    import app_fastapi.main as m
+    from app_fastapi.sessie import Sessie
+
+    ruw = [
+        dict(_FAKE_OERS[0], opleiding="25182_BOL_2025__25182BOLExamenplan2025-Zelfstandig-kok"),
+        dict(_FAKE_OERS[1], opleiding="25168_BOL_2025__25168BOL2025Examenplan-Gastheer-vrouw"),
+    ]
+    monkeypatch.setattr(m.db, "get_alle_oers_met_instelling", lambda conn: ruw)
+    s = Sessie(toegang=True)
+    monkeypatch.setattr(m, "get_sessie", lambda request: s)
+
+    opties = _client().post("/api/vraag", json={"vraag": "Talland College"}).json()["opties"]
+
+    assert opties, "verwacht kies-modus met opties"
+    for optie in opties:
+        assert "_BOL_" not in optie["label"], f"ruwe bestandsnaam lekt naar de UI: {optie['label']}"
+        assert "Examenplan" not in optie["label"]
