@@ -327,6 +327,42 @@ def test_api_kies_zonder_wachtende_vraag():
     assert "labels" in body
 
 
+def test_api_kies_laadt_meerdere_studiegidsen_naast_elkaar():
+    """De kiezer laat er tot 3 combineren; /api/kies moet die lijst ook echt honoreren.
+
+    Guard tegen een terugval naar één gids: elk meegestuurd id hoort in de sessie én
+    in de labels terug te komen (de multi-prompt van `bouw_gecombineerd_systeem`).
+    """
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    c = _client()
+    boom = c.get("/api/opleidingen").json()
+    ids: list[int] = []
+    for inst in boom:
+        for lw in inst["leerwegen"]:
+            for opl in lw["opleidingen"]:
+                for coh in opl["cohorten"]:
+                    for i in coh["oer_ids"]:
+                        if i not in ids:
+                            ids.append(i)
+                    if len(ids) >= 2:
+                        break
+                if len(ids) >= 2:
+                    break
+            if len(ids) >= 2:
+                break
+        if len(ids) >= 2:
+            break
+    if len(ids) < 2:
+        pytest.skip("minder dan 2 geïndexeerde OER's in de testdatabase.")
+    gekozen = ids[:2]
+
+    body = c.post("/api/kies", json={"oer_ids": gekozen}).json()
+
+    assert body["oer_ids"] == gekozen
+    assert len(body["labels"]) == 2, "elke gekozen studiegids hoort een eigen label te krijgen"
+
+
 def test_elke_instelling_soort_is_bereikbaar_in_een_context():
     """Guard: elke geïndexeerde instelling-soort moet in minstens één context-tuple zitten.
 

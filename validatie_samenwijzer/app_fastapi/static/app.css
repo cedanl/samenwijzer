@@ -343,16 +343,19 @@ body.app { padding-top: 60px; }
 .ktrow.sm.wp .ktnaam { font-size: .82rem; }
 
 /* ── opleidingskiezer ─────────────────────────────────────────────────────── */
-.oplkiezer { margin-top: 1.1rem; }
-.oplkiezer > summary {
-  cursor: pointer; display: inline-flex; align-items: center; gap: .4rem;
-  font-size: .9rem; color: var(--ink-soft); list-style: none; user-select: none;
+/* De opleidingskiezer is een eigen ingang naast de vrije vraag: altijd open en als
+   kaart afgezet, zodat hij niet als bijzaak achter een uitklap verdwijnt. */
+.oplkiezer {
+  margin-top: 1.4rem; padding: 1.1rem 1.2rem 1.2rem;
+  background: var(--paper-card); border: 1px solid var(--line); border-radius: 14px;
 }
-.oplkiezer > summary::-webkit-details-marker { display: none; }
-.oplkiezer > summary::before { content: "▸"; transition: transform .2s; }
-.oplkiezer[open] > summary::before { transform: rotate(90deg); }
-.oplkiezer > summary:hover { color: var(--ink); }
-.cascade-host { margin-top: .9rem; }
+.oplkiezer-kop { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem .7rem; }
+.oplkiezer-titel { font-size: 1rem; font-weight: 600; color: var(--ink); }
+.oplkiezer-hint {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-faint);
+}
+.cascade-host { margin-top: .8rem; }
 .cascade { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
 .cascade select {
   font-family: inherit; font-size: .95rem; color: var(--ink);
@@ -361,5 +364,26 @@ body.app { padding-top: 60px; }
 }
 .cascade select:disabled { opacity: .5; cursor: not-allowed; }
 .cascade select:focus { outline: 2px solid var(--vermilion); outline-offset: 1px; }
-.cascade .cas-start { flex: 1 1 200px; height: 48px; }
+/* De vier selects vullen de rij; de knoppen krijgen een eigen regel eronder, anders
+   breekt het label van de openknop over twee regels zodra er een select bij komt. */
+.cascade .cas-acties { flex: 1 0 100%; display: flex; flex-wrap: wrap; gap: .6rem; }
+.cascade .cas-start { flex: 1 1 200px; height: 48px; white-space: nowrap; }
 .cascade .cas-start:disabled { opacity: .45; cursor: not-allowed; }
+.cascade .cas-add {
+  font-family: inherit; font-size: .9rem; height: 48px; padding: 0 1rem; cursor: pointer;
+  background: transparent; color: var(--ink-soft);
+  border: 1px dashed var(--line); border-radius: 11px; transition: all .2s var(--ease);
+}
+.cascade .cas-add:hover:not(:disabled) { border-color: var(--vermilion); color: var(--vermilion); }
+.cascade .cas-add:disabled { opacity: .45; cursor: not-allowed; }
+.cas-gekozen { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .75rem; }
+.cas-chip {
+  display: inline-flex; align-items: center; gap: .45rem;
+  font-size: .78rem; color: var(--ink); background: var(--paper);
+  border: 1px solid var(--line); border-radius: 999px; padding: .3rem .5rem .3rem .8rem;
+}
+.cas-chip button {
+  border: 0; background: transparent; color: var(--ink-faint); cursor: pointer;
+  font-size: 1rem; line-height: 1; padding: 0 .15rem;
+}
+.cas-chip button:hover { color: var(--vermilion); }
