@@ -779,6 +779,13 @@ def identificeer_oer_kandidaten(oers: list, tekst: str, min_score: int = 0) -> l
     instellingsvraag, of een onleesbare/aaneengeplakte opleidingsnaam zoals bij kwic), dan blijft
     de hele instellingsgroep staan.
 
+    **Aanscherping 3 — partiële match markeren:** biedt de genoemde instelling de opleiding
+    niet aan, maar matcht een zwakkere naamgenoot wél (identiteit 1 op "paardensport" terwijl
+    een andere school "Bedrijfsleider paardensport" met identiteit 2 heeft), dan blijft die
+    naamgenoot de enige kandidaat — de instellingsfilter is terecht — maar krijgt `_partieel=True`.
+    De route laadt zo'n kandidaat niet stil als "de" studiegids maar legt de keuze voor.
+    Zonder genoemde instelling is niets partieel (de sterkste match staat gewoon bovenaan).
+
     De opleidingswoorden sluiten de instellingstokens uit: sommige scholen (Talland) embedden hun
     eigen slug in de opleiding-bestandsnaam, wat anders élke OER een vals identiteitssignaal zou
     geven (= het instelling-signaal, niet de opleiding).
@@ -846,6 +853,13 @@ def identificeer_oer_kandidaten(oers: list, tekst: str, min_score: int = 0) -> l
         inst > 0 for groep in per_instelling.values() for _, inst, _, _ in groep
     )
 
+    # Aanscherping 3: het sterkste identiteitssignaal van het hele corpus, om een zwakkere
+    # naamgenoot binnen de genoemde instelling als partieel te herkennen.
+    globale_max_identiteit = max(
+        (identiteit for groep in per_instelling.values() for identiteit, _, _, _ in groep),
+        default=0,
+    )
+
     kandidaten = []
     for groep in per_instelling.values():
         # Alle OER's van een groep delen de instelling, dus de eerste bepaalt of
@@ -860,11 +874,12 @@ def identificeer_oer_kandidaten(oers: list, tekst: str, min_score: int = 0) -> l
         # (gelijkspel-dropdown). Géén opleiding genoemd (max 0) → hele instellingsgroep
         # blijft staan, zoals bij een kale instellingsvraag.
         max_identiteit = max(identiteit for identiteit, _, _, _ in groep)
+        partieel = instelling_genoemd and max_identiteit < globale_max_identiteit
         for identiteit, _inst, score, d in groep:
             if max_identiteit > 0 and identiteit < max_identiteit:
                 continue
             if score >= min_score:
-                kandidaten.append({**d, "_score": score})
+                kandidaten.append({**d, "_score": score, "_partieel": partieel})
 
     return sorted(kandidaten, key=lambda x: x["_score"], reverse=True)
 

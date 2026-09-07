@@ -385,7 +385,5 @@ def test_verwerk_bestand_slaat_content_hash_op(conn, tmp_path, monkeypatch):
 
     ingest._verwerk_bestand(bestand, "deltion", conn)
 
-    rij = conn.execute(
-        "SELECT content_hash FROM oer_documenten WHERE crebo='25180'"
-    ).fetchone()
+    rij = conn.execute("SELECT content_hash FROM oer_documenten WHERE crebo='25180'").fetchone()
     assert rij["content_hash"] == bereken_content_hash(tekst)

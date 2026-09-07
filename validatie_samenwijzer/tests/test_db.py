@@ -403,9 +403,12 @@ def test_set_oer_content_hash(conn):
     inst = voeg_instelling_toe(conn, "deltion", "Deltion")
     oer_id = voeg_oer_document_toe(conn, inst, "Kok", "25180", "2025", "BOL", "x.md")
     set_oer_content_hash(conn, oer_id, "abc123")
-    assert conn.execute(
-        "SELECT content_hash FROM oer_documenten WHERE id = ?", (oer_id,)
-    ).fetchone()[0] == "abc123"
+    assert (
+        conn.execute("SELECT content_hash FROM oer_documenten WHERE id = ?", (oer_id,)).fetchone()[
+            0
+        ]
+        == "abc123"
+    )
 
 
 def test_student_kerntaak_score(conn):

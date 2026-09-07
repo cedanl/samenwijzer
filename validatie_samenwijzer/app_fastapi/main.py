@@ -227,7 +227,9 @@ async def api_vraag(request: Request):
     )
     kandidaten = identificeer_oer_kandidaten(oers, context_tekst, min_score=1)
 
-    if len(kandidaten) == 1:
+    # Eén kandidaat laadt direct — tenzij hij partieel is (de genoemde school biedt de
+    # opleiding niet aan; zie identificeer_oer_kandidaten, aanscherping 3): dan kies-modus.
+    if len(kandidaten) == 1 and not kandidaten[0]["_partieel"]:
         oer_id = kandidaten[0]["id"]
         s.oer_systeem, s.oer_labels, s.domeinen, s.oer_onleesbaar = laad_context([oer_id])
         s.oer_ids = [oer_id]
@@ -242,7 +244,7 @@ async def api_vraag(request: Request):
             }
         )
 
-    if len(kandidaten) > 1:
+    if kandidaten:
         s.kandidaten = kandidaten[:_MAX_KANDIDATEN]
         s.wachtende_vraag = vraag
         # Ook opnemen in chat_history (lege "assistent"-kant, net als een mislukte AI-call —

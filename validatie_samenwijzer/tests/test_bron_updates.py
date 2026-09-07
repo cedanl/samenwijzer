@@ -143,9 +143,7 @@ def test_oer_inhoud_status_aggregeert_gewijzigde_oers(monkeypatch):
             pass
 
     monkeypatch.setattr(bron_updates.oer_catalogus, "open_conn", lambda: _Conn())
-    monkeypatch.setattr(
-        bron_updates.oer_catalogus, "_CATALOGUS_BRONNEN", {"deltion": lambda: []}
-    )
+    monkeypatch.setattr(bron_updates.oer_catalogus, "_CATALOGUS_BRONNEN", {"deltion": lambda: []})
 
     def _fake_gewijzigd(inst, conn=None):
         return ([CatalogusItem("25180", "BOL", "2025", "Kok", "deltion", "u")], 2)
@@ -161,9 +159,7 @@ def test_oer_inhoud_status_aggregeert_gewijzigde_oers(monkeypatch):
 
 
 def test_verzamel_bron_status_alleen_oer(monkeypatch):
-    monkeypatch.setattr(
-        bron_updates.oer_catalogus, "_CATALOGUS_BRONNEN", {"deltion": lambda: []}
-    )
+    monkeypatch.setattr(bron_updates.oer_catalogus, "_CATALOGUS_BRONNEN", {"deltion": lambda: []})
     monkeypatch.setattr(
         bron_updates.oer_catalogus,
         "instelling_nieuwe_oers",
@@ -176,9 +172,7 @@ def test_verzamel_bron_status_alleen_oer(monkeypatch):
 def test_verzamel_bron_status_voegt_inhoud_toe_met_flag(monkeypatch, gemockte_bronnen):
     bronnen = {s.bron for s in bron_updates.verzamel_bron_status(inhoud=False)}
     assert "oer-inhoud" not in bronnen  # standaard niet
-    monkeypatch.setattr(
-        bron_updates.oer_catalogus, "_CATALOGUS_BRONNEN", {"deltion": lambda: []}
-    )
+    monkeypatch.setattr(bron_updates.oer_catalogus, "_CATALOGUS_BRONNEN", {"deltion": lambda: []})
     dummy_conn_cls = type("C", (), {"close": lambda s: None})
     monkeypatch.setattr(bron_updates.oer_catalogus, "open_conn", lambda: dummy_conn_cls())
     monkeypatch.setattr(bron_updates.oer_catalogus, "gewijzigde_oers", lambda i, conn=None: ([], 0))
