@@ -144,7 +144,12 @@ _BEHEER_TAKEN: dict[str, list[str]] = {
     "kd_sync": ["bash", "scripts/sync_kwalificatiedossiers.sh"],
     "bron_updates": ["uv", "run", "python", "-m", "validatie_samenwijzer.bron_updates"],
     "bron_updates_oer": [
-        "uv", "run", "python", "-m", "validatie_samenwijzer.bron_updates", "--oer"
+        "uv",
+        "run",
+        "python",
+        "-m",
+        "validatie_samenwijzer.bron_updates",
+        "--oer",
     ],
 }
 

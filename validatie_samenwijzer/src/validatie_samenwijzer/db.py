@@ -209,9 +209,7 @@ def markeer_geindexeerd(conn: sqlite3.Connection, oer_id: int) -> None:
 
 def set_oer_content_hash(conn: sqlite3.Connection, oer_id: int, content_hash: str) -> None:
     """Sla de content-hash van een OER-document op (voor upstream-wijzigingsdetectie)."""
-    conn.execute(
-        "UPDATE oer_documenten SET content_hash = ? WHERE id = ?", (content_hash, oer_id)
-    )
+    conn.execute("UPDATE oer_documenten SET content_hash = ? WHERE id = ?", (content_hash, oer_id))
     conn.commit()
 
 

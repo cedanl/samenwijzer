@@ -348,12 +348,9 @@ def genereer_corpus_manifest(conn, pad: Path) -> None:
     for r in db.get_alle_oers_met_instelling(conn):
         manifest.setdefault(r["naam"], []).append((r["crebo"], r["leerweg"], r["cohort"]))
     uit = {
-        inst: [list(t) for t in sorted(set(tupels))]
-        for inst, tupels in sorted(manifest.items())
+        inst: [list(t) for t in sorted(set(tupels))] for inst, tupels in sorted(manifest.items())
     }
-    pad.write_text(
-        json.dumps(uit, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
-    )
+    pad.write_text(json.dumps(uit, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def instelling_nieuwe_oers(
