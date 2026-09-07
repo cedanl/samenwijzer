@@ -96,8 +96,10 @@ image gebakken** — na een re-ingest of re-seed is een nieuwe deploy nodig. `SE
 Volledige beschrijving in `docs/ARCHITECTURE.md`. De regels die een wijziging niet mag overtreden:
 
 - **AI-isolatie**: alle Anthropic-calls via `_ai._client()`; `chat.py` is de enige module met
-  streaming-aanroepen. **Nooit** `anthropic.Anthropic()` direct instantiëren. De client dwingt het
-  30s-timeout-contract af (`_CLIENT_OPTS`).
+  streaming-aanroepen. Modellen: chat/intake `claude-sonnet-4-6`, vervolgvragen
+  (`genereer_vervolgvragen`) `claude-haiku-4-5-20251001`, best-effort. **Nooit**
+  `anthropic.Anthropic()` direct instantiëren. De client dwingt het 30s-timeout-contract af
+  (`_CLIENT_OPTS`).
 - **Geen business logic in `app_fastapi/`**; geen raw SQL in routes — alle DB-toegang via `db.py`
   (`get_connection()`), zowel in scripts/tests als via de route-lokale `_conn()`-helper.
   `app_fastapi/context.py` (chat-context uit OER-id's) en `data.py` (UI-vrije dicts voor de
@@ -109,8 +111,9 @@ Volledige beschrijving in `docs/ARCHITECTURE.md`. De regels die een wijziging ni
   de chat-state (system-prompt tot ~500K × bronnen) staat in SQLite `data/sessies.db`
   (`SESSIE_DB_PATH`, TTL 6 uur). Consequentie: **één Fly-machine** (`min_machines_running = 1`,
   geen scale-out) en de store overleeft geen redeploy. De middleware bewaart alleen op
-  niet-GET-requests (behalve `/api/chat`, dat zelf post-stream bewaart) — een GET die de sessie
-  muteert moet expliciet `bewaar_sessie()` aanroepen, anders lost update.
+  niet-GET-requests (behalve `/api/chat`, dat zelf post-stream bewaart, en `/api/vervolgvragen`,
+  een read-only POST) — een GET die de sessie muteert moet expliciet `bewaar_sessie()` aanroepen,
+  anders lost update.
 - **Vier chat-bronnen**, alle full-document: OER (leidend) + KD + skills + instellingsbrede regelingen.
   Loaders + caps in `chat.py` (`laad_oer_tekst` 500K, KD 300K, skills 50K, instelling 300K).
 - **Juridische citatieplicht**: elke claim eist **bron + vindplaats + woordelijk citaat tussen
