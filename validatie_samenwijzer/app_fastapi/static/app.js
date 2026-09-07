@@ -41,7 +41,12 @@ function _vulOpties(sel, labels, placeholder) {
     labels.map((t, i) => `<option value="${i}">${esc(t)}</option>`).join("");
 }
 
-/* Bouwt 4 afhankelijke selects + startknop in `container`. Roept onKies(oerIds[]) aan. */
+/* Max. aantal OER-id's dat /api/kies accepteert; de kiezer bewaakt dezelfde grens. */
+const MAX_GIDSEN = 3;
+
+/* Bouwt 4 afhankelijke selects + een lijstje gekozen studiegidsen in `container`.
+   Je kunt meerdere opleidingen, leerwegen of scholen naast elkaar zetten (tot MAX_GIDSEN
+   OER's, de grens die /api/kies hanteert). Roept onKies(oerIds[]) aan bij openen. */
 function bouwCascade(container, boom, onKies) {
   container.innerHTML = `
     <div class="cascade">
@@ -49,17 +54,53 @@ function bouwCascade(container, boom, onKies) {
       <select class="cas-lw" aria-label="Leerweg" disabled></select>
       <select class="cas-opl" aria-label="Opleiding" disabled></select>
       <select class="cas-coh" aria-label="Cohort" disabled hidden></select>
-      <button type="button" class="iconbtn cas-start" disabled>Open mijn studiegids →</button>
-    </div>`;
+      <div class="cas-acties">
+        <button type="button" class="cas-add" disabled>+ Nog een erbij</button>
+        <button type="button" class="iconbtn cas-start" disabled>Open mijn studiegids →</button>
+      </div>
+    </div>
+    <div class="cas-gekozen" hidden></div>`;
   const selI = container.querySelector(".cas-inst");
   const selL = container.querySelector(".cas-lw");
   const selO = container.querySelector(".cas-opl");
   const selC = container.querySelector(".cas-coh");
+  const addBtn = container.querySelector(".cas-add");
   const btn = container.querySelector(".cas-start");
+  const lijst = container.querySelector(".cas-gekozen");
   let inst = null, lw = null, opl = null;
+  const gekozen = [];
 
   const resetSel = (sel, ph) => { sel.innerHTML = `<option value="">${esc(ph)}</option>`; sel.disabled = true; };
-  const check = () => { btn.disabled = !(opl && (opl.cohorten.length === 1 || selC.value !== "")); };
+
+  /* De volledig ingevulde selectie, of null zolang er nog een keuze ontbreekt. */
+  const huidige = () => {
+    if (!opl) return null;
+    if (opl.cohorten.length > 1 && selC.value === "") return null;
+    const coh = opl.cohorten.length === 1 ? opl.cohorten[0] : opl.cohorten[Number(selC.value)];
+    return { label: `${inst.instelling} · ${opl.naam} · ${lw.leerweg} ${coh.cohort}`, ids: coh.oer_ids };
+  };
+  const gekozenIds = () => gekozen.reduce((acc, g) => acc.concat(g.ids), []);
+
+  const teken = () => {
+    lijst.hidden = gekozen.length === 0;
+    lijst.innerHTML = gekozen.map((g, i) =>
+      `<span class="cas-chip">${esc(g.label)}<button type="button" data-i="${i}" aria-label="Verwijder ${esc(g.label)}">×</button></span>`
+    ).join("");
+    const h = huidige();
+    const ruimte = MAX_GIDSEN - gekozenIds().length;
+    addBtn.disabled = !h || h.ids.length > ruimte;
+    addBtn.hidden = gekozen.length > 0 && ruimte <= 0;
+    btn.disabled = !h && gekozen.length === 0;
+    const n = gekozen.length + (h ? 1 : 0);
+    btn.textContent = n > 1 ? `Vergelijk ${n} studiegidsen →` : "Open mijn studiegids →";
+  };
+
+  /* Zet de selects terug op schoolniveau zodat je meteen een volgende kunt kiezen. */
+  const leegSelectie = () => {
+    inst = null; lw = null; opl = null;
+    selI.value = "";
+    resetSel(selL, "Leerweg…"); resetSel(selO, "Opleiding…"); resetSel(selC, "Cohort…"); selC.hidden = true;
+  };
 
   _vulOpties(selI, boom.map((b) => b.instelling), "Kies je school…");
   resetSel(selL, "Leerweg…"); resetSel(selO, "Opleiding…"); resetSel(selC, "Cohort…");
@@ -69,14 +110,14 @@ function bouwCascade(container, boom, onKies) {
     lw = null; opl = null;
     resetSel(selL, "Leerweg…"); resetSel(selO, "Opleiding…"); resetSel(selC, "Cohort…"); selC.hidden = true;
     if (inst) { _vulOpties(selL, inst.leerwegen.map((x) => x.leerweg), "Leerweg…"); selL.disabled = false; }
-    check();
+    teken();
   });
   selL.addEventListener("change", () => {
     lw = selL.value === "" ? null : inst.leerwegen[Number(selL.value)];
     opl = null;
     resetSel(selO, "Opleiding…"); resetSel(selC, "Cohort…"); selC.hidden = true;
     if (lw) { _vulOpties(selO, lw.opleidingen.map((x) => x.naam), "Opleiding…"); selO.disabled = false; }
-    check();
+    teken();
   });
   selO.addEventListener("change", () => {
     opl = selO.value === "" ? null : lw.opleidingen[Number(selO.value)];
@@ -85,14 +126,30 @@ function bouwCascade(container, boom, onKies) {
       _vulOpties(selC, opl.cohorten.map((c) => c.cohort), "Cohort…");
       selC.disabled = false; selC.hidden = false;
     }
-    check();
+    teken();
   });
-  selC.addEventListener("change", check);
+  selC.addEventListener("change", teken);
+
+  addBtn.addEventListener("click", () => {
+    const h = huidige();
+    if (!h) return;
+    gekozen.push(h);
+    leegSelectie();
+    teken();
+  });
+  lijst.addEventListener("click", (e) => {
+    const i = e.target.dataset && e.target.dataset.i;
+    if (i === undefined) return;
+    gekozen.splice(Number(i), 1);
+    teken();
+  });
   btn.addEventListener("click", () => {
-    if (!opl) return;
-    const coh = opl.cohorten.length === 1 ? opl.cohorten[0] : opl.cohorten[Number(selC.value)];
-    onKies(coh.oer_ids);
+    const h = huidige();
+    const ids = gekozenIds().concat(h ? h.ids : []).slice(0, MAX_GIDSEN);
+    if (ids.length) onKies(ids);
   });
+
+  teken();
 }
 
 /* Laadt de gekozen studiegids in de sessie en opent de chat (gedeeld door beide paden). */
