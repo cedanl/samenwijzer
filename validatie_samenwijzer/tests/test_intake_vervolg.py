@@ -177,3 +177,47 @@ def test_kies_beurt_telt_mee_bij_genegeerde_picker(monkeypatch):
     body = r2.json()
     assert body["modus"] == "chat", body
     assert body["oer_ids"] == [1193]
+
+
+def test_vraag_partiele_enkele_kandidaat_geeft_kies(monkeypatch):
+    """Eén kandidaat die slechts partieel matcht (de genoemde school biedt de opleiding niet aan,
+    een andere school wél) → modus "kies" i.p.v. stil de verkeerde studiegids laden."""
+    import app_fastapi.main as m
+    from app_fastapi.sessie import Sessie
+
+    oers = [
+        {
+            "id": 1,
+            "crebo": "25915",
+            "opleiding": "25915_BOL_2026__vakbekwaam-medewerker-paardensport",
+            "display_naam": "Aeres MBO",
+            "naam": "aeres",
+            "leerweg": "BOL",
+            "cohort": "2026",
+        },
+        {
+            "id": 2,
+            "crebo": "25916",
+            "opleiding": "25916_BOL_2025__Bedrijfsleider_paardensport",
+            "display_naam": "Landstede MBO",
+            "naam": "landstede",
+            "leerweg": "BOL",
+            "cohort": "2025",
+        },
+    ]
+    monkeypatch.setattr(m.db, "get_alle_oers_met_instelling", lambda conn: oers)
+    geladen = []
+    monkeypatch.setattr(
+        m, "laad_context", lambda oer_ids, **k: geladen.append(oer_ids) or ("P", ["l"], [], False)
+    )
+    s = Sessie(toegang=True)
+    monkeypatch.setattr(m, "get_sessie", lambda request: s)
+
+    r = _client().post(
+        "/api/vraag", json={"vraag": "Bedrijfsleider paardensport bij Aeres, BOL 2025"}
+    )
+
+    assert r.status_code == 200
+    assert r.json()["modus"] == "kies"
+    assert geladen == []
+    assert [k["id"] for k in s.kandidaten] == [1]

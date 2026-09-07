@@ -294,10 +294,22 @@ def test_bouw_systeem_zonder_leerweg_geen_leerweg_regel():
 
 def _vac_items():
     return [
-        {"tekst": "OER A", "opleiding": "Kok", "display_naam": "Da Vinci",
-         "leerweg": "BOL", "cohort": "2025", "crebo": "25180"},
-        {"tekst": "OER B", "opleiding": "Kapper", "display_naam": "Rijn IJssel",
-         "leerweg": "BBL", "cohort": "2025", "crebo": "25201"},
+        {
+            "tekst": "OER A",
+            "opleiding": "Kok",
+            "display_naam": "Da Vinci",
+            "leerweg": "BOL",
+            "cohort": "2025",
+            "crebo": "25180",
+        },
+        {
+            "tekst": "OER B",
+            "opleiding": "Kapper",
+            "display_naam": "Rijn IJssel",
+            "leerweg": "BBL",
+            "cohort": "2025",
+            "crebo": "25201",
+        },
     ]
 
 
@@ -308,8 +320,16 @@ def test_bouw_gecombineerd_systeem_vacatures_multi():
 
 
 def test_bouw_gecombineerd_systeem_vacatures_single_delegeert_met_leerweg():
-    items = [{"tekst": "OER A", "opleiding": "Kok", "display_naam": "Da Vinci",
-              "leerweg": "BBL", "cohort": "2025", "crebo": "25180"}]
+    items = [
+        {
+            "tekst": "OER A",
+            "opleiding": "Kok",
+            "display_naam": "Da Vinci",
+            "leerweg": "BBL",
+            "cohort": "2025",
+            "crebo": "25180",
+        }
+    ]
     systeem = bouw_gecombineerd_systeem(items, vacatures=True)
     assert "VACATURES & STAGES" in systeem
     assert "Leerweg van deze opleiding: BBL" in systeem
@@ -1095,3 +1115,63 @@ def test_genereer_vervolgvragen_bevat_opleiding_labels():
     )
     user_content = client.laatste_kwargs["messages"][0]["content"]
     assert "Opleiding(en): Talland College · Kok · BOL 2025" in user_content
+
+
+def test_identificeer_partiele_match_binnen_genoemde_instelling_wordt_gemarkeerd():
+    """Noemt de vraag een instelling die de opleiding niet aanbiedt, dan mag een zwakkere
+    naamgenoot bij die instelling niet stil als enige kandidaat "winnen".
+
+    'Bedrijfsleider paardensport bij Aeres': Aeres heeft alleen 'Vakbekwaam medewerker
+    paardensport' (identiteit 1 op 'paardensport'), Landstede de echte 'Bedrijfsleider
+    paardensport' (identiteit 2). De instellingsfilter houdt terecht alleen Aeres over, maar
+    markeert de kandidaat als `_partieel` zodat de route een keuze voorlegt i.p.v. te laden.
+    """
+    oers = [
+        _oer_row(
+            id=1,
+            naam="aeres",
+            display_naam="Aeres MBO",
+            crebo="25915",
+            opleiding="25915_BOL_2026__vakbekwaam-medewerker-paardensport-en-houderij",
+            cohort="2026",
+        ),
+        _oer_row(
+            id=2,
+            naam="landstede",
+            display_naam="Landstede MBO",
+            crebo="25916",
+            opleiding="25916_BOL_2025__Bedrijfsleider_paardensport_en_houderij",
+        ),
+    ]
+    resultaat = identificeer_oer_kandidaten(
+        oers, "Bedrijfsleider paardensport bij Aeres, BOL 2025", min_score=1
+    )
+    assert [r["id"] for r in resultaat] == [1]
+    assert resultaat[0]["_partieel"] is True
+
+
+def test_identificeer_volledige_match_is_niet_partieel():
+    """Biedt de genoemde instelling de opleiding wél aan (sterkste identiteit van het hele
+    corpus), dan is de kandidaat niet partieel — direct laden blijft het gedrag."""
+    oers = [
+        _oer_row(
+            id=1,
+            naam="aeres",
+            display_naam="Aeres MBO",
+            crebo="25915",
+            opleiding="25915_BOL_2026__vakbekwaam-medewerker-paardensport-en-houderij",
+            cohort="2026",
+        ),
+        _oer_row(
+            id=2,
+            naam="landstede",
+            display_naam="Landstede MBO",
+            crebo="25916",
+            opleiding="25916_BOL_2025__Bedrijfsleider_paardensport_en_houderij",
+        ),
+    ]
+    resultaat = identificeer_oer_kandidaten(
+        oers, "Bedrijfsleider paardensport bij Landstede, BOL 2025", min_score=1
+    )
+    assert [r["id"] for r in resultaat] == [2]
+    assert resultaat[0]["_partieel"] is False

@@ -16,10 +16,19 @@ def test_project_root_is_subproject_root():
 
 def test_bron_updates_taken_in_allowlist():
     assert _BEHEER_TAKEN["bron_updates"] == [
-        "uv", "run", "python", "-m", "validatie_samenwijzer.bron_updates"
+        "uv",
+        "run",
+        "python",
+        "-m",
+        "validatie_samenwijzer.bron_updates",
     ]
     assert _BEHEER_TAKEN["bron_updates_oer"] == [
-        "uv", "run", "python", "-m", "validatie_samenwijzer.bron_updates", "--oer"
+        "uv",
+        "run",
+        "python",
+        "-m",
+        "validatie_samenwijzer.bron_updates",
+        "--oer",
     ]
 
 
