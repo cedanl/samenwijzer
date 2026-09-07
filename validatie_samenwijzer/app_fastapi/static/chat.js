@@ -21,8 +21,15 @@ function inline(s) {
   s = s.replace(/`([^`]+)`/g, "<code>$1</code>");
   return s;
 }
+/* Het model begint de waarschuwings-blockquote soms middenin een regel
+   ("...ik zoek dit op voor je...> \u26a0\ufe0f Let op:"). Zonder eigen regel rendert die als
+   platte tekst. Alleen deze vorm normaliseren \u2014 een kale "> " kan ook gewoon
+   een groter-dan-teken in de lopende tekst zijn. */
+function normaliseerBlockquotes(md) {
+  return md.replace(/([^\n])(> \u26a0)/g, "$1\n\n$2");
+}
 function renderMarkdown(md) {
-  const lines = md.replace(/\r/g, "").split("\n");
+  const lines = normaliseerBlockquotes(md).replace(/\r/g, "").split("\n");
   let html = "", i = 0;
   const para = [];
   const flush = () => { if (para.length) { html += `<p>${inline(para.join(" "))}</p>`; para.length = 0; } };

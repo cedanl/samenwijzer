@@ -40,6 +40,7 @@ from validatie_samenwijzer.chat import (
     identificeer_oer_kandidaten,
     resolve_oer_pad,
 )
+from validatie_samenwijzer.opleiding import nette_opleiding_naam
 
 load_dotenv()
 log = logging.getLogger("oer_poc")
@@ -254,7 +255,11 @@ async def api_vraag(request: Request):
         opties = [
             {
                 "id": k["id"],
-                "label": f"{k['display_naam']} · {k['opleiding']} · {k['leerweg']} {k['cohort']}",
+                "label": (
+                    f"{k['display_naam']} · "
+                    f"{nette_opleiding_naam(str(k.get('crebo') or ''), k['opleiding'])} · "
+                    f"{k['leerweg']} {k['cohort']}"
+                ),
             }
             for k in s.kandidaten
         ]
