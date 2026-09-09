@@ -55,6 +55,8 @@ uv run ruff check --fix src/ app_fastapi/ scripts/ && uv run ruff format src/ ap
 uv run python -m validatie_samenwijzer.ingest --alles      # (her)indexeer OERs (+ --reset, --instelling <key>)
 uv run python -m validatie_samenwijzer.sync_afgeleid --alles  # KD + skills reconciliëren (bouwt alleen ontbrekende)
 uv run python -m validatie_samenwijzer.bron_updates        # bronactualiteit-rapport (ook wekelijks via GitHub Action)
+./scripts/verwerk_oers.sh --preview                       # nieuwe PDFs hernoemen + indexeren (droge run)
+./scripts/bootstrap.sh                                    # eenmalige machine-setup: Box-syncs + ingest + seed + KD/skills (--skip-*, zie script)
 ```
 
 Lint: line-length 100; selectie `E,F,I,N,W,UP`. `app_fastapi/*.py` wordt volledig gelint (HTML/CSS/JS
@@ -86,6 +88,9 @@ COMPETENTNL_API_KEY=...      # optioneel: skills-build gebruikt CompetentNL ipv 
 
 `tests/conftest.py` zet `SESSION_SECRET`, `ALGEMEEN_WACHTWOORD` en `COOKIE_HTTPS_ONLY=0` zelf;
 tests hebben geen `.env` nodig.
+
+**Tesseract OCR** is een systeemvereiste voor ingest (PDF→tekst):
+`sudo apt install tesseract-ocr tesseract-ocr-nld`.
 
 **Deploy** (commando + Fly-app: root-`CLAUDE.md`): `validatie.db` en `data/skills` worden **in het
 image gebakken** — na een re-ingest of re-seed is een nieuwe deploy nodig. `SESSION_SECRET`,
