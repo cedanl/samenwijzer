@@ -6,10 +6,11 @@ Lokaal draaien (naast Streamlit op 8503):
 
 from __future__ import annotations
 
+import asyncio
 import json
 import logging
 import os
-import subprocess
+import signal
 from pathlib import Path
 
 import anthropic
@@ -549,7 +550,7 @@ def beheer_run(request: Request, taak: str, reset: int = 0, instelling: str = ""
     """Stream de stdout van een vaste beheer-taak als SSE. GET → middleware bewaart niet.
 
     Veiligheid: dubbele gate (BEHEER_ENABLED + algemene poort), vaste commando-allowlist
-    (lijst-vorm Popen, geen shell), gevalideerde scope, cwd hard op de subproject-root.
+    (lijst-vorm exec, geen shell), gevalideerde scope, cwd hard op de subproject-root.
     """
     if not _BEHEER_ENABLED:
         return JSONResponse({"error": "uit"}, status_code=404)
@@ -563,18 +564,30 @@ def beheer_run(request: Request, taak: str, reset: int = 0, instelling: str = ""
     if reset:
         cmd.append("--reset")
 
-    def stream():
-        proc = subprocess.Popen(
-            cmd,
+    async def stream():
+        # Async subprocess: bij een client-disconnect cancellt starlette het await-punt,
+        # waardoor de finally wél bereikt wordt — een sync generator die op een blocking
+        # readline() zit kan nooit afgemaakt worden en laat het kind als orphan achter.
+        # start_new_session + killpg: dood de hele procesgroep (uv run + child), anders
+        # overleeft het kind een SIGTERM aan alleen uv.
+        proc = await asyncio.create_subprocess_exec(
+            *cmd,
             cwd=str(_PROJECT_ROOT),
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            text=True,
-            bufsize=1,
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.STDOUT,
+            start_new_session=True,
         )
-        for regel in iter(proc.stdout.readline, ""):
-            yield f"data: {json.dumps({'regel': regel.rstrip()})}\n\n"
-        proc.wait()
-        yield f"data: {json.dumps({'done': True, 'exit': proc.returncode})}\n\n"
+        try:
+            while regel := await proc.stdout.readline():
+                tekst = regel.decode("utf-8", "replace").rstrip()
+                yield f"data: {json.dumps({'regel': tekst})}\n\n"
+            await proc.wait()
+            yield f"data: {json.dumps({'done': True, 'exit': proc.returncode})}\n\n"
+        finally:
+            if proc.returncode is None:
+                try:
+                    os.killpg(proc.pid, signal.SIGKILL)
+                except ProcessLookupError:
+                    pass
 
     return StreamingResponse(stream(), media_type="text/event-stream")
