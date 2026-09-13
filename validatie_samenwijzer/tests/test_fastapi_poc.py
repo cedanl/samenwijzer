@@ -451,21 +451,33 @@ def test_beheer_run_streamt_output(monkeypatch):
 
     class _FakeStdout:
         def __init__(self, regels):
-            self._it = iter([*regels, ""])
+            self._it = iter([*regels])
 
-        def readline(self):
-            return next(self._it)
+        async def readline(self):
+            try:
+                return next(self._it)
+            except StopIteration:
+                return b""
 
     class _FakeProc:
         def __init__(self, *a, **k):
-            self.stdout = _FakeStdout(["regel1\n", "regel2\n"])
+            self.stdout = _FakeStdout([b"regel1\n", b"regel2\n"])
+            self.returncode = None
+            self.pid = -1
+
+        async def wait(self):
             self.returncode = 0
+            return 0
 
-        def wait(self):
-            pass
-
+    gedood = []
     monkeypatch.setattr(m, "_BEHEER_ENABLED", True)
-    monkeypatch.setattr(m.subprocess, "Popen", lambda *a, **k: _FakeProc())
+    monkeypatch.setattr(m.os, "killpg", lambda pid, sig: gedood.append((pid, sig)))
+
+    async def _fake_exec(*a, **k):
+        return _FakeProc()
+
+    monkeypatch.setattr(m.asyncio, "create_subprocess_exec", _fake_exec)
+
     body = _client().get("/api/beheer/run?taak=sync_oeren").text
     assert "regel1" in body and "regel2" in body
     assert '"done": true' in body
