@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import logging
 import os
 
 import pytest
@@ -393,6 +394,32 @@ def test_chat_toegewezen_maar_onleesbare_oer_geeft_lage_relevantie(monkeypatch):
     r = c.post("/api/chat", json={"vraag": "hoe werkt herkansen?"})
     assert r.status_code == 200
     assert LAGE_RELEVANTIE_BERICHT in r.text
+
+
+def test_chat_logt_timing_zonder_vraagtekst(monkeypatch, caplog):
+    """Elke voltooide chat-beurt logt timing/tekens/modus (Fly-zicht) — geen vraagtekst (PII)."""
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    import app_fastapi.main as m
+
+    monkeypatch.setattr(
+        m, "laad_context", lambda ids, *a, **k: ("SYSTEEMPROMPT", ["label"], [], False)
+    )
+    monkeypatch.setattr(m, "genereer_antwoord", lambda *a, **k: iter(["Hallo ", "wereld"]))
+    c = _client()
+    c.post("/api/kies", json={"oer_ids": [1]})  # sessie: oer_systeem="SYSTEEMPROMPT" → modus=oer
+    vraag = "geheime studentvraag 12345"
+    with caplog.at_level(logging.INFO, logger="oer_poc"):
+        r = c.post("/api/chat", json={"vraag": vraag})
+    assert r.status_code == 200
+
+    treffers = [rec for rec in caplog.records if "chat-beurt" in rec.message]
+    assert len(treffers) == 1
+    bericht = treffers[0].getMessage()
+    assert "ttft_s" in bericht and "totaal_s" in bericht
+    assert "tekens=12" in bericht  # "Hallo " + "wereld"
+    assert "modus=oer" in bericht and "webzoek=False" in bericht
+    assert vraag not in bericht
 
 
 def test_api_reset_ok():

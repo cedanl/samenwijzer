@@ -11,6 +11,7 @@ import json
 import logging
 import os
 import signal
+import time
 from pathlib import Path
 
 import anthropic
@@ -302,23 +303,38 @@ async def api_chat(request: Request):
     instellingen = _instellingen()
 
     def stream():
+        t_start = time.perf_counter()
         antwoord = ""
+        ttft_s: float | None = None
         try:
             if systeem:
+                modus = "oer"
                 gen = genereer_antwoord(
                     ai_client(), systeem, berichten, web_search_domeinen=domeinen
                 )
             elif heeft_oer:
                 # OER('s) toegewezen maar geen bruikbare bron geladen (onleesbaar + geen
                 # KD/instellingsbron) → expliciete melding, geen verwarrende intake-modus.
+                modus = "lage_relevantie"
                 gen = iter([LAGE_RELEVANTIE_BERICHT])
             else:
+                modus = "intake"
                 gen = genereer_intake_antwoord(ai_client(), berichten, instellingen)
             for chunk in gen:
+                if ttft_s is None and chunk:
+                    ttft_s = round(time.perf_counter() - t_start, 2)
                 antwoord += chunk
                 yield f"data: {json.dumps({'chunk': chunk})}\n\n"
             s.voeg_beurt_toe(vraag, antwoord)
             bewaar_sessie(request)
+            log.info(
+                "chat-beurt klaar: modus=%s webzoek=%s ttft_s=%s totaal_s=%.2f tekens=%d",
+                modus,
+                bool(domeinen),
+                ttft_s,
+                time.perf_counter() - t_start,
+                len(antwoord),
+            )
             yield f"data: {json.dumps({'done': True})}\n\n"
         except anthropic.APITimeoutError:
             yield f"data: {json.dumps({'error': 'timeout'})}\n\n"
