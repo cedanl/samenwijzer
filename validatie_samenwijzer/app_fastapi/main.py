@@ -45,7 +45,11 @@ from validatie_samenwijzer.chat import (
 from validatie_samenwijzer.opleiding import nette_opleiding_naam
 
 load_dotenv()
+# Uvicorn configureert alleen zijn eigen loggers; zonder root-handler verdwijnen INFO-regels
+# van de app (o.a. de timing per chatbeurt). No-op als er al een root-handler is.
+logging.basicConfig(level=logging.INFO, format="%(levelname)s:     %(name)s: %(message)s")
 log = logging.getLogger("oer_poc")
+log.setLevel(logging.INFO)
 _ALGEMEEN_WACHTWOORD = os.environ.get("ALGEMEEN_WACHTWOORD", "")
 if not _ALGEMEEN_WACHTWOORD:
     # Fail-closed (spiegelt SESSION_SECRET): zonder wachtwoord lockt de toegangspoort de

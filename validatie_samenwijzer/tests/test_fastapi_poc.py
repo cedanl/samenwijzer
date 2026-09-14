@@ -396,6 +396,12 @@ def test_chat_toegewezen_maar_onleesbare_oer_geeft_lage_relevantie(monkeypatch):
     assert LAGE_RELEVANTIE_BERICHT in r.text
 
 
+def test_app_logger_staat_op_info():
+    # Zonder root-config zou log.info() nergens aankomen (root default = WARNING).
+    assert logging.getLogger("oer_poc").getEffectiveLevel() <= logging.INFO
+    assert logging.getLogger().handlers
+
+
 def test_chat_logt_timing_zonder_vraagtekst(monkeypatch, caplog):
     """Elke voltooide chat-beurt logt timing/tekens/modus (Fly-zicht) — geen vraagtekst (PII)."""
     if not _WW:
