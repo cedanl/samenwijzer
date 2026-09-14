@@ -185,6 +185,15 @@ def test_bouw_systeem_bevat_doelgroep_instructie_naast_citatieplicht():
     assert "verander een citaat NOOIT" in systeem
 
 
+def test_bouw_systeem_bevat_lengte_instructie_zonder_citatie_te_verzwakken():
+    """Perf: kortere antwoorden mogen de citatieplicht niet verzwakken."""
+    systeem = bouw_systeem("OER-tekst", "Kok", "Da Vinci")
+    assert "LENGTE." in systeem
+    assert "120" in systeem and "200" in systeem
+    # De citaat- en "In gewone taal"-plicht blijft verplicht, ook in de lengte-instructie.
+    assert "verplicht" in systeem.lower()
+
+
 def test_bouw_gecombineerd_meervoudig_bevat_doelgroep_instructie():
     oers = [
         _oer_item(tekst="Tekst A", opleiding="Kok", display_naam="Da Vinci"),
@@ -280,6 +289,21 @@ def test_dedup_disclaimer_herhaling_gesplitst_over_chunks():
 def test_dedup_disclaimer_zonder_voorkomen_is_passthrough():
     chunks = ["geen ", "disclaimer ", "hier"]
     assert "".join(dedup_disclaimer(chunks, _DISC)) == "geen disclaimer hier"
+
+
+def test_dedup_disclaimer_houdt_gewone_tekst_niet_vast():
+    # Streaming-latency: tekst die géén begin van de disclaimer kan zijn moet direct
+    # doorstromen, niet pas nadat n-1 tekens zijn opgespaard.
+    gen = dedup_disclaimer(iter(["Hallo ", "wereld", " nooit-gelezen"]), _DISC)
+    assert next(gen) == "Hallo "
+    assert next(gen) == "wereld"
+
+
+def test_dedup_disclaimer_houdt_alleen_mogelijke_prefix_vast():
+    # "⚠️ Let" kan het begin van de disclaimer zijn → vasthouden tot duidelijk is wat volgt.
+    gen = dedup_disclaimer(iter(["Zie ⚠️ Let", " maar toch niet"]), _DISC)
+    assert next(gen) == "Zie "
+    assert next(gen) == "⚠️ Let maar toch niet"
 
 
 def test_bouw_systeem_leerweg_in_prompt():
@@ -1175,6 +1199,35 @@ def test_identificeer_volledige_match_is_niet_partieel():
     )
     assert [r["id"] for r in resultaat] == [2]
     assert resultaat[0]["_partieel"] is False
+
+
+def test_genereer_antwoord_gebruikt_kortere_output_defaults():
+    """Perf: kortere antwoorden schelen output-tokens (max_tokens 1200, effort low)."""
+    from validatie_samenwijzer import chat
+
+    class _Stream:
+        text_stream = iter(["Antwoord."])
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    class _Messages:
+        laatste_kwargs: dict | None = None
+
+        def stream(self, **kwargs):
+            self.laatste_kwargs = kwargs
+            return _Stream()
+
+    class _Client:
+        messages = _Messages()
+
+    client = _Client()
+    "".join(chat.genereer_antwoord(client, "systeem", [{"role": "user", "content": "hoi"}]))
+    assert client.messages.laatste_kwargs["max_tokens"] == 1200
+    assert client.messages.laatste_kwargs["output_config"] == {"effort": "low"}
 
 
 def test_genereer_antwoord_ontdubbelt_ook_de_web_disclaimer(monkeypatch):

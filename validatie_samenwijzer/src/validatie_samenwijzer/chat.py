@@ -164,7 +164,18 @@ ervan.
 Citeer je een tabel of een rij losse getallen, zet er dan één zin vóór die zegt
 waar de tabel over gaat, en zet de uitleg erna om in hele zinnen of een korte
 opsomming. Plak nooit een kale rij cijfers neer zonder te zeggen wat ze
-betekenen."""
+betekenen.
+
+LENGTE.
+Beantwoord alleen de gestelde vraag — begin er meteen mee, herhaal de vraag
+niet en begin niet met een inleidend zinnetje. Houd het antwoord bij wat de
+student vraagt: geen extra onderwerpen die niet gevraagd zijn. Richt op
+ongeveer 120-200 woorden, plus het verplichte woordelijke citaat/de citaten.
+Sluit niet af met een samenvatting of een zin als "hopelijk helpt dit" — stop
+zodra de vraag beantwoord is. Gebruik ten hoogste 2 citaten, tenzij de vraag
+er meer nodig heeft. Deze lengte-richtlijn gaat nooit vóór de citatieplicht:
+het woordelijke citaat en de "In gewone taal:"-uitleg erna blijven verplicht,
+ook in een kort antwoord."""
 
 
 _SYSTEEM_TEMPLATE = """\
@@ -540,8 +551,9 @@ def dedup_disclaimer(chunks: Iterable[str], disclaimer: str) -> Generator[str]:
 
     Het model herhaalt de vacature-disclaimer soms (typisch ná een web_search-tool-call):
     één keer aan het begin en nog eens vlak voor de resultaten. Deze filter behoudt het
-    eerste voorkomen en verwijdert latere identieke voorkomens. Buffert maximaal
-    len(disclaimer)-1 tekens zodat een over chunk-grenzen gesplitste disclaimer toch matcht.
+    eerste voorkomen en verwijdert latere identieke voorkomens. Houdt alleen de staart vast
+    die daadwerkelijk het begin van de disclaimer kan zijn, zodat gewone tekst zonder
+    vertraging doorstroomt (een vaste buffer van n-1 tekens kostte ~seconden per filter).
     """
     n = len(disclaimer)
     if n == 0:
@@ -557,13 +569,20 @@ def dedup_disclaimer(chunks: Iterable[str], disclaimer: str) -> Generator[str]:
                 yield disclaimer
                 gezien = True
             buf = buf[idx + n :]
-        # Houd een staart van n-1 tekens vast — die kan het begin van een disclaimer zijn.
-        if len(buf) >= n:
-            grens = len(buf) - (n - 1)
+        grens = len(buf) - _prefix_staart(buf, disclaimer)
+        if grens > 0:
             yield buf[:grens]
             buf = buf[grens:]
     if buf:
         yield buf
+
+
+def _prefix_staart(buf: str, disclaimer: str) -> int:
+    """Lengte van de langste staart van `buf` die een (echt) begin van `disclaimer` is."""
+    for k in range(min(len(buf), len(disclaimer) - 1), 0, -1):
+        if disclaimer.startswith(buf[-k:]):
+            return k
+    return 0
 
 
 def genereer_antwoord(
@@ -571,7 +590,7 @@ def genereer_antwoord(
     system: str,
     berichten: list[dict],
     model: str = "claude-sonnet-4-6",
-    max_tokens: int = 2048,
+    max_tokens: int = 1200,
     web_search_domeinen: list[str] | None = None,
 ) -> Generator[str]:
     """Stream Claude-antwoord als generator van tekst-fragmenten.
@@ -620,7 +639,7 @@ def genereer_antwoord(
             {"type": "text", "text": system, "cache_control": {"type": "ephemeral", "ttl": "1h"}}
         ],
         max_tokens=max_tokens,
-        output_config={"effort": "medium"},
+        output_config={"effort": "low"},
         messages=_messages_met_cache(berichten),
         **extra,
     ) as stream:
