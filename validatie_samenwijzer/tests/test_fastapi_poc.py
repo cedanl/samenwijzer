@@ -302,6 +302,29 @@ def test_api_vraag_zonder_match_geeft_intake():
     assert r.status_code == 200 and r.json()["modus"] == "intake"
 
 
+def test_api_vraag_en_chat_ongeldige_json_geven_400():
+    """Kapotte of lege body mag geen 500 opleveren (input-validatie aan de grens)."""
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    c = _client()
+    for endpoint in ("/api/vraag", "/api/chat"):
+        assert (
+            c.post(
+                endpoint, content=b"{niet json", headers={"Content-Type": "application/json"}
+            ).status_code
+            == 400
+        )
+        assert (
+            c.post(endpoint, content=b"", headers={"Content-Type": "application/json"}).status_code
+            == 400
+        )
+        # geldige JSON, maar géén object (bijv. een lijst) → ook nette 400
+        assert c.post(endpoint, json=[1, 2, 3]).status_code == 400
+    # geldige body werkt nog steeds (intake-modus op een verse sessie)
+    r = c.post("/api/vraag", json={"vraag": ""})
+    assert r.status_code == 200 and r.json()["modus"] == "intake"
+
+
 def test_api_opleidingen_geeft_boom():
     if not _WW:
         pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
