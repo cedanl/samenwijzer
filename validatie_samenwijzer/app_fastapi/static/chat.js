@@ -98,7 +98,9 @@ async function rehydrateer(thread) {
 
 async function streamAntwoord(thread, vraag) {
   const node = document.createElement("div");
-  node.className = "thinking"; node.textContent = "De gids zoekt het op";
+  node.className = "bubble-a"; node.setAttribute("aria-busy", "true");
+  node.innerHTML = '<span class="wacht-indicator">Studiegids lezen<span class="wacht-punt"></span>'
+    + '<span class="wacht-punt"></span><span class="wacht-punt"></span></span>';
   thread.appendChild(node); _scroll(thread);
   let acc = "";
   let fout = false;
@@ -110,7 +112,6 @@ async function streamAntwoord(thread, vraag) {
     const reader = resp.body.getReader();
     const dec = new TextDecoder();
     let buf = "";
-    node.className = "bubble-a";
     while (true) {
       const { value, done } = await reader.read();
       if (done) break;
@@ -120,19 +121,21 @@ async function streamAntwoord(thread, vraag) {
         const line = p.replace(/^data: /, "").trim();
         if (!line) continue;
         const ev = JSON.parse(line);
-        if (ev.chunk) { acc += ev.chunk; node.innerHTML = renderMarkdown(acc); _scroll(thread); }
+        if (ev.chunk) { acc += ev.chunk; node.removeAttribute("aria-busy"); node.innerHTML = renderMarkdown(acc); _scroll(thread); }
         else if (ev.error) {
           fout = true;
+          node.removeAttribute("aria-busy");
           node.innerHTML = `<em>${ev.error === "timeout"
             ? "De AI-service reageert niet. Probeer het zo opnieuw."
             : "Er ging iets mis. Probeer het later opnieuw."}</em>`;
         }
       }
     }
+    node.removeAttribute("aria-busy");
     if (!acc) node.innerHTML = "<em>Geen antwoord ontvangen. Probeer het opnieuw.</em>";
     else if (!fout) await toonVervolgvragen(thread);
   } catch (e) {
-    node.className = "bubble-a";
+    node.removeAttribute("aria-busy");
     node.innerHTML = "<em>Verbinding verbroken. Probeer het opnieuw.</em>";
   }
 }
