@@ -19,24 +19,16 @@ import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from . import kd_bundel, oer_catalogus, sync_afgeleid
+from . import instellingen, kd_bundel, oer_catalogus, sync_afgeleid
 
 logger = logging.getLogger(__name__)
 
-# Crawlbaarheid per instelling (juni 2026 in kaart gebracht; zie reference-memory
-# + scripts/fetch_deltion.py). Bepaalt of een OER-/instellingscatalogus-check
-# geautomatiseerd kan worden (Fase 3) of handmatig blijft.
-_OER_CRAWLBAAR = [
-    "aeres",
-    "curio",
-    "deltion",
-    "landstede",
-    "nijmegen",
-    "rijn_ijssel",
-    "talland",
-    "utrecht",
-]
-_OER_NIET_CRAWLBAAR = ["davinci", "graafschap", "kwic"]
+# Crawlbaarheid per instelling: afgeleid van de instelling-registry
+# (instellingen.py, veld `crawlbaar` — juni 2026 in kaart gebracht; zie
+# reference-memory + scripts/fetch_deltion.py). Bepaalt of een OER-/instellings-
+# catalogus-check geautomatiseerd kan worden (Fase 3) of handmatig blijft.
+_OER_CRAWLBAAR = instellingen.crawlbaar()
+_OER_NIET_CRAWLBAAR = instellingen.niet_crawlbaar()
 
 
 @dataclass

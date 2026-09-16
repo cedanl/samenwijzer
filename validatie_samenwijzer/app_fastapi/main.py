@@ -31,7 +31,7 @@ from app_fastapi import data
 from app_fastapi.auth import auth_mentor, auth_student
 from app_fastapi.context import MENTOR_SOORTEN, STUDENT_SOORTEN, laad_context
 from app_fastapi.sessie import bewaar_sessie, get_sessie
-from validatie_samenwijzer import db
+from validatie_samenwijzer import db, instellingen
 from validatie_samenwijzer._ai import _client as ai_client
 from validatie_samenwijzer.chat import (
     LAGE_RELEVANTIE_BERICHT,
@@ -128,19 +128,9 @@ _BEHEER_ENABLED = os.environ.get("BEHEER_ENABLED", "").lower() == "true"
 _PROJECT_ROOT = (
     Path(__file__).resolve().parents[1]
 )  # subproject-root: scripts/, pyproject + uv-env leven hier; OEREN_PAD=../oeren rekent hierop
-_INSTELLING_KEYS = {
-    "aeres",
-    "curio",
-    "davinci",
-    "deltion",
-    "graafschap",
-    "kwic",
-    "landstede",
-    "nijmegen",
-    "rijn_ijssel",
-    "talland",
-    "utrecht",
-}
+# Afgeleid van de instelling-registry (validatie_samenwijzer.instellingen) —
+# voeg nieuwe instellingen daar toe, niet hier.
+_INSTELLING_KEYS = set(instellingen.namen())
 # Vaste commando-allowlist: de browser stuurt alleen een taak-KEY, nooit een commando-string.
 _BEHEER_TAKEN: dict[str, list[str]] = {
     "sync_oeren": ["bash", "scripts/sync_oeren.sh"],

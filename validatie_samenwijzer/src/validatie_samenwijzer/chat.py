@@ -11,6 +11,7 @@ from pathlib import Path
 
 import anthropic
 
+from validatie_samenwijzer.instellingen import alle as _instellingen_alle
 from validatie_samenwijzer.opleiding import schoon_opleiding_naam
 
 logger = logging.getLogger(__name__)
@@ -32,19 +33,9 @@ LAGE_RELEVANTIE_BERICHT = (
 # Officiële instelling-websites (geverifieerd 2026-06-07; utrecht = MBO Utrecht, niet
 # ROC MN). De webzoek-tool wordt via `allowed_domains` tot deze domeinen gescoped, zodat
 # een fallback-antwoord van de eigen schoolsite komt en niet van een willekeurige bron.
-_INSTELLING_DOMEINEN: dict[str, str] = {
-    "aeres": "aeres.nl",
-    "curio": "curio.nl",
-    "davinci": "davinci.nl",
-    "deltion": "deltion.nl",
-    "graafschap": "graafschapcollege.nl",
-    "kwic": "kw1c.nl",
-    "landstede": "landstedembo.nl",
-    "nijmegen": "roc-nijmegen.nl",
-    "rijn_ijssel": "rijnijssel.nl",
-    "talland": "talland.nl",
-    "utrecht": "mboutrecht.nl",
-}
+# Afgeleid van de instelling-registry (instellingen.py) — voeg nieuwe instellingen
+# daar toe, niet hier.
+_INSTELLING_DOMEINEN: dict[str, str] = {i.naam: i.web_domein for i in _instellingen_alle()}
 
 
 def web_zoek_domeinen(oer_items: list[dict]) -> list[str]:

@@ -9,6 +9,8 @@ import sqlite3
 import time
 from pathlib import Path
 
+from validatie_samenwijzer import instellingen
+
 log = logging.getLogger(__name__)
 logging.getLogger("pdfminer").setLevel(logging.ERROR)
 
@@ -354,33 +356,10 @@ def extraheer_tekst(pad: Path) -> str:
 
 # ── CLI pipeline ──────────────────────────────────────────────────────────────
 
-_INSTELLINGEN = {
-    "aeres": "Aeres MBO",
-    "curio": "Curio",
-    "davinci": "Da Vinci College",
-    "deltion": "Deltion College",
-    "graafschap": "Graafschap College",
-    "kwic": "Koning Willem I College",
-    "landstede": "Landstede MBO",
-    "nijmegen": "ROC Nijmegen",
-    "rijn_ijssel": "Rijn IJssel",
-    "talland": "Talland",
-    "utrecht": "ROC Utrecht",
-}
-
-_MAP_NAAM = {
-    "aeres": "aeres_oeren",
-    "curio": "curio_oeren",
-    "davinci": "davinci_oeren",
-    "deltion": "deltion_oeren",
-    "graafschap": "graafschap_oeren",
-    "kwic": "kwic_oeren",
-    "landstede": "landstede_oeren",
-    "nijmegen": "nijmegen_oeren",
-    "rijn_ijssel": "rijn_ijssel_oer",
-    "talland": "talland_oeren",
-    "utrecht": "utrecht_oeren",
-}
+# Afgeleid van de instelling-registry (instellingen.py) — voeg nieuwe instellingen
+# daar toe, niet hier.
+_INSTELLINGEN = {i.naam: i.display_naam for i in instellingen.alle()}
+_MAP_NAAM = {i.naam: i.map_naam for i in instellingen.alle()}
 
 _ONDERSTEUNDE_EXTENSIES = {".pdf", ".html", ".htm", ".md"}
 

@@ -25,6 +25,7 @@ from pathlib import Path
 import httpx
 
 from . import db
+from .instellingen import alle
 
 logger = logging.getLogger(__name__)
 
@@ -34,11 +35,9 @@ _UA = "Mozilla/5.0 (samenwijzer bronactualiteit-check)"
 # vergelijken op een subset, anders matcht hun tuple nooit de DB (die wél BOL/BBL heeft)
 # en lijkt elke OER 'nieuw'.
 _STANDAARD_VELDEN = ("crebo", "leerweg", "cohort")
-_DIFF_SLEUTEL_VELDEN: dict[str, tuple[str, ...]] = {
-    "aeres": ("crebo", "cohort"),
-    "rijn_ijssel": ("crebo", "cohort"),
-    "utrecht": ("crebo", "cohort"),
-}
+# Afgeleid van de instelling-registry (instellingen.py, veld `diff_velden`) —
+# voeg nieuwe instellingen daar toe, niet hier.
+_DIFF_SLEUTEL_VELDEN: dict[str, tuple[str, ...]] = {i.naam: i.diff_velden for i in alle()}
 
 
 class CatalogusOnbereikbaarError(Exception):

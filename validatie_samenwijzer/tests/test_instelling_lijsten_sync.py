@@ -1,68 +1,90 @@
-"""Guard: de vier hardgecodeerde instelling-lijsten moeten dezelfde keys hebben.
+"""Guard: de afgeleide instelling-mappings dekken de volledige registry.
 
-Een nieuwe instelling moet in álle definities verschijnen; ontbreekt ze in
-``seed_bulk.INSTELLINGEN`` dan krijgt ze stil 0 studenten (zie CLAUDE.md).
+Sinds de instelling-registry (``validatie_samenwijzer.instellingen``) is de bron
+één lijst: :data:`instellingen.INSTELLINGEN`. De consumenten (ingest, seed_bulk,
+beheer, chat, bron_updates, oer_catalogus) leiden hun mapping daarvan af. Deze
+test vangt een terugval naar handmatige literals: elke afgeleide mapping moet
+exact de registry-namen hebben.
 
-De lijsten worden via AST uitgelezen i.p.v. geïmporteerd, omdat
-``app_fastapi/main.py`` bij import een `SESSION_SECRET`/`ALGEMEEN_WACHTWOORD`-guard
-afdwingt en de app opbouwt, en omdat ``scripts/seed_bulk.py`` bij import
-``load_dotenv()`` + ``hash_wachtwoord`` uitvoert. AST-parsen heeft geen side effects.
+Ontbreekt een instelling in ``seed_bulk.INSTELLINGEN`` dan krijgt ze stil
+0 studenten (zie CLAUDE.md); ontbreekt ze in ``chat._INSTELLING_DOMEINEN`` dan
+krijgt die instelling stil geen webzoek-fallback; ontbreekt ze in
+``bron_updates`` dan stil geen catalogus-check.
 """
 
-import ast
+import sys
 from pathlib import Path
 
+from validatie_samenwijzer import instellingen
+
 _ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(_ROOT / "scripts"))
+
+import seed_bulk  # noqa: E402  (scripts/ is geen package)
 
 
-def _lees_toewijzing(pad: Path, naam: str):
-    """Geef de literal-waarde van een toewijzing ``naam = ...`` via AST.
+def _ingest_mapping():
+    from validatie_samenwijzer import ingest
 
-    Dekt zowel ``naam = ...`` (Assign) als ``naam: T = ...`` (AnnAssign).
-    """
-    tree = ast.parse(pad.read_text(encoding="utf-8"))
-    for node in tree.body:
-        if isinstance(node, ast.Assign):
-            doelen = node.targets
-        elif isinstance(node, ast.AnnAssign):
-            doelen = [node.target]
-        else:
-            continue
-        for doel in doelen:
-            if isinstance(doel, ast.Name) and doel.id == naam:
-                return ast.literal_eval(node.value)
-    raise AssertionError(f"{naam} niet gevonden in {pad}")
+    return set(ingest._INSTELLINGEN), set(ingest._MAP_NAAM)
 
 
-def _instelling_keys() -> dict[str, set[str]]:
-    ingest_pad = _ROOT / "src" / "validatie_samenwijzer" / "ingest.py"
-    seed_pad = _ROOT / "scripts" / "seed_bulk.py"
-    beheer_pad = _ROOT / "app_fastapi" / "main.py"
+def _chat_domeinen():
+    from validatie_samenwijzer import chat
 
-    return {
-        # _MAP_NAAM: alleen keys vergelijken — de value rijn_ijssel->rijn_ijssel_oer
-        # is een bewuste afwijking en valt buiten deze guard.
-        "ingest._MAP_NAAM": set(_lees_toewijzing(ingest_pad, "_MAP_NAAM")),
-        "ingest._INSTELLINGEN": set(_lees_toewijzing(ingest_pad, "_INSTELLINGEN")),
-        "seed_bulk.INSTELLINGEN": {d["naam"] for d in _lees_toewijzing(seed_pad, "INSTELLINGEN")},
-        "fastapi._INSTELLING_KEYS": set(_lees_toewijzing(beheer_pad, "_INSTELLING_KEYS")),
-    }
+    return set(chat._INSTELLING_DOMEINEN)
 
 
-def test_instelling_lijsten_in_sync():
-    keys = _instelling_keys()
-    referentie_naam = "ingest._INSTELLINGEN"
-    referentie = keys[referentie_naam]
+def _beheer_keys():
+    from app_fastapi import main as beheer_main
 
-    for naam, gevonden in keys.items():
-        if naam == referentie_naam:
-            continue
-        ontbreekt = referentie - gevonden
-        teveel = gevonden - referentie
-        assert gevonden == referentie, (
-            f"{naam} is niet in sync met {referentie_naam}. "
-            f"ontbreekt={sorted(ontbreekt)}, teveel={sorted(teveel)}. "
-            "Voeg nieuwe instellingen toe aan alle vier de definities "
-            "(ingest._INSTELLINGEN, ingest._MAP_NAAM, seed_bulk.INSTELLINGEN, "
-            "9_beheer._INSTELLING_KEYS)."
-        )
+    return set(beheer_main._INSTELLING_KEYS)
+
+
+def _bronupdates_lijsten():
+    from validatie_samenwijzer import bron_updates
+
+    return set(bron_updates._OER_CRAWLBAAR), set(bron_updates._OER_NIET_CRAWLBAAR)
+
+
+def _diff_velden():
+    from validatie_samenwijzer import oer_catalogus
+
+    return set(oer_catalogus._DIFF_SLEUTEL_VELDEN)
+
+
+def test_ingest_mappings_dekken_registry():
+    inst, mappen = _ingest_mapping()
+    assert inst == set(instellingen.namen())
+    assert mappen == set(instellingen.namen())
+
+
+def test_seed_bulk_dekt_registry():
+    assert {d["naam"] for d in seed_bulk.INSTELLINGEN} == set(instellingen.namen())
+    assert [d["naam"] for d in seed_bulk.INSTELLINGEN] == instellingen.namen()  # seed-volgorde
+
+
+def test_beheer_keys_dekken_registry():
+    assert _beheer_keys() == set(instellingen.namen())
+
+
+def test_chat_domeinen_dekken_registry():
+    assert _chat_domeinen() == set(instellingen.namen())
+
+
+def test_bronupdates_lijsten_dekken_registry():
+    crawlbaar, niet_crawlbaar = _bronupdates_lijsten()
+    assert crawlbaar == set(instellingen.crawlbaar())
+    assert niet_crawlbaar == set(instellingen.niet_crawlbaar())
+    assert not crawlbaar & niet_crawlbaar
+
+
+def test_diff_velden_zijn_geldige_instellingen():
+    assert _diff_velden() <= set(instellingen.namen())
+
+
+def test_registry_is_gesorteerd_in_seedvolgorde_append_alleen_aan_het_eind():
+    """De seed deelt één Random(2026) in lijst-volgorde — append nieuwe instellingen
+    alléén aan het eind van instellingen.INSTELLINGEN, anders verschuift de
+    studenten-verdeling van bestaande instellingen."""
+    assert instellingen.namen()[0] == "talland"  # oudste instelling; RNG-baseline

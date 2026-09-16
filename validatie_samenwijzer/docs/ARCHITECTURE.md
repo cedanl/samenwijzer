@@ -374,9 +374,15 @@ die via de root-`.gitignore` **Box-only** zijn (rechten — zie Multi-machine wo
 submap per instelling (`davinci_oeren/`, `rijn_ijssel_oer/`,
 `talland_oeren/`, `aeres_oeren/`, `utrecht_oeren/`, `kwic_oeren/` = Koning Willem I College).
 Daarnaast `oer_algemeen/` voor instelling-overstijgende documenten. De instelling-keys leven in
-**vier hardgecodeerde lijsten** die synchroon moeten blijven: `ingest._INSTELLINGEN`,
-`ingest._MAP_NAAM`, `scripts/seed_bulk.py:INSTELLINGEN` en `app_fastapi/main.py:_INSTELLING_KEYS` —
-ontbreekt een nieuwe instelling in de seed-lijst, dan krijgt ze stil 0 studenten. Geïndexeerde OERs staan als
+**de instelling-registry `src/validatie_samenwijzer/instellingen.py`** (dataclass `Instelling`:
+naam, display_naam, map_naam, web_domein, klas_prefix, crawlbaar, diff_velden); consumenten
+(`ingest._INSTELLINGEN`/`_MAP_NAAM`, `scripts/seed_bulk.py:INSTELLINGEN`,
+`app_fastapi/main.py:_INSTELLING_KEYS`, `chat._INSTELLING_DOMEINEN`, `bron_updates`-crawlbaarheid
+en `oer_catalogus._DIFF_SLEUTEL_VELDEN`) leiden hun mapping daarvan af. Guard:
+`tests/test_instelling_lijsten_sync.py` bewaakt dat de afgeleide mappings de registry dekken —
+ontbreekt een nieuwe instelling in de registry, dan krijgt ze stil 0 studenten én geen
+webzoek-fallback. De registry-volgorde is de **seed-volgorde** (één gedeelde `Random(2026)`):
+append nieuwe instellingen alléén aan het eind. Geïndexeerde OERs staan als
 `geindexeerd=1` in `oer_documenten`. Studenten met `oer_id` naar niet-geïndexeerde OERs krijgen
 geen chatantwoorden.
 
