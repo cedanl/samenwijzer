@@ -101,7 +101,7 @@ image gebakken** — na een re-ingest of re-seed is een nieuwe deploy nodig. `SE
 Volledige beschrijving in `docs/ARCHITECTURE.md`. De regels die een wijziging niet mag overtreden:
 
 - **AI-isolatie**: alle Anthropic-calls via `_ai._client()`; `chat.py` is de enige module met
-  streaming-aanroepen. Modellen: chat/intake `claude-sonnet-4-6`, vervolgvragen
+  streaming-aanroepen. Modellen: chat/intake `claude-sonnet-5`, vervolgvragen
   (`genereer_vervolgvragen`) `claude-haiku-4-5-20251001`, best-effort. **Nooit**
   `anthropic.Anthropic()` direct instantiëren. De client dwingt het 30s-timeout-contract af
   (`_CLIENT_OPTS`).
