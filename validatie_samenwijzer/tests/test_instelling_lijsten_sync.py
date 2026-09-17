@@ -47,12 +47,6 @@ def _bronupdates_lijsten():
     return set(bron_updates._OER_CRAWLBAAR), set(bron_updates._OER_NIET_CRAWLBAAR)
 
 
-def _diff_velden():
-    from validatie_samenwijzer import oer_catalogus
-
-    return set(oer_catalogus._DIFF_SLEUTEL_VELDEN)
-
-
 def test_ingest_mappings_dekken_registry():
     inst, mappen = _ingest_mapping()
     assert inst == set(instellingen.namen())
@@ -79,12 +73,38 @@ def test_bronupdates_lijsten_dekken_registry():
     assert not crawlbaar & niet_crawlbaar
 
 
-def test_diff_velden_zijn_geldige_instellingen():
-    assert _diff_velden() <= set(instellingen.namen())
+def test_diff_velden_uitzonderingen_gebruiken_geen_leerweg():
+    """De catalogus-uitzonderingen vergelijken op ('crebo', 'cohort') — de catalogus
+    levert voor deze instellingen geen betrouwbare leerweg, dus diff op leerweg zou
+    elke OER als 'nieuw' markeren. Overige instellingen diffen op de standaard-tuple."""
+
+    uitzonderingen = ("aeres", "rijn_ijssel", "utrecht")
+    standaard = ("crebo", "leerweg", "cohort")
+    for i in instellingen.alle():
+        verwacht = ("crebo", "cohort") if i.naam in uitzonderingen else standaard
+        assert i.diff_velden == verwacht
 
 
-def test_registry_is_gesorteerd_in_seedvolgorde_append_alleen_aan_het_eind():
-    """De seed deelt één Random(2026) in lijst-volgorde — append nieuwe instellingen
-    alléén aan het eind van instellingen.INSTELLINGEN, anders verschuift de
-    studenten-verdeling van bestaande instellingen."""
-    assert instellingen.namen()[0] == "talland"  # oudste instelling; RNG-baseline
+# Frozen snapshot: de registry-volgorde is de seed-volgorde (één gedeelde Random(2026)).
+# Insert nieuwe instellingen alléén aan het EIND — een insert middenin schuift de
+# studenten-verdeling van álle latere instellingen op. Dit snapshot maakt dat bewijsbaar.
+_SEEDVOLGORDE_SNAPSHOT = [
+    "talland",
+    "davinci",
+    "rijn_ijssel",
+    "aeres",
+    "utrecht",
+    "kwic",
+    "curio",
+    "deltion",
+    "graafschap",
+    "landstede",
+    "nijmegen",
+]
+
+
+def test_registry_volgorde_is_append_only_seedvolgorde():
+    assert instellingen.namen() == _SEEDVOLGORDE_SNAPSHOT, (
+        "De registry-volgorde is de seed-volgorde (Random(2026) deelt in lijst-volgorde). "
+        "Append nieuwe instellingen alléén aan het eind en update dit snapshot bewust."
+    )
