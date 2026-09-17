@@ -190,6 +190,15 @@ def _instellingen() -> list[str]:
     return [r["display_naam"] for r in rows]
 
 
+async def _json_body(request: Request) -> dict | None:
+    """JSON-body veilig parsen; None bij ongeldige/lege body of non-object payload."""
+    try:
+        body = await request.json()
+    except (json.JSONDecodeError, UnicodeDecodeError):
+        return None
+    return body if isinstance(body, dict) else None
+
+
 @app.get("/")
 def index(request: Request):
     return templates.TemplateResponse(request, "index.html")
@@ -204,7 +213,10 @@ def api_opleidingen() -> JSONResponse:
 @app.post("/api/vraag")
 async def api_vraag(request: Request):
     """Identificeer de OER(s) voor een vraag; bepaal de modus (chat/kies/intake)."""
-    vraag = (await request.json()).get("vraag", "").strip()
+    body = await _json_body(request)
+    if body is None:
+        return JSONResponse({"error": "ongeldige json"}, status_code=400)
+    vraag = body.get("vraag", "").strip()
     if not vraag:
         return JSONResponse({"modus": "intake"})
     s = get_sessie(request)
@@ -288,7 +300,10 @@ async def api_kies(request: Request):
 @app.post("/api/chat")
 async def api_chat(request: Request):
     """Stream een antwoord (chat of intake) als Server-Sent Events."""
-    vraag = (await request.json()).get("vraag", "").strip()
+    body = await _json_body(request)
+    if body is None:
+        return JSONResponse({"error": "ongeldige json"}, status_code=400)
+    vraag = body.get("vraag", "").strip()
     s = get_sessie(request)
     berichten = bouw_berichten(s.chat_history, vraag)
     systeem = s.oer_systeem
