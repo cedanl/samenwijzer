@@ -20,6 +20,7 @@ from validatie_samenwijzer.db import (
     voeg_student_kerntaak_score_toe,
     voeg_student_toe,
 )
+from validatie_samenwijzer.instellingen import get as _instelling
 
 load_dotenv()
 
@@ -41,9 +42,10 @@ def seed(db_path: Path) -> None:
     conn = get_connection(db_path)
     init_db(conn)
 
-    # Instellingen
-    voeg_instelling_toe(conn, "talland", "Talland")
-    voeg_instelling_toe(conn, "davinci", "Da Vinci College")
+    # Instellingen (display_naam uit de instelling-registry)
+    for _n in ("talland", "davinci"):
+        _inst = _instelling(_n)
+        voeg_instelling_toe(conn, _inst.naam, _inst.display_naam)
     inst_talland = get_instelling_by_naam(conn, "talland")
     inst_dv = get_instelling_by_naam(conn, "davinci")
 

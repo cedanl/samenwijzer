@@ -125,12 +125,14 @@ Volledige beschrijving in `docs/ARCHITECTURE.md`. De regels die een wijziging ni
   aanhalingstekens** (OER/KD/examenreglement). Skills hebben een aangepaste citatie (bron + beroep +
   categorie + skill-naam) — verzonnen paginanummers zijn verboden. Templates: `_SYSTEEM_TEMPLATE`,
   `_MULTI_SYSTEEM_TEMPLATE`.
-- **Vier hardgecodeerde instelling-lijsten** moeten synchroon blijven (afgedwongen door
-  `tests/test_instelling_lijsten_sync.py`): `ingest._INSTELLINGEN`, `ingest._MAP_NAAM`,
-  `scripts/seed_bulk.py:INSTELLINGEN`, `app_fastapi/main.py:_INSTELLING_KEYS`. Ontbreekt een
-  nieuwe instelling in de seed-lijst → stil **0 studenten**.
-  Een **vijfde** lijst, `chat._INSTELLING_DOMEINEN` (schoolsite-domein per instelling), zit **niet**
-  in die test: ontbreekt een instelling daar → stil geen webzoek-fallback voor die school.
+- **Instelling-registry**: alle per-instelling-kennis (naam, display_naam, oeren-map, schoolsite-
+  domein, klas_prefix, crawlbaarheid, diff-velden) leeft in **`instellingen.py`** — één bron.
+  Consumenten (`ingest`, `seed_bulk`, beheer-`_INSTELLING_KEYS`, `chat._INSTELLING_DOMEINEN`,
+  `bron_updates`, `oer_catalogus._DIFF_SLEUTEL_VELDEN`) leiden hun mapping daarvan af;
+  `tests/test_instelling_lijsten_sync.py` bewaakt dat de afgeleide mappings compleet zijn.
+  **Nieuwe instelling = alleen de registry + seed-volgorde-invariant**: `INSTELLINGEN` is de
+  seed-volgorde (één gedeelde `Random(2026)`) — append alléén aan het eind, anders verschuift de
+  studenten-verdeling van bestaande instellingen. Volledige procedure: skill `add-institution`.
 - **Webzoek-tools** (`web_search`/`web_fetch`, alleen in `chat.stream_antwoord`): gescoped via
   `allowed_domains` op schoolsite (`web_zoek_domeinen`) + vacaturesites (`_VACATURE_DOMEINEN`,
   stagemarkt.nl/indeed.nl). Eén domein dat de Anthropic-crawler blokkeert geeft een **400 op de

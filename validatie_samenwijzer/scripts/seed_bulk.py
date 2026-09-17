@@ -19,6 +19,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+from validatie_samenwijzer import instellingen
 from validatie_samenwijzer.auth import hash_wachtwoord
 from validatie_samenwijzer.chat import resolve_oer_pad
 from validatie_samenwijzer.db import (
@@ -39,26 +40,12 @@ STUDENTEN_PER_OER = 100
 WW_HASH = hash_wachtwoord("Welkom123")
 RNG = random.Random(2026)
 
-# Instelling-namen moeten matchen met validatie_samenwijzer.ingest._INSTELLINGEN —
-# anders ontstaan er dubbele instellingen-records (bv. 'roc_utrecht' naast 'utrecht').
+# Instelling-namen + display + klas_prefix komen uit de instelling-registry
+# (validatie_samenwijzer.instellingen). De VOLGORDE van die registry is de seed-
+# volgorde (één gedeelde Random(2026)) — nieuwe instellingen daar alleen appenden.
 INSTELLINGEN: list[dict] = [
-    {"naam": "talland", "display_naam": "Talland", "klas_prefix": "TA"},
-    {"naam": "davinci", "display_naam": "Da Vinci College", "klas_prefix": "DV"},
-    {"naam": "rijn_ijssel", "display_naam": "Rijn IJssel", "klas_prefix": "RI"},
-    {"naam": "aeres", "display_naam": "Aeres MBO", "klas_prefix": "AE"},
-    {"naam": "utrecht", "display_naam": "ROC Utrecht", "klas_prefix": "UT"},
-    {"naam": "kwic", "display_naam": "Koning Willem I College", "klas_prefix": "KW"},
-    # Curio als laatste toevoegen: de seed deelt één Random(2026) in lijst-volgorde,
-    # dus appenden houdt de studenten van bestaande instellingen identiek.
-    {"naam": "curio", "display_naam": "Curio", "klas_prefix": "CU"},
-    # Deltion als laatste appenden (zelfde reden — RNG-volgorde behouden).
-    {"naam": "deltion", "display_naam": "Deltion College", "klas_prefix": "DE"},
-    # Graafschap als laatste appenden (zelfde reden — RNG-volgorde behouden).
-    {"naam": "graafschap", "display_naam": "Graafschap College", "klas_prefix": "GR"},
-    # Landstede als laatste appenden (zelfde reden — RNG-volgorde behouden).
-    {"naam": "landstede", "display_naam": "Landstede MBO", "klas_prefix": "LA"},
-    # Nijmegen als laatste appenden (zelfde reden — RNG-volgorde behouden).
-    {"naam": "nijmegen", "display_naam": "ROC Nijmegen", "klas_prefix": "NIJ"},
+    {"naam": i.naam, "display_naam": i.display_naam, "klas_prefix": i.klas_prefix}
+    for i in instellingen.alle()
 ]
 
 VOORNAMEN_V = [
