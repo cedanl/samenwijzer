@@ -580,7 +580,7 @@ def genereer_antwoord(
     client: anthropic.Anthropic,
     system: str,
     berichten: list[dict],
-    model: str = "claude-sonnet-4-6",
+    model: str = "claude-sonnet-5",
     max_tokens: int = 1200,
     web_search_domeinen: list[str] | None = None,
 ) -> Generator[str]:
@@ -923,7 +923,7 @@ def genereer_intake_antwoord(
     if beschikbare_instellingen:
         systeem += "\n\nBeschikbare instellingen: " + ", ".join(beschikbare_instellingen)
     with client.messages.stream(
-        model="claude-sonnet-4-6",
+        model="claude-sonnet-5",
         system=[{"type": "text", "text": systeem, "cache_control": {"type": "ephemeral"}}],
         max_tokens=512,
         messages=berichten,
