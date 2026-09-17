@@ -86,7 +86,7 @@ def kies_test_student() -> tuple[str, str, str, str]:
 def meet_call(client, systeem: str, vraag: str) -> dict:
     """Doe één non-streaming call, return usage-dict."""
     resp = client.messages.create(
-        model="claude-sonnet-4-6",
+        model="claude-sonnet-5",
         max_tokens=600,
         system=[{"type": "text", "text": systeem, "cache_control": {"type": "ephemeral"}}],
         messages=[{"role": "user", "content": vraag}],
