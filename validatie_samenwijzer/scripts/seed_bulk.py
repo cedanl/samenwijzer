@@ -222,8 +222,12 @@ def _reset_database(conn: sqlite3.Connection) -> None:
         conn.execute("DELETE FROM oer_documenten WHERE id = ?", (oer_id,))
     # Verwijder zombie-instellingen zonder OER-verwijzingen (zoals het oude
     # 'roc_utrecht'-record naast het 'utrecht'-record dat ingest aanmaakt).
+    # Instellingen met alleen instellingsbrede documenten (bv. Box-only OER-map nog niet
+    # gesynct, maar `_instelling/` wél) blijven staan — anders faalt de FK-constraint.
     conn.execute(
-        "DELETE FROM instellingen WHERE id NOT IN (SELECT instelling_id FROM oer_documenten)"
+        "DELETE FROM instellingen "
+        "WHERE id NOT IN (SELECT instelling_id FROM oer_documenten) "
+        "  AND id NOT IN (SELECT instelling_id FROM instelling_documenten)"
     )
     conn.commit()
 
