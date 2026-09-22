@@ -5,11 +5,15 @@ import pytest
 from validatie_samenwijzer.db import (
     get_alle_oers_met_instelling,
     get_instelling_by_naam,
+    get_instelling_display_namen,
     get_kerntaak_scores_by_student_id,
     get_kerntaken_by_oer_id,
     get_mentor_by_naam,
     get_oer_document,
     get_oer_ids_by_mentor_id,
+    get_oer_met_instelling,
+    get_oer_status_per_instelling,
+    get_student_by_id,
     get_student_by_studentnummer,
     get_studenten_by_mentor_id,
     haal_instelling_document_op,
@@ -316,6 +320,8 @@ def test_mentor_en_student_crud(conn):
     student = get_student_by_studentnummer(conn, "100001")
     assert student["naam"] == "Fatima"
     assert student["voortgang"] == pytest.approx(0.54)
+    assert get_student_by_id(conn, student["id"])["studentnummer"] == "100001"
+    assert get_student_by_id(conn, 99999) is None
 
     studenten = get_studenten_by_mentor_id(conn, mentor_id)
     assert len(studenten) == 1
@@ -353,6 +359,37 @@ def test_get_alle_oers_met_instelling_sorteert_op_display_naam(conn):
 
 def test_get_alle_oers_met_instelling_leeg(conn):
     assert get_alle_oers_met_instelling(conn) == []
+
+
+def test_get_instelling_display_namen(conn):
+    assert get_instelling_display_namen(conn) == []
+    voeg_instelling_toe(conn, "rijn", "Rijn IJssel")
+    voeg_instelling_toe(conn, "da_vinci", "Da Vinci College")
+    assert get_instelling_display_namen(conn) == ["Da Vinci College", "Rijn IJssel"]
+
+
+def test_get_oer_met_instelling_geeft_join_terug(conn):
+    voeg_instelling_toe(conn, "da_vinci", "Da Vinci College")
+    dv = get_instelling_by_naam(conn, "da_vinci")
+    oer_id = voeg_oer_document_toe(conn, dv["id"], "Kok", "25168", "2025", "BBL", "p.pdf")
+    oer = get_oer_met_instelling(conn, oer_id)
+    assert oer["opleiding"] == "Kok"  # uit oer_documenten (o.*)
+    assert oer["display_naam"] == "Da Vinci College"  # uit instellingen (join)
+    assert oer["naam"] == "da_vinci"
+    assert get_oer_met_instelling(conn, 99999) is None
+
+
+def test_get_oer_status_per_instelling(conn):
+    voeg_instelling_toe(conn, "rijn", "Rijn IJssel")
+    inst = get_instelling_by_naam(conn, "rijn")
+    a = voeg_oer_document_toe(conn, inst["id"], "VZ", "25655", "2025", "BOL", "p1.pdf")
+    voeg_oer_document_toe(conn, inst["id"], "Kok", "25168", "2025", "BBL", "p2.pdf")
+    markeer_geindexeerd(conn, a)
+    rijen = get_oer_status_per_instelling(conn)
+    assert len(rijen) == 1
+    assert rijen[0]["display_naam"] == "Rijn IJssel"
+    assert rijen[0]["totaal"] == 2
+    assert rijen[0]["geindexeerd"] == 1
 
 
 def test_init_db_voegt_content_hash_kolom_toe(conn):
