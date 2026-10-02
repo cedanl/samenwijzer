@@ -155,12 +155,7 @@ def _beheer_status() -> dict:
     """OERs per instelling (totaal + geïndexeerd) en de laatste ingest-run."""
     conn = db.get_connection(os.environ.get("DB_PATH", "data/validatie.db"))
     db.init_db(conn)
-    rijen = conn.execute(
-        "SELECT i.display_naam, COUNT(*) AS totaal, "
-        "SUM(CASE WHEN o.geindexeerd=1 THEN 1 ELSE 0 END) AS geindexeerd "
-        "FROM oer_documenten o JOIN instellingen i ON i.id = o.instelling_id "
-        "GROUP BY i.display_naam ORDER BY i.display_naam"
-    ).fetchall()
+    rijen = db.get_oer_status_per_instelling(conn)
     laatste = db.laatste_ingest_run(conn)
     return {
         "per_instelling": [dict(r) for r in rijen],
@@ -186,8 +181,7 @@ def _conn():
 
 
 def _instellingen() -> list[str]:
-    rows = _conn().execute("SELECT DISTINCT display_naam FROM instellingen ORDER BY 1").fetchall()
-    return [r["display_naam"] for r in rows]
+    return db.get_instelling_display_namen(_conn())
 
 
 async def _json_body(request: Request) -> dict | None:
@@ -389,9 +383,7 @@ def api_oer_bestand(request: Request, oer_id: int, download: int = 0):
     """
     if oer_id not in get_sessie(request).oer_ids:
         return JSONResponse({"error": "geen toegang"}, status_code=403)
-    row = (
-        _conn().execute("SELECT bestandspad FROM oer_documenten WHERE id = ?", (oer_id,)).fetchone()
-    )
+    row = db.get_oer_document_by_id(_conn(), oer_id)
     if row is None:
         return JSONResponse({"error": "onbekend"}, status_code=404)
     pad = resolve_oer_pad(row["bestandspad"])

@@ -165,6 +165,12 @@ def get_instelling_by_naam(conn: sqlite3.Connection, naam: str) -> sqlite3.Row |
     return conn.execute("SELECT * FROM instellingen WHERE naam = ?", (naam,)).fetchone()
 
 
+def get_instelling_display_namen(conn: sqlite3.Connection) -> list[str]:
+    """Geef alle unieke display-namen van instellingen, alfabetisch gesorteerd."""
+    rijen = conn.execute("SELECT DISTINCT display_naam FROM instellingen ORDER BY 1").fetchall()
+    return [r["display_naam"] for r in rijen]
+
+
 def voeg_oer_document_toe(
     conn: sqlite3.Connection,
     instelling_id: int,
@@ -220,6 +226,32 @@ def get_alle_oers_met_instelling(conn: sqlite3.Connection) -> list[sqlite3.Row]:
         "FROM oer_documenten o "
         "JOIN instellingen i ON i.id = o.instelling_id "
         "ORDER BY i.display_naam, o.opleiding, o.leerweg, o.cohort"
+    ).fetchall()
+
+
+def get_oer_met_instelling(conn: sqlite3.Connection, oer_id: int) -> sqlite3.Row | None:
+    """Geef één OER-document met naam en display_naam van de instelling. None als niet gevonden."""
+    return conn.execute(
+        "SELECT o.*, i.naam, i.display_naam "
+        "FROM oer_documenten o "
+        "JOIN instellingen i ON i.id = o.instelling_id "
+        "WHERE o.id = ?",
+        (oer_id,),
+    ).fetchone()
+
+
+def get_oer_status_per_instelling(conn: sqlite3.Connection) -> list[sqlite3.Row]:
+    """Geef per instelling het aantal OERs (totaal) en hoeveel daarvan geïndexeerd (geindexeerd)."""
+    return conn.execute(
+        """
+        SELECT i.display_naam,
+               COUNT(*)                                AS totaal,
+               SUM(CASE WHEN o.geindexeerd=1 THEN 1 ELSE 0 END) AS geindexeerd
+          FROM oer_documenten o
+          JOIN instellingen i ON i.id = o.instelling_id
+         GROUP BY i.display_naam
+         ORDER BY i.display_naam
+        """
     ).fetchall()
 
 
@@ -445,6 +477,11 @@ def voeg_student_toe(
     )
     conn.commit()
     return cur.lastrowid
+
+
+def get_student_by_id(conn: sqlite3.Connection, student_id: int) -> sqlite3.Row | None:
+    """Zoek een student op id. Geeft None als niet gevonden."""
+    return conn.execute("SELECT * FROM studenten WHERE id = ?", (student_id,)).fetchone()
 
 
 def get_student_by_studentnummer(
