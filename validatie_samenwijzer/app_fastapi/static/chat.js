@@ -88,6 +88,14 @@ function addAntwoord(thread, md) {
   d.className = "bubble-a"; d.innerHTML = renderMarkdown(md);
   thread.appendChild(d); _scroll(thread);
 }
+const FOUT_TEKSTEN = {
+  timeout: "De AI-service reageert niet. Probeer het zo opnieuw.",
+  auth: "De AI-service weigert de toegang: de API-sleutel van deze omgeving is ongeldig. Meld dit bij de beheerder.",
+};
+function foutTekst(code) {
+  return FOUT_TEKSTEN[code] || "Er ging iets mis. Probeer het later opnieuw.";
+}
+
 async function rehydrateer(thread) {
   const r = await (await fetch("/api/geschiedenis")).json();
   for (const b of r.beurten || []) {
@@ -125,9 +133,7 @@ async function streamAntwoord(thread, vraag) {
         else if (ev.error) {
           fout = true;
           node.removeAttribute("aria-busy");
-          node.innerHTML = `<em>${ev.error === "timeout"
-            ? "De AI-service reageert niet. Probeer het zo opnieuw."
-            : "Er ging iets mis. Probeer het later opnieuw."}</em>`;
+          node.innerHTML = `<em>${foutTekst(ev.error)}</em>`;
         }
       }
     }

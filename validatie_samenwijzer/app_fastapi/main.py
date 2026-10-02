@@ -347,6 +347,11 @@ async def api_chat(request: Request):
             yield f"data: {json.dumps({'done': True})}\n\n"
         except anthropic.APITimeoutError:
             yield f"data: {json.dumps({'error': 'timeout'})}\n\n"
+        except anthropic.AuthenticationError:
+            # Ongeldige/ingetrokken ANTHROPIC_API_KEY: apart melden, anders is een
+            # config-storing in de UI niet te onderscheiden van een willekeurige bug.
+            log.error("chat-stream: Anthropic weigert de API-key (401), check ANTHROPIC_API_KEY")
+            yield f"data: {json.dumps({'error': 'auth'})}\n\n"
         except Exception:
             log.exception("chat-stream mislukt")
             yield f"data: {json.dumps({'error': 'onbekend'})}\n\n"

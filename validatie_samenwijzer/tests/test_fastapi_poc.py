@@ -5,6 +5,7 @@ from __future__ import annotations
 import logging
 import os
 
+import anthropic
 import pytest
 from dotenv import load_dotenv
 
@@ -610,3 +611,27 @@ def test_mentor_idor_guard():
         # vreemde student → geweerd (redirect naar /mentor)
         r = c.get(f"/mentor/student/{vreemd['id']}", follow_redirects=False)
         assert r.status_code == 303 and r.headers["location"] == "/mentor"
+
+
+def test_api_chat_ongeldige_api_key_geeft_auth_fout(monkeypatch):
+    """Een 401 van Anthropic (ingetrokken ANTHROPIC_API_KEY) moet als 'auth' in de SSE-stream
+    landen, niet als generiek 'onbekend' — anders is een config-storing in de UI onzichtbaar."""
+    import httpx
+
+    from app_fastapi import main as main_mod
+
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+
+    def kapot(*a, **k):
+        resp = httpx.Response(401, request=httpx.Request("POST", "https://api.anthropic.com"))
+        raise anthropic.AuthenticationError("API key is invalid.", response=resp, body=None)
+
+    # Zonder gekozen OER loopt /api/chat via de intake-tak; die hoeft geen DB-state.
+    monkeypatch.setattr(main_mod, "genereer_intake_antwoord", kapot)
+    monkeypatch.setattr(main_mod, "ai_client", lambda: object())
+
+    r = _client().post("/api/chat", json={"vraag": "hoi"})
+    assert r.status_code == 200
+    assert 'data: {"error": "auth"}' in r.text
+    assert "onbekend" not in r.text
