@@ -44,16 +44,7 @@ def _kleur_bsa(pct: float) -> str:
 
 
 def _opleiding_label(oer_id: int) -> tuple[str, int | None]:
-    row = (
-        _conn()
-        .execute(
-            """SELECT o.opleiding, o.crebo, o.leerweg, o.cohort, i.display_naam
-           FROM oer_documenten o JOIN instellingen i ON i.id = o.instelling_id
-           WHERE o.id = ?""",
-            (oer_id,),
-        )
-        .fetchone()
-    )
+    row = db.get_oer_met_instelling(_conn(), oer_id)
     if row is None:
         return "Onbekende opleiding", None
     naam = schoon_opleiding_naam(row["opleiding"], row["crebo"])
@@ -86,7 +77,7 @@ def _kerntaken(student_id: int) -> list[dict]:
 
 
 def _student_row(student_id: int) -> sqlite3.Row | None:
-    return _conn().execute("SELECT * FROM studenten WHERE id = ?", (student_id,)).fetchone()
+    return db.get_student_by_id(_conn(), student_id)
 
 
 def _basis(student: sqlite3.Row) -> dict:
