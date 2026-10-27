@@ -22,8 +22,7 @@ https://github.com/cedanl/.github/tree/main/standards/README.md.
 
 Package manager: `uv`. Type checker: `ty`
 (lokaal — CI gate is alleen `ruff check`, `ruff format --check` en `pytest`; draai `ty check`
-zelf vóór een PR). Linter/formatter: `ruff` (line-length 100, selectie `E,F,I,N,W,UP`;
-HTML-strings in `styles.py`, `app/main.py` en `app/pages/*.py` zijn vrijgesteld van E501).
+zelf vóór een PR). Linter/formatter: `ruff` (config in `pyproject.toml`).
 
 **pandas, niet polars** — bewuste keuze: Altair en Streamlit verwachten pandas, en de dataset
 (1000 studenten) maakt conversie nutteloos.
@@ -49,7 +48,7 @@ uv run python scripts/generate_synthetisch_welzijn.py      # Regenereer welzijn-
 
 ## Deployment
 
-De repo-root `Dockerfile` + `fly.toml` deployen **het validatie-subproject** (publieksnaam
+De repo-root `Dockerfile.fastapi` + `fly.toml` deployen **het validatie-subproject** (publieksnaam
 "De digitale gids") naar Fly als app `digitale-gids` (https://digitale-gids.fly.dev, regio `ams`).
 De build-context is bewust de **repo-root** omdat de data (`oeren/`, `kwalificatiedossiers/`) buiten
 het subproject leeft. Deploy vanuit de repo-root:
@@ -180,4 +179,6 @@ zowel specs als plannen.
 2. No business logic in `app/`.
 3. Validate external inputs at boundaries; trust internal types.
 4. Structured logging only; no bare `print()` in production. Geen PII (namen, IDs) op INFO of hoger.
-5. Never push directly to `main` — open een PR via `gh pr create`.
+5. Never push directly to `main` — open een PR via `gh pr create`. `gh pr edit` en `gh pr merge`
+   falen (Projects classic GraphQL): gebruik `gh api` REST (`PATCH /pulls/N`, `PUT /pulls/N/merge`
+   met squash).

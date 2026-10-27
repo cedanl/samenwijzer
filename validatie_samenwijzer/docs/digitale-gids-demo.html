@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>De Digitale Gids — Probeer het zelf</title>
+<style>
+  :root{
+    --oranje:#DD784B; --blauw:#3D68EC; --roze:#F4D9DC; --geel:#F4D74B; --groen:#00AF81;
+    --zwart:#111; --grijs:#6B7280; --lijn:#e5e7eb; --bg:#f7f7fa; --kaart:#fff;
+    --oer:#DD784B; --oer-bg:#fbeae2;
+    --kd:#3D68EC;  --kd-bg:#e9eefd;
+    --skill:#8a6d0a; --skill-bg:#fbf3cd;
+    --regel:#00785a; --regel-bg:#e0f5ee;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--zwart);line-height:1.55;
+    font-family:'General Sans','Inter','Segoe UI',system-ui,Arial,sans-serif}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+  section{padding:48px 0}
+  h1,h2,h3{line-height:1.15;margin:0}
+  h2{font-size:clamp(1.5rem,3.2vw,2rem);margin-bottom:8px}
+  .kicker{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blauw)}
+  .lead{font-size:1.1rem;font-weight:500;color:#374151;max-width:640px}
+  button{font:inherit;cursor:pointer}
+  :focus-visible{outline:3px solid var(--blauw);outline-offset:2px}
+
+  /* hero */
+  .hero{background:linear-gradient(160deg,#fff 0%,var(--roze) 100%);padding:72px 0 56px;border-bottom:1px solid var(--lijn)}
+  .hero h1{font-size:clamp(2rem,6vw,3.4rem);max-width:760px;color:var(--zwart)}
+  .hero h1 em{font-style:normal;color:var(--oranje)}
+  .hero .lead{margin:18px 0 26px}
+  .cta{display:inline-block;background:var(--oranje);color:#fff;text-decoration:none;font-weight:700;
+    padding:13px 24px;border-radius:999px;border:0;box-shadow:0 4px 14px rgba(221,120,75,.35)}
+  .cta:hover{filter:brightness(1.06)}
+
+  /* demo */
+  .demo{display:grid;grid-template-columns:1.25fr 1fr;gap:16px;margin-top:22px}
+  @media(max-width:860px){.demo{grid-template-columns:1fr}}
+  .card{background:var(--kaart);border:1px solid var(--lijn);border-radius:14px;box-shadow:0 2px 14px rgba(0,0,0,.05)}
+  .chat{padding:18px;display:flex;flex-direction:column;gap:12px;min-height:420px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{background:#fff;border:1.5px solid var(--lijn);border-radius:999px;padding:8px 14px;font-size:.9rem}
+  .chip:hover,.chip[aria-pressed=true]{border-color:var(--oranje);background:var(--oer-bg)}
+  .bubble{border-radius:14px;padding:11px 14px;max-width:92%}
+  .bubble.u{background:var(--blauw);color:#fff;align-self:flex-end}
+  .bubble.a{background:#f3f4f6;align-self:flex-start;min-height:3rem}
+  .steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:.88rem;font-weight:600;color:var(--grijs)}
+  .steps li{display:flex;gap:8px;align-items:center;opacity:.75;transition:opacity .3s}
+  .steps li.on{opacity:1;color:var(--zwart)}
+  .steps li::before{content:"○";color:var(--grijs)}
+  .steps li.on::before{content:"●";color:var(--groen)}
+  .placeholder{color:var(--grijs);font-weight:600;font-style:italic}
+  .cite{display:inline-block;min-width:1.5em;text-align:center;font-size:.75rem;font-weight:700;border:0;
+    border-radius:6px;padding:0 5px;margin:0 1px;vertical-align:super;line-height:1.5}
+  .cite.oer{background:var(--oer-bg);color:#a8441a}.cite.kd{background:var(--kd-bg);color:var(--kd)}
+  .cite.skill{background:var(--skill-bg);color:var(--skill)}.cite.regel{background:var(--regel-bg);color:var(--regel)}
+  .cite.act{outline:2px solid var(--zwart)}
+
+  .bronnen{padding:18px}
+  .bronnen h3{font-size:1rem;margin-bottom:10px}
+  .bron{border-radius:10px;padding:10px 12px;margin-bottom:10px;border:1.5px solid transparent;opacity:.7;transition:all .25s}
+  .bron.oer{background:var(--oer-bg)}.bron.kd{background:var(--kd-bg)}
+  .bron.skill{background:var(--skill-bg)}.bron.regel{background:var(--regel-bg)}
+  .bron.used{opacity:1}
+  .bron.act{border-color:var(--zwart);box-shadow:0 2px 10px rgba(0,0,0,.12)}
+  .bron b{display:block;font-size:.85rem}
+  .bron small{color:#4b5563;font-weight:600}
+  .bron q{font-weight:500;display:block;margin-top:6px;font-size:.88rem;quotes:"“" "”"}
+  .hint{font-size:.82rem;font-weight:600;color:var(--grijs);margin-top:4px}
+
+  /* stappen */
+  .stappen{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
+  @media(max-width:860px){.stappen{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.stappen{grid-template-columns:1fr}}
+  .stap{text-align:left;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;padding:16px;background:var(--kaart);border:1.5px solid var(--lijn);border-radius:14px}
+  .stap .n{display:inline-flex;width:28px;height:28px;border-radius:50%;background:var(--oranje);color:#fff;
+    font-weight:700;align-items:center;justify-content:center;margin-bottom:8px}
+  .stap strong{display:block}
+  .stap p{margin:6px 0 0;font-size:.9rem;font-weight:500;color:#4b5563;display:none}
+  .stap[aria-expanded=true]{border-color:var(--oranje)}
+  .stap[aria-expanded=true] p{display:block}
+
+  /* tabs */
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 12px}
+  .tab{border:1.5px solid var(--lijn);background:#fff;border-radius:999px;padding:8px 16px;font-weight:600}
+  .tab[aria-selected=true]{color:#fff;border-color:transparent}
+  .tab[data-t=oer][aria-selected=true]{background:var(--oer)}
+  .tab[data-t=kd][aria-selected=true]{background:var(--kd)}
+  .tab[data-t=skill][aria-selected=true]{background:var(--skill)}
+  .tab[data-t=regel][aria-selected=true]{background:var(--regel)}
+  .tabpanel{padding:18px 20px}
+  .tabpanel h3{margin-bottom:6px}
+
+  .waarom{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+  @media(max-width:760px){.waarom{grid-template-columns:1fr}}
+  .waarom .card{padding:18px}
+  .waarom .ic{font-size:1.6rem}
+  footer{padding:28px 0 48px;color:var(--grijs);font-weight:500;font-size:.85rem;border-top:1px solid var(--lijn)}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">SamenWijzer · De Digitale Gids</div>
+    <h1>Stel je vraag over je opleiding. <em>Krijg antwoord mét bewijs.</em></h1>
+    <p class="lead">Geen eindeloos zoeken door een OER van 100 pagina’s. De Digitale Gids leest de regels van jouw
+      opleiding en geeft antwoord met de bron erbij — zodat je kunt nagaan dat het klopt.</p>
+    <a class="cta" href="#demo">Probeer het zelf ↓</a>
+  </div>
+</header>
+
+<main>
+<section id="demo">
+  <div class="wrap">
+    <div class="kicker">Live voorbeeld</div>
+    <h2>Kies een vraag en kijk wat er gebeurt</h2>
+    <p class="lead">Klik op een vraag. Klik daarna op een bronnummer in het antwoord om te zien waar het vandaan komt.</p>
+
+    <div class="demo">
+      <div class="card chat" aria-live="polite">
+        <div class="chips" id="chips" role="group" aria-label="Voorbeeldvragen"></div>
+        <ol class="steps" id="steps">
+          <li>Opleiding herkennen</li>
+          <li>Bronnen laden</li>
+          <li>Antwoord schrijven met citaten</li>
+        </ol>
+        <div class="bubble u" id="vraag" hidden></div>
+        <div class="bubble a" id="antwoord"><span class="placeholder">Kies hierboven een vraag…</span></div>
+      </div>
+
+      <aside class="card bronnen" aria-label="Bronnen">
+        <h3>Bronnen achter het antwoord</h3>
+        <div id="bronlijst"></div>
+        <p class="hint">Grijs = niet gebruikt voor deze vraag.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fff;border-block:1px solid var(--lijn)">
+  <div class="wrap">
+    <div class="kicker">Zo werkt het</div>
+    <h2>Van vraag naar antwoord in vier stappen</h2>
+    <div class="stappen" id="stappen"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">Bronnen</div>
+    <h2>Vier bronnen, één antwoord</h2>
+    <p class="lead">Elke bron heeft een eigen rol. De OER van jouw opleiding is altijd leidend.</p>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div class="card tabpanel" id="tabpanel" role="tabpanel"></div>
+  </div>
+</section>
+
+<section style="background:#fff;border-block:1px solid var(--lijn)">
+  <div class="wrap">
+    <div class="kicker">Betrouwbaar</div>
+    <h2>Geen gokwerk: elke claim heeft een bewijs</h2>
+    <div class="waarom">
+      <div class="card"><div class="ic" aria-hidden="true">📌</div><h3>Altijd een bron</h3>
+        <p>Bij elke bewering staat de bron, de vindplaats én een woordelijk citaat tussen aanhalingstekens.</p></div>
+      <div class="card"><div class="ic" aria-hidden="true">⚖️</div><h3>De OER gaat voor</h3>
+        <p>Het landelijke kwalificatiedossier wordt alleen gebruikt als de OER het onderwerp niet of onvoldoende behandelt.</p></div>
+      <div class="card"><div class="ic" aria-hidden="true">🚫</div><h3>Niets verzonnen</h3>
+        <p>Verzonnen paginanummers zijn verboden. Staat het antwoord nergens, dan zegt de gids dat — en verwijst naar je mentor.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">Alle vragen, antwoorden en citaten op deze pagina zijn <strong>fictieve voorbeelden</strong> ter illustratie;
+    ze komen niet uit een echte OER. De echte Digitale Gids antwoordt uitsluitend op basis van de OER van jouw opleiding.</div>
+</footer>
+
+<script>
+const TYPES = {
+  oer:  {naam:"OER", titel:"Onderwijs- en Examenregeling",
+         tekst:"Jouw OER is leidend: de regels van je eigen opleiding, zoals toetsing, herkansing, stage en studieduur."},
+  kd:   {naam:"Kwalificatiedossier", titel:"Landelijk kwalificatiedossier",
+         tekst:"Het landelijke beroepsprofiel met kerntaken en werkprocessen. Aanvulling wanneer de OER het onderwerp niet dekt."},
+  skill:{naam:"Skills", titel:"Skills-taxonomie",
+         tekst:"Beroepsvaardigheden uit een skills-taxonomie, zodat je kunt zien welke skills bij jouw beroep horen."},
+  regel:{naam:"Regelingen", titel:"Instellingsbrede regelingen",
+         tekst:"Regels van je school die voor alle opleidingen gelden, zoals het examenreglement of een meldcode."}
+};
+
+const BRONNEN = {
+  1:{t:"oer",  naam:"Voorbeeld-OER Zorg niveau 3", plek:"artikel 4.3 Herkansing",
+     q:"Per toets heeft de student recht op één herkansing binnen dezelfde onderwijsperiode."},
+  2:{t:"regel",naam:"Voorbeeld-examenreglement",   plek:"artikel 9 Herkansing examens",
+     q:"Een herkansing van een examen wordt aangevraagd bij de examencommissie."},
+  3:{t:"kd",   naam:"Voorbeeld-kwalificatiedossier Verzorgende", plek:"kerntaak B1-K1",
+     q:"Verleent zorg en ondersteuning aan zorgvragers."},
+  4:{t:"skill",naam:"Skills-taxonomie, beroep Verzorgende", plek:"categorie Communicatie",
+     q:"Skill: Luisteren naar en communiceren met cliënten."},
+  5:{t:"oer",  naam:"Voorbeeld-OER Zorg niveau 3", plek:"artikel 7.2 Buitenlandse stage",
+     q:"Een deel van de beroepspraktijkvorming mag in het buitenland plaatsvinden na goedkeuring van de opleiding."},
+  6:{t:"regel",naam:"Voorbeeld-stagereglement",    plek:"paragraaf 3 Goedkeuring",
+     q:"De aanvraag wordt minimaal acht weken voor aanvang ingediend."}
+};
+
+const SCEN = [
+  {vraag:"Hoeveel herkansingen heb ik voor een toets?",
+   deel:["Je hebt recht op ",{c:1,t:"één herkansing per toets"}," binnen dezelfde periode. Gaat het om een examen, dan vraag je de herkansing aan bij de examencommissie",{c:2},"."]},
+  {vraag:"Welke vaardigheden heb ik nodig als verzorgende?",
+   deel:["De kerntaak van een verzorgende is zorg en ondersteuning verlenen",{c:3},". Een belangrijke vaardigheid daarbij is ",{c:4,t:"luisteren en communiceren met cliënten"},"."]},
+  {vraag:"Mag ik stage lopen in het buitenland?",
+   deel:["Ja, een deel van je stage mag in het buitenland, mits je opleiding het goedkeurt",{c:5},". Dien je aanvraag ",{c:6,t:"minimaal acht weken vooraf"}," in."]}
+];
+
+const $ = id => document.getElementById(id);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let run = 0;
+
+/* demo */
+function renderBronnen(gebruikt){
+  $("bronlijst").innerHTML = Object.entries(BRONNEN).map(([id,b])=>
+    `<div class="bron ${b.t}${gebruikt.includes(+id)?" used":""}" id="bron${id}">
+       <b>[${id}] ${b.naam}</b><small>${TYPES[b.t].naam} · ${b.plek}</small><q>${b.q}</q></div>`).join("");
+}
+function kiesBron(id){
+  document.querySelectorAll(".bron").forEach(e=>e.classList.remove("act"));
+  document.querySelectorAll(".cite").forEach(e=>e.classList.toggle("act",e.dataset.id==id));
+  const el=$("bron"+id); if(el){el.classList.add("act"); el.scrollIntoView({block:"nearest",behavior:reduce?"auto":"smooth"});}
+}
+const wacht = ms => reduce ? Promise.resolve() : new Promise(r=>setTimeout(r,ms));
+
+async function start(i){
+  const mijn = ++run, s = SCEN[i], gebruikt = s.deel.filter(d=>d.c).map(d=>d.c);
+  document.querySelectorAll(".chip").forEach((c,j)=>c.setAttribute("aria-pressed",j===i));
+  $("vraag").hidden=false; $("vraag").textContent=s.vraag;
+  $("antwoord").innerHTML=""; renderBronnen([]);
+  const li=[...$("steps").children]; li.forEach(e=>e.classList.remove("on"));
+  li[0].classList.add("on"); await wacht(600); if(mijn!==run)return;
+  li[1].classList.add("on"); renderBronnen(gebruikt); await wacht(700); if(mijn!==run)return;
+  li[2].classList.add("on");
+  const out=$("antwoord");
+  for(const d of s.deel){
+    if(typeof d==="string"||d.t){
+      const woorden=(typeof d==="string"?d:d.t).split(/(?<= )/);
+      for(const w of woorden){ out.append(w); await wacht(35); if(mijn!==run)return; }
+    }
+    if(d.c){
+      const b=document.createElement("button");
+      b.className="cite "+BRONNEN[d.c].t; b.dataset.id=d.c; b.textContent=d.c;
+      b.setAttribute("aria-label","Toon bron "+d.c);
+      b.onclick=()=>kiesBron(d.c); out.append(b);
+    }
+  }
+}
+$("chips").innerHTML=SCEN.map((s,i)=>`<button class="chip" aria-pressed="false" data-i="${i}">${s.vraag}</button>`).join("");
+$("chips").onclick=e=>{const c=e.target.closest(".chip"); if(c) start(+c.dataset.i);};
+renderBronnen([]);
+
+/* stappen */
+const STAPPEN=[
+  ["Je stelt een vraag","Typ een vraag of kies je instelling, opleiding en cohort. Je hoeft niet in te loggen."],
+  ["De juiste OER wordt gevonden","De gids herkent welke OER bij jou hoort. Zijn er meerdere kandidaten, dan kies jij; is er geen, dan stelt de gids een paar vragen."],
+  ["De bronnen worden gelezen","De complete OER, het kwalificatiedossier, skills en schoolregelingen gaan als context mee — geen losse snippets."],
+  ["Antwoord met bewijs","Je krijgt een antwoord met bron, vindplaats en citaat, plus vervolgvragen om verder te vragen."]
+];
+$("stappen").innerHTML=STAPPEN.map((s,i)=>
+  `<button class="stap" aria-expanded="${i===0}"><span class="n">${i+1}</span><strong>${s[0]}</strong><p>${s[1]}</p></button>`).join("");
+$("stappen").onclick=e=>{const b=e.target.closest(".stap"); if(!b)return;
+  b.setAttribute("aria-expanded",b.getAttribute("aria-expanded")!=="true");};
+
+/* tabs */
+$("tabs").innerHTML=Object.entries(TYPES).map(([k,v],i)=>
+  `<button class="tab" role="tab" data-t="${k}" aria-selected="${i===0}">${v.naam}</button>`).join("");
+function toonTab(k){
+  document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.t===k));
+  $("tabpanel").innerHTML=`<h3>${TYPES[k].titel}</h3><p>${TYPES[k].tekst}</p>`;
+}
+$("tabs").onclick=e=>{const t=e.target.closest(".tab"); if(t) toonTab(t.dataset.t);};
+toonTab("oer");
+</script>
+</body>
+</html>
