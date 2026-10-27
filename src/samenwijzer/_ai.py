@@ -62,13 +62,24 @@ def vriendelijke_fout(e: Exception) -> str:
 _default_client: anthropic.Anthropic | None = None
 
 
+def _workspace_headers() -> dict[str, str]:
+    """Een organisatie-brede API-key (niet aan een workspace gebonden) eist per request
+    een `anthropic-workspace-id`-header; een workspace-key werkt zonder. Alleen zetten
+    als `ANTHROPIC_WORKSPACE_ID` is geconfigureerd."""
+    workspace_id = environ.get("ANTHROPIC_WORKSPACE_ID")
+    return {"anthropic-workspace-id": workspace_id} if workspace_id else {}
+
+
 def _client(api_key: str | None = None) -> anthropic.Anthropic:
     """Maak een Anthropic-client aan; hergebruik de default instantie als geen sleutel opgegeven."""
     global _default_client
+    headers = _workspace_headers()
     if api_key:
-        return anthropic.Anthropic(api_key=api_key)
+        return anthropic.Anthropic(api_key=api_key, default_headers=headers)
     if _default_client is None:
-        _default_client = anthropic.Anthropic(api_key=environ.get("ANTHROPIC_API_KEY"))
+        _default_client = anthropic.Anthropic(
+            api_key=environ.get("ANTHROPIC_API_KEY"), default_headers=headers
+        )
     return _default_client
 
 
