@@ -47,9 +47,20 @@ def budget_tekens() -> int:
     return int(os.environ.get("DOC_BUDGET_TEKENS", _STANDAARD_BUDGET_TEKENS))
 
 
-def _kop(soort: str, titel: str) -> str:
-    label = SOORTEN[soort].label
-    return label if titel.startswith(label) else f"{label} — {titel}"
+def _kop(soort: str, titel: str, instelling: str = "") -> str:
+    """Blokkop in de prompt. Een achtervoegsel met de instellingsnaam (oude titels als
+    "Examenreglement Curio") wordt weggelaten. Niet-juridische documenten krijgen
+    `[INFORMATIEF]`: daarbij volstaat een bronvermelding en is een woordelijk citaat niet nodig.
+    """
+    info = SOORTEN[soort]
+    naam = titel.removesuffix(f" {instelling}") if instelling else titel
+    if naam == info.label:
+        kop = info.label
+    elif naam.startswith(f"{info.label} "):
+        kop = f"{info.label} — {naam[len(info.label) + 1 :]}"
+    else:
+        kop = f"{info.label} — {naam}"
+    return kop if info.juridisch else f"{kop} [INFORMATIEF]"
 
 
 def _prioriteit(doc: GekozenDocument) -> int:
@@ -90,9 +101,10 @@ def selecteer_documenten(
             if not tekst.strip():
                 logger.warning("Document zonder leesbare tekst overgeslagen: id=%s", r["id"])
                 continue
+            instelling = oer["display_naam"] if "display_naam" in oer.keys() else ""  # noqa: SIM118
             doc = GekozenDocument(
-                r["id"], _kop(r["soort"], r["titel"]), tekst, SOORTEN[r["soort"]].juridisch,
-                r["bereik"],
+                r["id"], _kop(r["soort"], r["titel"], instelling), tekst,
+                SOORTEN[r["soort"]].juridisch, r["bereik"],
             )  # fmt: skip
             kandidaten.append((oer["id"], doc, r["titel"]))
 

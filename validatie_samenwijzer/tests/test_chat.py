@@ -1262,3 +1262,38 @@ def test_genereer_antwoord_ontdubbelt_ook_de_web_disclaimer(monkeypatch):
     )
     assert uit.count(_WEB_DISCLAIMER) == 1
     assert uit.endswith("Hier is het antwoord.")
+
+
+def test_systeemprompts_vereisen_citaat_alleen_voor_juridische_bronnen():
+    """Woordelijk citaat voor OER/KD/juridische regelingen; bij [INFORMATIEF] volstaat de bron."""
+    from validatie_samenwijzer.chat import bouw_gecombineerd_systeem, bouw_systeem
+
+    enkel = bouw_systeem("tekst", "Kok", "Curio")
+    meer = bouw_gecombineerd_systeem(
+        [
+            {
+                "tekst": "t",
+                "opleiding": "Kok",
+                "display_naam": "Curio",
+                "leerweg": "BOL",
+                "cohort": "2025",
+            }
+        ]
+        * 2
+    )
+    for prompt in (enkel, meer):
+        assert "[INFORMATIEF]" in prompt
+        assert "bronvermelding" in prompt.lower()
+        assert "NIET nodig" in prompt  # geen woordelijk citaat bij informatieve documenten
+
+
+def test_informatief_blok_draagt_de_markering_in_de_prompt():
+    from validatie_samenwijzer.chat import bouw_systeem
+
+    prompt = bouw_systeem(
+        "tekst",
+        "Kok",
+        "Curio",
+        instelling_bronnen=[("Protocol — Kluis [INFORMATIEF]", "KLUISTEKST")],
+    )
+    assert "=== PROTOCOL — KLUIS [INFORMATIEF] (Curio) ===" in prompt
