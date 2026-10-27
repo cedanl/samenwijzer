@@ -393,7 +393,8 @@ gewone OER-iteratie (`_INSTELLING_SUBMAP` wordt overgeslagen door de platte OER-
 
 Uitgebreid okt 2026 met `privacyreglement`, `pestprotocol`, `meldcode`, `ict_reglement` en
 `gedragsregeling` (KWIC-regelingen; ook in `STUDENT_SOORTEN`/`MENTOR_SOORTEN` in
-`app_fastapi/context.py`). Per soort is er één document per instelling. Overig aangeleverd
+`app_fastapi/context.py`, via `GENERIEKE_REGELINGEN` ook in de publieke route). Het zijn generieke
+concepten voor alle instellingen; alleen KWIC heeft nu inhoud. Per soort is er één document per instelling. Overig aangeleverd
 materiaal (examenplannen, NML's, Curio-KD-kopieën, onderwijsschema's, ICT-/veiligheidsplannen)
 staat in `oeren/<inst>_oeren/_bronmateriaal/`: wel in Box, niet geïndexeerd en niet in git.
 

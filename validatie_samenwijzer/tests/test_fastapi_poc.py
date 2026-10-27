@@ -401,6 +401,19 @@ def test_elke_instelling_soort_is_bereikbaar_in_een_context():
     assert not onbereikbaar, f"Soorten zonder context-tuple (onzichtbaar): {sorted(onbereikbaar)}"
 
 
+def test_generieke_regelingen_zitten_in_elke_context():
+    """Generieke regelingen zijn een concept voor alle instellingen, ook in de publieke route."""
+    from app_fastapi.context import (
+        GENERIEKE_REGELINGEN,
+        MENTOR_SOORTEN,
+        PUBLIEK_SOORTEN,
+        STUDENT_SOORTEN,
+    )
+
+    for context in (PUBLIEK_SOORTEN, STUDENT_SOORTEN, MENTOR_SOORTEN):
+        assert set(GENERIEKE_REGELINGEN) <= set(context)
+
+
 def test_chat_toegewezen_maar_onleesbare_oer_geeft_lage_relevantie(monkeypatch):
     """Toegewezen OER zonder bruikbare bron → expliciete melding, geen intake (geen AI-call)."""
     if not _WW:
