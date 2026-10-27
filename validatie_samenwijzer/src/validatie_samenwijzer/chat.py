@@ -74,17 +74,38 @@ _WEB_DISCLAIMER = (
     "informatie komt van de website van de school en kan verouderd of minder bindend "
     "zijn — controleer het bij twijfel bij je opleiding."
 )
+# Tegenhanger voor antwoorden uit een instellingsbreed schooldocument (examenreglement,
+# studentenstatuut, protocol …): wél officieel en door de school vastgesteld, maar niet de OER.
+# De gebruiker moet in één oogopslag zien of iets van de website komt of van vastgesteld
+# materiaal. Eén blockquote-regel, exact-string (wordt gededupliceerd in genereer_antwoord).
+_SCHOOLDOC_DISCLAIMER = (
+    "> ℹ️ Let op: dit staat niet in de studiegids (OER) zelf, maar in een officieel, door "
+    "de school vastgesteld document — zie de bron hieronder."
+)
+_SCHOOLDOC_BANNER_INSTRUCTIE = f"""\
+Komt je antwoord (geheel of in de kern) uit zo'n schooldocument en NIET uit de OER, begin
+dan ALTIJD met EXACT de volgende regel (één keer — niet herhalen of parafraseren):
+{_SCHOOLDOC_DISCLAIMER}
+Staat het antwoord (ook) in de OER, dan géén banner."""
+
 _WEB_ZOEK_BLOK = f"""
 
-WEBZOEKEN (uitzondering — alleen als de bronnen tekortschieten). Behandelt geen enkele
-bovenstaande bron het onderwerp, dan mag je op de officiële website van de instelling zoeken
+WEBZOEKEN (laatste redmiddel — nooit de eerste stap). Doorzoek EERST alle bovenstaande
+documenten volledig: de OER, de schooldocumenten (examenreglement, studentenstatuut,
+protocollen …) en het KD. Noemt ook maar één van die documenten het onderwerp, dan antwoord je
+daaruit en zoek je NIET op het web. Pas als werkelijk geen enkele bovenstaande bron het onderwerp
+behandelt, mag je op de officiële website van de instelling zoeken
 (web_search) ÉN de relevante gevonden pagina openen (web_fetch) om de volledige, actuele inhoud
 te lezen — vertrouw niet op de zoekfragmenten alleen, want die missen vaak specifieke gegevens
 zoals data, bedragen of deadlines. Dit is geen "eigen kennis" maar geverifieerde informatie van
 de schoolwebsite; de OER en de andere bronnen blijven leidend, dus doe dit alleen als het antwoord
-echt niet in de documenten staat. Begin een webantwoord ALTIJD met EXACT de volgende regel
-(één keer — niet herhalen of parafraseren):
+echt niet in de documenten staat. Gebruik je daadwerkelijk informatie van de website in je
+antwoord, begin dan ALTIJD met EXACT de volgende regel (één keer — niet herhalen of
+parafraseren):
 {_WEB_DISCLAIMER}
+Levert de webzoek niets bruikbaars op, of komt je antwoord toch uit de documenten (OER,
+schooldocument, KD), dan is dit GEEN webantwoord: géén webwaarschuwing en géén "Bron: "-URL-regel —
+gebruik dan de gewone bronvermelding (en bij een schooldocument de bijbehorende banner).
 Geef webinformatie NOOIT de vorm van een OER-citaat (geen "Volgens de OER", geen sectie-,
 artikel- of paginanummer) en verzin nooit een vindplaats. Sluit een webantwoord ALTIJD af
 met een regel die begint met "Bron: " gevolgd door de volledige URL(’s) van de
@@ -180,6 +201,7 @@ hieronder, zoals het examenreglement en het begeleidings-/welzijnsbeleid). Dit
 zijn APARTE documenten, NIET de OER. Ze gelden voor de hele instelling.
 Raadpleeg ze voor vragen over examinering, herkansingen, fraude, bezwaar of
 begeleiding; bij school-specifieke regels gaan ze vóór het landelijke KD.
+{schooldoc_banner}
 
 {kd_instructie}
 
@@ -501,6 +523,7 @@ def bouw_systeem(
         instelling_blok=_instelling_blok(instelling, instelling_bronnen),
         dossier_blok=dossier_blok,
         skills_blok=skills_tekst,
+        schooldoc_banner=_SCHOOLDOC_BANNER_INSTRUCTIE,
         web_zoek_blok=_WEB_ZOEK_BLOK if web_zoeken else "",
         vacature_blok=_VACATURE_BLOK if vacatures else "",
         doelgroep_toon=_DOELGROEP_TOON,
@@ -647,10 +670,13 @@ def genereer_antwoord(
         **extra,
     ) as stream:
         # Vangnet: verwijder een door het model herhaalde disclaimer (no-op als die niet
-        # voorkomt, bv. bij gewone OER-antwoorden). Beide disclaimers worden gefilterd —
+        # voorkomt, bv. bij gewone OER-antwoorden). Alle drie disclaimers worden gefilterd —
         # het model herhaalde ook de webzoek-variant, aaneengeplakt zonder witregel.
         yield from dedup_disclaimer(
-            dedup_disclaimer(stream.text_stream, _VACATURE_DISCLAIMER), _WEB_DISCLAIMER
+            dedup_disclaimer(
+                dedup_disclaimer(stream.text_stream, _VACATURE_DISCLAIMER), _WEB_DISCLAIMER
+            ),
+            _SCHOOLDOC_DISCLAIMER,
         )
 
 
@@ -666,6 +692,7 @@ AANVULLENDE BRON — instellingsbrede regelingen (zoals een examenreglement of
 begeleidingsbeleid) waar bij een OER getoond. Dit zijn APARTE documenten, NIET
 de OER; ze gelden voor de hele instelling en gaan bij school-specifieke regels
 vóór het KD.
+{schooldoc_banner}
 AANVULLENDE BRON — de KDs (landelijke eisen, kerntaken, werkprocessen).
 Raadpleeg een KD alléén als de bijbehorende OER het onderwerp niet of
 onvoldoende behandelt. Geef niet onnodig een tweede antwoord uit het KD als
@@ -777,6 +804,7 @@ def bouw_gecombineerd_systeem(
     return _MULTI_SYSTEEM_TEMPLATE.format(
         n=len(oer_items),
         oer_blokken="\n\n---\n\n".join(blokken),
+        schooldoc_banner=_SCHOOLDOC_BANNER_INSTRUCTIE,
         web_zoek_blok=_WEB_ZOEK_BLOK if web_zoeken else "",
         vacature_blok=_VACATURE_BLOK if vacatures else "",
         doelgroep_toon=_DOELGROEP_TOON,

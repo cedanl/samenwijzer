@@ -1264,6 +1264,62 @@ def test_genereer_antwoord_ontdubbelt_ook_de_web_disclaimer(monkeypatch):
     assert uit.endswith("Hier is het antwoord.")
 
 
+def test_schooldoc_banner_in_prompt_en_webbanner_niet_bij_documentantwoord():
+    """Antwoord uit een schooldocument krijgt een eigen banner (officieel, niet de OER);
+    de webwaarschuwing is voorbehouden aan informatie die écht van de website komt."""
+    from validatie_samenwijzer.chat import (
+        _SCHOOLDOC_DISCLAIMER,
+        _WEB_ZOEK_BLOK,
+        bouw_gecombineerd_systeem,
+        bouw_systeem,
+    )
+
+    prompt = bouw_systeem("OERTEKST", "Kok", "Curio", web_zoeken=True)
+    assert _SCHOOLDOC_DISCLAIMER in prompt
+    assert "Staat het antwoord (ook) in de OER, dan géén banner." in prompt
+    # Webzoek is laatste redmiddel; zonder bruikbaar resultaat geen webbanner/Bron:-URL.
+    assert "laatste redmiddel" in _WEB_ZOEK_BLOK
+    assert "GEEN webantwoord" in _WEB_ZOEK_BLOK
+    item = {
+        "tekst": "X",
+        "opleiding": "Kok",
+        "display_naam": "Curio",
+        "leerweg": "BOL",
+        "cohort": "2025",
+    }
+    multi = bouw_gecombineerd_systeem([item, {**item, "opleiding": "Bakker"}])
+    assert _SCHOOLDOC_DISCLAIMER in multi
+
+
+def test_genereer_antwoord_dedupliceert_schooldoc_banner():
+    from validatie_samenwijzer import chat
+    from validatie_samenwijzer.chat import _SCHOOLDOC_DISCLAIMER
+
+    stukken = [f"{_SCHOOLDOC_DISCLAIMER}\n\n{_SCHOOLDOC_DISCLAIMER}", "\n\nAntwoord."]
+
+    class _Stream:
+        text_stream = iter(stukken)
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    class _Messages:
+        def stream(self, **kwargs):
+            return _Stream()
+
+    class _Client:
+        messages = _Messages()
+
+    uit = "".join(
+        chat.genereer_antwoord(_Client(), "systeem", [{"role": "user", "content": "hoi"}])
+    )
+    assert uit.count(_SCHOOLDOC_DISCLAIMER) == 1
+    assert uit.endswith("Antwoord.")
+
+
 def test_systeemprompts_vereisen_citaat_alleen_voor_juridische_bronnen():
     """Woordelijk citaat voor OER/KD/juridische regelingen; bij [INFORMATIEF] volstaat de bron."""
     from validatie_samenwijzer.chat import bouw_gecombineerd_systeem, bouw_systeem

@@ -457,6 +457,38 @@ def test_begeleidingsbeleid_blijft_alleen_ingelogd_zichtbaar():
     assert SOORTEN["examenreglement"].zichtbaarheid == "publiek"
 
 
+def test_openbare_schooldocumenten_zijn_publiek():
+    """Statuut, BSA, klachtenregeling, gedragscode en algemene info staan openbaar op de
+    schoolsites en horen dus ook in de publieke chat (besluit D2)."""
+    from validatie_samenwijzer.db import _VRIJGEGEVEN_SOORTEN, SOORTEN
+
+    for soort in _VRIJGEGEVEN_SOORTEN:
+        assert SOORTEN[soort].zichtbaarheid == "publiek", soort
+
+
+def test_init_db_zet_vrijgegeven_soorten_van_ingelogd_naar_publiek():
+    """Bestaande rijen met de oude registerwaarde volgen het register; begeleidingsbeleid niet."""
+    c = sqlite3.connect(":memory:")
+    c.row_factory = sqlite3.Row
+    init_db(c)
+    voeg_instelling_toe(c, "curio", "Curio")
+    inst = get_instelling_by_naam(c, "curio")["id"]
+    c.execute(
+        "INSERT INTO documenten (instelling_id, soort, bereik, titel, bestandspad, zichtbaarheid)"
+        " VALUES (?, 'studentenstatuut', 'instelling', 's', 's.md', 'ingelogd'),"
+        " (?, 'begeleidingsbeleid', 'instelling', 'b', 'b.md', 'ingelogd')",
+        (inst, inst),
+    )
+    c.commit()
+    init_db(c)
+    rijen = c.execute("SELECT soort, zichtbaarheid FROM documenten ORDER BY soort").fetchall()
+    assert [tuple(r) for r in rijen] == [
+        ("begeleidingsbeleid", "ingelogd"),
+        ("studentenstatuut", "publiek"),
+    ]
+    c.close()
+
+
 def test_instelling_soorten_blijft_label_mapping_voor_instellingsbrede_soorten():
     from validatie_samenwijzer.db import INSTELLING_SOORTEN, SOORTEN
 
@@ -646,18 +678,12 @@ def test_context_documenten_van_andere_instelling_tellen_niet(conn):
     assert _toon(conn, a) == ["van-a"]
 
 
-def test_publieke_context_blijft_voor_bestaande_soorten_ongewijzigd():
-    """Bestaande, niet op persoonsgegevens gecontroleerde soorten verbreden de publieke chat niet:
-    publiek blijft examenreglement + de vijf generieke regelingen (zoals vóór de documentlaag)."""
+def test_alleen_begeleidingsbeleid_buiten_de_publieke_chat():
+    """Alle instellingsbrede soorten zijn publiek (openbare schooldocumenten, besluit D2),
+    behalve het begeleidings-/welzijnsbeleid — dat blijft voor ingelogde student/mentor."""
     from validatie_samenwijzer.db import SOORTEN
 
-    bestaand = {
-        "examenreglement", "begeleidingsbeleid", "studentenstatuut", "bindend_studieadvies",
-        "klachtenregeling", "gedragscode", "algemene_informatie", "privacyreglement",
-        "pestprotocol", "meldcode", "ict_reglement", "gedragsregeling",
-    }  # fmt: skip
-    publiek = {k for k in bestaand if SOORTEN[k].zichtbaarheid == "publiek"}
-    assert publiek == {
-        "examenreglement", "privacyreglement", "pestprotocol", "meldcode", "ict_reglement",
-        "gedragsregeling",
-    }  # fmt: skip
+    niet_publiek = {
+        k for k, v in SOORTEN.items() if v.bereik == "instelling" and v.zichtbaarheid != "publiek"
+    }
+    assert niet_publiek == {"begeleidingsbeleid"}
