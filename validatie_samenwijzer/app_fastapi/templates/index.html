@@ -15,7 +15,7 @@
     <div class="nav-right">
       <a href="#werkt" class="mono">Zo werkt het</a>
       <a href="#bronnen" class="mono">Bronnen</a>
-      <a href="#start" class="nav-cta">Stel je vraag</a>
+      <a href="#kiezer" class="nav-cta">Kies je opleiding</a>
     </div>
   </div>
 </nav>
@@ -25,32 +25,38 @@
     <div class="hero-text">
       <div class="overline mono rise">De regels van je opleiding · de assistent</div>
       <h1 class="lede rise" style="transition-delay:.08s">
-        Stel je vraag.<br>
-        <span class="it">Je studiegids</span> antwoordt —
-        <span class="small">mét de regel erbij.</span>
+        Kies je opleiding.<br>
+        <span class="it">Stel dan je vraag.</span>
+        <span class="small">Je studiegids antwoordt — mét de regel erbij.</span>
       </h1>
       <p class="sub rise" style="transition-delay:.16s">
-        Je studiegids — de regels van je opleiding — is soms honderd pagina's. Vraag in
-        gewone taal naar je <b>BSA</b>, je <b>stage</b> of je <b>herkansing</b> — en krijg
+        Je studiegids — de regels van je opleiding — is soms honderd pagina's. Kies eerst welke van
+        jou is en vraag dan in gewone taal naar je <b>BSA</b>, je <b>stage</b> of je <b>herkansing</b>:
         antwoord mét bron, vindplaats én woordelijk citaat, zodat je het zelf kunt nazoeken.
       </p>
       <div class="rise" style="transition-delay:.24s" id="start">
-        <form class="ask" data-ask>
-          <input type="text" placeholder="Bijv. Hoeveel punten heb ik nodig voor mijn BSA?" autocomplete="off" />
-          <button type="submit" aria-label="Vraag stellen">→</button>
-        </form>
-        <div class="chips">
-          <button class="chip" type="button">Wanneer krijg ik een bindend studieadvies?</button>
-          <button class="chip" type="button">Hoe vaak mag ik herkansen?</button>
-          <button class="chip" type="button">Telt mijn stage mee voor mijn diploma?</button>
-        </div>
-        <div class="oplkiezer">
-          <div class="oplkiezer-kop">
-            <span class="oplkiezer-titel">Of kies je opleiding</span>
-            <span class="oplkiezer-hint">Zet er meerdere naast elkaar — tot 3 tegelijk</span>
+        <section class="kiezer" id="kiezer" aria-labelledby="kiezerTitel">
+          <div class="kiezer-kop">
+            <h2 id="kiezerTitel">Welke studiegids is <span class="it">van jou?</span></h2>
+            <span class="mono">Tot 3 gidsen vergelijken</span>
           </div>
           <div id="oplCascade" class="cascade-host"></div>
-        </div>
+        </section>
+        <section class="vraagveld locked" id="vraagveld" aria-labelledby="vraagTitel">
+          <div class="vraagveld-kop">
+            <h2 id="vraagTitel">Stel je vraag</h2>
+            <span class="vraagstatus mono" id="vraagStatus"></span>
+          </div>
+          <form class="ask" id="vraagForm">
+            <input type="text" placeholder="Beschikbaar zodra je opleiding gekozen is" autocomplete="off" aria-label="Je vraag" disabled />
+            <button type="submit" aria-label="Vraag stellen" disabled>→</button>
+          </form>
+          <div class="chips">
+            <button class="chip" type="button" disabled>Wanneer krijg ik een bindend studieadvies?</button>
+            <button class="chip" type="button" disabled>Hoe vaak mag ik herkansen?</button>
+            <button class="chip" type="button" disabled>Telt mijn stage mee voor mijn diploma?</button>
+          </div>
+        </section>
       </div>
     </div>
 
@@ -78,12 +84,12 @@
     <div class="seclabel mono rise">Zo werkt het</div>
     <h2 class="sec rise" style="transition-delay:.06s">Geen zoekfunctie. <span class="it">Een gesprek.</span></h2>
     <p class="sec-intro rise" style="transition-delay:.12s">
-      Je hoeft niet te weten waar iets staat. Je hoeft niet eens te weten welke studiegids van jou is —
-      de assistent vraagt ernaar als dat nodig is.
+      Je hoeft niet te weten waar iets staat. Kies je opleiding en vraag erop los —
+      de assistent zoekt het voor je op.
     </p>
     <div class="steps">
-      <div class="step rise"><span class="num">01</span><h3>Stel je vraag in gewone taal</h3><p>Type wat je wilt weten. Geen vaktermen of artikelnummers nodig.</p><span class="tag">Vrije tekst</span></div>
-      <div class="step rise" style="transition-delay:.1s"><span class="num">02</span><h3>De assistent vindt jouw studiegids</h3><p>Op basis van instelling, opleiding, leerweg (BOL/BBL) en cohortjaar — of hij vraagt ernaar.</p><span class="tag">Intake · max 3 studiegidsen</span></div>
+      <div class="step rise"><span class="num">01</span><h3>Kies je studiegids</h3><p>Instelling, opleiding, leerweg (BOL/BBL) en cohortjaar — zo weet de assistent welke regels voor jou gelden.</p><span class="tag">Tot 3 studiegidsen</span></div>
+      <div class="step rise" style="transition-delay:.1s"><span class="num">02</span><h3>Stel je vraag in gewone taal</h3><p>Type wat je wilt weten. Geen vaktermen of artikelnummers nodig.</p><span class="tag">Vrije tekst</span></div>
       <div class="step rise" style="transition-delay:.2s"><span class="num">03</span><h3>Antwoord mét bewijs</h3><p>Elke claim krijgt een bron, een vindplaats en een woordelijk citaat — verifieerbaar.</p><span class="tag">Bron · vindplaats · citaat</span></div>
     </div>
   </div>
@@ -132,16 +138,8 @@
   <div class="wrap">
     <h2 class="sec rise">Wat wil je <span class="it">weten?</span></h2>
     <div class="rise" style="transition-delay:.1s">
-      <form class="ask" data-ask>
-        <input type="text" placeholder="Stel een vraag over jouw opleiding…" autocomplete="off" />
-        <button type="submit" aria-label="Vraag stellen">→</button>
-      </form>
-      <div class="chips">
-        <button class="chip" type="button">Wat is mijn slaag-zakregeling?</button>
-        <button class="chip" type="button">Hoeveel uur stage moet ik lopen?</button>
-        <button class="chip" type="button">Mag ik een vak vrijstellen?</button>
-      </div>
-      <div class="multi-note">Tot 3 studiegidsen tegelijk vergelijken · geen account nodig</div>
+      <a class="nav-cta closing-cta" href="#kiezer">Kies je opleiding ↑</a>
+      <div class="multi-note">Tot 3 studiegidsen vergelijken · geen account nodig</div>
     </div>
   </div>
 </section>

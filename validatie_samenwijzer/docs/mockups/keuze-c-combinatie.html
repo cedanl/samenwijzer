@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mockup C — landingspagina + keuzekaarten</title>
+<style>
+  @font-face{font-family:"Hanken Grotesk";font-weight:100 900;font-display:swap;src:url("../../app_fastapi/static/fonts/hanken-grotesk.woff2") format("woff2")}
+  @font-face{font-family:"Instrument Serif";font-style:normal;font-display:swap;src:url("../../app_fastapi/static/fonts/instrument-serif.woff2") format("woff2")}
+  @font-face{font-family:"Instrument Serif";font-style:italic;font-display:swap;src:url("../../app_fastapi/static/fonts/instrument-serif-italic.woff2") format("woff2")}
+  @font-face{font-family:"JetBrains Mono";font-weight:100 800;font-display:swap;src:url("../../app_fastapi/static/fonts/jetbrains-mono.woff2") format("woff2")}
+
+  /* Palet = de huidige landingspagina (papier, inkt, vermiljoen, markeergeel) + groen voor "klaar".
+     Kleur heeft vaste betekenis: vermiljoen = actie/OER, geel = "hier ben je nu", groen = gelukt. */
+  :root{
+    --paper:#F2ECE0;--card:#F8F3E9;--deep:#E7DECC;--ink:#211910;--soft:#5E5343;--faint:#6E6353;
+    --v:#DA3A1E;--vd:#B22C12;--vt:#F7D9D0;--mark:#FFD84D;--markt:#FFF0B8;--ok:#1E7A4A;--okt:#D7EDDF;
+    --line:rgba(33,25,16,.18);--lines:rgba(33,25,16,.09);
+    --shadow:22px 30px 60px -28px rgba(33,25,16,.45);--sm:8px 12px 30px -16px rgba(33,25,16,.4);
+    --ease:cubic-bezier(.22,.61,.36,1)}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:17px;line-height:1.55}
+  a{color:inherit;text-decoration:none}
+  button,input{font:inherit;color:inherit}
+  button{cursor:pointer}
+  ::selection{background:var(--mark)}
+  :focus-visible{outline:3px solid var(--v);outline-offset:2px}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(18px,4vw,48px)}
+  .hide{display:none!important}
+  .mono{font-family:"JetBrains Mono",ui-monospace,Consolas,monospace;text-transform:uppercase;letter-spacing:.09em;font-size:.74rem;font-weight:600}
+
+  .tools{background:#211910;color:#fff;font-size:.85rem;font-weight:600}
+  .tools .wrap{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;padding-block:8px}
+  .tools b{background:var(--mark);color:#211910;border-radius:99px;padding:2px 9px;font-size:.72rem;letter-spacing:.1em}
+  .tools button{border:1.5px solid #6a5d4a;background:transparent;color:#fff;border-radius:99px;padding:3px 12px;font-weight:600}
+  .tools button[aria-pressed=true]{background:#fff;color:#211910;border-color:#fff}
+
+  nav{border-bottom:1px solid var(--lines);background:rgba(242,236,224,.85);backdrop-filter:blur(8px)}
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;height:68px}
+  .brand{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:-.01em}
+  .glyph{width:30px;height:30px;border-radius:7px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:"Instrument Serif",serif;font-size:1.25rem;transform:rotate(-4deg)}
+  .nav-r{display:flex;gap:28px;align-items:center}
+  .nav-r a.mono{color:var(--soft)}
+  .nav-r .cta{background:var(--ink);color:var(--paper);border-radius:99px;padding:9px 18px;font-weight:600;font-size:.92rem;transition:background .25s}
+  .nav-r .cta:hover{background:var(--v)}
+  @media(max-width:640px){.nav-r a.mono{display:none}}
+
+  /* hero */
+  .hero{position:relative;padding:36px 0 24px}
+  .hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:clamp(24px,4vw,56px);align-items:start}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr}.artifact{display:none}}
+  .over{color:var(--vd);display:flex;align-items:center;gap:.7rem}
+  .over::before{content:"";width:26px;height:1px;background:var(--v)}
+  h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(2.6rem,5.4vw,4.3rem);line-height:.98;letter-spacing:-.015em;margin:16px 0 14px}
+  h1 em{color:var(--v)}
+  h1 .small{display:block;font-size:.5em;color:var(--soft);margin-top:.25em}
+  .lead{font-size:1.15rem;font-weight:500;color:var(--soft);max-width:30em;margin:0}
+  .artifact{position:relative;padding-bottom:30px;margin-top:34px}
+  .doc{background:var(--card);border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow);padding:24px 24px 26px;transform:rotate(2.4deg);position:relative}
+  .doc::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:4px;background:var(--v);border-radius:4px}
+  .doc .stamp{position:absolute;top:-14px;right:-8px;font-family:"JetBrains Mono",monospace;font-size:.64rem;letter-spacing:.08em;color:var(--vd);border:2px solid var(--vd);padding:.3rem .55rem;border-radius:5px;transform:rotate(7deg);background:var(--card);font-weight:700}
+  .doc h4{font-family:"Instrument Serif",serif;font-weight:400;font-size:1.4rem;margin:0 0 2px}
+  .doc .meta{font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.08em;color:var(--faint);text-transform:uppercase;margin-bottom:12px;font-weight:600}
+  .doc .l{height:7px;border-radius:4px;background:var(--deep);margin:10px 0}
+  .doc p{font-size:.9rem;font-weight:500;margin:12px 0}
+  .doc mark{background:linear-gradient(var(--mark),var(--mark)) 0 86%/100% 42% no-repeat;padding:0 .08em;color:inherit}
+  .fq{position:absolute;left:-26px;bottom:0;background:var(--ink);color:var(--paper);border-radius:12px;padding:12px 16px;max-width:15em;transform:rotate(-2.5deg);font-size:.86rem;line-height:1.4;box-shadow:var(--shadow)}
+  .fq .mono{display:block;color:var(--mark);font-size:.62rem;margin-bottom:.3rem}
+
+  /* kiezer: vier kaarten */
+  .kies{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 16px 14px;margin-top:26px}
+  .kop{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline;justify-content:space-between;margin-bottom:10px}
+  .kop h2{font-family:"Instrument Serif",serif;font-weight:400;font-size:1.55rem;margin:0;line-height:1.05}
+  .kop h2 em{color:var(--v)}
+  .kop .mono{color:var(--faint);font-size:.66rem}
+  .prog{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:12px}
+  .prog i{height:4px;border-radius:7px;background:var(--deep);transition:background .3s}
+  .prog i.on{background:var(--v)}
+  .velden{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:520px){.velden{grid-template-columns:1fr}}
+  .veld{position:relative;border:1px dashed var(--line);border-radius:12px;padding:9px 11px 11px;background:transparent;transition:all .25s var(--ease);min-width:0}
+  .veld.nu{border:1px solid var(--v);background:#fff}
+  .veld.klaar{border:1px solid rgba(33,25,16,.45);background:var(--paper)}
+  .veld.uit{opacity:.7}
+  .lab{display:flex;align-items:center;gap:8px;margin-bottom:7px;color:var(--soft);font-size:.68rem}
+  .num{width:20px;height:20px;border-radius:50%;background:var(--deep);color:var(--soft);display:grid;place-items:center;font-size:.72rem;flex:none;font-family:"Hanken Grotesk",sans-serif;font-weight:800}
+  .nu .num{background:var(--vt);color:var(--vd);box-shadow:inset 0 0 0 1px var(--v)}
+  .klaar .num{background:var(--ok);color:#fff}
+  .sel{width:100%;display:flex;justify-content:space-between;align-items:center;gap:8px;text-align:left;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:8px 11px;font-weight:700;min-height:42px;font-size:.96rem}
+  .nu .sel{border-color:var(--v)}
+  .sel span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .sel.leeg span:first-child{color:var(--soft);font-weight:600}
+  .sel:disabled{cursor:not-allowed}
+  .auto{font-size:.8rem;font-weight:700;color:var(--ok);margin-top:7px}
+  .menu{position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:20;background:#fff;border:1px solid var(--v);border-radius:12px;box-shadow:var(--sm);padding:8px;min-width:240px}
+  .menu input{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:9px 12px;margin-bottom:6px;font-weight:600;background:var(--card)}
+  .menu input:focus{outline:none;border-color:var(--v)}
+  .menu ul{list-style:none;margin:0;padding:0;max-height:250px;overflow:auto}
+  .menu li button{width:100%;text-align:left;border:0;background:none;border-radius:9px;padding:9px 10px;font-weight:700;display:flex;justify-content:space-between;gap:8px}
+  .menu li button:hover,.menu li button:focus-visible{background:var(--vt)}
+  .menu small{color:var(--faint);font-weight:600}
+  @media(max-width:560px){.menu{position:fixed;left:10px;right:10px;bottom:10px;top:auto}}
+
+  .seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--deep);border-radius:12px;padding:4px}
+  .seg button{border:0;background:transparent;border-radius:8px;padding:6px 4px;font-weight:800;line-height:1.2}
+  .seg button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+  .seg button:disabled{cursor:not-allowed;color:var(--soft)}
+  .seg small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .cy{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:7px 12px;font-weight:800}
+  .cy:hover:not(:disabled){border-color:var(--v)}
+  .cy[aria-pressed=true],.cy[aria-pressed=true]:hover:not(:disabled){background:var(--ink);border-color:var(--ink);color:var(--paper)}
+  .cy:disabled{background:var(--deep);color:var(--soft);cursor:not-allowed}
+
+  .samen{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px;min-height:30px}
+  .samen:empty{min-height:0;margin-top:0}
+  .samen .t{color:var(--faint)}
+  .gk{display:inline-flex;gap:8px;align-items:center;background:var(--card);border:1.5px solid var(--ink);border-radius:99px;padding:5px 6px 5px 14px;font-weight:700;font-size:.9rem}
+  .gk.nieuw{background:var(--okt);border-color:var(--ok);color:#0F4A2C}
+  .gk button{border:0;background:var(--ink);color:var(--paper);width:22px;height:22px;border-radius:50%;line-height:1}
+  .link{background:none;border:0;color:var(--vd);font-weight:800;padding:6px 4px;text-decoration:underline;text-underline-offset:3px}
+
+  /* vraagveld */
+  .composer{position:relative;margin-top:12px;border-radius:18px;padding:14px 16px 16px 20px;border:1px solid var(--line);transition:all .35s var(--ease)}
+  .composer::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:2px;border-radius:2px;background:var(--v);opacity:.3;transition:opacity .3s}
+  .composer.open::before{opacity:1}
+  .composer .top{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+  .composer h2{margin:0;font-family:"Instrument Serif",serif;font-weight:400;font-size:1.45rem}
+  .status{display:inline-flex;gap:6px;align-items:center;border-radius:99px;padding:3px 11px;font-weight:700;font-size:.66rem}
+  .box{display:flex;gap:8px;align-items:center;background:var(--card);border:1px solid var(--ink);border-radius:13px;padding:4px 4px 4px 16px}
+  .box input{flex:1;border:0;background:none;padding:11px 0;font-weight:500;min-width:0;font-size:1rem}
+  .box input:focus{outline:none}
+  .box input::placeholder{color:var(--soft)}
+  .box button{border:0;background:var(--v);color:#fff;width:42px;height:42px;border-radius:10px;font-size:1.2rem;transition:background .2s}
+  .box button:hover{background:var(--vd)}
+  .sug{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .sug button,.vv button{border:1px solid var(--line);background:transparent;border-radius:99px;padding:.34rem .9rem;font-weight:600;font-size:.86rem;color:var(--soft);transition:all .2s var(--ease)}
+  .sug button:hover,.vv button:hover{border-color:var(--ink);color:var(--ink);transform:translateY(-2px)}
+  .composer.locked{background:repeating-linear-gradient(135deg,var(--card) 0 12px,#EFE7D6 12px 24px)}
+  .composer.locked .box{border-color:var(--line);opacity:.6}
+  .composer.locked .box,.composer.locked .sug{pointer-events:none}
+  .composer.locked .sug{opacity:.55}
+  .composer.locked h2{color:var(--soft)}
+  .composer.locked .status{background:var(--paper);border:1.5px solid var(--line);color:var(--soft)}
+  .composer.open{background:#fff;border-color:var(--v)}
+  .composer.open .status{background:var(--okt);color:#0F4A2C}
+
+  /* zo werkt het */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);margin-top:56px;border-top:1px solid var(--line)}
+  @media(max-width:820px){.steps{grid-template-columns:1fr}}
+  .step{padding:26px 24px 30px;border-right:1px solid var(--line)}
+  .step:last-child{border-right:0}
+  @media(max-width:820px){.step{border-right:0;border-bottom:1px solid var(--line)}}
+  .step .n{font-family:"Instrument Serif",serif;font-size:3rem;line-height:1;color:var(--v);display:block;margin-bottom:8px}
+  .step h3{margin:0 0 4px;font-size:1.15rem;font-weight:700}
+  .step p{margin:0;color:var(--soft);font-weight:500}
+  .bronnen{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:22px 0 56px;color:var(--faint)}
+
+  /* chat */
+  .bar{border-bottom:1px solid var(--lines)}
+  .bar .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;padding-block:12px}
+  .chat{max-width:780px;margin:0 auto;padding:26px 0 48px;display:flex;flex-direction:column;gap:16px}
+  .q{align-self:flex-end;background:var(--v);color:#fff;border-radius:16px 16px 4px 16px;padding:13px 18px;font-weight:600;max-width:84%}
+  .a{background:var(--card);border:1px solid var(--line);border-radius:16px 16px 16px 4px;padding:20px 22px;box-shadow:var(--sm)}
+  .src{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;border-radius:6px;padding:3px 9px;margin-bottom:9px;background:var(--vt);color:var(--vd)}
+  .cite{margin:14px 0 2px;padding:12px 16px;background:#fff;border:1px solid var(--line);border-left:2px solid var(--v);border-radius:0 8px 8px 0}
+  .cite .f{display:block;font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--vd);margin-bottom:4px}
+  .cite q{font-family:"Instrument Serif",serif;font-style:italic;font-size:1.2rem;line-height:1.4;quotes:none}
+  .cite mark{background:none;font-weight:700;color:inherit;border-bottom:2px solid var(--v)}
+  .leg{display:flex;flex-wrap:wrap;gap:6px;align-items:center;color:var(--faint)}
+  .leg span.b{border-radius:6px;padding:2px 9px;font-family:"JetBrains Mono",monospace;font-weight:700;font-size:.66rem;letter-spacing:.07em;text-transform:uppercase}
+  .vv{display:flex;flex-wrap:wrap;gap:8px}
+  .cur{display:inline-block;width:8px;height:1.05em;background:var(--v);vertical-align:-2px;animation:b 1s steps(2) infinite}
+  @keyframes b{50%{opacity:0}}
+  footer{border-top:1px solid var(--line);padding:28px 0 44px;color:var(--faint);font-weight:600;font-size:.88rem}
+  footer .brandf{font-family:"Instrument Serif",serif;font-size:1.4rem;color:var(--ink);font-weight:400}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="tools"><div class="wrap">
+  <b>MOCKUP C</b>
+  <span id="t-scherm">Scherm <button data-v="start" aria-pressed="true">Start</button> <button data-v="chat" aria-pressed="false">Chat</button></span>
+  <button id="t-reset">↺ reset</button>
+  <span style="opacity:.8">Voorbeelddata — niet de echte app</span>
+</div></div>
+
+<nav><div class="wrap">
+  <div class="brand"><span class="glyph">§</span>De digitale gids</div>
+  <div class="nav-r"><a href="#" class="mono">Zo werkt het</a><a href="#" class="mono">Bronnen</a><a class="cta" href="#kies">Begin hier</a></div>
+</div></nav>
+
+<main id="scr-start"><div class="wrap">
+  <header class="hero"><div class="hero-grid">
+    <div>
+      <div class="over mono">De regels van je opleiding · de assistent</div>
+      <h1>Kies je opleiding.<br><em>Stel dan je vraag.</em><span class="small">Je studiegids antwoordt — mét de regel erbij.</span></h1>
+      <p class="lead">Zo weet de gids precies welke studiegids van jou is. Antwoord met bron, vindplaats én woordelijk citaat, zodat je het zelf kunt nazoeken.</p>
+
+      <section class="kies" id="kies" aria-labelledby="kt">
+        <div class="kop"><h2 id="kt">Welke studiegids is <em>van jou?</em></h2><span class="mono">Stap voor stap · tot 3 gidsen vergelijken</span></div>
+        <div class="prog" id="prog"><i></i><i></i><i></i><i></i></div>
+        <div class="velden" id="velden"></div>
+        <div class="samen" id="samen"></div>
+      </section>
+
+      <section class="composer locked" id="comp" aria-labelledby="ch">
+        <div class="top"><h2 id="ch">Stel je vraag</h2><span class="status mono" id="status"></span></div>
+        <form class="box" id="box" onsubmit="return false"><input id="inp" disabled aria-label="Je vraag"><button aria-label="Vraag stellen">→</button></form>
+        <div class="sug" id="sug"></div>
+      </section>
+    </div>
+    <div class="artifact" aria-hidden="true">
+      <div class="doc"><span class="stamp">STUDIEGIDS · COHORT ’25</span><h4>Je studiegids</h4><div class="meta">Hoofdstuk 4 — Studievoortgang</div>
+        <div class="l"></div><div class="l" style="width:90%"></div>
+        <p>De student ontvangt een <mark>bindend studieadvies indien minder dan 40 studiepunten zijn behaald</mark>.</p>
+        <div class="l" style="width:94%"></div></div>
+      <div class="fq"><span class="mono">Volgens de OER · art. 4.3</span>“…indien minder dan 40 studiepunten zijn behaald.”</div>
+    </div>
+  </div></header>
+
+
+  <div class="steps">
+    <div class="step"><span class="n">01</span><h3>Kies je studiegids</h3><p>School, opleiding, leerweg en cohort. De gids hoeft dus niet te raden.</p></div>
+    <div class="step"><span class="n">02</span><h3>Stel je vraag</h3><p>In gewone taal. Geen vaktermen of artikelnummers nodig.</p></div>
+    <div class="step"><span class="n">03</span><h3>Antwoord mét bewijs</h3><p>Bron, vindplaats en een woordelijk citaat bij elke claim.</p></div>
+  </div>
+  <div class="bronnen mono">Bronnen
+    <span class="b" style="background:var(--vt);color:var(--vd);border-radius:6px;padding:3px 9px">OER · leidend</span>
+    <span class="b" style="background:var(--markt);color:#6B4B00;border-radius:6px;padding:3px 9px">Kwalificatiedossier</span>
+    <span class="b" style="background:var(--okt);color:#0F4A2C;border-radius:6px;padding:3px 9px">Skills</span>
+    <span class="b" style="background:var(--deep);color:var(--ink);border-radius:6px;padding:3px 9px">Regelingen</span></div>
+</div></main>
+
+<main id="scr-chat" class="hide">
+  <div class="bar"><div class="wrap"><div class="samen" id="chat-gk" style="margin:0"></div><button class="link" id="nieuw">Nieuwe keuze</button></div></div>
+  <div class="wrap"><div class="chat">
+    <div class="leg mono">Bronnen
+      <span class="b" style="background:var(--vt);color:var(--vd)">OER</span><span class="b" style="background:var(--markt);color:#6B4B00">Kwalificatiedossier</span><span class="b" style="background:var(--okt);color:#0F4A2C">Skills</span><span class="b" style="background:var(--deep)">Regelingen</span></div>
+    <div class="q" id="cq"></div>
+    <div class="a" id="antw"></div>
+    <div class="vv" id="vv"></div>
+  </div></div>
+</main>
+
+<footer><div class="wrap"><span class="brandf">De digitale gids<span style="color:var(--v)">.</span></span><br>CEDA × Npuls · Studiesucces in het MBO · Antwoorden zijn indicatief — je studiegids blijft leidend. Mockup met voorbeelddata.</div></footer>
+
+<script src="_gids-data.js"></script>
+<script>
+const G = GIDS, $ = id => document.getElementById(id), reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let sel = G.nieuw(), gekozen = [], open = null, zoek = "", vraag = "";
+
+const unlocked = () => G.compleet(sel) || gekozen.length > 0;
+const nuIndex = () => [sel.school, sel.opl, sel.lw, sel.coh].findIndex(v => v === null);
+const vorig = i => [true, sel.school, sel.opl, sel.lw][i] !== null && [true, sel.school, sel.opl, sel.lw][i] !== undefined;
+
+function veld(i, titel, inhoud){
+  const klaar = [sel.school, sel.opl, sel.lw, sel.coh][i] !== null, nu = nuIndex() === i, uit = !klaar && !nu;
+  return `<div class="veld ${klaar ? "klaar" : ""} ${nu ? "nu" : ""} ${uit ? "uit" : ""}" data-v="${i}">
+    <div class="lab mono"><span class="num">${klaar ? "✓" : i + 1}</span>${titel}</div>${inhoud}</div>`;
+}
+function selectKnop(i, waarde, leeg){
+  const aan = vorig(i);
+  return `<button class="sel ${waarde === null ? "leeg" : ""}" data-open="${i}" ${aan ? "" : "disabled"} aria-haspopup="listbox" aria-expanded="${open === i}">
+    <span>${waarde === null ? leeg : waarde}</span><span aria-hidden="true">▾</span></button>`;
+}
+function render(){
+  const n = G.stappen(sel);
+  $("prog").querySelectorAll("i").forEach((d, i) => d.classList.toggle("on", i < n));
+  const lw = sel.opl ? G.leerwegen(sel.opl) : ["BOL", "BBL"], aanLw = sel.opl !== null;
+  const coh = sel.opl && sel.lw ? G.cohorten(sel.opl, sel.lw) : [];
+  $("velden").innerHTML =
+    veld(0, "Instelling", selectKnop(0, sel.school, "Kies je school")) +
+    veld(1, "Opleiding", selectKnop(1, sel.opl, "Kies je opleiding")) +
+    veld(2, "Leerweg", `<div class="seg" role="group" aria-label="Leerweg">${["BOL", "BBL"].map(l =>
+      `<button data-lw="${l}" aria-pressed="${sel.lw === l}" ${aanLw && lw.includes(l) ? "" : "disabled"}>${l}<small>${l === "BOL" ? "op school" : "werkend"}</small></button>`).join("")}</div>` +
+      (sel.auto.lw ? `<div class="auto">✓ automatisch gekozen</div>` : "")) +
+    veld(3, "Cohort", `<div class="chips" role="group" aria-label="Cohort">${(coh.length ? coh : ["2023", "2024", "2025"]).map(c =>
+      `<button class="cy" data-coh="${c}" aria-pressed="${sel.coh === Number(c)}" ${coh.length ? "" : "disabled"}>${c}</button>`).join("")}</div>` +
+      (sel.auto.coh ? `<div class="auto">✓ automatisch gekozen</div>` : ""));
+  if (open !== null) menuTekenen();
+
+  const nieuwLabel = G.compleet(sel) && !gekozen.includes(G.label(sel)) ? G.label(sel) : null;
+  $("samen").innerHTML = gekozen.length || nieuwLabel ? `<span class="t mono">Gekozen</span>` +
+    gekozen.map((g, i) => `<span class="gk">${g}<button data-x="${i}" aria-label="Verwijder ${g}">×</button></span>`).join("") +
+    (nieuwLabel ? `<span class="gk nieuw">${nieuwLabel}</span>` : "") +
+    (nieuwLabel && gekozen.length < 2 ? `<button class="link" id="erbij">+ vergelijk met een andere</button>` : "") : "";
+
+  const ok = unlocked(), c = $("comp"), aantal = gekozen.length + (nieuwLabel ? 1 : 0);
+  c.className = "composer " + (ok ? "open" : "locked");
+  $("status").textContent = ok ? (aantal > 1 ? `✓ aan ${aantal} studiegidsen` : "✓ klaar om te vragen") : `🔒 kies eerst je opleiding · ${n} van 4`;
+  $("inp").disabled = !ok;
+  $("inp").placeholder = ok ? `Stel je vraag over ${sel.opl || "je opleiding"}…` : "Beschikbaar zodra je opleiding gekozen is";
+  $("sug").innerHTML = ok ? G.SUGGESTIES.map(t => `<button type="button">${t}</button>`).join("") : "";
+}
+
+function menuTekenen(){
+  const host = $("velden").querySelector(`.veld[data-v="${open}"]`); if (!host) return;
+  const lijst = open === 0 ? G.SCHOLEN.map(n => [n, ""]) : G.opleidingen(sel.school).map(n => [n, G.leerwegen(n).join(" · ")]);
+  const items = q => lijst.filter(([t]) => t.toLowerCase().includes(q.toLowerCase()))
+    .map(([t, x]) => `<li><button data-pick="${t}">${t}<small>${x}</small></button></li>`).join("") || `<li style="padding:9px 10px;font-weight:600;color:var(--muted)">Niets gevonden</li>`;
+  host.insertAdjacentHTML("beforeend", `<div class="menu" role="listbox"><input placeholder="Zoeken…" value="${zoek}" aria-label="Zoeken"><ul>${items(zoek)}</ul></div>`);
+  const inp = host.querySelector(".menu input"); inp.focus(); inp.setSelectionRange(zoek.length, zoek.length);
+  inp.oninput = () => { zoek = inp.value; host.querySelector("ul").innerHTML = items(zoek); };
+}
+function sluit(){ open = null; zoek = ""; render(); }
+
+$("velden").onclick = e => {
+  const o = e.target.closest("[data-open]"), p = e.target.closest("[data-pick]"), l = e.target.closest("[data-lw]"), c = e.target.closest("[data-coh]");
+  if (p) { (open === 0 ? G.zetSchool : G.zetOpl)(sel, p.dataset.pick); open = null; zoek = ""; render(); return; }
+  if (o && !o.disabled) { const i = +o.dataset.open; open = open === i ? null : i; zoek = ""; render(); return; }
+  if (l && !l.disabled) { G.zetLw(sel, l.dataset.lw); render(); return; }
+  if (c && !c.disabled) { G.zetCoh(sel, Number(c.dataset.coh)); render(); if (G.compleet(sel)) $("inp").focus(); }
+};
+document.addEventListener("click", e => { if (open !== null && !e.target.closest(".veld")) sluit(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && open !== null) sluit(); });
+$("samen").onclick = e => {
+  const x = e.target.closest("[data-x]"); if (x) { gekozen.splice(+x.dataset.x, 1); render(); return; }
+  if (e.target.closest("#erbij")) { gekozen.push(G.label(sel)); sel = G.nieuw(); render(); }
+};
+$("sug").onclick = e => { const b = e.target.closest("button"); if (b) { $("inp").value = b.textContent; $("inp").focus(); } };
+$("box").onsubmit = e => { e.preventDefault(); vraag = $("inp").value.trim() || G.ANTWOORD.vraag; toonChat(); };
+
+/* chat */
+let timer;
+function toonChat(){
+  const lab = gekozen.slice(); if (G.compleet(sel) && !lab.includes(G.label(sel))) lab.push(G.label(sel));
+  if (!lab.length) lab.push("Da Vinci College · Verzorgende IG · BOL 2025");
+  $("chat-gk").innerHTML = lab.map(l => `<span class="gk">${l}</span>`).join("");
+  $("cq").textContent = vraag || G.ANTWOORD.vraag; zetScherm("chat"); speel();
+}
+function speel(){
+  clearTimeout(timer); const A = G.ANTWOORD, a = $("antw"); $("vv").innerHTML = "";
+  const klaar = () => { a.innerHTML = `<span class="src">Volgens de OER</span><br>${A.tekst}<div class="cite"><span class="f">${A.vindplaats}</span><q>${A.citaat}</q></div>`;
+    $("vv").innerHTML = A.vervolg.map(t => `<button>${t}</button>`).join(""); };
+  if (reduce) return klaar();
+  const w = A.tekst.split(" "); let i = 0;
+  a.innerHTML = `<span class="src">Volgens de OER</span><br><span id="stroom"></span><span class="cur"></span>`;
+  (function s(){ $("stroom").textContent = w.slice(0, ++i).join(" "); timer = setTimeout(i < w.length ? s : klaar, i < w.length ? 40 : 250); })();
+}
+function zetScherm(v){
+  $("scr-start").classList.toggle("hide", v !== "start"); $("scr-chat").classList.toggle("hide", v !== "chat");
+  $("t-scherm").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.v === v)); scrollTo(0, 0);
+}
+$("t-scherm").onclick = e => { const b = e.target.closest("button"); if (b) b.dataset.v === "chat" ? toonChat() : zetScherm("start"); };
+const reset = () => { sel = G.nieuw(); gekozen = []; vraag = ""; $("inp").value = ""; open = null; render(); zetScherm("start"); };
+$("t-reset").onclick = reset; $("nieuw").onclick = reset;
+render();
+</script>
+</body>
+</html>
