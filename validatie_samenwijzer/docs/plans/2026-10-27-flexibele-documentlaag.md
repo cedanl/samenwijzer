@@ -137,6 +137,8 @@ Alternatief: automatisch `publiek` na redactie, met de antwoordregel als enig va
 | D6 | "Leeg = alle" als `''` per veld (crebo/leerweg/cohort) | SQLite-UNIQUE behandelt NULL's als ongelijk |
 | D7 | KD-versies via expliciet manifest op cohort | datums kloppen niet altijd met cohortgebruik (KW1C 25122: KD 2016 voor cohort 2025) |
 | D8 | Manifest per instelling wint van de bestandsnaam | bestandsnamen kloppen niet altijd (NML 27054, Curio-"Examenregelement") |
+| D9 | Studentenstatuut, BSA-regeling, klachtenregeling, gedragscode en algemene informatie zijn `publiek` (2026-10-27); alleen `begeleidingsbeleid` blijft `ingelogd`. Bestaande rijen worden door `init_db` gelijkgetrokken | openbare documenten op de schoolsites; zonder ze in de publieke chat zocht het model op het web en toonde het de webwaarschuwing boven informatie uit het statuut (kluisjes-casus) |
+| D10 | Antwoorden uit een schooldocument (niet de OER) krijgen een eigen ℹ️-banner; de ⚠️-webwaarschuwing alleen bij informatie die écht van de website komt; webzoek is laatste redmiddel na álle documenten | gebruiker moet in één oogopslag zien: website vs. door de instelling vastgesteld materiaal |
 
 ## Fasering (elk een eigen PR, elk met spec-criteria, lokale test en UI-smoke)
 0. **`.dockerignore`-fix (los en eerst):** `Dockerfile.fastapi` doet `COPY oeren/`; `oeren/*/_bronmateriaal/`

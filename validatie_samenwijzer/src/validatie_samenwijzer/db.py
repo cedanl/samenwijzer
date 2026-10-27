@@ -29,15 +29,14 @@ SOORTEN: dict[str, SoortInfo] = {
     "begeleidingsbeleid": SoortInfo(
         "Begeleidings- en welzijnsbeleid", "instelling", False, "ingelogd"
     ),
-    # Deze bestaande soorten waren nooit publiek en zijn niet op persoonsgegevens gecontroleerd:
-    # `ingelogd` (nu: niet in de publieke chat) tot ze na review op `publiek` worden gezet.
-    "studentenstatuut": SoortInfo("Studentenstatuut", "instelling", True, "ingelogd"),
-    "bindend_studieadvies": SoortInfo(
-        "Regeling bindend studieadvies", "instelling", True, "ingelogd"
-    ),
-    "klachtenregeling": SoortInfo("Klachtenregeling", "instelling", True, "ingelogd"),
-    "gedragscode": SoortInfo("Gedragscode", "instelling", True, "ingelogd"),
-    "algemene_informatie": SoortInfo("Algemene informatie", "instelling", False, "ingelogd"),
+    # Openbare schooldocumenten (staan op de websites van de instellingen): publiek, zodat de
+    # publieke chat — de hoofdingang — ze als bron heeft (besluit D2; vrijgegeven 2026-10-27,
+    # zie _VRIJGEGEVEN_SOORTEN voor de migratie van bestaande rijen).
+    "studentenstatuut": SoortInfo("Studentenstatuut", "instelling", True),
+    "bindend_studieadvies": SoortInfo("Regeling bindend studieadvies", "instelling", True),
+    "klachtenregeling": SoortInfo("Klachtenregeling", "instelling", True),
+    "gedragscode": SoortInfo("Gedragscode", "instelling", True),
+    "algemene_informatie": SoortInfo("Algemene informatie", "instelling", False),
     "privacyreglement": SoortInfo("Privacyreglement", "instelling", True),
     "pestprotocol": SoortInfo("Pestprotocol", "instelling", False),
     "meldcode": SoortInfo("Meldcode huiselijk geweld en kindermishandeling", "instelling", True),
@@ -58,6 +57,17 @@ SOORTEN: dict[str, SoortInfo] = {
 
 # Instellingsbrede soorten → label (compat voor bestaande consumenten, o.a. de beheer-status).
 INSTELLING_SOORTEN = {k: v.label for k, v in SOORTEN.items() if v.bereik == "instelling"}
+
+# Soorten die op 2026-10-27 van `ingelogd` naar `publiek` zijn gezet. Bestaande rijen dragen
+# de oude registerwaarde nog; init_db trekt ze gelijk (idempotent). `begeleidingsbeleid`
+# blijft bewust `ingelogd` (mentor-/welzijnsbeleid).
+_VRIJGEGEVEN_SOORTEN = (
+    "studentenstatuut",
+    "bindend_studieadvies",
+    "klachtenregeling",
+    "gedragscode",
+    "algemene_informatie",
+)
 
 
 def _kolom_bestaat(conn: sqlite3.Connection, tabel: str, kolom: str) -> bool:
@@ -203,6 +213,14 @@ def init_db(conn: sqlite3.Connection) -> None:
             conn.execute(f"ALTER TABLE {tabel} ADD COLUMN content_hash TEXT")
     conn.commit()
     _migreer_instelling_documenten(conn)
+    # Vrijgegeven soorten: bestaande `ingelogd`-rijen volgen het register (_VRIJGEGEVEN_SOORTEN).
+    plekken = ", ".join("?" * len(_VRIJGEGEVEN_SOORTEN))
+    conn.execute(
+        f"UPDATE documenten SET zichtbaarheid = 'publiek' "
+        f"WHERE zichtbaarheid = 'ingelogd' AND soort IN ({plekken})",
+        _VRIJGEGEVEN_SOORTEN,
+    )
+    conn.commit()
 
 
 def get_connection(db_path: Path, timeout: float = 30.0) -> sqlite3.Connection:
