@@ -227,7 +227,7 @@ def _reset_database(conn: sqlite3.Connection) -> None:
     conn.execute(
         "DELETE FROM instellingen "
         "WHERE id NOT IN (SELECT instelling_id FROM oer_documenten) "
-        "  AND id NOT IN (SELECT instelling_id FROM instelling_documenten)"
+        "  AND id NOT IN (SELECT instelling_id FROM documenten)"
     )
     conn.commit()
 

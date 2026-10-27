@@ -16,12 +16,9 @@ from validatie_samenwijzer.db import (
     get_student_by_id,
     get_student_by_studentnummer,
     get_studenten_by_mentor_id,
-    haal_instelling_document_op,
     init_db,
     markeer_geindexeerd,
-    markeer_instelling_document_geindexeerd,
     update_oer_bestandspad,
-    voeg_instelling_document_toe,
     voeg_instelling_toe,
     voeg_kerntaak_toe,
     voeg_mentor_toe,
@@ -52,6 +49,7 @@ def test_init_db_maakt_tabellen_aan(conn):
         "studenten",
         "student_kerntaak_scores",
         "instelling_documenten",
+        "documenten",
     } <= tabellen
 
 
@@ -83,75 +81,6 @@ def test_oer_document_crud(conn):
     assert oer2["geindexeerd"] == 1
 
 
-def test_instelling_document_crud(conn):
-    voeg_instelling_toe(conn, "rijn_ijssel", "Rijn IJssel")
-    inst = get_instelling_by_naam(conn, "rijn_ijssel")
-    doc_id = voeg_instelling_document_toe(
-        conn,
-        instelling_id=inst["id"],
-        soort="examenreglement",
-        titel="Examenreglement mbo Rijn IJssel 2025",
-        bestandspad="oeren/rijn_ijssel_oer/_instelling/examenreglement.pdf",
-    )
-    doc = haal_instelling_document_op(conn, inst["id"], "examenreglement")
-    assert doc["id"] == doc_id
-    assert doc["titel"] == "Examenreglement mbo Rijn IJssel 2025"
-    assert doc["geindexeerd"] == 0
-    markeer_instelling_document_geindexeerd(conn, doc_id)
-    assert haal_instelling_document_op(conn, inst["id"], "examenreglement")["geindexeerd"] == 1
-    # onbekende combinatie → None
-    assert haal_instelling_document_op(conn, inst["id"], "begeleidingsbeleid") is None
-
-
-def test_instelling_document_upsert_per_instelling_en_soort(conn):
-    """Eén document per (instelling, soort); een nieuw pad reset geindexeerd, gelijk pad niet."""
-    voeg_instelling_toe(conn, "rijn_ijssel", "Rijn IJssel")
-    inst = get_instelling_by_naam(conn, "rijn_ijssel")
-    eerste = voeg_instelling_document_toe(
-        conn, inst["id"], "examenreglement", "v2025", "oeren/ri/_instelling/reglement_2025.pdf"
-    )
-    markeer_instelling_document_geindexeerd(conn, eerste)
-
-    # Zelfde pad opnieuw toevoegen → zelfde rij, geindexeerd blijft behouden.
-    zelfde = voeg_instelling_document_toe(
-        conn, inst["id"], "examenreglement", "v2025", "oeren/ri/_instelling/reglement_2025.pdf"
-    )
-    assert zelfde == eerste
-    assert haal_instelling_document_op(conn, inst["id"], "examenreglement")["geindexeerd"] == 1
-
-    # Nieuw pad (jaarlijkse herziening) → zelfde rij, maar geindexeerd terug naar 0.
-    vernieuwd = voeg_instelling_document_toe(
-        conn, inst["id"], "examenreglement", "v2026", "oeren/ri/_instelling/reglement_2026.pdf"
-    )
-    assert vernieuwd == eerste
-    doc = haal_instelling_document_op(conn, inst["id"], "examenreglement")
-    assert doc["titel"] == "v2026"
-    assert doc["bestandspad"] == "oeren/ri/_instelling/reglement_2026.pdf"
-    assert doc["geindexeerd"] == 0
-    # Nog steeds precies één rij voor deze (instelling, soort).
-    n = conn.execute(
-        "SELECT COUNT(*) FROM instelling_documenten WHERE instelling_id = ? AND soort = ?",
-        (inst["id"], "examenreglement"),
-    ).fetchone()[0]
-    assert n == 1
-
-
-def test_instelling_document_onbekende_soort_raises(conn):
-    voeg_instelling_toe(conn, "rijn_ijssel", "Rijn IJssel")
-    inst = get_instelling_by_naam(conn, "rijn_ijssel")
-    with pytest.raises(ValueError, match="Onbekende instellingsbrede soort"):
-        voeg_instelling_document_toe(conn, inst["id"], "willekeurig", "x", "y.pdf")
-
-
-def test_instelling_document_nieuwe_soort_studentenstatuut(conn):
-    """De uitbreidbare soort-set accepteert studentenstatuut + algemene_informatie."""
-    voeg_instelling_toe(conn, "davinci", "Da Vinci College")
-    inst = get_instelling_by_naam(conn, "davinci")
-    for soort in ("studentenstatuut", "algemene_informatie"):
-        doc_id = voeg_instelling_document_toe(conn, inst["id"], soort, "t", f"{soort}.pdf")
-        assert haal_instelling_document_op(conn, inst["id"], soort)["id"] == doc_id
-
-
 def test_init_db_migreert_oude_check_tabel(conn):
     """Een instelling_documenten-tabel met de oude CHECK wordt herbouwd zonder CHECK."""
     conn.execute("DROP TABLE instelling_documenten")
@@ -170,8 +99,19 @@ def test_init_db_migreert_oude_check_tabel(conn):
     voeg_instelling_toe(conn, "davinci", "Da Vinci College")
     inst = get_instelling_by_naam(conn, "davinci")
     # Een soort die de oude CHECK zou weigeren, moet nu werken.
-    voeg_instelling_document_toe(conn, inst["id"], "studentenstatuut", "t", "s.pdf")
-    assert haal_instelling_document_op(conn, inst["id"], "studentenstatuut") is not None
+    conn.execute(
+        "INSERT INTO instelling_documenten (instelling_id, soort, titel, bestandspad)"
+        " VALUES (?, 'studentenstatuut', 't', 's.pdf')",
+        (inst["id"],),
+    )
+    conn.commit()
+    init_db(conn)  # migratie neemt de rij over
+    assert (
+        conn.execute("SELECT COUNT(*) FROM documenten WHERE soort = 'studentenstatuut'").fetchone()[
+            0
+        ]
+        == 1
+    )
 
 
 def test_oer_document_gescheiden_per_instelling(conn):
@@ -480,3 +420,227 @@ def test_student_kerntaak_score(conn):
     assert len(scores) == 1
     assert scores[0]["score"] == pytest.approx(72.5)
     assert scores[0]["naam"] == "Zorg"
+
+
+# ── Soortenregister ───────────────────────────────────────────────────────────
+
+
+def test_soorten_bevat_bestaande_en_nieuwe_soorten():
+    from validatie_samenwijzer.db import SOORTEN
+
+    bestaand = {
+        "examenreglement", "begeleidingsbeleid", "studentenstatuut", "bindend_studieadvies",
+        "klachtenregeling", "gedragscode", "algemene_informatie", "privacyreglement",
+        "pestprotocol", "meldcode", "ict_reglement", "gedragsregeling",
+    }  # fmt: skip
+    nieuw = {
+        "examenplan", "nominale_lijn", "studiegids", "onderwijsplan", "praktijkovereenkomst",
+        "schoolkosten", "veiligheidsplan", "protocol", "keuzedelen", "studiekeuzegids", "overig",
+    }  # fmt: skip
+    assert (bestaand | nieuw) <= set(SOORTEN)
+
+
+def test_examenplan_is_opleidingsgebonden_en_examenreglement_instellingsbreed():
+    from validatie_samenwijzer.db import SOORTEN
+
+    assert SOORTEN["examenplan"].bereik == "opleiding"
+    assert SOORTEN["nominale_lijn"].bereik == "opleiding"
+    assert SOORTEN["examenreglement"].bereik == "instelling"
+    assert SOORTEN["examenreglement"].juridisch is True
+    assert SOORTEN["schoolkosten"].juridisch is False
+
+
+def test_begeleidingsbeleid_blijft_alleen_ingelogd_zichtbaar():
+    from validatie_samenwijzer.db import SOORTEN
+
+    assert SOORTEN["begeleidingsbeleid"].zichtbaarheid == "ingelogd"
+    assert SOORTEN["examenreglement"].zichtbaarheid == "publiek"
+
+
+def test_instelling_soorten_blijft_label_mapping_voor_instellingsbrede_soorten():
+    from validatie_samenwijzer.db import INSTELLING_SOORTEN, SOORTEN
+
+    assert INSTELLING_SOORTEN["examenreglement"] == "Examenreglement"
+    assert "examenplan" not in INSTELLING_SOORTEN  # opleidingsgebonden
+    assert set(INSTELLING_SOORTEN) == {k for k, v in SOORTEN.items() if v.bereik == "instelling"}
+
+
+# ── Documenten (opvolger van instelling_documenten) ───────────────────────────
+
+
+def _inst(conn, naam="curio", display="Curio"):
+    voeg_instelling_toe(conn, naam, display)
+    return get_instelling_by_naam(conn, naam)["id"]
+
+
+def test_meerdere_documenten_zelfde_soort(conn):
+    from validatie_samenwijzer.db import voeg_document_toe
+
+    inst = _inst(conn)
+    a = voeg_document_toe(conn, inst, "protocol", "Kluiscontrole", "a.md")
+    b = voeg_document_toe(conn, inst, "protocol", "Pestprotocol KW", "b.md")
+    assert a != b
+    n = conn.execute("SELECT COUNT(*) FROM documenten WHERE soort = 'protocol'").fetchone()[0]
+    assert n == 2
+
+
+def test_zelfde_sleutel_twee_keer_geeft_een_rij_en_werkt_titel_bij(conn):
+    from validatie_samenwijzer.db import voeg_document_toe
+
+    inst = _inst(conn)
+    eerste = voeg_document_toe(conn, inst, "examenplan", "oud", "x.md", crebo="25168", cohort="")
+    tweede = voeg_document_toe(conn, inst, "examenplan", "nieuw", "x.md", crebo="25168", cohort="")
+    assert eerste == tweede
+    rij = conn.execute("SELECT titel, cohort FROM documenten WHERE id = ?", (eerste,)).fetchone()
+    assert (rij["titel"], rij["cohort"]) == ("nieuw", "")  # lege string = alle cohorten
+
+
+def test_bereik_en_zichtbaarheid_default_uit_register(conn):
+    from validatie_samenwijzer.db import voeg_document_toe
+
+    inst = _inst(conn)
+    plan = voeg_document_toe(conn, inst, "examenplan", "t", "p.md", crebo="25168")
+    beleid = voeg_document_toe(conn, inst, "begeleidingsbeleid", "t", "b.md")
+    rij = conn.execute("SELECT bereik, zichtbaarheid FROM documenten WHERE id = ?", (plan,))
+    assert tuple(rij.fetchone()) == ("opleiding", "publiek")
+    rij = conn.execute("SELECT bereik, zichtbaarheid FROM documenten WHERE id = ?", (beleid,))
+    assert tuple(rij.fetchone()) == ("instelling", "ingelogd")
+
+
+def test_nieuw_document_is_standaard_ongereviewd_en_normaal(conn):
+    from validatie_samenwijzer.db import voeg_document_toe
+
+    inst = _inst(conn)
+    doc = voeg_document_toe(conn, inst, "protocol", "t", "p.md")
+    rij = conn.execute("SELECT gereviewd, gevoeligheid FROM documenten WHERE id = ?", (doc,))
+    assert tuple(rij.fetchone()) == (0, "normaal")
+
+
+def test_onbekende_soort_of_bereik_geeft_valueerror(conn):
+    from validatie_samenwijzer.db import voeg_document_toe
+
+    inst = _inst(conn)
+    with pytest.raises(ValueError, match="Onbekende documentsoort"):
+        voeg_document_toe(conn, inst, "willekeurig", "t", "x.md")
+    with pytest.raises(ValueError, match="bereik"):
+        voeg_document_toe(conn, inst, "protocol", "t", "x.md", bereik="overal")
+
+
+def test_migratie_neemt_instelling_documenten_over():
+    """Bestaande rijen uit de oude tabel komen in `documenten`: instellingsbreed, gereviewd."""
+    c = sqlite3.connect(":memory:")
+    c.row_factory = sqlite3.Row
+    init_db(c)
+    voeg_instelling_toe(c, "curio", "Curio")
+    inst = get_instelling_by_naam(c, "curio")["id"]
+    c.execute(
+        "INSERT INTO instelling_documenten (instelling_id, soort, titel, bestandspad, geindexeerd)"
+        " VALUES (?, 'examenreglement', 'Examenreglement Curio', 'e.pdf', 1),"
+        " (?, 'begeleidingsbeleid', 'Beleid', 'b.pdf', 0)",
+        (inst, inst),
+    )
+    c.commit()
+    init_db(c)  # tweede init: migratie draait opnieuw en is idempotent
+    init_db(c)
+    rijen = c.execute(
+        "SELECT soort, bereik, gereviewd, geindexeerd, zichtbaarheid FROM documenten ORDER BY soort"
+    ).fetchall()
+    assert [tuple(r) for r in rijen] == [
+        ("begeleidingsbeleid", "instelling", 1, 0, "ingelogd"),
+        ("examenreglement", "instelling", 1, 1, "publiek"),
+    ]
+    c.close()
+
+
+def test_documenten_heeft_content_hash_kolom(conn):
+    assert "content_hash" in {r[1] for r in conn.execute("PRAGMA table_info(documenten)")}
+
+
+def test_markeer_en_hash_voor_document(conn):
+    from validatie_samenwijzer.db import (
+        markeer_document_geindexeerd,
+        set_document_content_hash,
+        voeg_document_toe,
+    )
+
+    inst = _inst(conn)
+    doc = voeg_document_toe(conn, inst, "protocol", "t", "p.md")
+    markeer_document_geindexeerd(conn, doc)
+    set_document_content_hash(conn, doc, "abc123")
+    rij = conn.execute("SELECT geindexeerd, content_hash FROM documenten WHERE id = ?", (doc,))
+    assert tuple(rij.fetchone()) == (1, "abc123")
+
+
+def _toon(conn, inst, **kw):
+    from validatie_samenwijzer.db import get_documenten_voor_context
+
+    argumenten = {"crebo": "25168", "leerweg": "BOL", "cohort": "2025", "niveau": "publiek"}
+    argumenten.update(kw)
+    return [r["titel"] for r in get_documenten_voor_context(conn, inst, **argumenten)]
+
+
+def _gereed(conn, inst, soort, titel, pad, **kw):
+    """Voeg een document toe dat geïndexeerd én gereviewd is (zoals na ingest + review)."""
+    from validatie_samenwijzer.db import (
+        markeer_document_geindexeerd,
+        voeg_document_toe,
+    )
+
+    doc = voeg_document_toe(conn, inst, soort, titel, pad, gereviewd=True, **kw)
+    markeer_document_geindexeerd(conn, doc)
+    return doc
+
+
+def test_context_instellingsbreed_en_opleidingsgebonden_matchen(conn):
+    inst = _inst(conn)
+    _gereed(conn, inst, "examenreglement", "Reglement", "r.md")
+    _gereed(conn, inst, "examenplan", "Plan 25168", "p1.md", crebo="25168", cohort="2025")
+    _gereed(conn, inst, "examenplan", "Plan 99999", "p2.md", crebo="99999", cohort="2025")
+    _gereed(
+        conn, inst, "examenplan", "Plan 25168 cohort 2024", "p3.md", crebo="25168", cohort="2024"
+    )
+    assert set(_toon(conn, inst)) == {"Reglement", "Plan 25168"}
+
+
+def test_context_lege_string_matcht_alle_cohorten_en_leerwegen(conn):
+    inst = _inst(conn)
+    _gereed(conn, inst, "nominale_lijn", "NML alle", "n.md", crebo="25168")
+    assert _toon(conn, inst, cohort="2023", leerweg="BBL") == ["NML alle"]
+    assert _toon(conn, inst, crebo="11111") == []
+
+
+def test_context_sluit_ongereviewd_ongeindexeerd_en_uitgesloten_uit(conn):
+    from validatie_samenwijzer.db import voeg_document_toe
+
+    inst = _inst(conn)
+    voeg_document_toe(conn, inst, "protocol", "ongereviewd", "a.md")  # gereviewd=0
+    voeg_document_toe(conn, inst, "protocol", "ongeindexeerd", "b.md", gereviewd=True)
+    uit = _gereed(conn, inst, "protocol", "uitgesloten", "c.md")
+    conn.execute("UPDATE documenten SET gevoeligheid = 'uitgesloten' WHERE id = ?", (uit,))
+    conn.commit()
+    _gereed(conn, inst, "protocol", "ok", "d.md")
+    assert _toon(conn, inst) == ["ok"]
+
+
+def test_context_niveau_bepaalt_zichtbaarheid(conn):
+    inst = _inst(conn)
+    _gereed(conn, inst, "examenreglement", "publiek-doc", "a.md")
+    _gereed(conn, inst, "begeleidingsbeleid", "ingelogd-doc", "b.md")
+    _gereed(conn, inst, "protocol", "intern-doc", "c.md", zichtbaarheid="intern")
+    assert _toon(conn, inst, niveau="publiek") == ["publiek-doc"]
+    assert set(_toon(conn, inst, niveau="student")) == {"publiek-doc", "ingelogd-doc"}
+    assert set(_toon(conn, inst, niveau="mentor")) == {"publiek-doc", "ingelogd-doc"}
+
+
+def test_context_onbekend_niveau_geeft_valueerror(conn):
+    inst = _inst(conn)
+    with pytest.raises(ValueError, match="niveau"):
+        _toon(conn, inst, niveau="admin")
+
+
+def test_context_documenten_van_andere_instelling_tellen_niet(conn):
+    a = _inst(conn, "curio", "Curio")
+    b = _inst(conn, "deltion", "Deltion")
+    _gereed(conn, a, "examenreglement", "van-a", "a.md")
+    _gereed(conn, b, "examenreglement", "van-b", "b.md")
+    assert _toon(conn, a) == ["van-a"]

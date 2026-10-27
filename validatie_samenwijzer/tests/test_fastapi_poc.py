@@ -10,6 +10,7 @@ import pytest
 from dotenv import load_dotenv
 
 from app_fastapi.context import laad_context
+from validatie_samenwijzer.documenten import Selectie
 
 load_dotenv()  # OEREN_PAD=../oeren etc. — zoals de app bij opstart doet
 _WW = os.environ.get("ALGEMEEN_WACHTWOORD", "")
@@ -52,15 +53,13 @@ def test_laad_context_geeft_systeem_en_label():
     assert isinstance(domeinen, list)
 
 
-def test_laad_context_student_soorten_minstens_zo_breed():
-    """Meer instelling-soorten (student) → minstens zoveel context als publiek (examenreglement)."""
-    from app_fastapi.context import STUDENT_SOORTEN
-
+def test_laad_context_student_niveau_minstens_zo_breed():
+    """Student-niveau ziet minstens zoveel documenten als publiek."""
     oer_id = _leesbare_oer_id()
     if oer_id is None:
         pytest.skip("Geen geïndexeerde OER met leesbare tekst beschikbaar.")
     publiek, _, _, _ = laad_context([oer_id])
-    student, _, _, _ = laad_context([oer_id], STUDENT_SOORTEN)
+    student, _, _, _ = laad_context([oer_id], "student")
     assert len(student) >= len(publiek)
 
 
@@ -91,7 +90,7 @@ def test_laad_context_onleesbare_oer_via_kd(monkeypatch):
     monkeypatch.setattr(ctx, "_oer_blok", lambda oid: (fake_row, ""))
     monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c: "KD-INHOUD")
     monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
-    monkeypatch.setattr(ctx.db, "haal_instelling_document_op", lambda *a, **k: None)
+    monkeypatch.setattr(ctx, "selecteer_documenten", lambda *a, **k: Selectie({}, []))
     monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
 
     systeem, labels, domeinen, onleesbaar = laad_context([1])
@@ -117,7 +116,7 @@ def test_laad_context_leesbare_oer_niet_onleesbaar(monkeypatch):
     monkeypatch.setattr(ctx, "_oer_blok", lambda oid: (fake_row, "ECHTE OER-TEKST"))
     monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c: "")
     monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
-    monkeypatch.setattr(ctx.db, "haal_instelling_document_op", lambda *a, **k: None)
+    monkeypatch.setattr(ctx, "selecteer_documenten", lambda *a, **k: Selectie({}, []))
     monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
 
     systeem, labels, domeinen, onleesbaar = laad_context([1])
@@ -400,30 +399,34 @@ def test_api_kies_laadt_meerdere_studiegidsen_naast_elkaar():
     assert len(body["labels"]) == 2, "elke gekozen studiegids hoort een eigen label te krijgen"
 
 
-def test_elke_instelling_soort_is_bereikbaar_in_een_context():
-    """Guard: elke geïndexeerde instelling-soort moet in minstens één context-tuple zitten.
-
-    Anders is een geïndexeerde bron (zoals gedragscode) onzichtbaar als document-fallback.
-    """
-    from app_fastapi.context import MENTOR_SOORTEN, PUBLIEK_SOORTEN, STUDENT_SOORTEN
+def test_elke_soort_is_zichtbaar_voor_minstens_een_niveau():
+    """Guard: een soort moet in minstens één chat-niveau voorkomen, anders is een geïndexeerde
+    bron (zoals gedragscode) onzichtbaar als document-fallback."""
     from validatie_samenwijzer import db
 
-    bereikbaar = set(PUBLIEK_SOORTEN) | set(STUDENT_SOORTEN) | set(MENTOR_SOORTEN)
-    onbereikbaar = set(db.INSTELLING_SOORTEN) - bereikbaar
-    assert not onbereikbaar, f"Soorten zonder context-tuple (onzichtbaar): {sorted(onbereikbaar)}"
+    zichtbaar = {
+        z
+        for niveau in ("publiek", "student", "mentor")
+        for z in db.zichtbaarheden_voor_niveau(niveau)
+    }
+    onzichtbaar = {k for k, v in db.SOORTEN.items() if v.zichtbaarheid not in zichtbaar}
+    assert not onzichtbaar, f"Soorten die nergens zichtbaar zijn: {sorted(onzichtbaar)}"
 
 
-def test_generieke_regelingen_zitten_in_elke_context():
+def test_generieke_regelingen_zijn_publiek_zichtbaar():
     """Generieke regelingen zijn een concept voor alle instellingen, ook in de publieke route."""
-    from app_fastapi.context import (
-        GENERIEKE_REGELINGEN,
-        MENTOR_SOORTEN,
-        PUBLIEK_SOORTEN,
-        STUDENT_SOORTEN,
-    )
+    from validatie_samenwijzer import db
 
-    for context in (PUBLIEK_SOORTEN, STUDENT_SOORTEN, MENTOR_SOORTEN):
-        assert set(GENERIEKE_REGELINGEN) <= set(context)
+    for soort in (
+        "privacyreglement",
+        "pestprotocol",
+        "meldcode",
+        "ict_reglement",
+        "gedragsregeling",
+    ):
+        assert soort in db.zichtbaarheden_voor_niveau("publiek") or (
+            db.SOORTEN[soort].zichtbaarheid in db.zichtbaarheden_voor_niveau("publiek")
+        )
 
 
 def test_chat_toegewezen_maar_onleesbare_oer_geeft_lage_relevantie(monkeypatch):
@@ -434,7 +437,7 @@ def test_chat_toegewezen_maar_onleesbare_oer_geeft_lage_relevantie(monkeypatch):
     from validatie_samenwijzer.chat import LAGE_RELEVANTIE_BERICHT
 
     # laad_context geeft 'geen bruikbare bron' terug; ai_client mag niet aangeroepen worden.
-    monkeypatch.setattr(m, "laad_context", lambda ids, *a, **k: ("", [], [], False))
+    monkeypatch.setattr(m, "laad_context_met_melding", lambda ids, *a, **k: ("", [], [], False, ""))
     monkeypatch.setattr(
         m, "ai_client", lambda: (_ for _ in ()).throw(AssertionError("AI niet aanroepen"))
     )
@@ -458,7 +461,9 @@ def test_chat_logt_timing_zonder_vraagtekst(monkeypatch, caplog):
     import app_fastapi.main as m
 
     monkeypatch.setattr(
-        m, "laad_context", lambda ids, *a, **k: ("SYSTEEMPROMPT", ["label"], [], False)
+        m,
+        "laad_context_met_melding",
+        lambda ids, *a, **k: ("SYSTEEMPROMPT", ["label"], [], False, ""),
     )
     monkeypatch.setattr(m, "genereer_antwoord", lambda *a, **k: iter(["Hallo ", "wereld"]))
     c = _client()
@@ -660,3 +665,87 @@ def test_api_chat_ongeldige_api_key_geeft_auth_fout(monkeypatch):
     assert r.status_code == 200
     assert 'data: {"error": "auth"}' in r.text
     assert "onbekend" not in r.text
+
+
+def test_context_migreert_een_oud_schema_bij_eerste_gebruik(tmp_path, monkeypatch):
+    """De ingebakken productie-DB kan van vóór de `documenten`-tabel zijn: `_conn()` migreert."""
+    import app_fastapi.context as ctx
+    from validatie_samenwijzer import db
+
+    pad = tmp_path / "oud.db"
+    c = db.get_connection(pad)
+    db.init_db(c)
+    c.execute("DROP TABLE documenten")
+    c.commit()
+    c.close()
+    monkeypatch.setenv("DB_PATH", str(pad))
+    ctx._gemigreerd.clear()
+
+    conn = ctx._conn()
+    assert conn.execute("SELECT COUNT(*) FROM documenten").fetchone()[0] == 0
+
+
+def test_laad_context_bevat_opleidingsgebonden_en_kluisprotocol_uit_documenten(
+    tmp_path, monkeypatch
+):
+    """Een gereviewd protocol van de instelling en een examenplan van de opleiding komen in de
+    systeemprompt (acceptatie: de assistent kent het kluiscontroleprotocol)."""
+    import app_fastapi.context as ctx
+    from validatie_samenwijzer import db
+
+    pad = tmp_path / "t.db"
+    c = db.get_connection(pad)
+    db.init_db(c)
+    inst = db.voeg_instelling_toe(c, "curio", "Curio")
+    protocol = tmp_path / "kluiscontrole.md"
+    protocol.write_text("PROTOCOL-KLUISCONTROLE: de kluis wordt wekelijks gecontroleerd.")
+    plan = tmp_path / "plan.md"
+    plan.write_text("EXAMENPLAN-25168: weging 60/40.")
+    for soort, titel, bestand, kw in (
+        ("protocol", "Protocol kluiscontrole", protocol, {}),
+        ("examenplan", "Examenplan Kok", plan, {"crebo": "25168"}),
+    ):
+        doc = db.voeg_document_toe(c, inst, soort, titel, str(bestand), gereviewd=True, **kw)
+        db.markeer_document_geindexeerd(c, doc)
+    monkeypatch.setenv("DB_PATH", str(pad))
+    ctx._gemigreerd.clear()
+    ctx._oer_blok.cache_clear()
+    fake_row = {
+        "id": 1, "crebo": "25168", "opleiding": "Kok", "display_naam": "Curio", "naam": "curio",
+        "leerweg": "BOL", "cohort": "2025", "instelling_id": inst, "bestandspad": "x.pdf",
+    }  # fmt: skip
+    monkeypatch.setattr(ctx, "_oer_blok", lambda oid: (fake_row, "OER-TEKST"))
+    monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c: "")
+    monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
+    monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
+
+    systeem, *_ = ctx.laad_context([1])
+    assert "PROTOCOL-KLUISCONTROLE" in systeem and "EXAMENPLAN-25168" in systeem
+
+
+def test_laad_context_meldt_documenten_buiten_budget(tmp_path, monkeypatch):
+    import app_fastapi.context as ctx
+    from validatie_samenwijzer import db
+
+    pad = tmp_path / "t.db"
+    c = db.get_connection(pad)
+    db.init_db(c)
+    inst = db.voeg_instelling_toe(c, "curio", "Curio")
+    groot = tmp_path / "groot.md"
+    groot.write_text("x" * 500)
+    doc = db.voeg_document_toe(c, inst, "protocol", "Groot protocol", str(groot), gereviewd=True)
+    db.markeer_document_geindexeerd(c, doc)
+    monkeypatch.setenv("DB_PATH", str(pad))
+    monkeypatch.setenv("DOC_BUDGET_TEKENS", "10")
+    ctx._gemigreerd.clear()
+    fake_row = {
+        "id": 1, "crebo": "25168", "opleiding": "Kok", "display_naam": "Curio", "naam": "curio",
+        "leerweg": "BOL", "cohort": "2025", "instelling_id": inst, "bestandspad": "x.pdf",
+    }  # fmt: skip
+    monkeypatch.setattr(ctx, "_oer_blok", lambda oid: (fake_row, "OER-TEKST"))
+    monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c: "")
+    monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
+    monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
+
+    systeem, _labels, _dom, _onl, melding = ctx.laad_context_met_melding([1])
+    assert "Groot protocol" in melding and "x" * 500 not in systeem

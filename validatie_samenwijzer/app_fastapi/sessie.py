@@ -32,6 +32,7 @@ class Sessie:
     oer_labels: list[str] = field(default_factory=list)
     oer_ids: list[int] = field(default_factory=list)
     oer_onleesbaar: bool = False  # OER-fulltext onleesbaar (gescand) → banner + KD-fallback
+    melding: str = ""  # documenten buiten budget weggelaten → banner
     domeinen: list[str] = field(default_factory=list)
     kandidaten: list[dict] = field(default_factory=list)
     wachtende_vraag: str | None = None
@@ -61,6 +62,7 @@ class Sessie:
         self.oer_labels = []
         self.oer_ids = []
         self.oer_onleesbaar = False
+        self.melding = ""
         self.domeinen = []
         self.kandidaten = []
         self.wachtende_vraag = None
