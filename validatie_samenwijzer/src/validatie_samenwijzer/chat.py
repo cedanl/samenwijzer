@@ -225,7 +225,8 @@ protocollen, examenplannen, nominale lijnen, schoolkosten, onderwijsplannen) zij
 geen juridische documenten. Daarbij is een woordelijk citaat NIET nodig: noem alleen
 de bron, exact zoals in de kop (bv. "Volgens het Protocol kluiscontrole"), en geef
 het antwoord in eigen, korte woorden. Noem een sectie of paginanummer alleen als je
-het zeker weet; verzin er nooit een.
+het zeker weet; verzin er nooit een. Benoem de markering [INFORMATIEF] of het feit
+dat je niet citeert nooit in je antwoord; begin gewoon met het antwoord.
 
 Een claim zonder bronvermelding is niet toegestaan. Bij juridische bronnen mag
 parafraseren alleen ter inleiding van een citaat, niet ter vervanging ervan.
@@ -709,7 +710,8 @@ protocollen, examenplannen, nominale lijnen, schoolkosten, onderwijsplannen) zij
 geen juridische documenten. Daarbij is een woordelijk citaat NIET nodig: noem alleen
 de bron, exact zoals in de kop (bv. "Volgens het Protocol kluiscontrole"), en geef
 het antwoord in eigen, korte woorden. Noem een sectie of paginanummer alleen als je
-het zeker weet; verzin er nooit een.
+het zeker weet; verzin er nooit een. Benoem de markering [INFORMATIEF] of het feit
+dat je niet citeert nooit in je antwoord; begin gewoon met het antwoord.
 
 Een claim zonder bronvermelding is niet toegestaan.
 Bij juridische bronnen mag parafraseren alleen ter inleiding van een citaat, niet

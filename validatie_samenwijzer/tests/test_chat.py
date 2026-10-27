@@ -1285,6 +1285,8 @@ def test_systeemprompts_vereisen_citaat_alleen_voor_juridische_bronnen():
         assert "[INFORMATIEF]" in prompt
         assert "bronvermelding" in prompt.lower()
         assert "NIET nodig" in prompt  # geen woordelijk citaat bij informatieve documenten
+        # de markering is een interne regel: nooit tegen de student zeggen
+        assert "nooit in je antwoord" in prompt
 
 
 def test_informatief_blok_draagt_de_markering_in_de_prompt():
