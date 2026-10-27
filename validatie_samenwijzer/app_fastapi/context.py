@@ -70,7 +70,7 @@ def laad_context_met_melding(
     for row, tekst in gevonden:
         crebo = row["crebo"]
         instelling_bronnen = [(d.kop, d.tekst) for d in selectie.per_oer.get(row["id"], [])]
-        dossier_tekst = laad_kwalificatiedossier_tekst(crebo)
+        dossier_tekst = laad_kwalificatiedossier_tekst(crebo, row["cohort"])
         # Onleesbare OER (gescande PDF) tóch opnemen als er een KD of document is.
         if not tekst.strip() and not dossier_tekst and not instelling_bronnen:
             continue

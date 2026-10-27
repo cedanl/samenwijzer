@@ -665,6 +665,10 @@ def main() -> None:
         parser.print_help()
 
     if scope is not None:
+        from validatie_samenwijzer.kd_versies import controleer_kd_versies
+
+        for melding in controleer_kd_versies(conn):
+            log.warning(melding)
         n_oers = conn.execute(
             "SELECT COUNT(*) FROM oer_documenten WHERE geindexeerd = 1"
         ).fetchone()[0]
