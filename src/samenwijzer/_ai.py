@@ -9,7 +9,7 @@ APITimeoutError = anthropic.APITimeoutError
 
 # Standaardmodel voor tutor, coach, outreach en welzijn.
 # whatsapp.py kiest bewust een eigen (lichter) model.
-MODEL = "claude-sonnet-5-5"
+MODEL = "claude-sonnet-5"
 
 
 def oer_systeem_prompt(oer_tekst: str) -> list[TextBlockParam]:
