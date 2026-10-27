@@ -644,3 +644,20 @@ def test_context_documenten_van_andere_instelling_tellen_niet(conn):
     _gereed(conn, a, "examenreglement", "van-a", "a.md")
     _gereed(conn, b, "examenreglement", "van-b", "b.md")
     assert _toon(conn, a) == ["van-a"]
+
+
+def test_publieke_context_blijft_voor_bestaande_soorten_ongewijzigd():
+    """Bestaande, niet op persoonsgegevens gecontroleerde soorten verbreden de publieke chat niet:
+    publiek blijft examenreglement + de vijf generieke regelingen (zoals vóór de documentlaag)."""
+    from validatie_samenwijzer.db import SOORTEN
+
+    bestaand = {
+        "examenreglement", "begeleidingsbeleid", "studentenstatuut", "bindend_studieadvies",
+        "klachtenregeling", "gedragscode", "algemene_informatie", "privacyreglement",
+        "pestprotocol", "meldcode", "ict_reglement", "gedragsregeling",
+    }  # fmt: skip
+    publiek = {k for k in bestaand if SOORTEN[k].zichtbaarheid == "publiek"}
+    assert publiek == {
+        "examenreglement", "privacyreglement", "pestprotocol", "meldcode", "ict_reglement",
+        "gedragsregeling",
+    }  # fmt: skip

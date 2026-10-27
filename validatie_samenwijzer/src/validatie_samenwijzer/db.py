@@ -29,11 +29,15 @@ SOORTEN: dict[str, SoortInfo] = {
     "begeleidingsbeleid": SoortInfo(
         "Begeleidings- en welzijnsbeleid", "instelling", False, "ingelogd"
     ),
-    "studentenstatuut": SoortInfo("Studentenstatuut", "instelling", True),
-    "bindend_studieadvies": SoortInfo("Regeling bindend studieadvies", "instelling", True),
-    "klachtenregeling": SoortInfo("Klachtenregeling", "instelling", True),
-    "gedragscode": SoortInfo("Gedragscode", "instelling", True),
-    "algemene_informatie": SoortInfo("Algemene informatie", "instelling", False),
+    # Deze bestaande soorten waren nooit publiek en zijn niet op persoonsgegevens gecontroleerd:
+    # `ingelogd` (nu: niet in de publieke chat) tot ze na review op `publiek` worden gezet.
+    "studentenstatuut": SoortInfo("Studentenstatuut", "instelling", True, "ingelogd"),
+    "bindend_studieadvies": SoortInfo(
+        "Regeling bindend studieadvies", "instelling", True, "ingelogd"
+    ),
+    "klachtenregeling": SoortInfo("Klachtenregeling", "instelling", True, "ingelogd"),
+    "gedragscode": SoortInfo("Gedragscode", "instelling", True, "ingelogd"),
+    "algemene_informatie": SoortInfo("Algemene informatie", "instelling", False, "ingelogd"),
     "privacyreglement": SoortInfo("Privacyreglement", "instelling", True),
     "pestprotocol": SoortInfo("Pestprotocol", "instelling", False),
     "meldcode": SoortInfo("Meldcode huiselijk geweld en kindermishandeling", "instelling", True),
