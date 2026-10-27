@@ -71,3 +71,6 @@ oeren/landstede_oeren/
 
 # graphify knowledge-graph output
 graphify-out/
+
+# Aangeleverd bronmateriaal dat niet wordt geïndexeerd — alleen in Box
+oeren/*/_bronmateriaal/

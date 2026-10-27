@@ -15,6 +15,11 @@ INSTELLING_SOORTEN = {
     "klachtenregeling": "Klachtenregeling",
     "gedragscode": "Gedragscode",
     "algemene_informatie": "Algemene informatie",
+    "privacyreglement": "Privacyreglement",
+    "pestprotocol": "Pestprotocol",
+    "meldcode": "Meldcode huiselijk geweld en kindermishandeling",
+    "ict_reglement": "Reglement gebruik ICT-voorzieningen",
+    "gedragsregeling": "Regeling houding en gedrag",
 }
 
 

@@ -1,46 +1,65 @@
- Centraal Examenreglement
+ Examenreglement
 
 Middelbaar beroepsonderwijs
 
-Augustus 2025
+augustus 2026
 Versie 1.1
 
-2025-2026
+2026-2027
 
 Eigenaar
+Opsteller
 Uitvoering
+Vaststelling CEC
 Definitieve Vaststelling RvB
 Ingangsdatum
 Evaluatiedatum
 
 CEC
-PF, SEC
-30-06-2025
-01-08-2025
-april 2026
+SEC mbo
+SEC, portefeuille examinering
+11-05-2026
+28-09-2026
+01-08-2026
+Maart 2027
 
-Voorwoord
+Examenreglement mbo 2026-2027
 
-Om te kunnen garanderen dat Curio met betrekking tot examinering functioneert en handelt in
-overeenstemming met de wettelijke eisen en dat zijn dienstverlening kwalitatief hoogwaardig en
-transparant is, hanteert Curio dit centrale examenreglement.
+Voorwoord
 
-Dit centrale examenreglement is een verzameling regels, procedures en voorschriften rond de organisatie,
-voorbereiding, afname, beoordeling, en klacht en beroep van examens.
+Beste student,
 
-De inhoud van de examens voor de opleiding van de student staat in het examen-, diplomaplan(EDP), dat
-deel uitmaakt van de Onderwijs- en Examenregeling (OER).
+Voor je ligt het examenreglement van jouw mbo-opleiding bij Curio. Het is belangrijk dat jouw diploma voldoet aan
+alle wettelijke eisen. Dat kunnen wij alleen garanderen als de examinering zorgvuldig, transparant en volgens de
+geldende regels wordt uitgevoerd.
 
-Bij dit examenreglement hoort ook een begrippenlijst. Daarin worden de belangrijkste woorden uitgelegd
-die in het mbo-examenreglement van Curio worden gebruikt.
+In dit examenreglement vind je alle regels en procedures die nodig zijn voor een goede organisatie, voorbereiding,
+afname en beoordeling van examens. Ook beschrijft dit reglement jouw rechten en plichten rondom examinering.
+Daarnaast lees je wat je kunt doen wanneer je het niet eens bent met een beslissing van de examencommissie,
+bijvoorbeeld via klacht- en beroepsprocedures.
 
-Eigenaar van het Curio Centraal Examenreglement mbo is de Centrale Examencommissie.
+De kwaliteit van de examinering bepaalt de waarde van jouw diploma. Daarom is het belangrijk dat iedereen binnen
+Curio, jij, docenten, surveillanten, beoordelaars, management en de directie, zich aan deze regels houdt. De regels
+zijn zorgvuldig opgesteld en worden strikt toegepast om de kwaliteit en betrouwbaarheid van de examens te
+waarborgen.
+De inhoud van de examens van jouw opleiding is vastgelegd in het examen- en diplomaplan (EDP), dat onderdeel is
+van de Onderwijs- en Examenregeling (OER). Bij dit examenreglement hoort ook een begrippenlijst, waarin de
+belangrijkste termen worden toegelicht.
+
+Het examenreglement is vastgesteld door de raad van bestuur van Curio en afgestemd met de Centrale
+Examencommissie, de ondernemingsraad en de studentenraad.
+
+Heb je vragen over de examinering of over dit examenreglement? Neem dan contact op met je mentor.
 
 2
 
 www.curio.nl/vmbo
 
-1 ALGEMEEN ................................................................................................................................................................. 4
+Examenreglement mbo 2026-2027
+
+INHOUDSOPGAVE
+
+1 ALGEMEEN ................................................................................................................................................................. 4
 
 1.1 WAT IS HET EXAMENREGLEMENT? ............................................................................................................................. 4
 1.2 INFORMATIE VOOR STUDENTEN ................................................................................................................................. 4
@@ -58,769 +77,853 @@ www.curio.nl/vmbo
 
 3 AFNAME EXAMEN ..................................................................................................................................................... 7
 
-3.1 VOORBEREIDING ...................................................................................................................................................... 7
-3.2 INSCHRIJVING .......................................................................................................................................................... 7
+3.1 ALGEMEEN .............................................................................................................................................................. 7
+3.2 INSCHRIJVING VOOR HET EXAMEN ............................................................................................................................. 7
 3.3 HULPMIDDELEN ........................................................................................................................................................ 7
-3.4 AANWEZIGHEID ........................................................................................................................................................ 7
-3.5 LEGITIMATIE............................................................................................................................................................. 7
-3.6 TE LAAT KOMEN ....................................................................................................................................................... 7
-3.7 AFWEZIG TIJDENS EXAMEN ....................................................................................................................................... 8
-3.8 EXAMENGELEGENHEDEN .......................................................................................................................................... 8
-3.9 EXAMENGELEGENHEDEN OP HOGER NIVEAU .............................................................................................................. 8
-3.10 AANVRAGEN DERDE (EXAMEN)GELEGENHEID ........................................................................................................... 8
-3.11 NIET EENS MET EEN BESLUIT?................................................................................................................................. 8
+3.4 EXAMENGELEGENHEDEN .......................................................................................................................................... 8
+3.5 AANWEZIGHEID ........................................................................................................................................................ 8
+3.6 LEGITIMATIE............................................................................................................................................................. 8
+3.7 TE LAAT KOMEN ....................................................................................................................................................... 8
+3.8 AFWEZIG TIJDENS EXAMEN ....................................................................................................................................... 8
+3.9 AANVRAGEN DERDE (EXAMEN)GELEGENHEID ............................................................................................................. 9
+3.10 NIET EENS MET EEN BESLUIT VAN DE EXAMENCOMMISSIE? ....................................................................................... 9
 
-4 UITSLAG EXAMEN ..................................................................................................................................................... 9
+4 UITSLAG EXAMEN ................................................................................................................................................... 10
 
-4.1 VOORLOPIGE UITSLAG .............................................................................................................................................. 9
-4.2 VASTSTELLING ......................................................................................................................................................... 9
-4.3 DEFINITIEVE UITSLAG ............................................................................................................................................... 9
-4.4 ONVOORZIENE OMSTANDIGHEDEN............................................................................................................................. 9
-4.5 WANNEER BEN JE GESLAAGD? .................................................................................................................................. 9
-4.6 CUM LAUDE ............................................................................................................................................................. 9
+4.1 VOORLOPIG RESULTAAT ......................................................................................................................................... 10
+4.2 VASTSTELLING DEFINITIEVE RESULTAAT .................................................................................................................. 10
+4.3 ONVOORZIENE OMSTANDIGHEDEN........................................................................................................................... 10
+4.4 WANNEER BEN JE GESLAAGD? ................................................................................................................................ 10
+4.5 CUM LAUDE ........................................................................................................................................................... 10
 
-5 DIPLOMA, MBO-VERKLARING EN MBO-CERTIFICATEN .................................................................................... 10
+5 DIPLOMA, MBO-VERKLARING EN MBO-CERTIFICATEN .................................................................................... 11
 
-5.1 DIPLOMABESLUIT ................................................................................................................................................... 10
-5.2 MBO-VERKLARING .................................................................................................................................................. 10
-5.3 MBO-CERTIFICAAT .................................................................................................................................................. 10
+5.1 DIPLOMABESLUIT ................................................................................................................................................... 11
+5.2 MBO-VERKLARING .................................................................................................................................................. 11
+5.3 MBO-CERTIFICAAT .................................................................................................................................................. 11
 
-6 INZAGE-, BESPREEKRECHT EN BEWAARTERMIJNEN ...................................................................................... 10
+6 INZAGE-, BESPREEKRECHT EN BEWAARTERMIJNEN ...................................................................................... 12
 
-6.1 INZAGE .................................................................................................................................................................. 10
-6.2 BESPREKEN ........................................................................................................................................................... 11
-6.3 BEWAARTERMIJN ................................................................................................................................................... 11
-6.4 AUDIO EN VIDEO ..................................................................................................................................................... 11
-7 FRAUDE EN ONREGELMATIGHEDEN ................................................................................................................... 11
+6.1 INZAGE .................................................................................................................................................................. 12
+6.2 BESPREKEN ........................................................................................................................................................... 12
+6.3 BEWAARTERMIJN ................................................................................................................................................... 12
+6.4 AUDIO EN VIDEO ..................................................................................................................................................... 12
+7 FRAUDE EN ONREGELMATIGHEDEN ................................................................................................................... 12
 
-8 KLACHT EN BEROEP .............................................................................................................................................. 12
+8 KLACHT EN BEROEP .............................................................................................................................................. 13
 
-8.1 KLACHT ................................................................................................................................................................. 12
-8.2 BEROEP ................................................................................................................................................................ 12
-8.3 OPLOSSING IN OVERLEG (MINNELIJKE SCHIKKING) .................................................................................................... 12
+8.1 KLACHT ................................................................................................................................................................. 13
+8.2 BEROEP ................................................................................................................................................................ 13
+8.3 OPLOSSING IN OVERLEG (MINNELIJKE SCHIKKING) .................................................................................................... 13
 
-9 SLOTBEPALINGEN .................................................................................................................................................. 12
+9 SLOTBEPALINGEN .................................................................................................................................................. 13
 
-9.1 WIJZIGINGEN ......................................................................................................................................................... 12
-9.2 GELDIGHEID........................................................................................................................................................... 12
-9.3 HARDHEIDSCLAUSULE ............................................................................................................................................ 12
-9.4 DISCRETIONAIRE BEVOEGDHEID .............................................................................................................................. 12
+9.1 WIJZIGINGEN ......................................................................................................................................................... 13
+9.2 GELDIGHEID........................................................................................................................................................... 13
+9.3 HARDHEIDSCLAUSULE ............................................................................................................................................ 13
+9.4 DISCRETIONAIRE BEVOEGDHEID .............................................................................................................................. 13
 
-BEGRIPPENLIJST ....................................................................................................................................................... 13
+BEGRIPPENLIJST ....................................................................................................................................................... 14
+
+CONTACTGEGEVENS ................................................................................................................................................ 16
 
 3
 
 www.curio.nl/vmbo
 
-1 Algemeen
+Examenreglement mbo 2026-2027
+
+1 Algemeen
 
 1.1  Wat is het examenreglement?
-In dit examenreglement staan jouw rechten en plichten met betrekking tot examens.
-Het gaat om examens die Curio zelf organiseert, zowel voor:
 
-•  beroepsgerichte vakken (zoals praktijkexamens en proeven van bekwaamheid),
-•  als algemene vakken (zoals Nederlands, rekenen, Engels en keuzedelen).
+In dit examenreglement staan jouw rechten en plichten bij examens.
+Het gaat om examens die door Curio worden georganiseerd, zoals:
+•  beroepsgerichte examens (bijvoorbeeld praktijkexamens en proeven van bekwaamheid);
+•
+•  generieke examens (zoals Nederlands, rekenen en Engels).
+Voor de landelijke lees- en luisterexamens Nederlands en Engels gelden de regels van het Examenprotocol centrale
+examinering mbo.  landelijke Examenprotocol centrale examinering mbo.
 
-Voor onderdelen van Nederlands en Engels die landelijk worden geëxamineerd, gelden de regels van het
-landelijke Examenprotocol centrale examinering mbo.
+keuzedeelexamens;
 
 1.2 Informatie voor studenten
-De examencommissie stelt voor elke opleiding een examenplan vast. Dit gebeurt in opdracht van het bestuur
-van Curio.
-In het examenplan staat hoe jouw examens zijn ingericht: welke examens je krijgt, wanneer ze plaatsvinden
-en hoe ze worden beoordeeld.
+
+De examencommissie stelt voor elke opleiding een examenplan vast.
+In het examenplan staat hoe jouw examens zijn ingericht: welke examens je krijgt, wanneer ze plaatsvinden en op
+welke manier ze worden afgenomen.
 
 Het examenplan is onderdeel van de OER (Onderwijs- en Examenregeling).
-Elke opleiding heeft een eigen OER. In de OER lees je hoe het onderwijs en de examinering in jouw
-opleiding zijn opgebouwd. Zo weet jij als student wat je kunt verwachten van jouw opleiding en examens.
+Elke opleiding heeft een eigen OER. In de OER lees je hoe het onderwijs en de examinering in jouw opleiding zijn
+opgebouwd. Zo weet jij als student wat je kunt verwachten van jouw opleiding en examens.
 
 1.3 De examencommissie
-Curio heeft:
 
-•  één centrale examencommissie voor toezicht,
-•  én in elke sector een eigen examencommissie die verantwoordelijk is voor de borging van
+Binnen Curio zijn er twee soorten examencommissies:
+•  een centrale examencommissie (CEC) die toezicht houdt;
+•
 
-examinering.
+sectorale examencommissies (SEC) die verantwoordelijk zijn voor de kwaliteit van de examens binnen hun
+sector.
 
-De examencommissie stelt regels op om te zorgen dat elk examen eerlijk en zorgvuldig verloopt.
-De sectorale examencommissie is verantwoordelijk voor de kwaliteit van examens en diploma’s binnen de
-opleidingen in die sector.
-Als het nodig is, kan de centrale examencommissie (CEC) de bevoegdheden van een sectorale
-examencommissie (SEC) overnemen.
+De examencommissie stelt regels vast om ervoor te zorgen dat examens zorgvuldig en eerlijk verlopen. De sectorale
+examencommissie is verantwoordelijk voor de kwaliteit van de examinering en de diplomering binnen de
+opleidingen.
 
 1.4 Geheimhouding
-Iedereen die betrokken is bij de uitvoering van examens en vertrouwelijke gegevens ontvangt, of
-redelijkerwijs moet vermoeden dat de gegevens vertrouwelijk zijn, moet deze informatie geheimhouden.
 
-De geheimhoudingsplicht geldt, tenzij:
-•  de wet verplicht om informatie te delen, of
-•  het noodzakelijk is voor de uitvoering van het examen.
-
-Deze regels komen uit de Algemene Verordening Gegevensbescherming (AVG) en de Wet Educatie en
-Beroepsonderwijs (artikel 7.4.6).
+Iedereen die betrokken is bij examens en toegang heeft tot vertrouwelijke informatie, moet deze informatie
+geheimhouden.
+De geheimhoudingsplicht geldt, behalve:
+•  als de wet verplicht om informatie te delen;
+•  als het delen van informatie nodig is voor een goede uitvoering van het examen.
+Deze regels zijn gebaseerd op de Algemene Verordening Gegevensbescherming (AVG) en de Wet educatie en
+beroepsonderwijs (WEB).
 
 4
 
 www.curio.nl/vmbo
 
-2 Voorbereiding examen
+Examenreglement mbo 2026-2027
+
+2 Voorbereiding examen
 
 2.1 Toegang examens
-Als je bent ingeschreven bij een opleiding van Curio, mag je meedoen aan het onderwijs en de examens.
-Als je geen onderwijs volgt, maar toch examen wilt doen, kun je meedoen als examendeelnemer.
+
+Als je bent ingeschreven bij een opleiding van Curio, mag je deelnemen aan het onderwijs en de examens.
+Als je geen onderwijs volgt, maar toch examen wilt doen, kun je deelnemen als examendeelnemer.
 
 2.2 Inschrijving
-Als je een positief bindend studieadvies hebt ontvangen, mag je de opleiding blijven volgen tot je alle
-examenpogingen hebt gebruikt. Pas als je geen examenmogelijkheden meer hebt én er geen realistisch
-uitzicht is op het behalen van je diploma, stopt je opleiding.
 
-Moet je nog één of meerdere examens of herkansingen doen na 31 juli, maar voor 1 oktober, dan kun je
-tijdelijk worden ingeschreven met een verlengde inschrijving.
-Je hoeft dan geen lesgeld te betalen.
+Als je een positief bindend studieadvies hebt ontvangen, mag je de opleiding blijven volgen en examens doen tot je
+alle examengelegenheden hebt benut. Als je geen examengelegenheden meer hebt én er geen uitzicht is op het
+behalen van je diploma, word je uitgeschreven van de opleiding
+
+Moet je nog één of meerdere examens of examengelegenheden doen na 31 juli, maar voor 1 oktober, dan kan je
+inschrijving worden verlengd tot 1 oktober. Dit kan alleen als je nog examengelegenheden over hebt.
 
 2.3 Examendeelnemer
-Heb je onderwijs gevolgd, maar je opleiding nog niet afgerond, dan kun je je inschrijven als
-examendeelnemer (ook wel: extraneus). Dit betekent dat je alleen examens maakt, zonder dat je onderwijs
-volgt.
-Voor deelname aan deze examens betaal je examengeld.
 
-Voor examendeelnemers mbo bij Curio gelden de volgende regels:
-•
-•
-
-Je doet een schriftelijk verzoek via Osiris (zaak: aanvraag examendeelnemer) om je in te schrijven;
-Je moet voldoen aan de examenvoorwaarden uit de Onderwijs- en Examenregeling (OER) van de
-opleiding waarvoor je examen wilt doen;
-Je wordt ingeschreven tot het einde van het schooljaar. Je kunt deze inschrijving jaarlijks verlengen, met
-een maximum van twee jaar;
-Je betaalt het examengeld vooraf, volgens de actuele tarieflijst voor examendeelnemers mbo.
-
-•
-
-•
+Een examendeelnemer (ook wel ‘extraneus’ genoemd) is iemand die uitsluitend deelneemt aan (onderdelen van) het
+examen van de opleiding. Als examendeelnemer heb je geen recht op onderwijs, begeleiding of studiefinanciering.
+Het meedoen aan een examen kost geld. Je kunt je onder bepaalde voorwaarden inschrijven als examendeelnemer.
+De onderwijsdirecteur beslist over de inschrijving als examendeelnemer. Wil je meer weten? Alle regels over
+examendeelnemers vind je hier (koppeling volgt). Aanvraag examendeelnemer | Curio
 
 2.4 Vrijstelling
-De examencommissie kan op jouw verzoek vrijstelling verlenen voor een of meer examenonderdelen. De
-nadere uitwerking is te vinden in de vrijstellingsregeling van Curio. Deze is te vinden op het studentenportaal
-bij belangrijke documenten.
+
+De examencommissie kan op jouw verzoek vrijstelling verlenen voor een of meer examenonderdelen. De nadere
+uitwerking is te vinden in de vrijstellingsregeling van Curio. Deze is te vinden op het Studentenportaal.
+vrijstellingsregeling mbo
+
+Je doet je aanvraag voor een vrijstelling via Osiris: kies de zaak “vrijstelling aanvragen”.
+De examencommissie beoordeelt je aanvraag en neemt een formeel besluit. Dit besluit wordt vastgelegd in Osiris.
+
+Een vrijstelling voor een examen geeft niet automatisch ook vrijstelling voor de lessen. Dit kan je bespreken met je
+mentor of vakdocent.
 
 2.5 Aangepaste examinering
-De examencommissie kan aangepaste examinering toekennen als dat nodig is.
-Het uitgangspunt blijft altijd: de aanpassing mag niet ten koste gaan van de kwaliteit of gelijkwaardigheid van
-het examen.
 
-Je kunt een verzoek doen voor aangepaste examinering als je een aangetoonde ondersteuning behoefte
-hebt voor het maken van een examen.
+De examencommissie kan, indien noodzakelijk, besluiten tot aangepaste examinering. Hierbij geldt als uitgangspunt
+dat de aanpassing geen afbreuk doet aan de kwaliteit, het niveau, de validiteit of de gelijkwaardigheid van het
+examen.
+Een student kan een verzoek indienen voor aangepaste examinering indien sprake is van een aantoonbare
+ondersteuningsbehoefte bij het afleggen van examens. De aanvraag wordt ingediend via Osiris, door het selecteren
+van de zaak ‘aanvragen voorzieningen’. De examencommissie beoordeelt de aanvraag mede op basis van het
+advies van de zorgcoördinator en neemt vervolgens een formeel besluit. Dit besluit wordt vastgelegd in Osiris.
 
-De examencommissie mag de afnamecondities aanpassen als aan deze voorwaarden is voldaan1:
-•  Bij een ondersteuningsbehoefte die niet zintuigelijk of lichamelijk van aard is, heb je een verklaring van
+De examencommissie kan besluiten de afnamecondities aan te passen, mits aan de volgende voorwaarden is
+voldaan:
+•  bij een ondersteuningsbehoefte die niet zintuiglijk of lichamelijk van aard is, wordt een geldige verklaring
 
-een deskundige nodig (zoals een arts, psycholoog of orthopedagoog);
-In de verklaring staat dat een aanpassing noodzakelijk is voor het kunnen deelnemen aan examens;
+overlegd van een ter zake deskundige (zoals een arts, psycholoog of orthopedagoog);
 
-•
-•  De verklaring is voorzien van een datum.
-
-Je doet je aanvraag via Osiris: kies de zaak “aanvragen voorzieningen”.
-De examencommissie beoordeelt je aanvraag en neemt een formeel besluit. Dit besluit wordt vastgelegd in
-Osiris.
-
-Je opleiding of inschrijving eindigt, of
-Je wisselt van opleiding, of
-
-Een toegekende aanpassing geldt zolang je ingeschreven bent bij Curio, totdat:
-•
-•
-•  De verklaring verloopt, of
-•  De ondersteuningsbehoefte niet meer van toepassing is.
-
-1 Is Nederlands niet je moedertaal, bespreek dan jouw mogelijkheden met de zorgcoördinator
+•  uit de verklaring blijkt dat een aanpassing noodzakelijk is om te kunnen deelnemen aan examens;
+•  de verklaring is voorzien van een datum.
 
 5
 
 www.curio.nl/vmbo
 
-Voor centrale examens gelden de landelijke regels van het College voor Toetsen en Examens (CvTE).
-Deze zijn te vinden op examenbladmbo.nl onder het document: “Deelnemers met een
-ondersteuningsbehoefte”
-De examencommissie mag alleen aanpassingen toekennen die passen binnen deze landelijke regels.
+Examenreglement mbo 2026-2027
 
-Als je verzoek wordt afgewezen, kun je in beroep gaan.
-Dit doe je via de beroepsprocedure van Curio (zie hoofdstuk 8: Klacht en beroep).
+1 is geldig gedurende de periode dat de student staat ingeschreven bij Curio en vervalt
+
+Geldigheidsduur
+Een toegekende aanpassing 0F
+wanneer één van de volgende situaties zich voordoet:
+•  de opleiding of inschrijving van de student eindigt;
+•  de student overstapt naar een andere opleiding;
+•  de onderliggende verklaring niet langer geldig is;
+•  de ondersteuningsbehoefte niet langer van toepassing is.
+
+Aanvullende bepaling voor NT2-studenten
+Voor NT2-studenten geldt dat toegekende ondersteuning (zoals bijvoorbeeld extra tijd) uitsluitend van toepassing is
+gedurende de eerste zes jaar waarin de student onderwijs in Nederland volgt.
+
+Voor centrale examens (lees- en luisterexamens Nederlands en Engels) gelden de landelijke regels van het College
+voor Toetsen en Examens (CvTE). Deze regels zijn te raadplegen via:
+https://www.examenbladmbo.nl/2025-26/onderwerpen/passend-examineren, onder het document ‘Deelnemers met
+een ondersteuningsbehoefte’.
+
+De examencommissie kan uitsluitend aanpassingen toekennen die in overeenstemming zijn met deze landelijke
+richtlijnen.
 
 2.6 Examineren op hoger niveau (generiek)
-Je mag examens van generieke vakken (zoals Nederlands, Engels of rekenen) op een hoger niveau doen
-dan het niveau van jouw opleiding. Dit mag alleen als de examencommissie toestemming geeft.
 
-Je vakdocent moet het goed vinden dat je het examen wilt maken op hoger niveau;
-Je hoeft niet eerst examen te doen op het niveau van je opleiding;
+Een student kan ervoor kiezen om examens voor generieke vakken (Nederlands, Engels of rekenen) af te leggen op
+een hoger niveau dan het niveau van de opleiding. Hiervoor is voorafgaande toestemming van de examencommissie
+vereist.
 
-Wat zijn de voorwaarden?
+Toestemming kan worden verleend indien aan de volgende voorwaarden is voldaan:
+•  de vakdocent geeft een positief advies voor het afleggen van het examen op een hoger niveau;
+•  het behaalde resultaat op het hogere niveau wordt opgenomen als eindresultaat;
 •
-•
-•  Als je het examen op een hoger niveau maakt, dan telt dat cijfer mee voor je eindresultaat;
-•  Doe je Nederlands of Engels op een hoger niveau? Dan maak je alle examens van dat vak op het
 
-hogere niveau. Je mag dus niet mixen tussen niveaus.
+indien het vak Nederlands of Engels op een hoger niveau wordt afgelegd, dienen alle examenonderdelen van
+dat vak op hetzelfde hogere niveau te worden afgelegd. Het combineren van examenonderdelen op
+verschillende niveaus is niet toegestaan.
 
-Je vraagt dit aan in Osiris via de zaak: “Examen op hoger niveau aanvragen”.
-De examencommissie beoordeelt je verzoek en neemt een besluit. Dit besluit wordt vastgelegd in Osiris.
+Aanvraagprocedure
+De student dient een aanvraag in via Osiris, door het selecteren van de zaak ‘Examen op hoger niveau aanvragen’.
+De examencommissie beoordeelt het verzoek en neemt een formeel besluit. Dit besluit wordt vastgelegd in Osiris.
+
+Indien het examen op het hogere niveau niet wordt behaald, kan de student het examen alsnog afleggen op het
+niveau van de opleiding. Zie ook de Handreiking-examineren-op-hoger-niveau.
+
+1 Een toegekende voorziening kan ook van tijdelijke aard zijn.
 
 6
 
 www.curio.nl/vmbo
 
-3 Afname examen
+Examenreglement mbo 2026-2027
 
-De examens worden afgenomen volgens vaste procedures. Deze staan in het Curio-handboek Examinering,
-Certificering en Diplomering (ECD).
+3 Afname examen
 
-3.1 Voorbereiding
-Je wordt samen met het onderwijsteam goed voorbereid op je examens.
+3.1 Algemeen
 
-3.2 Inschrijving
+In dit hoofdstuk lees je hoe de examens worden afgenomen en welke regels daarbij gelden.
 
+Je wordt door het onderwijsteam voorbereid op je examens.
+
+Tijdens het examen wordt verwacht dat je je rustig en correct gedraagt. Je bent op tijd aanwezig en volgt de
+aanwijzingen van de surveillant of examinator op. Je maakt het examen zelfstandig en zonder hulp van anderen.
+Ook houd je rekening met andere studenten, zodat iedereen het examen in stilte kan maken.
+
+Tijdens het examen gelden de volgende basisregels:
+•
+•
+•
+•
+•
 •
 
-Je docent of mentor kijkt samen met jou of je klaar bent voor het examen. Is dat zo? Dan meldt hij of
-zij je aan voor de eerste examengelegenheid.
+Je werkt zelfstandig.
+Je stoort anderen niet.
+Je gebruikt alleen toegestane hulpmiddelen.
+Je praat niet tijdens het examen, tenzij je toestemming hebt.
+Je verlaat de examenruimte alleen met toestemming.
+Je mag de examenruimte niet verlaten in de eerste 15 minuten of de laatste 15 minuten.
 
-•  Voor generieke examens (zoals Nederlands, rekenen of Engels) krijg je via je Curio-mail een
-uitnodiging om jezelf aan te melden via OnTrac. Je kiest dan zelf de datum van je examen.
-•  Schrijf je jezelf niet (op tijd) in? Dan doet het examenbureau dat voor jou. In dat geval bepaalt het
+Als je je niet aan deze regels houdt, kan dit worden gezien als een onregelmatigheid of fraude. De
+examencommissie bepaalt de gevolgen. (zie hoofdstuk 7)
 
-examenbureau de datum, tijd en locatie van je examen.
+3.2 Inschrijving voor het examen
 
-Wil je het examen verplaatsen of annuleren? Overleg dit dan op tijd met je docent. Zolang de
-inschrijfperiode nog open is, kan dit meestal zonder problemen.
-Is de inschrijfperiode gesloten? Dan kun je het examen alleen verplaatsen of annuleren met toestemming
+De docent of mentor beoordeelt in overleg met de student of deze gereed is voor het afleggen van het examen.
+Indien dit het geval is, meldt de vakdocent de student aan voor de eerste examengelegenheid.
+
+Voor generieke examens (Nederlands, rekenen en Engels) geldt eveneens dat de student samen met de docent of
+mentor beoordeelt of hij of zij examengereed is. Indien dit het geval is, zorgt de vakdocent ervoor dat het examen
+voor de student wordt vrijgegeven.
+De student ontvangt vervolgens via het Curio-e-mailadres een uitnodiging om zich via OnTrac in te schrijven. De
+student kiest daarbij zelf een examenmoment. Indien de student zich niet inschrijft voor een generiek examen, wordt
+de inschrijving verzorgd door het examenbureau. In dat geval stelt het examenbureau de datum, tijd en locatie van
+het examen vast.
+
+Wijzigen of annuleren van een generiek examen
+Indien de student een gepland generiek examen (Nederlands, rekenen of Engels) wil verplaatsen of annuleren, dient
+dit tijdig te worden besproken met de docent. Zolang de inschrijfperiode openstaat, is wijziging of annulering in de
+regel mogelijk. De sluitingsdatum van inschrijving wordt vermeld in de mail “inschrijven voor je examen(s)”
+Na sluiting van de inschrijfperiode kan een examen uitsluitend worden verplaatst of geannuleerd met toestemming
 van de examencommissie.
 
 3.3 Hulpmiddelen
-Tijdens de voorbereiding hoor je welke hulpmiddelen je mag gebruiken tijdens het examen. Je hoort ook of je
-die zelf moet meenemen, of dat de school ze regelt.
+
+Tijdens de voorbereiding hoor je welke hulpmiddelen je mag gebruiken bij het examen. Je krijgt ook te horen of je
+deze zelf moet meenemen of dat de school ze regelt.
+
 Let op:
 •
 •
 
-Je mag alleen de hulpmiddelen gebruiken die zijn toegestaan.
-In de examenruimte mag je geen apparaten bij je hebben waarmee je kunt communiceren of informatie
-kunt opzoeken. Denk aan:
+Je mag alleen hulpmiddelen gebruiken die zijn toegestaan.
+Je mag geen apparaten bij je hebben waarmee je kunt communiceren of informatie kunt opzoeken. Deze mag je
+dus niet meenemen in het examenlokaal.
 
-o  een mobiele telefoon;
-o  een smartwatch;
-o  een rekenmachine met extra functies (zoals een geheugen).
+Voorbeelden van zulke apparaten zijn:
+•  een mobiele telefoon;
+•  een smartwatch;
+•  een rekenmachine met extra functies (zoals een geheugen).
 
-Deze spullen mogen alleen mee als dat duidelijk in de uitnodiging voor het examen staat.
-
-3.4 Aanwezigheid
-In je uitnodiging staat hoe laat het examen begint. Je moet minstens 15 minuten van tevoren aanwezig zijn.
-
-Identiteitskaart;
-
-3.5 Legitimatie
-Bij binnenkomst moet je je kunnen legitimeren met een geldig identiteitsbewijs. Dat mag zijn:
-•  Paspoort;
-•
-•  Rijbewijs of bromfietsrijbewijs;
-•  Vreemdelingen- of vluchtelingenpaspoort;
-•  Proces-verbaal van vermissing (van je ID).
-Een kopie of foto van je ID of je schoolpas is niet geldig. Je ID mag maximaal 6 maanden zijn verlopen.
-
-3.6 Te laat komen
-•  Kom je binnen 15 minuten na de start binnen? Dan mag je meedoen. Je krijgt geen extra tijd.
-•  Kom je 15 minuten of later na de start? Dan mag je niet meer meedoen. Dat telt als een gemiste
-
-examengelegenheid.
-
-•  Bij examens die korter dan 15 minuten duren: betekent te laat, dat je niet meer aan het examen mag
-
-deelnemen.
-Je mag de examenruimte niet verlaten in de eerste 15 minuten van het examen2.
-
-•
-
-Voor centrale examens gelden de regels van Regeling examenprotocol centrale examinering mbo van het
-CvTE.
-
-2 Examens die korter duren dan 15 minuten vallen niet onder deze regeling
+Alleen als dit in de examenuitnodiging staat, mag je deze apparaten wel gebruiken.
 
 7
 
 www.curio.nl/vmbo
 
-3.7 Afwezig tijdens examen
-•  Als je niet aanwezig bent, telt dit als een gemiste examenkans. In Osiris komt dan ‘afwezig’ te staan. Dit
+3.4 Examengelegenheden
 
-geldt ook bij ziekte.
+Examenreglement mbo 2026-2027
 
-•  Ben je 15 minuten of later te laat? Dan mag je niet meedoen en word je als ‘afwezig’ geregistreerd.
-•  Was er sprake van overmacht3? Meld dit binnen 10 werkdagen na het examen via een mailtje bij de
-
-sectorale examencommissie4.
-
-Je moet zelf goed gemotiveerde bewijzen aanleveren en uitleg geven, met handtekening van je mentor.
-
-Je krijgt voor elk examen twee kansen tijdens je opleiding.
-In de Onderwijs- en Examenregeling (OER) kan staan dat je meer dan twee kansen krijgt.
-
-3.8 Examengelegenheden
+Voor elk examen heb je recht op twee examengelegenheden.
+De volgende regels gelden:
+•  Haal je het examen niet? Dan vraag je zelf een herkansing aan.
+•  Het hoogste cijfer telt.
 •
-•
-•  Ook bij een voldoende mag je het examen herkansen.
-•  Van de twee cijfers telt altijd het hoogste cijfer.
+•  Soms heb je voor een bepaald examen recht op meer dan twee gelegenheden, dan staat dit beschreven in de
 
-3.9 Examengelegenheden op hoger niveau
-Als je het examen op een hoger niveau niet haalt, mag je de tweede kans alsnog doen op het niveau dat bij
-je opleiding hoort. Zie ook de Handreiking “examineren op hoger niveau”
+Je mag ook herkansen als je al een voldoende hebt.
 
-3.10 Aanvragen derde (examen)gelegenheid
-Heb je na twee gelegenheden een examen nog niet behaald?
-•  Dan kun je één extra gelegenheid aanvragen voor één generiek examen én één extra gelegenheid voor
+OER.
 
-één ander examen (beroepsgericht of keuzedeel).
+3.5 Aanwezigheid
 
-•  Dien je verzoek in via Osiris → “Aanvraag 3e gelegenheid generiek” of “Aanvragen 3e gelegenheid
+In de uitnodiging staat hoe laat het examen begint. Je moet minimaal 15 minuten van tevoren aanwezig zijn, tenzij
+anders is aangegeven (bijvoorbeeld bij meerdaagse examens).
 
-Beroepsexamens, keuzedelen en/of overige examens”, maar pas nadat je met je mentor hebt overlegd
-en deze een positief advies heeft gegeven.
-Is er sprake van bewezen overmacht en heb je daardoor méér extra gelegenheden nodig? Stuur dan
-een gemotiveerd verzoek per e-mail naar de sectorale examencommissie. Zie 3.7 afwezig tijdens examen
+3.6 Legitimatie
 
-•
+Bij binnenkomst moet je je legitimeren met een geldig identiteitsbewijs. Zonder geldig identiteitsbewijs mag je niet
+deelnemen aan het examen.
 
-In bijzondere situaties kan de examencommissie van deze regels afwijken.
+Je kunt je legitimeren met:
+•  een paspoort;
+•  een identiteitskaart;
+•  een rijbewijs;
+•  een vreemdelingen- of vluchtelingenpaspoort;
+•  een proces-verbaal van vermissing.
 
-Voor de onderdelen Loopbaan, Burgerschap en BPV geldt een inspanningsverplichting. Hiervoor hoeft de
-student geen extra gelegenheid aan te vragen bij de examencommissie.
+Een kopie of foto is niet geldig. Je identiteitsbewijs mag maximaal 6 maanden verlopen zijn.
 
-3.11 Niet eens met een besluit?
-Als je het niet eens bent met een besluit van de examencommissie, kun je schriftelijk beroep aantekenen bij
-de Commissie van Beroep voor de Examens. Zie hiervoor hoofdstuk 8 “Klacht en beroep”.
+Meer informatie over geldige identiteitsbewijzen vind je op:
+https://www.rijksoverheid.nl/onderwerpen/identificatieplicht/vraag-en-antwoord/met-welke-identiteitsbewijzen-kan-ik-
+mij-identificeren
 
-3 Bijvoorbeeld: ziekte, ongeluk, begrafenis, bijzondere familieomstandigheden, rij-examen, OV-staking
-4 Examencommissie.eo@Curio.nl / Examencommissie.tt@curio.nl / Examencommissie.zw@curio.nl / Examencommissie.vgg@curio.nl /
+3.7 Te laat komen
 
-Examencommissie.start@curio.nl
+Het examen begint op tijd. Zorg daarom dat je op tijd aanwezig bent.
+Kom je toch te laat? Dan gelden deze regels:
+•  Binnen 15 minuten na de start: je mag nog meedoen, maar krijgt geen extra tijd.
+•  15 minuten of later te laat: je mag niet meer deelnemen. Dit telt als een gemiste examengelegenheid.
+•  Bij examens korter dan 15 minuten: je mag niet meer deelnemen als je te laat bent.
+
+Voor examens die meerdere dagen duren, kunnen andere regels gelden. Deze staan in de exameninformatie.
+Voor centrale examens (lees- en luisterexamens Nederlands en Engels) gelden de landelijke regels van het CvTE.
+Regeling examenprotocol centrale examinering mbo
+
+3.8 Afwezig tijdens examen
+
+Ben je afwezig bij een examen? Dan wordt dit geregistreerd in Osiris als ‘afwezig’. Dit telt als een gemiste
+examengelegenheid. Dit geldt ook als je je ziek hebt gemeld.
+Je wordt ook als afwezig geregistreerd als je 15 minuten of meer te laat bent en niet meer mag deelnemen.
+
+2? Dan moet je dit binnen 10 werkdagen melden bij de examencommissie2F(.(zie bijlage
+
+Is er sprake van overmacht1F
+contactgegevens)
+Je levert zelf daarbij aan:
+•  een duidelijke uitleg;
+•  bewijs van de situatie;
+•  een handtekening van je mentor.
+
+De examencommissie beoordeelt je verzoek en beslist of je een extra gelegenheid krijgt.
+
+2 Bijvoorbeeld: ziekte, een ongeluk, begrafenis, bijzondere familieomstandigheden, rijexamen, OV-staking.
 
 8
 
 www.curio.nl/vmbo
 
-4 Uitslag examen
+3.9 Aanvragen derde (examen)gelegenheid
 
-4.1 Voorlopige uitslag
-De uitslag die je direct na het examen krijgt van de beoordelaar is altijd voorlopig.
+Examenreglement mbo 2026-2027
 
-4.2 Vaststelling
-De examencommissie stelt het officiële resultaat vast.
-In de OER van jouw opleiding staat of dat resultaat een cijfer is of een woord (zoals ‘voldoende’ of ‘goed’).
-Als je een cijfer krijgt, wordt dat afgerond op één decimaal.
+Heb je een examen na twee gelegenheden nog niet behaald? Dan kun je een extra examengelegenheid aanvragen.
+Je kunt aanvragen:
+•  één extra gelegenheid voor één generiek examen;
+•  één extra gelegenheid voor één ander examen (beroepsgericht of keuzedeel).
+Je dient je aanvraag in via Osiris en overlegt dit eerst met je mentor. Je mentor moet akkoord geven. Daarna
+beoordeelt de examencommissie je aanvraag.
 
-4.3 Definitieve uitslag
-•  De definitieve uitslag van het examen staat binnen 20 werkdagen na het examen in Osiris. Je krijgt dit
+In bijzondere situaties kan de examencommissie van de regels afwijken. (zie hoofdstuk 9.3).
 
-persoonlijk te zien.
+Voor Loopbaan, Burgerschap en BPV hoef je geen extra gelegenheid aan te vragen. Dit is een
+inspanningsverplichting.
 
-•  Als je geen inzage of gesprek aanvraagt5, stelt de examencommissie het resultaat automatisch vast na
+3.10 Niet eens met een besluit van de examencommissie?
 
-60 werkdagen.
-
-•  Vraag je wel inzage of een gesprek aan? Dan wordt het cijfer pas definitief als jij hebt laten weten dat je
-
-het eens bent met het resultaat.
-
-De examencommissie kan een eerder vastgesteld resultaat aanpassen of ongeldig maken. Dit kan alleen als
-er een geldige reden is, zoals fraude, een beoordelingsfout of een administratieve vergissing. Deze
-bevoegdheid is bedoeld om de betrouwbaarheid van het examen en het diploma te beschermen. De
-examencommissie weegt daarbij altijd zorgvuldig jouw belang als student mee.
-
-4.4 Onvoorziene omstandigheden
-Gebeuren er dingen, tijdens of na het examen, die niet vooraf geregeld zijn? Dan neemt de
-examencommissie binnen 20 werkdagen een besluit.
-Is er een administratieve fout gemaakt bij het invoeren van je resultaat? Dan mag de examencommissie het
-resultaat alsnog aanpassen via haar discretionaire bevoegdheid6
-
-4.5 Wanneer ben je geslaagd?
-Je bent geslaagd voor je opleiding als:
-•
-•
-•
-De examencommissie beslist of je aan alle eisen voldoet en dus het diploma krijgt.
-
-Je alle kerntaken en werkprocessen hebt behaald;
-Je voldoet aan de eisen voor taal, rekenen en keuzedelen;
-Je loopbaan en burgerschap en BPV hebt afgerond.
-
-4.6 Cum laude
-De examencommissie kijkt bij het diplomabesluit of jij in aanmerking komt voor een diploma cum laude.
-In bijzondere gevallen mag de examencommissie afwijken van de standaardregels.
-Je krijgt cum laude als je voldoet aan alle onderstaande voorwaarden:
-•
-•  Alle cijfers of oordelen zijn minimaal een 7;
-•
-•
-•
-
-Je hebt voor de keuzedelen minimaal een 7 gehaald;
-Je bent binnen de gestelde studieduur geslaagd (zoals in de OER staat);
-Je hebt geen fraude gepleegd.
-
-Je gemiddelde cijfer of oordeel is 8,0 of hoger;
-
-De eindwaardering gaat over de afgeronde cijfers of oordelen voor kerntaken, keuzedelen en generieke
-vakken.
-Deze tellen mee in de beslissing of je slaagt. Dit staat ook in het modeldiploma.
-Extra vakken of prestaties tellen niet mee voor cum laude, als ze geen onderdeel zijn van de slaag/zak-
-regeling.
-
-5 Zie hoofdstuk 6.2: Bespreken
-6 Zie hoofdstuk 9.4:
+Ben je het niet eens met een besluit van de examencommissie? Dan kun je in beroep gaan bij de Commissie van
+Beroep voor de Examens.  Meer informatie vind je in hoofdstuk 8: Klacht en beroep.
 
 9
 
 www.curio.nl/vmbo
 
-5 Diploma, mbo-verklaring en mbo-certificaten
+Examenreglement mbo 2026-2027
 
-In de Onderwijs- en Examenregeling (OER) van jouw opleiding staan de wettelijke eisen voor het behalen van een
-diploma.
-Als je aan alle eisen voldoet, krijg je een diploma, een resultatenlijst en soms nog een ander officieel bewijs.
+4 Uitslag examen
 
-5.1 Diplomabesluit
-Voordat je een diploma krijgt, controleert de examencommissie of je examendossier compleet is.
-Als alles klopt, neemt de examencommissie het diplomabesluit.
-Daarna krijg je hierover bericht. Je haalt het diploma persoonlijk op.
-Op het diploma staan jouw naam, de behaalde resultaten en de datum van uitreiking.
-Jij en de onderwijsmanager, of een lid van de examencommissie, ondertekenen het diploma7.
+4.1 Voorlopig resultaat
 
-5.2 Mbo-verklaring
-Je krijgt een mbo-verklaring van de examencommissie in deze situaties:
+Binnen 20 werkdagen na het examen wordt je resultaat in Osiris geplaatst. Je kunt dit daar persoonlijk bekijken. Het
+resultaat dat je in Osiris ziet, is altijd een voorlopig resultaat. Het definitieve resultaat wordt later vastgesteld door de
+examencommissie. Bij landelijke examens waarvoor de normering na afname nog wordt vastgesteld, kan de termijn
+voor publicatie van het voorlopige resultaat langer zijn.
+
+4.2 Vaststelling definitief resultaat
+
+De examencommissie stelt het definitieve resultaat van je examen vast.
+•  Nadat je resultaat in Osiris is geplaatst, is dit eerst een voorlopig resultaat.
+•
+In deze periode kun je inzage aanvragen of een gesprek voeren met de examinator (zie hoofdstuk 6).
+•  Vraag je geen inzage of gesprek aan? Dan wordt het resultaat automatisch na 60 werkdagen definitief
+
+vastgesteld.
+
+•  Vraag je wel inzage of een gesprek aan binnen 60 dagen? Dan wordt het resultaat pas definitief nadat je hebt
+
+laten weten dat je akkoord bent.
+
+In het examenplan van jouw opleiding (in de OER) staat of je een cijfer of een beoordeling krijgt. Cijfers worden
+afgerond op één decimaal3F
+
+3
+
+4.3 Onvoorziene omstandigheden
+
+Soms gebeuren er situaties die vooraf niet waren voorzien. In dat geval gelden de volgende regels:
+•  Als er tijdens of na het examen iets is gebeurd dat niet volgens de regels ging, beoordeelt de examencommissie
+
 •
 
-Je stopt met de opleiding zonder diploma, en:
+binnen 20 werkdagen of het examen geldig is.
+Is er een administratieve fout gemaakt, bijvoorbeeld bij het invoeren van een resultaat? Dan mag de
+examencommissie dit corrigeren via haar discretionaire bevoegdheid (zie hoofdstuk 9)
+
+•  De examencommissie kan ook een eerder vastgesteld resultaat aanpassen of ongeldig verklaren. Dit gebeurt
+
+alleen als daar een goede reden voor is, zoals:
+
+fraude;
 
 o
-o
-o
+o  een beoordelingsfout;
+o  een administratieve vergissing.
 
-je bent jonger dan 23 jaar,
-je hebt nog geen startkwalificatie,
-je hebt minstens één examenonderdeel gehaald dat in het examenplan van jouw opleiding staat;
+De examencommissie doet dit altijd zorgvuldig en weegt jouw belang als student mee. Het doel is om de
+betrouwbaarheid van examens en diploma’s te waarborgen.
 
+4.4 Wanneer ben je geslaagd?
+
+Je bent geslaagd voor je opleiding als je aan alle eisen voldoet.
+•
+•
+•
+De examencommissie beoordeelt of je aan alle wettelijke eisen voldoet en beslist of je je diploma krijgt.
+
+Je alle kerntaken en werkprocessen van je opleiding hebt behaald;
+Je voldoet aan de eisen voor taal, rekenen en keuzedelen;
+Je loopbaan, burgerschap en BPV hebt afgerond.
+
+4.5 Cum laude
+
+De examencommissie beoordeelt bij het diplomabesluit of je in aanmerking komt voor een diploma cum laude. In
+bijzondere gevallen kan de examencommissie afwijken van de standaardregels.
+Je krijgt cum laude als je aan alle volgende voorwaarden voldoet:
+•
+•  alle cijfers of beoordelingen zijn minimaal een 7;
+•
 •
 
-Je vraagt zelf om een mbo-verklaring als je met de opleiding stopt zonder diploma of certificaat.
+je bent binnen de gestelde studieduur geslaagd (zoals vermeld in de OER);
+je hebt geen fraude gepleegd.
 
-Op de mbo-verklaring staat welke onderdelen je succesvol hebt afgerond op het moment dat je met de
-opleiding stopt. Je krijgt ook een lijst met jouw behaalde examenresultaten.
-De mbo-verklaring wordt ondertekend door de onderwijsmanager of iemand van de examencommissie.
+je gemiddelde resultaat is 8,0 of hoger;
 
-5.3 Mbo-certificaat
-Heb je een onderdeel van de opleiding gehaald waarvoor een los mbo-certificaat bestaat? Dan krijg je dat
-certificaat naast de mbo-verklaring.
-Dit gaat bijvoorbeeld om een afgerond keuzedeel of ander onderdeel dat apart gecertificeerd mag worden.
-Let op:
-Je krijgt geen certificaat als het onderdeel al is opgenomen in het behaalde diploma.
-Het certificaat staat ook niet op de mbo-verklaring.
+De eindwaardering gaat over de cijfers of oordelen op basis van: kerntaken, keuzedelen, generieke vakken.
+Resultaten van extra vakken of andere prestaties tellen niet mee, tenzij deze onderdeel zijn van de slaag-
+zakregeling.
 
-6 Inzage-, bespreekrecht en bewaartermijnen
-
-6.1 Inzage
-Heb je het definitieve resultaat van een examen ontvangen? Dan heb je tot 12 maanden daarna recht op
-inzage. Een verzoek tot inzage dien je in via Topdesk bij het examenbureau.
-Je mag dan het volgende inzien:
-•
-•  de examenopgaven, het antwoordmodel en de beoordelingsformulieren (tenzij dit niet mag vanwege de
-
-jouw eigen gemaakte examenwerk (als dat beschikbaar is),
-
-aard van het examen),
-
-•  het beoordelingsformulier waarop de punten of beoordelingen van de examinator staan.
-
-Let op:
-Je mag geen aantekeningen maken, kopieën maken, foto’s nemen of opnames maken van wat je inziet.
-
-Ben je het na inzage niet eens met de beoordeling? Dan mag je een herbeoordeling aanvragen bij de
-examencommissie. Je doet dit door een e-mail te sturen naar de sectorale examencommissie8.
-
-Voor centrale examens Nederlands, Engels en rekenen heb je ook recht op inzage. Dit staat in: art 18-19
-Regeling examenprotocol centrale examinering
-
-7 Wie er tekent staat vastgelegd in het tekenregister, Het diploma wordt met de hand getekend en met een blauwe pen.
-8 Examencommissie.eo@Curio.nl / Examencommissie.tt@curio.nl / Examencommissie.zw@curio.nl / Examencommissie.vgg@curio.nl /
-
-Examencommissie.start@curio.nl
+3 Rekenen wordt afgerond op een geheel cijfer
 
 10
 
 www.curio.nl/vmbo
 
-6.2 Bespreken
-Je hebt tot 40 werkdagen na de uitslag recht op een gesprek over het examen met de examinator.
-De examinator legt dan uit hoe het resultaat tot stand is gekomen.
+Examenreglement mbo 2026-2027
 
-6.3 Bewaartermijn
-Curio bewaart het gemaakte examenwerk (als dat kan), de opgaven, beoordelingsformulieren,
-antwoordmodellen en eventuele audio- of video-opnames zolang als dat volgens de wet verplicht is.
+5 Diploma, mbo-verklaring en mbo-certificaten
 
-6.4 Audio en video
-Audio- en video-opnames die worden gebruikt voor controle of beoordeling van bijvoorbeeld taalexamens
-moeten voldoen aan de privacyregels van Curio. Je mag deze opnames niet downloaden.
+In de Onderwijs- en Examenregeling (OER) van jouw opleiding staan de wettelijke eisen voor het behalen van een
+diploma.
+Als je aan alle eisen voldoet, ontvang je een diploma. Daarbij krijg je ook een resultatenlijst en soms een ander
+officieel bewijs.
 
-7  Fraude en onregelmatigheden
+5.1 Diplomabesluit
 
-Fraude of onregelmatigheden bij examens zijn verboden.
-
-Iedereen die bij een examen betrokken is en denkt dat er fraude of een onregelmatigheid is, moet dit melden aan de
-sectorale examencommissie.
-
-Voorbeelden van fraude bij examens
-
-•  Afkijken of elkaars antwoorden delen
-•  Plagiaat (iets overnemen zonder de bron te noemen)
-•  Handtekeningen vervalsen
-•  Gebruik van hulpmiddelen die niet zijn toegestaan
-
-Voorbeelden van een onregelmatigheid bij examens
-
-Je houdt je niet aan de instructies van de surveillant
-
-•
-•  De orde tijdens het examen wordt verstoord, door jou of door een ander.
-
-Als fraude of een onregelmatigheid wordt gezien of later ontdekt, wordt er altijd een proces-verbaal opgesteld.
-
-Maatregelen bij fraude of onregelmatigheid
-De examencommissie kan bijvoorbeeld besluiten tot:
-
-Je krijgt een 1 voor het examen;
-
-•
-•  De beoordeling wordt ongeldig verklaard;
+Voordat je een diploma krijgt, controleert de examencommissie of je examendossier compleet is.
+Als alles in orde is, neemt de examencommissie het diplomabesluit. Je ontvangt daarna bericht.
+Je haalt je diploma persoonlijk op. Op het diploma staan:
 •
 •
+•  de datum van uitreiking.
+Het diploma wordt ondertekend 4F
+
+4 door jou en door de secretaris van de examencommissie.
+
+je naam;
+je behaalde resultaten;
+
+5.2 Mbo-verklaring
+
+In plaats van een diploma kun je een mbo-verklaring krijgen.
+Ben je jonger dan 27 jaar en heb je geen startkwalificatie? Dan krijg je automatisch een mbo-verklaring als je stopt
+met je opleiding. Dit gebeurt binnen 30 werkdagen na uitschrijving.
+•  Dit kan alleen als je minimaal één resultaat hebt behaald voor:
+
+o  een (deel van een) examenonderdeel;
+o
+o  de volledige BPV.
+
+loopbaan en burgerschap; of
+
+Ben je 27 jaar of ouder? Dan kun je zelf een mbo-verklaring aanvragen. Dit kan tot twee jaar na uitschrijving, als je
+minimaal één resultaat hebt behaald.
 •
 
-Je mag maximaal 1 jaar geen examens doen;
-Je mag helemaal geen examens meer doen. Dit kan betekenen dat dat jouw inschrijving wordt beëindigd;
- De examencommissie kan ook andere maatregelen nemen die nodig zijn.
+Je doet de aanvraag:
 
-De examencommissie onderzoek en;
+o  binnen 3 maanden na uitschrijving via Topdesk;
+o  ben je langer dan 3 maanden uitgeschreven, dan kun je jouw verzoek indienen via de website van Curio.
 
-•  bekijkt of er echt sprake is van fraude of een onregelmatigheid;
-•  praat met de betrokken personen;
-•  beslist welke maatregel nodig is als iemand zich niet aan de regels houdt.
+•  Na je aanvraag ontvang je de mbo-verklaring binnen 30 werkdagen.
+De mbo-verklaring wordt ondertekend door de secretaris van de examencommissie.
 
-Ben je jonger dan 18 jaar? Dan moet een ouder of voogd jou vertegenwoordigen.
-Iedere student mag zich laten helpen of vertegenwoordigen door iemand anders.
+5.3 Mbo-certificaat Mbo-verklaring
 
-De school bewaart alle informatie over fraude of onregelmatigheid in het studentendossier.
-Dit blijft bewaard tot twee jaar nadat je van school bent gegaan.
+De examencommissie geeft een mbo-certificaat af als je een onderdeel van de opleiding met succes hebt afgerond,
+waarvoor een erkend mbo-certificaat bestaat.
+•  Dit kan bijvoorbeeld gaan om een apart onderdeel van de opleiding of een keuzedeel.
+•  Het mbo-certificaat wordt gegeven naast een mbo-verklaring, als dat van toepassing is.
+•
+Je krijgt geen mbo-certificaat als het onderdeel al is opgenomen in je diploma.
+•  Onderdelen waarvoor je een mbo-certificaat krijgt, staan niet op de mbo-verklaring.
+
+4 Wie er tekent, staat vastgelegd in het tekenregister. Het diploma wordt met de hand getekend en met een blauwe pen.
 
 11
 
 www.curio.nl/vmbo
 
-8 Klacht en beroep
+Examenreglement mbo 2026-2027
 
-8.1 Klacht
-Ben je niet tevreden over hoe een examen is gegaan? Bijvoorbeeld over het gedrag van een surveillant of
-over de manier waarop iets is geregeld? Dan kun je een klacht indienen.
-Gebruik hiervoor het klachtenformulier op Topdesk of ga naar:
-https://www.curio.nl/service-en-contact/tips-of-klachten
+6 Inzage-, bespreekrecht en bewaartermijnen
 
-8.2 Beroep
-Ben je het niet eens met een besluit van de examencommissie? Dan mag je binnen 10 werkdagen in beroep
-gaan. Dit doe je bij de Commissie van Beroep voor de Examens, via het klachtenformulier op Topdesk of de
-website van Curio. https://www.curio.nl/service-en-contact/tips-of-klachten
-De termijn van 10 werkdagen start op de dag na dat het besluit aan jou is meegedeeld.
+6.1 Inzage
 
-De Commissie van Beroep behandelt het beroep volgens de regeling klachten en geschillen Curio.
+Heb je een voorlopig examencijfer ontvangen in Osiris? Dan kun je inzage aanvragen.
+Je vraagt inzage aan via Topdesk bij het examenbureau. Tijdens de inzage mag je het volgende bekijken:
 
-8.3 Oplossing in overleg (minnelijke schikking)
-Als je al een beroep hebt ingediend, kan er alsnog samen met de sectorale examencommissie worden
-geprobeerd om het probleem op te lossen. Als dat lukt, hoeft het beroep niet verder behandeld te worden.
+je eigen gemaakte schriftelijke of digitale examenwerk;
 
-9 Slotbepalingen
+•
+•  de examenopgaven, het antwoordmodel en de beoordelingsformulieren (tenzij dit niet is toegestaan);
+•  het beoordelingsformulier met de toegekende punten of beoordeling.
 
-9.1 Wijzigingen
-Wijzigingen in dit examenreglement worden onder toezicht van de Centrale Examencommissie (CEC)
-gemaakt en jaarlijks vastgesteld door de Raad van Bestuur.
-
-9.2 Geldigheid
-Dit examenreglement is vastgesteld door de Raad van Bestuur en is vanaf 1 augustus 2025 geldig.
-
-9.3 Hardheidsclausule
-Soms is het volgen van de regels in dit examenreglement niet eerlijk voor een student. Bijvoorbeeld als het
-grote en onevenredige nadelige gevolgen heeft. In zulke situaties kan de examencommissie besluiten om af
-te wijken van de regels, zodat het wél eerlijk uitpakt.
-De examencommissie kijkt dan goed naar de omstandigheden en naar wat redelijk is. Als ze besluiten om af
-te wijken, leggen ze dit goed uit en schrijven ze het op. Het besluit wordt ook opgenomen in het jaarverslag
-van de examencommissie.
-
-9.4 Discretionaire bevoegdheid
-Soms gebeurt er iets wat niet in dit examenreglement staat. Als de examencommissie dan een besluit moet
-nemen, kan dat ook betekenen dat het besluit niet in het voordeel van de student is.
-Dat mag alleen als de commissie daar een goede reden voor heeft en dit zorgvuldig afweegt. Dit noemen we
-de discretionaire bevoegdheid.
-Zo’n besluit wordt duidelijk gemotiveerd, schriftelijk vastgelegd en opgenomen in het jaarverslag van de
+Let op:
+Je mag tijdens de inzage geen aantekeningen maken, kopieën maken, foto’s nemen of opnames maken.
+Ben je het na inzage niet eens met de beoordeling? Dan kun je een verzoek tot herbeoordeling indienen bij de
 examencommissie.
+Je kunt inzage aanvragen vanaf het moment dat het voorlopige resultaat bekend is tot maximaal 12 maanden na het
+examen. Resultaten zijn na vaststelling niet meer aan te passen.
+Voor centrale examens Nederlands, Engels en rekenen geldt het inzagerecht volgens de landelijke regels.
+Dit staat in: art 18-19 van de Regeling examenprotocol centrale examinering mbo
+
+6.2 Bespreken
+
+Je hebt tot 40 werkdagen na de uitslag recht op een gesprek met de examinator. Tijdens dit gesprek legt de
+examinator uit hoe de beoordeling tot stand is gekomen. Een gesprek met de examinator is verplicht voordat je een
+second opinion kunt aanvragen.
+
+6.3 Bewaartermijn
+
+Curio bewaart examenmateriaal zolang dit volgens de wet verplicht is. Het gaat hierbij om gemaakt schriftelijk en
+digitaal examenwerk, examenopgaven, beoordelingsformulieren en antwoordmodellen. Ook eventuele audio- en
+video-opnames die zijn gebruikt bij de afname of beoordeling van het examen worden gedurende deze wettelijke
+bewaartermijn bewaard.
+
+6.4 Audio en video
+
+Audio- en video-opnames die worden gebruikt voor controle of beoordeling (bijvoorbeeld bij taalexamens) worden
+verwerkt volgens de privacyregels van Curio. Je mag deze opnames niet downloaden of kopiëren.
+
+7 Fraude en onregelmatigheden
+
+Fraude en onregelmatigheden tijdens examens zijn niet toegestaan.
+De regels over wat fraude en onregelmatigheden zijn en hoe hiermee wordt omgegaan, staan in de Regeling fraude
+en onregelmatigheden van Curio. Deze regeling hoort bij dit examenreglement.
+
+Iedereen die betrokken is bij een examen en vermoedt dat er fraude of een onregelmatigheid is, meldt dit zo snel
+mogelijk bij de examencommissie.
+
+De examencommissie onderzoekt de situatie en bepaalt of er sprake is van fraude of een onregelmatigheid. Voordat
+er een besluit wordt genomen, krijgt de student de kans om zijn of haar kant van het verhaal te vertellen.
+De examencommissie kan daarna één of meer maatregelen nemen, zoals:
+
+•  het ongeldig verklaren van het examen;
+•  het geven van een onvoldoende;
+•  het opnieuw laten maken van het examen;
+•  het tijdelijk niet mogen meedoen aan examens;
+•  een andere passende maatregel.
+
+In ernstige gevallen kan de examencommissie de directeur adviseren om de inschrijving te beëindigen.
+
+Ben je het niet eens met een besluit van de examencommissie? Dan kun je in beroep gaan (zie hoofdstuk 8)
 
 12
 
 www.curio.nl/vmbo
 
-Begrippenlijst
+Examenreglement mbo 2026-2027
 
-Afnameconditie
-De afgesproken omstandigheden waaronder een examen wordt afgenomen.
+8 Klacht en beroep
 
-Beoordelaar:
-Iemand die het examenwerk van een student beoordeelt. De beoordelaar geeft punten en vult het resultaat in
-volgens een vaste handleiding. Hij of zij werkt bij Curio of in opdracht van Curio. Andere woorden voor beoordelaar
-zijn: examinator of assessor.
+8.1 Klacht
 
-Beroepsspecifieke examenonderdelen
-Examenonderdelen die gaan over de kerntaken van een opleiding, zoals vastgelegd in het kwalificatiedossier.
+Ben je niet tevreden over hoe een examen is gegaan? Bijvoorbeeld over het “gedrag van een
+surveillant/examinator/medestudent” of over de manier waarop iets is geregeld? Dan kun je een klacht indienen.
+Gebruik hiervoor het klachtenformulier op Topdesk of ga naar:
+Tips of klachten | Curio
 
-Beroepspraktijkvorming (BPV)
-Het verplichte deel van de opleiding dat je volgt bij een erkend leerbedrijf. Je moet de BPV goed afronden om je
-diploma te krijgen. (WEB artikel 7.2.8, lid 1)
+8.2 Beroep
 
-Beroepsprocedure
-Een officiële manier waarop een student bezwaar kan maken bij de commissie van beroep, bijvoorbeeld tegen een
-besluit van de examencommissie.
+Ben je het niet eens met een besluit van de examencommissie? Dan mag je binnen 10 werkdagen in beroep gaan.
+Dit doe je bij de Commissie van Beroep voor de Examens, via het klachtenformulier op Topdesk of de website van
+Curio. Tips of klachten | Curio
+De termijn van 10 werkdagen start op de dag nadat het besluit aan jou is meegedeeld.
 
-Bevoegd gezag
-De organisatie die eindverantwoordelijk is voor de school. Voor Curio is dat: Stichting Curio Onderwijsgroep West-
-Brabant.
+De Commissie van Beroep voor de examens behandelt het beroep volgens de regeling klachten en geschillen Curio.
 
-Bindend studieadvies
-Advies van de school aan studenten in het eerste jaar van een mbo-opleiding. In dit advies staat of je wel of niet door
-mag gaan met je opleiding.
+8.3 Oplossing in overleg (minnelijke schikking)
 
-Centrale Examens (CE)
-Landelijke (digitale) examens voor Nederlands (lezen en luisteren), rekenen en Engels (voor niveau 4). Deze
-examens vinden plaats in een vaste periode.
+Als je al een beroep hebt ingediend, kan er alsnog samen met de sectorale examencommissie worden geprobeerd
+om het probleem op te lossen. Als het lukt samen het probleem op te lossen, hoeft het beroep niet verder behandeld
+te worden.
 
-Certificaat
-Officieel bewijs dat je een deel van een opleiding hebt gehaald. Dit kan een deel van de hoofdopleiding zijn of een
-keuzedeel. Een certificaat wordt alleen gegeven als dit volgens de wet is toegestaan.
+9 Slotbepalingen
 
-Cohort
-Een groep studenten die in hetzelfde jaar met dezelfde opleiding is begonnen en hetzelfde examenplan volgt.
+9.1 Vaststelling wijziging
 
-Crebo (erkende opleidingscode)
-Een unieke code voor elke mbo-opleiding in Nederland. Crebo staat voor: Centraal Register Beroepsopleidingen.
+Dit examenreglement wordt vastgesteld door de Raad van Bestuur van Curio.
+Wijzigingen in dit examenreglement worden voorbereid onder verantwoordelijkheid van de examencommissie en
+vastgesteld door de Raad van Bestuur.
 
-Diploma
-Officieel document dat laat zien dat je een mbo-opleiding met succes hebt afgerond. Je hebt voldaan aan alle eisen
-uit het kwalificatiedossier. (WEB artikel 7.4.6)
+9.2 Inwerkingtreding en geldigheid
 
-EQF
-Een Europees systeem om opleidingsniveaus met elkaar te vergelijken.
+Dit examenreglement treedt in werking op 1 augustus 2026 en geldt voor alle studenten die vanaf die datum staan
+ingeschreven bij Curio, tenzij anders is bepaald.
+Eerdere versies van het examenreglement komen hiermee te vervallen.
 
-Examen
+9.3 Hardheidsclausule
 
-1.  Alle examens (generiek, beroepsspecifiek en keuzedelen) samen voor één opleiding.
-2.  Een toets waarmee gekeken wordt of je aan de eisen van de opleiding voldoet.
+In bijzondere situaties kan het voorkomen dat toepassing van de regels uit dit examenreglement voor een student
+onredelijk uitpakt.
+In dat geval kan de examencommissie gemotiveerd afwijken van het reglement. Hierbij wordt zorgvuldig gekeken
+naar de omstandigheden en naar wat redelijk en billijk is.
+Een besluit tot afwijking wordt schriftelijk vastgelegd en opgenomen in het jaarverslag van de examencommissie.
 
-Examenbureau
-De afdeling van Curio die alles regelt rondom de organisatie van examens.
+9.4 Discretionaire bevoegdheid
 
-Examencommissie
-Een vaste groep mensen binnen Curio die de kwaliteit van de examens en diploma’s bewaakt. Deze commissie
-beslist bijvoorbeeld of een student recht heeft op een diploma, certificaat of vrijstelling. (WEB artikel 7.4.5)
+In situaties waarin dit examenreglement niet voorziet, beslist de examencommissie.
+De examencommissie neemt alleen een besluit als daarvoor een goede reden is en weegt daarbij de belangen van
+de student en de kwaliteit van de examinering zorgvuldig af.
+Het besluit wordt gemotiveerd, schriftelijk vastgelegd en opgenomen in het jaarverslag van de examencommissie.
 
 13
 
 www.curio.nl/vmbo
 
-Examendeelnemer
-Iemand die alleen examen doet bij Curio, maar geen lessen volgt. (WEB artikel 8.1.1, lid 1)
+Examenreglement mbo 2026-2027
+
+Begrippenlijst
+
+Afnameconditie
+De omstandigheden waaronder een examen wordt afgenomen.
+
+Beoordelaar / examinator / assessor
+Iemand die het examenwerk van een student beoordeelt. De beoordelaar geeft punten en stelt het resultaat vast
+volgens een vaste handleiding. Deze persoon werkt bij Curio of in opdracht van Curio.
+
+Beroepsspecifieke examenonderdelen
+Examenonderdelen die horen bij de kerntaken van de opleiding, zoals beschreven in het kwalificatiedossier.
+
+Beroepspraktijkvorming (BPV)
+Het verplichte deel van de opleiding dat je volgt bij een erkend leerbedrijf. Je moet de BPV met een voldoende
+resultaat afronden om je diploma te krijgen. (WEB artikel 7.2.8, lid 1)
+
+Beroepsprocedure
+De procedure waarmee een student in beroep kan gaan tegen een besluit, bijvoorbeeld van de examencommissie.
+
+Bevoegd gezag
+De organisatie die eindverantwoordelijk is voor de school. Voor Curio is dit Stichting Curio Onderwijsgroep West-
+Brabant.
+
+Bindend studieadvies
+Een advies in het eerste jaar van je opleiding waarin staat of je de opleiding mag voortzetten.
+
+Centrale examens (CE)
+Landelijke digitale examens voor Nederlands, rekenen en (voor niveau 4) Engels.
+
+Certificaat
+Een officieel bewijs dat je een onderdeel van de opleiding hebt behaald, als hiervoor een erkend mbo-certificaat
+bestaat.
+
+Cohort
+Een groep studenten die in hetzelfde studiejaar is gestart met dezelfde opleiding en hetzelfde examenplan volgt.
+
+Crebo (opleidingscode)
+Een unieke code voor een mbo-opleiding in Nederland (Centraal Register Beroepsopleidingen).
+
+Diploma
+Een officieel document dat aantoont dat je de opleiding succesvol hebt afgerond. (WEB artikel 7.4.6)
+
+EQF
+Een Europees systeem om opleidingsniveaus met elkaar te vergelijken.
+
+Examen
+Een beoordeling waarmee wordt vastgesteld of je voldoet aan de eisen van de opleiding. Een examen kan bestaan
+uit meerdere onderdelen, zoals schriftelijke, mondelinge, praktische of digitale examens.
+
+Examenbureau
+De afdeling die de organisatie en planning (generiek) van examens verzorgt.
+
+Examencommissie
+De commissie die verantwoordelijk is voor de kwaliteit van examinering en die besluiten neemt over examens,
+resultaten, vrijstellingen en diplomering. (WEB artikel 7.4.5)
 
 Examendossier
-Alle resultaten en bewijzen van examens van een student. De examencommissie gebruikt dit om te bepalen of je
-een diploma krijgt.
-
-Examengelegenheid (of examenkans)
-Een vastgesteld moment waarop je examen kunt doen. Je hebt recht op twee kansen. Een derde kans moet je
-aanvragen bij de examencommissie.
-
-Examenplan
-Een overzicht waarin staat welke examens je moet doen per opleiding en per groep studenten. Hierin staan ook de
-regels over hoe beslissingen worden genomen.
-
-Examinering
-Alles wat te maken heeft met het afnemen en beoordelen van examens, en het vaststellen van de uitslag.
-
-Generieke examenonderdelen
-Verplichte examens voor alle studenten, zoals Nederlands, rekenen en (voor niveau 4) Engels.
-
-Hulpmiddelen
-Spullen die je mag gebruiken tijdens een examen, zoals een rekenmachine of woordenboek
-
-Inschrijving (voorheen OOK)
-Officiële aanmelding voor een opleiding. Vanaf dat moment zijn er rechten en plichten voor jou en voor de school.
-Deze staan onder andere in de OER en het studentenstatuut. (WEB artikel 8.1.1)
-
-Keuzedelen
-Delen van de opleiding waarmee je je kennis kunt verbreden of verdiepen. Ze zijn verplicht en horen bij je mbo-
-opleiding.
-
-Kwalificatiedossier
-Een landelijk document waarin staat wat je moet leren en kunnen voor je opleiding. Hierin staan ook de kerntaken en
-werkprocessen.
-
-Mbo-verklaring
-Officieel document voor studenten die de opleiding verlaten, maar geen diploma of certificaat kunnen krijgen. (WEB
-artikel 7.4.6a)
-
-OER (Onderwijs-, en examenregeling)
-Regels over hoe het onderwijs en de examens zijn geregeld. Hierin staat wat je moet weten om je examen goed te
-kunnen doen.
-
-Referentieniveaus
-De niveaus voor taal en rekenen die gelden voor jouw opleidingsniveau. Ze zijn wettelijk vastgesteld.
-Wet referentieniveaus Nederlandse taal en rekenen.
-
-Resultatenlijst
-Een overzicht van je eindcijfers per examenonderdeel. (WEB artikel 3)
-
-Slaag-/zakregeling
-Regels waarin staat aan welke eisen je moet voldoen om te slagen voor je diploma.
-
-Startkwalificatie
-Een diploma havo, vwo of mbo-niveau 2 of hoger. Dit is het minimale niveau dat je moet hebben om niet meer
-leerplichtig te zijn.
-
-Student
-Iemand die staat ingeschreven bij Curio en onderwijs volgt.
+Het geheel van behaalde resultaten en bewijsstukken van examens van een student.
 
 14
 
 www.curio.nl/vmbo
 
-Surveillant
-Iemand die toezicht houdt tijdens het maken van een examen.
+Examenreglement mbo 2026-2027
+
+Examendeelnemer
+Iemand die alleen examens aflegt en geen onderwijs volgt.
+
+Examengelegenheid (examenkans)
+Een moment waarop je een examen kunt afleggen. Je hebt recht op twee gelegenheden per examen.
+
+Examenplan (EDP)
+Een overzicht van de examens binnen een opleiding en de regels die daarbij horen.
+
+Examinering
+Alles wat te maken heeft met het afnemen, beoordelen en vaststellen van examens.
+
+Generieke examenonderdelen
+Verplichte examenonderdelen, zoals Nederlands, rekenen en Engels.
+
+Hulpmiddelen
+Middelen die je tijdens een examen mag gebruiken, zoals een woordenboek of rekenmachine.
+
+Inschrijving
+De officiële inschrijving voor een opleiding. Vanaf dat moment gelden rechten en plichten voor de student en de
+school.
+
+Keuzedelen
+Een verplicht onderdeel van de opleiding waarmee je je kennis kunt verbreden of verdiepen.
+
+Kwalificatiedossier
+Een landelijk document waarin staat wat je moet kennen en kunnen voor een opleiding, inclusief kerntaken en
+werkprocessen.
+
+Mbo-verklaring
+Een officieel document voor studenten die stoppen zonder diploma, met daarop de behaalde onderdelen. (WEB artikel
+7.4.6a)
+
+OER (Onderwijs- en examenregeling)
+De regeling waarin staat hoe onderwijs en examinering zijn georganiseerd en aan welke eisen je moet voldoen.
+
+Referentieniveaus
+De wettelijk vastgestelde niveaus voor taal en rekenen.
+
+Resultatenlijst
+Een overzicht van de behaalde eindresultaten per examen. (WEB artikel 3)
+
+Slaag-/zakregeling
+De regels die bepalen of je geslaagd bent voor je opleiding.
+
+Startkwalificatie
+Een diploma van minimaal mbo-niveau 2, havo of vwo. Dit is het minimale niveau dat je moet hebben om niet meer
+kwalificatieplichtig te zijn.
+
+Student
+Iemand die staat ingeschreven bij Curio en onderwijs volgt.
+
+Surveillant
+Iemand die toezicht houdt tijdens het examen.
 
 Vrijstelling
-Een officiële erkenning dat je een deel van de opleiding niet hoeft te doen, omdat je dit al eerder hebt geleerd of
-gehaald.
+Een besluit van de examencommissie dat je een onderdeel van de opleiding niet hoeft te volgen of af te leggen,
+omdat je dit al hebt behaald.
 
 Waardepapier
-Speciaal papier met beveiliging waarop officiële documenten zoals diploma’s en cijferlijsten worden afgedrukt.
-
-Werkprocessen
-De verschillende taken die je uitvoert binnen een beroep. Deze werkprocessen horen bij kerntaken in het
-kwalificatiedossier.
-
-WEB
-Wet Educatie en Beroepsonderwijs. De wet die alles regelt over mbo en volwassenonderwijs
+Beveiligd papier waarop officiële documenten zoals diploma’s worden geprint.
 
 15
+
+www.curio.nl/vmbo
+
+Examenreglement mbo 2026-2027
+
+Werkprocessen
+Taken die horen bij een beroep en onderdeel zijn van de kerntaken in het kwalificatiedossier.
+
+WEB (Wet Educatie en Beroepsonderwijs)
+De wet die het mbo en de examinering regelt.
+
+Contactgegevens
+
+Commissie van Beroep voor de examens
+Digitaal via: Tips of klachten | Curio
+
+Post via
+Commissie van Beroep Examens Curio
+t.a.v. ambtelijk secretaris
+Trivium 74
+4873 LP Etten-Leur
+
+Examencommissie:
+Curio Zorg en welzijn
+Examencommissie.zw@curio.nl
+
+Curio Techniek en technologie
+Examencommissie.tt@curio.nl
+
+Curio Economie en ondernemen
+Examencommissie.eo@Curio.nl
+
+Curio Voedsel, groen en gastvrijheid
+Examencommissie.vgg@curio.nl
+
+Curio Entree - mbo-breed
+Examencommissie.entreembobreed@curio.nl
+
+16
 
 www.curio.nl/vmbo
 

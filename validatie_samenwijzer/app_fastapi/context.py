@@ -34,6 +34,11 @@ STUDENT_SOORTEN = (
     "klachtenregeling",
     "gedragscode",
     "algemene_informatie",
+    "privacyreglement",
+    "pestprotocol",
+    "meldcode",
+    "ict_reglement",
+    "gedragsregeling",
 )
 MENTOR_SOORTEN = (
     "examenreglement",
@@ -43,6 +48,11 @@ MENTOR_SOORTEN = (
     "klachtenregeling",
     "gedragscode",
     "algemene_informatie",
+    "privacyreglement",
+    "pestprotocol",
+    "meldcode",
+    "ict_reglement",
+    "gedragsregeling",
 )
 
 
