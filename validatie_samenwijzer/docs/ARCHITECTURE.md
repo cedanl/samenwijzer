@@ -391,6 +391,13 @@ de instellingsbrede regelingen bevatten; de bestandsnaam-stem is de `soort` (moe
 `db.INSTELLING_SOORTEN` staan). `ingest._verwerk_instelling_documenten` indexeert die apart van de
 gewone OER-iteratie (`_INSTELLING_SUBMAP` wordt overgeslagen door de platte OER-loop).
 
+Uitgebreid okt 2026 met `privacyreglement`, `pestprotocol`, `meldcode`, `ict_reglement` en
+`gedragsregeling` (KWIC-regelingen; ook in `STUDENT_SOORTEN`/`MENTOR_SOORTEN` in
+`app_fastapi/context.py`, via `GENERIEKE_REGELINGEN` ook in de publieke route). Het zijn generieke
+concepten voor alle instellingen; alleen KWIC heeft nu inhoud. Per soort is er één document per instelling. Overig aangeleverd
+materiaal (examenplannen, NML's, Curio-KD-kopieën, onderwijsschema's, ICT-/veiligheidsplannen)
+staat in `oeren/<inst>_oeren/_bronmateriaal/`: wel in Box, niet geïndexeerd en niet in git.
+
 ## Instellingsbrede bron (aanvullende bron)
 
 Naast de OER, het KD en skills is er een **vierde chat-bron**: instellingsbrede regelingen

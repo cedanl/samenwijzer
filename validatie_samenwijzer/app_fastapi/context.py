@@ -25,8 +25,18 @@ from validatie_samenwijzer.opleiding import nette_opleiding_naam
 
 # Welke instellingsbrede documenten als bron meegaan, per context — mirror van
 # app/main.py (_STUDENT_SOORTEN/_MENTOR_SOORTEN) en 0_oer_vraag.py (publiek = enkel
-# examenreglement). Labels komen uit db.INSTELLING_SOORTEN (bron van waarheid).
-PUBLIEK_SOORTEN = ("examenreglement",)
+# examenreglement + generieke regelingen). Labels komen uit db.INSTELLING_SOORTEN
+# (bron van waarheid).
+# Generieke regelingen gelden als concept voor elke instelling; een instelling zonder document
+# voor een soort krijgt gewoon geen blok (laad_context slaat ontbrekende soorten over).
+GENERIEKE_REGELINGEN = (
+    "privacyreglement",
+    "pestprotocol",
+    "meldcode",
+    "ict_reglement",
+    "gedragsregeling",
+)
+PUBLIEK_SOORTEN = ("examenreglement", *GENERIEKE_REGELINGEN)
 STUDENT_SOORTEN = (
     "examenreglement",
     "studentenstatuut",
@@ -34,6 +44,7 @@ STUDENT_SOORTEN = (
     "klachtenregeling",
     "gedragscode",
     "algemene_informatie",
+    *GENERIEKE_REGELINGEN,
 )
 MENTOR_SOORTEN = (
     "examenreglement",
@@ -43,6 +54,7 @@ MENTOR_SOORTEN = (
     "klachtenregeling",
     "gedragscode",
     "algemene_informatie",
+    *GENERIEKE_REGELINGEN,
 )
 
 
