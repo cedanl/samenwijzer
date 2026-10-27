@@ -284,6 +284,18 @@ def test_api_index_serveert_landing():
     assert r.status_code == 200 and "/static/app.css" in r.text
 
 
+def test_landing_toont_eerst_de_kiezer_en_dan_het_vraagveld():
+    """Keuze-eerst: de kiezer staat vóór het (vergrendelde) vraagveld en er is geen vrij
+    vraagformulier (`data-ask`) meer op de startpagina."""
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    html = _client().get("/").text
+    assert 'id="oplCascade"' in html and 'id="vraagveld"' in html
+    assert html.index('id="oplCascade"') < html.index('id="vraagveld"')
+    assert "data-ask" not in html
+    assert 'class="vraagveld locked"' in html
+
+
 def test_static_assets_hebben_cache_bust_versie():
     """Cache-busting: terugkerende bezoekers moeten een gewijzigde app.js/app.css oppikken
     zonder hard-refresh — static_url() hangt ?v=<mtime> aan elk static-asset-path."""
