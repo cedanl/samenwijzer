@@ -99,7 +99,9 @@ def test_vraag_accumuleert_naar_eenduidige_match_laadt_direct(monkeypatch):
     from app_fastapi.sessie import Sessie
 
     monkeypatch.setattr(m.db, "get_alle_oers_met_instelling", lambda conn: _FAKE_OERS)
-    monkeypatch.setattr(m, "laad_context", lambda oer_ids, **k: ("PROMPT", ["label"], [], False))
+    monkeypatch.setattr(
+        m, "laad_context_met_melding", lambda oer_ids, **k: ("PROMPT", ["label"], [], False, "")
+    )
 
     s = Sessie(
         toegang=True,
@@ -161,7 +163,9 @@ def test_kies_beurt_telt_mee_bij_genegeerde_picker(monkeypatch):
     import app_fastapi.main as m
     from app_fastapi.sessie import Sessie
 
-    monkeypatch.setattr(m, "laad_context", lambda oer_ids, **k: ("PROMPT", ["label"], [], False))
+    monkeypatch.setattr(
+        m, "laad_context_met_melding", lambda oer_ids, **k: ("PROMPT", ["label"], [], False, "")
+    )
 
     s = Sessie(toegang=True)
     monkeypatch.setattr(m, "get_sessie", lambda request: s)
@@ -208,7 +212,9 @@ def test_vraag_partiele_enkele_kandidaat_geeft_kies(monkeypatch):
     monkeypatch.setattr(m.db, "get_alle_oers_met_instelling", lambda conn: oers)
     geladen = []
     monkeypatch.setattr(
-        m, "laad_context", lambda oer_ids, **k: geladen.append(oer_ids) or ("P", ["l"], [], False)
+        m,
+        "laad_context_met_melding",
+        lambda oer_ids, **k: geladen.append(oer_ids) or ("P", ["l"], [], False, ""),
     )
     s = Sessie(toegang=True)
     monkeypatch.setattr(m, "get_sessie", lambda request: s)

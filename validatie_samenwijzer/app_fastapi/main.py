@@ -29,7 +29,7 @@ from starlette.middleware.sessions import SessionMiddleware
 
 from app_fastapi import data
 from app_fastapi.auth import auth_mentor, auth_student
-from app_fastapi.context import MENTOR_SOORTEN, STUDENT_SOORTEN, laad_context
+from app_fastapi.context import laad_context, laad_context_met_melding
 from app_fastapi.sessie import bewaar_sessie, get_sessie
 from validatie_samenwijzer import db, instellingen
 from validatie_samenwijzer._ai import _client as ai_client
@@ -218,7 +218,12 @@ async def api_vraag(request: Request):
     # Al een OER geladen? → direct doorchatten.
     if s.oer_systeem:
         return JSONResponse(
-            {"modus": "chat", "labels": s.oer_labels, "oer_onleesbaar": s.oer_onleesbaar}
+            {
+                "modus": "chat",
+                "labels": s.oer_labels,
+                "oer_onleesbaar": s.oer_onleesbaar,
+                "melding": s.melding,
+            }
         )
 
     oers = [dict(r) for r in db.get_alle_oers_met_instelling(_conn())]
@@ -234,7 +239,13 @@ async def api_vraag(request: Request):
     # opleiding niet aan; zie identificeer_oer_kandidaten, aanscherping 3): dan kies-modus.
     if len(kandidaten) == 1 and not kandidaten[0]["_partieel"]:
         oer_id = kandidaten[0]["id"]
-        s.oer_systeem, s.oer_labels, s.domeinen, s.oer_onleesbaar = laad_context([oer_id])
+        (
+            s.oer_systeem,
+            s.oer_labels,
+            s.domeinen,
+            s.oer_onleesbaar,
+            s.melding,
+        ) = laad_context_met_melding([oer_id])
         s.oer_ids = [oer_id]
         s.wachtende_vraag = None
         s.kandidaten = []
@@ -244,6 +255,7 @@ async def api_vraag(request: Request):
                 "labels": s.oer_labels,
                 "oer_ids": s.oer_ids,
                 "oer_onleesbaar": s.oer_onleesbaar,
+                "melding": s.melding,
             }
         )
 
@@ -275,7 +287,7 @@ async def api_kies(request: Request):
     """Laad de gekozen OER's als context en geef de wachtende vraag terug."""
     oer_ids = (await request.json()).get("oer_ids", [])[:3]
     s = get_sessie(request)
-    s.oer_systeem, s.oer_labels, s.domeinen, s.oer_onleesbaar = laad_context(
+    s.oer_systeem, s.oer_labels, s.domeinen, s.oer_onleesbaar, s.melding = laad_context_met_melding(
         [int(i) for i in oer_ids]
     )
     s.oer_ids = [int(i) for i in oer_ids]
@@ -287,6 +299,7 @@ async def api_kies(request: Request):
             "oer_ids": s.oer_ids,
             "wachtende_vraag": vraag,
             "oer_onleesbaar": s.oer_onleesbaar,
+            "melding": s.melding,
         }
     )
 
@@ -437,7 +450,7 @@ def login_post(
                 "studentnummer": student["studentnummer"],
             }
             s.oer_systeem, s.oer_labels, s.domeinen, s.oer_onleesbaar = laad_context(
-                [student["oer_id"]], STUDENT_SOORTEN
+                [student["oer_id"]], "student"
             )
             s.oer_ids = [student["oer_id"]]
             return RedirectResponse("/student", status_code=303)
@@ -534,7 +547,7 @@ def mentor_sessie(request: Request, student_id: int):
     prof = data.profiel_van_student(student_id)
     s.actieve_student = prof
     s.oer_systeem, s.oer_labels, s.domeinen, s.oer_onleesbaar = laad_context(
-        [prof["oer_id"]], MENTOR_SOORTEN
+        [prof["oer_id"]], "mentor"
     )
     s.oer_ids = [prof["oer_id"]]
     s.chat_history = []

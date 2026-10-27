@@ -4,7 +4,6 @@ import pytest
 
 from validatie_samenwijzer.db import (
     get_kerntaken_by_oer_id,
-    haal_instelling_document_op,
     init_db,
     voeg_instelling_toe,
 )
@@ -309,14 +308,23 @@ def test_verwerk_instelling_documenten_indexeert_bekende_soorten(tmp_path, conn)
     _verwerk_instelling_documenten("rijn_ijssel", tmp_path, conn)
 
     inst_id = conn.execute("SELECT id FROM instellingen WHERE naam = 'rijn_ijssel'").fetchone()[0]
-    reglement = haal_instelling_document_op(conn, inst_id, "examenreglement")
+    reglement = conn.execute(
+        "SELECT * FROM documenten WHERE instelling_id = ? AND soort = 'examenreglement'", (inst_id,)
+    ).fetchone()
     assert reglement is not None
+    assert reglement["gereviewd"] == 1
     assert reglement["geindexeerd"] == 1
     assert reglement["titel"] == "Examenreglement Rijn IJssel"
     assert reglement["bestandspad"].endswith("_instelling/examenreglement.md")
-    assert haal_instelling_document_op(conn, inst_id, "begeleidingsbeleid") is not None
+    assert (
+        conn.execute(
+            "SELECT 1 FROM documenten WHERE instelling_id = ? AND soort = 'begeleidingsbeleid'",
+            (inst_id,),
+        ).fetchone()
+        is not None
+    )
     # Geen rij voor de onbekende stem.
-    n = conn.execute("SELECT COUNT(*) FROM instelling_documenten").fetchone()[0]
+    n = conn.execute("SELECT COUNT(*) FROM documenten").fetchone()[0]
     assert n == 2
 
 
@@ -326,7 +334,7 @@ def test_verwerk_instelling_documenten_zonder_submap_doet_niets(tmp_path, conn):
 
     _verwerk_instelling_documenten("rijn_ijssel", tmp_path, conn)
 
-    assert conn.execute("SELECT COUNT(*) FROM instelling_documenten").fetchone()[0] == 0
+    assert conn.execute("SELECT COUNT(*) FROM documenten").fetchone()[0] == 0
 
 
 # Echte Da Vinci-titelpagina's (eerste regel) — de drie formaten plus de afgekapte

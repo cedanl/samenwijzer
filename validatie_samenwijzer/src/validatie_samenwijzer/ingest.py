@@ -557,15 +557,15 @@ def _verwerk_instelling_documenten(
 
     Verwacht ze in `<map>/_instelling/<soort>.<ext>` met de bestandsnaam-stem als soort
     (geldige soorten: db.INSTELLING_SOORTEN). Crebo-loos: alleen markdown-conversie +
-    registratie in `instelling_documenten`, geen kerntaken-extractie. Onbekende stems
+    registratie in `documenten`, geen kerntaken-extractie. Onbekende stems
     worden overgeslagen.
     """
     from validatie_samenwijzer.db import (
         INSTELLING_SOORTEN,
         get_instelling_by_naam,
-        markeer_instelling_document_geindexeerd,
-        set_instelling_document_content_hash,
-        voeg_instelling_document_toe,
+        markeer_document_geindexeerd,
+        set_document_content_hash,
+        voeg_document_toe,
     )
     from validatie_samenwijzer.oer_catalogus import bereken_content_hash
 
@@ -595,15 +595,17 @@ def _verwerk_instelling_documenten(
             log.error("Extractie mislukt voor '%s': %s", bestand.name, e)
             tekst = ""
         titel = f"{INSTELLING_SOORTEN[soort]} {inst['display_naam']}"
-        doc_id = voeg_instelling_document_toe(
+        # `_instelling/` wordt door de beheerder aangeleverd: direct gereviewd.
+        doc_id = voeg_document_toe(
             conn,
-            instelling_id=inst["id"],
-            soort=soort,
-            titel=titel,
-            bestandspad=_pad_relatief_aan_oeren_root(bestand),
+            inst["id"],
+            soort,
+            titel,
+            _pad_relatief_aan_oeren_root(bestand),
+            gereviewd=True,
         )
-        set_instelling_document_content_hash(conn, doc_id, bereken_content_hash(tekst))
-        markeer_instelling_document_geindexeerd(conn, doc_id)
+        set_document_content_hash(conn, doc_id, bereken_content_hash(tekst))
+        markeer_document_geindexeerd(conn, doc_id)
         log.info("Instellingsbron '%s' geïndexeerd voor %s.", soort, inst["display_naam"])
 
 

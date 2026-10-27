@@ -185,7 +185,7 @@ async function laadStudiegidsEnOpen(ids, vraag = null) {
   })).json();
   oerIds = r.oer_ids || ids;
   setLabels(r.labels);
-  setBanner(r.oer_onleesbaar);
+  setBanner(r.oer_onleesbaar, r.melding);
   if (vraag) { addVraag(thread, vraag); await streamAntwoord(thread, vraag); }
   else if (r.wachtende_vraag) { await streamAntwoord(thread, r.wachtende_vraag); }
   else { ovAsk.querySelector("input").focus(); }
@@ -197,12 +197,15 @@ function setLabels(labels) {
   ovLabels.innerHTML = (labels || []).map((l) => `<span class="ov-label">${esc(l)}</span>`).join("");
   ovPdfBtn.style.display = oerIds.length ? "" : "none";
 }
-function setBanner(onleesbaar) {
+function setBanner(onleesbaar, melding = "") {
   const b = document.getElementById("ovBanner");
   if (!b) return;
-  b.hidden = !onleesbaar;
-  if (onleesbaar) b.textContent =
-    "De OER van deze opleiding is niet machine-leesbaar; antwoorden komen uit het landelijke kwalificatiedossier en de instellingsregelingen.";
+  const tekst = [
+    onleesbaar ? "De OER van deze opleiding is niet machine-leesbaar; antwoorden komen uit het landelijke kwalificatiedossier en de instellingsregelingen." : "",
+    melding || "",
+  ].filter(Boolean).join(" ");
+  b.hidden = !tekst;
+  b.textContent = tekst;
 }
 
 /* POST /api/vraag + modus-routering (gedeeld door start() en de ovAsk-handler). */
@@ -215,7 +218,7 @@ async function routeerVraag(vraag) {
   // Chat/intake: een eventuele nog-zichtbare picker uit een eerder kies-ronde moet weg —
   // anders kan een klik erop later de net-geladen (of nog te laden) bron overschrijven.
   picker.innerHTML = "";
-  if (r.modus === "chat") { oerIds = r.oer_ids || oerIds; setLabels(r.labels); setBanner(r.oer_onleesbaar); }
+  if (r.modus === "chat") { oerIds = r.oer_ids || oerIds; setLabels(r.labels); setBanner(r.oer_onleesbaar, r.melding); }
   await streamAntwoord(thread, vraag);
 }
 
@@ -243,7 +246,7 @@ async function renderPicker() {
     })).json();
     oerIds = r.oer_ids || ids;
     setLabels(r.labels);
-    setBanner(r.oer_onleesbaar);
+    setBanner(r.oer_onleesbaar, r.melding);
     picker.innerHTML = "";
     if (r.wachtende_vraag) await streamAntwoord(thread, r.wachtende_vraag);
   }, { knop: "Open mijn studiegids →" });

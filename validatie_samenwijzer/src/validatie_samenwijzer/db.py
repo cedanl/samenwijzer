@@ -1,26 +1,63 @@
 """SQLite schema-initialisatie en queries voor validatie-samenwijzer."""
 
 import sqlite3
+from dataclasses import dataclass
 from pathlib import Path
+from typing import Literal
 
-# Instellingsbrede document-soorten → blok-kop/citeer-label. Eén bron van waarheid
-# voor opslag, ingestie, de chat-blokkop en de beheer-status. Een nieuwe soort
-# toevoegen = hier één regel; geen schema-migratie nodig (soort-validatie staat in
-# voeg_instelling_document_toe, niet in een DB-CHECK).
-INSTELLING_SOORTEN = {
-    "examenreglement": "Examenreglement",
-    "begeleidingsbeleid": "Begeleidings- en welzijnsbeleid",
-    "studentenstatuut": "Studentenstatuut",
-    "bindend_studieadvies": "Regeling bindend studieadvies",
-    "klachtenregeling": "Klachtenregeling",
-    "gedragscode": "Gedragscode",
-    "algemene_informatie": "Algemene informatie",
-    "privacyreglement": "Privacyreglement",
-    "pestprotocol": "Pestprotocol",
-    "meldcode": "Meldcode huiselijk geweld en kindermishandeling",
-    "ict_reglement": "Reglement gebruik ICT-voorzieningen",
-    "gedragsregeling": "Regeling houding en gedrag",
+
+@dataclass(frozen=True)
+class SoortInfo:
+    """Eigenschappen van een documentsoort (zie docs/plans/2026-10-27-flexibele-documentlaag.md).
+
+    bereik: "instelling" (geldt voor alle opleidingen) of "opleiding" (per crebo/leerweg/cohort).
+    juridisch: volledige tekst + harde citatieplicht (anders informatief; eerste die afvalt
+        bij budgetdruk). zichtbaarheid: standaard voor nieuwe documenten van deze soort.
+    """
+
+    label: str
+    bereik: Literal["instelling", "opleiding"]
+    juridisch: bool
+    zichtbaarheid: Literal["publiek", "ingelogd", "intern"] = "publiek"
+
+
+# Documentsoorten → eigenschappen. Eén bron van waarheid voor opslag, ingestie, de chat-blokkop
+# en de beheer-status. Een nieuwe soort toevoegen = hier één regel; geen schema-migratie nodig
+# (soort-validatie staat in voeg_document_toe, niet in een DB-CHECK).
+SOORTEN: dict[str, SoortInfo] = {
+    "examenreglement": SoortInfo("Examenreglement", "instelling", True),
+    "begeleidingsbeleid": SoortInfo(
+        "Begeleidings- en welzijnsbeleid", "instelling", False, "ingelogd"
+    ),
+    # Deze bestaande soorten waren nooit publiek en zijn niet op persoonsgegevens gecontroleerd:
+    # `ingelogd` (nu: niet in de publieke chat) tot ze na review op `publiek` worden gezet.
+    "studentenstatuut": SoortInfo("Studentenstatuut", "instelling", True, "ingelogd"),
+    "bindend_studieadvies": SoortInfo(
+        "Regeling bindend studieadvies", "instelling", True, "ingelogd"
+    ),
+    "klachtenregeling": SoortInfo("Klachtenregeling", "instelling", True, "ingelogd"),
+    "gedragscode": SoortInfo("Gedragscode", "instelling", True, "ingelogd"),
+    "algemene_informatie": SoortInfo("Algemene informatie", "instelling", False, "ingelogd"),
+    "privacyreglement": SoortInfo("Privacyreglement", "instelling", True),
+    "pestprotocol": SoortInfo("Pestprotocol", "instelling", False),
+    "meldcode": SoortInfo("Meldcode huiselijk geweld en kindermishandeling", "instelling", True),
+    "ict_reglement": SoortInfo("Reglement gebruik ICT-voorzieningen", "instelling", False),
+    "gedragsregeling": SoortInfo("Regeling houding en gedrag", "instelling", True),
+    "praktijkovereenkomst": SoortInfo("Praktijkovereenkomst", "instelling", True),
+    "schoolkosten": SoortInfo("Schoolkosten", "instelling", False),
+    "veiligheidsplan": SoortInfo("Schoolveiligheidsplan", "instelling", False),
+    "protocol": SoortInfo("Protocol", "instelling", False),
+    "studiekeuzegids": SoortInfo("Studiekeuzegids", "instelling", False),
+    "overig": SoortInfo("Overig document", "instelling", False),
+    "examenplan": SoortInfo("Examenplan", "opleiding", False),
+    "nominale_lijn": SoortInfo("Nominale lijn", "opleiding", False),
+    "studiegids": SoortInfo("Studiegids", "opleiding", False),
+    "onderwijsplan": SoortInfo("Onderwijsplan", "opleiding", False),
+    "keuzedelen": SoortInfo("Keuzedelen", "opleiding", False),
 }
+
+# Instellingsbrede soorten → label (compat voor bestaande consumenten, o.a. de beheer-status).
+INSTELLING_SOORTEN = {k: v.label for k, v in SOORTEN.items() if v.bereik == "instelling"}
 
 
 def _kolom_bestaat(conn: sqlite3.Connection, tabel: str, kolom: str) -> bool:
@@ -122,6 +159,30 @@ def init_db(conn: sqlite3.Connection) -> None:
             duur_seconden REAL
         );
 
+        CREATE TABLE IF NOT EXISTS documenten (
+            id             INTEGER PRIMARY KEY AUTOINCREMENT,
+            instelling_id  INTEGER NOT NULL REFERENCES instellingen(id),
+            soort          TEXT NOT NULL,
+            bereik         TEXT NOT NULL CHECK (bereik IN ('instelling', 'opleiding')),
+            crebo          TEXT NOT NULL DEFAULT '',
+            leerweg        TEXT NOT NULL DEFAULT '',
+            cohort         TEXT NOT NULL DEFAULT '',
+            titel          TEXT NOT NULL,
+            bestandspad    TEXT NOT NULL,
+            versie_label   TEXT NOT NULL DEFAULT '',
+            zichtbaarheid  TEXT NOT NULL DEFAULT 'publiek'
+                CHECK (zichtbaarheid IN ('publiek', 'ingelogd', 'intern')),
+            gevoeligheid   TEXT NOT NULL DEFAULT 'normaal'
+                CHECK (gevoeligheid IN ('normaal', 'geredigeerd', 'uitgesloten')),
+            gereviewd      INTEGER NOT NULL DEFAULT 0,
+            samenvatting   TEXT NOT NULL DEFAULT '',
+            tekens         INTEGER NOT NULL DEFAULT 0,
+            geindexeerd    INTEGER NOT NULL DEFAULT 0,
+            content_hash   TEXT,
+            toegevoegd_op  TEXT NOT NULL DEFAULT (datetime('now')),
+            UNIQUE (instelling_id, soort, bereik, crebo, leerweg, cohort, bestandspad)
+        );
+
         CREATE TABLE IF NOT EXISTS instelling_documenten (
             id            INTEGER PRIMARY KEY AUTOINCREMENT,
             instelling_id INTEGER NOT NULL REFERENCES instellingen(id),
@@ -141,6 +202,7 @@ def init_db(conn: sqlite3.Connection) -> None:
         if not _kolom_bestaat(conn, tabel, "content_hash"):
             conn.execute(f"ALTER TABLE {tabel} ADD COLUMN content_hash TEXT")
     conn.commit()
+    _migreer_instelling_documenten(conn)
 
 
 def get_connection(db_path: Path, timeout: float = 30.0) -> sqlite3.Connection:
@@ -266,71 +328,159 @@ def update_oer_bestandspad(conn: sqlite3.Connection, oer_id: int, bestandspad: s
     conn.commit()
 
 
-def voeg_instelling_document_toe(
+_BEREIKEN = ("instelling", "opleiding")
+# niveau → zichtbaarheden die in die context meegaan. `intern` komt nergens in de chat.
+_NIVEAU_ZICHTBAARHEID = {
+    "publiek": ("publiek",),
+    "student": ("publiek", "ingelogd"),
+    "mentor": ("publiek", "ingelogd"),
+}
+
+
+def zichtbaarheden_voor_niveau(niveau: str) -> tuple[str, ...]:
+    """Zichtbaarheidswaarden die bij een chat-niveau (publiek/student/mentor) horen.
+
+    Raises:
+        ValueError: bij een onbekend niveau (geen stille terugval naar een ruimere set).
+    """
+    if niveau not in _NIVEAU_ZICHTBAARHEID:
+        raise ValueError(
+            f"Onbekend niveau: {niveau!r}. Bekend: {', '.join(sorted(_NIVEAU_ZICHTBAARHEID))}."
+        )
+    return _NIVEAU_ZICHTBAARHEID[niveau]
+
+
+def _migreer_instelling_documenten(conn: sqlite3.Connection) -> None:
+    """Neem rijen uit de oude `instelling_documenten` over in `documenten` (idempotent).
+
+    Bestaande documenten waren al ingelezen door de beheerder: instellingsbreed, `gereviewd`,
+    zichtbaarheid volgens het register. De oude tabel blijft ongemoeid (legacy).
+    """
+    for r in conn.execute("SELECT * FROM instelling_documenten").fetchall():
+        info = SOORTEN.get(r["soort"])
+        conn.execute(
+            """INSERT OR IGNORE INTO documenten
+               (instelling_id, soort, bereik, titel, bestandspad, zichtbaarheid, gereviewd,
+                geindexeerd, content_hash, toegevoegd_op)
+               VALUES (?, ?, 'instelling', ?, ?, ?, 1, ?, ?, ?)""",
+            (
+                r["instelling_id"],
+                r["soort"],
+                r["titel"],
+                r["bestandspad"],
+                info.zichtbaarheid if info else "intern",
+                r["geindexeerd"],
+                r["content_hash"],
+                r["toegevoegd_op"],
+            ),
+        )
+    conn.commit()
+
+
+def voeg_document_toe(
     conn: sqlite3.Connection,
     instelling_id: int,
     soort: str,
     titel: str,
     bestandspad: str,
+    *,
+    bereik: str | None = None,
+    crebo: str = "",
+    leerweg: str = "",
+    cohort: str = "",
+    zichtbaarheid: str | None = None,
+    gevoeligheid: str = "normaal",
+    gereviewd: bool = False,
+    versie_label: str = "",
+    samenvatting: str = "",
 ) -> int:
-    """Voeg een instellingsbreed document toe of werk het bij (upsert op instelling + soort).
+    """Voeg een document toe of werk het bij (upsert op de volledige sleutel).
 
-    Eén document per (instelling, soort). Een gewijzigd bestandspad (bijv. een jaarlijkse
-    herziening) zet `geindexeerd` terug naar 0 zodat het opnieuw wordt geïndexeerd; een
-    identiek pad laat de bestaande indexeerstatus ongemoeid. Geeft het id terug.
+    Sleutel: (instelling, soort, bereik, crebo, leerweg, cohort, bestandspad); `''` betekent
+    "alle". Meerdere documenten per soort zijn dus mogelijk. `bereik` en `zichtbaarheid`
+    vallen terug op het register. Een nieuw document is standaard niet gereviewd en dus nog
+    niet zichtbaar in de chat. Geeft het id terug.
 
     Raises:
-        ValueError: als `soort` geen bekende instellingsbrede soort is.
+        ValueError: bij een onbekende soort of een ongeldig bereik.
     """
-    if soort not in INSTELLING_SOORTEN:
+    info = SOORTEN.get(soort)
+    if info is None:
         raise ValueError(
-            f"Onbekende instellingsbrede soort: {soort!r}. "
-            f"Bekend: {', '.join(sorted(INSTELLING_SOORTEN))}."
+            f"Onbekende documentsoort: {soort!r}. Bekend: {', '.join(sorted(SOORTEN))}."
         )
+    bereik = bereik or info.bereik
+    if bereik not in _BEREIKEN:
+        raise ValueError(f"Ongeldig bereik: {bereik!r}. Bekend: {', '.join(_BEREIKEN)}.")
     conn.execute(
-        """INSERT INTO instelling_documenten (instelling_id, soort, titel, bestandspad)
-           VALUES (?, ?, ?, ?)
-           ON CONFLICT (instelling_id, soort) DO UPDATE SET
+        """INSERT INTO documenten
+           (instelling_id, soort, bereik, crebo, leerweg, cohort, titel, bestandspad,
+            versie_label, zichtbaarheid, gevoeligheid, gereviewd, samenvatting)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+           ON CONFLICT (instelling_id, soort, bereik, crebo, leerweg, cohort, bestandspad)
+           DO UPDATE SET
                titel = excluded.titel,
-               bestandspad = excluded.bestandspad,
-               geindexeerd = CASE
-                   WHEN instelling_documenten.bestandspad <> excluded.bestandspad THEN 0
-                   ELSE instelling_documenten.geindexeerd
-               END,
+               versie_label = excluded.versie_label,
+               zichtbaarheid = excluded.zichtbaarheid,
+               gevoeligheid = excluded.gevoeligheid,
+               gereviewd = excluded.gereviewd,
+               samenvatting = excluded.samenvatting,
                toegevoegd_op = datetime('now')""",
-        (instelling_id, soort, titel, bestandspad),
-    )
+        (
+            instelling_id, soort, bereik, crebo, leerweg, cohort, titel, bestandspad,
+            versie_label, zichtbaarheid or info.zichtbaarheid, gevoeligheid, int(gereviewd),
+            samenvatting,
+        ),
+    )  # fmt: skip
     conn.commit()
     # Niet op lastrowid vertrouwen bij ON CONFLICT; resolve via de UNIQUE-sleutel.
     return conn.execute(
-        "SELECT id FROM instelling_documenten WHERE instelling_id = ? AND soort = ?",
-        (instelling_id, soort),
+        """SELECT id FROM documenten WHERE instelling_id = ? AND soort = ? AND bereik = ?
+           AND crebo = ? AND leerweg = ? AND cohort = ? AND bestandspad = ?""",
+        (instelling_id, soort, bereik, crebo, leerweg, cohort, bestandspad),
     ).fetchone()["id"]
 
 
-def haal_instelling_document_op(
-    conn: sqlite3.Connection, instelling_id: int, soort: str
-) -> sqlite3.Row | None:
-    """Zoek een instellingsbreed document op instelling + soort. Geeft None als niet gevonden."""
+def get_documenten_voor_context(
+    conn: sqlite3.Connection,
+    instelling_id: int,
+    crebo: str,
+    leerweg: str,
+    cohort: str,
+    niveau: str,
+) -> list[sqlite3.Row]:
+    """Documenten die in de chat-context van een OER horen.
+
+    Instellingsbrede documenten van de instelling plus opleidingsgebonden documenten die op
+    crebo/leerweg/cohort matchen (`''` = alle). Alleen geïndexeerde, gereviewde, niet-uitgesloten
+    documenten waarvan de zichtbaarheid bij het niveau past.
+
+    Raises:
+        ValueError: bij een onbekend niveau.
+    """
+    zichtbaar = zichtbaarheden_voor_niveau(niveau)
+    plaats = ", ".join("?" for _ in zichtbaar)
     return conn.execute(
-        "SELECT * FROM instelling_documenten WHERE instelling_id = ? AND soort = ?",
-        (instelling_id, soort),
-    ).fetchone()
+        f"""SELECT * FROM documenten
+            WHERE instelling_id = ? AND geindexeerd = 1 AND gereviewd = 1
+              AND gevoeligheid <> 'uitgesloten' AND zichtbaarheid IN ({plaats})
+              AND (bereik = 'instelling'
+                   OR ((crebo = '' OR crebo = ?) AND (leerweg = '' OR leerweg = ?)
+                       AND (cohort = '' OR cohort = ?)))
+            ORDER BY soort, titel, id""",  # noqa: S608 — alleen vaste '?'-plaatshouders
+        (instelling_id, *zichtbaar, crebo, leerweg, cohort),
+    ).fetchall()
 
 
-def markeer_instelling_document_geindexeerd(conn: sqlite3.Connection, doc_id: int) -> None:
-    """Zet geindexeerd=1 voor het instellingsbrede document met het gegeven id."""
-    conn.execute("UPDATE instelling_documenten SET geindexeerd = 1 WHERE id = ?", (doc_id,))
+def markeer_document_geindexeerd(conn: sqlite3.Connection, doc_id: int) -> None:
+    """Zet geindexeerd=1 voor het document met het gegeven id."""
+    conn.execute("UPDATE documenten SET geindexeerd = 1 WHERE id = ?", (doc_id,))
     conn.commit()
 
 
-def set_instelling_document_content_hash(
-    conn: sqlite3.Connection, doc_id: int, content_hash: str
-) -> None:
-    """Sla de content-hash van een instellingsbreed document op."""
-    conn.execute(
-        "UPDATE instelling_documenten SET content_hash = ? WHERE id = ?", (content_hash, doc_id)
-    )
+def set_document_content_hash(conn: sqlite3.Connection, doc_id: int, content_hash: str) -> None:
+    """Sla de content-hash van een document op."""
+    conn.execute("UPDATE documenten SET content_hash = ? WHERE id = ?", (content_hash, doc_id))
     conn.commit()
 
 

@@ -341,7 +341,10 @@ def laad_instelling_bron_tekst(bestandspad: Path | str | None) -> str:
     """
     if not bestandspad:
         return ""
-    return laad_oer_tekst(Path(bestandspad))[:_MAX_INSTELLING_TEKST_TEKENS]
+    pad = Path(bestandspad)
+    if not pad.exists() and not pad.with_suffix(".md").exists():
+        return ""
+    return laad_oer_tekst(pad)[:_MAX_INSTELLING_TEKST_TEKENS]
 
 
 def pad_kwalificatiedossier(crebo: str) -> Path:
