@@ -1124,7 +1124,8 @@ def test_genereer_vervolgvragen_prompt_bevat_vraag_en_antwoord():
     kwargs = client.laatste_kwargs
     assert kwargs is not None
     assert kwargs["max_tokens"] == 300
-    assert kwargs["model"] == "claude-haiku-4-5-20251001"
+    assert kwargs["model"] == "claude-haiku-5-5"
+    assert kwargs["thinking"] == {"type": "disabled"}
     user_content = kwargs["messages"][0]["content"]
     assert "Wat is de urennorm?" in user_content
     # antwoord gekapt op 4000 tekens

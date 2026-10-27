@@ -957,7 +957,7 @@ def genereer_vervolgvragen(
     vraag: str,
     antwoord: str,
     opleiding_labels: list[str] | None = None,
-    model: str = "claude-haiku-4-5-20251001",
+    model: str = "claude-haiku-5-5",
 ) -> list[str]:
     """Genereer max. 4 klikbare vervolgvragen na een antwoord.
 
@@ -973,6 +973,9 @@ def genereer_vervolgvragen(
         resp = client.messages.create(
             model=model,
             max_tokens=300,
+            # Haiku 5.5 denkt standaard (adaptive) en dat telt mee in max_tokens: bij 300
+            # blijft er anders geen tekst over. Triviale taak → thinking uit.
+            thinking={"type": "disabled"},
             system=_VERVOLGVRAGEN_SYSTEEM,
             messages=[{"role": "user", "content": user_content}],
         )
