@@ -12,6 +12,7 @@ from pathlib import Path
 import anthropic
 
 from validatie_samenwijzer.instellingen import alle as _instellingen_alle
+from validatie_samenwijzer.kd_versies import kd_map, kies_kd_pad
 from validatie_samenwijzer.opleiding import schoon_opleiding_naam
 
 logger = logging.getLogger(__name__)
@@ -364,20 +365,18 @@ def pad_kwalificatiedossier(crebo: str) -> Path:
     ``KWALDOSSIERS_PAD`` (absolute of relatief; valt terug op default als de
     env-var ontbreekt).
     """
-    base = os.environ.get("KWALDOSSIERS_PAD")
-    if base:
-        directory = Path(base).resolve()
-    else:
-        # chat.py → parents[3] = repo-root → kwalificatiedossiers/pdfs
-        directory = Path(__file__).resolve().parents[3] / "kwalificatiedossiers" / "pdfs"
-    return directory / f"{crebo}.md"
+    return kd_map() / f"{crebo}.md"
 
 
-def laad_kwalificatiedossier_tekst(crebo: str | None) -> str:
-    """Laad de markdown-tekst van een kwalificatiedossier op crebo, of lege string."""
+def laad_kwalificatiedossier_tekst(crebo: str | None, cohort: str | int | None = None) -> str:
+    """Laad de markdown-tekst van een kwalificatiedossier op crebo, of lege string.
+
+    Met ``cohort`` wordt de KD-versie gekozen die voor dat cohort geldt (zie ``kd_versies``);
+    zonder cohort of zonder match geldt het nieuwste (``<crebo>.md``).
+    """
     if not crebo:
         return ""
-    md_pad = pad_kwalificatiedossier(str(crebo))
+    md_pad = kies_kd_pad(str(crebo), cohort) or pad_kwalificatiedossier(str(crebo))
     if not md_pad.exists():
         return ""
     return md_pad.read_text(encoding="utf-8", errors="replace")[:_MAX_DOSSIER_TEKST_TEKENS]

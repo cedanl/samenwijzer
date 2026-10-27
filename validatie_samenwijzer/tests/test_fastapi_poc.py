@@ -88,7 +88,7 @@ def test_laad_context_onleesbare_oer_via_kd(monkeypatch):
         "bestandspad": "x.pdf",
     }
     monkeypatch.setattr(ctx, "_oer_blok", lambda oid: (fake_row, ""))
-    monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c: "KD-INHOUD")
+    monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c, *a: "KD-INHOUD")
     monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
     monkeypatch.setattr(ctx, "selecteer_documenten", lambda *a, **k: Selectie({}, []))
     monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
@@ -114,7 +114,7 @@ def test_laad_context_leesbare_oer_niet_onleesbaar(monkeypatch):
         "bestandspad": "x.pdf",
     }
     monkeypatch.setattr(ctx, "_oer_blok", lambda oid: (fake_row, "ECHTE OER-TEKST"))
-    monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c: "")
+    monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c, *a: "")
     monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
     monkeypatch.setattr(ctx, "selecteer_documenten", lambda *a, **k: Selectie({}, []))
     monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
@@ -715,7 +715,7 @@ def test_laad_context_bevat_opleidingsgebonden_en_kluisprotocol_uit_documenten(
         "leerweg": "BOL", "cohort": "2025", "instelling_id": inst, "bestandspad": "x.pdf",
     }  # fmt: skip
     monkeypatch.setattr(ctx, "_oer_blok", lambda oid: (fake_row, "OER-TEKST"))
-    monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c: "")
+    monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c, *a: "")
     monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
     monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
 
@@ -743,7 +743,7 @@ def test_laad_context_meldt_documenten_buiten_budget(tmp_path, monkeypatch):
         "leerweg": "BOL", "cohort": "2025", "instelling_id": inst, "bestandspad": "x.pdf",
     }  # fmt: skip
     monkeypatch.setattr(ctx, "_oer_blok", lambda oid: (fake_row, "OER-TEKST"))
-    monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c: "")
+    monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c, *a: "")
     monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
     monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
 
