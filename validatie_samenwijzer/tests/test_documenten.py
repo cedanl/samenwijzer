@@ -31,7 +31,8 @@ def _instelling(conn, naam="curio"):
 def _oer(conn, oer_id, instelling_id, crebo="25168", leerweg="BOL", cohort="2025"):
     """Een OER-rij met precies de velden die de selectie gebruikt."""
     return conn.execute(
-        "SELECT ? AS id, ? AS instelling_id, ? AS crebo, ? AS leerweg, ? AS cohort",
+        "SELECT ? AS id, ? AS instelling_id, ? AS crebo, ? AS leerweg, ? AS cohort,"
+        " 'Curio' AS display_naam",
         (oer_id, instelling_id, crebo, leerweg, cohort),
     ).fetchone()
 
@@ -57,7 +58,7 @@ def test_opleidingsgebonden_alleen_bij_match(conn, tmp_path):
     _doc(conn, tmp_path, inst, "examenplan", "plan_ander_crebo", crebo="99999", cohort="2025")
     _doc(conn, tmp_path, inst, "examenplan", "plan_ander_cohort", crebo="25168", cohort="2024")
     sel = selecteer_documenten(conn, [_oer(conn, 1, inst)], "publiek")
-    assert [d.kop for d in sel.per_oer[1]] == ["Examenplan — plan_match"]
+    assert [d.kop for d in sel.per_oer[1]] == ["Examenplan — plan_match [INFORMATIEF]"]
 
 
 def test_lege_string_matcht_alle_cohorten_en_leerwegen(conn, tmp_path):
@@ -114,7 +115,7 @@ def test_binnen_een_groep_gaat_het_kleinste_document_eerst(conn, tmp_path):
     _doc(conn, tmp_path, inst, "protocol", "groot", tekst="g" * 50)
     _doc(conn, tmp_path, inst, "protocol", "klein", tekst="k" * 5)
     sel = selecteer_documenten(conn, [_oer(conn, 1, inst)], "publiek", budget=20)
-    assert [d.kop.split(" — ")[-1] for d in sel.per_oer[1]] == ["klein"]
+    assert [d.kop for d in sel.per_oer[1]] == ["Protocol — klein [INFORMATIEF]"]
     assert sel.afgevallen == ["groot"]
 
 
@@ -143,3 +144,15 @@ def test_budget_komt_uit_env_als_niet_meegegeven(conn, tmp_path, monkeypatch):
     monkeypatch.setenv("DOC_BUDGET_TEKENS", "10")
     sel = selecteer_documenten(conn, [_oer(conn, 1, inst)], "publiek")
     assert sel.per_oer.get(1, []) == [] and sel.afgevallen == ["doc"]
+
+
+def test_kop_markeert_niet_juridische_documenten_als_informatief(conn, tmp_path):
+    """Alleen juridische bronnen vereisen een woordelijk citaat; de rest is `[INFORMATIEF]`."""
+    inst = _instelling(conn)
+    _doc(conn, tmp_path, inst, "examenreglement", "Examenreglement Curio")
+    _doc(conn, tmp_path, inst, "protocol", "Protocol kluiscontrole")
+    sel = selecteer_documenten(conn, [_oer(conn, 1, inst)], "publiek")
+    assert sorted(d.kop for d in sel.per_oer[1]) == [
+        "Examenreglement",  # oude titel: instellingsnaam weg, juridisch → geen markering
+        "Protocol — kluiscontrole [INFORMATIEF]",
+    ]
