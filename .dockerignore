@@ -8,6 +8,11 @@
 **/*.key
 **/secrets.toml
 
+# Ongeïndexeerd bronmateriaal en ongeredigeerde originelen horen niet in het image
+# (`COPY oeren/` zou ze anders meebakken; sommige bevatten personeelsgegevens).
+**/_bronmateriaal/
+**/_documenten/**/origineel/
+
 .git
 .venv
 validatie_samenwijzer/.venv
