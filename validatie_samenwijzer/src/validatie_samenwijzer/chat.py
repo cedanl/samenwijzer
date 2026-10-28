@@ -630,6 +630,13 @@ class Bron:
     url: str | None = None
 
 
+@dataclass(frozen=True)
+class Status:
+    """Statuscode voor de UI tijdens het streamen, bv. "web"."""
+
+    code: str
+
+
 def splits_bronnen(tekst: str) -> tuple[str, list[Bron]]:
     """Haal de machineleesbare bronnenregel uit een modelantwoord.
 
@@ -664,6 +671,46 @@ def splits_bronnen(tekst: str) -> tuple[str, list[Bron]]:
         url = velden[2] if len(velden) == 3 and velden[2] else None
         bronnen.append(Bron(soort, titel, url))
     return voor + na, bronnen[:_MAX_BRONNEN]
+
+
+def strip_bronnenregel(chunks: Iterable[str | Status]) -> Generator[str | Status]:
+    """Stream `chunks` door, maar laat de bronnenregel (`<!-- bronnen: ... -->`) weg.
+
+    Streaming-tegenhanger van `splits_bronnen`: houdt alleen een staart vast die het begin
+    van de marker kan zijn, zodat gewone tekst zonder vertraging doorstroomt. Alles tussen
+    marker en `-->` (inclusief) verdwijnt; tekst ná `-->` stroomt weer door. Zonder sluitende
+    `-->` verdwijnt de rest bij stream-einde. Niet-`str`-items (bv. `Status`) passeren direct.
+    """
+    buf = ""
+    in_marker = False
+    for chunk in chunks:
+        if not isinstance(chunk, str):
+            yield chunk
+            continue
+        buf += chunk
+        while True:
+            if in_marker:
+                idx = buf.find(_BRONNEN_SLUIT)
+                if idx == -1:
+                    buf = buf[len(buf) - _prefix_staart(buf, _BRONNEN_SLUIT) :]
+                    break
+                buf = buf[idx + len(_BRONNEN_SLUIT) :]
+                in_marker = False
+                continue
+            idx = buf.find(_BRONNEN_MARKER)
+            if idx != -1:
+                if idx:
+                    yield buf[:idx]
+                buf = buf[idx + len(_BRONNEN_MARKER) :]
+                in_marker = True
+                continue
+            grens = len(buf) - _prefix_staart(buf, _BRONNEN_MARKER)
+            if grens > 0:
+                yield buf[:grens]
+                buf = buf[grens:]
+            break
+    if buf and not in_marker:
+        yield buf
 
 
 def genereer_antwoord(

@@ -7,6 +7,7 @@ import anthropic
 from validatie_samenwijzer.chat import (
     LAGE_RELEVANTIE_BERICHT,
     Bron,
+    Status,
     bouw_berichten,
     bouw_gecombineerd_systeem,
     bouw_systeem,
@@ -20,6 +21,7 @@ from validatie_samenwijzer.chat import (
     pad_kwalificatiedossier,
     pad_skills,
     splits_bronnen,
+    strip_bronnenregel,
     web_zoek_domeinen,
 )
 
@@ -1408,3 +1410,32 @@ def test_splits_bronnen_zonder_sluiting_geeft_geen_bronnen():
 def test_splits_bronnen_lege_items_worden_overgeslagen():
     _, bronnen = splits_bronnen("x\n<!-- bronnen: ; studiegids|OER;; website| -->")
     assert bronnen == [Bron("studiegids", "OER")]
+
+
+def test_strip_bronnenregel_laat_marker_weg():
+    out = "".join(strip_bronnenregel(["Antwoord.\n\n<!-- bronnen: studiegids|OER -->"]))
+    assert out == "Antwoord.\n\n"
+
+
+def test_strip_bronnenregel_marker_over_chunkgrens():
+    chunks = ["Antwoord.\n<!-- bro", "nnen: studiegids|OER ", "-->"]
+    assert "".join(strip_bronnenregel(chunks)) == "Antwoord.\n"
+
+
+def test_strip_bronnenregel_houdt_gewone_tekst_niet_vast():
+    gen = strip_bronnenregel(iter(["Hallo ", "wereld"]))
+    assert next(gen) == "Hallo "
+
+
+def test_strip_bronnenregel_tekst_na_sluiting_gaat_door():
+    chunks = ["Voor.\n<!-- bronnen: studiegids|OER -->\nNa."]
+    assert "".join(strip_bronnenregel(chunks)) == "Voor.\n\nNa."
+
+
+def test_strip_bronnenregel_zonder_sluiting_verdwijnt_rest():
+    assert "".join(strip_bronnenregel(["Voor.\n<!-- bronnen: studiegids|OE"])) == "Voor.\n"
+
+
+def test_strip_bronnenregel_laat_status_passeren():
+    items = list(strip_bronnenregel([Status("web"), "tekst"]))
+    assert items == [Status("web"), "tekst"]
