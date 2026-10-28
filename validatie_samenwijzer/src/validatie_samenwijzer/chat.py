@@ -7,6 +7,7 @@ import logging
 import os
 import re
 from collections.abc import Generator, Iterable, Sequence
+from dataclasses import dataclass
 from pathlib import Path
 
 import anthropic
@@ -609,6 +610,60 @@ def _prefix_staart(buf: str, disclaimer: str) -> int:
         if disclaimer.startswith(buf[-k:]):
             return k
     return 0
+
+
+BRON_TYPES: frozenset[str] = frozenset(
+    {"studiegids", "kwalificatiedossier", "schooldocument", "skills", "website"}
+)
+_BRONNEN_MARKER = "<!-- bronnen:"
+_BRONNEN_SLUIT = "-->"
+_MAX_BRONNEN = 6
+_MAX_BRON_TITEL = 80
+
+
+@dataclass(frozen=True)
+class Bron:
+    """Eén bron die het model onder een antwoord noemt (voor de bronnen-chips)."""
+
+    type: str
+    titel: str
+    url: str | None = None
+
+
+def splits_bronnen(tekst: str) -> tuple[str, list[Bron]]:
+    """Haal de machineleesbare bronnenregel uit een modelantwoord.
+
+    Formaat: `<!-- bronnen: type|titel; type|titel|url -->`. Onbekende types en items zonder
+    titel vallen weg; dubbele (type, titel) worden samengevoegd; maximaal 6 bronnen, titel
+    maximaal 80 tekens. Zonder sluitende `-->` is de regel onvolledig: alles vanaf de marker
+    wordt weggelaten en er komen geen bronnen terug.
+
+    Returns:
+        (tekst zonder markerregel, gevalideerde bronnen).
+    """
+    start = tekst.find(_BRONNEN_MARKER)
+    if start == -1:
+        return tekst, []
+    voor = tekst[:start].rstrip()
+    inhoud_start = start + len(_BRONNEN_MARKER)
+    einde = tekst.find(_BRONNEN_SLUIT, inhoud_start)
+    if einde == -1:
+        return voor, []
+    na = tekst[einde + len(_BRONNEN_SLUIT) :]
+
+    bronnen: list[Bron] = []
+    gezien: set[tuple[str, str]] = set()
+    for item in tekst[inhoud_start:einde].split(";"):
+        velden = [v.strip() for v in item.split("|", 2)]
+        if len(velden) < 2 or velden[0] not in BRON_TYPES or not velden[1]:
+            continue
+        soort, titel = velden[0], velden[1][:_MAX_BRON_TITEL]
+        if (soort, titel) in gezien:
+            continue
+        gezien.add((soort, titel))
+        url = velden[2] if len(velden) == 3 and velden[2] else None
+        bronnen.append(Bron(soort, titel, url))
+    return voor + na, bronnen[:_MAX_BRONNEN]
 
 
 def genereer_antwoord(

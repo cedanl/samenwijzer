@@ -6,6 +6,7 @@ import anthropic
 
 from validatie_samenwijzer.chat import (
     LAGE_RELEVANTIE_BERICHT,
+    Bron,
     bouw_berichten,
     bouw_gecombineerd_systeem,
     bouw_systeem,
@@ -18,6 +19,7 @@ from validatie_samenwijzer.chat import (
     laad_skills_tekst,
     pad_kwalificatiedossier,
     pad_skills,
+    splits_bronnen,
     web_zoek_domeinen,
 )
 
@@ -1355,3 +1357,54 @@ def test_informatief_blok_draagt_de_markering_in_de_prompt():
         instelling_bronnen=[("Protocol — Kluis [INFORMATIEF]", "KLUISTEKST")],
     )
     assert "=== PROTOCOL — KLUIS [INFORMATIEF] (Curio) ===" in prompt
+
+
+def test_splits_bronnen_geldig():
+    tekst = (
+        "Antwoord.\n\n<!-- bronnen: studiegids|OER Kok BOL 2026; schooldocument|Studentenstatuut; "
+        "website|curio.nl|https://curio.nl/x -->"
+    )
+    schoon, bronnen = splits_bronnen(tekst)
+    assert schoon == "Antwoord."
+    assert bronnen == [
+        Bron("studiegids", "OER Kok BOL 2026"),
+        Bron("schooldocument", "Studentenstatuut"),
+        Bron("website", "curio.nl", "https://curio.nl/x"),
+    ]
+
+
+def test_splits_bronnen_zonder_marker_is_passthrough():
+    assert splits_bronnen("Gewoon antwoord.") == ("Gewoon antwoord.", [])
+
+
+def test_splits_bronnen_onbekend_type_valt_weg():
+    _, bronnen = splits_bronnen("x\n<!-- bronnen: folder|Brochure; skills|ESCO kok -->")
+    assert bronnen == [Bron("skills", "ESCO kok")]
+
+
+def test_splits_bronnen_dedupt_en_kapt_op_zes():
+    items = "; ".join(f"studiegids|Doc {i}" for i in range(8)) + "; studiegids|Doc 0"
+    _, bronnen = splits_bronnen(f"x\n<!-- bronnen: {items} -->")
+    assert [b.titel for b in bronnen] == [f"Doc {i}" for i in range(6)]
+
+
+def test_splits_bronnen_stript_en_kapt_titel_op_80():
+    _, bronnen = splits_bronnen("x\n<!-- bronnen: studiegids|   " + "a" * 100 + "   -->")
+    assert bronnen[0].titel == "a" * 80
+
+
+def test_splits_bronnen_tekst_na_marker_blijft():
+    schoon, bronnen = splits_bronnen("Voor.\n<!-- bronnen: studiegids|OER -->\nNa.")
+    assert schoon == "Voor.\nNa."
+    assert bronnen == [Bron("studiegids", "OER")]
+
+
+def test_splits_bronnen_zonder_sluiting_geeft_geen_bronnen():
+    schoon, bronnen = splits_bronnen("Voor.\n<!-- bronnen: studiegids|OER")
+    assert schoon == "Voor."
+    assert bronnen == []
+
+
+def test_splits_bronnen_lege_items_worden_overgeslagen():
+    _, bronnen = splits_bronnen("x\n<!-- bronnen: ; studiegids|OER;; website| -->")
+    assert bronnen == [Bron("studiegids", "OER")]
