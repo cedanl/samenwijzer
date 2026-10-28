@@ -862,3 +862,14 @@ def test_laad_context_meldt_documenten_buiten_budget(tmp_path, monkeypatch):
 
     systeem, _labels, _dom, _onl, melding = ctx.laad_context_met_melding([1])
     assert "Groot protocol" in melding and "x" * 500 not in systeem
+
+
+def test_chat_js_bevat_status_en_bron_teksten():
+    from pathlib import Path
+
+    js = Path("app_fastapi/static/chat.js").read_text(encoding="utf-8")
+    for code in ("lezen", "intake", "web", "schooldoc", "webinfo"):
+        assert f"{code}:" in js
+    for t in ("Studiegids", "Kwalificatiedossier", "Schooldocument", "Skills", "Website"):
+        assert f'"{t}"' in js
+    assert "<!-- bronnen:" in js  # vangnet in renderMarkdown
