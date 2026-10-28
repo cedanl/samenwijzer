@@ -7,7 +7,7 @@ import logging
 import os
 import re
 from collections.abc import Generator, Iterable, Sequence
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from pathlib import Path
 
 import anthropic
@@ -123,7 +123,7 @@ helemaal onderaan, in dit machineformaat (de gebruiker ziet deze regel niet; hij
 omgezet in nette bronvermeldingen):
 <!-- bronnen: type|titel; type|titel -->
 - type is één van: studiegids, kwalificatiedossier, schooldocument, skills, website.
-- titel is de naam uit de blokkop hierboven, zonder [INFORMATIEF] en zonder de
+- titel is de naam uit de blokkop hieronder, zonder [INFORMATIEF] en zonder de
   instellingsnaam tussen haakjes, in gewone hoofdletters (bv. "Examenreglement",
   "Protocol kluiscontrole"). Voor de studiegids: "OER <opleiding>" (bij meerdere OER's de
   naam uit de kop "OER N: …"). Voor het KD: "Kwalificatiedossier <crebo>". Voor skills:
@@ -749,6 +749,25 @@ def status_uit_tekstbegin(tekst: str) -> str | None:
     if tekst.startswith(_WEB_DISCLAIMER):
         return "webinfo"
     return None
+
+
+def geschiedenis_voor_ui(chat_history: list[dict]) -> list[dict]:
+    """Maak de bewaarde gespreksgeschiedenis geschikt voor de UI.
+
+    Assistant-beurten krijgen de bronnenmarker eruit (`content`) en de geparste bronnen als
+    `bronnen`-lijst (altijd aanwezig, mag leeg zijn); user-beurten blijven ongewijzigd.
+    `chat_history` zelf wordt niet gemuteerd (blijft de ruwe tekst mét marker).
+    """
+    uit: list[dict] = []
+    for beurt in chat_history:
+        if beurt.get("role") == "assistant":
+            tekst, bronnen = splits_bronnen(beurt.get("content", ""))
+            uit.append(
+                {"role": "assistant", "content": tekst, "bronnen": [asdict(b) for b in bronnen]}
+            )
+        else:
+            uit.append({"role": beurt.get("role"), "content": beurt.get("content", "")})
+    return uit
 
 
 def _stream_items(stream) -> Generator[str | Status]:

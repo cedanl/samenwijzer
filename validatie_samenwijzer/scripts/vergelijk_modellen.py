@@ -148,7 +148,8 @@ def main() -> None:
                 ):
                     if eerste_chunk is None:
                         eerste_chunk = time.perf_counter() - start
-                    delen.append(chunk)
+                    if isinstance(chunk, str):
+                        delen.append(chunk)
                 totaal = time.perf_counter() - start
                 antwoord = "".join(delen)
                 fouten = ongegrond(antwoord, systeem)

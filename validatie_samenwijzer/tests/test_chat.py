@@ -19,6 +19,7 @@ from validatie_samenwijzer.chat import (
     dedup_disclaimer,
     genereer_antwoord,
     genereer_vervolgvragen,
+    geschiedenis_voor_ui,
     identificeer_oer_kandidaten,
     laad_instelling_bron_tekst,
     laad_kwalificatiedossier_tekst,
@@ -1535,3 +1536,18 @@ def test_bouw_gecombineerd_meervoudig_bevat_bronnenregel():
 
 def test_intake_systeem_heeft_geen_bronnenregel():
     assert "BRONNENREGEL" not in _INTAKE_SYSTEEM
+
+
+def test_geschiedenis_voor_ui_stript_en_laat_history_heel():
+    hist = [
+        {"role": "user", "content": "v"},
+        {"role": "assistant", "content": "a\n<!-- bronnen: studiegids|OER -->"},
+    ]
+    ui = geschiedenis_voor_ui(hist)
+    assert ui[0] == {"role": "user", "content": "v"}
+    assert ui[1] == {
+        "role": "assistant",
+        "content": "a",
+        "bronnen": [{"type": "studiegids", "titel": "OER", "url": None}],
+    }
+    assert hist[1]["content"].endswith("-->")

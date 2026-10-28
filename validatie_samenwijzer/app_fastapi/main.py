@@ -12,6 +12,7 @@ import logging
 import os
 import signal
 import time
+from dataclasses import asdict
 from pathlib import Path
 
 import anthropic
@@ -35,12 +36,17 @@ from validatie_samenwijzer import db, instellingen
 from validatie_samenwijzer._ai import _client as ai_client
 from validatie_samenwijzer.chat import (
     LAGE_RELEVANTIE_BERICHT,
+    Status,
     bouw_berichten,
     genereer_antwoord,
     genereer_intake_antwoord,
     genereer_vervolgvragen,
+    geschiedenis_voor_ui,
     identificeer_oer_kandidaten,
     resolve_oer_pad,
+    splits_bronnen,
+    status_uit_tekstbegin,
+    strip_bronnenregel,
 )
 from validatie_samenwijzer.opleiding import nette_opleiding_naam
 
@@ -304,6 +310,14 @@ async def api_kies(request: Request):
     )
 
 
+# Alleen het begin van het antwoord op een disclaimer-banner controleren (langste banner: 206).
+_STATUS_VENSTER = 300
+
+
+def _sse(event: dict) -> str:
+    return f"data: {json.dumps(event)}\n\n"
+
+
 @app.post("/api/chat")
 async def api_chat(request: Request):
     """Stream een antwoord (chat of intake) als Server-Sent Events."""
@@ -320,14 +334,17 @@ async def api_chat(request: Request):
 
     def stream():
         t_start = time.perf_counter()
-        antwoord = ""
+        ruw_delen: list[str] = []
+        ruw = ""
         ttft_s: float | None = None
+        status_gemeld = False
         try:
             if systeem:
                 modus = "oer"
                 gen = genereer_antwoord(
                     ai_client(), systeem, berichten, web_search_domeinen=domeinen
                 )
+                yield _sse({"status": "lezen"})
             elif heeft_oer:
                 # OER('s) toegewezen maar geen bruikbare bron geladen (onleesbaar + geen
                 # KD/instellingsbron) → expliciete melding, geen verwarrende intake-modus.
@@ -336,22 +353,48 @@ async def api_chat(request: Request):
             else:
                 modus = "intake"
                 gen = genereer_intake_antwoord(ai_client(), berichten, instellingen)
-            for chunk in gen:
+                yield _sse({"status": "intake"})
+
+            def _tap():
+                # Bewaart de ruwe (ongestripte) tekst voor historie en bron-/status-detectie.
+                nonlocal ruw
+                for item in gen:
+                    if isinstance(item, str):
+                        ruw_delen.append(item)
+                        ruw += item
+                    yield item
+
+            for chunk in strip_bronnenregel(_tap()):
+                if isinstance(chunk, Status):
+                    yield _sse({"status": chunk.code})
+                    continue
                 if ttft_s is None and chunk:
                     ttft_s = round(time.perf_counter() - t_start, 2)
-                antwoord += chunk
-                yield f"data: {json.dumps({'chunk': chunk})}\n\n"
+                if chunk:
+                    yield _sse({"chunk": chunk})
+                # Disclaimer-banner staat vooraan: alleen in het begin van het antwoord checken.
+                if modus == "oer" and not status_gemeld and len(ruw) < _STATUS_VENSTER:
+                    code = status_uit_tekstbegin(ruw)
+                    if code:
+                        status_gemeld = True
+                        yield _sse({"status": code})
+            antwoord = "".join(ruw_delen)
+            _, bronnen = splits_bronnen(antwoord) if modus == "oer" else ("", [])
             s.voeg_beurt_toe(vraag, antwoord)
             bewaar_sessie(request)
             log.info(
-                "chat-beurt klaar: modus=%s webzoek=%s ttft_s=%s totaal_s=%.2f tekens=%d",
+                "chat-beurt klaar: modus=%s webzoek=%s ttft_s=%s totaal_s=%.2f "
+                "tekens=%d bronnen=%d",
                 modus,
                 bool(domeinen),
                 ttft_s,
                 time.perf_counter() - t_start,
                 len(antwoord),
+                len(bronnen),
             )
-            yield f"data: {json.dumps({'done': True})}\n\n"
+            if bronnen:
+                yield _sse({"bronnen": [asdict(b) for b in bronnen]})
+            yield _sse({"done": True})
         except anthropic.APITimeoutError:
             yield f"data: {json.dumps({'error': 'timeout'})}\n\n"
         except anthropic.AuthenticationError:
@@ -422,7 +465,7 @@ def api_reset(request: Request):
 @app.get("/api/geschiedenis")
 def api_geschiedenis(request: Request):
     """Geef de bewaarde gespreksgeschiedenis terug voor rehydratie bij page-load."""
-    return JSONResponse({"beurten": get_sessie(request).chat_history})
+    return JSONResponse({"beurten": geschiedenis_voor_ui(get_sessie(request).chat_history)})
 
 
 # ── Login / sessie ─────────────────────────────────────────────────────────────
