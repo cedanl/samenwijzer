@@ -236,7 +236,10 @@ async function toonVervolgvragen(thread) {
     lijst.appendChild(sk);
   }
   wrap.appendChild(label); wrap.appendChild(lijst);
-  laatste.insertAdjacentElement("afterend", wrap);
+  // Volgorde: bubbel → bronnen → vervolgvragen (ook na streamen, niet alleen na rehydratie).
+  const volgende = laatste.nextElementSibling;
+  const anker = volgende && volgende.classList.contains("bronnen") ? volgende : laatste;
+  anker.insertAdjacentElement("afterend", wrap);
   _scroll(thread);
 
   let vragen = [];
