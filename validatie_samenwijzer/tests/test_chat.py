@@ -1,16 +1,25 @@
 import json
 import sys
 import types
+from contextlib import contextmanager
+from types import SimpleNamespace
 
 import anthropic
 
 from validatie_samenwijzer.chat import (
+    _INTAKE_SYSTEEM,
+    _SCHOOLDOC_DISCLAIMER,
+    _WEB_DISCLAIMER,
     LAGE_RELEVANTIE_BERICHT,
+    Bron,
+    Status,
     bouw_berichten,
     bouw_gecombineerd_systeem,
     bouw_systeem,
     dedup_disclaimer,
+    genereer_antwoord,
     genereer_vervolgvragen,
+    geschiedenis_voor_ui,
     identificeer_oer_kandidaten,
     laad_instelling_bron_tekst,
     laad_kwalificatiedossier_tekst,
@@ -18,6 +27,9 @@ from validatie_samenwijzer.chat import (
     laad_skills_tekst,
     pad_kwalificatiedossier,
     pad_skills,
+    splits_bronnen,
+    status_uit_tekstbegin,
+    strip_bronnenregel,
     web_zoek_domeinen,
 )
 
@@ -1202,12 +1214,58 @@ def test_identificeer_volledige_match_is_niet_partieel():
     assert resultaat[0]["_partieel"] is False
 
 
+def _nep_client(events):
+    """Client waarvan `messages.stream(**kw)` een context geeft die `events` itereert."""
+
+    @contextmanager
+    def _stream(**_kw):
+        yield iter(events)
+
+    return SimpleNamespace(messages=SimpleNamespace(stream=_stream))
+
+
+def _tool_start(naam):
+    blok = SimpleNamespace(type="server_tool_use", name=naam)
+    return SimpleNamespace(type="content_block_start", content_block=blok)
+
+
+def test_genereer_antwoord_yieldt_web_status_voor_tekst():
+    events = [
+        SimpleNamespace(type="message_start"),
+        _tool_start("web_search"),
+        _tool_start("web_fetch"),
+        SimpleNamespace(type="content_block_start", content_block=SimpleNamespace(type="text")),
+        SimpleNamespace(type="text", text="Hallo "),
+        SimpleNamespace(type="text", text="wereld"),
+    ]
+    out = list(genereer_antwoord(_nep_client(events), "sys", [{"role": "user", "content": "q"}]))
+    assert out[0] == Status("web")
+    assert out.count(Status("web")) == 1
+    assert "".join(x for x in out if isinstance(x, str)) == "Hallo wereld"
+
+
+def test_genereer_antwoord_zonder_tool_geen_status():
+    events = [SimpleNamespace(type="text", text="A"), SimpleNamespace(type="text", text="B")]
+    out = list(genereer_antwoord(_nep_client(events), "sys", [{"role": "user", "content": "q"}]))
+    assert out == ["A", "B"]
+
+
+def test_genereer_antwoord_onbekende_servertool_geen_status():
+    events = [
+        _tool_start("code_execution"),
+        SimpleNamespace(type="text", text="A"),
+    ]
+    out = list(genereer_antwoord(_nep_client(events), "sys", [{"role": "user", "content": "q"}]))
+    assert out == ["A"]
+
+
 def test_genereer_antwoord_gebruikt_kortere_output_defaults():
     """Perf: kortere antwoorden schelen output-tokens (max_tokens 1200, effort low)."""
     from validatie_samenwijzer import chat
 
     class _Stream:
-        text_stream = iter(["Antwoord."])
+        def __iter__(self):
+            return iter([SimpleNamespace(type="text", text="Antwoord.")])
 
         def __enter__(self):
             return self
@@ -1242,7 +1300,8 @@ def test_genereer_antwoord_ontdubbelt_ook_de_web_disclaimer(monkeypatch):
     stukken = [f"{_WEB_DISCLAIMER}{_WEB_DISCLAIMER}", "\n\nHier is het antwoord."]
 
     class _Stream:
-        text_stream = iter(stukken)
+        def __iter__(self):
+            return iter([SimpleNamespace(type="text", text=t) for t in stukken])
 
         def __enter__(self):
             return self
@@ -1298,7 +1357,8 @@ def test_genereer_antwoord_dedupliceert_schooldoc_banner():
     stukken = [f"{_SCHOOLDOC_DISCLAIMER}\n\n{_SCHOOLDOC_DISCLAIMER}", "\n\nAntwoord."]
 
     class _Stream:
-        text_stream = iter(stukken)
+        def __iter__(self):
+            return iter([SimpleNamespace(type="text", text=t) for t in stukken])
 
         def __enter__(self):
             return self
@@ -1355,3 +1415,150 @@ def test_informatief_blok_draagt_de_markering_in_de_prompt():
         instelling_bronnen=[("Protocol — Kluis [INFORMATIEF]", "KLUISTEKST")],
     )
     assert "=== PROTOCOL — KLUIS [INFORMATIEF] (Curio) ===" in prompt
+
+
+def test_splits_bronnen_geldig():
+    tekst = (
+        "Antwoord.\n\n<!-- bronnen: studiegids|OER Kok BOL 2026; schooldocument|Studentenstatuut; "
+        "website|curio.nl|https://curio.nl/x -->"
+    )
+    schoon, bronnen = splits_bronnen(tekst)
+    assert schoon == "Antwoord."
+    assert bronnen == [
+        Bron("studiegids", "OER Kok BOL 2026"),
+        Bron("schooldocument", "Studentenstatuut"),
+        Bron("website", "curio.nl", "https://curio.nl/x"),
+    ]
+
+
+def test_splits_bronnen_zonder_marker_is_passthrough():
+    assert splits_bronnen("Gewoon antwoord.") == ("Gewoon antwoord.", [])
+
+
+def test_splits_bronnen_onbekend_type_valt_weg():
+    _, bronnen = splits_bronnen("x\n<!-- bronnen: folder|Brochure; skills|ESCO kok -->")
+    assert bronnen == [Bron("skills", "ESCO kok")]
+
+
+def test_splits_bronnen_dedupt_en_kapt_op_zes():
+    items = "studiegids|Doc 0; studiegids|Doc 0; " + "; ".join(
+        f"studiegids|Doc {i}" for i in range(1, 8)
+    )
+    _, bronnen = splits_bronnen(f"x\n<!-- bronnen: {items} -->")
+    assert [b.titel for b in bronnen] == [f"Doc {i}" for i in range(6)]
+
+
+def test_splits_bronnen_stript_en_kapt_titel_op_80():
+    _, bronnen = splits_bronnen("x\n<!-- bronnen: studiegids|   " + "a" * 100 + "   -->")
+    assert bronnen[0].titel == "a" * 80
+
+
+def test_splits_bronnen_tekst_na_marker_blijft():
+    schoon, bronnen = splits_bronnen("Voor.\n<!-- bronnen: studiegids|OER -->\nNa.")
+    assert schoon == "Voor.\nNa."
+    assert bronnen == [Bron("studiegids", "OER")]
+
+
+def test_splits_bronnen_zonder_sluiting_geeft_geen_bronnen():
+    schoon, bronnen = splits_bronnen("Voor.\n<!-- bronnen: studiegids|OER")
+    assert schoon == "Voor."
+    assert bronnen == []
+
+
+def test_splits_bronnen_lege_items_worden_overgeslagen():
+    _, bronnen = splits_bronnen("x\n<!-- bronnen: ; studiegids|OER;; website| -->")
+    assert bronnen == [Bron("studiegids", "OER")]
+
+
+def test_strip_bronnenregel_laat_marker_weg():
+    out = "".join(strip_bronnenregel(["Antwoord.\n\n<!-- bronnen: studiegids|OER -->"]))
+    assert out == "Antwoord.\n\n"
+
+
+def test_strip_bronnenregel_marker_over_chunkgrens():
+    chunks = ["Antwoord.\n<!-- bro", "nnen: studiegids|OER ", "-->"]
+    assert "".join(strip_bronnenregel(chunks)) == "Antwoord.\n"
+
+
+def test_strip_bronnenregel_houdt_gewone_tekst_niet_vast():
+    gen = strip_bronnenregel(iter(["Hallo ", "wereld"]))
+    assert next(gen) == "Hallo "
+
+
+def test_strip_bronnenregel_tekst_na_sluiting_gaat_door():
+    chunks = ["Voor.\n<!-- bronnen: studiegids|OER -->\nNa."]
+    assert "".join(strip_bronnenregel(chunks)) == "Voor.\n\nNa."
+
+
+def test_strip_bronnenregel_zonder_sluiting_verdwijnt_rest():
+    assert "".join(strip_bronnenregel(["Voor.\n<!-- bronnen: studiegids|OE"])) == "Voor.\n"
+
+
+def test_strip_bronnenregel_laat_status_passeren():
+    items = list(strip_bronnenregel([Status("web"), "tekst"]))
+    assert items == [Status("web"), "tekst"]
+
+
+def test_status_uit_tekstbegin_schooldoc():
+    assert status_uit_tekstbegin(_SCHOOLDOC_DISCLAIMER + "\n\nAntwoord") == "schooldoc"
+
+
+def test_status_uit_tekstbegin_webinfo():
+    assert status_uit_tekstbegin(_WEB_DISCLAIMER + "\n\nAntwoord") == "webinfo"
+
+
+def test_status_uit_tekstbegin_onvolledige_prefix_is_none():
+    assert status_uit_tekstbegin(_SCHOOLDOC_DISCLAIMER[:20]) is None
+
+
+def test_status_uit_tekstbegin_ander_blockquote_is_none():
+    assert status_uit_tekstbegin('> "De student ontvangt uiterlijk in juli…"') is None
+
+
+def test_dedup_disclaimer_laat_status_passeren():
+    out = list(dedup_disclaimer([Status("web"), "abc"], "DISCLAIMER"))
+    assert Status("web") in out and "".join(x for x in out if isinstance(x, str)) == "abc"
+
+
+def test_bouw_systeem_bevat_bronnenregel_instructie():
+    s = bouw_systeem("OER-tekst", "Kok", "Curio")
+    assert "BRONNENREGEL" in s and "<!-- bronnen:" in s
+    for t in ("studiegids", "kwalificatiedossier", "schooldocument", "skills", "website"):
+        assert t in s
+
+
+def test_bronnenregel_instructie_dekt_webantwoord():
+    """Webantwoord: bronnenregel komt ná de "Bron: "-regel, één website-item per URL."""
+    s = bouw_systeem("OER-tekst", "Kok", "Curio", web_zoeken=True)
+    idx_web = s.index("WEBZOEKEN")
+    idx_regel = s.index("BRONNENREGEL")
+    assert idx_regel < idx_web  # bronnenregel-instructie staat vóór het webblok
+    assert "DAARNA volgt" in s and "één website-item per geraadpleegde URL" in s
+
+
+def test_bouw_gecombineerd_meervoudig_bevat_bronnenregel():
+    basis = {"opleiding": "Kok", "leerweg": "BOL", "cohort": "2026"}
+    items = [
+        {**basis, "tekst": "A", "display_naam": "Curio"},
+        {**basis, "tekst": "B", "display_naam": "Landstede"},
+    ]
+    assert "BRONNENREGEL" in bouw_gecombineerd_systeem(items)
+
+
+def test_intake_systeem_heeft_geen_bronnenregel():
+    assert "BRONNENREGEL" not in _INTAKE_SYSTEEM
+
+
+def test_geschiedenis_voor_ui_stript_en_laat_history_heel():
+    hist = [
+        {"role": "user", "content": "v"},
+        {"role": "assistant", "content": "a\n<!-- bronnen: studiegids|OER -->"},
+    ]
+    ui = geschiedenis_voor_ui(hist)
+    assert ui[0] == {"role": "user", "content": "v"}
+    assert ui[1] == {
+        "role": "assistant",
+        "content": "a",
+        "bronnen": [{"type": "studiegids", "titel": "OER", "url": None}],
+    }
+    assert hist[1]["content"].endswith("-->")

@@ -7,6 +7,7 @@ import logging
 import os
 import re
 from collections.abc import Generator, Iterable, Sequence
+from dataclasses import asdict, dataclass
 from pathlib import Path
 
 import anthropic
@@ -107,10 +108,34 @@ Levert de webzoek niets bruikbaars op, of komt je antwoord toch uit de documente
 schooldocument, KD), dan is dit GEEN webantwoord: géén webwaarschuwing en géén "Bron: "-URL-regel —
 gebruik dan de gewone bronvermelding (en bij een schooldocument de bijbehorende banner).
 Geef webinformatie NOOIT de vorm van een OER-citaat (geen "Volgens de OER", geen sectie-,
-artikel- of paginanummer) en verzin nooit een vindplaats. Sluit een webantwoord ALTIJD af
-met een regel die begint met "Bron: " gevolgd door de volledige URL(’s) van de
-geraadpleegde pagina('s) op de schoolwebsite, zodat de gebruiker het zelf kan nazoeken.
+artikel- of paginanummer) en verzin nooit een vindplaats. Geef in een webantwoord ALTIJD
+een regel die begint met "Bron: " gevolgd door de volledige URL(’s) van de geraadpleegde
+pagina('s) op de schoolwebsite, zodat de gebruiker het zelf kan nazoeken; daaronder volgt
+alleen nog de bronnenregel (zie BRONNENREGEL).
 De OER blijft de juridisch bindende bron; webinformatie is aanvullend en indicatief."""
+
+
+# Machineleesbare bronnenregel onderaan een antwoord; wordt door splits_bronnen /
+# strip_bronnenregel uit de stream gehaald en omgezet in nette bronvermeldingen.
+_BRONNENREGEL_BLOK = """
+
+BRONNENREGEL. Sluit elk antwoord waarin je een bron gebruikt af met PRECIES één regel,
+helemaal onderaan, in dit machineformaat (de gebruiker ziet deze regel niet; hij wordt
+omgezet in nette bronvermeldingen):
+<!-- bronnen: type|titel; type|titel -->
+- type is één van: studiegids, kwalificatiedossier, schooldocument, skills, website.
+- titel is de naam uit de blokkop hieronder, zonder [INFORMATIEF] en zonder de
+  instellingsnaam tussen haakjes, in gewone hoofdletters (bv. "Examenreglement",
+  "Protocol kluiscontrole"). Voor de studiegids: "OER <opleiding>" (bij meerdere OER's de
+  naam uit de kop "OER N: …"). Voor het KD: "Kwalificatiedossier <crebo>". Voor skills:
+  de bronnaam uit de kop (ESCO of CompetentNL). Voor website: het domein, gevolgd door
+  |<volledige url> als derde veld.
+- Noem alleen bronnen die je in dít antwoord daadwerkelijk gebruikt hebt; maximaal 6.
+- Heb je geen bron gebruikt (bv. "dat staat nergens in de bronnen"), laat de regel dan weg.
+- Ook bij een webantwoord: de "Bron: "-regel met de URL('s) blijft staan, en DAARNA volgt
+  nog de bronnenregel als allerlaatste regel, met één website-item per geraadpleegde URL
+  (bv. website|curio.nl|https://curio.nl/opleidingen/kok; website|curio.nl|https://curio.nl/open-dag).
+- Vacature-antwoorden krijgen geen bronnenregel (de links staan al in de tekst)."""
 
 
 # Instructie voor de vacature-/stagezoek. Alleen in de prompt als vacatures=True; gate't
@@ -256,7 +281,7 @@ parafraseren alleen ter inleiding van een citaat, niet ter vervanging ervan.
 Beantwoord vragen
 uitsluitend op basis van deze bronnen — nooit vanuit eigen kennis. Als de
 informatie in geen van de bronnen staat, zeg dat dan expliciet. Antwoord in het
-Nederlands.{web_zoek_blok}{vacature_blok}{doelgroep_toon}
+Nederlands.{bronnenregel}{web_zoek_blok}{vacature_blok}{doelgroep_toon}
 
 {oer_sectie}{instelling_blok}{dossier_blok}{skills_blok}"""
 
@@ -524,6 +549,7 @@ def bouw_systeem(
         dossier_blok=dossier_blok,
         skills_blok=skills_tekst,
         schooldoc_banner=_SCHOOLDOC_BANNER_INSTRUCTIE,
+        bronnenregel=_BRONNENREGEL_BLOK,
         web_zoek_blok=_WEB_ZOEK_BLOK if web_zoeken else "",
         vacature_blok=_VACATURE_BLOK if vacatures else "",
         doelgroep_toon=_DOELGROEP_TOON,
@@ -572,7 +598,7 @@ def _messages_met_cache(berichten: list[dict]) -> list[dict]:
     return [*kop, {**laatste, "content": [blok]}]
 
 
-def dedup_disclaimer(chunks: Iterable[str], disclaimer: str) -> Generator[str]:
+def dedup_disclaimer(chunks: Iterable[str | Status], disclaimer: str) -> Generator[str | Status]:
     """Stream `chunks` door, maar laat `disclaimer` hooguit één keer passeren.
 
     Het model herhaalt de vacature-disclaimer soms (typisch ná een web_search-tool-call):
@@ -580,6 +606,7 @@ def dedup_disclaimer(chunks: Iterable[str], disclaimer: str) -> Generator[str]:
     eerste voorkomen en verwijdert latere identieke voorkomens. Houdt alleen de staart vast
     die daadwerkelijk het begin van de disclaimer kan zijn, zodat gewone tekst zonder
     vertraging doorstroomt (een vaste buffer van n-1 tekens kostte ~seconden per filter).
+    Niet-`str`-items (bv. `Status`) passeren onaangeroerd.
     """
     n = len(disclaimer)
     if n == 0:
@@ -588,6 +615,9 @@ def dedup_disclaimer(chunks: Iterable[str], disclaimer: str) -> Generator[str]:
     buf = ""
     gezien = False
     for chunk in chunks:
+        if not isinstance(chunk, str):
+            yield chunk
+            continue
         buf += chunk
         while (idx := buf.find(disclaimer)) != -1:
             yield buf[:idx]
@@ -611,6 +641,160 @@ def _prefix_staart(buf: str, disclaimer: str) -> int:
     return 0
 
 
+BRON_TYPES: frozenset[str] = frozenset(
+    {"studiegids", "kwalificatiedossier", "schooldocument", "skills", "website"}
+)
+_BRONNEN_MARKER = "<!-- bronnen:"
+_BRONNEN_SLUIT = "-->"
+_MAX_BRONNEN = 6
+_MAX_BRON_TITEL = 80
+
+
+@dataclass(frozen=True)
+class Bron:
+    """Eén bron die het model onder een antwoord noemt (voor de bronnen-chips)."""
+
+    type: str
+    titel: str
+    url: str | None = None
+
+
+@dataclass(frozen=True)
+class Status:
+    """Statuscode voor de UI tijdens het streamen, bv. "web"."""
+
+    code: str
+
+
+def splits_bronnen(tekst: str) -> tuple[str, list[Bron]]:
+    """Haal de machineleesbare bronnenregel uit een modelantwoord.
+
+    Formaat: `<!-- bronnen: type|titel; type|titel|url -->`. Onbekende types en items zonder
+    titel vallen weg; dubbele (type, titel) worden samengevoegd; maximaal 6 bronnen, titel
+    maximaal 80 tekens. Zonder sluitende `-->` is de regel onvolledig: alles vanaf de marker
+    wordt weggelaten en er komen geen bronnen terug.
+
+    Returns:
+        (tekst zonder markerregel, gevalideerde bronnen).
+    """
+    start = tekst.find(_BRONNEN_MARKER)
+    if start == -1:
+        return tekst, []
+    voor = tekst[:start].rstrip()
+    inhoud_start = start + len(_BRONNEN_MARKER)
+    einde = tekst.find(_BRONNEN_SLUIT, inhoud_start)
+    if einde == -1:
+        return voor, []
+    na = tekst[einde + len(_BRONNEN_SLUIT) :]
+
+    bronnen: list[Bron] = []
+    gezien: set[tuple[str, str]] = set()
+    for item in tekst[inhoud_start:einde].split(";"):
+        velden = [v.strip() for v in item.split("|", 2)]
+        if len(velden) < 2 or velden[0] not in BRON_TYPES or not velden[1]:
+            continue
+        soort, titel = velden[0], velden[1][:_MAX_BRON_TITEL]
+        if (soort, titel) in gezien:
+            continue
+        gezien.add((soort, titel))
+        url = velden[2] if len(velden) == 3 and velden[2] else None
+        bronnen.append(Bron(soort, titel, url))
+    return voor + na, bronnen[:_MAX_BRONNEN]
+
+
+def strip_bronnenregel(chunks: Iterable[str | Status]) -> Generator[str | Status]:
+    """Stream `chunks` door, maar laat de bronnenregel (`<!-- bronnen: ... -->`) weg.
+
+    Streaming-tegenhanger van `splits_bronnen`: houdt alleen een staart vast die het begin
+    van de marker kan zijn, zodat gewone tekst zonder vertraging doorstroomt. Alles tussen
+    marker en `-->` (inclusief) verdwijnt; tekst ná `-->` stroomt weer door. Zonder sluitende
+    `-->` verdwijnt de rest bij stream-einde. Niet-`str`-items (bv. `Status`) passeren direct.
+    """
+    buf = ""
+    in_marker = False
+    for chunk in chunks:
+        if not isinstance(chunk, str):
+            yield chunk
+            continue
+        buf += chunk
+        while True:
+            if in_marker:
+                idx = buf.find(_BRONNEN_SLUIT)
+                if idx == -1:
+                    buf = buf[len(buf) - _prefix_staart(buf, _BRONNEN_SLUIT) :]
+                    break
+                buf = buf[idx + len(_BRONNEN_SLUIT) :]
+                in_marker = False
+                continue
+            idx = buf.find(_BRONNEN_MARKER)
+            if idx != -1:
+                if idx:
+                    yield buf[:idx]
+                buf = buf[idx + len(_BRONNEN_MARKER) :]
+                in_marker = True
+                continue
+            grens = len(buf) - _prefix_staart(buf, _BRONNEN_MARKER)
+            if grens > 0:
+                yield buf[:grens]
+                buf = buf[grens:]
+            break
+    if buf and not in_marker:
+        yield buf
+
+
+def status_uit_tekstbegin(tekst: str) -> str | None:
+    """Bepaal uit het begin van een ruw antwoord welke bronstatus erbij hoort.
+
+    Geeft `"schooldoc"` of `"webinfo"` als `tekst` met de bijbehorende disclaimer begint,
+    anders `None`. De route roept dit aan zolang het ruwe antwoord korter is dan
+    `_STATUS_VENSTER` (app_fastapi/main.py, 300 tekens).
+    """
+    if tekst.startswith(_SCHOOLDOC_DISCLAIMER):
+        return "schooldoc"
+    if tekst.startswith(_WEB_DISCLAIMER):
+        return "webinfo"
+    return None
+
+
+def geschiedenis_voor_ui(chat_history: list[dict]) -> list[dict]:
+    """Maak de bewaarde gespreksgeschiedenis geschikt voor de UI.
+
+    Assistant-beurten krijgen de bronnenmarker eruit (`content`) en de geparste bronnen als
+    `bronnen`-lijst (altijd aanwezig, mag leeg zijn); user-beurten blijven ongewijzigd.
+    `chat_history` zelf wordt niet gemuteerd (blijft de ruwe tekst mét marker).
+    """
+    uit: list[dict] = []
+    for beurt in chat_history:
+        if beurt.get("role") == "assistant":
+            tekst, bronnen = splits_bronnen(beurt.get("content", ""))
+            uit.append(
+                {"role": "assistant", "content": tekst, "bronnen": [asdict(b) for b in bronnen]}
+            )
+        else:
+            uit.append({"role": beurt.get("role"), "content": beurt.get("content", "")})
+    return uit
+
+
+def _stream_items(stream) -> Generator[str | Status]:
+    """Vertaal SDK-stream-events naar tekst-fragmenten en één `Status("web")`.
+
+    Tekst-events geven hun tekst door; de eerste server-side webzoek-/fetch-aanroep geeft
+    (hooguit één keer per antwoord) `Status("web")`. Alle andere events worden genegeerd.
+    """
+    web_gemeld = False
+    for event in stream:
+        if event.type == "text":
+            yield event.text
+        elif (
+            not web_gemeld
+            and event.type == "content_block_start"
+            and event.content_block.type == "server_tool_use"
+            and event.content_block.name in ("web_search", "web_fetch")
+        ):
+            web_gemeld = True
+            yield Status("web")
+
+
 def genereer_antwoord(
     client: anthropic.Anthropic,
     system: str,
@@ -618,8 +802,8 @@ def genereer_antwoord(
     model: str = "claude-sonnet-5-5",
     max_tokens: int = 1200,
     web_search_domeinen: list[str] | None = None,
-) -> Generator[str]:
-    """Stream Claude-antwoord als generator van tekst-fragmenten.
+) -> Generator[str | Status]:
+    """Stream Claude-antwoord als generator van tekst-fragmenten en `Status`-objecten.
 
     Args:
         client: Geïnitialiseerde Anthropic-client.
@@ -632,7 +816,7 @@ def genereer_antwoord(
             `web_zoeken=True` mee aan `bouw_systeem`/`bouw_gecombineerd_systeem`.
 
     Yields:
-        Tekst-fragmenten van het gestreamde antwoord.
+        Tekst-fragmenten van het gestreamde antwoord en `Status`-objecten (web-zoek gestart).
     """
     extra: dict = {}
     if web_search_domeinen:
@@ -674,7 +858,7 @@ def genereer_antwoord(
         # het model herhaalde ook de webzoek-variant, aaneengeplakt zonder witregel.
         yield from dedup_disclaimer(
             dedup_disclaimer(
-                dedup_disclaimer(stream.text_stream, _VACATURE_DISCLAIMER), _WEB_DISCLAIMER
+                dedup_disclaimer(_stream_items(stream), _VACATURE_DISCLAIMER), _WEB_DISCLAIMER
             ),
             _SCHOOLDOC_DISCLAIMER,
         )
@@ -744,7 +928,7 @@ Bij juridische bronnen mag parafraseren alleen ter inleiding van een citaat, nie
 ter vervanging ervan.
 Beantwoord uitsluitend op basis van deze bronnen — nooit vanuit eigen kennis.
 Als de informatie in geen van de bronnen staat, zeg dat dan expliciet.
-Antwoord in het Nederlands.{web_zoek_blok}{vacature_blok}{doelgroep_toon}
+Antwoord in het Nederlands.{bronnenregel}{web_zoek_blok}{vacature_blok}{doelgroep_toon}
 
 {oer_blokken}"""
 
@@ -805,6 +989,7 @@ def bouw_gecombineerd_systeem(
         n=len(oer_items),
         oer_blokken="\n\n---\n\n".join(blokken),
         schooldoc_banner=_SCHOOLDOC_BANNER_INSTRUCTIE,
+        bronnenregel=_BRONNENREGEL_BLOK,
         web_zoek_blok=_WEB_ZOEK_BLOK if web_zoeken else "",
         vacature_blok=_VACATURE_BLOK if vacatures else "",
         doelgroep_toon=_DOELGROEP_TOON,

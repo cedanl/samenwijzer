@@ -29,7 +29,9 @@ function normaliseerBlockquotes(md) {
   return md.replace(/([^\n])(> \u26a0)/g, "$1\n\n$2");
 }
 function renderMarkdown(md) {
-  const lines = normaliseerBlockquotes(md).replace(/\r/g, "").split("\n");
+  // Vangnet: de bronnenmarker hoort server-side gestript te zijn; nooit tonen als hij toch doorkomt.
+  const lines = normaliseerBlockquotes(md).replace(/\r/g, "").split("\n")
+    .filter((l) => !l.trimStart().startsWith("<!--"));
   let html = "", i = 0;
   const para = [];
   const flush = () => { if (para.length) { html += `<p>${inline(para.join(" "))}</p>`; para.length = 0; } };
@@ -96,22 +98,88 @@ function foutTekst(code) {
   return FOUT_TEKSTEN[code] || "Er ging iets mis. Probeer het later opnieuw.";
 }
 
+const STATUS_TEKSTEN = {
+  lezen: "Studiegids en officiële documenten lezen…",
+  intake: "Opleiding zoeken…",
+  web: "Niet in de documenten gevonden — website van de school raadplegen…",
+  schooldoc: "Niet in de studiegids — officieel schooldocument van de school gebruikt",
+  webinfo: "Niet in de documenten — informatie van de schoolwebsite gebruikt",
+};
+const BRON_TYPE_LABELS = {
+  studiegids: "Studiegids",
+  kwalificatiedossier: "Kwalificatiedossier",
+  schooldocument: "Schooldocument",
+  skills: "Skills",
+  website: "Website",
+};
+
+function maakStatusRegel() {
+  const el = document.createElement("div");
+  el.className = "status-regel";
+  el.setAttribute("role", "status");
+  const tekst = document.createElement("span");
+  tekst.className = "status-tekst"; tekst.textContent = "Even geduld";
+  el.appendChild(tekst);
+  for (let i = 0; i < 3; i++) {
+    const punt = document.createElement("span");
+    punt.className = "wacht-punt";
+    el.appendChild(punt);
+  }
+  return el;
+}
+function zetStatus(el, code) {
+  const tekst = STATUS_TEKSTEN[code];
+  if (!tekst) return;
+  const t = el.querySelector(".status-tekst");
+  if (t) t.textContent = tekst;
+}
+
+/* Bronnenrij onder een antwoord. Titel/url komen uit modeloutput: alleen via
+   textContent/createElement, en een link alleen bij een http(s)-url. */
+function addBronnen(thread, bronnen) {
+  if (!Array.isArray(bronnen) || !bronnen.length) return;
+  const chips = [];
+  for (const b of bronnen) {
+    if (!b || !Object.prototype.hasOwnProperty.call(BRON_TYPE_LABELS, b.type)) continue;
+    const link = b.type === "website" && typeof b.url === "string" && /^https?:\/\//.test(b.url);
+    const chip = document.createElement(link ? "a" : "span");
+    chip.className = "bron-chip";
+    if (link) {
+      chip.href = b.url; chip.target = "_blank"; chip.rel = "noopener noreferrer";
+    }
+    const type = document.createElement("span");
+    type.className = "bron-type"; type.textContent = BRON_TYPE_LABELS[b.type];
+    chip.appendChild(type);
+    chip.appendChild(document.createTextNode(" · " + String(b.titel ?? "")));
+    chips.push(chip);
+  }
+  if (!chips.length) return;
+  const wrap = document.createElement("div");
+  wrap.className = "bronnen";
+  const label = document.createElement("span");
+  label.className = "bronnen-label"; label.textContent = "Bronnen";
+  wrap.appendChild(label);
+  chips.forEach((c) => wrap.appendChild(c));
+  thread.appendChild(wrap); _scroll(thread);
+}
+
 async function rehydrateer(thread) {
   const r = await (await fetch("/api/geschiedenis")).json();
   for (const b of r.beurten || []) {
     if (b.role === "user") addVraag(thread, b.content);
-    else addAntwoord(thread, b.content);
+    else { addAntwoord(thread, b.content); addBronnen(thread, b.bronnen || []); }
   }
 }
 
 async function streamAntwoord(thread, vraag) {
+  const status = maakStatusRegel();
+  thread.appendChild(status);
   const node = document.createElement("div");
   node.className = "bubble-a"; node.setAttribute("aria-busy", "true");
-  node.innerHTML = '<span class="wacht-indicator">Studiegids lezen<span class="wacht-punt"></span>'
-    + '<span class="wacht-punt"></span><span class="wacht-punt"></span></span>';
   thread.appendChild(node); _scroll(thread);
   let acc = "";
   let fout = false;
+  let bronnen = [];
   try {
     const resp = await fetch("/api/chat", {
       method: "POST", headers: { "Content-Type": "application/json" },
@@ -129,7 +197,9 @@ async function streamAntwoord(thread, vraag) {
         const line = p.replace(/^data: /, "").trim();
         if (!line) continue;
         const ev = JSON.parse(line);
-        if (ev.chunk) { acc += ev.chunk; node.removeAttribute("aria-busy"); node.innerHTML = renderMarkdown(acc); _scroll(thread); }
+        if (ev.status) zetStatus(status, ev.status);
+        else if (ev.chunk) { acc += ev.chunk; node.removeAttribute("aria-busy"); node.innerHTML = renderMarkdown(acc); _scroll(thread); }
+        else if (ev.bronnen) bronnen = ev.bronnen;
         else if (ev.error) {
           fout = true;
           node.removeAttribute("aria-busy");
@@ -137,10 +207,12 @@ async function streamAntwoord(thread, vraag) {
         }
       }
     }
+    status.remove();
     node.removeAttribute("aria-busy");
     if (!acc) node.innerHTML = "<em>Geen antwoord ontvangen. Probeer het opnieuw.</em>";
-    else if (!fout) await toonVervolgvragen(thread);
+    else if (!fout) { addBronnen(thread, bronnen); await toonVervolgvragen(thread); }
   } catch (e) {
+    status.remove();
     node.removeAttribute("aria-busy");
     node.innerHTML = "<em>Verbinding verbroken. Probeer het opnieuw.</em>";
   }
@@ -165,7 +237,10 @@ async function toonVervolgvragen(thread) {
     lijst.appendChild(sk);
   }
   wrap.appendChild(label); wrap.appendChild(lijst);
-  laatste.insertAdjacentElement("afterend", wrap);
+  // Volgorde: bubbel → bronnen → vervolgvragen (ook na streamen, niet alleen na rehydratie).
+  const volgende = laatste.nextElementSibling;
+  const anker = volgende && volgende.classList.contains("bronnen") ? volgende : laatste;
+  anker.insertAdjacentElement("afterend", wrap);
   _scroll(thread);
 
   let vragen = [];

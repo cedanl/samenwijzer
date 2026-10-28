@@ -187,6 +187,11 @@ footer .fbrand { font-family: "Instrument Serif", Georgia, serif; font-size: 1.4
 .vervolg-chip:hover:not(:disabled) { border-color: var(--vermilion); background: var(--marker-was); transform: translateY(-2px); }
 .vervolg-chip:focus-visible { outline: 2px solid var(--vermilion); outline-offset: 2px; }
 .vervolg-chip:disabled { opacity: .55; cursor: default; transform: none; }
+.bronnen { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; align-self: flex-start; max-width: 94%; margin-top: -.3rem; }
+.bronnen-label { font-family: "JetBrains Mono", ui-monospace, Consolas, monospace; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); margin-right: 4px; }
+.bron-chip { font-size: .8rem; color: var(--ink); border: 1px solid var(--line); border-radius: 999px; padding: .3rem .8rem; text-decoration: none; }
+.bron-chip .bron-type { color: var(--ink-soft); }
+a.bron-chip:hover { border-color: var(--vermilion); }
 .vervolg-skelet { display: inline-block; width: 8em; height: 2.3em; border-radius: 999px; background: linear-gradient(90deg, var(--line-soft) 25%, var(--paper-deep) 37%, var(--line-soft) 63%); background-size: 400% 100%; animation: vervolgShimmer 1.4s ease infinite; }
 @keyframes vervolgShimmer { 0% { background-position: 100% 50%; } 100% { background-position: 0 50%; } }
 @keyframes vervolgIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
@@ -199,6 +204,11 @@ footer .fbrand { font-family: "Instrument Serif", Georgia, serif; font-size: 1.4
 }
 
 .wacht-indicator { display: inline-flex; align-items: center; gap: .35em; color: var(--ink-faint); font-style: italic; }
+.status-regel { display: inline-flex; align-items: center; gap: .35em; align-self: flex-start; color: var(--ink-faint); font-style: italic; font-size: .92rem; margin: 0 0 -.4rem .4rem; }
+.bubble-a[aria-busy="true"]:empty { display: none; }
+.status-regel .wacht-punt:nth-child(2) { animation-delay: 0s; }
+.status-regel .wacht-punt:nth-child(3) { animation-delay: .2s; }
+.status-regel .wacht-punt:nth-child(4) { animation-delay: .4s; }
 .wacht-punt { width: .4em; height: .4em; border-radius: 50%; background: var(--ink-faint); display: inline-block; animation: wachtPuls 1.2s ease-in-out infinite; }
 .wacht-punt:nth-child(2) { animation-delay: .2s; }
 .wacht-punt:nth-child(3) { animation-delay: .4s; }

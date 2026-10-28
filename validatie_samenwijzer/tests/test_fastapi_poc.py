@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import logging
 import os
 
@@ -482,6 +483,118 @@ def test_chat_logt_timing_zonder_vraagtekst(monkeypatch, caplog):
     assert vraag not in bericht
 
 
+def _events(tekst: str) -> list[dict]:
+    return [json.loads(line[6:]) for line in tekst.splitlines() if line.startswith("data: ")]
+
+
+def test_chat_stuurt_status_lezen_bronnen_en_stript_marker(monkeypatch):
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    import app_fastapi.main as m
+    from validatie_samenwijzer.chat import Status
+
+    monkeypatch.setattr(
+        m, "laad_context_met_melding", lambda ids, *a, **k: ("SYS", ["label"], [], False, "")
+    )
+    monkeypatch.setattr(
+        m,
+        "genereer_antwoord",
+        lambda *a, **k: iter(
+            [
+                Status("web"),
+                "Antwoord.\n\n<!-- bro",
+                "nnen: studiegids|OER Kok; website|curio.nl|https://curio.nl -->",
+            ]
+        ),
+    )
+    c = _client()
+    c.post("/api/kies", json={"oer_ids": [1]})
+    ev = _events(c.post("/api/chat", json={"vraag": "kluisjes?"}).text)
+    assert ev[0] == {"status": "lezen"}
+    assert {"status": "web"} in ev
+    assert "".join(e["chunk"] for e in ev if "chunk" in e) == "Antwoord.\n\n"
+    assert ev[-2] == {
+        "bronnen": [
+            {"type": "studiegids", "titel": "OER Kok", "url": None},
+            {"type": "website", "titel": "curio.nl", "url": "https://curio.nl"},
+        ]
+    }
+    assert ev[-1] == {"done": True}
+    # ruwe tekst mét marker in de historie; geschiedenis-API stript en levert bronnen
+    g = c.get("/api/geschiedenis").json()["beurten"]
+    assert g[-1]["content"] == "Antwoord." and g[-1]["bronnen"][0]["titel"] == "OER Kok"
+    assert "<!-- bronnen:" not in c.get("/api/geschiedenis").text
+
+
+def test_chat_meldt_schooldoc_status_uit_tekstbegin(monkeypatch):
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    import app_fastapi.main as m
+    from validatie_samenwijzer.chat import _SCHOOLDOC_DISCLAIMER
+
+    monkeypatch.setattr(
+        m, "laad_context_met_melding", lambda ids, *a, **k: ("SYS", ["label"], [], False, "")
+    )
+    helft = len(_SCHOOLDOC_DISCLAIMER) // 2
+    monkeypatch.setattr(
+        m,
+        "genereer_antwoord",
+        lambda *a, **k: iter(
+            [_SCHOOLDOC_DISCLAIMER[:helft], _SCHOOLDOC_DISCLAIMER[helft:], "\n\nAntwoord"]
+        ),
+    )
+    c = _client()
+    c.post("/api/kies", json={"oer_ids": [1]})
+    ev = _events(c.post("/api/chat", json={"vraag": "statuut?"}).text)
+    statussen = [e["status"] for e in ev if "status" in e]
+    assert statussen == ["lezen", "schooldoc"]
+    assert not any("bronnen" in e for e in ev)
+
+
+def test_chat_meldt_webinfo_status_ook_bij_één_grote_chunk(monkeypatch):
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    import app_fastapi.main as m
+    from validatie_samenwijzer.chat import _WEB_DISCLAIMER
+
+    monkeypatch.setattr(
+        m, "laad_context_met_melding", lambda ids, *a, **k: ("SYS", ["label"], [], False, "")
+    )
+    monkeypatch.setattr(
+        m, "genereer_antwoord", lambda *a, **k: iter([_WEB_DISCLAIMER + "\n\nAntwoord"])
+    )
+    c = _client()
+    c.post("/api/kies", json={"oer_ids": [1]})
+    ev = _events(c.post("/api/chat", json={"vraag": "web?"}).text)
+    assert [e["status"] for e in ev if "status" in e] == ["lezen", "webinfo"]
+
+
+def test_chat_intake_stuurt_status_intake_zonder_bronnen(monkeypatch):
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    import app_fastapi.main as m
+
+    monkeypatch.setattr(m, "genereer_intake_antwoord", lambda *a, **k: iter(["Welke school?"]))
+    ev = _events(_client().post("/api/chat", json={"vraag": "hoi"}).text)
+    assert ev[0] == {"status": "intake"}
+    assert not any("bronnen" in e for e in ev)
+
+
+def test_chat_lage_relevantie_stuurt_geen_status(monkeypatch):
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    import app_fastapi.main as m
+
+    monkeypatch.setattr(m, "laad_context_met_melding", lambda ids, *a, **k: ("", [], [], False, ""))
+    monkeypatch.setattr(
+        m, "ai_client", lambda: (_ for _ in ()).throw(AssertionError("AI niet aanroepen"))
+    )
+    c = _client()
+    c.post("/api/kies", json={"oer_ids": [1]})
+    ev = _events(c.post("/api/chat", json={"vraag": "x"}).text)
+    assert not any("status" in e for e in ev)
+
+
 def test_api_reset_ok():
     if not _WW:
         pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
@@ -749,3 +862,14 @@ def test_laad_context_meldt_documenten_buiten_budget(tmp_path, monkeypatch):
 
     systeem, _labels, _dom, _onl, melding = ctx.laad_context_met_melding([1])
     assert "Groot protocol" in melding and "x" * 500 not in systeem
+
+
+def test_chat_js_bevat_status_en_bron_teksten():
+    from pathlib import Path
+
+    js = Path("app_fastapi/static/chat.js").read_text(encoding="utf-8")
+    for code in ("lezen", "intake", "web", "schooldoc", "webinfo"):
+        assert f"{code}:" in js
+    for t in ("Studiegids", "Kwalificatiedossier", "Schooldocument", "Skills", "Website"):
+        assert f'"{t}"' in js
+    assert 'startsWith("<!--")' in js  # vangnet in renderMarkdown: elke HTML-commentaarregel
