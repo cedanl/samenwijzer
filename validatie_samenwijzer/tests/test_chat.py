@@ -1525,6 +1525,15 @@ def test_bouw_systeem_bevat_bronnenregel_instructie():
         assert t in s
 
 
+def test_bronnenregel_instructie_dekt_webantwoord():
+    """Webantwoord: bronnenregel komt ná de "Bron: "-regel, één website-item per URL."""
+    s = bouw_systeem("OER-tekst", "Kok", "Curio", web_zoeken=True)
+    idx_web = s.index("WEBZOEKEN")
+    idx_regel = s.index("BRONNENREGEL")
+    assert idx_regel < idx_web  # bronnenregel-instructie staat vóór het webblok
+    assert "DAARNA volgt" in s and "één website-item per geraadpleegde URL" in s
+
+
 def test_bouw_gecombineerd_meervoudig_bevat_bronnenregel():
     basis = {"opleiding": "Kok", "leerweg": "BOL", "cohort": "2026"}
     items = [

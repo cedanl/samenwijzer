@@ -131,6 +131,9 @@ omgezet in nette bronvermeldingen):
   |<volledige url> als derde veld.
 - Noem alleen bronnen die je in dít antwoord daadwerkelijk gebruikt hebt; maximaal 6.
 - Heb je geen bron gebruikt (bv. "dat staat nergens in de bronnen"), laat de regel dan weg.
+- Ook bij een webantwoord: de "Bron: "-regel met de URL('s) blijft staan, en DAARNA volgt
+  nog de bronnenregel als allerlaatste regel, met één website-item per geraadpleegde URL
+  (bv. website|curio.nl|https://curio.nl/opleidingen/kok; website|curio.nl|https://curio.nl/open-dag).
 - Vacature-antwoorden krijgen geen bronnenregel (de links staan al in de tekst)."""
 
 
