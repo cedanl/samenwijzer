@@ -108,9 +108,10 @@ Levert de webzoek niets bruikbaars op, of komt je antwoord toch uit de documente
 schooldocument, KD), dan is dit GEEN webantwoord: géén webwaarschuwing en géén "Bron: "-URL-regel —
 gebruik dan de gewone bronvermelding (en bij een schooldocument de bijbehorende banner).
 Geef webinformatie NOOIT de vorm van een OER-citaat (geen "Volgens de OER", geen sectie-,
-artikel- of paginanummer) en verzin nooit een vindplaats. Sluit een webantwoord ALTIJD af
-met een regel die begint met "Bron: " gevolgd door de volledige URL(’s) van de
-geraadpleegde pagina('s) op de schoolwebsite, zodat de gebruiker het zelf kan nazoeken.
+artikel- of paginanummer) en verzin nooit een vindplaats. Geef in een webantwoord ALTIJD
+een regel die begint met "Bron: " gevolgd door de volledige URL(’s) van de geraadpleegde
+pagina('s) op de schoolwebsite, zodat de gebruiker het zelf kan nazoeken; daaronder volgt
+alleen nog de bronnenregel (zie BRONNENREGEL).
 De OER blijft de juridisch bindende bron; webinformatie is aanvullend en indicatief."""
 
 
@@ -745,7 +746,8 @@ def status_uit_tekstbegin(tekst: str) -> str | None:
     """Bepaal uit het begin van een ruw antwoord welke bronstatus erbij hoort.
 
     Geeft `"schooldoc"` of `"webinfo"` als `tekst` met de bijbehorende disclaimer begint,
-    anders `None`. Wordt door de route aangeroepen op de eerste ~200 tekens van het antwoord.
+    anders `None`. De route roept dit aan zolang het ruwe antwoord korter is dan
+    `_STATUS_VENSTER` (app_fastapi/main.py, 300 tekens).
     """
     if tekst.startswith(_SCHOOLDOC_DISCLAIMER):
         return "schooldoc"

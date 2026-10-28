@@ -872,4 +872,4 @@ def test_chat_js_bevat_status_en_bron_teksten():
         assert f"{code}:" in js
     for t in ("Studiegids", "Kwalificatiedossier", "Schooldocument", "Skills", "Website"):
         assert f'"{t}"' in js
-    assert "<!-- bronnen:" in js  # vangnet in renderMarkdown
+    assert 'startsWith("<!--")' in js  # vangnet in renderMarkdown: elke HTML-commentaarregel

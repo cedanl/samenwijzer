@@ -31,7 +31,7 @@ function normaliseerBlockquotes(md) {
 function renderMarkdown(md) {
   // Vangnet: de bronnenmarker hoort server-side gestript te zijn; nooit tonen als hij toch doorkomt.
   const lines = normaliseerBlockquotes(md).replace(/\r/g, "").split("\n")
-    .filter((l) => !l.trimStart().startsWith("<!-- bronnen:"));
+    .filter((l) => !l.trimStart().startsWith("<!--"));
   let html = "", i = 0;
   const para = [];
   const flush = () => { if (para.length) { html += `<p>${inline(para.join(" "))}</p>`; para.length = 0; } };
@@ -116,6 +116,7 @@ const BRON_TYPE_LABELS = {
 function maakStatusRegel() {
   const el = document.createElement("div");
   el.className = "status-regel";
+  el.setAttribute("role", "status");
   const tekst = document.createElement("span");
   tekst.className = "status-tekst"; tekst.textContent = "Even geduld";
   el.appendChild(tekst);

@@ -1441,7 +1441,9 @@ def test_splits_bronnen_onbekend_type_valt_weg():
 
 
 def test_splits_bronnen_dedupt_en_kapt_op_zes():
-    items = "; ".join(f"studiegids|Doc {i}" for i in range(8)) + "; studiegids|Doc 0"
+    items = "studiegids|Doc 0; studiegids|Doc 0; " + "; ".join(
+        f"studiegids|Doc {i}" for i in range(1, 8)
+    )
     _, bronnen = splits_bronnen(f"x\n<!-- bronnen: {items} -->")
     assert [b.titel for b in bronnen] == [f"Doc {i}" for i in range(6)]
 
