@@ -1,6 +1,8 @@
 import json
 import sys
 import types
+from contextlib import contextmanager
+from types import SimpleNamespace
 
 import anthropic
 
@@ -14,6 +16,7 @@ from validatie_samenwijzer.chat import (
     bouw_gecombineerd_systeem,
     bouw_systeem,
     dedup_disclaimer,
+    genereer_antwoord,
     genereer_vervolgvragen,
     identificeer_oer_kandidaten,
     laad_instelling_bron_tekst,
@@ -1209,12 +1212,58 @@ def test_identificeer_volledige_match_is_niet_partieel():
     assert resultaat[0]["_partieel"] is False
 
 
+def _nep_client(events):
+    """Client waarvan `messages.stream(**kw)` een context geeft die `events` itereert."""
+
+    @contextmanager
+    def _stream(**_kw):
+        yield iter(events)
+
+    return SimpleNamespace(messages=SimpleNamespace(stream=_stream))
+
+
+def _tool_start(naam):
+    blok = SimpleNamespace(type="server_tool_use", name=naam)
+    return SimpleNamespace(type="content_block_start", content_block=blok)
+
+
+def test_genereer_antwoord_yieldt_web_status_voor_tekst():
+    events = [
+        SimpleNamespace(type="message_start"),
+        _tool_start("web_search"),
+        _tool_start("web_fetch"),
+        SimpleNamespace(type="content_block_start", content_block=SimpleNamespace(type="text")),
+        SimpleNamespace(type="text", text="Hallo "),
+        SimpleNamespace(type="text", text="wereld"),
+    ]
+    out = list(genereer_antwoord(_nep_client(events), "sys", [{"role": "user", "content": "q"}]))
+    assert out[0] == Status("web")
+    assert out.count(Status("web")) == 1
+    assert "".join(x for x in out if isinstance(x, str)) == "Hallo wereld"
+
+
+def test_genereer_antwoord_zonder_tool_geen_status():
+    events = [SimpleNamespace(type="text", text="A"), SimpleNamespace(type="text", text="B")]
+    out = list(genereer_antwoord(_nep_client(events), "sys", [{"role": "user", "content": "q"}]))
+    assert out == ["A", "B"]
+
+
+def test_genereer_antwoord_onbekende_servertool_geen_status():
+    events = [
+        _tool_start("code_execution"),
+        SimpleNamespace(type="text", text="A"),
+    ]
+    out = list(genereer_antwoord(_nep_client(events), "sys", [{"role": "user", "content": "q"}]))
+    assert out == ["A"]
+
+
 def test_genereer_antwoord_gebruikt_kortere_output_defaults():
     """Perf: kortere antwoorden schelen output-tokens (max_tokens 1200, effort low)."""
     from validatie_samenwijzer import chat
 
     class _Stream:
-        text_stream = iter(["Antwoord."])
+        def __iter__(self):
+            return iter([SimpleNamespace(type="text", text="Antwoord.")])
 
         def __enter__(self):
             return self
@@ -1249,7 +1298,8 @@ def test_genereer_antwoord_ontdubbelt_ook_de_web_disclaimer(monkeypatch):
     stukken = [f"{_WEB_DISCLAIMER}{_WEB_DISCLAIMER}", "\n\nHier is het antwoord."]
 
     class _Stream:
-        text_stream = iter(stukken)
+        def __iter__(self):
+            return iter([SimpleNamespace(type="text", text=t) for t in stukken])
 
         def __enter__(self):
             return self
@@ -1305,7 +1355,8 @@ def test_genereer_antwoord_dedupliceert_schooldoc_banner():
     stukken = [f"{_SCHOOLDOC_DISCLAIMER}\n\n{_SCHOOLDOC_DISCLAIMER}", "\n\nAntwoord."]
 
     class _Stream:
-        text_stream = iter(stukken)
+        def __iter__(self):
+            return iter([SimpleNamespace(type="text", text=t) for t in stukken])
 
         def __enter__(self):
             return self

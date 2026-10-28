@@ -730,6 +730,26 @@ def status_uit_tekstbegin(tekst: str) -> str | None:
     return None
 
 
+def _stream_items(stream) -> Generator[str | Status]:
+    """Vertaal SDK-stream-events naar tekst-fragmenten en één `Status("web")`.
+
+    Tekst-events geven hun tekst door; de eerste server-side webzoek-/fetch-aanroep geeft
+    (hooguit één keer per antwoord) `Status("web")`. Alle andere events worden genegeerd.
+    """
+    web_gemeld = False
+    for event in stream:
+        if event.type == "text":
+            yield event.text
+        elif (
+            not web_gemeld
+            and event.type == "content_block_start"
+            and event.content_block.type == "server_tool_use"
+            and event.content_block.name in ("web_search", "web_fetch")
+        ):
+            web_gemeld = True
+            yield Status("web")
+
+
 def genereer_antwoord(
     client: anthropic.Anthropic,
     system: str,
@@ -737,8 +757,8 @@ def genereer_antwoord(
     model: str = "claude-sonnet-5-5",
     max_tokens: int = 1200,
     web_search_domeinen: list[str] | None = None,
-) -> Generator[str]:
-    """Stream Claude-antwoord als generator van tekst-fragmenten.
+) -> Generator[str | Status]:
+    """Stream Claude-antwoord als generator van tekst-fragmenten en `Status`-objecten.
 
     Args:
         client: Geïnitialiseerde Anthropic-client.
@@ -751,7 +771,7 @@ def genereer_antwoord(
             `web_zoeken=True` mee aan `bouw_systeem`/`bouw_gecombineerd_systeem`.
 
     Yields:
-        Tekst-fragmenten van het gestreamde antwoord.
+        Tekst-fragmenten van het gestreamde antwoord en `Status`-objecten (web-zoek gestart).
     """
     extra: dict = {}
     if web_search_domeinen:
@@ -793,7 +813,7 @@ def genereer_antwoord(
         # het model herhaalde ook de webzoek-variant, aaneengeplakt zonder witregel.
         yield from dedup_disclaimer(
             dedup_disclaimer(
-                dedup_disclaimer(stream.text_stream, _VACATURE_DISCLAIMER), _WEB_DISCLAIMER
+                dedup_disclaimer(_stream_items(stream), _VACATURE_DISCLAIMER), _WEB_DISCLAIMER
             ),
             _SCHOOLDOC_DISCLAIMER,
         )
