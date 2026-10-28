@@ -5,6 +5,8 @@ import types
 import anthropic
 
 from validatie_samenwijzer.chat import (
+    _SCHOOLDOC_DISCLAIMER,
+    _WEB_DISCLAIMER,
     LAGE_RELEVANTIE_BERICHT,
     Bron,
     Status,
@@ -21,6 +23,7 @@ from validatie_samenwijzer.chat import (
     pad_kwalificatiedossier,
     pad_skills,
     splits_bronnen,
+    status_uit_tekstbegin,
     strip_bronnenregel,
     web_zoek_domeinen,
 )
@@ -1439,3 +1442,24 @@ def test_strip_bronnenregel_zonder_sluiting_verdwijnt_rest():
 def test_strip_bronnenregel_laat_status_passeren():
     items = list(strip_bronnenregel([Status("web"), "tekst"]))
     assert items == [Status("web"), "tekst"]
+
+
+def test_status_uit_tekstbegin_schooldoc():
+    assert status_uit_tekstbegin(_SCHOOLDOC_DISCLAIMER + "\n\nAntwoord") == "schooldoc"
+
+
+def test_status_uit_tekstbegin_webinfo():
+    assert status_uit_tekstbegin(_WEB_DISCLAIMER + "\n\nAntwoord") == "webinfo"
+
+
+def test_status_uit_tekstbegin_onvolledige_prefix_is_none():
+    assert status_uit_tekstbegin(_SCHOOLDOC_DISCLAIMER[:20]) is None
+
+
+def test_status_uit_tekstbegin_ander_blockquote_is_none():
+    assert status_uit_tekstbegin('> "De student ontvangt uiterlijk in juli…"') is None
+
+
+def test_dedup_disclaimer_laat_status_passeren():
+    out = list(dedup_disclaimer([Status("web"), "abc"], "DISCLAIMER"))
+    assert Status("web") in out and "".join(x for x in out if isinstance(x, str)) == "abc"

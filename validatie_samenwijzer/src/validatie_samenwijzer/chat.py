@@ -573,7 +573,7 @@ def _messages_met_cache(berichten: list[dict]) -> list[dict]:
     return [*kop, {**laatste, "content": [blok]}]
 
 
-def dedup_disclaimer(chunks: Iterable[str], disclaimer: str) -> Generator[str]:
+def dedup_disclaimer(chunks: Iterable[str | Status], disclaimer: str) -> Generator[str | Status]:
     """Stream `chunks` door, maar laat `disclaimer` hooguit één keer passeren.
 
     Het model herhaalt de vacature-disclaimer soms (typisch ná een web_search-tool-call):
@@ -581,6 +581,7 @@ def dedup_disclaimer(chunks: Iterable[str], disclaimer: str) -> Generator[str]:
     eerste voorkomen en verwijdert latere identieke voorkomens. Houdt alleen de staart vast
     die daadwerkelijk het begin van de disclaimer kan zijn, zodat gewone tekst zonder
     vertraging doorstroomt (een vaste buffer van n-1 tekens kostte ~seconden per filter).
+    Niet-`str`-items (bv. `Status`) passeren onaangeroerd.
     """
     n = len(disclaimer)
     if n == 0:
@@ -589,6 +590,9 @@ def dedup_disclaimer(chunks: Iterable[str], disclaimer: str) -> Generator[str]:
     buf = ""
     gezien = False
     for chunk in chunks:
+        if not isinstance(chunk, str):
+            yield chunk
+            continue
         buf += chunk
         while (idx := buf.find(disclaimer)) != -1:
             yield buf[:idx]
@@ -711,6 +715,19 @@ def strip_bronnenregel(chunks: Iterable[str | Status]) -> Generator[str | Status
             break
     if buf and not in_marker:
         yield buf
+
+
+def status_uit_tekstbegin(tekst: str) -> str | None:
+    """Bepaal uit het begin van een ruw antwoord welke bronstatus erbij hoort.
+
+    Geeft `"schooldoc"` of `"webinfo"` als `tekst` met de bijbehorende disclaimer begint,
+    anders `None`. Wordt door de route aangeroepen op de eerste ~200 tekens van het antwoord.
+    """
+    if tekst.startswith(_SCHOOLDOC_DISCLAIMER):
+        return "schooldoc"
+    if tekst.startswith(_WEB_DISCLAIMER):
+        return "webinfo"
+    return None
 
 
 def genereer_antwoord(
