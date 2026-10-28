@@ -114,6 +114,26 @@ geraadpleegde pagina('s) op de schoolwebsite, zodat de gebruiker het zelf kan na
 De OER blijft de juridisch bindende bron; webinformatie is aanvullend en indicatief."""
 
 
+# Machineleesbare bronnenregel onderaan een antwoord; wordt door splits_bronnen /
+# strip_bronnenregel uit de stream gehaald en omgezet in nette bronvermeldingen.
+_BRONNENREGEL_BLOK = """
+
+BRONNENREGEL. Sluit elk antwoord waarin je een bron gebruikt af met PRECIES één regel,
+helemaal onderaan, in dit machineformaat (de gebruiker ziet deze regel niet; hij wordt
+omgezet in nette bronvermeldingen):
+<!-- bronnen: type|titel; type|titel -->
+- type is één van: studiegids, kwalificatiedossier, schooldocument, skills, website.
+- titel is de naam uit de blokkop hierboven, zonder [INFORMATIEF] en zonder de
+  instellingsnaam tussen haakjes, in gewone hoofdletters (bv. "Examenreglement",
+  "Protocol kluiscontrole"). Voor de studiegids: "OER <opleiding>" (bij meerdere OER's de
+  naam uit de kop "OER N: …"). Voor het KD: "Kwalificatiedossier <crebo>". Voor skills:
+  de bronnaam uit de kop (ESCO of CompetentNL). Voor website: het domein, gevolgd door
+  |<volledige url> als derde veld.
+- Noem alleen bronnen die je in dít antwoord daadwerkelijk gebruikt hebt; maximaal 6.
+- Heb je geen bron gebruikt (bv. "dat staat nergens in de bronnen"), laat de regel dan weg.
+- Vacature-antwoorden krijgen geen bronnenregel (de links staan al in de tekst)."""
+
+
 # Instructie voor de vacature-/stagezoek. Alleen in de prompt als vacatures=True; gate't
 # zelf op een EXPLICIETE vacaturevraag zodat een gewone OER-vraag ongemoeid blijft.
 _VACATURE_DISCLAIMER = (
@@ -257,7 +277,7 @@ parafraseren alleen ter inleiding van een citaat, niet ter vervanging ervan.
 Beantwoord vragen
 uitsluitend op basis van deze bronnen — nooit vanuit eigen kennis. Als de
 informatie in geen van de bronnen staat, zeg dat dan expliciet. Antwoord in het
-Nederlands.{web_zoek_blok}{vacature_blok}{doelgroep_toon}
+Nederlands.{bronnenregel}{web_zoek_blok}{vacature_blok}{doelgroep_toon}
 
 {oer_sectie}{instelling_blok}{dossier_blok}{skills_blok}"""
 
@@ -525,6 +545,7 @@ def bouw_systeem(
         dossier_blok=dossier_blok,
         skills_blok=skills_tekst,
         schooldoc_banner=_SCHOOLDOC_BANNER_INSTRUCTIE,
+        bronnenregel=_BRONNENREGEL_BLOK,
         web_zoek_blok=_WEB_ZOEK_BLOK if web_zoeken else "",
         vacature_blok=_VACATURE_BLOK if vacatures else "",
         doelgroep_toon=_DOELGROEP_TOON,
@@ -883,7 +904,7 @@ Bij juridische bronnen mag parafraseren alleen ter inleiding van een citaat, nie
 ter vervanging ervan.
 Beantwoord uitsluitend op basis van deze bronnen — nooit vanuit eigen kennis.
 Als de informatie in geen van de bronnen staat, zeg dat dan expliciet.
-Antwoord in het Nederlands.{web_zoek_blok}{vacature_blok}{doelgroep_toon}
+Antwoord in het Nederlands.{bronnenregel}{web_zoek_blok}{vacature_blok}{doelgroep_toon}
 
 {oer_blokken}"""
 
@@ -944,6 +965,7 @@ def bouw_gecombineerd_systeem(
         n=len(oer_items),
         oer_blokken="\n\n---\n\n".join(blokken),
         schooldoc_banner=_SCHOOLDOC_BANNER_INSTRUCTIE,
+        bronnenregel=_BRONNENREGEL_BLOK,
         web_zoek_blok=_WEB_ZOEK_BLOK if web_zoeken else "",
         vacature_blok=_VACATURE_BLOK if vacatures else "",
         doelgroep_toon=_DOELGROEP_TOON,

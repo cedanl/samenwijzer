@@ -7,6 +7,7 @@ from types import SimpleNamespace
 import anthropic
 
 from validatie_samenwijzer.chat import (
+    _INTAKE_SYSTEEM,
     _SCHOOLDOC_DISCLAIMER,
     _WEB_DISCLAIMER,
     LAGE_RELEVANTIE_BERICHT,
@@ -1514,3 +1515,23 @@ def test_status_uit_tekstbegin_ander_blockquote_is_none():
 def test_dedup_disclaimer_laat_status_passeren():
     out = list(dedup_disclaimer([Status("web"), "abc"], "DISCLAIMER"))
     assert Status("web") in out and "".join(x for x in out if isinstance(x, str)) == "abc"
+
+
+def test_bouw_systeem_bevat_bronnenregel_instructie():
+    s = bouw_systeem("OER-tekst", "Kok", "Curio")
+    assert "BRONNENREGEL" in s and "<!-- bronnen:" in s
+    for t in ("studiegids", "kwalificatiedossier", "schooldocument", "skills", "website"):
+        assert t in s
+
+
+def test_bouw_gecombineerd_meervoudig_bevat_bronnenregel():
+    basis = {"opleiding": "Kok", "leerweg": "BOL", "cohort": "2026"}
+    items = [
+        {**basis, "tekst": "A", "display_naam": "Curio"},
+        {**basis, "tekst": "B", "display_naam": "Landstede"},
+    ]
+    assert "BRONNENREGEL" in bouw_gecombineerd_systeem(items)
+
+
+def test_intake_systeem_heeft_geen_bronnenregel():
+    assert "BRONNENREGEL" not in _INTAKE_SYSTEEM
