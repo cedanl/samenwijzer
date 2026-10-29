@@ -93,6 +93,10 @@ re-seed is een nieuwe deploy nodig. Fly-secrets: `SESSION_SECRET`, `ALGEMEEN_WAC
 - **Static-asset-cache**: `static_url()` berekent `?v=<mtime>` eenmalig bij opstart; na een edit aan
   alleen `app.css`/`app.js`/`chat.js` herstart de app of hard-refresh.
 - **Markitdown-conversie** is best-effort; bij falen blijft alleen pdfplumber over (geen tabellen).
+- **Hangende chat-stream** (2026-10-29: proces zat vast vóór de Anthropic-call, zonder timeout):
+  `/api/chat` stuurt bij stilte elke 15s een `ping`-event (Fly-proxy kapt ~60s stilte) en breekt na
+  `CHAT_MAX_SECONDEN` (default 90) af met `error: timeout` + stack van de hangende thread in het log.
+  Handmatige thread-dump: `kill -USR1 <pid>` op de machine (faulthandler → stderr → Fly-logs).
 
 ## Kennisbank
 
