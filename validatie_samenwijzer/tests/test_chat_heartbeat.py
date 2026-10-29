@@ -1,0 +1,112 @@
+"""Heartbeat + harde tijdslimiet op de chat-stream (`/api/chat`).
+
+Aanleiding (2026-10-29): het prod-proces bleef hangen vóór de Anthropic-call; de browser kreeg
+alleen `{"status":"lezen"}` en de Fly-proxy kapte na ~60s stilte de verbinding ("Verbinding
+verbroken"). De 30s-httpx-timeout ging niet af. Vangnet: bij stilte periodiek een `ping`-event
+(houdt de proxy wakker) en na `_CHAT_MAX_SECONDEN` een `error: timeout` + stacktrace in het log.
+"""
+
+from __future__ import annotations
+
+import asyncio
+import json
+import logging
+import os
+import threading
+import time
+
+import pytest
+from dotenv import load_dotenv
+
+load_dotenv()
+_WW = os.environ.get("ALGEMEEN_WACHTWOORD", "")
+
+
+def _verzamel(gen, heartbeat_s, max_s):
+    import app_fastapi.main as m
+
+    async def run():
+        return [x async for x in m._met_heartbeat(gen, heartbeat_s=heartbeat_s, max_s=max_s)]
+
+    return asyncio.run(run())
+
+
+def _events(items: list[str]) -> list[dict]:
+    return [json.loads(x[6:]) for x in items if x.startswith("data: ")]
+
+
+def test_items_passeren_in_volgorde_zonder_ping_bij_snelle_stream():
+    uit = _verzamel(iter(["a", "b", "c"]), heartbeat_s=1.0, max_s=5.0)
+    assert uit == ["a", "b", "c"]
+
+
+def test_ping_bij_stilte_en_daarna_gewoon_verder():
+    def traag():
+        yield "eerst"
+        time.sleep(0.25)
+        yield "later"
+
+    uit = _verzamel(traag(), heartbeat_s=0.05, max_s=5.0)
+    assert uit[0] == "eerst" and uit[-1] == "later"
+    pings = [x for x in uit if x.startswith("data: ")]
+    assert pings and all(json.loads(p[6:]) == {"ping": True} for p in pings)
+
+
+def test_tijdslimiet_geeft_timeout_event_en_logt_stack(caplog):
+    gestart = threading.Event()
+
+    def hangt():
+        yield "start"
+        gestart.set()
+        time.sleep(2.0)  # simuleert een thread die vastzit in de AI-call
+        yield "te laat"
+
+    with caplog.at_level(logging.ERROR, logger="oer_poc"):
+        uit = _verzamel(hangt(), heartbeat_s=0.05, max_s=0.3)
+    assert uit[0] == "start"
+    assert _events(uit)[-1] == {"error": "timeout"}
+    assert "te laat" not in uit
+    assert gestart.is_set()
+    # Diagnose voor de volgende keer: waar stond de vastgelopen thread?
+    assert any(
+        "chat-stream afgebroken" in r.message and "time.sleep" in r.message for r in caplog.records
+    )
+
+
+def test_exception_in_generator_wordt_doorgegeven():
+    def kapot():
+        yield "ok"
+        raise RuntimeError("boem")
+
+    with pytest.raises(RuntimeError, match="boem"):
+        _verzamel(kapot(), heartbeat_s=1.0, max_s=5.0)
+
+
+def test_api_chat_stuurt_ping_bij_stilte(monkeypatch):
+    """End-to-end: een trage AI-generator levert ping-events tussen 'lezen' en het antwoord."""
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    from fastapi.testclient import TestClient
+
+    import app_fastapi.main as m
+
+    monkeypatch.setattr(m, "_CHAT_HEARTBEAT_SECONDEN", 0.05)
+    monkeypatch.setattr(
+        m, "laad_context_met_melding", lambda ids, *a, **k: ("SYS", ["label"], [], False, "")
+    )
+
+    def traag(*a, **k):
+        time.sleep(0.3)
+        yield "Antwoord."
+
+    monkeypatch.setattr(m, "genereer_antwoord", traag)
+    c = TestClient(m.app)
+    c.post("/toegang", data={"wachtwoord": _WW})
+    c.post("/api/kies", json={"oer_ids": [1]})
+    r = c.post("/api/chat", json={"vraag": "kluisjes?"})
+    ev = [json.loads(x[6:]) for x in r.text.splitlines() if x.startswith("data: ")]
+    assert ev[0] == {"status": "lezen"}
+    assert {"ping": True} in ev
+    assert "".join(e.get("chunk", "") for e in ev) == "Antwoord."
+    assert ev[-1] == {"done": True}
+    assert r.headers.get("x-accel-buffering") == "no"

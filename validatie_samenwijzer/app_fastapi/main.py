@@ -7,11 +7,15 @@ Lokaal draaien (naast Streamlit op 8503):
 from __future__ import annotations
 
 import asyncio
+import faulthandler
 import json
 import logging
 import os
 import signal
+import sys
+import threading
 import time
+import traceback
 from dataclasses import asdict
 from pathlib import Path
 
@@ -56,6 +60,80 @@ load_dotenv()
 logging.basicConfig(level=logging.INFO, format="%(levelname)s:     %(name)s: %(message)s")
 log = logging.getLogger("oer_poc")
 log.setLevel(logging.INFO)
+
+# Chat-stream-vangnet (zie tests/test_chat_heartbeat.py). De Fly-proxy sluit een verbinding die
+# ~60s geen bytes ziet; een `ping`-event bij stilte houdt 'm open en de browser negeert het.
+# Na _CHAT_MAX_SECONDEN zonder nieuw item breken we af met `error: timeout` en loggen we waar de
+# vastgelopen thread stond — de httpx-timeout (30s) dekte de hang van 2026-10-29 niet.
+_CHAT_HEARTBEAT_SECONDEN = 15.0
+_CHAT_MAX_SECONDEN = float(os.environ.get("CHAT_MAX_SECONDEN", "90"))
+
+# Thread-dump op aanvraag: `kill -USR1 <pid>` op de machine schrijft alle Python-stacks naar
+# stderr (→ Fly-logs). Alleen op platforms met SIGUSR1 (niet Windows).
+if hasattr(signal, "SIGUSR1"):
+    faulthandler.register(signal.SIGUSR1, all_threads=True)
+
+
+def _sse(event: dict) -> str:
+    return f"data: {json.dumps(event)}\n\n"
+
+
+def _stack_van_thread(thread: threading.Thread) -> str:
+    frame = sys._current_frames().get(thread.ident) if thread.ident is not None else None
+    return "".join(traceback.format_stack(frame)) if frame else "(geen frame)"
+
+
+async def _met_heartbeat(gen, *, heartbeat_s: float, max_s: float):
+    """Itereer een sync-generator in een eigen thread; yield `ping` bij stilte, breek af na max_s.
+
+    Items komen via een asyncio-queue naar de event-loop. Blijft de generator `heartbeat_s` stil,
+    dan gaat er een `{"ping": true}`-event uit. Blijft hij in totaal `max_s` stil sinds het laatste
+    item, dan stoppen we met `{"error": "timeout"}` en loggen we de stack van de hangende thread;
+    de thread zelf is niet te onderbreken en wordt als daemon losgelaten.
+    """
+    loop = asyncio.get_running_loop()
+    q: asyncio.Queue = asyncio.Queue()
+    einde = object()
+    losgelaten = False
+
+    def werker():
+        try:
+            for item in gen:
+                if losgelaten:
+                    return
+                loop.call_soon_threadsafe(q.put_nowait, item)
+        except BaseException as e:  # noqa: BLE001 — wordt in de async-kant opnieuw geraised
+            loop.call_soon_threadsafe(q.put_nowait, e)
+        finally:
+            if not losgelaten:
+                loop.call_soon_threadsafe(q.put_nowait, einde)
+
+    thread = threading.Thread(target=werker, name="chat-stream", daemon=True)
+    thread.start()
+    laatste = time.monotonic()
+    while True:
+        try:
+            item = await asyncio.wait_for(q.get(), timeout=heartbeat_s)
+        except TimeoutError:
+            if time.monotonic() - laatste >= max_s:
+                losgelaten = True
+                log.error(
+                    "chat-stream afgebroken na %.0fs stilte; thread stond op:\n%s",
+                    max_s,
+                    _stack_van_thread(thread),
+                )
+                yield _sse({"error": "timeout"})
+                return
+            yield _sse({"ping": True})
+            continue
+        if item is einde:
+            return
+        if isinstance(item, BaseException):
+            raise item
+        laatste = time.monotonic()
+        yield item
+
+
 _ALGEMEEN_WACHTWOORD = os.environ.get("ALGEMEEN_WACHTWOORD", "")
 if not _ALGEMEEN_WACHTWOORD:
     # Fail-closed (spiegelt SESSION_SECRET): zonder wachtwoord lockt de toegangspoort de
@@ -314,10 +392,6 @@ async def api_kies(request: Request):
 _STATUS_VENSTER = 300
 
 
-def _sse(event: dict) -> str:
-    return f"data: {json.dumps(event)}\n\n"
-
-
 @app.post("/api/chat")
 async def api_chat(request: Request):
     """Stream een antwoord (chat of intake) als Server-Sent Events."""
@@ -406,7 +480,11 @@ async def api_chat(request: Request):
             log.exception("chat-stream mislukt")
             yield f"data: {json.dumps({'error': 'onbekend'})}\n\n"
 
-    return StreamingResponse(stream(), media_type="text/event-stream")
+    return StreamingResponse(
+        _met_heartbeat(stream(), heartbeat_s=_CHAT_HEARTBEAT_SECONDEN, max_s=_CHAT_MAX_SECONDEN),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )
 
 
 @app.post("/api/vervolgvragen")
