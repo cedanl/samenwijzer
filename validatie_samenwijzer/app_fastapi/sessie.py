@@ -13,25 +13,26 @@ niet een redeploy (nieuwe ephemerale container-fs). Multi-machine zou een gedeel
 
 from __future__ import annotations
 
+import copy
 import json
 import os
 import sqlite3
 import time
 import uuid
-from dataclasses import asdict, dataclass, field, fields
+from dataclasses import dataclass, field, fields
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+from validatie_samenwijzer.gesprek import MAX_GESCHIEDENIS, Gesprek  # noqa: F401 — her-export
+
 if TYPE_CHECKING:
     from app_fastapi.context import ChatContext
-
-MAX_GESCHIEDENIS = 20  # 10 vraag/antwoord-paren, zoals 0_oer_vraag.py
 
 
 @dataclass
 class Sessie:
     # Chat-/OER-context (publiek én ingelogd)
-    chat_history: list[dict] = field(default_factory=list)
+    gesprek: Gesprek = field(default_factory=Gesprek)  # opslagsleutel in sessies.db: chat_history
     oer_systeem: str | None = None
     oer_labels: list[str] = field(default_factory=list)
     oer_ids: list[int] = field(default_factory=list)
@@ -47,18 +48,11 @@ class Sessie:
     rol: str | None = None  # "student" | "mentor"
     gebruiker: dict | None = None  # {id, naam, studentnummer?}
 
-    def voeg_beurt_toe(self, vraag: str, antwoord: str) -> None:
-        """Voeg een vraag/antwoord-paar toe en kap de historie op MAX_GESCHIEDENIS."""
-        self.chat_history.append({"role": "user", "content": vraag})
-        self.chat_history.append({"role": "assistant", "content": antwoord})
-        if len(self.chat_history) > MAX_GESCHIEDENIS:
-            self.chat_history = self.chat_history[-MAX_GESCHIEDENIS:]
-
     def laad_context(self, ctx: ChatContext) -> None:
         """Neem een geladen :class:`ChatContext` over — de enige plek die deze velden zet.
 
         Wist ook een wachtende kies-vraag en de melding van een eerdere context; de
-        gesprekshistorie blijft (gebruik :meth:`nieuw_gesprek` om die te wissen).
+        gesprek blijft (gebruik :meth:`nieuw_gesprek` om dat te wissen).
         """
         self.oer_systeem = ctx.systeem
         self.oer_labels = list(ctx.labels)
@@ -70,12 +64,12 @@ class Sessie:
         self.wachtende_vraag = None
 
     def nieuw_gesprek(self) -> None:
-        """Wis alleen de gesprekshistorie (OER-context blijft — ingelogde pagina's)."""
-        self.chat_history = []
+        """Wis alleen het gesprek (OER-context blijft — ingelogde pagina's)."""
+        self.gesprek.reset()
 
     def reset(self) -> None:
         """Wis alle chat-/OER-state (publiek 'nieuw gesprek' of na uitloggen)."""
-        self.chat_history = []
+        self.gesprek.reset()
         self.oer_systeem = None
         self.oer_labels = []
         self.oer_ids = []
@@ -90,6 +84,25 @@ class Sessie:
         self.reset()
         self.rol = None
         self.gebruiker = None
+
+    def naar_dict(self) -> dict:
+        """Opslagvorm voor ``sessies.db``; het gesprek staat onder de sleutel ``chat_history``."""
+        data = {
+            f.name: copy.deepcopy(getattr(self, f.name))
+            for f in fields(self)
+            if f.name != "gesprek"
+        }
+        data["chat_history"] = self.gesprek.naar_lijst()
+        return data
+
+    @classmethod
+    def uit_dict(cls, data: dict) -> Sessie:
+        """Inverse van :meth:`naar_dict`; onbekende sleutels worden genegeerd, ontbrekende
+        krijgen hun default. Een oude rij (alleen ``chat_history``) laadt zo ongewijzigd."""
+        bekend = {f.name for f in fields(cls)} - {"gesprek"}
+        sessie = cls(**{k: v for k, v in data.items() if k in bekend})
+        sessie.gesprek = Gesprek.van_lijst(data.get("chat_history"))
+        return sessie
 
 
 # ── SQLite-backed store (productie: 1 machine, overleeft app-restarts + TTL) ──────
@@ -134,7 +147,7 @@ def bewaar(sid: str, sessie: Sessie) -> None:
         "INSERT INTO sessies (sid, data, laatst_gebruikt) VALUES (?, ?, ?) "
         "ON CONFLICT(sid) DO UPDATE SET "
         "data=excluded.data, laatst_gebruikt=excluded.laatst_gebruikt",
-        (sid, json.dumps(asdict(sessie)), nu),
+        (sid, json.dumps(sessie.naar_dict()), nu),
     )
     _store().commit()
 
@@ -150,9 +163,7 @@ def laad(sid: str) -> Sessie | None:
     if row is None:
         return None
     try:
-        data = json.loads(row[0])
-        bekend = {f.name for f in fields(Sessie)}
-        return Sessie(**{k: v for k, v in data.items() if k in bekend})
+        return Sessie.uit_dict(json.loads(row[0]))
     except (TypeError, ValueError, AttributeError):
         return None
 

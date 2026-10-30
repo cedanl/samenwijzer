@@ -8,8 +8,9 @@ from validatie_samenwijzer.bron_catalogus import (
     BronRegister,
     OerInvoer,
 )
-from validatie_samenwijzer.chat import geschiedenis_voor_ui, splits_bronnen
+from validatie_samenwijzer.chat import splits_bronnen
 from validatie_samenwijzer.documenten import GekozenDocument
+from validatie_samenwijzer.gesprek import Gesprek
 
 _SKILLS = "\n\n=== SKILLS-TAXONOMIE (ESCO) — beroep: kok ===\nkooktechnieken"
 
@@ -153,7 +154,7 @@ def test_splits_bronnen_met_register_corrigeert_het_type():
 def test_geschiedenis_voor_ui_met_register():
     register = BronCatalogus.bouw([_volledig()]).register()
     hist = [{"role": "assistant", "content": "a\n<!-- bronnen: studiegids|OER Kok BOL 2025 -->"}]
-    assert geschiedenis_voor_ui(hist, register)[0]["bronnen"][0]["oer_id"] == 7
+    assert Gesprek.van_lijst(hist).view_voor_ui(register)[0]["bronnen"][0]["oer_id"] == 7
 
 
 def test_titel_zonder_scheidingstekens_van_de_bronnenregel():

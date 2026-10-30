@@ -57,12 +57,13 @@ def test_vraag_accumuleert_eerdere_gebruikersbeurten(monkeypatch):
     `wachtende_vraag`."""
     import app_fastapi.main as m
     from app_fastapi.sessie import Sessie
+    from validatie_samenwijzer.gesprek import Gesprek
 
     monkeypatch.setattr(m.db, "get_alle_oers_met_instelling", lambda conn: _FAKE_OERS)
 
     s = Sessie(
         toegang=True,
-        chat_history=[{"role": "user", "content": "Ik zit op Talland College"}],
+        gesprek=Gesprek.van_lijst([{"role": "user", "content": "Ik zit op Talland College"}]),
     )
     monkeypatch.setattr(m, "get_sessie", lambda request: s)
 
@@ -99,13 +100,16 @@ def test_vraag_accumuleert_naar_eenduidige_match_laadt_direct(monkeypatch, stub_
     eerdere ronde wordt niet per ongeluk laten staan (regressie voor Finding 1)."""
     import app_fastapi.main as m
     from app_fastapi.sessie import Sessie
+    from validatie_samenwijzer.gesprek import Gesprek
 
     monkeypatch.setattr(m.db, "get_alle_oers_met_instelling", lambda conn: _FAKE_OERS)
     stub_context(systeem="PROMPT")
 
     s = Sessie(
         toegang=True,
-        chat_history=[{"role": "user", "content": "Ik zit op Talland College, ik doe Kok"}],
+        gesprek=Gesprek.van_lijst(
+            [{"role": "user", "content": "Ik zit op Talland College, ik doe Kok"}]
+        ),
         # Stale kies-state uit een eerdere ronde die deze beurt zou moeten opruimen.
         wachtende_vraag="oude vraag",
     )
@@ -124,6 +128,7 @@ def test_vraag_met_al_geladen_oer_blijft_shortcut_nemen(monkeypatch):
     """Bestaande shortcut (OER al geladen) blijft ongewijzigd: geen scoring, direct chat."""
     import app_fastapi.main as m
     from app_fastapi.sessie import Sessie
+    from validatie_samenwijzer.gesprek import Gesprek
 
     def _boom(*a, **k):
         raise AssertionError("identificeer_oer_kandidaten mag niet aangeroepen worden")
@@ -135,7 +140,7 @@ def test_vraag_met_al_geladen_oer_blijft_shortcut_nemen(monkeypatch):
         oer_systeem="PROMPT",
         oer_labels=["Talland College · Kok · BOL 2025"],
         oer_onleesbaar=False,
-        chat_history=[{"role": "user", "content": "Ik zit op Talland College"}],
+        gesprek=Gesprek.van_lijst([{"role": "user", "content": "Ik zit op Talland College"}]),
     )
     monkeypatch.setattr(m, "get_sessie", lambda request: s)
 
@@ -171,7 +176,7 @@ def test_kies_beurt_telt_mee_bij_genegeerde_picker(monkeypatch, stub_context):
     assert r1.json()["modus"] == "kies"
     assert len(r1.json()["opties"]) > 1
     # De kies-beurt moet nu ook zelf als user-turn in de historie staan.
-    assert {"role": "user", "content": "tandartsassistent"} in s.chat_history
+    assert {"role": "user", "content": "tandartsassistent"} in s.gesprek.naar_lijst()
 
     r2 = c.post("/api/vraag", json={"vraag": "in Nijmegen"})
     body = r2.json()

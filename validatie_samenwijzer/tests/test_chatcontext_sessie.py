@@ -11,6 +11,7 @@ from app_fastapi import sessie as sessie_mod
 from app_fastapi.context import ChatContext
 from app_fastapi.sessie import Sessie
 from validatie_samenwijzer import db
+from validatie_samenwijzer.gesprek import Gesprek
 
 _WW = os.environ.get("ALGEMEEN_WACHTWOORD", "")
 
@@ -53,14 +54,14 @@ def test_sessie_laad_context_zet_velden_en_wist_melding_en_wachtende_vraag():
         melding="oude melding",
         wachtende_vraag="oude vraag",
         oer_onleesbaar=True,
-        chat_history=[{"role": "user", "content": "hoi"}],
+        gesprek=Gesprek.van_lijst([{"role": "user", "content": "hoi"}]),
     )
     s.laad_context(ChatContext("SYS", ["lbl"], ["d.nl"], False, "", [4, 5]))
 
     assert (s.oer_systeem, s.oer_labels, s.domeinen) == ("SYS", ["lbl"], ["d.nl"])
     assert (s.oer_onleesbaar, s.melding, s.oer_ids) == (False, "", [4, 5])
     assert s.wachtende_vraag is None
-    assert s.chat_history == [{"role": "user", "content": "hoi"}]  # historie blijft
+    assert s.gesprek.naar_lijst() == [{"role": "user", "content": "hoi"}]  # gesprek blijft
 
 
 def test_sessie_laad_context_kopieert_lijsten():
@@ -82,7 +83,7 @@ def test_mentorwissel_wist_oude_melding_en_historie(monkeypatch, stub_context):
         rol="mentor",
         gebruiker={"id": 5, "naam": "Mentor"},
         melding="oude melding van vorige student",
-        chat_history=[{"role": "user", "content": "vraag over vorige student"}],
+        gesprek=Gesprek.van_lijst([{"role": "user", "content": "vraag over vorige student"}]),
     )
     monkeypatch.setattr(m, "get_sessie", lambda request: s)
     monkeypatch.setattr(m.data, "studenten_van_mentor", lambda mid: [{"id": 7}])
@@ -94,7 +95,7 @@ def test_mentorwissel_wist_oude_melding_en_historie(monkeypatch, stub_context):
     assert r.status_code == 200
     assert aanroepen == [[3]]
     assert s.melding == ""
-    assert s.chat_history == []
+    assert s.gesprek.naar_lijst() == []
     assert (s.oer_systeem, s.oer_ids) == ("MENTOR", [3])
 
 
@@ -244,6 +245,7 @@ def test_laad_tolereert_oude_velden_en_vult_ontbrekende_aan(sessie_store):
     assert s is not None
     assert s.oer_systeem == "SYS" and s.oer_ids == [3] and s.toegang is True
     assert s.melding == "" and s.domeinen == []
+    assert s.gesprek.naar_lijst() == [{"role": "user", "content": "hoi"}]  # oude opslagvorm
     assert not hasattr(s, "kandidaten") and not hasattr(s, "actieve_student")
 
 

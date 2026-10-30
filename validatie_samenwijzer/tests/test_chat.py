@@ -21,12 +21,10 @@ from validatie_samenwijzer.chat import (
     LAGE_RELEVANTIE_BERICHT,
     Bron,
     Status,
-    bouw_berichten,
     bouw_prompt,
     dedup_disclaimer,
     genereer_antwoord,
     genereer_vervolgvragen,
-    geschiedenis_voor_ui,
     identificeer_oer_kandidaten,
     splits_bronnen,
     status_uit_tekstbegin,
@@ -34,6 +32,7 @@ from validatie_samenwijzer.chat import (
     web_zoek_domeinen,
 )
 from validatie_samenwijzer.documenten import GekozenDocument
+from validatie_samenwijzer.gesprek import Gesprek
 
 
 def _invoer(item: dict, web_zoeken: bool) -> OerInvoer:
@@ -131,7 +130,7 @@ def test_laad_oer_tekst_geeft_voorrang_aan_gevuld_md(tmp_path, monkeypatch):
 
 
 def test_bouw_berichten_nieuwe_vraag():
-    berichten = bouw_berichten([], "Hoeveel uren BPV?")
+    berichten = Gesprek().berichten_voor_model("Hoeveel uren BPV?")
     assert berichten[0]["role"] == "user"
     assert berichten[0]["content"] == "Hoeveel uren BPV?"
 
@@ -141,7 +140,7 @@ def test_bouw_berichten_behoudt_history():
         {"role": "user", "content": "Vraag 1"},
         {"role": "assistant", "content": "Antwoord 1"},
     ]
-    berichten = bouw_berichten(history, "Vraag 2")
+    berichten = Gesprek.van_lijst(history).berichten_voor_model("Vraag 2")
     rollen = [b["role"] for b in berichten]
     assert rollen == ["user", "assistant", "user"]
     assert berichten[-1]["content"] == "Vraag 2"
@@ -154,7 +153,7 @@ def test_bouw_berichten_filtert_lege_assistant_turn():
         {"role": "user", "content": "Vraag 1"},
         {"role": "assistant", "content": ""},
     ]
-    berichten = bouw_berichten(history, "Vraag 2")
+    berichten = Gesprek.van_lijst(history).berichten_voor_model("Vraag 2")
     assert all(str(b["content"]).strip() for b in berichten)
     assert berichten == [{"role": "user", "content": "Vraag 2"}]
 
@@ -165,7 +164,7 @@ def test_bouw_berichten_vervangt_onbeantwoorde_user_turn():
         {"role": "assistant", "content": "Antwoord 1"},
         {"role": "user", "content": "Vraag 2"},  # onbeantwoord (stream faalde)
     ]
-    berichten = bouw_berichten(history, "Vraag 3")
+    berichten = Gesprek.van_lijst(history).berichten_voor_model("Vraag 3")
     rollen = [b["role"] for b in berichten]
     assert rollen == ["user", "assistant", "user"]
     assert berichten[-1]["content"] == "Vraag 3"
@@ -180,7 +179,7 @@ def test_bouw_berichten_cascade_blijft_geldig():
         {"role": "user", "content": "Vraag 2"},
         {"role": "assistant", "content": ""},
     ]
-    berichten = bouw_berichten(history, "Vraag 3")
+    berichten = Gesprek.van_lijst(history).berichten_voor_model("Vraag 3")
     rollen = [b["role"] for b in berichten]
     assert berichten[0]["role"] == "user"
     assert all(rollen[i] != rollen[i + 1] for i in range(len(rollen) - 1))
@@ -1594,7 +1593,7 @@ def test_geschiedenis_voor_ui_stript_en_laat_history_heel():
         {"role": "user", "content": "v"},
         {"role": "assistant", "content": "a\n<!-- bronnen: studiegids|OER -->"},
     ]
-    ui = geschiedenis_voor_ui(hist)
+    ui = Gesprek.van_lijst(hist).view_voor_ui()
     assert ui[0] == {"role": "user", "content": "v"}
     assert ui[1] == {
         "role": "assistant",

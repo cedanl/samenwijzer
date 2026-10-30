@@ -46,6 +46,7 @@ def test_geen_oer_systeem_geeft_lege_lijst_zonder_ai_call(monkeypatch):
 def test_te_korte_historie_geeft_lege_lijst(monkeypatch):
     import app_fastapi.main as m
     from app_fastapi.sessie import Sessie
+    from validatie_samenwijzer.gesprek import Gesprek
 
     def _boom(*a, **k):
         raise AssertionError("genereer_vervolgvragen mag niet aangeroepen worden")
@@ -55,7 +56,7 @@ def test_te_korte_historie_geeft_lege_lijst(monkeypatch):
     s = Sessie(
         toegang=True,
         oer_systeem="PROMPT",
-        chat_history=[{"role": "user", "content": "Hoe zit het met herkansen?"}],
+        gesprek=Gesprek.van_lijst([{"role": "user", "content": "Hoe zit het met herkansen?"}]),
     )
     monkeypatch.setattr(m, "get_sessie", lambda request: s)
 
@@ -68,6 +69,7 @@ def test_te_korte_historie_geeft_lege_lijst(monkeypatch):
 def test_lege_assistant_content_geeft_lege_lijst(monkeypatch):
     import app_fastapi.main as m
     from app_fastapi.sessie import Sessie
+    from validatie_samenwijzer.gesprek import Gesprek
 
     def _boom(*a, **k):
         raise AssertionError("genereer_vervolgvragen mag niet aangeroepen worden")
@@ -77,10 +79,12 @@ def test_lege_assistant_content_geeft_lege_lijst(monkeypatch):
     s = Sessie(
         toegang=True,
         oer_systeem="PROMPT",
-        chat_history=[
-            {"role": "user", "content": "en dan?"},
-            {"role": "assistant", "content": ""},
-        ],
+        gesprek=Gesprek.van_lijst(
+            [
+                {"role": "user", "content": "en dan?"},
+                {"role": "assistant", "content": ""},
+            ]
+        ),
     )
     monkeypatch.setattr(m, "get_sessie", lambda request: s)
 
@@ -93,6 +97,7 @@ def test_lege_assistant_content_geeft_lege_lijst(monkeypatch):
 def test_met_geladen_oer_roept_ai_aan_en_geeft_vragen_terug(monkeypatch):
     import app_fastapi.main as m
     from app_fastapi.sessie import Sessie
+    from validatie_samenwijzer.gesprek import Gesprek
 
     monkeypatch.setattr(m, "ai_client", lambda: "FAKE_CLIENT")
 
@@ -111,10 +116,12 @@ def test_met_geladen_oer_roept_ai_aan_en_geeft_vragen_terug(monkeypatch):
         toegang=True,
         oer_systeem="PROMPT",
         oer_labels=["Talland College · Kok · BOL 2025"],
-        chat_history=[
-            {"role": "user", "content": "Hoeveel uren BPV moet ik draaien?"},
-            {"role": "assistant", "content": "Je moet 700 uur BPV draaien."},
-        ],
+        gesprek=Gesprek.van_lijst(
+            [
+                {"role": "user", "content": "Hoeveel uren BPV moet ik draaien?"},
+                {"role": "assistant", "content": "Je moet 700 uur BPV draaien."},
+            ]
+        ),
     )
     monkeypatch.setattr(m, "get_sessie", lambda request: s)
 

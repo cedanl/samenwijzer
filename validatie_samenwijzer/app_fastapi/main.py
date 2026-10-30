@@ -42,11 +42,9 @@ from validatie_samenwijzer.bron_catalogus import resolve_oer_pad
 from validatie_samenwijzer.chat import (
     LAGE_RELEVANTIE_BERICHT,
     Status,
-    bouw_berichten,
     genereer_antwoord,
     genereer_intake_antwoord,
     genereer_vervolgvragen,
-    geschiedenis_voor_ui,
     identificeer_oer_kandidaten,
     splits_bronnen,
     status_uit_tekstbegin,
@@ -83,13 +81,16 @@ def _stack_van_thread(thread: threading.Thread) -> str:
     return "".join(traceback.format_stack(frame)) if frame else "(geen frame)"
 
 
-async def _met_heartbeat(gen, *, heartbeat_s: float, max_s: float):
+async def _met_heartbeat(gen, *, heartbeat_s: float, max_s: float, bij_timeout=None):
     """Itereer een sync-generator in een eigen thread; yield `ping` bij stilte, breek af na max_s.
 
     Items komen via een asyncio-queue naar de event-loop. Blijft de generator `heartbeat_s` stil,
     dan gaat er een `{"ping": true}`-event uit. Blijft hij in totaal `max_s` stil sinds het laatste
     item, dan stoppen we met `{"error": "timeout"}` en loggen we de stack van de hangende thread;
-    de thread zelf is niet te onderbreken en wordt als daemon losgelaten.
+    de thread zelf is niet te onderbreken en wordt als daemon losgelaten. ``bij_timeout`` (sync
+    callable, optioneel) draait dan in een executor-thread vóór het error-event, zodat de
+    afgebroken beurt bewaard is voordat de browser het opnieuw probeert; fouten daarin worden
+    gelogd en breken het error-event niet.
     """
     loop = asyncio.get_running_loop()
     q: asyncio.Queue = asyncio.Queue()
@@ -122,6 +123,11 @@ async def _met_heartbeat(gen, *, heartbeat_s: float, max_s: float):
                     max_s,
                     _stack_van_thread(thread),
                 )
+                if bij_timeout is not None:
+                    try:
+                        await asyncio.to_thread(bij_timeout)
+                    except Exception:
+                        log.exception("afgebroken beurt vastleggen mislukt")
                 yield _sse({"error": "timeout"})
                 return
             yield _sse({"ping": True})
@@ -314,10 +320,7 @@ async def api_vraag(request: Request):
     # Score op de opgetelde gesprekstekst (eerdere user-beurten + nieuwe vraag), niet op de
     # kale vraag: een vervolgbeurt ("2024", "Tandartsassistent, BOL") heeft de context van
     # eerdere beurten nodig om te matchen. Bij lege historie is dit gelijk aan `vraag`.
-    context_tekst = " ".join(
-        [b["content"] for b in s.chat_history if b["role"] == "user"] + [vraag]
-    )
-    kandidaten = identificeer_oer_kandidaten(oers, context_tekst, min_score=1)
+    kandidaten = identificeer_oer_kandidaten(oers, s.gesprek.context_tekst(vraag), min_score=1)
 
     # Eén kandidaat laadt direct — tenzij hij partieel is (de genoemde school biedt de
     # opleiding niet aan; zie identificeer_oer_kandidaten, aanscherping 3): dan kies-modus.
@@ -335,10 +338,10 @@ async def api_vraag(request: Request):
 
     if kandidaten:
         s.wachtende_vraag = vraag
-        # Ook opnemen in chat_history (lege "assistent"-kant, net als een mislukte AI-call —
-        # bouw_berichten() saneert dat al): negeert de gebruiker de picker en typt hij verder,
-        # dan telt deze kies-beurt alsnog mee in de opgetelde context_tekst hierboven.
-        s.voeg_beurt_toe(vraag, "")
+        # Ook opnemen in het gesprek (lege "assistent"-kant, net als een mislukte AI-call —
+        # berichten_voor_model() saneert dat al): negeert de gebruiker de picker en typt hij
+        # verder, dan telt deze kies-beurt alsnog mee in de opgetelde context_tekst hierboven.
+        s.gesprek.voeg_beurt_toe(vraag, "")
         opties = [
             {
                 "id": k["id"],
@@ -391,15 +394,20 @@ async def api_chat(request: Request):
         return JSONResponse({"error": "ongeldige json"}, status_code=400)
     vraag = body.get("vraag", "").strip()
     s = get_sessie(request)
-    berichten = bouw_berichten(s.chat_history, vraag)
+    berichten = s.gesprek.berichten_voor_model(vraag)
+    beurt = s.gesprek.begin_beurt(vraag)
     systeem = s.oer_systeem
     heeft_oer = bool(s.oer_ids)
     domeinen = s.domeinen or None
     instellingen = _instellingen()
 
+    def _leg_afgebroken_vast() -> None:
+        """Bewaar vraag + gedeeltelijk antwoord als afgebroken beurt (eenmalig, thread-veilig)."""
+        if beurt.breek_af():
+            bewaar_sessie(request)
+
     def stream():
         t_start = time.perf_counter()
-        ruw_delen: list[str] = []
         ruw = ""
         ttft_s: float | None = None
         status_gemeld = False
@@ -425,7 +433,7 @@ async def api_chat(request: Request):
                 nonlocal ruw
                 for item in gen:
                     if isinstance(item, str):
-                        ruw_delen.append(item)
+                        beurt.voeg_toe(item)
                         ruw += item
                     yield item
 
@@ -443,12 +451,13 @@ async def api_chat(request: Request):
                     if code:
                         status_gemeld = True
                         yield _sse({"status": code})
-            antwoord = "".join(ruw_delen)
+            antwoord = beurt.antwoord
             # `or None`: een sessie zonder register (oud of intake) valt terug op de type-check.
             _, bronnen = (
                 splits_bronnen(antwoord, s.bron_register or None) if modus == "oer" else ("", [])
             )
-            s.voeg_beurt_toe(vraag, antwoord)
+            if not beurt.rond_af():
+                return  # tijdens het wachten al als afgebroken vastgelegd (heartbeat-timeout)
             bewaar_sessie(request)
             log.info(
                 "chat-beurt klaar: modus=%s domeinen=%d ttft_s=%s totaal_s=%.2f "
@@ -464,18 +473,26 @@ async def api_chat(request: Request):
                 yield _sse({"bronnen": [asdict(b) for b in bronnen]})
             yield _sse({"done": True})
         except anthropic.APITimeoutError:
+            _leg_afgebroken_vast()
             yield f"data: {json.dumps({'error': 'timeout'})}\n\n"
         except anthropic.AuthenticationError:
             # Ongeldige/ingetrokken ANTHROPIC_API_KEY: apart melden, anders is een
             # config-storing in de UI niet te onderscheiden van een willekeurige bug.
             log.error("chat-stream: Anthropic weigert de API-key (401), check ANTHROPIC_API_KEY")
+            _leg_afgebroken_vast()
             yield f"data: {json.dumps({'error': 'auth'})}\n\n"
         except Exception:
             log.exception("chat-stream mislukt")
+            _leg_afgebroken_vast()
             yield f"data: {json.dumps({'error': 'onbekend'})}\n\n"
 
     return StreamingResponse(
-        _met_heartbeat(stream(), heartbeat_s=_CHAT_HEARTBEAT_SECONDEN, max_s=_CHAT_MAX_SECONDEN),
+        _met_heartbeat(
+            stream(),
+            heartbeat_s=_CHAT_HEARTBEAT_SECONDEN,
+            max_s=_CHAT_MAX_SECONDEN,
+            bij_timeout=_leg_afgebroken_vast,
+        ),
         media_type="text/event-stream",
         headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
     )
@@ -485,19 +502,11 @@ async def api_chat(request: Request):
 def api_vervolgvragen(request: Request):
     """Klikbare vervolgvragen na het laatste antwoord (best-effort, geen sessie-mutatie)."""
     s = get_sessie(request)
-    if not s.oer_systeem or len(s.chat_history) < 2:
+    laatste = s.gesprek.laatste_beurt()
+    if not s.oer_systeem or laatste is None:
         return JSONResponse({"vragen": []})
 
-    laatste_assistant = s.chat_history[-1]
-    laatste_user = s.chat_history[-2]
-    if laatste_assistant["role"] != "assistant" or laatste_user["role"] != "user":
-        return JSONResponse({"vragen": []})
-    antwoord = laatste_assistant["content"]
-    if not antwoord:
-        return JSONResponse({"vragen": []})
-    vraag = laatste_user["content"]
-
-    vragen = genereer_vervolgvragen(ai_client(), vraag, antwoord, s.oer_labels)
+    vragen = genereer_vervolgvragen(ai_client(), laatste.vraag, laatste.antwoord, s.oer_labels)
     return JSONResponse({"vragen": vragen})
 
 
@@ -538,7 +547,7 @@ def api_reset(request: Request):
 def api_geschiedenis(request: Request):
     """Geef de bewaarde gespreksgeschiedenis terug voor rehydratie bij page-load."""
     s = get_sessie(request)
-    return JSONResponse({"beurten": geschiedenis_voor_ui(s.chat_history, s.bron_register or None)})
+    return JSONResponse({"beurten": s.gesprek.view_voor_ui(s.bron_register or None)})
 
 
 # ── Login / sessie ─────────────────────────────────────────────────────────────

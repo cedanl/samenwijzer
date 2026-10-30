@@ -89,6 +89,7 @@ function addAntwoord(thread, md) {
   const d = document.createElement("div");
   d.className = "bubble-a"; d.innerHTML = renderMarkdown(md);
   thread.appendChild(d); _scroll(thread);
+  return d;
 }
 const FOUT_TEKSTEN = {
   timeout: "De AI-service reageert niet. Probeer het zo opnieuw.",
@@ -177,7 +178,18 @@ async function rehydrateer(thread) {
   const r = await (await fetch("/api/geschiedenis")).json();
   for (const b of r.beurten || []) {
     if (b.role === "user") addVraag(thread, b.content);
-    else { addAntwoord(thread, b.content); addBronnen(thread, b.bronnen || []); }
+    else {
+      const node = addAntwoord(thread, b.content);
+      if (b.afgebroken) {
+        // Beurt die niet af kwam (time-out/fout): de server bewaarde vraag + deel van het antwoord.
+        const note = document.createElement("p");
+        note.className = "afgebroken";
+        const em = document.createElement("em");
+        em.textContent = "Dit antwoord is afgebroken. Stel de vraag gerust opnieuw.";
+        note.appendChild(em); node.appendChild(note);
+      }
+      addBronnen(thread, b.bronnen || []);
+    }
   }
 }
 

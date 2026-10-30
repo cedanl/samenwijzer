@@ -6,7 +6,7 @@ import json
 import logging
 import re
 from collections.abc import Generator, Iterable
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
 
 import anthropic
 
@@ -409,31 +409,6 @@ def bouw_prompt(catalogus: BronCatalogus, *, vacatures: bool = True) -> Prompt:
     return Prompt(systeem, sorted(web_domeinen))
 
 
-def bouw_berichten(chat_history: list[dict], vraag: str) -> list[dict]:
-    """Voeg de nieuwe vraag toe aan de gesprekshistorie.
-
-    Saneert de historie zodat de API nooit een ongeldige berichtenlijst krijgt:
-    lege beurten (een mislukte AI-call die een lege assistant-turn achterliet)
-    worden overgeslagen, twee dezelfde rollen op rij ingeklapt, en een
-    onbeantwoorde laatste user-beurt wordt vervangen door de nieuwe vraag. Zo
-    kan één gefaalde beurt niet de hele sessie blokkeren (API 400 op lege/
-    niet-alternerende content).
-    """
-    berichten: list[dict] = []
-    for bericht in chat_history:
-        if not str(bericht.get("content", "")).strip():
-            continue  # lege/mislukte beurt overslaan
-        if berichten and berichten[-1]["role"] == bericht["role"]:
-            continue  # geen twee dezelfde rollen op rij
-        berichten.append({"role": bericht["role"], "content": bericht["content"]})
-    while berichten and berichten[0]["role"] != "user":
-        berichten.pop(0)  # API verwacht een user-beurt als eerste
-    if berichten and berichten[-1]["role"] == "user":
-        berichten.pop()  # onbeantwoorde vraag → vervangen door de nieuwe
-    berichten.append({"role": "user", "content": vraag})
-    return berichten
-
-
 def _messages_met_cache(berichten: list[dict]) -> list[dict]:
     """Zet een cache-breakpoint op de laatste beurt (multi-turn prompt caching).
 
@@ -616,28 +591,15 @@ def status_uit_tekstbegin(tekst: str) -> str | None:
     return None
 
 
-def geschiedenis_voor_ui(
-    chat_history: list[dict], register: BronRegister | Iterable[dict] | None = None
-) -> list[dict]:
-    """Maak de bewaarde gespreksgeschiedenis geschikt voor de UI.
+def knip_bronnenregel(tekst: str) -> str:
+    """Geef `tekst` zonder bronnenregel, ook als die nog niet af is (afgebroken stream).
 
-    Assistant-beurten krijgen de bronnenmarker eruit (`content`) en de geparste bronnen als
-    `bronnen`-lijst (altijd aanwezig, mag leeg zijn); user-beurten blijven ongewijzigd.
-    `register` werkt als bij `splits_bronnen`. `chat_history` zelf wordt niet gemuteerd
-    (blijft de ruwe tekst mét marker).
+    Haalt een complete markerregel weg, een onvolledige (`<!-- bronnen: a|b` zonder `-->`) en
+    een begin van de marker aan het einde (`<!-- bro`). Zo kan een gedeeltelijk antwoord veilig
+    in de gesprekshistorie zonder dat het model of de UI een halve marker ziet.
     """
-    if register is not None and not isinstance(register, BronRegister):
-        register = BronRegister.uit_dicts(register)
-    uit: list[dict] = []
-    for beurt in chat_history:
-        if beurt.get("role") == "assistant":
-            tekst, bronnen = splits_bronnen(beurt.get("content", ""), register)
-            uit.append(
-                {"role": "assistant", "content": tekst, "bronnen": [asdict(b) for b in bronnen]}
-            )
-        else:
-            uit.append({"role": beurt.get("role"), "content": beurt.get("content", "")})
-    return uit
+    schoon = "".join(strip_bronnenregel([tekst]))
+    return schoon[: len(schoon) - _prefix_staart(schoon, _BRONNEN_MARKER)].rstrip()
 
 
 def _stream_items(stream) -> Generator[str | Status]:
