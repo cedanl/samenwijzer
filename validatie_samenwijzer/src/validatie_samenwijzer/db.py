@@ -325,6 +325,25 @@ def get_oer_met_instelling(conn: sqlite3.Connection, oer_id: int) -> sqlite3.Row
     ).fetchone()
 
 
+def filter_geindexeerde_oer_ids(conn: sqlite3.Connection, oer_ids: list[int]) -> list[int]:
+    """Geef de id's uit ``oer_ids`` die een bestaand, geïndexeerd OER-document zijn.
+
+    Volgorde en duplicaten van de invoer blijven behouden; onbekende of niet-geïndexeerde
+    id's vallen weg.
+    """
+    if not oer_ids:
+        return []
+    marks = ",".join("?" for _ in oer_ids)
+    geldig = {
+        r[0]
+        for r in conn.execute(
+            f"SELECT id FROM oer_documenten WHERE geindexeerd = 1 AND id IN ({marks})",  # noqa: S608
+            list(oer_ids),
+        )
+    }
+    return [i for i in oer_ids if i in geldig]
+
+
 def get_oer_status_per_instelling(conn: sqlite3.Connection) -> list[sqlite3.Row]:
     """Geef per instelling het aantal OERs (totaal) en hoeveel daarvan geïndexeerd (geindexeerd)."""
     return conn.execute(

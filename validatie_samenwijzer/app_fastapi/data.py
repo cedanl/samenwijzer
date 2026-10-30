@@ -138,6 +138,21 @@ def profiel_van_student(student_id: int) -> dict | None:
     return data
 
 
+def kiesbare_oers() -> list[dict]:
+    """Alle geïndexeerde OER's (met instelling) — de set waaruit de chat een OER kan kiezen."""
+    return [dict(r) for r in db.get_alle_oers_met_instelling(_conn()) if r["geindexeerd"]]
+
+
+def geldige_oer_ids(oer_ids: list) -> list[int]:
+    """Filter ruwe (client-)id's op bestaande, geïndexeerde OER's; max. 3, volgorde behouden.
+
+    Niet-numerieke waarden vallen weg. Dit is de enige poort waarlangs een client OER's in
+    zijn sessie kan zetten (de sessie-guard van het bronbestand leunt hierop).
+    """
+    ints = [i for i in oer_ids if isinstance(i, int) and not isinstance(i, bool)]
+    return db.filter_geindexeerde_oer_ids(_conn(), ints)[:3]
+
+
 def opleidingen_boom() -> list[dict]:
     """Geneste keuzeboom instelling → leerweg → opleiding → cohort voor de publieke kiezer.
 
