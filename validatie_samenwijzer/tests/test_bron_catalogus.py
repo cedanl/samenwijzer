@@ -154,3 +154,11 @@ def test_geschiedenis_voor_ui_met_register():
     register = BronCatalogus.bouw([_volledig()]).register()
     hist = [{"role": "assistant", "content": "a\n<!-- bronnen: studiegids|OER Kok BOL 2025 -->"}]
     assert geschiedenis_voor_ui(hist, register)[0]["bronnen"][0]["oer_id"] == 7
+
+
+def test_titel_zonder_scheidingstekens_van_de_bronnenregel():
+    cat = BronCatalogus.bouw([_oer(documenten=(_doc(1, "Protocol — Kluis; deur|raam"),))])
+    titel = cat.bronnen[1].titel
+    assert "|" not in titel and ";" not in titel
+    _, bronnen = splits_bronnen(f"x\n<!-- bronnen: schooldocument|{titel} -->", cat.register())
+    assert bronnen[0].doc_id == 1

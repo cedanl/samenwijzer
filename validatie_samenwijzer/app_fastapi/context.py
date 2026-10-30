@@ -48,18 +48,15 @@ def _oer_blok(oer_id: int):
     return row, tekst  # tekst mag leeg zijn (gescande OER) — laad_context beslist op KD/bron
 
 
-def laad_context_met_melding(
+def laad_context_met_register(
     oer_ids: list[int], niveau: str = "publiek"
-) -> tuple[str, list[str], list[str], bool, str]:
-    """Geef (system-prompt, labels, web-zoek-domeinen, oer_onleesbaar, melding) voor de OER's.
+) -> tuple[tuple[str, list[str], list[str], bool, str], list[dict]]:
+    """Als :func:`laad_context_met_melding`, plus het bron-register van de chat-sessie.
 
-    Per OER de volledige tekst + KD + skills; de bijbehorende documenten (instellingsbreed en
-    opleidingsgebonden) komen uit ``documenten.selecteer_documenten`` binnen het budget, op basis
-    van het ``niveau`` (publiek/student/mentor). De ``BronCatalogus`` laat OER's zonder enige
-    bruikbare bron weg; een OER zonder leesbare tekst (gescande PDF) blijft staan als er een KD
-    of document is (KD-fallback) en dan is ``oer_onleesbaar`` True. ``melding`` is niet leeg als
-    documenten buiten het budget vielen. Lege string + False als geen enkele OER een bruikbare
-    bron heeft.
+    Het register (``BronCatalogus.register(prompt.web_domeinen)``) is JSON-serialiseerbaar en
+    hoort in de server-side sessie; ``chat.splits_bronnen(antwoord, register)`` herleidt daarmee
+    de titels in de bronnenregel naar bekende bronnen (met ``oer_id``/``doc_id``/``crebo``) en
+    wijst verzonnen titels af. Leeg register bij een lege context.
     """
     conn = _conn()
     gevonden = [res for oid in oer_ids[:3] if (res := _oer_blok(oid)) is not None]
@@ -81,11 +78,12 @@ def laad_context_met_melding(
         for row, tekst in gevonden
     )
     if catalogus.leeg:
-        return "", [], [], False, ""
+        return ("", [], [], False, ""), []
 
     prompt = bouw_prompt(catalogus)
     labels = [
-        f"{o.invoer.instelling} · {nette_opleiding_naam(o.invoer.crebo, o.invoer.opleiding)} · "
+        f"{o.invoer.instelling} · "
+        f"{nette_opleiding_naam(o.invoer.crebo or '', o.invoer.opleiding)} · "
         f"{o.invoer.leerweg} {o.invoer.cohort}"
         for o in catalogus.oers
     ]
@@ -96,7 +94,24 @@ def laad_context_met_melding(
         if selectie.afgevallen
         else ""
     )
-    return prompt.systeem, labels, prompt.web_domeinen, catalogus.oer_onleesbaar, melding
+    context = (prompt.systeem, labels, prompt.web_domeinen, catalogus.oer_onleesbaar, melding)
+    return context, catalogus.register(prompt.web_domeinen)
+
+
+def laad_context_met_melding(
+    oer_ids: list[int], niveau: str = "publiek"
+) -> tuple[str, list[str], list[str], bool, str]:
+    """Geef (system-prompt, labels, web-zoek-domeinen, oer_onleesbaar, melding) voor de OER's.
+
+    Per OER de volledige tekst + KD + skills; de bijbehorende documenten (instellingsbreed en
+    opleidingsgebonden) komen uit ``documenten.selecteer_documenten`` binnen het budget, op basis
+    van het ``niveau`` (publiek/student/mentor). De ``BronCatalogus`` laat OER's zonder enige
+    bruikbare bron weg; een OER zonder leesbare tekst (gescande PDF) blijft staan als er een KD
+    of document is (KD-fallback) en dan is ``oer_onleesbaar`` True. ``melding`` is niet leeg als
+    documenten buiten het budget vielen. Lege string + False als geen enkele OER een bruikbare
+    bron heeft.
+    """
+    return laad_context_met_register(oer_ids, niveau)[0]
 
 
 def laad_context(

@@ -441,7 +441,8 @@ class BronCatalogus:
                 blokken.append(("", o.skills_tekst.lstrip("\n"), bron))
             for _, _, bron in blokken:
                 if bron is not None:
-                    basistitels.append(bron.titel)
+                    # `|` en `;` zijn scheidingstekens in de bronnenregel.
+                    basistitels.append(bron.titel.replace("|", "/").replace(";", ","))
                     achtervoegsels.append((o.instelling, f"OER {i}"))
             ruw.append((i, o, opleiding, blokken))
 

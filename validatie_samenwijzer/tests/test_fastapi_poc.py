@@ -123,6 +123,39 @@ def test_laad_context_leesbare_oer_niet_onleesbaar(monkeypatch):
     assert onleesbaar is False
 
 
+def test_laad_context_met_register_geeft_tuple_en_register(monkeypatch):
+    """Het register hoort bij de context: bekende titels met oer_id, plus de webdomeinen."""
+    import app_fastapi.context as ctx
+    from validatie_samenwijzer.chat import splits_bronnen
+
+    fake_row = {
+        "id": 1, "crebo": "25168", "opleiding": "Gastheer", "display_naam": "Da Vinci",
+        "naam": "davinci", "leerweg": "BBL", "cohort": "2025", "instelling_id": 2,
+        "bestandspad": "x.pdf",
+    }  # fmt: skip
+    monkeypatch.setattr(ctx, "_oer_blok", lambda oid: (fake_row, "ECHTE OER-TEKST"))
+    monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c, *a: "")
+    monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
+    monkeypatch.setattr(ctx, "selecteer_documenten", lambda *a, **k: Selectie({}, []))
+
+    context, register = ctx.laad_context_met_register([1])
+    assert context == ctx.laad_context_met_melding([1])
+    websites = {r["titel"] for r in register if r["type"] == "website"}
+    assert websites == {"davinci.nl", "indeed.nl", "stagemarkt.nl"}
+    titel = next(r["titel"] for r in register if r["type"] == "studiegids")
+    tekst = f"x\n<!-- bronnen: studiegids|{titel}; studiegids|Nep -->"
+    _, bronnen = splits_bronnen(tekst, register)
+    assert [(b.titel, b.oer_id) for b in bronnen] == [(titel, 1)]
+
+
+def test_laad_context_met_register_leeg_zonder_bron(monkeypatch):
+    import app_fastapi.context as ctx
+
+    monkeypatch.setattr(ctx, "_oer_blok", lambda oid: None)
+    monkeypatch.setattr(ctx, "selecteer_documenten", lambda *a, **k: Selectie({}, []))
+    assert ctx.laad_context_met_register([1]) == (("", [], [], False, ""), [])
+
+
 # ── sessie ────────────────────────────────────────────────────────────────────
 def test_sessie_voeg_beurt_kapt_op_max():
     from app_fastapi.sessie import MAX_GESCHIEDENIS, Sessie
@@ -872,3 +905,4 @@ def test_chat_js_bevat_status_en_bron_teksten():
     for t in ("Studiegids", "Kwalificatiedossier", "Schooldocument", "Skills", "Website"):
         assert f'"{t}"' in js
     assert 'startsWith("<!--")' in js  # vangnet in renderMarkdown: elke HTML-commentaarregel
+    assert "/api/oer/${b.oer_id}/bestand" in js  # studiegids-chip linkt naar de bestaande route
