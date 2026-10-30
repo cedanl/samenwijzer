@@ -1553,6 +1553,15 @@ def test_geschiedenis_voor_ui_stript_en_laat_history_heel():
     assert ui[1] == {
         "role": "assistant",
         "content": "a",
-        "bronnen": [{"type": "studiegids", "titel": "OER", "url": None}],
+        "bronnen": [
+            {
+                "type": "studiegids",
+                "titel": "OER",
+                "url": None,
+                "doc_id": None,
+                "oer_id": None,
+                "crebo": None,
+            }
+        ],
     }
     assert hist[1]["content"].endswith("-->")

@@ -10,6 +10,8 @@ from dataclasses import asdict, dataclass
 
 import anthropic
 
+from validatie_samenwijzer.bron_catalogus import BRON_TYPES, Bron, BronRegister
+
 # Re-export: app_fastapi/main.py importeert resolve_oer_pad nog uit chat (verhuist na de merge).
 from validatie_samenwijzer.bron_catalogus import resolve_oer_pad as resolve_oer_pad
 from validatie_samenwijzer.instellingen import alle as _instellingen_alle
@@ -463,22 +465,10 @@ def _prefix_staart(buf: str, disclaimer: str) -> int:
     return 0
 
 
-BRON_TYPES: frozenset[str] = frozenset(
-    {"studiegids", "kwalificatiedossier", "schooldocument", "skills", "website"}
-)
 _BRONNEN_MARKER = "<!-- bronnen:"
 _BRONNEN_SLUIT = "-->"
 _MAX_BRONNEN = 6
 _MAX_BRON_TITEL = 80
-
-
-@dataclass(frozen=True)
-class Bron:
-    """Eén bron die het model onder een antwoord noemt (voor de bronnen-chips)."""
-
-    type: str
-    titel: str
-    url: str | None = None
 
 
 @dataclass(frozen=True)
@@ -488,13 +478,19 @@ class Status:
     code: str
 
 
-def splits_bronnen(tekst: str) -> tuple[str, list[Bron]]:
+def splits_bronnen(
+    tekst: str, register: BronRegister | Iterable[dict] | None = None
+) -> tuple[str, list[Bron]]:
     """Haal de machineleesbare bronnenregel uit een modelantwoord.
 
-    Formaat: `<!-- bronnen: type|titel; type|titel|url -->`. Onbekende types en items zonder
-    titel vallen weg; dubbele (type, titel) worden samengevoegd; maximaal 6 bronnen, titel
-    maximaal 80 tekens. Zonder sluitende `-->` is de regel onvolledig: alles vanaf de marker
-    wordt weggelaten en er komen geen bronnen terug.
+    Formaat: `<!-- bronnen: type|titel; type|titel|url -->`. Items zonder titel vallen weg;
+    dubbele (type, titel) worden samengevoegd; maximaal 6 bronnen. Zonder sluitende `-->` is de
+    regel onvolledig: alles vanaf de marker wordt weggelaten en er komen geen bronnen terug.
+
+    Zonder `register` geldt alleen een type-check (onbekende types vallen weg, titel maximaal
+    80 tekens). Mét `register` (een `BronRegister` of de `BronCatalogus.register()`-dicts uit
+    de sessie) wordt elke titel herleid: onbekende titels vallen weg, bekende krijgen hun
+    canonieke titel, type en identifiers (`oer_id`/`doc_id`/`crebo`).
 
     Returns:
         (tekst zonder markerregel, gevalideerde bronnen).
@@ -508,19 +504,32 @@ def splits_bronnen(tekst: str) -> tuple[str, list[Bron]]:
     if einde == -1:
         return voor, []
     na = tekst[einde + len(_BRONNEN_SLUIT) :]
+    if register is not None and not isinstance(register, BronRegister):
+        register = BronRegister.uit_dicts(register)
 
     bronnen: list[Bron] = []
     gezien: set[tuple[str, str]] = set()
+    afgewezen = 0
     for item in tekst[inhoud_start:einde].split(";"):
         velden = [v.strip() for v in item.split("|", 2)]
-        if len(velden) < 2 or velden[0] not in BRON_TYPES or not velden[1]:
+        if len(velden) < 2 or not velden[1]:
             continue
-        soort, titel = velden[0], velden[1][:_MAX_BRON_TITEL]
-        if (soort, titel) in gezien:
-            continue
-        gezien.add((soort, titel))
         url = velden[2] if len(velden) == 3 and velden[2] else None
-        bronnen.append(Bron(soort, titel, url))
+        if register is None:
+            if velden[0] not in BRON_TYPES:
+                continue
+            bron: Bron | None = Bron(velden[0], velden[1][:_MAX_BRON_TITEL], url)
+        else:
+            bron = register.resolve(velden[1], url)
+        if bron is None:
+            afgewezen += 1
+            continue
+        if (bron.type, bron.titel) in gezien:
+            continue
+        gezien.add((bron.type, bron.titel))
+        bronnen.append(bron)
+    if register is not None:
+        logger.debug("Bronnenregel: %d herleid, %d onbekend afgewezen", len(bronnen), afgewezen)
     return voor + na, bronnen[:_MAX_BRONNEN]
 
 
@@ -578,17 +587,22 @@ def status_uit_tekstbegin(tekst: str) -> str | None:
     return None
 
 
-def geschiedenis_voor_ui(chat_history: list[dict]) -> list[dict]:
+def geschiedenis_voor_ui(
+    chat_history: list[dict], register: BronRegister | Iterable[dict] | None = None
+) -> list[dict]:
     """Maak de bewaarde gespreksgeschiedenis geschikt voor de UI.
 
     Assistant-beurten krijgen de bronnenmarker eruit (`content`) en de geparste bronnen als
     `bronnen`-lijst (altijd aanwezig, mag leeg zijn); user-beurten blijven ongewijzigd.
-    `chat_history` zelf wordt niet gemuteerd (blijft de ruwe tekst mét marker).
+    `register` werkt als bij `splits_bronnen`. `chat_history` zelf wordt niet gemuteerd
+    (blijft de ruwe tekst mét marker).
     """
+    if register is not None and not isinstance(register, BronRegister):
+        register = BronRegister.uit_dicts(register)
     uit: list[dict] = []
     for beurt in chat_history:
         if beurt.get("role") == "assistant":
-            tekst, bronnen = splits_bronnen(beurt.get("content", ""))
+            tekst, bronnen = splits_bronnen(beurt.get("content", ""), register)
             uit.append(
                 {"role": "assistant", "content": tekst, "bronnen": [asdict(b) for b in bronnen]}
             )

@@ -487,6 +487,9 @@ def _events(tekst: str) -> list[dict]:
     return [json.loads(line[6:]) for line in tekst.splitlines() if line.startswith("data: ")]
 
 
+_GEEN_IDS = {"doc_id": None, "oer_id": None, "crebo": None}
+
+
 def test_chat_stuurt_status_lezen_bronnen_en_stript_marker(monkeypatch):
     if not _WW:
         pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
@@ -515,8 +518,8 @@ def test_chat_stuurt_status_lezen_bronnen_en_stript_marker(monkeypatch):
     assert "".join(e["chunk"] for e in ev if "chunk" in e) == "Antwoord.\n\n"
     assert ev[-2] == {
         "bronnen": [
-            {"type": "studiegids", "titel": "OER Kok", "url": None},
-            {"type": "website", "titel": "curio.nl", "url": "https://curio.nl"},
+            {"type": "studiegids", "titel": "OER Kok", "url": None, **_GEEN_IDS},
+            {"type": "website", "titel": "curio.nl", "url": "https://curio.nl", **_GEEN_IDS},
         ]
     }
     assert ev[-1] == {"done": True}
