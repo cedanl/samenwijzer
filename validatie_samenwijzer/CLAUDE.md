@@ -60,6 +60,10 @@ re-seed is een nieuwe deploy nodig. Fly-secrets: `SESSION_SECRET`, `ALGEMEEN_WAC
   (`get_connection()`). `context.py` en `data.py` zijn dunne orchestrators over `chat.py`/`db.py`.
 - **Toegangspoort**: middleware `_toegangspoort` zet de héle app (ook `/`) achter `ALGEMEEN_WACHTWOORD`;
   `/api/*` krijgt 401, pagina's een redirect. Alleen `/static` is vrij.
+- **Gesprek-module**: `gesprek.py` is de enige eigenaar van de gesprekshistorie (ruwe antwoordtekst
+  mét bronnenmarker; saneren voor het model, UI-view, cap, afgebroken beurten via `LopendeBeurt`).
+  Routes en `chat.py` raken de `{"role","content"}`-lijst niet direct aan; opslagsleutel in
+  `sessies.db` blijft `chat_history`.
 - **Sessiestate server-side** (`sessie.py`, SQLite `data/sessies.db`, TTL 6 uur; cookie draagt alleen
   een `sid`). Dus **één Fly-machine** en de store overleeft geen redeploy. De middleware bewaart alleen
   bij niet-GET-requests (behalve `/api/chat`, dat zelf post-stream bewaart, en `/api/vervolgvragen`):
