@@ -14,7 +14,7 @@ from types import SimpleNamespace
 import anthropic
 import pytest
 
-from app_fastapi.context import ChatContext, laad_context
+from app_fastapi.context import ChatContext, OerBlokken, laad_context
 from app_fastapi.deps import AppDeps, ValidatieDb
 from app_fastapi.sessie import Sessie, SessieStore
 from validatie_samenwijzer import db
@@ -102,6 +102,41 @@ def test_laad_context_leeg_register_zonder_bron(conn):
     assert c.bron_register == [] and c.oer_ids == [1]
 
 
+# ── OER-cache per app-instantie ─────────────────────────────────────────────────
+def test_oer_blokken_cachet_per_instantie(seed, conn):
+    """De cache hangt aan de instantie: dezelfde instantie leest het bestand niet opnieuw,
+    een nieuwe (herstart/re-ingest) ziet de nieuwe tekst."""
+    oer_id = seed.oer(tekst="EERSTE VERSIE")
+    blokken = OerBlokken()
+    assert "EERSTE VERSIE" in laad_context(conn, [oer_id], oer_blokken=blokken).systeem
+    Path(db.get_oer_document_by_id(conn, oer_id)["bestandspad"]).write_text("TWEEDE VERSIE")
+
+    assert "EERSTE VERSIE" in laad_context(conn, [oer_id], oer_blokken=blokken).systeem
+    assert "TWEEDE VERSIE" in laad_context(conn, [oer_id], oer_blokken=OerBlokken()).systeem
+    blokken.leeg()
+    assert "TWEEDE VERSIE" in laad_context(conn, [oer_id], oer_blokken=blokken).systeem
+
+
+def test_oer_blokken_is_begrensd(seed, conn):
+    blokken = OerBlokken(maxsize=2)
+    ids = [seed.oer(crebo=f"9900{i}", tekst=f"OER {i}") for i in range(3)]
+    for oid in ids:
+        blokken.haal(conn, oid)
+    assert len(blokken) == 2
+
+
+def test_twee_app_instanties_delen_geen_oer_cache(seed, maak_client, maak_deps):
+    oer_id = seed.oer(tekst=_OER_TEKST)
+    deps1, deps2 = maak_deps(), maak_deps()
+    assert deps1.oer_blokken is not deps2.oer_blokken
+
+    r = maak_client(deps=deps1).post("/api/kies", json={"oer_ids": [oer_id]})
+
+    assert r.status_code == 200 and r.json()["oer_ids"] == [oer_id]
+    assert len(deps1.oer_blokken) == 1
+    assert len(deps2.oer_blokken) == 0
+
+
 # ── sessie ────────────────────────────────────────────────────────────────────
 def test_sessie_voeg_beurt_kapt_op_max():
     from app_fastapi.sessie import MAX_GESCHIEDENIS
@@ -138,6 +173,19 @@ def test_sessiestore_bewaart_en_laadt():
         {"role": "user", "content": "vraag"},
         {"role": "assistant", "content": "antwoord"},
     ]
+
+
+def test_sessiestore_in_memory_instanties_zijn_gescheiden():
+    a, b = SessieStore(":memory:"), SessieStore(":memory:")
+    a.bewaar("sid", Sessie(toegang=True))
+    assert a.laad("sid") is not None and b.laad("sid") is None
+
+
+def test_sessiestore_op_bestand_overleeft_een_nieuwe_instantie(tmp_path):
+    pad = tmp_path / "sub" / "sessies.db"
+    SessieStore(pad).bewaar("sid", Sessie(toegang=True))
+    geladen = SessieStore(pad).laad("sid")
+    assert geladen is not None and geladen.toegang is True
 
 
 def test_sessiestore_laad_onbekende_sid_is_none():
@@ -180,6 +228,48 @@ def test_session_secret_verplicht():
         AppDeps.uit_env({"ALGEMEEN_WACHTWOORD": "pw"})
 
 
+def test_algemeen_wachtwoord_verplicht():
+    with pytest.raises(RuntimeError, match="ALGEMEEN_WACHTWOORD"):
+        AppDeps.uit_env({"SESSION_SECRET": "s"})
+    with pytest.raises(RuntimeError, match="ALGEMEEN_WACHTWOORD"):
+        AppDeps.uit_env({"SESSION_SECRET": "s", "ALGEMEEN_WACHTWOORD": ""})
+
+
+def test_constructor_is_ook_fail_closed():
+    with pytest.raises(RuntimeError, match="SESSION_SECRET"):
+        AppDeps("", "pw", ValidatieDb(":memory:"), SessieStore(":memory:"))
+
+
+def test_uit_env_leest_config_zonder_iets_te_openen(tmp_path):
+    deps = AppDeps.uit_env(
+        {
+            "SESSION_SECRET": "s",
+            "ALGEMEEN_WACHTWOORD": "pw",
+            "COOKIE_HTTPS_ONLY": "0",
+            "BEHEER_ENABLED": "True",
+            "CHAT_MAX_SECONDEN": "12.5",
+            "DB_PATH": str(tmp_path / "v.db"),
+            "SESSIE_DB_PATH": str(tmp_path / "s" / "sessies.db"),
+        }
+    )
+    assert (deps.cookie_https_only, deps.beheer_enabled) == (False, True)
+    assert (deps.chat_max_seconden, deps.chat_heartbeat_seconden) == (12.5, 15.0)
+    assert deps.validatie_db.pad == str(tmp_path / "v.db")
+    assert deps.sessie_store.pad == str(tmp_path / "s" / "sessies.db")
+    assert list(tmp_path.iterdir()) == []  # lazy: bouwen opent geen DB-bestanden
+
+
+def test_uit_env_defaults():
+    from validatie_samenwijzer import _ai
+
+    deps = AppDeps.uit_env({"SESSION_SECRET": "s", "ALGEMEEN_WACHTWOORD": "pw"})
+    assert deps.cookie_https_only is True and deps.beheer_enabled is False
+    assert deps.chat_max_seconden == 90.0
+    assert deps.validatie_db.pad == "data/validatie.db"
+    assert deps.sessie_store.pad == "data/sessies.db"
+    assert deps.ai_client is _ai._client
+
+
 def test_read_only_get_bewaart_niet(client):
     """Lost-update-fix: een read-only GET schrijft de sessie niet terug; mutaties wel."""
     saves = client.app.state.deps.sessie_store.bewaard
@@ -195,6 +285,13 @@ def test_toegangspoort_blokkeert_zonder_wachtwoord(maak_client):
     c = maak_client(toegang=False)
     r = c.get("/", follow_redirects=False)
     assert r.status_code == 303 and r.headers["location"] == "/toegang"
+    assert c.post("/api/reset").status_code == 401
+
+
+def test_toegang_met_fout_wachtwoord_blijft_dicht(maak_client):
+    c = maak_client(toegang=False)
+    r = c.post("/toegang", data={"wachtwoord": "fout"}, follow_redirects=False)
+    assert r.headers["location"] == "/toegang?fout=1"
     assert c.post("/api/reset").status_code == 401
 
 
@@ -501,6 +598,12 @@ def test_beheer_uit_zonder_flag(maak_client):
     assert c.get("/api/beheer/run?taak=sync_oeren").status_code == 404
 
 
+def test_beheer_toont_status(seed, maak_client):
+    seed.oer()
+    r = maak_client(beheer_enabled=True).get("/beheer")
+    assert r.status_code == 200 and "Talland College" in r.text
+
+
 def test_beheer_onbekende_taak_400(maak_client):
     c = maak_client(beheer_enabled=True)
     assert c.get("/api/beheer/run?taak=bestaatniet").status_code == 400
@@ -508,7 +611,7 @@ def test_beheer_onbekende_taak_400(maak_client):
     assert c.get("/api/beheer/run?taak=ingest&instelling=onzin").status_code == 400
 
 
-def test_beheer_run_streamt_output(maak_client, monkeypatch):
+def test_beheer_run_streamt_output(maak_client, conn, monkeypatch):
     import app_fastapi.main as m
 
     class _FakeStdout:
@@ -539,9 +642,13 @@ def test_beheer_run_streamt_output(maak_client, monkeypatch):
 
     monkeypatch.setattr(m.asyncio, "create_subprocess_exec", _fake_exec)
 
-    body = maak_client(beheer_enabled=True).get("/api/beheer/run?taak=sync_oeren").text
+    c = maak_client(beheer_enabled=True)
+    blokken = c.app.state.deps.oer_blokken
+    blokken.haal(conn, 1)  # iets in de OER-cache
+    body = c.get("/api/beheer/run?taak=sync_oeren").text
     assert "regel1" in body and "regel2" in body
     assert '"done": true' in body
+    assert len(blokken) == 0  # na een beheer-taak (bv. re-ingest) is de OER-cache leeg
 
 
 # ── auth / ingelogde pagina's ────────────────────────────────────────────────────
