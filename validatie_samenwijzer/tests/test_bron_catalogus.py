@@ -67,8 +67,8 @@ def test_koppen_identiek_in_single_en_multi():
     koppen_enkel = [b.kop for b in enkel.oers[0].blokken]
     koppen_multi = [b.kop for b in multi.oers[0].blokken]
     assert koppen_enkel == koppen_multi
-    assert "=== EXAMENREGLEMENT (Curio) ===" in koppen_enkel
-    assert "=== PROTOCOL — KLUIS [INFORMATIEF] (Curio) ===" in koppen_enkel
+    assert "=== EXAMENREGLEMENT 1 (Curio) ===" in koppen_enkel
+    assert "=== PROTOCOL — KLUIS 1 [INFORMATIEF] (Curio) ===" in koppen_enkel
     assert "=== OER 1: Curio · Kok · BOL 2025 ===" in koppen_enkel
     assert "=== KWALIFICATIEDOSSIER 1 (Crebo 25180) ===" in koppen_enkel
     tekst = multi.bronblokken()
@@ -267,3 +267,53 @@ def test_uniekheid_blijft_overeind_na_ruimere_norm(a, b):
 def test_catalogus_maakt_zelf_geen_titels_met_afsluitende_punt():
     cat = BronCatalogus.bouw([_oer(documenten=(_doc(1, "Examenreglement"),))])
     assert not any(b.titel.endswith((".", ":")) for b in cat.bronnen)
+
+
+# ── Punt C: documentkoppen dragen het OER-volgnummer en de markertitel ────────
+
+
+def test_documentkop_met_oer_nummer_en_markertitel_onder_de_kop():
+    cat = BronCatalogus.bouw(
+        [
+            _oer(documenten=(_doc(1, "Examenreglement"),)),
+            _oer(oer_id=8, instelling="Talland", documenten=(_doc(2, "Examenreglement"),)),
+        ]
+    )
+    tekst = cat.bronblokken()
+    assert (
+        "=== EXAMENREGLEMENT 1 (Curio) ===\n"
+        "Bronvermelding: schooldocument|Examenreglement (Curio)\n" in tekst
+    )
+    assert (
+        "=== EXAMENREGLEMENT 2 (Talland) ===\n"
+        "Bronvermelding: schooldocument|Examenreglement (Talland)\n" in tekst
+    )
+
+
+def test_markertitel_met_oer_achtervoegsel_staat_onder_de_kop():
+    """Dezelfde instelling twee keer: "Examenreglement (Curio) (OER 2)" staat bij zijn kop."""
+    cat = BronCatalogus.bouw(
+        [
+            _oer(documenten=(_doc(1, "Examenreglement"),)),
+            _oer(oer_id=8, documenten=(_doc(2, "Examenreglement"),)),
+        ]
+    )
+    assert "Examenreglement (Curio) (OER 2)" in [b.titel for b in cat.bronnen]
+    assert (
+        "=== EXAMENREGLEMENT 2 (Curio) ===\n"
+        "Bronvermelding: schooldocument|Examenreglement (Curio) (OER 2)\n" in cat.bronblokken()
+    )
+
+
+def test_elke_bron_heeft_een_bronvermelding_in_het_blok():
+    cat = BronCatalogus.bouw([_volledig(), _volledig(oer_id=8, opleiding="Bakker")])
+    tekst = cat.bronblokken()
+    for b in cat.bronnen:
+        assert f"Bronvermelding: {b.type}|{b.titel}\n" in tekst
+    assert "=== SKILLS-TAXONOMIE (ESCO) — beroep: kok ===\nBronvermelding: skills|" in tekst
+    assert "=== EXAMENREGLEMENT 1 (Curio) ===" in tekst
+
+
+def test_onleesbare_oer_krijgt_geen_bronvermelding():
+    cat = BronCatalogus.bouw([_oer(oer_tekst="", kd_tekst="KD")])
+    assert "=== OER 1: Curio · Kok · BOL 2025 ===\n(De OER" in cat.bronblokken()

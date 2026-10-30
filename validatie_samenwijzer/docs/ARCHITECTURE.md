@@ -324,7 +324,9 @@ orchestrator die alle chat-routes (publiek `/`, `/student`, `/mentor/student/{id
    melding en `catalogus.register()` in één `ChatContext`, die `Sessie.laad_context()` overneemt.
    **Bron-catalogus**: één module kent de naam van een chat-bron. De catalogus rendert de
    blokkoppen in één formaat voor elke modus (`=== OER i: instelling · opleiding · leerweg cohort ===`,
-   `=== EXAMENREGLEMENT (instelling) ===`, `=== KWALIFICATIEDOSSIER i (Crebo x) ===`), geeft elke
+   `=== EXAMENREGLEMENT i (instelling) ===`, `=== KWALIFICATIEDOSSIER i (Crebo x) ===`; i is het OER-volgnummer,
+   ook bij één OER), zet onder elke kop van een citeerbare bron de regel `Bronvermelding: type|titel`
+   (de letterlijke markertitel; bij skills onder de eigen `=== SKILLS-TAXONOMIE … ===`-kop), geeft elke
    citeerbare bron een unieke markertitel (bij botsing aangevuld met instelling, dan `OER i`) die
    de BRONNENREGEL letterlijk opsomt, en levert `register()`: JSON (type, titel, `oer_id`,
    `doc_id`, `crebo`, plus de webdomeinen) voor de sessie. `BronRegister.uit_dicts(register)`
@@ -379,7 +381,7 @@ chat werkt dan zonder skills. Zie de Skills-taxonomie-sectie verderop.
 (examenreglement, begeleidingsbeleid, studentenstatuut, protocollen …) met
 `laad_oer_tekst(pad, cap=_MAX_INSTELLING_TEKST_TEKENS)` (300_000), binnen het documentbudget en
 gefilterd op niveau; de kop komt uit `bron_catalogus.document_kop()`. De `BronCatalogus` zet ze
-als blokken `=== KOP (instelling) ===` in de system prompt. Zie de Instellingsbrede-bron-sectie
+als blokken `=== KOP i (instelling) ===` in de system prompt. Zie de Instellingsbrede-bron-sectie
 verderop.
 
 **OER-onleesbaar-modus**: is de OER-fulltext leeg (gescande PDF zonder tekstlaag), dan bouwt

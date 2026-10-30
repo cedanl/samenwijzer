@@ -379,6 +379,18 @@ class _Blok:
     tekst: str
     bron: Bron | None  # None: niet citeerbaar (onleesbare OER)
 
+    def render(self) -> str:
+        """Kop, dan (bij een citeerbare bron) ``Bronvermelding: type|titel`` met de letterlijke
+        markertitel, dan de tekst. Een blok zonder kop draagt zijn eigen kop als eerste regel
+        (skills): de bronvermelding komt daar direct onder."""
+        regel = f"Bronvermelding: {self.bron.type}|{self.bron.titel}" if self.bron else ""
+        if self.kop:
+            return "\n".join(d for d in (self.kop, regel, self.tekst) if d)
+        eerste, scheiding, rest = self.tekst.partition("\n")
+        if regel and self.tekst.startswith("==="):
+            return f"{eerste}\n{regel}{scheiding}{rest}"
+        return self.tekst
+
 
 @dataclass(frozen=True)
 class CatalogusOer:
@@ -408,8 +420,13 @@ def _kop_oer(i: int, instelling: str, opleiding: str, leerweg: str, cohort: str)
     return f"=== OER {i}: {label} ==="
 
 
-def _kop_document(kop: str, instelling: str) -> str:
-    return f"=== {kop.upper()} ({instelling}) ===" if instelling else f"=== {kop.upper()} ==="
+def _kop_document(i: int, kop: str, instelling: str) -> str:
+    """Kopregel van een document: ``=== EXAMENREGLEMENT i (Instelling) ===`` (i = OER-volgnummer).
+
+    Een ``[INFORMATIEF]``-markering blijft direct voor de instelling staan."""
+    naam, informatief, _ = kop.upper().partition(_INFORMATIEF)
+    kop_i = f"{naam} {i}{informatief}"
+    return f"=== {kop_i} ({instelling}) ===" if instelling else f"=== {kop_i} ==="
 
 
 def _kop_kd(i: int, crebo: str | None) -> str:
@@ -473,7 +490,7 @@ class BronCatalogus:
             for d in o.documenten:
                 if d.tekst:
                     bron = Bron("schooldocument", d.kop.removesuffix(_INFORMATIEF), doc_id=d.doc_id)
-                    blokken.append((_kop_document(d.kop, o.instelling), d.tekst, bron))
+                    blokken.append((_kop_document(i, d.kop, o.instelling), d.tekst, bron))
             if o.kd_tekst:
                 titel = f"Kwalificatiedossier {crebo}" if crebo else "Kwalificatiedossier"
                 bron = Bron("kwalificatiedossier", titel, oer_id=o.oer_id, crebo=crebo)
@@ -518,10 +535,7 @@ class BronCatalogus:
 
     def bronblokken(self) -> str:
         """Alle bronteksten met hun koppen, per OER; OER's gescheiden door een ``---``-regel."""
-        return "\n\n---\n\n".join(
-            "\n\n".join(f"{b.kop}\n{b.tekst}" if b.kop else b.tekst for b in o.blokken)
-            for o in self.oers
-        )
+        return "\n\n---\n\n".join("\n\n".join(b.render() for b in o.blokken) for o in self.oers)
 
     def register(self, web_domeinen: Iterable[str] = ()) -> list[dict]:
         """JSON-serialiseerbaar register van de bronnen, om in de sessie te bewaren.
