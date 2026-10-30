@@ -6,6 +6,12 @@ from types import SimpleNamespace
 
 import anthropic
 
+from validatie_samenwijzer.bron_catalogus import (
+    laad_kwalificatiedossier_tekst,
+    laad_oer_tekst,
+    laad_skills_tekst,
+    pad_skills,
+)
 from validatie_samenwijzer.chat import (
     _INTAKE_SYSTEEM,
     _SCHOOLDOC_DISCLAIMER,
@@ -21,12 +27,6 @@ from validatie_samenwijzer.chat import (
     genereer_vervolgvragen,
     geschiedenis_voor_ui,
     identificeer_oer_kandidaten,
-    laad_instelling_bron_tekst,
-    laad_kwalificatiedossier_tekst,
-    laad_oer_tekst,
-    laad_skills_tekst,
-    pad_kwalificatiedossier,
-    pad_skills,
     splits_bronnen,
     status_uit_tekstbegin,
     strip_bronnenregel,
@@ -840,29 +840,21 @@ def test_bouw_gecombineerd_systeem_includeert_instelling_bron_per_oer():
     assert "reglement A" in systeem
 
 
-def test_laad_instelling_bron_leeg_zonder_pad():
-    assert laad_instelling_bron_tekst(None) == ""
-    assert laad_instelling_bron_tekst("") == ""
+def test_laad_oer_tekst_leeg_bij_ontbrekend_bestand(tmp_path):
+    assert laad_oer_tekst(tmp_path / "bestaat_niet.pdf") == ""
+    assert laad_oer_tekst(tmp_path / "bestaat_niet.md") == ""
 
 
-def test_laad_instelling_bron_leest_bestaande_md(tmp_path):
+def test_laad_oer_tekst_leest_instellingsdocument_md(tmp_path):
     md = tmp_path / "examenreglement.md"
     md.write_text("Artikel 6.3 Herkansingen: ten hoogste één herkansing.", encoding="utf-8")
-    assert "Herkansingen" in laad_instelling_bron_tekst(md)
-    assert "Herkansingen" in laad_instelling_bron_tekst(str(md))
+    assert "Herkansingen" in laad_oer_tekst(md)
 
 
-def test_laad_instelling_bron_leeg_bij_ontbrekend_bestand(tmp_path):
-    assert laad_instelling_bron_tekst(tmp_path / "bestaat_niet.pdf") == ""
-
-
-def test_laad_instelling_bron_cap(tmp_path, monkeypatch):
-    import validatie_samenwijzer.chat as chat_mod
-
-    monkeypatch.setattr(chat_mod, "_MAX_INSTELLING_TEKST_TEKENS", 10)
+def test_laad_oer_tekst_respecteert_cap(tmp_path):
     md = tmp_path / "begeleidingsbeleid.md"
     md.write_text("x" * 100, encoding="utf-8")
-    assert len(laad_instelling_bron_tekst(md)) == 10
+    assert len(laad_oer_tekst(md, cap=10)) == 10
 
 
 def test_laad_kwalificatiedossier_leeg_zonder_crebo():
@@ -876,9 +868,11 @@ def test_laad_kwalificatiedossier_leest_bestaande_md(tmp_path, monkeypatch):
     assert "Dossier-inhoud" in laad_kwalificatiedossier_tekst("12345")
 
 
-def test_pad_kwalificatiedossier_respecteert_env(tmp_path, monkeypatch):
+def test_kd_map_respecteert_env(tmp_path, monkeypatch):
+    from validatie_samenwijzer.kd_versies import kd_map
+
     monkeypatch.setenv("KWALDOSSIERS_PAD", str(tmp_path))
-    assert pad_kwalificatiedossier("99999") == tmp_path / "99999.md"
+    assert kd_map() / "99999.md" == tmp_path / "99999.md"
 
 
 def test_bouw_gecombineerd_systeem_includeert_dossier_per_oer():

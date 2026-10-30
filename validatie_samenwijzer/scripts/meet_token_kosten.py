@@ -28,12 +28,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from validatie_samenwijzer._ai import _client  # noqa: E402
-from validatie_samenwijzer.chat import (  # noqa: E402
-    bouw_systeem,
+from validatie_samenwijzer.bron_catalogus import (  # noqa: E402
     laad_kwalificatiedossier_tekst,
     laad_oer_tekst,
     resolve_oer_pad,
 )
+from validatie_samenwijzer.chat import bouw_systeem  # noqa: E402
 
 # Sonnet 4.6 tarief (USD per 1M tokens; bron: anthropic.com/pricing 2026-05).
 PRIJS_INPUT = 3.0 / 1_000_000

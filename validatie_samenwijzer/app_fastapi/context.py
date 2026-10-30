@@ -11,12 +11,14 @@ import sqlite3
 from functools import lru_cache
 
 from validatie_samenwijzer import db
-from validatie_samenwijzer.chat import (
-    bouw_gecombineerd_systeem,
+from validatie_samenwijzer.bron_catalogus import (
     laad_kwalificatiedossier_tekst,
     laad_oer_tekst,
     laad_skills_tekst,
     resolve_oer_pad,
+)
+from validatie_samenwijzer.chat import (
+    bouw_gecombineerd_systeem,
     vacature_domeinen,
     web_zoek_domeinen,
 )

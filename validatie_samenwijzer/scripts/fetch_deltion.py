@@ -8,7 +8,7 @@ examenplan, BSA, examinering en LOB — als zelfstandige HTML.
 
 De studiegids wordt via markitdown naar **gestructureerde Markdown** geconverteerd en
 opgeslagen als ``.md`` naast de overige instellingen onder ``oeren/deltion_oeren/``.
-Reden voor ``.md`` en niet ``.pdf``: ``chat.laad_oer_tekst`` leest alleen ``.md``/``.pdf``
+Reden voor ``.md`` en niet ``.pdf``: ``bron_catalogus.laad_oer_tekst`` leest alleen ``.md``/``.pdf``
 als chat-context. markitdown behoudt de koppen, tabellen en lijsten van de bron-HTML
 (zodat de viewer en de chat-context leesbaar blijven); de kerntaken (``B1-K1-W1``) staan
 in lijst-items en worden door ``ingest.extraheer_kerntaken`` herkend dankzij de

@@ -15,7 +15,11 @@ import sqlite3
 from collections.abc import Sequence
 from dataclasses import dataclass
 
-from validatie_samenwijzer.chat import laad_instelling_bron_tekst, resolve_oer_pad
+from validatie_samenwijzer.bron_catalogus import (
+    _MAX_INSTELLING_TEKST_TEKENS,
+    laad_oer_tekst,
+    resolve_oer_pad,
+)
 from validatie_samenwijzer.db import (
     SOORTEN,
     get_documenten_voor_context,
@@ -97,7 +101,9 @@ def selecteer_documenten(
             if r["id"] in gezien:
                 continue
             gezien.add(r["id"])
-            tekst = laad_instelling_bron_tekst(resolve_oer_pad(r["bestandspad"]))
+            tekst = laad_oer_tekst(
+                resolve_oer_pad(r["bestandspad"]), cap=_MAX_INSTELLING_TEKST_TEKENS
+            )
             if not tekst.strip():
                 logger.warning("Document zonder leesbare tekst overgeslagen: id=%s", r["id"])
                 continue
