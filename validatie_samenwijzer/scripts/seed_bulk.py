@@ -21,7 +21,7 @@ from dotenv import load_dotenv
 
 from validatie_samenwijzer import instellingen
 from validatie_samenwijzer.auth import hash_wachtwoord
-from validatie_samenwijzer.chat import resolve_oer_pad
+from validatie_samenwijzer.bron_catalogus import resolve_oer_pad
 from validatie_samenwijzer.db import (
     get_connection,
     init_db,

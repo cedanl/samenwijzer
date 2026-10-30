@@ -2,6 +2,10 @@
 
 Lokaal draaien (naast Streamlit op 8503):
     uv run uvicorn app_fastapi.main:app --port 8504 --reload
+
+``maak_app(deps)`` bouwt de app op een ``AppDeps`` (zie ``deps.py``); de module-level ``app``
+is de productie-instantie op ``AppDeps.uit_env()`` (uvicorn/Dockerfile/start.sh). Routes staan
+op ``router`` en halen hun afhankelijkheden uit ``request.app.state.deps``.
 """
 
 from __future__ import annotations
@@ -21,7 +25,7 @@ from pathlib import Path
 
 import anthropic
 from dotenv import load_dotenv
-from fastapi import FastAPI, Form, Request
+from fastapi import APIRouter, FastAPI, Form, Request
 from fastapi.responses import (
     FileResponse,
     JSONResponse,
@@ -34,20 +38,18 @@ from starlette.middleware.sessions import SessionMiddleware
 
 from app_fastapi import data
 from app_fastapi.auth import auth_mentor, auth_student
-from app_fastapi.context import laad_context, laad_context_met_melding
+from app_fastapi.context import ChatContext, laad_context
+from app_fastapi.deps import AppDeps, deps_van
 from app_fastapi.sessie import bewaar_sessie, get_sessie
 from validatie_samenwijzer import db, instellingen
-from validatie_samenwijzer._ai import _client as ai_client
+from validatie_samenwijzer.bron_catalogus import resolve_oer_pad
 from validatie_samenwijzer.chat import (
     LAGE_RELEVANTIE_BERICHT,
     Status,
-    bouw_berichten,
     genereer_antwoord,
     genereer_intake_antwoord,
     genereer_vervolgvragen,
-    geschiedenis_voor_ui,
     identificeer_oer_kandidaten,
-    resolve_oer_pad,
     splits_bronnen,
     status_uit_tekstbegin,
     strip_bronnenregel,
@@ -63,10 +65,9 @@ log.setLevel(logging.INFO)
 
 # Chat-stream-vangnet (zie tests/test_chat_heartbeat.py). De Fly-proxy sluit een verbinding die
 # ~60s geen bytes ziet; een `ping`-event bij stilte houdt 'm open en de browser negeert het.
-# Na _CHAT_MAX_SECONDEN zonder nieuw item breken we af met `error: timeout` en loggen we waar de
-# vastgelopen thread stond — de httpx-timeout (30s) dekte de hang van 2026-10-29 niet.
-_CHAT_HEARTBEAT_SECONDEN = 15.0
-_CHAT_MAX_SECONDEN = float(os.environ.get("CHAT_MAX_SECONDEN", "90"))
+# Na `AppDeps.chat_max_seconden` (env CHAT_MAX_SECONDEN) zonder nieuw item breken we af met
+# `error: timeout` en loggen we waar de vastgelopen thread stond — de httpx-timeout (30s) dekte
+# de hang van 2026-10-29 niet. De heartbeat-interval is `AppDeps.chat_heartbeat_seconden`.
 
 # Thread-dump op aanvraag: `kill -USR1 <pid>` op de machine schrijft alle Python-stacks naar
 # stderr (→ Fly-logs). Alleen op platforms met SIGUSR1 (niet Windows).
@@ -83,13 +84,16 @@ def _stack_van_thread(thread: threading.Thread) -> str:
     return "".join(traceback.format_stack(frame)) if frame else "(geen frame)"
 
 
-async def _met_heartbeat(gen, *, heartbeat_s: float, max_s: float):
+async def _met_heartbeat(gen, *, heartbeat_s: float, max_s: float, bij_timeout=None):
     """Itereer een sync-generator in een eigen thread; yield `ping` bij stilte, breek af na max_s.
 
     Items komen via een asyncio-queue naar de event-loop. Blijft de generator `heartbeat_s` stil,
     dan gaat er een `{"ping": true}`-event uit. Blijft hij in totaal `max_s` stil sinds het laatste
     item, dan stoppen we met `{"error": "timeout"}` en loggen we de stack van de hangende thread;
-    de thread zelf is niet te onderbreken en wordt als daemon losgelaten.
+    de thread zelf is niet te onderbreken en wordt als daemon losgelaten. ``bij_timeout`` (sync
+    callable, optioneel) draait dan in een executor-thread vóór het error-event, zodat de
+    afgebroken beurt bewaard is voordat de browser het opnieuw probeert; fouten daarin worden
+    gelogd en breken het error-event niet.
     """
     loop = asyncio.get_running_loop()
     q: asyncio.Queue = asyncio.Queue()
@@ -122,6 +126,11 @@ async def _met_heartbeat(gen, *, heartbeat_s: float, max_s: float):
                     max_s,
                     _stack_van_thread(thread),
                 )
+                if bij_timeout is not None:
+                    try:
+                        await asyncio.to_thread(bij_timeout)
+                    except Exception:
+                        log.exception("afgebroken beurt vastleggen mislukt")
                 yield _sse({"error": "timeout"})
                 return
             yield _sse({"ping": True})
@@ -134,19 +143,10 @@ async def _met_heartbeat(gen, *, heartbeat_s: float, max_s: float):
         yield item
 
 
-_ALGEMEEN_WACHTWOORD = os.environ.get("ALGEMEEN_WACHTWOORD", "")
-if not _ALGEMEEN_WACHTWOORD:
-    # Fail-closed (spiegelt SESSION_SECRET): zonder wachtwoord lockt de toegangspoort de
-    # hele app uit — geef een duidelijk operator-signaal i.p.v. een stille DoS.
-    raise RuntimeError(
-        "ALGEMEEN_WACHTWOORD is verplicht (geen default) — zet 'm in .env / Fly-secrets."
-    )
-
 _HIER = Path(__file__).resolve().parent
-app = FastAPI(title="De digitale gids — POC")
+router = APIRouter()
 
 
-@app.middleware("http")
 async def _toegangspoort(request: Request, call_next):
     """De hele app zit achter het algemene wachtwoord — sommige instellingen zetten
     hun OER achter een wachtwoord, dus niets is publiek vindbaar zonder de poort."""
@@ -168,18 +168,6 @@ async def _toegangspoort(request: Request, call_next):
     return response
 
 
-# SessionMiddleware ná de poort geregistreerd → draait als buitenste laag, zodat
-# request.session (en dus get_sessie) in de poort beschikbaar is.
-_SESSION_SECRET = os.environ.get("SESSION_SECRET")
-if not _SESSION_SECRET:
-    raise RuntimeError("SESSION_SECRET is verplicht (geen default) — zet 'm in .env / Fly-secrets.")
-app.add_middleware(
-    SessionMiddleware,
-    secret_key=_SESSION_SECRET,
-    https_only=os.environ.get("COOKIE_HTTPS_ONLY", "1") != "0",
-    same_site="lax",
-)
-app.mount("/static", StaticFiles(directory=_HIER / "static"), name="static")
 templates = Jinja2Templates(directory=_HIER / "templates")
 
 _STATIC_DIR = _HIER / "static"
@@ -207,8 +195,7 @@ templates.env.globals["static_url"] = static_url
 
 _MAX_KANDIDATEN = 40
 
-# ── Beheer (dev-only, achter BEHEER_ENABLED) ────────────────────────────────────
-_BEHEER_ENABLED = os.environ.get("BEHEER_ENABLED", "").lower() == "true"
+# ── Beheer (dev-only, achter AppDeps.beheer_enabled / env BEHEER_ENABLED) ─────────
 _PROJECT_ROOT = (
     Path(__file__).resolve().parents[1]
 )  # subproject-root: scripts/, pyproject + uv-env leven hier; OEREN_PAD=../oeren rekent hierop
@@ -235,10 +222,8 @@ _BEHEER_TAKEN: dict[str, list[str]] = {
 }
 
 
-def _beheer_status() -> dict:
+def _beheer_status(conn) -> dict:
     """OERs per instelling (totaal + geïndexeerd) en de laatste ingest-run."""
-    conn = db.get_connection(os.environ.get("DB_PATH", "data/validatie.db"))
-    db.init_db(conn)
     rijen = db.get_oer_status_per_instelling(conn)
     laatste = db.laatste_ingest_run(conn)
     return {
@@ -247,25 +232,30 @@ def _beheer_status() -> dict:
     }
 
 
-@app.get("/toegang")
+@router.get("/toegang")
 def toegang_form(request: Request, fout: int = 0):
     return templates.TemplateResponse(request, "toegang.html", {"fout": bool(fout)})
 
 
-@app.post("/toegang")
+@router.post("/toegang")
 def toegang_post(request: Request, wachtwoord: str = Form(...)):
-    if _ALGEMEEN_WACHTWOORD and wachtwoord == _ALGEMEEN_WACHTWOORD:
+    verwacht = deps_van(request).algemeen_wachtwoord
+    if verwacht and wachtwoord == verwacht:
         get_sessie(request).toegang = True
         return RedirectResponse("/", status_code=303)
     return RedirectResponse("/toegang?fout=1", status_code=303)
 
 
-def _conn():
-    return db.get_connection(os.environ.get("DB_PATH", "data/validatie.db"))
+def _instellingen(request: Request) -> list[str]:
+    with deps_van(request).verbinding() as conn:
+        return db.get_instelling_display_namen(conn)
 
 
-def _instellingen() -> list[str]:
-    return db.get_instelling_display_namen(_conn())
+def _context(request: Request, oer_ids: list[int], niveau: str = "publiek") -> ChatContext:
+    """Laad de chat-context met de DB-verbinding en de OER-cache van deze app."""
+    deps = deps_van(request)
+    with deps.verbinding() as conn:
+        return laad_context(conn, oer_ids, niveau, oer_blokken=deps.oer_blokken)
 
 
 async def _json_body(request: Request) -> dict | None:
@@ -277,18 +267,19 @@ async def _json_body(request: Request) -> dict | None:
     return body if isinstance(body, dict) else None
 
 
-@app.get("/")
+@router.get("/")
 def index(request: Request):
     return templates.TemplateResponse(request, "index.html")
 
 
-@app.get("/api/opleidingen")
-def api_opleidingen() -> JSONResponse:
+@router.get("/api/opleidingen")
+def api_opleidingen(request: Request) -> JSONResponse:
     """Keuzeboom instelling → leerweg → opleiding → cohort voor de publieke kiezer."""
-    return JSONResponse(data.opleidingen_boom())
+    with deps_van(request).verbinding() as conn:
+        return JSONResponse(data.opleidingen_boom(conn))
 
 
-@app.post("/api/vraag")
+@router.post("/api/vraag")
 async def api_vraag(request: Request):
     """Identificeer de OER(s) voor een vraag; bepaal de modus (chat/kies/intake)."""
     body = await _json_body(request)
@@ -310,29 +301,17 @@ async def api_vraag(request: Request):
             }
         )
 
-    oers = [dict(r) for r in db.get_alle_oers_met_instelling(_conn())]
+    with deps_van(request).verbinding() as conn:
+        oers = data.kiesbare_oers(conn)
     # Score op de opgetelde gesprekstekst (eerdere user-beurten + nieuwe vraag), niet op de
     # kale vraag: een vervolgbeurt ("2024", "Tandartsassistent, BOL") heeft de context van
     # eerdere beurten nodig om te matchen. Bij lege historie is dit gelijk aan `vraag`.
-    context_tekst = " ".join(
-        [b["content"] for b in s.chat_history if b["role"] == "user"] + [vraag]
-    )
-    kandidaten = identificeer_oer_kandidaten(oers, context_tekst, min_score=1)
+    kandidaten = identificeer_oer_kandidaten(oers, s.gesprek.context_tekst(vraag), min_score=1)
 
     # Eén kandidaat laadt direct — tenzij hij partieel is (de genoemde school biedt de
     # opleiding niet aan; zie identificeer_oer_kandidaten, aanscherping 3): dan kies-modus.
     if len(kandidaten) == 1 and not kandidaten[0]["_partieel"]:
-        oer_id = kandidaten[0]["id"]
-        (
-            s.oer_systeem,
-            s.oer_labels,
-            s.domeinen,
-            s.oer_onleesbaar,
-            s.melding,
-        ) = laad_context_met_melding([oer_id])
-        s.oer_ids = [oer_id]
-        s.wachtende_vraag = None
-        s.kandidaten = []
+        s.laad_context(_context(request, [kandidaten[0]["id"]]))
         return JSONResponse(
             {
                 "modus": "chat",
@@ -344,12 +323,11 @@ async def api_vraag(request: Request):
         )
 
     if kandidaten:
-        s.kandidaten = kandidaten[:_MAX_KANDIDATEN]
         s.wachtende_vraag = vraag
-        # Ook opnemen in chat_history (lege "assistent"-kant, net als een mislukte AI-call —
-        # bouw_berichten() saneert dat al): negeert de gebruiker de picker en typt hij verder,
-        # dan telt deze kies-beurt alsnog mee in de opgetelde context_tekst hierboven.
-        s.voeg_beurt_toe(vraag, "")
+        # Ook opnemen in het gesprek (lege "assistent"-kant, net als een mislukte AI-call —
+        # berichten_voor_model() saneert dat al): negeert de gebruiker de picker en typt hij
+        # verder, dan telt deze kies-beurt alsnog mee in de opgetelde context_tekst hierboven.
+        s.gesprek.voeg_beurt_toe(vraag, "")
         opties = [
             {
                 "id": k["id"],
@@ -359,24 +337,27 @@ async def api_vraag(request: Request):
                     f"{k['leerweg']} {k['cohort']}"
                 ),
             }
-            for k in s.kandidaten
+            for k in kandidaten[:_MAX_KANDIDATEN]
         ]
         return JSONResponse({"modus": "kies", "opties": opties})
 
     return JSONResponse({"modus": "intake"})
 
 
-@app.post("/api/kies")
+@router.post("/api/kies")
 async def api_kies(request: Request):
     """Laad de gekozen OER's als context en geef de wachtende vraag terug."""
-    oer_ids = (await request.json()).get("oer_ids", [])[:3]
+    body = await _json_body(request)
+    if body is None:
+        return JSONResponse({"error": "ongeldige json"}, status_code=400)
+    raw_ids = body.get("oer_ids", [])
+    with deps_van(request).verbinding() as conn:
+        oer_ids = data.geldige_oer_ids(conn, raw_ids if isinstance(raw_ids, list) else [])
+    if not oer_ids:
+        return JSONResponse({"error": "ongeldige oer_ids"}, status_code=400)
     s = get_sessie(request)
-    s.oer_systeem, s.oer_labels, s.domeinen, s.oer_onleesbaar, s.melding = laad_context_met_melding(
-        [int(i) for i in oer_ids]
-    )
-    s.oer_ids = [int(i) for i in oer_ids]
-    s.kandidaten = []
-    vraag, s.wachtende_vraag = s.wachtende_vraag, None
+    vraag = s.wachtende_vraag
+    s.laad_context(_context(request, oer_ids))  # wist ook wachtende_vraag
     return JSONResponse(
         {
             "labels": s.oer_labels,
@@ -392,7 +373,7 @@ async def api_kies(request: Request):
 _STATUS_VENSTER = 300
 
 
-@app.post("/api/chat")
+@router.post("/api/chat")
 async def api_chat(request: Request):
     """Stream een antwoord (chat of intake) als Server-Sent Events."""
     body = await _json_body(request)
@@ -400,15 +381,22 @@ async def api_chat(request: Request):
         return JSONResponse({"error": "ongeldige json"}, status_code=400)
     vraag = body.get("vraag", "").strip()
     s = get_sessie(request)
-    berichten = bouw_berichten(s.chat_history, vraag)
+    berichten = s.gesprek.berichten_voor_model(vraag)
+    beurt = s.gesprek.begin_beurt(vraag)
     systeem = s.oer_systeem
     heeft_oer = bool(s.oer_ids)
     domeinen = s.domeinen or None
-    instellingen = _instellingen()
+    instellingen = _instellingen(request)
+    deps = deps_van(request)
+    ai_client = deps.ai_client
+
+    def _leg_afgebroken_vast() -> None:
+        """Bewaar vraag + gedeeltelijk antwoord als afgebroken beurt (eenmalig, thread-veilig)."""
+        if beurt.breek_af():
+            bewaar_sessie(request)
 
     def stream():
         t_start = time.perf_counter()
-        ruw_delen: list[str] = []
         ruw = ""
         ttft_s: float | None = None
         status_gemeld = False
@@ -434,7 +422,7 @@ async def api_chat(request: Request):
                 nonlocal ruw
                 for item in gen:
                     if isinstance(item, str):
-                        ruw_delen.append(item)
+                        beurt.voeg_toe(item)
                         ruw += item
                     yield item
 
@@ -452,15 +440,19 @@ async def api_chat(request: Request):
                     if code:
                         status_gemeld = True
                         yield _sse({"status": code})
-            antwoord = "".join(ruw_delen)
-            _, bronnen = splits_bronnen(antwoord) if modus == "oer" else ("", [])
-            s.voeg_beurt_toe(vraag, antwoord)
+            antwoord = beurt.antwoord
+            # `or None`: een sessie zonder register (oud of intake) valt terug op de type-check.
+            _, bronnen = (
+                splits_bronnen(antwoord, s.bron_register or None) if modus == "oer" else ("", [])
+            )
+            if not beurt.rond_af([asdict(b) for b in bronnen]):
+                return  # tijdens het wachten al als afgebroken vastgelegd (heartbeat-timeout)
             bewaar_sessie(request)
             log.info(
-                "chat-beurt klaar: modus=%s webzoek=%s ttft_s=%s totaal_s=%.2f "
+                "chat-beurt klaar: modus=%s domeinen=%d ttft_s=%s totaal_s=%.2f "
                 "tekens=%d bronnen=%d",
                 modus,
-                bool(domeinen),
+                len(domeinen or ()),
                 ttft_s,
                 time.perf_counter() - t_start,
                 len(antwoord),
@@ -470,44 +462,45 @@ async def api_chat(request: Request):
                 yield _sse({"bronnen": [asdict(b) for b in bronnen]})
             yield _sse({"done": True})
         except anthropic.APITimeoutError:
+            _leg_afgebroken_vast()
             yield f"data: {json.dumps({'error': 'timeout'})}\n\n"
         except anthropic.AuthenticationError:
             # Ongeldige/ingetrokken ANTHROPIC_API_KEY: apart melden, anders is een
             # config-storing in de UI niet te onderscheiden van een willekeurige bug.
             log.error("chat-stream: Anthropic weigert de API-key (401), check ANTHROPIC_API_KEY")
+            _leg_afgebroken_vast()
             yield f"data: {json.dumps({'error': 'auth'})}\n\n"
         except Exception:
             log.exception("chat-stream mislukt")
+            _leg_afgebroken_vast()
             yield f"data: {json.dumps({'error': 'onbekend'})}\n\n"
 
     return StreamingResponse(
-        _met_heartbeat(stream(), heartbeat_s=_CHAT_HEARTBEAT_SECONDEN, max_s=_CHAT_MAX_SECONDEN),
+        _met_heartbeat(
+            stream(),
+            heartbeat_s=deps.chat_heartbeat_seconden,
+            max_s=deps.chat_max_seconden,
+            bij_timeout=_leg_afgebroken_vast,
+        ),
         media_type="text/event-stream",
         headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
     )
 
 
-@app.post("/api/vervolgvragen")
+@router.post("/api/vervolgvragen")
 def api_vervolgvragen(request: Request):
     """Klikbare vervolgvragen na het laatste antwoord (best-effort, geen sessie-mutatie)."""
     s = get_sessie(request)
-    if not s.oer_systeem or len(s.chat_history) < 2:
+    laatste = s.gesprek.laatste_beurt()
+    if not s.oer_systeem or laatste is None:
         return JSONResponse({"vragen": []})
 
-    laatste_assistant = s.chat_history[-1]
-    laatste_user = s.chat_history[-2]
-    if laatste_assistant["role"] != "assistant" or laatste_user["role"] != "user":
-        return JSONResponse({"vragen": []})
-    antwoord = laatste_assistant["content"]
-    if not antwoord:
-        return JSONResponse({"vragen": []})
-    vraag = laatste_user["content"]
-
-    vragen = genereer_vervolgvragen(ai_client(), vraag, antwoord, s.oer_labels)
+    client = deps_van(request).ai_client()
+    vragen = genereer_vervolgvragen(client, laatste.vraag, laatste.antwoord, s.oer_labels)
     return JSONResponse({"vragen": vragen})
 
 
-@app.get("/api/oer/{oer_id}/bestand")
+@router.get("/api/oer/{oer_id}/bestand")
 def api_oer_bestand(request: Request, oer_id: int, download: int = 0):
     """Serveer het OER-bronbestand (PDF inline / markdown) voor de viewer.
 
@@ -517,7 +510,8 @@ def api_oer_bestand(request: Request, oer_id: int, download: int = 0):
     """
     if oer_id not in get_sessie(request).oer_ids:
         return JSONResponse({"error": "geen toegang"}, status_code=403)
-    row = db.get_oer_document_by_id(_conn(), oer_id)
+    with deps_van(request).verbinding() as conn:
+        row = db.get_oer_document_by_id(conn, oer_id)
     if row is None:
         return JSONResponse({"error": "onbekend"}, status_code=404)
     pad = resolve_oer_pad(row["bestandspad"])
@@ -530,7 +524,7 @@ def api_oer_bestand(request: Request, oer_id: int, download: int = 0):
     return FileResponse(pad, media_type=media)
 
 
-@app.post("/api/reset")
+@router.post("/api/reset")
 def api_reset(request: Request):
     s = get_sessie(request)
     if s.rol:  # ingelogd: OER-context blijft, alleen het gesprek wist
@@ -540,19 +534,20 @@ def api_reset(request: Request):
     return JSONResponse({"ok": True})
 
 
-@app.get("/api/geschiedenis")
+@router.get("/api/geschiedenis")
 def api_geschiedenis(request: Request):
     """Geef de bewaarde gespreksgeschiedenis terug voor rehydratie bij page-load."""
-    return JSONResponse({"beurten": geschiedenis_voor_ui(get_sessie(request).chat_history)})
+    s = get_sessie(request)
+    return JSONResponse({"beurten": s.gesprek.view_voor_ui(s.bron_register or None)})
 
 
 # ── Login / sessie ─────────────────────────────────────────────────────────────
-@app.get("/login")
+@router.get("/login")
 def login_form(request: Request, fout: int = 0):
     return templates.TemplateResponse(request, "login.html", {"fout": bool(fout)})
 
 
-@app.post("/login")
+@router.post("/login")
 def login_post(
     request: Request,
     rol: str = Form(...),
@@ -561,7 +556,8 @@ def login_post(
 ):
     s = get_sessie(request)
     if rol == "student":
-        student = auth_student(identifier, wachtwoord)
+        with deps_van(request).verbinding() as conn:
+            student = auth_student(conn, identifier, wachtwoord)
         if student:
             s.uitloggen()
             s.rol = "student"
@@ -570,13 +566,11 @@ def login_post(
                 "naam": student["naam"],
                 "studentnummer": student["studentnummer"],
             }
-            s.oer_systeem, s.oer_labels, s.domeinen, s.oer_onleesbaar = laad_context(
-                [student["oer_id"]], "student"
-            )
-            s.oer_ids = [student["oer_id"]]
+            s.laad_context(_context(request, [student["oer_id"]], "student"))
             return RedirectResponse("/student", status_code=303)
     elif rol == "mentor":
-        mentor = auth_mentor(identifier, wachtwoord)
+        with deps_van(request).verbinding() as conn:
+            mentor = auth_mentor(conn, identifier, wachtwoord)
         if mentor:
             s.uitloggen()
             s.rol = "mentor"
@@ -585,7 +579,7 @@ def login_post(
     return RedirectResponse("/login?fout=1", status_code=303)
 
 
-@app.get("/uitloggen")
+@router.get("/uitloggen")
 def uitloggen(request: Request):
     get_sessie(request).uitloggen()
     bewaar_sessie(request)  # mutaterende GET → expliciet bewaren (middleware slaat GET over)
@@ -598,7 +592,7 @@ def _eis(request: Request, rol: str):
 
 
 # ── Student ─────────────────────────────────────────────────────────────────────
-@app.get("/student")
+@router.get("/student")
 def student_home(request: Request):
     s = _eis(request, "student")
     if not s:
@@ -615,7 +609,7 @@ def student_home(request: Request):
     )
 
 
-@app.get("/student/studiegids")
+@router.get("/student/studiegids")
 def student_studiegids(request: Request):
     s = _eis(request, "student")
     if not s:
@@ -632,24 +626,26 @@ def student_studiegids(request: Request):
     )
 
 
-@app.get("/student/voortgang")
+@router.get("/student/voortgang")
 def student_voortgang(request: Request):
     s = _eis(request, "student")
     if not s:
         return RedirectResponse("/login", status_code=303)
-    vg = data.voortgang_voor_studentnummer(s.gebruiker["studentnummer"])
+    with deps_van(request).verbinding() as conn:
+        vg = data.voortgang_voor_studentnummer(conn, s.gebruiker["studentnummer"])
     return templates.TemplateResponse(
         request, "voortgang.html", {"rol": "student", "vg": vg, "naam": s.gebruiker["naam"]}
     )
 
 
 # ── Mentor ──────────────────────────────────────────────────────────────────────
-@app.get("/mentor")
+@router.get("/mentor")
 def mentor_home(request: Request):
     s = _eis(request, "mentor")
     if not s:
         return RedirectResponse("/login", status_code=303)
-    studenten = data.studenten_van_mentor(s.gebruiker["id"])
+    with deps_van(request).verbinding() as conn:
+        studenten = data.studenten_van_mentor(conn, s.gebruiker["id"])
     return templates.TemplateResponse(
         request,
         "mentor_studenten.html",
@@ -657,21 +653,19 @@ def mentor_home(request: Request):
     )
 
 
-@app.get("/mentor/student/{student_id}")
+@router.get("/mentor/student/{student_id}")
 def mentor_sessie(request: Request, student_id: int):
     s = _eis(request, "mentor")
     if not s:
         return RedirectResponse("/login", status_code=303)
-    # IDOR-guard: een mentor mag alleen z'n eigen studenten openen.
-    if student_id not in {st["id"] for st in data.studenten_van_mentor(s.gebruiker["id"])}:
+    with deps_van(request).verbinding() as conn:
+        # IDOR-guard: een mentor mag alleen z'n eigen studenten openen.
+        eigen = {st["id"] for st in data.studenten_van_mentor(conn, s.gebruiker["id"])}
+        prof = data.profiel_van_student(conn, student_id) if student_id in eigen else None
+    if prof is None:
         return RedirectResponse("/mentor", status_code=303)
-    prof = data.profiel_van_student(student_id)
-    s.actieve_student = prof
-    s.oer_systeem, s.oer_labels, s.domeinen, s.oer_onleesbaar = laad_context(
-        [prof["oer_id"]], "mentor"
-    )
-    s.oer_ids = [prof["oer_id"]]
-    s.chat_history = []
+    s.nieuw_gesprek()
+    s.laad_context(_context(request, [prof["oer_id"]], "mentor"))
     bewaar_sessie(request)  # mutaterende GET → expliciet bewaren (middleware slaat GET over)
     return templates.TemplateResponse(
         request,
@@ -687,28 +681,32 @@ def mentor_sessie(request: Request, student_id: int):
 
 
 # ── Beheer (dev-only) ───────────────────────────────────────────────────────────
-@app.get("/beheer")
+@router.get("/beheer")
 def beheer_home(request: Request):
-    if not _BEHEER_ENABLED:
+    deps = deps_van(request)
+    if not deps.beheer_enabled:
         return JSONResponse({"error": "uit"}, status_code=404)
+    with deps.verbinding() as conn:
+        status = _beheer_status(conn)
     return templates.TemplateResponse(
         request,
         "beheer.html",
         {
-            "status": _beheer_status(),
+            "status": status,
             "instellingen": sorted(_INSTELLING_KEYS),
         },
     )
 
 
-@app.get("/api/beheer/run")
+@router.get("/api/beheer/run")
 def beheer_run(request: Request, taak: str, reset: int = 0, instelling: str = ""):
     """Stream de stdout van een vaste beheer-taak als SSE. GET → middleware bewaart niet.
 
     Veiligheid: dubbele gate (BEHEER_ENABLED + algemene poort), vaste commando-allowlist
     (lijst-vorm exec, geen shell), gevalideerde scope, cwd hard op de subproject-root.
     """
-    if not _BEHEER_ENABLED:
+    deps = deps_van(request)
+    if not deps.beheer_enabled:
         return JSONResponse({"error": "uit"}, status_code=404)
     cmd = list(_BEHEER_TAKEN.get(taak, []))
     if not cmd:
@@ -738,6 +736,7 @@ def beheer_run(request: Request, taak: str, reset: int = 0, instelling: str = ""
                 tekst = regel.decode("utf-8", "replace").rstrip()
                 yield f"data: {json.dumps({'regel': tekst})}\n\n"
             await proc.wait()
+            deps.oer_blokken.leeg()  # een (re-)ingest kan OER-teksten/-paden veranderd hebben
             yield f"data: {json.dumps({'done': True, 'exit': proc.returncode})}\n\n"
         finally:
             if proc.returncode is None:
@@ -747,3 +746,26 @@ def beheer_run(request: Request, taak: str, reset: int = 0, instelling: str = ""
                     pass
 
     return StreamingResponse(stream(), media_type="text/event-stream")
+
+
+def maak_app(deps: AppDeps) -> FastAPI:
+    """Bouw de app op ``deps``: middleware, static files en de routes van ``router``."""
+    app = FastAPI(title="De digitale gids — POC")
+    app.state.deps = deps
+    app.middleware("http")(_toegangspoort)
+    # SessionMiddleware ná de poort geregistreerd → draait als buitenste laag, zodat
+    # request.session (en dus get_sessie) in de poort beschikbaar is.
+    app.add_middleware(
+        SessionMiddleware,
+        secret_key=deps.session_secret,
+        https_only=deps.cookie_https_only,
+        same_site="lax",
+    )
+    app.mount("/static", StaticFiles(directory=_HIER / "static"), name="static")
+    app.include_router(router)
+    return app
+
+
+# Productie-instantie (uvicorn `app_fastapi.main:app`); faalt bij import zonder
+# SESSION_SECRET / ALGEMEEN_WACHTWOORD (fail-closed, zie AppDeps).
+app = maak_app(AppDeps.uit_env())

@@ -1,20 +1,16 @@
 """Data-fetchers voor de ingelogde pagina's (voortgang, studentenlijst, mentor-profiel).
 
 Levert plain dicts (UI-vrij) op basis van de db.py-queries; kleurklassen worden hier
-bepaald zodat de templates ze alleen hoeven te stylen.
+bepaald zodat de templates ze alleen hoeven te stylen. Elke functie krijgt de DB-verbinding
+als eerste parameter (de routes halen hem uit ``AppDeps.verbinding()``).
 """
 
 from __future__ import annotations
 
-import os
 import sqlite3
 
 from validatie_samenwijzer import db
 from validatie_samenwijzer.opleiding import nette_opleiding_naam, schoon_opleiding_naam
-
-
-def _conn() -> sqlite3.Connection:
-    return db.get_connection(os.environ.get("DB_PATH", "data/validatie.db"))
 
 
 def _kleur_score(score: float) -> str:
@@ -43,21 +39,21 @@ def _kleur_bsa(pct: float) -> str:
     return "rood"
 
 
-def _opleiding_label(oer_id: int) -> tuple[str, int | None]:
-    row = db.get_oer_met_instelling(_conn(), oer_id)
+def _opleiding_label(conn: sqlite3.Connection, oer_id: int) -> tuple[str, int | None]:
+    row = db.get_oer_met_instelling(conn, oer_id)
     if row is None:
         return "Onbekende opleiding", None
     naam = schoon_opleiding_naam(row["opleiding"], row["crebo"])
     return f"{naam} · {row['leerweg']} {row['cohort']} · {row['display_naam']}", oer_id
 
 
-def _kerntaken(student_id: int) -> list[dict]:
+def _kerntaken(conn: sqlite3.Connection, student_id: int) -> list[dict]:
     """Kerntaken met per kerntaak de geneste werkprocessen (score + kleur).
 
     Werkprocessen worden aan hun kerntaak gekoppeld via de code-prefix
     (``B1-K1-W1`` → kerntaak ``B1-K1``).
     """
-    rows = db.get_kerntaak_scores_by_student_id(_conn(), student_id)
+    rows = db.get_kerntaak_scores_by_student_id(conn, student_id)
 
     def _item(r) -> dict:
         return {"naam": r["naam"], "score": round(r["score"]), "kleur": _kleur_score(r["score"])}
@@ -76,17 +72,13 @@ def _kerntaken(student_id: int) -> list[dict]:
     return [kts[c] for c in volgorde]
 
 
-def _student_row(student_id: int) -> sqlite3.Row | None:
-    return db.get_student_by_id(_conn(), student_id)
-
-
-def _basis(student: sqlite3.Row) -> dict:
+def _basis(conn: sqlite3.Connection, student: sqlite3.Row) -> dict:
     vg = student["voortgang"] or 0.0
     bsa_b = student["bsa_behaald"] or 0.0
     bsa_v = student["bsa_vereist"] or 60.0
     bsa_pct = min(bsa_b / bsa_v, 1.0) if bsa_v else 0.0
     afw = student["absence_unauthorized"] or 0.0
-    label, _ = _opleiding_label(student["oer_id"])
+    label, _ = _opleiding_label(conn, student["oer_id"])
     return {
         "id": student["id"],
         "naam": student["naam"],
@@ -103,27 +95,27 @@ def _basis(student: sqlite3.Row) -> dict:
     }
 
 
-def voortgang_voor_studentnummer(studentnummer: str) -> dict | None:
-    student = db.get_student_by_studentnummer(_conn(), studentnummer)
+def voortgang_voor_studentnummer(conn: sqlite3.Connection, studentnummer: str) -> dict | None:
+    student = db.get_student_by_studentnummer(conn, studentnummer)
     if student is None:
         return None
-    data = _basis(student)
-    data["kerntaken"] = _kerntaken(student["id"])
+    data = _basis(conn, student)
+    data["kerntaken"] = _kerntaken(conn, student["id"])
     return data
 
 
-def studenten_van_mentor(mentor_id: int) -> list[dict]:
-    rows = db.get_studenten_by_mentor_id(_conn(), mentor_id)
-    return [_basis(r) for r in rows]
+def studenten_van_mentor(conn: sqlite3.Connection, mentor_id: int) -> list[dict]:
+    rows = db.get_studenten_by_mentor_id(conn, mentor_id)
+    return [_basis(conn, r) for r in rows]
 
 
-def profiel_van_student(student_id: int) -> dict | None:
-    student = _student_row(student_id)
+def profiel_van_student(conn: sqlite3.Connection, student_id: int) -> dict | None:
+    student = db.get_student_by_id(conn, student_id)
     if student is None:
         return None
-    data = _basis(student)
+    data = _basis(conn, student)
     data["oer_id"] = student["oer_id"]
-    data["kerntaken"] = _kerntaken(student_id)
+    data["kerntaken"] = _kerntaken(conn, student_id)
     punten: list[str] = []
     if data["voortgang"] < 0.5:
         punten.append("⚠️ Lage voortgang — doorvragen naar oorzaak")
@@ -138,13 +130,34 @@ def profiel_van_student(student_id: int) -> dict | None:
     return data
 
 
-def opleidingen_boom() -> list[dict]:
+def kiesbare_oers(conn: sqlite3.Connection) -> list[dict]:
+    """Alle geïndexeerde OER's (met instelling) — de set waaruit de chat een OER kan kiezen."""
+    return [dict(r) for r in db.get_alle_oers_met_instelling(conn) if r["geindexeerd"]]
+
+
+_MAX_KIES_IDS = 3  # zelfde grens als MAX_GIDSEN in static/app.js en oer_ids[:3] in context
+
+
+def geldige_oer_ids(conn: sqlite3.Connection, oer_ids: list) -> list[int]:
+    """Filter ruwe (client-)id's op bestaande, geïndexeerde OER's; max. 3, volgorde behouden.
+
+    Niet-numerieke waarden vallen weg. Dit is de enige poort waarlangs een client OER's in
+    zijn sessie kan zetten (de sessie-guard van het bronbestand leunt hierop).
+    """
+    ints = [i for i in oer_ids if isinstance(i, int) and not isinstance(i, bool)]
+    # Ontdubbel (volgorde behouden) en kap vóór de DB-call af: een lange lijst mag geen
+    # "too many SQL variables" geven, en [5, 5, 5] mag niet drie keer dezelfde OER laden.
+    uniek = list(dict.fromkeys(ints))[:_MAX_KIES_IDS]
+    return db.filter_geindexeerde_oer_ids(conn, uniek)
+
+
+def opleidingen_boom(conn: sqlite3.Connection) -> list[dict]:
     """Geneste keuzeboom instelling → leerweg → opleiding → cohort voor de publieke kiezer.
 
     Alleen geïndexeerde OER's. Opleidingsnamen via de autoritatieve crebo-lookup; een naam
     die binnen één cohort meerdere crebo's dekt levert meerdere oer_ids op (samen te laden).
     """
-    rows = db.get_alle_oers_met_instelling(_conn())
+    rows = db.get_alle_oers_met_instelling(conn)
     boom: dict[str, dict[str, dict[str, dict[str, list[int]]]]] = {}
     for r in rows:
         if not r["geindexeerd"]:

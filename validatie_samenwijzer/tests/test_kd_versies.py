@@ -60,7 +60,7 @@ def test_kapot_manifest_geeft_none_zonder_crash(kd_map):
 
 
 def test_laad_kwalificatiedossier_tekst_gebruikt_de_cohortversie(kd_map):
-    from validatie_samenwijzer.chat import laad_kwalificatiedossier_tekst
+    from validatie_samenwijzer.bron_catalogus import laad_kwalificatiedossier_tekst
 
     assert laad_kwalificatiedossier_tekst("25122", "2025") == "KD 2016"
     assert laad_kwalificatiedossier_tekst("25122", "2010") == "NIEUWSTE KD"  # terugval

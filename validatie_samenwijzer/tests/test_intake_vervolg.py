@@ -1,70 +1,37 @@
 """Tests voor Task 1: `/api/vraag` scoort op opgetelde gesprekstekst (niet alleen de laatste vraag).
 
-Patronen overgenomen uit `tests/test_fastapi_poc.py` (TestClient + toegangspoort, monkeypatch van
-`db.get_alle_oers_met_instelling`/`get_sessie` i.p.v. de echte database — deterministisch en
-onafhankelijk van de seed-data).
+De app draait op een test-``AppDeps`` (``tests/conftest.py``): de OER's staan in een geseede
+in-memory validatie-DB en de begin-sessie zit vast in de test-store (``maak_client(sessie=s)``),
+zodat de test de toestand na de request op ``s`` afleest — deterministisch en onafhankelijk van
+de echte database.
 """
 
 from __future__ import annotations
 
-import os
-
-from dotenv import load_dotenv
-
-load_dotenv()
-_WW = os.environ.get("ALGEMEEN_WACHTWOORD", "")
-
-# Twee OER's van dezelfde instelling, zonder onderscheidend opleidingswoord in de teksten
-# hieronder — een instellingsmatch alleen levert dus een gelijkspel (kies-modus, geen intake).
-_FAKE_OERS = [
-    {
-        "id": 1,
-        "crebo": "11111",
-        "opleiding": "Kok",
-        "display_naam": "Talland College",
-        "naam": "talland",
-        "leerweg": "BOL",
-        "cohort": "2025",
-    },
-    {
-        "id": 2,
-        "crebo": "22222",
-        "opleiding": "Banketbakker",
-        "display_naam": "Talland College",
-        "naam": "talland",
-        "leerweg": "BBL",
-        "cohort": "2024",
-    },
-]
+from app_fastapi.sessie import Sessie
+from validatie_samenwijzer.gesprek import Gesprek
 
 
-def _client():
-    """TestClient die al door de algemene toegangspoort is (gedeeld wachtwoord)."""
-    from fastapi.testclient import TestClient
-
-    from app_fastapi.main import app
-
-    c = TestClient(app)
-    c.post("/toegang", data={"wachtwoord": _WW})
-    return c
+def _seed_kok_en_banketbakker(seed) -> tuple[int, int]:
+    """Twee OER's van dezelfde instelling, zonder onderscheidend opleidingswoord in de teksten
+    hieronder — een instellingsmatch alleen levert dus een gelijkspel (kies-modus, geen intake)."""
+    return (
+        seed.oer("Kok", crebo="11111", leerweg="BOL", cohort="2025"),
+        seed.oer("Banketbakker", crebo="22222", leerweg="BBL", cohort="2024"),
+    )
 
 
-def test_vraag_accumuleert_eerdere_gebruikersbeurten(monkeypatch):
+def test_vraag_accumuleert_eerdere_gebruikersbeurten(seed, maak_client):
     """Een fragment zonder eigen match ("en dan?") vindt kandidaten via de instelling die in
     een eerdere user-beurt genoemd is — en de kale vraag (niet de optelsom) blijft
     `wachtende_vraag`."""
-    import app_fastapi.main as m
-    from app_fastapi.sessie import Sessie
-
-    monkeypatch.setattr(m.db, "get_alle_oers_met_instelling", lambda conn: _FAKE_OERS)
-
+    _seed_kok_en_banketbakker(seed)
     s = Sessie(
         toegang=True,
-        chat_history=[{"role": "user", "content": "Ik zit op Talland College"}],
+        gesprek=Gesprek.van_lijst([{"role": "user", "content": "Ik zit op Talland College"}]),
     )
-    monkeypatch.setattr(m, "get_sessie", lambda request: s)
 
-    r = _client().post("/api/vraag", json={"vraag": "en dan?"})
+    r = maak_client(s).post("/api/vraag", json={"vraag": "en dan?"})
 
     assert r.status_code == 200
     body = r.json()
@@ -74,58 +41,45 @@ def test_vraag_accumuleert_eerdere_gebruikersbeurten(monkeypatch):
     assert s.wachtende_vraag == "en dan?"
 
 
-def test_vraag_zonder_historie_matcht_niet_op_fragment_alleen(monkeypatch):
+def test_vraag_zonder_historie_matcht_niet_op_fragment_alleen(seed, maak_client):
     """Eerste beurt (geen chat_history): hetzelfde fragment matcht op zichzelf niets → intake.
     Bewijst dat het kies-resultaat hierboven echt uit de historie komt, niet uit "en dan?" zelf."""
-    import app_fastapi.main as m
-    from app_fastapi.sessie import Sessie
+    _seed_kok_en_banketbakker(seed)
 
-    monkeypatch.setattr(m.db, "get_alle_oers_met_instelling", lambda conn: _FAKE_OERS)
-
-    s = Sessie(toegang=True)
-    monkeypatch.setattr(m, "get_sessie", lambda request: s)
-
-    r = _client().post("/api/vraag", json={"vraag": "en dan?"})
+    r = maak_client(Sessie(toegang=True)).post("/api/vraag", json={"vraag": "en dan?"})
 
     assert r.status_code == 200
     assert r.json()["modus"] == "intake"
 
 
-def test_vraag_accumuleert_naar_eenduidige_match_laadt_direct(monkeypatch):
+def test_vraag_accumuleert_naar_eenduidige_match_laadt_direct(seed, maak_client, stub_context):
     """Seeded historie + vervolgfragment lossen samen op tot precies 1 kandidaat → modus
     "chat" met `oer_ids` gezet, en de kies-state (`wachtende_vraag`/`kandidaten`) van een
     eerdere ronde wordt niet per ongeluk laten staan (regressie voor Finding 1)."""
-    import app_fastapi.main as m
-    from app_fastapi.sessie import Sessie
-
-    monkeypatch.setattr(m.db, "get_alle_oers_met_instelling", lambda conn: _FAKE_OERS)
-    monkeypatch.setattr(
-        m, "laad_context_met_melding", lambda oer_ids, **k: ("PROMPT", ["label"], [], False, "")
-    )
+    kok, _ = _seed_kok_en_banketbakker(seed)
+    stub_context(systeem="PROMPT")
 
     s = Sessie(
         toegang=True,
-        chat_history=[{"role": "user", "content": "Ik zit op Talland College, ik doe Kok"}],
+        gesprek=Gesprek.van_lijst(
+            [{"role": "user", "content": "Ik zit op Talland College, ik doe Kok"}]
+        ),
         # Stale kies-state uit een eerdere ronde die deze beurt zou moeten opruimen.
         wachtende_vraag="oude vraag",
-        kandidaten=[{"id": 99, "display_naam": "oud"}],
     )
-    monkeypatch.setattr(m, "get_sessie", lambda request: s)
 
-    r = _client().post("/api/vraag", json={"vraag": "en dan?"})
+    r = maak_client(s).post("/api/vraag", json={"vraag": "en dan?"})
 
     assert r.status_code == 200
     body = r.json()
     assert body["modus"] == "chat"
-    assert body["oer_ids"] == [1]
+    assert body["oer_ids"] == [kok]
     assert s.wachtende_vraag is None
-    assert s.kandidaten == []
 
 
-def test_vraag_met_al_geladen_oer_blijft_shortcut_nemen(monkeypatch):
+def test_vraag_met_al_geladen_oer_blijft_shortcut_nemen(maak_client, monkeypatch):
     """Bestaande shortcut (OER al geladen) blijft ongewijzigd: geen scoring, direct chat."""
     import app_fastapi.main as m
-    from app_fastapi.sessie import Sessie
 
     def _boom(*a, **k):
         raise AssertionError("identificeer_oer_kandidaten mag niet aangeroepen worden")
@@ -137,11 +91,10 @@ def test_vraag_met_al_geladen_oer_blijft_shortcut_nemen(monkeypatch):
         oer_systeem="PROMPT",
         oer_labels=["Talland College · Kok · BOL 2025"],
         oer_onleesbaar=False,
-        chat_history=[{"role": "user", "content": "Ik zit op Talland College"}],
+        gesprek=Gesprek.van_lijst([{"role": "user", "content": "Ik zit op Talland College"}]),
     )
-    monkeypatch.setattr(m, "get_sessie", lambda request: s)
 
-    r = _client().post("/api/vraag", json={"vraag": "hoe zit het met herkansen?"})
+    r = maak_client(s).post("/api/vraag", json={"vraag": "hoe zit het met herkansen?"})
 
     assert r.status_code == 200
     body = r.json()
@@ -149,101 +102,75 @@ def test_vraag_met_al_geladen_oer_blijft_shortcut_nemen(monkeypatch):
     assert body["labels"] == ["Talland College · Kok · BOL 2025"]
 
 
-def test_kies_beurt_telt_mee_bij_genegeerde_picker(monkeypatch):
+def test_kies_beurt_telt_mee_bij_genegeerde_picker(seed, maak_client, stub_context):
     """Regressie voor de #243-follow-up: de kies-beurt zelf ontbrak in `chat_history`, dus als
     de gebruiker de picker negeert en verder typt, mist de accumulatie de kandidaten-context.
 
-    Gebruikt de echte `validatie.db` (geen synthetische fixture): "tandartsassistent" alleen
-    levert meerdere kandidaten op (4 instellingen, kies-modus). Zonder de kies-beurt-fix ziet de
-    vervolgvraag "in Nijmegen" alleen zichzelf en matcht op instelling-naam alleen (5 ROC
-    Nijmegen-OER's, kies-modus opnieuw). Mét de fix telt "tandartsassistent" nog mee en
-    resolveert de combinatie naar precies de ROC Nijmegen-tandartsassistent-OER (crebo 25699,
-    bekende val: bestandsnaam-token "Tandartsassistent1" bij Da Vinci matcht niet op naam).
+    Nagebouwd naar de echte catalogus: "tandartsassistent" alleen levert meerdere kandidaten op
+    (vier instellingen, kies-modus). Zonder de kies-beurt-fix ziet de vervolgvraag "in Nijmegen"
+    alleen zichzelf en matcht op instellingsnaam alleen (alle ROC Nijmegen-OER's, kies-modus
+    opnieuw). Mét de fix telt "tandartsassistent" nog mee en resolveert de combinatie naar
+    precies de ROC Nijmegen-tandartsassistent-OER.
     """
-    import app_fastapi.main as m
-    from app_fastapi.sessie import Sessie
-
-    monkeypatch.setattr(
-        m, "laad_context_met_melding", lambda oer_ids, **k: ("PROMPT", ["label"], [], False, "")
-    )
+    for inst, display in (
+        ("talland", "Talland College"),
+        ("curio", "Curio"),
+        ("davinci", "Da Vinci College"),
+    ):
+        seed.oer("Tandartsassistent", crebo="25699", instelling=inst, display=display)
+    nijmegen = {"instelling": "rocnijmegen", "display": "ROC Nijmegen"}
+    doel = seed.oer("Tandartsassistent", crebo="25699", **nijmegen)
+    seed.oer("Kok", crebo="25180", **nijmegen)
+    seed.oer("Verzorgende IG", crebo="25655", **nijmegen)
+    stub_context(systeem="PROMPT")
 
     s = Sessie(toegang=True)
-    monkeypatch.setattr(m, "get_sessie", lambda request: s)
-
-    c = _client()
+    c = maak_client(s)
     r1 = c.post("/api/vraag", json={"vraag": "tandartsassistent"})
     assert r1.json()["modus"] == "kies"
     assert len(r1.json()["opties"]) > 1
     # De kies-beurt moet nu ook zelf als user-turn in de historie staan.
-    assert {"role": "user", "content": "tandartsassistent"} in s.chat_history
+    assert {"role": "user", "content": "tandartsassistent"} in s.gesprek.naar_lijst()
 
     r2 = c.post("/api/vraag", json={"vraag": "in Nijmegen"})
     body = r2.json()
     assert body["modus"] == "chat", body
-    assert body["oer_ids"] == [1193]
+    assert body["oer_ids"] == [doel]
 
 
-def test_vraag_partiele_enkele_kandidaat_geeft_kies(monkeypatch):
+def test_vraag_partiele_enkele_kandidaat_geeft_kies(seed, maak_client, stub_context):
     """Eén kandidaat die slechts partieel matcht (de genoemde school biedt de opleiding niet aan,
     een andere school wél) → modus "kies" i.p.v. stil de verkeerde studiegids laden."""
-    import app_fastapi.main as m
-    from app_fastapi.sessie import Sessie
+    aeres = seed.oer(
+        "25915_BOL_2026__vakbekwaam-medewerker-paardensport",
+        crebo="25915", cohort="2026", instelling="aeres", display="Aeres MBO",
+    )  # fmt: skip
+    seed.oer(
+        "25916_BOL_2025__Bedrijfsleider_paardensport",
+        crebo="25916", cohort="2025", instelling="landstede", display="Landstede MBO",
+    )  # fmt: skip
+    geladen = stub_context(systeem="P", labels=["l"])
 
-    oers = [
-        {
-            "id": 1,
-            "crebo": "25915",
-            "opleiding": "25915_BOL_2026__vakbekwaam-medewerker-paardensport",
-            "display_naam": "Aeres MBO",
-            "naam": "aeres",
-            "leerweg": "BOL",
-            "cohort": "2026",
-        },
-        {
-            "id": 2,
-            "crebo": "25916",
-            "opleiding": "25916_BOL_2025__Bedrijfsleider_paardensport",
-            "display_naam": "Landstede MBO",
-            "naam": "landstede",
-            "leerweg": "BOL",
-            "cohort": "2025",
-        },
-    ]
-    monkeypatch.setattr(m.db, "get_alle_oers_met_instelling", lambda conn: oers)
-    geladen = []
-    monkeypatch.setattr(
-        m,
-        "laad_context_met_melding",
-        lambda oer_ids, **k: geladen.append(oer_ids) or ("P", ["l"], [], False, ""),
-    )
-    s = Sessie(toegang=True)
-    monkeypatch.setattr(m, "get_sessie", lambda request: s)
-
-    r = _client().post(
+    r = maak_client(Sessie(toegang=True)).post(
         "/api/vraag", json={"vraag": "Bedrijfsleider paardensport bij Aeres, BOL 2025"}
     )
 
     assert r.status_code == 200
     assert r.json()["modus"] == "kies"
     assert geladen == []
-    assert [k["id"] for k in s.kandidaten] == [1]
+    assert [o["id"] for o in r.json()["opties"]] == [aeres]
 
 
-def test_kies_opties_tonen_schone_opleidingsnaam(monkeypatch):
+def test_kies_opties_tonen_schone_opleidingsnaam(seed, maak_client):
     """Regressie: de picker toonde de ruwe `opleiding`-string (een bestandsnaam met crebo,
     leerweg en cohort erin) i.p.v. de opgeschoonde naam die `/api/kies` wél teruggeeft."""
-    import app_fastapi.main as m
-    from app_fastapi.sessie import Sessie
+    seed.oer("25182_BOL_2025__25182BOLExamenplan2025-Zelfstandig-kok", crebo="11111")
+    seed.oer(
+        "25168_BOL_2025__25168BOL2025Examenplan-Gastheer-vrouw",
+        crebo="22222", leerweg="BBL", cohort="2024",
+    )  # fmt: skip
 
-    ruw = [
-        dict(_FAKE_OERS[0], opleiding="25182_BOL_2025__25182BOLExamenplan2025-Zelfstandig-kok"),
-        dict(_FAKE_OERS[1], opleiding="25168_BOL_2025__25168BOL2025Examenplan-Gastheer-vrouw"),
-    ]
-    monkeypatch.setattr(m.db, "get_alle_oers_met_instelling", lambda conn: ruw)
-    s = Sessie(toegang=True)
-    monkeypatch.setattr(m, "get_sessie", lambda request: s)
-
-    opties = _client().post("/api/vraag", json={"vraag": "Talland College"}).json()["opties"]
+    opties = maak_client().post("/api/vraag", json={"vraag": "Talland College"}).json()["opties"]
 
     assert opties, "verwacht kies-modus met opties"
     for optie in opties:

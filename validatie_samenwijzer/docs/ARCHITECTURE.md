@@ -158,10 +158,12 @@ instellingsbrede document-soorten → citeer-label; een nieuwe soort toevoegen =
 geen schema-migratie (soort-validatie staat in `voeg_instelling_document_toe`, niet in een DB-CHECK).
 Verbinding via `get_connection()` met WAL-modus en `check_same_thread=False`.
 
-**Verbinden vanuit de app**: routes openen de DB via een module-lokale `_conn()`-helper
-(`app_fastapi/main.py` en `context.py`) die `db.get_connection(DB_PATH)` aanroept; scripts en tests
-gebruiken `db.get_connection()` direct. (De geretirede Streamlit-wrapper `_db.py` met
-`@st.cache_resource` bestaat niet meer.)
+**Verbinden vanuit de app**: routes openen de DB via `with deps_van(request).verbinding() as conn:`
+(`AppDeps.validatie_db`, een `ValidatieDb` op `DB_PATH`: per blok een eigen verbinding die daarna
+sluit, en één keer per instantie `init_db` als migratie). `context.py`, `data.py` en `auth.py` krijgen
+die `conn` als eerste parameter. Scripts en tests gebruiken `db.get_connection()` of `ValidatieDb`
+direct; `ValidatieDb(":memory:")` houdt één gedeelde verbinding open (tests). (De geretirede
+Streamlit-wrapper `_db.py` met `@st.cache_resource` bestaat niet meer.)
 
 ## Ingestie-pipeline (`ingest.py`)
 
@@ -174,7 +176,7 @@ oer_id       → markeer_geindexeerd()     → geindexeerd=1
 ```
 
 Geen chunking, geen embeddings, geen vector store. De volledige OER-tekst wordt op
-chat-tijd geladen door `chat.laad_oer_tekst()` (voorkeur: `<stem>.md` van markitdown,
+chat-tijd geladen door `bron_catalogus.laad_oer_tekst()` (voorkeur: `<stem>.md` van markitdown,
 fallback: pdfplumber over de PDF).
 
 **KD-fallback (issue #53)**: levert de OER nul kerntaken op (bv. Aeres/Rijn IJssel-examenplannen
@@ -230,7 +232,8 @@ zodat het label matcht met wat de student in de dropdown koos.
 ## Sessiemodel
 
 Server-side sessie in `app_fastapi/sessie.py`: een `Sessie`-dataclass per gebruiker, bewaard in
-een SQLite-store met TTL die proces-restarts overleeft. De browser houdt alleen de door
+een `SessieStore` (SQLite op `SESSIE_DB_PATH`, default `data/sessies.db`, TTL 6 uur; één per app via
+`AppDeps.sessie_store`, `":memory:"` in tests) die proces-restarts overleeft. De browser houdt alleen de door
 `SESSION_SECRET` ondertekende `SessionMiddleware`-cookie vast met daarin een `sid`-sleutel; die
 `sid` wijst naar het server-side `Sessie`-object. `get_sessie(request)` laadt/maakt het object,
 write-through naar de store gebeurt via middleware (mutaterende GET-routes roepen `bewaar_sessie()`
@@ -238,8 +241,35 @@ expliciet aan).
 
 Relevante velden: `toegang` (algemene poort gepasseerd), `rol` (`"student"`/`"mentor"`/`None`),
 `gebruiker` (`{id, naam, studentnummer?}`), `oer_ids` + `oer_systeem` (geladen context),
-`oer_labels`, `oer_onleesbaar`, `chat_history`, en mentor-specifiek `actieve_student`. Login
-(`POST /login`) vult deze velden; `reset()`/`uitloggen()` wissen ze.
+`oer_labels`, `domeinen`, `oer_onleesbaar`, `melding`, `bron_register`, `gesprek`. De context-velden zet alleen
+`Sessie.laad_context(ctx)` (neemt een `ChatContext` over en wist `wachtende_vraag`); `nieuw_gesprek()`
+wist het Gesprek, `reset()`/`uitloggen()` alles. Login, `/api/vraag`, `/api/kies` en
+`/mentor/student/{id}` gebruiken uitsluitend die twee methoden. `laad()` negeert onbekende velden in
+oude `sessies.db`-rijen.
+
+**Gesprek** (`src/validatie_samenwijzer/gesprek.py`, UI-vrij): bezit als enige de gesprekshistorie.
+De invariant — per beurt de **ruwe** modeltekst mét `<!-- bronnen: … -->`-marker, strippen pas aan
+de leesrand — leeft alleen daar. Interface: `voeg_beurt_toe` (met cap `MAX_GESCHIEDENIS`),
+`berichten_voor_model(vraag)`, `view_voor_ui(register)`, `laatste_beurt()`, `context_tekst(vraag)`,
+`reset()`, `naar_lijst()`/`van_lijst()` en `begin_beurt(vraag)` → `LopendeBeurt`. Opslagvorm in
+`sessies.db` blijft de JSON-lijst onder de sleutel `chat_history` (`Sessie.naar_dict`/`uit_dict`);
+oude rijen laden ongewijzigd. Routes en `chat.py` raken de dict-lijst niet aan.
+
+**Bronnen per beurt**: `/api/chat` geeft de bij die beurt geresolvede bronnen (`asdict(Bron)`) aan
+`rond_af(bronnen)`/`voeg_beurt_toe(…, bronnen=…)`; de assistant-beurt krijgt dan de sleutel
+`"bronnen": [...]` (naast `content`, het model ziet hem niet). `view_voor_ui(register)` gebruikt
+die lijst als hij er is (ook als hij leeg is) en resolvet alleen oude beurten zonder `bronnen`
+alsnog tegen het register van dat moment. Zo blijven chips van eerdere beurten kloppen na
+`Sessie.laad_context()` met een andere studiegids. Afgebroken en kies-beurten hebben geen `bronnen`.
+
+**Afgebroken beurten**: een beurt die niet af komt (heartbeat-timeout, `APITimeoutError`, andere
+fout) verdwijnt niet stil. `LopendeBeurt` (`rond_af()`/`breek_af()`, onder één lock) legt hem
+precies één keer vast: vraag + gedeeltelijk antwoord, marker (of begin ervan) eruit geknipt, met
+`"afgebroken": true` op de assistant-beurt. `_met_heartbeat(..., bij_timeout=…)` draait de
+callback via `asyncio.to_thread` vóór het `error: timeout`-event; de `except`-takken in
+`/api/chat` doen hetzelfde. Een losgelaten worker die later alsnog afrondt krijgt `False` en
+voegt niets toe. De UI toont zo'n beurt bij rehydratie als afgebroken; het model krijgt het
+deel met `[antwoord afgebroken]` erachter (zonder deel telt de beurt als onbeantwoord).
 
 Rolbewaking: de `_eis(request, rol)`-helper in `main.py` redirect naar `/login` als de rol niet
 klopt; mentor-routes checken bovendien IDOR (`/mentor/student/{id}` weigert studenten buiten de
@@ -262,14 +292,27 @@ elders in dit document beschrijven de gedeelde Python-kern, niet een bestaande U
 DE frontend sinds juni 2026. Vervangt **alleen de UI-schil** en hergebruikt de Python-laag
 (`chat.py`, `db.py`, `_ai.py`, `auth.py`) **ongewijzigd** — die importeren geen streamlit.
 
-- `main.py` (routes + SSE-chat), `context.py` (OER-context-orchestrator: OER + KD + skills +
+- `deps.py` (`AppDeps`: config uit env via `AppDeps.uit_env()` — fail-closed op `SESSION_SECRET`/
+  `ALGEMEEN_WACHTWOORD` —, `ValidatieDb`, `SessieStore`, `ai_client`, OER-cache `OerBlokken`; zie
+  hieronder), `main.py` (`maak_app(deps)` + routes op een `APIRouter` + SSE-chat; module-level
+  `app = maak_app(AppDeps.uit_env())` voor uvicorn), `context.py` (OER-context-orchestrator: OER + KD + skills +
   instellingsdocumenten per rol via `PUBLIEK/STUDENT/MENTOR_SOORTEN` + web-zoek-domeinen),
   `auth.py` (login-hergebruik), `data.py` (voortgang/studenten/profiel), `sessie.py` (server-side
-  sessie via signed-cookie `sid`), `static/chat.js` (escapende markdown-renderer + SSE + viewer —
+  sessie via signed-cookie `sid`; bewaart een `Gesprek` uit `gesprek.py`), `static/chat.js` (escapende markdown-renderer + SSE + viewer —
   één plek voor de security-gevoelige rendering), templates.
 - **Toegangspoort**: de hele app achter `ALGEMEEN_WACHTWOORD` (`.env`); login student/mentor erachter.
 - Streaming via `text/event-stream`; dezelfde `_ai._client()` → prompt-cache blijft werken.
-- Tests: `tests/test_fastapi_poc.py`.
+- **App-factory + deps**: `maak_app(deps)` registreert de toegangspoort, `SessionMiddleware`
+  (`deps.session_secret`, `deps.cookie_https_only`), `/static` en de router, en zet
+  `app.state.deps`. Routes halen alles via `deps_van(request)` (sessie: `get_sessie(request)` leest
+  `request.app.state.deps.sessie_store`); er zijn geen module-globals of env-reads meer in
+  `app_fastapi/`. `OerBlokken` (LRU, max 64 OER-teksten) hangt aan de deps, dus een herstart begint
+  leeg, twee app-instanties delen niets en een beheer-taak (bv. re-ingest) leegt hem na afloop.
+- Tests: `tests/test_fastapi_poc.py` e.a. bouwen per test een `AppDeps` (fixtures `maak_deps`,
+  `maak_client`, `client`, `seed`, `conn` in `tests/conftest.py`): in-memory validatie-DB met
+  seed-helpers, `TelStore` (in-memory sessie-store die bewaar-aanroepen telt en optioneel één vaste
+  `Sessie` laadt) en een nep-`ai_client`. Alleen gedrag (`genereer_*`, `laad_context` via
+  `stub_context`) wordt nog gemonkeypatcht.
 - Productie-`digitale-gids` draait `Dockerfile.fastapi` op Fly; vereist Fly-secret `SESSION_SECRET`.
   Plan: `docs/plans/2026-06-08-fastapi-poc-publieke-oer-chat.md` + `2026-06-10-fastapi-migratie-*.md`.
 
@@ -283,28 +326,50 @@ inter-event, dus een lang antwoord wordt niet afgebroken — alleen een vastgelo
 
 ## OER-chat-flow
 
-`chat.py` levert de system-prompt-bouwers; `app_fastapi/context.py:laad_context()` is de UI-loze
+`bron_catalogus.py` laadt de chat-bronnen en kent hun namen; `chat.bouw_prompt()` bouwt de
+system-prompt; `app_fastapi/context.py:laad_context()` (geeft één frozen `ChatContext`: `systeem`,
+`labels`, `domeinen`, `oer_onleesbaar`, `melding`, `oer_ids`, `bron_register`) is de UI-loze
 orchestrator die alle chat-routes (publiek `/`, `/student`, `/mentor/student/{id}`) gebruiken:
 
-1. **Context bouwen** (`bouw_gecombineerd_systeem`) — `laad_context()` laadt per gekozen OER de
-   volledige tekst + KD + skills + instellingsbronnen en combineert tot 3 OER's in één system
-   prompt met blok-headers `=== OER 1: … ===`. Bij één OER delegeert `bouw_gecombineerd_systeem`
-   naar `bouw_systeem` (single-OER pad), dus de student-/mentor-route (één gekoppelde OER) en de
-   publieke multi-OER-vraag lopen door dezelfde functie.
+1. **Context bouwen** — `laad_context()` laadt per gekozen OER (max 3) de volledige
+   tekst + KD + skills, haalt de documenten uit `documenten.selecteer_documenten()` en bouwt daaruit
+   één `BronCatalogus` (`OerInvoer` per OER). `bouw_prompt(catalogus)` kiest zelf de modus (één OER,
+   meerdere OER's, OER-onleesbaar) in één template met modus-fragmenten en neemt het
+   webzoek-besluit (schooldomeinen uit de instellingen van de catalogus; vacaturesites altijd);
+   het geeft `Prompt(systeem, web_domeinen)` terug; `laad_context()` bundelt dat met labels,
+   melding en `catalogus.register()` in één `ChatContext`, die `Sessie.laad_context()` overneemt.
+   **Bron-catalogus**: één module kent de naam van een chat-bron. De catalogus rendert de
+   blokkoppen in één formaat voor elke modus (`=== OER i: instelling · opleiding · leerweg cohort ===`,
+   `=== EXAMENREGLEMENT i (instelling) ===`, `=== KWALIFICATIEDOSSIER i (Crebo x) ===`; i is het OER-volgnummer,
+   ook bij één OER), zet onder elke kop van een citeerbare bron de regel `Bronvermelding: type|titel`
+   (de letterlijke markertitel; bij skills onder de eigen `=== SKILLS-TAXONOMIE … ===`-kop), geeft elke
+   citeerbare bron een unieke markertitel (bij botsing aangevuld met instelling, dan `OER i`) die
+   de BRONNENREGEL letterlijk opsomt, en levert `register()`: JSON (type, titel, `oer_id`,
+   `doc_id`, `crebo`, plus de webdomeinen) voor de sessie. `BronRegister.uit_dicts(register)`
+   herleidt daarmee later modeltitels zonder de teksten te laden; `splits_bronnen(tekst, register)`
+   wijst onbekende titels af en zet de identifiers (zonder register: alleen de type-check).
+   `resolve` vergelijkt via `_norm` (hetzelfde als de uniciteitscontrole van de catalogus): hoofdletters,
+   NFKC, streepjes, `&`=`en`, afsluitende `.`/`:` en een type-prefix ("Studiegids: …") tellen niet mee;
+   een website-bron herkent ook de schoolnaam uit `instellingen.py` ("Curio" → `curio.nl`) en `www.`.
+   `static/chat.js` linkt een studiegids-chip met `oer_id` naar `/api/oer/{id}/bestand`; documenten
+   hebben (nog) geen download-route en blijven een label.
 2. **Intake** (`genereer_intake_antwoord` + `identificeer_oer_kandidaten`) — fallback in
    `POST /api/vraag` zolang nog geen OER gekozen is. `identificeer_oer_kandidaten()` scoort op
    crebo (+3), leerweg (+2), cohort (+2), opleidingswoorden (+1, max 2), instelling (+1) en
-   bepaalt de modus (`chat` bij één match, `kies` bij meer, `intake` bij geen).
+   bepaalt de modus (`chat` bij één match, `kies` bij meer, `intake` bij geen). Alleen geïndexeerde
+   OER's doen mee (`data.kiesbare_oers()`).
 3. **Opleidingskiezer** (`kies`-modus + optionele shortcut op de landing) — bij meerdere kandidaten
    toont de frontend géén platte lijst maar een **cascade** instelling → leerweg → opleiding →
    cohort, gevoed door `GET /api/opleidingen` (`data.opleidingen_boom()`, alleen geïndexeerde OER's,
-   schone namen). De keuze laadt via het bestaande `POST /api/kies`; een opleidingsnaam die meerdere
+   schone namen). De keuze laadt via het bestaande `POST /api/kies` (id's gefilterd op bestaande, geïndexeerde OER's
+   via `data.geldige_oer_ids`, max. 3; niets geldigs → 400); een opleidingsnaam die meerdere
    crebo's dekt laadt de siblings samen (gecapt op 3). Vrije tekst blijft de primaire start.
 
-`laad_oer_tekst()` voorkeursvolgorde: `<stem>.md` (markitdown-output) → bron-`.md` →
-pdfplumber over PDF. Hard cap: `_MAX_OER_TEKST_TEKENS = 500_000` tekens.
+`bron_catalogus.laad_oer_tekst()` voorkeursvolgorde: `<stem>.md` (markitdown-output) → bron-`.md` →
+pdfplumber over PDF. Hard cap: `_MAX_OER_TEKST_TEKENS = 500_000` tekens (parameter `cap`).
+Alle bronladers en caps staan in `bron_catalogus.py`.
 
-**Gespreksgeschiedenis & caching**: `bouw_berichten()` saneert de historie (lege/mislukte beurten
+**Gespreksgeschiedenis & caching**: `Gesprek.berichten_voor_model()` saneert de historie (lege/mislukte beurten
 weg, alternerende rollen, onbeantwoorde laatste user-beurt vervangen) zodat één gefaalde AI-call de
 sessie niet kan blokkeren met een API 400. `genereer_antwoord()` zet `cache_control` met **1h-TTL**
 op het system-blok én een cache-breakpoint op de laatste beurt (`_messages_met_cache`), zodat de
@@ -317,8 +382,9 @@ weergave, zodat een letterlijke `<`, code of HTML in het antwoord niet als marku
 Markdown-blockquotes worden als citaat-pull-quotes gestyled (`app.css`).
 
 `laad_kwalificatiedossier_tekst(crebo)` leest `kwalificatiedossiers/pdfs/<crebo>.md` (hard cap
-`_MAX_DOSSIER_TEKST_TEKENS = 300_000`). Pad-resolutie via `pad_kwalificatiedossier(crebo)`:
-default `<repo>/kwalificatiedossiers/pdfs`, override via env-var `KWALDOSSIERS_PAD`. Lege
+`_MAX_DOSSIER_TEKST_TEKENS = 300_000`), of de cohortversie via `kd_versies.kies_kd_pad`. Map via
+`kd_versies.kd_map()`: default `<repo>/kwalificatiedossiers/pdfs`, override via env-var
+`KWALDOSSIERS_PAD`. Lege
 string als de crebo geen KD heeft — de chat werkt dan OER-only.
 
 `laad_skills_tekst(crebo)` leest het skills-artefact `data/skills/<crebo>.json` (hard cap
@@ -327,27 +393,26 @@ tekstblok. Pad-resolutie via `pad_skills(crebo)`: default `<subproject>/data/ski
 env-var `SKILLS_PAD`. Lege string als de crebo geen artefact of geen gematcht beroep heeft — de
 chat werkt dan zonder skills. Zie de Skills-taxonomie-sectie verderop.
 
-`laad_instelling_bron_tekst(bestandspad)` leest een instellingsbreed document (examenreglement,
-begeleidingsbeleid, studentenstatuut, algemene informatie; hard cap
-`_MAX_INSTELLING_TEKST_TEKENS = 300_000`). `context.laad_context()` haalt de paden uit
-`instelling_documenten` (`db.haal_instelling_document_op`), gefilterd op de rol-soorten
-(`PUBLIEK/STUDENT/MENTOR_SOORTEN`), en geeft `(label, tekst)`-paren door als `instelling_bronnen`
-aan `bouw_gecombineerd_systeem`, dat ze als blokken `=== LABEL (instelling) ===` in de system
-prompt zet. Zie de Instellingsbrede-bron-sectie verderop.
+`documenten.selecteer_documenten()` leest instellingsbrede en opleidingsgebonden documenten
+(examenreglement, begeleidingsbeleid, studentenstatuut, protocollen …) met
+`laad_oer_tekst(pad, cap=_MAX_INSTELLING_TEKST_TEKENS)` (300_000), binnen het documentbudget en
+gefilterd op niveau; de kop komt uit `bron_catalogus.document_kop()`. De `BronCatalogus` zet ze
+als blokken `=== KOP i (instelling) ===` in de system prompt. Zie de Instellingsbrede-bron-sectie
+verderop.
 
 **OER-onleesbaar-modus**: is de OER-fulltext leeg (gescande PDF zonder tekstlaag), dan bouwt
-`bouw_systeem` de prompt in een aangepaste modus die het kwalificatiedossier + instellingsregelingen
-als hoofdbron neemt (i.p.v. de OER) en de citatie-instructie daarop aanpast (drie template-varianten:
-`_PRIMAIRE_BRON_*`, `_KD_INSTRUCTIE_*`, `_OER_SECTIE_*`). `context.laad_context()` neemt de OER
-tóch op zolang er een KD óf instellingsbron is en zet dan `oer_onleesbaar=True`; de route geeft die
+`bouw_prompt` (bij één OER) de prompt in een aangepaste modus die het kwalificatiedossier + instellingsregelingen
+als hoofdbron neemt (i.p.v. de OER) en de citatie-instructie daarop aanpast (template-varianten
+`_PRIMAIRE_BRON_*`, `_KD_INSTRUCTIE_*`). De `BronCatalogus` neemt de OER tóch op zolang er een KD
+óf document is (de OER zelf is dan geen citeerbare bron) en zet `oer_onleesbaar=True`; de route geeft die
 vlag door aan de template → banner dat de OER niet machine-leesbaar is. Alleen zónder enige bron
 geeft `laad_context` een lege system-prompt terug en volgt `LAGE_RELEVANTIE_BERICHT`. Spec/plan:
 `docs/plans/2026-06-09-chat-kd-fallback-onleesbare-oer.md`.
 
-Toon `LAGE_RELEVANTIE_BERICHT` wanneer `laad_oer_tekst()` een lege string teruggeeft én er geen
+Toon `LAGE_RELEVANTIE_BERICHT` wanneer `bron_catalogus.laad_oer_tekst()` een lege string teruggeeft én er geen
 KD/instellingsbron is (bestand ontbreekt of niet leesbaar, zonder aanvullende bron).
 
-**Juridische citatieplicht**: zowel `_SYSTEEM_TEMPLATE` als `_MULTI_SYSTEEM_TEMPLATE` eisen per
+**Juridische citatieplicht**: `_SYSTEEM_TEMPLATE` (in elke modus) eist per
 claim drie elementen: **bron** ("Volgens de OER", "Volgens het kwalificatiedossier" of "Volgens
 het [examenreglement/studentenstatuut/…]"), **vindplaats** (sectie-nummer, kopje, artikel of
 paginanummer) en een **woordelijk citaat tussen dubbele aanhalingstekens**. Reden: een OER is een

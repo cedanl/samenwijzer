@@ -89,6 +89,7 @@ function addAntwoord(thread, md) {
   const d = document.createElement("div");
   d.className = "bubble-a"; d.innerHTML = renderMarkdown(md);
   thread.appendChild(d); _scroll(thread);
+  return d;
 }
 const FOUT_TEKSTEN = {
   timeout: "De AI-service reageert niet. Probeer het zo opnieuw.",
@@ -134,18 +135,40 @@ function zetStatus(el, code) {
   if (t) t.textContent = tekst;
 }
 
-/* Bronnenrij onder een antwoord. Titel/url komen uit modeloutput: alleen via
-   textContent/createElement, en een link alleen bij een http(s)-url. */
+/* Bronnenrij onder een antwoord. De server stuurt per bron {type, titel, url, oer_id, doc_id,
+   crebo}; met een sessieregister is de titel de canonieke catalogustitel en zijn de ids gezet.
+   Alleen via textContent/createElement. Een link alleen naar wat echt bestaat: een website met
+   http(s)-url, of een studiegids met oer_id (de bestaande route /api/oer/{id}/bestand). Voor
+   documenten (doc_id), KD en skills is er geen download-route: die blijven een label. */
+/* Alleen een http(s)-URL zonder backslash/userinfo/witruimte waarvan de host het
+   geregistreerde domein (de chip-titel) is of eronder valt — zelfde regel als de server. */
+function _veiligeWebUrl(url, domein) {
+  if (/[\\@\s]/.test(url)) return false;
+  let u;
+  try { u = new URL(url); } catch { return false; }
+  if (u.protocol !== "http:" && u.protocol !== "https:") return false;
+  if (u.username || u.password || u.port) return false;
+  const host = u.hostname.toLowerCase();
+  const dom = String(domein ?? "").toLowerCase().replace(/^www\./, "");
+  return !!dom && (host === dom || host.endsWith("." + dom));
+}
+function _bronLink(b) {
+  if (b.type === "website" && typeof b.url === "string" && _veiligeWebUrl(b.url, b.titel)) return b.url;
+  if (b.type === "studiegids" && Number.isInteger(b.oer_id) && b.oer_id > 0) {
+    return `/api/oer/${b.oer_id}/bestand`;
+  }
+  return null;
+}
 function addBronnen(thread, bronnen) {
   if (!Array.isArray(bronnen) || !bronnen.length) return;
   const chips = [];
   for (const b of bronnen) {
     if (!b || !Object.prototype.hasOwnProperty.call(BRON_TYPE_LABELS, b.type)) continue;
-    const link = b.type === "website" && typeof b.url === "string" && /^https?:\/\//.test(b.url);
-    const chip = document.createElement(link ? "a" : "span");
+    const href = _bronLink(b);
+    const chip = document.createElement(href ? "a" : "span");
     chip.className = "bron-chip";
-    if (link) {
-      chip.href = b.url; chip.target = "_blank"; chip.rel = "noopener noreferrer";
+    if (href) {
+      chip.href = href; chip.target = "_blank"; chip.rel = "noopener noreferrer";
     }
     const type = document.createElement("span");
     type.className = "bron-type"; type.textContent = BRON_TYPE_LABELS[b.type];
@@ -167,7 +190,18 @@ async function rehydrateer(thread) {
   const r = await (await fetch("/api/geschiedenis")).json();
   for (const b of r.beurten || []) {
     if (b.role === "user") addVraag(thread, b.content);
-    else { addAntwoord(thread, b.content); addBronnen(thread, b.bronnen || []); }
+    else {
+      const node = addAntwoord(thread, b.content);
+      if (b.afgebroken) {
+        // Beurt die niet af kwam (time-out/fout): de server bewaarde vraag + deel van het antwoord.
+        const note = document.createElement("p");
+        note.className = "afgebroken";
+        const em = document.createElement("em");
+        em.textContent = "Dit antwoord is afgebroken. Stel de vraag gerust opnieuw.";
+        note.appendChild(em); node.appendChild(note);
+      }
+      addBronnen(thread, b.bronnen || []);
+    }
   }
 }
 

@@ -397,7 +397,7 @@ def _classificeer_kwic(bestanden: list[str]) -> list[Item]:
                 inst,
                 b,
                 "studentenstatuut",
-                "Addendum",
+                "Studentenstatuut addendum",  # zelfbeschrijvend → kop "Studentenstatuut — addendum"
                 "studentenstatuut-addendum",
                 versie_label="addendum",
             ),

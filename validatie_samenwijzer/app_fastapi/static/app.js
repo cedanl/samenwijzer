@@ -176,16 +176,30 @@ function bouwCascade(container, boom, onKies, opts = {}) {
 
 /* Laadt de gekozen studiegids in de sessie en opent de chat (gedeeld door beide paden);
    met `vraag` wordt die meteen gesteld. */
-async function laadStudiegidsEnOpen(ids, vraag = null) {
-  openOverlay();
-  if (!_gehydrateerd) { _gehydrateerd = true; await rehydrateer(thread); }
-  const r = await (await fetch("/api/kies", {
+/* POST /api/kies en neem het antwoord over in de UI. Geeft null bij een afgewezen keuze
+   (400: ids onbekend of niet geïndexeerd — bijv. een verouderde kiezer na re-ingest); de
+   sessie is dan niet veranderd, dus oerIds blijft wat het was. */
+async function kiesStudiegids(ids) {
+  const resp = await fetch("/api/kies", {
     method: "POST", headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ oer_ids: ids }),
-  })).json();
+  });
+  if (!resp.ok) {
+    setBanner(false, "Deze studiegids is op dit moment niet beschikbaar. Kies een andere of herlaad de pagina.");
+    return null;
+  }
+  const r = await resp.json();
   oerIds = r.oer_ids || ids;
   setLabels(r.labels);
   setBanner(r.oer_onleesbaar, r.melding);
+  return r;
+}
+
+async function laadStudiegidsEnOpen(ids, vraag = null) {
+  openOverlay();
+  if (!_gehydrateerd) { _gehydrateerd = true; await rehydrateer(thread); }
+  const r = await kiesStudiegids(ids);
+  if (!r) { ovAsk.querySelector("input").focus(); return; }
   if (vraag) { addVraag(thread, vraag); await streamAntwoord(thread, vraag); }
   else if (r.wachtende_vraag) { await streamAntwoord(thread, r.wachtende_vraag); }
   else { ovAsk.querySelector("input").focus(); }
@@ -240,13 +254,8 @@ async function renderPicker() {
       <div id="pickerCascade" class="cascade-host"></div>
     </div>`;
   bouwCascade(picker.querySelector("#pickerCascade"), boom, async (ids) => {
-    const r = await (await fetch("/api/kies", {
-      method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ oer_ids: ids }),
-    })).json();
-    oerIds = r.oer_ids || ids;
-    setLabels(r.labels);
-    setBanner(r.oer_onleesbaar, r.melding);
+    const r = await kiesStudiegids(ids);
+    if (!r) return;
     picker.innerHTML = "";
     if (r.wachtende_vraag) await streamAntwoord(thread, r.wachtende_vraag);
   }, { knop: "Open mijn studiegids →" });

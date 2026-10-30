@@ -19,7 +19,7 @@ De **publieke startpagina** (`/`) is de ingang: vrije vraag of opleidingskiezer-
 chat-streaming. `/student`, `/mentor`, `/beheer` zitten achter login en delen die kern.
 
 De Streamlit-frontend (`app/`) is **geretired**; `app_fastapi/` draait in productie als `digitale-gids`
-op Fly (`Dockerfile.fastapi`). Er is geen vector store (full-document context, `chat.py:_MAX_OER_TEKST_TEKENS`).
+op Fly (`Dockerfile.fastapi`). Er is geen vector store (full-document context, `bron_catalogus.py:_MAX_OER_TEKST_TEKENS`).
 
 ## Commando's
 
@@ -36,8 +36,10 @@ OEREN_PAD=../oeren uv run python scripts/vergelijk_modellen.py --uit <json>  # S
 ```
 
 Geen CI-gate voor dit subproject (root-`ci.yml` raakt de eigen `.venv` niet): draai lint, format en tests
-**lokaal** vóór je commit. `tests/conftest.py` zet `SESSION_SECRET`, `ALGEMEEN_WACHTWOORD` en
-`COOKIE_HTTPS_ONLY=0` zelf en reset de `_ai`-client- en crebo-naam-cache.
+**lokaal** vóór je commit. App-tests draaien op een eigen `AppDeps` uit `tests/conftest.py`
+(`maak_client(sessie=…, **deps_velden)` / `client`, in-memory validatie-DB met `seed`-helpers, nep-
+`ai_client`) — patch geen DB-, sessie- of AI-globals. conftest zet alleen `SESSION_SECRET` en
+`ALGEMEEN_WACHTWOORD` (om `app_fastapi.main` te kunnen importeren) en reset de crebo-naam-cache.
 
 ## Omgeving & deploy
 
@@ -56,20 +58,34 @@ re-seed is een nieuwe deploy nodig. Fly-secrets: `SESSION_SECRET`, `ALGEMEEN_WAC
   `claude-sonnet-5-5`, vervolgvragen `claude-haiku-5-5` (best-effort), `skills_bron._MATCH_MODEL` nog
   `claude-haiku-4-5-20251001`. Haiku 5.5 kost 5× méér boven 100K prompttokens (p90 OER ≈ 112K): de
   hoofdchat blijft op Sonnet tot `vergelijk_modellen.py` op grotere schaal is gemeten.
-- **Geen business logic in `app_fastapi/`**; geen raw SQL in routes — DB alleen via `db.py`
-  (`get_connection()`). `context.py` en `data.py` zijn dunne orchestrators over `chat.py`/`db.py`.
+- **Geen business logic in `app_fastapi/`**; geen raw SQL in routes — DB alleen via `db.py`.
+  `context.py` en `data.py` zijn dunne orchestrators over `chat.py`/`db.py` en krijgen de
+  verbinding als parameter.
+- **Afhankelijkheden via `AppDeps`** (`app_fastapi/deps.py`): config (`SESSION_SECRET`,
+  `ALGEMEEN_WACHTWOORD`, `COOKIE_HTTPS_ONLY`, `BEHEER_ENABLED`, `CHAT_MAX_SECONDEN`, `DB_PATH`,
+  `SESSIE_DB_PATH`), validatie.db (`deps.verbinding()`, migreert één keer), sessie-store, `ai_client`
+  (default `_ai._client`) en de OER-cache (`oer_blokken`, per app-instantie). Alleen
+  `AppDeps.uit_env()` leest env; `maak_app(deps)` hangt de bundel aan `app.state.deps` en routes lezen
+  hem via `deps_van(request)` — geen module-globals of `os.environ` in `app_fastapi/`. De
+  module-level `app = maak_app(AppDeps.uit_env())` is wat uvicorn/Docker/`start.sh` laden.
 - **Toegangspoort**: middleware `_toegangspoort` zet de héle app (ook `/`) achter `ALGEMEEN_WACHTWOORD`;
   `/api/*` krijgt 401, pagina's een redirect. Alleen `/static` is vrij.
-- **Sessiestate server-side** (`sessie.py`, SQLite `data/sessies.db`, TTL 6 uur; cookie draagt alleen
-  een `sid`). Dus **één Fly-machine** en de store overleeft geen redeploy. De middleware bewaart alleen
+- **Gesprek-module**: `gesprek.py` is de enige eigenaar van de gesprekshistorie (ruwe antwoordtekst
+  mét bronnenmarker; saneren voor het model, UI-view, cap, afgebroken beurten via `LopendeBeurt`).
+  Routes en `chat.py` raken de `{"role","content"}`-lijst niet direct aan; opslagsleutel in
+  `sessies.db` blijft `chat_history`.
+- **Sessiestate server-side** (`sessie.SessieStore` op `AppDeps.sessie_store`, SQLite
+  `data/sessies.db` via `SESSIE_DB_PATH`, TTL 6 uur; cookie draagt alleen een `sid`). Dus **één Fly-machine** en de store overleeft geen redeploy. De middleware bewaart alleen
   bij niet-GET-requests (behalve `/api/chat`, dat zelf post-stream bewaart, en `/api/vervolgvragen`):
   een GET die de sessie muteert moet `bewaar_sessie()` expliciet aanroepen.
 - **Vier chat-bronnen**, allemaal full-document: OER (leidend) + KD + skills + instellingsregelingen
-  (caps in `chat.py`: 500K / 300K / 50K / 300K). OER-onleesbaar → `bouw_systeem` gebruikt KD +
-  regelingen als hoofdbron; zonder enige bron volgt `LAGE_RELEVANTIE_BERICHT`.
+  (laders + caps in `bron_catalogus.py`: 500K / 300K / 50K / 300K). Alleen `BronCatalogus` kent de
+  naam van een bron (promptkop + markertitel + register); `chat.bouw_prompt` is de enige
+  prompt-builder. OER-onleesbaar → KD + regelingen als hoofdbron; zonder enige bron volgt
+  `LAGE_RELEVANTIE_BERICHT`.
 - **Juridische citatieplicht**: elke claim eist bron + vindplaats + woordelijk citaat (OER/KD/
   examenreglement); skills citeren bron + beroep + categorie + skill-naam. Verzonnen paginanummers
-  zijn verboden (`_SYSTEEM_TEMPLATE`, `_MULTI_SYSTEEM_TEMPLATE`).
+  zijn verboden (`chat._SYSTEEM_TEMPLATE`).
 - **Instelling-registry**: alle per-instelling-kennis leeft in `instellingen.py`; consumenten leiden
   daar hun mapping van af (bewaakt door `tests/test_instelling_lijsten_sync.py`). `INSTELLINGEN` is de
   seed-volgorde (gedeelde `Random(2026)`): append alleen aan het eind. Procedure: skill `add-institution`.
@@ -86,8 +102,9 @@ re-seed is een nieuwe deploy nodig. Fly-secrets: `SESSION_SECRET`, `ALGEMEEN_WAC
 
 - **Niet-geïndexeerde OER** (`geindexeerd=0`): geen kerntaken en mogelijk een leeg chatantwoord. Check
   `SELECT geindexeerd, bestandspad FROM oer_documenten WHERE id=?`.
-- **Ontbrekend bronbestand**: `geindexeerd=1` zegt niets over aanwezigheid op schijf. `laad_oer_tekst()`
-  valt terug `<stem>.md` → PDF; ontbreken beide → `LAGE_RELEVANTIE_BERICHT`.
+- **Ontbrekend bronbestand**: `geindexeerd=1` zegt niets over aanwezigheid op schijf.
+  `bron_catalogus.laad_oer_tekst()` valt terug `<stem>.md` → PDF; ontbreken beide →
+  `LAGE_RELEVANTIE_BERICHT`.
 - **Curio 27052/27060**: de st- en vg-versie delen één DB-sleutel; vg is geforceerd en een
   `ingest --alles` kan dat terugdraaien.
 - **Static-asset-cache**: `static_url()` berekent `?v=<mtime>` eenmalig bij opstart; na een edit aan

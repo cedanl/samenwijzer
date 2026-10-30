@@ -134,9 +134,14 @@ def test_kwic_classificatie():
     statuut = items["Studentenstatuut addendum gepubliceerd.pdf"]
     assert (statuut.soort, statuut.titel, statuut.versie_label) == (
         "studentenstatuut",
-        "Studentenstatuut — addendum",
+        "Studentenstatuut addendum",
         "addendum",
     )
+    # De titel is zelfbeschrijvend: als promptkop/chip wordt het "Studentenstatuut — addendum",
+    # niet een los "Addendum" waarvan niemand weet waar het bij hoort.
+    from validatie_samenwijzer.bron_catalogus import document_kop
+
+    assert document_kop(statuut.soort, statuut.titel) == "Studentenstatuut — addendum"
     module = items["Module overzicht.xlsx"]
     assert (module.soort, module.leerweg, module.crebo) == ("onderwijsplan", "BBL", "")
     assert items["Grof ontwerp challenges BBL4 (1).pdf"].status == ib.OVERGESLAGEN

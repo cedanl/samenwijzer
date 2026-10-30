@@ -2,13 +2,25 @@
 
 import os
 import sqlite3
+from pathlib import Path
+
+import pytest
 
 from app_fastapi import data
-from validatie_samenwijzer import opleiding
+from validatie_samenwijzer import db, opleiding
 
 
-def test_boom_structuur_en_sortering():
-    boom = data.opleidingen_boom()
+@pytest.fixture
+def boom():
+    """Integratie: de boom uit de echte (geseede) validatie.db."""
+    conn = db.get_connection(Path(os.environ.get("DB_PATH", "data/validatie.db")))
+    try:
+        return data.opleidingen_boom(conn)
+    finally:
+        conn.close()
+
+
+def test_boom_structuur_en_sortering(boom):
     assert isinstance(boom, list) and boom, "boom mag niet leeg zijn"
 
     # instellingen alfabetisch
@@ -47,23 +59,17 @@ def test_boom_structuur_en_sortering():
     )
 
 
-def test_boom_namen_komen_uit_het_asset():
+def test_boom_namen_komen_uit_het_asset(boom):
     # Integratie-check: de autoritatieve crebo-lookup voedt daadwerkelijk de boom
     # (niet enkel de string-fallback). Zonder cache-reset zou dit een lege lookup zien.
     asset = opleiding.laad_crebo_namen()
     assert asset, "crebo→naam-asset moet geladen zijn (data/opleidingsnamen.json)"
-    namen_in_boom = {
-        o["naam"]
-        for b in data.opleidingen_boom()
-        for lw in b["leerwegen"]
-        for o in lw["opleidingen"]
-    }
+    namen_in_boom = {o["naam"] for b in boom for lw in b["leerwegen"] for o in lw["opleidingen"]}
     assert namen_in_boom & set(asset.values()), "minstens één boom-naam moet uit het asset komen"
 
 
-def test_boom_alleen_geindexeerd():
+def test_boom_alleen_geindexeerd(boom):
     # Alle oer_ids in de boom moeten geindexeerd=1 zijn.
-    boom = data.opleidingen_boom()
     ids = {
         i
         for b in boom

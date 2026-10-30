@@ -4,27 +4,16 @@ from __future__ import annotations
 
 import json
 import logging
-import os
 import re
-from collections.abc import Generator, Iterable, Sequence
-from dataclasses import asdict, dataclass
-from pathlib import Path
+from collections.abc import Generator, Iterable
+from dataclasses import dataclass
 
 import anthropic
 
+from validatie_samenwijzer.bron_catalogus import BRON_TYPES, Bron, BronCatalogus, BronRegister
 from validatie_samenwijzer.instellingen import alle as _instellingen_alle
-from validatie_samenwijzer.kd_versies import kd_map, kies_kd_pad
-from validatie_samenwijzer.opleiding import schoon_opleiding_naam
 
 logger = logging.getLogger(__name__)
-
-_MAX_OER_TEKST_TEKENS = 500_000  # ruim voldoende voor elke OER binnen Sonnet 4.6 (1M context)
-_MAX_DOSSIER_TEKST_TEKENS = 300_000
-_MAX_SKILLS_TEKST_TEKENS = 50_000  # skills-blok is klein; cap als veiligheid
-# Cap voor instellingsbrede documenten (examenreglement/begeleidingsbeleid). Ruime veiligheidsrem:
-# een echt examenreglement meet ~37K tekens (~12,5K tokens), dus de cap bindt in de praktijk niet.
-# Onderbouwing: docs/plans/2026-06-02-instellingsbrede-bron.md §4 (kostenmeting 2026-06-02).
-_MAX_INSTELLING_TEKST_TEKENS = 300_000
 
 LAGE_RELEVANTIE_BERICHT = (
     "Ik kon de studiegids voor deze opleiding niet laden. "
@@ -40,18 +29,15 @@ LAGE_RELEVANTIE_BERICHT = (
 _INSTELLING_DOMEINEN: dict[str, str] = {i.naam: i.web_domein for i in _instellingen_alle()}
 
 
-def web_zoek_domeinen(oer_items: list[dict]) -> list[str]:
-    """Gesorteerde unie van instelling-domeinen voor de geladen OER's.
+def web_zoek_domeinen(instelling_sleutels: Iterable[str]) -> list[str]:
+    """Gesorteerde unie van de schoolsite-domeinen voor deze instellingen (korte sleutels).
 
     Leeg als geen van de instellingen een bekend domein heeft → de chat valt dan
     terug op puur documentcontext (geen webzoeken). Gesorteerd voor cache-stabiliteit.
     """
-    domeinen = {
-        _INSTELLING_DOMEINEN[item["naam"]]
-        for item in oer_items
-        if item.get("naam") in _INSTELLING_DOMEINEN
-    }
-    return sorted(domeinen)
+    return sorted(
+        {_INSTELLING_DOMEINEN[s] for s in instelling_sleutels if s in _INSTELLING_DOMEINEN}
+    )
 
 
 # Vacaturesites voor de vacature-/stagezoek (los van de school-webzoek). Stagemarkt =
@@ -59,11 +45,6 @@ def web_zoek_domeinen(oer_items: list[dict]) -> list[str]:
 # die de Anthropic-crawler toelaat — een geblokkeerd domein (bv. nationalevacaturebank.nl)
 # geeft een 400 op de HELE web_search-call. Gescoped als allowed_domains op web_search/web_fetch.
 _VACATURE_DOMEINEN = ["stagemarkt.nl", "indeed.nl"]
-
-
-def vacature_domeinen() -> list[str]:
-    """Vaste vacaturesites (kopie, gesorteerd voor cache-stabiliteit)."""
-    return sorted(_VACATURE_DOMEINEN)
 
 
 # Instructie + verplichte waarschuwing/citatie voor de webzoek-fallback. Alleen in de
@@ -124,12 +105,11 @@ helemaal onderaan, in dit machineformaat (de gebruiker ziet deze regel niet; hij
 omgezet in nette bronvermeldingen):
 <!-- bronnen: type|titel; type|titel -->
 - type is één van: studiegids, kwalificatiedossier, schooldocument, skills, website.
-- titel is de naam uit de blokkop hieronder, zonder [INFORMATIEF] en zonder de
-  instellingsnaam tussen haakjes, in gewone hoofdletters (bv. "Examenreglement",
-  "Protocol kluiscontrole"). Voor de studiegids: "OER <opleiding>" (bij meerdere OER's de
-  naam uit de kop "OER N: …"). Voor het KD: "Kwalificatiedossier <crebo>". Voor skills:
-  de bronnaam uit de kop (ESCO of CompetentNL). Voor website: het domein, gevolgd door
-  |<volledige url> als derde veld.
+- Voor de bronnen hieronder neem je type|titel LETTERLIJK over uit deze lijst; andere
+  titels worden genegeerd. Onder elke bronkop staat een regel "Bronvermelding: type|titel":
+  dat is precies de te gebruiken tekst.
+{titels}
+- Voor website: het domein, gevolgd door |<volledige url> als derde veld.
 - Noem alleen bronnen die je in dít antwoord daadwerkelijk gebruikt hebt; maximaal 6.
 - Heb je geen bron gebruikt (bv. "dat staat nergens in de bronnen"), laat de regel dan weg.
 - Ook bij een webantwoord: de "Bron: "-regel met de URL('s) blijft staan, en DAARNA volgt
@@ -173,7 +153,7 @@ naar de zoek-/filterpagina van die site. Vind je niets, zeg dat dan eerlijk — 
 vacatures. Sluit af met de bron-URL('s)."""
 
 
-# Doelgroep-instructie: MBO-studenten niveau 1 t/m 4 lezen mee. In beide system-templates
+# Doelgroep-instructie: MBO-studenten niveau 1 t/m 4 lezen mee. In de system-template
 # ingespoten (zelfde patroon als _WEB_ZOEK_BLOK). De woordelijke citaten blijven onaangetast —
 # de uitleg in simpele taal komt ERNAAST, nooit in de plaats van het citaat.
 _DOELGROEP_TOON = """
@@ -216,50 +196,25 @@ het woordelijke citaat en de "In gewone taal:"-uitleg erna blijven verplicht,
 ook in een kort antwoord."""
 
 
+# Eén systeemprompt voor alle modi. De modus (één OER, meerdere OER's, OER-onleesbaar) bepaalt
+# alleen de fragmenten {intro}, {bronhierarchie} en de citatie-invulling; koppen en titels van
+# de bronblokken komen uit de BronCatalogus en zijn in elke modus gelijk.
 _SYSTEEM_TEMPLATE = """\
-Je bent een onderwijs-assistent voor de opleiding {opleiding} bij {instelling}.{leerweg_blok}
+{intro}
 
-{primaire_bron}
-
-AANVULLENDE BRON — instellingsbrede regelingen van de school (zie de koppen
-hieronder, zoals het examenreglement en het begeleidings-/welzijnsbeleid). Dit
-zijn APARTE documenten, NIET de OER. Ze gelden voor de hele instelling.
-Raadpleeg ze voor vragen over examinering, herkansingen, fraude, bezwaar of
-begeleiding; bij school-specifieke regels gaan ze vóór het landelijke KD.
-{schooldoc_banner}
-
-{kd_instructie}
-
-AANVULLENDE BRON — de skills-taxonomie (ESCO): de skills, vaardigheden en
-competenties die horen bij het beroep waarvoor deze opleiding opleidt. Raadpleeg
-deze alléén bij vragen over welke skills of vaardigheden het beroep vereist
-(bijv. "welke skills heb ik nodig voor dit beroep?").
+{bronhierarchie}
 
 CITATIEPLICHT (de OER is een juridisch document).
-Bij ELKE claim uit de OER, het KD of een juridische regeling (een blok zonder
+Bij ELKE claim uit {claim_bronnen} of een juridische regeling (een blok zonder
 [INFORMATIEF] in de kop), MOET je:
-1. de bron noemen ("Volgens de OER", "Volgens het Examenreglement" of "Volgens
-   het kwalificatiedossier"),
+1. de bron noemen ({bron_noemen}),
 2. de exacte vindplaats noemen — sectie-nummer, kopje, artikel of paginanummer,
 3. de relevante passage WOORDELIJK citeren tussen dubbele aanhalingstekens, op
    een APARTE regel als markdown-blockquote (de regel begint met "> "), zodat de
    verwijzing visueel als juridisch citaat opvalt. Zet bron + vindplaats op de
    regel ervoor.
 
-Voorbeeld OER:
-Volgens de OER, sectie 3.2 "Bindend studieadvies":
-> "De student ontvangt uiterlijk in juli van het eerste studiejaar een bindend studieadvies."
-
-Voorbeeld regeling:
-Volgens het Examenreglement, artikel 6.3 "Herkansingen":
-> "..."
-
-Noem de regeling exact zoals in de kop hierboven (bv. "het Examenreglement" of
-"het Begeleidingsbeleid") — citeer een regeling NOOIT als "de OER".
-
-Voorbeeld KD: De OER beschrijft dit niet. Volgens het kwalificatiedossier,
-kerntaak B1-K1 "Bieden van zorg en ondersteuning":
-> "..."
+{citatie_voorbeelden}
 
 Voor de skills-taxonomie geldt een AANGEPASTE citatie (een taxonomie heeft geen
 secties of pagina's): noem de bron PRECIES zoals die in de kop van het
@@ -278,15 +233,37 @@ dat je niet citeert nooit in je antwoord; begin gewoon met het antwoord.
 
 Een claim zonder bronvermelding is niet toegestaan. Bij juridische bronnen mag
 parafraseren alleen ter inleiding van een citaat, niet ter vervanging ervan.
-Beantwoord vragen
-uitsluitend op basis van deze bronnen — nooit vanuit eigen kennis. Als de
-informatie in geen van de bronnen staat, zeg dat dan expliciet. Antwoord in het
-Nederlands.{bronnenregel}{web_zoek_blok}{vacature_blok}{doelgroep_toon}
+Beantwoord vragen uitsluitend op basis van deze bronnen — nooit vanuit eigen kennis.
+Als de informatie in geen van de bronnen staat, zeg dat dan expliciet.
+Antwoord in het Nederlands.{bronnenregel}{web_zoek_blok}{vacature_blok}{doelgroep_toon}
 
-{oer_sectie}{instelling_blok}{dossier_blok}{skills_blok}"""
+{bronblokken}"""
 
-# Twee modi voor de bronhiërarchie: normaal (OER leidend) en onleesbaar (gescande OER
-# zonder tekstlaag → KD/regelingen als hoofdbron). Zie spec 2026-06-09-chat-kd-fallback.
+# ── Modus: één OER ────────────────────────────────────────────────────────────
+_INTRO_ENKEL = (
+    "Je bent een onderwijs-assistent voor de opleiding {opleiding} bij {instelling}.{leerweg_blok}"
+)
+
+_BRONHIERARCHIE_ENKEL = """\
+{primaire_bron}
+
+AANVULLENDE BRON — instellingsbrede regelingen van de school (zie de koppen
+hieronder, zoals het examenreglement en het begeleidings-/welzijnsbeleid). Dit
+zijn APARTE documenten, NIET de OER. Ze gelden voor de hele instelling.
+Raadpleeg ze voor vragen over examinering, herkansingen, fraude, bezwaar of
+begeleiding; bij school-specifieke regels gaan ze vóór het landelijke KD.
+{schooldoc_banner}
+
+{kd_instructie}
+
+AANVULLENDE BRON — de skills-taxonomie (ESCO): de skills, vaardigheden en
+competenties die horen bij het beroep waarvoor deze opleiding opleidt. Raadpleeg
+deze alléén bij vragen over welke skills of vaardigheden het beroep vereist
+(bijv. "welke skills heb ik nodig voor dit beroep?")."""
+
+# Twee varianten voor de bronhiërarchie bij één OER: normaal (OER leidend) en OER-onleesbaar
+# (gescande OER zonder tekstlaag → KD/regelingen als hoofdbron). Zie spec
+# 2026-06-09-chat-kd-fallback.
 _PRIMAIRE_BRON_OER = """\
 PRIMAIRE BRON — de Onderwijs- en Examenregeling (OER) van deze opleiding.
 Dit is het leidende, schoolspecifieke document. Beantwoord vragen primair op
@@ -309,276 +286,128 @@ het KD je hoofdbron voor opleidings- en beroepsinhoud. Citeer het KD direct met
 bron, vindplaats en woordelijk citaat; gebruik NIET de inleider "De OER
 beschrijft dit niet"."""
 
-_OER_SECTIE_OER = "=== ONDERWIJS- EN EXAMENREGELING (OER) ===\n{oer_tekst}"
-_OER_SECTIE_GEEN_OER = (
-    "=== ONDERWIJS- EN EXAMENREGELING (OER) ===\n"
-    "(De OER van deze opleiding is niet machine-leesbaar; gebruik de aanvullende "
-    "bronnen hieronder.)"
-)
+_CITATIE_ENKEL = {
+    "claim_bronnen": "de OER, het KD",
+    "bron_noemen": (
+        '"Volgens de OER", "Volgens het Examenreglement" of "Volgens\n   het kwalificatiedossier"'
+    ),
+    "citatie_voorbeelden": """\
+Voorbeeld OER:
+Volgens de OER, sectie 3.2 "Bindend studieadvies":
+> "De student ontvangt uiterlijk in juli van het eerste studiejaar een bindend studieadvies."
 
-_DOSSIER_BLOK_TEMPLATE = "\n\n=== KWALIFICATIEDOSSIER (Crebo {crebo}) ===\n{dossier_tekst}"
-_INSTELLING_BLOK_TEMPLATE = "\n\n=== {kop} ({instelling}) ===\n{tekst}"
+Voorbeeld regeling:
+Volgens het Examenreglement, artikel 6.3 "Herkansingen":
+> "..."
+
+Noem de regeling exact zoals in de kop hierboven (bv. "het Examenreglement" of
+"het Begeleidingsbeleid") — citeer een regeling NOOIT als "de OER".
+
+Voorbeeld KD: De OER beschrijft dit niet. Volgens het kwalificatiedossier,
+kerntaak B1-K1 "Bieden van zorg en ondersteuning":
+> "..." """.rstrip(),
+}
+
+# ── Modus: meerdere OER's ─────────────────────────────────────────────────────
+_INTRO_MULTI = """\
+Je bent een onderwijs-assistent voor MBO-opleidingen.
+Hieronder staan {n} Onderwijs- en Examenregelingen (OERs), elk waar beschikbaar
+gevolgd door het bijbehorende kwalificatiedossier (KD)."""
+
+_BRONHIERARCHIE_MULTI = """\
+PRIMAIRE BRON — de OERs (schoolspecifieke afspraken). Dit is leidend.
+AANVULLENDE BRON — instellingsbrede regelingen (zoals een examenreglement of
+begeleidingsbeleid) waar bij een OER getoond. Dit zijn APARTE documenten, NIET
+de OER; ze gelden voor de hele instelling en gaan bij school-specifieke regels
+vóór het KD.
+{schooldoc_banner}
+AANVULLENDE BRON — de KDs (landelijke eisen, kerntaken, werkprocessen).
+Raadpleeg een KD alléén als de bijbehorende OER het onderwerp niet of
+onvoldoende behandelt. Geef niet onnodig een tweede antwoord uit het KD als
+de OER de vraag al beantwoordt — de OER is leidend.
+Staat bij een OER dat deze niet machine-leesbaar is, gebruik dan voor díe
+opleiding het bijbehorende KD en de instellingsregelingen als hoofdbron.
+AANVULLENDE BRON — de skills-taxonomie (ESCO) waar beschikbaar: de skills en
+vaardigheden die horen bij het beroep van een opleiding. Raadpleeg deze alléén
+bij vragen over welke skills of vaardigheden het beroep vereist."""
+
+_CITATIE_MULTI = {
+    "claim_bronnen": "een OER, een KD",
+    "bron_noemen": '"OER N" of "Kwalificatiedossier N", zie de koppen hieronder',
+    "citatie_voorbeelden": """\
+Voorbeeld:
+OER 1, sectie 3.2 "Bindend studieadvies":
+> "De student ontvangt uiterlijk in juli..."
+
+Voor het KD: De OER beschrijft dit niet. Volgens Kwalificatiedossier 1,
+kerntaak B1-K1:
+> "..."
+
+Voor een juridische instellingsbrede regeling: noem de regeling exact zoals in de
+kop (bv. "het Examenreglement"), met artikel/vindplaats en het woordelijk citaat
+als blockquote — nooit als "de OER".""",
+}
 
 
-def resolve_oer_pad(bestandspad: str) -> Path:
-    """Maak een DB-`bestandspad` (relatief, bv. `oeren/talland_oeren/x.pdf`) absoluut.
+@dataclass(frozen=True)
+class Prompt:
+    """Systeemprompt plus de domeinen voor de webzoek-/webfetch-tools.
 
-    De DB bewaart paden onder de oeren/-tree. OEREN_PAD wijst naar die tree
-    (default `oeren`, na de root-dedupe `../oeren` vanuit validatie_samenwijzer/).
-    De parent van OEREN_PAD is de bovenliggende projectroot — daarmee wordt
-    `oeren/...` correct geresolved naar het echte bestand.
+    ``web_domeinen`` gaat ongewijzigd naar ``genereer_antwoord(web_search_domeinen=...)``;
+    leeg betekent: geen tools. Bevat het schooldomeinen, dan staat de webzoek-instructie in
+    ``systeem`` (web-instructie alleen mét tools).
     """
-    pad = Path(bestandspad)
-    if pad.is_absolute():
-        return pad
-    return Path(os.environ.get("OEREN_PAD", "oeren")).resolve().parent / pad
+
+    systeem: str
+    web_domeinen: list[str]
 
 
-def laad_oer_tekst(bestandspad: Path) -> str:
-    """Laad de OER-tekst voor gebruik als chatcontext.
+def bouw_prompt(catalogus: BronCatalogus, *, vacatures: bool = True) -> Prompt:
+    """Stel de systeemprompt samen uit de bron-catalogus van de chat-sessie.
 
-    Prioriteit: .md-broertje (markitdown-kwaliteit) → .md zelf → PDF via pdfplumber.
-
-    Args:
-        bestandspad: Pad naar het OER-bestand (PDF of Markdown).
-
-    Returns:
-        Volledige OER-tekst als string, of lege string als niets beschikbaar is.
+    De modus volgt uit de catalogus: één OER (met OER-onleesbaar-modus als die OER geen
+    leesbare tekst heeft) of meerdere OER's. Het webzoek-besluit valt hier: schooldomeinen
+    komen uit de instellingen van de catalogus; alleen als die er zijn gaat de
+    webzoek-instructie mee. Met ``vacatures`` (standaard) komen het vacatureblok en de
+    vacaturesites erbij — de vacaturezoek is daarmee altijd beschikbaar, ook bij een
+    instelling zonder webdomein. Een lege catalogus (geen enkele bron) geeft een lege prompt.
     """
-    if not bestandspad.exists() and bestandspad.suffix.lower() != ".md":
-        # Probeer het .md-broertje ook als het bronbestand zelf ontbreekt
-        md_pad = bestandspad.with_suffix(".md")
-        if md_pad.exists():
-            md_tekst = md_pad.read_text(encoding="utf-8", errors="replace")
-            if md_tekst.strip():
-                return md_tekst[:_MAX_OER_TEKST_TEKENS]
-        return ""
+    if catalogus.leeg:
+        return Prompt("", [])
+    school_domeinen = web_zoek_domeinen(catalogus.instelling_sleutels)
+    web_domeinen = set(school_domeinen) | (set(_VACATURE_DOMEINEN) if vacatures else set())
 
-    suffix = bestandspad.suffix.lower()
-
-    if suffix == ".md":
-        return bestandspad.read_text(encoding="utf-8", errors="replace")[:_MAX_OER_TEKST_TEKENS]
-
-    if suffix == ".pdf":
-        # Voorkeur: naastliggend .md-bestand van markitdown-conversie — maar alleen als
-        # het écht inhoud heeft. Een leeg .md (bv. mislukte conversie van een gescande
-        # PDF) mag de pdfplumber-fallback niet blokkeren.
-        md_pad = bestandspad.with_suffix(".md")
-        if md_pad.exists():
-            md_tekst = md_pad.read_text(encoding="utf-8", errors="replace")
-            if md_tekst.strip():
-                return md_tekst[:_MAX_OER_TEKST_TEKENS]
-        # Fallback: pdfplumber
-        try:
-            import pdfplumber
-
-            tekst_delen = []
-            with pdfplumber.open(str(bestandspad)) as pdf:
-                for pagina in pdf.pages:
-                    t = pagina.extract_text()
-                    if t:
-                        tekst_delen.append(t)
-            return "\n\n".join(tekst_delen)[:_MAX_OER_TEKST_TEKENS]
-        except Exception as e:
-            logger.warning("PDF lezen mislukt voor '%s': %s", bestandspad, e)
-            return ""
-
-    return ""
-
-
-def laad_instelling_bron_tekst(bestandspad: Path | str | None) -> str:
-    """Laad de tekst van een instellingsbreed document (examenreglement/begeleidingsbeleid).
-
-    Zelfde laadlogica als de OER (md-voorkeur → PDF-fallback), met een eigen cap. Geeft
-    een lege string bij een ontbrekend pad of onleesbaar bestand, zodat de chat zonder de
-    bron blijft werken.
-
-    Args:
-        bestandspad: DB-`bestandspad` van het document (al naar absoluut pad geresolved),
-            of None als de instelling deze soort niet heeft.
-    """
-    if not bestandspad:
-        return ""
-    pad = Path(bestandspad)
-    if not pad.exists() and not pad.with_suffix(".md").exists():
-        return ""
-    return laad_oer_tekst(pad)[:_MAX_INSTELLING_TEKST_TEKENS]
-
-
-def pad_kwalificatiedossier(crebo: str) -> Path:
-    """Pad naar het markdown-bestand van het kwalificatiedossier voor een crebo.
-
-    Default: ``<repo-root>/kwalificatiedossiers/pdfs/<crebo>.md``. Override via
-    ``KWALDOSSIERS_PAD`` (absolute of relatief; valt terug op default als de
-    env-var ontbreekt).
-    """
-    return kd_map() / f"{crebo}.md"
-
-
-def laad_kwalificatiedossier_tekst(crebo: str | None, cohort: str | int | None = None) -> str:
-    """Laad de markdown-tekst van een kwalificatiedossier op crebo, of lege string.
-
-    Met ``cohort`` wordt de KD-versie gekozen die voor dat cohort geldt (zie ``kd_versies``);
-    zonder cohort of zonder match geldt het nieuwste (``<crebo>.md``).
-    """
-    if not crebo:
-        return ""
-    md_pad = kies_kd_pad(str(crebo), cohort) or pad_kwalificatiedossier(str(crebo))
-    if not md_pad.exists():
-        return ""
-    return md_pad.read_text(encoding="utf-8", errors="replace")[:_MAX_DOSSIER_TEKST_TEKENS]
-
-
-def pad_skills(crebo: str) -> Path:
-    """Pad naar het skills-taxonomie-artefact voor een crebo.
-
-    Default: ``<subproject-root>/data/skills/<crebo>.json`` (gebouwd door
-    ``scripts/build_skills_taxonomie.py``). Override via env-var ``SKILLS_PAD``.
-    """
-    base = os.environ.get("SKILLS_PAD")
-    if base:
-        directory = Path(base).resolve()
-    else:
-        # chat.py → parents[2] = subproject-root → data/skills
-        directory = Path(__file__).resolve().parents[2] / "data" / "skills"
-    return directory / f"{crebo}.json"
-
-
-def laad_skills_tekst(crebo: str | None) -> str:
-    """Bouw het skills-tekstblok voor een crebo, of lege string als er geen artefact is.
-
-    Leest het bron-agnostische JSON-artefact en formatteert het tot een leesbaar
-    blok voor de systeemprompt. Lege string als het bestand ontbreekt of geen
-    beroep gematcht is — de chat werkt dan zonder skills.
-    """
-    if not crebo:
-        return ""
-    json_pad = pad_skills(str(crebo))
-    if not json_pad.exists():
-        return ""
-    try:
-        data = json.loads(json_pad.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError) as e:
-        logger.warning("Skills-artefact onleesbaar voor crebo %s: %s", crebo, e)
-        return ""
-
-    beroep = data.get("beroep")
-    if not beroep:
-        return ""
-
-    regels = [f'Beroep "{beroep["label"]}"']
-    if beroep.get("definitie"):
-        regels.append(beroep["definitie"])
-    for categorie, kop in (
-        ("essentieel", "Essentiële skills"),
-        ("belangrijk", "Belangrijke skills"),
-        ("optioneel", "Optionele skills"),
-    ):
-        labels = [s["label"] for s in data.get("skills", []) if s["categorie"] == categorie]
-        if labels:
-            regels.append(f"\n{kop}:")
-            regels.extend(f"- {label}" for label in labels)
-
-    bron = data.get("bron", "ESCO")
-    tekst = "\n".join(regels)[:_MAX_SKILLS_TEKST_TEKENS]
-    return (
-        f"\n\n=== SKILLS-TAXONOMIE ({bron}) — beroep: {beroep['label']} ===\n"
-        f"De skills die horen bij het beroep waarvoor deze opleiding opleidt. "
-        f"Citeer deze skills uitsluitend als afkomstig van: {bron}.\n"
-        f"{tekst}"
-    )
-
-
-def _instelling_blok(instelling: str, instelling_bronnen: Sequence[tuple[str, str]]) -> str:
-    """Render de instellingsbrede regelingen (label, tekst) als prompt-blokken.
-
-    Lege of ontbrekende bronnen leveren geen blok op (geen lege koppen).
-    """
-    delen = [
-        _INSTELLING_BLOK_TEMPLATE.format(kop=kop.upper(), instelling=instelling, tekst=tekst)
-        for kop, tekst in instelling_bronnen
-        if tekst
-    ]
-    return "".join(delen)
-
-
-def bouw_systeem(
-    oer_tekst: str,
-    opleiding: str,
-    instelling: str,
-    dossier_tekst: str = "",
-    crebo: str | None = None,
-    skills_tekst: str = "",
-    instelling_bronnen: Sequence[tuple[str, str]] = (),
-    web_zoeken: bool = False,
-    leerweg: str = "",
-    vacatures: bool = False,
-) -> str:
-    """Stel de systeemprompt samen met OER, optionele instellingsbrede regelingen, KD en skills.
-
-    Args:
-        instelling_bronnen: (label, tekst)-paren voor instellingsbrede regelingen
-            (bv. ("Examenreglement", ...)). Het label wordt de blok-kop en de te
-            citeren bronnaam. Volgorde bepaalt de blok-volgorde; lege tekst → geen blok.
-        web_zoeken: voeg de webzoek-instructie toe aan de prompt (graceful degradation).
-            Zet dit alleen True wanneer `genereer_antwoord` ook de webzoek-tool meekrijgt.
-    """
-    # Schoon de opleidingsnaam op de read-boundary: in de DB staan ruwe bestandsnaam-
-    # stems (bv. Da Vinci '25642_BBL_2025__...Examenplan-hairstylist-dame-cohort-2025').
-    # De UI doet dit al; zo ziet het model ook een leesbare naam i.p.v. de codes.
-    opleiding = schoon_opleiding_naam(opleiding, str(crebo) if crebo else "")
-    dossier_blok = ""
-    if dossier_tekst:
-        dossier_blok = _DOSSIER_BLOK_TEMPLATE.format(
-            crebo=crebo or "onbekend",
-            dossier_tekst=dossier_tekst,
+    if len(catalogus.oers) == 1:
+        oer = catalogus.oers[0]
+        leerweg = oer.invoer.leerweg
+        intro = _INTRO_ENKEL.format(
+            opleiding=oer.opleiding,
+            instelling=oer.invoer.instelling,
+            leerweg_blok=f"\nLeerweg van deze opleiding: {leerweg}." if leerweg else "",
         )
-    oer_onleesbaar = not oer_tekst.strip()
-    oer_sectie = (
-        _OER_SECTIE_GEEN_OER if oer_onleesbaar else _OER_SECTIE_OER.format(oer_tekst=oer_tekst)
-    )
-    leerweg_blok = f"\nLeerweg van deze opleiding: {leerweg}." if leerweg else ""
-    return _SYSTEEM_TEMPLATE.format(
-        opleiding=opleiding,
-        instelling=instelling,
-        leerweg_blok=leerweg_blok,
-        primaire_bron=_PRIMAIRE_BRON_GEEN_OER if oer_onleesbaar else _PRIMAIRE_BRON_OER,
-        kd_instructie=_KD_INSTRUCTIE_GEEN_OER if oer_onleesbaar else _KD_INSTRUCTIE_OER,
-        oer_sectie=oer_sectie,
-        instelling_blok=_instelling_blok(instelling, instelling_bronnen),
-        dossier_blok=dossier_blok,
-        skills_blok=skills_tekst,
-        schooldoc_banner=_SCHOOLDOC_BANNER_INSTRUCTIE,
-        bronnenregel=_BRONNENREGEL_BLOK,
-        web_zoek_blok=_WEB_ZOEK_BLOK if web_zoeken else "",
+        bronhierarchie = _BRONHIERARCHIE_ENKEL.format(
+            primaire_bron=_PRIMAIRE_BRON_GEEN_OER if oer.onleesbaar else _PRIMAIRE_BRON_OER,
+            kd_instructie=_KD_INSTRUCTIE_GEEN_OER if oer.onleesbaar else _KD_INSTRUCTIE_OER,
+            schooldoc_banner=_SCHOOLDOC_BANNER_INSTRUCTIE,
+        )
+        citatie = _CITATIE_ENKEL
+    else:
+        intro = _INTRO_MULTI.format(n=len(catalogus.oers))
+        bronhierarchie = _BRONHIERARCHIE_MULTI.format(schooldoc_banner=_SCHOOLDOC_BANNER_INSTRUCTIE)
+        citatie = _CITATIE_MULTI
+
+    titels = "\n".join(f"  {b.type}|{b.titel}" for b in catalogus.bronnen)
+    systeem = _SYSTEEM_TEMPLATE.format(
+        intro=intro,
+        bronhierarchie=bronhierarchie,
+        **citatie,
+        bronnenregel=_BRONNENREGEL_BLOK.format(titels=titels),
+        web_zoek_blok=_WEB_ZOEK_BLOK if school_domeinen else "",
         vacature_blok=_VACATURE_BLOK if vacatures else "",
         doelgroep_toon=_DOELGROEP_TOON,
+        bronblokken=catalogus.bronblokken(),
     )
-
-
-def bouw_berichten(chat_history: list[dict], vraag: str) -> list[dict]:
-    """Voeg de nieuwe vraag toe aan de gesprekshistorie.
-
-    Saneert de historie zodat de API nooit een ongeldige berichtenlijst krijgt:
-    lege beurten (een mislukte AI-call die een lege assistant-turn achterliet)
-    worden overgeslagen, twee dezelfde rollen op rij ingeklapt, en een
-    onbeantwoorde laatste user-beurt wordt vervangen door de nieuwe vraag. Zo
-    kan één gefaalde beurt niet de hele sessie blokkeren (API 400 op lege/
-    niet-alternerende content).
-    """
-    berichten: list[dict] = []
-    for bericht in chat_history:
-        if not str(bericht.get("content", "")).strip():
-            continue  # lege/mislukte beurt overslaan
-        if berichten and berichten[-1]["role"] == bericht["role"]:
-            continue  # geen twee dezelfde rollen op rij
-        berichten.append({"role": bericht["role"], "content": bericht["content"]})
-    while berichten and berichten[0]["role"] != "user":
-        berichten.pop(0)  # API verwacht een user-beurt als eerste
-    if berichten and berichten[-1]["role"] == "user":
-        berichten.pop()  # onbeantwoorde vraag → vervangen door de nieuwe
-    berichten.append({"role": "user", "content": vraag})
-    return berichten
+    return Prompt(systeem, sorted(web_domeinen))
 
 
 def _messages_met_cache(berichten: list[dict]) -> list[dict]:
@@ -641,22 +470,10 @@ def _prefix_staart(buf: str, disclaimer: str) -> int:
     return 0
 
 
-BRON_TYPES: frozenset[str] = frozenset(
-    {"studiegids", "kwalificatiedossier", "schooldocument", "skills", "website"}
-)
 _BRONNEN_MARKER = "<!-- bronnen:"
 _BRONNEN_SLUIT = "-->"
 _MAX_BRONNEN = 6
 _MAX_BRON_TITEL = 80
-
-
-@dataclass(frozen=True)
-class Bron:
-    """Eén bron die het model onder een antwoord noemt (voor de bronnen-chips)."""
-
-    type: str
-    titel: str
-    url: str | None = None
 
 
 @dataclass(frozen=True)
@@ -666,13 +483,19 @@ class Status:
     code: str
 
 
-def splits_bronnen(tekst: str) -> tuple[str, list[Bron]]:
+def splits_bronnen(
+    tekst: str, register: BronRegister | Iterable[dict] | None = None
+) -> tuple[str, list[Bron]]:
     """Haal de machineleesbare bronnenregel uit een modelantwoord.
 
-    Formaat: `<!-- bronnen: type|titel; type|titel|url -->`. Onbekende types en items zonder
-    titel vallen weg; dubbele (type, titel) worden samengevoegd; maximaal 6 bronnen, titel
-    maximaal 80 tekens. Zonder sluitende `-->` is de regel onvolledig: alles vanaf de marker
-    wordt weggelaten en er komen geen bronnen terug.
+    Formaat: `<!-- bronnen: type|titel; type|titel|url -->`. Items zonder titel vallen weg;
+    dubbele (type, titel) worden samengevoegd; maximaal 6 bronnen. Zonder sluitende `-->` is de
+    regel onvolledig: alles vanaf de marker wordt weggelaten en er komen geen bronnen terug.
+
+    Zonder `register` geldt alleen een type-check (onbekende types vallen weg, titel maximaal
+    80 tekens). Mét `register` (een `BronRegister` of de `BronCatalogus.register()`-dicts uit
+    de sessie) wordt elke titel herleid: onbekende titels vallen weg, bekende krijgen hun
+    canonieke titel, type en identifiers (`oer_id`/`doc_id`/`crebo`).
 
     Returns:
         (tekst zonder markerregel, gevalideerde bronnen).
@@ -686,19 +509,32 @@ def splits_bronnen(tekst: str) -> tuple[str, list[Bron]]:
     if einde == -1:
         return voor, []
     na = tekst[einde + len(_BRONNEN_SLUIT) :]
+    if register is not None and not isinstance(register, BronRegister):
+        register = BronRegister.uit_dicts(register)
 
     bronnen: list[Bron] = []
     gezien: set[tuple[str, str]] = set()
+    afgewezen = 0
     for item in tekst[inhoud_start:einde].split(";"):
         velden = [v.strip() for v in item.split("|", 2)]
-        if len(velden) < 2 or velden[0] not in BRON_TYPES or not velden[1]:
+        if len(velden) < 2 or not velden[1]:
             continue
-        soort, titel = velden[0], velden[1][:_MAX_BRON_TITEL]
-        if (soort, titel) in gezien:
-            continue
-        gezien.add((soort, titel))
         url = velden[2] if len(velden) == 3 and velden[2] else None
-        bronnen.append(Bron(soort, titel, url))
+        if register is None:
+            if velden[0] not in BRON_TYPES:
+                continue
+            bron: Bron | None = Bron(velden[0], velden[1][:_MAX_BRON_TITEL], url)
+        else:
+            bron = register.resolve(velden[1], url)
+        if bron is None:
+            afgewezen += 1
+            continue
+        if (bron.type, bron.titel) in gezien:
+            continue
+        gezien.add((bron.type, bron.titel))
+        bronnen.append(bron)
+    if register is not None:
+        logger.debug("Bronnenregel: %d herleid, %d onbekend afgewezen", len(bronnen), afgewezen)
     return voor + na, bronnen[:_MAX_BRONNEN]
 
 
@@ -756,23 +592,15 @@ def status_uit_tekstbegin(tekst: str) -> str | None:
     return None
 
 
-def geschiedenis_voor_ui(chat_history: list[dict]) -> list[dict]:
-    """Maak de bewaarde gespreksgeschiedenis geschikt voor de UI.
+def knip_bronnenregel(tekst: str) -> str:
+    """Geef `tekst` zonder bronnenregel, ook als die nog niet af is (afgebroken stream).
 
-    Assistant-beurten krijgen de bronnenmarker eruit (`content`) en de geparste bronnen als
-    `bronnen`-lijst (altijd aanwezig, mag leeg zijn); user-beurten blijven ongewijzigd.
-    `chat_history` zelf wordt niet gemuteerd (blijft de ruwe tekst mét marker).
+    Haalt een complete markerregel weg, een onvolledige (`<!-- bronnen: a|b` zonder `-->`) en
+    een begin van de marker aan het einde (`<!-- bro`). Zo kan een gedeeltelijk antwoord veilig
+    in de gesprekshistorie zonder dat het model of de UI een halve marker ziet.
     """
-    uit: list[dict] = []
-    for beurt in chat_history:
-        if beurt.get("role") == "assistant":
-            tekst, bronnen = splits_bronnen(beurt.get("content", ""))
-            uit.append(
-                {"role": "assistant", "content": tekst, "bronnen": [asdict(b) for b in bronnen]}
-            )
-        else:
-            uit.append({"role": beurt.get("role"), "content": beurt.get("content", "")})
-    return uit
+    schoon = "".join(strip_bronnenregel([tekst]))
+    return schoon[: len(schoon) - _prefix_staart(schoon, _BRONNEN_MARKER)].rstrip()
 
 
 def _stream_items(stream) -> Generator[str | Status]:
@@ -812,8 +640,8 @@ def genereer_antwoord(
         model: Claude-model ID.
         max_tokens: Maximum aantal tokens in het antwoord.
         web_search_domeinen: indien gezet, krijgt het model de webzoek- én webfetch-tools
-            (graceful degradation), beide gescoped tot deze domeinen. Stuur dan ook
-            `web_zoeken=True` mee aan `bouw_systeem`/`bouw_gecombineerd_systeem`.
+            (graceful degradation), beide gescoped tot deze domeinen. Geef hier
+            `bouw_prompt(...).web_domeinen` door, zodat prompt en tools bij elkaar passen.
 
     Yields:
         Tekst-fragmenten van het gestreamde antwoord en `Status`-objecten (web-zoek gestart).
@@ -862,138 +690,6 @@ def genereer_antwoord(
             ),
             _SCHOOLDOC_DISCLAIMER,
         )
-
-
-# ── Multi-OER ──────────────────────────────────────────────────────────────────
-
-_MULTI_SYSTEEM_TEMPLATE = """\
-Je bent een onderwijs-assistent voor MBO-opleidingen.
-Hieronder staan {n} Onderwijs- en Examenregelingen (OERs), elk waar beschikbaar
-gevolgd door het bijbehorende kwalificatiedossier (KD).
-
-PRIMAIRE BRON — de OERs (schoolspecifieke afspraken). Dit is leidend.
-AANVULLENDE BRON — instellingsbrede regelingen (zoals een examenreglement of
-begeleidingsbeleid) waar bij een OER getoond. Dit zijn APARTE documenten, NIET
-de OER; ze gelden voor de hele instelling en gaan bij school-specifieke regels
-vóór het KD.
-{schooldoc_banner}
-AANVULLENDE BRON — de KDs (landelijke eisen, kerntaken, werkprocessen).
-Raadpleeg een KD alléén als de bijbehorende OER het onderwerp niet of
-onvoldoende behandelt. Geef niet onnodig een tweede antwoord uit het KD als
-de OER de vraag al beantwoordt — de OER is leidend.
-Staat bij een OER dat deze niet machine-leesbaar is, gebruik dan voor díe
-opleiding het bijbehorende KD en de instellingsregelingen als hoofdbron.
-AANVULLENDE BRON — de skills-taxonomie (ESCO) waar beschikbaar: de skills en
-vaardigheden die horen bij het beroep van een opleiding. Raadpleeg deze alléén
-bij vragen over welke skills of vaardigheden het beroep vereist.
-
-CITATIEPLICHT (de OER is een juridisch document).
-Bij ELKE claim uit een OER, een KD of een juridische regeling (een blok zonder
-[INFORMATIEF] in de kop) MOET je:
-1. de bron noemen ("OER N" of "Kwalificatiedossier N", zie de koppen hieronder),
-2. de exacte vindplaats noemen — sectie-nummer, kopje, artikel of paginanummer,
-3. de relevante passage WOORDELIJK citeren tussen dubbele aanhalingstekens, op
-   een APARTE regel als markdown-blockquote (de regel begint met "> "), zodat de
-   verwijzing visueel als juridisch citaat opvalt. Zet bron + vindplaats op de
-   regel ervoor.
-
-Voorbeeld:
-OER 1, sectie 3.2 "Bindend studieadvies":
-> "De student ontvangt uiterlijk in juli..."
-
-Voor het KD: De OER beschrijft dit niet. Volgens Kwalificatiedossier 1,
-kerntaak B1-K1:
-> "..."
-
-Voor een juridische instellingsbrede regeling: noem de regeling exact zoals in de
-kop (bv. "het Examenreglement"), met artikel/vindplaats en het woordelijk citaat
-als blockquote — nooit als "de OER".
-
-Voor de skills-taxonomie geldt een AANGEPASTE citatie (geen secties of pagina's):
-noem de bron PRECIES zoals in de kop van het skills-blok (ESCO óf CompetentNL),
-plus het beroep en de categorie, en citeer de exacte skill-naam, bijv. Volgens
-CompetentNL hoort bij het beroep "kok" de essentiële skill "samenwerken".
-Verzin nooit een sectie- of paginanummer bij skills.
-
-INFORMATIEVE DOCUMENTEN. Blokken waarvan de kop eindigt op [INFORMATIEF] (zoals
-protocollen, examenplannen, nominale lijnen, schoolkosten, onderwijsplannen) zijn
-geen juridische documenten. Daarbij is een woordelijk citaat NIET nodig: noem alleen
-de bron, exact zoals in de kop (bv. "Volgens het Protocol kluiscontrole"), en geef
-het antwoord in eigen, korte woorden. Noem een sectie of paginanummer alleen als je
-het zeker weet; verzin er nooit een. Benoem de markering [INFORMATIEF] of het feit
-dat je niet citeert nooit in je antwoord; begin gewoon met het antwoord.
-
-Een claim zonder bronvermelding is niet toegestaan.
-Bij juridische bronnen mag parafraseren alleen ter inleiding van een citaat, niet
-ter vervanging ervan.
-Beantwoord uitsluitend op basis van deze bronnen — nooit vanuit eigen kennis.
-Als de informatie in geen van de bronnen staat, zeg dat dan expliciet.
-Antwoord in het Nederlands.{bronnenregel}{web_zoek_blok}{vacature_blok}{doelgroep_toon}
-
-{oer_blokken}"""
-
-
-def bouw_gecombineerd_systeem(
-    oer_items: list[dict], web_zoeken: bool = False, vacatures: bool = False
-) -> str:
-    """Bouw een systeemprompt voor één of meerdere OERs.
-
-    Args:
-        oer_items: lijst van dict met sleutels 'tekst', 'opleiding',
-                   'display_naam', 'leerweg', 'cohort'. Optioneel:
-                   'dossier_tekst' en 'crebo' om het landelijke
-                   kwalificatiedossier mee in te bedden, en 'skills_tekst'
-                   voor de skills-taxonomie van het beroep.
-        web_zoeken: voeg de webzoek-instructie toe (zie bouw_systeem).
-    """
-    if len(oer_items) == 1:
-        item = oer_items[0]
-        return bouw_systeem(
-            item["tekst"],
-            item["opleiding"],
-            item["display_naam"],
-            dossier_tekst=item.get("dossier_tekst", ""),
-            crebo=item.get("crebo"),
-            skills_tekst=item.get("skills_tekst", ""),
-            instelling_bronnen=item.get("instelling_bronnen", ()),
-            web_zoeken=web_zoeken,
-            leerweg=item.get("leerweg", ""),
-            vacatures=vacatures,
-        )
-
-    blokken = []
-    for i, item in enumerate(oer_items, 1):
-        schone_opl = schoon_opleiding_naam(item["opleiding"], str(item.get("crebo") or ""))
-        label = f"{item['display_naam']} · {schone_opl} · {item['leerweg']} {item['cohort']}"
-        oer_inhoud = (
-            item["tekst"]
-            if item["tekst"].strip()
-            else (
-                "(De OER van deze opleiding is niet machine-leesbaar; gebruik het "
-                "bijbehorende kwalificatiedossier / de instellingsregelingen hieronder.)"
-            )
-        )
-        oer_blok = f"=== OER {i}: {label} ===\n\n{oer_inhoud}"
-        for kop, tekst in item.get("instelling_bronnen", ()):
-            if tekst:
-                oer_blok += f"\n\n=== {kop.upper()} {i} ({item['display_naam']}) ===\n\n{tekst}"
-        dossier_tekst = item.get("dossier_tekst", "")
-        if dossier_tekst:
-            crebo_label = item.get("crebo", "onbekend")
-            oer_blok += (
-                f"\n\n=== KWALIFICATIEDOSSIER {i} (Crebo {crebo_label}) ===\n\n{dossier_tekst}"
-            )
-        oer_blok += item.get("skills_tekst", "")
-        blokken.append(oer_blok)
-    return _MULTI_SYSTEEM_TEMPLATE.format(
-        n=len(oer_items),
-        oer_blokken="\n\n---\n\n".join(blokken),
-        schooldoc_banner=_SCHOOLDOC_BANNER_INSTRUCTIE,
-        bronnenregel=_BRONNENREGEL_BLOK,
-        web_zoek_blok=_WEB_ZOEK_BLOK if web_zoeken else "",
-        vacature_blok=_VACATURE_BLOK if vacatures else "",
-        doelgroep_toon=_DOELGROEP_TOON,
-    )
 
 
 # ── Conversationele OER-identificatie ─────────────────────────────────────────
