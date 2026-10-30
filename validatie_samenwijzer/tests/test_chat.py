@@ -819,7 +819,7 @@ def test_bouw_systeem_met_instelling_bron_bevat_blok():
         "Rijn IJssel",
         instelling_bronnen=[("Examenreglement", "Artikel 6.3: één herkansing.")],
     )
-    assert "=== EXAMENREGLEMENT (Rijn IJssel) ===" in systeem
+    assert "=== EXAMENREGLEMENT 1 (Rijn IJssel) ===" in systeem
     assert "Artikel 6.3: één herkansing." in systeem
 
 
@@ -864,8 +864,8 @@ def test_bouw_systeem_meerdere_instelling_bronnen():
             ("Begeleidings- en welzijnsbeleid", "beleid-tekst"),
         ],
     )
-    assert "=== EXAMENREGLEMENT (Rijn IJssel) ===" in systeem
-    assert "=== BEGELEIDINGS- EN WELZIJNSBELEID (Rijn IJssel) ===" in systeem
+    assert "=== EXAMENREGLEMENT 1 (Rijn IJssel) ===" in systeem
+    assert "=== BEGELEIDINGS- EN WELZIJNSBELEID 1 (Rijn IJssel) ===" in systeem
     assert "reglement-tekst" in systeem
     assert "beleid-tekst" in systeem
 
@@ -889,8 +889,8 @@ def test_bouw_gecombineerd_systeem_includeert_instelling_bron_per_oer():
         },
     ]
     systeem = _meervoudig(items)
-    # Zelfde kop als in single-modus (de catalogus rendert beide modi gelijk).
-    assert "=== EXAMENREGLEMENT (Rijn IJssel) ===" in systeem
+    # Zelfde kop als in single-modus (de catalogus rendert beide modi gelijk); i = OER-volgnummer.
+    assert "=== EXAMENREGLEMENT 1 (Rijn IJssel) ===" in systeem
     assert "reglement A" in systeem
 
 
@@ -1453,7 +1453,7 @@ def test_informatief_blok_draagt_de_markering_in_de_prompt():
         "Curio",
         instelling_bronnen=[("Protocol — Kluis [INFORMATIEF]", "KLUISTEKST")],
     )
-    assert "=== PROTOCOL — KLUIS [INFORMATIEF] (Curio) ===" in prompt
+    assert "=== PROTOCOL — KLUIS 1 [INFORMATIEF] (Curio) ===" in prompt
 
 
 def test_splits_bronnen_geldig():

@@ -106,7 +106,8 @@ omgezet in nette bronvermeldingen):
 <!-- bronnen: type|titel; type|titel -->
 - type is één van: studiegids, kwalificatiedossier, schooldocument, skills, website.
 - Voor de bronnen hieronder neem je type|titel LETTERLIJK over uit deze lijst; andere
-  titels worden genegeerd:
+  titels worden genegeerd. Onder elke bronkop staat een regel "Bronvermelding: type|titel":
+  dat is precies de te gebruiken tekst.
 {titels}
 - Voor website: het domein, gevolgd door |<volledige url> als derde veld.
 - Noem alleen bronnen die je in dít antwoord daadwerkelijk gebruikt hebt; maximaal 6.

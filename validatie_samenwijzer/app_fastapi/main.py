@@ -445,7 +445,7 @@ async def api_chat(request: Request):
             _, bronnen = (
                 splits_bronnen(antwoord, s.bron_register or None) if modus == "oer" else ("", [])
             )
-            if not beurt.rond_af():
+            if not beurt.rond_af([asdict(b) for b in bronnen]):
                 return  # tijdens het wachten al als afgebroken vastgelegd (heartbeat-timeout)
             bewaar_sessie(request)
             log.info(

@@ -149,3 +149,65 @@ def test_lopende_beurt_race_geeft_precies_een_winnaar():
         t.join()
         assert sorted(uitkomst) == [False, True]
         assert len(g) == 2
+
+
+# ── bronnen per beurt vastleggen ──────────────────────────────────────────────────
+_BRON = {"type": "studiegids", "titel": "OER Kok", "url": None, "doc_id": None,
+         "oer_id": 7, "crebo": "25180"}  # fmt: skip
+
+
+def test_beurt_legt_geresolvede_bronnen_vast_en_view_gebruikt_ze():
+    g = Gesprek()
+    g.voeg_beurt_toe("v", "a\n<!-- bronnen: studiegids|OER Kok -->", bronnen=[_BRON])
+    assert g.naar_lijst()[1]["bronnen"] == [_BRON]
+    # Ander register (andere studiegids) → de vastgelegde bronnen blijven gelden.
+    ander = [{"type": "studiegids", "titel": "OER Bakker", "oer_id": 9}]
+    assert g.view_voor_ui(ander)[1]["bronnen"] == [_BRON]
+    assert g.view_voor_ui(ander)[1]["content"] == "a"
+    assert Gesprek.van_lijst(json.loads(json.dumps(g.naar_lijst()))).view_voor_ui(None) == (
+        g.view_voor_ui(None)
+    )
+
+
+def test_lege_vastgelegde_bronnen_worden_niet_opnieuw_geresolvet():
+    g = Gesprek()
+    g.voeg_beurt_toe("v", "a\n<!-- bronnen: studiegids|OER Kok -->", bronnen=[])
+    register = [{"type": "studiegids", "titel": "OER Kok", "oer_id": 7}]
+    assert g.view_voor_ui(register)[1]["bronnen"] == []
+
+
+def test_oude_beurt_zonder_bronnen_valt_terug_op_resolven_met_register():
+    oud = [
+        {"role": "user", "content": "v"},
+        {"role": "assistant", "content": "a\n<!-- bronnen: studiegids|OER Kok -->"},
+    ]
+    g = Gesprek.van_lijst(oud)
+    assert g.naar_lijst() == oud  # laadt/bewaart ongewijzigd
+    register = [{"type": "studiegids", "titel": "OER Kok", "oer_id": 7}]
+    assert g.view_voor_ui(register)[1]["bronnen"][0]["oer_id"] == 7
+    assert g.view_voor_ui(None)[1]["bronnen"][0]["titel"] == "OER Kok"
+
+
+def test_lopende_beurt_rond_af_geeft_bronnen_door():
+    g = Gesprek()
+    b = g.begin_beurt("v")
+    b.voeg_toe("a")
+    assert b.rond_af([_BRON])
+    assert g.naar_lijst()[1] == {"role": "assistant", "content": "a", "bronnen": [_BRON]}
+
+
+def test_afgebroken_beurt_en_kies_beurt_dragen_geen_bronnen_sleutel():
+    g = Gesprek()
+    g.voeg_beurt_toe("v", "deel", afgebroken=True)
+    g.voeg_beurt_toe("w", "")
+    assert all("bronnen" not in b for b in g.naar_lijst())
+
+
+def test_bronnen_sleutel_beinvloedt_het_model_niet():
+    g = Gesprek()
+    g.voeg_beurt_toe("v", "a", bronnen=[_BRON])
+    assert g.berichten_voor_model("w") == [
+        {"role": "user", "content": "v"},
+        {"role": "assistant", "content": "a"},
+        {"role": "user", "content": "w"},
+    ]

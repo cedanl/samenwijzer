@@ -255,6 +255,13 @@ de leesrand — leeft alleen daar. Interface: `voeg_beurt_toe` (met cap `MAX_GES
 `sessies.db` blijft de JSON-lijst onder de sleutel `chat_history` (`Sessie.naar_dict`/`uit_dict`);
 oude rijen laden ongewijzigd. Routes en `chat.py` raken de dict-lijst niet aan.
 
+**Bronnen per beurt**: `/api/chat` geeft de bij die beurt geresolvede bronnen (`asdict(Bron)`) aan
+`rond_af(bronnen)`/`voeg_beurt_toe(…, bronnen=…)`; de assistant-beurt krijgt dan de sleutel
+`"bronnen": [...]` (naast `content`, het model ziet hem niet). `view_voor_ui(register)` gebruikt
+die lijst als hij er is (ook als hij leeg is) en resolvet alleen oude beurten zonder `bronnen`
+alsnog tegen het register van dat moment. Zo blijven chips van eerdere beurten kloppen na
+`Sessie.laad_context()` met een andere studiegids. Afgebroken en kies-beurten hebben geen `bronnen`.
+
 **Afgebroken beurten**: een beurt die niet af komt (heartbeat-timeout, `APITimeoutError`, andere
 fout) verdwijnt niet stil. `LopendeBeurt` (`rond_af()`/`breek_af()`, onder één lock) legt hem
 precies één keer vast: vraag + gedeeltelijk antwoord, marker (of begin ervan) eruit geknipt, met
@@ -333,12 +340,17 @@ orchestrator die alle chat-routes (publiek `/`, `/student`, `/mentor/student/{id
    melding en `catalogus.register()` in één `ChatContext`, die `Sessie.laad_context()` overneemt.
    **Bron-catalogus**: één module kent de naam van een chat-bron. De catalogus rendert de
    blokkoppen in één formaat voor elke modus (`=== OER i: instelling · opleiding · leerweg cohort ===`,
-   `=== EXAMENREGLEMENT (instelling) ===`, `=== KWALIFICATIEDOSSIER i (Crebo x) ===`), geeft elke
+   `=== EXAMENREGLEMENT i (instelling) ===`, `=== KWALIFICATIEDOSSIER i (Crebo x) ===`; i is het OER-volgnummer,
+   ook bij één OER), zet onder elke kop van een citeerbare bron de regel `Bronvermelding: type|titel`
+   (de letterlijke markertitel; bij skills onder de eigen `=== SKILLS-TAXONOMIE … ===`-kop), geeft elke
    citeerbare bron een unieke markertitel (bij botsing aangevuld met instelling, dan `OER i`) die
    de BRONNENREGEL letterlijk opsomt, en levert `register()`: JSON (type, titel, `oer_id`,
    `doc_id`, `crebo`, plus de webdomeinen) voor de sessie. `BronRegister.uit_dicts(register)`
    herleidt daarmee later modeltitels zonder de teksten te laden; `splits_bronnen(tekst, register)`
    wijst onbekende titels af en zet de identifiers (zonder register: alleen de type-check).
+   `resolve` vergelijkt via `_norm` (hetzelfde als de uniciteitscontrole van de catalogus): hoofdletters,
+   NFKC, streepjes, `&`=`en`, afsluitende `.`/`:` en een type-prefix ("Studiegids: …") tellen niet mee;
+   een website-bron herkent ook de schoolnaam uit `instellingen.py` ("Curio" → `curio.nl`) en `www.`.
    `static/chat.js` linkt een studiegids-chip met `oer_id` naar `/api/oer/{id}/bestand`; documenten
    hebben (nog) geen download-route en blijven een label.
 2. **Intake** (`genereer_intake_antwoord` + `identificeer_oer_kandidaten`) — fallback in
@@ -385,7 +397,7 @@ chat werkt dan zonder skills. Zie de Skills-taxonomie-sectie verderop.
 (examenreglement, begeleidingsbeleid, studentenstatuut, protocollen …) met
 `laad_oer_tekst(pad, cap=_MAX_INSTELLING_TEKST_TEKENS)` (300_000), binnen het documentbudget en
 gefilterd op niveau; de kop komt uit `bron_catalogus.document_kop()`. De `BronCatalogus` zet ze
-als blokken `=== KOP (instelling) ===` in de system prompt. Zie de Instellingsbrede-bron-sectie
+als blokken `=== KOP i (instelling) ===` in de system prompt. Zie de Instellingsbrede-bron-sectie
 verderop.
 
 **OER-onleesbaar-modus**: is de OER-fulltext leeg (gescande PDF zonder tekstlaag), dan bouwt
