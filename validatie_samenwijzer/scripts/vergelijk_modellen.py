@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 import time
@@ -33,6 +34,7 @@ sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT))
 
 from app_fastapi import context  # noqa: E402
+from app_fastapi.deps import ValidatieDb  # noqa: E402
 from validatie_samenwijzer._ai import _client  # noqa: E402
 from validatie_samenwijzer.chat import genereer_antwoord  # noqa: E402
 
@@ -45,6 +47,8 @@ VRAGEN = (
     "Welke kerntaken horen bij mijn opleiding?",
 )
 MIN_CITAAT_TEKENS = 25
+_DB = ValidatieDb(os.environ.get("DB_PATH", "data/validatie.db"))
+_OER_BLOKKEN = context.OerBlokken()  # kies_oers en main laden dezelfde OER's
 
 # Prijs per miljoen tokens (platform.claude.com/docs/en/about-claude/pricing, okt 2026):
 # (invoer, 1h-cache-write, cache-read, uitvoer); Haiku 5.5 heeft een tarief tot en met
@@ -89,24 +93,28 @@ def ongegrond(antwoord: str, bron: str) -> list[str]:
 
 def kies_oers(aantal: int) -> list[tuple[int, str, str]]:
     """Eerste geïndexeerde OER met de grootste context per gekozen instelling."""
-    conn = context._conn()
     gekozen = []
-    for naam in INSTELLINGEN[:aantal]:
-        rijen = conn.execute(
-            "SELECT o.id, o.opleiding FROM oer_documenten o JOIN instellingen i "
-            "ON i.id = o.instelling_id WHERE i.naam = ? AND o.geindexeerd = 1",
-            (naam,),
-        ).fetchall()
-        kandidaten = []
-        for r in rijen:
-            systeem = context.laad_context([r["id"]]).systeem
-            if systeem:
-                kandidaten.append((len(systeem), r["id"], r["opleiding"]))
-        if kandidaten:
-            kandidaten.sort()
-            _, oer_id, opleiding = kandidaten[len(kandidaten) // 2]  # mediaan i.p.v. extreem
-            gekozen.append((oer_id, naam, opleiding))
+    with _DB.verbinding() as conn:
+        for naam in INSTELLINGEN[:aantal]:
+            rijen = conn.execute(
+                "SELECT o.id, o.opleiding FROM oer_documenten o JOIN instellingen i "
+                "ON i.id = o.instelling_id WHERE i.naam = ? AND o.geindexeerd = 1",
+                (naam,),
+            ).fetchall()
+            kandidaten = []
+            for r in rijen:
+                systeem = laad_systeem(conn, r["id"])
+                if systeem:
+                    kandidaten.append((len(systeem), r["id"], r["opleiding"]))
+            if kandidaten:
+                kandidaten.sort()
+                _, oer_id, opleiding = kandidaten[len(kandidaten) // 2]  # mediaan i.p.v. extreem
+                gekozen.append((oer_id, naam, opleiding))
     return gekozen
+
+
+def laad_systeem(conn, oer_id: int) -> str:
+    return context.laad_context(conn, [oer_id], oer_blokken=_OER_BLOKKEN).systeem
 
 
 def schat_kosten(model: str, prompt_tokens: int, uitvoer_tokens: int, eerste: bool) -> float:
@@ -134,7 +142,8 @@ def main() -> None:
     }
     log: list[dict] = []
     for oer_id, inst, opleiding in oers:
-        systeem = context.laad_context([oer_id]).systeem
+        with _DB.verbinding() as conn:
+            systeem = laad_systeem(conn, oer_id)
         for model in args.modellen:
             prompt_tokens = client.messages.count_tokens(
                 model=model, system=systeem, messages=[{"role": "user", "content": VRAGEN[0]}]

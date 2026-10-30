@@ -3,49 +3,27 @@
 from __future__ import annotations
 
 import json
-import os
 
 import pytest
 
-from app_fastapi import sessie as sessie_mod
 from app_fastapi.context import ChatContext
-from app_fastapi.sessie import Sessie
-from validatie_samenwijzer import db
+from app_fastapi.sessie import Sessie, SessieStore
 from validatie_samenwijzer.gesprek import Gesprek
-
-_WW = os.environ.get("ALGEMEEN_WACHTWOORD", "")
-
-
-def _client():
-    from fastapi.testclient import TestClient
-
-    from app_fastapi.main import app
-
-    c = TestClient(app)
-    c.post("/toegang", data={"wachtwoord": _WW})
-    return c
 
 
 @pytest.fixture
-def oer_db(tmp_path, monkeypatch):
-    """Tijdelijke DB met twee geïndexeerde en één niet-geïndexeerde Kok-OER."""
-    pad = tmp_path / "t.db"
-    conn = db.get_connection(pad)
-    db.init_db(conn)
-    inst = db.voeg_instelling_toe(conn, "talland", "Talland College")
-    ids = {}
-    for sleutel, leerweg, cohort in (
-        ("a", "BOL", "2025"),
-        ("b", "BBL", "2025"),
-        ("x", "BOL", "2024"),
-    ):
-        ids[sleutel] = db.voeg_oer_document_toe(
-            conn, inst, "Kok", "25168", cohort, leerweg, f"{sleutel}.pdf"
+def oer_db(seed):
+    """In-memory DB met twee geïndexeerde en één niet-geïndexeerde Kok-OER."""
+    return {
+        sleutel: seed.oer(
+            "Kok", crebo="25168", leerweg=leerweg, cohort=cohort, geindexeerd=sleutel != "x"
         )
-    db.markeer_geindexeerd(conn, ids["a"])
-    db.markeer_geindexeerd(conn, ids["b"])
-    monkeypatch.setenv("DB_PATH", str(pad))
-    return ids
+        for sleutel, leerweg, cohort in (
+            ("a", "BOL", "2025"),
+            ("b", "BBL", "2025"),
+            ("x", "BOL", "2024"),
+        )
+    }
 
 
 # ── Sessie.laad_context ────────────────────────────────────────────────────────
@@ -72,69 +50,55 @@ def test_sessie_laad_context_kopieert_lijsten():
     assert ctx.labels == ["l"]
 
 
-def test_mentorwissel_wist_oude_melding_en_historie(monkeypatch, stub_context):
-    from fastapi.responses import PlainTextResponse
-
-    import app_fastapi.main as m
-
+def test_mentorwissel_wist_oude_melding_en_historie(seed, maak_client, stub_context):
+    oer_id = seed.oer()
+    mentor_id = seed.mentor("Mentor")
+    student_id = seed.student("100001", oer_id, mentor_id)
     aanroepen = stub_context(systeem="MENTOR", melding="")
     s = Sessie(
         toegang=True,
         rol="mentor",
-        gebruiker={"id": 5, "naam": "Mentor"},
+        gebruiker={"id": mentor_id, "naam": "Mentor"},
         melding="oude melding van vorige student",
         gesprek=Gesprek.van_lijst([{"role": "user", "content": "vraag over vorige student"}]),
     )
-    monkeypatch.setattr(m, "get_sessie", lambda request: s)
-    monkeypatch.setattr(m.data, "studenten_van_mentor", lambda mid: [{"id": 7}])
-    monkeypatch.setattr(m.data, "profiel_van_student", lambda sid: {"oer_id": 3})
-    monkeypatch.setattr(m.templates, "TemplateResponse", lambda *a, **k: PlainTextResponse("ok"))
 
-    r = _client().get("/mentor/student/7")
+    r = maak_client(s).get(f"/mentor/student/{student_id}")
 
     assert r.status_code == 200
-    assert aanroepen == [[3]]
+    assert aanroepen == [[oer_id]]
     assert s.melding == ""
     assert s.gesprek.naar_lijst() == []
-    assert (s.oer_systeem, s.oer_ids) == ("MENTOR", [3])
+    assert (s.oer_systeem, s.oer_ids) == ("MENTOR", [oer_id])
 
 
-def test_studentlogin_laadt_context_via_sessie(monkeypatch, stub_context):
-    import app_fastapi.main as m
-
+def test_studentlogin_laadt_context_via_sessie(seed, maak_client, stub_context):
+    oer_id = seed.oer()
+    seed.student("123", oer_id, None)
     aanroepen = stub_context(systeem="STUDENT", melding="documenten weggelaten")
     s = Sessie(toegang=True, melding="stale")
-    monkeypatch.setattr(m, "get_sessie", lambda request: s)
-    monkeypatch.setattr(
-        m,
-        "auth_student",
-        lambda ident, ww: {"id": 1, "naam": "S", "studentnummer": "123", "oer_id": 9},
-    )
 
-    r = _client().post(
+    r = maak_client(s).post(
         "/login",
-        data={"rol": "student", "identifier": "123", "wachtwoord": "x"},
+        data={"rol": "student", "identifier": "123", "wachtwoord": "Welkom123"},
         follow_redirects=False,
     )
 
     assert r.status_code == 303
-    assert aanroepen == [[9]]
-    assert (s.oer_systeem, s.oer_ids, s.melding) == ("STUDENT", [9], "documenten weggelaten")
+    assert aanroepen == [[oer_id]]
+    assert (s.oer_systeem, s.oer_ids, s.melding) == ("STUDENT", [oer_id], "documenten weggelaten")
 
 
 # ── /api/kies: id-guard ────────────────────────────────────────────────────────
-def _kies(monkeypatch, stub_context, ids, body=None):
-    import app_fastapi.main as m
-
+def _kies(maak_client, stub_context, ids, body=None):
     aanroepen = stub_context(stub_guard=False)
     s = Sessie(toegang=True, wachtende_vraag="wachtende vraag")
-    monkeypatch.setattr(m, "get_sessie", lambda request: s)
-    r = _client().post("/api/kies", json=body if body is not None else {"oer_ids": ids})
+    r = maak_client(s).post("/api/kies", json=body if body is not None else {"oer_ids": ids})
     return r, s, aanroepen
 
 
-def test_kies_weigert_onbekend_en_niet_geindexeerd_id(oer_db, monkeypatch, stub_context):
-    r, s, aanroepen = _kies(monkeypatch, stub_context, [99_999, oer_db["x"]])
+def test_kies_weigert_onbekend_en_niet_geindexeerd_id(oer_db, maak_client, stub_context):
+    r, s, aanroepen = _kies(maak_client, stub_context, [99_999, oer_db["x"]])
 
     assert r.status_code == 400
     assert r.json() == {"error": "ongeldige oer_ids"}
@@ -142,17 +106,17 @@ def test_kies_weigert_onbekend_en_niet_geindexeerd_id(oer_db, monkeypatch, stub_
     assert s.oer_ids == [] and s.wachtende_vraag == "wachtende vraag"
 
 
-def test_kies_weigert_ontbrekende_of_ongeldige_lijst(oer_db, monkeypatch, stub_context):
+def test_kies_weigert_ontbrekende_of_ongeldige_lijst(oer_db, maak_client, stub_context):
     for body in ({}, {"oer_ids": "1"}, {"oer_ids": ["a", None, True]}, {"oer_ids": []}):
-        r, _, aanroepen = _kies(monkeypatch, stub_context, [], body=body)
+        r, _, aanroepen = _kies(maak_client, stub_context, [], body=body)
         assert r.status_code == 400, body
         assert aanroepen == []
 
 
-def test_kies_accepteert_kiezer_ids_zonder_voorafgaande_vraag(oer_db, monkeypatch, stub_context):
+def test_kies_accepteert_kiezer_ids_zonder_voorafgaande_vraag(oer_db, maak_client, stub_context):
     """De publieke kiezer POST ids uit opleidingen_boom() direct; die zijn alleen geïndexeerd."""
     ids = [oer_db["a"], oer_db["b"]]
-    r, s, aanroepen = _kies(monkeypatch, stub_context, ids)
+    r, s, aanroepen = _kies(maak_client, stub_context, ids)
 
     assert r.status_code == 200
     assert r.json()["oer_ids"] == ids
@@ -161,41 +125,35 @@ def test_kies_accepteert_kiezer_ids_zonder_voorafgaande_vraag(oer_db, monkeypatc
     assert s.wachtende_vraag is None
 
 
-def test_kies_filtert_ongeldige_ids_weg(oer_db, monkeypatch, stub_context):
-    r, s, aanroepen = _kies(monkeypatch, stub_context, [99_999, oer_db["a"], oer_db["x"]])
+def test_kies_filtert_ongeldige_ids_weg(oer_db, maak_client, stub_context):
+    r, s, aanroepen = _kies(maak_client, stub_context, [99_999, oer_db["a"], oer_db["x"]])
 
     assert r.status_code == 200
     assert aanroepen == [[oer_db["a"]]]
     assert s.oer_ids == [oer_db["a"]]
 
 
-def test_kies_ontdubbelt_en_kapt_op_drie_geldige_ids(oer_db, monkeypatch, stub_context):
+def test_kies_ontdubbelt_en_kapt_op_drie_geldige_ids(oer_db, maak_client, stub_context):
     """Dubbele ids laden dezelfde OER niet twee keer (kosten/contextbudget); max. 3 uniek."""
     ids = [oer_db["a"], oer_db["b"], oer_db["a"], oer_db["b"]]
-    _, s, _ = _kies(monkeypatch, stub_context, ids)
+    _, s, _ = _kies(maak_client, stub_context, ids)
     assert s.oer_ids == [oer_db["a"], oer_db["b"]]
 
 
-def test_geweigerde_kies_opent_bronbestand_niet(oer_db, monkeypatch, stub_context):
+def test_geweigerde_kies_opent_bronbestand_niet(oer_db, maak_client, stub_context):
     """Het omzeilen van de sessie-guard op /api/oer/{id}/bestand via /api/kies is dicht."""
-    import app_fastapi.main as m
-
-    _kies(monkeypatch, stub_context, [oer_db["x"]])  # geweigerd
     s = Sessie(toegang=True)
-    monkeypatch.setattr(m, "get_sessie", lambda request: s)
-    assert _client().get(f"/api/oer/{oer_db['x']}/bestand").status_code == 403
+    c = maak_client(s)
+    assert c.post("/api/kies", json={"oer_ids": [oer_db["x"]]}).status_code == 400  # geweigerd
+    assert c.get(f"/api/oer/{oer_db['x']}/bestand").status_code == 403
 
 
 # ── /api/vraag: alleen geïndexeerde kandidaten ─────────────────────────────────
-def test_vraag_negeert_niet_geindexeerde_oers(oer_db, monkeypatch, stub_context):
+def test_vraag_negeert_niet_geindexeerde_oers(oer_db, maak_client, stub_context):
     """'Kok BOL 2024' matcht alleen de niet-geïndexeerde OER; die mag geen kandidaat zijn."""
-    import app_fastapi.main as m
-
     aanroepen = stub_context()
-    s = Sessie(toegang=True)
-    monkeypatch.setattr(m, "get_sessie", lambda request: s)
 
-    r = _client().post("/api/vraag", json={"vraag": "Kok BOL 2024"})
+    r = maak_client(Sessie(toegang=True)).post("/api/vraag", json={"vraag": "Kok BOL 2024"})
 
     body = r.json()
     ids = {o["id"] for o in body.get("opties", [])} | set(body.get("oer_ids", []))
@@ -203,32 +161,32 @@ def test_vraag_negeert_niet_geindexeerde_oers(oer_db, monkeypatch, stub_context)
     assert oer_db["x"] not in [i for call in aanroepen for i in call]
 
 
-def test_kiesbare_oers_bevat_alleen_geindexeerd(oer_db):
+def test_kiesbare_oers_bevat_alleen_geindexeerd(oer_db, conn):
     from app_fastapi import data
 
-    assert {o["id"] for o in data.kiesbare_oers()} == {oer_db["a"], oer_db["b"]}
+    assert {o["id"] for o in data.kiesbare_oers(conn)} == {oer_db["a"], oer_db["b"]}
 
 
 # ── (de)serialisatie ───────────────────────────────────────────────────────────
 @pytest.fixture
-def sessie_store(tmp_path, monkeypatch):
-    monkeypatch.setattr(sessie_mod, "_DB_PAD", str(tmp_path / "sessies.db"))
-    sessie_mod._reset_store_voor_test()
-    yield
-    sessie_mod._reset_store_voor_test()
+def sessie_store():
+    store = SessieStore(":memory:")
+    yield store
+    store.sluit()
 
 
-def _zet_raw(sid, data):
-    sessie_mod._store().execute(
+def _zet_raw(store, sid, data):
+    store._store().execute(
         "INSERT INTO sessies (sid, data, laatst_gebruikt) VALUES (?, ?, 9999999999)",
         (sid, data if isinstance(data, str) else json.dumps(data)),
     )
-    sessie_mod._store().commit()
+    store._store().commit()
 
 
 def test_laad_tolereert_oude_velden_en_vult_ontbrekende_aan(sessie_store):
     # Rij van vóór deze refactor: bevat `kandidaten` + `actieve_student`, mist `melding`.
     _zet_raw(
+        sessie_store,
         "oud",
         {
             "chat_history": [{"role": "user", "content": "hoi"}],
@@ -241,7 +199,7 @@ def test_laad_tolereert_oude_velden_en_vult_ontbrekende_aan(sessie_store):
         },
     )
 
-    s = sessie_mod.laad("oud")
+    s = sessie_store.laad("oud")
 
     assert s is not None
     assert s.oer_systeem == "SYS" and s.oer_ids == [3] and s.toegang is True
@@ -251,21 +209,21 @@ def test_laad_tolereert_oude_velden_en_vult_ontbrekende_aan(sessie_store):
 
 
 def test_laad_geeft_none_bij_onleesbare_rij(sessie_store):
-    _zet_raw("kapot", "{geen json")
-    _zet_raw("lijst", "[1, 2]")
-    assert sessie_mod.laad("kapot") is None
-    assert sessie_mod.laad("lijst") is None
-    assert sessie_mod.laad("bestaat-niet") is None
+    _zet_raw(sessie_store, "kapot", "{geen json")
+    _zet_raw(sessie_store, "lijst", "[1, 2]")
+    assert sessie_store.laad("kapot") is None
+    assert sessie_store.laad("lijst") is None
+    assert sessie_store.laad("bestaat-niet") is None
 
 
 def test_bewaar_en_laad_roundtrip(sessie_store):
     s = Sessie(toegang=True)
     s.laad_context(ChatContext("SYS", ["l"], ["d.nl"], True, "m", [2]))
-    sessie_mod.bewaar("sid1", s)
-    assert sessie_mod.laad("sid1") == s
+    sessie_store.bewaar("sid1", s)
+    assert sessie_store.laad("sid1") == s
 
 
-def test_geldige_oer_ids_ontdubbelt_en_kapt_voor_de_db_call(monkeypatch):
+def test_geldige_oer_ids_ontdubbelt_en_kapt_voor_de_db_call(conn, monkeypatch):
     """[5, 5, 5, 6, 7, 8] → DB krijgt hooguit drie unieke ids (geen 'too many SQL variables',
     geen drie keer dezelfde OER in de catalogus)."""
     from app_fastapi import data
@@ -276,7 +234,6 @@ def test_geldige_oer_ids_ontdubbelt_en_kapt_voor_de_db_call(monkeypatch):
         gezien.append(list(ids))
         return list(ids)
 
-    monkeypatch.setattr(data, "_conn", lambda: None)
     monkeypatch.setattr(data.db, "filter_geindexeerde_oer_ids", _filter)
-    assert data.geldige_oer_ids([5, 5, 5, 6, 7, 8, True, "x"]) == [5, 6, 7]
+    assert data.geldige_oer_ids(conn, [5, 5, 5, 6, 7, 8, True, "x"]) == [5, 6, 7]
     assert gezien == [[5, 6, 7]]

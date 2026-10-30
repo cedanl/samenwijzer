@@ -2,15 +2,16 @@
 
 Laadt per OER de teksten (OER, KD, skills) via ``bron_catalogus`` en de documenten via
 ``documenten.selecteer_documenten``, bouwt daaruit een ``BronCatalogus`` en laat
-``chat.bouw_prompt`` de systeemprompt en het webzoek-besluit maken. UI-vrij en testbaar.
+``chat.bouw_prompt`` de systeemprompt en het webzoek-besluit maken. UI-vrij en testbaar: de
+DB-verbinding en de OER-cache komen als parameter binnen (de app geeft ze uit ``AppDeps``).
 """
 
 from __future__ import annotations
 
-import os
 import sqlite3
+import threading
+from collections import OrderedDict
 from dataclasses import dataclass, field
-from functools import lru_cache
 
 from validatie_samenwijzer import db
 from validatie_samenwijzer.bron_catalogus import (
@@ -25,28 +26,49 @@ from validatie_samenwijzer.chat import bouw_prompt
 from validatie_samenwijzer.documenten import selecteer_documenten
 from validatie_samenwijzer.opleiding import nette_opleiding_naam
 
-_gemigreerd: set[str] = set()
 
-
-def _conn() -> sqlite3.Connection:
-    """DB-verbinding; migreert het schema één keer per proces (de ingebakken productie-DB kan
-    van vóór de `documenten`-tabel zijn; `init_db` is idempotent)."""
-    pad = os.environ.get("DB_PATH", "data/validatie.db")
-    conn = db.get_connection(pad)
-    if pad not in _gemigreerd:
-        db.init_db(conn)
-        _gemigreerd.add(pad)
-    return conn
-
-
-@lru_cache(maxsize=64)
-def _oer_blok(oer_id: int):
+def _laad_oer_blok(conn: sqlite3.Connection, oer_id: int):
     """Geef (db-rij, geladen OER-tekst) voor één OER, of None als niet leesbaar/onbekend."""
-    row = db.get_oer_met_instelling(_conn(), oer_id)
+    row = db.get_oer_met_instelling(conn, oer_id)
     if row is None:
         return None
     tekst = laad_oer_tekst(resolve_oer_pad(row["bestandspad"]))
     return row, tekst  # tekst mag leeg zijn (gescande OER) — laad_context beslist op KD/bron
+
+
+class OerBlokken:
+    """LRU-cache van (db-rij, OER-tekst) per ``oer_id`` — één per app-instantie.
+
+    Hangt aan ``AppDeps.oer_blokken``: een nieuwe app (herstart, re-ingest + redeploy, of een
+    test) begint leeg, en twee app-instanties delen niets. Bewust begrensd (OER-tekst tot 500K
+    tekens per stuk). Ook ``None`` (onbekende id) wordt gecachet, zoals de oude ``lru_cache``.
+    """
+
+    def __init__(self, maxsize: int = 64) -> None:
+        self.maxsize = maxsize
+        self._items: OrderedDict[int, tuple | None] = OrderedDict()
+        self._lock = threading.Lock()
+
+    def __len__(self) -> int:
+        return len(self._items)
+
+    def haal(self, conn: sqlite3.Connection, oer_id: int):
+        """Geef het gecachete blok, of laad en cache het (zie :func:`_laad_oer_blok`)."""
+        with self._lock:
+            if oer_id in self._items:
+                self._items.move_to_end(oer_id)
+                return self._items[oer_id]
+        blok = _laad_oer_blok(conn, oer_id)  # buiten de lock: bestands-I/O
+        with self._lock:
+            self._items[oer_id] = blok
+            self._items.move_to_end(oer_id)
+            while len(self._items) > self.maxsize:
+                self._items.popitem(last=False)
+        return blok
+
+    def leeg(self) -> None:
+        with self._lock:
+            self._items.clear()
 
 
 @dataclass(frozen=True)
@@ -70,8 +92,14 @@ class ChatContext:
     bron_register: list[dict] = field(default_factory=list)
 
 
-def laad_context(oer_ids: list[int], niveau: str = "publiek") -> ChatContext:
-    """Geef de :class:`ChatContext` voor de OER's.
+def laad_context(
+    conn: sqlite3.Connection,
+    oer_ids: list[int],
+    niveau: str = "publiek",
+    *,
+    oer_blokken: OerBlokken | None = None,
+) -> ChatContext:
+    """Geef de :class:`ChatContext` voor de OER's (gelezen via ``conn``).
 
     Per OER de volledige tekst + KD + skills; de bijbehorende documenten (instellingsbreed en
     opleidingsgebonden) komen uit ``documenten.selecteer_documenten`` binnen het budget, op basis
@@ -79,10 +107,11 @@ def laad_context(oer_ids: list[int], niveau: str = "publiek") -> ChatContext:
     bruikbare bron weg; een OER zonder leesbare tekst (gescande PDF) blijft staan als er een KD
     of document is (KD-fallback) en dan is ``oer_onleesbaar`` True. ``melding`` is niet leeg als
     documenten buiten het budget vielen. Lege ``systeem`` + leeg register als geen enkele OER
-    een bruikbare bron heeft.
+    een bruikbare bron heeft. ``oer_blokken`` (de cache van de app) is optioneel; zonder laadt
+    elke aanroep de OER-teksten opnieuw (scripts).
     """
-    conn = _conn()
-    gevonden = [res for oid in oer_ids[:3] if (res := _oer_blok(oid)) is not None]
+    haal = oer_blokken.haal if oer_blokken is not None else _laad_oer_blok
+    gevonden = [res for oid in oer_ids[:3] if (res := haal(conn, oid)) is not None]
     selectie = selecteer_documenten(conn, [row for row, _ in gevonden], niveau)
     catalogus = BronCatalogus.bouw(
         OerInvoer(
