@@ -38,6 +38,7 @@ class Sessie:
     oer_onleesbaar: bool = False  # OER-fulltext onleesbaar (gescand) → banner + KD-fallback
     melding: str = ""  # documenten buiten budget weggelaten → banner
     domeinen: list[str] = field(default_factory=list)
+    bron_register: list[dict] = field(default_factory=list)  # BronCatalogus.register()
     wachtende_vraag: str | None = None
     # Algemene toegang (gedeeld wachtwoord — sommige instellingen zetten hun OER
     # achter een wachtwoord, dus de hele app zit achter deze poort).
@@ -65,6 +66,7 @@ class Sessie:
         self.oer_onleesbaar = ctx.oer_onleesbaar
         self.melding = ctx.melding
         self.oer_ids = list(ctx.oer_ids)
+        self.bron_register = [dict(b) for b in ctx.bron_register]
         self.wachtende_vraag = None
 
     def nieuw_gesprek(self) -> None:
@@ -80,6 +82,7 @@ class Sessie:
         self.oer_onleesbaar = False
         self.melding = ""
         self.domeinen = []
+        self.bron_register = []
         self.wachtende_vraag = None
 
     def uitloggen(self) -> None:

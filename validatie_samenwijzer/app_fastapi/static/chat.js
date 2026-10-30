@@ -134,18 +134,28 @@ function zetStatus(el, code) {
   if (t) t.textContent = tekst;
 }
 
-/* Bronnenrij onder een antwoord. Titel/url komen uit modeloutput: alleen via
-   textContent/createElement, en een link alleen bij een http(s)-url. */
+/* Bronnenrij onder een antwoord. De server stuurt per bron {type, titel, url, oer_id, doc_id,
+   crebo}; met een sessieregister is de titel de canonieke catalogustitel en zijn de ids gezet.
+   Alleen via textContent/createElement. Een link alleen naar wat echt bestaat: een website met
+   http(s)-url, of een studiegids met oer_id (de bestaande route /api/oer/{id}/bestand). Voor
+   documenten (doc_id), KD en skills is er geen download-route: die blijven een label. */
+function _bronLink(b) {
+  if (b.type === "website" && typeof b.url === "string" && /^https?:\/\//.test(b.url)) return b.url;
+  if (b.type === "studiegids" && Number.isInteger(b.oer_id) && b.oer_id > 0) {
+    return `/api/oer/${b.oer_id}/bestand`;
+  }
+  return null;
+}
 function addBronnen(thread, bronnen) {
   if (!Array.isArray(bronnen) || !bronnen.length) return;
   const chips = [];
   for (const b of bronnen) {
     if (!b || !Object.prototype.hasOwnProperty.call(BRON_TYPE_LABELS, b.type)) continue;
-    const link = b.type === "website" && typeof b.url === "string" && /^https?:\/\//.test(b.url);
-    const chip = document.createElement(link ? "a" : "span");
+    const href = _bronLink(b);
+    const chip = document.createElement(href ? "a" : "span");
     chip.className = "bron-chip";
-    if (link) {
-      chip.href = b.url; chip.target = "_blank"; chip.rel = "noopener noreferrer";
+    if (href) {
+      chip.href = href; chip.target = "_blank"; chip.rel = "noopener noreferrer";
     }
     const type = document.createElement("span");
     type.className = "bron-type"; type.textContent = BRON_TYPE_LABELS[b.type];

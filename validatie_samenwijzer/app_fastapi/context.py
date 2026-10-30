@@ -1,7 +1,8 @@
 """Dunne orchestrator: bouwt de chat-context uit gekozen OER-id's.
 
-Hergebruikt de loaders en system-prompt-bouwers uit ``chat.py`` ongewijzigd; dit is
-precies wat ``app/pages/0_oer_vraag.py`` nu inline doet, maar UI-vrij en testbaar.
+Laadt per OER de teksten (OER, KD, skills) via ``bron_catalogus`` en de documenten via
+``documenten.selecteer_documenten``, bouwt daaruit een ``BronCatalogus`` en laat
+``chat.bouw_prompt`` de systeemprompt en het webzoek-besluit maken. UI-vrij en testbaar.
 """
 
 from __future__ import annotations
@@ -12,15 +13,15 @@ from dataclasses import dataclass, field
 from functools import lru_cache
 
 from validatie_samenwijzer import db
-from validatie_samenwijzer.chat import (
-    bouw_gecombineerd_systeem,
+from validatie_samenwijzer.bron_catalogus import (
+    BronCatalogus,
+    OerInvoer,
     laad_kwalificatiedossier_tekst,
     laad_oer_tekst,
     laad_skills_tekst,
     resolve_oer_pad,
-    vacature_domeinen,
-    web_zoek_domeinen,
 )
+from validatie_samenwijzer.chat import bouw_prompt
 from validatie_samenwijzer.documenten import selecteer_documenten
 from validatie_samenwijzer.opleiding import nette_opleiding_naam
 
@@ -54,6 +55,10 @@ class ChatContext:
 
     ``systeem`` is leeg als geen enkele OER een bruikbare bron had; ``oer_ids`` blijft dan
     toch gevuld (max. 3, zoals gevraagd), zodat de chat 'lage relevantie' kan melden.
+    ``bron_register`` (``BronCatalogus.register(prompt.web_domeinen)``) is JSON-serialiseerbaar
+    en hoort in de server-side sessie; ``chat.splits_bronnen(antwoord, register)`` herleidt
+    daarmee de titels in de bronnenregel naar bekende bronnen (met ``oer_id``/``doc_id``/
+    ``crebo``) en wijst verzonnen titels af.
     """
 
     systeem: str = ""
@@ -62,58 +67,49 @@ class ChatContext:
     oer_onleesbaar: bool = False
     melding: str = ""
     oer_ids: list[int] = field(default_factory=list)
+    bron_register: list[dict] = field(default_factory=list)
 
 
 def laad_context(oer_ids: list[int], niveau: str = "publiek") -> ChatContext:
-    """Geef de :class:`ChatContext` (system-prompt, labels, web-zoek-domeinen, onleesbaar-vlag,
-    melding, OER-id's) voor de OER's.
+    """Geef de :class:`ChatContext` voor de OER's.
 
     Per OER de volledige tekst + KD + skills; de bijbehorende documenten (instellingsbreed en
     opleidingsgebonden) komen uit ``documenten.selecteer_documenten`` binnen het budget, op basis
-    van het ``niveau`` (publiek/student/mentor). Gecombineerd via ``bouw_gecombineerd_systeem``.
-    Een OER zonder leesbare tekst (gescande PDF) wordt tóch opgenomen als er een KD of
-    document is (KD-fallback); ``oer_onleesbaar`` is dan True. ``melding`` is niet leeg als
-    documenten buiten het budget vielen. Lege string + False als geen enkele OER een bruikbare
-    bron heeft.
+    van het ``niveau`` (publiek/student/mentor). De ``BronCatalogus`` laat OER's zonder enige
+    bruikbare bron weg; een OER zonder leesbare tekst (gescande PDF) blijft staan als er een KD
+    of document is (KD-fallback) en dan is ``oer_onleesbaar`` True. ``melding`` is niet leeg als
+    documenten buiten het budget vielen. Lege ``systeem`` + leeg register als geen enkele OER
+    een bruikbare bron heeft.
     """
     conn = _conn()
     gevonden = [res for oid in oer_ids[:3] if (res := _oer_blok(oid)) is not None]
     selectie = selecteer_documenten(conn, [row for row, _ in gevonden], niveau)
-
-    items: list[dict] = []
-    labels: list[str] = []
-    oer_onleesbaar = False
-    for row, tekst in gevonden:
-        crebo = row["crebo"]
-        instelling_bronnen = [(d.kop, d.tekst) for d in selectie.per_oer.get(row["id"], [])]
-        dossier_tekst = laad_kwalificatiedossier_tekst(crebo, row["cohort"])
-        # Onleesbare OER (gescande PDF) tóch opnemen als er een KD of document is.
-        if not tekst.strip() and not dossier_tekst and not instelling_bronnen:
-            continue
-        if not tekst.strip():
-            oer_onleesbaar = True
-
-        items.append(
-            {
-                "tekst": tekst,
-                "opleiding": row["opleiding"],
-                "display_naam": row["display_naam"],
-                "naam": row["naam"],  # korte instelling-sleutel — voor web_zoek_domeinen
-                "leerweg": row["leerweg"],
-                "cohort": row["cohort"],
-                "crebo": crebo,
-                "dossier_tekst": dossier_tekst,
-                "skills_tekst": laad_skills_tekst(crebo),
-                "instelling_bronnen": instelling_bronnen,
-            }
+    catalogus = BronCatalogus.bouw(
+        OerInvoer(
+            opleiding=row["opleiding"],
+            instelling=row["display_naam"],
+            oer_id=row["id"],
+            instelling_sleutel=row["naam"],
+            leerweg=row["leerweg"],
+            cohort=row["cohort"],
+            crebo=row["crebo"],
+            oer_tekst=tekst,
+            kd_tekst=laad_kwalificatiedossier_tekst(row["crebo"], row["cohort"]),
+            skills_tekst=laad_skills_tekst(row["crebo"]),
+            documenten=tuple(selectie.per_oer.get(row["id"], [])),
         )
-        labels.append(
-            f"{row['display_naam']} · {nette_opleiding_naam(crebo, row['opleiding'])} · "
-            f"{row['leerweg']} {row['cohort']}"
-        )
-
-    if not items:
+        for row, tekst in gevonden
+    )
+    if catalogus.leeg:
         return ChatContext(oer_ids=list(oer_ids[:3]))
+
+    prompt = bouw_prompt(catalogus)
+    labels = [
+        f"{o.invoer.instelling} · "
+        f"{nette_opleiding_naam(o.invoer.crebo or '', o.invoer.opleiding)} · "
+        f"{o.invoer.leerweg} {o.invoer.cohort}"
+        for o in catalogus.oers
+    ]
     melding = (
         "Niet alle documenten pasten in dit gesprek; weggelaten: "
         + ", ".join(selectie.afgevallen)
@@ -121,10 +117,12 @@ def laad_context(oer_ids: list[int], niveau: str = "publiek") -> ChatContext:
         if selectie.afgevallen
         else ""
     )
-    school_domeinen = web_zoek_domeinen(items)
-    # Vacaturezoek is altijd beschikbaar (beroep bekend via de OER/skills); het prompt-blok
-    # gate't zelf op een expliciete vacaturevraag. Los van school_domeinen, zodat het ook
-    # werkt bij een instelling zonder scrapebaar webdomein.
-    systeem = bouw_gecombineerd_systeem(items, web_zoeken=bool(school_domeinen), vacatures=True)
-    domeinen = sorted(set(school_domeinen) | set(vacature_domeinen()))
-    return ChatContext(systeem, labels, domeinen, oer_onleesbaar, melding, list(oer_ids[:3]))
+    return ChatContext(
+        systeem=prompt.systeem,
+        labels=labels,
+        domeinen=prompt.web_domeinen,
+        oer_onleesbaar=catalogus.oer_onleesbaar,
+        melding=melding,
+        oer_ids=list(oer_ids[:3]),
+        bron_register=catalogus.register(prompt.web_domeinen),
+    )

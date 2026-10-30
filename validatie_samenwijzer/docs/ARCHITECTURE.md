@@ -174,7 +174,7 @@ oer_id       → markeer_geindexeerd()     → geindexeerd=1
 ```
 
 Geen chunking, geen embeddings, geen vector store. De volledige OER-tekst wordt op
-chat-tijd geladen door `chat.laad_oer_tekst()` (voorkeur: `<stem>.md` van markitdown,
+chat-tijd geladen door `bron_catalogus.laad_oer_tekst()` (voorkeur: `<stem>.md` van markitdown,
 fallback: pdfplumber over de PDF).
 
 **KD-fallback (issue #53)**: levert de OER nul kerntaken op (bv. Aeres/Rijn IJssel-examenplannen
@@ -286,15 +286,28 @@ inter-event, dus een lang antwoord wordt niet afgebroken — alleen een vastgelo
 
 ## OER-chat-flow
 
-`chat.py` levert de system-prompt-bouwers; `app_fastapi/context.py:laad_context()` (geeft één
-frozen `ChatContext`: `systeem`, `labels`, `domeinen`, `oer_onleesbaar`, `melding`, `oer_ids`) is de UI-loze
+`bron_catalogus.py` laadt de chat-bronnen en kent hun namen; `chat.bouw_prompt()` bouwt de
+system-prompt; `app_fastapi/context.py:laad_context()` (geeft één frozen `ChatContext`: `systeem`,
+`labels`, `domeinen`, `oer_onleesbaar`, `melding`, `oer_ids`, `bron_register`) is de UI-loze
 orchestrator die alle chat-routes (publiek `/`, `/student`, `/mentor/student/{id}`) gebruiken:
 
-1. **Context bouwen** (`bouw_gecombineerd_systeem`) — `laad_context()` laadt per gekozen OER de
-   volledige tekst + KD + skills + instellingsbronnen en combineert tot 3 OER's in één system
-   prompt met blok-headers `=== OER 1: … ===`. Bij één OER delegeert `bouw_gecombineerd_systeem`
-   naar `bouw_systeem` (single-OER pad), dus de student-/mentor-route (één gekoppelde OER) en de
-   publieke multi-OER-vraag lopen door dezelfde functie.
+1. **Context bouwen** — `laad_context()` laadt per gekozen OER (max 3) de volledige
+   tekst + KD + skills, haalt de documenten uit `documenten.selecteer_documenten()` en bouwt daaruit
+   één `BronCatalogus` (`OerInvoer` per OER). `bouw_prompt(catalogus)` kiest zelf de modus (één OER,
+   meerdere OER's, OER-onleesbaar) in één template met modus-fragmenten en neemt het
+   webzoek-besluit (schooldomeinen uit de instellingen van de catalogus; vacaturesites altijd);
+   het geeft `Prompt(systeem, web_domeinen)` terug; `laad_context()` bundelt dat met labels,
+   melding en `catalogus.register()` in één `ChatContext`, die `Sessie.laad_context()` overneemt.
+   **Bron-catalogus**: één module kent de naam van een chat-bron. De catalogus rendert de
+   blokkoppen in één formaat voor elke modus (`=== OER i: instelling · opleiding · leerweg cohort ===`,
+   `=== EXAMENREGLEMENT (instelling) ===`, `=== KWALIFICATIEDOSSIER i (Crebo x) ===`), geeft elke
+   citeerbare bron een unieke markertitel (bij botsing aangevuld met instelling, dan `OER i`) die
+   de BRONNENREGEL letterlijk opsomt, en levert `register()`: JSON (type, titel, `oer_id`,
+   `doc_id`, `crebo`, plus de webdomeinen) voor de sessie. `BronRegister.uit_dicts(register)`
+   herleidt daarmee later modeltitels zonder de teksten te laden; `splits_bronnen(tekst, register)`
+   wijst onbekende titels af en zet de identifiers (zonder register: alleen de type-check).
+   `static/chat.js` linkt een studiegids-chip met `oer_id` naar `/api/oer/{id}/bestand`; documenten
+   hebben (nog) geen download-route en blijven een label.
 2. **Intake** (`genereer_intake_antwoord` + `identificeer_oer_kandidaten`) — fallback in
    `POST /api/vraag` zolang nog geen OER gekozen is. `identificeer_oer_kandidaten()` scoort op
    crebo (+3), leerweg (+2), cohort (+2), opleidingswoorden (+1, max 2), instelling (+1) en
@@ -307,8 +320,9 @@ orchestrator die alle chat-routes (publiek `/`, `/student`, `/mentor/student/{id
    via `data.geldige_oer_ids`, max. 3; niets geldigs → 400); een opleidingsnaam die meerdere
    crebo's dekt laadt de siblings samen (gecapt op 3). Vrije tekst blijft de primaire start.
 
-`laad_oer_tekst()` voorkeursvolgorde: `<stem>.md` (markitdown-output) → bron-`.md` →
-pdfplumber over PDF. Hard cap: `_MAX_OER_TEKST_TEKENS = 500_000` tekens.
+`bron_catalogus.laad_oer_tekst()` voorkeursvolgorde: `<stem>.md` (markitdown-output) → bron-`.md` →
+pdfplumber over PDF. Hard cap: `_MAX_OER_TEKST_TEKENS = 500_000` tekens (parameter `cap`).
+Alle bronladers en caps staan in `bron_catalogus.py`.
 
 **Gespreksgeschiedenis & caching**: `bouw_berichten()` saneert de historie (lege/mislukte beurten
 weg, alternerende rollen, onbeantwoorde laatste user-beurt vervangen) zodat één gefaalde AI-call de
@@ -323,8 +337,9 @@ weergave, zodat een letterlijke `<`, code of HTML in het antwoord niet als marku
 Markdown-blockquotes worden als citaat-pull-quotes gestyled (`app.css`).
 
 `laad_kwalificatiedossier_tekst(crebo)` leest `kwalificatiedossiers/pdfs/<crebo>.md` (hard cap
-`_MAX_DOSSIER_TEKST_TEKENS = 300_000`). Pad-resolutie via `pad_kwalificatiedossier(crebo)`:
-default `<repo>/kwalificatiedossiers/pdfs`, override via env-var `KWALDOSSIERS_PAD`. Lege
+`_MAX_DOSSIER_TEKST_TEKENS = 300_000`), of de cohortversie via `kd_versies.kies_kd_pad`. Map via
+`kd_versies.kd_map()`: default `<repo>/kwalificatiedossiers/pdfs`, override via env-var
+`KWALDOSSIERS_PAD`. Lege
 string als de crebo geen KD heeft — de chat werkt dan OER-only.
 
 `laad_skills_tekst(crebo)` leest het skills-artefact `data/skills/<crebo>.json` (hard cap
@@ -333,27 +348,26 @@ tekstblok. Pad-resolutie via `pad_skills(crebo)`: default `<subproject>/data/ski
 env-var `SKILLS_PAD`. Lege string als de crebo geen artefact of geen gematcht beroep heeft — de
 chat werkt dan zonder skills. Zie de Skills-taxonomie-sectie verderop.
 
-`laad_instelling_bron_tekst(bestandspad)` leest een instellingsbreed document (examenreglement,
-begeleidingsbeleid, studentenstatuut, algemene informatie; hard cap
-`_MAX_INSTELLING_TEKST_TEKENS = 300_000`). `context.laad_context()` haalt de paden uit
-`instelling_documenten` (`db.haal_instelling_document_op`), gefilterd op de rol-soorten
-(`PUBLIEK/STUDENT/MENTOR_SOORTEN`), en geeft `(label, tekst)`-paren door als `instelling_bronnen`
-aan `bouw_gecombineerd_systeem`, dat ze als blokken `=== LABEL (instelling) ===` in de system
-prompt zet. Zie de Instellingsbrede-bron-sectie verderop.
+`documenten.selecteer_documenten()` leest instellingsbrede en opleidingsgebonden documenten
+(examenreglement, begeleidingsbeleid, studentenstatuut, protocollen …) met
+`laad_oer_tekst(pad, cap=_MAX_INSTELLING_TEKST_TEKENS)` (300_000), binnen het documentbudget en
+gefilterd op niveau; de kop komt uit `bron_catalogus.document_kop()`. De `BronCatalogus` zet ze
+als blokken `=== KOP (instelling) ===` in de system prompt. Zie de Instellingsbrede-bron-sectie
+verderop.
 
 **OER-onleesbaar-modus**: is de OER-fulltext leeg (gescande PDF zonder tekstlaag), dan bouwt
-`bouw_systeem` de prompt in een aangepaste modus die het kwalificatiedossier + instellingsregelingen
-als hoofdbron neemt (i.p.v. de OER) en de citatie-instructie daarop aanpast (drie template-varianten:
-`_PRIMAIRE_BRON_*`, `_KD_INSTRUCTIE_*`, `_OER_SECTIE_*`). `context.laad_context()` neemt de OER
-tóch op zolang er een KD óf instellingsbron is en zet dan `oer_onleesbaar=True`; de route geeft die
+`bouw_prompt` (bij één OER) de prompt in een aangepaste modus die het kwalificatiedossier + instellingsregelingen
+als hoofdbron neemt (i.p.v. de OER) en de citatie-instructie daarop aanpast (template-varianten
+`_PRIMAIRE_BRON_*`, `_KD_INSTRUCTIE_*`). De `BronCatalogus` neemt de OER tóch op zolang er een KD
+óf document is (de OER zelf is dan geen citeerbare bron) en zet `oer_onleesbaar=True`; de route geeft die
 vlag door aan de template → banner dat de OER niet machine-leesbaar is. Alleen zónder enige bron
 geeft `laad_context` een lege system-prompt terug en volgt `LAGE_RELEVANTIE_BERICHT`. Spec/plan:
 `docs/plans/2026-06-09-chat-kd-fallback-onleesbare-oer.md`.
 
-Toon `LAGE_RELEVANTIE_BERICHT` wanneer `laad_oer_tekst()` een lege string teruggeeft én er geen
+Toon `LAGE_RELEVANTIE_BERICHT` wanneer `bron_catalogus.laad_oer_tekst()` een lege string teruggeeft én er geen
 KD/instellingsbron is (bestand ontbreekt of niet leesbaar, zonder aanvullende bron).
 
-**Juridische citatieplicht**: zowel `_SYSTEEM_TEMPLATE` als `_MULTI_SYSTEEM_TEMPLATE` eisen per
+**Juridische citatieplicht**: `_SYSTEEM_TEMPLATE` (in elke modus) eist per
 claim drie elementen: **bron** ("Volgens de OER", "Volgens het kwalificatiedossier" of "Volgens
 het [examenreglement/studentenstatuut/…]"), **vindplaats** (sectie-nummer, kopje, artikel of
 paginanummer) en een **woordelijk citaat tussen dubbele aanhalingstekens**. Reden: een OER is een

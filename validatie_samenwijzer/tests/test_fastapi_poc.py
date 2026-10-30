@@ -91,7 +91,6 @@ def test_laad_context_onleesbare_oer_via_kd(monkeypatch):
     monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c, *a: "KD-INHOUD")
     monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
     monkeypatch.setattr(ctx, "selecteer_documenten", lambda *a, **k: Selectie({}, []))
-    monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
 
     c = laad_context([1])
     assert "KD-INHOUD" in c.systeem
@@ -117,11 +116,46 @@ def test_laad_context_leesbare_oer_niet_onleesbaar(monkeypatch):
     monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c, *a: "")
     monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
     monkeypatch.setattr(ctx, "selecteer_documenten", lambda *a, **k: Selectie({}, []))
-    monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
 
     c = laad_context([1])
     assert "ECHTE OER-TEKST" in c.systeem
     assert c.oer_onleesbaar is False
+
+
+def test_laad_context_geeft_bron_register(monkeypatch):
+    """Het register hoort bij de context: bekende titels met oer_id, plus de webdomeinen."""
+    import app_fastapi.context as ctx
+    from validatie_samenwijzer.chat import splits_bronnen
+
+    fake_row = {
+        "id": 1, "crebo": "25168", "opleiding": "Gastheer", "display_naam": "Da Vinci",
+        "naam": "davinci", "leerweg": "BBL", "cohort": "2025", "instelling_id": 2,
+        "bestandspad": "x.pdf",
+    }  # fmt: skip
+    monkeypatch.setattr(ctx, "_oer_blok", lambda oid: (fake_row, "ECHTE OER-TEKST"))
+    monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c, *a: "")
+    monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
+    monkeypatch.setattr(ctx, "selecteer_documenten", lambda *a, **k: Selectie({}, []))
+
+    c = ctx.laad_context([1])
+    register = c.bron_register
+    assert c.systeem and c.oer_ids == [1]
+    websites = {r["titel"] for r in register if r["type"] == "website"}
+    assert websites == {"davinci.nl", "indeed.nl", "stagemarkt.nl"}
+    titel = next(r["titel"] for r in register if r["type"] == "studiegids")
+    tekst = f"x\n<!-- bronnen: studiegids|{titel}; studiegids|Nep -->"
+    _, bronnen = splits_bronnen(tekst, register)
+    assert [(b.titel, b.oer_id) for b in bronnen] == [(titel, 1)]
+
+
+def test_laad_context_leeg_register_zonder_bron(monkeypatch):
+    import app_fastapi.context as ctx
+
+    monkeypatch.setattr(ctx, "_oer_blok", lambda oid: None)
+    monkeypatch.setattr(ctx, "selecteer_documenten", lambda *a, **k: Selectie({}, []))
+    c = ctx.laad_context([1])
+    assert (c.systeem, c.labels, c.domeinen, c.oer_onleesbaar, c.melding) == ("", [], [], False, "")
+    assert c.bron_register == [] and c.oer_ids == [1]
 
 
 # ── sessie ────────────────────────────────────────────────────────────────────
@@ -367,7 +401,7 @@ def test_api_kies_laadt_meerdere_studiegidsen_naast_elkaar():
     """De kiezer laat er tot 3 combineren; /api/kies moet die lijst ook echt honoreren.
 
     Guard tegen een terugval naar één gids: elk meegestuurd id hoort in de sessie én
-    in de labels terug te komen (de multi-prompt van `bouw_gecombineerd_systeem`).
+    in de labels terug te komen (de multi-OER-modus van `bouw_prompt`).
     """
     if not _WW:
         pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
@@ -482,6 +516,9 @@ def _events(tekst: str) -> list[dict]:
     return [json.loads(line[6:]) for line in tekst.splitlines() if line.startswith("data: ")]
 
 
+_GEEN_IDS = {"doc_id": None, "oer_id": None, "crebo": None}
+
+
 def test_chat_stuurt_status_lezen_bronnen_en_stript_marker(monkeypatch, stub_context):
     if not _WW:
         pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
@@ -508,8 +545,8 @@ def test_chat_stuurt_status_lezen_bronnen_en_stript_marker(monkeypatch, stub_con
     assert "".join(e["chunk"] for e in ev if "chunk" in e) == "Antwoord.\n\n"
     assert ev[-2] == {
         "bronnen": [
-            {"type": "studiegids", "titel": "OER Kok", "url": None},
-            {"type": "website", "titel": "curio.nl", "url": "https://curio.nl"},
+            {"type": "studiegids", "titel": "OER Kok", "url": None, **_GEEN_IDS},
+            {"type": "website", "titel": "curio.nl", "url": "https://curio.nl", **_GEEN_IDS},
         ]
     }
     assert ev[-1] == {"done": True}
@@ -819,7 +856,6 @@ def test_laad_context_bevat_opleidingsgebonden_en_kluisprotocol_uit_documenten(
     monkeypatch.setattr(ctx, "_oer_blok", lambda oid: (fake_row, "OER-TEKST"))
     monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c, *a: "")
     monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
-    monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
 
     systeem = ctx.laad_context([1]).systeem
     assert "PROTOCOL-KLUISCONTROLE" in systeem and "EXAMENPLAN-25168" in systeem
@@ -847,7 +883,6 @@ def test_laad_context_meldt_documenten_buiten_budget(tmp_path, monkeypatch):
     monkeypatch.setattr(ctx, "_oer_blok", lambda oid: (fake_row, "OER-TEKST"))
     monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c, *a: "")
     monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
-    monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
 
     c = ctx.laad_context([1])
     assert "Groot protocol" in c.melding and "x" * 500 not in c.systeem
@@ -862,3 +897,4 @@ def test_chat_js_bevat_status_en_bron_teksten():
     for t in ("Studiegids", "Kwalificatiedossier", "Schooldocument", "Skills", "Website"):
         assert f'"{t}"' in js
     assert 'startsWith("<!--")' in js  # vangnet in renderMarkdown: elke HTML-commentaarregel
+    assert "/api/oer/${b.oer_id}/bestand" in js  # studiegids-chip linkt naar de bestaande route

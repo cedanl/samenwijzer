@@ -246,8 +246,7 @@ def _pad_kwalificatiedossier(crebo: str | None) -> Path | None:
     """Pad naar <crebo>.md van het kwalificatiedossier, of None als de crebo leeg is
     of het bestand ontbreekt.
 
-    Spiegelt ``chat.pad_kwalificatiedossier`` bewust zonder import: chat.py trekt
-    ``anthropic`` binnen en hoort niet in de ingest-pijplijn. Default-pad
+    Spiegelt het KD-pad van ``kd_versies.kd_map`` zonder import. Default-pad
     ``<repo-root>/kwalificatiedossiers/pdfs``; override via ``KWALDOSSIERS_PAD``.
     """
     if not crebo:

@@ -38,6 +38,7 @@ from app_fastapi.context import laad_context
 from app_fastapi.sessie import bewaar_sessie, get_sessie
 from validatie_samenwijzer import db, instellingen
 from validatie_samenwijzer._ai import _client as ai_client
+from validatie_samenwijzer.bron_catalogus import resolve_oer_pad
 from validatie_samenwijzer.chat import (
     LAGE_RELEVANTIE_BERICHT,
     Status,
@@ -47,7 +48,6 @@ from validatie_samenwijzer.chat import (
     genereer_vervolgvragen,
     geschiedenis_voor_ui,
     identificeer_oer_kandidaten,
-    resolve_oer_pad,
     splits_bronnen,
     status_uit_tekstbegin,
     strip_bronnenregel,
@@ -444,7 +444,10 @@ async def api_chat(request: Request):
                         status_gemeld = True
                         yield _sse({"status": code})
             antwoord = "".join(ruw_delen)
-            _, bronnen = splits_bronnen(antwoord) if modus == "oer" else ("", [])
+            # `or None`: een sessie zonder register (oud of intake) valt terug op de type-check.
+            _, bronnen = (
+                splits_bronnen(antwoord, s.bron_register or None) if modus == "oer" else ("", [])
+            )
             s.voeg_beurt_toe(vraag, antwoord)
             bewaar_sessie(request)
             log.info(
@@ -534,7 +537,8 @@ def api_reset(request: Request):
 @app.get("/api/geschiedenis")
 def api_geschiedenis(request: Request):
     """Geef de bewaarde gespreksgeschiedenis terug voor rehydratie bij page-load."""
-    return JSONResponse({"beurten": geschiedenis_voor_ui(get_sessie(request).chat_history)})
+    s = get_sessie(request)
+    return JSONResponse({"beurten": geschiedenis_voor_ui(s.chat_history, s.bron_register or None)})
 
 
 # ── Login / sessie ─────────────────────────────────────────────────────────────
