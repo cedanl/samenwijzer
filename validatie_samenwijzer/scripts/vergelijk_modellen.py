@@ -99,7 +99,7 @@ def kies_oers(aantal: int) -> list[tuple[int, str, str]]:
         ).fetchall()
         kandidaten = []
         for r in rijen:
-            systeem, *_ = context.laad_context([r["id"]])
+            systeem = context.laad_context([r["id"]]).systeem
             if systeem:
                 kandidaten.append((len(systeem), r["id"], r["opleiding"]))
         if kandidaten:
@@ -134,7 +134,7 @@ def main() -> None:
     }
     log: list[dict] = []
     for oer_id, inst, opleiding in oers:
-        systeem, *_ = context.laad_context([oer_id])
+        systeem = context.laad_context([oer_id]).systeem
         for model in args.modellen:
             prompt_tokens = client.messages.count_tokens(
                 model=model, system=systeem, messages=[{"role": "user", "content": VRAGEN[0]}]

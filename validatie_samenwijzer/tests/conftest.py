@@ -34,3 +34,45 @@ def _reset_crebo_namen_cache():
     opleiding.laad_crebo_namen.cache_clear()
     yield
     opleiding.laad_crebo_namen.cache_clear()
+
+
+@pytest.fixture
+def stub_context(monkeypatch):
+    """Vervang ``app_fastapi.main.laad_context`` door een stub die een ``ChatContext`` geeft.
+
+    ``stub_context(systeem="SYS", labels=["l"], domeinen=[], melding="")`` stubt standaard ook
+    de id-guard van ``/api/kies`` (``data.geldige_oer_ids``), zodat tests geen echte,
+    geïndexeerde OER-id's nodig hebben; ``stub_guard=False`` laat de echte guard staan.
+    Geeft de lijst terug waarin elke aanroep (oer_ids) wordt vastgelegd.
+    """
+
+    def _stub(
+        systeem="SYS",
+        labels=None,
+        domeinen=None,
+        oer_onleesbaar=False,
+        melding="",
+        stub_guard=True,
+    ):
+        import app_fastapi.main as m
+        from app_fastapi.context import ChatContext
+
+        aanroepen: list[list[int]] = []
+
+        def _laad(oer_ids, *a, **k):
+            aanroepen.append(list(oer_ids))
+            return ChatContext(
+                systeem,
+                ["label"] if labels is None else labels,
+                [] if domeinen is None else domeinen,
+                oer_onleesbaar,
+                melding,
+                list(oer_ids),
+            )
+
+        monkeypatch.setattr(m, "laad_context", _laad)
+        if stub_guard:
+            monkeypatch.setattr(m.data, "geldige_oer_ids", lambda ids: list(ids)[:3])
+        return aanroepen
+
+    return _stub

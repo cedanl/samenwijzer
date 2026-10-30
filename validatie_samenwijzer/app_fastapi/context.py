@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import os
 import sqlite3
+from dataclasses import dataclass, field
 from functools import lru_cache
 
 from validatie_samenwijzer import db
@@ -47,10 +48,25 @@ def _oer_blok(oer_id: int):
     return row, tekst  # tekst mag leeg zijn (gescande OER) — laad_context beslist op KD/bron
 
 
-def laad_context_met_melding(
-    oer_ids: list[int], niveau: str = "publiek"
-) -> tuple[str, list[str], list[str], bool, str]:
-    """Geef (system-prompt, labels, web-zoek-domeinen, oer_onleesbaar, melding) voor de OER's.
+@dataclass(frozen=True)
+class ChatContext:
+    """De geladen chat-context voor één of meer OER's — één waarde, één eigenaar.
+
+    ``systeem`` is leeg als geen enkele OER een bruikbare bron had; ``oer_ids`` blijft dan
+    toch gevuld (max. 3, zoals gevraagd), zodat de chat 'lage relevantie' kan melden.
+    """
+
+    systeem: str = ""
+    labels: list[str] = field(default_factory=list)
+    domeinen: list[str] = field(default_factory=list)
+    oer_onleesbaar: bool = False
+    melding: str = ""
+    oer_ids: list[int] = field(default_factory=list)
+
+
+def laad_context(oer_ids: list[int], niveau: str = "publiek") -> ChatContext:
+    """Geef de :class:`ChatContext` (system-prompt, labels, web-zoek-domeinen, onleesbaar-vlag,
+    melding, OER-id's) voor de OER's.
 
     Per OER de volledige tekst + KD + skills; de bijbehorende documenten (instellingsbreed en
     opleidingsgebonden) komen uit ``documenten.selecteer_documenten`` binnen het budget, op basis
@@ -97,7 +113,7 @@ def laad_context_met_melding(
         )
 
     if not items:
-        return "", [], [], False, ""
+        return ChatContext(oer_ids=list(oer_ids[:3]))
     melding = (
         "Niet alle documenten pasten in dit gesprek; weggelaten: "
         + ", ".join(selectie.afgevallen)
@@ -111,11 +127,4 @@ def laad_context_met_melding(
     # werkt bij een instelling zonder scrapebaar webdomein.
     systeem = bouw_gecombineerd_systeem(items, web_zoeken=bool(school_domeinen), vacatures=True)
     domeinen = sorted(set(school_domeinen) | set(vacature_domeinen()))
-    return systeem, labels, domeinen, oer_onleesbaar, melding
-
-
-def laad_context(
-    oer_ids: list[int], niveau: str = "publiek"
-) -> tuple[str, list[str], list[str], bool]:
-    """Als :func:`laad_context_met_melding` zonder de melding (vier-tuple, oud contract)."""
-    return laad_context_met_melding(oer_ids, niveau)[:4]
+    return ChatContext(systeem, labels, domeinen, oer_onleesbaar, melding, list(oer_ids[:3]))

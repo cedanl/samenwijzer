@@ -10,7 +10,7 @@ import anthropic
 import pytest
 from dotenv import load_dotenv
 
-from app_fastapi.context import laad_context
+from app_fastapi.context import ChatContext, laad_context
 from validatie_samenwijzer.documenten import Selectie
 
 load_dotenv()  # OEREN_PAD=../oeren etc. — zoals de app bij opstart doet
@@ -28,30 +28,29 @@ def _leesbare_oer_id() -> int | None:
     for row in conn.execute(
         "SELECT id FROM oer_documenten WHERE geindexeerd = 1 ORDER BY id"
     ).fetchall():
-        systeem, _labels, _dom, _onl = laad_context([row["id"]])
-        if systeem:
+        if laad_context([row["id"]]).systeem:
             return row["id"]
     return None
 
 
 def test_laad_context_lege_lijst():
-    # Contract: 4-tuple (systeem, labels, domeinen, oer_onleesbaar).
-    assert laad_context([]) == ("", [], [], False)
+    assert laad_context([]) == ChatContext()
 
 
 def test_laad_context_onbekende_id():
-    # Een niet-bestaand id levert geen leesbare OER → lege context.
-    assert laad_context([99_999_999]) == ("", [], [], False)
+    # Een niet-bestaand id levert geen leesbare OER → lege context (id blijft genoteerd).
+    assert laad_context([99_999_999]) == ChatContext(oer_ids=[99_999_999])
 
 
 def test_laad_context_geeft_systeem_en_label():
     oer_id = _leesbare_oer_id()
     if oer_id is None:
         pytest.skip("Geen geïndexeerde OER met leesbare tekst beschikbaar (DB/oeren afwezig).")
-    systeem, labels, domeinen, _ = laad_context([oer_id])
-    assert systeem and len(systeem) > 500
-    assert len(labels) == 1 and " · " in labels[0]
-    assert isinstance(domeinen, list)
+    c = laad_context([oer_id])
+    assert c.systeem and len(c.systeem) > 500
+    assert len(c.labels) == 1 and " · " in c.labels[0]
+    assert isinstance(c.domeinen, list)
+    assert c.oer_ids == [oer_id]
 
 
 def test_laad_context_student_niveau_minstens_zo_breed():
@@ -59,8 +58,8 @@ def test_laad_context_student_niveau_minstens_zo_breed():
     oer_id = _leesbare_oer_id()
     if oer_id is None:
         pytest.skip("Geen geïndexeerde OER met leesbare tekst beschikbaar.")
-    publiek, _, _, _ = laad_context([oer_id])
-    student, _, _, _ = laad_context([oer_id], "student")
+    publiek = laad_context([oer_id]).systeem
+    student = laad_context([oer_id], "student").systeem
     assert len(student) >= len(publiek)
 
 
@@ -68,7 +67,7 @@ def test_laad_context_bevat_vacature_domeinen():
     oer_id = _leesbare_oer_id()
     if oer_id is None:
         pytest.skip("Geen geïndexeerde OER met leesbare tekst beschikbaar (DB/oeren afwezig).")
-    _systeem, _labels, domeinen, _ = laad_context([oer_id])
+    domeinen = laad_context([oer_id]).domeinen
     for d in ("stagemarkt.nl", "indeed.nl"):
         assert d in domeinen
 
@@ -94,10 +93,10 @@ def test_laad_context_onleesbare_oer_via_kd(monkeypatch):
     monkeypatch.setattr(ctx, "selecteer_documenten", lambda *a, **k: Selectie({}, []))
     monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
 
-    systeem, labels, domeinen, onleesbaar = laad_context([1])
-    assert "KD-INHOUD" in systeem
-    assert onleesbaar is True
-    assert len(labels) == 1
+    c = laad_context([1])
+    assert "KD-INHOUD" in c.systeem
+    assert c.oer_onleesbaar is True
+    assert len(c.labels) == 1
 
 
 def test_laad_context_leesbare_oer_niet_onleesbaar(monkeypatch):
@@ -120,9 +119,9 @@ def test_laad_context_leesbare_oer_niet_onleesbaar(monkeypatch):
     monkeypatch.setattr(ctx, "selecteer_documenten", lambda *a, **k: Selectie({}, []))
     monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
 
-    systeem, labels, domeinen, onleesbaar = laad_context([1])
-    assert "ECHTE OER-TEKST" in systeem
-    assert onleesbaar is False
+    c = laad_context([1])
+    assert "ECHTE OER-TEKST" in c.systeem
+    assert c.oer_onleesbaar is False
 
 
 # ── sessie ────────────────────────────────────────────────────────────────────
@@ -430,7 +429,7 @@ def test_generieke_regelingen_zijn_publiek_zichtbaar():
         )
 
 
-def test_chat_toegewezen_maar_onleesbare_oer_geeft_lage_relevantie(monkeypatch):
+def test_chat_toegewezen_maar_onleesbare_oer_geeft_lage_relevantie(monkeypatch, stub_context):
     """Toegewezen OER zonder bruikbare bron → expliciete melding, geen intake (geen AI-call)."""
     if not _WW:
         pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
@@ -438,7 +437,7 @@ def test_chat_toegewezen_maar_onleesbare_oer_geeft_lage_relevantie(monkeypatch):
     from validatie_samenwijzer.chat import LAGE_RELEVANTIE_BERICHT
 
     # laad_context geeft 'geen bruikbare bron' terug; ai_client mag niet aangeroepen worden.
-    monkeypatch.setattr(m, "laad_context_met_melding", lambda ids, *a, **k: ("", [], [], False, ""))
+    stub_context(systeem="", labels=[])
     monkeypatch.setattr(
         m, "ai_client", lambda: (_ for _ in ()).throw(AssertionError("AI niet aanroepen"))
     )
@@ -455,17 +454,13 @@ def test_app_logger_staat_op_info():
     assert logging.getLogger().handlers
 
 
-def test_chat_logt_timing_zonder_vraagtekst(monkeypatch, caplog):
+def test_chat_logt_timing_zonder_vraagtekst(monkeypatch, caplog, stub_context):
     """Elke voltooide chat-beurt logt timing/tekens/modus (Fly-zicht) — geen vraagtekst (PII)."""
     if not _WW:
         pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
     import app_fastapi.main as m
 
-    monkeypatch.setattr(
-        m,
-        "laad_context_met_melding",
-        lambda ids, *a, **k: ("SYSTEEMPROMPT", ["label"], [], False, ""),
-    )
+    stub_context(systeem="SYSTEEMPROMPT", domeinen=["stagemarkt.nl", "indeed.nl"])
     monkeypatch.setattr(m, "genereer_antwoord", lambda *a, **k: iter(["Hallo ", "wereld"]))
     c = _client()
     c.post("/api/kies", json={"oer_ids": [1]})  # sessie: oer_systeem="SYSTEEMPROMPT" → modus=oer
@@ -479,7 +474,7 @@ def test_chat_logt_timing_zonder_vraagtekst(monkeypatch, caplog):
     bericht = treffers[0].getMessage()
     assert "ttft_s" in bericht and "totaal_s" in bericht
     assert "tekens=12" in bericht  # "Hallo " + "wereld"
-    assert "modus=oer" in bericht and "webzoek=False" in bericht
+    assert "modus=oer" in bericht and "domeinen=2" in bericht
     assert vraag not in bericht
 
 
@@ -487,15 +482,13 @@ def _events(tekst: str) -> list[dict]:
     return [json.loads(line[6:]) for line in tekst.splitlines() if line.startswith("data: ")]
 
 
-def test_chat_stuurt_status_lezen_bronnen_en_stript_marker(monkeypatch):
+def test_chat_stuurt_status_lezen_bronnen_en_stript_marker(monkeypatch, stub_context):
     if not _WW:
         pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
     import app_fastapi.main as m
     from validatie_samenwijzer.chat import Status
 
-    monkeypatch.setattr(
-        m, "laad_context_met_melding", lambda ids, *a, **k: ("SYS", ["label"], [], False, "")
-    )
+    stub_context()
     monkeypatch.setattr(
         m,
         "genereer_antwoord",
@@ -526,15 +519,13 @@ def test_chat_stuurt_status_lezen_bronnen_en_stript_marker(monkeypatch):
     assert "<!-- bronnen:" not in c.get("/api/geschiedenis").text
 
 
-def test_chat_meldt_schooldoc_status_uit_tekstbegin(monkeypatch):
+def test_chat_meldt_schooldoc_status_uit_tekstbegin(monkeypatch, stub_context):
     if not _WW:
         pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
     import app_fastapi.main as m
     from validatie_samenwijzer.chat import _SCHOOLDOC_DISCLAIMER
 
-    monkeypatch.setattr(
-        m, "laad_context_met_melding", lambda ids, *a, **k: ("SYS", ["label"], [], False, "")
-    )
+    stub_context()
     helft = len(_SCHOOLDOC_DISCLAIMER) // 2
     monkeypatch.setattr(
         m,
@@ -551,15 +542,13 @@ def test_chat_meldt_schooldoc_status_uit_tekstbegin(monkeypatch):
     assert not any("bronnen" in e for e in ev)
 
 
-def test_chat_meldt_webinfo_status_ook_bij_één_grote_chunk(monkeypatch):
+def test_chat_meldt_webinfo_status_ook_bij_één_grote_chunk(monkeypatch, stub_context):
     if not _WW:
         pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
     import app_fastapi.main as m
     from validatie_samenwijzer.chat import _WEB_DISCLAIMER
 
-    monkeypatch.setattr(
-        m, "laad_context_met_melding", lambda ids, *a, **k: ("SYS", ["label"], [], False, "")
-    )
+    stub_context()
     monkeypatch.setattr(
         m, "genereer_antwoord", lambda *a, **k: iter([_WEB_DISCLAIMER + "\n\nAntwoord"])
     )
@@ -580,12 +569,12 @@ def test_chat_intake_stuurt_status_intake_zonder_bronnen(monkeypatch):
     assert not any("bronnen" in e for e in ev)
 
 
-def test_chat_lage_relevantie_stuurt_geen_status(monkeypatch):
+def test_chat_lage_relevantie_stuurt_geen_status(monkeypatch, stub_context):
     if not _WW:
         pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
     import app_fastapi.main as m
 
-    monkeypatch.setattr(m, "laad_context_met_melding", lambda ids, *a, **k: ("", [], [], False, ""))
+    stub_context(systeem="", labels=[])
     monkeypatch.setattr(
         m, "ai_client", lambda: (_ for _ in ()).throw(AssertionError("AI niet aanroepen"))
     )
@@ -832,7 +821,7 @@ def test_laad_context_bevat_opleidingsgebonden_en_kluisprotocol_uit_documenten(
     monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
     monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
 
-    systeem, *_ = ctx.laad_context([1])
+    systeem = ctx.laad_context([1]).systeem
     assert "PROTOCOL-KLUISCONTROLE" in systeem and "EXAMENPLAN-25168" in systeem
 
 
@@ -860,8 +849,8 @@ def test_laad_context_meldt_documenten_buiten_budget(tmp_path, monkeypatch):
     monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
     monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
 
-    systeem, _labels, _dom, _onl, melding = ctx.laad_context_met_melding([1])
-    assert "Groot protocol" in melding and "x" * 500 not in systeem
+    c = ctx.laad_context([1])
+    assert "Groot protocol" in c.melding and "x" * 500 not in c.systeem
 
 
 def test_chat_js_bevat_status_en_bron_teksten():

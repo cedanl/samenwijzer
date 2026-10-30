@@ -82,7 +82,7 @@ def test_exception_in_generator_wordt_doorgegeven():
         _verzamel(kapot(), heartbeat_s=1.0, max_s=5.0)
 
 
-def test_api_chat_stuurt_ping_bij_stilte(monkeypatch):
+def test_api_chat_stuurt_ping_bij_stilte(monkeypatch, stub_context):
     """End-to-end: een trage AI-generator levert ping-events tussen 'lezen' en het antwoord."""
     if not _WW:
         pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
@@ -91,9 +91,7 @@ def test_api_chat_stuurt_ping_bij_stilte(monkeypatch):
     import app_fastapi.main as m
 
     monkeypatch.setattr(m, "_CHAT_HEARTBEAT_SECONDEN", 0.05)
-    monkeypatch.setattr(
-        m, "laad_context_met_melding", lambda ids, *a, **k: ("SYS", ["label"], [], False, "")
-    )
+    stub_context()
 
     def traag(*a, **k):
         time.sleep(0.3)

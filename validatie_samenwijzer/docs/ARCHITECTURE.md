@@ -238,8 +238,11 @@ expliciet aan).
 
 Relevante velden: `toegang` (algemene poort gepasseerd), `rol` (`"student"`/`"mentor"`/`None`),
 `gebruiker` (`{id, naam, studentnummer?}`), `oer_ids` + `oer_systeem` (geladen context),
-`oer_labels`, `oer_onleesbaar`, `chat_history`, en mentor-specifiek `actieve_student`. Login
-(`POST /login`) vult deze velden; `reset()`/`uitloggen()` wissen ze.
+`oer_labels`, `domeinen`, `oer_onleesbaar`, `melding`, `chat_history`. De context-velden zet alleen
+`Sessie.laad_context(ctx)` (neemt een `ChatContext` over en wist `wachtende_vraag`); `nieuw_gesprek()`
+wist de historie, `reset()`/`uitloggen()` alles. Login, `/api/vraag`, `/api/kies` en
+`/mentor/student/{id}` gebruiken uitsluitend die twee methoden. `laad()` negeert onbekende velden in
+oude `sessies.db`-rijen.
 
 Rolbewaking: de `_eis(request, rol)`-helper in `main.py` redirect naar `/login` als de rol niet
 klopt; mentor-routes checken bovendien IDOR (`/mentor/student/{id}` weigert studenten buiten de
@@ -283,7 +286,8 @@ inter-event, dus een lang antwoord wordt niet afgebroken — alleen een vastgelo
 
 ## OER-chat-flow
 
-`chat.py` levert de system-prompt-bouwers; `app_fastapi/context.py:laad_context()` is de UI-loze
+`chat.py` levert de system-prompt-bouwers; `app_fastapi/context.py:laad_context()` (geeft één
+frozen `ChatContext`: `systeem`, `labels`, `domeinen`, `oer_onleesbaar`, `melding`, `oer_ids`) is de UI-loze
 orchestrator die alle chat-routes (publiek `/`, `/student`, `/mentor/student/{id}`) gebruiken:
 
 1. **Context bouwen** (`bouw_gecombineerd_systeem`) — `laad_context()` laadt per gekozen OER de
@@ -294,11 +298,13 @@ orchestrator die alle chat-routes (publiek `/`, `/student`, `/mentor/student/{id
 2. **Intake** (`genereer_intake_antwoord` + `identificeer_oer_kandidaten`) — fallback in
    `POST /api/vraag` zolang nog geen OER gekozen is. `identificeer_oer_kandidaten()` scoort op
    crebo (+3), leerweg (+2), cohort (+2), opleidingswoorden (+1, max 2), instelling (+1) en
-   bepaalt de modus (`chat` bij één match, `kies` bij meer, `intake` bij geen).
+   bepaalt de modus (`chat` bij één match, `kies` bij meer, `intake` bij geen). Alleen geïndexeerde
+   OER's doen mee (`data.kiesbare_oers()`).
 3. **Opleidingskiezer** (`kies`-modus + optionele shortcut op de landing) — bij meerdere kandidaten
    toont de frontend géén platte lijst maar een **cascade** instelling → leerweg → opleiding →
    cohort, gevoed door `GET /api/opleidingen` (`data.opleidingen_boom()`, alleen geïndexeerde OER's,
-   schone namen). De keuze laadt via het bestaande `POST /api/kies`; een opleidingsnaam die meerdere
+   schone namen). De keuze laadt via het bestaande `POST /api/kies` (id's gefilterd op bestaande, geïndexeerde OER's
+   via `data.geldige_oer_ids`, max. 3; niets geldigs → 400); een opleidingsnaam die meerdere
    crebo's dekt laadt de siblings samen (gecapt op 3). Vrije tekst blijft de primaire start.
 
 `laad_oer_tekst()` voorkeursvolgorde: `<stem>.md` (markitdown-output) → bron-`.md` →

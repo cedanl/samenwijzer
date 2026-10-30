@@ -25,6 +25,7 @@ _FAKE_OERS = [
         "naam": "talland",
         "leerweg": "BOL",
         "cohort": "2025",
+        "geindexeerd": 1,
     },
     {
         "id": 2,
@@ -34,6 +35,7 @@ _FAKE_OERS = [
         "naam": "talland",
         "leerweg": "BBL",
         "cohort": "2024",
+        "geindexeerd": 1,
     },
 ]
 
@@ -91,7 +93,7 @@ def test_vraag_zonder_historie_matcht_niet_op_fragment_alleen(monkeypatch):
     assert r.json()["modus"] == "intake"
 
 
-def test_vraag_accumuleert_naar_eenduidige_match_laadt_direct(monkeypatch):
+def test_vraag_accumuleert_naar_eenduidige_match_laadt_direct(monkeypatch, stub_context):
     """Seeded historie + vervolgfragment lossen samen op tot precies 1 kandidaat → modus
     "chat" met `oer_ids` gezet, en de kies-state (`wachtende_vraag`/`kandidaten`) van een
     eerdere ronde wordt niet per ongeluk laten staan (regressie voor Finding 1)."""
@@ -99,16 +101,13 @@ def test_vraag_accumuleert_naar_eenduidige_match_laadt_direct(monkeypatch):
     from app_fastapi.sessie import Sessie
 
     monkeypatch.setattr(m.db, "get_alle_oers_met_instelling", lambda conn: _FAKE_OERS)
-    monkeypatch.setattr(
-        m, "laad_context_met_melding", lambda oer_ids, **k: ("PROMPT", ["label"], [], False, "")
-    )
+    stub_context(systeem="PROMPT")
 
     s = Sessie(
         toegang=True,
         chat_history=[{"role": "user", "content": "Ik zit op Talland College, ik doe Kok"}],
         # Stale kies-state uit een eerdere ronde die deze beurt zou moeten opruimen.
         wachtende_vraag="oude vraag",
-        kandidaten=[{"id": 99, "display_naam": "oud"}],
     )
     monkeypatch.setattr(m, "get_sessie", lambda request: s)
 
@@ -119,7 +118,6 @@ def test_vraag_accumuleert_naar_eenduidige_match_laadt_direct(monkeypatch):
     assert body["modus"] == "chat"
     assert body["oer_ids"] == [1]
     assert s.wachtende_vraag is None
-    assert s.kandidaten == []
 
 
 def test_vraag_met_al_geladen_oer_blijft_shortcut_nemen(monkeypatch):
@@ -149,7 +147,7 @@ def test_vraag_met_al_geladen_oer_blijft_shortcut_nemen(monkeypatch):
     assert body["labels"] == ["Talland College · Kok · BOL 2025"]
 
 
-def test_kies_beurt_telt_mee_bij_genegeerde_picker(monkeypatch):
+def test_kies_beurt_telt_mee_bij_genegeerde_picker(monkeypatch, stub_context):
     """Regressie voor de #243-follow-up: de kies-beurt zelf ontbrak in `chat_history`, dus als
     de gebruiker de picker negeert en verder typt, mist de accumulatie de kandidaten-context.
 
@@ -163,9 +161,7 @@ def test_kies_beurt_telt_mee_bij_genegeerde_picker(monkeypatch):
     import app_fastapi.main as m
     from app_fastapi.sessie import Sessie
 
-    monkeypatch.setattr(
-        m, "laad_context_met_melding", lambda oer_ids, **k: ("PROMPT", ["label"], [], False, "")
-    )
+    stub_context(systeem="PROMPT")
 
     s = Sessie(toegang=True)
     monkeypatch.setattr(m, "get_sessie", lambda request: s)
@@ -183,7 +179,7 @@ def test_kies_beurt_telt_mee_bij_genegeerde_picker(monkeypatch):
     assert body["oer_ids"] == [1193]
 
 
-def test_vraag_partiele_enkele_kandidaat_geeft_kies(monkeypatch):
+def test_vraag_partiele_enkele_kandidaat_geeft_kies(monkeypatch, stub_context):
     """Eén kandidaat die slechts partieel matcht (de genoemde school biedt de opleiding niet aan,
     een andere school wél) → modus "kies" i.p.v. stil de verkeerde studiegids laden."""
     import app_fastapi.main as m
@@ -198,6 +194,7 @@ def test_vraag_partiele_enkele_kandidaat_geeft_kies(monkeypatch):
             "naam": "aeres",
             "leerweg": "BOL",
             "cohort": "2026",
+            "geindexeerd": 1,
         },
         {
             "id": 2,
@@ -207,15 +204,11 @@ def test_vraag_partiele_enkele_kandidaat_geeft_kies(monkeypatch):
             "naam": "landstede",
             "leerweg": "BOL",
             "cohort": "2025",
+            "geindexeerd": 1,
         },
     ]
     monkeypatch.setattr(m.db, "get_alle_oers_met_instelling", lambda conn: oers)
-    geladen = []
-    monkeypatch.setattr(
-        m,
-        "laad_context_met_melding",
-        lambda oer_ids, **k: geladen.append(oer_ids) or ("P", ["l"], [], False, ""),
-    )
+    geladen = stub_context(systeem="P", labels=["l"])
     s = Sessie(toegang=True)
     monkeypatch.setattr(m, "get_sessie", lambda request: s)
 
@@ -226,7 +219,7 @@ def test_vraag_partiele_enkele_kandidaat_geeft_kies(monkeypatch):
     assert r.status_code == 200
     assert r.json()["modus"] == "kies"
     assert geladen == []
-    assert [k["id"] for k in s.kandidaten] == [1]
+    assert [o["id"] for o in r.json()["opties"]] == [1]
 
 
 def test_kies_opties_tonen_schone_opleidingsnaam(monkeypatch):
