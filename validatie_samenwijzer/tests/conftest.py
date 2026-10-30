@@ -42,7 +42,8 @@ def stub_context(monkeypatch):
 
     ``stub_context(systeem="SYS", labels=["l"], domeinen=[], melding="")`` stubt standaard ook
     de id-guard van ``/api/kies`` (``data.geldige_oer_ids``), zodat tests geen echte,
-    geïndexeerde OER-id's nodig hebben; ``stub_guard=False`` laat de echte guard staan.
+    geïndexeerde OER-id's nodig hebben; ``stub_guard=False`` laat de echte guard staan; ``bron_register`` zet het
+    ``BronCatalogus.register()``-register van de context.
     Geeft de lijst terug waarin elke aanroep (oer_ids) wordt vastgelegd.
     """
 
@@ -53,6 +54,7 @@ def stub_context(monkeypatch):
         oer_onleesbaar=False,
         melding="",
         stub_guard=True,
+        bron_register=None,
     ):
         import app_fastapi.main as m
         from app_fastapi.context import ChatContext
@@ -68,6 +70,7 @@ def stub_context(monkeypatch):
                 oer_onleesbaar,
                 melding,
                 list(oer_ids),
+                list(bron_register or []),
             )
 
         monkeypatch.setattr(m, "laad_context", _laad)

@@ -164,18 +164,19 @@ def test_sessie_voeg_beurt_kapt_op_max():
 
     s = Sessie()
     for i in range(MAX_GESCHIEDENIS):  # elk = 2 berichten → ruim over de cap
-        s.voeg_beurt_toe(f"v{i}", f"a{i}")
-    assert len(s.chat_history) == MAX_GESCHIEDENIS
-    assert s.chat_history[-1]["content"].startswith("a")  # nieuwste behouden
+        s.gesprek.voeg_beurt_toe(f"v{i}", f"a{i}")
+    lijst = s.gesprek.naar_lijst()
+    assert len(lijst) == MAX_GESCHIEDENIS
+    assert lijst[-1]["content"].startswith("a")  # nieuwste behouden
 
 
 def test_sessie_reset_leegt_alles():
     from app_fastapi.sessie import Sessie
 
     s = Sessie(oer_systeem="x", oer_labels=["l"], oer_ids=[1])
-    s.voeg_beurt_toe("v", "a")
+    s.gesprek.voeg_beurt_toe("v", "a")
     s.reset()
-    assert s.chat_history == [] and s.oer_systeem is None and s.oer_ids == []
+    assert s.gesprek.naar_lijst() == [] and s.oer_systeem is None and s.oer_ids == []
 
 
 # ── sessiestore (SQLite, write-through + TTL) ───────────────────────────────────
@@ -187,14 +188,14 @@ def test_sessiestore_bewaart_en_laadt(tmp_path, monkeypatch):
     s = sessie_mod.Sessie()
     s.oer_systeem = "PROMPT"
     s.oer_ids = [1, 2]
-    s.voeg_beurt_toe("vraag", "antwoord")
+    s.gesprek.voeg_beurt_toe("vraag", "antwoord")
     sessie_mod.bewaar("sid-1", s)
 
     geladen = sessie_mod.laad("sid-1")
     assert geladen is not None
     assert geladen.oer_systeem == "PROMPT"
     assert geladen.oer_ids == [1, 2]
-    assert geladen.chat_history == [
+    assert geladen.gesprek.naar_lijst() == [
         {"role": "user", "content": "vraag"},
         {"role": "assistant", "content": "antwoord"},
     ]
@@ -554,6 +555,33 @@ def test_chat_stuurt_status_lezen_bronnen_en_stript_marker(monkeypatch, stub_con
     g = c.get("/api/geschiedenis").json()["beurten"]
     assert g[-1]["content"] == "Antwoord." and g[-1]["bronnen"][0]["titel"] == "OER Kok"
     assert "<!-- bronnen:" not in c.get("/api/geschiedenis").text
+
+
+def test_chat_gebruikt_bron_register_uit_de_sessie(monkeypatch, stub_context):
+    """`/api/chat` herleidt de bronnenmarker via het sessieregister: een bekende titel komt mét
+    `oer_id` door, een door het model verzonnen titel valt weg."""
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    import app_fastapi.main as m
+
+    stub_context(
+        bron_register=[
+            {"type": "studiegids", "titel": "OER Kok BOL 2025", "oer_id": 7, "doc_id": None,
+             "crebo": "25180"},
+        ]
+    )  # fmt: skip
+    monkeypatch.setattr(
+        m,
+        "genereer_antwoord",
+        lambda *a, **k: iter(
+            ["Antwoord.\n<!-- bronnen: studiegids|OER Kok BOL 2025; studiegids|Verzonnen gids -->"]
+        ),
+    )
+    c = _client()
+    c.post("/api/kies", json={"oer_ids": [7]})
+    ev = _events(c.post("/api/chat", json={"vraag": "kluisjes?"}).text)
+    bronnen = next(e["bronnen"] for e in ev if "bronnen" in e)
+    assert [(b["titel"], b["oer_id"]) for b in bronnen] == [("OER Kok BOL 2025", 7)]
 
 
 def test_chat_meldt_schooldoc_status_uit_tekstbegin(monkeypatch, stub_context):

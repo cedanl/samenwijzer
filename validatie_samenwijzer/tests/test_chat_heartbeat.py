@@ -108,3 +108,128 @@ def test_api_chat_stuurt_ping_bij_stilte(monkeypatch, stub_context):
     assert "".join(e.get("chunk", "") for e in ev) == "Antwoord."
     assert ev[-1] == {"done": True}
     assert r.headers.get("x-accel-buffering") == "no"
+
+
+# ── afgebroken beurt blijft in het Gesprek ────────────────────────────────────────
+def test_bij_timeout_callback_draait_voor_het_error_event():
+    volgorde: list[str] = []
+
+    def hangt():
+        yield "start"
+        time.sleep(1.0)
+
+    import app_fastapi.main as m
+
+    async def run():
+        uit = []
+        async for x in m._met_heartbeat(
+            hangt(), heartbeat_s=0.05, max_s=0.2, bij_timeout=lambda: volgorde.append("cb")
+        ):
+            uit.append(x)
+            if not x.startswith("data: ") or json.loads(x[6:]) != {"ping": True}:
+                volgorde.append("event")
+        return uit
+
+    asyncio.run(run())
+    assert volgorde == ["event", "cb", "event"]  # start, callback, error
+
+
+def test_fout_in_bij_timeout_callback_houdt_error_event(caplog):
+    def hangt():
+        yield "start"
+        time.sleep(1.0)
+
+    def kapot():
+        raise RuntimeError("opslaan faalt")
+
+    import app_fastapi.main as m
+
+    async def run():
+        return [
+            x
+            async for x in m._met_heartbeat(hangt(), heartbeat_s=0.05, max_s=0.2, bij_timeout=kapot)
+        ]
+
+    with caplog.at_level(logging.ERROR, logger="oer_poc"):
+        uit = asyncio.run(run())
+    assert _events(uit)[-1] == {"error": "timeout"}
+    assert any("afgebroken beurt vastleggen mislukt" in r.message for r in caplog.records)
+
+
+def test_api_chat_timeout_bewaart_afgebroken_beurt(monkeypatch, stub_context):
+    """Een hangende stream: vraag + gedeeltelijk antwoord blijven als afgebroken beurt in het
+    Gesprek (zonder halve marker), en een late afronding van de losgelaten worker voegt geen
+    tweede beurt toe."""
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    from fastapi.testclient import TestClient
+
+    import app_fastapi.main as m
+
+    monkeypatch.setattr(m, "_CHAT_HEARTBEAT_SECONDEN", 0.05)
+    monkeypatch.setattr(m, "_CHAT_MAX_SECONDEN", 0.3)
+    stub_context()
+
+    def hangt(*a, **k):
+        yield "Eerste deel.\n\n<!-- bro"
+        time.sleep(0.8)  # de AI-call hangt
+        yield "nnen: studiegids|OER -->"  # komt na de timeout alsnog binnen
+
+    monkeypatch.setattr(m, "genereer_antwoord", hangt)
+    c = TestClient(m.app)
+    c.post("/toegang", data={"wachtwoord": _WW})
+    c.post("/api/kies", json={"oer_ids": [1]})
+
+    r = c.post("/api/chat", json={"vraag": "kluisjes?"})
+    assert _events(r.text.splitlines())[-1] == {"error": "timeout"}
+
+    beurten = c.get("/api/geschiedenis").json()["beurten"]
+    assert beurten == [
+        {"role": "user", "content": "kluisjes?"},
+        {"role": "assistant", "content": "Eerste deel.", "bronnen": [], "afgebroken": True},
+    ]
+    assert "<!--" not in c.get("/api/geschiedenis").text
+
+    time.sleep(1.0)  # de losgelaten worker rondt af: mag niets meer toevoegen
+    assert len(c.get("/api/geschiedenis").json()["beurten"]) == 2
+
+    # Volgende beurt: het model ziet een consistente historie, zonder halve marker.
+    gezien: list[list[dict]] = []
+
+    def antwoord(client, systeem, berichten, **k):
+        gezien.append(berichten)
+        yield "Ok."
+
+    monkeypatch.setattr(m, "genereer_antwoord", antwoord)
+    monkeypatch.setattr(m, "_CHAT_MAX_SECONDEN", 5.0)
+    c.post("/api/chat", json={"vraag": "nog eens"})
+    assert gezien[0] == [
+        {"role": "user", "content": "kluisjes?"},
+        {"role": "assistant", "content": "Eerste deel.\n\n[antwoord afgebroken]"},
+        {"role": "user", "content": "nog eens"},
+    ]
+
+
+def test_api_chat_exceptie_bewaart_afgebroken_beurt(monkeypatch, stub_context):
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    from fastapi.testclient import TestClient
+
+    import app_fastapi.main as m
+
+    stub_context()
+
+    def faalt(*a, **k):
+        yield "Half antwoord"
+        raise RuntimeError("boem")
+
+    monkeypatch.setattr(m, "genereer_antwoord", faalt)
+    c = TestClient(m.app)
+    c.post("/toegang", data={"wachtwoord": _WW})
+    c.post("/api/kies", json={"oer_ids": [1]})
+
+    r = c.post("/api/chat", json={"vraag": "kluisjes?"})
+    assert _events(r.text.splitlines())[-1] == {"error": "onbekend"}
+    beurten = c.get("/api/geschiedenis").json()["beurten"]
+    assert beurten[0] == {"role": "user", "content": "kluisjes?"}
+    assert beurten[1]["afgebroken"] is True and beurten[1]["content"] == "Half antwoord"
