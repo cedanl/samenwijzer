@@ -2,6 +2,8 @@
 
 import json
 
+import pytest
+
 from validatie_samenwijzer.bron_catalogus import (
     Bron,
     BronCatalogus,
@@ -121,6 +123,23 @@ def test_register_round_trip_zonder_teksten():
     )
     assert herbouwd.resolve("curio.nl", "https://evil.example/curio.nl") is None
     assert herbouwd.resolve("talland.nl") is None
+
+
+@pytest.mark.parametrize(
+    "url",
+    [
+        "https://evil.example\\@curio.nl/x",  # browser leest \\ als / → evil.example
+        "https://user@curio.nl/x",  # userinfo
+        "https://curio.nl:8443/x",  # poort
+        "https://curio.nl/x y",  # witruimte
+        "javascript:alert(1)",
+        "https://curio.nl.evil.example/x",  # ander domein met curio.nl als prefix
+    ],
+)
+def test_register_wijst_misleidende_website_urls_af(url):
+    cat = BronCatalogus.bouw([_volledig()])
+    herbouwd = BronRegister.uit_dicts(cat.register(["curio.nl"]))
+    assert herbouwd.resolve("curio.nl", url) is None
 
 
 def test_register_uit_dicts_negeert_rommel():

@@ -140,8 +140,20 @@ function zetStatus(el, code) {
    Alleen via textContent/createElement. Een link alleen naar wat echt bestaat: een website met
    http(s)-url, of een studiegids met oer_id (de bestaande route /api/oer/{id}/bestand). Voor
    documenten (doc_id), KD en skills is er geen download-route: die blijven een label. */
+/* Alleen een http(s)-URL zonder backslash/userinfo/witruimte waarvan de host het
+   geregistreerde domein (de chip-titel) is of eronder valt — zelfde regel als de server. */
+function _veiligeWebUrl(url, domein) {
+  if (/[\\@\s]/.test(url)) return false;
+  let u;
+  try { u = new URL(url); } catch { return false; }
+  if (u.protocol !== "http:" && u.protocol !== "https:") return false;
+  if (u.username || u.password || u.port) return false;
+  const host = u.hostname.toLowerCase();
+  const dom = String(domein ?? "").toLowerCase().replace(/^www\./, "");
+  return !!dom && (host === dom || host.endsWith("." + dom));
+}
 function _bronLink(b) {
-  if (b.type === "website" && typeof b.url === "string" && /^https?:\/\//.test(b.url)) return b.url;
+  if (b.type === "website" && typeof b.url === "string" && _veiligeWebUrl(b.url, b.titel)) return b.url;
   if (b.type === "studiegids" && Number.isInteger(b.oer_id) && b.oer_id > 0) {
     return `/api/oer/${b.oer_id}/bestand`;
   }

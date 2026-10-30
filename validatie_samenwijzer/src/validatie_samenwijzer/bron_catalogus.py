@@ -238,12 +238,22 @@ def _norm(titel: str) -> str:
 
 
 def _host_hoort_bij(url: str, domein: str) -> bool:
+    """Hoort ``url`` bij ``domein`` (of een subdomein)? Alleen http(s), strikt geparsed.
+
+    Browsers lezen ``\\`` als ``/`` en honoreren userinfo (``user@host``); ``urlparse`` niet.
+    Zulke URL's (en URL's met witruimte of een poort/credentials in de netloc) worden daarom
+    afgewezen, zodat ``https://evil.example\\@curio.nl`` nooit een geldige chip-link wordt.
+    """
+    if any(c in url for c in "\\@ \t\r\n") or not url.isprintable():
+        return False
     try:
         delen = urlparse(url)
-        host = (delen.hostname or "").casefold()
     except ValueError:
         return False
-    return delen.scheme in ("http", "https") and (host == domein or host.endswith(f".{domein}"))
+    netloc = delen.netloc.casefold()
+    if not netloc or netloc != (delen.hostname or "").casefold():
+        return False  # poort, credentials of lege host → geen link
+    return delen.scheme in ("http", "https") and (netloc == domein or netloc.endswith(f".{domein}"))
 
 
 @dataclass(frozen=True)

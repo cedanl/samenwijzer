@@ -143,6 +143,9 @@ def kiesbare_oers() -> list[dict]:
     return [dict(r) for r in db.get_alle_oers_met_instelling(_conn()) if r["geindexeerd"]]
 
 
+_MAX_KIES_IDS = 3  # zelfde grens als MAX_GIDSEN in static/app.js en oer_ids[:3] in context
+
+
 def geldige_oer_ids(oer_ids: list) -> list[int]:
     """Filter ruwe (client-)id's op bestaande, geïndexeerde OER's; max. 3, volgorde behouden.
 
@@ -150,7 +153,10 @@ def geldige_oer_ids(oer_ids: list) -> list[int]:
     zijn sessie kan zetten (de sessie-guard van het bronbestand leunt hierop).
     """
     ints = [i for i in oer_ids if isinstance(i, int) and not isinstance(i, bool)]
-    return db.filter_geindexeerde_oer_ids(_conn(), ints)[:3]
+    # Ontdubbel (volgorde behouden) en kap vóór de DB-call af: een lange lijst mag geen
+    # "too many SQL variables" geven, en [5, 5, 5] mag niet drie keer dezelfde OER laden.
+    uniek = list(dict.fromkeys(ints))[:_MAX_KIES_IDS]
+    return db.filter_geindexeerde_oer_ids(_conn(), uniek)
 
 
 def opleidingen_boom() -> list[dict]:

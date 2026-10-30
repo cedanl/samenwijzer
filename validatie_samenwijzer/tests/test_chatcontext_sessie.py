@@ -169,10 +169,11 @@ def test_kies_filtert_ongeldige_ids_weg(oer_db, monkeypatch, stub_context):
     assert s.oer_ids == [oer_db["a"]]
 
 
-def test_kies_kapt_op_drie_geldige_ids(oer_db, monkeypatch, stub_context):
+def test_kies_ontdubbelt_en_kapt_op_drie_geldige_ids(oer_db, monkeypatch, stub_context):
+    """Dubbele ids laden dezelfde OER niet twee keer (kosten/contextbudget); max. 3 uniek."""
     ids = [oer_db["a"], oer_db["b"], oer_db["a"], oer_db["b"]]
     _, s, _ = _kies(monkeypatch, stub_context, ids)
-    assert len(s.oer_ids) == 3
+    assert s.oer_ids == [oer_db["a"], oer_db["b"]]
 
 
 def test_geweigerde_kies_opent_bronbestand_niet(oer_db, monkeypatch, stub_context):
@@ -262,3 +263,20 @@ def test_bewaar_en_laad_roundtrip(sessie_store):
     s.laad_context(ChatContext("SYS", ["l"], ["d.nl"], True, "m", [2]))
     sessie_mod.bewaar("sid1", s)
     assert sessie_mod.laad("sid1") == s
+
+
+def test_geldige_oer_ids_ontdubbelt_en_kapt_voor_de_db_call(monkeypatch):
+    """[5, 5, 5, 6, 7, 8] → DB krijgt hooguit drie unieke ids (geen 'too many SQL variables',
+    geen drie keer dezelfde OER in de catalogus)."""
+    from app_fastapi import data
+
+    gezien: list[list[int]] = []
+
+    def _filter(conn, ids):
+        gezien.append(list(ids))
+        return list(ids)
+
+    monkeypatch.setattr(data, "_conn", lambda: None)
+    monkeypatch.setattr(data.db, "filter_geindexeerde_oer_ids", _filter)
+    assert data.geldige_oer_ids([5, 5, 5, 6, 7, 8, True, "x"]) == [5, 6, 7]
+    assert gezien == [[5, 6, 7]]
