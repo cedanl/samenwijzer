@@ -12,8 +12,9 @@ Eén module bezit de invariant die voorheen over sessie, routes en ``chat.py`` v
 UI-vrij en zonder AI-calls: alleen stdlib en de marker-helpers uit ``chat.py``.
 
 Opslagvorm (``naar_lijst``/``van_lijst``) is de JSON-lijst ``[{"role", "content"}, …]`` die al
-in ``sessies.db`` staat. Een afgebroken assistant-beurt krijgt er ``"afgebroken": true`` bij;
-oudere sessies (zonder de sleutel) laden ongewijzigd, en oude code negeert de extra sleutel.
+in ``sessies.db`` staat. Een afgebroken assistant-beurt krijgt er ``"afgebroken": true`` bij,
+een voltooide de ``"bronnen"``-lijst (de bij die beurt geresolvede bronnen); oudere sessies
+(zonder die sleutels) laden ongewijzigd, en oude code negeert de extra sleutels.
 """
 
 from __future__ import annotations
@@ -56,13 +57,25 @@ class Gesprek:
         return [dict(b) for b in self._berichten]
 
     # ── schrijven ─────────────────────────────────────────────────────────────────
-    def voeg_beurt_toe(self, vraag: str, antwoord: str, *, afgebroken: bool = False) -> None:
+    def voeg_beurt_toe(
+        self,
+        vraag: str,
+        antwoord: str,
+        *,
+        afgebroken: bool = False,
+        bronnen: Iterable[dict] | None = None,
+    ) -> None:
         """Leg een vraag/antwoord-paar vast en kap de historie op ``MAX_GESCHIEDENIS``.
 
         ``antwoord`` is de ruwe modeltekst (mét marker); een leeg antwoord markeert een
         onbeantwoorde vraag (bv. de kies-beurt) en wordt door :meth:`berichten_voor_model`
         gesaneerd. Met ``afgebroken=True`` is ``antwoord`` een gedeeltelijk antwoord: de
         marker (of het begin ervan) wordt eruit geknipt.
+
+        ``bronnen`` (dicts van ``asdict(Bron)``) zijn de op dit moment geresolvede bronnen van
+        het antwoord; ze worden in de beurt vastgelegd, zodat de chips ook na een wissel van
+        studiegids (ander register) kloppen. ``None`` laat de sleutel weg: ``view_voor_ui``
+        resolvet dan, zoals voor oude beurten, tegen het register van dat moment.
         """
         self._berichten.append({"role": "user", "content": vraag})
         if afgebroken:
@@ -70,7 +83,10 @@ class Gesprek:
                 {"role": "assistant", "content": knip_bronnenregel(antwoord), "afgebroken": True}
             )
         else:
-            self._berichten.append({"role": "assistant", "content": antwoord})
+            beurt: dict = {"role": "assistant", "content": antwoord}
+            if bronnen is not None:
+                beurt["bronnen"] = [dict(b) for b in bronnen]
+            self._berichten.append(beurt)
         if len(self._berichten) > MAX_GESCHIEDENIS:
             self._berichten = self._berichten[-MAX_GESCHIEDENIS:]
 
@@ -126,8 +142,10 @@ class Gesprek:
 
         Assistant-beurten krijgen de bronnenmarker eruit (``content``) en de geparste bronnen
         als ``bronnen``-lijst (altijd aanwezig, mag leeg zijn); een afgebroken beurt heeft
-        daarbovenop ``"afgebroken": true``. User-beurten blijven ongewijzigd. ``register``
-        werkt als bij :func:`chat.splits_bronnen`. Het Gesprek zelf blijft ongemoeid.
+        daarbovenop ``"afgebroken": true``. User-beurten blijven ongewijzigd. Is bij de beurt de
+        geresolvede ``bronnen``-lijst vastgelegd, dan geldt die; alleen oude beurten zonder die
+        sleutel worden alsnog tegen ``register`` geresolvet (zie :func:`chat.splits_bronnen`).
+        Het Gesprek zelf blijft ongemoeid.
         """
         if register is not None and not isinstance(register, BronRegister):
             register = BronRegister.uit_dicts(register)
@@ -135,10 +153,15 @@ class Gesprek:
         for beurt in self._berichten:
             if beurt.get("role") == "assistant":
                 tekst, bronnen = splits_bronnen(beurt.get("content", ""), register)
+                vastgelegd = beurt.get("bronnen")
                 item = {
                     "role": "assistant",
                     "content": tekst,
-                    "bronnen": [asdict(b) for b in bronnen],
+                    "bronnen": (
+                        [dict(b) for b in vastgelegd]
+                        if isinstance(vastgelegd, list)
+                        else [asdict(b) for b in bronnen]
+                    ),
                 }
                 if beurt.get("afgebroken"):
                     item["afgebroken"] = True
@@ -204,13 +227,14 @@ class LopendeBeurt:
         with self._lock:
             return "".join(self._delen)
 
-    def rond_af(self) -> bool:
-        """Leg de beurt compleet vast. ``False`` als hij al was afgebroken/afgerond."""
+    def rond_af(self, bronnen: Iterable[dict] | None = None) -> bool:
+        """Leg de beurt compleet vast (met de geresolvede ``bronnen``, zie
+        :meth:`Gesprek.voeg_beurt_toe`). ``False`` als hij al was afgebroken/afgerond."""
         with self._lock:
             if self._klaar:
                 return False
             self._klaar = True
-            self._gesprek.voeg_beurt_toe(self.vraag, "".join(self._delen))
+            self._gesprek.voeg_beurt_toe(self.vraag, "".join(self._delen), bronnen=bronnen)
             return True
 
     def breek_af(self) -> bool:

@@ -584,6 +584,42 @@ def test_chat_gebruikt_bron_register_uit_de_sessie(monkeypatch, stub_context):
     assert [(b["titel"], b["oer_id"]) for b in bronnen] == [("OER Kok BOL 2025", 7)]
 
 
+def test_chips_van_eerdere_beurt_blijven_na_wissel_van_studiegids(monkeypatch, stub_context):
+    """De bronnen worden bij de beurt vastgelegd: `laad_context` met een ander register (andere
+    studiegids) verandert de chips van de eerdere beurt in `/api/geschiedenis` niet."""
+    if not _WW:
+        pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
+    import app_fastapi.main as m
+
+    stub_context(
+        bron_register=[
+            {"type": "studiegids", "titel": "OER Kok BOL 2025", "oer_id": 7, "doc_id": None,
+             "crebo": "25180"},
+        ]
+    )  # fmt: skip
+    monkeypatch.setattr(
+        m,
+        "genereer_antwoord",
+        lambda *a, **k: iter(["Antwoord.\n<!-- bronnen: studiegids|OER Kok BOL 2025 -->"]),
+    )
+    c = _client()
+    c.post("/api/kies", json={"oer_ids": [7]})
+    c.post("/api/chat", json={"vraag": "kluisjes?"})
+    voor = c.get("/api/geschiedenis").json()["beurten"]
+    assert [(b["titel"], b["oer_id"]) for b in voor[-1]["bronnen"]] == [("OER Kok BOL 2025", 7)]
+
+    # Andere studiegids: nieuw register zonder de titel van de eerste beurt.
+    stub_context(
+        bron_register=[
+            {"type": "studiegids", "titel": "OER Bakker BBL 2024", "oer_id": 9, "doc_id": None,
+             "crebo": "25300"},
+        ]
+    )  # fmt: skip
+    c.post("/api/kies", json={"oer_ids": [9]})
+    na = c.get("/api/geschiedenis").json()["beurten"]
+    assert na == voor
+
+
 def test_chat_meldt_schooldoc_status_uit_tekstbegin(monkeypatch, stub_context):
     if not _WW:
         pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")

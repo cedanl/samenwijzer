@@ -252,6 +252,13 @@ de leesrand — leeft alleen daar. Interface: `voeg_beurt_toe` (met cap `MAX_GES
 `sessies.db` blijft de JSON-lijst onder de sleutel `chat_history` (`Sessie.naar_dict`/`uit_dict`);
 oude rijen laden ongewijzigd. Routes en `chat.py` raken de dict-lijst niet aan.
 
+**Bronnen per beurt**: `/api/chat` geeft de bij die beurt geresolvede bronnen (`asdict(Bron)`) aan
+`rond_af(bronnen)`/`voeg_beurt_toe(…, bronnen=…)`; de assistant-beurt krijgt dan de sleutel
+`"bronnen": [...]` (naast `content`, het model ziet hem niet). `view_voor_ui(register)` gebruikt
+die lijst als hij er is (ook als hij leeg is) en resolvet alleen oude beurten zonder `bronnen`
+alsnog tegen het register van dat moment. Zo blijven chips van eerdere beurten kloppen na
+`Sessie.laad_context()` met een andere studiegids. Afgebroken en kies-beurten hebben geen `bronnen`.
+
 **Afgebroken beurten**: een beurt die niet af komt (heartbeat-timeout, `APITimeoutError`, andere
 fout) verdwijnt niet stil. `LopendeBeurt` (`rond_af()`/`breek_af()`, onder één lock) legt hem
 precies één keer vast: vraag + gedeeltelijk antwoord, marker (of begin ervan) eruit geknipt, met
