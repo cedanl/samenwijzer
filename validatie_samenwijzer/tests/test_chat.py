@@ -7,6 +7,8 @@ from types import SimpleNamespace
 import anthropic
 
 from validatie_samenwijzer.bron_catalogus import (
+    BronCatalogus,
+    OerInvoer,
     laad_kwalificatiedossier_tekst,
     laad_oer_tekst,
     laad_skills_tekst,
@@ -20,8 +22,7 @@ from validatie_samenwijzer.chat import (
     Bron,
     Status,
     bouw_berichten,
-    bouw_gecombineerd_systeem,
-    bouw_systeem,
+    bouw_prompt,
     dedup_disclaimer,
     genereer_antwoord,
     genereer_vervolgvragen,
@@ -32,6 +33,61 @@ from validatie_samenwijzer.chat import (
     strip_bronnenregel,
     web_zoek_domeinen,
 )
+from validatie_samenwijzer.documenten import GekozenDocument
+
+
+def _invoer(item: dict, web_zoeken: bool) -> OerInvoer:
+    """Vertaal een OER-item-dict naar `OerInvoer`; `web_zoeken` kiest een instelling met
+    schoolsite-domein, zodat `bouw_prompt` de webzoek-instructie opneemt."""
+    documenten = tuple(
+        GekozenDocument(n, kop, tekst, "[INFORMATIEF]" not in kop, "instelling")
+        for n, (kop, tekst) in enumerate(item.get("instelling_bronnen", ()), 1)
+    )
+    return OerInvoer(
+        opleiding=item["opleiding"],
+        instelling=item["display_naam"],
+        instelling_sleutel="davinci" if web_zoeken else "",
+        leerweg=item.get("leerweg", ""),
+        cohort=item.get("cohort", ""),
+        crebo=item.get("crebo"),
+        oer_tekst=item["tekst"],
+        kd_tekst=item.get("dossier_tekst", ""),
+        skills_tekst=item.get("skills_tekst", ""),
+        documenten=documenten,
+    )
+
+
+def _meervoudig(items: list[dict], web_zoeken: bool = False, vacatures: bool = False) -> str:
+    """Systeemprompt voor één of meer OER-items via BronCatalogus + bouw_prompt."""
+    catalogus = BronCatalogus.bouw([_invoer(item, web_zoeken) for item in items])
+    return bouw_prompt(catalogus, vacatures=vacatures).systeem
+
+
+def _enkel(
+    oer_tekst: str,
+    opleiding: str,
+    instelling: str,
+    *,
+    dossier_tekst: str = "",
+    crebo: str | None = None,
+    skills_tekst: str = "",
+    instelling_bronnen=(),
+    web_zoeken: bool = False,
+    leerweg: str = "",
+    vacatures: bool = False,
+) -> str:
+    """Systeemprompt voor één OER (de vroegere `bouw_systeem`-aanroep)."""
+    item = {
+        "tekst": oer_tekst,
+        "opleiding": opleiding,
+        "display_naam": instelling,
+        "leerweg": leerweg,
+        "crebo": crebo,
+        "dossier_tekst": dossier_tekst,
+        "skills_tekst": skills_tekst,
+        "instelling_bronnen": instelling_bronnen,
+    }
+    return _meervoudig([item], web_zoeken=web_zoeken, vacatures=vacatures)
 
 
 def _fake_pdfplumber(tekst: str):
@@ -148,21 +204,21 @@ def test_messages_met_cache_zet_breakpoint_op_laatste():
 
 
 def test_bouw_systeem_bevat_oer_tekst():
-    systeem = bouw_systeem("Dit is de OER-tekst.", "Verzorgende IG", "Rijn IJssel")
+    systeem = _enkel("Dit is de OER-tekst.", "Verzorgende IG", "Rijn IJssel")
     assert "Verzorgende IG" in systeem
     assert "Rijn IJssel" in systeem
     assert "Dit is de OER-tekst." in systeem
 
 
-def test_bouw_systeem_leeg_bij_geen_tekst():
-    systeem = bouw_systeem("", "Kok", "Da Vinci")
-    # Lege oer_tekst → systeem mag worden aangemaakt maar is inhoudsloos
-    assert "Kok" in systeem
+def test_bouw_prompt_zonder_enige_bron_is_leeg():
+    """Geen leesbare OER, geen KD en geen document → lege prompt (LAGE_RELEVANTIE-pad)."""
+    assert _enkel("", "Kok", "Da Vinci") == ""
+    assert bouw_prompt(BronCatalogus()).web_domeinen == []
 
 
 def test_bouw_systeem_schoont_ruwe_opleidingsnaam():
     """Een ruwe bestandsnaam-stem moet als leesbare naam in de prompt komen."""
-    systeem = bouw_systeem(
+    systeem = _enkel(
         "OER-tekst",
         "25642_BBL_2025__25642BBL2025Examenplan-hairstylist-dame-cohort-2025",
         "Da Vinci",
@@ -173,14 +229,14 @@ def test_bouw_systeem_schoont_ruwe_opleidingsnaam():
 
 
 def test_bouw_systeem_onleesbare_oer_gebruikt_kd_modus():
-    systeem = bouw_systeem("", "Kok", "Da Vinci", dossier_tekst="KD-INHOUD-HIER", crebo="25180")
+    systeem = _enkel("", "Kok", "Da Vinci", dossier_tekst="KD-INHOUD-HIER", crebo="25180")
     assert "KD-INHOUD-HIER" in systeem  # KD-blok aanwezig
     assert "niet machine-leesbaar" in systeem  # onleesbaar-modus framing
     assert "Dit is het leidende, schoolspecifieke document" not in systeem  # normale framing weg
 
 
 def test_bouw_systeem_leesbare_oer_blijft_normale_modus():
-    systeem = bouw_systeem("ECHTE OER-TEKST", "Kok", "Da Vinci", dossier_tekst="KD", crebo="25180")
+    systeem = _enkel("ECHTE OER-TEKST", "Kok", "Da Vinci", dossier_tekst="KD", crebo="25180")
     assert "ECHTE OER-TEKST" in systeem
     assert "Dit is het leidende, schoolspecifieke document" in systeem  # normale framing
     assert "niet machine-leesbaar" not in systeem
@@ -188,7 +244,7 @@ def test_bouw_systeem_leesbare_oer_blijft_normale_modus():
 
 def test_bouw_systeem_bevat_doelgroep_instructie_naast_citatieplicht():
     """De MBO niveau 1-4-uitleg staat in de prompt, NAAST de woordelijke citatieplicht."""
-    systeem = bouw_systeem("OER-tekst", "Kok", "Da Vinci")
+    systeem = _enkel("OER-tekst", "Kok", "Da Vinci")
     assert "DOELGROEP & TOON" in systeem
     assert "niveau 1 t/m 4" in systeem
     assert "In gewone taal:" in systeem
@@ -199,7 +255,7 @@ def test_bouw_systeem_bevat_doelgroep_instructie_naast_citatieplicht():
 
 def test_bouw_systeem_bevat_lengte_instructie_zonder_citatie_te_verzwakken():
     """Perf: kortere antwoorden mogen de citatieplicht niet verzwakken."""
-    systeem = bouw_systeem("OER-tekst", "Kok", "Da Vinci")
+    systeem = _enkel("OER-tekst", "Kok", "Da Vinci")
     assert "LENGTE." in systeem
     assert "120" in systeem and "200" in systeem
     # De citaat- en "In gewone taal"-plicht blijft verplicht, ook in de lengte-instructie.
@@ -211,7 +267,7 @@ def test_bouw_gecombineerd_meervoudig_bevat_doelgroep_instructie():
         _oer_item(tekst="Tekst A", opleiding="Kok", display_naam="Da Vinci"),
         _oer_item(tekst="Tekst B", opleiding="Verzorgende IG", display_naam="Rijn IJssel"),
     ]
-    systeem = bouw_gecombineerd_systeem(oers)
+    systeem = _meervoudig(oers)
     assert "DOELGROEP & TOON" in systeem
     assert "niveau 1 t/m 4" in systeem
 
@@ -225,12 +281,11 @@ def test_lage_relevantie_bericht_is_string():
 
 
 def test_web_zoek_domeinen_mapt_dedupt_en_sorteert():
-    items = [{"naam": "utrecht"}, {"naam": "davinci"}, {"naam": "davinci"}]
-    assert web_zoek_domeinen(items) == ["davinci.nl", "mboutrecht.nl"]
+    assert web_zoek_domeinen(["utrecht", "davinci", "davinci"]) == ["davinci.nl", "mboutrecht.nl"]
 
 
 def test_web_zoek_domeinen_negeert_onbekende_instelling():
-    assert web_zoek_domeinen([{"naam": "onbekend"}, {}]) == []
+    assert web_zoek_domeinen(["onbekend", ""]) == []
 
 
 def test_elke_instelling_heeft_web_domein():
@@ -247,32 +302,32 @@ def test_elke_instelling_heeft_web_domein():
 
 
 def test_bouw_systeem_web_zoeken_voegt_instructie_en_disclaimer_toe():
-    met = bouw_systeem("OER", "Kok", "Da Vinci", web_zoeken=True)
+    met = _enkel("OER", "Kok", "Da Vinci", web_zoeken=True)
     assert "WEBZOEKEN" in met
     assert "officiële website van de instelling" in met
     assert "dit staat niet in de officiële studiegids" in met
 
 
 def test_bouw_systeem_zonder_web_zoeken_heeft_geen_webblok():
-    zonder = bouw_systeem("OER", "Kok", "Da Vinci")
+    zonder = _enkel("OER", "Kok", "Da Vinci")
     assert "WEBZOEKEN" not in zonder
 
 
 def test_bouw_systeem_vacatures_voegt_blok_toe():
-    met = bouw_systeem("OER-tekst", "Kok", "Da Vinci", leerweg="BOL", vacatures=True)
-    zonder = bouw_systeem("OER-tekst", "Kok", "Da Vinci", leerweg="BOL")
+    met = _enkel("OER-tekst", "Kok", "Da Vinci", leerweg="BOL", vacatures=True)
+    zonder = _enkel("OER-tekst", "Kok", "Da Vinci", leerweg="BOL")
     assert "VACATURES & STAGES" in met
     assert "VACATURES & STAGES" not in zonder
 
 
 def test_bouw_systeem_vacatures_blok_bevat_niveau_en_locatie():
-    met = bouw_systeem("OER-tekst", "Kok", "Da Vinci", leerweg="BOL", vacatures=True)
+    met = _enkel("OER-tekst", "Kok", "Da Vinci", leerweg="BOL", vacatures=True)
     assert "MBO-NIVEAU" in met  # zoekt op opleidingsniveau (uit de OER/KD-tekst)
     assert "±10 km" in met and "LOCATIE" in met  # vraagt om plaats + straal
 
 
 def test_bouw_systeem_vacatures_blok_eist_klikbare_links():
-    met = bouw_systeem("OER-tekst", "Kok", "Da Vinci", leerweg="BOL", vacatures=True)
+    met = _enkel("OER-tekst", "Kok", "Da Vinci", leerweg="BOL", vacatures=True)
     assert "klikbare Markdown-link" in met  # elk resultaat klikbaar
     assert "verzin NOOIT een URL" in met  # geen gefabriceerde links
 
@@ -319,12 +374,12 @@ def test_dedup_disclaimer_houdt_alleen_mogelijke_prefix_vast():
 
 
 def test_bouw_systeem_leerweg_in_prompt():
-    systeem = bouw_systeem("OER-tekst", "Kok", "Da Vinci", leerweg="BOL")
+    systeem = _enkel("OER-tekst", "Kok", "Da Vinci", leerweg="BOL")
     assert "Leerweg van deze opleiding: BOL" in systeem
 
 
 def test_bouw_systeem_zonder_leerweg_geen_leerweg_regel():
-    systeem = bouw_systeem("OER-tekst", "Kok", "Da Vinci")
+    systeem = _enkel("OER-tekst", "Kok", "Da Vinci")
     assert "Leerweg van deze opleiding" not in systeem
 
 
@@ -351,8 +406,8 @@ def _vac_items():
 
 def test_bouw_gecombineerd_systeem_vacatures_multi():
     items = _vac_items()
-    assert "VACATURES & STAGES" in bouw_gecombineerd_systeem(items, vacatures=True)
-    assert "VACATURES & STAGES" not in bouw_gecombineerd_systeem(items)
+    assert "VACATURES & STAGES" in _meervoudig(items, vacatures=True)
+    assert "VACATURES & STAGES" not in _meervoudig(items)
 
 
 def test_bouw_gecombineerd_systeem_vacatures_single_delegeert_met_leerweg():
@@ -366,7 +421,7 @@ def test_bouw_gecombineerd_systeem_vacatures_single_delegeert_met_leerweg():
             "crebo": "25180",
         }
     ]
-    systeem = bouw_gecombineerd_systeem(items, vacatures=True)
+    systeem = _meervoudig(items, vacatures=True)
     assert "VACATURES & STAGES" in systeem
     assert "Leerweg van deze opleiding: BBL" in systeem
 
@@ -388,11 +443,11 @@ def test_bouw_gecombineerd_systeem_meervoudig_web_zoeken():
             "cohort": "2025",
         },
     ]
-    assert "WEBZOEKEN" in bouw_gecombineerd_systeem(items, web_zoeken=True)
-    assert "WEBZOEKEN" not in bouw_gecombineerd_systeem(items)
+    assert "WEBZOEKEN" in _meervoudig(items, web_zoeken=True)
+    assert "WEBZOEKEN" not in _meervoudig(items)
 
 
-# ── bouw_gecombineerd_systeem ─────────────────────────────────────────────────
+# ── meerdere OER's ────────────────────────────────────────────────────────────
 
 
 def _oer_item(**overrides):
@@ -406,11 +461,12 @@ def _oer_item(**overrides):
     return {**base, **overrides}
 
 
-def test_bouw_gecombineerd_systeem_enkel_delegeert_naar_bouw_systeem():
+def test_bouw_prompt_een_oer_kiest_single_modus():
     item = _oer_item(tekst="Tekst A", opleiding="Kok", display_naam="Da Vinci")
-    systeem = bouw_gecombineerd_systeem([item])
-    # De single-OER-delegatie geeft nu ook de leerweg door (item["leerweg"] == "BOL").
-    assert systeem == bouw_systeem("Tekst A", "Kok", "Da Vinci", leerweg="BOL")
+    systeem = _meervoudig([item])
+    assert systeem.startswith("Je bent een onderwijs-assistent voor de opleiding Kok bij Da Vinci.")
+    assert "Leerweg van deze opleiding: BOL" in systeem
+    assert "Hieronder staan" not in systeem
 
 
 def test_bouw_gecombineerd_systeem_meervoudig_bevat_alle_oers():
@@ -418,7 +474,7 @@ def test_bouw_gecombineerd_systeem_meervoudig_bevat_alle_oers():
         _oer_item(tekst="Tekst A", opleiding="Kok", display_naam="Da Vinci"),
         _oer_item(tekst="Tekst B", opleiding="Verzorgende IG", display_naam="Rijn IJssel"),
     ]
-    systeem = bouw_gecombineerd_systeem(items)
+    systeem = _meervoudig(items)
     assert "OER 1" in systeem and "OER 2" in systeem
     assert "Tekst A" in systeem and "Tekst B" in systeem
     assert "Da Vinci" in systeem and "Rijn IJssel" in systeem
@@ -437,7 +493,7 @@ def test_bouw_gecombineerd_meervoudig_neemt_oer_loos_item_op_via_kd():
             dossier_tekst="KD-GASTHEER-INHOUD",
         ),
     ]
-    systeem = bouw_gecombineerd_systeem(items)
+    systeem = _meervoudig(items)
     assert "ECHTE OER 1" in systeem
     assert "KD-GASTHEER-INHOUD" in systeem  # OER-loos item tóch opgenomen via KD
     assert "niet machine-leesbaar" in systeem  # notitie bij het OER-loze blok
@@ -739,7 +795,7 @@ def test_identificeer_gelijke_top_tier_blijven_samen():
 
 
 def test_bouw_systeem_met_dossier_bevat_beide_bronnen():
-    systeem = bouw_systeem(
+    systeem = _enkel(
         "OER-tekst hier.",
         "Kok",
         "Da Vinci",
@@ -753,12 +809,12 @@ def test_bouw_systeem_met_dossier_bevat_beide_bronnen():
 
 
 def test_bouw_systeem_zonder_dossier_heeft_geen_kd_blok():
-    systeem = bouw_systeem("OER-tekst", "Kok", "Da Vinci")
+    systeem = _enkel("OER-tekst", "Kok", "Da Vinci")
     assert "KWALIFICATIEDOSSIER" not in systeem
 
 
 def test_bouw_systeem_met_instelling_bron_bevat_blok():
-    systeem = bouw_systeem(
+    systeem = _enkel(
         "OER-tekst",
         "ICT",
         "Rijn IJssel",
@@ -770,7 +826,7 @@ def test_bouw_systeem_met_instelling_bron_bevat_blok():
 
 def test_bouw_systeem_instelling_citatie_onderscheidt_van_oer():
     """De citatie-instructie moet de regeling als aparte bron behandelen, niet als de OER."""
-    systeem = bouw_systeem("OER-tekst", "ICT", "Rijn IJssel")
+    systeem = _enkel("OER-tekst", "ICT", "Rijn IJssel")
     assert "Volgens het Examenreglement" in systeem
     assert 'citeer een regeling NOOIT als "de OER"' in systeem
 
@@ -779,8 +835,8 @@ def test_citatieplicht_eist_markdown_blockquote():
     """Het woordelijk citaat moet als markdown-blockquote (eigen regel met '> ')
     worden opgemaakt, zodat de .chat-antwoord blockquote-CSS het als pull-quote
     rendert. Geldt voor zowel de single- als de multi-OER-systeemprompt."""
-    single = bouw_systeem("OER-tekst", "ICT", "Rijn IJssel")
-    multi = bouw_gecombineerd_systeem(
+    single = _enkel("OER-tekst", "ICT", "Rijn IJssel")
+    multi = _meervoudig(
         [_oer_item(tekst="A", display_naam="X"), _oer_item(tekst="B", display_naam="Y")]
     )
     for systeem in (single, multi):
@@ -789,20 +845,18 @@ def test_citatieplicht_eist_markdown_blockquote():
 
 
 def test_bouw_systeem_zonder_instelling_bron_geen_blok():
-    systeem = bouw_systeem("OER-tekst", "Kok", "Da Vinci")
+    systeem = _enkel("OER-tekst", "Kok", "Da Vinci")
     assert "=== EXAMENREGLEMENT" not in systeem
     assert "=== BEGELEIDINGS" not in systeem
 
 
 def test_bouw_systeem_lege_instelling_bron_tekst_geen_blok():
-    systeem = bouw_systeem(
-        "OER-tekst", "Kok", "Da Vinci", instelling_bronnen=[("Examenreglement", "")]
-    )
+    systeem = _enkel("OER-tekst", "Kok", "Da Vinci", instelling_bronnen=[("Examenreglement", "")])
     assert "=== EXAMENREGLEMENT" not in systeem
 
 
 def test_bouw_systeem_meerdere_instelling_bronnen():
-    systeem = bouw_systeem(
+    systeem = _enkel(
         "OER-tekst",
         "ICT",
         "Rijn IJssel",
@@ -835,8 +889,9 @@ def test_bouw_gecombineerd_systeem_includeert_instelling_bron_per_oer():
             "cohort": "2025",
         },
     ]
-    systeem = bouw_gecombineerd_systeem(items)
-    assert "EXAMENREGLEMENT 1 (Rijn IJssel)" in systeem
+    systeem = _meervoudig(items)
+    # Zelfde kop als in single-modus (de catalogus rendert beide modi gelijk).
+    assert "=== EXAMENREGLEMENT (Rijn IJssel) ===" in systeem
     assert "reglement A" in systeem
 
 
@@ -894,7 +949,7 @@ def test_bouw_gecombineerd_systeem_includeert_dossier_per_oer():
             "cohort": "2025",
         },
     ]
-    systeem = bouw_gecombineerd_systeem(items)
+    systeem = _meervoudig(items)
     assert "KD-tekst voor Kok." in systeem
     assert "KWALIFICATIEDOSSIER 1" in systeem
     assert "25180" in systeem
@@ -965,7 +1020,7 @@ def test_laad_skills_leeg_bij_ontbrekend_bestand(tmp_path, monkeypatch):
 
 
 def test_bouw_systeem_includeert_skills_blok():
-    systeem = bouw_systeem(
+    systeem = _enkel(
         "OER-tekst",
         "Kok",
         "Da Vinci",
@@ -976,7 +1031,7 @@ def test_bouw_systeem_includeert_skills_blok():
 
 
 def test_bouw_systeem_zonder_skills_geen_blok():
-    systeem = bouw_systeem("OER-tekst", "Kok", "Da Vinci")
+    systeem = _enkel("OER-tekst", "Kok", "Da Vinci")
     assert "SKILLS-TAXONOMIE (ESCO) — beroep" not in systeem
 
 
@@ -992,7 +1047,7 @@ def test_bouw_gecombineerd_systeem_includeert_skills_per_oer():
             "skills_tekst": "\n\n=== SKILLS-TAXONOMIE (ESCO) — beroep: kok ===\nkooktechnieken",
         },
     ]
-    systeem = bouw_gecombineerd_systeem(items)
+    systeem = _meervoudig(items)
     assert "SKILLS-TAXONOMIE (ESCO)" in systeem
     assert "kooktechnieken" in systeem
 
@@ -1320,14 +1375,9 @@ def test_genereer_antwoord_ontdubbelt_ook_de_web_disclaimer(monkeypatch):
 def test_schooldoc_banner_in_prompt_en_webbanner_niet_bij_documentantwoord():
     """Antwoord uit een schooldocument krijgt een eigen banner (officieel, niet de OER);
     de webwaarschuwing is voorbehouden aan informatie die écht van de website komt."""
-    from validatie_samenwijzer.chat import (
-        _SCHOOLDOC_DISCLAIMER,
-        _WEB_ZOEK_BLOK,
-        bouw_gecombineerd_systeem,
-        bouw_systeem,
-    )
+    from validatie_samenwijzer.chat import _SCHOOLDOC_DISCLAIMER, _WEB_ZOEK_BLOK
 
-    prompt = bouw_systeem("OERTEKST", "Kok", "Curio", web_zoeken=True)
+    prompt = _enkel("OERTEKST", "Kok", "Curio", web_zoeken=True)
     assert _SCHOOLDOC_DISCLAIMER in prompt
     assert "Staat het antwoord (ook) in de OER, dan géén banner." in prompt
     # Webzoek is laatste redmiddel; zonder bruikbaar resultaat geen webbanner/Bron:-URL.
@@ -1340,7 +1390,7 @@ def test_schooldoc_banner_in_prompt_en_webbanner_niet_bij_documentantwoord():
         "leerweg": "BOL",
         "cohort": "2025",
     }
-    multi = bouw_gecombineerd_systeem([item, {**item, "opleiding": "Bakker"}])
+    multi = _meervoudig([item, {**item, "opleiding": "Bakker"}])
     assert _SCHOOLDOC_DISCLAIMER in multi
 
 
@@ -1376,10 +1426,8 @@ def test_genereer_antwoord_dedupliceert_schooldoc_banner():
 
 def test_systeemprompts_vereisen_citaat_alleen_voor_juridische_bronnen():
     """Woordelijk citaat voor OER/KD/juridische regelingen; bij [INFORMATIEF] volstaat de bron."""
-    from validatie_samenwijzer.chat import bouw_gecombineerd_systeem, bouw_systeem
-
-    enkel = bouw_systeem("tekst", "Kok", "Curio")
-    meer = bouw_gecombineerd_systeem(
+    enkel = _enkel("tekst", "Kok", "Curio")
+    meer = _meervoudig(
         [
             {
                 "tekst": "t",
@@ -1400,9 +1448,7 @@ def test_systeemprompts_vereisen_citaat_alleen_voor_juridische_bronnen():
 
 
 def test_informatief_blok_draagt_de_markering_in_de_prompt():
-    from validatie_samenwijzer.chat import bouw_systeem
-
-    prompt = bouw_systeem(
+    prompt = _enkel(
         "tekst",
         "Kok",
         "Curio",
@@ -1515,7 +1561,7 @@ def test_dedup_disclaimer_laat_status_passeren():
 
 
 def test_bouw_systeem_bevat_bronnenregel_instructie():
-    s = bouw_systeem("OER-tekst", "Kok", "Curio")
+    s = _enkel("OER-tekst", "Kok", "Curio")
     assert "BRONNENREGEL" in s and "<!-- bronnen:" in s
     for t in ("studiegids", "kwalificatiedossier", "schooldocument", "skills", "website"):
         assert t in s
@@ -1523,7 +1569,7 @@ def test_bouw_systeem_bevat_bronnenregel_instructie():
 
 def test_bronnenregel_instructie_dekt_webantwoord():
     """Webantwoord: bronnenregel komt ná de "Bron: "-regel, één website-item per URL."""
-    s = bouw_systeem("OER-tekst", "Kok", "Curio", web_zoeken=True)
+    s = _enkel("OER-tekst", "Kok", "Curio", web_zoeken=True)
     idx_web = s.index("WEBZOEKEN")
     idx_regel = s.index("BRONNENREGEL")
     assert idx_regel < idx_web  # bronnenregel-instructie staat vóór het webblok
@@ -1536,7 +1582,7 @@ def test_bouw_gecombineerd_meervoudig_bevat_bronnenregel():
         {**basis, "tekst": "A", "display_naam": "Curio"},
         {**basis, "tekst": "B", "display_naam": "Landstede"},
     ]
-    assert "BRONNENREGEL" in bouw_gecombineerd_systeem(items)
+    assert "BRONNENREGEL" in _meervoudig(items)
 
 
 def test_intake_systeem_heeft_geen_bronnenregel():
@@ -1565,3 +1611,57 @@ def test_geschiedenis_voor_ui_stript_en_laat_history_heel():
         ],
     }
     assert hist[1]["content"].endswith("-->")
+
+
+# ── bouw_prompt: modus en webzoek-besluit ─────────────────────────────────────
+
+
+def _cat(*invoer: OerInvoer) -> BronCatalogus:
+    return BronCatalogus.bouw(invoer)
+
+
+def _oi(**kw) -> OerInvoer:
+    basis = {"opleiding": "Kok", "instelling": "Curio", "leerweg": "BOL", "cohort": "2025"}
+    return OerInvoer(**{**basis, "oer_tekst": "OER-TEKST", **kw})
+
+
+def test_bouw_prompt_twee_oers_kiest_multi_modus():
+    systeem = bouw_prompt(_cat(_oi(), _oi(opleiding="Bakker", instelling="Talland"))).systeem
+    assert "Hieronder staan 2 Onderwijs- en Examenregelingen" in systeem
+    assert "=== OER 1: Curio · Kok · BOL 2025 ===" in systeem
+    assert "=== OER 2: Talland · Bakker · BOL 2025 ===" in systeem
+    assert "voor de opleiding Kok bij Curio" not in systeem
+
+
+def test_bouw_prompt_onleesbare_oer_met_kd_kiest_onleesbaar_modus():
+    catalogus = _cat(_oi(oer_tekst="", crebo="25180", kd_tekst="KD-INHOUD"))
+    systeem = bouw_prompt(catalogus).systeem
+    assert catalogus.oer_onleesbaar
+    assert "HOOFDBRON — het landelijke kwalificatiedossier" in systeem
+    assert "KD-INHOUD" in systeem
+    assert "studiegids|" not in systeem  # een onleesbare OER is geen citeerbare bron
+
+
+def test_bouw_prompt_bronnenregel_somt_de_catalogustitels_op():
+    systeem = bouw_prompt(_cat(_oi(crebo="25180", kd_tekst="KD"))).systeem
+    assert "  studiegids|OER Kok BOL 2025\n" in systeem
+    assert "  kwalificatiedossier|Kwalificatiedossier 25180\n" in systeem
+
+
+def test_bouw_prompt_webzoek_met_schooldomein():
+    prompt = bouw_prompt(_cat(_oi(instelling_sleutel="curio")))
+    assert "WEBZOEKEN" in prompt.systeem
+    assert prompt.web_domeinen == ["curio.nl", "indeed.nl", "stagemarkt.nl"]
+
+
+def test_bouw_prompt_zonder_schooldomein_alleen_vacaturesites():
+    prompt = bouw_prompt(_cat(_oi(instelling_sleutel="onbekend")))
+    assert "WEBZOEKEN" not in prompt.systeem  # geen webzoek-instructie zonder schoolsite
+    assert "VACATURES & STAGES" in prompt.systeem
+    assert prompt.web_domeinen == ["indeed.nl", "stagemarkt.nl"]  # vacaturezoek blijft
+
+
+def test_bouw_prompt_zonder_vacatures_en_schooldomein_geen_tools():
+    prompt = bouw_prompt(_cat(_oi()), vacatures=False)
+    assert prompt.web_domeinen == []
+    assert "VACATURES & STAGES" not in prompt.systeem

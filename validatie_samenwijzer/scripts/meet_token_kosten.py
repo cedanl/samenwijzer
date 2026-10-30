@@ -29,11 +29,13 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from validatie_samenwijzer._ai import _client  # noqa: E402
 from validatie_samenwijzer.bron_catalogus import (  # noqa: E402
+    BronCatalogus,
+    OerInvoer,
     laad_kwalificatiedossier_tekst,
     laad_oer_tekst,
     resolve_oer_pad,
 )
-from validatie_samenwijzer.chat import bouw_systeem  # noqa: E402
+from validatie_samenwijzer.chat import bouw_prompt  # noqa: E402
 
 # Sonnet 4.6 tarief (USD per 1M tokens; bron: anthropic.com/pricing 2026-05).
 PRIJS_INPUT = 3.0 / 1_000_000
@@ -125,10 +127,10 @@ def main() -> int:
     if not kd_tekst:
         print(f"Geen KD-tekst voor crebo {crebo} — meting beperkt tot OER-only")
 
-    systeem_oer = bouw_systeem(oer_tekst, opleiding, instelling)
-    systeem_beide = bouw_systeem(
-        oer_tekst, opleiding, instelling, dossier_tekst=kd_tekst, crebo=crebo
-    )
+    alleen_oer = OerInvoer(opleiding, instelling, crebo=crebo, oer_tekst=oer_tekst)
+    met_kd = OerInvoer(opleiding, instelling, crebo=crebo, oer_tekst=oer_tekst, kd_tekst=kd_tekst)
+    systeem_oer = bouw_prompt(BronCatalogus.bouw([alleen_oer]), vacatures=False).systeem
+    systeem_beide = bouw_prompt(BronCatalogus.bouw([met_kd]), vacatures=False).systeem
     print(
         f"Test-student: opleiding={opleiding!r}, crebo={crebo}, instelling={instelling!r}\n"
         f"OER-tekens={len(oer_tekst):,}  KD-tekens={len(kd_tekst):,}  "

@@ -92,7 +92,6 @@ def test_laad_context_onleesbare_oer_via_kd(monkeypatch):
     monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c, *a: "KD-INHOUD")
     monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
     monkeypatch.setattr(ctx, "selecteer_documenten", lambda *a, **k: Selectie({}, []))
-    monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
 
     systeem, labels, domeinen, onleesbaar = laad_context([1])
     assert "KD-INHOUD" in systeem
@@ -118,7 +117,6 @@ def test_laad_context_leesbare_oer_niet_onleesbaar(monkeypatch):
     monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c, *a: "")
     monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
     monkeypatch.setattr(ctx, "selecteer_documenten", lambda *a, **k: Selectie({}, []))
-    monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
 
     systeem, labels, domeinen, onleesbaar = laad_context([1])
     assert "ECHTE OER-TEKST" in systeem
@@ -368,7 +366,7 @@ def test_api_kies_laadt_meerdere_studiegidsen_naast_elkaar():
     """De kiezer laat er tot 3 combineren; /api/kies moet die lijst ook echt honoreren.
 
     Guard tegen een terugval naar één gids: elk meegestuurd id hoort in de sessie én
-    in de labels terug te komen (de multi-prompt van `bouw_gecombineerd_systeem`).
+    in de labels terug te komen (de multi-OER-modus van `bouw_prompt`).
     """
     if not _WW:
         pytest.skip("ALGEMEEN_WACHTWOORD niet gezet.")
@@ -833,7 +831,6 @@ def test_laad_context_bevat_opleidingsgebonden_en_kluisprotocol_uit_documenten(
     monkeypatch.setattr(ctx, "_oer_blok", lambda oid: (fake_row, "OER-TEKST"))
     monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c, *a: "")
     monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
-    monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
 
     systeem, *_ = ctx.laad_context([1])
     assert "PROTOCOL-KLUISCONTROLE" in systeem and "EXAMENPLAN-25168" in systeem
@@ -861,7 +858,6 @@ def test_laad_context_meldt_documenten_buiten_budget(tmp_path, monkeypatch):
     monkeypatch.setattr(ctx, "_oer_blok", lambda oid: (fake_row, "OER-TEKST"))
     monkeypatch.setattr(ctx, "laad_kwalificatiedossier_tekst", lambda c, *a: "")
     monkeypatch.setattr(ctx, "laad_skills_tekst", lambda c: "")
-    monkeypatch.setattr(ctx, "web_zoek_domeinen", lambda items: [])
 
     systeem, _labels, _dom, _onl, melding = ctx.laad_context_met_melding([1])
     assert "Groot protocol" in melding and "x" * 500 not in systeem
