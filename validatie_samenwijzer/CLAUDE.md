@@ -36,8 +36,10 @@ OEREN_PAD=../oeren uv run python scripts/vergelijk_modellen.py --uit <json>  # S
 ```
 
 Geen CI-gate voor dit subproject (root-`ci.yml` raakt de eigen `.venv` niet): draai lint, format en tests
-**lokaal** vóór je commit. `tests/conftest.py` zet `SESSION_SECRET`, `ALGEMEEN_WACHTWOORD` en
-`COOKIE_HTTPS_ONLY=0` zelf en reset de `_ai`-client- en crebo-naam-cache.
+**lokaal** vóór je commit. App-tests draaien op een eigen `AppDeps` uit `tests/conftest.py`
+(`maak_client(sessie=…, **deps_velden)` / `client`, in-memory validatie-DB met `seed`-helpers, nep-
+`ai_client`) — patch geen DB-, sessie- of AI-globals. conftest zet alleen `SESSION_SECRET` en
+`ALGEMEEN_WACHTWOORD` (om `app_fastapi.main` te kunnen importeren) en reset de crebo-naam-cache.
 
 ## Omgeving & deploy
 
@@ -56,16 +58,24 @@ re-seed is een nieuwe deploy nodig. Fly-secrets: `SESSION_SECRET`, `ALGEMEEN_WAC
   `claude-sonnet-5-5`, vervolgvragen `claude-haiku-5-5` (best-effort), `skills_bron._MATCH_MODEL` nog
   `claude-haiku-4-5-20251001`. Haiku 5.5 kost 5× méér boven 100K prompttokens (p90 OER ≈ 112K): de
   hoofdchat blijft op Sonnet tot `vergelijk_modellen.py` op grotere schaal is gemeten.
-- **Geen business logic in `app_fastapi/`**; geen raw SQL in routes — DB alleen via `db.py`
-  (`get_connection()`). `context.py` en `data.py` zijn dunne orchestrators over `chat.py`/`db.py`.
+- **Geen business logic in `app_fastapi/`**; geen raw SQL in routes — DB alleen via `db.py`.
+  `context.py` en `data.py` zijn dunne orchestrators over `chat.py`/`db.py` en krijgen de
+  verbinding als parameter.
+- **Afhankelijkheden via `AppDeps`** (`app_fastapi/deps.py`): config (`SESSION_SECRET`,
+  `ALGEMEEN_WACHTWOORD`, `COOKIE_HTTPS_ONLY`, `BEHEER_ENABLED`, `CHAT_MAX_SECONDEN`, `DB_PATH`,
+  `SESSIE_DB_PATH`), validatie.db (`deps.verbinding()`, migreert één keer), sessie-store, `ai_client`
+  (default `_ai._client`) en de OER-cache (`oer_blokken`, per app-instantie). Alleen
+  `AppDeps.uit_env()` leest env; `maak_app(deps)` hangt de bundel aan `app.state.deps` en routes lezen
+  hem via `deps_van(request)` — geen module-globals of `os.environ` in `app_fastapi/`. De
+  module-level `app = maak_app(AppDeps.uit_env())` is wat uvicorn/Docker/`start.sh` laden.
 - **Toegangspoort**: middleware `_toegangspoort` zet de héle app (ook `/`) achter `ALGEMEEN_WACHTWOORD`;
   `/api/*` krijgt 401, pagina's een redirect. Alleen `/static` is vrij.
 - **Gesprek-module**: `gesprek.py` is de enige eigenaar van de gesprekshistorie (ruwe antwoordtekst
   mét bronnenmarker; saneren voor het model, UI-view, cap, afgebroken beurten via `LopendeBeurt`).
   Routes en `chat.py` raken de `{"role","content"}`-lijst niet direct aan; opslagsleutel in
   `sessies.db` blijft `chat_history`.
-- **Sessiestate server-side** (`sessie.py`, SQLite `data/sessies.db`, TTL 6 uur; cookie draagt alleen
-  een `sid`). Dus **één Fly-machine** en de store overleeft geen redeploy. De middleware bewaart alleen
+- **Sessiestate server-side** (`sessie.SessieStore` op `AppDeps.sessie_store`, SQLite
+  `data/sessies.db` via `SESSIE_DB_PATH`, TTL 6 uur; cookie draagt alleen een `sid`). Dus **één Fly-machine** en de store overleeft geen redeploy. De middleware bewaart alleen
   bij niet-GET-requests (behalve `/api/chat`, dat zelf post-stream bewaart, en `/api/vervolgvragen`):
   een GET die de sessie muteert moet `bewaar_sessie()` expliciet aanroepen.
 - **Vier chat-bronnen**, allemaal full-document: OER (leidend) + KD + skills + instellingsregelingen

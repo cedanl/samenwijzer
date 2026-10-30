@@ -158,10 +158,12 @@ instellingsbrede document-soorten → citeer-label; een nieuwe soort toevoegen =
 geen schema-migratie (soort-validatie staat in `voeg_instelling_document_toe`, niet in een DB-CHECK).
 Verbinding via `get_connection()` met WAL-modus en `check_same_thread=False`.
 
-**Verbinden vanuit de app**: routes openen de DB via een module-lokale `_conn()`-helper
-(`app_fastapi/main.py` en `context.py`) die `db.get_connection(DB_PATH)` aanroept; scripts en tests
-gebruiken `db.get_connection()` direct. (De geretirede Streamlit-wrapper `_db.py` met
-`@st.cache_resource` bestaat niet meer.)
+**Verbinden vanuit de app**: routes openen de DB via `with deps_van(request).verbinding() as conn:`
+(`AppDeps.validatie_db`, een `ValidatieDb` op `DB_PATH`: per blok een eigen verbinding die daarna
+sluit, en één keer per instantie `init_db` als migratie). `context.py`, `data.py` en `auth.py` krijgen
+die `conn` als eerste parameter. Scripts en tests gebruiken `db.get_connection()` of `ValidatieDb`
+direct; `ValidatieDb(":memory:")` houdt één gedeelde verbinding open (tests). (De geretirede
+Streamlit-wrapper `_db.py` met `@st.cache_resource` bestaat niet meer.)
 
 ## Ingestie-pipeline (`ingest.py`)
 
@@ -230,7 +232,8 @@ zodat het label matcht met wat de student in de dropdown koos.
 ## Sessiemodel
 
 Server-side sessie in `app_fastapi/sessie.py`: een `Sessie`-dataclass per gebruiker, bewaard in
-een SQLite-store met TTL die proces-restarts overleeft. De browser houdt alleen de door
+een `SessieStore` (SQLite op `SESSIE_DB_PATH`, default `data/sessies.db`, TTL 6 uur; één per app via
+`AppDeps.sessie_store`, `":memory:"` in tests) die proces-restarts overleeft. De browser houdt alleen de door
 `SESSION_SECRET` ondertekende `SessionMiddleware`-cookie vast met daarin een `sid`-sleutel; die
 `sid` wijst naar het server-side `Sessie`-object. `get_sessie(request)` laadt/maakt het object,
 write-through naar de store gebeurt via middleware (mutaterende GET-routes roepen `bewaar_sessie()`
@@ -282,14 +285,27 @@ elders in dit document beschrijven de gedeelde Python-kern, niet een bestaande U
 DE frontend sinds juni 2026. Vervangt **alleen de UI-schil** en hergebruikt de Python-laag
 (`chat.py`, `db.py`, `_ai.py`, `auth.py`) **ongewijzigd** — die importeren geen streamlit.
 
-- `main.py` (routes + SSE-chat), `context.py` (OER-context-orchestrator: OER + KD + skills +
+- `deps.py` (`AppDeps`: config uit env via `AppDeps.uit_env()` — fail-closed op `SESSION_SECRET`/
+  `ALGEMEEN_WACHTWOORD` —, `ValidatieDb`, `SessieStore`, `ai_client`, OER-cache `OerBlokken`; zie
+  hieronder), `main.py` (`maak_app(deps)` + routes op een `APIRouter` + SSE-chat; module-level
+  `app = maak_app(AppDeps.uit_env())` voor uvicorn), `context.py` (OER-context-orchestrator: OER + KD + skills +
   instellingsdocumenten per rol via `PUBLIEK/STUDENT/MENTOR_SOORTEN` + web-zoek-domeinen),
   `auth.py` (login-hergebruik), `data.py` (voortgang/studenten/profiel), `sessie.py` (server-side
   sessie via signed-cookie `sid`; bewaart een `Gesprek` uit `gesprek.py`), `static/chat.js` (escapende markdown-renderer + SSE + viewer —
   één plek voor de security-gevoelige rendering), templates.
 - **Toegangspoort**: de hele app achter `ALGEMEEN_WACHTWOORD` (`.env`); login student/mentor erachter.
 - Streaming via `text/event-stream`; dezelfde `_ai._client()` → prompt-cache blijft werken.
-- Tests: `tests/test_fastapi_poc.py`.
+- **App-factory + deps**: `maak_app(deps)` registreert de toegangspoort, `SessionMiddleware`
+  (`deps.session_secret`, `deps.cookie_https_only`), `/static` en de router, en zet
+  `app.state.deps`. Routes halen alles via `deps_van(request)` (sessie: `get_sessie(request)` leest
+  `request.app.state.deps.sessie_store`); er zijn geen module-globals of env-reads meer in
+  `app_fastapi/`. `OerBlokken` (LRU, max 64 OER-teksten) hangt aan de deps, dus een herstart begint
+  leeg, twee app-instanties delen niets en een beheer-taak (bv. re-ingest) leegt hem na afloop.
+- Tests: `tests/test_fastapi_poc.py` e.a. bouwen per test een `AppDeps` (fixtures `maak_deps`,
+  `maak_client`, `client`, `seed`, `conn` in `tests/conftest.py`): in-memory validatie-DB met
+  seed-helpers, `TelStore` (in-memory sessie-store die bewaar-aanroepen telt en optioneel één vaste
+  `Sessie` laadt) en een nep-`ai_client`. Alleen gedrag (`genereer_*`, `laad_context` via
+  `stub_context`) wordt nog gemonkeypatcht.
 - Productie-`digitale-gids` draait `Dockerfile.fastapi` op Fly; vereist Fly-secret `SESSION_SECRET`.
   Plan: `docs/plans/2026-06-08-fastapi-poc-publieke-oer-chat.md` + `2026-06-10-fastapi-migratie-*.md`.
 
