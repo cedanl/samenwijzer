@@ -182,3 +182,88 @@ def test_titel_zonder_scheidingstekens_van_de_bronnenregel():
     assert "|" not in titel and ";" not in titel
     _, bronnen = splits_bronnen(f"x\n<!-- bronnen: schooldocument|{titel} -->", cat.register())
     assert bronnen[0].doc_id == 1
+
+
+# ── Punt A: ruimere titelnormalisatie ─────────────────────────────────────────
+
+
+@pytest.mark.parametrize(
+    "geschreven",
+    [
+        "Examenreglement.",  # afsluitende punt
+        "Examenreglement:",  # afsluitende dubbele punt
+        "“Examenreglement”.",  # quotes + punt
+        "Schooldocument · Examenreglement",  # type-prefix met middenpunt
+        "Schooldocument: Examenreglement",
+        "schooldocument - Examenreglement",
+        "Schooldocument | Examenreglement [INFORMATIEF]",
+    ],
+)
+def test_resolve_accepteert_titelvarianten(geschreven):
+    assert BronCatalogus.bouw([_volledig()]).resolve(geschreven).doc_id == 11
+
+
+@pytest.mark.parametrize(
+    "geschreven",
+    ["Studiegids: OER Kok BOL 2025", "OER Kok BOL 2025.", "studiegids · oer  kok bol 2025"],
+)
+def test_resolve_type_prefix_bij_studiegids(geschreven):
+    assert BronCatalogus.bouw([_volledig()]).resolve(geschreven).oer_id == 7
+
+
+def test_resolve_nfc_nfd_en_ampersand():
+    cat = BronCatalogus.bouw([_oer(documenten=(_doc(1, "Réglement A & B"),))])
+    assert cat.resolve("Réglement A en B").doc_id == 1  # NFD + "en"
+    assert cat.resolve("réglement a & b.").doc_id == 1
+
+
+def test_resolve_laat_titels_met_type_woord_zonder_scheidingsteken_intact():
+    cat = BronCatalogus.bouw([_volledig()])
+    assert cat.resolve("Kwalificatiedossier 25180").crebo == "25180"  # geen prefix-strip
+    assert cat.resolve("Kwalificatiedossier") is None
+
+
+@pytest.mark.parametrize("naam", ["Curio", "curio", "Curio.", "Website: Curio", "www.curio.nl"])
+def test_resolve_website_via_schoolnaam_of_domein(naam):
+    register = BronRegister.uit_dicts(BronCatalogus.bouw([_volledig()]).register(["curio.nl"]))
+    assert register.resolve(naam).titel == "curio.nl"
+    assert register.resolve(naam, "https://www.curio.nl/open-dag").url.endswith("/open-dag")
+    assert register.resolve(naam, "https://evil.example/curio.nl") is None
+
+
+def test_resolve_website_alias_gebruikt_weergavenaam():
+    register = BronRegister((Bron("website", "deltion.nl"),))
+    assert register.resolve("Deltion College").titel == "deltion.nl"
+    assert register.resolve("Talland") is None
+
+
+def test_www_prefix_alleen_voor_websites():
+    cat = BronCatalogus.bouw([_oer(documenten=(_doc(1, "Examenreglement"),))])
+    assert cat.resolve("www.Examenreglement") is None
+    register = BronRegister.uit_dicts(cat.register(["curio.nl"]))
+    assert register.resolve("www.curio.nl").titel == "curio.nl"
+
+
+def test_exacte_titel_gaat_voor_website_alias():
+    """Een document dat toevallig "Curio" heet wint van de alias van de website curio.nl."""
+    cat = BronCatalogus.bouw([_oer(documenten=(_doc(5, "Curio"),))])
+    register = BronRegister.uit_dicts(cat.register(["curio.nl"]))
+    assert register.resolve("Curio").doc_id == 5
+
+
+@pytest.mark.parametrize(
+    ("a", "b"),
+    [("Reglement A & B", "Reglement A en B"), ("Reglement A", "reglement a.")],
+)
+def test_uniekheid_blijft_overeind_na_ruimere_norm(a, b):
+    cat = BronCatalogus.bouw([_oer(documenten=(_doc(1, a), _doc(2, b)))])
+    docs = [x for x in cat.bronnen if x.type == "schooldocument"]
+    assert docs[0].titel != docs[1].titel
+    register = BronRegister.uit_dicts(cat.register())
+    # Elke uitgegeven titel herleidt naar precies zichzelf.
+    assert [register.resolve(x.titel).doc_id for x in docs] == [1, 2]
+
+
+def test_catalogus_maakt_zelf_geen_titels_met_afsluitende_punt():
+    cat = BronCatalogus.bouw([_oer(documenten=(_doc(1, "Examenreglement"),))])
+    assert not any(b.titel.endswith((".", ":")) for b in cat.bronnen)

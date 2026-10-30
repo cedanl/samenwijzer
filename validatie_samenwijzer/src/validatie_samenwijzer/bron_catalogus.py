@@ -15,6 +15,7 @@ import json
 import logging
 import os
 import re
+import unicodedata
 from collections import Counter
 from collections.abc import Iterable, Sequence
 from dataclasses import dataclass, field
@@ -23,6 +24,7 @@ from typing import TYPE_CHECKING
 from urllib.parse import urlparse
 
 from validatie_samenwijzer.db import SOORTEN
+from validatie_samenwijzer.instellingen import alle as instellingen_alle
 from validatie_samenwijzer.kd_versies import kd_map, kies_kd_pad
 from validatie_samenwijzer.opleiding import schoon_opleiding_naam
 
@@ -228,13 +230,34 @@ class Bron:
     crebo: str | None = None
 
 
+_TYPE_PREFIX = re.compile(
+    rf"^(?:{'|'.join(sorted(BRON_TYPES))})(?:\s*[:·|]\s*|\s+-\s+)(?=\S)"
+)  # "studiegids: x", "schooldocument · x", "skills - x"; niet "kwalificatiedossier 25180"
+_RAND = " \"'“”‘’"
+
+
 def _norm(titel: str) -> str:
-    """Vergelijkingsvorm van een titel: hoofdletterongevoelig, streepjes en witruimte gelijk,
-    zonder `[INFORMATIEF]` en omringende aanhalingstekens."""
-    t = titel.casefold().replace("[informatief]", "")
-    t = re.sub(r"[‐-―−]", "-", t)
-    t = " ".join(t.split())
-    return t.strip(" \"'“”‘’")
+    """Vergelijkingsvorm van een titel (voor ``resolve`` én ``_maak_uniek``).
+
+    Hoofdletter-, NFC/NFD-, streepje- en witruimte-ongevoelig; ``&`` = ``en``; zonder
+    ``[INFORMATIEF]``, omringende aanhalingstekens, afsluitende ``.``/``:`` en een door het
+    model toegevoegd type-prefix ("Studiegids: …", "Schooldocument · …").
+    """
+    t = unicodedata.normalize("NFKC", titel).casefold().replace("[informatief]", "")
+    t = re.sub(r"[‐-―−]", "-", t).replace("&", " en ")
+    t = " ".join(t.split()).strip(_RAND + ".:")
+    t = _TYPE_PREFIX.sub("", t, count=1)
+    return t.strip(_RAND + ".: ")
+
+
+def _web_aliassen(domein: str) -> frozenset[str]:
+    """Namen waaronder het model een schoolsite noemt: weergavenaam of domeinlabel ("Curio")."""
+    domein = domein.casefold()
+    namen = {domein.split(".")[0]}
+    for i in instellingen_alle():
+        if i.web_domein.casefold() == domein:
+            namen.add(i.display_naam)
+    return frozenset(_norm(n) for n in namen)
 
 
 def _host_hoort_bij(url: str, domein: str) -> bool:
@@ -292,21 +315,30 @@ class BronRegister:
     def resolve(self, titel: str, url: str | None = None) -> Bron | None:
         """Herleid een door het model geschreven titel naar een bekende bron, of None.
 
-        Vergelijkt hoofdletter-/streepjesongevoelig. Een website-bron matcht op het domein
-        (met of zonder ``www.``); een meegegeven url moet dan binnen dat domein liggen, anders
-        is de bron onbekend. Andere bronnen krijgen geen url.
+        Vergelijkt via ``_norm`` (hoofdletters, streepjes, ``&``/``en``, type-prefix, afsluitende
+        leestekens). Een website-bron matcht op het domein (met of zonder ``www.``) of op de
+        naam van de school erachter ("Curio" → curio.nl); een meegegeven url moet dan binnen dat
+        domein liggen, anders is de bron onbekend. Andere bronnen krijgen geen url.
         """
-        sleutel = _norm(titel).removeprefix("www.")
-        for bron in self.bronnen:
-            if _norm(bron.titel) != sleutel:
-                continue
-            if bron.type != "website":
-                return bron
-            if url is None:
-                return bron
-            if _host_hoort_bij(url, bron.titel.casefold()):
-                return Bron(bron.type, bron.titel, url)
+        sleutel = _norm(titel)
+        web_sleutel = sleutel.removeprefix("www.")
+        gevonden = next(
+            (
+                b
+                for b in self.bronnen
+                if _norm(b.titel) == (web_sleutel if b.type == "website" else sleutel)
+            ),
+            None,
+        ) or next(
+            (b for b in self.bronnen if b.type == "website" and sleutel in _web_aliassen(b.titel)),
+            None,
+        )
+        if gevonden is None:
             return None
+        if gevonden.type != "website" or url is None:
+            return gevonden
+        if _host_hoort_bij(url, gevonden.titel.casefold()):
+            return Bron(gevonden.type, gevonden.titel, url)
         return None
 
 

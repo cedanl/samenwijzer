@@ -330,6 +330,9 @@ orchestrator die alle chat-routes (publiek `/`, `/student`, `/mentor/student/{id
    `doc_id`, `crebo`, plus de webdomeinen) voor de sessie. `BronRegister.uit_dicts(register)`
    herleidt daarmee later modeltitels zonder de teksten te laden; `splits_bronnen(tekst, register)`
    wijst onbekende titels af en zet de identifiers (zonder register: alleen de type-check).
+   `resolve` vergelijkt via `_norm` (hetzelfde als de uniciteitscontrole van de catalogus): hoofdletters,
+   NFKC, streepjes, `&`=`en`, afsluitende `.`/`:` en een type-prefix ("Studiegids: …") tellen niet mee;
+   een website-bron herkent ook de schoolnaam uit `instellingen.py` ("Curio" → `curio.nl`) en `www.`.
    `static/chat.js` linkt een studiegids-chip met `oer_id` naar `/api/oer/{id}/bestand`; documenten
    hebben (nog) geen download-route en blijven een label.
 2. **Intake** (`genereer_intake_antwoord` + `identificeer_oer_kandidaten`) — fallback in
