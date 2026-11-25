@@ -144,7 +144,8 @@ def test_kwic_classificatie():
     assert document_kop(statuut.soort, statuut.titel) == "Studentenstatuut — addendum"
     module = items["Module overzicht.xlsx"]
     assert (module.soort, module.leerweg, module.crebo) == ("onderwijsplan", "BBL", "")
-    assert items["Grof ontwerp challenges BBL4 (1).pdf"].status == ib.OVERGESLAGEN
+    grof = items["Grof ontwerp challenges BBL4 (1).pdf"]
+    assert (grof.status, grof.soort, grof.leerweg) == (ib.INGENOMEN, "onderwijsplan", "BBL")
 
 
 def test_ingenomen_items_hebben_geldige_soort_en_unieke_bestemming():
