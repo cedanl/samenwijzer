@@ -20,4 +20,5 @@ oeren/
 .uv_cache/
 
 # Claude Code lokale/runtime-bestanden (niet versiebeheren)
-.claude/
+.claude/*
+!.claude/agents/

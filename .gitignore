@@ -54,6 +54,7 @@ kwalificatiedossiers/
 # Skills-plugin tooling (machine-lokaal — symlinks naar anthropics/skills)
 .agents/
 .claude/*
+!.claude/agents/
 !.claude/skills/
 .claude/skills/*
 # Uitzondering: handgeschreven team-skills wél in git (geen symlinks, geen persoonlijke settings)

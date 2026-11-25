@@ -13,7 +13,7 @@ dus overschreven). Het script is idempotent: `documenten` wordt ge-upsert, `.md`
 Er worden geen originelen gekopieerd; alleen `.md` komt onder `_documenten/`.
 
 Gebruik (vanuit validatie_samenwijzer/, met OEREN_PAD=../oeren):
-    uv run python scripts/ingest_bronmateriaal.py --instelling curio|graafschap|kwic [--dry-run]
+    uv run python scripts/ingest_bronmateriaal.py --instelling <naam> [--dry-run]
     uv run python scripts/ingest_bronmateriaal.py --alles --dry-run
 """
 
@@ -58,7 +58,7 @@ log = logging.getLogger("ingest_bronmateriaal")
 
 INGENOMEN = "ingenomen"
 OVERGESLAGEN = "overgeslagen"
-INSTELLINGEN = ("curio", "graafschap", "kwic")
+INSTELLINGEN = ("curio", "graafschap", "kwic", "deltion")
 _PDF_TIMEOUT_S = 180
 _MIN_TEKENS = 50  # korter = conversie waarschijnlijk mislukt (lege/scan-PDF zonder OCR-resultaat)
 
@@ -435,8 +435,16 @@ def _classificeer_kwic(bestanden: list[str]) -> list[Item]:
             ),
         ),
         (
+            # Contactblok (namen, e-mail, mobiel) wordt door `redigeer` verwijderd (Ed, 25-11-2026).
             "grof ontwerp challenges",
-            lambda b: _overgeslagen(b, "bevat persoonsgegevens en is niet geredigeerd"),
+            lambda b: _ingenomen(
+                inst,
+                b,
+                "onderwijsplan",
+                "Grof ontwerp challenges BBL 4 (Design Based Learning)",
+                "grof-ontwerp-challenges-bbl-4",
+                leerweg="BBL",
+            ),
         ),
         ("ibp-beleid", lambda b: _overgeslagen(b, "intern beleid (informatiebeveiliging/privacy)")),
         ("kd werkvoorbereider", lambda b: _overgeslagen(b, "landelijk KD")),
@@ -453,10 +461,79 @@ def _classificeer_kwic(bestanden: list[str]) -> list[Item]:
     return items
 
 
+# Deltion: OER's in de gids zijn cohort 2025 (PW 23285/25696, VP 25655). De aangeleverde stukken
+# zijn cohort 2026; cohort blijft leeg zodat ze bij die OER's zichtbaar zijn. VP-stukken horen bij
+# het nieuwe crebo 27145 maar hangen (besluit Ed, 25-11-2026) aan de bestaande 25655-OER.
+_DELTION_PW = ("23285", "25696")
+_DELTION_VP = "25655"
+
+
+def _classificeer_deltion(bestanden: list[str]) -> list[Item]:
+    inst = "deltion"
+    # (sleutel in stem, soort, titel, slug, crebo's)
+    regels: list[tuple[str, str, str, str, tuple[str, ...]]] = [
+        ("23285 examenplan keuzedelen", "examenplan",
+         "Examenplan keuzedelen Pedagogisch werk niveau 4 (2026)",
+         "23285-examenplan-keuzedelen-2026", ("23285",)),
+        ("23285 examenplan pedagogisch", "examenplan",
+         "Examenplan Pedagogisch werk niveau 4 (2026)", "23285-examenplan-2026", ("23285",)),
+        ("25696 examenplan keuzedelen", "examenplan",
+         "Examenplan keuzedelen Pedagogisch medewerker kinderopvang (2026)",
+         "25696-examenplan-keuzedelen-2026", ("25696",)),
+        ("25696 examenplan pedagogisch", "examenplan",
+         "Examenplan Pedagogisch medewerker kinderopvang (2026)",
+         "25696-examenplan-2026", ("25696",)),
+        ("keuzedelengids pw", "keuzedelen", "Keuzedelengids Pedagogisch werk",
+         "keuzedelengids-pw", _DELTION_PW),
+        ("bpv pw 2026-2027 bol", "studiegids", "Algemene informatiegids BPV Pedagogisch werk "
+         "2026-2027 (BOL)", "informatiegids-bpv-pw-bol", _DELTION_PW),
+        ("bpv pw 2026-2027 maatwerk-bbl", "studiegids", "Algemene informatiegids BPV "
+         "Pedagogisch werk 2026-2027 (Maatwerk-BBL)", "informatiegids-bpv-pw-bbl", _DELTION_PW),
+        ("onderwijsplanning  gpm", "onderwijsplan",
+         "Globale onderwijsplanning Gespecialiseerd pedagogisch medewerker 2026-2027",
+         "onderwijsplanning-gpm", ("23285",)),
+        ("onderwijsplanning oa", "onderwijsplan",
+         "Globale onderwijsplanning Onderwijsassistent 2026-2027",
+         "onderwijsplanning-oa", ("23285",)),
+        ("27145 examenplan keuzedelen", "examenplan",
+         "Examenplan keuzedelen Mbo-Verpleegkundige (crebo 27145, cohort 2026)",
+         "27145-examenplan-keuzedelen-2026", (_DELTION_VP,)),
+        ("27145 examenplan mbo-verpleegkundige", "examenplan",
+         "Examenplan Mbo-Verpleegkundige (crebo 27145, cohort 2026)",
+         "27145-examenplan-2026", (_DELTION_VP,)),
+        ("curriculum verpleegkunde", "onderwijsplan",
+         "Curriculum Verpleegkunde BOL (crebo 27145, cohort 2026-2027)",
+         "curriculum-verpleegkunde-bol-2026", (_DELTION_VP,)),
+        ("stagegids", "studiegids", "Stagegids Verpleegkunde", "stagegids-verpleegkunde",
+         (_DELTION_VP,)),
+        ("studiegids - actief - 26 - 27145", "studiegids",
+         "Studiegids Mbo-Verpleegkundige BOL (crebo 27145, cohort 2026-2027)",
+         "studiegids-27145-bol-2026", (_DELTION_VP,)),
+    ]  # fmt: skip
+    overslaan = {
+        "po - passend onderwijzen": "bevat namen van medewerkers",
+        "links": "alleen een lijst met links",
+    }
+    items: list[Item] = []
+    for bestand in bestanden:
+        stem = Path(bestand).stem.lower()
+        regel = next((r for r in regels if r[0] in stem), None)
+        if regel is not None:
+            _, soort, titel, slug, crebos = regel
+            items.extend(
+                _ingenomen(inst, bestand, soort, titel, f"{slug}-{c}", crebo=c) for c in crebos
+            )
+            continue
+        reden = next((r for k, r in overslaan.items() if stem.startswith(k)), None)
+        items.append(_overgeslagen(bestand, reden or "geen classificatieregel voor dit bestand"))
+    return items
+
+
 _CLASSIFICEERDERS: dict[str, Callable[[list[str]], list[Item]]] = {
     "curio": _classificeer_curio,
     "graafschap": _classificeer_graafschap,
     "kwic": _classificeer_kwic,
+    "deltion": _classificeer_deltion,
 }
 
 
@@ -701,6 +778,13 @@ _BEKENDE_NAMEN = (
     "Willem van der Weijden",
     "Rogier van Erp",
     "Lotte van de Rijt",
+    # Deltion PW/VP (25-11-2026)
+    "Jitske Strikwerda",
+    "Marcel Hulleman",
+    "Manuela\nHagen",
+    "Manuela Hagen",
+    "Jordi van der Zande",
+    "Roy van den Brand",
 )
 
 _REDACTIES: dict[str, re.Pattern[str]] = {
@@ -708,6 +792,11 @@ _REDACTIES: dict[str, re.Pattern[str]] = {
     "iban": re.compile(r"\b[A-Z]{2}\d{2}\s?[A-Z]{4}(?:\s?\d{4}){2}\s?\d{2}\b"),
     "telefoon": re.compile(
         r"(?<![\d.,/-])(?:\+31|0031|0)[\s-]?(?:\(0\))?[\s-]?[1-9](?:[\s-]?\d){7,8}(?!\d)"
+    ),
+    "wachtwoord": re.compile(r"(?i)\bwachtwoord(?: is)?: *\S+"),
+    # Aanhef + initialen + achternaam ("Mw. S. Jacobi", "Dhr. H. Tichelaar").
+    "naam_aanhef": re.compile(
+        r"\b(?:Mw|Mevr|Dhr|Mr)\.? (?:[A-Z]\.\s?)+(?:(?:van|de|der|den|ter|te) )*[A-Z][a-zë'’-]+"
     ),
     "bsn": re.compile(r"(?i)\b(bsn|burgerservicenummer)\b[^\d\n]{0,15}\d{8,9}\b"),
     # Rol + persoonsnamen ("Projectleider: Willem van der Weijden - ..."): rest van de regel weg.

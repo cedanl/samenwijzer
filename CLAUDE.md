@@ -8,6 +8,21 @@ Werkstijl: vraag bij twijfel vóór je begint; lever de kleinste oplossing die h
 raak alleen aan wat de taak vereist (geen ongevraagde refactors van aangrenzende code); definieer
 per taak een verifieerbaar success-criterium. Volledige agent-regels: `AGENTS.md`.
 
+## Werkwijze
+
+- **Denk eerst:** benoem aannames; bij meerdere interpretaties leg ze voor; bij onduidelijkheid stoppen en vragen.
+- **Eenvoud:** minimale code, niets speculatiefs, geen abstractie voor eenmalig gebruik.
+- **Chirurgisch:** raak alleen aan wat nodig is; ruim alleen je eigen rommel op; meld ongerelateerde dode code in plaats van te verwijderen. Elke gewijzigde regel herleidt naar het verzoek.
+- **Doelgericht:** vertaal taken naar controleerbare doelen (bug → eerst falende test; refactor → tests vóór en na groen). Bij meerstapstaken: kort plan met `stap → verify`.
+
+### Modelrouting
+
+- Hoofdsessie: Opus 4.8, die ook alle code schrijft. Fable 5.2 is de adviseur en ziet de hele conversatie.
+- Alleen-lezen subagents (Haiku 5.5) in `.claude/agents/`: `search` (repo in kaart), `grep` (alle call sites), `docs` (API-referentie). Delegeer zoek- en leeswerk daarheen.
+- Verbrand geen Fable of Opus aan werk dat een goedkoper model net zo goed doet.
+- Raadpleeg de adviseur vóór een plan wordt vastgelegd, na dezelfde fout twee keer, vóór een taak als af wordt gemarkeerd, en wanneer om advies wordt gevraagd.
+
+Zie: https://code.claude.com/docs/en/advisor
 ## Overview
 
 Python-app die AI en Data gebruikt om MBO-studenten te ondersteunen bij het leren. De frontend

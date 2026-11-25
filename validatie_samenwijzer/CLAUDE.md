@@ -4,13 +4,13 @@ Guidance for Claude Code in dit subproject. Module-rollen, datapipelines, de vol
 en de multi-machine-workflow staan in **`docs/ARCHITECTURE.md`**.
 
 **Werkstijl:** voorzichtigheid boven snelheid. Maak aannames expliciet en vraag bij twijfel; lever de
-minimale oplossing; raak alleen aan wat de taak vereist (dode code: melden, niet verwijderen); vertaal
-taken naar verifieerbare doelen en noem bij multi-step kort plan + check per stap.
+minimale oplossing; raak alleen aan wat de taak vereist (dode code: melden, en vragen om te verwijderen, niet zelf verwijderen); 
+vertaaltaken naar verifieerbare doelen en noem bij multi-step kort plan + check per stap.
 
 ## Wat dit project is
 
-Standalone **FastAPI-app** (`app_fastapi/`) waarin MBO-studenten en mentoren chatten met hun OER via
-Claude streaming met de **volledige OER als context** (1M-tokenvenster). Het landelijke
+Standalone **FastAPI-app** (`app_fastapi/`) waarin MBO-studenten en mentoren/leer loopbaan begeleiders (LLB) 
+chatten met hun OER via Claude streaming met de **volledige OER als context** (1M-tokenvenster). Het landelijke
 **kwalificatiedossier (KD)** wordt mee-ingebed als aanvullende bron; de OER blijft leidend. Subproject
 van de `samenwijzer`-monorepo met eigen `pyproject.toml`, `.venv` en database.
 
@@ -20,6 +20,17 @@ chat-streaming. `/student`, `/mentor`, `/beheer` zitten achter login en delen di
 
 De Streamlit-frontend (`app/`) is **geretired**; `app_fastapi/` draait in productie als `digitale-gids`
 op Fly (`Dockerfile.fastapi`). Er is geen vector store (full-document context, `bron_catalogus.py:_MAX_OER_TEKST_TEKENS`).
+
+## Werkwijze
+
+- Hoofdsessie: Opus 4.8, die ook alle code schrijft. Fable 5.2 is de adviseur en ziet de hele conversatie.
+- Alleen-lezen subagents (Haiku 5.5) in `.claude/agents/`: `search` (repo in kaart), `grep` (alle call
+  sites), `docs` (API-referentie). Delegeer zoek- en leeswerk daarheen.
+- Verbrand geen Fable of Opus aan werk dat een goedkoper model net zo goed doet.
+- Raadpleeg de adviseur vóór een plan wordt vastgelegd, na dezelfde fout twee keer, vóór een taak als af
+  wordt gemarkeerd, en wanneer om advies wordt gevraagd.
+
+Zie: https://code.claude.com/docs/en/advisor
 
 ## Commando's
 
@@ -53,7 +64,7 @@ re-seed is een nieuwe deploy nodig. Fly-secrets: `SESSION_SECRET`, `ALGEMEEN_WAC
 
 ## Architectuur-invarianten (niet breken)
 
-- **AI-isolatie**: alle Anthropic-calls via `_ai._client()` (dwingt 30s-timeout af); nooit
+- **AI-isolatie**: voor de live app: alle Anthropic-calls via `_ai._client()` (dwingt 30s-timeout af); nooit
   `anthropic.Anthropic()` direct. `chat.py` is de enige module met streaming. Modellen: chat/intake
   `claude-sonnet-5-5`, vervolgvragen `claude-haiku-5-5` (best-effort), `skills_bron._MATCH_MODEL` nog
   `claude-haiku-4-5-20251001`. Haiku 5.5 kost 5× méér boven 100K prompttokens (p90 OER ≈ 112K): de
