@@ -773,19 +773,29 @@ def converteer(pad: Path, timeout: int = _PDF_TIMEOUT_S) -> str:
 
 # ── Redactie (deterministisch; vangt geen namen in lopende tekst) ─────────────
 
-_BEKENDE_NAMEN = (
-    "Maico de Jong",
-    "Willem van der Weijden",
-    "Rogier van Erp",
-    "Lotte van de Rijt",
-    # Deltion PW/VP (25-11-2026)
-    "Jitske Strikwerda",
-    "Marcel Hulleman",
-    "Manuela\nHagen",
-    "Manuela Hagen",
-    "Jordi van der Zande",
-    "Roy van den Brand",
+# Namen die bij handmatige review in de bronnen zijn aangetroffen staan NIET in de (publieke) repo
+# maar in een gitignored bestand: één naam per regel, `#` = commentaar. Vangt geen onbekende namen.
+_NAMEN_PAD = Path(
+    os.environ.get(
+        "REDACTIE_NAMEN_PAD",
+        Path(__file__).resolve().parent.parent / "data" / "redactie_namen.txt",
+    )
 )
+
+
+def _lees_namen(pad: Path) -> list[str]:
+    if not pad.is_file():
+        log.warning("Geen namenlijst voor redactie gevonden: %s", pad)
+        return []
+    regels = (r.strip() for r in pad.read_text(encoding="utf-8").splitlines())
+    return [r for r in regels if r and not r.startswith("#")]
+
+
+def _namen_patroon(namen: Iterable[str]) -> re.Pattern[str]:
+    """Regex die elke naam matcht, ook als de woorden over een regelafbreking zijn verdeeld."""
+    delen = [r"\s+".join(re.escape(w) for w in n.split()) for n in namen]
+    return re.compile(r"\b(?:" + "|".join(delen) + r")\b") if delen else re.compile(r"(?!x)x")
+
 
 _REDACTIES: dict[str, re.Pattern[str]] = {
     "email": re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+"),
@@ -799,14 +809,12 @@ _REDACTIES: dict[str, re.Pattern[str]] = {
         r"\b(?:Mw|Mevr|Dhr|Mr)\.? (?:[A-Z]\.\s?)+(?:(?:van|de|der|den|ter|te) )*[A-Z][a-zë'’-]+"
     ),
     "bsn": re.compile(r"(?i)\b(bsn|burgerservicenummer)\b[^\d\n]{0,15}\d{8,9}\b"),
-    # Rol + persoonsnamen ("Projectleider: Willem van der Weijden - ..."): rest van de regel weg.
+    # Rol + persoonsnamen ("Projectleider: Piet van Fictief - ..."): rest van de regel weg.
     "naam_bij_rol": re.compile(
         r"(?m)((?i:projectleiders?|auteurs?|opgesteld door|contactpersonen?|eigenaar))"
         r"[ \t]*:[ \t]*(?=[A-Z][a-zë'’.-]+ (?:(?:van|de|der|den|ter|te|'t) )*[A-Z])[^\n]*$"
     ),
-    # Namen die bij handmatige review in de bronnen zijn aangetroffen (bestuurder in het Curio-
-    # protocol, KWIC-projectleiders). Aanvullen bij nieuwe bevindingen; vangt geen onbekende namen.
-    "naam_review": re.compile(r"\b(?:" + "|".join(re.escape(n) for n in _BEKENDE_NAMEN) + r")\b"),
+    "naam_review": _namen_patroon(_lees_namen(_NAMEN_PAD)),
 }
 
 

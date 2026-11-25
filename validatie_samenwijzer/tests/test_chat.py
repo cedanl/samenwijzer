@@ -1308,7 +1308,7 @@ def test_genereer_antwoord_onbekende_servertool_geen_status():
 
 
 def test_genereer_antwoord_gebruikt_kortere_output_defaults():
-    """Perf: kortere antwoorden schelen output-tokens (max_tokens 1200, effort low)."""
+    """Perf: kortere antwoorden schelen output-tokens (max_tokens 2500, effort low)."""
     from validatie_samenwijzer import chat
 
     class _Stream:
@@ -1333,7 +1333,7 @@ def test_genereer_antwoord_gebruikt_kortere_output_defaults():
 
     client = _Client()
     "".join(chat.genereer_antwoord(client, "systeem", [{"role": "user", "content": "hoi"}]))
-    assert client.messages.laatste_kwargs["max_tokens"] == 1200
+    assert client.messages.laatste_kwargs["max_tokens"] == 2500
     assert client.messages.laatste_kwargs["output_config"] == {"effort": "low"}
 
 

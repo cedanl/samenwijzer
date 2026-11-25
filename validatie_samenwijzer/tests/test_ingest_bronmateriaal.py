@@ -205,7 +205,8 @@ def test_blad_naar_markdown_maakt_tabel_en_tekstregels():
     assert "| K1 | Kerntaak 1 |" in md
 
 
-def test_redigeer_bekende_namen_uit_review():
-    schoon, aantallen = ib.redigeer("Goedgekeurd door Maico de Jong, Raad van Bestuur.")
-    assert "Maico" not in schoon and "Raad van Bestuur" in schoon
+def test_redigeer_bekende_namen_uit_review(monkeypatch):
+    monkeypatch.setitem(ib._REDACTIES, "naam_review", ib._namen_patroon(["Piet van Fictief"]))
+    schoon, aantallen = ib.redigeer("Goedgekeurd door Piet van\nFictief, Raad van Bestuur.")
+    assert "Piet" not in schoon and "Raad van Bestuur" in schoon
     assert aantallen == {"naam_review": 1}
