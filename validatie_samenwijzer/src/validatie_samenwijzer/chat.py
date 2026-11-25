@@ -628,7 +628,7 @@ def genereer_antwoord(
     system: str,
     berichten: list[dict],
     model: str = "claude-sonnet-5-5",
-    max_tokens: int = 1200,
+    max_tokens: int = 2500,
     web_search_domeinen: list[str] | None = None,
 ) -> Generator[str | Status]:
     """Stream Claude-antwoord als generator van tekst-fragmenten en `Status`-objecten.

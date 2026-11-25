@@ -180,11 +180,11 @@ def test_redigeer_verwijdert_contactgegevens_maar_laat_crebo_staan():
 
 def test_redigeer_namen_na_rol_maar_niet_rollen_zelf():
     tekst = (
-        "Locatie: Oss\nProjectleider: Willem van der Weijden - Lotte de Rijt\n"
+        "Locatie: Oss\nProjectleider: Piet van Fictief - Klaas de Verzonnen\n"
         "Contactpersoon: de mentor"
     )
     schoon, aantallen = ib.redigeer(tekst)
-    assert "Weijden" not in schoon and "Rijt" not in schoon
+    assert "Fictief" not in schoon and "Verzonnen" not in schoon
     assert "Projectleider: [verwijderd]" in schoon
     assert "Contactpersoon: de mentor" in schoon
     assert aantallen == {"naam_bij_rol": 1}
@@ -205,7 +205,8 @@ def test_blad_naar_markdown_maakt_tabel_en_tekstregels():
     assert "| K1 | Kerntaak 1 |" in md
 
 
-def test_redigeer_bekende_namen_uit_review():
-    schoon, aantallen = ib.redigeer("Goedgekeurd door Maico de Jong, Raad van Bestuur.")
-    assert "Maico" not in schoon and "Raad van Bestuur" in schoon
+def test_redigeer_bekende_namen_uit_review(monkeypatch):
+    monkeypatch.setitem(ib._REDACTIES, "naam_review", ib._namen_patroon(["Piet van Fictief"]))
+    schoon, aantallen = ib.redigeer("Goedgekeurd door Piet van\nFictief, Raad van Bestuur.")
+    assert "Piet" not in schoon and "Raad van Bestuur" in schoon
     assert aantallen == {"naam_review": 1}
