@@ -180,11 +180,11 @@ def test_redigeer_verwijdert_contactgegevens_maar_laat_crebo_staan():
 
 def test_redigeer_namen_na_rol_maar_niet_rollen_zelf():
     tekst = (
-        "Locatie: Oss\nProjectleider: Willem van der Weijden - Lotte de Rijt\n"
+        "Locatie: Oss\nProjectleider: Piet van Fictief - Klaas de Verzonnen\n"
         "Contactpersoon: de mentor"
     )
     schoon, aantallen = ib.redigeer(tekst)
-    assert "Weijden" not in schoon and "Rijt" not in schoon
+    assert "Fictief" not in schoon and "Verzonnen" not in schoon
     assert "Projectleider: [verwijderd]" in schoon
     assert "Contactpersoon: de mentor" in schoon
     assert aantallen == {"naam_bij_rol": 1}
